@@ -65,6 +65,47 @@ flowchart TD
 
 ---
 
+## Repository Structure
+
+* [**`Elsword/`**](file:///c:/Users/media/Downloads/JoySwordOffline/Elsword) — The legacy game server binaries, configurations, database backups, and operational scripts.
+* [**`web/`**](file:///c:/Users/media/Downloads/JoySwordOffline/web) — The modern Next.js web portal, player wiki content, and cash shop galleries.
+* [**`launcher/`**](file:///c:/Users/media/Downloads/JoySwordOffline/launcher) — The Electron desktop application codebase and configurations.
+* [**`client/`**](file:///c:/Users/media/Downloads/JoySwordOffline/client) — Local client packaging, launch scripts, and desktop installer utilities.
+* [**`database/`**](file:///c:/Users/media/Downloads/JoySwordOffline/database) — SQL migration, auditing scripts, and account provisioning schemas.
+* [**`infra/`**](file:///c:/Users/media/Downloads/JoySwordOffline/infra) — Infrastructure-as-Code Terraform script configurations targeting Azure deployment.
+* [**`scripts/`**](file:///c:/Users/media/Downloads/JoySwordOffline/scripts) — Utility scripts written in Python and PowerShell for environment provisioning, patch overrides, and client testing.
+* [**`tests/`**](file:///c:/Users/media/Downloads/JoySwordOffline/tests) — Automated validation suites for checking build integrity and network endpoints.
+
+---
+
+## Quick Start
+
+### 1. Web Account Portal Setup
+To run the Next.js account registration portal locally:
+```bash
+cd web
+npm install
+npm run dev
+```
+
+### 2. Desktop Launcher Setup
+To build and run the Electron desktop launcher in development mode:
+```bash
+cd launcher
+npm install
+npm run dev
+```
+
+### 3. Server Startup (Windows / Azure VM)
+To bootstrap the legacy servers and map databases automatically:
+```powershell
+.\Start-Server-Automatic.ps1
+```
+This PowerShell script checks local firewall rules, reads configuration credentials, and launches the legacy game executables in their sequential dependency order.
+
+---
+
+
 ## Documentation
 
 For guides on how to install, configure, deploy, and debug, please refer to the following documents:
