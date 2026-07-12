@@ -1,0 +1,239 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 0.0,
+	UNIT_HEIGHT		= 0.0,
+	
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	RENDER_PARAM	= RENDER_TYPE["RT_REAL_COLOR"],
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+		"Chicken_Eltree_AttackB.ogg", 
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_CHICKEN_ELTREE_FEMALE.x",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 0,
+	MAX_G_SPEED			= 0,
+	
+	WALK_SPEED			= 0,
+	RUN_SPEED			= 0,
+	JUMP_SPEED			= 0,
+	DASH_JUMP_SPEED		= 0,
+}
+
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 10000,
+	MP_CHANGE_RATE		= 0,
+	MP_CHARGE_RATE		= 0,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	SHADOW_SIZE			= 0,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "",
+	SMALL_HP_BAR_RED	= "",
+	--SMALL_HP_BAR_YELLOW = "",
+	
+	QUESTION_MARK_SEQ		= "",
+	EXCLAMATION_MARK_SEQ	= "",
+	
+	HEAD_BONE_NAME			= "",
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 0,
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "CHICKEN_FEMALE_WAITSTART",	},
+	{ STATE_NAME = "CHICKEN_FEMALE_WAIT",	LUA_STATE_START_FUNC = "CHICKEN_FEMALE_WAIT_STATE_START_FUNC",			},
+	{ STATE_NAME = "CHICKEN_FEMALE_DYING",	},
+	
+	
+	START_STATE					= "CHICKEN_FEMALE_WAITSTART",
+	WAIT_STATE					= "CHICKEN_FEMALE_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "",
+	SMALL_DAMAGE_LAND_BACK		= "",
+	BIG_DAMAGE_LAND_FRONT		= "",
+	BIG_DAMAGE_LAND_BACK		= "",
+	DOWN_DAMAGE_LAND_FRONT		= "",
+	DOWN_DAMAGE_LAND_BACK		= "",
+	FLY_DAMAGE_FRONT			= "",
+	FLY_DAMAGE_BACK				= "",
+	SMALL_DAMAGE_AIR			= "",
+	BIG_DAMAGE_AIR				= "",
+	DOWN_DAMAGE_AIR				= "",
+	UP_DAMAGE					= "",
+	DAMAGE_REVENGE				= "",
+	
+	DYING_LAND_FRONT			= "CHICKEN_FEMALE_DYING",
+	DYING_LAND_BACK				= "CHICKEN_FEMALE_DYING",
+	DYING_SKY					= "CHICKEN_FEMALE_DYING",
+
+	REVENGE_ATTACK				= "",	
+}
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 0.1,	-- sec
+		TARGET_NEAR_RANGE			= 10000,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 0,		-- cm
+		TARGET_LOST_RANGE			= 0,		-- cm
+		TARGET_SUCCESS_RATE			= 100,		-- %
+		ATTACK_TARGET_RATE			= 0,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 0,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE = 
+	{		
+		DEST_GAP			= 150,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 160,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		MOVE_SPLIT_RANGE	= 600,
+		WALK_INTERVAL		= 3,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 5,
+		UP_JUMP_RATE		= 100, -- 40,
+		UP_DOWN_RATE		= 20,
+		DOWN_JUMP_RATE		= 100,    --  20,
+		DOWN_DOWN_RATE		= 40,
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 100, --50,		
+		PATROL_RANGE			= 300,
+		PATROL_COOL_TIME		= 1,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 500,	-- cm
+		ESCAPE_GAP			= 600,	-- 이 거리 보다 멀어지면 도망 성공
+		
+		WALK_INTERVAL		= 1,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 10,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+	},
+	
+	
+}
+
+CHICKEN_FEMALE_WAITSTART = 
+{
+	ANIM_NAME					= "WaitStart",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	SOUND_PLAY0 = 	{ 0.01,"Chicken_Eltree_AttackB.ogg", },
+	SOUND_PLAY1 = 	{ 0.02,"Chicken_Eltree_AttackB.ogg", },
+	SOUND_PLAY2 = 	{ 0.05,"Chicken_Eltree_AttackB.ogg", },
+	SOUND_PLAY3 = 	{ 0.05,"Chicken_Eltree_AttackB.ogg", },
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	NEVER_MOVE					= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"CHICKEN_FEMALE_WAIT",	},
+	},	
+}
+
+CHICKEN_FEMALE_WAIT = 
+{
+	ANIM_NAME					= "WaitStart",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	NEVER_MOVE					= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"CHICKEN_FEMALE_WAIT",		},
+	},	
+}
+
+CHICKEN_FEMALE_DYING = 
+{
+	ANIM_NAME					= "WaitStart",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+
+	--SHOW					= FALSE,
+	
+	NEVER_MOVE					= TRUE,
+	
+	DYING_END					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+
+function CHICKEN_FEMALE_WAIT_STATE_START_FUNC( pKTDXApp, pX2Game, pNPCUnit )
+    
+    local bFine = pX2Game:AnyUserUnitInRange( pNPCUnit:GetPos(), 9999 )
+    if bFine == true then
+        pNPCUnit:SetNowHP_LUA(0)
+    end   
+
+end

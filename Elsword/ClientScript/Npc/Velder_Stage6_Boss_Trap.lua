@@ -1,0 +1,203 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 100.0,
+	UNIT_HEIGHT		= 500.0,	
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+		"Trap_Attack.ogg",
+        "Trap_Broken.ogg",                
+	},
+	
+	READY_XSKIN_MESH = 
+	{
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_Velder_Stage6_Boss_Trap.x",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 500,
+	RUN_SPEED			= 2000,
+	JUMP_SPEED			= 2000,
+	DASH_JUMP_SPEED		= 2600,
+}
+
+
+INIT_COMPONENT = 
+{
+	MP_CHANGE_RATE			= 1,
+	MP_CHARGE_RATE			= 130,
+	
+	HITTED_TYPE				= HITTED_TYPE["HTD_STONE"],	
+	
+	DAMAGE_DOWN			= FALSE,
+	DAMAGE_DOWN         = FALSE,
+    
+    DIE_FLY					= 0,		
+	
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "VELDER_STAGE6_BOSS_TRAP_WAIT",				},
+	{ STATE_NAME = "VELDER_STAGE6_BOSS_TRAP_ATTACK",			},
+	{ STATE_NAME = "VELDER_STAGE6_BOSS_TRAP_BROKEN",			},
+	
+	
+	
+		
+	START_STATE					= "VELDER_STAGE6_BOSS_TRAP_WAIT",
+	WAIT_STATE					= "VELDER_STAGE6_BOSS_TRAP_WAIT",
+		
+	SMALL_DAMAGE_LAND_FRONT		= "VELDER_STAGE6_BOSS_TRAP_WAIT",
+	SMALL_DAMAGE_LAND_BACK		= "VELDER_STAGE6_BOSS_TRAP_WAIT",
+	SMALL_DAMAGE_AIR			= "VELDER_STAGE6_BOSS_TRAP_WAIT",	
+	
+	BIG_DAMAGE_LAND_FRONT		= "VELDER_STAGE6_BOSS_TRAP_WAIT",
+	BIG_DAMAGE_LAND_BACK		= "VELDER_STAGE6_BOSS_TRAP_WAIT",
+	BIG_DAMAGE_AIR				= "VELDER_STAGE6_BOSS_TRAP_WAIT",
+	
+	DOWN_DAMAGE_LAND_FRONT		= "VELDER_STAGE6_BOSS_TRAP_WAIT",
+	DOWN_DAMAGE_LAND_BACK		= "VELDER_STAGE6_BOSS_TRAP_WAIT",
+	DOWN_DAMAGE_AIR				= "VELDER_STAGE6_BOSS_TRAP_WAIT",
+	
+	UP_DAMAGE					= "VELDER_STAGE6_BOSS_TRAP_WAIT",
+	
+	FLY_DAMAGE_FRONT			= "VELDER_STAGE6_BOSS_TRAP_WAIT",
+	FLY_DAMAGE_BACK				= "VELDER_STAGE6_BOSS_TRAP_WAIT",
+	
+	REVENGE_ATTACK				= "VELDER_STAGE6_BOSS_TRAP_WAIT",	
+	DAMAGE_REVENGE				= "VELDER_STAGE6_BOSS_TRAP_WAIT",
+	
+	DYING_LAND_FRONT			= "VELDER_STAGE6_BOSS_TRAP_BROKEN",
+	DYING_LAND_BACK				= "VELDER_STAGE6_BOSS_TRAP_BROKEN",
+	DYING_SKY					= "VELDER_STAGE6_BOSS_TRAP_BROKEN",
+		
+	DOWN_DAMAGE_AIR_LANDING		= "VELDER_STAGE6_BOSS_TRAP_WAIT",
+	
+	--COMMON_FRAME_FUNC           = "VELDER_STAGE6_BOSS_TRAP_COMMON_FRAME_MOVE",	
+}
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_RANDOM"],
+		TARGET_INTERVAL				= 1,		
+		TARGET_NEAR_RANGE			= 9000,		
+		TARGET_RANGE				= 9000,		
+		TARGET_LOST_RANGE			= 10000,		
+		TARGET_SUCCESS_RATE			= 100,		
+		ATTACK_TARGET_RATE			= 50,		
+		PRESERVE_LAST_TARGET_RATE	= 40,		
+	},
+
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 700,
+		DEST_GAP			= 800,
+		MOVE_GAP			= 900,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		WALK_INTERVAL		= 3,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 40,
+		UP_DOWN_RATE		= 20,
+		DOWN_JUMP_RATE		= 100,    --  20,
+		DOWN_DOWN_RATE		= 40,
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 100, --50,		
+		PATROL_RANGE			= 200,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+}
+
+VELDER_STAGE6_BOSS_TRAP_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	NEVER_MOVE					= TRUE,
+	
+	ALLOW_DIR_CHANGE			= FALSE,	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+VELDER_STAGE6_BOSS_TRAP_ATTACK =
+{
+	ANIM_NAME					= "Attack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	NEVER_MOVE					= TRUE,
+	
+	SOUND_PLAY0			= { 0.2, "Trap_Attack.ogg" },
+	
+	
+}
+
+VELDER_STAGE6_BOSS_TRAP_BROKEN = 
+{
+	ANIM_NAME					= "Broken",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SOUND_PLAY0			= { 0.1, "Trap_Broken.ogg" },
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	NEVER_MOVE					= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+----------- condition function----------------------------------------------------------
+----------------------------------------------------------------------------------------
+
+----------- state function----------------------------------------------------------
+----------------------------------------------------------------------------------------
+
+----------- util function----------------------------------------------------------
+----------------------------------------------------------------------------------------

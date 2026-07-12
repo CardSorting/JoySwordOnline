@@ -1,0 +1,287 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+-- 아이샤 Dimension Witch 액티브 스킬 / 공간 왜곡(Distortion)
+-- 순간 설치형 타격 + 방어기
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 1.0,
+	UNIT_HEIGHT		= 1.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	-- UNIT_SCALE		= 10.0,
+}
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+		"aisha_C_comboX3UpX_circle.dds",
+		"aisha_active_energySpurt_energy.dds",
+		"WhitePoint.dds",
+		"Explosion_Sphere.dds",
+		"DevourerMagic.ogg",
+	},
+	
+	READY_SOUND = 
+	{
+      "Hit_LightBall.ogg",
+      "Spriggan_Light_Ball_Start.ogg",	
+      "Spriggan_Light_Ball_Loop.ogg",	
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME	= "aisha_A_DISTORTION_dummy.X",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 0,
+	RUN_SPEED			= 0,
+	JUMP_SPEED			= 0,
+	DASH_JUMP_SPEED		= 0,
+}
+
+INIT_COMPONENT = 
+{
+	USE_SLASH_TRACE			= FALSE,
+	SHADOW_SIZE				= 0,
+	HYPER_MODE_COUNT		= 0,
+	NOT_EXTRA_DAMAGE   		= TRUE,
+	SHOW_ON_MINIMAP			= FALSE,
+	SKY_DIE					= TRUE,
+	DIE_FLY					= 0,
+	ABSORB_MAGIC_MONSTER	= TRUE,
+	ABSORB_MAGIC_SPECIAL	= TRUE,
+	QUESTION_MARK_SEQ		= "",
+	EXCLAMATION_MARK_SEQ	= "",
+	MP_CHANGE_RATE			= 0,
+	MP_CHARGE_RATE			= 0,
+	HEAD_BONE_NAME			= "effect_Dummy01",
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "DISTORTION_START",	LUA_STATE_START_FUNC = "DISTORTION_START_STATE_START",	},
+	{ STATE_NAME = "DISTORTION_WAIT",	},
+	{ STATE_NAME = "DISTORTION_DYING",	LUA_STATE_START_FUNC = "DISTORTION_DYING_STATE_START",	},
+	{ STATE_NAME = "DISTORTION_SELF_DESTRUCTION",	LUA_STATE_START_FUNC = "DISTORTION_SELF_DESTRUCTION_STATE_START",	},
+		
+	{ STATE_NAME = "DISTORTION_DAMAGE",	},
+
+	START_STATE					= "DISTORTION_START",
+	WAIT_STATE					= "DISTORTION_WAIT",
+	SELF_DESTRUCTION_STATE		= "DISTORTION_SELF_DESTRUCTION",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "DISTORTION_DAMAGE",
+	SMALL_DAMAGE_LAND_BACK		= "DISTORTION_DAMAGE",
+	BIG_DAMAGE_LAND_FRONT		= "DISTORTION_DAMAGE",
+	BIG_DAMAGE_LAND_BACK		= "DISTORTION_DAMAGE",
+	DOWN_DAMAGE_LAND_FRONT		= "DISTORTION_DAMAGE",
+	DOWN_DAMAGE_LAND_BACK		= "DISTORTION_DAMAGE",
+	FLY_DAMAGE_FRONT			= "DISTORTION_DAMAGE",
+	FLY_DAMAGE_BACK				= "DISTORTION_DAMAGE",
+	SMALL_DAMAGE_AIR			= "DISTORTION_DAMAGE",	
+	BIG_DAMAGE_AIR				= "DISTORTION_DAMAGE",
+	DOWN_DAMAGE_AIR				= "DISTORTION_DAMAGE",
+	UP_DAMAGE					= "DISTORTION_DAMAGE",
+	DAMAGE_REVENGE				= "DISTORTION_DAMAGE",
+	
+	DYING_LAND_FRONT			= "DISTORTION_DYING",
+	DYING_LAND_BACK				= "DISTORTION_DYING",
+	DYING_SKY					= "DISTORTION_DYING",
+
+	REVENGE_ATTACK				= "",
+}
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_NEAR_FIRST"],
+		TARGET_INTERVAL				= 0.3,	-- sec
+		TARGET_NEAR_RANGE			= 300,	-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 1000,	-- cm
+		TARGET_LOST_RANGE			= 1200,	-- cm
+		TARGET_SUCCESS_RATE			= 100,
+		ATTACK_TARGET_RATE			= 0,	-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 0,	-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+}
+
+DISTORTION_START = 
+{
+	ANIM_NAME		= "Normal",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,	
+
+    -- SOUND_PLAY0		= { 0.05, "Spriggan_Light_Ball_Start.ogg" },
+	
+	SPEED_X			= 0,
+	SPEED_Y			= 0,
+
+	REVENGE			= { 0.033, 100, },
+	
+	NEVER_MOVE			= TRUE,
+	ALLOW_DIR_CHANGE	= FALSE,
+	VIEW_TARGET			= FALSE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"DISTORTION_WAIT",	},
+	},
+	
+	ATTACK_TIME0	= { 0.01, 100 },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE	= DAMAGE_TYPE["DT_MAGIC"],
+		HIT_TYPE	= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE	= REACT_TYPE["RT_BIG_DAMAGE"],
+		PVP_RATE		= 0.6,
+		DAMAGE = 
+		{
+			MAGIC	= 4.93,
+		},
+		
+		-- BACK_SPEED_X	= 1000,
+			
+		STOP_TIME_DEF	= 0.2,
+		
+		CAMERA_CRASH_GAP	= 10.0,	
+		CAMERA_CRASH_TIME	= 0.2,		
+		
+		RE_ATTACK			= FALSE,		
+        CAN_REVENGE			= FALSE,
+		CAN_REFLEX          = FALSE,
+	},
+}
+
+function DISTORTION_START_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	-- Start Effect 불러옴
+	local pEffectSet = pX2Game:GetEffectSet()
+	local hEffect = pNPCUnit:GetEffectSet_LUA( 0 )
+	
+	if nil ~= pEffectSet then
+		if 0 == hEffect then
+			hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_ADW_Distortion_NPC_Start", pNPCUnit )
+			pNPCUnit:SetEffectSet_LUA( 0, hEffect )
+		end
+	end
+end
+
+DISTORTION_SELF_DESTRUCTION =
+{
+	ANIM_NAME		= "Normal",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,	
+	NEVER_MOVE		= TRUE,
+	
+	SOUND_PLAY0			= { 0.001, "Aisha_Distortion3.ogg" },
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+}
+
+function DISTORTION_SELF_DESTRUCTION_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	pNPCUnit:SetNowHP_LUA( 0 )
+end
+
+DISTORTION_WAIT = 
+{
+	ANIM_NAME		= "Normal",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	REVENGE			= { 0.033, 100, },
+	-- ABSORB_MAGIC	= TRUE,
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,	
+	
+    -- SOUND_PLAY0		= { 0.001, "Spriggan_Light_Ball_Loop.ogg" },
+	
+	SPEED_X			= 0,
+	SPEED_Y			= 0,
+	
+	NEVER_MOVE			= TRUE,
+	ALLOW_DIR_CHANGE	= FALSE,
+	VIEW_TARGET			= FALSE,
+}
+
+DISTORTION_DAMAGE = 
+{
+	ANIM_NAME		= "Normal",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,	
+
+	SOUND_PLAY0			= { 0.001, "Aisha_Distortion4.ogg" },
+	
+	SPEED_X			= 0,
+	SPEED_Y			= 0,
+	
+	NEVER_MOVE			= TRUE,
+	ALLOW_DIR_CHANGE	= FALSE,
+	VIEW_TARGET			= FALSE,
+	
+	REVENGE			= { 0.033, 100, },
+	-- ABSORB_MAGIC	= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"DISTORTION_WAIT",		"CT_DISTORTION_WAIT"	},
+	},
+	
+	CT_DISTORTION_WAIT = 
+	{
+		STATE_TIME_OVER			= 1.0,
+	},
+}
+
+DISTORTION_DYING = 
+{
+	ANIM_NAME		= "Normal",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	INVINCIBLE		= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+	NEVER_MOVE		= TRUE,
+	
+	DYING_END		= TRUE,	
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+}
+
+function DISTORTION_DYING_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	-- Start Effect를 제거하고 End Effect를 불러옴
+	local pEffectSet = pX2Game:GetEffectSet()
+	
+	if nil ~= pEffectSet then
+		local hEffect = pNPCUnit:GetEffectSet_LUA( 0 )
+		if 0 ~= hEffet then
+			pEffectSet:StopEffectSet_LUA( hEffect )
+			pNPCUnit:ClearEffectSet_LUA( 0 )
+		end
+		pEffectSet:PlayEffectSet_LUA( "EffectSet_ADW_Distortion_NPC_End", pNPCUnit )
+	end
+end

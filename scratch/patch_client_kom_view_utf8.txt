@@ -1,0 +1,31 @@
+﻿=== Found 2 matches ===
+Match 1:
+de (size_t/int = 4 bytes).
+LUAC_DOCKER_PLATFORM = "linux/386"
+
+# Character-create UI is loaded from packed client archives, not loose ClientScript.
+CLIENT_PATCHES: dict[str, dict[str, Path]] = {
+    "data034.kom": {
+        "DLG_unit_create_front.lua": CLIENT_DIALOG / "DLG_unit_create_front.lua",
+        "DLG_unit_create_back.lua": CLIENT_DIALOG / "DLG_unit_create_back.lua",
+        "DLG_Unit_Create_Select_Unit_Elesis.lua": CLIENT_DIALOG / "DLG_Unit_Create_Select_Unit_Elesis.lua",
+        "DLG_Unit_Create_NickName_Elesis.lua": CLIENT_DIALOG / "DLG_Unit_Create_NickName_Elesis.lua",
+        "DLG
+--------------------------------------------------
+Match 2:
+ENT_MAJOR / "RandomItem.lua",
+    },
+}
+
+# Backward-compatible alias used by --elesis-create-ui.
+ELESIS_CLIENT_PATCHES = CLIENT_PATCHES
+
+CASHSHOP_INVENTORY_PATCHES: dict[str, dict[str, Path]] = {
+    "data034.kom": {
+        "DLG_Cash_Shop_Popup_ItemToInven.lua": CLIENT_DIALOG / "DLG_Cash_Shop_Popup_ItemToInven.lua",
+        "DLG_Cash_Shop_Popup_ItemToInven_Slot.lua": CLIENT_DIALOG / "DLG_Cash_Shop_Popup_ItemToInven_Slot.lua",
+    },
+    "data036.kom": {
+        "SocketGroupDataForCashAvatar.lua": CLIENT_MAJOR / "SocketGroupDataForCashAvatar.lua",
+        "PackageItemData.lua": CLIENT_MAJOR / "
+--------------------------------------------------

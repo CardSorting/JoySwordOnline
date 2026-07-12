@@ -1,0 +1,132 @@
+﻿
+
+g_pLineMap:SetLandHeight( 750 )
+
+
+
+
+-- RED, BLUE, TEAM START POS
+g_pLineMap:SetTeamStartPos( true, D3DXVECTOR3( 0, 1241, 0 ), false, 0 )
+
+
+
+
+-- NPC (or else) START POS
+
+
+
+
+
+
+-- LINE DATA -- 
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 0, 
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= -1, 
+	NEXT_LINE		= 1, 
+	LINE_SET		= 0, 
+	"START_POS		= D3DXVECTOR3(0, 1241, 0)", 
+	"END_POS		= D3DXVECTOR3(1928, 1241, 0)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 1, 
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= 0, 
+	NEXT_LINE		= 2, 
+	LINE_SET		= 0, 
+	"START_POS		= D3DXVECTOR3(1928, 1241, 0)", 
+	"END_POS		= D3DXVECTOR3(2452, 1000, 0)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 2, 
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= 1, 
+	NEXT_LINE		= 3, 
+	LINE_SET		= 0, 
+	"START_POS		= D3DXVECTOR3(2452, 1000, 0)", 
+	"END_POS		= D3DXVECTOR3(12000, 1000, 0)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 3, 
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= 2, 
+	NEXT_LINE		= 4, 
+	LINE_SET		= 0, 
+	"START_POS		= D3DXVECTOR3(12000, 1000, 0)", 
+	"END_POS		= D3DXVECTOR3(12800, 850, 0)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 4, 
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= 3, 
+	NEXT_LINE		= 5, 
+	LINE_SET		= 0, 
+	"START_POS		= D3DXVECTOR3(12800, 850, 0)", 
+	"END_POS		= D3DXVECTOR3(13600, 750, 0)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 5, 
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= 4, 
+	NEXT_LINE		= 6, 
+	LINE_SET		= 0, 
+	"START_POS		= D3DXVECTOR3(13600, 750, 0)", 
+	"END_POS		= D3DXVECTOR3(14400, 750, 0)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 6, 
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= 5, 
+	NEXT_LINE		= 7, 
+	LINE_SET		= 0, 
+	"START_POS		= D3DXVECTOR3(14400, 750, 0)", 
+	"END_POS		= D3DXVECTOR3(15200, 850, 0)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 7, 
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= 6, 
+	NEXT_LINE		= 8, 
+	LINE_SET		= 0, 
+	"START_POS		= D3DXVECTOR3(15200, 850, 0)", 
+	"END_POS		= D3DXVECTOR3(16000, 1000, 0)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 8, 
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= 7, 
+	NEXT_LINE		= -1, 
+	LINE_SET		= 0, 
+	"START_POS		= D3DXVECTOR3(16000, 1000, 0)", 
+	"END_POS		= D3DXVECTOR3(19250, 1000, 0)", 
+}
+
+
+-- CAMERA DATA 
+

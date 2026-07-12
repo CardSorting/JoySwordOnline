@@ -1,0 +1,13 @@
+# JoySword offline connection manifest (generated)
+SERVER_PROFILE=US_SERVICE
+LOGIN_MODE=PUBLIC
+ADMIN_USER=admin
+CHANNEL_SERVER_IP=52.238.194.187
+CHANNEL_SERVER_PORT=9400
+LOGIN_SERVER_PORT=9200
+CENTER_SERVER_PORT=9100
+GLOBAL_SERVER_PORT=9500
+GAME_SERVER_PORT=9300
+
+# Point your Elsword client config at:
+#   ClientScript/Major/Config_US_Service.lua

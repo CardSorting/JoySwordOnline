@@ -1,0 +1,6 @@
+USE [Statistics];
+GO
+ALTER TABLE LChannelList ALTER COLUMN IP VARCHAR(100) NOT NULL;
+GO
+UPDATE LChannelList SET IP = '52.238.194.187' WHERE IP IN ('159.203.165.171', 'play.onjoysword.top');
+GO

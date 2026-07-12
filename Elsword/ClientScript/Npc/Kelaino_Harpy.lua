@@ -1,0 +1,3089 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 250.0,
+	UNIT_HEIGHT		= 180.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	UNIT_SCALE		= 1,
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{		
+		"smoke.dds",
+		"GroundShockWave.dds",
+		"Explosion_Sphere.dds",
+		"Particle_Blur.dds",
+		"Kelaino_magic_Square.dds",
+		"Explosion_Sphere.dds",
+		"EFFECT_Kelaino_SpA_B_Frame_Canon_Hole.dds",
+		"Black_FireBall01.dds",
+		"Arme_Ring2.dds",
+		"ColorBallRed3.dds",
+		"Nasod_King_Laser03.dds",
+		"Stone.dds",
+		"Raven_CanonBlade01.dds",
+		"EFFECT_Kelaino_SpA_B_Frame_Canon_Hole.dds",
+		"acce_armItem_Feather.dds",
+		"Poison02.dds",
+	},
+	
+	READY_SOUND = 
+	{
+		"Kelaino_Harpy_Voice_AttackA01.ogg",
+		"Kelaino_Harpy_Voice_DamageA01.ogg",
+		"Kelaino_Harpy_Voice_DamageB01.ogg",
+		"Kelaino_Harpy_Voice_Dying01.ogg",
+		"Kelaino_Harpy_Voice_MagicAttackB_Ready_Fly01.ogg",
+		"Kelaino_Harpy_Voice_MagicAttackC_Fly01.ogg",
+		"Kelaino_Harpy_Voice_MagicAttackC01.ogg",
+		"Kelaino_Harpy_Voice_SpecialAttackA_Ready01.ogg",
+		"Kelaino_Harpy_Voice_SpecialAttackB_Ready01.ogg",
+		"Kelaino_Harpy_Voice_Wait01.ogg",
+		"BatBig_Fly3.ogg",
+		"BatBig_Fly2.ogg",
+		"Bat_Fly.ogg",
+	},
+	
+	READY_XMESH = 
+	{
+		"FireWave01.Y",
+		"Maximumcanon_Mesh02.Y",
+	},
+	
+	READY_XSKIN_MESH = 
+	{
+		"Kelaino_SA_A_Start_Cyclone_A.X",
+		"Kelaino_SA_A_Start_Cyclone_B.X",
+		"Kelaino_SA_A_Start_Cyclone_C.X",
+		"Kelaino_Blade_Attack_A.X",
+		"Kelaino_Blade_Attack.X",
+		"Kelaino_SA_B_Attack_Box_Dummy.X",
+		"MaximumCanon_Mesh01.X",
+		"Kelaino_MA_C_Blade_Attack_Ready.X",
+		"Kelaino_MA_C_Blade_Attack.X",
+		"Kelaino_MA_A_Stone.X",
+		"Kelaino_MA_B_Attack_Box_Dummy.x",
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME	= "Motion_Kelaino_Harpy.x",	
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+		
+	WALK_SPEED			= 400,
+	RUN_SPEED			= 1000,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300,
+}
+
+
+INIT_COMPONENT = 
+{
+	IMMUNITY_TIME_STOP = TRUE,
+	MAX_HP				= 1500,
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	--SHADOW_SIZE			= 200,
+	--SHADOW_FILE_NAME	= "shadow.dds",
+	
+	DRAW_SMALL_MP_BAR = TRUE,
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	
+	HEAD_BONE_NAME			= "Bip01_Head",
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	DIE_FLY					= 0,
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	
+	FALL_DOWN			= FALSE,	
+	DAMAGE_DOWN         = FALSE,	
+	--SKY_DIE             = TRUE,
+	
+	BOSS_GAGE_FACE_TEX			= "DLG_BossState.tga",
+	BOSS_GAGE_FACE_TEX_PIECE	= "KELAINO_HARPY",
+	BOSS_NAME_TEX				= "HQ_BOSS_NAME_KELAINO.dds",
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "KELAINO_HARPY_FLY_WAIT_START",				},	
+	
+	-- 공중 wait
+	{ STATE_NAME = "KELAINO_HARPY_FLY_WAIT",					LUA_STATE_START_FUNC = "KELAINO_HARPY_FLY_WAIT_STATE_START",},
+	
+	-- 공중 이동
+	{ STATE_NAME = "KELAINO_HARPY_FLY_FRONT",					},
+	{ STATE_NAME = "KELAINO_HARPY_FLY_FRONT_UP",					},
+	{ STATE_NAME = "KELAINO_HARPY_FLY_FRONT_DOWN",				},
+	{ STATE_NAME = "KELAINO_HARPY_FLY_BACK",						},
+	{ STATE_NAME = "KELAINO_HARPY_FLY_BACK_UP",					},
+	{ STATE_NAME = "KELAINO_HARPY_FLY_BACK_DOWN",				},
+    { STATE_NAME = "KELAINO_HARPY_FLY_UP",					   LUA_STATE_START_FUNC = "KELAINO_HARPY_START_FLYING_STATE_START",	},
+    { STATE_NAME = "KELAINO_HARPY_FLY_DOWN",					    },
+		
+	-- 지상 wait
+	{ STATE_NAME = "KELAINO_HARPY_LAND_WAIT",					},
+	
+	-- 지상 이동
+	{ STATE_NAME = "KELAINO_HARPY_LAND_WALK",					},
+	
+	{ STATE_NAME = "KELAINO_HARPY_LAND_JUMP_UP",					},
+	{ STATE_NAME = "KELAINO_HARPY_LAND_JUMP_UP_DIR",				},
+	{ STATE_NAME = "KELAINO_HARPY_LAND_JUMP_DOWN",				LUA_STATE_START_FUNC = "KELAINO_HARPY_LANDING_STATE_START",				},
+	{ STATE_NAME = "KELAINO_HARPY_LAND_JUMP_DOWN_DIR",			},
+	{ STATE_NAME = "KELAINO_HARPY_LAND_JUMP_DOWN_LANDING",		LUA_STATE_START_FUNC = "KELAINO_HARPY_LANDING_STATE_START",				},
+	
+	-- 공중에서 지상으로 착지
+	{ STATE_NAME = "KELAINO_HARPY_START_LANDING",				LUA_STATE_START_FUNC = "KELAINO_HARPY_LANDING_STATE_START", 			
+																STATE_COOL_TIME	= 10, 													},
+	
+	-- 지상에서 공중으로 비행
+	{ STATE_NAME = "KELAINO_HARPY_START_FLYING",				LUA_STATE_START_FUNC = "KELAINO_HARPY_START_FLYING_STATE_START",
+																LUA_FRAME_MOVE_FUNC = "KELAINO_HARPY_START_FLYING_FRAME_MOVE", 			
+																STATE_COOL_TIME	= 10, 													},
+
+------------------------------------------------------------------------------------------																
+--LAND_MODE
+	-- LAND_MODE 대각선 아래 발차기 공격
+	{ STATE_NAME = "KELAINO_HARPY_ATTACK_A",					LUA_FRAME_MOVE_FUNC = "KELAINO_HARPY_ATTACK_A_FRAME_MOVE",
+																STATE_COOL_TIME	= 5,},	
+	
+	-- LAND_MODE 유저 발 아래쪽에 회오리 생성
+	{ STATE_NAME = "KELAINO_HARPY_MAGIC_ATTACK_A",				LUA_FRAME_MOVE_FUNC = "KELAINO_HARPY_MAGIC_ATTACK_A_FRAME_MOVE", 
+																STATE_COOL_TIME	= 15,},	
+		
+	-- LAND_MODE 낙하 비행
+	{ STATE_NAME = "KELAINO_HARPY_MAGIC_ATTACK_B_READY",		LUA_FRAME_MOVE_FUNC = "KELAINO_HARPY_MAGIC_ATTACK_B_READY_FRAME_MOVE",
+																STATE_COOL_TIME	= 15, },
+	{ STATE_NAME = "KELAINO_HARPY_MAGIC_ATTACK_B_START",		LUA_STATE_START_FUNC = "KELAINO_HARPY_MAGIC_ATTACK_B_START_START",},
+	{ STATE_NAME = "KELAINO_HARPY_MAGIC_ATTACK_B_END",			LUA_STATE_START_FUNC = "KELAINO_HARPY_MAGIC_ATTACK_B_END_START",},	
+	
+	-- LAND_MODE 전방 칼날 공격
+	{ STATE_NAME = "KELAINO_HARPY_MAGIC_ATTACK_C",				STATE_COOL_TIME	= 15, 	},
+	
+	-- LAND_MODE 칼날 떨어뜨리는 전체 공격	
+	{ STATE_NAME = "KELAINO_HARPY_SPECIAL_ATTACK_A_PRE_READY",	--시야 밖으로 사라지는 준비
+																LUA_STATE_START_FUNC = "KELAINO_HARPY_SPECIAL_ATTACK_A_PRE_READY_START",
+																STATE_COOL_TIME	= 20, 	}, 
+																
+																
+																
+	{ STATE_NAME = "KELAINO_HARPY_SPECIAL_ATTACK_A_READY",		--스킬 사용 준비
+																LUA_STATE_START_FUNC = "KELAINO_HARPY_SPECIAL_ATTACK_A_READY_START",}, 
+	{ STATE_NAME = "KELAINO_HARPY_SPECIAL_ATTACK_A_START",		LUA_FRAME_MOVE_FUNC = "KELAINO_HARPY_SPECIAL_ATTACK_A_START_FRAME_MOVE", 	},	
+	{ STATE_NAME = "KELAINO_HARPY_SPECIAL_ATTACK_A_LOOP",		LUA_FRAME_MOVE_FUNC = "KELAINO_HARPY_SPECIAL_ATTACK_A_LOOP_FRAME_MOVE", 	},	
+	{ STATE_NAME = "KELAINO_HARPY_SPECIAL_ATTACK_A_END",		},
+	{ STATE_NAME = "KELAINO_HARPY_SPECIAL_ATTACK_A_LAND_END",	LUA_STATE_END_FUNC = "KELAINO_HARPY_SPECIAL_ATTACK_A_END_START",},
+	
+	-- LAND_MODE 2/3 지역 이펙트 공격
+	{ STATE_NAME = "KELAINO_HARPY_SPECIAL_ATTACK_B_READY",		STATE_COOL_TIME	= 30,},	
+	{ STATE_NAME = "KELAINO_HARPY_SPECIAL_ATTACK_B_L_START",	LUA_STATE_START_FUNC = "KELAINO_HARPY_SPECIAL_ATTACK_B_L_START_START",
+																LUA_FRAME_MOVE_FUNC = "KELAINO_HARPY_SPECIAL_ATTACK_B_L_FRAME_MOVE",},																
+	{ STATE_NAME = "KELAINO_HARPY_SPECIAL_ATTACK_B_R_START",	LUA_STATE_START_FUNC = "KELAINO_HARPY_SPECIAL_ATTACK_B_R_START_START",
+																LUA_FRAME_MOVE_FUNC = "KELAINO_HARPY_SPECIAL_ATTACK_B_R_FRAME_MOVE",},
+	{ STATE_NAME = "KELAINO_HARPY_SPECIAL_ATTACK_B_END",		},
+	
+	
+	{ STATE_NAME = "KELAINO_HARPY_SPECIAL_ATTACK_B_L_START2",	LUA_STATE_START_FUNC = "KELAINO_HARPY_SPECIAL_ATTACK_B_L_START2_START",
+																LUA_FRAME_MOVE_FUNC = "KELAINO_HARPY_SPECIAL_ATTACK_B_L2_FRAME_MOVE",},																
+	{ STATE_NAME = "KELAINO_HARPY_SPECIAL_ATTACK_B_R_START2",	LUA_STATE_START_FUNC = "KELAINO_HARPY_SPECIAL_ATTACK_B_R_START2_START",
+																LUA_FRAME_MOVE_FUNC = "KELAINO_HARPY_SPECIAL_ATTACK_B_R2_FRAME_MOVE",},
+	
+------------------------------------------------------------------------------------------																
+--FLY_MODE
+
+	-- FLY_MODE 유저 발 아래쪽에 회오리 생성
+	{ STATE_NAME = "KELAINO_HARPY_MAGIC_ATTACK_A_FLY",			LUA_FRAME_MOVE_FUNC = "KELAINO_HARPY_MAGIC_ATTACK_A_FRAME_MOVE", 	
+																STATE_COOL_TIME	= 5,},	
+	
+	-- FLY_MODE 낙하 비행
+	{ STATE_NAME = "KELAINO_HARPY_MAGIC_ATTACK_B_FLY_READY",	LUA_FRAME_MOVE_FUNC = "KELAINO_HARPY_MAGIC_ATTACK_B_READY_FRAME_MOVE",
+																STATE_COOL_TIME	= 20,},
+	{ STATE_NAME = "KELAINO_HARPY_MAGIC_ATTACK_B_FLY_END",		},
+	
+	-- FLY_MODE 전방 칼날 공격
+	{ STATE_NAME = "KELAINO_HARPY_MAGIC_ATTACK_C_FLY",			STATE_COOL_TIME	= 20,},
+	
+	-- FLY_MODE 칼날 떨어뜨리는 전체 공격	
+	{ STATE_NAME = "KELAINO_HARPY_SPECIAL_ATTACK_A_FLY_PRE_READY",	 --시야 밖으로 사라지는 준비	
+																LUA_STATE_START_FUNC = "KELAINO_HARPY_SPECIAL_ATTACK_A_PRE_READY_START",
+																STATE_COOL_TIME	= 30,}, 
+	{ STATE_NAME = "KELAINO_HARPY_SPECIAL_ATTACK_A_FLY_END",	LUA_STATE_START_FUNC = "KELAINO_HARPY_SPECIAL_ATTACK_A_END_START",},
+	
+	-- FLY_MODE 2/3 지역 이펙트 공격
+	{ STATE_NAME = "KELAINO_HARPY_SPECIAL_ATTACK_B_FLY_READY",		--LUA_STATE_START_FUNC = "KELAINO_HARPY_SPECIAL_ATTACK_B_READY_START",
+																	STATE_COOL_TIME	= 30,},	
+	{ STATE_NAME = "KELAINO_HARPY_SPECIAL_ATTACK_B_FLY_END",		},
+	
+	--리액션 관련 ( 지상 피격 )
+	{ STATE_NAME = "KELAINO_HARPY_LAND_DAMAGE_FRONT",			},
+	{ STATE_NAME = "KELAINO_HARPY_LAND_DAMAGE_BACK",			},
+	{ STATE_NAME = "KELAINO_HARPY_LAND_DAMAGE_DOWN_FRONT",		},
+	{ STATE_NAME = "KELAINO_HARPY_LAND_DAMAGE_DOWN_BACK",		},
+	{ STATE_NAME = "KELAINO_HARPY_LAND_STAND_UP_FRONT",			},
+	{ STATE_NAME = "KELAINO_HARPY_LAND_STAND_UP_BACK",			},
+
+	{ STATE_NAME = "KELAINO_HARPY_FLY_DAMAGE_FRONT",				LUA_STATE_START_FUNC = "KELAINO_HARPY_DAMAGE_REACT_FLY_START_FUNC", 		},
+	{ STATE_NAME = "KELAINO_HARPY_FLY_DAMAGE_BACK",				LUA_STATE_START_FUNC = "KELAINO_HARPY_DAMAGE_REACT_FLY_START_FUNC", 		},
+	{ STATE_NAME = "KELAINO_HARPY_FLY_DAMAGE_FRONT_LANDING",		},
+	{ STATE_NAME = "KELAINO_HARPY_FLY_DAMAGE_BACK_LANDING",		},
+	
+	{ STATE_NAME = "KELAINO_HARPY_FLY_DAMAGE_UP",					LUA_STATE_START_FUNC = "KELAINO_HARPY_DAMAGE_REACT_FLY_START_FUNC", 	},
+	{ STATE_NAME = "KELAINO_HARPY_FLY_DAMAGE_FALL",				},
+	{ STATE_NAME = "KELAINO_HARPY_FLY_DAMAGE_DOWN_LANDING",		},
+	
+	{ STATE_NAME = "KELAINO_HARPY_LAND_AIR_DAMAGE",				},
+	
+	--리액션 관련 ( 공중 피격 )
+	{ STATE_NAME = "KELAINO_HARPY_AIR_DAMAGE_FRONT",			LUA_STATE_START_FUNC = "KELAINO_HARPY_AIR_DAMAGE_START_FUNC", 			},
+	{ STATE_NAME = "KELAINO_HARPY_AIR_DAMAGE_BACK",				LUA_STATE_START_FUNC = "KELAINO_HARPY_AIR_DAMAGE_START_FUNC", 			},		
+	
+	{ STATE_NAME = "KELAINO_HARPY_LAND_DYING_FRONT",				},
+	{ STATE_NAME = "KELAINO_HARPY_LAND_DYING_BACK",				},
+	
+	{ STATE_NAME = "KELAINO_HARPY_AIR_DYING",					},
+	{ STATE_NAME = "KELAINO_HARPY_AIR_DYING_FALL",				},
+	{ STATE_NAME = "KELAINO_HARPY_AIR_DYING_LANDING",			},
+	
+	START_STATE					= "KELAINO_HARPY_FLY_WAIT_START",	
+	WAIT_STATE					= "KELAINO_HARPY_LAND_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "KELAINO_HARPY_LAND_DAMAGE_FRONT",
+	SMALL_DAMAGE_LAND_BACK		= "KELAINO_HARPY_LAND_DAMAGE_BACK",
+	SMALL_DAMAGE_AIR_FRONT		= "KELAINO_HARPY_AIR_DAMAGE_FRONT",
+	SMALL_DAMAGE_AIR_BACK		= "KELAINO_HARPY_AIR_DAMAGE_BACK",
+	SMALL_DAMAGE_AIR			= "KELAINO_HARPY_AIR_DAMAGE_FRONT",
+	
+	BIG_DAMAGE_LAND_FRONT		= "KELAINO_HARPY_LAND_DAMAGE_FRONT",
+	BIG_DAMAGE_LAND_BACK		= "KELAINO_HARPY_LAND_DAMAGE_BACK",
+	BIG_DAMAGE_AIR_FRONT		= "KELAINO_HARPY_AIR_DAMAGE_FRONT",
+	BIG_DAMAGE_AIR_BACK			= "KELAINO_HARPY_AIR_DAMAGE_BACK",
+	BIG_DAMAGE_AIR				= "KELAINO_HARPY_AIR_DAMAGE_FRONT",
+	
+	DOWN_DAMAGE_LAND_FRONT		= "KELAINO_HARPY_LAND_DAMAGE_DOWN_FRONT",
+	DOWN_DAMAGE_LAND_BACK		= "KELAINO_HARPY_LAND_DAMAGE_DOWN_BACK",
+	DOWN_DAMAGE_AIR				= "KELAINO_HARPY_AIR_DAMAGE_FRONT",
+	UP_DAMAGE					= "KELAINO_HARPY_FLY_DAMAGE_UP",
+	
+	FLY_DAMAGE_FRONT			= "KELAINO_HARPY_FLY_DAMAGE_FRONT",
+	FLY_DAMAGE_BACK				= "KELAINO_HARPY_FLY_DAMAGE_BACK",
+	REVENGE_ATTACK				= "",
+	--DAMAGE_FLUSH_LAND_FRONT		= "KELAINO_HARPY_DAMAGE_FRONT",
+	--DAMAGE_FLUSH_LAND_BACK		= "KELAINO_HARPY_DAMAGE_BACK",
+	DAMAGE_FLUSH_AIR			= "KELAINO_HARPY_AIR_DAMAGE_FRONT",
+	DAMAGE_REVENGE				= "",
+	
+	DAMAGE_EXTRA_STATES         = {"KELAINO_HARPY_LAND_STAND_UP_FRONT","KELAINO_HARPY_LAND_STAND_UP_BACK",
+	"KELAINO_HARPY_FLY_DAMAGE_FRONT_LANDING","KELAINO_HARPY_FLY_DAMAGE_BACK_LANDING",
+	"KELAINO_HARPY_FLY_DAMAGE_FALL","KELAINO_HARPY_FLY_DAMAGE_DOWN_LANDING","KELAINO_HARPY_LAND_AIR_DAMAGE",},	
+	
+	WAIT_STATES                 = { "KELAINO_HARPY_FLY_WAIT", },	
+	
+	DYING_LAND_FRONT			= "KELAINO_HARPY_LAND_DYING_FRONT",
+	DYING_LAND_BACK				= "KELAINO_HARPY_LAND_DYING_BACK",
+	DYING_SKY					= "KELAINO_HARPY_AIR_DYING_LANDING",
+	
+	
+	--칼날 떨어뜨리는 전체 공격, 관리를 위한 함수
+	COMMON_FRAME_FUNC           = "KELAINO_HARPY_COMMON_FRAME_FUNC",
+}
+
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_RANDOM"],
+		TARGET_INTERVAL				= 2,		-- sec
+		TARGET_NEAR_RANGE			= 1000,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 1600,		-- cm
+		TARGET_LOST_RANGE			= 2400,		-- cm
+		TARGET_SUCCESS_RATE			= 50,		-- %
+		ATTACK_TARGET_RATE			= 10,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 50,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE = 
+	{		
+		DEST_GAP			= 600,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 800,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		MOVE_SPLIT_RANGE	= 400,
+		WALK_INTERVAL		= 1,
+		NEAR_WALK_RATE		= 100,		-- 70,
+		FAR_WALK_RATE		= 100,		-- 30,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 0, 		-- 30,
+		UP_DOWN_RATE		= 0,
+		DOWN_JUMP_RATE		= 0,		-- 30,
+		DOWN_DOWN_RATE		= 0,
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 100, --50,		
+		PATROL_RANGE			= 300,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= FALSE,
+	},
+	
+	FLY_CHASE_MOVE = 
+	{
+	    DEST_HEIGHT_GAP     = 250,  -- 타겟과 유지할 높이
+	    DEST_LAND_GAP       = 250,  -- 지면상에서의 타겟과 거리기준
+	    DEST_AREA       	= 100,  -- 타겟과의 지면거리를 기준으로 이 범위안에 있으면 도착했다고 판단
+	    
+	    FLY_MOVE_INTERVAL	= 1.5,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 1000,
+		ESCAPE_GAP			= 1500,	-- 이 거리 보다 멀면 도망 성공
+		
+		WALK_INTERVAL		= 1,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+	},
+	
+	ESCAPE_CONDITION = 
+	{
+		--RATE	= 0,
+		--MY_HP	= 0,
+	}	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_FLY_WAIT_START = 
+{
+	ANIM_NAME					= "WaitStart",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	VIEW_TARGET					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,	
+		
+    FLY_AI                      = TRUE,
+    SHOW_NAME                   = TRUE,
+    PASSIVE_SPEED_Y				= 0,
+    ENABLE_HEIGHT_FIX           = TRUE,
+    
+    SPEED_X						= 0,
+	SPEED_Y						= 0,		
+	NEVER_MOVE					= TRUE,
+   -- ADD_POS_Y					= 400,
+    		
+	SOUND_PLAY0					= { 0.01, "Kelaino_Harpy_Voice_Wait01.ogg", 100, FALSE, -1.0, FALSE },				
+			
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"KELAINO_HARPY_LAND_WAIT",	},		
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_FLY_WAIT = 
+{
+	ANIM_NAME					= "Wait_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = TRUE,
+
+    VIEW_TARGET					= TRUE,
+    ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	PASSIVE_SPEED_Y				= 0,
+	
+	SOUND_PLAY0 = { 0.25, "Pet_Fly01.ogg"},
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"KELAINO_HARPY_MAGIC_ATTACK_A_FLY",			"CT_KELAINO_HARPY_MAGIC_ATTACK_A_FLY",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"KELAINO_HARPY_MAGIC_ATTACK_B_FLY_READY",	"CT_KELAINO_HARPY_MAGIC_ATTACK_B_FLY_READY",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"KELAINO_HARPY_MAGIC_ATTACK_C_FLY",			"CT_KELAINO_HARPY_MAGIC_ATTACK_C_FLY",			},
+	    { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"KELAINO_HARPY_SPECIAL_ATTACK_B_FLY_READY",	"CT_KELAINO_HARPY_SPECIAL_ATTACK_B_FLY_READY",	},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],			"KELAINO_HARPY_FLY_BACK",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],		"KELAINO_HARPY_FLY_BACK_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],	"KELAINO_HARPY_FLY_BACK_DOWN",		},
+	    	 
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],			"KELAINO_HARPY_FLY_UP",				},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],			"KELAINO_HARPY_FLY_DOWN",			},
+	    	    
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],		"KELAINO_HARPY_FLY_FRONT",			},		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],		"KELAINO_HARPY_FLY_FRONT_UP",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],	"KELAINO_HARPY_FLY_FRONT_DOWN",		},
+	},
+	
+	CT_KELAINO_HARPY_MAGIC_ATTACK_A_FLY = 
+	{
+		RATE						= 30,
+		DISTANCE_TO_TARGET_NEAR		= 500,
+		--HAVE_TARGET					= 1,--반드시 타겟이 있어야 함
+		EVENT_INTERVAL_ID		= 0,
+	},
+	CT_KELAINO_HARPY_MAGIC_ATTACK_B_FLY_READY = 
+	{
+		RATE						= 30,
+		DISTANCE_TO_TARGET_NEAR		= 800,
+		--HAVE_TARGET					= 1,--반드시 타겟이 있어야 함
+		EVENT_INTERVAL_ID		= 0,
+	},
+	CT_KELAINO_HARPY_MAGIC_ATTACK_C_FLY = 
+	{
+		RATE						= 30,
+		EVENT_INTERVAL_ID			= 0,
+	},
+	CT_KELAINO_HARPY_SPECIAL_ATTACK_B_FLY_READY =
+	{
+		--MY_MP_MORE_THAN_PERCENT		= 90,
+		EVENT_INTERVAL_ID			= 0,
+	},
+}
+
+function KELAINO_HARPY_FLY_WAIT_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	pNPCUnit:SetFlag_LUA( 0, true )		-- 공중 채공 여부 ( 공중에서 피격시 현재 FLY 상태에 따른 스테이트를 적용시키기 위해 )
+	pNPCUnit:SetBuffFactorToGameUnitByBuffFactorID_LUA( BUFF_FACTOR_ID["BFI_BUFF_KELAINO_RAGE_MODE"] )	
+
+end
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_FLY_FRONT = 
+{
+	ANIM_NAME					= "Walk_Fly_Front",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= 500,
+	PASSIVE_SPEED_Y				= 0,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	SOUND_PLAY0 = { 0.33, "BatBig_Fly2.ogg"},	
+	
+	EVENT_PROCESS = 
+	{		    
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],			"KELAINO_HARPY_FLY_UP",			},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],			"KELAINO_HARPY_FLY_DOWN",		},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],			"KELAINO_HARPY_FLY_BACK",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],		"KELAINO_HARPY_FLY_BACK_UP",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],	"KELAINO_HARPY_FLY_BACK_DOWN",	},
+	    
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],				"KELAINO_HARPY_FLY_WAIT",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],		"KELAINO_HARPY_FLY_FRONT_UP",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],	"KELAINO_HARPY_FLY_FRONT_DOWN",	},
+				
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_FLY_FRONT_UP = 
+{
+	ANIM_NAME					= "Walk_Fly_Front",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= 500,
+	PASSIVE_SPEED_Y				= 3,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	SOUND_PLAY0 = { 0.33, "BatBig_Fly2.ogg"},	
+	
+	EVENT_PROCESS = 
+	{	
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],			"KELAINO_HARPY_FLY_UP",			},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],			"KELAINO_HARPY_FLY_DOWN",		},
+	    { STATE_CHANGE_TYPE["SCT_AI_WAIT"],				"KELAINO_HARPY_FLY_WAIT",		},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],			"KELAINO_HARPY_FLY_BACK",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],		"KELAINO_HARPY_FLY_BACK_UP",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],	"KELAINO_HARPY_FLY_BACK_DOWN",	},	
+			
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],		"KELAINO_HARPY_FLY_FRONT",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],	"KELAINO_HARPY_FLY_FRONT_DOWN",	},
+		
+		
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_FLY_FRONT_DOWN = 
+{
+	ANIM_NAME					= "Walk_Fly_Front",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= 500,
+	PASSIVE_SPEED_Y				= -3,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	SOUND_PLAY0 = { 0.33, "BatBig_Fly2.ogg"},	
+	
+	EVENT_PROCESS = 
+	{		
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],			"KELAINO_HARPY_FLY_UP",			},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],			"KELAINO_HARPY_FLY_DOWN",		},
+	    { STATE_CHANGE_TYPE["SCT_AI_WAIT"],				"KELAINO_HARPY_FLY_WAIT",		},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],			"KELAINO_HARPY_FLY_BACK",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],		"KELAINO_HARPY_FLY_BACK_UP",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],	"KELAINO_HARPY_FLY_BACK_DOWN",	},
+	    
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],		"KELAINO_HARPY_FLY_FRONT",		},		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],		"KELAINO_HARPY_FLY_FRONT_UP",	},			
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_FLY_BACK = 
+{
+	ANIM_NAME					= "Walk_Fly_Back",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= -700,
+	PASSIVE_SPEED_Y				= 0,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	SOUND_PLAY0 = { 0.33, "BatBig_Fly2.ogg"},
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],			"KELAINO_HARPY_FLY_UP",			},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],			"KELAINO_HARPY_FLY_DOWN",		},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],		"KELAINO_HARPY_FLY_BACK_UP",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],	"KELAINO_HARPY_FLY_BACK_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],				"KELAINO_HARPY_FLY_WAIT",		},   
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],		"KELAINO_HARPY_FLY_FRONT",		},		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],		"KELAINO_HARPY_FLY_FRONT_UP",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],	"KELAINO_HARPY_FLY_FRONT_DOWN",	},				
+		
+		
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_FLY_BACK_UP = 
+{
+	ANIM_NAME					= "Walk_Fly_Back",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= -700,
+	PASSIVE_SPEED_Y				= 3,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	SOUND_PLAY0 = { 0.33, "BatBig_Fly2.ogg"},	
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],			"KELAINO_HARPY_FLY_UP",			},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],			"KELAINO_HARPY_FLY_DOWN",		},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],			"KELAINO_HARPY_FLY_BACK",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],	"KELAINO_HARPY_FLY_BACK_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],				"KELAINO_HARPY_FLY_WAIT",		}, 
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],		"KELAINO_HARPY_FLY_FRONT",		},		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],		"KELAINO_HARPY_FLY_FRONT_UP",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],	"KELAINO_HARPY_FLY_FRONT_DOWN",	},
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_FLY_BACK_DOWN = 
+{
+	ANIM_NAME					= "Walk_Fly_Back",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= -700,
+	PASSIVE_SPEED_Y				= -3,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	
+	EVENT_INTERVAL_TIME0		= 2,
+
+	SOUND_PLAY0 = { 0.33, "BatBig_Fly2.ogg"},
+	
+	EVENT_PROCESS = 
+	{		
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],			"KELAINO_HARPY_FLY_UP",			},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],			"KELAINO_HARPY_FLY_DOWN",		},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],			"KELAINO_HARPY_FLY_BACK",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],		"KELAINO_HARPY_FLY_BACK_UP",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],				"KELAINO_HARPY_FLY_WAIT",		}, 
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],		"KELAINO_HARPY_FLY_FRONT",		},		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],		"KELAINO_HARPY_FLY_FRONT_UP",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],	"KELAINO_HARPY_FLY_FRONT_DOWN",	},
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_FLY_UP = 
+{
+	ANIM_NAME					= "Wait_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    VIEW_TARGET					= TRUE,
+    ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	PASSIVE_SPEED_Y				= 3,
+		
+		
+	EVENT_PROCESS = 
+	{	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"KELAINO_HARPY_FLY_WAIT",		"CT_KELAINO_HARPY_FLY_WAIT",	},	    
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				"KELAINO_HARPY_FLY_DOWN",		},    	    	
+	    { STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"KELAINO_HARPY_FLY_WAIT",		},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],				"KELAINO_HARPY_FLY_BACK",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],			"KELAINO_HARPY_FLY_BACK_UP",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],		"KELAINO_HARPY_FLY_BACK_DOWN",	},
+	    	    
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],			"KELAINO_HARPY_FLY_FRONT",		},		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],			"KELAINO_HARPY_FLY_FRONT_UP",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],		"KELAINO_HARPY_FLY_FRONT_DOWN",	},				
+	},
+	
+	CT_KELAINO_HARPY_FLY_WAIT =
+	{
+		STATE_TIME_OVER			= 1,
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_FLY_DOWN = 
+{
+	ANIM_NAME					= "Wait_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    VIEW_TARGET					= TRUE,
+    ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	PASSIVE_SPEED_Y				= -3,
+	
+	
+	EVENT_PROCESS = 
+	{		    
+	    { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"KELAINO_HARPY_FLY_WAIT",		"CT_KELAINO_HARPY_FLY_WAIT",	},	
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],			"KELAINO_HARPY_FLY_UP",			},	    	
+	    { STATE_CHANGE_TYPE["SCT_AI_WAIT"],				"KELAINO_HARPY_FLY_WAIT",		},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],			"KELAINO_HARPY_FLY_BACK",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],		"KELAINO_HARPY_FLY_BACK_UP",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],	"KELAINO_HARPY_FLY_BACK_DOWN",	},    	 
+	    	    
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],		"KELAINO_HARPY_FLY_FRONT",		},		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],		"KELAINO_HARPY_FLY_FRONT_UP",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],	"KELAINO_HARPY_FLY_FRONT_DOWN",	},		
+		
+	},
+	
+	CT_KELAINO_HARPY_FLY_WAIT =
+	{
+		STATE_TIME_OVER			= 4,
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_LAND_WAIT = 
+{
+	ANIM_NAME					= "Wait_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+    VIEW_TARGET					= TRUE,
+    ALLOW_DIR_CHANGE			= TRUE,
+	
+	
+	FLY_AI                      = FALSE,
+	
+	
+	PASSIVE_SPEED_Y				= 0,
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{	    
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"KELAINO_HARPY_FLY_WAIT", "CT_KELAINO_HARPY_FLY_WAIT", },
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"KELAINO_HARPY_LAND_JUMP_DOWN",		},
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"KELAINO_HARPY_ATTACK_A",				"CT_KELAINO_HARPY_ATTACK_A",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"KELAINO_HARPY_MAGIC_ATTACK_A",			"CT_KELAINO_HARPY_MAGIC_ATTACK_A",	},
+		 { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"KELAINO_HARPY_MAGIC_ATTACK_B_READY",	"CT_KELAINO_HARPY_MAGIC_ATTACK_B_READY",},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"KELAINO_HARPY_MAGIC_ATTACK_C",			"CT_KELAINO_HARPY_MAGIC_ATTACK_C",},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"KELAINO_HARPY_SPECIAL_ATTACK_B_READY",	"CT_KELAINO_HARPY_SPECIAL_ATTACK_B_READY",},		
+	
+	    { STATE_CHANGE_TYPE["SCT_AI_WALK"],					"KELAINO_HARPY_LAND_WALK",			},
+	    { STATE_CHANGE_TYPE["SCT_AI_DASH"],					"KELAINO_HARPY_LAND_WALK",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"KELAINO_HARPY_LAND_JUMP_UP",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"KELAINO_HARPY_LAND_JUMP_UP_DIR",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"KELAINO_HARPY_LAND_JUMP_DOWN",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"KELAINO_HARPY_LAND_JUMP_DOWN_DIR",	},	
+		
+	},
+	CT_KELAINO_HARPY_FLY_WAIT =
+	{		
+		MY_HP_LESS_THAN_PERCENT = 20,--체력 40% 이하이면 무조건 하늘을 나는 상태
+		EVENT_INTERVAL_ID		= 0,
+		FOOT_ON_LINE 			= TRUE,
+	},	
+	CT_KELAINO_HARPY_ATTACK_A = 
+	{
+		DISTANCE_TO_TARGET_NEAR		= 300,
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 100,
+	},	
+	CT_KELAINO_HARPY_MAGIC_ATTACK_A = 
+	{
+		RATE						= 100,
+		DISTANCE_TO_TARGET_NEAR		= 800,
+		--HAVE_TARGET					= 1,--반드시 타겟이 있어야 함
+		EVENT_INTERVAL_ID			= 0,
+	},
+	CT_KELAINO_HARPY_MAGIC_ATTACK_B_READY = 
+	{
+		RATE						= 30,		
+		--HAVE_TARGET					= 1,--반드시 타겟이 있어야 함
+		DISTANCE_TO_TARGET_NEAR		= 800,
+		EVENT_INTERVAL_ID			= 0,
+	},
+	CT_KELAINO_HARPY_MAGIC_ATTACK_C = 
+	{
+		RATE						= 30,
+		EVENT_INTERVAL_ID			= 0,
+	},
+	CT_KELAINO_HARPY_SPECIAL_ATTACK_B_READY =
+	{
+		--MY_MP_MORE_THAN_PERCENT		= 90,
+		EVENT_INTERVAL_ID			= 0,
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_LAND_WALK = 
+{
+	ANIM_NAME					= "Walk_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"KELAINO_HARPY_FLY_WAIT", "CT_KELAINO_HARPY_FLY_WAIT", },
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"KELAINO_HARPY_LAND_JUMP_DOWN",		},
+	    	
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"KELAINO_HARPY_LAND_WAIT",			},
+	    { STATE_CHANGE_TYPE["SCT_AI_WALK"],					"KELAINO_HARPY_LAND_WALK",			},
+	    { STATE_CHANGE_TYPE["SCT_AI_DASH"],					"KELAINO_HARPY_LAND_WALK",			},	    
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"KELAINO_HARPY_LAND_JUMP_UP",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"KELAINO_HARPY_LAND_JUMP_UP_DIR",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"KELAINO_HARPY_LAND_JUMP_DOWN",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"KELAINO_HARPY_LAND_JUMP_DOWN_DIR",	},
+	},	
+	
+	CT_KELAINO_HARPY_FLY_WAIT =
+	{
+		FOOT_ON_LINE 	= TRUE,		
+		MY_HP_LESS_THAN_PERCENT = 20,--체력 40% 이하이면 무조건 하늘을 나는 상태
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_LAND_JUMP_UP = 
+{
+	ANIM_NAME					= "JumpUp_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	
+	FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"KELAINO_HARPY_LAND_JUMP_DOWN", },
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_LAND_JUMP_UP_DIR = 
+{
+	ANIM_NAME					= "JumpUp_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	
+	ADD_POS_Y					= 45,
+	
+	FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"KELAINO_HARPY_LAND_JUMP_DOWN_DIR", },
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_LAND_JUMP_DOWN = 
+{
+	ANIM_NAME					= "JumpLanding_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Landing_Meat01.ogg"},
+	SOUND_PLAY1 = { 0.75, "Landing_Meat02.ogg"},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"KELAINO_HARPY_LAND_JUMP_DOWN_LANDING", },
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_LAND_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME					= "JumpLanding_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Landing_Meat01.ogg"},
+	SOUND_PLAY1 = { 0.75, "Landing_Meat02.ogg"},	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"KELAINO_HARPY_LAND_JUMP_DOWN_LANDING", },
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_LAND_JUMP_DOWN_LANDING = 
+{
+	ANIM_NAME					= "JumpLanding_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Landing_Meat01.ogg"},
+	SOUND_PLAY1 = { 0.75, "Landing_Meat02.ogg"},	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"KELAINO_HARPY_FLY_WAIT", "CT_KELAINO_HARPY_FLY_WAIT", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"KELAINO_HARPY_LAND_WAIT", },
+	},	
+	CT_KELAINO_HARPY_FLY_WAIT =
+	{
+		FOOT_ON_LINE 			= TRUE,		
+		ANIM_PLAY_COUNT			= 1,
+		MY_HP_LESS_THAN_PERCENT = 20,--체력 40% 이하이면 무조건 하늘을 나는 상태		
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+	
+KELAINO_HARPY_START_LANDING =
+{
+	ANIM_NAME					= "JumpDown_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	PASSIVE_SPEED_Y				= INIT_PHYSIC["WALK_SPEED"] * -5.0,
+	
+	FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"KELAINO_HARPY_LAND_JUMP_DOWN_LANDING", },
+	},	
+}
+	
+----------------------------------------------------------------------------------------------------------------------------------------	
+
+KELAINO_HARPY_START_FLYING =
+{
+	ANIM_NAME					= "Start_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.45, "Pet_Fly01.ogg"},
+	SOUND_PLAY1 = { 0.85, "Pet_Fly02.ogg"},
+	SOUND_PLAY2 = { 1.41, "BatBig_Fly3.ogg"},
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"KELAINO_HARPY_FLY_WAIT", },
+	},
+}
+
+function KELAINO_HARPY_START_FLYING_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	pNPCUnit:SetFlag_LUA( 0, true )	-- 날고 있다.
+	pNPCUnit:SetBuffFactorToGameUnitByBuffFactorID_LUA( BUFF_FACTOR_ID["BFI_BUFF_KELAINO_RAGE_MODE"] )	
+end
+
+function KELAINO_HARPY_START_FLYING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 1.328 ) then
+		pNPCUnit:SetSpeedY( 1700 )
+	end
+
+end
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_LAND_DAMAGE_FRONT = 
+{
+	ANIM_NAME					= "DamageFront_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Kelaino_Harpy_Voice_DamageB01.ogg",30},
+	
+	EVENT_INTERVAL_TIME0		= 1,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"KELAINO_HARPY_FLY_WAIT", "CT_KELAINO_HARPY_FLY_WAIT", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"KELAINO_HARPY_LAND_WAIT",},
+	},	
+	
+	CT_KELAINO_HARPY_FLY_WAIT =
+	{
+		MY_HP_LESS_THAN_PERCENT = 20,--체력 40% 이하이면 무조건 하늘을 나는 상태
+	},		
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_LAND_DAMAGE_BACK = 
+{
+	ANIM_NAME					= "DamageBack_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_INTERVAL_TIME0		= 1,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Kelaino_Harpy_Voice_DamageB01.ogg",30},
+	
+	EVENT_PROCESS = 
+	{
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"KELAINO_HARPY_MAGIC_ATTACK_B_READY", "CT_KELAINO_HARPY_MAGIC_ATTACK_B_READY", },
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"KELAINO_HARPY_FLY_WAIT", "CT_KELAINO_HARPY_FLY_WAIT", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"KELAINO_HARPY_LAND_WAIT", 				},
+	},	
+	
+	CT_KELAINO_HARPY_FLY_WAIT =
+	{
+		MY_HP_LESS_THAN_PERCENT = 20,--체력 40% 이하이면 무조건 하늘을 나는 상태		
+	},		
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_LAND_DAMAGE_DOWN_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Kelaino_Harpy_Voice_DamageA01.ogg",30},
+			SOUND_PLAY1 = { 0.70, "JumpLand2.ogg"},	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"KELAINO_HARPY_LAND_STAND_UP_FRONT", },
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_LAND_DAMAGE_DOWN_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Kelaino_Harpy_Voice_DamageB01.ogg",30},	
+		SOUND_PLAY1 = { 0.70, "JumpLand2.ogg"},	
+	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"KELAINO_HARPY_LAND_STAND_UP_BACK", },
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_LAND_STAND_UP_FRONT = 
+{
+	ANIM_NAME					= "DamageStandUpFront_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.45, "Swing_Big02.ogg"},	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"KELAINO_HARPY_FLY_WAIT", "CT_KELAINO_HARPY_FLY_WAIT", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"KELAINO_HARPY_LAND_WAIT", },
+	},	
+	
+	CT_KELAINO_HARPY_FLY_WAIT =
+	{
+		MY_HP_LESS_THAN_PERCENT = 20,--체력 40% 이하이면 무조건 하늘을 나는 상태		
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_LAND_STAND_UP_BACK = 
+{
+	ANIM_NAME					= "DamageStandUpBack_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"KELAINO_HARPY_FLY_WAIT", "CT_KELAINO_HARPY_FLY_WAIT", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"KELAINO_HARPY_LAND_WAIT", },
+	},	
+	CT_KELAINO_HARPY_FLY_WAIT =
+	{
+		MY_HP_LESS_THAN_PERCENT = 20,--체력 40% 이하이면 무조건 하늘을 나는 상태		
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_FLY_DAMAGE_FRONT = 
+{
+	ANIM_NAME					= "DamageAirFlyFront_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Kelaino_Harpy_Voice_DamageB01.ogg",30},
+	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"KELAINO_HARPY_LAND_DAMAGE_DOWN_FRONT", },
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_FLY_DAMAGE_BACK = 
+{
+	ANIM_NAME					= "DamageAirFlyBack_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+		
+	SOUND_PLAY0 = { 0.01, "Kelaino_Harpy_Voice_DamageA01.ogg",30},
+	SOUND_PLAY1 = { 0.21, "Pet_Fly01.ogg"},
+	SOUND_PLAY2 = { 0.61, "Pet_Fly01.ogg"},
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"KELAINO_HARPY_LAND_DAMAGE_DOWN_BACK", },
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_FLY_DAMAGE_FRONT_LANDING = 
+{
+	ANIM_NAME					= "Dying_Landing_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Landing_RawMeat02.ogg"},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"], "KELAINO_HARPY_FLY_DAMAGE_FRONT",		},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"KELAINO_HARPY_LAND_STAND_UP_FRONT", 	},
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_FLY_DAMAGE_BACK_LANDING = 
+{
+	ANIM_NAME					= "Dying_Landing_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Landing_RawMeat02.ogg"},
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"], "KELAINO_HARPY_FLY_DAMAGE_BACK",		},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"KELAINO_HARPY_LAND_STAND_UP_BACK", 	},
+	},
+}
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+	
+KELAINO_HARPY_AIR_DAMAGE_FRONT = 
+{
+	ANIM_NAME					= "DamageFront_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_Y				= 0,
+	
+	FLY_AI                      = TRUE,
+	
+	SOUND_PLAY0 = { 0.01, "Kelaino_Harpy_Voice_DamageA01.ogg",30},
+	-- KELAINO_HARPY_MAGIC_ATTACK_B_FLY_READY
+	
+	EVENT_PROCESS = 
+	{
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"KELAINO_HARPY_MAGIC_ATTACK_B_READY", "CT_KELAINO_HARPY_MAGIC_ATTACK_B_READY", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"KELAINO_HARPY_FLY_WAIT", 				},
+	},	
+	
+	-- CT_KELAINO_HARPY_MAGIC_ATTACK_B_READY =
+	-- {
+	    -- EVENT_INTERVAL_ID           = 0,
+		-- RATE	= 3,
+	-- },	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_AIR_DAMAGE_BACK = 
+{
+	ANIM_NAME					= "DamageBack_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_Y				= 0,
+	
+	FLY_AI                      = TRUE,
+	
+	SOUND_PLAY0 = { 0.01, "Kelaino_Harpy_Voice_DamageA01.ogg",30},
+	SOUND_PLAY1 = { 0.30, "Pet_Fly01.ogg"},
+	SOUND_PLAY2 = { 0.70, "Pet_Fly01.ogg"},
+	
+	EVENT_PROCESS = 
+	{
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"KELAINO_HARPY_MAGIC_ATTACK_B_READY", 	"CT_KELAINO_HARPY_MAGIC_ATTACK_B_READY", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"KELAINO_HARPY_FLY_WAIT", 				},
+	},	
+	
+	-- CT_KELAINO_HARPY_MAGIC_ATTACK_B_READY =
+	-- {
+	    -- EVENT_INTERVAL_ID           = 0,
+		-- RATE						= 2,
+	-- },	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_LAND_DYING_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	DYING_END					= TRUE,
+	
+	SOUND_PLAY0 = { 0.01, "Kelaino_Harpy_Voice_Dying01.ogg"},	
+			SOUND_PLAY1 = { 0.70, "JumpLand2.ogg"},	
+			
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],  	"KELAINO_HARPY_LAND_JUMP_DOWN",		},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"KELAINO_HARPY_LAND_STAND_UP_FRONT", 	},
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_LAND_DYING_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	DYING_END					= TRUE,
+	
+	SOUND_PLAY0 = { 0.01, "Kelaino_Harpy_Voice_Dying01.ogg"},	
+		SOUND_PLAY1 = { 0.70, "JumpLand2.ogg"},	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],  	"KELAINO_HARPY_LAND_JUMP_DOWN",		},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"KELAINO_HARPY_LAND_STAND_UP_FRONT", 	},
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_FLY_DAMAGE_UP = 
+{
+	ANIM_NAME					= "DamageAirUp_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Kelaino_Harpy_Voice_DamageB01.ogg",30},
+	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],  	"KELAINO_HARPY_FLY_DAMAGE_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"KELAINO_HARPY_FLY_DAMAGE_DOWN_LANDING",	},
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_FLY_DAMAGE_FALL = 
+{
+	ANIM_NAME					= "DamageAirFall_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_POSITIVE_Y_SPEED"],  	"KELAINO_HARPY_FLY_DAMAGE_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"KELAINO_HARPY_FLY_DAMAGE_DOWN_LANDING",	},
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_FLY_DAMAGE_DOWN_LANDING = 
+{
+	ANIM_NAME					= "DamageDownLanding_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	FLY_AI                      = FALSE,
+		
+	SOUND_PLAY0 = { 0.01, "Landing_RawMeat01.ogg"},	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],  	"KELAINO_HARPY_FLY_DAMAGE_FALL",		},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"KELAINO_HARPY_LAND_STAND_UP_FRONT", 	},
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_LAND_AIR_DAMAGE =
+{
+	ANIM_NAME					= "DamageAir_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,	
+	
+	FLY_AI                      = FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Kelaino_Harpy_Voice_DamageA01.ogg",30},
+	SOUND_PLAY1 = { 0.25, "Bat_Fly.ogg"},
+	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"KELAINO_HARPY_FLY_WAIT", "CT_KELAINO_HARPY_FLY_WAIT", },
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"], "KELAINO_HARPY_LAND_WAIT",	},
+	},
+	CT_KELAINO_HARPY_FLY_WAIT =
+	{
+		FOOT_ON_LINE 			= TRUE,		
+		ANIM_PLAY_COUNT			= 1,
+		MY_HP_LESS_THAN_PERCENT = 20,--체력 40% 이하이면 무조건 하늘을 나는 상태		
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+--대각선 아래 발차기 공격
+KELAINO_HARPY_ATTACK_A =
+{
+	ANIM_NAME					= "Attack_A_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Kelaino_Harpy_Voice_AttackA01.ogg",30},	
+	SOUND_PLAY1 = { 0.21, "BatBig_Fly2.ogg"},
+	SOUND_PLAY2 = { 1.01, "Bat_Fly.ogg"},
+	SOUND_PLAY3 = { 1.01, "Swing_Medium01.ogg"},
+	SOUND_PLAY4 = { 1.11, "Swing_Medium02.ogg"},
+	SOUND_PLAY5 = { 1.21, "Swing_Medium01.ogg"},
+	SOUND_PLAY6 = { 1.31, "Swing_Medium02.ogg"},
+	SOUND_PLAY7 = { 1.41, "BatBig_Fly3.ogg"},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"KELAINO_HARPY_LAND_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], 				"KELAINO_HARPY_LAND_WAIT",		},
+	},
+	
+	ATTACK_TIME0	= { 0.837, 1.24, },	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE	= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE	= HIT_TYPE["HT_KICK_SLASH"],
+		REACT_TYPE	= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC	= 3.0,
+		},		
+		BACK_SPEED_X		= 300,		
+		CAN_REVENGE			= TRUE,			
+		RE_ATTACK			= TRUE,
+		HIT_GAP				= 0.15,
+		
+		CAMERA_CRASH_GAP	= 10.0,	
+		CAMERA_CRASH_TIME	= 0.3,		
+	},	
+}
+
+function KELAINO_HARPY_ATTACK_A_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.752 ) then
+		pNPCUnit:SetSpeedX(800)
+	elseif pNPCUnit:AnimEventTimer_LUA( 1.678 ) then
+		pNPCUnit:SetSpeedX(0)
+	end
+end
+
+----------------------------------------------------------------------------------------------------------------------------------------
+--LAND_MODE 낙하 비행
+KELAINO_HARPY_MAGIC_ATTACK_B_READY =
+{
+	ANIM_NAME					= "Magic_Attack_B_Ready_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+		
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	VIEW_TARGET					= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	PASSIVE_SPEED_Y				= 1,
+	SOUND_PLAY0 = { 0.60, "BatBig_Fly2.ogg"},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], 	"KELAINO_HARPY_MAGIC_ATTACK_B_START",	"CT_KELAINO_HARPY_MAGIC_ATTACK_B_START",	},
+	},
+	
+	CT_KELAINO_HARPY_MAGIC_ATTACK_B_START =
+	{
+		STATE_TIME_OVER = 1.5,
+	},
+}
+function KELAINO_HARPY_MAGIC_ATTACK_B_READY_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.1 ) then		
+		if nil ~= pNPCUnit then
+			pNPCUnit:SetVector_LUA(0, D3DXVECTOR3( 10822, 14400, 26596) ) 	
+		end
+	end
+	
+	if pNPCUnit:AnimEventTimer_LUA( 0.9 ) then
+		local TargetUser = pNPCUnit:GetTargetUser()	
+		if nil ~= TargetUser then
+			if 0 < TargetUser:GetNowHP() then
+				local TargetPos = TargetUser:GetPos()			
+
+				--좌 / 우 최대 위치 지정. 
+				--이 이상 넘어가면 MAGIC_ATTACK_B_START함수에 의해
+				--지정된 월드맵 밖으로 켈라이노가 이동 될 수 있음.
+				if TargetPos.x >= 11848 then
+					pNPCUnit:SetIsRight(true)
+				end
+				
+				if TargetPos.x <= 9736 then			
+					pNPCUnit:SetIsRight(false)
+				end
+				--공격 위치 경고 이펙트
+				local pMajorParticle = pX2Game:GetMajorParticle()			
+				if nil ~= pMajorParticle then
+					local pSeq = pMajorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "waldo_trock_MagicAttackA_drop_P02", TargetPos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )			
+		
+					--공격 위치 저장
+					local TargetLandPos = TargetUser:GetLandPosition_LUA()		
+					pNPCUnit:SetVector_LUA(0, TargetLandPos ) 	
+				end
+			end
+		end
+	end
+end
+
+
+KELAINO_HARPY_MAGIC_ATTACK_B_START =
+{
+	ANIM_NAME					= "Magic_Attack_B_Start",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	ANIM_SPEED					= 1.0,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	VIEW_TARGET					= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "KELAINO_HARPY_MAGIC_ATTACK_A_FLY.ogg"},
+	
+	PASSIVE_SPEED_X				= 1000,
+	
+	IGNORE_LINE_TIME_START		= 0,
+	IGNORE_LINE_TIME_END		= 1,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	
+	EVENT_PROCESS = 
+	{
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"KELAINO_HARPY_MAGIC_ATTACK_B_FLY_END", "CT_KELAINO_HARPY_SPECIAL_ATTACK_A_FLY_END", },
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "KELAINO_HARPY_MAGIC_ATTACK_B_END",	"CT_KELAINO_HARPY_MAGIC_ATTACK_B_END",	},
+		
+		--{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"KELAINO_HARPY_MAGIC_ATTACK_B_END", },
+	},
+	
+	-- CT_KELAINO_HARPY_SPECIAL_ATTACK_A_FLY_END =
+	-- {
+		-- FOOT_ON_LINE 	= TRUE,		
+		-- STATE_TIME_OVER = 0.14,
+		-- MY_HP_LESS_THAN_PERCENT = 30,--체력 40% 이하이면 무조건 하늘을 나는 상태	
+	-- },	
+	CT_KELAINO_HARPY_MAGIC_ATTACK_B_END =
+	{
+		STATE_TIME_OVER = 0.39,
+	},
+}
+function KELAINO_HARPY_MAGIC_ATTACK_B_START_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	--공격 위치 얻기	
+	local MovePos = pNPCUnit:GetVector_LUA(0)
+	--이동해야 할 위치 설정
+	local pEffectSet = pX2Game:GetEffectSet()
+		if nil ~= pEffectSet then		
+		local IsRight = pNPCUnit:GetIsRight()
+		if true == IsRight then -- 오른쪽을 보고 있다면		
+			MovePos.x = MovePos.x - 300
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_KELAINO_MAGIC_ATTACK_B_START_R", pNPCUnit)
+		else -- 왼쪽을 보고 있다면
+			MovePos.x = MovePos.x + 300
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_KELAINO_MAGIC_ATTACK_B_START", pNPCUnit)
+		end
+		-- MovePos.y = MovePos.y + 700
+			
+		--위치 이동
+		pNPCUnit:SetPosition(MovePos)
+		pNPCUnit:SetIsRight(IsRight)
+	end
+end
+
+
+KELAINO_HARPY_MAGIC_ATTACK_B_END =
+{
+	ANIM_NAME					= "Magic_Attack_B_End_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	
+	VIEW_TARGET					= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Landing_Meat04.ogg"},
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"KELAINO_HARPY_FLY_WAIT", "CT_KELAINO_HARPY_FLY_WAIT", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], 				"KELAINO_HARPY_LAND_WAIT",		},
+	},
+	CT_KELAINO_HARPY_FLY_WAIT =
+	{
+		FOOT_ON_LINE 			= TRUE,		
+		ANIM_PLAY_COUNT			= 1,
+		MY_HP_LESS_THAN_PERCENT = 20,--체력 40% 이하이면 무조건 하늘을 나는 상태		
+	},	
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_KELAINO_MAIGC_ATTACK_B_GROUND", 0,	
+	},	
+}
+
+function KELAINO_HARPY_MAGIC_ATTACK_B_END_START( pKTDXApp, pX2Game, pNPCUnit )
+	-- 켈라이노 위치
+	local vNPCPos = pNPCUnit:GetPos()
+	
+	-- 맵 범위를 넘어섰다면	위치 강제 이동
+	if vNPCPos.x >= 12700 then 
+		pNPCUnit:SetPosition(D3DXVECTOR3( 10822, 14400, 26596))
+	end
+	
+	if vNPCPos.x <= 8818 then	
+		pNPCUnit:SetPosition(D3DXVECTOR3( 10822, 14400, 26596))
+	end	
+end
+
+--FLY_MODE 낙하 비행
+KELAINO_HARPY_MAGIC_ATTACK_B_FLY_READY =
+{
+	ANIM_NAME					= "Magic_Attack_B_Ready_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+		
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = TRUE,
+	
+	SOUND_PLAY0 = { 0.01, "Kelaino_Harpy_Voice_MagicAttackB_Ready_Fly01.ogg"},
+	SOUND_PLAY1 = { 0.31, "Pet_Fly01.ogg"},
+	SOUND_PLAY2 = { 0.45, "Pet_Fly02.ogg"},
+	SOUND_PLAY3 = { 0.51, "Landing_Meat03.ogg"},
+	SOUND_PLAY4 = { 1.35, "BatBig_Fly3.ogg"},
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], 	"KELAINO_HARPY_MAGIC_ATTACK_B_START",	"CT_KELAINO_HARPY_MAGIC_ATTACK_B_START",	},
+	},
+	
+	CT_KELAINO_HARPY_MAGIC_ATTACK_B_START =
+	{
+		STATE_TIME_OVER = 1.5,
+	},
+}
+KELAINO_HARPY_MAGIC_ATTACK_B_FLY_END =
+{
+	ANIM_NAME					= "Magic_Attack_B_End_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	VIEW_TARGET					= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.71, "BatBig_Small_Fly2.ogg"},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], 				"KELAINO_HARPY_FLY_WAIT",		},
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_KELAINO_MAIGC_ATTACK_B_GROUND", 0,	
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+--LAND_MODE 전방 칼날 공격
+KELAINO_HARPY_MAGIC_ATTACK_C =
+{
+	ANIM_NAME					= "Magic_Attack_C_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Kelaino_Harpy_Voice_MagicAttackC01.ogg"},
+	SOUND_PLAY1 = { 0.14, "Pet_Fly01.ogg"},
+	SOUND_PLAY2 = { 0.20, "BatBig_Fly3.ogg"},
+	SOUND_PLAY3 = { 1.11, "Pet_Fly02.ogg"},
+	SOUND_PLAY4 = { 2.01, "Pet_Fly01.ogg"},
+	SOUND_PLAY5 = { 3.01, "Pet_Fly02.ogg"},
+	SOUND_PLAY6 = { 4.01, "Pet_Fly01.ogg"},
+	SOUND_PLAY7 = { 4.7, "Landing_Meat03.ogg"},	
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"KELAINO_HARPY_FLY_WAIT", 		"CT_KELAINO_HARPY_FLY_WAIT", },
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"KELAINO_HARPY_LAND_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], 				"KELAINO_HARPY_LAND_WAIT",		},
+	},
+	
+	CT_KELAINO_HARPY_FLY_WAIT =
+	{
+		FOOT_ON_LINE 			= TRUE,		
+		ANIM_PLAY_COUNT			= 1,
+		MY_HP_LESS_THAN_PERCENT = 20,--체력 40% 이하이면 무조건 하늘을 나는 상태		
+	},	
+	
+	--DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_KELAINO_MAGIC_ATTACK_C_WIND", 0,	
+		"EffectSet_KELAINO_MAGIC_ATTACK_C_BLADE", 0,
+	},	
+	
+}
+--FLY_MODE 전방 칼날 공격
+KELAINO_HARPY_MAGIC_ATTACK_C_FLY =
+{
+	ANIM_NAME					= "Magic_Attack_C_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Kelaino_Harpy_Voice_MagicAttackC_Fly01.ogg"},	
+	SOUND_PLAY1 = { 0.31, "BatBig_Fly3.ogg"},
+	SOUND_PLAY2 = { 1.35, "Pet_Fly02.ogg"},
+	SOUND_PLAY3 = { 2.35, "Pet_Fly01.ogg"},
+	SOUND_PLAY4 = { 3.35, "Pet_Fly02.ogg"},
+	SOUND_PLAY5 = { 4.35, "Pet_Fly01.ogg"},
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], 				"KELAINO_HARPY_FLY_WAIT",		},
+	},
+	
+	--DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_KELAINO_MAGIC_ATTACK_C_WIND", 0,	
+		"EffectSet_KELAINO_MAGIC_ATTACK_C_BLADE", 0,
+	},	
+}
+----------------------------------------------------------------------------------------------------------------------------------------
+--LAND_MODE 유저 발 아래쪽에 회오리 생성
+KELAINO_HARPY_MAGIC_ATTACK_A =
+{
+	ANIM_NAME					= "Magic_Attack_A_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Kelaino_Harpy_Voice_AttackA01.ogg",30},	
+	SOUND_PLAY1 = { 0.21, "BatBig_Fly2.ogg"},
+	SOUND_PLAY2 = { 0.65, "BatBig_Fly3.ogg"},
+	SOUND_PLAY3 = { 1.01, "Swing_Big04.ogg"},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"KELAINO_HARPY_FLY_WAIT", "CT_KELAINO_HARPY_FLY_WAIT", },
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"KELAINO_HARPY_LAND_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], 				"KELAINO_HARPY_LAND_WAIT",		},
+	},
+	
+	CT_KELAINO_HARPY_FLY_WAIT =
+	{
+		FOOT_ON_LINE 			= TRUE,		
+		ANIM_PLAY_COUNT			= 1,
+		MY_HP_LESS_THAN_PERCENT = 20,--체력 40% 이하이면 무조건 하늘을 나는 상태		
+	},	
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_KELAINO_MAGIC_ATTACK_A_CYCLONE_PASSIVE", 0,	
+	},	
+}
+
+function KELAINO_HARPY_MAGIC_ATTACK_A_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.2 ) then
+		local TargetUser = pNPCUnit:GetTargetUser()
+		if nil ~= TargetUser then
+			local TargetPos = TargetUser:GetPos()
+			local LandPos = TargetUser:GetLandPosition_LUA()		
+			TargetPos.y = LandPos.y
+			
+			local pDamageEffect = pX2Game:GetDamageEffect()
+			if nil ~= pDamageEffect then
+				pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_MAGIC_ATTACK_A_CYCLONE", TargetPos , LandPos.y )
+				--pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_MAGIC_ATTACK_A_STONE", TargetPos , TargetPos.y )
+			end
+		end	
+	end
+end
+----------------------------------------------------------------------------------------------------------------------------------------
+--FLY_MODE 유저 발 아래쪽에 회오리 생성
+KELAINO_HARPY_MAGIC_ATTACK_A_FLY =
+{
+	ANIM_NAME					= "Magic_Attack_A_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = FALSE,
+		
+	SOUND_PLAY0 = { 0.21, "BatBig_Fly3.ogg"},
+	SOUND_PLAY1 = { 0.91, "BatBig_Fly2.ogg"},
+	SOUND_PLAY2 = { 0.01, "Kelaino_Harpy_Voice_AttackA01.ogg",30},	
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], 				"KELAINO_HARPY_FLY_WAIT",		},
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_KELAINO_MAGIC_ATTACK_A_CYCLONE_PASSIVE", 0,	
+	},	
+}
+
+-- LAND_MODE 칼날 떨어뜨리는 전체 공격	
+KELAINO_HARPY_SPECIAL_ATTACK_A_PRE_READY =
+{
+	ANIM_NAME					= "Special_Attack_B_Ready_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+
+	SUPER_ARMOR					= TRUE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = FALSE,
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], 	"KELAINO_HARPY_SPECIAL_ATTACK_A_READY",		},
+	},
+}
+function KELAINO_HARPY_SPECIAL_ATTACK_A_PRE_READY_START( pKTDXApp, pX2Game, pNPCUnit )
+	--칼날 공격 현재 사용 중인 상태로 변경
+	pNPCUnit:SetInt_LUA( 1, 1 )		
+		
+	--사용한 횟수 기록. 무조건 3번 사용 할 수 있도록 설정
+	if pNPCUnit:GetInt_LUA( 0 ) == 0 then
+		pNPCUnit:SetInt_LUA( 0, 1 )
+	elseif pNPCUnit:GetInt_LUA( 0 ) == 1 then
+		pNPCUnit:SetInt_LUA( 0, 2 )
+	elseif pNPCUnit:GetInt_LUA( 0 ) == 2 then
+		pNPCUnit:SetInt_LUA( 0, 3 )	
+	end
+end
+KELAINO_HARPY_SPECIAL_ATTACK_A_READY =
+{
+	ANIM_NAME					= "Special_Attack_A_Ready",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+
+	SUPER_ARMOR					= TRUE,
+
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Kelaino_Harpy_Voice_SpecialAttackA_Ready01.ogg"},
+	SOUND_PLAY1 = { 0.81, "Bat_Fly.ogg"},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], 	"KELAINO_HARPY_SPECIAL_ATTACK_A_START",		},
+	},
+}
+function KELAINO_HARPY_SPECIAL_ATTACK_A_READY_START ( pKTDXApp, pX2Game, pNPCUnit )
+
+	--던전의 중앙으로 강제 이동
+	pNPCUnit:SetPosition( D3DXVECTOR3(10775, 15400, 26596) )
+	pNPCUnit:SetIsRight(true)
+	
+	--카메라 변경
+	local camera = pX2Game:GetX2Camera()
+	if nil ~= camera then 
+	    --X2OPTIMIZE_ROBUST_NPC_ROTATION( by robobeg )
+		--camera:PartsLookTrackingCameraByNpc_LUA( pNPCUnit, D3DXVECTOR3(10775, 15250, 24596), D3DXVECTOR3(-1700, 0, 0), D3DXVECTOR3( 0, 0, 1 ), 11 )
+		camera:PartsLookTrackingCameraByNpc_LUA( pNPCUnit, D3DXVECTOR3(10775, 15250, 24596), D3DXVECTOR3(-1700, 0, 180), D3DXVECTOR3( 0, 0, 1 ), 11 )
+	end
+end
+KELAINO_HARPY_SPECIAL_ATTACK_A_START =
+{
+	ANIM_NAME					= "Special_Attack_A_Start",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,
+	
+	VIEW_TARGET					= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = FALSE,
+		
+	SOUND_PLAY0 = { 0.21, "BatBig_Fly2.ogg"},
+	SOUND_PLAY1 = { 1.61, "Swing_Medium01.ogg"},
+	SOUND_PLAY2 = { 1.75, "Swing_Medium02.ogg"},
+	SOUND_PLAY3 = { 1.91, "Swing_Medium01.ogg"},
+	SOUND_PLAY4 = { 2.01, "Swing_Medium02.ogg"},
+	SOUND_PLAY5 = { 2.61, "Amethyst_WalkEnd.ogg"},
+	SOUND_PLAY6	= { 1.50, "Kelaino_Attack_A_Loop01.ogg", 100, FALSE, -1.0, FALSE },
+
+		
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_KELAINO_SP_ATTACK_CYCLONE", 0,	
+	},
+	EFFECT_SET_LIFE_TIME = 10.0,
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], 	"KELAINO_HARPY_SPECIAL_ATTACK_A_LOOP",		},
+	},
+}
+function KELAINO_HARPY_SPECIAL_ATTACK_A_START_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	-- 켈라이노 회오리에 의한 블랙홀은, 밀어내는 효과를 주기 위해 좌, 우에 설치된 블랙홀 2개로 당기기
+	
+	if pNPCUnit:AnimEventTimer_LUA( 0.1 ) then	
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		if nil ~= pDamageEffect then		
+			pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_CYCLONE_BLACK_HOLE", D3DXVECTOR3( 8818,  14000, 26596 ) , 14000 )	
+			pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_CYCLONE_BLACK_HOLE", D3DXVECTOR3( 12734, 14000, 26596 ) , 14000 )	
+		end
+	end
+end
+KELAINO_HARPY_SPECIAL_ATTACK_A_LOOP =
+{
+	ANIM_NAME					= "Special_Attack_A_Loop",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,	
+	
+	PASSIVE_SPEED_X				= 500,
+	
+	VIEW_TARGET					= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = FALSE,
+	NEVER_MOVE					= TRUE,
+
+
+	EFFECT_SET_LIST =
+	{
+	--	"DAMAGE_EFFECT_KELAINO_SP_ATTACK_BLADE", 0,	
+	},
+	
+	EVENT_PROCESS = 
+	{
+		-- { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "KELAINO_HARPY_SPECIAL_ATTACK_A_END", "CT_KELAINO_HARPY_SPECIAL_ATTACK_A_END", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], 	"KELAINO_HARPY_SPECIAL_ATTACK_A_END",		},
+	},
+	
+	-- CT_KELAINO_HARPY_SPECIAL_ATTACK_A_END =
+	-- {
+		-- STATE_TIME_OVER = 5,
+	-- },
+}
+function KELAINO_HARPY_SPECIAL_ATTACK_A_LOOP_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.33 ) then
+		local vTargetPos = pNPCUnit:GetPos()		
+		local pEffectSet = pX2Game:GetEffectSet()		
+		
+		--체력이 30% 이하면 광폭화 상태
+		local maxHP = pNPCUnit:GetMaxHP()
+		local bIsRageMode = false
+		if pNPCUnit:GetNowHP() < maxHP * 0.3 then 
+			bIsRageMode = true		
+		end
+		--왼쪽 칼날 4개 출력		
+		--4군데 포지션 중 3군데에만 칼날 출력 하기 위한 랜덤값 구하기
+		local iRandVal = pNPCUnit:GetRandVal() % 4
+		
+		--광폭화 상태에서는 한쪽은 4개 다 출력
+		if true == bIsRageMode then 
+			local bRageModeRandVal = pNPCUnit:GetRandVal() % 2
+			--0이면 왼쪽 칼날을 4개 다 출력
+			if 0 == bRageModeRandVal then
+				iRandVal = 5
+				bIsRageMode = false
+			end
+		end
+		
+		vTargetPos.x = vTargetPos.x - 1750
+		if iRandVal ~= 0 then
+			pEffectSet:PlayEffectSetWithCustomPos_LUA( "EffectSet_KELAINO_SP_ATTACK_BLADE", pNPCUnit, vTargetPos, D3DXVECTOR3( 0, 0, 0 ) )
+		end
+		
+		vTargetPos.x = vTargetPos.x + 450
+		if iRandVal ~= 1 then
+			pEffectSet:PlayEffectSetWithCustomPos_LUA( "EffectSet_KELAINO_SP_ATTACK_BLADE", pNPCUnit, vTargetPos, D3DXVECTOR3( 0, 0, 0 ) )
+		end
+		
+		vTargetPos.x = vTargetPos.x + 450
+		if iRandVal ~= 2 then
+			pEffectSet:PlayEffectSetWithCustomPos_LUA( "EffectSet_KELAINO_SP_ATTACK_BLADE", pNPCUnit, vTargetPos, D3DXVECTOR3( 0, 0, 0 ) )
+		end
+		
+		vTargetPos.x = vTargetPos.x + 450
+		if iRandVal ~= 3 then
+			pEffectSet:PlayEffectSetWithCustomPos_LUA( "EffectSet_KELAINO_SP_ATTACK_BLADE", pNPCUnit, vTargetPos, D3DXVECTOR3( 0, 0, 0 ) )
+		end
+		
+		
+		--오른쪽 칼날 4개 출력		
+		--광폭화 상태에서는 한쪽은 4개 다 출력
+		if true == bIsRageMode then 
+			iRandVal = 5
+		else		
+			--4군데 포지션 중 3군데에만 칼날 출력 하기 위한 랜덤값 구하기
+			iRandVal = pNPCUnit:GetRandVal() % 4			
+		end
+		
+		
+		vTargetPos.x = vTargetPos.x + 800
+		if iRandVal ~= 0 then
+			pEffectSet:PlayEffectSetWithCustomPos_LUA( "EffectSet_KELAINO_SP_ATTACK_BLADE", pNPCUnit, vTargetPos, D3DXVECTOR3( 0, 0, 0 ) )
+		end
+		
+		vTargetPos.x = vTargetPos.x + 450
+		if iRandVal ~= 1 then
+			pEffectSet:PlayEffectSetWithCustomPos_LUA( "EffectSet_KELAINO_SP_ATTACK_BLADE", pNPCUnit, vTargetPos, D3DXVECTOR3( 0, 0, 0 ) )
+		end
+		
+		vTargetPos.x = vTargetPos.x + 450
+		if iRandVal ~= 2 then
+			pEffectSet:PlayEffectSetWithCustomPos_LUA( "EffectSet_KELAINO_SP_ATTACK_BLADE", pNPCUnit, vTargetPos, D3DXVECTOR3( 0, 0, 0 ) )
+		end
+		
+		vTargetPos.x = vTargetPos.x + 450
+		if iRandVal ~= 3 then
+			pEffectSet:PlayEffectSetWithCustomPos_LUA( "EffectSet_KELAINO_SP_ATTACK_BLADE", pNPCUnit, vTargetPos, D3DXVECTOR3( 0, 0, 0 ) )
+		end
+	end
+end
+KELAINO_HARPY_SPECIAL_ATTACK_A_END =
+{
+	ANIM_NAME					= "Special_Attack_A_End",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,	
+
+	SUPER_ARMOR					= TRUE,	
+	
+	VIEW_TARGET					= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 1.81, "Bat_Fly.ogg"},
+	SOUND_PLAY1 = { 0.31, "Pet_Fly01.ogg"},
+	SOUND_PLAY2 = { 2.71, "Pet_Fly02.ogg"},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	 "KELAINO_HARPY_SPECIAL_ATTACK_A_FLY_END", "CT_KELAINO_HARPY_SPECIAL_ATTACK_A_FLY_END", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], 		 "KELAINO_HARPY_SPECIAL_ATTACK_A_LAND_END",		},
+	},
+	
+	CT_KELAINO_HARPY_SPECIAL_ATTACK_A_FLY_END =
+	{
+		FOOT_ON_LINE 			= TRUE,		
+		ANIM_PLAY_COUNT 		= 1,		
+		MY_HP_LESS_THAN_PERCENT = 30,--체력 40% 이하이면 무조건 하늘을 나는 상태
+	},
+}
+KELAINO_HARPY_SPECIAL_ATTACK_A_LAND_END =
+{
+	ANIM_NAME					= "Special_Attack_B_End_land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,	
+
+	SUPER_ARMOR					= TRUE,			
+	
+	VIEW_TARGET					= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"KELAINO_HARPY_FLY_WAIT", "CT_KELAINO_HARPY_FLY_WAIT", },
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"KELAINO_HARPY_LAND_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], 				"KELAINO_HARPY_LAND_WAIT",		},
+	},
+	CT_KELAINO_HARPY_FLY_WAIT =
+	{
+		FOOT_ON_LINE 			= TRUE,		
+		ANIM_PLAY_COUNT			= 1,
+		MY_HP_LESS_THAN_PERCENT = 20,--체력 40% 이하이면 무조건 하늘을 나는 상태		
+	},	
+}
+function KELAINO_HARPY_SPECIAL_ATTACK_A_END_START( pKTDXApp, pX2Game, pNPCUnit )
+		pNPCUnit:SetInt_LUA( 1, 0 )
+end
+----------------------------------------------------------------------------------------------------------------------------------------
+-- FLY_MODE 칼날 떨어뜨리는 전체 공격	
+KELAINO_HARPY_SPECIAL_ATTACK_A_FLY_PRE_READY =
+{
+	ANIM_NAME					= "Special_Attack_B_Ready_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+
+	SUPER_ARMOR					= TRUE,
+
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], 	"KELAINO_HARPY_SPECIAL_ATTACK_A_READY",		},
+	},
+}
+
+KELAINO_HARPY_SPECIAL_ATTACK_A_FLY_END =
+{
+	ANIM_NAME					= "Special_Attack_B_End_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+
+	SUPER_ARMOR					= TRUE,
+	
+	VIEW_TARGET					= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], 				"KELAINO_HARPY_FLY_WAIT",		},
+	},
+}
+----------------------------------------------------------------------------------------------------------------------------------------
+KELAINO_HARPY_MAGIC_ATTACK_B =
+{
+	ANIM_NAME					= "Magic_Attack_B",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_X				= 0,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], "KELAINO_HARPY_FLY_WAIT",	},
+	},
+}
+
+function KELAINO_HARPY_MAGIC_ATTACK_B_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.75 ) then
+		
+		local extraDamage = { "CURSE", "POISON", "REVERSE", "FIRE", "SLOW" }
+		local num = pNPCUnit:GetRandVal() % 5 + 1
+		local damageEffectName = "GLITER_ALCHEMYST_GREAT_MAGIC_ATTACK_A_" .. extraDamage[num]
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		local landPos = pNPCUnit:GetLandPosition_LUA()
+		local pos = pNPCUnit:GetBonePos_LUA( "Bip01_L_Hand" )
+		pDamageEffect:CreateInstance_LUA( pNPCUnit, damageEffectName, pos, landPos.y )
+	end
+	
+	if pNPCUnit:AnimEventTimer_LUA( 1 ) then
+		
+		local extraDamage = { "CURSE", "POISON", "REVERSE", "FIRE", "SLOW" }
+		local num = pNPCUnit:GetRandVal() % 5 + 1
+		local damageEffectName = "GLITER_ALCHEMYST_GREAT_MAGIC_ATTACK_A_" .. extraDamage[num]
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		local landPos = pNPCUnit:GetLandPosition_LUA()
+		local pos = pNPCUnit:GetBonePos_LUA( "Bip01_R_Hand" )
+		pDamageEffect:CreateInstance_LUA( pNPCUnit, damageEffectName, pos, landPos.y )
+	end
+end
+-----------------------------------------------------------------------------------------------
+-- LAND_MODE 2/3 지역 이펙트 공격
+KELAINO_HARPY_SPECIAL_ATTACK_B_READY =
+{
+	ANIM_NAME					= "Special_Attack_B_Ready_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	SUPER_ARMOR					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	
+	VIEW_TARGET					= FALSE,
+
+	
+	ALARM =
+	{
+		DANGER  				 = TRUE,  				    	    --DANGER 표시
+		ALARM_MESSAGE 			 = STR_ID_22061,  		  		    --경고 문구
+		DELAY   				 = 0,  				    	 		--이 스테이트가 시작되고 이 시간이 경과 후에 경고가 나갑니다.
+		REPEAT   				 = TRUE,  		 		   		    --한 번만 반복 FALSE, 이 스테이트 취할때 마다 반복 TRUE
+		ALARM_COLOR_TYPE		 = ALARM_COLOR_TYPE["ACT_ORANGE"],  --경고 문구 색깔 (ACT_RED, ACT_BLUE, ACT_YELLOW ,ACT_ORANGE, ACT_MAGENTA
+		DISAPPEAR_TIME  		 = 5, 				  			    -- 표시 지속 시간
+	},
+	
+	SOUND_PLAY0 = { 0.01, "Kelaino_Harpy_Voice_SpecialAttackB_Ready01.ogg"},
+
+	FLY_AI                      = FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "KELAINO_HARPY_SPECIAL_ATTACK_B_L_START",	"CT_KELAINO_HARPY_SPECIAL_ATTACK_B_L_START",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "KELAINO_HARPY_SPECIAL_ATTACK_B_R_START2",	"CT_KELAINO_HARPY_SPECIAL_ATTACK_B_R_START2",	},
+	},
+	
+	CT_KELAINO_HARPY_SPECIAL_ATTACK_B_L_START =
+	{
+		RATE						= 50,
+		--DISTANCE_TO_TARGET_NEAR		= 800,
+		--HAVE_TARGET					= 1,--반드시 타겟이 있어야 함
+		EVENT_INTERVAL_ID		= 0,
+	},
+	CT_KELAINO_HARPY_SPECIAL_ATTACK_B_R_START2 =
+	{
+		RATE						= 50,
+		--DISTANCE_TO_TARGET_NEAR		= 800,
+		--HAVE_TARGET					= 1,--반드시 타겟이 있어야 함
+		EVENT_INTERVAL_ID		= 0,
+	},		
+}
+
+
+KELAINO_HARPY_SPECIAL_ATTACK_B_L_START =
+{
+	ANIM_NAME					= "Special_Attack_B_Start",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	SUPER_ARMOR					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,	
+	
+	VIEW_TARGET					= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0					= { 0.01, "KELAINO_HARPY_SPECIAL_ATTACK_B_L_START.ogg", 100, FALSE, -1.0, FALSE },
+
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_KELAINO_SP_ATTACK_FLY_WAVE", 0,	
+	},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "KELAINO_HARPY_SPECIAL_ATTACK_B_R_START", "CT_KELAINO_HARPY_SPECIAL_ATTACK_B_R_START", },
+	},
+	
+	CT_KELAINO_HARPY_SPECIAL_ATTACK_B_R_START =
+	{
+		STATE_TIME_OVER = 3.5,
+	},
+}
+function KELAINO_HARPY_SPECIAL_ATTACK_B_L_START_START( pKTDXApp, pX2Game, pNPCUnit )
+	--MP 소모
+	pNPCUnit:SetNowMP(0)
+	--위치 및 방향 변경
+	pNPCUnit:SetPosition( D3DXVECTOR3( 9055, 14600, 26596 ))
+	pNPCUnit:SetIsRight( true )	
+end
+function KELAINO_HARPY_SPECIAL_ATTACK_B_L_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.1 ) then		
+		pNPCUnit:SetSpeedX(4200)		
+	-- elseif pNPCUnit:AnimEventTimer_LUA( 0.2 ) then	
+		-- local pDamageEffect = pX2Game:GetDamageEffect()
+		-- local LandPos = pNPCUnit:GetLandPosition_LUA()		
+		-- local pos = pNPCUnit:GetBonePos_LUA( "Bip01_Spine1" )
+		-- pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_ENERGY_THROW_01", pos , LandPos.y )	
+	elseif pNPCUnit:AnimEventTimer_LUA( 0.35 ) then	
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		local LandPos = pNPCUnit:GetLandPosition_LUA()		
+		local pos = pNPCUnit:GetBonePos_LUA( "Bip01_Spine1" )
+		pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_ENERGY_THROW_02", pos , LandPos.y )	
+	elseif pNPCUnit:AnimEventTimer_LUA( 0.55 ) then	
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		local LandPos = pNPCUnit:GetLandPosition_LUA()		
+		local pos = pNPCUnit:GetBonePos_LUA( "Bip01_Spine1" )
+		pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_ENERGY_THROW_03", pos , LandPos.y )	
+	elseif pNPCUnit:AnimEventTimer_LUA( 1.178 ) then
+		pNPCUnit:SetSpeedX(900)
+	elseif pNPCUnit:AnimEventTimer_LUA( 1.1 ) then		
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		local LandPos = pNPCUnit:GetLandPosition_LUA()		
+		--pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_BIG_BANG", D3DXVECTOR3( 10659, 14000, 26596 ) , LandPos.y )	
+		pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_BIG_BANG", D3DXVECTOR3( 11540, 14000, 26596 ) , LandPos.y )	
+		pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_BIG_BANG", D3DXVECTOR3( 12491, 14000, 26596 ) , LandPos.y )	
+	end
+end
+KELAINO_HARPY_SPECIAL_ATTACK_B_R_START =
+{
+	ANIM_NAME					= "Special_Attack_B_Start",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	VIEW_TARGET					= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0					= { 0.01, "KELAINO_HARPY_SPECIAL_ATTACK_B_R_START.ogg", 100, FALSE, -1.0, FALSE },
+
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_KELAINO_SP_ATTACK_FLY_WAVE", 0,	
+	},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	 "KELAINO_HARPY_SPECIAL_ATTACK_B_FLY_END", "CT_KELAINO_HARPY_SPECIAL_ATTACK_B_FLY_END", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], "KELAINO_HARPY_SPECIAL_ATTACK_B_END",	},		
+	},
+	CT_KELAINO_HARPY_SPECIAL_ATTACK_B_FLY_END =
+	{
+		ANIM_PLAY_COUNT = 1,		
+		MY_HP_LESS_THAN_PERCENT = 30,--체력 40% 이하이면 무조건 하늘을 나는 상태
+	},	
+}
+function KELAINO_HARPY_SPECIAL_ATTACK_B_R_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.1 ) then		
+		pNPCUnit:SetSpeedX(4200)		
+	-- elseif pNPCUnit:AnimEventTimer_LUA( 0.2 ) then	
+		-- local pDamageEffect = pX2Game:GetDamageEffect()
+		-- local LandPos = pNPCUnit:GetLandPosition_LUA()		
+		-- local pos = pNPCUnit:GetBonePos_LUA( "Bip01_Spine1" )
+		-- pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_ENERGY_THROW_01", pos , LandPos.y )	
+	elseif pNPCUnit:AnimEventTimer_LUA( 0.35 ) then	
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		local LandPos = pNPCUnit:GetLandPosition_LUA()		
+		local pos = pNPCUnit:GetBonePos_LUA( "Bip01_Spine1" )
+		pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_ENERGY_THROW_02", pos , LandPos.y )	
+	elseif pNPCUnit:AnimEventTimer_LUA( 0.55 ) then	
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		local LandPos = pNPCUnit:GetLandPosition_LUA()		
+		local pos = pNPCUnit:GetBonePos_LUA( "Bip01_Spine1" )
+		pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_ENERGY_THROW_03", pos , LandPos.y )	
+	elseif pNPCUnit:AnimEventTimer_LUA( 1.178 ) then
+		pNPCUnit:SetSpeedX(900)
+	elseif pNPCUnit:AnimEventTimer_LUA( 1.1 ) then		
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		local LandPos = pNPCUnit:GetLandPosition_LUA()		
+		pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_BIG_BANG", D3DXVECTOR3( 10659-1520, 14000, 26596 ) , LandPos.y )	
+		pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_BIG_BANG", D3DXVECTOR3( 11540-1480, 14000, 26596 ) , LandPos.y )	
+		--pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_BIG_BANG", D3DXVECTOR3( 12491-1520, 14000, 26596 ) , LandPos.y )	
+	end
+end
+function KELAINO_HARPY_SPECIAL_ATTACK_B_R_START_START( pKTDXApp, pX2Game, pNPCUnit )
+	--위치 및 방향 변경
+	pNPCUnit:SetIsRight( false )	
+	
+end
+
+
+
+KELAINO_HARPY_SPECIAL_ATTACK_B_L_START2 =
+{
+	ANIM_NAME					= "Special_Attack_B_Start",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	SUPER_ARMOR					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,	
+	
+	VIEW_TARGET					= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0					= { 0.01, "KELAINO_HARPY_SPECIAL_ATTACK_B_L_START.ogg", 100, FALSE, -1.0, FALSE },
+
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_KELAINO_SP_ATTACK_FLY_WAVE", 0,	
+	},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	 "KELAINO_HARPY_SPECIAL_ATTACK_B_FLY_END", "CT_KELAINO_HARPY_SPECIAL_ATTACK_B_FLY_END", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], "KELAINO_HARPY_SPECIAL_ATTACK_B_END",	},		
+	},
+	CT_KELAINO_HARPY_SPECIAL_ATTACK_B_FLY_END =
+	{
+		ANIM_PLAY_COUNT = 1,		
+		MY_HP_LESS_THAN_PERCENT = 30,--체력 40% 이하이면 무조건 하늘을 나는 상태
+	},
+}
+function KELAINO_HARPY_SPECIAL_ATTACK_B_L_START2_START( pKTDXApp, pX2Game, pNPCUnit )
+	--MP 소모
+	pNPCUnit:SetNowMP(0)
+	--위치 및 방향 변경
+	pNPCUnit:SetPosition( D3DXVECTOR3( 9055, 14600, 26596 ))
+	pNPCUnit:SetIsRight( true )	
+end
+function KELAINO_HARPY_SPECIAL_ATTACK_B_L2_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.1 ) then		
+		pNPCUnit:SetSpeedX(4200)		
+	-- elseif pNPCUnit:AnimEventTimer_LUA( 0.2 ) then	
+		-- local pDamageEffect = pX2Game:GetDamageEffect()
+		-- local LandPos = pNPCUnit:GetLandPosition_LUA()		
+		-- local pos = pNPCUnit:GetBonePos_LUA( "Bip01_Spine1" )
+		-- pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_ENERGY_THROW_01", pos , LandPos.y )	
+	elseif pNPCUnit:AnimEventTimer_LUA( 0.35 ) then	
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		local LandPos = pNPCUnit:GetLandPosition_LUA()		
+		local pos = pNPCUnit:GetBonePos_LUA( "Bip01_Spine1" )
+		pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_ENERGY_THROW_02", pos , LandPos.y )	
+	elseif pNPCUnit:AnimEventTimer_LUA( 0.55 ) then	
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		local LandPos = pNPCUnit:GetLandPosition_LUA()		
+		local pos = pNPCUnit:GetBonePos_LUA( "Bip01_Spine1" )
+		pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_ENERGY_THROW_03", pos , LandPos.y )	
+	elseif pNPCUnit:AnimEventTimer_LUA( 1.178 ) then
+		pNPCUnit:SetSpeedX(900)
+	elseif pNPCUnit:AnimEventTimer_LUA( 1.1 ) then		
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		local LandPos = pNPCUnit:GetLandPosition_LUA()		
+		--pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_BIG_BANG", D3DXVECTOR3( 10659, 14000, 26596 ) , LandPos.y )	
+		pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_BIG_BANG", D3DXVECTOR3( 11540, 14000, 26596 ) , LandPos.y )	
+		pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_BIG_BANG", D3DXVECTOR3( 12491, 14000, 26596 ) , LandPos.y )	
+	end
+end
+
+
+
+KELAINO_HARPY_SPECIAL_ATTACK_B_R_START2 =
+{
+	ANIM_NAME					= "Special_Attack_B_Start",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	VIEW_TARGET					= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0					= { 0.01, "KELAINO_HARPY_SPECIAL_ATTACK_B_R_START.ogg", 100, FALSE, -1.0, FALSE },
+
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_KELAINO_SP_ATTACK_FLY_WAVE", 0,	
+	},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "KELAINO_HARPY_SPECIAL_ATTACK_B_L_START2", "CT_KELAINO_HARPY_SPECIAL_ATTACK_B_L_START2", },
+	},
+	
+	CT_KELAINO_HARPY_SPECIAL_ATTACK_B_L_START2 =
+	{
+		STATE_TIME_OVER = 3.5,
+	},	
+}
+function KELAINO_HARPY_SPECIAL_ATTACK_B_R2_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.1 ) then		
+		pNPCUnit:SetSpeedX(4200)		
+	-- elseif pNPCUnit:AnimEventTimer_LUA( 0.2 ) then	
+		-- local pDamageEffect = pX2Game:GetDamageEffect()
+		-- local LandPos = pNPCUnit:GetLandPosition_LUA()		
+		-- local pos = pNPCUnit:GetBonePos_LUA( "Bip01_Spine1" )
+		-- pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_ENERGY_THROW_01", pos , LandPos.y )	
+	elseif pNPCUnit:AnimEventTimer_LUA( 0.35 ) then	
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		local LandPos = pNPCUnit:GetLandPosition_LUA()		
+		local pos = pNPCUnit:GetBonePos_LUA( "Bip01_Spine1" )
+		pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_ENERGY_THROW_02", pos , LandPos.y )	
+	elseif pNPCUnit:AnimEventTimer_LUA( 0.55 ) then	
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		local LandPos = pNPCUnit:GetLandPosition_LUA()		
+		local pos = pNPCUnit:GetBonePos_LUA( "Bip01_Spine1" )
+		pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_ENERGY_THROW_03", pos , LandPos.y )	
+	elseif pNPCUnit:AnimEventTimer_LUA( 1.178 ) then
+		pNPCUnit:SetSpeedX(900)
+	elseif pNPCUnit:AnimEventTimer_LUA( 1.1 ) then		
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		local LandPos = pNPCUnit:GetLandPosition_LUA()		
+		pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_BIG_BANG", D3DXVECTOR3( 10659-1520, 14000, 26596 ) , LandPos.y )	
+		pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_BIG_BANG", D3DXVECTOR3( 11540-1480, 14000, 26596 ) , LandPos.y )	
+		--pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_KELAINO_SP_ATTACK_BIG_BANG", D3DXVECTOR3( 12491-1520, 14000, 26596 ) , LandPos.y )	
+	end
+end
+function KELAINO_HARPY_SPECIAL_ATTACK_B_R_START2_START( pKTDXApp, pX2Game, pNPCUnit )
+	--위치 및 방향 변경
+	pNPCUnit:SetIsRight( false )	
+	
+end
+
+
+KELAINO_HARPY_SPECIAL_ATTACK_B_END =
+{
+	ANIM_NAME					= "Special_Attack_B_End_land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= TRUE,	
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"KELAINO_HARPY_LAND_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], "KELAINO_HARPY_LAND_WAIT",	},		
+	},
+}
+-----------------------------------------------------------------------------------------------
+-- FLY_MODE 2/3 지역 이펙트 공격
+KELAINO_HARPY_SPECIAL_ATTACK_B_FLY_READY =
+{
+	ANIM_NAME					= "Special_Attack_B_Ready_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	
+	SUPER_ARMOR					= TRUE,
+	ALARM =
+	{
+		DANGER  				 = TRUE,  				    	    --DANGER 표시
+		ALARM_MESSAGE 			 = STR_ID_22061,  		  		    --경고 문구
+		DELAY   				 = 0,  				    	 		--이 스테이트가 시작되고 이 시간이 경과 후에 경고가 나갑니다.
+		REPEAT   				 = TRUE,  		 		   		    --한 번만 반복 FALSE, 이 스테이트 취할때 마다 반복 TRUE
+		ALARM_COLOR_TYPE		 = ALARM_COLOR_TYPE["ACT_ORANGE"],  --경고 문구 색깔 (ACT_RED, ACT_BLUE, ACT_YELLOW ,ACT_ORANGE, ACT_MAGENTA
+		DISAPPEAR_TIME  		 = 5, 				  			    -- 표시 지속 시간
+	},
+	
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	VIEW_TARGET					= FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Kelaino_Harpy_Voice_MagicAttackB_Ready_Fly01.ogg"},	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "KELAINO_HARPY_SPECIAL_ATTACK_B_L_START",	"CT_KELAINO_HARPY_SPECIAL_ATTACK_B_L_START",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "KELAINO_HARPY_SPECIAL_ATTACK_B_R_START2",	"CT_KELAINO_HARPY_SPECIAL_ATTACK_B_R_START2",	},
+	},
+	
+	CT_KELAINO_HARPY_SPECIAL_ATTACK_B_L_START =
+	{
+		RATE						= 50,
+		--DISTANCE_TO_TARGET_NEAR		= 800,
+		--HAVE_TARGET					= 1,--반드시 타겟이 있어야 함
+		EVENT_INTERVAL_ID		= 0,
+	},
+	CT_KELAINO_HARPY_SPECIAL_ATTACK_B_R_START2 =
+	{
+		RATE						= 50,
+		--DISTANCE_TO_TARGET_NEAR		= 800,
+		--HAVE_TARGET					= 1,--반드시 타겟이 있어야 함
+		EVENT_INTERVAL_ID		= 0,
+	},		
+}
+
+KELAINO_HARPY_SPECIAL_ATTACK_B_FLY_END =
+{
+	ANIM_NAME					= "Special_Attack_B_End_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= TRUE,	
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], "KELAINO_HARPY_FLY_WAIT",	},		
+	},
+}
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_AIR_DYING = 
+{
+	ANIM_NAME					= "Dying_Air_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	--LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	-- SPEED_X						= 0,
+	-- SPEED_Y						= 0,	
+	-- PASSIVE_SPEED_Y				= 10000,
+	-- G_ACCEL                     = 0,
+    -- DOWN_ACCEL                  = 0,
+	
+	FLY_AI                      = FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	SOUND_PLAY0					= { 0.01, "Kelaino_Harpy_Voice_Dying01.ogg", 100, FALSE, -1.0, FALSE },
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"KELAINO_HARPY_AIR_DYING_FALL",	},
+	},
+}
+
+function KELAINO_HARPY_DYING_SKY_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	--pNPCUnit:SetPosition( pNPCUnit:GetPos() )
+
+end
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_AIR_DYING_FALL = 
+{
+	ANIM_NAME					= "Dying_Fall_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+	--LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	SPEED_Y						= -500,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	--FLY_AI                      = FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"KELAINO_HARPY_AIR_DYING_LANDING",	},
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+KELAINO_HARPY_AIR_DYING_LANDING = 
+{
+	ANIM_NAME					= "Dying_Landing_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	DYING_END					= TRUE,
+	
+	SOUND_PLAY1 = { 0.01, "Landing_RawMeat02.ogg"},	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+function KELAINO_HARPY_AIR_DAMAGE_START_FUNC( pKTDXApp, pX2Game, pNPCUnit )			-- 하피 공중 데미지 공통 함수
+
+	if pNPCUnit:GetNowHP() <= 0 then	    
+	    pNPCUnit:StateChange_LUA("KELAINO_HARPY_DYING_SKY", true)
+	else
+		local bIsFly = pNPCUnit:GetFlag_LUA( 0 )	-- 현재 채공 여부
+		
+		if false == bIsFly then				-- 공중에서 맞았을 때, 지상 착륙 중이면 한바퀴 도는 모션으로 설정
+			pNPCUnit:StateChange_LUA("KELAINO_HARPY_LAND_AIR_DAMAGE", true)
+		end
+	end
+
+end
+
+function KELAINO_HARPY_DAMAGE_REACT_FLY_START_FUNC( pKTDXApp, pX2Game, pNPCUnit )		-- 하피 데미지 공통 함수
+
+	if pNPCUnit:GetNowHP() <= 0 then	    
+	    pNPCUnit:StateChange_LUA("KELAINO_HARPY_DYING_SKY", true)
+	else
+		local bIsFly = pNPCUnit:GetFlag_LUA( 0 )	-- 현재 채공 여부
+		
+		if true == bIsFly then				-- 공중 채공 중이면, 공중 타격 모션으로 설정
+			pNPCUnit:StateChange_LUA("KELAINO_HARPY_AIR_DAMAGE_FRONT", true)
+		end
+	end
+
+end
+
+function KELAINO_HARPY_LANDING_STATE_START( pKTDXApp, pX2Game, pNPCUnit )					--  하피 지면 착지 설정 공통 함수
+
+	pNPCUnit:SetFlag_LUA( 0, false )	-- 땅에 있다.
+
+end
+
+
+function KELAINO_HARPY_COMMON_FRAME_FUNC( pKTDApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:GetInt_LUA( 1 ) == 0 then -- 칼날 떨어뜨리는 전체 공격/현재 사용 중인지 체크
+		local bIsFly = pNPCUnit:GetFlag_LUA( 0 )	-- 현재 채공 여부
+		local SpecialAttackAName = "KELAINO_HARPY_SPECIAL_ATTACK_A_PRE_READY"
+		if true == bIsFly then --채공 상태에서는 스테이트명 변경
+			SpecialAttackAName = "KELAINO_HARPY_SPECIAL_ATTACK_A_FLY_PRE_READY"
+		end
+		
+		local maxHP = pNPCUnit:GetMaxHP()	
+		if pNPCUnit:GetInt_LUA( 0 ) == 0 then
+			if pNPCUnit:GetNowHP() < maxHP * 0.8 then
+				pNPCUnit:StateChange_LUA( SpecialAttackAName, false )
+			end
+		elseif pNPCUnit:GetInt_LUA( 0 ) == 1 then
+			if pNPCUnit:GetNowHP() < maxHP * 0.5 then
+				pNPCUnit:StateChange_LUA( SpecialAttackAName, false )
+			end
+		elseif pNPCUnit:GetInt_LUA( 0 ) == 2 then
+			if pNPCUnit:GetNowHP() < maxHP * 0.2 then
+				pNPCUnit:StateChange_LUA( SpecialAttackAName, false )
+			end
+		end		
+	end
+end

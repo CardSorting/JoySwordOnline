@@ -1,0 +1,40 @@
+Patching client endpoint configs...
+Syncing GameServer runtime script overrides...
+Patching ODBC DSN files...
+  Found 198 DSN file(s) to audit.
+Writing connection manifest...
+[PVP][PROFILE] Applied profile=default
+[PVP][PROFILE] server_profile=US_SERVICE
+[PVP][PROFILE] ConnectionMode=Default
+[PVP][PROFILE] startup_log=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\log\pvp-profile-startup.log
+[PVP][PROFILE] client_hint=C:\Users\monst\Downloads\JoySwordOffline\Elsword\offline\client-pvp-hint.txt
+[PVP][PROFILE] active_marker=C:\Users\monst\Downloads\JoySwordOffline\Elsword\offline\pvp-profile.active
+[PVP][PROFILE] changed_files=2
+  - ServerResource/GameSysValTable.lua
+  - Resources/GameSysValTable.lua
+fixed: Elsword\ServerResource\GameSysValTable.lua
+fixed: Elsword\Resources\GameSysValTable.lua
+fixed: Elsword\ServerResource\RandomItemMapping.lua
+fixed: Elsword\ServerResource\ClassChangeTable.lua
+fixed: Elsword\ServerResource\ClassChangeSkill.lua
+fixed: Elsword\ServerResource\ClassChangeQuest.lua
+fixed: Elsword\ServerResource\ClassChangeMemo.lua
+fixed: Elsword\ServerResource\ClassChangeItem.lua
+fixed: Elsword\ServerResource\CashItemPrice.lua
+Updated 9 file(s).
+JoySword offline configuration applied.
+  ELSWORD_ROOT      : C:\Users\monst\Downloads\JoySwordOffline\Elsword
+  DB target         : 127.0.0.1:1433 (user: sa)
+  Profile           : US_SERVICE
+  Login mode        : PUBLIC
+  Admin user        : admin
+  Channel endpoint  : 127.0.0.1:9400
+  Server ports      : center 9100, login 9200, global 9500, game 9300
+  Offline auth      : AF_INTERNAL
+  Lua files updated : 0
+  Client configs    : 0 patched in ClientScript/Major/Config*.lua
+  Runtime overrides : 1 synced into GameServer/
+  Manifest          : C:\Users\monst\Downloads\JoySwordOffline\Elsword\offline\connection.manifest
+  PvP profile       : default
+GameServer.exe already patched for Elesis 2nd-job class IDs
+GameServer.exe already patched for max level scroll

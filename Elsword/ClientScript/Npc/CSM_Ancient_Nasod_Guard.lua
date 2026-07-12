@@ -1,0 +1,1033 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+--[[ KjTiger / 2011/1/5 / 고대 나소드 근위병/
+	 AttackA, MagicAttack, SpecialAttack
+--]]
+
+INIT_SYSTEM =
+{
+	UNIT_WIDTH	= 180.0,
+	UNIT_HEIGHT	= 180.0,
+	UNIT_LAYER	= X2_LAYER["XL_UNIT_0"],
+	UNIT_SCALE	= 2.5,
+}
+--------------------------------------------------------------------------
+INIT_DEVICE =
+{
+	READY_TEXTURE =
+	{
+        "NUI_ANCIENTNASOD_GUARD_A.tga",
+        "NUI_ANCIENTNASOD_GUARD_B.tga",
+        "NUI_ANCIENTNASOD_GUARD_C.tga",
+        "NG_Arrow.tga",
+	},
+
+	READY_SOUND =
+	{
+	"Landing_Stone01.ogg",
+	"Ancient_Nasod_AttackA01.ogg",
+	"Ancient_Nasod_AttackA02.ogg",
+	"Ancient_Nasod_Death01.ogg",
+	"Ancient_NAsod_Death02.ogg",
+	"Ancient_Nasod_Growl01.ogg",
+	"Ancient_Nasod_Growl02.ogg",
+	"ANCIENT_NASOD_Load.ogg",
+	"Ancient_Nasod_Machine01.ogg",
+	"Ancient_Nasod_Machine02.ogg",
+	"ANCIENT_NASOD_MagicAttackA.ogg",
+	"ANCIENT_NASOD_WaitStart01.ogg",
+	"ANCIENT_NASOD_WaitStart02.ogg",
+	"ANCIENT_NASOD_MagicAttackA02.ogg",
+	"Landing_Big_Metal01.ogg",
+	"Landing_Big_Metal02.ogg",	
+	"Landing_Big_Meat02.ogg",
+	},
+	
+	READY_XSKIN_MESH = 
+	{
+	    "NG_Arrow.x",
+	}
+}
+--------------------------------------------------------------------------
+INIT_MOTION =
+{
+	MOTION_FILE_NAME		= "Motion_ANCIENT_NASOD_GUARD.x",
+}
+--------------------------------------------------------------------------
+INIT_PHYSIC =
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+
+	WALK_SPEED			= 400,
+	RUN_SPEED			= 600,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 1800,
+}
+--------------------------------------------------------------------------
+INIT_COMPONENT =
+{
+	MAX_HP				= 20000,
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+
+	OUT_LINE_WIDTH_SCALE = 0.3,
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	--MIND_FLAG_HEIGHT		= 230,
+
+	HITTED_TYPE			= HITTED_TYPE["HTD_STONE2"],
+
+	FALL_DOWN			= TRUE,
+	
+	SUMMON_TIME			= 180,
+}
+--------------------------------------------------------------------------
+INIT_STATE =
+{
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_READY",		},
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_START",		},
+
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_WAIT",			},
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_WAIT_HABIT",	},
+
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_WALK",			LUA_STATE_END_FUNC = "CSM_ANCIENT_NASOD_GUARD_WALK_STATE_END"	},
+    
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_JUMP_UP",		},
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_JUMP_DOWN",		LUA_STATE_END_FUNC = "CSM_ANCIENT_NASOD_GUARD_JUMP_DOWN_STATE_END"		},
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_JUMP_UP_DIR",	},
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_JUMP_DOWN_DIR",	LUA_STATE_END_FUNC = "CSM_ANCIENT_NASOD_GUARD_JUMP_DOWN_DIR_STATE_END"	},
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_JUMP_LANDING",	},
+
+	-- { STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_ATTACKA",	    	STATE_COOL_TIME	= 3,	},
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_MAGIC_ATTACKA",	   	LUA_FRAME_MOVE_FUNC = "CSM_ANCIENT_NASOD_GUARD_MAGIC_ATTACKA_FRAME_MOVE",	STATE_COOL_TIME	= 3,	},
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_SPECIAL_ATTACK",	STATE_COOL_TIME	= 15,	},
+	
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_END",						},
+	
+	--리액션 관련
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_DAMAGE_SMALL_LAND_FRONT",	LUA_FRAME_MOVE_FUNC = "CSM_ANCIENT_NASOD_GUARD_DAMAGE_SMALL_FRAME_MOVE"	    },
+   	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_DAMAGE_SMALL_LAND_BACK",	LUA_FRAME_MOVE_FUNC = "CSM_ANCIENT_NASOD_GUARD_DAMAGE_SMALL_FRAME_MOVE"	  	},
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_DAMAGE_BIG_LAND_FRONT",		LUA_FRAME_MOVE_FUNC = "CSM_ANCIENT_NASOD_GUARD_DAMAGE_BIG_FRAME_MOVE"			},
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_DAMAGE_BIG_LAND_BACK",		LUA_FRAME_MOVE_FUNC = "CSM_ANCIENT_NASOD_GUARD_DAMAGE_BIG_FRAME_MOVE"			},
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_DAMAGE_DOWN_FRONT",			LUA_FRAME_MOVE_FUNC = "CSM_ANCIENT_NASOD_GUARD_DAMAGE_DOWN_FRONT_FRAME_MOVE"	},
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_DAMAGE_DOWN_BACK",			LUA_FRAME_MOVE_FUNC = "CSM_ANCIENT_NASOD_GUARD_DAMAGE_DOWN_BACK_FRAME_MOVE"	},
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_DAMAGE_FLY_FRONT",			},
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_DAMAGE_FLY_BACK",			},
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_DAMAGE_AIR_DOWN_LANDING",	LUA_FRAME_MOVE_FUNC = "CSM_ANCIENT_NASOD_GUARD_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE"	},
+    { STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_DAMAGE_REVENGE"				},
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_STAND_UP_FRONT",			},
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_STAND_UP_BACK",				},
+	--{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_STAND_UP_ATTACK_FRONT",		LUA_FRAME_MOVE_FUNC = "CSM_ANCIENT_NASOD_GUARD_STAND_UP_ATTACK_FRONT_FRAME_MOVE"	},
+	--{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_STAND_UP_ATTACK_BACK",		LUA_FRAME_MOVE_FUNC = "CSM_ANCIENT_NASOD_GUARD_STAND_UP_ATTACK_BACK_FRAME_MOVE"	},
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_DAMAGE_AIR_FALL",			},
+
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_DYING_LAND_FRONT",	LUA_STATE_START_FUNC = "CSM_ANCIENT_NASOD_GUARD_DYING_LAND_STATE_START",	},
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_DYING_LAND_BACK",	LUA_STATE_START_FUNC = "CSM_ANCIENT_NASOD_GUARD_DYING_LAND_STATE_START",	},
+	{ STATE_NAME = "CSM_ANCIENT_NASOD_GUARD_DYING_SKY",			LUA_STATE_START_FUNC = "CSM_ANCIENT_NASOD_GUARD_DYING_LAND_STATE_START",	},
+
+	START_STATE					= "CSM_ANCIENT_NASOD_GUARD_START",
+	WAIT_STATE					= "CSM_ANCIENT_NASOD_GUARD_WAIT",
+	SUMMON_END_STATE			= "CSM_ANCIENT_NASOD_GUARD_END",
+
+	SMALL_DAMAGE_LAND_FRONT		= "CSM_ANCIENT_NASOD_GUARD_DAMAGE_SMALL_LAND_FRONT",
+	SMALL_DAMAGE_LAND_BACK		= "CSM_ANCIENT_NASOD_GUARD_DAMAGE_SMALL_LAND_BACK",
+	BIG_DAMAGE_LAND_FRONT		= "CSM_ANCIENT_NASOD_GUARD_DAMAGE_BIG_LAND_FRONT",
+	BIG_DAMAGE_LAND_BACK		= "CSM_ANCIENT_NASOD_GUARD_DAMAGE_BIG_LAND_BACK",
+	DOWN_DAMAGE_LAND_FRONT		= "CSM_ANCIENT_NASOD_GUARD_DAMAGE_DOWN_FRONT",
+	DOWN_DAMAGE_LAND_BACK		= "CSM_ANCIENT_NASOD_GUARD_DAMAGE_DOWN_BACK",
+	FLY_DAMAGE_FRONT			= "CSM_ANCIENT_NASOD_GUARD_DAMAGE_FLY_FRONT",
+	FLY_DAMAGE_BACK				= "CSM_ANCIENT_NASOD_GUARD_DAMAGE_FLY_BACK",
+	DOWN_DAMAGE_AIR_LANDING		= "CSM_ANCIENT_NASOD_GUARD_DAMAGE_AIR_DOWN_LANDING",
+	UP_DAMAGE					= "CSM_ANCIENT_NASOD_GUARD_WAIT",
+	DAMAGE_REVENGE				= "CSM_ANCIENT_NASOD_GUARD_DAMAGE_REVENGE",
+	
+	DAMAGE_EXTRA_STATES         = {"CSM_ANCIENT_NASOD_GUARD_DAMAGE_AIR_FALL","CSM_ANCIENT_NASOD_GUARD_STAND_UP_FRONT","CSM_ANCIENT_NASOD_GUARD_STAND_UP_BACK",
+	"CSM_ANCIENT_NASOD_GUARD_JUMP_DOWN","CSM_ANCIENT_NASOD_GUARD_JUMP_LANDING",},	
+
+	DYING_LAND_FRONT			= "CSM_ANCIENT_NASOD_GUARD_DYING_LAND_FRONT",
+	DYING_LAND_BACK				= "CSM_ANCIENT_NASOD_GUARD_DYING_LAND_BACK",
+	DYING_SKY					= "CSM_ANCIENT_NASOD_GUARD_DYING_SKY",
+
+	REVENGE_ATTACK				= "",
+}
+--------------------------------------------------------------------------
+INIT_AI =
+{
+	ALLY = 
+	{
+		FAR_LOST_RANGE	= 1400,			-- 이 거리보다 멀어지면 유저 옆으로 텔레포트
+		LOST_RANGE		= 1400,			-- 이 거리보다 멀어지면 유저 쪽으로 걸어감
+	},
+
+	TARGET =
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_NEAR_FIRST"],
+		TARGET_INTERVAL 			= 1,
+		TARGET_NEAR_RANGE 			= 1000,
+		TARGET_RANGE 				= 2000,
+		TARGET_LOST_RANGE 			= 5000,
+		TARGET_SUCCESS_RATE 		= 100,
+		ATTACK_TARGET_RATE 			= 100,
+		PRESERVE_LAST_TARGET_RATE 	= 20,
+	},
+	
+	CHASE_MOVE =
+	{
+		MOVE_SPLIT_RANGE	= 700,
+		DEST_GAP			= 600,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 900,
+
+		DIR_CHANGE_INTERVAL = 0.7,
+
+		WALK_INTERVAL		= 1,
+		NEAR_WALK_RATE		= 1,   --  70,
+		FAR_WALK_RATE		= 1,   -- 30,
+
+		JUMP_INTERVAL		= 5,
+		UP_JUMP_RATE		= 100,	-- 40,
+		UP_DOWN_RATE		= 20,
+		DOWN_JUMP_RATE		= 100,	--  20,
+		DOWN_DOWN_RATE		= 40,
+
+		--LINE_END_RANGE		= 80,	-- cm
+	},
+
+	PATROL_MOVE =
+	{
+		PATROL_BEGIN_RATE		= 1, --50,
+		PATROL_RANGE			= 150,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+
+	ESCAPE_MOVE =
+	{
+		MOVE_SPLIT_RANGE	= 500,	-- cm
+		ESCAPE_GAP			= 700,	-- 이 거리 보다 멀어지면 도망 성공
+
+		WALK_INTERVAL		= 1.5,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 10,
+
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+
+		LINE_END_RANGE		= 80,	-- cm
+	},
+
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_READY =
+{
+	RENDER_PARAM = RENDER_TYPE["RT_CARTOON"],
+	ANIM_NAME	= "Start",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= FALSE,
+
+	CAN_PUSH_UNIT			= FALSE,
+	CAN_PASS_UNIT			= FALSE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	--INVINCIBLE				= { 0, 100, },
+	NEVER_MOVE				= TRUE,
+	ALLOW_DIR_CHANGE		= FALSE,
+	VIEW_TARGET				= FALSE,
+	EVENT_INTERVAL_TIME0	= 0.3,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"CSM_ANCIENT_NASOD_GUARD_START",	"CT_CSM_ANCIENT_NASOD_GUARD_START"    },
+	},
+
+	CT_CSM_ANCIENT_NASOD_GUARD_START =
+	{
+		EVENT_INTERVAL_ID		= 0,
+		DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE					= 100,
+	},
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_START =
+{
+	ANIM_NAME	= "WaitStart",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+
+	CAN_PUSH_UNIT			= FALSE,
+	CAN_PASS_UNIT			= FALSE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+	--INVINCIBLE				= { 0, 100, },
+	ALLOW_DIR_CHANGE		= FALSE,
+	VIEW_TARGET				= FALSE,
+	
+	
+	SOUND_PLAY0				= { 0.01, "ANCIENT_NASOD_WaitStart01.ogg" },
+	SOUND_PLAY1				= { 0.65, "ANCIENT_NASOD_WaitStart02.ogg" },	
+	
+	ATTACK_TIME0	= { 0.75, 1.024, },
+	
+	DAMAGE_DATA =
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+
+		DAMAGE =
+		{
+			PHYSIC	= 1.0,
+		},
+
+		BACK_SPEED_X	= 1200,
+		BACK_SPEED_Y	= 0.0,
+
+		CAMERA_CRASH_GAP	= 5.0,
+		CAMERA_CRASH_TIME	= 0.2,
+		
+        CAN_REVENGE				= TRUE,
+	},
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"CSM_ANCIENT_NASOD_GUARD_WAIT",	"CT_CSM_ANCIENT_NASOD_GUARD_WAIT"    },
+	},
+
+	CT_CSM_ANCIENT_NASOD_GUARD_WAIT =
+	{
+		STATE_TIME_OVER			= 2.7,
+	},
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_WAIT_HABIT =
+{
+	ANIM_NAME	= "WaitHabit",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= TRUE,
+
+	CAN_PUSH_UNIT			= TRUE,
+	CAN_PASS_UNIT			= FALSE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CSM_ANCIENT_NASOD_GUARD_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CSM_ANCIENT_NASOD_GUARD_WAIT",			},
+	},
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_WAIT =
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+
+	PASSIVE_SPEED_X				= 0,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+	EVENT_INTERVAL_TIME0		= 0,
+
+	EVENT_PROCESS =
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CSM_ANCIENT_NASOD_GUARD_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"CSM_ANCIENT_NASOD_GUARD_WAIT_HABIT",	"CT_CSM_ANCIENT_NASOD_GUARD_WAIT_HABIT",	},
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"CSM_ANCIENT_NASOD_GUARD_SPECIAL_ATTACK",	"CT_CSM_ANCIENT_NASOD_GUARD_SPECIAL_ATTACK",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"CSM_ANCIENT_NASOD_GUARD_MAGIC_ATTACKA",		"CT_CSM_ANCIENT_NASOD_GUARD_MAGIC_ATTACKA",	},
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],		"CSM_ANCIENT_NASOD_GUARD_WALK",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],		"CSM_ANCIENT_NASOD_GUARD_JUMP_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],	"CSM_ANCIENT_NASOD_GUARD_JUMP_UP_DIR",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],		"CSM_ANCIENT_NASOD_GUARD_JUMP_DOWN",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],	"CSM_ANCIENT_NASOD_GUARD_JUMP_DOWN_DIR",	},
+	},
+
+	CT_CSM_ANCIENT_NASOD_GUARD_WAIT_HABIT =
+	{
+		EVENT_INTERVAL_ID	= 0,
+		HAVE_TARGET			= 0,
+		RATE				= 30,
+	},
+	
+	
+	CT_CSM_ANCIENT_NASOD_GUARD_MAGIC_ATTACKA =
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1200,
+		RATE						= 100,
+	},
+	
+	CT_CSM_ANCIENT_NASOD_GUARD_SPECIAL_ATTACK =
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID		= 0,
+		DISTANCE_TO_TARGET_NEAR	= 1000,
+		RATE					= 100,
+	},
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_END = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,	
+
+    INVINCIBLE					= { 0, 100, }, 
+    
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	RIGHT						= FALSE,
+	
+	DYING_END					= TRUE,	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,	
+}	
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_WALK =
+{
+	ANIM_NAME	= "Walk",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+    SOUND_PLAY0			= { 0.060, "Step.ogg" },
+    SOUND_PLAY1			= { 0.881, "Step.ogg" },
+
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_INTERVAL_TIME0		= 2,
+	EVENT_INTERVAL_TIME1		= 3,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CSM_ANCIENT_NASOD_GUARD_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"CSM_ANCIENT_NASOD_GUARD_WAIT_HABIT",	"CT_CSM_ANCIENT_NASOD_GUARD_WAIT_HABIT",	},
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"CSM_ANCIENT_NASOD_GUARD_SPECIAL_ATTACK",	"CT_CSM_ANCIENT_NASOD_GUARD_SPECIAL_ATTACK",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"CSM_ANCIENT_NASOD_GUARD_MAGIC_ATTACKA",	"CT_CSM_ANCIENT_NASOD_GUARD_MAGIC_ATTACKA",	},
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],		"CSM_ANCIENT_NASOD_GUARD_WAIT",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],		"CSM_ANCIENT_NASOD_GUARD_JUMP_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],	"CSM_ANCIENT_NASOD_GUARD_JUMP_UP_DIR",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],		"CSM_ANCIENT_NASOD_GUARD_JUMP_DOWN",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],	"CSM_ANCIENT_NASOD_GUARD_JUMP_DOWN_DIR",	},
+	},
+
+	CT_CSM_ANCIENT_NASOD_GUARD_WAIT_HABIT = 
+	{
+		EVENT_INTERVAL_ID	= 0,
+		HAVE_TARGET			= 0,
+		RATE				= 30,
+	},
+	
+	
+	-- CSM_ANCIENT_NASOD_GUARD_MAGIC_ATTACKA =
+	CT_CSM_ANCIENT_NASOD_GUARD_MAGIC_ATTACKA =
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1200,
+		RATE						= 100,
+	},
+	
+	CT_CSM_ANCIENT_NASOD_GUARD_SPECIAL_ATTACK =
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID		= 0,
+		DISTANCE_TO_TARGET_NEAR	= 1000,
+		RATE					= 100,
+	},
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_JUMP_UP =
+{
+	ANIM_NAME		= "JumpUp",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION		= TRUE,
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	SPEED_X		= 0,
+	SPEED_Y		= INIT_PHYSIC["JUMP_SPEED"],
+	ADD_POS_Y	= 45,
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"CSM_ANCIENT_NASOD_GUARD_JUMP_DOWN",		},
+	},
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_JUMP_DOWN =
+{
+	ANIM_NAME		= "JumpDown",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION		= TRUE,
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"CSM_ANCIENT_NASOD_GUARD_JUMP_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_JUMP_UP_DIR =
+{
+	ANIM_NAME		= "JumpUp",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION		= TRUE,
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	PASSIVE_SPEED_X	= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y			= INIT_PHYSIC["JUMP_SPEED"],
+
+	ADD_POS_Y	= 45,
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"CSM_ANCIENT_NASOD_GUARD_JUMP_DOWN_DIR",	},
+	},
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_JUMP_DOWN_DIR =
+{
+	ANIM_NAME		= "JumpDown",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION		= TRUE,
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	PASSIVE_SPEED_X	= INIT_PHYSIC["WALK_SPEED"],
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"CSM_ANCIENT_NASOD_GUARD_JUMP_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_JUMP_LANDING =
+{
+	ANIM_NAME		= "JumpLanding",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= TRUE,
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	SOUND_PLAY0 		= { 0.001, "Landing_Big_Meat02.ogg" },
+	
+	SPEED_X		= 0,
+	SPEED_Y		= 0,
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CSM_ANCIENT_NASOD_GUARD_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CSM_ANCIENT_NASOD_GUARD_WAIT",		},
+	},
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_DAMAGE_REVENGE =
+{
+	ANIM_NAME		= "DamageRevenge",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CSM_ANCIENT_NASOD_GUARD_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CSM_ANCIENT_NASOD_GUARD_WAIT",		},
+	},
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_MAGIC_ATTACKA =
+{
+	ANIM_NAME	= "MagicAttackA",
+	ANIM_SPEED	 = 0.7,
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	VIEW_TARGET	= TRUE,
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+		
+	SOUND_PLAY0			= { 1.10, "ANCIENT_NASOD_MagicAttackA02.ogg" },
+	SOUND_PLAY1			= { 0.60, "ANCIENT_NASOD_Load.ogg" },
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CSM_ANCIENT_NASOD_GUARD_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CSM_ANCIENT_NASOD_GUARD_WAIT",		},
+	},
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_SPECIAL_ATTACK =
+{
+	ANIM_NAME	= "SpecialAttack",
+	ANIM_SPEED	= 0.7,
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= TRUE,
+	SUPER_ARMOR	= TRUE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+    SOUND_PLAY0	= { 0.53, "Landing_Big_Metal01.ogg" },
+	SOUND_PLAY1	= { 0.78, "Landing_Big_Metal02.ogg" },
+	SOUND_PLAY2	= { 1.40, "Ancient_Nasod_Machine02.ogg" },
+	SOUND_PLAY3	= { 1.85, "Ancient_Nasod_SpecialAttack.ogg" },
+	
+	SUPER_ARMOR	= TRUE,
+
+	SPEED_X		= 0,
+	SPEED_Y		= 0,
+
+	VIEW_TARGET				= TRUE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	REFLECT_MAGIC = { 1.8, 6, 0, },
+	
+	EFFECT_SET_LIST =
+	{
+		"Ancient_Nasod_Special_Attack", 0,
+	},
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CSM_ANCIENT_NASOD_GUARD_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CSM_ANCIENT_NASOD_GUARD_WAIT",		},
+	},
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_DAMAGE_SMALL_LAND_FRONT =
+{
+	ANIM_NAME		= "DamageFront",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	SOUND_PLAY0		= { 0.001, "Ancient_Nasod_Growl01.ogg", 24 },
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"CSM_ANCIENT_NASOD_GUARD_WAIT",	},
+	},
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_DAMAGE_SMALL_LAND_BACK =
+{
+	ANIM_NAME		= "DamageBack",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	SOUND_PLAY0		= { 0.001, "Ancient_Nasod_Growl02.ogg", 24 },
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"CSM_ANCIENT_NASOD_GUARD_WAIT",	},
+	},
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_DAMAGE_BIG_LAND_FRONT =
+{
+	ANIM_NAME		= "DamageFront",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	SOUND_PLAY0		= { 0.001, "Ancient_Nasod_Growl01.ogg", 24 },
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"CSM_ANCIENT_NASOD_GUARD_WAIT",	},
+	},
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_DAMAGE_BIG_LAND_BACK =
+{
+	ANIM_NAME		= "DamageBack",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	SOUND_PLAY0		= { 0.001, "Ancient_Nasod_Growl02.ogg", 24 },
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"CSM_ANCIENT_NASOD_GUARD_WAIT",	},
+	},
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_DAMAGE_DOWN_FRONT =
+{
+	ANIM_NAME		= "DamageDownFront",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	SUPER_ARMOR	= TRUE,
+	DEFENCE		= { 0, 100, 70, },
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"CSM_ANCIENT_NASOD_GUARD_DAMAGE_AIR_FALL",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"CSM_ANCIENT_NASOD_GUARD_STAND_UP_FRONT",	},
+	},
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_DAMAGE_DOWN_BACK =
+{
+	ANIM_NAME		= "DamageDownBack",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	SUPER_ARMOR	= TRUE,
+	DEFENCE		= { 0, 100, 70, },
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"CSM_ANCIENT_NASOD_GUARD_DAMAGE_AIR_FALL",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"CSM_ANCIENT_NASOD_GUARD_STAND_UP_BACK",	},
+	},
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_DAMAGE_FLY_FRONT =
+{
+	ANIM_NAME		= "DamageAirFlyFront",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	SOUND_PLAY0		= { 0.001, "Ancient_Nasod_Growl01.ogg", 24 },
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"CSM_ANCIENT_NASOD_GUARD_DAMAGE_DOWN_FRONT",	},
+	},
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_DAMAGE_FLY_BACK =
+{
+	ANIM_NAME		= "DamageAirFlyBack",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	SOUND_PLAY0		= { 0.001, "Ancient_Nasod_Growl02.ogg", 24 },
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"CSM_ANCIENT_NASOD_GUARD_DAMAGE_DOWN_BACK",	},
+	},
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_DAMAGE_AIR_FALL =
+{
+	ANIM_NAME		= "DamageAirFall",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	EVENT_PROCESS =
+	{
+		--{ STATE_CHANGE_TYPE["SCT_POSITIVE_Y_SPEED"],	"CSM_ANCIENT_NASOD_GUARD_DAMAGE_AIR_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"CSM_ANCIENT_NASOD_GUARD_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_DAMAGE_AIR_DOWN_LANDING =
+{
+	ANIM_NAME		= "DamageAirDownlanding",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	SUPER_ARMOR	= TRUE,
+	DEFENCE		= { 0, 100, 70, },
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CSM_ANCIENT_NASOD_GUARD_DAMAGE_AIR_FALL",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CSM_ANCIENT_NASOD_GUARD_STAND_UP_FRONT",	},
+	},
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_STAND_UP_FRONT =
+{
+	ANIM_NAME		= "DamageStandUpFront",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	SUPER_ARMOR	= TRUE,
+	DEFENCE		= { 0, 100, 70, },
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CSM_ANCIENT_NASOD_GUARD_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CSM_ANCIENT_NASOD_GUARD_WAIT",		},
+	},
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_STAND_UP_BACK =
+{
+	ANIM_NAME		= "DamageStandUpBack",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	SUPER_ARMOR	= TRUE,
+	DEFENCE		= { 0, 100, 70, },
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CSM_ANCIENT_NASOD_GUARD_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CSM_ANCIENT_NASOD_GUARD_WAIT",      },
+	},
+}
+CSM_ANCIENT_NASOD_GUARD_DYING_LAND_FRONT =
+{
+	ANIM_NAME		= "DamageDownFront",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	INVINCIBLE	= { 0, 100, },
+
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+
+	DYING_END	= TRUE,
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_DYING_LAND_BACK =
+{
+	ANIM_NAME		= "DamageDownBack",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	INVINCIBLE	= { 0, 100, },
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= TRUE,
+
+	DYING_END	= TRUE,
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+}
+--------------------------------------------------------------------------
+CSM_ANCIENT_NASOD_GUARD_DYING_SKY =
+{
+	ANIM_NAME		= "DamageAirDownlanding",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	INVINCIBLE	= { 0, 100, },
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= TRUE,
+
+	DYING_END	= TRUE,
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+}
+--------------------------------------------------------------------
+function CSM_ANCIENT_NASOD_GUARD_WALK_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+end
+--------------------------------------------------------------------------
+function CSM_ANCIENT_NASOD_GUARD_JUMP_DOWN_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+end
+--------------------------------------------------------------------------
+function CSM_ANCIENT_NASOD_GUARD_JUMP_DOWN_DIR_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+end
+--------------------------------------------------------------------------
+function CSM_ANCIENT_NASOD_GUARD_DAMAGE_SMALL_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.047 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+end
+--------------------------------------------------------------------------
+function CSM_ANCIENT_NASOD_GUARD_DAMAGE_BIG_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.06 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+end
+--------------------------------------------------------------------------
+function CSM_ANCIENT_NASOD_GUARD_DAMAGE_DOWN_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.41 ) then
+		pNPCUnit:PlaySound_LUA( "Landing_Big_Metal01.ogg" )
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+end
+--------------------------------------------------------------------------
+function CSM_ANCIENT_NASOD_GUARD_DAMAGE_DOWN_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.45 ) then
+		pNPCUnit:PlaySound_LUA( "Landing_Big_Metal02.ogg" )
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+end
+--------------------------------------------------------------------------
+function CSM_ANCIENT_NASOD_GUARD_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		local pos = pNPCUnit:GetLandPosition_LUA()
+		pMinorParticle:CreateSequence_LUA( "DownSmoke", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+		pos.y = pos.y + 5
+		pMinorParticle:CreateSequence_LUA( "GroundShockWave", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(1,-1) )
+		local pParticle = pMinorParticle:CreateSequence_LUA( "AirDownTick", pNPCUnit:GetPos(), D3DXVECTOR2(200,200), D3DXVECTOR2(10,-1) )
+		if pParticle ~= nil then
+			pParticle:SetLandPosition( pos.y - 5 )
+		end
+
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 500 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 0.1 )
+		end
+
+	elseif pNPCUnit:AnimEventTimer_LUA( 0.1 ) then
+		pNPCUnit:PlaySound_LUA( "Landing_Big_Metal01.ogg" )
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+end
+--------------------------------------------------------------------------
+function CSM_ANCIENT_NASOD_GUARD_STAND_UP_ATTACK_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.35 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+end
+--------------------------------------------------------------------------
+function CSM_ANCIENT_NASOD_GUARD_STAND_UP_ATTACK_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.35 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+end
+--------------------------------------------------------------------------
+function CSM_ANCIENT_NASOD_GUARD_MAGIC_ATTACKA_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 1.066 ) then
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		local pos = pNPCUnit:GetLandPosition_LUA()
+		pDamageEffect:CreateInstance_LUA( pNPCUnit, "CSM_ANCIENT_NASOD_MAGIC_ATTACK_A", pNPCUnit:GetBonePos_LUA( "Bip01_R_Hand" ), pos.y )
+	end
+end
+--------------------------------------------------------------------------
+function CSM_ANCIENT_NASOD_GUARD_DYING_LAND_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	local pos = pNPCUnit:GetPos()
+	pos.y = pos.y + 100.0
+	local GetMinorParticle = pX2Game:GetMinorParticle()
+
+	local pSeq = GetMinorParticle:CreateSequence_LUA( "DieLight",		pos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+
+	if pSeq ~= nil then
+		pSeq:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+		pNPCUnit:SetDieSeq( pSeq:GetHandle() )
+	end
+
+	pNPCUnit:PlaySound_LUA( "DieLight.ogg" )
+end
+--------------------------------------------------------------------------

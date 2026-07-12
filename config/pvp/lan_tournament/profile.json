@@ -1,0 +1,57 @@
+{
+  "name": "lan_tournament",
+  "description": "LAN tournament: LanBug logging on, faster host checks, relay health logging, shorter zombie tick.",
+  "client_switch_connect_mode": 0,
+  "client_connection_mode_label": "Default",
+  "diff_from_default": {
+    "lan_bug_out_check.bLanBugOutCheck": "false → true (observe only; SetLanBugOutJustLog stays true)",
+    "lan_bug_out_verify.bLanBugOutVerify": "false → true",
+    "check_change_host_time": "180 → 120",
+    "max_ping_score": "5000 → 4000",
+    "battle_field_check_change_host_time": "new 120 (API exists in GameServer.exe)",
+    "udp_relay_checker.enabled": "false → true",
+    "udp_relay_checker.print_log": "false → true",
+    "tr_server.worker_thread_count": "6 → 8",
+    "room_manager.zu_tick_time": "300 → 120"
+  },
+  "gamesysval": {
+    "lan_bug_out_just_log": true,
+    "lan_bug_out_check": {
+      "bLanBugOutCheck": true,
+      "byteLanBugOutCheckMaxCount": 0,
+      "fLanBugOutCheckTime": 1.0,
+      "byteLanBugOutCheckCount": 10,
+      "fLanBugOutCheckTermMin": 1.0,
+      "fLanBugOutCheckTerm": 0.0,
+      "fLanBugOutCheckRepeatTerm": 0.5
+    },
+    "lan_bug_out_verify": {
+      "bLanBugOutVerify": true,
+      "byteLanBugOutVerifyMaxCount": 10,
+      "fLanBugOutVerifyTime": 1.0,
+      "byteLanBugOutVerifyCount": 10,
+      "fLanBugOutVerifyTermMin": 1.0,
+      "fLanBugOutVerifyTerm": 0.0,
+      "fLanBugOutVerifyRepeatTerm": 0.5
+    },
+    "check_change_host_time": 120,
+    "max_ping_score": 4000,
+    "host_check_term": 3.0,
+    "battle_field_check_change_host_time": 120
+  },
+  "udp_relay_checker": {
+    "enabled": true,
+    "print_log": true,
+    "port": 26424,
+    "time_gap": 5.0,
+    "db_update_time_gap": 300.0,
+    "server_class": 3
+  },
+  "tr_server": {
+    "worker_thread_count": 8
+  },
+  "room_manager": {
+    "zu_tick_time": 120,
+    "battle_field_zu_tick_time": 20
+  }
+}

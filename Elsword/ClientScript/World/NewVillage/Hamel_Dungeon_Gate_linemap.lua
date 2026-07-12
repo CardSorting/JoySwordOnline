@@ -1,0 +1,87 @@
+﻿
+
+g_pLineMap:SetLandHeight( 4844 )
+
+
+
+
+-- RED, BLUE, TEAM START POS
+g_pLineMap:SetTeamStartPos( true, D3DXVECTOR3( -2347.8, 5084, -12252 + 12000 ), false, 4 )
+g_pLineMap:SetTeamStartPos( true, D3DXVECTOR3( -2720.49, 5084, -12252 + 12000 ), false, 4 )
+g_pLineMap:SetTeamStartPos( true, D3DXVECTOR3( -11512.2, 5084, -12252 + 12000 ), false, 0 )
+g_pLineMap:SetTeamStartPos( true, D3DXVECTOR3( -11176.6, 5084, -12252 + 12000 ), false, 0 )
+
+
+
+
+-- NPC (or else) START POS
+
+
+
+
+
+
+-- LINE DATA -- 
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 0, 
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= -1, 
+	NEXT_LINE		= 1, 
+	LINE_SET		= -1, 
+	"START_POS		= D3DXVECTOR3(-11531, 5084, -12252 + 12000)", 
+	"END_POS		= D3DXVECTOR3(-11086, 5084, -12252 + 12000)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 1, 
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= 0, 
+	NEXT_LINE		= 2, 
+	LINE_SET		= -1, 
+	"START_POS		= D3DXVECTOR3(-11086, 5084, -12252 + 12000)", 
+	"END_POS		= D3DXVECTOR3(-10357, 4844, -12252 + 12000)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 2, 
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= 1, 
+	NEXT_LINE		= 3, 
+	LINE_SET		= -1, 
+	"START_POS		= D3DXVECTOR3(-10357, 4844, -12252 + 12000)", 
+	"END_POS		= D3DXVECTOR3(-3657, 4844, -12252 + 12000)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 3, 
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= 2, 
+	NEXT_LINE		= 4, 
+	LINE_SET		= -1, 
+	"START_POS		= D3DXVECTOR3(-3657, 4844, -12252 + 12000)", 
+	"END_POS		= D3DXVECTOR3(-2962, 5084, -12252 + 12000)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 4, 
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= 3, 
+	NEXT_LINE		= -1, 
+	LINE_SET		= -1, 
+	"START_POS		= D3DXVECTOR3(-2962, 5084, -12252 + 12000)", 
+	"END_POS		= D3DXVECTOR3(-2291, 5084, -12252 + 12000)", 
+}
+
+
+-- CAMERA DATA 
+

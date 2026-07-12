@@ -1,0 +1,728 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+--[[ KjTiger / 2011/11/14 / 황금 다오(이벤트 몬스터)/
+	 공격 없음
+--]]
+
+--------------------------------------------------------------------------
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH	= 120.0,
+	UNIT_HEIGHT	= 200.0,
+	UNIT_LAYER	= X2_LAYER["XL_UNIT_0"],
+	UNIT_SCALE	= 5,
+}
+--------------------------------------------------------------------------
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+		"Npc_All_Dao_Gold_body.tga",
+	},
+	
+	READY_SOUND = 
+	{
+	},
+}
+--------------------------------------------------------------------------
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_EVENT_GOLDEN_DAO.x",
+}
+--------------------------------------------------------------------------
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 400,
+	RUN_SPEED			= 820,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300,
+}
+--------------------------------------------------------------------------
+INIT_COMPONENT = 
+{
+	MAX_HP				= 4000,
+	MP_CHANGE_RATE		= 0,
+	MP_CHARGE_RATE		= 0,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	
+	HEAD_BONE_NAME		= "Bip01_Head",
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 10,
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_METAL"],
+	SKY_DIE				= TRUE,
+	DIE_FLY				= FALSE,
+	OUT_LINE_WIDTH_SCALE	= 0.3,
+}
+--------------------------------------------------------------------------
+INIT_STATE = 
+{
+	{ STATE_NAME = "EVENT_GOLDEN_DAO_WAIT",	},
+	{ STATE_NAME = "EVENT_GOLDEN_DAO_WALK",	},
+	{ STATE_NAME = "EVENT_GOLDEN_DAO_DASH",	},
+	{ STATE_NAME = "EVENT_GOLDEN_DAO_JUMP_UP",			},
+	{ STATE_NAME = "EVENT_GOLDEN_DAO_JUMP_DOWN",		LUA_STATE_END_FUNC = "EVENT_GOLDEN_DAO_JUMP_DOWN_STATE_END"		},
+	{ STATE_NAME = "EVENT_GOLDEN_DAO_JUMP_UP_DIR",		},
+	{ STATE_NAME = "EVENT_GOLDEN_DAO_JUMP_DOWN_DIR",	LUA_STATE_END_FUNC = "EVENT_GOLDEN_DAO_JUMP_DOWN_DIR_STATE_END"	},
+	{ STATE_NAME = "EVENT_GOLDEN_DAO_JUMP_LANDING",		},
+	
+	{ STATE_NAME = "EVENT_GOLDEN_DAO_DAMAGE_FRONT",				},
+	{ STATE_NAME = "EVENT_GOLDEN_DAO_DAMAGE_BACK",				},
+	{ STATE_NAME = "EVENT_GOLDEN_DAO_DAMAGE_DOWN_FRONT",		},
+	{ STATE_NAME = "EVENT_GOLDEN_DAO_DAMAGE_DOWN_BACK",			},
+	{ STATE_NAME = "EVENT_GOLDEN_DAO_DAMAGE_FLY_FRONT",			},
+	{ STATE_NAME = "EVENT_GOLDEN_DAO_DAMAGE_FLY_BACK",			},
+	{ STATE_NAME = "EVENT_GOLDEN_DAO_DAMAGE_AIR_SMALL",			},
+	{ STATE_NAME = "EVENT_GOLDEN_DAO_DAMAGE_AIR_DOWN",			},
+	{ STATE_NAME = "EVENT_GOLDEN_DAO_DAMAGE_AIR_DOWN_LANDING",	},
+	{ STATE_NAME = "EVENT_GOLDEN_DAO_DAMAGE_AIR_UP",			},
+	{ STATE_NAME = "EVENT_GOLDEN_DAO_STAND_UP_FRONT",			},
+	{ STATE_NAME = "EVENT_GOLDEN_DAO_STAND_UP_BACK",			},
+	
+	{ STATE_NAME = "EVENT_GOLDEN_DAO_DYING_LAND_FRONT",	},
+	{ STATE_NAME = "EVENT_GOLDEN_DAO_DYING_LAND_BACK",	},
+	{ STATE_NAME = "EVENT_GOLDEN_DAO_DYING_SKY",		},
+
+{ STATE_NAME = "EVENT_GOLDEN_DAO_DAMAGE_AIR_FALL", },
+	
+	START_STATE		= "EVENT_GOLDEN_DAO_WAIT",
+	WAIT_STATE		= "EVENT_GOLDEN_DAO_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "EVENT_GOLDEN_DAO_DAMAGE_FRONT",
+	SMALL_DAMAGE_LAND_BACK		= "EVENT_GOLDEN_DAO_DAMAGE_BACK",
+	BIG_DAMAGE_LAND_FRONT		= "EVENT_GOLDEN_DAO_DAMAGE_FRONT",
+	BIG_DAMAGE_LAND_BACK		= "EVENT_GOLDEN_DAO_DAMAGE_BACK",
+	DOWN_DAMAGE_LAND_FRONT		= "EVENT_GOLDEN_DAO_DAMAGE_DOWN_FRONT",
+	DOWN_DAMAGE_LAND_BACK		= "EVENT_GOLDEN_DAO_DAMAGE_DOWN_BACK",
+	FLY_DAMAGE_FRONT			= "EVENT_GOLDEN_DAO_DAMAGE_FLY_FRONT",
+	FLY_DAMAGE_BACK				= "EVENT_GOLDEN_DAO_DAMAGE_FLY_BACK",
+	SMALL_DAMAGE_AIR			= "EVENT_GOLDEN_DAO_DAMAGE_AIR_SMALL",	
+	BIG_DAMAGE_AIR				= "EVENT_GOLDEN_DAO_DAMAGE_AIR_SMALL",
+	DOWN_DAMAGE_AIR				= "EVENT_GOLDEN_DAO_DAMAGE_AIR_DOWN",
+	DOWN_DAMAGE_AIR_LANDING		= "EVENT_GOLDEN_DAO_DAMAGE_AIR_DOWN_LANDING",
+	UP_DAMAGE					= "EVENT_GOLDEN_DAO_DAMAGE_AIR_UP",
+	
+	DAMAGE_EXTRA_STATES         = {"EVENT_GOLDEN_DAO_DAMAGE_AIR_FALL","EVENT_GOLDEN_DAO_STAND_UP_FRONT","EVENT_GOLDEN_DAO_STAND_UP_BACK",
+	"EVENT_GOLDEN_DAO_JUMP_DOWN","EVENT_GOLDEN_DAO_JUMP_LANDING",	},	
+	
+	DYING_LAND_FRONT			= "EVENT_GOLDEN_DAO_DYING_LAND_FRONT",
+	DYING_LAND_BACK				= "EVENT_GOLDEN_DAO_DYING_LAND_BACK",
+	DYING_SKY					= "EVENT_GOLDEN_DAO_DYING_SKY",
+
+	REVENGE_ATTACK				= "",	
+}
+--------------------------------------------------------------------------
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 0.5,
+		TARGET_NEAR_RANGE			= 200,
+		TARGET_RANGE				= 600,
+		TARGET_LOST_RANGE			= 800,
+		TARGET_SUCCESS_RATE			= 100,
+		ATTACK_TARGET_RATE			= 100,
+		PRESERVE_LAST_TARGET_RATE	= 100,
+	},
+	
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 600,
+		DEST_GAP			= 150,
+		MOVE_GAP			= 160,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		WALK_INTERVAL		= 2,
+		NEAR_WALK_RATE		= 100,
+		FAR_WALK_RATE		= 100,
+		
+		JUMP_INTERVAL		= 5,
+		UP_JUMP_RATE		= 100,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,
+		DOWN_DOWN_RATE		= 40,
+	},
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 50,
+		PATROL_RANGE			= 150,
+		PATROL_COOL_TIME		= 2,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 500,
+		ESCAPE_GAP			= 600,
+		
+		WALK_INTERVAL		= 1.5,
+		NEAR_WALK_RATE		= 100,
+		FAR_WALK_RATE		= 100,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,
+		DOWN_DOWN_RATE		= 30,
+	},
+}
+--------------------------------------------------------------------------
+EVENT_GOLDEN_DAO_WAIT = 
+{
+	ANIM_NAME	= "Wait",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	SPEED_X	= 0,
+	SPEED_Y	= 0,
+	
+	EVENT_INTERVAL_TIME0	= 2,
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],		"EVENT_GOLDEN_DAO_WALK",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],		"EVENT_GOLDEN_DAO_DASH",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],		"EVENT_GOLDEN_DAO_JUMP_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],	"EVENT_GOLDEN_DAO_JUMP_UP_DIR",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],		"EVENT_GOLDEN_DAO_JUMP_DOWN",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],	"EVENT_GOLDEN_DAO_JUMP_DOWN_DIR",	},
+		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"EVENT_GOLDEN_DAO_JUMP_DOWN",		},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_GOLDEN_DAO_WALK = 
+{
+	ANIM_NAME	= "Walk",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	PASSIVE_SPEED_X	= INIT_PHYSIC["WALK_SPEED"],
+	
+	ALLOW_DIR_CHANGE		= TRUE,
+	EVENT_INTERVAL_TIME0	= 2,
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],		"EVENT_GOLDEN_DAO_WAIT",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],		"EVENT_GOLDEN_DAO_DASH",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],		"EVENT_GOLDEN_DAO_JUMP_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],	"EVENT_GOLDEN_DAO_JUMP_UP_DIR",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],		"EVENT_GOLDEN_DAO_JUMP_DOWN",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],	"EVENT_GOLDEN_DAO_JUMP_DOWN_DIR",	},
+		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"EVENT_GOLDEN_DAO_JUMP_DOWN",	},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_GOLDEN_DAO_JUMP_UP = 
+{
+	ANIM_NAME	= "JumpUp",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	SPEED_X		= 0,
+	SPEED_Y		= INIT_PHYSIC["JUMP_SPEED"],
+	ADD_POS_Y	= 45,
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"EVENT_GOLDEN_DAO_JUMP_DOWN",	},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_GOLDEN_DAO_JUMP_DOWN = 
+{
+	ANIM_NAME	= "JumpDown",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"EVENT_GOLDEN_DAO_JUMP_LANDING",	},
+	},
+}
+
+function EVENT_GOLDEN_DAO_JUMP_DOWN_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+end
+--------------------------------------------------------------------------
+EVENT_GOLDEN_DAO_JUMP_UP_DIR = 
+{
+	ANIM_NAME	= "JumpUp",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	SPEED_X		= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y		= INIT_PHYSIC["JUMP_SPEED"],
+	ADD_POS_Y	= 45,
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"EVENT_GOLDEN_DAO_JUMP_DOWN_DIR",	},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_GOLDEN_DAO_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME	= "JumpDown",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	PASSIVE_SPEED_X	= INIT_PHYSIC["WALK_SPEED"],
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"EVENT_GOLDEN_DAO_JUMP_LANDING",	},
+	},
+}
+
+function EVENT_GOLDEN_DAO_JUMP_DOWN_DIR_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+end
+--------------------------------------------------------------------------
+EVENT_GOLDEN_DAO_JUMP_LANDING = 
+{
+	ANIM_NAME	= "JumpDownLanding",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= TRUE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	SPEED_X		= 0,
+	SPEED_Y		= 0,
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"EVENT_GOLDEN_DAO_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"EVENT_GOLDEN_DAO_WAIT",		},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_GOLDEN_DAO_DASH = 
+{
+	ANIM_NAME	= "Dash",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	LAND_CONNECT	= FALSE,
+			
+	PASSIVE_SPEED_X	= INIT_PHYSIC["RUN_SPEED"],
+	
+	ALLOW_DIR_CHANGE		= TRUE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],		"EVENT_GOLDEN_DAO_WALK",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],		"EVENT_GOLDEN_DAO_DASH",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],		"EVENT_GOLDEN_DAO_JUMP_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],	"EVENT_GOLDEN_DAO_JUMP_UP_DIR",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],		"EVENT_GOLDEN_DAO_JUMP_DOWN",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],	"EVENT_GOLDEN_DAO_JUMP_DOWN_DIR",	},
+		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"EVENT_GOLDEN_DAO_JUMP_DOWN",	},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_GOLDEN_DAO_DAMAGE_FRONT = 
+{
+	ANIM_NAME	= "DamageFront",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+		
+	--SOUND_PLAY0 = { 0.01, "Squish_Hit02.wav" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"EVENT_GOLDEN_DAO_WAIT", },
+	},
+}
+--------------------------------------------------------------------------
+EVENT_GOLDEN_DAO_DAMAGE_BACK = 
+{
+	ANIM_NAME	= "DamageBack",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+		
+	--SOUND_PLAY0 = { 0.01, "Squish_Hit02.wav" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"EVENT_GOLDEN_DAO_WAIT", },
+	},
+}
+--------------------------------------------------------------------------
+EVENT_GOLDEN_DAO_DAMAGE_DOWN_FRONT = 
+{
+	ANIM_NAME	= "DamageDownFront",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+		
+	SUPER_ARMOR	= TRUE,
+	DEFENCE		= { 0, 100, 50, },
+	
+	--SOUND_PLAY0 = { 0.01, "Squish_Hit02.wav" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"EVENT_GOLDEN_DAO_DAMAGE_AIR_FALL",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"EVENT_GOLDEN_DAO_STAND_UP_FRONT",	},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_GOLDEN_DAO_DAMAGE_DOWN_BACK = 
+{
+	ANIM_NAME	= "DamageDownBack",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+		
+	SUPER_ARMOR	= TRUE,
+	DEFENCE		= { 0, 100, 50, },
+	
+	--SOUND_PLAY0 = { 0.01, "Squish_Hit02.wav" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"EVENT_GOLDEN_DAO_DAMAGE_AIR_FALL",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"EVENT_GOLDEN_DAO_STAND_UP_BACK",	},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_GOLDEN_DAO_DAMAGE_AIR_SMALL = 
+{
+	ANIM_NAME	= "DamageAir",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	--SOUND_PLAY0 = { 0.01, "Squish_Hit02.wav" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"EVENT_GOLDEN_DAO_WAIT",	},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_GOLDEN_DAO_DAMAGE_AIR_DOWN = 
+{
+	ANIM_NAME	= "DamageAirDown",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+			
+	--SOUND_PLAY0 = { 0.01, "Squish_Hit02.wav" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"EVENT_GOLDEN_DAO_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_GOLDEN_DAO_DAMAGE_AIR_UP = 
+{
+	ANIM_NAME	= "DamageAirUp",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	--SOUND_PLAY0 = { 0.01, "Squish_Hit02.wav" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"EVENT_GOLDEN_DAO_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"EVENT_GOLDEN_DAO_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_GOLDEN_DAO_DAMAGE_AIR_FALL = 
+{
+	ANIM_NAME	= "DamageAirFall",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	--SOUND_PLAY0 = { 0.01, "Squish_Hit02.wav" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_POSITIVE_Y_SPEED"],	"EVENT_GOLDEN_DAO_DAMAGE_AIR_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"EVENT_GOLDEN_DAO_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_GOLDEN_DAO_DAMAGE_AIR_DOWN_LANDING = 
+{
+	ANIM_NAME	= "DamageAirDownLanding",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+		
+	SUPER_ARMOR	= TRUE,
+	DEFENCE		= { 0, 100, 50, },
+	
+	--SOUND_PLAY0 = { 0.01, "Squish_Hit02.wav" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"EVENT_GOLDEN_DAO_DAMAGE_AIR_FALL",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"EVENT_GOLDEN_DAO_STAND_UP_FRONT",	},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_GOLDEN_DAO_DAMAGE_FLY_FRONT = 
+{
+	ANIM_NAME	= "DamageAirFlyFront",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	--SOUND_PLAY0 = { 0.01, "Squish_Hit02.wav" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"EVENT_GOLDEN_DAO_DAMAGE_DOWN_FRONT",	},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_GOLDEN_DAO_DAMAGE_FLY_BACK = 
+{
+	ANIM_NAME	= "DamageAirFlyBack",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	--SOUND_PLAY0 = { 0.01, "Squish_Hit02.wav" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"EVENT_GOLDEN_DAO_DAMAGE_DOWN_BACK",	},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_GOLDEN_DAO_STAND_UP_FRONT = 
+{
+	ANIM_NAME	= "DamageStandUpFront",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"EVENT_GOLDEN_DAO_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"EVENT_GOLDEN_DAO_WAIT",		},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_GOLDEN_DAO_STAND_UP_BACK = 
+{
+	ANIM_NAME	= "DamageStandUpBack",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	--SOUND_PLAY0 = { 0.01, "Squish_Hit02.wav" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"EVENT_GOLDEN_DAO_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"EVENT_GOLDEN_DAO_WAIT",		},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_GOLDEN_DAO_DYING_LAND_FRONT = 
+{
+	ANIM_NAME		= "Dying",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	INVINCIBLE		= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+	
+	RIGHT		= FALSE,
+	DYING_END	= TRUE,
+		
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	PARTICLE_SEQ =
+	{
+		--Major, time, Name, weaponBonePos, Pos, StateEndDelete, bTrace, posx, posy, posz, bApplyUnitRotation, rotx, roty, rotz,
+		{ FALSE, 0.83, "RespawnLanding_P01", FALSE, "", FALSE, FALSE, 0, 0, 0, FALSE, 0, 0, 0, 2.0, 2.0, 2.0},
+		{ FALSE, 0.83, "RespawnLanding_P02", FALSE, "", FALSE, FALSE, 0, 0, 0, FALSE, 0, 0, 0, 2.0, 2.0, 2.0},
+		{ FALSE, 0.83, "RespawnLanding_P03", FALSE, "", FALSE, FALSE, 0, 0, 0, FALSE, 0, 0, 0, 2.0, 2.0, 2.0},
+		{ FALSE, 0.93, "RespawnLanding_P04", FALSE, "", FALSE, FALSE, 0, 50, 0, FALSE, 0, 0, 0, 2.0, 2.0, 2.0},
+		{ FALSE, 0.96, "RespawnLanding_P04", FALSE, "", FALSE, FALSE, 0, 100, 0, FALSE, 0, 0, 0, 2.0, 2.0, 2.0},
+		{ FALSE, 1.09, "RespawnLanding_P04", FALSE, "", FALSE, FALSE, 0, 200, 0, FALSE, 0, 0, 0, 2.0, 2.0, 2.0},
+		{ FALSE, 1.12, "RespawnLanding_P04", FALSE, "", FALSE, FALSE, 0, 300, 0, FALSE, 0, 0, 0, 2.0, 2.0, 2.0},
+		{ FALSE, 1.35, "RespawnLanding_P04", FALSE, "", FALSE, FALSE, 0, 450, 0, FALSE, 0, 0, 0, 2.0, 2.0, 2.0},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_GOLDEN_DAO_DYING_LAND_BACK = 
+{
+	ANIM_NAME		= "Dying",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	INVINCIBLE		= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+	
+	RIGHT		= FALSE,
+	DYING_END	= TRUE,
+		
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	PARTICLE_SEQ =
+	{
+		--Major, time, Name, weaponBonePos, Pos, StateEndDelete, bTrace, posx, posy, posz, bApplyUnitRotation, rotx, roty, rotz,
+		{ FALSE, 0.83, "RespawnLanding_P01", FALSE, "", FALSE, FALSE, 0, 0, 0, FALSE, 0, 0, 0, 2.0, 2.0, 2.0},
+		{ FALSE, 0.83, "RespawnLanding_P02", FALSE, "", FALSE, FALSE, 0, 0, 0, FALSE, 0, 0, 0, 2.0, 2.0, 2.0},
+		{ FALSE, 0.83, "RespawnLanding_P03", FALSE, "", FALSE, FALSE, 0, 0, 0, FALSE, 0, 0, 0, 2.0, 2.0, 2.0},
+		{ FALSE, 0.93, "RespawnLanding_P04", FALSE, "", FALSE, FALSE, 0, 50, 0, FALSE, 0, 0, 0, 2.0, 2.0, 2.0},
+		{ FALSE, 0.96, "RespawnLanding_P04", FALSE, "", FALSE, FALSE, 0, 100, 0, FALSE, 0, 0, 0, 2.0, 2.0, 2.0},
+		{ FALSE, 1.09, "RespawnLanding_P04", FALSE, "", FALSE, FALSE, 0, 200, 0, FALSE, 0, 0, 0, 2.0, 2.0, 2.0},
+		{ FALSE, 1.12, "RespawnLanding_P04", FALSE, "", FALSE, FALSE, 0, 300, 0, FALSE, 0, 0, 0, 2.0, 2.0, 2.0},
+		{ FALSE, 1.35, "RespawnLanding_P04", FALSE, "", FALSE, FALSE, 0, 450, 0, FALSE, 0, 0, 0, 2.0, 2.0, 2.0},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_GOLDEN_DAO_DYING_SKY = 
+{
+	ANIM_NAME		= "Dying",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	INVINCIBLE		= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+	
+	RIGHT		= FALSE,
+	DYING_END	= TRUE,
+	NEVER_MOVE	= TRUE,
+		
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	PARTICLE_SEQ =
+	{
+		--Major, time, Name, weaponBonePos, Pos, StateEndDelete, bTrace, posx, posy, posz, bApplyUnitRotation, rotx, roty, rotz,
+		{ FALSE, 0.83, "RespawnLanding_P01", FALSE, "", FALSE, FALSE, 0, 0, 0, FALSE, 0, 0, 0, 2.0, 2.0, 2.0},
+		{ FALSE, 0.83, "RespawnLanding_P02", FALSE, "", FALSE, FALSE, 0, 0, 0, FALSE, 0, 0, 0, 2.0, 2.0, 2.0},
+		{ FALSE, 0.83, "RespawnLanding_P03", FALSE, "", FALSE, FALSE, 0, 0, 0, FALSE, 0, 0, 0, 2.0, 2.0, 2.0},
+		{ FALSE, 0.93, "RespawnLanding_P04", FALSE, "", FALSE, FALSE, 0, 50, 0, FALSE, 0, 0, 0, 2.0, 2.0, 2.0},
+		{ FALSE, 0.96, "RespawnLanding_P04", FALSE, "", FALSE, FALSE, 0, 100, 0, FALSE, 0, 0, 0, 2.0, 2.0, 2.0},
+		{ FALSE, 1.09, "RespawnLanding_P04", FALSE, "", FALSE, FALSE, 0, 200, 0, FALSE, 0, 0, 0, 2.0, 2.0, 2.0},
+		{ FALSE, 1.12, "RespawnLanding_P04", FALSE, "", FALSE, FALSE, 0, 300, 0, FALSE, 0, 0, 0, 2.0, 2.0, 2.0},
+		{ FALSE, 1.35, "RespawnLanding_P04", FALSE, "", FALSE, FALSE, 0, 450, 0, FALSE, 0, 0, 0, 2.0, 2.0, 2.0},
+	},
+}

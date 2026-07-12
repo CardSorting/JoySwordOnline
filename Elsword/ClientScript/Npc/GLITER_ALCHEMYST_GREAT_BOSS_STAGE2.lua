@@ -1,0 +1,315 @@
+﻿-- lua header. UTF-8 인코	딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 100.0,
+	UNIT_HEIGHT		= 50.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	RENDER_PARAM	= RENDER_TYPE["RT_CARTOON"],
+	--UNIT_SCALE      = 2,
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+	"Hoakin_Voice_Stage02_WaitStart01.ogg",
+	"Hoakin_Voice_Stage02_SummonA01.ogg",
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_GLITER_ALCHEMYST_GREAT_BOSS_STAGE2.x",
+	MOTION_CHANGE_TEX_XET	= "NUI_GLITER_ALCHEMYST_GREAT_BOSS_STAGE0.xet",
+	MOTION_ANI_TEX_XET		= "NUI_GLITER_ALCHEMYST_GREAT_BOSS_STAGE0.xet",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 0,
+	MAX_G_SPEED			= 0,
+	
+	WALK_SPEED			= 0,
+	RUN_SPEED			= 0,
+	JUMP_SPEED			= 0,
+	DASH_JUMP_SPEED		= 0,
+}
+
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 1000,
+	MP_CHANGE_RATE		= 0,
+	MP_CHARGE_RATE		= 0,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	--SHADOW_SIZE			= 0,
+	--SHADOW_FILE_NAME	= "shadow.dds",
+	
+	--SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	--SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	--SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "",
+	EXCLAMATION_MARK_SEQ	= "",
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_NO_SOUND"],
+	
+	NOT_EXTRA_DAMAGE	= TRUE,
+
+	NOT_CULL  = TRUE,
+
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "GLITER_ALCHEMYST_GREAT_BOSS_STAGE2_WAITSTART",			LUA_STATE_START_FUNC = "GLITER_ALCHEMYST_GREAT_BOSS_STAGE2_WAITSTART_STATE",	},
+	{ STATE_NAME = "GLITER_ALCHEMYST_GREAT_BOSS_STAGE2_WAIT",				},
+	{ STATE_NAME = "GLITER_ALCHEMYST_GREAT_BOSS_STAGE2_SUMMON_A",			LUA_STATE_END_FUNC	= "GLITER_ALCHEMYST_GREAT_BOSS_STAGE2_SUMMON_A_STATE_END",	STATE_COOL_TIME = 12},
+	{ STATE_NAME = "GLITER_ALCHEMYST_GREAT_BOSS_STAGE2_DYING",				},
+	
+	START_STATE					= "GLITER_ALCHEMYST_GREAT_BOSS_STAGE2_WAITSTART",
+	WAIT_STATE					= "GLITER_ALCHEMYST_GREAT_BOSS_STAGE2_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "",
+	SMALL_DAMAGE_LAND_BACK		= "",
+	BIG_DAMAGE_LAND_FRONT		= "",
+	BIG_DAMAGE_LAND_BACK		= "",
+	DOWN_DAMAGE_LAND_FRONT		= "",
+	DOWN_DAMAGE_LAND_BACK		= "",
+	FLY_DAMAGE_FRONT			= "",
+	FLY_DAMAGE_BACK				= "",
+	SMALL_DAMAGE_AIR			= "",	
+	BIG_DAMAGE_AIR				= "",
+	DOWN_DAMAGE_AIR				= "",
+	UP_DAMAGE					= "",
+	DAMAGE_REVENGE				= "",
+	
+	DYING_LAND_FRONT			= "GLITER_ALCHEMYST_GREAT_BOSS_STAGE2_DYING",
+	DYING_LAND_BACK				= "GLITER_ALCHEMYST_GREAT_BOSS_STAGE2_DYING",
+	DYING_SKY					= "GLITER_ALCHEMYST_GREAT_BOSS_STAGE2_DYING",
+
+	REVENGE_ATTACK				= "",	
+}
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 99999,	-- sec
+		TARGET_NEAR_RANGE			= 0,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 0,		-- cm
+		TARGET_LOST_RANGE			= 0,		-- cm
+		TARGET_SUCCESS_RATE			= 0,		-- %
+		ATTACK_TARGET_RATE			= 0,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 0,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE = 
+	{		
+		DEST_GAP			= 150,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 160,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		MOVE_SPLIT_RANGE	= 600,
+		WALK_INTERVAL		= 3,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 5,
+		UP_JUMP_RATE		= 100, -- 40,
+		UP_DOWN_RATE		= 20,
+		DOWN_JUMP_RATE		= 100,    --  20,
+		DOWN_DOWN_RATE		= 40,
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 100, --50,		
+		PATROL_RANGE			= 300,
+		PATROL_COOL_TIME		= 1,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 500,	-- cm
+		ESCAPE_GAP			= 600,	-- 이 거리 보다 멀어지면 도망 성공
+		
+		WALK_INTERVAL		= 1,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 10,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+	},
+	
+	ESCAPE_CONDITION = 
+	{
+		RATE				= 100, -- 50,
+		MY_HP				= 20,		-- %, 전체 HP에 대해 현재 HP의 비율
+		ESCAPE_RANGE		= 600,		-- 이 범위 안에 들어오면 타격당하지 않아도 RATE에 지정된 확률로 도망
+	}
+}
+
+GLITER_ALCHEMYST_GREAT_BOSS_STAGE2_WAITSTART = 
+{
+	ANIM_NAME					= "WaitStart",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= TRUE,
+	LAND_CONNECT	= FALSE,
+	ADD_ROTATE_Y	= 180,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,	
+	
+	INVINCIBLE	= { 0, 100, },
+	
+	SPEED_X	= 0,
+	SPEED_Y	= 0,
+		
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	SOUND_PLAY1              	= { 0.1, "Hoakin_Voice_Stage02_SummonA01.ogg", 100, FALSE, 100000,}, --예비
+	SOUND_PLAY2              	= { 0.1, "Hoakin_Voice_Stage02_WaitStart01.ogg", 100, FALSE, 100000, }, --예비
+	
+	SOUND_PLAY0              	= { 3.75, "Hoakin_Voice_Stage02_WaitStart01.ogg", 100, FALSE, 100000, },
+		
+	EVENT_PROCESS =
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GLITER_ALCHEMYST_GREAT_BOSS_STAGE2_WAIT",						},
+	},	
+}
+
+function GLITER_ALCHEMYST_GREAT_BOSS_STAGE2_WAITSTART_STATE( pKTDXApp, pX2Game, pNPCUnit )
+	local vPos = pNPCUnit:GetPos()
+	vPos.x = 0
+	vPos.y = 0
+	vPos.z = 0
+	
+	pNPCUnit:SetPositionForce( vPos )
+end
+
+GLITER_ALCHEMYST_GREAT_BOSS_STAGE2_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+	LAND_CONNECT	= FALSE,
+	ADD_ROTATE_Y	= 180,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,	
+	
+	INVINCIBLE	= { 0, 100, },
+	
+	SPEED_X	= 0,
+	SPEED_Y	= 0,
+		
+	IMMADIATE_PACKET_SEND	= TRUE,
+		
+	EVENT_PROCESS =
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GLITER_ALCHEMYST_GREAT_BOSS_STAGE2_SUMMON_A",			"CT_GLITER_ALCHEMYST_GREAT_BOSS_STAGE2_SUMMON_A",	},		
+	},	
+
+	CT_GLITER_ALCHEMYST_GREAT_BOSS_STAGE2_SUMMON_A = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 40,
+	},
+}
+
+GLITER_ALCHEMYST_GREAT_BOSS_STAGE2_SUMMON_A = 
+{
+	ANIM_NAME					= "Summon_A",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= TRUE,
+	LAND_CONNECT	= FALSE,
+	ADD_ROTATE_Y	= 180,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,	
+	
+	INVINCIBLE	= { 0, 100, },
+	
+	SPEED_X	= 0,
+	SPEED_Y	= 0,
+		
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	SOUND_PLAY0              	= { 0.5, "Hoakin_Voice_Stage02_SummonA01.ogg", 50, FALSE, 100000, },
+		
+	EVENT_PROCESS =
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GLITER_ALCHEMYST_GREAT_BOSS_STAGE2_WAIT",						},
+	},	
+}
+
+GLITER_ALCHEMYST_GREAT_BOSS_STAGE2_DYING = 
+{
+	ANIM_NAME					= "Dying",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	    	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	NEVER_MOVE					= TRUE,
+	DYING_END					= TRUE,
+	DYING_SPEED					= 1.0,
+		
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+}
+	
+-------------------------------------------------------------------------------
+function GLITER_ALCHEMYST_GREAT_BOSS_STAGE2_SUMMON_A_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+		
+	local numLiveNpc = pX2Game:LiveNPCNumType_LUA( NPC_UNIT_ID["NUI_CRAZY_PUPPET_DOLL"] )
+	
+	local summonG1 = { 86, 87, 89, 90, 91, 99, 100, 98, 105, 106, 110, 108, 109, 104, 111, 112,	117, 118, 120, 122, 125, 131, 133, 135, 138, 139, 140, 141, 142, 145 }
+
+	if numLiveNpc >= 20 then
+		return
+	end
+	
+	for iStartInx = 1, 20 do
+		local iRand = pNPCUnit:GetRandVal(iStartInx) % 30 +1
+		local iStartPos = summonG1[ iRand ]
+		local vSummonPos = pX2Game:GetLineMap():GetStartPosition( iStartPos )
+		vSummonPos.y = vSummonPos.y + 1000
+		pX2Game:PushCreateNPCReq_Lua( NPC_UNIT_ID["NUI_CRAZY_PUPPET_DOLL"], pNPCUnit:GetHardLevel(), false, vSummonPos, true, 1, true, 0  )
+
+		numLiveNpc = numLiveNpc + 1
+		if numLiveNpc >= 20 then
+			break
+		end
+	end
+
+	pX2Game:FlushCreateNPCReq()
+end
+
+
+

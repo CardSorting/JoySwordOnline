@@ -1,0 +1,441 @@
+Changed database context to 'Game01'.
+CREATE PROCEDURE [dbo].[gup_create_unit]
+	@iUserUID_ [bigint],
+	@strNickName_ [nvarchar](16),
+	@iUnitClass_ [tinyint],
+	@iOK [int] = 0,
+	@iUnitUID [bigint] = 0
+AS
+SET NOCOUNT ON;
+
+DECLARE @bDeleted bit,
+        @iUsSize int,
+        @sdtNow smalldatetime
+,		@iStartSpirit smallint
+,		@sdtNickDate smalldatetime
+--	ì‹ ê·œê³„ì • ìµœì´ˆ ìƒ�ì„± ìº�ë¦­í„°ì—�ê²Œ í��ë¸Œ ì£¼ê¸°
+,		@iPopUp		tinyint
+,		@sdtAccountRegDate	smalldatetime	-- ì‹ ê·œ ê³„ì •ì�˜ ëª¨ë“  ìº�ë¦­í„°ì—�ê²Œ ì�´ë²¤íŠ¸ ì•„ì�´í…œ ì£¼ê¸° ( ë°•ì„¸í›ˆ )
+SELECT @iPopUp = 0
+
+SELECT @sdtAccountRegDate = RegDate FROM Account.dbo.MUser WITH(NOLOCK) WHERE UserUID = @iUserUID_	-- ( ë°•ì„¸í›ˆ )
+
+
+SELECT  @sdtNow = GetDate()
+
+SELECT  @iStartSpirit = StartSpirit
+	FROM dbo.GResurrectionStoneCnt WITH (NOLOCK)
+
+-- ê³„ì •ì�˜ ì‚­ì œì—¬ë¶€ ë°� ìº�ë¦­í„° ìŠ¬ë¡¯ ê°œìˆ˜ ì •ë³´ ì–»ê¸°.
+SELECT @bDeleted = Deleted, @iUsSize = USSize FROM dbo.GUser WITH(NOLOCK) WHERE UserUID = @iUserUID_
+
+IF @bDeleted = 1    -- í•´ë‹¹ UserUIDê°€ ì�´ë¯¸ ì‚­ì œë�œ ê²½ìš°
+    BEGIN    SELECT @iOK = -1    GOTO END_PROC    END
+
+-- í˜„ìž¬ ë³´ìœ í•œ ìº�ë¦­í„° ìˆ˜ê°€ ì�´ë¯¸ ì œí•œì—� ê±¸ë¦° ê²½ìš°
+if (select count(*) from dbo.gunit(NOLOCK) where deleted = 0 and UserUID = @iUserUID_) >= @iUsSize
+    BEGIN    SELECT @iOK = -3    GOTO END_PROC    END
+
+-- ì�¼ì�¼ ìµœëŒ€ ìƒ�ì„±ìˆ˜ì—� ê±¸ë¦¬ëŠ” ê²½ìš°
+--IF ((select count(*) from dbo.gunit with (nolock) where useruid = @iUserUID_ and regdate between convert(nvarchar(10), @sdtNow, 120)+' 00:00:00' and convert(nvarchar(10), @sdtNow, 120)+' 23:59:00') = 4)
+--	BEGIN	SELECT @iOK = -23    GOTO END_PROC    END
+
+-- ë�™ì�¼í•œ ë‹‰ë„¤ìž„ì�´ ì¡´ìž¬í•˜ëŠ” ê²½ìš°
+IF EXISTS(SELECT * FROM dbo.GUnitNickName WITH(NOLOCK) WHERE NickName = @strNickName_)
+    BEGIN    SELECT @iOK = -2    GOTO END_PROC    END
+
+-- ì‚­ì œë�œ ë‹‰ë„¤ìž„ ì¤‘ í•´ë‹¹ ë‹‰ë„¤ìž„ì�´ ì¡´ìž¬í•˜ëŠ” ê²½ìš°
+--	ìˆ˜ì • 1
+IF EXISTS(SELECT * FROM dbo.GDeletedNickNameHistory with (nolock) WHERE NickName = @strNickName_)
+    BEGIN    
+		SELECT TOP 1 @sdtNickDate = RegDate FROM dbo.GDeletedNickNameHistory WHERE NickName = @strNickName_ ORDER BY RegDate DESC
+		IF (DATEADD(DD,-14,@sdtNow) < @sdtNickDate)
+			BEGIN	SELECT @iOK = -222  SELECT @sdtNickDate = DATEADD(DD,14,@sdtNickDate) GOTO END_PROC	END
+	END
+
+IF @iUnitClass_ not in (1, 2, 3, 4, 5, 6, 7, 8)
+	BEGIN
+		SELECT @iOK = -10
+		GOTO END_PROC
+	END
+	
+
+BEGIN TRAN
+
+    -- unit ìƒ�ì„±.
+    INSERT INTO dbo.GUnit( UserUID, UnitClass, [Exp], [Level], GamePoint, BaseHP, AtkPhysic, AtkMagic, DefPhysic, DefMagic, 
+							SPoint, Seceder, RegDate, DelDate, LastPosition  ) -- ë°°í‹€í•„ë“œ ë“¤ì–´ê°€ë©´ LastPosition ë¹¼ì•¼ë�¨
+        SELECT  @iUserUID_, @iUnitClass_, 0, 1, 0, 0, 0, 0, 0, 0,
+                 0, 0, @sdtNow, @sdtNow, 0
+		    
+	IF @@ERROR <> 0 OR @@ROWCOUNT <> 1
+    BEGIN    
+        SELECT @iOK = -11  
+        GOTO FAIL_TRAN    
+    END
+
+    SELECT @iUnitUID = CONVERT(BIGINT, SCOPE_IDENTITY())
+    
+    -- ë§ˆì§€ë§‰ ìœ„ì¹˜ê°’ ì €ìž¥
+    INSERT INTO dbo.GUnitLastPosition( UnitUID, MapID, LastLineIndex, LastPosValue )
+		SELECT @iUnitUID, 2000, 0, 0
+    IF @@ERROR <> 0 OR @@ROWCOUNT <> 1
+    BEGIN    
+        SELECT @iOK = -12 
+        GOTO FAIL_TRAN
+    END
+    
+    INSERT INTO dbo.GUnitNickName( UnitUID, NickName, RegDate )
+        SELECT  @iUnitUID, @strNickName_, @sdtNow
+    IF @@ERROR <> 0 OR @@ROWCOUNT <> 1
+    BEGIN    
+        SELECT @iOK = -13    
+        GOTO FAIL_TRAN
+    END
+
+
+    -- ì»¤ë®¤ë‹ˆí‹° ì˜µì…˜ ìƒ�ì„±
+	INSERT INTO dbo.GDenyOption( UnitUID, QuestionNo, CodeNo )
+        SELECT  @iUnitUID, 1, 1 UNION ALL
+        SELECT  @iUnitUID, 2, 1 UNION ALL
+        SELECT  @iUnitUID, 3, 1 UNION ALL
+        SELECT  @iUnitUID, 4, 1 UNION ALL
+        SELECT  @iUnitUID, 5, 1
+   /*
+ IF @@ERROR <> 0 OR @@ROWCOUNT <> 5
+    BEGIN    
+        SELECT @iOK = -14
+        GOTO FAIL_TRAN
+   
+  END*/
+
+	-- [[ê¸°ë³¸ ìŠ¤í‚¬ ì…‹íŒ…]]
+
+	-- ë¡œìš°ì�˜ í˜¸ì¶œ ê¸°ë³¸ í€˜ìŠ¤íŠ¸ ë„£ê¸°
+/*
+	INSERT INTO dbo.GQuests (UnitUID, QuestID, SubQuest0, SubQuest1, SubQuest2, SubQuest3, SubQuest4, RegDate)
+		SELECT @iUnitUID, 11000, 1,0,0,0,0, @sdtNow
+*/
+
+		-- ê¸°ë³¸ìŠ¤í‚¬ ë“±ë¡�
+	INSERT INTO dbo.GSkill_New( UnitUID, SkillID, [Level], CSP)
+	SELECT @iUnitUID, SkillID, 1, 0
+	FROM GSkill_Default  WITH(NOLOCK)
+	WHERE UnitClass= @iUnitClass_
+		
+	/*IF @@ERROR <> 0 OR @@ROWCOUNT <> 2
+		BEGIN    SELECT @iOK = -16    GOTO FAIL_TRAN    END*/
+
+	-- ê¸°ë³¸ ìŠ¤í‚¬ ìŠ¬ë¡¯ ë“±ë¡�
+	INSERT INTO dbo.GSkillSlot_New( UnitUID, Slot01, Slot02, Slot03, Slot04 )
+	SELECT @iUnitUID, ISNULL([1], 0), ISNULL([2], 0), ISNULL([3], 0), ISNULL([4], 0)
+	FROM (
+		SELECT ROW_NUMBER() OVER(ORDER BY UnitClass) AS SkillNum, SkillID
+		FROM dbo.GSkill_Default WITH(NOLOCK)
+		WHERE UnitClass = @iUnitClass_
+	) AS BASETABLE
+	PIVOT (
+		MAX(SkillID) FOR SkillNum IN ( [1], [2], [3], [4] )
+	) AS PIVOTTABLE
+		
+	/*IF @@ERROR <> 0 OR @@ROWCOUNT <> 1
+		BEGIN    SELECT @iOK = -15    GOTO FAIL_TRAN    END*/
+				
+	INSERT INTO dbo.GItem (UnitUID, ItemID, InventoryCategory, SlotID, UsageType, Quantity, Endurance, Inserted, RegDate)
+	SELECT @iUnitUID, ItemID, InventoryCategory, SlotID, UsageType, Quantity, Endurance, 125, @sdtNow
+	FROM dbo.GBase_Item WITH(NOLOCK)
+	WHERE UnitClass = @iUnitClass_
+
+	/*IF @@ERROR <> 0 OR @@ROWCOUNT <> 10
+		BEGIN    SELECT @iOK = -28    GOTO FAIL_TRAN    END*/
+    
+    
+	----ì—˜ì†Œë“œ
+	IF @iUnitClass_ = 1
+	BEGIN
+		INSERT INTO dbo.GSkill_New( UnitUID, SkillID, [Level], CSP)
+	        SELECT  @iUnitUID, 1001, 1, 0 UNION ALL 
+	        SELECT  @iUnitUID, 1205, 1, 0
+				IF @@ERROR <> 0 OR @@ROWCOUNT <> 2
+					BEGIN    SELECT @iOK = -16    GOTO FAIL_TRAN    END
+
+		INSERT INTO dbo.GSkillSlot_New( UnitUID, Slot01, Slot02, Slot03, Slot04 )
+			SELECT  @iUnitUID, 1001, 1205, 0, 0
+				IF @@ERROR <> 0 OR @@ROWCOUNT <> 1
+					BEGIN    SELECT @iOK = -15    GOTO FAIL_TRAN    END
+					
+		INSERT INTO dbo.GItem (UnitUID, ItemID, InventoryCategory, SlotID, UsageType, Quantity, Endurance, Inserted, RegDate)
+			SELECT @iUnitUID, 128000, 9, 10, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 128001, 9,  2, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 128002, 9,  4, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 128003, 9,  6, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 128004, 9,  8, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 131641, 9,  9, 1, 0, 10000, 125, @sdtNow union all
+			SELECT @iUnitUID, 111094, 9,  1, 1, 0, 10000, 125, @sdtNow union all
+			SELECT @iUnitUID, 111095, 9,  3, 1, 0, 10000, 125, @sdtNow union all
+			SELECT @iUnitUID, 111096, 9,  5, 1, 0, 10000, 125, @sdtNow union all
+			SELECT @iUnitUID, 111097, 9,  7, 1, 0, 10000, 125, @sdtNow 
+
+			
+				IF @@ERROR <> 0 OR @@ROWCOUNT <> 10
+					BEGIN    SELECT @iOK = -28    GOTO FAIL_TRAN    END
+	END
+
+	----ì•„ì�´ìƒ¤
+	IF @iUnitClass_ = 2
+	BEGIN
+		INSERT INTO dbo.GSkill_New( UnitUID, SkillID, [Level], CSP)
+			SELECT  @iUnitUID, 2001, 1, 0 UNION ALL
+			SELECT  @iUnitUID, 2200, 1, 0
+				IF @@ERROR <> 0 OR @@ROWCOUNT <> 2
+					BEGIN    SELECT @iOK = -18    GOTO FAIL_TRAN    END
+
+		INSERT INTO dbo.GSkillSlot_New( UnitUID, Slot01, Slot02, Slot03, Slot04 )
+			SELECT  @iUnitUID, 2001, 2200, 0, 0
+				IF @@ERROR <> 0 OR @@ROWCOUNT <> 1
+					BEGIN    SELECT @iOK = -17    GOTO FAIL_TRAN    END
+
+
+		INSERT INTO dbo.GItem (UnitUID, ItemID, InventoryCategory, SlotID, UsageType, Quantity, Endurance, Inserted, RegDate)
+			SELECT @iUnitUID, 128010, 9, 10, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 128011, 9,  2, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 128012, 9,  4, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 128013, 9,  6, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 128014, 9,  8, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 131642, 9,  9, 1, 0, 10000, 125, @sdtNow union all
+			SELECT @iUnitUID, 111098, 9,  1, 1, 0, 10000, 125, @sdtNow union all
+			SELECT @iUnitUID, 111099, 9,  3, 1, 0, 10000, 125, @sdtNow union all
+			SELECT @iUnitUID, 111100, 9,  5, 1, 0, 10000, 125, @sdtNow union all
+			SELECT @iUnitUID, 111101, 9,  7, 1, 0, 10000, 125, @sdtNow 
+				IF @@ERROR <> 0 OR @@ROWCOUNT <> 10
+				BEGIN    SELECT @iOK = -28    GOTO FAIL_TRAN    END					
+	END
+
+	----ë ˆë‚˜
+	IF @iUnitClass_ = 3
+	BEGIN
+		INSERT INTO dbo.GSkill_New( UnitUID, SkillID, [Level], CSP)
+			SELECT  @iUnitUID, 3001, 1, 0 UNION ALL
+			SELECT  @iUnitUID, 3202, 1, 0
+				IF @@ERROR <> 0 OR @@ROWCOUNT <> 2
+				BEGIN    SELECT @iOK = -20    GOTO FAIL_TRAN    END
+
+		INSERT INTO dbo.GSkillSlot_New( UnitUID, Slot01, Slot02, Slot03, Slot04 )
+			SELECT  @iUnitUID, 3001, 3202, 0, 0
+				IF @@ERROR <> 0 OR @@ROWCOUNT <> 1
+					BEGIN    SELECT @iOK = -19    GOTO FAIL_TRAN    END
+
+		INSERT INTO dbo.GItem (UnitUID, ItemID, InventoryCategory, SlotID, UsageType, Quantity, Endurance, Inserted, RegDate)
+			SELECT @iUnitUID, 128005, 9, 10, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 128006, 9,  2, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 128007, 9,  4, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 128008, 9,  6, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 128009, 9,  8, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 131643, 9,  9, 1, 0, 10000, 125, @sdtNow union all
+			SELECT @iUnitUID, 111102, 9,  1, 1, 0, 10000, 125, @sdtNow union all
+			SELECT @iUnitUID, 111103, 9,  3, 1, 0, 10000, 125, @sdtNow union all
+			SELECT @iUnitUID, 111104, 9,  5, 1, 0, 10000, 125, @sdtNow union all
+			SELECT @iUnitUID, 111105, 9,  7, 1, 0, 10000, 125, @sdtNow
+				IF @@ERROR <> 0 OR @@ROWCOUNT <> 10
+					BEGIN    SELECT @iOK = -28    GOTO FAIL_TRAN    END
+	END
+
+	----ë ˆì�´ë¸�
+	IF @iUnitClass_ = 4
+	BEGIN
+		INSERT INTO dbo.GSkill_New( UnitUID, SkillID, [Level], CSP)
+			SELECT  @iUnitUID, 4000, 1, 0 UNION ALL
+			SELECT  @iUnitUID, 4205, 1, 0
+				IF @@ERROR <> 0 OR @@ROWCOUNT <> 2
+					BEGIN    SELECT @iOK = -25    GOTO FAIL_TRAN    END
+
+		INSERT INTO dbo.GSkillSlot_New( UnitUID, Slot01, Slot02, Slot03, Slot04 )
+			SELECT  @iUnitUID, 4000, 4205, 0, 0
+				IF @@ERROR <> 0 OR @@ROWCOUNT <> 1
+					BEGIN    SELECT @iOK = -24    GOTO FAIL_TRAN    END
+
+		INSERT INTO dbo.GItem (UnitUID, ItemID, InventoryCategory, SlotID, UsageType, Quantity, Endurance, Inserted, RegDate)
+			SELECT @iUnitUID, 128072, 9, 10, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 128073, 9,  2, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 128074, 9,  4, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 128075, 9,  6, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 128076, 9,  8, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 131644, 9,  9, 1, 0, 10000, 125, @sdtNow union all			
+			SELECT @iUnitUID, 111106, 9,  1, 1, 0, 10000, 125, @sdtNow union all
+			SELECT @iUnitUID, 111107, 9,  3, 1, 0, 10000, 125, @sdtNow union all
+			SELECT @iUnitUID, 111108, 9,  5, 1, 0, 10000, 125, @sdtNow union all
+			SELECT @iUnitUID, 111109, 9,  7, 1, 0, 10000, 125, @sdtNow
+			
+				IF @@ERROR <> 0 OR @@ROWCOUNT <> 10
+					BEGIN    SELECT @iOK = -28    GOTO FAIL_TRAN    END	
+	END
+
+
+	----ì�´ë¸Œ
+	IF @iUnitClass_ = 5
+	BEGIN
+		INSERT INTO dbo.GSkill_New( UnitUID, SkillID, [Level], CSP)
+			SELECT  @iUnitUID, 5001, 1, 0 UNION ALL
+			SELECT  @iUnitUID, 5205, 1, 0
+				IF @@ERROR <> 0 OR @@ROWCOUNT <> 2
+					BEGIN    SELECT @iOK = -26    GOTO FAIL_TRAN    END
+
+		INSERT INTO dbo.GSkillSlot_New( UnitUID, Slot01, Slot02, Slot03, Slot04 )
+			SELECT  @iUnitUID, 5001, 5205, 0, 0
+				IF @@ERROR <> 0 OR @@ROWCOUNT <> 1
+					BEGIN    SELECT @iOK = -27    GOTO FAIL_TRAN    END
+					
+		INSERT INTO dbo.GItem (UnitUID, ItemID, InventoryCategory, SlotID, UsageType, Quantity, Endurance, Inserted, RegDate)
+			SELECT @iUnitUID, 130134, 9, 10, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 130135, 9,  2, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 130136, 9,  4, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 130137, 9,  6, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 130138, 9,  8, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 131645, 9,  9, 1, 0, 10000, 125, @sdtNow union all
+			SELECT @iUnitUID, 111110, 9,  1, 1, 0, 10000, 125, @sdtNow union all
+			SELECT @iUnitUID, 111111, 9,  3, 1, 0, 10000, 125, @sdtNow union all
+			SELECT @iUnitUID, 111112, 9,  5, 1, 0, 10000, 125, @sdtNow union all
+			SELECT @iUnitUID, 111113, 9,  7, 1, 0, 10000, 125, @sdtNow
+
+				IF @@ERROR <> 0 OR @@ROWCOUNT <> 10
+					BEGIN    SELECT @iOK = -28    GOTO FAIL_TRAN    END	
+	END
+
+
+	----ì²­
+	IF @iUnitClass_ = 6
+	BEGIN
+		INSERT INTO dbo.GSkill_New( UnitUID, SkillID, [Level], CSP)
+			SELECT  @iUnitUID, 6000, 1, 0 UNION ALL
+			SELECT  @iUnitUID, 6203, 1, 0
+				IF @@ERROR <> 0 OR @@ROWCOUNT <> 2
+					BEGIN    SELECT @iOK = -29    GOTO FAIL_TRAN    END
+
+		INSERT INTO dbo.GSkillSlot_New( UnitUID, Slot01, Slot02, Slot03, Slot04 )
+			SELECT  @iUnitUID, 6000, 6203, 0, 0
+				IF @@ERROR <> 0 OR @@ROWCOUNT <> 1
+					BEGIN    SELECT @iOK = -30    GOTO FAIL_TRAN    END
+					
+		INSERT INTO dbo.GItem (UnitUID, ItemID, InventoryCategory, SlotID, UsageType, Quantity, Endurance, Inserted, RegDate)
+			SELECT @iUnitUID, 133125, 9, 10, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 133126, 9,  2, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 133127, 9,  4, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 133128, 9,  6, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 133129, 9,  8, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 111114, 9,  9, 1, 0, 10000, 125, @sdtNow union all
+			SELECT @iUnitUID, 111115, 9,  1, 1, 0, 10000, 125, @sdtNow union all
+			SELECT @iUnitUID, 111116, 9,  3, 1, 0, 10000, 125, @sdtNow union all
+			SELECT @iUnitUID, 111117, 9,  5, 1, 0, 10000, 125, @sdtNow union all
+			SELECT @iUnitUID, 111118, 9,  7, 1, 0, 10000, 125, @sdtNow 
+			
+			IF @@ERROR <> 0 OR @@ROWCOUNT <> 10
+					BEGIN    SELECT @iOK = -28    GOTO FAIL_TRAN    END
+
+	END					
+	----ì•„ë�¼
+	IF @iUnitClass_ = 7 -- ìž¥ë¹„ ë¹ ì ¸ìžˆê³  ì—�ëŸ¬ë¶€ë¶„ ì²´í�¬í•´ì•¼í•¨
+	BEGIN
+	--	-- ê¸°ë³¸ ìŠ¤í‚¬ ë ˆë²¨ 1 ì°�ì–´ì£¼ê¸°
+		INSERT INTO dbo.GSkill_New( UnitUID, SkillID, [Level], CSP)
+			SELECT  @iUnitUID, 7001, 1, 0 UNION ALL
+			SELECT  @iUnitUID, 7204, 1, 0
+			IF @@ERROR <> 0 OR @@ROWCOUNT <> 2
+					BEGIN    SELECT @iOK = -31    GOTO FAIL_TRAN    END
+
+	--	-- ê¸°ë³¸ ìŠ¤í‚¬ì�„ ìŠ¤í‚¬ ìŠ¬ë¡¯ì—� ìž¥ì°©
+		INSERT INTO dbo.GSkillSlot_New( UnitUID, Slot01, Slot02, Slot03, Slot04 )
+			SELECT  @iUnitUID, 7001, 7204, 0, 0
+				/*IF @@ERROR <> 0 OR @@ROWCOUNT <> 1
+					BEGIN    SELECT @iOK = -32    GOTO FAIL_TRAN    END*/
+	
+	--	-- í”„ë¡œëª¨ì…˜ & ì´ˆë³´ìž�ìš© ìž¥ë¹„ ìž¥ì°©
+		INSERT INTO dbo.GItem (UnitUID, ItemID, InventoryCategory, SlotID, UsageType, Quantity, Endurance, Inserted, RegDate)
+			SELECT @iUnitUID, 41460, 9, 10, 0, 0, -1, 125, @sdtNow union all		-- ì•„ë�¼ í”„ë¡œëª¨ì…˜ ë¬´ê¸°
+		    SELECT @iUnitUID, 41470, 9,  2, 0, 0, -1, 125, @sdtNow union all		-- ì•„ë�¼ í”„ë¡œëª¨ì…˜ ìƒ�ì�˜
+			SELECT @iUnitUID, 41480, 9,  4, 0, 0, -1, 125, @sdtNow union all		-- ì•„ë�¼ í”„ë¡œëª¨ì…˜ í•˜ì�˜
+			SELECT @iUnitUID, 41490, 9,  6, 0, 0, -1, 125, @sdtNow union all		-- ì•„ë�¼ í”„ë¡œëª¨ì…˜ ìž¥ê°‘
+			SELECT @iUnitUID, 41500, 9,  8, 0, 0, -1, 125, @sdtNow union all		-- ì•„ë�¼ í”„ë¡œëª¨ì…˜ ì‹ ë°œ
+			SELECT @iUnitUID, 112700, 9,  9, 1, 0, 10000, 125, @sdtNow union all -- ì´ˆë³´ìž�ìš© ì½”ë³´ ì°½
+			SELECT @iUnitUID, 112701, 9,  1, 1, 0, 10000, 125, @sdtNow union all -- ì´ˆë³´ìž�ìš© ì½”ë³´ ë¬´ë�„ê°€ ìƒ�ì�˜
+			SELECT @iUnitUID, 112702, 9,  3, 1, 0, 10000, 125, @sdtNow union all -- ì´ˆë³´ìž�ìš© ì½”ë³´ ë¬´ë�„ê°€ ë°”ì§€
+			SELECT @iUnitUID, 112703, 9,  5, 1, 0, 10000, 125, @sdtNow union all -- ì´ˆë³´ìž�ìš© ì½”ë³´ ë¬´ë�„ê°€ ìž¥ê°‘
+			SELECT @iUnitUID, 112704, 9,  7, 1, 0, 10000, 125, @sdtNow			-- ì´ˆë³´ìž�ìš© ì½”ë³´ ë¬´ë�„ê°€ ì‹ ë°œ		
+			IF @@ERROR <> 0 OR @@ROWCOUNT <> 10
+					BEGIN    SELECT @iOK = -28    GOTO FAIL_TRAN    END
+		
+	END	
+
+	
+	----ì—˜ë¦¬ì‹œìŠ¤
+	IF @iUnitClass_ = 8
+	BEGIN
+		INSERT INTO dbo.GSkill_New( UnitUID, SkillID, [Level], CSP)
+			SELECT  @iUnitUID, 8001, 1, 0 UNION ALL
+			SELECT  @iUnitUID, 8200, 1, 0
+			IF @@ERROR <> 0 OR @@ROWCOUNT <> 2
+					BEGIN    SELECT @iOK = -31    GOTO FAIL_TRAN    END
+
+		INSERT INTO dbo.GSkillSlot_New( UnitUID, Slot01, Slot02, Slot03, Slot04 )
+			SELECT  @iUnitUID, 8001, 8200, 0, 0
+				IF @@ERROR <> 0 OR @@ROWCOUNT <> 1
+					BEGIN    SELECT @iOK = -32    GOTO FAIL_TRAN    END
+
+		INSERT INTO dbo.GItem (UnitUID, ItemID, InventoryCategory, SlotID, UsageType, Quantity, Endurance, Inserted, RegDate)
+			SELECT @iUnitUID, 77, 9, 2, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 71, 9, 6, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 72, 9, 7, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 73, 9, 8, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 74, 9, 9, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 75, 9, 10, 0, 0, -1, 125, @sdtNow union all
+			SELECT @iUnitUID, 76, 9, 11, 0, 0, -1, 125, @sdtNow
+			IF @@ERROR <> 0 OR @@ROWCOUNT <> 7
+					BEGIN    SELECT @iOK = -28    GOTO FAIL_TRAN    END
+	END
+
+-- ê·¼ì„±ë�„ 
+	INSERT INTO dbo.GSpirit (UnitUID, Spirit, RegDate)
+		SELECT @iUnitUID, @iStartSpirit, @sdtNow
+			/*IF @@ERROR <> 0 OR @@ROWCOUNT <> 1
+					BEGIN    SELECT @iOK = -41    GOTO FAIL_TRAN    END*/
+
+	---- ëŒ€ì „ ê¸°ë³¸ ì •ë³´(ì‹œì¦Œ 2 ì‹œìž‘ì‹œ ì£¼ì„�ì²˜ë¦¬ í•„ìš”)
+	--INSERT INTO dbo.GUnitPVP(UnitUID, OfficialMatchCnt, Rating, MaxRating, RPoint, APoint, IsWinBeforeMatch, Grade, win, lose)
+	--	SELECT @iUnitUID, 0, 250, 250, 0, 0, 0, 0, 0, 0
+	--		IF @@ERROR <> 0 OR @@ROWCOUNT <> 1
+	--				BEGIN    SELECT @iOK = -42    GOTO FAIL_TRAN    END	
+									
+	
+	-- í—¤ë‹ˆë¥´ ë³´ìƒ� ì œí•œ					
+	INSERT INTO dbo.GHenirRewardCnt(UnitUID, NormalCnt, PCBangCnt, EventCnt, LastDate)
+		SELECT @iUnitUID, 0, 0, 0, @sdtNow
+			IF @@ERROR <> 0 OR @@ROWCOUNT <> 1
+					BEGIN    SELECT @iOK = -43    GOTO FAIL_TRAN    END			
+					
+	-- LastGamepoint ì²´í�¬
+	INSERT INTO	dbo.GUnit_LastPoint WITH (UPDLOCK) (UnitUID, Gamepoint, RegDate)
+		SELECT @iUnitUID, 0, @sdtNow
+			IF @@ERROR <> 0 OR @@ROWCOUNT <> 1 
+			BEGIN    SELECT @iOK = -44   GOTO FAIL_TRAN    END
+	
+	-- ëŒ€ì „ ì‹œì¦Œ2 ê¸°ë³¸ ì •ë³´				
+	INSERT INTO dbo.GUnitPVP_Season2 ( UnitUID, OfficialMatchCnt, Rating, MaxRating, RPoint, APoint, IsWinBeforeMatch, Grade, win, lose, KFactor, IsRedistribution, PastSeasonWin )
+		SELECT @iUnitUID, 0, 0, 0, 0, 0, 0, 2, 0, 0, 500, 0, 0	
+			IF @@ERROR <> 0 OR @@ROWCOUNT <> 1 
+			BEGIN    SELECT @iOK = -45   GOTO FAIL_TRAN    END
+		
+	-- SERV_LAUNCH_EVENT
+	-- INSERT INTO [dbo].[GPet_Info]([UnitUID], [PetID], [PetName], [EvolutionStep], [Satiety],
+	-- 		[Intimacy], [Extroversion], [Emotion], [RegDate], [DelDate], [IsCall],
+	-- 		[AutoFeed], [LastFeedDate], [LastcallDate], [PickUP])
+	-- 	VALUES(@iUnitUID, 29, 'Fox', 3, 3840, 534240, -90, -90, GETDATE(), GETDATE(), 1, 0, GETDATE(),
+	-- 		GETDATE(), 0)
+COMMIT TRAN
+
+GOTO END_PROC
+
+FAIL_TRAN:
+ROLLBACK TRAN
+
+END_PROC:
+SELECT @iOK, @iUnitUID, ISNULL(@sdtNickDate,'2000-01-01 00:00')
+

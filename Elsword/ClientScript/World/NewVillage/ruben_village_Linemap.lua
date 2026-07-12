@@ -1,0 +1,169 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+g_pLineMap:SetLandHeight( 0.0 ) 
+--g_pLineMap:SetTeamStartPos( true, D3DXVECTOR3( 488.117, 151.576, -802.246 ), false ) 	 -- default 
+
+g_pLineMap:AddLine_LUA 
+{ 
+	LINE_NUM 		 = 0, 
+	LINE_TYPE 		 = LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP 	 = 0, 
+	STOP_FACTOR 	 = 1, 
+	FOOT_DUST_NAME 	 = "", 
+	BEFORE_LINE		 = -1,
+	NEXT_LINE		 = 1,
+	"START_POS 		 = D3DXVECTOR3(488.117, 151.576, -802.246)", 
+	"END_POS 		 = D3DXVECTOR3(753.641, 151.576, -630.586)", 
+	CAMERA_INDEX	= 0,
+} 
+
+g_pLineMap:AddLine_LUA 
+{ 
+	LINE_NUM 		 = 1, 
+	LINE_TYPE 		 = LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP 	 = 0, 
+	STOP_FACTOR 	 = 1, 
+	FOOT_DUST_NAME 	 = "", 
+	BEFORE_LINE		 = 0,
+	NEXT_LINE		 = 2,
+	"START_POS 		 = D3DXVECTOR3(753.641, 151.576, -630.586)", 
+	"END_POS 		 = D3DXVECTOR3(1171.84, 151.576, -357.139)", 
+} 
+
+g_pLineMap:AddLine_LUA 
+{ 
+	LINE_NUM 		 = 2, 
+	LINE_TYPE 		 = LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP 	 = 0, 
+	STOP_FACTOR 	 = 1, 
+	FOOT_DUST_NAME 	 = "", 
+	BEFORE_LINE		 = 1,
+	NEXT_LINE		 = 3,
+	"START_POS 		 = D3DXVECTOR3(1171.84, 151.576, -357.139)", 
+	"END_POS 		 = D3DXVECTOR3(1496.03, 58.096, -170.904)", 
+} 
+
+g_pLineMap:AddLine_LUA 
+{ 
+	LINE_NUM 		 = 3, 
+	LINE_TYPE 		 = LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP 	 = 0, 
+	STOP_FACTOR 	 = 1, 
+	FOOT_DUST_NAME 	 = "", 
+	BEFORE_LINE		 = 2,
+	NEXT_LINE		 = 4,
+	"START_POS 		 = D3DXVECTOR3(1496.03, 58.096, -170.904)", 
+	"END_POS 		 = D3DXVECTOR3(1837.26, 58.096, -57.968)", 
+} 
+
+g_pLineMap:AddLine_LUA 
+{ 
+	LINE_NUM 		 = 4, 
+	LINE_TYPE 		 = LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP 	 = 0, 
+	STOP_FACTOR 	 = 1, 
+	FOOT_DUST_NAME 	 = "", 
+	BEFORE_LINE		 = 3,
+	NEXT_LINE		 = 5,
+	"START_POS 		 = D3DXVECTOR3(1837.26, 58.096, -57.968)", 
+	"END_POS 		 = D3DXVECTOR3(2558.05, 58.096, 0.0)", 
+} 
+
+g_pLineMap:AddLine_LUA 
+{ 
+	LINE_NUM 		 = 5, 
+	LINE_TYPE 		 = LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP 	 = 0, 
+	STOP_FACTOR 	 = 1, 
+	FOOT_DUST_NAME 	 = "", 
+	BEFORE_LINE		 = 4,
+	NEXT_LINE		 = 6,
+	"START_POS 		 = D3DXVECTOR3(2558.05, 58.096, 0.0)", 
+	"END_POS 		 = D3DXVECTOR3(2607.55, 68.122, 0.0)", 
+} 
+
+g_pLineMap:AddLine_LUA 
+{ 
+	LINE_NUM 		 = 6, 
+	LINE_TYPE 		 = LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP 	 = 0, 
+	STOP_FACTOR 	 = 1, 
+	FOOT_DUST_NAME 	 = "", 
+	BEFORE_LINE		 = 5,
+	NEXT_LINE		 = 7,
+	"START_POS 		 = D3DXVECTOR3(2607.55, 68.122, 0.0)", 
+	"END_POS 		 = D3DXVECTOR3(3662.35, 68.122, 0.0)", 
+} 
+
+g_pLineMap:AddLine_LUA 
+{ 
+	LINE_NUM 		 = 7, 
+	LINE_TYPE 		 = LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP 	 = 0, 
+	STOP_FACTOR 	 = 1, 
+	FOOT_DUST_NAME 	 = "", 
+	BEFORE_LINE		 = 6,
+	NEXT_LINE		 = 8,
+	"START_POS 		 = D3DXVECTOR3(3662.35, 68.122, 0.0)", 
+	"END_POS 		 = D3DXVECTOR3(3724.62, 58.096, 0.0)", 
+} 
+
+g_pLineMap:AddLine_LUA 
+{ 
+	LINE_NUM 		 = 8, 
+	LINE_TYPE 		 = LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP 	 = 0, 
+	STOP_FACTOR 	 = 1, 
+	FOOT_DUST_NAME 	 = "", 
+	BEFORE_LINE		 = 7,
+	NEXT_LINE		 = 9,
+	"START_POS 		 = D3DXVECTOR3(3724.62, 58.096, 0.0)", 
+	"END_POS 		 = D3DXVECTOR3(4258.34, 58.096, -43.982)", 
+} 
+
+g_pLineMap:AddLine_LUA 
+{ 
+	LINE_NUM 		 = 9, 
+	LINE_TYPE 		 = LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP 	 = 0, 
+	STOP_FACTOR 	 = 1, 
+	FOOT_DUST_NAME 	 = "", 
+	BEFORE_LINE		 = 8,
+	NEXT_LINE		 = 10,
+	"START_POS 		 = D3DXVECTOR3(4258.34, 58.096, -43.982)", 
+	"END_POS 		 = D3DXVECTOR3(5015.84, 58.096, -253.647)", 
+} 
+
+g_pLineMap:AddLine_LUA 
+{ 
+	LINE_NUM 		 = 10, 
+	LINE_TYPE 		 = LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP 	 = 0, 
+	STOP_FACTOR 	 = 1, 
+	FOOT_DUST_NAME 	 = "", 
+	BEFORE_LINE		 = 9,
+	NEXT_LINE		 = 11,
+	"START_POS 		 = D3DXVECTOR3(5015.84, 58.096, -253.647)", 
+	"END_POS 		 = D3DXVECTOR3(5239.35, 123.391, -342.855)", 
+} 
+
+g_pLineMap:AddLine_LUA 
+{ 
+	LINE_NUM 		 = 11, 
+	LINE_TYPE 		 = LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP 	 = 0, 
+	STOP_FACTOR 	 = 1, 
+	FOOT_DUST_NAME 	 = "", 
+	BEFORE_LINE		 = 10,
+	NEXT_LINE		 = -1,
+	"START_POS 		 = D3DXVECTOR3(5239.35, 123.391, -342.855)", 
+	"END_POS 		 = D3DXVECTOR3(5643.99, 123.391, -616.398)", 
+} 
+
+g_pLineMap:AddCameraData_LUA	
+{
+	FOCUS_UNIT 	= FALSE,
+	"EYE_POS	= D3DXVECTOR3  ( 1297.866, 450.248, -1524.842 )", 
+	"LOOKAT_POS	= D3DXVECTOR3  ( 748.92, 58.069, -306.432 )", 
+	
+}
+

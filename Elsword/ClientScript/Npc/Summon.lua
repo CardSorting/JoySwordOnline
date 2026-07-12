@@ -1,0 +1,1386 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+-- Summon.lua
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 80.0,
+	UNIT_HEIGHT		= 200.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+		"Summon_Smash.ogg",
+		"Summon_Walk.ogg",
+		"Summon_Land.ogg",
+		"Summon_Smash2.ogg",
+		"Summon_Scream1.ogg",
+		
+	},
+	
+	
+	
+	
+	READY_XSKIN_MESH = 
+	{
+	},
+	
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_Summon.x",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 300,
+	RUN_SPEED			= 600,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 1800,
+}
+
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 100000,
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	
+	USE_SLASH_TRACE		= TRUE,
+
+	SLASH_TRACE_TOP_BONE		= "TRACE_START0",
+	SLASH_TRACE_BOTTOM_BONE		= "TRACE_END0",
+
+	
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	--MIND_FLAG_HEIGHT		= 230,
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	--RAGE_COUNT_MAX		= 20,
+	--RAGE_TIME_MAX		= 5,
+
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	
+	FALL_DOWN			= TRUE,
+		
+	DIE_FLY             = 0,
+
+	
+
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "SUMMON_START",						},
+	
+	{ STATE_NAME = "SUMMON_WAIT",						},
+	{ STATE_NAME = "SUMMON_WAIT_DISABLE",				},
+	{ STATE_NAME = "SUMMON_WAIT_START",					},
+	{ STATE_NAME = "SUMMON_WAIT_HABIT",					},
+	
+	{ STATE_NAME = "SUMMON_WALK",						LUA_STATE_END_FUNC = "SUMMON_WALK_STATE_END"						},
+	
+	
+	
+	{ STATE_NAME = "SUMMON_JUMP_READY",					},
+	{ STATE_NAME = "SUMMON_JUMP_READY_DIR",				},
+	{ STATE_NAME = "SUMMON_JUMP_UP",					},
+	{ STATE_NAME = "SUMMON_JUMP_DOWN",					LUA_STATE_END_FUNC = "SUMMON_JUMP_DOWN_STATE_END"					},
+	{ STATE_NAME = "SUMMON_JUMP_UP_DIR",				},
+	{ STATE_NAME = "SUMMON_JUMP_DOWN_DIR",				LUA_STATE_END_FUNC = "SUMMON_JUMP_DOWN_DIR_STATE_END"				},
+	{ STATE_NAME = "SUMMON_JUMP_LANDING",				},
+	
+	{ STATE_NAME = "SUMMON_ATTACK",						STATE_COOL_TIME	= 10,												},
+	
+	
+	
+	
+	--리액션 관련
+	{ STATE_NAME = "SUMMON_DAMAGE_SMALL",				LUA_FRAME_MOVE_FUNC = "SUMMON_DAMAGE_SMALL_FRAME_MOVE"				},
+	{ STATE_NAME = "SUMMON_DAMAGE_BIG",					LUA_FRAME_MOVE_FUNC = "SUMMON_DAMAGE_BIG_FRAME_MOVE"				},
+	{ STATE_NAME = "SUMMON_DAMAGE_DOWN_FRONT",			LUA_FRAME_MOVE_FUNC = "SUMMON_DAMAGE_DOWN_FRONT_FRAME_MOVE"			},
+	{ STATE_NAME = "SUMMON_DAMAGE_DOWN_BACK",			LUA_FRAME_MOVE_FUNC = "SUMMON_DAMAGE_DOWN_BACK_FRAME_MOVE"			},
+	{ STATE_NAME = "SUMMON_DAMAGE_FLY_FRONT",			},
+	{ STATE_NAME = "SUMMON_DAMAGE_FLY_BACK",			},
+	{ STATE_NAME = "SUMMON_DAMAGE_AIR",					},
+	{ STATE_NAME = "SUMMON_DAMAGE_AIR_DOWN",			},
+	{ STATE_NAME = "SUMMON_DAMAGE_AIR_UP",				},
+	{ STATE_NAME = "SUMMON_DAMAGE_AIR_FALL",			},	
+	{ STATE_NAME = "SUMMON_DAMAGE_AIR_DOWN_LANDING",	LUA_FRAME_MOVE_FUNC = "SUMMON_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE"	},
+	{ STATE_NAME = "SUMMON_STAND_UP_FRONT",				},
+	{ STATE_NAME = "SUMMON_STAND_UP_BACK",				},
+	{ STATE_NAME = "SUMMON_STAND_UP_ATTACK_FRONT",		LUA_FRAME_MOVE_FUNC = "SUMMON_STAND_UP_ATTACK_FRONT_FRAME_MOVE"		},
+	{ STATE_NAME = "SUMMON_STAND_UP_ATTACK_BACK",		LUA_FRAME_MOVE_FUNC = "SUMMON_STAND_UP_ATTACK_BACK_FRAME_MOVE"		},
+	
+	{ STATE_NAME = "SUMMON_DYING_LAND_FRONT",			LUA_STATE_START_FUNC = "SUMMON_DYING_LAND_STATE_START",},
+	{ STATE_NAME = "SUMMON_DYING_LAND_BACK",			LUA_STATE_START_FUNC = "SUMMON_DYING_LAND_STATE_START",},
+	{ STATE_NAME = "SUMMON_DYING_SKY",					LUA_STATE_START_FUNC = "SUMMON_DYING_LAND_STATE_START",},
+	
+	{ STATE_NAME = "SUMMON_WIN", 						},
+	
+	
+	START_STATE					= "SUMMON_START",
+	WAIT_STATE					= "SUMMON_WAIT",
+
+	SMALL_DAMAGE_LAND_FRONT		= "SUMMON_DAMAGE_SMALL",
+	SMALL_DAMAGE_LAND_BACK		= "SUMMON_DAMAGE_SMALL",
+	BIG_DAMAGE_LAND_FRONT		= "SUMMON_DAMAGE_BIG",
+	BIG_DAMAGE_LAND_BACK		= "SUMMON_DAMAGE_BIG",
+	
+	DOWN_DAMAGE_LAND_FRONT		= "SUMMON_DAMAGE_BIG",
+	DOWN_DAMAGE_LAND_BACK		= "SUMMON_DAMAGE_BIG",
+	FLY_DAMAGE_FRONT			= "SUMMON_DAMAGE_BIG",
+	FLY_DAMAGE_BACK				= "SUMMON_DAMAGE_BIG",
+	SMALL_DAMAGE_AIR			= "SUMMON_DAMAGE_BIG",	
+	BIG_DAMAGE_AIR				= "SUMMON_DAMAGE_BIG",
+	DOWN_DAMAGE_AIR				= "SUMMON_DAMAGE_BIG",
+	DOWN_DAMAGE_AIR_LANDING				= "SUMMON_DAMAGE_AIR_DOWN_LANDING",
+	UP_DAMAGE					= "SUMMON_DAMAGE_BIG",
+	DAMAGE_REVENGE				= "SUMMON_DAMAGE_BIG",
+	
+	DAMAGE_EXTRA_STATES         = { "SUMMON_DAMAGE_DOWN_FRONT","SUMMON_DAMAGE_DOWN_BACK","SUMMON_DAMAGE_FLY_FRONT","SUMMON_DAMAGE_FLY_BACK",
+	"SUMMON_DAMAGE_AIR","SUMMON_DAMAGE_AIR_DOWN","SUMMON_DAMAGE_AIR_UP","SUMMON_DAMAGE_AIR_FALL","SUMMON_STAND_UP_FRONT","SUMMON_STAND_UP_BACK",
+		"SUMMON_STAND_UP_ATTACK_FRONT","SUMMON_STAND_UP_ATTACK_BACK","SUMMON_JUMP_DOWN","SUMMON_JUMP_LANDING",},	
+
+	
+	
+--[[
+	DOWN_DAMAGE_LAND_FRONT		= "SUMMON_DAMAGE_DOWN_FRONT",
+	DOWN_DAMAGE_LAND_BACK		= "SUMMON_DAMAGE_DOWN_BACK",
+	FLY_DAMAGE_FRONT			= "SUMMON_DAMAGE_FLY_FRONT",
+	FLY_DAMAGE_BACK				= "SUMMON_DAMAGE_FLY_BACK",
+	SMALL_DAMAGE_AIR			= "SUMMON_DAMAGE_AIR",	
+	BIG_DAMAGE_AIR				= "SUMMON_DAMAGE_AIR",
+	DOWN_DAMAGE_AIR				= "SUMMON_DAMAGE_AIR_DOWN",
+	DOWN_DAMAGE_AIR_LANDING				= "SUMMON_DAMAGE_AIR_DOWN_LANDING",
+	UP_DAMAGE					= "SUMMON_DAMAGE_AIR_UP",
+	DAMAGE_REVENGE				= "SUMMON_DAMAGE_SMALL",
+--]]	
+	
+	DYING_LAND_FRONT			= "SUMMON_DYING_LAND_FRONT",
+	DYING_LAND_BACK				= "SUMMON_DYING_LAND_BACK",
+	DYING_SKY					= "SUMMON_DYING_SKY",
+
+	REVENGE_ATTACK				= "",	
+}
+
+
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 3,		-- sec
+		TARGET_NEAR_RANGE			= 150,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 800,		-- cm
+		TARGET_LOST_RANGE			= 1200,		-- cm
+		TARGET_SUCCESS_RATE			= 100,  --50,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 30,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 100, -- 30,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 600,
+		DEST_GAP			= 150,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 160,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		WALK_INTERVAL		= 3,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 5,
+		UP_JUMP_RATE		= 100, -- 40,
+		UP_DOWN_RATE		= 20,
+		DOWN_JUMP_RATE		= 100,    --  20,
+		DOWN_DOWN_RATE		= 40,
+		
+		LINE_END_RANGE		= 80,	-- cm
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 100, --50,		
+		PATROL_RANGE			= 200,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 500,	-- cm
+		ESCAPE_GAP			= 600,	-- 이 거리 보다 멀어지면 도망 성공
+		
+		WALK_INTERVAL		= 1.5,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 10,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+		
+		LINE_END_RANGE		= 80,	-- cm
+	},
+
+}
+
+
+SUMMON_START = 
+{
+	ANIM_NAME					= "WaitStart",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,	
+	
+
+	DEFENCE						= { 0, 100, 99, },
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"SUMMON_WAIT",		"CT_SUMMON_WAIT"				},
+	},
+	
+	CT_SUMMON_WAIT = 
+	{
+		STATE_TIME_OVER			= 3,
+	},
+}
+
+
+SUMMON_WIN = 
+{
+	ANIM_NAME					= "WaitHabit", -- fix!!
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+
+	DEFENCE						= { 0, 100, 99, },
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+
+	RIGHT						= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	TALK_BOX =
+ 	{
+		{ RATE = 40, MESSAGE = STR_ID_1658 },
+	},
+}
+
+
+SUMMON_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+
+	DEFENCE						= { 0, 100, 99, },	
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	PASSIVE_SPEED_X				= 0,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"SUMMON_WIN",						"CF_SUMMON_WIN",	},	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_JUMP_DOWN",					},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SUMMON_ATTACK",					"CT_SUMMON_ATTACK",				},
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SUMMON_WAIT_HABIT",				"CT_SUMMON_WAIT_HABIT",		},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SUMMON_WAIT_START",				"CT_SUMMON_WAIT_START",		},
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"SUMMON_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"SUMMON_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"SUMMON_JUMP_READY",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"SUMMON_JUMP_READY_DIR",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"SUMMON_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"SUMMON_JUMP_DOWN_DIR",				},
+	},
+	
+	
+	CT_SUMMON_ATTACK = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 600,
+		RATE						= 50,
+	},
+	
+	CT_SUMMON_WAIT_HABIT = 
+	{
+		ANIM_PLAY_COUNT				= 5,
+		RATE						= 60,
+		HAVE_TARGET					= 0,		-- false
+	},
+	
+	CT_SUMMON_WAIT_START = 
+	{
+		ANIM_PLAY_COUNT				= 5,
+		RATE						= 60,
+		HAVE_TARGET					= 0,		-- false
+	},
+	
+    TALK_BOX =
+	{
+		EVENT_INTERVAL_ID			= 0,
+ 		{ RATE = 10,		MESSAGE = STR_ID_1659 },
+ 	},
+		
+}
+
+SUMMON_WAIT_DISABLE = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+
+	DEFENCE						= { 0, 100, 99, },	
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	PASSIVE_SPEED_X				= 0,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		
+	},		
+}
+
+
+SUMMON_WAIT_START = 
+{
+	ANIM_NAME					= "WaitStart",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,	
+
+	DEFENCE						= { 0, 100, 99, },
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"SUMMON_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"SUMMON_WAIT",					},
+	},
+	
+	TALK_BOX =
+	{
+		EVENT_INTERVAL_ID			= 0,
+ 		{ RATE = 30, MESSAGE = STR_ID_2567 },
+ 	},
+
+}
+
+
+SUMMON_WAIT_HABIT = 
+{
+	ANIM_NAME					= "WaitHabit",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	DEFENCE						= { 0, 100, 99, },
+
+    SOUND_PLAY0			= { 1.320, "Summon_Smash2.ogg" },
+    SOUND_PLAY1			= { 2.098, "Summon_Scream1.ogg" },
+	
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SUMMON_WAIT",						},
+	},
+	
+	TALK_BOX =
+ 	{
+		{ RATE = 20, MESSAGE = STR_ID_1470 },
+	},
+}
+
+
+SUMMON_WALK = 
+{
+	ANIM_SPEED 					= 1.6,
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	DEFENCE						= { 0, 100, 99, },
+
+    SOUND_PLAY0			= { 0.119, "Summon_Walk.ogg" },
+    SOUND_PLAY1			= { 1.093, "Summon_Walk.ogg" },
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	EVENT_INTERVAL_TIME1		= 3,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"SUMMON_WIN",						"CF_SUMMON_WIN",	},	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_JUMP_DOWN_DIR",										},
+				
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SUMMON_ATTACK",					"CT_SUMMON_ATTACK",				},
+		
+	
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"SUMMON_WAIT",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"SUMMON_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"SUMMON_JUMP_READY",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"SUMMON_JUMP_READY_DIR",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"SUMMON_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"SUMMON_JUMP_DOWN_DIR",				},
+	},
+	
+	
+	CT_SUMMON_ATTACK = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 600,
+		RATE						= 50,
+	},
+		
+	
+	TALK_BOX =
+ 	{
+ 		EVENT_INTERVAL_ID		= 1,
+		{ RATE = 10, MESSAGE = STR_ID_2574 },
+		{ RATE = 10, MESSAGE = STR_ID_1472 },
+	},
+}
+
+
+
+SUMMON_JUMP_READY = 
+{
+	ANIM_NAME					= "JumpReady",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	DEFENCE						= { 0, 100, 99, },
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SUMMON_JUMP_UP",					},		
+	},
+}
+
+
+SUMMON_JUMP_READY_DIR = 
+{
+	ANIM_NAME					= "JumpReady",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+		
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	DEFENCE						= { 0, 100, 99, },
+
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_JUMP_DOWN_DIR",			},	
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SUMMON_JUMP_UP_DIR",				},
+	},
+}
+
+SUMMON_JUMP_UP = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	DEFENCE						= { 0, 100, 99, },	
+
+	SPEED_X						= 0,
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	
+	ADD_POS_Y					= 45, 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"SUMMON_JUMP_DOWN",			},
+	},
+}
+
+SUMMON_JUMP_DOWN = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	DEFENCE						= { 0, 100, 99, },		 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"SUMMON_JUMP_LANDING",				},
+	},
+}
+
+SUMMON_JUMP_UP_DIR = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	DEFENCE						= { 0, 100, 99, },
+		
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	
+	ADD_POS_Y					= 45, 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"SUMMON_JUMP_DOWN_DIR",				},
+	},
+}
+
+SUMMON_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	DEFENCE						= { 0, 100, 99, },
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"SUMMON_JUMP_LANDING",				},
+	},
+}
+
+SUMMON_JUMP_LANDING = 
+{
+	ANIM_NAME					= "JumpLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	DEFENCE						= { 0, 100, 99, },
+
+    SOUND_PLAY0			= { 0.003, "Summon_Land.ogg" },
+	
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+		
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SUMMON_WAIT",						},
+	},
+}
+
+
+
+SUMMON_ATTACK = 
+{
+	ANIM_NAME					= "Attack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	DEFENCE						= { 0, 100, 99, },
+
+	SPEED_X						= INIT_PHYSIC["RUN_SPEED"],
+	SPEED_Y						= 0,	
+
+    SOUND_PLAY0			= { 0.804, "Summon_Smash.ogg" },
+
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	TALK_BOX = 
+	{
+		{ RATE = 10, MESSAGE = STR_ID_1473 },
+		{ RATE = 10, MESSAGE = STR_ID_1474 },
+	},
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_JUMP_DOWN",							},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SUMMON_WAIT",								},
+	},
+	
+	ATTACK_TIME0				= { 0.73, 0.89, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+		
+		BACK_SPEED_X			= 300,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+}
+
+
+SUMMON_DAMAGE_SMALL = 
+{
+	ANIM_NAME					= "DamageSmall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	DEFENCE						= { 0, 100, 99, },
+	
+	TALK_BOX = 
+	{
+		{ RATE = 10, MESSAGE = STR_ID_1475 },
+	},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"SUMMON_WAIT",												},
+	},
+}
+
+SUMMON_DAMAGE_BIG = 
+{
+	ANIM_NAME					= "DamageSmall",				-- fix!!
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	DEFENCE						= { 0, 100, 99, },	
+	
+	PASSIVE_SPEED_Y				= 0,	-- fix!! 일단 안뜨게 
+	SPEED_Y						= 0,
+	
+	TALK_BOX = 
+	{
+		{ RATE = 10, MESSAGE = STR_ID_1476 },
+	},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"SUMMON_WAIT",												},
+	},
+}
+
+
+
+
+
+
+
+SUMMON_DAMAGE_DOWN_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront",	
+		
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	DEFENCE						= { 0, 100, 99, },
+	
+	TALK_BOX = 
+	{
+		{ RATE = 10, MESSAGE = STR_ID_2568 },
+		{ RATE = 10, MESSAGE = STR_ID_2569 },
+	},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"SUMMON_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"SUMMON_STAND_UP_FRONT",			},
+	},
+}
+
+SUMMON_DAMAGE_DOWN_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	DEFENCE						= { 0, 100, 99, },
+
+	TALK_BOX = 
+	{
+		{ RATE = 10, MESSAGE = STR_ID_2568 },
+		{ RATE = 10, MESSAGE = STR_ID_2569 },
+	},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"SUMMON_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"SUMMON_STAND_UP_BACK",			},
+	},
+}
+
+SUMMON_DAMAGE_FLY_FRONT = 
+{
+	ANIM_NAME					= "DamageAirFall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	DEFENCE						= { 0, 100, 99, },
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"SUMMON_DAMAGE_AIR_DOWN_LANDING",		},
+	},
+}
+
+SUMMON_DAMAGE_FLY_BACK = 
+{
+	ANIM_NAME					= "DamageAirUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	DEFENCE						= { 0, 100, 99, },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"SUMMON_DAMAGE_DOWN_BACK",		},
+	},
+}
+
+SUMMON_DAMAGE_AIR = 
+{
+	ANIM_NAME					= "DamageAirSmall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	DEFENCE						= { 0, 100, 99, },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"SUMMON_WAIT",					},
+	},
+}
+
+SUMMON_DAMAGE_AIR_DOWN = 
+{
+	ANIM_NAME					= "DamageAirDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	DEFENCE						= { 0, 100, 99, },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"SUMMON_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+SUMMON_DAMAGE_AIR_UP = 
+{
+	ANIM_NAME					= "DamageAirUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	DEFENCE						= { 0, 100, 99, },	
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"SUMMON_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"SUMMON_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_2568 },
+		{ RATE = 10, MESSAGE = STR_ID_2569 },
+	},
+}
+
+SUMMON_DAMAGE_AIR_FALL = 
+{
+	ANIM_NAME					= "DamageAirFall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	DEFENCE						= { 0, 100, 99, },	
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_POSITIVE_Y_SPEED"],		"SUMMON_DAMAGE_AIR_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"SUMMON_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+SUMMON_DAMAGE_AIR_DOWN_LANDING = 
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	DEFENCE						= { 0, 100, 99, },	
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SUMMON_STAND_UP_ATTACK_FRONT",	"CT_SUMMON_STAND_UP_ATTACK_FRONT", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SUMMON_STAND_UP_FRONT",			},
+	},
+	
+	CT_SUMMON_STAND_UP_ATTACK_FRONT = 
+	{
+		ANIM_PLAY_COUNT		= 1,
+		RATE				= 20,
+	},
+}
+
+SUMMON_STAND_UP_FRONT = 
+{
+	ANIM_NAME					= "DamageStandUpFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 99, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SUMMON_WAIT",				},
+	},
+}
+
+SUMMON_STAND_UP_BACK = 
+{
+	ANIM_NAME					= "DamageStandUpBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 99, },
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SUMMON_WAIT", },
+	},		
+}
+
+SUMMON_STAND_UP_ATTACK_FRONT = 
+{
+	ANIM_NAME					= "StandUpAttackFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	ANIM_WAIT_TIME				= 1,
+	MIND_FLAG					= MIND_FLAG["MF_STAND_UP_ATTACK"],
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	DEFENCE						= { 0, 100, 99, },
+
+--    SOUND_PLAY0			= { 0.234, "LizardHigh_Slash1.ogg" },
+
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SUMMON_WAIT",				},
+	},
+		
+	ATTACK_TIME0				= { 0.2, 0.27, },	
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+			FIRE		= 0.0,
+			ICE			= 0.0,
+			EARTH		= 0.0,
+			LIGHTNING	= 0.0,
+			DARK		= 0.0,
+			LIGHT		= 0.0,
+			UNIVERSAL	= 0.0,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		STOP_TIME_ATT			= 0.0,		
+		STOP_TIME_DEF			= 0.0,	
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 0.0,	
+		CLEAR_SCREEN_COLOR_A	= 0.0,
+		CLEAR_SCREEN_COLOR_R	= 1.0,
+		CLEAR_SCREEN_COLOR_G	= 1.0,
+		CLEAR_SCREEN_COLOR_B	= 1.0,
+
+		RE_ATTACK				= FALSE,		
+		HIT_GAP					= 0.0,				
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_2568 },
+	},
+	
+}
+
+SUMMON_STAND_UP_ATTACK_BACK = 
+{
+	ANIM_NAME					= "StandUpAttackBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	ANIM_WAIT_TIME				= 1,
+	MIND_FLAG					= MIND_FLAG["MF_STAND_UP_ATTACK"],
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	DEFENCE						= { 0, 100, 99, },
+
+--    SOUND_PLAY0			= { 0.420, "LizardHigh_Slash1.ogg" },
+
+	
+	FLIP_DIR_END				= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SUMMON_WAIT", },
+	},	
+	
+		
+	ATTACK_TIME0				= { 0.4, 0.47, },	
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+			FIRE		= 0.0,
+			ICE			= 0.0,
+			EARTH		= 0.0,
+			LIGHTNING	= 0.0,
+			DARK		= 0.0,
+			LIGHT		= 0.0,
+			UNIVERSAL	= 0.0,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		STOP_TIME_ATT			= 0.0,		
+		STOP_TIME_DEF			= 0.0,	
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 0.0,	
+		CLEAR_SCREEN_COLOR_A	= 0.0,
+		CLEAR_SCREEN_COLOR_R	= 1.0,
+		CLEAR_SCREEN_COLOR_G	= 1.0,
+		CLEAR_SCREEN_COLOR_B	= 1.0,
+
+		RE_ATTACK				= FALSE,		
+		HIT_GAP					= 0.0,				
+	},
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_1477 },
+
+	},
+}
+
+
+SUMMON_DYING_LAND_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+	
+SUMMON_DYING_LAND_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+SUMMON_DYING_SKY = 
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+
+
+
+
+
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+
+
+function CF_SUMMON_WIN( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pX2Game:LiveUserUnitNum() == 0 then
+		return true
+	else
+		return false
+	end
+
+end
+
+
+
+
+
+
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+
+
+
+
+function SUMMON_WALK_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+
+
+function SUMMON_JUMP_DOWN_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+function SUMMON_JUMP_DOWN_DIR_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+
+
+
+
+
+
+function SUMMON_DAMAGE_SMALL_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.047 ) then
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function SUMMON_DAMAGE_BIG_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.06 ) then
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function SUMMON_DAMAGE_DOWN_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.41 ) then
+		
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+
+end
+
+function SUMMON_DAMAGE_DOWN_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.45 ) then
+		
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+
+end
+
+function SUMMON_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+		
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pos = pNPCUnit:GetLandPosition_LUA()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+		pos.y = pos.y + 5
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "GroundShockWave", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(1,-1) )
+		pParticle = pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "AirDownTick", pNPCUnit:GetPos(), D3DXVECTOR2(200,200), D3DXVECTOR2(10,-1) )
+		if pParticle ~= nil then
+			pParticle:SetLandPosition( pos.y - 5 )
+		end
+		
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 500 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 0.1 )
+		end		
+		
+	elseif pNPCUnit:AnimEventTimer_LUA( 0.1 ) then
+		
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+		
+	end
+
+end
+
+function SUMMON_STAND_UP_ATTACK_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.35 ) then
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function SUMMON_STAND_UP_ATTACK_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.35 ) then
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+
+
+
+
+
+function SUMMON_DYING_LAND_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	pos = pNPCUnit:GetPos()
+	pos.y = pos.y + 100.0
+	GetMinorParticle = pX2Game:GetMinorParticle()
+	
+	pSeq = GetMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DieLight",		pos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+	if pSeq ~= nil then
+	
+		pSeq:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+		pNPCUnit:SetDieSeq( pSeq:GetHandle() )
+	
+	end
+	pNPCUnit:PlaySound_LUA( "DieLight.ogg" )
+	
+end
+
+

@@ -1,0 +1,99 @@
+=== gup_get_unit_info_by_useruid ===
+Changed database context to 'Game01'.
+CREATE PROCEDURE [dbo].[gup_get_unit_info_by_useruid]
+	@iUserUID_ [bigint]
+AS
+SET NOCOUNT ON;
+
+SELECT  a.UnitUID
+,       a.UnitClass
+,       a.[Exp]
+,       a.[Level]
+,       a.GamePoint
+,		c.Rating
+,       a.BaseHP
+,       a.AtkPhysic
+,       a.AtkMagic
+,       a.DefPhysic
+,       a.DefMagic
+,       a.SPoint
+,		CASE WHEN b.NickName LIKE '%[_]%' THEN '__DELETED__' ELSE b.NickName END
+,       a.LastPosition
+    FROM dbo.GUnit as a WITH(NOLOCK)
+		JOIN dbo.GUnitPVP AS c WITH (NOLOCK) ON a.UnitUID = c.UnitUID
+        JOIN dbo.GUnitNickName as b WITH(NOLOCK)
+            ON a.UserUID = @iUserUID_ AND a.Deleted = 0 AND a.UnitUID = b.UnitUID --∞é¡∞á£δÉ£ ∞£á∞áÇ ∞áòδ│┤ ∞¥╜∞û┤Ω░êΩ╣îδ┤É...
+				ORDER BY a.LastDate DESC
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ∞║Éδª¡φä░ ∞é¡∞á£ φöäδí£∞ä╕∞èñ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+SELECT A.UnitUID, A.UnitClass, A.[Exp], A.[Level], A.GamePoint
+	, D.Rating
+	, A.BaseHP, A.AtkPhysic, A.AtkMagic, A.DefPhysic, A.DefMagic, A.SPoint, B.NickName
+	, A.LastPosition
+	, A.LastDate												--$$∞ä£δ▓ä∞ùÉ∞ä£ ∞║Éδª¡φä░ φæ£∞ï£ ∞ê£∞ä£δÑ╝ ∞áòφòÿΩ╕░ ∞£äφò┤ ∞╢öΩ░Ç(Maxpia)
+	, A.Deleted, C.DelAbleDate, C.RestoreAbleDate				-- ∞║Éδª¡φä░ ∞é¡∞á£ δîÇΩ╕░ ∞╢öΩ░Çδí£ ∞╢öΩ░Ç(Maxpia)
+	FROM dbo.GUnit AS A WITH(NOLOCK)
+	JOIN dbo.GUnitNickName AS B WITH(NOLOCK)
+		ON A.UnitUID = B.UnitUID
+	LEFT OUTER JOIN dbo.GUnitWaitDelete AS C WITH(NOLOCK)
+		ON A.UnitUID = C.UnitUID
+	JOIN dbo.GUnitPVP AS D WITH(NOLOCK)
+		ON A.UnitUID = D.UnitUID
+	WHERE A.UserUID = @UserUID
+		AND (
+			A.Deleted = 0	-- ∞é¡∞á£δÉ£ ∞£á∞áÇ ∞áòδ│┤ ∞¥╜∞û┤Ω░êΩ╣îδ┤É...
+			OR ( A.Deleted = 1 AND ISNULL(C.Deleted, 1) = 0)	-- ∞║Éδª¡φä░ ∞é¡∞á£ δîÇΩ╕░ ∞╢öΩ░Çδí£ ∞╢öΩ░Ç(Maxpia)
+		)
+	--ORDER BY A.LastDate DESC									--$$∞ä£δ▓ä∞ùÉ∞ä£ ∞áòδá¼ ∞▓ÿδª¼φòÿΩ╕░δí£φò¿.(Maxpia)
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+(1 rows affected)
+=== P_GUnit_Userinfo_GET ===
+Changed database context to 'Game01'.
+CREATE PROCEDURE [dbo].[P_GUnit_Userinfo_GET]
+	@iUserUID_ [bigint]
+AS
+	SET NOCOUNT ON;
+
+	SELECT  a.UnitUID
+	,       a.UnitClass
+	,       a.[Exp]
+	,       a.[Level]
+	,       a.GamePoint
+	,       ISNULL(D.OfficialMatchCnt, 0) as OfficialMatchCnt
+	,       ISNULL(D.Grade, 2) as Grade
+	,       a.BaseHP
+	,       a.AtkPhysic
+	,       a.AtkMagic
+	,       a.DefPhysic
+	,       a.DefMagic
+	,       a.SPoint
+	,       CASE WHEN b.NickName LIKE '%[_]%' THEN '__DELETED__' ELSE b.NickName END as NickName
+	,       a.LastPosition
+	--/*	∞║Éδª¡φä░ ∞é¡∞á£ ∞ï£∞èñφà£∞¥┤ ∞áü∞Ü⌐δÉá Ω▓╜∞Ü░
+	,		A.LastDate
+	, 		A.Deleted
+	, 		C.DelAbleDate
+	, 		C.RestoreAbleDate
+	--*/
+	FROM dbo.GUnit as a WITH(NOLOCK)
+	LEFT OUTER JOIN dbo.GUnitWaitDelete AS C WITH(NOLOCK)
+		ON A.UnitUID = C.UnitUID
+	LEFT OUTER JOIN dbo.GUnitPVP_Season2 AS D WITH (NOLOCK) 
+		ON a.UnitUID = D.UnitUID     -- dbo.GUnitPVP δîÇ∞ïá GUnitPVP_Season2 ∞¥ÿ Ω░Æ∞¥ä ∞¥╜∞û┤ ∞ÖÇ∞ò╝ φò¿
+	JOIN dbo.GUnitNickName as b WITH(NOLOCK)
+		ON a.UserUID = @iUserUID_ 
+		--AND a.Deleted = 0 
+		--/* ∞║Éδª¡φä░ ∞é¡∞á£ ∞ï£∞èñφà£∞¥┤ ∞áü∞Ü⌐δÉá Ω▓╜∞Ü░
+		AND (
+			A.Deleted = 0	-- ∞é¡∞á£δÉ£ ∞£á∞áÇ ∞áòδ│┤ ∞¥╜∞û┤Ω░êΩ╣îδ┤É...
+			OR ( A.Deleted = 1 AND ISNULL(C.Deleted, 1) = 0)	-- ∞║Éδª¡φä░ ∞é¡∞á£ δîÇΩ╕░ ∞╢öΩ░Çδí£ ∞╢öΩ░Ç(Maxpia)
+		) 
+		--*/
+		AND a.UnitUID = b.UnitUID
+
+
+(1 rows affected)

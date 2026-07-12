@@ -1,0 +1,14 @@
+﻿=== Found 13 dlg_unit_select files ===
+  data034.kom: DLG_Unit_Select_Back.lua
+  data034.kom: DLG_Unit_Select_Front.lua
+  data034.kom: DLG_Unit_Select_FrontButton.lua
+  data034.kom: DLG_Unit_Select_FrontWindow.lua
+  data034.kom: DLG_Unit_Select_Name_Arme.lua
+  data034.kom: DLG_Unit_Select_Name_Elsword.lua
+  data034.kom: DLG_Unit_Select_Name_Lire.lua
+  data034.kom: DLG_Unit_Select_Slot_Arme.lua
+  data034.kom: DLG_Unit_Select_Slot_Elsword.lua
+  data034.kom: DLG_Unit_Select_Slot_Lire.lua
+  data034.kom: DLG_Unit_Select_Slot_Unknow.lua
+  data034.kom: DLG_Unit_Select_Title.lua
+  data034.kom: DLG_Unit_Select_Unit.lua

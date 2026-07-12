@@ -1,0 +1,86 @@
+
+particlesystem "GameMinor" 1.00 
+{ 
+	eventsequence "LightParticle_Full_Moon_Monster"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 30
+  		gravity    		= XYZ(0,-100,0)
+  		emitradius   		= XYZ(random(-15,15),random(-15,15),random(-15,15))
+  		UseLand    		= true
+  		lifetime   		= 0.8
+		emitrate		= 25
+		triggertime		= 99999
+  		BillboardType  		= BT_all
+		ZEnable			= false
+		DrawCount		= 1
+
+  		initial texture 	= "Explosion_Sphere.dds"
+  		initial     		color 		= rgba(0.7,0.3,0,35)
+ 		fade so from 0.001 to 0.15 color  	= rgba(0.8,0.3,0,35)
+ 		fade so from 0.6 to 0.8 color  		= rgba(0.8,0.3,0,35)
+  		initial     		size		= XYZ(100,100,1)
+		fade so from 0.25 to 0.5 size           = XYZ(64,64,1)
+  		initial     		rotate		= XYZ(0,0,random(-180,180))
+  		initial			Dirspeed	= 150
+	}
+	eventsequence "LightParticle_Red_Full_Moon_Monster"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 30
+  		gravity    		= XYZ(0,-100,0)
+  		emitradius   		= XYZ(random(-15,15),random(-15,15),random(-15,15))
+  		UseLand    		= true
+  		lifetime   		= 0.8
+		emitrate		= 25
+		triggertime		= 99999
+  		BillboardType  		= BT_all
+		ZEnable			= false
+		DrawCount		= 1
+
+  		initial texture 	= "Explosion_Sphere.dds"
+  		initial     		color 		= rgba(0.7,0,0,35)
+ 		fade so from 0.001 to 0.15 color  	= rgba(0.8,0,0,35)
+ 		fade so from 0.6 to 0.8 color  		= rgba(0.8,0,0,35)
+  		initial     		size		= XYZ(100,100,1)
+		fade so from 0.25 to 0.5 size           = XYZ(64,64,1)
+  		initial     		rotate		= XYZ(0,0,random(-180,180))
+  		initial			Dirspeed	= 150
+	}
+	eventsequence "LightParticle_Blue_Full_Moon_Monster"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 30
+  		gravity    		= XYZ(0,-100,0)
+  		emitradius   		= XYZ(random(-15,15),random(-15,15),random(-15,15))
+  		UseLand    		= true
+  		lifetime   		= 0.8
+		emitrate		= 25
+		triggertime		= 99999
+  		BillboardType  		= BT_all
+		ZEnable			= false
+		DrawCount		= 1
+
+  		initial texture 	= "Explosion_Sphere.dds"
+  		initial     		color 		= rgba(0,0,0.7,35)
+ 		fade so from 0.001 to 0.15 color  	= rgba(0,0,0.8,35)
+ 		fade so from 0.6 to 0.8 color  		= rgba(0,0,0.8,35)
+  		initial     		size		= XYZ(100,100,1)
+		fade so from 0.25 to 0.5 size           = XYZ(64,64,1)
+  		initial     		rotate		= XYZ(0,0,random(-180,180))
+  		initial			Dirspeed	= 150
+	}		
+}
+

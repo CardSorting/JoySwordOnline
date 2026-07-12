@@ -1,0 +1,7 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+g_pXET:AddChangeTexture( "GOD_MAGICIAN_MONKEY_BOMB_B_Basket.tga",	"GOD_MAGICIAN_MONKEY_BOMB_C_Basket.tga" 	)
+g_pXET:AddChangeTexture( "Monkey_Bomb01.tga",						"GOD_MAGICIAN_MONKEY_BOMB_C_01.tga" 		)
+g_pXET:AddChangeTexture( "monkey_BombSet01.tga",					"GOD_MAGICIAN_MONKEY_BOMB_C_Set01.tga" 		)
+g_pXET:AddChangeTexture( "MonkeyBomb_body.tga",						"GOD_MAGICIAN_MONKEY_BOMB_C_body.tga" 		)
+g_pXET:AddChangeTexture( "MonkeyBomb_Head.tga",						"GOD_MAGICIAN_MONKEY_BOMB_C_Head.tga" 		)

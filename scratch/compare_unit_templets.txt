@@ -1,0 +1,256 @@
+=== ARA BLOCK(S) ===
+g_pUnitManager:AddUnitTemplet
+{		
+	unitType				= UNIT_TYPE["UT_ARA"],
+	unitClass				= UNIT_CLASS["UC_ARA_MARTIAL_ARTIST"],
+
+	name					= STR_ID_21181,
+	description				= STR_ID_21181,
+		
+	basicWeaponItemID		= 41450,
+	basicHairItemID			= 41390,
+	basicFaceItemID			= 41400,
+	basicBodyItemID			= 41410,
+	basicLegItemID			= 41420,
+	basicHandItemID			= 41430,
+	basicFootItemID			= 41440,
+
+	m_CommonMotion	= "Motion_ARA_Common.x",
+	m_FieldMotion	= "Motion_ARA_Field.x",
+	m_LobbyMotion	= "Motion_ARA_Lobby.x",
+	m_EmotionMotion	= "Motion_ARA_Emotion.x",	
+
+	m_GameMotion0	= "Motion_ARA.x",
+	m_GameMotion1	= "Motion_Ara_LH.x",
+}
+----------------------------------------
+g_pUnitManager:AddUnitTemplet
+{		
+	unitType				= UNIT_TYPE["UT_ARA"],
+	unitClass				= UNIT_CLASS["UC_ARA_LITTLE_HSIEN"], -- 소선
+
+	name					= STR_ID_22115,
+	description				= STR_ID_22328,
+		
+	basicWeaponItemID		= 41450,
+	basicHairItemID			= 41585,
+	basicFaceItemID			= 41400,
+	basicBodyItemID			= 41410,
+	basicLegItemID			= 41420,
+	basicHandItemID			= 41430,
+	basicFootItemID			= 41440,
+
+	m_CommonMotion	= "Motion_ARA_Common.x",
+	m_FieldMotion	= "Motion_ARA_Field.x",
+	m_LobbyMotion	= "Motion_ARA_Lobby.x",
+	m_EmotionMotion	= "Motion_ARA_Emotion.x",	
+
+	m_GameMotion0	= "Motion_ARA.x",
+	m_GameMotion1	= "Motion_Ara_LH.x",
+}
+----------------------------------------
+g_pUnitManager:AddUnitTemplet
+{		
+	unitType				= UNIT_TYPE["UT_ARA"],
+	unitClass				= UNIT_CLASS["UC_ARA_SAKRA_DEVANAM"], -- 제천
+
+	name					= STR_ID_22116,
+	description				= STR_ID_22329,
+		
+	basicWeaponItemID		= 41450,
+	basicHairItemID			= 41645,
+	basicFaceItemID			= 41400,
+	basicBodyItemID			= 41410,
+	basicLegItemID			= 41420,
+	basicHandItemID			= 41430,
+	basicFootItemID			= 41440,
+
+	m_CommonMotion	= "Motion_ARA_Common.x",
+	m_FieldMotion	= "Motion_ARA_Field.x",
+	m_LobbyMotion	= "Motion_ARA_Lobby.x",
+	m_EmotionMotion	= "Motion_ARA_Emotion.x",	
+
+	m_GameMotion0	= "Motion_ARA.x",
+	m_GameMotion1	= "Motion_Ara_LH.x",
+	m_GameMotion2	= "Motion_Ara_SD.x",
+}
+----------------------------------------
+g_pUnitManager:AddUnitTemplet
+{		
+	unitType				= UNIT_TYPE["UT_ARA"],
+	unitClass				= UNIT_CLASS["UC_ARA_LITTLE_DEVIL"], -- 소마
+
+	name					= STR_ID_26771,
+	description				= STR_ID_26773,
+		
+	basicWeaponItemID		= 41450,
+	basicHairItemID			= 41730,
+	basicFaceItemID			= 41400,
+	basicBodyItemID			= 41410,
+	basicLegItemID			= 41420,
+	basicHandItemID			= 41430,
+	basicFootItemID			= 41440,
+
+	m_CommonMotion	= "Motion_ARA_Common.x",
+	m_FieldMotion	= "Motion_ARA_Field.x",
+	m_LobbyMotion	= "Motion_ARA_Lobby.x",
+	m_EmotionMotion	= "Motion_ARA_Emotion.x",	
+
+	m_GameMotion0	= "Motion_ARA.x",
+	m_GameMotion1	= "Motion_Ara_LD.x",
+}
+----------------------------------------
+g_pUnitManager:AddUnitTemplet
+{		
+	unitType				= UNIT_TYPE["UT_ARA"],
+	unitClass				= UNIT_CLASS["UC_ARA_YAMA_RAJA"], -- 명왕
+
+	name					= STR_ID_26772,
+	description				= STR_ID_26774,
+		
+	basicWeaponItemID		= 41450,
+	basicHairItemID			= 41737,
+	basicFaceItemID			= 41400,
+	basicBodyItemID			= 41410,
+	basicLegItemID			= 41420,
+	basicHandItemID			= 41430,
+	basicFootItemID			= 41440,
+
+	m_CommonMotion	= "Motion_ARA_Common.x",
+	m_FieldMotion	= "Motion_ARA_Field.x",
+	m_LobbyMotion	= "Motion_ARA_Lobby.x",
+	m_EmotionMotion	= "Motion_ARA_Emotion.x",	
+
+	m_GameMotion0	= "Motion_ARA.x",
+	m_GameMotion1	= "Motion_Ara_LD.x",
+	m_GameMotion2	= "Motion_Ara_YR.x",
+}
+----------------------------------------
+
+=== ELESIS BLOCK(S) ===
+g_pUnitManager:AddUnitTemplet
+{		
+	unitType				= UNIT_TYPE["UT_ELESIS"],
+	unitClass				= UNIT_CLASS["UC_ELESIS_KNIGHT"],
+
+	name					= STR_ID_25873,
+	description				= STR_ID_25873,
+		
+	basicWeaponItemID		= 77,
+	basicHairItemID			= 71,
+	basicFaceItemID			= 72,
+	basicBodyItemID			= 73,
+	basicLegItemID			= 74,
+	basicHandItemID			= 75,
+	basicFootItemID			= 76,
+
+	m_CommonMotion	= "Motion_EL_Common.x",
+	m_FieldMotion	= "Motion_EL_Field.x",
+	m_LobbyMotion	= "Motion_EL_Lobby.x",
+	m_EmotionMotion	= "Motion_EL_Emotion.x",	
+
+	m_GameMotion0	= "Motion_EL.x",
+}
+----------------------------------------
+g_pUnitManager:AddUnitTemplet
+{		
+	unitType				= UNIT_TYPE["UT_ELESIS"],
+	unitClass				= UNIT_CLASS["UC_ELESIS_SABER_KNIGHT"],
+
+	name					= STR_ID_24893,
+	description				= STR_ID_26274,
+		
+	basicWeaponItemID		= 77,
+	basicHairItemID			= 41725,
+	basicFaceItemID			= 72,
+	basicBodyItemID			= 73,
+	basicLegItemID			= 74,
+	basicHandItemID			= 75,
+	basicFootItemID			= 76,
+
+	m_CommonMotion	= "Motion_EL_Common.x",
+	m_FieldMotion	= "Motion_EL_Field.x",
+	m_LobbyMotion	= "Motion_EL_Lobby.x",
+	m_EmotionMotion	= "Motion_EL_Emotion.x",	
+
+	m_GameMotion0	= "Motion_EL.x",
+	m_GameMotion1	= "Motion_EL_SK.x",
+}
+----------------------------------------
+g_pUnitManager:AddUnitTemplet
+{		
+	unitType				= UNIT_TYPE["UT_ELESIS"],
+	unitClass				= UNIT_CLASS["UC_ELESIS_PYRO_KNIGHT"],
+
+	name					= STR_ID_24894,
+	description				= STR_ID_26275,
+		
+	basicWeaponItemID		= 77,
+	basicHairItemID			= 41726,
+	basicFaceItemID			= 72,
+	basicBodyItemID			= 73,
+	basicLegItemID			= 74,
+	basicHandItemID			= 75,
+	basicFootItemID			= 76,
+
+	m_CommonMotion	= "Motion_EL_Common.x",
+	m_FieldMotion	= "Motion_EL_Field.x",
+	m_LobbyMotion	= "Motion_EL_Lobby.x",
+	m_EmotionMotion	= "Motion_EL_Emotion.x",	
+
+	m_GameMotion0	= "Motion_EL.x",
+	m_GameMotion1	= "Motion_EL_PK.x",
+}
+----------------------------------------
+g_pUnitManager:AddUnitTemplet
+{		
+	unitType				= UNIT_TYPE["UT_ELESIS"],
+	unitClass				= UNIT_CLASS["UC_ELESIS_GRAND_MASTER"],
+
+	name					= STR_ID_24895,
+	description				= STR_ID_26276,
+		
+	basicWeaponItemID		= 77,
+	basicHairItemID			= 41727,
+	basicFaceItemID			= 72,
+	basicBodyItemID			= 73,
+	basicLegItemID			= 74,
+	basicHandItemID			= 75,
+	basicFootItemID			= 76,
+
+	m_CommonMotion	= "Motion_EL_Common.x",
+	m_FieldMotion	= "Motion_EL_Field.x",
+	m_LobbyMotion	= "Motion_EL_Lobby.x",
+	m_EmotionMotion	= "Motion_EL_Emotion.x",	
+
+	m_GameMotion0	= "Motion_EL.x",
+	m_GameMotion1	= "Motion_EL_SK.x",
+	m_GameMotion2	= "Motion_EL_SSK.x",
+}
+----------------------------------------
+g_pUnitManager:AddUnitTemplet
+{		
+	unitType				= UNIT_TYPE["UT_ELESIS"],
+	unitClass				= UNIT_CLASS["UC_ELESIS_BLAZING_HEART"],
+
+	name					= STR_ID_24896,
+	description				= STR_ID_26277,
+		
+	basicWeaponItemID		= 77,
+	basicHairItemID			= 41728,
+	basicFaceItemID			= 72,
+	basicBodyItemID			= 73,
+	basicLegItemID			= 74,
+	basicHandItemID			= 75,
+	basicFootItemID			= 76,
+
+	m_CommonMotion	= "Motion_EL_Common.x",
+	m_FieldMotion	= "Motion_EL_Field.x",
+	m_LobbyMotion	= "Motion_EL_Lobby.x",
+	m_EmotionMotion	= "Motion_EL_Emotion.x",	
+
+	m_GameMotion0	= "Motion_EL.x",
+	m_GameMotion1	= "Motion_EL_PK.x",
+	m_GameMotion2	= "Motion_EL_SPK.x",
+}
+----------------------------------------

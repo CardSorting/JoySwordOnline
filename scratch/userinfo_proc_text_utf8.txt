@@ -1,0 +1,83 @@
+Changed database context to 'Game01'.
+CREATE PROCEDURE [dbo].[P_GUnit_Userinfo_GET]
+
+	@iUserUID_ [bigint]
+
+AS
+
+	SET NOCOUNT ON;
+
+
+
+	SELECT  a.UnitUID
+
+	,       a.UnitClass
+
+	,       a.[Exp]
+
+	,       a.[Level]
+
+	,       a.GamePoint
+
+	,       ISNULL(D.OfficialMatchCnt, 0) as OfficialMatchCnt
+
+	,       ISNULL(D.Grade, 2) as Grade
+
+	,       a.BaseHP
+
+	,       a.AtkPhysic
+
+	,       a.AtkMagic
+
+	,       a.DefPhysic
+
+	,       a.DefMagic
+
+	,       a.SPoint
+
+	,       CASE WHEN b.NickName LIKE '%[_]%' THEN '__DELETED__' ELSE b.NickName END as NickName
+
+	,       a.LastPosition
+
+	--/*	캐릭터 삭제 시스템이 적용될 경우
+
+	,		A.LastDate
+
+	, 		A.Deleted
+
+	, 		C.DelAbleDate
+
+	, 		C.RestoreAbleDate
+
+	--*/
+
+	FROM dbo.GUnit as a WITH(NOLOCK)
+
+	LEFT OUTER JOIN dbo.GUnitWaitDelete AS C WITH(NOLOCK)
+
+		ON A.UnitUID = C.UnitUID
+
+	LEFT OUTER JOIN dbo.GUnitPVP_Season2 AS D WITH (NOLOCK) 
+
+		ON a.UnitUID = D.UnitUID     -- dbo.GUnitPVP 대신 GUnitPVP_Season2 의 값을 읽어 와야 함
+
+	JOIN dbo.GUnitNickName as b WITH(NOLOCK)
+
+		ON a.UserUID = @iUserUID_ 
+
+		--AND a.Deleted = 0 
+
+		--/* 캐릭터 삭제 시스템이 적용될 경우
+
+		AND (
+
+			A.Deleted = 0	-- 삭제된 유저 정보 읽어갈까봐...
+
+			OR ( A.Deleted = 1 AND ISNULL(C.Deleted, 1) = 0)	-- 캐릭터 삭제 대기 추가로 추가(Maxpia)
+
+		) 
+
+		--*/
+
+		AND a.UnitUID = b.UnitUID
+

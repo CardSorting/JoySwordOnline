@@ -1,0 +1,1618 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+--------------------------------------------------------------------------
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH	= 100.0,
+	UNIT_HEIGHT	= 200.0,
+	UNIT_LAYER	= X2_LAYER["XL_UNIT_0"],
+	--UNIT_SCALE	= 1.4,
+}
+--------------------------------------------------------------------------
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+		"stone.dds",
+		"Smoke.dds",
+		"GroundShockWave02.dds",
+		"Condense_Pulse02.dds",
+	},
+	
+	READY_SOUND = 
+	{
+		"Unohound_Wait.ogg",
+		"Unohound_WinMetal1.ogg",
+		"Unohound_WinMetal2.ogg",
+		"Unohound_AttackA1.ogg",
+		"Unohound_AttackA2.ogg",
+		"Unohound_AttackB.ogg",
+		"Unohound_AttackC1.ogg",
+		"Unohound_AttackC2.ogg",
+		"Unohound_AttackC3.ogg",
+		"Unohound_AttackC4.ogg",
+		"Unohound_Walk.ogg",
+		"Unohound_Dash.ogg",
+		"Unohound_DashEnd.ogg",
+		"Unohound_JumpAttackLanding.ogg",
+		"Unohound_DamageAirDown.ogg",
+		"Unohound_DownAirDownLanding.ogg",
+		"Unohound_StandUp1.ogg",
+		"Unohound_StandUp2.ogg",
+
+		"UnohoundVoice_DashReady.ogg",
+		"UnohoundVoice_AttackA.ogg",
+		"UnohoundVoice_Dying.ogg",
+		"UnohoundVoice_JumpAttackA.ogg",
+		"UnohoundVoice_JumpReady.ogg",
+		"UnohoundVoice_Dying.ogg",
+	},
+
+	READY_XMESH = 
+	{
+		"Thief_Fat_JumpAttackA_Stone02.Y",
+	},
+	
+	READY_XSKIN_MESH = 
+	{	
+		"UnoHound_AttackB_Mesh01.X",
+		"UnoHound_AttackB_Wind_Mesh01.X",
+		"UnoHound_AttackC_Mesh01.X",
+	},
+}
+--------------------------------------------------------------------------
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME	= "Motion_UNOHOUND.x",
+	MOTION_CHANGE_TEX_XET	= "NUI_BLOODY_UNOHOUND.xet",
+	MOTION_ANI_TEX_XET		= "NUI_BLOODY_UNOHOUND.xet",
+}
+--------------------------------------------------------------------------
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL	= 2000,
+	G_ACCEL			= 4000,
+	MAX_G_SPEED		= -2000,
+	
+	WALK_SPEED		= 500,
+	RUN_SPEED		= 700,
+	JUMP_SPEED		= 2000,
+	DASH_JUMP_SPEED	= 2300,
+}
+--------------------------------------------------------------------------
+INIT_COMPONENT = 
+{
+	HP_CHANGE_RATE		= 500,
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+
+	
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	
+	BOSS_GAGE_FACE_TEX			= "DLG_BossState.tga",
+	BOSS_GAGE_FACE_TEX_PIECE	= "NUI_UNOHOUND",
+	BOSS_NAME_TEX				= "HQ_BOSS_NAME_UNOHOUND.dds",
+
+	-- RAGE_COUNT_MAX		= 30,
+	-- RAGE_TIME_MAX		= 5,
+
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	FALL_DOWN			= TRUE,
+	DIE_FLY				= 0,
+}
+--------------------------------------------------------------------------
+INIT_STATE = 
+{
+	{ STATE_NAME = "BLOODY_UNOHOUND_START",	},
+	{ STATE_NAME = "BLOODY_UNOHOUND_WAIT",			},
+	{ STATE_NAME = "BLOODY_UNOHOUND_WAIT_HABIT",	},
+	
+	{ STATE_NAME = "BLOODY_UNOHOUND_WALK",		LUA_STATE_END_FUNC = "BLOODY_UNOHOUND_WALK_STATE_END"	},
+	{ STATE_NAME = "BLOODY_UNOHOUND_DASH",		},
+	{ STATE_NAME = "BLOODY_UNOHOUND_DASH_END",	},
+	{ STATE_NAME = "BLOODY_UNOHOUND_JUMP_UP",		},
+	{ STATE_NAME = "BLOODY_UNOHOUND_JUMP_DOWN",		LUA_STATE_END_FUNC = "BLOODY_UNOHOUND_JUMP_DOWN_STATE_END"	},
+	{ STATE_NAME = "BLOODY_UNOHOUND_JUMP_UP_DIR",	},
+	{ STATE_NAME = "BLOODY_UNOHOUND_JUMP_DOWN_DIR",	LUA_STATE_END_FUNC = "BLOODY_UNOHOUND_JUMP_DOWN_DIR_STATE_END"	},
+	{ STATE_NAME = "BLOODY_UNOHOUND_JUMP_LANDING",	},
+	
+	{ STATE_NAME = "BLOODY_UNOHOUND_JUMP_UP_DIR_FOR_ATTACK",	STATE_COOL_TIME = 6, },
+	{ STATE_NAME = "BLOODY_UNOHOUND_JUMP_ATTACK",				},
+	{ STATE_NAME = "BLOODY_UNOHOUND_JUMP_ATTACK_LANDING",		LUA_FRAME_MOVE_FUNC = "BLOODY_UNOHOUND_JUMP_ATTACK_LANDING_FRAME_MOVE",},
+
+	{ STATE_NAME = "BLOODY_UNOHOUND_ATTACK_A",	STATE_COOL_TIME = 4,	},
+	{ STATE_NAME = "BLOODY_UNOHOUND_ATTACK_B",	STATE_COOL_TIME = 10,	},
+	{ STATE_NAME = "BLOODY_UNOHOUND_ATTACK_C",	STATE_COOL_TIME = 30,	},
+
+	{ STATE_NAME = "BLOODY_UNOHOUND_DASH_ATTACK_READY",			STATE_COOL_TIME = 18,	},
+	{ STATE_NAME = "BLOODY_UNOHOUND_DASH_ATTACK_READY_REVENGE",	STATE_COOL_TIME = 25,	},
+	{ STATE_NAME = "BLOODY_UNOHOUND_DASH_ATTACK",				LUA_FRAME_MOVE_FUNC = "BLOODY_UNOHOUND_DASH_ATTACK_FRAME_MOVE",	},
+	{ STATE_NAME = "BLOODY_UNOHOUND_DASH_ATTACK_END",			},
+
+	--리액션 관련
+	{ STATE_NAME = "BLOODY_UNOHOUND_DAMAGE_FRONT",		LUA_FRAME_MOVE_FUNC = "BLOODY_UNOHOUND_DAMAGE_FRONT_FRAME_MOVE"	},
+	{ STATE_NAME = "BLOODY_UNOHOUND_DAMAGE_BACK",		LUA_FRAME_MOVE_FUNC = "BLOODY_UNOHOUND_DAMAGE_BACK_FRAME_MOVE"	},
+	{ STATE_NAME = "BLOODY_UNOHOUND_DAMAGE_DOWN_FRONT",	LUA_FRAME_MOVE_FUNC = "BLOODY_UNOHOUND_DAMAGE_DOWN_FRONT_FRAME_MOVE"	},
+	{ STATE_NAME = "BLOODY_UNOHOUND_DAMAGE_DOWN_BACK",	LUA_FRAME_MOVE_FUNC = "BLOODY_UNOHOUND_DAMAGE_DOWN_BACK_FRAME_MOVE"	},
+	{ STATE_NAME = "BLOODY_UNOHOUND_DAMAGE_FLY_FRONT",	},
+	{ STATE_NAME = "BLOODY_UNOHOUND_DAMAGE_FLY_BACK",	},
+	{ STATE_NAME = "BLOODY_UNOHOUND_DAMAGE_AIR",		},
+	{ STATE_NAME = "BLOODY_UNOHOUND_DAMAGE_AIR_DOWN",	},
+	{ STATE_NAME = "BLOODY_UNOHOUND_DAMAGE_AIR_UP",		},
+	{ STATE_NAME = "BLOODY_UNOHOUND_DAMAGE_AIR_FALL",	},
+	{ STATE_NAME = "BLOODY_UNOHOUND_DAMAGE_AIR_DOWN_LANDING",	LUA_FRAME_MOVE_FUNC = "BLOODY_UNOHOUND_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE"	},
+	
+	{ STATE_NAME = "BLOODY_UNOHOUND_STAND_UP_FRONT",	},
+	{ STATE_NAME = "BLOODY_UNOHOUND_STAND_UP_BACK",		},
+	{ STATE_NAME = "BLOODY_UNOHOUND_DAMAGE_REVENGE",	},
+	
+	{ STATE_NAME = "BLOODY_UNOHOUND_DYING_LAND_FRONT",	LUA_STATE_START_FUNC = "BLOODY_UNOHOUND_DYING_LAND_STATE_START",	},
+	{ STATE_NAME = "BLOODY_UNOHOUND_DYING_LAND_BACK",	LUA_STATE_START_FUNC = "BLOODY_UNOHOUND_DYING_LAND_STATE_START",	},
+	{ STATE_NAME = "BLOODY_UNOHOUND_DYING_SKY",			LUA_STATE_START_FUNC = "BLOODY_UNOHOUND_DYING_LAND_STATE_START",	},
+	
+	START_STATE	= "BLOODY_UNOHOUND_START",
+	WAIT_STATE	= "BLOODY_UNOHOUND_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT	= "BLOODY_UNOHOUND_DAMAGE_FRONT",
+	SMALL_DAMAGE_LAND_BACK	= "BLOODY_UNOHOUND_DAMAGE_BACK",
+	BIG_DAMAGE_LAND_FRONT	= "BLOODY_UNOHOUND_DAMAGE_FRONT",
+	BIG_DAMAGE_LAND_BACK	= "BLOODY_UNOHOUND_DAMAGE_BACK",
+	DOWN_DAMAGE_LAND_FRONT	= "BLOODY_UNOHOUND_DAMAGE_DOWN_FRONT",
+	DOWN_DAMAGE_LAND_BACK	= "BLOODY_UNOHOUND_DAMAGE_DOWN_BACK",
+	FLY_DAMAGE_FRONT		= "BLOODY_UNOHOUND_DAMAGE_FLY_FRONT",
+	FLY_DAMAGE_BACK			= "BLOODY_UNOHOUND_DAMAGE_FLY_BACK",
+	SMALL_DAMAGE_AIR		= "BLOODY_UNOHOUND_DAMAGE_AIR",	
+	BIG_DAMAGE_AIR			= "BLOODY_UNOHOUND_DAMAGE_AIR",
+	DOWN_DAMAGE_AIR			= "BLOODY_UNOHOUND_DAMAGE_AIR_DOWN",
+	DOWN_DAMAGE_AIR_LANDING	= "BLOODY_UNOHOUND_DAMAGE_AIR_DOWN_LANDING",
+	UP_DAMAGE				= "BLOODY_UNOHOUND_DAMAGE_AIR_UP",
+	DAMAGE_REVENGE			= "BLOODY_UNOHOUND_DAMAGE_REVENGE",
+	
+	DAMAGE_EXTRA_STATES         = {"BLOODY_UNOHOUND_DAMAGE_AIR_FALL","BLOODY_UNOHOUND_STAND_UP_FRONT","BLOODY_UNOHOUND_STAND_UP_BACK",
+	"BLOODY_UNOHOUND_JUMP_DOWN","BLOODY_UNOHOUND_JUMP_LANDING",},
+	
+	
+	DYING_LAND_FRONT	= "BLOODY_UNOHOUND_DYING_LAND_FRONT",
+	DYING_LAND_BACK		= "BLOODY_UNOHOUND_DYING_LAND_BACK",
+	DYING_SKY			= "BLOODY_UNOHOUND_DYING_SKY",
+
+	REVENGE_ATTACK	= "",	
+}
+--------------------------------------------------------------------------
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 2,
+		TARGET_NEAR_RANGE			= 600,
+		TARGET_RANGE				= 800,
+		TARGET_LOST_RANGE			= 1000,
+		TARGET_SUCCESS_RATE			= 100,
+		ATTACK_TARGET_RATE			= 100,
+		PRESERVE_LAST_TARGET_RATE	= 100,
+	},
+
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 600,
+		DEST_GAP			= 500,
+		MOVE_GAP			= 600,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		WALK_INTERVAL	= 3,
+		NEAR_WALK_RATE	= 100,
+		FAR_WALK_RATE	= 100,
+		
+		JUMP_INTERVAL	= 5,
+		UP_JUMP_RATE	= 0,
+		UP_DOWN_RATE	= 20,
+		DOWN_JUMP_RATE	= 100,
+		DOWN_DOWN_RATE	= 40,
+		
+		LINE_END_RANGE	= 80,
+	},	
+	
+	-- PATROL_MOVE = 	
+	-- {
+		-- PATROL_BEGIN_RATE		= 100,
+		-- PATROL_RANGE			= 200,
+		-- PATROL_COOL_TIME		= 2,
+		-- ONLY_THIS_LINE_GROUP	= TRUE,
+	-- },
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 500,
+		ESCAPE_GAP			= 600,
+		
+		WALK_INTERVAL	= 1.5,
+		NEAR_WALK_RATE	= 100,
+		FAR_WALK_RATE	= 100,
+		
+		JUMP_INTERVAL	= 10,
+		UP_JUMP_RATE	= 100,
+		UP_DOWN_RATE	= 30,
+		DOWN_JUMP_RATE	= 100,
+		DOWN_DOWN_RATE	= 30,
+		
+		LINE_END_RANGE	= 80,
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_START = 
+{
+	ANIM_NAME	= "Win",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	IMMADIATE_PACKET_SEND	= TRUE,	
+	
+	SOUND_PLAY0	= { 0.792, "Unohound_WinMetal1.ogg" },
+	SOUND_PLAY1	= { 0.792, "Unohound_WinMetal2.ogg" },
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"BLOODY_UNOHOUND_WAIT",	"CT_BLOODY_UNOHOUND_WAIT"	},
+	},
+	
+	CT_BLOODY_UNOHOUND_WAIT = 
+	{
+		STATE_TIME_OVER	= 2.8,
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_WAIT = 
+{
+	ANIM_NAME	= "Wait",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,	
+	
+	SPEED_X	= 0,
+	SPEED_Y	= 0,
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	EVENT_INTERVAL_TIME0	= 0.2,
+	
+	SOUND_PLAY0	= { 0.001, "Unohound_Wait.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_UNOHOUND_JUMP_DOWN",	},
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"BLOODY_UNOHOUND_DASH_ATTACK_READY",	"CT_BLOODY_UNOHOUND_DASH_ATTACK_READY",	},
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"BLOODY_UNOHOUND_ATTACK_A",	"CT_BLOODY_UNOHOUND_ATTACK_A",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"BLOODY_UNOHOUND_ATTACK_B",	"CT_BLOODY_UNOHOUND_ATTACK_B",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"BLOODY_UNOHOUND_ATTACK_C",	"CT_BLOODY_UNOHOUND_ATTACK_C",	},		
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"BLOODY_UNOHOUND_JUMP_UP_DIR_FOR_ATTACK",	"CT_BLOODY_UNOHOUND_JUMP_UP_DIR_FOR_ATTACK",	},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"BLOODY_UNOHOUND_WAIT_HABIT",	"CT_BLOODY_UNOHOUND_WAIT_HABIT",	},
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],		"BLOODY_UNOHOUND_WALK",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],		"BLOODY_UNOHOUND_DASH",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],		"BLOODY_UNOHOUND_JUMP_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],	"BLOODY_UNOHOUND_JUMP_UP_DIR",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],		"BLOODY_UNOHOUND_JUMP_DOWN",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],	"BLOODY_UNOHOUND_JUMP_DOWN_DIR",	},
+	},
+
+	CT_BLOODY_UNOHOUND_DASH_ATTACK_READY = 
+	{
+		RATE	= 0,
+		EVENT_INTERVAL_ID	= 0,
+	},
+
+	CT_BLOODY_UNOHOUND_ATTACK_A = 
+	{
+		RATE	= 40,
+		EVENT_INTERVAL_ID	= 0,
+		DISTANCE_TO_TARGET_NEAR	= 500,
+		SAME_LINE_WITH_TARGET	= TRUE,
+	},
+
+	CT_BLOODY_UNOHOUND_ATTACK_B = 
+	{
+		RATE	= 30,
+		EVENT_INTERVAL_ID	= 0,
+		DISTANCE_TO_TARGET_NEAR	= 700,
+		SAME_LINE_WITH_TARGET	= TRUE,
+	},
+	
+	CT_BLOODY_UNOHOUND_JUMP_UP_DIR_FOR_ATTACK = 
+	{
+		RATE	= 60,
+		EVENT_INTERVAL_ID	= 0,
+		DISTANCE_TO_TARGET_NEAR	= 500,
+	},
+	
+	CT_BLOODY_UNOHOUND_ATTACK_C = 
+	{
+		RATE	= 80,
+		EVENT_INTERVAL_ID	= 0,
+		DISTANCE_TO_TARGET_NEAR	= 1400,
+		SAME_LINE_WITH_TARGET	= TRUE,
+	},
+
+	CT_BLOODY_UNOHOUND_WAIT_HABIT = 
+	{
+		RATE	= 60,
+		HAVE_TARGET	= 0,
+		ANIM_PLAY_COUNT	= 1,
+	},	
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_WAIT_HABIT = 
+{
+	ANIM_NAME	= "Wait",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	SOUND_PLAY0	= { 0.001, "Unohound_Wait.ogg" },
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_UNOHOUND_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_UNOHOUND_WAIT",			},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_WALK = 
+{
+	ANIM_NAME	= "Walk",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	SOUND_PLAY0	= { 0.001, "Unohound_Walk.ogg" },
+
+	PASSIVE_SPEED_X	= INIT_PHYSIC["WALK_SPEED"],
+	
+	ALLOW_DIR_CHANGE	= TRUE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_INTERVAL_TIME0	= 0.2,
+	EVENT_INTERVAL_TIME1	= 3,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_UNOHOUND_JUMP_DOWN_DIR",	},
+	
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"BLOODY_UNOHOUND_DASH_ATTACK_READY",			"CT_BLOODY_UNOHOUND_DASH_ATTACK_READY",	},
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"BLOODY_UNOHOUND_ATTACK_A",			"CT_BLOODY_UNOHOUND_ATTACK_A",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"BLOODY_UNOHOUND_ATTACK_B",			"CT_BLOODY_UNOHOUND_ATTACK_B",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"BLOODY_UNOHOUND_ATTACK_C",			"CT_BLOODY_UNOHOUND_ATTACK_C",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"BLOODY_UNOHOUND_JUMP_UP_DIR_FOR_ATTACK",	"CT_BLOODY_UNOHOUND_JUMP_UP_DIR_FOR_ATTACK",	},
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],		"BLOODY_UNOHOUND_WAIT",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],		"BLOODY_UNOHOUND_DASH",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],		"BLOODY_UNOHOUND_JUMP_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],	"BLOODY_UNOHOUND_JUMP_UP_DIR",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],		"BLOODY_UNOHOUND_JUMP_DOWN",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],	"BLOODY_UNOHOUND_JUMP_DOWN_DIR",	},
+	},
+
+	CT_BLOODY_UNOHOUND_DASH_ATTACK_READY = 
+	{
+		RATE	= 40,
+		EVENT_INTERVAL_ID	= 0,
+		DISTANCE_TO_TARGET_NEAR	= 1200,
+	},
+
+	CT_BLOODY_UNOHOUND_ATTACK_A = 
+	{
+		RATE	= 30,
+		EVENT_INTERVAL_ID	= 0,
+		DISTANCE_TO_TARGET_NEAR	= 500,
+	},
+
+	CT_BLOODY_UNOHOUND_ATTACK_B = 
+	{		
+		RATE	= 50,
+		EVENT_INTERVAL_ID	= 0,
+		DISTANCE_TO_TARGET_NEAR	= 500,
+	},
+	
+	CT_BLOODY_UNOHOUND_JUMP_UP_DIR_FOR_ATTACK = 
+	{
+		RATE	= 80,
+		EVENT_INTERVAL_ID	= 0,
+		DISTANCE_TO_TARGET_NEAR	= 500,		
+	},
+
+	CT_BLOODY_UNOHOUND_ATTACK_C = 
+	{
+		RATE	= 80,
+		EVENT_INTERVAL_ID	= 0,
+		DISTANCE_TO_TARGET_NEAR	= 500,
+	},
+ }
+ 
+ function BLOODY_UNOHOUND_WALK_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+end
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_DASH = 
+{
+	ANIM_NAME	= "Dash",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= FALSE,
+
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+	
+	SOUND_PLAY0	= { 0.001, "Unohound_Dash.ogg" },
+	
+	PASSIVE_SPEED_X	= 1200,
+	
+	ALLOW_DIR_CHANGE	= FALSE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_INTERVAL_TIME0	= 2,
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_UNOHOUND_JUMP_DOWN_DIR",	},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"BLOODY_UNOHOUND_DASH_ATTACK",	"CT_BLOODY_UNOHOUND_DASH_ATTACK",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],	"BLOODY_UNOHOUND_DASH_END",		"CF_BLOODY_UNOHOUND_DASH_END",		},		
+	},
+	
+	CT_BLOODY_UNOHOUND_DASH_ATTACK = 
+	{
+		RATE	= 100,
+		EVENT_INTERVAL_ID	= 0,
+	},
+	
+	ATTACK_TIME0	= { 0.01, 100, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE	= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE	= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE	= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			PHYSIC	= 0.8,   
+		},
+		
+		CAN_REVENGE = FALSE,
+		
+		BACK_SPEED_X	= 1450,
+		BACK_SPEED_Y	= 1200,
+		
+		CAMERA_CRASH_GAP	= 5.0,	
+		CAMERA_CRASH_TIME	= 0.2,	
+		
+		RE_ATTACK	= TRUE,		
+		HIT_GAP		= 0.3,
+	},
+}
+
+function CF_BLOODY_UNOHOUND_DASH_END( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:GetStateTime() < 0.1 then
+		return false 
+	end
+
+ 	local bIsRight = pNPCUnit:GetIsRight()
+	local vStartPos = pNPCUnit:GetLineGroupStartPos()
+	local vEndPos = pNPCUnit:GetLineGroupEndPos()
+
+ 	if bIsRight == true and pNPCUnit:GetDistanceFrom(vEndPos) < 280.0 then
+		return true
+ 	end
+   	
+   	if bIsRight == false and pNPCUnit:GetDistanceFrom(vStartPos) < 280.0 then
+		return true
+  	end
+	
+	if pNPCUnit:GetStateTime() > 5.0 then
+		return true
+	end
+    
+    return false 	
+end
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_DASH_END = 
+{
+	ANIM_NAME	= "DashEnd",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= FALSE,
+
+	SOUND_PLAY0	= { 0.001, "Unohound_DashEnd.ogg" },
+	
+	ALLOW_DIR_CHANGE	= FALSE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"BLOODY_UNOHOUND_WAIT",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_JUMP_UP = 
+{
+	ANIM_NAME	= "JumpUp",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	SPEED_X	= 0,
+	SPEED_Y	= INIT_PHYSIC["JUMP_SPEED"],
+	
+	ADD_POS_Y	= 45, 
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"BLOODY_UNOHOUND_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"BLOODY_UNOHOUND_JUMP_ATTACK",	"CT_BLOODY_UNOHOUND_JUMP_ATTACK",	},
+	},
+
+	CT_BLOODY_UNOHOUND_JUMP_ATTACK = 
+	{
+		RATE	= 100,
+		SMALL_THEN_Y_SPEED	= 0,
+		DISTANCE_TO_TARGET_NEAR	= 1400,
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_JUMP_DOWN = 
+{
+	ANIM_NAME	= "JumpDown",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+	
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BLOODY_UNOHOUND_JUMP_LANDING",	},
+	},
+}
+
+function BLOODY_UNOHOUND_JUMP_DOWN_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+end
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_JUMP_UP_DIR = 
+{
+	ANIM_NAME	= "JumpUp",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+	
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+		
+	PASSIVE_SPEED_X	= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y			= INIT_PHYSIC["JUMP_SPEED"],
+	
+	ADD_POS_Y	= 45, 
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"BLOODY_UNOHOUND_JUMP_DOWN_DIR",	},
+	},
+}
+
+function BLOODY_UNOHOUND_JUMP_DOWN_DIR_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+end
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME	= "JumpDown",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	PASSIVE_SPEED_X	= INIT_PHYSIC["WALK_SPEED"],
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BLOODY_UNOHOUND_JUMP_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_JUMP_LANDING = 
+{
+	ANIM_NAME	= "JumpDownLanding",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= TRUE,
+	
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+    SOUND_PLAY0	= { 0.001, "Unohound_JumpAttackLanding.ogg" },
+
+	SPEED_X	= 0,
+	SPEED_Y	= 0,
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_UNOHOUND_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_UNOHOUND_WAIT",			},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_JUMP_UP_DIR_FOR_ATTACK = 
+{
+	ANIM_NAME	= "JumpUp",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	PASSIVE_SPEED_X	= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y			= INIT_PHYSIC["DASH_JUMP_SPEED"],
+
+	VIEW_TARGET	= TRUE,
+	
+	ADD_POS_Y	= 45, 
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"BLOODY_UNOHOUND_JUMP_ATTACK",	},
+	},	
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_JUMP_ATTACK = 
+{
+	ANIM_NAME	= "JumpAttackA",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	SPEED_Y			= INIT_PHYSIC["G_ACCEL"] * -0.9,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	--SUPER_ARMOR	= TRUE,
+
+    SOUND_PLAY0	= { 0.224, "UnohoundVoice_AttackA.ogg" },
+	
+	VIEW_TARGET	= FALSE,
+	ALLOW_DIR_CHANGE	= FALSE,	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BLOODY_UNOHOUND_JUMP_ATTACK_LANDING",	},
+	},
+
+	ATTACK_TIME0	= { 0.342, 0.42, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE	= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE	= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE	= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC	= 1.0,
+		},
+				
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= -500,
+		
+		CAMERA_CRASH_GAP		= 10.0,	
+		CAMERA_CRASH_TIME		= 0.3,		
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_JUMP_ATTACK_LANDING = 
+{
+	ANIM_NAME	= "JumpAttackALanding",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	--SUPER_ARMOR	= TRUE,
+	SPEED_X		= 0,
+	SPEED_Y		= 0,
+	
+	SOUND_PLAY0	= { 0.231, "Unohound_JumpAttackLanding.ogg" },
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_UNOHOUND_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_UNOHOUND_WAIT",			},
+	},
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE	= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE	= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE	= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC	= 1.0,
+		},
+		
+		BACK_SPEED_X	= 0,
+		BACK_SPEED_Y	= -1000,
+		
+		CAMERA_CRASH_GAP	= 10.0,	
+		CAMERA_CRASH_TIME	= 0.3,		
+	},
+}
+
+function BLOODY_UNOHOUND_JUMP_ATTACK_LANDING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+    if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+		pos = pNPCUnit:GetLandPosition_LUA()
+		vDirVector		= pNPCUnit:GetDirVector()
+		bIsRight		= pNPCUnit:GetIsRight()
+		rotDegree		= pNPCUnit:GetRotateDegree()
+		
+		if bIsRight == true then 
+			pos = MovePos( pos, vDirVector, 280 )
+		else
+			pos = MovePos( pos, vDirVector, -280 )
+		end
+		
+		pDamageEffect = pX2Game:GetDamageEffect()
+		pDamageEffect:CreateInstance_LUA( pNPCUnit, "GLITER_HAMMER_JUMPATTACK_LANDING", pos, pos.y )
+		pMajorXMeshPlayer = pX2Game:GetMajorXMeshPlayer()
+        pMajorXMeshPlayer:CreateInstance_LUA( "Gliter_Hammer_JumpAttack01", pos, rotDegree, rotDegree, 14 )
+        
+		pos.y = pos.y + 2
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "GroundShockWave", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(1,-1) )
+				
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 800 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 0.2 )
+		end
+    end
+end
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_ATTACK_A = 
+{
+	ANIM_NAME	= "AttackA",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	--SUPER_ARMOR	= TRUE,
+
+	SPEED_X	= 0,
+	SPEED_Y	= 0,	
+
+   	SOUND_PLAY0	= { 0.152, "UnohoundVoice_AttackA.ogg" },
+    SOUND_PLAY1	= { 1.052, "Unohound_AttackA1.ogg" },
+    SOUND_PLAY2	= { 1.560, "Unohound_AttackA2.ogg" },
+	
+	VIEW_TARGET	= TRUE,
+	ALLOW_DIR_CHANGE	= FALSE,	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_UNOHOUND_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_UNOHOUND_WAIT",			},	
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Unohound_Attack_A", 0,
+	},
+
+	DELETE_EFFECT_SET_ON_CUSTOM_STATE = TRUE,
+
+	DISABLE_ATTACK_BOX = 
+	{
+		"Spine1",
+		"Rhand1",
+		"Rhand2",
+		"Rhand3",
+	},
+
+	ATTACK_TIME0	= { 1.441, 1.63, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE	= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE	= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE	= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC	= 1.4,
+		},
+		
+		
+		BACK_SPEED_X	= 0,
+		BACK_SPEED_Y	= -800,
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_ATTACK_B =
+{
+	ANIM_NAME	= "AttackB",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	ANIM_SPEED	= 0.85,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	SUPER_ARMOR	= TRUE,
+	
+    SOUND_PLAY0	= { 1.223, "Unohound_AttackB.ogg" },
+	SOUND_PLAY1	= { 0.152, "UnohoundVoice_AttackA.ogg" },
+
+	SPEED_X	= 0,
+	SPEED_Y	= 0,	
+	
+	VIEW_TARGET	= TRUE,
+	ALLOW_DIR_CHANGE	= FALSE,	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_UNOHOUND_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_UNOHOUND_WAIT",			},	
+	},
+
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Unohound_Attack_B", 0,
+	},
+	
+	DELETE_EFFECT_SET_ON_CUSTOM_STATE = TRUE,
+	
+	ATTACK_TIME0	= { 1.4, 2.0, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE	= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE	= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE	= REACT_TYPE["RT_UP"],
+		
+		DAMAGE = 
+		{
+			PHYSIC	= 0.8,
+		},
+		
+		BACK_SPEED_X	= 1200,
+		BACK_SPEED_Y	= 1200,
+
+		RE_ATTACK	= TRUE,		
+		HIT_GAP		= 0.04,		
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_ATTACK_C =
+{
+	ANIM_NAME	= "AttackC",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	SUPER_ARMOR	= TRUE,
+	
+   	SOUND_PLAY0	= { 1.340, "Unohound_AttackC1.ogg" },
+	SOUND_PLAY1	= { 2.692, "Unohound_AttackC2.ogg" },
+	SOUND_PLAY2	= { 4.012, "Unohound_AttackC3.ogg" },
+	SOUND_PLAY3	= { 5.872, "Unohound_AttackC4.ogg" },
+
+	SPEED_X	= 0,
+	SPEED_Y	= 0,	
+	
+	VIEW_TARGET	= TRUE,
+	ALLOW_DIR_CHANGE	= FALSE,	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_UNOHOUND_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_UNOHOUND_WAIT",			},	
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Unohound_Attack_C", 0,	
+	},
+	
+	DELETE_EFFECT_SET_ON_CUSTOM_STATE = TRUE,
+
+	ATTACK_TIME0	= { 1.2, 1.33, },
+	ATTACK_TIME1	= { 2.6, 2.73, },
+	ATTACK_TIME2	= { 3.9, 4.1, },
+	ATTACK_TIME3	= { 5.8, 5.9, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE	= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE	= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE	= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			PHYSIC	= 1.0,
+		},
+
+		BACK_SPEED_X	= 500,
+		BACK_SPEED_Y	= 2000,
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_DASH_ATTACK_READY = 
+{
+	ANIM_NAME	= "DashReady",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	SOUND_PLAY0	= { 0.189, "UnohoundVoice_DashReady.ogg" },
+	
+	--SUPER_ARMOR	= TRUE,
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	VIEW_TARGET	= TRUE,
+	ALLOW_DIR_CHANGE	= FALSE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_UNOHOUND_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_UNOHOUND_DASH",			},		
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_DASH_ATTACK_READY_REVENGE = 
+{
+	ANIM_NAME	= "DashReady",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	SOUND_PLAY0	= { 0.189, "UnohoundVoice_DashReady.ogg" },
+	
+	SUPER_ARMOR	= TRUE,
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	VIEW_TARGET	= TRUE,
+	ALLOW_DIR_CHANGE	= FALSE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_UNOHOUND_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_UNOHOUND_DASH",			},		
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_DASH_ATTACK_END = 
+{
+	ANIM_NAME	= "DashEnd",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	SUPER_ARMOR		= TRUE,
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+	ALLOW_DIR_CHANGE		= FALSE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	SOUND_PLAY0	= { 0.189, "Unohound_AttackA1.ogg" },
+	SOUND_PLAY1	= { 0.325, "Unohound_DashEnd.ogg" },
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_UNOHOUND_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_UNOHOUND_WAIT",			},	
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_DASH_ATTACK =
+{
+	ANIM_NAME	= "DashAttackA",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	ANIM_SPEED	= 1.2,
+	
+	LAND_CONNECT	= FALSE,	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+	--SUPER_ARMOR		= TRUE,
+
+	SOUND_PLAY0	= { 1.126, "Unohound_AttackA1.ogg" },
+			
+	ALLOW_DIR_CHANGE	= FALSE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_UNOHOUND_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_UNOHOUND_WAIT",			},
+	},
+
+	DISABLE_ATTACK_BOX = 
+	{
+		"Lhand1",
+		"Lhand2",
+		"Lhand3",
+	},
+
+	ATTACK_TIME0	= { 0.01, 1.413, },
+	ATTACK_TIME1	= { 1.42, 1.58, },	
+
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE	= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE	= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE	= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			PHYSIC	= 0.5,
+		},
+		
+		BACK_SPEED_X	= 1300,
+		BACK_SPEED_Y	= 1300,
+		
+		CAMERA_CRASH_GAP	= 5.0,	
+		CAMERA_CRASH_TIME	= 0.2,	
+
+		RE_ATTACK	= TRUE,		
+		HIT_GAP		= 0.3,
+	},
+
+	DAMAGE_DATA_NEXT = 
+	{
+		DAMAGE_TYPE	= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE	= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE	= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			PHYSIC	= 2.0,
+		},
+		
+		BACK_SPEED_X	= 4000,
+		BACK_SPEED_Y	= 1400,
+		
+		CAMERA_CRASH_GAP	= 5.0,	
+		CAMERA_CRASH_TIME	= 0.2,	
+
+		RE_ATTACK	= FALSE,		
+		HIT_GAP		= 0.6,
+	},
+}
+
+function BLOODY_UNOHOUND_DASH_ATTACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.15 ) then
+        local pMinorParticle = pX2Game:GetMinorParticle()
+        
+		if pMinorParticle ~= nil then
+	        pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+        end
+        if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 800 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 0.2 )
+		end		
+    end
+    
+    if pNPCUnit:AnimEventTimer_LUA( 0.35 ) then
+        local pMinorParticle = pX2Game:GetMinorParticle()
+        
+		if pMinorParticle ~= nil then
+	        pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+        end	        
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 800 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 0.2 )
+		end
+    end
+end
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_DAMAGE_REVENGE = 
+{
+	ANIM_NAME	= "DamageRevenge",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	CUSTOM_STATE_DELETE_EFFECT_SET	= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"BLOODY_UNOHOUND_WAIT",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_DAMAGE_FRONT = 
+{
+	ANIM_NAME	= "Damage",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],		"BLOODY_UNOHOUND_WAIT",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"BLOODY_UNOHOUND_ATTACK_B",	"CT_BLOODY_UNOHOUND_ATTACK_B",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"BLOODY_UNOHOUND_DASH_ATTACK_READY_REVENGE",	"CT_BLOODY_UNOHOUND_DASH_ATTACK_READY_REVENGE",	},		
+	},
+	
+	CT_BLOODY_UNOHOUND_ATTACK_B = 
+	{
+		RATE	= 30,
+		ANIM_EVENT_TIMER	= 0.15,
+		DISTANCE_TO_TARGET_NEAR	= 400,
+		SAME_LINE_WITH_TARGET	= TRUE,
+	},
+	
+	CT_BLOODY_UNOHOUND_DASH_ATTACK_READY_REVENGE = 
+	{
+		RATE	= 50,
+		ANIM_EVENT_TIMER	= 0.15,
+		DISTANCE_TO_TARGET_NEAR	= 600,
+	},
+}
+
+function BLOODY_UNOHOUND_DAMAGE_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.047 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+end
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_DAMAGE_BACK = 
+{
+	ANIM_NAME	= "Damage",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"BLOODY_UNOHOUND_WAIT",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"BLOODY_UNOHOUND_ATTACK_B",	"CT_BLOODY_UNOHOUND_ATTACK_B",	},
+	},
+
+	CT_BLOODY_UNOHOUND_ATTACK_B = 
+	{
+		RATE	= 30,
+		ANIM_EVENT_TIMER	= 0.15,
+		DISTANCE_TO_TARGET_NEAR	= 400,
+		SAME_LINE_WITH_TARGET	= TRUE,
+	},
+	
+	CT_BLOODY_UNOHOUND_DASH_ATTACK_READY_REVENGE = 
+	{
+		RATE	= 50,
+		ANIM_EVENT_TIMER	= 0.15,
+		DISTANCE_TO_TARGET_NEAR	= 600,
+	},
+}
+
+function BLOODY_UNOHOUND_DAMAGE_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.06 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+end
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_DAMAGE_DOWN_FRONT = 
+{
+	ANIM_NAME	= "DamageDownFront",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	SUPER_ARMOR		= TRUE,
+	DEFENCE			= { 0, 100, 70, },
+
+    SOUND_PLAY0	= { 0.275, "UnohoundVoice_Damage.ogg" , 24 },
+	SOUND_PLAY1	= { 0.322, "Unohound_StandUp1.ogg" },
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_UNOHOUND_DAMAGE_AIR_FALL",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_UNOHOUND_STAND_UP_FRONT",	},
+	},
+}
+
+function BLOODY_UNOHOUND_DAMAGE_DOWN_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.41 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )		
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+end
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_DAMAGE_DOWN_BACK = 
+{
+	ANIM_NAME	= "DamageDownBack",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	SUPER_ARMOR		= TRUE,
+	DEFENCE			= { 0, 100, 70, },
+
+    SOUND_PLAY0	= { 0.275, "UnohoundVoice_Damage.ogg" , 24 },
+	SOUND_PLAY1	= { 0.421, "Unohound_StandUp1.ogg" },
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_UNOHOUND_DAMAGE_AIR_FALL",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_UNOHOUND_STAND_UP_BACK",	},
+	},
+}
+
+function BLOODY_UNOHOUND_DAMAGE_DOWN_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.45 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )		
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+end
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_DAMAGE_FLY_FRONT = 
+{
+	ANIM_NAME	= "DamageAirFlyFront",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= TRUE,
+	
+	LAND_CONNECT	= FALSE,	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BLOODY_UNOHOUND_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_DAMAGE_FLY_BACK = 
+{
+	ANIM_NAME	= "DamageAirFlyBack",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,	
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BLOODY_UNOHOUND_DAMAGE_DOWN_BACK",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_DAMAGE_AIR = 
+{
+	ANIM_NAME	= "DamageAir",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BLOODY_UNOHOUND_WAIT",	},
+	},
+	
+	VIEW_TARGET	= TRUE,
+	ALLOW_DIR_CHANGE	= TRUE,
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_DAMAGE_AIR_DOWN = 
+{
+	ANIM_NAME	= "DamageAirDown",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BLOODY_UNOHOUND_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_DAMAGE_AIR_UP = 
+{
+	ANIM_NAME	= "DamageAirUp",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	PASSIVE_SPEED_Y	= -1,
+	SPEED_Y			= INIT_PHYSIC["JUMP_SPEED"] * 0.6,
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"BLOODY_UNOHOUND_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BLOODY_UNOHOUND_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_DAMAGE_AIR_FALL = 
+{
+	ANIM_NAME	= "DamageAirFall",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_POSITIVE_Y_SPEED"],	"BLOODY_UNOHOUND_DAMAGE_AIR_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BLOODY_UNOHOUND_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_DAMAGE_AIR_DOWN_LANDING = 
+{
+	ANIM_NAME	= "DamageAirDownLanding",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	SUPER_ARMOR		= TRUE,
+	DEFENCE			= { 0, 100, 70, },
+
+    SOUND_PLAY0	= { 0.103, "UnohoundVoice_Damage.ogg", 24 },
+	SOUND_PLAY1	= { 0.040, "Unohound_DamageAirDownLanding.ogg" },
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_UNOHOUND_DAMAGE_AIR_FALL",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_UNOHOUND_STAND_UP_FRONT",	},
+	},
+}
+
+function BLOODY_UNOHOUND_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		local pos = pNPCUnit:GetLandPosition_LUA()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+		pos.y = pos.y + 5
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "GroundShockWave", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(1,-1) )
+		local pParticle = pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "AirDownTick", pNPCUnit:GetPos(), D3DXVECTOR2(200,200), D3DXVECTOR2(10,-1) )
+
+		if pParticle ~= nil then 
+			pParticle:SetLandPosition( pos.y - 5 )
+		end
+		
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 500 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 0.1 )
+		end		
+		
+	elseif pNPCUnit:AnimEventTimer_LUA( 0.1 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )		
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+end
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_STAND_UP_FRONT = 
+{
+	ANIM_NAME	= "DamageStandUpFront",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,	
+	SUPER_ARMOR		= TRUE,
+	DEFENCE			= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	SOUND_PLAY0	= { 0.290, "Unohound_StandUp2.ogg" },	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_UNOHOUND_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_UNOHOUND_WAIT",			},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_STAND_UP_BACK = 
+{
+	ANIM_NAME	= "DamageStandUpBack",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	SUPER_ARMOR		= TRUE,
+	DEFENCE			= { 0, 100, 70, },
+		
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+		
+	SOUND_PLAY0	= { 0.290, "Unohound_StandUp2.ogg" },	
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_UNOHOUND_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_UNOHOUND_WAIT",			},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_DYING_LAND_FRONT = 
+{
+	ANIM_NAME	= "DamageDownFront",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	INVINCIBLE		= { 0, 100, }, 		
+
+    SOUND_PLAY0	= { 0.196, "UnohoundVoice_Dying.ogg" },
+	SOUND_PLAY1	= { 0.290, "Unohound_StandUp2.ogg" },	
+
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	DYING_END	= TRUE,	
+}
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_DYING_LAND_BACK = 
+{
+	ANIM_NAME	= "DamageDownBack",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	INVINCIBLE		= { 0, 100, }, 		
+
+    SOUND_PLAY0		= { 0.250, "UnohoundVoice_Dying.ogg" },
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	DYING_END	= TRUE,	
+}
+
+function BLOODY_UNOHOUND_DYING_LAND_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	local pos = pNPCUnit:GetPos()
+	pos.y = pos.y + 100.0
+	local GetMinorParticle = pX2Game:GetMinorParticle()
+	local pSeq = GetMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DieLight",		pos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+	
+	if pSeq ~= nil then
+		pSeq:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+		pNPCUnit:SetDieSeq( pSeq:GetHandle() )
+	end
+	
+	pNPCUnit:PlaySound_LUA( "DieLight.ogg" )
+end
+--------------------------------------------------------------------------
+BLOODY_UNOHOUND_DYING_SKY = 
+{
+	ANIM_NAME	= "DamageAirDownLanding",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	INVINCIBLE		= { 0, 100, }, 		
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+
+    SOUND_PLAY0	= { 0.103, "UnohoundVoice_Dying.ogg" },
+	SOUND_PLAY0	= { 0.043, "Unohound_DamageAirDownLanding.ogg" },
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	DYING_END	= TRUE,
+}
+--------------------------------------------------------------------------
+function MovePos( pos, dirvector, dist )
+	pos.x = pos.x + dist * dirvector.x
+	pos.y = pos.y + dist * dirvector.y
+	pos.z = pos.z + dist * dirvector.z
+	
+	return pos
+end
+--------------------------------------------------------------------------

@@ -1,0 +1,16 @@
+[Version]
+Internal Version = 
+OpenTest Version = ٶ
+Service Version  = ٶ
+
+[String]
+
+str_00 = ݸ PC _PC  ȣ  ȹ߽ϴ.
+str_01 = Ӱκ  Ͽϴ.
+str_02 = ٸ   ̵ αϿϴ.
+str_03 = ٽ GUID  Ͽϴ.
+str_04 = ٽ GUID м Ͽϴ.
+str_05 = ٽ  Ŷ  Ͽϴ.
+str_06 = ٽ  Ŷ м Ͽϴ.
+str_07 = ٽ   ߻Ͽϴ.
+str_08 = ׷ü̽ PC _PC  ȣ  ȹ߽ϴ.

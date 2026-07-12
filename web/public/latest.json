@@ -1,0 +1,33 @@
+{
+  "schema": "joysword.downloads/v1",
+  "version": "1.2.0",
+  "publishedAt": "2026-07-07T00:00:00+00:00",
+  "artifacts": [
+    {
+      "id": "full-client",
+      "label": "Full client + launcher",
+      "description": "Everything required for a new Windows installation.",
+      "version": "1.2.0",
+      "fileName": "JoySword-Client-1.2.0-windows-x64.zip",
+      "blobName": "releases/1.2.0/JoySword-Client-1.2.0-windows-x64.zip",
+      "bytes": 2648824666,
+      "sha256": "ac74cb93c66e1213f1b1fc1f83ae74c0602e8aafbfd1bf581f0f8ff14bf8e095",
+      "platform": "windows-x64",
+      "kind": "archive",
+      "recommended": true
+    },
+    {
+      "id": "launcher",
+      "label": "Launcher only",
+      "description": "For players who already have the current JoySword client files.",
+      "version": "1.2.0",
+      "fileName": "JoySword-Launcher-Setup-1.2.0-x64.exe",
+      "blobName": "releases/1.2.0/JoySword-Launcher-Setup-1.2.0-x64.exe",
+      "bytes": 93084870,
+      "sha256": "6a11e735ac98e1c2961a5f3a05cf3cdebd5e01254db13b534e1161787adaf072",
+      "platform": "windows-x64",
+      "kind": "installer",
+      "recommended": false
+    }
+  ]
+}

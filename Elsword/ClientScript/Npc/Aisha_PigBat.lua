@@ -1,0 +1,372 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 80,
+	UNIT_HEIGHT		= 80,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "AVP_SUMMON_BAT_MESH_EFFECT.X",	
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 1200,
+	RUN_SPEED			= 1200,
+	JUMP_SPEED			= 0,
+	DASH_JUMP_SPEED		= 0,
+}
+
+
+INIT_COMPONENT = 
+{
+
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	--SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	--SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	--SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	--QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	--EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	
+	HEAD_BONE_NAME			= "Dummy01",
+	
+	--HYPER_MODE_COUNT	= 0,
+	--MAX_HYPER_MODE_TIME	= 30,
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	
+	FALL_DOWN			= FALSE,
+	
+	SKY_DIE = TRUE,
+
+}
+
+
+
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "AISHA_PIG_BAT_WALK",			},
+	{ STATE_NAME = "AISHA_PIG_BAT_ATTACK",			LUA_FRAME_MOVE_FUNC = "AISHA_PIG_BAT_ATTACK_FRAME_MOVE",	},
+	{ STATE_NAME = "AISHA_PIG_BAT_EXPLODE",			LUA_STATE_END_FUNC = "AISHA_PIG_BAT_EXPLODE_STATE_END", },
+	{ STATE_NAME = "AISHA_PIG_BAT_DYING",			},
+	
+	
+	
+	
+	START_STATE					= "AISHA_PIG_BAT_WALK",
+	WAIT_STATE					= "AISHA_PIG_BAT_WALK",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "",
+	SMALL_DAMAGE_LAND_BACK		= "",
+	SMALL_DAMAGE_AIR			= "",
+	BIG_DAMAGE_LAND_FRONT		= "",
+	BIG_DAMAGE_LAND_BACK		= "",
+	BIG_DAMAGE_AIR				= "",
+	DOWN_DAMAGE_LAND_FRONT		= "",
+	DOWN_DAMAGE_LAND_BACK		= "",
+	DOWN_DAMAGE_AIR				= "",
+	DOWN_DAMAGE_AIR_LANDING		= "AISHA_PIG_BAT_EXPLODE",		-- 폭발상태를 외부에서 참조하기 위해서 임의로 할당
+	UP_DAMAGE					= "",
+	FLY_DAMAGE_FRONT			= "AISHA_PIG_BAT_ATTACK",		-- 공격중인 상태를 외부에서 참조하기 위해서 임의로 할당
+	FLY_DAMAGE_BACK				= "",
+	REVENGE_ATTACK				= "",
+	DAMAGE_FLUSH_LAND_FRONT		= "",
+	DAMAGE_FLUSH_LAND_BACK		= "",
+	DAMAGE_FLUSH_AIR			= "",
+	DAMAGE_REVENGE				= "",
+	
+	DYING_LAND_FRONT			= "AISHA_PIG_BAT_DYING",
+	DYING_LAND_BACK				= "AISHA_PIG_BAT_DYING",
+	DYING_SKY					= "AISHA_PIG_BAT_DYING",
+	
+}
+
+
+INIT_AI = 
+{
+	NO_BRAIN = TRUE,
+}
+
+
+
+
+
+
+AISHA_PIG_BAT_WALK = 
+{
+	ANIM_NAME					= "AVP_SUMMON_BAT_Effect_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	--INVINCIBLE					= { 0, 100,},
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	--VIEW_TARGET					= TRUE,
+	
+	ALLOW_DIR_CHANGE			= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	SHOW_NAME					= FALSE,
+	
+	
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"AISHA_PIG_BAT_DYING",		"CT_AISHA_PIG_BAT_DYING",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"AISHA_PIG_BAT_ATTACK",		"CT_AISHA_PIG_BAT_ATTACK",	},
+	},
+	
+	CT_AISHA_PIG_BAT_ATTACK = 
+	{
+		ATTACK_SUCCESS = TRUE,
+	},
+	
+	CT_AISHA_PIG_BAT_DYING =
+	{
+		STATE_TIME_OVER = 20,
+	},
+	
+	ATTACK_TIME0 = { 0, 100 },
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1,
+			
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		STOP_TIME_ATT			= 0.0,		
+		STOP_TIME_DEF			= 0.0,	
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+	},
+	
+	
+	
+	
+	DELETE_EFFECT_SET_ON_DIE = TRUE,
+
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Aisha_Summon_Bat_Trace", 0,
+	},
+	
+		
+}
+
+
+
+
+AISHA_PIG_BAT_ATTACK = 
+{
+	ANIM_NAME					= "AVP_SUMMON_BAT_Effect_Stick",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= TRUE,
+	
+	
+	FOLLOW_HITTER				= 15,
+	ATTACK_FOLLOW_HITTER		= TRUE,
+	
+	INVINCIBLE					= { 0, 100,},
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	SHOW_STICK_SHAKE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	SHOW_NAME = FALSE,
+	
+	DISABLE_ATTACK_BOX = 
+	{
+		"ATTACK_SPHERE1",
+	},	
+	--[[
+	ATTACK_TIME0				= { 0, 0.1, },	
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_DUMMY_DAMAGE"],
+		--DRAIN			= TRUE,
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 0.001,
+			
+		},
+		
+		BACK_SPEED_X			= 0.0,
+		BACK_SPEED_Y			= 0.0,
+		
+		STOP_TIME_ATT			= 0.0,		
+		STOP_TIME_DEF			= 0.0,	
+		CAMERA_CRASH_GAP		= 0.0,	
+		CAMERA_CRASH_TIME		= 0.0,
+		
+
+		RE_ATTACK				= FALSE,		
+		--HIT_GAP					= 1,
+	},
+	--]]
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"AISHA_PIG_BAT_EXPLODE",			"CT_AISHA_PIG_BAT_EXPLODE",			},
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"AISHA_PIG_BAT_DYING",				"CF_AISHA_PIG_BAT_DYING",			},
+	},
+	
+	CT_AISHA_PIG_BAT_EXPLODE =
+	{
+		STATE_TIME_OVER				= 20,
+	},
+	
+}
+
+----------------------------------------------------------
+function AISHA_PIG_BAT_ATTACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	
+	
+	if pNPCUnit:EventTimer( 0.2 ) or 
+		pNPCUnit:EventTimer( 1.2 ) or 
+		pNPCUnit:EventTimer( 2.2 ) or 
+		pNPCUnit:EventTimer( 3.2 ) then 
+		
+		--local vPos = pNPCUnit:GetPos()
+		local vPos = pNPCUnit:GetBonePos_LUA( "Bat_Body" )
+		
+		pX2Game:GetDamageEffect():CreateInstance_LUA( pNPCUnit, "AISHA_SUMMON_BAT_BITE", vPos, vPos.y )
+		
+	end
+		
+end
+
+
+
+--[[
+
+	----------------------------------------------------------
+	function CF_AISHA_PIG_BAT_DYING( pKTDXApp, pX2Game, pNPCUnit )
+
+		if pNPCUnit:GetFollowHitter() <= 0 then
+			
+			pNPCUnit:SetNowHP_LUA( 0 )
+			return true
+		else
+			return false
+		end
+
+	end
+
+--]]
+
+	
+
+
+
+AISHA_PIG_BAT_EXPLODE = 
+{
+	ANIM_NAME					= "AVP_SUMMON_BAT_Effect_Stick",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	SHOW_NAME = FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	--DYING_END					= TRUE,
+	--DYING_END_IMMEDIATE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"AISHA_PIG_BAT_WALK",						},
+	},
+	
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Aisha_Summon_Bat_Explosion", 0,
+	},
+}
+
+
+
+
+----------------------------------------------------------
+function AISHA_PIG_BAT_EXPLODE_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	
+	pNPCUnit:SetNowHP_LUA( 0 )
+	
+end
+
+
+
+
+
+
+
+
+AISHA_PIG_BAT_DYING = 
+{
+	ANIM_NAME					= "AVP_SUMMON_BAT_Effect_Stick",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	SHOW_NAME = FALSE,
+	SHOW = FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	--DYING_END_IMMEDIATE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+
+

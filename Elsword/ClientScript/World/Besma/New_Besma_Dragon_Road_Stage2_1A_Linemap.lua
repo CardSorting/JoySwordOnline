@@ -1,0 +1,890 @@
+﻿
+
+g_pLineMap:SetLandHeight( -100 )
+
+
+
+
+-- RED, BLUE, TEAM START POS
+g_pLineMap:SetTeamStartPos( true, D3DXVECTOR3( -4225.92, 0, -3403.85 ), true, 0 )
+g_pLineMap:SetTeamStartPos( true, D3DXVECTOR3( -4048.43, 0, -3468.43 ), true, 0 )
+g_pLineMap:SetTeamStartPos( true, D3DXVECTOR3( -3899.27, 0, -3522.7 ), true, 0 )
+g_pLineMap:SetTeamStartPos( true, D3DXVECTOR3( -3735.8, 0, -3582.17 ), true, 0 )
+
+
+
+
+-- NPC (or else) START POS
+g_pLineMap:AddStartPos( 1, D3DXVECTOR3( -3313.54, 2.67103, -3735.81 ), false, 4 )
+g_pLineMap:AddStartPos( 2, D3DXVECTOR3( -3098.15, 57.6638, -3814.17 ), false, 4 )
+g_pLineMap:AddStartPos( 3, D3DXVECTOR3( -2896.6, 109.123, -3887.5 ), false, 4 )
+g_pLineMap:AddStartPos( 4, D3DXVECTOR3( -2644.92, 173.382, -3979.07 ), false, 4 )
+g_pLineMap:AddStartPos( 5, D3DXVECTOR3( -2404.33, 234.809, -4066.6 ), false, 4 )
+g_pLineMap:AddStartPos( 6, D3DXVECTOR3( -2415.35, 480, -4062.59 ), false, 1 )
+g_pLineMap:AddStartPos( 7, D3DXVECTOR3( -2620.26, 480, -3988.04 ), false, 1 )
+g_pLineMap:AddStartPos( 8, D3DXVECTOR3( -2832.01, 480, -3911 ), false, 1 )
+g_pLineMap:AddStartPos( 9, D3DXVECTOR3( -2339, 720, -4090.41 ), false, 2 )
+g_pLineMap:AddStartPos( 10, D3DXVECTOR3( -2148.19, 720, -4160.01 ), false, 2 )
+g_pLineMap:AddStartPos( 11, D3DXVECTOR3( -1970.85, 720, -4224.69 ), false, 2 )
+g_pLineMap:AddStartPos( 12, D3DXVECTOR3( -1766.61, 720, -4299.19 ), false, 2 )
+g_pLineMap:AddStartPos( 13, D3DXVECTOR3( -2202.57, 240, -4140.17 ), false, 5 )
+g_pLineMap:AddStartPos( 14, D3DXVECTOR3( -1990.82, 240, -4217.41 ), false, 5 )
+g_pLineMap:AddStartPos( 15, D3DXVECTOR3( -1743.66, 240, -4307.56 ), false, 5 )
+g_pLineMap:AddStartPos( 16, D3DXVECTOR3( -1497.42, 313.048, -4397.09 ), false, 6 )
+g_pLineMap:AddStartPos( 17, D3DXVECTOR3( -1263.27, 387.876, -4482.21 ), false, 6 )
+g_pLineMap:AddStartPos( 18, D3DXVECTOR3( -994.908, 473.638, -4579.76 ), false, 6 )
+g_pLineMap:AddStartPos( 19, D3DXVECTOR3( -795.03, 480, -4652.57 ), false, 7 )
+g_pLineMap:AddStartPos( 20, D3DXVECTOR3( -628.252, 480, -4713.34 ), false, 7 )
+g_pLineMap:AddStartPos( 21, D3DXVECTOR3( -1388.41, 720, -4436.27 ), false, 3 )
+g_pLineMap:AddStartPos( 22, D3DXVECTOR3( -1209.75, 720, -4501.41 ), false, 3 )
+g_pLineMap:AddStartPos( 23, D3DXVECTOR3( -1012.48, 720, -4573.33 ), false, 3 )
+g_pLineMap:AddStartPos( 24, D3DXVECTOR3( -541.572, 240, -4744.64 ), false, 8 )
+g_pLineMap:AddStartPos( 25, D3DXVECTOR3( -339, 240, -4792 ), false, 9 )
+g_pLineMap:AddStartPos( 26, D3DXVECTOR3( -108.192, 240, -4805.04 ), false, 11 )
+g_pLineMap:AddStartPos( 27, D3DXVECTOR3( 33.1991, 240, -4780.08 ), false, 13 )
+g_pLineMap:AddStartPos( 28, D3DXVECTOR3( 209.837, 240, -4707.08 ), false, 14 )
+g_pLineMap:AddStartPos( 29, D3DXVECTOR3( 351.383, 240, -4580.47 ), false, 16 )
+g_pLineMap:AddStartPos( 30, D3DXVECTOR3( 435.091, 240, -4442.26 ), false, 18 )
+g_pLineMap:AddStartPos( 31, D3DXVECTOR3( 468.263, 240, -4250.56 ), false, 19 )
+g_pLineMap:AddStartPos( 32, D3DXVECTOR3( 469, 480, -4029.56 ), false, 21 )
+g_pLineMap:AddStartPos( 33, D3DXVECTOR3( 469, 480, -3885.94 ), false, 21 )
+g_pLineMap:AddStartPos( 34, D3DXVECTOR3( 469, 480.236, -3696.65 ), false, 22 )
+g_pLineMap:AddStartPos( 35, D3DXVECTOR3( 469, 519.623, -3471.58 ), false, 22 )
+g_pLineMap:AddStartPos( 36, D3DXVECTOR3( 469, 565.736, -3208.08 ), false, 22 )
+g_pLineMap:AddStartPos( 37, D3DXVECTOR3( 469, 608.219, -2965.32 ), false, 22 )
+g_pLineMap:AddStartPos( 38, D3DXVECTOR3( 469, 620, -2790.77 ), false, 23 )
+g_pLineMap:AddStartPos( 39, D3DXVECTOR3( 469, 620, -2627.12 ), false, 23 )
+g_pLineMap:AddStartPos( 40, D3DXVECTOR3( 469, 860, -2554.24 ), false, 24 )
+g_pLineMap:AddStartPos( 41, D3DXVECTOR3( 469, 860, -2340.09 ), false, 24 )
+g_pLineMap:AddStartPos( 42, D3DXVECTOR3( 469, 860, -2108.51 ), false, 24 )
+g_pLineMap:AddStartPos( 43, D3DXVECTOR3( 469, 807.947, -1886.26 ), false, 26 )
+g_pLineMap:AddStartPos( 44, D3DXVECTOR3( 469, 774, -1667 ), false, 28 )
+g_pLineMap:AddStartPos( 45, D3DXVECTOR3( 469, 759, -1383.21 ), false, 31 )
+g_pLineMap:AddStartPos( 46, D3DXVECTOR3( 469, 784.117, -1050.68 ), false, 34 )
+g_pLineMap:AddStartPos( 47, D3DXVECTOR3( 469, 842.314, -763.255 ), false, 37 )
+g_pLineMap:AddStartPos( 48, D3DXVECTOR3( 469, 860, -472.693 ), false, 38 )
+g_pLineMap:AddStartPos( 49, D3DXVECTOR3( 469, 860, -223.084 ), false, 38 )
+g_pLineMap:AddStartPos( 50, D3DXVECTOR3( 472, 860, -10 ), false, 39 )
+g_pLineMap:AddStartPos( 51, D3DXVECTOR3( 633.848, 860, 216.801 ), false, 43 )
+g_pLineMap:AddStartPos( 52, D3DXVECTOR3( 959.785, 860, 231.64 ), false, 44 )
+g_pLineMap:AddStartPos( 53, D3DXVECTOR3( 1099.32, 1100, 232 ), false, 45 )
+g_pLineMap:AddStartPos( 54, D3DXVECTOR3( 1299.94, 1100, 232 ), false, 45 )
+g_pLineMap:AddStartPos( 55, D3DXVECTOR3( 1483.83, 1100, 232 ), false, 45 )
+g_pLineMap:AddStartPos( 56, D3DXVECTOR3( 1552.49, 860, 232 ), false, 46 )
+g_pLineMap:AddStartPos( 57, D3DXVECTOR3( 1764.43, 860, 232 ), false, 46 )
+g_pLineMap:AddStartPos( 58, D3DXVECTOR3( 1976.38, 860, 232 ), false, 46 )
+g_pLineMap:AddStartPos( 59, D3DXVECTOR3( 2068.93, 1100, 232 ), false, 47 )
+g_pLineMap:AddStartPos( 60, D3DXVECTOR3( 2323.01, 1100, 232 ), false, 47 )
+g_pLineMap:AddStartPos( 61, D3DXVECTOR3( 2635.91, 1100, 232 ), false, 47 )
+g_pLineMap:AddStartPos( 62, D3DXVECTOR3( 2956.9, 1100, 232 ), false, 47 )
+g_pLineMap:AddStartPos( 63, D3DXVECTOR3( 3073.42, 1280, 232 ), false, 48 )
+g_pLineMap:AddStartPos( 64, D3DXVECTOR3( 3363, 1280, 232 ), false, 48 )
+g_pLineMap:AddStartPos( 65, D3DXVECTOR3( 3639.1, 1280, 232 ), false, 49 )
+g_pLineMap:AddStartPos( 66, D3DXVECTOR3( 4022, 1280, 232 ), false, 49 )
+
+
+
+
+
+
+-- LINE DATA -- 
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 0, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= -1, 
+	NEXT_LINE		= 4, 
+	LINE_SET		= 0, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(-4264, 0, -3390)", 
+	"END_POS		= D3DXVECTOR3(-3324, 0, -3732)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 1, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= -1, 
+	NEXT_LINE		= -1, 
+	LINE_SET		= 0, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(-2854, 480, -3903)", 
+	"END_POS		= D3DXVECTOR3(-2384, 480, -4074)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 2, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= -1, 
+	NEXT_LINE		= -1, 
+	LINE_SET		= 0, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(-2384, 720, -4074)", 
+	"END_POS		= D3DXVECTOR3(-1726, 720, -4314)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 3, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= -1, 
+	NEXT_LINE		= -1, 
+	LINE_SET		= 0, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(-1444, 720, -4416)", 
+	"END_POS		= D3DXVECTOR3(-975, 720, -4587)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 4, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 0, 
+	NEXT_LINE		= 5, 
+	LINE_SET		= 0, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(-3324, 0, -3732)", 
+	"END_POS		= D3DXVECTOR3(-2384, 240, -4074)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 5, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 4, 
+	NEXT_LINE		= 6, 
+	LINE_SET		= 0, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(-2384, 240, -4074)", 
+	"END_POS		= D3DXVECTOR3(-1726, 240, -4314)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 6, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 5, 
+	NEXT_LINE		= 7, 
+	LINE_SET		= 0, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(-1726, 240, -4314)", 
+	"END_POS		= D3DXVECTOR3(-975, 480, -4587)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 7, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 6, 
+	NEXT_LINE		= -1, 
+	LINE_SET		= 0, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(-975, 480, -4587)", 
+	"END_POS		= D3DXVECTOR3(-599, 480, -4724)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 8, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= -1, 
+	NEXT_LINE		= 9, 
+	LINE_SET		= 0, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(-599, 240, -4724)", 
+	"END_POS		= D3DXVECTOR3(-471, 240, -4770)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 9, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 8, 
+	NEXT_LINE		= 10, 
+	LINE_SET		= 0, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(-471, 240, -4770)", 
+	"END_POS		= D3DXVECTOR3(-339, 240, -4792)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 10, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 9, 
+	NEXT_LINE		= 11, 
+	LINE_SET		= 0, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(-339, 240, -4792)", 
+	"END_POS		= D3DXVECTOR3(-217, 240, -4806)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 11, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 10, 
+	NEXT_LINE		= 12, 
+	LINE_SET		= 0, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(-217, 240, -4806)", 
+	"END_POS		= D3DXVECTOR3(-104, 240, -4805)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 12, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 11, 
+	NEXT_LINE		= 13, 
+	LINE_SET		= 0, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(-104, 240, -4805)", 
+	"END_POS		= D3DXVECTOR3(8, 240, -4788)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 13, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 12, 
+	NEXT_LINE		= 14, 
+	LINE_SET		= 0, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(8, 240, -4788)", 
+	"END_POS		= D3DXVECTOR3(113, 240, -4755)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 14, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 13, 
+	NEXT_LINE		= 15, 
+	LINE_SET		= 0, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(113, 240, -4755)", 
+	"END_POS		= D3DXVECTOR3(210, 240, -4707)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 15, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 14, 
+	NEXT_LINE		= 16, 
+	LINE_SET		= 0, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(210, 240, -4707)", 
+	"END_POS		= D3DXVECTOR3(295, 240, -4644)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 16, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 15, 
+	NEXT_LINE		= 17, 
+	LINE_SET		= 0, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(295, 240, -4644)", 
+	"END_POS		= D3DXVECTOR3(366, 240, -4564)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 17, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 16, 
+	NEXT_LINE		= 18, 
+	LINE_SET		= 0, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(366, 240, -4564)", 
+	"END_POS		= D3DXVECTOR3(426, 240, -4469)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 18, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 17, 
+	NEXT_LINE		= 19, 
+	LINE_SET		= 0, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(426, 240, -4469)", 
+	"END_POS		= D3DXVECTOR3(460, 240, -4369)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 19, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 18, 
+	NEXT_LINE		= 20, 
+	LINE_SET		= 0, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(460, 240, -4369)", 
+	"END_POS		= D3DXVECTOR3(469, 240, -4240)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 20, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 19, 
+	NEXT_LINE		= -1, 
+	LINE_SET		= 0, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(469, 240, -4240)", 
+	"END_POS		= D3DXVECTOR3(469, 240, -4098)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 21, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= -1, 
+	NEXT_LINE		= 22, 
+	LINE_SET		= 1, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(469, 480, -4098)", 
+	"END_POS		= D3DXVECTOR3(469, 480, -3698)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 22, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 21, 
+	NEXT_LINE		= 23, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(469, 480, -3698)", 
+	"END_POS		= D3DXVECTOR3(469, 620, -2898)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 23, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 22, 
+	NEXT_LINE		= -1, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(469, 620, -2898)", 
+	"END_POS		= D3DXVECTOR3(469, 620, -2598)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 24, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= -1, 
+	NEXT_LINE		= 25, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(469, 860, -2598)", 
+	"END_POS		= D3DXVECTOR3(469, 860, -2098)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 25, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 24, 
+	NEXT_LINE		= 26, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(469, 860, -2098)", 
+	"END_POS		= D3DXVECTOR3(469, 831, -1990)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 26, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 25, 
+	NEXT_LINE		= 27, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(469, 831, -1990)", 
+	"END_POS		= D3DXVECTOR3(469, 807, -1882)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 27, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 26, 
+	NEXT_LINE		= 28, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(469, 807, -1882)", 
+	"END_POS		= D3DXVECTOR3(469, 788, -1774)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 28, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 27, 
+	NEXT_LINE		= 29, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(469, 788, -1774)", 
+	"END_POS		= D3DXVECTOR3(469, 774, -1667)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 29, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 28, 
+	NEXT_LINE		= 30, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(469, 774, -1667)", 
+	"END_POS		= D3DXVECTOR3(469, 764, -1559)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 30, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 29, 
+	NEXT_LINE		= 31, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(469, 764, -1559)", 
+	"END_POS		= D3DXVECTOR3(469, 759, -1451)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 31, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 30, 
+	NEXT_LINE		= 32, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(469, 759, -1451)", 
+	"END_POS		= D3DXVECTOR3(469, 759, -1344)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 32, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 31, 
+	NEXT_LINE		= 33, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(469, 759, -1344)", 
+	"END_POS		= D3DXVECTOR3(469, 764, -1236)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 33, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 32, 
+	NEXT_LINE		= 34, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(469, 764, -1236)", 
+	"END_POS		= D3DXVECTOR3(469, 774, -1128)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 34, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 33, 
+	NEXT_LINE		= 35, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(469, 774, -1128)", 
+	"END_POS		= D3DXVECTOR3(469, 788, -1021)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 35, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 34, 
+	NEXT_LINE		= 36, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(469, 788, -1021)", 
+	"END_POS		= D3DXVECTOR3(469, 807, -913)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 36, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 35, 
+	NEXT_LINE		= 37, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(469, 807, -913)", 
+	"END_POS		= D3DXVECTOR3(469, 831, -805)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 37, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 36, 
+	NEXT_LINE		= 38, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(469, 831, -805)", 
+	"END_POS		= D3DXVECTOR3(469, 860, -698)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 38, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 37, 
+	NEXT_LINE		= 39, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(469, 860, -698)", 
+	"END_POS		= D3DXVECTOR3(469, 860, -98)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 39, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 38, 
+	NEXT_LINE		= 40, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(469, 860, -98)", 
+	"END_POS		= D3DXVECTOR3(472, 860, -10)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 40, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 39, 
+	NEXT_LINE		= 41, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(472, 860, -10)", 
+	"END_POS		= D3DXVECTOR3(485, 860, 73)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 41, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 40, 
+	NEXT_LINE		= 42, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(485, 860, 73)", 
+	"END_POS		= D3DXVECTOR3(517, 860, 144)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 42, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 41, 
+	NEXT_LINE		= 43, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(517, 860, 144)", 
+	"END_POS		= D3DXVECTOR3(577, 860, 199)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 43, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 42, 
+	NEXT_LINE		= 44, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(577, 860, 199)", 
+	"END_POS		= D3DXVECTOR3(676, 860, 230)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 44, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 43, 
+	NEXT_LINE		= -1, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(676, 860, 230)", 
+	"END_POS		= D3DXVECTOR3(1022, 860, 232)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 45, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= -1, 
+	NEXT_LINE		= -1, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(1022, 1100, 232)", 
+	"END_POS		= D3DXVECTOR3(1522, 1100, 232)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 46, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= -1, 
+	NEXT_LINE		= -1, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(1522, 860, 232)", 
+	"END_POS		= D3DXVECTOR3(2022, 860, 232)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 47, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= -1, 
+	NEXT_LINE		= -1, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(2022, 1100, 232)", 
+	"END_POS		= D3DXVECTOR3(3022, 1100, 232)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 48, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= -1, 
+	NEXT_LINE		= 49, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(3022, 1280, 232)", 
+	"END_POS		= D3DXVECTOR3(3522, 1280, 232)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 49, 
+	ENABLE			= TRUE,
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	STOP_FACTOR		= 1, 
+	FOOT_DUST_NAME	= "", 
+	BEFORE_LINE		= 48, 
+	NEXT_LINE		= -1, 
+	LINE_SET		= 2, 
+	SPEED			= 0, 
+	"START_POS		= D3DXVECTOR3(3522, 1280, 232)", 
+	"END_POS		= D3DXVECTOR3(4022, 1280, 232)", 
+}
+

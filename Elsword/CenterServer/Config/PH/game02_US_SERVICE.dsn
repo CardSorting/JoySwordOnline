@@ -1,0 +1,13 @@
+[ODBC]
+DRIVER=SQL Server
+Description=JoySword Offline
+SERVER=127.0.0.1
+UID=sa
+PWD=JoySwordDb2026!
+Trusted_Connection=No
+WSID=JOY_SWORD_OFFLINE
+APP=JoySword Offline
+DATABASE=Game02
+Network=DBMSSOCN
+Address=127.0.0.1,1433
+LastUser=sa

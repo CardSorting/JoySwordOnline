@@ -1,0 +1,11 @@
+  LogType  	  Source   	Destination	    ip     	  RegDate  	  Reason   	
+Disconnect	6       	4611686030516534109	10.77.0.2	2026-07-07 11:02:44	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	
+Disconnect	6       	4611686030516534109	10.77.0.2	2026-07-07 11:08:54	Session_Close [A﹌卹O A取﹞a ﹉“Ao (Session)]	
+Disconnect	6       	4611686030516534109	10.77.0.2	2026-07-07 11:12:38	Session_Close [A﹌卹O A取﹞a ﹉“Ao (Session)]	
+Disconnect	6       	4611686030516534109	10.77.0.2	2026-07-07 11:16:14	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	
+Disconnect	6       	4611686030516534109	10.77.0.2	2026-07-07 11:24:41	Session_Close [A﹌卹O A取﹞a ﹉“Ao (Session)]	
+Disconnect	6       	4611686078152309487	10.77.0.2	2026-07-07 11:24:41	Session_Close [A﹌卹O A取﹞a ﹉“Ao (Session)]	
+Disconnect	6       	4611686030516534109	10.77.0.2	2026-07-07 11:28:01	Session_Close [A﹌卹O A取﹞a ﹉“Ao (Session)]	
+Disconnect	6       	4611686083397301549	10.77.0.2	2026-07-07 11:29:21	Session_Close [A﹌卹O A取﹞a ﹉“Ao (Session)]	
+Disconnect	6       	4611686030516534109	10.77.0.2	2026-07-08 00:18:05	Session_Close [A﹌卹O A取﹞a ﹉“Ao (Session)]	
+Disconnect	6       	4611686030516534109	10.77.0.2	2026-07-08 00:22:58	Session_Close [A﹌卹O A取﹞a ﹉“Ao (Session)]	

@@ -1,0 +1,16 @@
+--- mup_auth_global_user ---
+[
+  {
+    "definition": "CREATE PROCEDURE [dbo].[mup_auth_global_user]\r\n\t@strUserID_ [nvarchar](20),\t\t/*@strOTP_ [nvarchar](32), -- OTP 입력 해당 SP에서 안함*/\r\n\t@iOK [int] = 0,\r\n\t@iUserUID [bigint] = 0\r\n\r\nAS\r\nSET NOCOUNT ON;\r\n\r\nDECLARE @PublisherSN\tINT\r\n\r\nSELECT @iUserUID = UserUID, @PublisherSN = PublisherSN FROM dbo.Muser WITH(NOLOCK) WHERE UserID = @strUserID_ \r\n\r\nIF @iUserUID = 0\r\nBEGIN\r\n    SELECT @iOK = -1\r\n    GOTO END_PROC\r\nEND\r\n\r\n--{{ 유럽은 신속한 빠른 블록 처리를 위해 AuthLevel을 0으로 처리하면 로그인에 실패함\r\nDECLARE @iAuthLevel int\r\n\r\nSELECT @iAuthLevel = AuthLevel FROM dbo.MUserAuthority( NOLOCK ) WHERE UserUID = @iUserUID\r\n\r\nIF @iAuthLevel = -4\r\n\tBegin\r\n\t\tSELECT @iOK = -5    GOTO END_PROC\r\n\tEnd\r\n--}}\r\n\r\nIF NOT EXISTS ( SELECT * FROM dbo.MUserOTP WITH(NOLOCK) WHERE UserUID = @iUserUID)\r\n    BEGIN    SELECT @iOK = -2    GOTO END_PROC    END\r\n/* -- KOG_OTP_MODIFY 해당 부분 주석 처리함. UPDATE를 여기서 처리하면 안됨\r\nBEGIN TRAN\r\n\r\n    UPDATE dbo.MUserOTP WITH (ROWLOCK)\r\n\t\tSET OTP = @strOTP_\r\n\t\t\tWHERE UserUID = @iUserUID\r\n    IF @@ERROR <> 0 OR @@ROWCOUNT <> 1 --이건 한개만 입력되어야 하삼\r\n    BEGIN    SELECT @iOK = -3   GOTO FAIL_TRAN    END\r\n\r\nCOMMIT TRAN\r\n*/\r\n\r\nGOTO END_PROC\r\n\r\n--FAIL_TRAN:\r\n--ROLLBACK TRAN\r\n\r\nEND_PROC:\r\nSELECT @iOK, @iUserUID, @PublisherSN\r\n"
+  }
+]
+
+
+--- mup_login_mornitor_user ---
+[
+  {
+    "definition": "CREATE PROCEDURE [dbo].[mup_login_mornitor_user]\r\n\t@strUserID_ [nvarchar](10),\r\n\t@strPassword_ [nvarchar](20),\r\n    @iOK [int] = 0\r\nAS\r\nSET NOCOUNT ON;\r\n\r\nDECLARE @iMTAuthLevel_ [tinyint]\r\n\r\nBEGIN TRAN\r\n\tIF NOT EXISTS (SELECT * FROM dbo.TUser WITH (NOLOCK) WHERE ID = @strUserID_)\r\n\t\tBEGIN\r\n\t\t\tSELECT @iOK = -1\r\n\t\t\tGOTO END_PROC\r\n\t\tEND\r\n\r\n\tELSE\r\n\t\tBEGIN\r\n\t\t\tSELECT @iMTauthLevel_ = MTAuthLevel\r\n\t\t\t\tFROM dbo.TUser\r\n\t\t\t\t\tWHERE id = @strUserID_ AND pw = @strPassword_\r\n\t\t\t\r\n\t\t\tSELECT @iOK = @iMTauthLevel_\r\n\r\n\t\tEND\r\n\r\nCOMMIT TRAN\r\n\r\nGOTO END_PROC\r\n\r\nFAIL_TRAN:\r\nROLLBACK TRAN\r\n\r\nEND_PROC:\r\nSELECT @iOK\r\n"
+  }
+]
+
+

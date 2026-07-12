@@ -1,0 +1,341 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 300.0,
+	UNIT_HEIGHT		= 150.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = {},	
+	READY_SOUND = {},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME	= "Motion_Poison_Cup_Cake_B.x",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 400,
+	RUN_SPEED			= 400,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300,
+}
+
+
+INIT_COMPONENT = 
+{
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	-- SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	-- SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	-- SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	
+	HEAD_BONE_NAME			= "Bone03",
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_DEFAULT"],
+	
+	FALL_DOWN			= TRUE,
+	DAMAGE_DOWN         = FALSE,
+	DIE_FLY				= FALSE,
+	-- BOSS_GAGE_FACE_TEX			= "DLG_BossState.tga",
+	-- BOSS_GAGE_FACE_TEX_PIECE	= "KARUSO_BATTLE_MASTER",
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "POISON_CUP_CAKE_START",			LUA_STATE_START_FUNC = "POISON_CUP_CAKE_START_STATE_START",  },
+	{ STATE_NAME = "POISON_CUP_CAKE_WAIT",			},
+	
+	--리액션 관련
+	{ STATE_NAME = "POISON_CUP_CAKE_DAMAGE_FRONT",	LUA_FRAME_MOVE_FUNC = "POISON_CUP_CAKE_DAMAGE_FRONT_FRAME_MOVE",},
+	{ STATE_NAME = "POISON_CUP_CAKE_DAMAGE_MOVE",	},
+	{ STATE_NAME = "POISON_CUP_CAKE_DAMAGE_BACK",	},
+	
+	{ STATE_NAME = "POISON_CUP_CAKE_DYING_LAND",	},
+	{ STATE_NAME = "POISON_CUP_CAKE_PACKING",		STATE_COOL_TIME	= 5,},
+	{ STATE_NAME = "POISON_CUP_CAKE_DISUSE",		LUA_STATE_END_FUNC = "POISON_CUP_CAKE_DISUSE_STATE_END",},
+	
+	START_STATE					= "POISON_CUP_CAKE_START",
+	WAIT_STATE					= "POISON_CUP_CAKE_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "POISON_CUP_CAKE_DAMAGE_FRONT",
+	SMALL_DAMAGE_LAND_BACK		= "POISON_CUP_CAKE_DAMAGE_BACK",
+	SMALL_DAMAGE_AIR			= "POISON_CUP_CAKE_DAMAGE_FRONT",
+	BIG_DAMAGE_LAND_FRONT		= "POISON_CUP_CAKE_DAMAGE_FRONT",
+	BIG_DAMAGE_LAND_BACK		= "POISON_CUP_CAKE_DAMAGE_BACK",
+	BIG_DAMAGE_AIR				= "POISON_CUP_CAKE_DAMAGE_FRONT",
+	
+	DOWN_DAMAGE_LAND_FRONT		= "POISON_CUP_CAKE_DAMAGE_FRONT",
+	DOWN_DAMAGE_LAND_BACK		= "POISON_CUP_CAKE_DAMAGE_BACK",
+	
+	DOWN_DAMAGE_AIR				= "POISON_CUP_CAKE_DAMAGE_FRONT",
+	DOWN_DAMAGE_AIR_LANDING		= "POISON_CUP_CAKE_DAMAGE_FRONT",
+	UP_DAMAGE					= "POISON_CUP_CAKE_DAMAGE_FRONT",
+	FLY_DAMAGE_FRONT			= "POISON_CUP_CAKE_DAMAGE_FRONT",
+	FLY_DAMAGE_BACK				= "POISON_CUP_CAKE_DAMAGE_BACK",
+	DAMAGE_FLUSH_LAND_FRONT		= "POISON_CUP_CAKE_DAMAGE_FRONT",
+	DAMAGE_FLUSH_LAND_BACK		= "POISON_CUP_CAKE_DAMAGE_BACK",
+	DAMAGE_FLUSH_AIR			= "POISON_CUP_CAKE_DAMAGE_FRONT",
+	DAMAGE_REVENGE				= "POISON_CUP_CAKE_DAMAGE_FRONT",
+	
+	--DAMAGE_EXTRA_STATES         = { "POISON_CUP_CAKE_DAMAGE_MOVE", },	
+	
+	DYING_LAND_FRONT			= "POISON_CUP_CAKE_DYING_LAND",
+	DYING_LAND_BACK				= "POISON_CUP_CAKE_DYING_LAND",
+	DYING_SKY					= "POISON_CUP_CAKE_DYING_LAND",
+	
+	REVENGE_ATTACK				= "",
+}
+INIT_AI = 
+{
+}
+
+POISON_CUP_CAKE_START = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	NEVER_MOVE					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"POISON_CUP_CAKE_WAIT",	"CT_POISON_CUP_CAKE_WAIT",	},
+	},
+	
+	CT_POISON_CUP_CAKE_WAIT = 
+	{
+		STATE_TIME_OVER			= 0.5,
+	},
+}
+
+
+function POISON_CUP_CAKE_START_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	pNPCUnit:SetTimerRestart( 0 )
+	pNPCUnit:SetInt_LUA( 0, 100 )-- 현재 HP 백분율
+end
+
+
+POISON_CUP_CAKE_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	--NEVER_MOVE					= TRUE,
+	
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"POISON_CUP_CAKE_ATTACK",			"CT_POISON_CUP_CAKE_ATTACK"		}, 
+	},
+	
+	CT_POISON_CUP_CAKE_ATTACK = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 150,
+		RATE						= 50,
+	},	
+}
+POISON_CUP_CAKE_DAMAGE_FRONT = 
+{
+	ANIM_NAME					= "Damage",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	NEVER_MOVE					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"POISON_CUP_CAKE_WAIT", },
+	},
+}
+function POISON_CUP_CAKE_DAMAGE_FRONT_FRAME_MOVE ( pKTDXApp, pX2Game, pNPCUnit )
+	if 0.1 <= pNPCUnit:GetTimerElapsedTime( 0 ) then
+		pNPCUnit:SetTimerRestart( 0 )
+				
+		local PreHpPercent = pNPCUnit:GetInt_LUA(0) -- 이전 HP 백분율
+		local NowHpPercent = pNPCUnit:GetNowHP_LUA() / pNPCUnit:GetMaxHP() * 100	-- 현재 HP 백분율
+		
+		local StateChangeHpPercent = 1 --이전에 기록한 HP보다 해당 수치 % 이상 타격 했다면 움직이도록 설정.
+		
+		if ( PreHpPercent - NowHpPercent )  >= StateChangeHpPercent then 
+			pNPCUnit:SetInt_LUA( 0, NowHpPercent )-- 현재 HP 백분율 저장
+			pNPCUnit:StateChange_LUA( "POISON_CUP_CAKE_DAMAGE_MOVE" )
+		end 
+	end
+end
+
+POISON_CUP_CAKE_DAMAGE_MOVE = 
+{
+	ANIM_NAME					= "Move",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	--SUPER_ARMOR_NOT_RED			= TRUE,
+	
+	PASSIVE_SPEED_X				= -400,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"POISON_CUP_CAKE_WAIT", },
+	},
+}
+POISON_CUP_CAKE_DAMAGE_BACK =
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	NEVER_MOVE					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"POISON_CUP_CAKE_WAIT", },
+	},
+}
+POISON_CUP_CAKE_DYING_LAND = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+POISON_CUP_CAKE_PACKING = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	ALARM =
+	{
+		--DANGER  				 = TRUE,  				    	    --DANGER 표시
+		ALARM_MESSAGE 			 = STR_ID_23330,  		  		    --경고 문구
+		DELAY   				 = 0,  				    	 		--이 스테이트가 시작되고 이 시간이 경과 후에 경고가 나갑니다.
+		REPEAT   				 = TRUE,  		 		   		    --한 번만 반복 FALSE, 이 스테이트 취할때 마다 반복 TRUE
+		ALARM_COLOR_TYPE		 = ALARM_COLOR_TYPE["ACT_ORANGE"],  --경고 문구 색깔 (ACT_RED, ACT_BLUE, ACT_YELLOW ,ACT_ORANGE, ACT_MAGENTA
+		DISAPPEAR_TIME  		 = 5, 				  			    -- 표시 지속 시간
+	},
+	
+	PASSIVE_SPEED_X				= 200,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED			= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"POISON_CUP_CAKE_DYING_LAND",	"CT_POISON_CUP_CAKE_DYING_LAND",	},
+	},
+	
+	CT_POISON_CUP_CAKE_DYING_LAND = 
+	{
+		STATE_TIME_OVER			= 2.5,
+	},
+}
+
+POISON_CUP_CAKE_DISUSE = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	PASSIVE_SPEED_X				= -200,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	ALARM =
+	{
+		--DANGER  				 = TRUE,  				    	    --DANGER 표시
+		ALARM_MESSAGE 			 = STR_ID_23329,  		  		    --경고 문구
+		DELAY   				 = 0,  				    	 		--이 스테이트가 시작되고 이 시간이 경과 후에 경고가 나갑니다.
+		REPEAT   				 = TRUE,  		 		   		    --한 번만 반복 FALSE, 이 스테이트 취할때 마다 반복 TRUE
+		ALARM_COLOR_TYPE		 = ALARM_COLOR_TYPE["ACT_ORANGE"],  --경고 문구 색깔 (ACT_RED, ACT_BLUE, ACT_YELLOW ,ACT_ORANGE, ACT_MAGENTA
+		DISAPPEAR_TIME  		 = 5, 				  			    -- 표시 지속 시간
+	},
+	
+	SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED			= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"POISON_CUP_CAKE_DYING_LAND",	"CT_POISON_CUP_CAKE_DYING_LAND",	},
+	},
+	
+	CT_POISON_CUP_CAKE_DYING_LAND = 
+	{
+		STATE_TIME_OVER			= 3.3,
+	},
+}
+function POISON_CUP_CAKE_DISUSE_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	local vSummonPos = pX2Game:GetLineMap():GetStartPosition( 10 )
+	pX2Game:CreateNPCReq_LUA( NPC_UNIT_ID["NUI_VALENTINE_DROP_MONSTER1"], pNPCUnit:GetHardLevel(), true, vSummonPos, false, 0.1, false  )	
+	
+	vSummonPos = pX2Game:GetLineMap():GetStartPosition( 22 )
+	pX2Game:CreateNPCReq_LUA( NPC_UNIT_ID["NUI_VALENTINE_DROP_MONSTER2"], pNPCUnit:GetHardLevel(), true, vSummonPos, false, 0.1, false  )	
+	
+	vSummonPos = pX2Game:GetLineMap():GetStartPosition( 21 )
+	pX2Game:CreateNPCReq_LUA( NPC_UNIT_ID["NUI_VALENTINE_DROP_MONSTER3"], pNPCUnit:GetHardLevel(), true, vSummonPos, false, 0.1, false  )	
+	
+	-- vSummonPos = pX2Game:GetLineMap():GetStartPosition( 16 )
+	-- pX2Game:CreateNPCReq_LUA( NPC_UNIT_ID["NUI_VALENTINE_DROP_MONSTER4"], pNPCUnit:GetHardLevel(), true, vSummonPos, false, 0.1, false  )	
+	
+	-- vSummonPos = pX2Game:GetLineMap():GetStartPosition( 1 )
+	-- pX2Game:CreateNPCReq_LUA( NPC_UNIT_ID["NUI_VALENTINE_DROP_MONSTER5"], pNPCUnit:GetHardLevel(), true, vSummonPos, false, 0.1, false  )	
+end

@@ -1,0 +1,165 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{	    
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+}
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Dummy_Ani_Wait.x",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 400,
+	RUN_SPEED			= 1200,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300,
+}
+
+
+INIT_COMPONENT = 
+{
+	MP_CHANGE_RATE			= 1,
+	MP_CHARGE_RATE			= 130,
+	
+	--SHADOW_SIZE				= 200,
+	--SHADOW_FILE_NAME		= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE		= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED		= "Small_HP_bar_Red.TGA",
+	--SMALL_HP_BAR_YELLOW		= "Small_HP_bar_Yellow.TGA",
+	
+	SHOW_ON_MINIMAP		= FALSE,
+	
+	HITTED_TYPE				= HITTED_TYPE["HTD_WOOD"],
+	
+	DAMAGE_DOWN				= FALSE,
+    DIE_FLY					= 0,		
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "HENIR_CUT_REPORTER_START",		},	
+	{ STATE_NAME = "HENIR_CUT_REPORTER_WAIT",		},
+	{ STATE_NAME = "HENIR_CUT_REPORTER_DIE",		},
+		
+	START_STATE					= "HENIR_CUT_REPORTER_START",
+	WAIT_STATE					= "HENIR_CUT_REPORTER_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "",
+	SMALL_DAMAGE_LAND_BACK		= "",
+	BIG_DAMAGE_LAND_FRONT		= "",
+	BIG_DAMAGE_LAND_BACK		= "",
+	
+	DOWN_DAMAGE_LAND_FRONT		= "",
+	DOWN_DAMAGE_LAND_BACK		= "",
+	
+	FLY_DAMAGE_FRONT			= "",
+	FLY_DAMAGE_BACK				= "",
+	SMALL_DAMAGE_AIR			= "",	
+	BIG_DAMAGE_AIR				= "",
+	DOWN_DAMAGE_AIR				= "",
+	UP_DAMAGE					= "",
+	DAMAGE_REVENGE				= "",	
+	
+	DYING_LAND_FRONT			= "HENIR_CUT_REPORTER_DIE",
+	DYING_LAND_BACK				= "HENIR_CUT_REPORTER_DIE",
+	DYING_SKY					= "HENIR_CUT_REPORTER_DIE",
+}
+
+HENIR_CUT_REPORTER_START = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	--SOUND_PLAY0					= { 0.143, "Peita_Crossbow_Start.ogg" },
+
+	CAN_PUSH_UNIT               = FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	NEVER_MOVE					= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"HENIR_CUT_REPORTER_WAIT",				},
+	},
+	
+	
+	-- EVENT_PROCESS = 
+	-- {	
+		-- { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"HENIR_CUT_REPORTER_DIE",		"CT_HENIR_CUT_REPORTER_DIE"	},	
+	-- },
+	
+	
+	-- CT_HENIR_CUT_REPORTER_DIE = 
+	-- {
+		-- STATE_TIME_OVER			= 1.0,
+	-- },	
+}
+
+HENIR_CUT_REPORTER_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,	
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	CAN_PUSH_UNIT               = FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	NEVER_MOVE					= TRUE,
+
+	EVENT_PROCESS = 
+	{	
+	},
+}
+
+HENIR_CUT_REPORTER_DIE = 
+{
+    SHOW                        = FALSE,
+    
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,	
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+		
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,	
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}

@@ -1,0 +1,1081 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 100.0,
+	UNIT_HEIGHT		= 100.0,	
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	UNIT_SCALE		= 1.4,
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+		
+		"Komodo_AttackA.ogg",
+		"Komodo_VoiceDamage.ogg",
+		"Komodo_VoiceDying.ogg",
+		
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "NUI_Besma_Komodo.x",
+	MOTION_CHANGE_TEX_XET		= "NUI_Besma_fire_komodo.xet",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 200,
+	RUN_SPEED			= 400,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300,
+}
+
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 2250,
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	
+	FALL_DOWN			= TRUE,
+	
+	DAMAGE_DOWN         = FALSE,
+		
+    --SKY_DIE             = TRUE,		
+    --DIE_FLY             = 650,		
+	
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "KOMODO_WAIT",						},
+	{ STATE_NAME = "KOMODO_WAIT_HABIT",					},
+	{ STATE_NAME = "KOMODO_WALK",						},
+	{ STATE_NAME = "KOMODO_JUMP_UP",					},
+	{ STATE_NAME = "KOMODO_JUMP_DOWN",				}, --LUA_STATE_END_FUNC = "KOMODO_JUMP_DOWN_STATE_END" },
+	{ STATE_NAME = "KOMODO_JUMP_UP_DIR",				},
+	{ STATE_NAME = "KOMODO_JUMP_DOWN_DIR",			}, --LUA_STATE_END_FUNC = "KOMODO_JUMP_DOWN_DIR_STATE_END" },
+	{ STATE_NAME = "KOMODO_JUMP_LANDING",				},
+	
+	{ STATE_NAME = "KOMODO_ATTACK_A",					},
+	{ STATE_NAME = "KOMODO_ATTACK_B",					},
+	{ STATE_NAME = "KOMODO_ATTACK_B_READY",			STATE_COOL_TIME = 3, 												},
+	{ STATE_NAME = "KOMODO_ATTACK_C",					},	-- fireAttack
+	{ STATE_NAME = "KOMODO_ATTACK_C_READY",			},
+		
+	--리액션 관련
+	{ STATE_NAME = "KOMODO_DAMAGE_FRONT",				}, --LUA_FRAME_MOVE_FUNC = "KOMODO_DAMAGE_SMALL_FRAME_MOVE"			},
+	{ STATE_NAME = "KOMODO_DAMAGE_BACK",				}, --LUA_FRAME_MOVE_FUNC = "KOMODO_DAMAGE_BIG_FRAME_MOVE"				},
+	{ STATE_NAME = "KOMODO_DAMAGE_DOWN_FRONT",		}, --LUA_FRAME_MOVE_FUNC = "KOMODO_DAMAGE_DOWN_FRONT_FRAME_MOVE"		},
+	{ STATE_NAME = "KOMODO_DAMAGE_DOWN_BACK",			}, --LUA_FRAME_MOVE_FUNC = "KOMODO_DAMAGE_DOWN_BACK_FRAME_MOVE"		},
+	{ STATE_NAME = "KOMODO_DAMAGE_FLY_FRONT",			},
+	{ STATE_NAME = "KOMODO_DAMAGE_FLY_BACK",			},
+	{ STATE_NAME = "KOMODO_DAMAGE_AIR",				},
+	{ STATE_NAME = "KOMODO_DAMAGE_AIR_DOWN",			},
+	{ STATE_NAME = "KOMODO_DAMAGE_AIR_UP",			},
+	{ STATE_NAME = "KOMODO_DAMAGE_AIR_FALL",			},	
+	{ STATE_NAME = "KOMODO_DAMAGE_AIR_DOWN_LANDING",	}, --LUA_FRAME_MOVE_FUNC = "KOMODO_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE"	},
+	{ STATE_NAME = "KOMODO_STAND_UP_FRONT",			},
+	{ STATE_NAME = "KOMODO_STAND_UP_BACK",			},
+	--{ STATE_NAME = "KOMODO_STAND_UP_ATTACK_FRONT",	}, --LUA_FRAME_MOVE_FUNC = "KOMODO_STAND_UP_ATTACK_FRONT_FRAME_MOVE"	},
+	--{ STATE_NAME = "KOMODO_STAND_UP_ATTACK_BACK",		}, --LUA_FRAME_MOVE_FUNC = "KOMODO_STAND_UP_ATTACK_BACK_FRAME_MOVE"	},
+	--{ STATE_NAME = "KOMODO_DAMAGE_REVENGE",			},
+	
+	{ STATE_NAME = "KOMODO_DYING_LAND_FRONT",			}, --LUA_STATE_START_FUNC = "KOMODO_DYING_LAND_STATE_START", },
+	{ STATE_NAME = "KOMODO_DYING_LAND_BACK",			}, --LUA_STATE_START_FUNC = "KOMODO_DYING_LAND_STATE_START", },
+	{ STATE_NAME = "KOMODO_DYING_SKY",				}, --LUA_STATE_START_FUNC = "KOMODO_DYING_LAND_STATE_START", },
+	--{ STATE_NAME = "KOMODO_DYING_FLY",				},
+	
+	
+	START_STATE					= "KOMODO_WAIT_HABIT",
+	WAIT_STATE					= "KOMODO_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "KOMODO_DAMAGE_FRONT",
+	SMALL_DAMAGE_LAND_BACK		= "KOMODO_DAMAGE_BACK",
+	BIG_DAMAGE_LAND_FRONT		= "KOMODO_DAMAGE_FRONT",
+	BIG_DAMAGE_LAND_BACK		= "KOMODO_DAMAGE_BACK",
+	
+	-- fix!! 안넘어지게 테스트
+	DOWN_DAMAGE_LAND_FRONT		= "KOMODO_DAMAGE_DOWN_FRONT",
+	DOWN_DAMAGE_LAND_BACK		= "KOMODO_DAMAGE_DOWN_BACK",
+	
+	FLY_DAMAGE_FRONT			= "KOMODO_DAMAGE_FLY_FRONT",
+	FLY_DAMAGE_BACK				= "KOMODO_DAMAGE_FLY_BACK",
+	SMALL_DAMAGE_AIR			= "KOMODO_DAMAGE_AIR",	
+	BIG_DAMAGE_AIR				= "KOMODO_DAMAGE_AIR",
+	DOWN_DAMAGE_AIR				= "KOMODO_DAMAGE_AIR_DOWN",
+	DOWN_DAMAGE_AIR_LANDING				= "KOMODO_DAMAGE_AIR_DOWN_LANDING",
+	UP_DAMAGE					= "KOMODO_DAMAGE_AIR_UP",
+	DAMAGE_REVENGE				= "KOMODO_DAMAGE_FRONT",
+	
+	DAMAGE_EXTRA_STATES         = {"KOMODO_DAMAGE_AIR_FALL","KOMODO_STAND_UP_FRONT","KOMODO_STAND_UP_BACK","KOMODO_JUMP_DOWN","KOMODO_JUMP_LANDING",},	
+	
+	DYING_LAND_FRONT			= "KOMODO_DYING_LAND_FRONT",
+	DYING_LAND_BACK				= "KOMODO_DYING_LAND_BACK",
+	DYING_SKY					= "KOMODO_DYING_SKY",
+	--DYING_FLY                   = "KOMODO_DYING_FLY",
+
+	REVENGE_ATTACK				= "",	
+}
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 3,		-- sec
+		TARGET_NEAR_RANGE			= 300,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 400,		-- cm
+		TARGET_LOST_RANGE			= 600,		-- cm
+		TARGET_SUCCESS_RATE			= 100,  --40,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 30,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 100, -- 30,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 600,
+		DEST_GAP			= 200,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 160,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		WALK_INTERVAL		= 3,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 5,
+		UP_JUMP_RATE		= 100, -- 40,
+		UP_DOWN_RATE		= 20,
+		DOWN_JUMP_RATE		= 100,    --  20,
+		DOWN_DOWN_RATE		= 40,
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 100, --50,		
+		PATROL_RANGE			= 200,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 500,	-- cm
+		ESCAPE_GAP			= 600,	-- 이 거리 보다 멀어지면 도망 성공
+		
+		WALK_INTERVAL		= 1.5,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 10,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+	},
+	
+	
+}
+
+
+KOMODO_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"KOMODO_JUMP_DOWN",					},
+				
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"KOMODO_ATTACK_C_READY",		"CT_KOMODO_ATTACK_C_READY",	},
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"KOMODO_ATTACK_A",				"CT_KOMODO_ATTACK_A",		},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"KOMODO_ATTACK_B_READY",		"CT_KOMODO_ATTACK_B_READY",	},
+		
+		
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"KOMODO_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"KOMODO_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"KOMODO_JUMP_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"KOMODO_JUMP_UP_DIR",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"KOMODO_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"KOMODO_JUMP_DOWN_DIR",				},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"KOMODO_WAIT_HABIT",						"CT_KOMODO_WAIT_HABIT",		},
+	},
+	
+	
+	
+	CT_KOMODO_ATTACK_C_READY = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 50,
+	},
+	-- CT_KOMODO_ATTACK_A = 
+	-- {
+		-- EVENT_INTERVAL_ID			= 0,
+		-- DISTANCE_TO_TARGET_NEAR		= 150,
+		-- RATE						= 40,
+	-- },
+	CT_KOMODO_ATTACK_B_READY = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 50,
+	},
+	
+	
+	CT_KOMODO_WAIT_HABIT = 
+	{
+		ANIM_PLAY_COUNT		= 8,
+		RATE				= 50,
+	},
+}
+
+KOMODO_WAIT_HABIT = 
+{
+	ANIM_NAME					= "WaitHabit",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,	
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"KOMODO_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"KOMODO_WAIT",						},
+	},
+}
+
+KOMODO_WALK = 
+{
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"KOMODO_JUMP_DOWN_DIR",				},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"KOMODO_ATTACK_C_READY",		"CT_KOMODO_ATTACK_C_READY",	},
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"KOMODO_ATTACK_A",				"CT_KOMODO_ATTACK_A",		},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"KOMODO_ATTACK_B_READY",		"CT_KOMODO_ATTACK_B_READY",	},
+		
+		
+				
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"KOMODO_WAIT",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"KOMODO_JUMP_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"KOMODO_JUMP_UP_DIR",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"KOMODO_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"KOMODO_JUMP_DOWN_DIR",				},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"KOMODO_WAIT_HABIT",						"CT_KOMODO_WAIT_HABIT",		},
+	},
+	
+	CT_KOMODO_ATTACK_C_READY = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 50,
+	},
+	
+	-- CT_KOMODO_ATTACK_A = 
+	-- {
+		-- EVENT_INTERVAL_ID			= 0,
+		-- DISTANCE_TO_TARGET_NEAR		= 50,
+		-- RATE						= 10,
+	-- },
+	CT_KOMODO_ATTACK_B_READY = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 50,
+	},
+
+	CT_KOMODO_WAIT_HABIT = 
+	{
+		ANIM_PLAY_COUNT		= 8,
+		RATE				= 50,
+	},
+}
+
+KOMODO_JUMP_UP = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	ADD_POS_Y					= 45,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"KOMODO_JUMP_DOWN",				},
+	},
+}
+
+KOMODO_JUMP_DOWN = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"KOMODO_JUMP_LANDING",				},
+	},
+}
+
+KOMODO_JUMP_UP_DIR = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	ADD_POS_Y					= 45,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"KOMODO_JUMP_DOWN_DIR",				},
+	},
+}
+
+KOMODO_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"KOMODO_JUMP_LANDING",				},
+	},
+}
+
+KOMODO_JUMP_LANDING = 
+{
+	ANIM_NAME					= "JumpLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+		
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"KOMODO_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"KOMODO_WAIT",					},
+	},
+}
+
+KOMODO_ATTACK_A = 
+{
+	ANIM_NAME					= "AttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+
+        SOUND_PLAY0			= { 0.355, "Komodo_AttackA.ogg" },
+	
+	VIEW_TARGET					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+			
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"KOMODO_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"KOMODO_WAIT",					},
+	},
+	
+	ATTACK_TIME0				= { 1.06, 1.16, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["WALK_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+}
+
+KOMODO_ATTACK_B_READY = 
+{
+	ANIM_NAME					= "AttackBReady",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	VIEW_TARGET					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"KOMODO_ATTACK_B",		},
+	},
+}
+
+KOMODO_ATTACK_B = 
+{
+	ANIM_NAME					= "AttackB",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	SPEED_X				= INIT_PHYSIC["RUN_SPEED"] * 5,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"KOMODO_WAIT",					},
+	},
+	
+	ATTACK_TIME0				= { 0.066, 0.46, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+		
+		BACK_SPEED_X			= 800,
+		BACK_SPEED_Y			= 0.0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+}
+
+KOMODO_ATTACK_C_READY = 
+{
+	ANIM_NAME					= "AttackCReady",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	--SUPER_ARMOR					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	VIEW_TARGET					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"KOMODO_ATTACK_C",		},
+	},
+}
+
+KOMODO_ATTACK_C = 
+{
+	ANIM_NAME					= "AttackC",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	SUPER_ARMOR					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Fire_Komodo_Fire_Attack", 0,
+	},
+
+        SOUND_PLAY0			= { 0.082, "Komodo_AttackCFire.ogg" },
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"KOMODO_WAIT",					},
+	},
+}
+
+KOMODO_DAMAGE_FRONT = 
+{
+	ANIM_NAME					= "DamageFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    SOUND_PLAY0			= { 0.069, "Komodo_VoiceDamage.ogg", 60 },
+	
+    EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"KOMODO_WAIT",												},
+	},
+	
+}
+
+KOMODO_DAMAGE_BACK = 
+{
+	ANIM_NAME					= "DamageBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	    SOUND_PLAY0			= { 0.102, "Komodo_VoiceDamage.ogg", 60 },
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"KOMODO_WAIT",												},
+	},
+}
+
+KOMODO_DAMAGE_DOWN_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 20, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"KOMODO_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"KOMODO_STAND_UP_FRONT",			},
+	},
+}
+
+KOMODO_DAMAGE_DOWN_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 20, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"KOMODO_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"KOMODO_STAND_UP_BACK",			},
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_1465 },
+		{ RATE = 10, MESSAGE = STR_ID_1463 },
+	},
+}
+
+KOMODO_DAMAGE_FLY_FRONT = 
+{
+	ANIM_NAME					= "DamageAirFlyFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"KOMODO_DAMAGE_DOWN_FRONT",		},
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_1433 },
+	},
+}
+
+KOMODO_DAMAGE_FLY_BACK = 
+{
+	ANIM_NAME					= "DamageAirFlyBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"KOMODO_DAMAGE_DOWN_BACK",		},
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_1433 },
+	},
+}
+
+KOMODO_DAMAGE_AIR = 
+{
+	ANIM_NAME					= "DamageAirSmall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"KOMODO_WAIT",					},
+	},
+}
+
+KOMODO_DAMAGE_AIR_DOWN = 
+{
+	ANIM_NAME					= "DamageAirDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"KOMODO_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+KOMODO_DAMAGE_AIR_UP = 
+{
+	ANIM_NAME					= "DamageAirUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+ 
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"KOMODO_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"KOMODO_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_1433 },
+	},
+}
+
+KOMODO_DAMAGE_AIR_FALL = 
+{
+	ANIM_NAME					= "DamageAirFall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_POSITIVE_Y_SPEED"],		"KOMODO_DAMAGE_AIR_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"KOMODO_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+KOMODO_DAMAGE_AIR_DOWN_LANDING = 
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 20, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"KOMODO_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"KOMODO_STAND_UP_FRONT",			},
+	},
+}
+
+KOMODO_STAND_UP_FRONT = 
+{
+	ANIM_NAME					= "DamageStandUpFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 20, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"KOMODO_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"KOMODO_WAIT",				},
+	},
+}
+
+KOMODO_STAND_UP_BACK = 
+{
+	ANIM_NAME					= "DamageStandUpBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 20, },
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"KOMODO_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"KOMODO_WAIT", },
+	},		
+}
+
+KOMODO_DYING_LAND_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+
+    SOUND_PLAY0			= { 0.219, "Komodo_VoiceDying.ogg" },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+	
+KOMODO_DYING_LAND_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+
+    SOUND_PLAY0			= { 0.217, "Komodo_VoiceDying.ogg" },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+KOMODO_DYING_SKY = 
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+    SOUND_PLAY0			= { 0.137, "Komodo_VoiceDying.ogg" },
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+
+--[[
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+function KOMODO_WAIT2_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.34 ) then
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function KOMODO_WAIT3_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.7 ) then
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function KOMODO_WALK_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+function KOMODO_JUMP_DOWN_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+function KOMODO_JUMP_DOWN_DIR_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+function KOMODO_DAMAGE_SMALL_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.047 ) then
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function KOMODO_DAMAGE_BIG_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.06 ) then
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function KOMODO_DAMAGE_DOWN_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.3 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+
+end
+
+function KOMODO_DAMAGE_DOWN_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.2 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+
+end
+
+function KOMODO_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pos = pNPCUnit:GetLandPosition_LUA()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+		pos.y = pos.y + 5
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "GroundShockWave", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(1,-1) )
+		pParticle = pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "AirDownTick", pNPCUnit:GetPos(), D3DXVECTOR2(200,200), D3DXVECTOR2(10,-1) )
+		if pParticle ~= nil then 
+			pParticle:SetLandPosition( pos.y - 5 )
+		end 
+		
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 500 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 0.1 )
+		end		
+		
+	elseif pNPCUnit:AnimEventTimer_LUA( 0.44 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+
+end
+
+function KOMODO_STAND_UP_ATTACK_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 1.15 ) then
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function KOMODO_STAND_UP_ATTACK_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 1.15 ) then
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+
+function KOMODO_DYING_LAND_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	
+	pos = pNPCUnit:GetPos()
+	pos.y = pos.y + 100.0
+	GetMinorParticle = pX2Game:GetMinorParticle()
+	
+	pSeq = GetMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DieLight",		pos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+	if pSeq ~= nil then
+	
+		pSeq:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+		pNPCUnit:SetDieSeq( pSeq:GetHandle() )
+	
+	end
+	pNPCUnit:PlaySound_LUA( "DieLight.ogg" )
+	
+end
+
+--]]

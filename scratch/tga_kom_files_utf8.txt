@@ -1,0 +1,14 @@
+﻿=== Found 13 select/unit TGA files ===
+  data051.kom: DLG_New_Unit_Background.tga
+  data051.kom: DLG_Unit_Background.tga
+  data063.kom: DLG_UI_New_Delete_Unit.tga
+  data068.kom: DLG_My_Unit_Score.tga
+  data068.kom: DLG_New_Unit_Background01.tga
+  data068.kom: DLG_New_Unit_Background01_1.tga
+  data068.kom: DLG_New_Unit_Background01_2.tga
+  data068.kom: DLG_New_Unit_Background01_3.tga
+  data068.kom: DLG_New_Unit_Background02.tga
+  data068.kom: DLG_New_Unit_Background02_1.tga
+  data068.kom: DLG_New_Unit_Background02_2.tga
+  data068.kom: DLG_New_Unit_Background02_3.tga
+  data068.kom: DLG_Unit_State.TGA

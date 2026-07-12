@@ -1,0 +1,620 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 120.0,
+	UNIT_HEIGHT		= 150.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	UNIT_SCALE		= 1.1,
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{	
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Event_INT_Cage_BabyPonggo.x",
+}
+
+INIT_PHYSIC = 
+{	
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 300,
+	RUN_SPEED			= 550,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300,
+}
+
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 2000,
+	--HP_CHANGE_RATE		= -50,
+	MP_CHANGE_RATE		= 0,
+	MP_CHARGE_RATE		= 0,
+	
+	--USE_SLASH_TRACE		= FALSE,
+	
+	--SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+		
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	FALL_DOWN			= TRUE,
+	
+	DAMAGE_DOWN         = FALSE,
+		
+
+	--SUMMON_TIME			= 80, --소환 지속시간 관리 방법 변경
+
+	SUMMON_TIME			= 1800,
+	
+	NOT_EXTRA_DAMAGE    = TRUE,	
+	DAMAGE_DOWN         = FALSE,
+	DIE_FLY				= FALSE,
+	
+}
+
+
+
+
+INIT_STATE = 
+{	
+	{ STATE_NAME = "PONGGO_START",			LUA_FRAME_MOVE_FUNC = "PONGGO_START_FRAME_MOVE"			},
+	{ STATE_NAME = "PONGGO_PRE_WAIT",				},
+	{ STATE_NAME = "PONGGO_WAIT",					},
+	{ STATE_NAME = "PONGGO_END",				LUA_FRAME_MOVE_FUNC = "PONGGO_DYING_FRAME_MOVE"			},
+	{ STATE_NAME = "PONGGO_DYING",			LUA_FRAME_MOVE_FUNC = "PONGGO_DYING_FRAME_MOVE"			},
+	
+
+--리액션 관련
+	{ STATE_NAME = "PONGGO_DAMAGE",				},	
+
+
+	{ STATE_NAME = "PONGGO_WALK",					},
+	{ STATE_NAME = "PONGGO_JUMP_UP",				},
+	{ STATE_NAME = "PONGGO_JUMP_DOWN",			},
+	{ STATE_NAME = "PONGGO_JUMP_UP_DIR",			},
+	{ STATE_NAME = "PONGGO_JUMP_DOWN_DIR",		},
+	{ STATE_NAME = "PONGGO_JUMP_LANDING",			},
+	
+	COMMON_FRAME_FUNC			= "PONGGO_COMMON_FRAME_MOVE",
+	
+	START_STATE					= "PONGGO_START",
+	WAIT_STATE					= "PONGGO_WAIT",
+	SUMMON_END_STATE			= "PONGGO_END",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "PONGGO_DAMAGE",
+	SMALL_DAMAGE_LAND_BACK		= "PONGGO_DAMAGE",
+	BIG_DAMAGE_LAND_FRONT		= "PONGGO_DAMAGE",
+	BIG_DAMAGE_LAND_BACK		= "PONGGO_DAMAGE",
+	DOWN_DAMAGE_LAND_FRONT		= "PONGGO_DAMAGE",
+	DOWN_DAMAGE_LAND_BACK		= "PONGGO_DAMAGE",
+	FLY_DAMAGE_FRONT			= "PONGGO_DAMAGE",
+	FLY_DAMAGE_BACK				= "PONGGO_DAMAGE",
+	SMALL_DAMAGE_AIR			= "PONGGO_DAMAGE",	
+	BIG_DAMAGE_AIR				= "PONGGO_DAMAGE",
+	DOWN_DAMAGE_AIR				= "PONGGO_DAMAGE",
+	UP_DAMAGE					= "PONGGO_DAMAGE",
+	
+	DYING_LAND_FRONT			= "PONGGO_DYING",
+	DYING_LAND_BACK				= "PONGGO_DYING",
+	DYING_SKY					= "PONGGO_DYING",
+
+	REVENGE_ATTACK				= "",	
+}
+
+INIT_AI = 
+{
+	ALLY = 
+	{
+		FAR_LOST_RANGE	= 1400,			-- 이 거리보다 멀어지면 유저 옆으로 텔레포트
+		LOST_RANGE		= 50,			-- 이 거리보다 멀어지면 유저 쪽으로 걸어감
+	},
+
+	TARGET =
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_NEAR_FIRST"],
+		TARGET_INTERVAL 			= 2,
+		TARGET_NEAR_RANGE 			= 1000,
+		TARGET_RANGE 				= 2000,
+		TARGET_LOST_RANGE 			= 5000,
+		TARGET_SUCCESS_RATE 		= 100,
+		ATTACK_TARGET_RATE 			= 100,
+		PRESERVE_LAST_TARGET_RATE 	= 0,
+	},
+	
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 400,
+		DEST_GAP			= 300,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 500,
+		
+		DIR_CHANGE_INTERVAL = 0.5,
+		
+		WALK_INTERVAL		= 0.5,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 0.5,
+		UP_JUMP_RATE		= 100, -- 40,
+		UP_DOWN_RATE		= 20,
+		DOWN_JUMP_RATE		= 100,    --  20,
+		DOWN_DOWN_RATE		= 40,
+		
+		LINE_END_RANGE		= 80,	-- cm
+	},	
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 400,	-- cm
+		ESCAPE_GAP			= 600,	-- 이 거리 보다 멀어지면 도망 성공
+		
+		WALK_INTERVAL		= 1.5,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 10,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+	},
+		
+	ESCAPE_CONDITION = 
+	{
+		RATE				= 100, --30,
+		ESCAPE_RANGE		= 350,		-- 이 범위 안에 들어오면 타격당하지 않아도 RATE에 지정된 확률로 도망
+	}
+	
+	
+}
+
+
+
+PONGGO_START = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	
+	RIGHT						= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SOUND_PLAY0 				= { 0.001, "Pet_Summon.ogg" },
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"PONGGO_PRE_WAIT",				},
+	},
+	
+	TALK_BOX =
+	{
+ 	},
+	
+}
+
+
+PONGGO_PRE_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"PONGGO_WAIT",				},
+	},
+	
+}
+
+
+
+PONGGO_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	-- VIEW_TARGET					= TRUE,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+	EVENT_INTERVAL_TIME0		= 0.5,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"PONGGO_JUMP_DOWN",					},
+
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"PONGGO_WAIT",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"PONGGO_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"PONGGO_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"PONGGO_JUMP_UP",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"PONGGO_JUMP_UP_DIR",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"PONGGO_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"PONGGO_JUMP_DOWN_DIR",				},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PONGGO_JUMP_UP_DIR",			"CT_PONGGO_JUMP_UP_DIR",		},
+		-- robobeg : 정의되지 않은 next state
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PONGGO_ATTACK_B",				"CT_PONGGO_ATTACK_B",			},
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PONGGO_ATTACK_C",				"CT_PONGGO_ATTACK_C",			},
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PONGGO_ATTACK_A",				"CT_PONGGO_ATTACK_A",			},
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PONGGO_ATTACK_D",				"CT_PONGGO_ATTACK_D",			},
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PONGGO_BUFF",					"CT_PONGGO_BUFF",				},
+	},
+
+	CT_PONGGO_JUMP_UP_DIR = 
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		TARGET_ABOVE_ME 			= TRUE,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 50,
+	},
+
+	CT_PONGGO_ATTACK_A = 
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 700,
+		RATE						= 100,
+	},
+	
+	CT_PONGGO_ATTACK_B = 
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 600,
+		RATE						= 100,
+	},
+	CT_PONGGO_ATTACK_C = 
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 600,
+		RATE						= 75,
+	},
+	CT_PONGGO_ATTACK_D = 
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 5000,
+		RATE						= 100,
+	},
+	CT_PONGGO_BUFF = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 100,
+	},
+}
+
+
+PONGGO_WALK = 
+{
+	ANIM_SPEED					= 1.2,
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["RUN_SPEED"],
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 0.5,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"PONGGO_JUMP_DOWN",					},
+
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"PONGGO_WAIT",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"PONGGO_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"PONGGO_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"PONGGO_JUMP_UP",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"PONGGO_JUMP_UP_DIR",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"PONGGO_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"PONGGO_JUMP_DOWN_DIR",				},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PONGGO_JUMP_UP_DIR",			"CT_PONGGO_JUMP_UP_DIR",		},
+	},
+
+	CT_PONGGO_JUMP_UP_DIR = 
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		TARGET_ABOVE_ME 			= TRUE,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 50,
+	},
+}
+
+PONGGO_DAMAGE =
+{
+	ANIM_NAME					= "Damage",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	-- SOUND_PLAY0 				= { 0.01, "PONGGO_Voice_Hit01.ogg",30 },
+		
+	GUARD_DEFENCE               = 50,
+	GUARD_DEFENCE_FRONT			= TRUE,
+	GUARD_DEFENCE_BACK			= FALSE,
+	
+	-- EFFECT_SET_LIST = 
+	-- {
+		-- "EffectSet_APINK_ANGEL_SHIELD", 0.1,
+	-- },	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"PONGGO_WAIT",				},
+	},
+}
+
+PONGGO_JUMP_UP = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	ADD_POS_Y					= 45,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"PONGGO_JUMP_DOWN",				},
+	},
+}
+
+PONGGO_JUMP_DOWN = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"PONGGO_JUMP_LANDING",				},
+	},
+}
+
+PONGGO_JUMP_UP_DIR = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["RUN_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	ADD_POS_Y					= 45,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"PONGGO_JUMP_DOWN_DIR",				},
+	},
+}
+
+PONGGO_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["RUN_SPEED"],
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"PONGGO_JUMP_LANDING",				},
+	},
+}
+
+PONGGO_JUMP_LANDING = 
+{
+	ANIM_NAME					= "JumpDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+		
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"PONGGO_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PONGGO_WAIT",					},
+	},
+}
+
+
+PONGGO_DYING = 
+{
+	ANIM_NAME					= "Dying",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	PASSIVE_SPEED_Y				= 0,
+	PASSIVE_SPEED_X				= 0,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	
+	--NEVER_MOVE					= TRUE,
+	DYING_END					= TRUE,
+	DYING_SPEED					= 1.4,
+	
+	EFFECT_SET_LIST =
+	{
+	},
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+	
+
+
+
+PONGGO_END = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	PASSIVE_SPEED_Y				= 0,
+	PASSIVE_SPEED_X				= 0,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= TRUE,
+	SOUND_PLAY0					= { 0.01, "Parasite_House_Summon.ogg" },
+	SOUND_PLAY1					= { 0.01, "Parasite_House_Summon.ogg" },
+	
+	
+	--NEVER_MOVE					= TRUE,
+	DYING_END					= TRUE,
+	DYING_SPEED					= 1.4,
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_APINK_ANGEL_BUFF", 0,	
+	},
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+	
+
+
+function PONGGO_DYING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+end
+
+
+function PONGGO_MAGIC_ATTACK_A_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+  
+end
+
+
+
+function PONGGO_MAGIC_ATTACK_A_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	
+	
+end
+
+
+------------------------------------------------------------------------------
+-- Frame Move Function --
+------------------------------------------------------------------------------
+
+
+
+
+
+------------------------------------------------------------------------------
+-- UTIL FUNCTION
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+function MovePos( pos, dirvector, dist )
+	
+	pos.x = pos.x + dist * dirvector.x
+	pos.y = pos.y + dist * dirvector.y
+	pos.z = pos.z + dist * dirvector.z
+	
+	return pos
+	
+end
+
+
+
+function PONGGO_COMMON_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+end
+
+
+function PONGGO_START_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+end	   
+
+
+function PONGGO_DYING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+end	   
+

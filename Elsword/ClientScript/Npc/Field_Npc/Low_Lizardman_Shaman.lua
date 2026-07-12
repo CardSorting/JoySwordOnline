@@ -1,0 +1,1521 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+-- Lizardman_Shaman.lua
+
+INIT_SYSTEM = 
+{
+	LUA_SHAREABLE	= TRUE,
+	UNIT_WIDTH		= 100.0,
+	UNIT_HEIGHT		= 200.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	UNIT_SCALE		= 0.9,
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{		
+		"Gate_Light2.dds",
+		"GuideArrow02.dds",
+		"Particle_Blur.dds",
+		
+		"Heal01.dds",
+		"Explosion_Sphere.dds",
+	},
+	
+	READY_SOUND = 
+	{
+		"LizardMan_Shaman_Slash.ogg",
+		"LizardMan_MagicMissile.ogg",
+		"Lizard_SPHeal.ogg",
+        "Lizardman_Laugh.ogg",
+		
+	},
+			
+	READY_XMESH = 
+	{
+		"Arme_ChargeMp2.Y",
+	},
+	
+	READY_XSKIN_MESH = 
+	{
+		"FireBall01_GhostMagician.X",
+		"GuideArrow_AttackBox.X",
+	},
+		
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_LizardMan_Shaman.x",
+	MOTION_ANI_TEX_XET		= "NUI_LOW_LIZARDMAN_SHAMAN.xet",
+	MOTION_CHANGE_TEX_XET	= "NUI_LOW_LIZARDMAN_SHAMAN.xet",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 100,
+	RUN_SPEED			= 600,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 1800,
+}
+
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 6000,
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	
+
+	
+	DRAW_SMALL_MP_BAR	= TRUE,
+	
+	
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	--MIND_FLAG_HEIGHT		= 230,
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	--RAGE_COUNT_MAX		= 20,
+	--RAGE_TIME_MAX		= 5,
+
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	
+	FALL_DOWN			= TRUE,
+	
+	WEAPON0 = 
+	{
+		WEAPON_FILE_NAME	= "Mesh_LizardMan_Shaman_Weapon.X",
+		WEAPON_XET_NAME		= "NUI_LOW_LIZARDMAN_SHAMAN_Weapon.xet",
+		WEAPON_BONE_NAME	= "Dummy1_Rhand",
+			
+		USE_SLASH_TRACE		= TRUE,
+		SLASH_TRACE_TOP_BONE		= "TRACE_START0",
+		SLASH_TRACE_BOTTOM_BONE		= "TRACE_END0",
+	},
+	
+	
+	
+	
+
+	
+
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_START",					},
+	
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_WAIT",						},
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_WAIT_START",				},
+		
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_WALK",						LUA_STATE_END_FUNC = "LOW_LIZARDMAN_SHAMAN_WALK_STATE_END"						},
+		
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_JUMP_UP",					},
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_JUMP_DOWN",				LUA_STATE_END_FUNC = "LOW_LIZARDMAN_SHAMAN_JUMP_DOWN_STATE_END"					},
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_JUMP_UP_DIR",				},
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_JUMP_DOWN_DIR",			LUA_STATE_END_FUNC = "LOW_LIZARDMAN_SHAMAN_JUMP_DOWN_DIR_STATE_END"				},
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_JUMP_LANDING",				},
+
+
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_ATTACK",					STATE_COOL_TIME	= 2, },
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_MAGIC_MISSILE",			LUA_FRAME_MOVE_FUNC = "LOW_LIZARDMAN_SHAMAN_MAGIC_MISSILE_FRAME_MOVE",			STATE_COOL_TIME	= 5,},
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_SP_HEAL",					LUA_FRAME_MOVE_FUNC = "LOW_LIZARDMAN_SHAMAN_SP_HEAL_FRAME_MOVE",
+																LUA_STATE_END_FUNC = "LOW_LIZARDMAN_SHAMAN_SP_HEAL_STATE_END",			},
+	
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_CHARGE",					LUA_FRAME_MOVE_FUNC = "LOW_LIZARDMAN_SHAMAN_CHARGE_FRAME_MOVE",					
+																LUA_STATE_END_FUNC = "LOW_LIZARDMAN_SHAMAN_CHARGE_STATE_END",			STATE_COOL_TIME	= 10,		},	
+	
+	
+	
+	--리액션 관련
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_DAMAGE_SMALL",				LUA_FRAME_MOVE_FUNC = "LOW_LIZARDMAN_SHAMAN_DAMAGE_SMALL_FRAME_MOVE"				},
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_DAMAGE_BIG",				LUA_FRAME_MOVE_FUNC = "LOW_LIZARDMAN_SHAMAN_DAMAGE_BIG_FRAME_MOVE"				},
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_DAMAGE_DOWN_FRONT",		LUA_FRAME_MOVE_FUNC = "LOW_LIZARDMAN_SHAMAN_DAMAGE_DOWN_FRONT_FRAME_MOVE"		},
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_DAMAGE_DOWN_BACK",			LUA_FRAME_MOVE_FUNC = "LOW_LIZARDMAN_SHAMAN_DAMAGE_DOWN_BACK_FRAME_MOVE"			},
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_DAMAGE_FLY_FRONT",			},
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_DAMAGE_FLY_BACK",			},
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR",				},
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR_DOWN",			},
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR_UP",			},
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR_FALL",			},	
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR_DOWN_LANDING",	LUA_FRAME_MOVE_FUNC = "LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE"	},
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_STAND_UP_FRONT",			},
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_STAND_UP_BACK",			},
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_STAND_UP_ATTACK_FRONT",	LUA_FRAME_MOVE_FUNC = "LOW_LIZARDMAN_SHAMAN_STAND_UP_ATTACK_FRONT_FRAME_MOVE"	},
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_STAND_UP_ATTACK_BACK",		LUA_FRAME_MOVE_FUNC = "LOW_LIZARDMAN_SHAMAN_STAND_UP_ATTACK_BACK_FRAME_MOVE"		},
+	
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_DYING_LAND_FRONT",			LUA_STATE_START_FUNC = "LOW_LIZARDMAN_SHAMAN_DYING_LAND_STATE_START",},
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_DYING_LAND_BACK",			LUA_STATE_START_FUNC = "LOW_LIZARDMAN_SHAMAN_DYING_LAND_STATE_START",},
+	{ STATE_NAME = "LOW_LIZARDMAN_SHAMAN_DYING_SKY",				LUA_STATE_START_FUNC = "LOW_LIZARDMAN_SHAMAN_DYING_LAND_STATE_START",},
+	
+	
+	
+	START_STATE					= "LOW_LIZARDMAN_SHAMAN_WAIT",
+	WAIT_STATE					= "LOW_LIZARDMAN_SHAMAN_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "LOW_LIZARDMAN_SHAMAN_DAMAGE_SMALL",
+	SMALL_DAMAGE_LAND_BACK		= "LOW_LIZARDMAN_SHAMAN_DAMAGE_SMALL",
+	BIG_DAMAGE_LAND_FRONT		= "LOW_LIZARDMAN_SHAMAN_DAMAGE_BIG",
+	BIG_DAMAGE_LAND_BACK		= "LOW_LIZARDMAN_SHAMAN_DAMAGE_BIG",
+	DOWN_DAMAGE_LAND_FRONT		= "LOW_LIZARDMAN_SHAMAN_DAMAGE_DOWN_FRONT",
+	DOWN_DAMAGE_LAND_BACK		= "LOW_LIZARDMAN_SHAMAN_DAMAGE_DOWN_BACK",
+	FLY_DAMAGE_FRONT			= "LOW_LIZARDMAN_SHAMAN_DAMAGE_FLY_FRONT",
+	FLY_DAMAGE_BACK				= "LOW_LIZARDMAN_SHAMAN_DAMAGE_FLY_BACK",
+	SMALL_DAMAGE_AIR			= "LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR",	
+	BIG_DAMAGE_AIR				= "LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR",
+	DOWN_DAMAGE_AIR				= "LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR_DOWN",
+	DOWN_DAMAGE_AIR_LANDING				= "LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR_DOWN_LANDING",
+	UP_DAMAGE					= "LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR_UP",
+	DAMAGE_REVENGE				= "LOW_LIZARDMAN_SHAMAN_DAMAGE_SMALL",
+	
+	DAMAGE_EXTRA_STATES         = {"LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR_FALL","LOW_LIZARDMAN_SHAMAN_STAND_UP_FRONT","LOW_LIZARDMAN_SHAMAN_STAND_UP_BACK",
+	"LOW_LIZARDMAN_SHAMAN_STAND_UP_ATTACK_FRONT","LOW_LIZARDMAN_SHAMAN_STAND_UP_ATTACK_BACK",
+	"LOW_LIZARDMAN_SHAMAN_JUMP_DOWN","LOW_LIZARDMAN_SHAMAN_JUMP_LANDING",},
+	
+	
+	DYING_LAND_FRONT			= "LOW_LIZARDMAN_SHAMAN_DYING_LAND_FRONT",
+	DYING_LAND_BACK				= "LOW_LIZARDMAN_SHAMAN_DYING_LAND_BACK",
+	DYING_SKY					= "LOW_LIZARDMAN_SHAMAN_DYING_SKY",
+
+	REVENGE_ATTACK				= "",	
+}
+
+
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 3,		-- sec
+		TARGET_NEAR_RANGE			= 500,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 600,		-- cm
+		TARGET_LOST_RANGE			= 700,		-- cm
+		TARGET_SUCCESS_RATE			= 100,  --50,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 30,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 100, -- 30,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+		TARGET_HEIGHT_LIMIT			= 50,
+	},
+
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 600,
+		DEST_GAP			= 150,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 160,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		WALK_INTERVAL		= 3,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 5,
+		UP_JUMP_RATE		= 0, -- 40,
+		UP_DOWN_RATE		= 0,
+		DOWN_JUMP_RATE		= 0,    --  20,
+		DOWN_DOWN_RATE		= 0,
+		
+		LINE_END_RANGE		= 80,	-- cm
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 50, --50,		
+		PATROL_RANGE			= 100,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 500,	-- cm
+		ESCAPE_GAP			= 600,	-- 이 거리 보다 멀어지면 도망 성공
+		
+		WALK_INTERVAL		= 1.5,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 10,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+		
+		LINE_END_RANGE		= 80,	-- cm
+	},
+
+}
+
+
+LOW_LIZARDMAN_SHAMAN_START = 
+{
+	ANIM_NAME					= "WaitStart",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,	
+
+    SOUND_PLAY0			= { 0.01, "Lizardman_Laugh.ogg" , 30 },
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"LOW_LIZARDMAN_SHAMAN_WAIT",		"CT_LOW_LIZARDMAN_SHAMAN_WAIT"				},
+	},
+	
+	CT_LOW_LIZARDMAN_SHAMAN_WAIT = 
+	{
+		STATE_TIME_OVER			= 3,
+	},
+}
+
+
+
+LOW_LIZARDMAN_SHAMAN_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+
+    SOUND_PLAY0			= { 0.01, "Lizardman_Laugh.ogg" , 20 },
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	PASSIVE_SPEED_X				= 0,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		
+		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"LOW_LIZARDMAN_SHAMAN_JUMP_DOWN",				},
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"LOW_LIZARDMAN_SHAMAN_ATTACK",					"CT_LOW_LIZARDMAN_SHAMAN_ATTACK",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"LOW_LIZARDMAN_SHAMAN_SP_HEAL",					"CT_LOW_LIZARDMAN_SHAMAN_SP_HEAL",		},
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"LOW_LIZARDMAN_SHAMAN_WALK",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"LOW_LIZARDMAN_SHAMAN_WALK",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"LOW_LIZARDMAN_SHAMAN_JUMP_UP",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"LOW_LIZARDMAN_SHAMAN_JUMP_UP_DIR",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"LOW_LIZARDMAN_SHAMAN_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"LOW_LIZARDMAN_SHAMAN_JUMP_DOWN_DIR",			},
+	},
+	
+	CT_LOW_LIZARDMAN_SHAMAN_ATTACK = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 100,
+	},
+	CT_LOW_LIZARDMAN_SHAMAN_SP_HEAL =				-- fix!! 주위에 healing 할 몬스터가 있는지를 체크해야 한다
+	{
+		EVENT_INTERVAL_ID			= 0,
+		MY_MP_MORE_THAN_PERCENT		= 20,
+		RATE						= 50,
+	},
+		
+}
+
+
+LOW_LIZARDMAN_SHAMAN_WAIT_START = 
+{
+	ANIM_NAME					= "WaitStart",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,	
+
+    SOUND_PLAY0			= { 0.01, "Lizardman_Laugh.ogg" , 30 },
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"LOW_LIZARDMAN_SHAMAN_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"LOW_LIZARDMAN_SHAMAN_WAIT",					},
+	},
+
+}
+
+
+
+
+LOW_LIZARDMAN_SHAMAN_WALK = 
+{
+	ANIM_SPEED					= 0.6,
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= 100,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	EVENT_INTERVAL_TIME1		= 3,
+	
+	EVENT_PROCESS = 
+	{		
+		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"LOW_LIZARDMAN_SHAMAN_JUMP_DOWN_DIR",			},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"LOW_LIZARDMAN_SHAMAN_ATTACK",					"CT_LOW_LIZARDMAN_SHAMAN_ATTACK",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"LOW_LIZARDMAN_SHAMAN_SP_HEAL",					"CT_LOW_LIZARDMAN_SHAMAN_SP_HEAL",		},
+
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"LOW_LIZARDMAN_SHAMAN_WAIT",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"LOW_LIZARDMAN_SHAMAN_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"LOW_LIZARDMAN_SHAMAN_JUMP_UP",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"LOW_LIZARDMAN_SHAMAN_JUMP_UP_DIR",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"LOW_LIZARDMAN_SHAMAN_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"LOW_LIZARDMAN_SHAMAN_JUMP_DOWN_DIR",			},
+	},
+	
+	CT_LOW_LIZARDMAN_SHAMAN_ATTACK = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 100,
+	},
+
+	CT_LOW_LIZARDMAN_SHAMAN_SP_HEAL =				-- fix!! 주위에 healing 할 몬스터가 있는지를 체크해야 한다
+	{
+		EVENT_INTERVAL_ID			= 0,
+		MY_MP_MORE_THAN_PERCENT		= 20,
+		RATE						= 50,
+	},
+}
+
+
+
+LOW_LIZARDMAN_SHAMAN_JUMP_UP = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	
+	ADD_POS_Y					= 45, 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"LOW_LIZARDMAN_SHAMAN_JUMP_DOWN",			},
+	},
+	
+	
+}
+
+LOW_LIZARDMAN_SHAMAN_JUMP_DOWN = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"LOW_LIZARDMAN_SHAMAN_JUMP_LANDING",				},
+	},
+}
+
+LOW_LIZARDMAN_SHAMAN_JUMP_UP_DIR = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	
+	ADD_POS_Y					= 45, 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"LOW_LIZARDMAN_SHAMAN_JUMP_DOWN_DIR",				},
+	},
+	
+
+}
+
+LOW_LIZARDMAN_SHAMAN_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"LOW_LIZARDMAN_SHAMAN_JUMP_LANDING",				},
+	},
+}
+
+LOW_LIZARDMAN_SHAMAN_JUMP_LANDING = 
+{
+	ANIM_NAME					= "JumpLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+    SOUND_PLAY0			= { 0.121, "JumpLand.ogg" },
+
+	SPEED_X						= 300,
+	SPEED_Y						= 0,
+		
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"LOW_LIZARDMAN_SHAMAN_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"LOW_LIZARDMAN_SHAMAN_WAIT",						},
+	},
+}
+
+
+LOW_LIZARDMAN_SHAMAN_ATTACK = 
+{
+	ANIM_NAME					= "Attack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    SOUND_PLAY0			= { 0.438, "LizardMan_Shaman_Slash.ogg" },
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	
+	VIEW_TARGET					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"LOW_LIZARDMAN_SHAMAN_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"LOW_LIZARDMAN_SHAMAN_WAIT",						},	
+
+	},
+		
+	ATTACK_TIME0				= { 0.44, 0.51, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["WALK_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+}
+
+
+
+
+
+
+LOW_LIZARDMAN_SHAMAN_MAGIC_MISSILE = 
+{
+	ANIM_NAME					= "MagicMissile",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+
+    SOUND_PLAY0			= { 0.482, "LizardMan_MagicMissile.ogg" },
+
+	VIEW_TARGET					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"LOW_LIZARDMAN_SHAMAN_JUMP_DOWN",										},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"LOW_LIZARDMAN_SHAMAN_WAIT",											},	
+
+	},
+}
+
+
+
+
+LOW_LIZARDMAN_SHAMAN_SP_HEAL = 
+{
+	ANIM_NAME					= "SP_Heal",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    SOUND_PLAY0			= { 0.15, "Lizard_SPHeal.ogg" },
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	
+	VIEW_TARGET					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"LOW_LIZARDMAN_SHAMAN_JUMP_DOWN",										},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"LOW_LIZARDMAN_SHAMAN_WAIT",											},	
+
+	},
+}
+
+
+
+LOW_LIZARDMAN_SHAMAN_CHARGE = 
+{
+	ANIM_NAME					= "Charge",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+		
+	EVENT_INTERVAL_TIME0		= 2,
+	NEVER_MOVE					= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"LOW_LIZARDMAN_SHAMAN_JUMP_DOWN",										},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"LOW_LIZARDMAN_SHAMAN_WAIT",					"CT_LOW_LIZARDMAN_SHAMAN_WAIT_1",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"LOW_LIZARDMAN_SHAMAN_WAIT",					"CT_LOW_LIZARDMAN_SHAMAN_WAIT_2",			},
+	},
+	
+	CT_LOW_LIZARDMAN_SHAMAN_WAIT_1 = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		MY_MP_MORE_THAN_PERCENT		= 80,
+		RATE						= 100,
+	},
+
+	CT_LOW_LIZARDMAN_SHAMAN_WAIT_2 = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		HAVE_TARGET					= 1,		-- true
+		RATE						= 100,
+	},
+	
+}
+
+
+
+
+
+LOW_LIZARDMAN_SHAMAN_DAMAGE_SMALL = 
+{
+	ANIM_NAME					= "DamageSmall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"LOW_LIZARDMAN_SHAMAN_WAIT",												},
+	},
+}
+
+LOW_LIZARDMAN_SHAMAN_DAMAGE_BIG = 
+{
+	ANIM_NAME					= "DamageBig",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"LOW_LIZARDMAN_SHAMAN_WAIT",												},
+	},
+}
+
+LOW_LIZARDMAN_SHAMAN_DAMAGE_DOWN_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 20, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"LOW_LIZARDMAN_SHAMAN_STAND_UP_FRONT",			},
+	},
+}
+
+LOW_LIZARDMAN_SHAMAN_DAMAGE_DOWN_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 20, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"LOW_LIZARDMAN_SHAMAN_STAND_UP_BACK",			},
+	},
+}
+
+LOW_LIZARDMAN_SHAMAN_DAMAGE_FLY_FRONT = 
+{
+	ANIM_NAME					= "DamageAirFlyFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+		
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"LOW_LIZARDMAN_SHAMAN_DAMAGE_DOWN_FRONT",		},
+	},
+}
+
+LOW_LIZARDMAN_SHAMAN_DAMAGE_FLY_BACK = 
+{
+	ANIM_NAME					= "DamageAirFlyBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"LOW_LIZARDMAN_SHAMAN_DAMAGE_DOWN_BACK",		},
+	},
+}
+
+LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR = 
+{
+	ANIM_NAME					= "DamageAirSmall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"LOW_LIZARDMAN_SHAMAN_WAIT",					},
+	},
+}
+
+LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR_DOWN = 
+{
+	ANIM_NAME					= "DamageAirDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR_UP = 
+{
+	ANIM_NAME					= "DamageAirUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR_FALL = 
+{
+	ANIM_NAME					= "DamageAirFall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_POSITIVE_Y_SPEED"],		"LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR_DOWN_LANDING = 
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 20, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"LOW_LIZARDMAN_SHAMAN_STAND_UP_FRONT",			},
+	},
+}
+
+LOW_LIZARDMAN_SHAMAN_STAND_UP_FRONT = 
+{
+	ANIM_NAME					= "DamageStandUpFront", 
+		
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 20, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"LOW_LIZARDMAN_SHAMAN_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"LOW_LIZARDMAN_SHAMAN_WAIT",				},
+	},
+}
+
+LOW_LIZARDMAN_SHAMAN_STAND_UP_BACK = 
+{
+	ANIM_NAME					= "DamageStandUpBack",		
+	
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 20, },
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"LOW_LIZARDMAN_SHAMAN_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"LOW_LIZARDMAN_SHAMAN_WAIT", },
+	},		
+}
+
+LOW_LIZARDMAN_SHAMAN_STAND_UP_ATTACK_FRONT = 
+{
+	ANIM_NAME					= "StandAttackFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	ANIM_WAIT_TIME				= 1,
+
+	MIND_FLAG					= MIND_FLAG["MF_STAND_UP_ATTACK"],
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 20, },
+
+    SOUND_PLAY0			= { 0.234, "LizardMan_Shaman_Slash.ogg" },
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"LOW_LIZARDMAN_SHAMAN_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"LOW_LIZARDMAN_SHAMAN_WAIT",				},
+	},
+		
+	
+	ATTACK_TIME0				= { 0.21, 0.28, },	
+	SLASH_TRACE					= { 0.1, 0.4 },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.5,
+			FIRE		= 0.0,
+			ICE			= 0.0,
+			EARTH		= 0.0,
+			LIGHTNING	= 0.0,
+			DARK		= 0.0,
+			LIGHT		= 0.0,
+			UNIVERSAL	= 0.0,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		STOP_TIME_ATT			= 0.0,		
+		STOP_TIME_DEF			= 0.0,	
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 0.0,	
+		CLEAR_SCREEN_COLOR_A	= 0.0,
+		CLEAR_SCREEN_COLOR_R	= 1.0,
+		CLEAR_SCREEN_COLOR_G	= 1.0,
+		CLEAR_SCREEN_COLOR_B	= 1.0,
+
+		RE_ATTACK				= FALSE,		
+		HIT_GAP					= 0.0,				
+	},
+	
+}
+
+LOW_LIZARDMAN_SHAMAN_STAND_UP_ATTACK_BACK = 
+{
+	ANIM_NAME					= "StandAttackBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	ANIM_WAIT_TIME				= 1,
+
+	MIND_FLAG					= MIND_FLAG["MF_STAND_UP_ATTACK"],
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 20, },
+
+    SOUND_PLAY0			= { 0.410, "LizardMan_Shaman_Slash.ogg" },
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	
+	FLIP_DIR_END				= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"LOW_LIZARDMAN_SHAMAN_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"LOW_LIZARDMAN_SHAMAN_WAIT", },
+	},	
+	
+		
+	ATTACK_TIME0				= { 0.41, 0.51, },	
+	SLASH_TRACE					= { 0.2, 0.6 },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.5,
+			FIRE		= 0.0,
+			ICE			= 0.0,
+			EARTH		= 0.0,
+			LIGHTNING	= 0.0,
+			DARK		= 0.0,
+			LIGHT		= 0.0,
+			UNIVERSAL	= 0.0,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		STOP_TIME_ATT			= 0.0,		
+		STOP_TIME_DEF			= 0.0,	
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 0.0,	
+		CLEAR_SCREEN_COLOR_A	= 0.0,
+		CLEAR_SCREEN_COLOR_R	= 1.0,
+		CLEAR_SCREEN_COLOR_G	= 1.0,
+		CLEAR_SCREEN_COLOR_B	= 1.0,
+
+		RE_ATTACK				= FALSE,		
+		HIT_GAP					= 0.0,				
+	},
+}
+
+
+LOW_LIZARDMAN_SHAMAN_DYING_LAND_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+	
+LOW_LIZARDMAN_SHAMAN_DYING_LAND_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+LOW_LIZARDMAN_SHAMAN_DYING_SKY = 
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+
+function LOW_LIZARDMAN_SHAMAN_WALK_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+
+
+function LOW_LIZARDMAN_SHAMAN_JUMP_DOWN_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+function LOW_LIZARDMAN_SHAMAN_JUMP_DOWN_DIR_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+
+
+------------------------------------------------------------------------------------------------------------
+function LOW_LIZARDMAN_SHAMAN_MAGIC_MISSILE_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.5 ) then
+	
+		local vBonePos = pNPCUnit:GetLandPosition_LUA()		
+			
+		local bIsRight = pNPCUnit:GetIsRight()
+		local vDirVector = pNPCUnit:GetDirVector()
+		if bIsRight == false then
+			vBonePos = MovePos( vBonePos, vDirVector, -200 )
+		else
+			vBonePos = MovePos( vBonePos, vDirVector, 200 )
+		end
+		
+		vBonePos.y = vBonePos.y + 300.0 
+		pNPCUnit:SetVector_LUA( 0, vBonePos )
+		
+		local rotDegree = pNPCUnit:GetRotateDegree()	
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		local Particle1 = pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "LizardMan_Shaman_Charge02", vBonePos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(-1,-1) )
+		if Particle1 ~= nil then 
+			Particle1:SetAddRotate( rotDegree )
+			Particle1:SetAxisAngle( rotDegree )
+		end 
+		
+	end
+		
+
+
+	if pNPCUnit:AnimEventTimer_LUA( 1.0 ) then
+
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		local vRot = pNPCUnit:GetRotateDegree()
+		vRot.z = vRot.z - 30.0
+		local pos = pNPCUnit:GetLandPosition_LUA()		
+		local vBonePos = pNPCUnit:GetVector_LUA( 0 )
+		
+		pDamageEffect:CreateInstance_LUA2( pNPCUnit, "LOW_LIZARDMAN_SHAMAN_MAGIC_MISSILE", vBonePos, pos.y, vRot )
+	
+	end
+	
+end
+	
+	
+	
+------------------------------------------------------------------------------------------------------------
+function LOW_LIZARDMAN_SHAMAN_SP_HEAL_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+
+	local pParticle1 = pNPCUnit:GetMinorParticle_LUA( 0 ) 
+	if nil ~= pParticle1 then 
+
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		
+		if pMinorParticle:IsLiveInstance( pParticle1 ) == true then 
+		
+			local LHandPos = pNPCUnit:GetBonePos_LUA( "Dummy2_Lhand" )
+			pParticle1:SetPosition( LHandPos )		
+		
+		else 
+		
+			pNPCUnit:ClearMinorParticle_LUA( 0 )
+			
+		end
+	
+	end
+
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.13333 ) then
+
+		local LHandPos = pNPCUnit:GetBonePos_LUA( "Dummy2_Lhand" )
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		local pParticle2 = pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "LizardMan_ShamanKing_SP_Heal01", LHandPos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(-1,-1) )
+		if pParticle2 ~= nil then 
+			pNPCUnit:SetMinorParticle_LUA( 0, pParticle2:GetHandle() ) 
+		end 
+	end
+	
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.566 ) then
+		
+		local vPos = pNPCUnit:GetPos()
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "LizardMan_ShamanKing_SP_Heal02", vPos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(-1,-1) )
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "LizardMan_ShamanKing_SP_Heal03", vPos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(-1,-1) )
+	end
+	
+	if pNPCUnit:AnimEventTimer_LUA( 0.57 ) then
+		
+		local vPos = pNPCUnit:GetPos()
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "LizardMan_ShamanKing_SP_Heal04", vPos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(-1,-1) )
+	end
+	
+	
+	
+	-- fix !! 일단 범위안에 있는 애들 한번에 힐링 되게
+	if pNPCUnit:AnimEventTimer_LUA( 0.75 ) then
+	
+		local pMajorParticle = pX2Game:GetMajorParticle()	
+		
+		local vPos = pNPCUnit:GetPos()
+		local fDist = 800.0
+		--nCount = 0
+		local nUnitListSize = pX2Game:GetNPCUnitListSize()
+		
+				
+		for i=0, nUnitListSize-1 do 
+			
+			local pUnit = pX2Game:GetNPCUnit( i )
+			
+			if pUnit ~= nil and
+				--pUnit:GetUID() ~= pNPCUnit:GetUID() and
+				pUnit:GetTeam() == pNPCUnit:GetTeam() and				
+				pUnit:GetDistanceFrom(vPos) < fDist and
+				pUnit:GetNowHP() > 0 and				
+				pUnit:GetNowHP() < pUnit:GetMaxHP() then
+				
+				pMajorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "Heal_Effect01", pUnit:GetPos(), D3DXVECTOR2(-1,-1), D3DXVECTOR2(-1,-1) )
+				pMajorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "LobbyLevelUp01", pUnit:GetPos(), D3DXVECTOR2(-1,-1), D3DXVECTOR2(-1,-1) )
+
+				local healedHP = pUnit:GetNowHP() + 300.0 * pNPCUnit:GetHardLevel()
+				--healedHP = pUnit:GetNowHP() + pUnit:GetMaxHP() * 0.2 -- 최대 HP의 20% healing
+				if healedHP > pUnit:GetMaxHP() then
+					
+					healedHP = pUnit:GetMaxHP()
+				
+				end
+				
+				pUnit:SetNowHP_LUA( healedHP )
+								
+			end
+				
+		end
+		
+		pNPCUnit:SetNowMP( 0.0 )
+		
+	end
+	
+	
+end
+	
+	
+	
+------------------------------------------------------------------------------------------------------------
+function LOW_LIZARDMAN_SHAMAN_SP_HEAL_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pParticle1 = pNPCUnit:GetMinorParticle_LUA( 0 ) 
+	if nil ~= pParticle1 then 
+
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:DestroyInstance( pParticle1 )
+		pNPCUnit:ClearMinorParticle_LUA( 0 )
+	
+	end
+	
+end
+
+
+	
+------------------------------------------------------------------------------------------------------------
+function LOW_LIZARDMAN_SHAMAN_CHARGE_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+		local vPos = pNPCUnit:GetPos()
+		local vBonePos = pNPCUnit:GetWeaponBonePos_LUA( 0, "TRACE_START0" )
+		vBonePos.y = vBonePos.y + 140.0
+
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		local pCharge1 = pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "LizardMan_Shaman_Charge01", vPos,	D3DXVECTOR2(-1,-1), D3DXVECTOR2(-1,1000) )
+		local pCharge2 = pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "LizardMan_Shaman_Charge02", vBonePos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(-1,1000) )
+		local pCharge3 = pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "LizardMan_Shaman_Charge03", vPos,	D3DXVECTOR2(-1,-1), D3DXVECTOR2(-1,1000) )
+		
+		if pCharge1 ~= nil then 
+			pNPCUnit:SetMinorParticle_LUA( 0, pCharge1:GetHandle() ) 
+		end 
+		
+		if pCharge2 ~= nil then 
+			pNPCUnit:SetMinorParticle_LUA( 1, pCharge2:GetHandle() ) 
+		end 
+		
+		if pCharge3 ~= nil then 
+			pNPCUnit:SetMinorParticle_LUA( 2, pCharge3:GetHandle() ) 
+		end 
+	end
+
+
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.4 ) then
+		pNPCUnit:PlaySound_LUA( "LizardMan_Charge.ogg" )
+		local fMP = pNPCUnit:GetNowMP() + 10.0					
+		if fMP > pNPCUnit:GetMaxMP() then
+			fMP = pNPCUnit:GetMaxMP() 
+		end
+		
+		pNPCUnit:SetNowMP( fMP )		
+		pNPCUnit:ClearEventCheck( 0.4 )
+		
+	end
+	
+end
+
+
+------------------------------------------------------------------------------------------------------------
+function LOW_LIZARDMAN_SHAMAN_CHARGE_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+
+	local pCharge1 = pNPCUnit:GetMinorParticle_LUA( 0 ) 
+	local pCharge2 = pNPCUnit:GetMinorParticle_LUA( 1 ) 
+	local pCharge3 = pNPCUnit:GetMinorParticle_LUA( 2 ) 
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	
+	if pCharge1 ~= nil then
+		
+		pMinorParticle:DestroyInstance( pCharge1 )
+		pNPCUnit:ClearMinorParticle_LUA( 0 )
+		
+	end
+	
+	if pCharge2 ~= nil then
+		
+		pMinorParticle:DestroyInstance( pCharge2 )
+		pNPCUnit:ClearMinorParticle_LUA( 1 )
+		
+	end
+	
+	
+	if pCharge3 ~= nil then
+		
+		pMinorParticle:DestroyInstance( pCharge3 )
+		pNPCUnit:ClearMinorParticle_LUA( 2 )
+		
+	end
+	
+end
+
+
+
+
+
+function LOW_LIZARDMAN_SHAMAN_DAMAGE_SMALL_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.047 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function LOW_LIZARDMAN_SHAMAN_DAMAGE_BIG_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.06 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function LOW_LIZARDMAN_SHAMAN_DAMAGE_DOWN_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.41 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )		
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+
+end
+
+function LOW_LIZARDMAN_SHAMAN_DAMAGE_DOWN_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.45 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )		
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+
+end
+
+function LOW_LIZARDMAN_SHAMAN_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+		
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		local pos = pNPCUnit:GetLandPosition_LUA()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+		pos.y = pos.y + 5
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "GroundShockWave", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(1,-1) )
+		local pParticle = pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "AirDownTick", pNPCUnit:GetPos(), D3DXVECTOR2(200,200), D3DXVECTOR2(10,-1) )
+		if pParticle ~= nil then 
+			pParticle:SetLandPosition( pos.y - 5 )
+		end
+		
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 500 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 0.1 )
+		end		
+		
+	elseif pNPCUnit:AnimEventTimer_LUA( 0.1 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )		
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+		
+	end
+
+end
+
+function LOW_LIZARDMAN_SHAMAN_STAND_UP_ATTACK_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.35 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function LOW_LIZARDMAN_SHAMAN_STAND_UP_ATTACK_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.35 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+
+
+
+
+
+function LOW_LIZARDMAN_SHAMAN_DYING_LAND_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pos = pNPCUnit:GetPos()
+	pos.y = pos.y + 100.0
+	local GetMinorParticle = pX2Game:GetMinorParticle()
+	
+	local pSeq = GetMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DieLight",		pos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+	if pSeq ~= nil then
+	
+		pSeq:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+		pNPCUnit:SetDieSeq( pSeq:GetHandle() )
+	
+	end
+	pNPCUnit:PlaySound_LUA( "DieLight.ogg" )
+	
+end
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------
+-- UTIL FUNCTION
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+function MovePos( pos, dirvector, dist )
+	
+	pos.x = pos.x + dist * dirvector.x
+	pos.y = pos.y + dist * dirvector.y
+	pos.z = pos.z + dist * dirvector.z
+	
+	return pos
+	
+end
+

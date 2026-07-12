@@ -1,0 +1,27 @@
+﻿=== Found 26 motion_el files in data033.kom ===
+  MOTION_EL_GM.x
+  Motion_EL.x
+  Motion_EL_BH.x
+  Motion_EL_Common.x
+  Motion_EL_Emotion.x
+  Motion_EL_Field.x
+  Motion_EL_Lobby.x
+  Motion_EL_PK.x
+  Motion_EL_SK.x
+  Motion_Elsword.x
+  Motion_Elsword_Common.x
+  Motion_Elsword_Emotion.x
+  Motion_Elsword_Emotion_APINK.X
+  Motion_Elsword_Emotion_APINK_LOVE.X
+  Motion_Elsword_Emotion_BIGBANG.X
+  Motion_Elsword_Emotion_CRAYONPOP_Sorted.X
+  Motion_Elsword_Emotion_DeepBow.X
+  Motion_Elsword_Field.x
+  Motion_Elsword_IS.x
+  Motion_Elsword_LK.x
+  Motion_Elsword_Lobby.x
+  Motion_Elsword_MK.x
+  Motion_Elsword_RS.x
+  Motion_Elsword_SK.x
+  Motion_Elsword_SwordMan.x
+  Motion_Elsword_TK.x

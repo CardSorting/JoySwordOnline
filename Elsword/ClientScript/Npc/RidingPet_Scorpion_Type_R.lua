@@ -1,0 +1,435 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 300.0,
+	UNIT_HEIGHT		= 230.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+
+	SPEECH =
+	{
+		STR_ID_4016,
+	},
+}
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+		"Riding_Nasod_Guardian.tga",
+		"eve_A_blink_light.DDS",
+		"eve_SA_sweepParade_middle02.dds",
+	},
+
+	READY_SOUND = 
+	{
+		"RidingPet_Scorpion_SkillC.ogg",
+		"RidingPet_Scorpion_DamageBack.ogg",
+		"RidingPet_Scorpion_DamageFront.ogg",
+		"RidingPet_Scorpion_PassDash.ogg",
+		"RidingPet_Scorpion_Dying.ogg",
+		"RidingPet_Scorpion_Start.ogg",
+		"RidingPet_Scorpion_WaitHabit.ogg",
+	},
+
+	READY_XSKIN_MESH = 
+	{
+		"Riding_Bbori_AttackX_AttackBox.X",
+		"Riding_Bboru_FireballS.X",
+		"Riding_Bboru_SP_C_AttackBox.X",
+		"Riding_Pporu_Skill_C_Attack_Line.X",
+	},
+
+	READY_XMESH =
+	{
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME	= "Motion_Riding_Nasod_Guardian.x",
+	RIDING_MOTION		= "Ride_1",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+
+	WALK_SPEED			= 700,
+	RUN_SPEED			= 1000, --750,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300, -- 2300
+
+	IGNORE_LINE_SPEED	= FALSE,
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "SCORPION_TYPE_R_START", },
+	{ STATE_NAME = "SCORPION_TYPE_R_WAIT", },
+	{ STATE_NAME = "SCORPION_TYPE_R_WAIT_HABIT", },
+	{ STATE_NAME = "SCORPION_TYPE_R_WALK", },
+	
+	{ STATE_NAME = "SCORPION_TYPE_R_JUMP_UP", },
+	{ STATE_NAME = "SCORPION_TYPE_R_JUMP_DOWN", },
+	{ STATE_NAME = "SCORPION_TYPE_R_JUMP_LANDING", },
+	
+	{ STATE_NAME = "SCORPION_TYPE_R_DASH", },
+	{ STATE_NAME = "SCORPION_TYPE_R_DASH_END", },
+	{ STATE_NAME = "SCORPION_TYPE_R_DASH_JUMP", },
+	{ STATE_NAME = "SCORPION_TYPE_R_DASH_JUMP_LANDING", },
+	
+	{ STATE_NAME = "SCORPION_TYPE_R_DAMAGE_FRONT", },
+	{ STATE_NAME = "SCORPION_TYPE_R_DAMAGE_BACK", },
+	{ STATE_NAME = "SCORPION_TYPE_R_DYING", },
+
+	{ STATE_NAME = "SCORPION_TYPE_R_ATTACK_Z", },
+	{ STATE_NAME = "SCORPION_TYPE_R_JUMP_ATTACK_Z", },
+	{ STATE_NAME = "SCORPION_TYPE_R_ATTACK_X", },
+	{ STATE_NAME = "SCORPION_TYPE_R_ATTACK_SPECIAL", },
+
+	{ STATE_NAME = "SCORPION_TYPE_R_SIT_READY", },
+	{ STATE_NAME = "SCORPION_TYPE_R_SIT_WAIT", },
+	{ STATE_NAME = "SCORPION_TYPE_R_STAND_UP", },
+	
+	{ STATE_NAME = "SCORPION_TYPE_R_PASS_DASH", },
+
+	START_STATE		= "SCORPION_TYPE_R_START",
+	WAIT_STATE		= "SCORPION_TYPE_R_WAIT",
+	HABIT_STATE		= "SCORPION_TYPE_R_WAIT_HABIT",
+	WALK_STATE		= "SCORPION_TYPE_R_WALK",
+
+	JUMP_UP_STATE		= "SCORPION_TYPE_R_JUMP_UP",
+	JUMP_DOWN_STATE		= "SCORPION_TYPE_R_JUMP_DOWN",
+	JUMP_LANDING_STATE	= "SCORPION_TYPE_R_JUMP_LANDING",
+
+	DASH_STATE				= "SCORPION_TYPE_R_DASH",
+	DASH_END_STATE			= "SCORPION_TYPE_R_DASH_END",
+	DASH_JUMP_UP_STATE		= "SCORPION_TYPE_R_DASH_JUMP",
+	DASH_JUMP_LANDING_STATE	= "SCORPION_TYPE_R_DASH_JUMP_LANDING",
+
+	DAMAGE_FRONT_STATE	= "SCORPION_TYPE_R_DAMAGE_FRONT",
+	DAMAGE_BACK_STATE	= "SCORPION_TYPE_R_DAMAGE_BACK",
+	DYING_STATE_STATE	= "SCORPION_TYPE_R_DYING",
+
+	ATTACK_Z_STATE			= "SCORPION_TYPE_R_ATTACK_Z",
+	JUMP_ATTACK_Z_STATE		= "SCORPION_TYPE_R_JUMP_ATTACK_Z",
+	ATTACK_X_STATE			= "SCORPION_TYPE_R_ATTACK_X",
+	ATTACK_SPECIAL_STATE	= "SCORPION_TYPE_R_ATTACK_SPECIAL",
+
+	SIT_READY_STATE = "SCORPION_TYPE_R_SIT_READY",
+	SIT_WAIT_STATE = "SCORPION_TYPE_R_SIT_WAIT",
+	STAND_UP_STATE = "SCORPION_TYPE_R_STAND_UP",
+	
+	SPECIAL_MOVE_STATE = "SCORPION_TYPE_R_PASS_DASH",
+}
+
+-- 상태 정의 --
+-- 시작 --
+SCORPION_TYPE_R_START = 
+{
+	ANIM_NAME	= "Start",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= TRUE,
+	EFFECT_SET_LIST = { "EffectSet_Riding_Pet_Summon", 0.001, },
+
+	SOUND_PLAY0	= { 0.4, "RidingPet_Scorpion_Start.ogg", },
+	SOUND_PLAY1	= { 0.001, "RidingPet_Summon.ogg", },
+	SKILL_CANCEL_AFTER	= 0.001,
+}
+----
+
+-- 대기 --
+SCORPION_TYPE_R_WAIT = 
+{
+	ANIM_NAME	= "Wait",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+}
+-----
+
+-- 습관 --
+SCORPION_TYPE_R_WAIT_HABIT = 
+{
+	ANIM_NAME	= "WaitHabit",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+
+	SOUND_PLAY0	= { 0.371, "RidingPet_Scorpion_WaitHabit.ogg", },
+}
+----
+
+-- 걷기 --
+SCORPION_TYPE_R_WALK = 
+{
+	ANIM_NAME	= "Walk",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+}
+----
+
+-- 점프 업 --
+SCORPION_TYPE_R_JUMP_UP = 
+{
+	ANIM_NAME		= "JumpUp",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+}
+----
+
+-- 점프 다운 --
+SCORPION_TYPE_R_JUMP_DOWN =
+{
+	ANIM_NAME		= "JumpDown",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+}
+----
+
+-- 점프 착지 --
+SCORPION_TYPE_R_JUMP_LANDING =
+{
+	ANIM_NAME		= "JumpDownLading",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+	TRANSITION		= TRUE,
+}
+----
+
+-- 달리기 ---
+SCORPION_TYPE_R_DASH =
+{
+	ANIM_NAME		= "Dash",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= TRUE,
+}
+----
+
+-- 달리다가 멈춤 --
+SCORPION_TYPE_R_DASH_END =
+{
+	ANIM_NAME	= "DashEnd",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	
+    SOUND_PLAY0	= { 0.01, "RidingPet_Scorpion_Dash_End.ogg", },
+	
+}
+----
+
+-- 달리다가 점프 --
+SCORPION_TYPE_R_DASH_JUMP =
+{
+	ANIM_NAME		= "DashJump",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+	SOUND_PLAY0			= { 0.02, "Step.ogg" },
+}
+----
+
+-- 달리다가 점프 착지 --
+SCORPION_TYPE_R_DASH_JUMP_LANDING =
+{
+	ANIM_NAME		= "DashJumpLanding",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+	
+	SOUND_PLAY0			= { 0.09, "RidingPet_Scorpion_DashJumpLanding.ogg" },
+}
+----
+
+-- 앞 데미지 --
+SCORPION_TYPE_R_DAMAGE_FRONT = 
+{
+	ANIM_NAME		= "DamageFront",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+	
+    SOUND_PLAY0	= { 0.02, "RidingPet_Scorpion_DamageFront.ogg", 40, },
+	
+}
+----
+
+-- 뒤 데미지 --
+SCORPION_TYPE_R_DAMAGE_BACK = 
+{
+	ANIM_NAME		= "DamageBack",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+	
+    SOUND_PLAY0	= { 0.02, "RidingPet_Scorpion_DamageBack.ogg", 40, },
+	
+}
+----
+
+-- 죽음 --
+SCORPION_TYPE_R_DYING =
+{
+	ANIM_NAME		= "Dying",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	INVINCIBLE		= { 0, 100, },
+
+    SOUND_PLAY0	= { 0.001, "RidingPet_Scorpion_Dying.ogg", },
+    SOUND_PLAY1	= { 0.697, "Down.ogg", },
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+}
+----
+
+-- Z 공격 --
+SCORPION_TYPE_R_ATTACK_Z =
+{
+	ANIM_NAME		= "Attack_Z",
+	ANIM_SPEED		= 1.16,
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	SPEED_TIME0		= { 800, -1, 0.001, 3 },
+	SPEED_TIME1		= { 0, -1, 0.60, 3 },
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= FALSE,
+	TRANSITION		= TRUE,
+
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	DELETE_EFFECT_SET_ON_DAMAGE_REACT = TRUE,
+	DELETE_EFFECT_SET_ON_DIE = TRUE,
+
+	SKILL_CANCEL_AFTER	= 0.7,
+	WALK_CANCEL_AFTER	= 0.7,
+	DASH_CANCEL_AFTER	= 0.7,
+}
+----
+
+-- 점프 Z 공격 --
+SCORPION_TYPE_R_JUMP_ATTACK_Z =
+{
+	ANIM_NAME		= "Jump_Attack_Z",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	--SPEED_X				= 500.0,
+	--SPEED_Y				= 500.0,
+	SPEED_TIME0		= { 0, 0, 0.01, 3 },
+	SPEED_TIME1		= { -1, -1, 0.20, 3 },
+	SPEED_TIME2		= { -500, 500, 0.21, 2 },
+
+    SOUND_PLAY0	= { 0.309, "MagicBall.ogg", },
+
+	EFFECT_SET_LIST = { "Riding_Nasod_Guardian_Attack_Jump_Z", 0.25, },
+}
+----
+
+-- X 공격 --
+SCORPION_TYPE_R_ATTACK_X =
+{
+	ANIM_NAME		= "Attack_x",
+	ANIM_SPEED		= 1.6, 
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+	
+	SUPER_ARMOR		= TRUE,
+	SUPER_ARMOR_NOT_RED	= TRUE,
+
+    SOUND_PLAY0	= { 0.716, "MagicBall.ogg", },
+    SOUND_PLAY1	= { 0.786, "MagicBall.ogg", },
+    SOUND_PLAY2	= { 0.896, "MagicBall.ogg", },
+    SOUND_PLAY3	= { 0.976, "MagicBall.ogg", },
+    SOUND_PLAY4	= { 1.155, "MagicBall.ogg", },
+    SOUND_PLAY5	= { 1.235, "MagicBall.ogg", },
+    SOUND_PLAY6	= { 1.315, "MagicBall.ogg", },
+    SOUND_PLAY7	= { 1.395, "MagicBall.ogg", },
+    SOUND_PLAY8	= { 1.748, "MagicBall.ogg", },
+    SOUND_PLAY9	= { 1.828, "MagicBall.ogg", },
+    SOUND_PLAY10 = { 1.916, "MagicBall.ogg", },
+    SOUND_PLAY11 = { 1.996, "MagicBall.ogg", },
+
+	EFFECT_SET_LIST = { "Riding_Nasod_Guardian_Attack_x", 0.0, },
+	SKILL_CANCEL_AFTER	= 2.3,
+	WALK_CANCEL_AFTER	= 2.3,
+	DASH_CANCEL_AFTER	= 2.3,
+}
+----
+
+-- SPECIAL 공격 --
+SCORPION_TYPE_R_ATTACK_SPECIAL =
+{
+	ANIM_NAME		= "Skill_C",
+	ANIM_SPEED		= 1.0,
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+	
+	SUPER_ARMOR		= TRUE,
+	SUPER_ARMOR_NOT_RED	= TRUE,
+
+	INVINCIBLE		= { 0, 100, },
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+    SOUND_PLAY0	= { 0.04, "RidingPet_Scorpion_SkillC.ogg", },
+
+	EFFECT_SET_LIST = { "Riding_Nasod_Guardian_Attack_c_Ready", 0.001, },
+
+	SKILL_CANCEL_AFTER	= 1.5,
+	WALK_CANCEL_AFTER	= 1.5,
+	DASH_CANCEL_AFTER	= 1.5,
+	NORMAL_CAMERA1_RATE			= 30,
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 1500,
+			HEIGHT			= 600,
+			ANGLEDEGREE		= 35,
+		},
+	},
+}
+----
+
+SCORPION_TYPE_R_SIT_READY = 
+{
+	ANIM_NAME		= "SitDown",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+}
+
+SCORPION_TYPE_R_SIT_WAIT = 
+{
+	ANIM_NAME		= "SitWait",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+}
+
+SCORPION_TYPE_R_STAND_UP = 
+{
+	ANIM_NAME		= "StandUp",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+}
+
+SCORPION_TYPE_R_PASS_DASH = 
+{
+	ANIM_NAME		= "Pass_Dahs",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+
+	SOUND_PLAY0	= { 0.07, "RidingPet_Scorpion_PassDash.ogg", },
+	
+	PASSIVE_SPEED_X	= INIT_PHYSIC["RUN_SPEED"] * 1.5,
+}

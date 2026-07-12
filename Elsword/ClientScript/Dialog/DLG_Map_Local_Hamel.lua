@@ -1,0 +1,91 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+DLGBack		= "DLG_Map_Local_Hamel_Back_NEW.lua"
+DLGFront	= "DLG_Map_Local_Hamel_Front.lua"
+
+
+
+--LOCAL_MAP_DLG = "DLG_TEMP_UI_Local_Velder_South.lua"
+LOCAL_MAP_DLG = "DLG_Map_Local_Hamel_Back_NEW.lua"
+
+
+BaseWorldStateID = WORLD_MAP_ID["WMI_ELLIOS"] -- 해당 지역을 품는 월드 ID
+
+EnterCondition = 
+{
+	RequireClearDungeonID = 
+	{
+	    DUNGEON_ID["DI_VELDER_GATE_NORMAL"],
+	},
+	RequireUnitLevel = 48,
+}
+
+PositionData =
+{
+	AURORA_POS_X = -200 - 105,
+	AURORA_POS_Y = 190 - 110,
+}
+
+VillageData = 
+{
+	ID			= VILLAGE_MAP_ID["VMI_HAMEL"],
+	
+	TEX_NAME	= "DLG_New_Dungeon_Image5.dds",
+	PIECE_NAME	= "Local_Image_Besma_Village",
+
+	EXPLANATION = STR_ID_1111,
+}
+
+VillageDGData = 
+{
+	ID			= VILLAGE_MAP_ID["VMI_DUNGEON_GATE_HAMEL"],
+	
+	TEX_NAME	= "DLG_New_Dungeon_Image5.dds",
+	PIECE_NAME	= "Local_Image_Besma_Village",
+
+	EXPLANATION = STR_ID_1111,
+}
+
+
+VillageDungeonLoungeData = 
+{
+	ID			= VILLAGE_MAP_ID["VMI_DUNGEON_LOUNGE_HAMEL"],
+}
+
+BattleFieldRestData = 
+{
+	ID			= VILLAGE_MAP_ID["VMI_BATTLE_FIELD_HAMEL_REST_00"],
+}
+
+
+-- 하멜
+DungeonIDList = 
+{
+	DUNGEON_ID["DI_HAMEL_OUTSKIRTS_RESIAM_NORMAL"],
+	DUNGEON_ID["DI_HAMEL_BREAK_RESIAM_NORMAL"],
+	DUNGEON_ID["DI_HAMEL_ANCIENT_WATERWAY_NORMAL"],
+	DUNGEON_ID["DI_HAMEL_ANCIENT_WATERWAY_CORE_NORMAL"],
+	DUNGEON_ID["DI_BATTLE_SHIP_HAMEL"],		-- 배던전 테스트
+	
+	DUNGEON_ID["DI_ELDER_HENIR_SPACE"],
+	
+	--DUNGEON_ID["DI_ELDER_HALLOWEEN_NORMAL"],
+	
+	--DUNGEON_ID["DI_EVENT_TREE_DAY_HAMEL"],
+	
+	DUNGEON_ID["DI_DEFENCE_DUNGEON_ELDER_NORMAL"],	-- 디펜스 던전
+	
+	DUNGEON_ID["DI_HAMEL_CAVE_OF_MAGMANTA_NORMAL"],
+	DUNGEON_ID["DI_HAMEL_FROZEN_WATER_TEMPLE_NORMAL"],
+	DUNGEON_ID["DI_HAMEL_FROZEN_WATER_HALL_NORMAL"],
+	-- 본섭에 패치 할 던전 ID만 추가해주세요.
+}
+
+BattleFieldIDList = 
+{
+	VILLAGE_MAP_ID["VMI_BATTLE_FIELD_HAMEL_FIELD_01"],
+	VILLAGE_MAP_ID["VMI_BATTLE_FIELD_HAMEL_FIELD_02"],
+	VILLAGE_MAP_ID["VMI_BATTLE_FIELD_HAMEL_FIELD_03"],
+	VILLAGE_MAP_ID["VMI_BATTLE_FIELD_HAMEL_FIELD_04"],
+	VILLAGE_MAP_ID["VMI_BATTLE_FIELD_HAMEL_SHIP_STAGE"],
+}

@@ -1,0 +1,300 @@
+    iSkillID : 8203
+    skillTreeTemplet.m_iUnitClass : 121
+    skillTreeTemplet.m_iMasterSkillLevel : 20
+    skillTreeTemplet.m_iTier : 9
+    skillTreeTemplet.m_iColumn : 2
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLSkillTree.cpp, 149)
+cerr : CXSLSkillTree::AddSkillTreeTemplet_LUA(), 2026-06-28 20:10:57, AddSkillTreeTemplet ÆÄ½Ì ½ÇÆÐ!
+    iSkillID : 8217
+    skillTreeTemplet.m_iUnitClass : 121
+    skillTreeTemplet.m_iMasterSkillLevel : 20
+    skillTreeTemplet.m_iTier : 10
+    skillTreeTemplet.m_iColumn : 0
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLSkillTree.cpp, 149)
+cerr : CXSLSkillTree::AddSkillTreeTemplet_LUA(), 2026-06-28 20:10:57, AddSkillTreeTemplet ÆÄ½Ì ½ÇÆÐ!
+    iSkillID : 103
+    skillTreeTemplet.m_iUnitClass : 121
+    skillTreeTemplet.m_iMasterSkillLevel : 20
+    skillTreeTemplet.m_iTier : 10
+    skillTreeTemplet.m_iColumn : 2
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLSkillTree.cpp, 149)
+cerr : CXSLSkillTree::AddSkillTreeTemplet_LUA(), 2026-06-28 20:10:57, AddSkillTreeTemplet ÆÄ½Ì ½ÇÆÐ!
+    iSkillID : 8219
+    skillTreeTemplet.m_iUnitClass : 121
+    skillTreeTemplet.m_iMasterSkillLevel : 20
+    skillTreeTemplet.m_iTier : 11
+    skillTreeTemplet.m_iColumn : 0
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLSkillTree.cpp, 149)
+cerr : CXSLSkillTree::AddSkillTreeTemplet_LUA(), 2026-06-28 20:10:57, AddSkillTreeTemplet ÆÄ½Ì ½ÇÆÐ!
+    iSkillID : 8220
+    skillTreeTemplet.m_iUnitClass : 121
+    skillTreeTemplet.m_iMasterSkillLevel : 20
+    skillTreeTemplet.m_iTier : 11
+    skillTreeTemplet.m_iColumn : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLSkillTree.cpp, 149)
+cerr : CXSLSkillTree::AddSkillTreeTemplet_LUA(), 2026-06-28 20:10:57, AddSkillTreeTemplet ÆÄ½Ì ½ÇÆÐ!
+    iSkillID : 8410
+    skillTreeTemplet.m_iUnitClass : 121
+    skillTreeTemplet.m_iMasterSkillLevel : 20
+    skillTreeTemplet.m_iTier : 12
+    skillTreeTemplet.m_iColumn : 0
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLSkillTree.cpp, 149)
+cerr : CXSLSkillTree::AddSkillTreeTemplet_LUA(), 2026-06-28 20:10:57, AddSkillTreeTemplet ÆÄ½Ì ½ÇÆÐ!
+    iSkillID : 8408
+    skillTreeTemplet.m_iUnitClass : 121
+    skillTreeTemplet.m_iMasterSkillLevel : 20
+    skillTreeTemplet.m_iTier : 12
+    skillTreeTemplet.m_iColumn : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLSkillTree.cpp, 149)
+cerr : CXSLSkillTree::AddSkillTreeTemplet_LUA(), 2026-06-28 20:10:57, AddSkillTreeTemplet ÆÄ½Ì ½ÇÆÐ!
+    iSkillID : 8218
+    skillTreeTemplet.m_iUnitClass : 121
+    skillTreeTemplet.m_iMasterSkillLevel : 20
+    skillTreeTemplet.m_iTier : 12
+    skillTreeTemplet.m_iColumn : 2
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLSkillTree.cpp, 149)
+cerr : CXSLSkillTree::AddSkillTreeTemplet_LUA(), 2026-06-28 20:10:57, AddSkillTreeTemplet ÆÄ½Ì ½ÇÆÐ!
+    iSkillID : 8013
+    skillTreeTemplet.m_iUnitClass : 121
+    skillTreeTemplet.m_iMasterSkillLevel : 20
+    skillTreeTemplet.m_iTier : 13
+    skillTreeTemplet.m_iColumn : 0
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLSkillTree.cpp, 149)
+cerr : CXSLSkillTree::AddSkillTreeTemplet_LUA(), 2026-06-28 20:10:57, AddSkillTreeTemplet ÆÄ½Ì ½ÇÆÐ!
+    iSkillID : 8014
+    skillTreeTemplet.m_iUnitClass : 121
+    skillTreeTemplet.m_iMasterSkillLevel : 20
+    skillTreeTemplet.m_iTier : 13
+    skillTreeTemplet.m_iColumn : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLSkillTree.cpp, 149)
+cerr : CXSLSkillTree::AddSkillTreeTemplet_LUA(), 2026-06-28 20:10:57, AddSkillTreeTemplet ÆÄ½Ì ½ÇÆÐ!
+    iSkillID : 8400
+    skillTreeTemplet.m_iUnitClass : 121
+    skillTreeTemplet.m_iMasterSkillLevel : 20
+    skillTreeTemplet.m_iTier : 14
+    skillTreeTemplet.m_iColumn : 0
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLSkillTree.cpp, 149)
+cerr : CXSLSkillTree::AddSkillTreeTemplet_LUA(), 2026-06-28 20:10:57, AddSkillTreeTemplet ÆÄ½Ì ½ÇÆÐ!
+    iSkillID : 8409
+    skillTreeTemplet.m_iUnitClass : 121
+    skillTreeTemplet.m_iMasterSkillLevel : 20
+    skillTreeTemplet.m_iTier : 14
+    skillTreeTemplet.m_iColumn : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLSkillTree.cpp, 149)
+cout : KLoginSimLayer::Init(), 2026-06-28 20:10:57, SKILL TEMPLET Á¤º¸ ·Îµå ¼º°ø.!
+cout2 : LoadingTimer::~LoadingTimer(), 2026-06-28 20:10:57, NewSkillTempletVer2.lua ·Îµù½Ã°£ : 
+    GetTickCount() - m_dwTime : 110
+cout2 : KGameSysVal::AddLimitsMaxLevel_LUA(), 2026-06-28 20:10:57, Á¦ÇÑ·¹º§ ¼³Á¤.!
+    m_iLimitsMaxLevel : 80
+cout2 : KGameSysVal::AddPremiumEXP_LUA(), 2026-06-28 20:10:57, ÇÁ¸®¹Ì¾ö ¾ÆÀÌÅÛ EXP º¸³Ê½º È®·ü.!
+    m_fValue[GSVT_PREMIUM_EXP] : 0.3
+cout2 : KGameSysVal::AddVIPEXP_LUA(), 2026-06-28 20:10:57, VIP EXP º¸³Ê½º È®·ü.!
+    m_fValue[GSVT_VIP_EXP] : 0.05
+cout2 : KGameSysVal::SetGuestUserLimitLevel_LUA(), 2026-06-28 20:10:57, Ã¼ÇèID Á¦ÇÑ·¹º§ ¼³Á¤.!
+    m_iGuestUserLimitLevel : 19
+cout2 : KGameSysVal::SetIsHackUserRegRejected_LUA(), 2026-06-28 20:10:57, ÇÙ À¯Àú ¹ß°ß½Ã DB¿¡ Á¢¼Ó Â÷´Ü µî·Ï ¿©ºÎ!
+    m_bIsHackUserRegRejected : false
+cout2 : KGameSysVal::SetIsHackUserRegMonitors_LUA(), 2026-06-28 20:10:57, ÇÙ À¯Àú ¹ß°ß½Ã DB¿¡ ÇØÅ· °¨½Ã ´ë»ó À¯Àú µî·Ï ¿©ºÎ!
+    m_bIsHackUserRegMonitors : false
+cout2 : KGameSysVal::SetIsHackUserKick_LUA(), 2026-06-28 20:10:57, ÇÙ À¯Àú ¹ß°ß½Ã Áï½Ã À¯Àú °­Á¦ Á¢¼Ó Á¾·á ¿©ºÎ!
+    m_bIsHackUserKick : false
+cout2 : KGameSysVal::SetIsHackUserBlockTrade_LUA(), 2026-06-28 20:10:57, ÇÙ À¯Àú ¹ß°ß½Ã Áï½Ã °Å·¡ Á¤Áö Ã³¸® ¿©ºÎ!
+    m_bIsHackUserBlockTrade : false
+cout : KGameSysVal::SetHackUserPacketMornitor_LUA(), 2026-06-28 20:10:57, ¿ÀÅäÇÙ À¯Àú ÆÐÅ¶ ¸ð´ÏÅÍ¸µ ¿©ºÎ : true
+cout : KGameSysVal::SetIsNewUnitTradeBlock_LUA(), 2026-06-28 20:10:57, ½Å±Ô À¯´Ö °Å·¡ Á¦ÇÑ ¿©ºÎ : false
+cout : KGameSysVal::SetNewUnitTradeBlockDay_LUA(), 2026-06-28 20:10:57, ½Å±Ô À¯´Ö °Å·¡ Á¦ÇÑ ¿©ºÎ : 3
+cout : KGameSysVal::SetNewUnitTradeBlockUnitClass_LUA(), 2026-06-28 20:10:57, ½Å±Ô À¯´Ö °Å·¡ Á¦ÇÑ ¿©ºÎ : 10
+cout2 : KGameSysVal::SetDisagreeHackUserFunc_LUA(), 2026-06-28 20:10:57, µ¿ÀÇ ¾ÈÇÑ ÇÙ À¯Àú¿¡ °üÇÑ Ã³¸® ¿©ºÎ!
+    m_bDisagreeHackUserFunc : false
+cout : KGameSysVal::SetLanBugOutCheckOption_Lua(), 2026-06-28 20:10:57, ·£¼±·º ¹æÁö ÄÚµå: ÀÎÀÚ Á¤º¸ ¼öÁ¤
+    m_bLanBugOutCheck : false
+    m_byteLanBugOutCheckMaxCount : 0
+    m_fLanBugOutCheckTime : 1
+    m_byteLanBugOutCheckCount : 10
+    m_fLanBugOutCheckTermMin : 1
+    m_fLanBugOutCheckTerm : 0
+    m_fLanBugOutCheckRepeatTerm : 0.5
+cout : KGameSysVal::SetLanBugOutVerifyOption_Lua(), 2026-06-28 20:10:57, ·£¼±·º ¹æÁö ÄÚµå: ÀÎÀÚ Á¤º¸ ¼öÁ¤
+    m_bLanBugOutVerify : false
+    m_byteLanBugOutVerifyMaxCount : 10
+    m_fLanBugOutVerifyTime : 1
+    m_byteLanBugOutVerifyCount : 10
+    m_fLanBugOutVerifyTermMin : 1
+    m_fLanBugOutVerifyTerm : 0
+    m_fLanBugOutVerifyRepeatTerm : 0.5
+cout2 : KGameSysVal::SetCheckChangeHostTime_LUA(), 2026-06-28 20:10:57, ÇÎ Ã¼Å©ÇÏ¿© ¹æÀå º¯°æ ½Ã°£ÀÌ º¯°æ µÇ¾ú½À´Ï´Ù.
+    m_iCheckChangeHostTime : 180
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\GameSysVal\GameSysVal.cpp, 2026)
+cout2 : KGameSysVal::SetCharStatisticsStartDate_LUA(), 2026-06-28 20:10:57, Ä³¸¯ÅÍ Åë°è ³²±â´Â ½ÃÀÛ ³¯Â¥!
+    wstrCharStatisticsStartDate : 2011-01-20 08:30:00
+cout2 : KGameSysVal::SetAccountStatisticsStartDate_LUA(), 2026-06-28 20:10:57, °èÁ¤ Åë°è ³²±â´Â ½ÃÀÛ ³¯Â¥!
+    wstrAccountStatisticsStartDate : 2011-02-24 08:00:00
+cout : KGameSysVal::SetBlockPersonalTrade_LUA(), 2026-06-28 20:10:57, °³ÀÎ °Å·¡ Â÷´Ü ¿©ºÎ : false
+cout : KGameSysVal::SetBlockPersonalShop_LUA(), 2026-06-28 20:10:57, °³ÀÎ »óÁ¡ Â÷´Ü ¿©ºÎ : false
+cout : KGameSysVal::SetBlockSendLetter_LUA(), 2026-06-28 20:10:57, ¿ìÆí Àü¼Û Â÷´Ü ¿©ºÎ : false
+cout : KGameSysVal::SetMachineIDBlock_LUA(), 2026-06-28 20:10:57, ¸Ó½Å ID ºí·° ±â´É µ¿ÀÛ ¿©ºÎ : false
+cout : KGameSysVal::SetMachineIDDuplicateCheck_LUA(), 2026-06-28 20:10:57, ¸Ó½Å ID Áßº¹ Á¢¼Ó Ã¼Å© ±â´É µ¿ÀÛ ¿©ºÎ : false
+cout : KGameSysVal::SetLetterAndTradeMonitoringIsOn_Lua(), 2026-06-28 20:10:57, ¿ìÆí and °Å·¡ °¨½Ã ±â´É : true
+cout : KGameSysVal::SetLimitsCountOfLetter_Lua(), 2026-06-28 20:10:57, ¿ìÆí Àü¼Û È½¼ö °¨½Ã ±â´É - Àü¼Û È½¼ö ¼³Á¤ : 10
+cout : KGameSysVal::SetLetterMonitoringCheckTime_Lua(), 2026-06-28 20:10:57, ¿ìÆí Àü¼Û È½¼ö °¨½Ã ±â´É - ½Ã°£ ¼³Á¤(ÃÊ) : 1200
+cout : KGameSysVal::SetLimitsCountOfTrade_Lua(), 2026-06-28 20:10:57, °Å·¡ È½¼ö °¨½Ã ±â´É - °Å·¡ È½¼ö ¼³Á¤ : 10
+cout : KGameSysVal::SetTradeMonitoringCheckTime_Lua(), 2026-06-28 20:10:57, °Å·¡ È½¼ö °¨½Ã ±â´É - ½Ã°£ ¼³Á¤(ÃÊ) : 1200
+cout : KGameSysVal::SetMonitoringMinED_Lua(), 2026-06-28 20:10:57, °Å·¡ ÃÖ¼Ò ±Ý¾× ¼³Á¤(ED) : 400000
+cout : KGameSysVal::SetMonitoringMaxED_Lua(), 2026-06-28 20:10:57, °Å·¡ ÃÖ´ë ±Ý¾× ¼³Á¤(ED) : 7000000
+cout : KGameSysVal::SetMonitoringLetterAndTradeBlockTime_LUA(), 2026-06-28 20:10:57, ¿ìÆí ¹× °Å·¡ °¨½Ã ½Ç½Ã°£ °èÁ¤ ºí·Ï ½Ã°£ ¼³Á¤
+    hh : 5
+    mm : 0
+    ss : 0
+    iDuration_s : 10800
+    m_tLetterAndTradeBlockStartTime.GetTimeSpan() : 18000
+    m_tLetterAndTradeBlockEndTime.GetTimeSpan() : 28800
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\GameSysVal\GameSysVal.cpp, 1557)
+cout : KGameSysVal::SetDeserializeFailCheck_LUA(), 2026-06-28 20:10:57, Deserialize Fail Check ¿©ºÎ
+    m_bDeserializeFailCheck : true
+cout : KGameSysVal::SetDeserializeFailCheckCount_LUA(), 2026-06-28 20:10:57, Deserialize Fail Check Count ¼¼ÆÃ
+    m_iDeserializeFailCheckCount : 5
+cout : KGameSysVal::SetHackingUserKick_LUA(), 2026-06-28 20:10:57, ÇØÅ· À¯Àú Å± ¼³Á¤
+    m_bHackingUserKick : true
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\GameSysVal\GameSysVal.cpp, 1535)
+cout : KGameSysVal::SetEnableOpenRandomCubeDelaySystem_LUA(), 2026-06-28 20:10:57, ·£´ý Å¥ºê ¿ÀÇÂ µô·¹ÀÌ ½Ã½ºÅÛ : È°¼ºÈ­ ¿©ºÎ
+    m_bEnableOpenRandomCubeDelaySystem : false
+cout : KGameSysVal::SetOpenRandomCubeDelayTime_LUA(), 2026-06-28 20:10:57, ·£´ý Å¥ºê ¿ÀÇÂ µô·¹ÀÌ ½Ã½ºÅÛ : µô·¹ÀÌ ½Ã°£
+    m_fOpenRandomCubeDelayTime : 3
+cout : KGameSysVal::SetOpenRandomCubeDelayCount_LUA(), 2026-06-28 20:10:57, ·£´ý Å¥ºê ¿ÀÇÂ µô·¹ÀÌ ½Ã½ºÅÛ : ½Ã°£´ç ¿ÀÇÂ Ä«¿îÆ®
+    m_iOpenRandomCubeDelayCount : 10
+cout : KGameSysVal::SetProcessCommunication_Lua(), 2026-06-28 20:10:57, ¼­¹ö °ü¸®Åø°úÀÇ Åë½Å ¸ðµå
+    m_bProcessCommunicationON : true
+cout : KGameSysVal::SetLanBugOutCheckOption_Lua(), 2026-06-28 20:10:57, ·£¼±·º ¹æÁö ÄÚµå: ÀÎÀÚ Á¤º¸ ¼öÁ¤
+    m_bLanBugOutCheck : false
+    m_byteLanBugOutCheckMaxCount : 0
+    m_fLanBugOutCheckTime : 1
+    m_byteLanBugOutCheckCount : 10
+    m_fLanBugOutCheckTermMin : 1
+    m_fLanBugOutCheckTerm : 0
+    m_fLanBugOutCheckRepeatTerm : 0.5
+cout : KGameSysVal::SetLanBugOutVerifyOption_Lua(), 2026-06-28 20:10:57, ·£¼±·º ¹æÁö ÄÚµå: ÀÎÀÚ Á¤º¸ ¼öÁ¤
+    m_bLanBugOutVerify : false
+    m_byteLanBugOutVerifyMaxCount : 10
+    m_fLanBugOutVerifyTime : 1
+    m_byteLanBugOutVerifyCount : 10
+    m_fLanBugOutVerifyTermMin : 1
+    m_fLanBugOutVerifyTerm : 0
+    m_fLanBugOutVerifyRepeatTerm : 0.5
+cout2 : KGameSysVal::SetCheckChangeHostTime_LUA(), 2026-06-28 20:10:57, ÇÎ Ã¼Å©ÇÏ¿© ¹æÀå º¯°æ ½Ã°£ÀÌ º¯°æ µÇ¾ú½À´Ï´Ù.
+    m_iCheckChangeHostTime : 180
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\GameSysVal\GameSysVal.cpp, 2026)
+cout2 : KGameSysVal::SetBattleFieldCheckChangeHostTime_LUA(), 2026-06-28 20:10:57, ÇÎ Ã¼Å©ÇÏ¿© ÇÊµå ¹æÀå º¯°æ ½Ã°£ÀÌ º¯°æ µÇ¾ú½À´Ï´Ù.
+    m_iBattleFieldCheckChangeHostTime : 180
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\GameSysVal\GameSysVal.cpp, 2036)
+cout2 : KGameSysVal::OpenScriptFile(), 2026-06-28 20:10:57, GameSysValTable.lua ·Îµù½Ã°£ : 
+    GetTickCount() - m_dwTime : 0
+cout : KLoginSimLayer::Init(), 2026-06-28 20:10:57, KGameSysVal Á¤º¸ ·Îµå ¼º°ø.!
+cout2 : CXSLTitleManager::OpenScriptFile(), 2026-06-28 20:10:57, TitleTable.lua ·Îµù½Ã°£ : 
+    GetTickCount() - m_dwTime : 16
+cout2 : CXSLTitleManager::OpenScriptFile(), 2026-06-28 20:10:57, TitleMission.lua ·Îµù½Ã°£ : 
+    GetTickCount() - m_dwTime : 16
+cerr : CXSLTitleManager::LoadClearCondition(), 2026-06-28 20:10:58, Lua Get Value Error [m_eDungeonID]
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLTitleManager.cpp, 320)
+cerr : CXSLTitleManager::LoadClearCondition(), 2026-06-28 20:10:58, Sub Mission ClearCondition Type º° ÀÐ¾î ¿À±â ½ÇÆÐ.!
+    kSubMissionTemplet.m_iSubMissionID : 690
+    kSubMissionTemplet.m_wstrDescription : Demons (Heart of Behemoth, 'Very Hard')
+    kSubMissionTemplet.m_eClearType : 2
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLTitleManager.cpp, 624)
+cerr : CXSLTitleManager::AddSubTitleMissionInfo_LUA(), 2026-06-28 20:10:58, ::: Sub Mission Templet Load Fail :::
+    kSubMissionTemplet.m_iSubMissionID : 690
+    kSubMissionTemplet.m_wstrDescription : Demons (Heart of Behemoth, 'Very Hard')
+    kSubMissionTemplet.m_bAutomaticDescription : true
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLTitleManager.cpp, 229)
+cerr : CXSLTitleManager::LoadClearCondition(), 2026-06-28 20:10:58, Lua Get Value Error [m_eDungeonID]
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLTitleManager.cpp, 320)
+cerr : CXSLTitleManager::LoadClearCondition(), 2026-06-28 20:10:58, Sub Mission ClearCondition Type º° ÀÐ¾î ¿À±â ½ÇÆÐ.!
+    kSubMissionTemplet.m_iSubMissionID : 691
+    kSubMissionTemplet.m_wstrDescription : Dark Clark/Living Trock
+(Heart of Behemoth 'Very Hard')
+    kSubMissionTemplet.m_eClearType : 2
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLTitleManager.cpp, 624)
+cerr : CXSLTitleManager::AddSubTitleMissionInfo_LUA(), 2026-06-28 20:10:58, ::: Sub Mission Templet Load Fail :::
+    kSubMissionTemplet.m_iSubMissionID : 691
+    kSubMissionTemplet.m_wstrDescription : Dark Clark/Living Trock
+(Heart of Behemoth 'Very Hard')
+    kSubMissionTemplet.m_bAutomaticDescription : true
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLTitleManager.cpp, 229)
+cerr : CXSLTitleManager::LoadClearCondition(), 2026-06-28 20:10:58, Lua Get Value Error [m_eDungeonID]
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLTitleManager.cpp, 320)
+cerr : CXSLTitleManager::LoadClearCondition(), 2026-06-28 20:10:58, Sub Mission ClearCondition Type º° ÀÐ¾î ¿À±â ½ÇÆÐ.!
+    kSubMissionTemplet.m_iSubMissionID : 692
+    kSubMissionTemplet.m_wstrDescription : Karis' True Form (Heart of Behemoth, 'Very Hard')
+    kSubMissionTemplet.m_eClearType : 2
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLTitleManager.cpp, 624)
+cerr : CXSLTitleManager::AddSubTitleMissionInfo_LUA(), 2026-06-28 20:10:58, ::: Sub Mission Templet Load Fail :::
+    kSubMissionTemplet.m_iSubMissionID : 692
+    kSubMissionTemplet.m_wstrDescription : Karis' True Form (Heart of Behemoth, 'Very Hard')
+    kSubMissionTemplet.m_bAutomaticDescription : true
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLTitleManager.cpp, 229)
+cerr : CXSLTitleManager::LoadClearCondition(), 2026-06-28 20:10:58, Lua Get Value Error [m_eDungeonID]
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLTitleManager.cpp, 429)
+cerr : CXSLTitleManager::LoadClearCondition(), 2026-06-28 20:10:58, Sub Mission ClearCondition Type º° ÀÐ¾î ¿À±â ½ÇÆÐ.!
+    kSubMissionTemplet.m_iSubMissionID : 30700
+    kSubMissionTemplet.m_wstrDescription : 
+    kSubMissionTemplet.m_eClearType : 7
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLTitleManager.cpp, 624)
+cerr : CXSLTitleManager::AddSubTitleMissionInfo_LUA(), 2026-06-28 20:10:58, ::: Sub Mission Templet Load Fail :::
+    kSubMissionTemplet.m_iSubMissionID : 30700
+    kSubMissionTemplet.m_wstrDescription : 
+    kSubMissionTemplet.m_bAutomaticDescription : true
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLTitleManager.cpp, 229)
+cerr : CXSLTitleManager::LoadClearCondition(), 2026-06-28 20:10:58, Lua Get Value Error [m_eDungeonID]
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLTitleManager.cpp, 409)
+cerr : CXSLTitleManager::LoadClearCondition(), 2026-06-28 20:10:58, Sub Mission ClearCondition Type º° ÀÐ¾î ¿À±â ½ÇÆÐ.!
+    kSubMissionTemplet.m_iSubMissionID : 30701
+    kSubMissionTemplet.m_wstrDescription : 
+    kSubMissionTemplet.m_eClearType : 6
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLTitleManager.cpp, 624)
+cerr : CXSLTitleManager::AddSubTitleMissionInfo_LUA(), 2026-06-28 20:10:58, ::: Sub Mission Templet Load Fail :::
+    kSubMissionTemplet.m_iSubMissionID : 30701
+    kSubMissionTemplet.m_wstrDescription : 
+    kSubMissionTemplet.m_bAutomaticDescription : true
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLTitleManager.cpp, 229)
+cout2 : CXSLTitleManager::OpenScriptFile(), 2026-06-28 20:10:58, SubTitleMission.lua ·Îµù½Ã°£ : 
+    GetTickCount() - m_dwTime : 16
+cout : KLoginSimLayer::Init(), 2026-06-28 20:10:58, CXSLTitleManager Á¤º¸ ·Îµå ¼º°ø.!
+cout : KThreadStatisticsManager::Init(), 2026-06-28 20:10:58, Thread Statistics Manager ÃÊ±âÈ­ ¿Ï·á! thread½ÃÀÛ!
+cout : KMailManager::Init(), 2026-06-28 20:10:58, Mail Manager Manager ÃÊ±âÈ­ ¿Ï·á! thread½ÃÀÛ!
+cout2 : KLoginServer::OnServerReadyComplete(), 2026-06-28 20:10:58, Nexon AuthCheck SetPassportLevel : 0
+cout2 : KLoginServer::OnServerReadyComplete(), 2026-06-28 20:10:58, Nexon AuthCheck SetLocale : kLocaleID_KR
+cout : KRankingManager::Init(), 2026-06-28 20:10:58, ´ëÀü/´øÀü·¹º§ ·©Å· °»½Å ½Ã°¢ ¼³Á¤!2026-06-29 03:30:00
+cout : KRandomItemEventManager::Init(), 2026-06-28 20:10:58, Æ¯Á¤ ½Ã°¢ È¹µæ ·£´ý Å¥ºê ÀÌº¥Æ® Á¤º¸ ¿äÃ»!
+cout : KAccountBlockManager::Init(), 2026-06-28 20:10:58, °èÁ¤ ºí·° ¸®½ºÆ® ¿äÃ»!
+cout : KRandomItemEventManager::UpdateEventInfo(), 2026-06-28 20:10:58, Æ¯Á¤ ½Ã°¢ È¹µæ ·£´ý Å¥ºê ÀÌº¥Æ® Á¤º¸ ¾÷µ¥ÀÌÆ®!
+    m_mapEventInfo.size() : 0
+    m_setGetRewardUserUIDList.size() : 0
+cout : KRankingManager::UpdateDungeonRanking(), 2026-06-28 20:10:58, ´øÀü ·©Å· °»½Å!
+    m_mapDungeonRanking.size() : 0
+    m_vecDungeonRanking.size() : 0
+cout : KRankingManager::UpdatePvpRanking(), 2026-06-28 20:10:58, ´ëÀü ·©Å· °»½Å!
+    m_mapPvpRanking.size() : 0
+    m_vecPvpRanking.size() : 0
+cout : KRankingManager::InitHenirRanking(), 2026-06-28 20:10:58, DB·ÎºÎÅÍ Çì´Ï¸£ÀÇ ½Ã°ø ·©Å· Á¤º¸ ¹Þ±â ¼º°ø!
+    mit->first : 2
+    mit->second.size() : 1
+cout : KGuildBoardManager::UpdateGuildBoardInfo(), 2026-06-28 20:10:58, ±æµå °Ô½ÃÆÇ Á¤º¸ ¾÷µ¥ÀÌÆ® ¿Ï·á!
+    kInfo.m_vecGuildAdList.size() : 0
+    kInfo.m_vecApplyJoinGuildList.size() : 0
+cout : KUserList::UnRegAllUserOfThisGS(), 2026-06-28 20:10:58, °ÔÀÓ ¼­¹ö Á×Àº ÈÄ Ã³¸®.
+    iGSUID : 4611686030516534109
+cout2 : KLoginUser::OnDestroy(), 2026-06-28 20:10:58, ºñÁ¤»óÀûÀÎ ¿øÀÎÀ¸·Î ÀÎÇÑ LoginUser°´Ã¼ ¼Ò¸ê
+    GetIPStr() : 127.0.0.1
+    GetDisconnectReason() : 20
+    Á¾·á »çÀ¯ : Session_Close [Á¢¼Ó Á¾·á °¨Áö (Session)]
+    GetLastIocpFailedError() : 0
+cout : KLoginScriptRefreshManager::Init(), 2026-06-28 20:10:58, ½ºÅ©¸³Æ® ¸®ÇÁ·¹½¬ ½º·¹µå ½ÃÀÛ!
+cout : KDLLManager::OnServerReadyComplete(), 2026-06-28 20:10:58, DLL °ü¸® ¸®½ºÆ® ¿äÃ»!
+cout : KDLLManager::OnServerReadyComplete(), 2026-06-28 20:10:58, ÇØÅ· DLL ¸®½ºÆ® ¿äÃ»!
+cout2 : KLoginServer::OnServerReadyComplete(), 2026-06-28 20:10:58, NONE
+    GetServerGroupID() : 0
+    GetUID() : 2
+    GetName() : Login
+cout : KLoginServer::ON_DBE_GET_MODULE_INFO_LIST_ACK(), 2026-06-28 20:10:58, DLL ¸ðµâ ¸®½ºÆ® ¾÷µ¥ÀÌÆ® ¿Ï·á!
+    kPacket_.m_vecModuleList.size() : 0
+cout : KLoginServer::ON_DBE_LOAD_PSHOP_AGENCY_ACK(), 2026-06-28 20:10:58, °³¼³µÈ ´ë¸® »óÀÎÀÌ ¾ø½À´Ï´Ù!
+    kPacket_.m_vecOpenPShopAgency.size() : 0

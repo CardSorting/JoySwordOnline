@@ -1,0 +1,39 @@
+﻿=== Found 38 references ===
+  Line 1: # JoySword Public Server One-Click Automator
+  Line 15: Write-Host "           JoySword Public Server Automator               " -ForegroundColor Cyan
+  Line 79:     if ($Line -and -not $Line.StartsWith("#") -and $Line -like "*=*") {
+  Line 90: $AdminStartingCash = $EnvVars["ADMIN_STARTING_CASH"]
+  Line 92: # Explicitly map SQL Server variables for Docker Compose
+  Line 101:     $Psi = New-Object System.Diagnostics.ProcessStartInfo
+  Line 112:     $Proc.StartInfo = $Psi
+  Line 113:     $Proc.Start() | Out-Null
+  Line 144:         Start-Process -FilePath "powershell.exe" -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"$FirewallCmd`"" -Verb RunAs -Wait -WindowStyle Hidden
+  Line 163:     $DockerPath = "C:\Program Files\Docker\Docker\Docker Desktop.exe"
+  Line 165:         Start-Process -FilePath $DockerPath
+  Line 171:             Start-Sleep -Seconds $CheckInterval
+  Line 191:     Write-Warning "Proceeding without a running Docker daemon. Note that database setup and game servers might fail to start if the database is unreachable."
+  Line 200:     Write-Host "Tearing down old database containers/volumes and restarting SQL Server with secure password..." -ForegroundColor Green
+  Line 204:     Write-Host "Waiting for SQL Server to become healthy..." -ForegroundColor Green
+  Line 222:                 Write-Host "SQL Server is healthy and ready!" -ForegroundColor Green
+  Line 226:         Start-Sleep -Seconds 2
+  Line 230:         Write-Error "SQL Server did not become healthy in time."
+  Line 301: $SQLCmdPath -S localhost -U sa -P "$DBPassword" $ExtraArgs -v ADMIN_USER="$AdminUser" ADMIN_PASSWORD="$AdminPassword" ADMIN_STARTING_CASH="$AdminStartingCash" -i /backups/setup-public-users.sql
+  Line 309:     # Update LServerList in Statistics database with Public IP
+  Line 310:     Write-Host "Updating LServerList in Statistics database..." -ForegroundColor Green
+  Line 313:     $LServerListQuery = "USE [Statistics]; UPDATE dbo.LServerList SET IP = '$PublicIP', PrivateIP = '$PublicIP', PublicIP = '$PublicIP' WHERE UID IN (1, 2, 3, 4, 6);"
+  Line 314:     $LServerListScript = @"
+  Line 316: $SQLCmdPath -S localhost -U sa -P "$DBPassword" $ExtraArgs -b -Q "$LServerListQuery"
+  Line 318:     $LServerListResult = Invoke-BashInDocker $LServerListScript
+  Line 320:         Write-Host "Output/Error from LServerList update: $LServerListResult" -ForegroundColor Red
+  Line 321:         Write-Error "Failed to update LServerList table."
+  Line 330: ALTER PROCEDURE [dbo].[lup_verify_server_on] @iServerType TINYINT, @strServerIP NVARCHAR(15) AS SET NOCOUNT ON; SELECT [UID], [Name], ServerSetID, ServerType, @strServerIP AS IP, Port1, Port2, MaxConcurrentUser, ConcurrentUser, [Enable], ServerRollType FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType;
+  Line 332: ALTER PROCEDURE [dbo].[P_LServerList_Verify_On_SEL] @iServerSetID TINYINT, @iServerType TINYINT, @strServerIP NVARCHAR(15) AS SET NOCOUNT ON; SELECT [UID], [Name], ServerSetID, ServerType, @strServerIP AS IP, Port1, Port2, MaxConcurrentUser, ConcurrentUser, [Enable], ServerRollType FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType;
+  Line 334: ALTER PROCEDURE [dbo].[P_LServerList_GET_verify_PublicIP] @iServerType TINYINT, @strServerIP NVARCHAR(15) AS SET NOCOUNT ON; SELECT [UID], [Name], ServerSetID, ServerType, @strServerIP AS PublicIP, @strServerIP AS PrivateIP, Port1, Port2, MaxConcurrentUser, ConcurrentUser, [Enable], ServerRollType FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType;
+  Line 336: ALTER PROCEDURE [dbo].[P_LServerList_Verify_Connect_SEL] @iServerSetID TINYINT = 0, @iServerType TINYINT, @strServerIP NVARCHAR(15), @iPort1 SMALLINT, @iInternal TINYINT AS SET NOCOUNT ON; IF @iServerType = 0 BEGIN SELECT [UID], ServerSetID, [Name], MaxConcurrentUser, ServerType, @strServerIP AS PublicIP, @strServerIP AS PrivateIP FROM dbo.LServerList WITH (NOLOCK) WHERE Port1 = @iPort1 END ELSE BEGIN SELECT [UID], ServerSetID, [Name], MaxConcurrentUser, ServerType, @strServerIP AS PublicIP, @strServerIP AS PrivateIP FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType AND Port1 = @iPort1 END;
+  Line 338: ALTER PROCEDURE [dbo].[lup_verify_server_connect] @iServerType TINYINT, @strServerIP NVARCHAR(15), @iPort1 SMALLINT AS SET NOCOUNT ON; SELECT [UID], ServerSetID, [Name], MaxConcurrentUser, @strServerIP AS IP FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType AND Port1 = @iPort1;
+  Line 340: ALTER PROCEDURE [dbo].[P_LServerList_GET_verify_connect] @iServerType TINYINT, @strServerIP NVARCHAR(15), @iPort1 SMALLINT AS SET NOCOUNT ON; SELECT [UID], ServerSetID, [Name], MaxConcurrentUser, @strServerIP AS PrivateIP FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType AND Port1 = @iPort1;
+  Line 342: ALTER PROCEDURE [dbo].[P_LServerList_By_PublicIP_SEL] @iServerSetID TINYINT, @iServerType TINYINT, @strServerIP NVARCHAR(15) AS SET NOCOUNT ON; SELECT [UID], [Name], ServerSetID, ServerType, @strServerIP AS PublicIP, PrivateIP, Port1, Port2, MaxConcurrentUser, ConcurrentUser, [Enable], ServerRollType FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType;
+  Line 377: # 8. Start Elsword Server Stack
+  Line 379: & python "$ScriptRoot\scripts\start-offline.py"
+  Line 382: Write-Host "Automated startup complete!" -ForegroundColor Green
+  Line 384: Write-Host "Your players can now launch Start-Client-Windows.bat to connect." -ForegroundColor Green

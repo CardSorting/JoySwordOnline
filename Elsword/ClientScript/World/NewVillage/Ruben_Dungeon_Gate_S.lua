@@ -1,0 +1,974 @@
+﻿-- Ruben_Dungeon_Gate.lua
+
+g_pWorld:SetLightPos( 50000, 50000, -100000 )
+g_pWorld:SetLineMap( "Ruben_Dungeon_Gate_LineMap.lua" )
+g_pWorld:SetBGM( "DunGeonGate01.ogg" )
+g_pWorld:AddEffectBGM_LUA( "Amb_DungeonGate_Forest01.ogg" )
+
+
+
+
+
+
+
+
+g_pWorld:SetFogWorld( 2200, 17200, 0, 0, 0, D3DXCOLOR( 0.784314, 0.929412, 0.956863, 1.0 ) )
+
+-- SKY / CLOUD -- 
+-- STATIC MESH -- 
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_1alpa_gr1.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_1alpa_gr1.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_UNIT_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_1alpa_gr2.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_1alpa_gr2.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_OBJECT_1"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_1alpa_gr3.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_1alpa_gr3.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_OBJECT_1"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+g_pObjectMesh:SetForceShow( 1)
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_1alpa_gr4.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_1alpa_gr4.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_OBJECT_2"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_1alpa_gr5.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_1alpa_gr5.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_UNIT_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_1alpa_gr6.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_1alpa_gr6.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_EFFECT_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_1alpa_gr7.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_1alpa_gr7.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_EFFECT_1"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_1alpa_gr8.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_1alpa_gr8.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_EFFECT_2"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_1alpa_gr9.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_1alpa_gr9.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_OBJECT_OVER_EFFECT_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_2alpa_gr1.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_2alpa_gr1.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_2alpa_gr2.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_2alpa_gr2.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_2alpa_gr3.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_2alpa_gr3.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_2alpa_gr4.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_2alpa_gr4.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_2alpa_gr5.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_2alpa_gr5.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_2alpa_gr6.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_2alpa_gr6.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_2alpa_gr7.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_2alpa_gr7.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_2alpa_gr8.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_2alpa_gr8.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_1"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_2alpa_gr9.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_2alpa_gr9.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_2"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_3alpa_gr1.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_3alpa_gr1.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_3alpa_gr10.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_3alpa_gr10.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_EFFECT_2"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_3alpa_gr11.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_3alpa_gr11.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_OBJECT_OVER_EFFECT_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_3alpa_gr2.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_3alpa_gr2.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_OBJECT_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_3alpa_gr3.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_3alpa_gr3.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_OBJECT_2"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_3alpa_gr4.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_3alpa_gr4.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_UNIT_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_3alpa_gr5.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_3alpa_gr5.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_UNIT_1"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_3alpa_gr6.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_3alpa_gr6.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_UNIT_1"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_3alpa_gr7.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_3alpa_gr7.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_UNIT_2"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+g_pObjectMesh:SetForceShow( 1)
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_3alpa_gr8.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_3alpa_gr8.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_EFFECT_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_3alpa_gr9.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_3alpa_gr9.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_EFFECT_1"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_Ad_board.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_Ad_board.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_alpa1.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_alpa1.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_DOME_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_alpa10.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_alpa10.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_UNIT_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_alpa11-1.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_alpa11-1.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_UNIT_1"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_alpa11.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_alpa11.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_UNIT_1"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_alpa12.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_alpa12.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_UNIT_1"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_alpa13-1.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_alpa13-1.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_EFFECT_1"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_alpa13.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_alpa13.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_EFFECT_1"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_alpa14.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_alpa14.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_OBJECT_OVER_EFFECT_3"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_alpa2.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_alpa2.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_DOME_1"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_alpa3.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_alpa3.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_DOME_2"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_alpa4.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_alpa4.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_alpa5.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_alpa5.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_1"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_alpa6.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_alpa6.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_2"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_alpa7.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_alpa7.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_OBJECT_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_alpa8.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_alpa8.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_OBJECT_1"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_alpa9.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_alpa9.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_OBJECT_2"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_Gra1.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_Gra1.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_Gra2.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_Gra2.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_Gra3.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_Gra3.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_Gra4.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_Gra4.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_macha.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_macha.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_Mt1.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_Mt1.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_Mt2.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_Mt2.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_Mt3.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_Mt3.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_sign1.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_sign1.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_sign2.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_sign2.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_SKY.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_SKY.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_Stone.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_Stone.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_tree1.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_tree1.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_tree2.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_tree2.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_tree3.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_tree3.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_tree4.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_tree4.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_tree5.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_tree5.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_TREE_ALPA1.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_TREE_ALPA1.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_UNIT_1"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_TREE_ALPA2.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_TREE_ALPA2.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_UNIT_2"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Ruben_DG_wallycastle.Y" )
+g_pObjectMesh:SetXMeshLOD( "Ruben_DG_wallycastle.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 2200, 17200, 0, 0, D3DXCOLOR(0.788235, 0.929412, 0.960784, 1), 0 )
+
+
+-- SKIN MESH -- 
+-- PARTICLE -- 

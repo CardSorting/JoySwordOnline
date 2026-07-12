@@ -1,0 +1,20 @@
+=== Found 19 references in CharacterStatTable.lua ===
+  Line 1: -- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요
+  Line 18: = ROUND((C*[{A+A*(D+E-1)*0.15}-[(B*0.8)+0.15*{B*(D+E-1)*0.15}] ]),0)   --소수점 1자리 반올림 연산
+  Line 21: = ROUND((C*(E*[  {A+A*(D-1)*0.15}-[(B*0.8)+0.15*{B*(D-1)*0.15}] ])),0)   --소수점 1자리 반올림 연산.
+  Line 31: 	local Cal2 = CharStat * 0.8
+  Line 48: 	local Cal2 = CharStat								--//(구)CharStat * 0.8
+  Line 76: 	{ UNIT_TYPE["UT_ELSWORD"],	 450,	100,	370,	 83,	11250},	--엘소드
+  Line 77: 	{ UNIT_TYPE["UT_ARME"],	 	 360,	 85,	490,	108,	 9500},	--아이샤
+  Line 79: 	{ UNIT_TYPE["UT_RAVEN"], 	 430,	103,	380,	 83,	11250},	--레이븐
+  Line 80: 	{ UNIT_TYPE["UT_EVE"],		 380,	108,	470,	 75,	10500},	--이브
+  Line 81: 	{ UNIT_TYPE["UT_CHUNG"],	 440,	108,	380,	 88,	10000},	--청
+  Line 83: 	{ UNIT_TYPE["UT_ELESIS"],	 450,	100,	370,	 83,	11250},	--EL
+  Line 99: 	{UNIT_CLASS["UC_LIRE_GRAND_ARCHER"],		420,	100,	480,	115,	11000},	--그랜드 아처
+  Line 102: 	{UNIT_CLASS["UC_RAVEN_BLADE_MASTER"],		480,	112,	410,	 90,	12500},	--블레이드 마스터
+  Line 106: 	{UNIT_CLASS["UC_EVE_CODE_NEMESIS"],		 	420,	115,	510,	 85,	11750},	--코드 네메시스
+  Line 107: 	{UNIT_CLASS["UC_EVE_CODE_EMPRESS"],		 	440,	115,	480,	 85,	12000},	--코드 엠프레스
+  Line 108: 	{UNIT_CLASS["UC_EVE_BATTLE_SERAPH"],		410,	115,	520,	 87,	11500},	--배틀 세라프
+  Line 114: 	{UNIT_CLASS["UC_ARA_SAKRA_DEVANAM"],		480,	115,	400,	 97,	11750},	--제천
+  Line 116: 	{UNIT_CLASS["UC_ELESIS_GRAND_MASTER"],		500,	112,	400,	 90,	12250},	--그랜드 마스터
+  Line 117: 	{UNIT_CLASS["UC_ELESIS_BLAZING_HEART"],	490,	110,	430,	 92,	11750},	--블레이징 하트

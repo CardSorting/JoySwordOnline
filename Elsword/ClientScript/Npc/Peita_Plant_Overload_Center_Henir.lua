@@ -1,0 +1,2134 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 200.0,
+	UNIT_HEIGHT		= 100.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	UNIT_SCALE      = 1.0,
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	    "Sap_Gray01.dds",
+	    "ColorBallGray.dds",
+	    "Wrap_Gray01.dds",
+	},
+	
+	READY_SOUND = 
+	{
+	  "Plant_OverLord_Voice_AttackRoar1.ogg",
+	  "Plant_OverLord_Voice_AttackRoar2.ogg",
+	  "Plant_OverLord_Voice_AttackRoar3.ogg",
+	  "Plant_OverLord_Voice_AttackRoar4.ogg",
+	  "Plant_OverLord_Voice_AttackRoar5.ogg",
+	  "Plant_OverLord_Voice_DamageRoar.ogg",
+	  "Plant_OverLord_Voice_Dying1.ogg",
+	  "Plant_OverLord_Voice_Dying2.ogg",
+
+	  "Plant_OverLord_Attack_Slash.ogg",
+      "Plant_OverLord_Attack_Slash2.ogg",
+	  "Plant_OverLord_AttackB_Slash1.ogg",
+	  "Plant_OverLord_AttackB_Slash2.ogg",
+ 	  
+      "Plant_OverLord_Damage.ogg",
+	  
+      "Plant_OverLord_SummonBine1.ogg",
+      "Plant_OverLord_MagicAttack.ogg",
+      "Plant_OverLord_WaitStart.ogg",
+      "Plant_OverLord_Sound1.ogg",
+      "Plant_OverLord_Sound2.ogg",
+	  
+	},
+	
+	READY_XSKIN_MESH = 
+	{
+	    "DummyAttackBox_50x50x50.X",
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_PLANT_OVERLORD.x",
+}
+
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 0,
+	RUN_SPEED			= 0,
+	JUMP_SPEED			= 0,
+	DASH_JUMP_SPEED		= 0,
+}
+
+
+INIT_COMPONENT = 
+{
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	--SHADOW_SIZE			= 200,
+	--SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	--DRAW_SMALL_MP_BAR	= TRUE,
+	
+	BOSS_GAGE_FACE_TEX   = "DLG_BossState.tga",
+    BOSS_GAGE_FACE_TEX_PIECE = "OVERLOAD",
+    BOSS_NAME_TEX    = "HQ_BOSS_NAME_OVERLOAD.dds", 
+
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	MIND_FLAG_HEIGHT		= 300,
+		
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	HEAD_BONE_NAME		= "Bip01_Head",
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+		
+	FALL_DOWN			= FALSE,
+	
+	DIE_FLY             = 0,
+	DAMAGE_DOWN         = FALSE,	
+	
+	USE_GUARD_COLLISION_BOX		= TRUE,
+	
+}
+
+INIT_STATE = 
+{	
+    -- Normal Mode -------------------------------------------------------------------------------------------------------------------------------------------
+    
+	{ STATE_NAME = "PLANT_OVERLOAD_CENTER_WAITSTART",					    LUA_STATE_START_FUNC = "PLANT_OVERLOAD_CENTER_WAITSTART_STATE_START", },
+	{ STATE_NAME = "PLANT_OVERLOAD_CENTER_WAIT",						    },	
+	
+	{ STATE_NAME = "PLANT_OVERLOAD_CENTER_ATTACK",					        },
+	{ STATE_NAME = "PLANT_OVERLOAD_CENTER_ATTACKB",					        LUA_FRAME_MOVE_FUNC = "PLANT_OVERLOAD_CENTER_ATTACKB_FRAME_MOVE", },
+	{ STATE_NAME = "PLANT_OVERLOAD_CENTER_MAGIC_ATTACK",			        },
+	{ STATE_NAME = "PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_C",			        LUA_FRAME_MOVE_FUNC = "PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_FRAME_MOVE", STATE_COOL_TIME = 6,},
+	{ STATE_NAME = "PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_L",			        LUA_FRAME_MOVE_FUNC = "PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_L_FRAME_MOVE", },
+	{ STATE_NAME = "PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_R",			        LUA_FRAME_MOVE_FUNC = "PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_R_FRAME_MOVE", },
+	{ STATE_NAME = "PLANT_OVERLOAD_CENTER_SUMMON_BINE_READY",			    },
+	{ STATE_NAME = "PLANT_OVERLOAD_CENTER_SUMMON_BINE",			            LUA_FRAME_MOVE_FUNC = "PLANT_OVERLOAD_CENTER_SUMMON_BINE_FRAME_MOVE", STATE_COOL_TIME = 8, },
+	
+	{ STATE_NAME = "PLANT_OVERLOAD_CENTER_DAMAGE",				            LUA_STATE_START_FUNC = "PLANT_OVERLOAD_CENTER_DAMAGE_STATE_START", },
+	
+	{ STATE_NAME = "PLANT_OVERLOAD_CENTER_DYING",				            LUA_STATE_START_FUNC = "PLANT_OVERLOAD_CENTER_DYING_STATE_START", },
+
+    -- Over Mode ----------------------------------------------------------------------------------------------------------------------------------------------
+    
+    { STATE_NAME = "PLANT_OVERLOAD_CENTER_OVER_WAITSTART",					LUA_STATE_START_FUNC = "PLANT_OVERLOAD_CENTER_OVER_WAITSTART_STATE_START", },
+	{ STATE_NAME = "PLANT_OVERLOAD_CENTER_OVER_WAIT",						},
+	
+	{ STATE_NAME = "PLANT_OVERLOAD_CENTER_OVER_ATTACK",					    },
+	{ STATE_NAME = "PLANT_OVERLOAD_CENTER_OVER_ATTACKB",					LUA_FRAME_MOVE_FUNC = "PLANT_OVERLOAD_CENTER_ATTACKB_FRAME_MOVE", },
+	{ STATE_NAME = "PLANT_OVERLOAD_CENTER_OVER_ATTACKC",					LUA_FRAME_MOVE_FUNC = "PLANT_OVERLOAD_CENTER_OVER_ATTACKC_FRAME_MOVE", },
+	{ STATE_NAME = "PLANT_OVERLOAD_CENTER_OVER_MAGIC_ATTACK",			    },
+	{ STATE_NAME = "PLANT_OVERLOAD_CENTER_OVER_MAGIC_ATTACK_C",			    LUA_FRAME_MOVE_FUNC = "PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_FRAME_MOVE", },
+	{ STATE_NAME = "PLANT_OVERLOAD_CENTER_OVER_MAGIC_ATTACK_L",			    LUA_FRAME_MOVE_FUNC = "PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_L_FRAME_MOVE", },
+	{ STATE_NAME = "PLANT_OVERLOAD_CENTER_OVER_MAGIC_ATTACK_R",			    LUA_FRAME_MOVE_FUNC = "PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_R_FRAME_MOVE", },
+	{ STATE_NAME = "PLANT_OVERLOAD_CENTER_OVER_SUMMON_BINE_READY",			},
+	{ STATE_NAME = "PLANT_OVERLOAD_CENTER_OVER_SUMMON_BINE",			    LUA_FRAME_MOVE_FUNC = "PLANT_OVERLOAD_CENTER_OVER_SUMMON_BINE_FRAME_MOVE", },
+	
+	{ STATE_NAME = "PLANT_OVERLOAD_CENTER_OVER_DAMAGE",				        LUA_STATE_START_FUNC = "PLANT_OVERLOAD_CENTER_OVER_DAMAGE_STATE_START", },
+	
+	{ STATE_NAME = "PLANT_OVERLOAD_CENTER_OVER_DYING",				        LUA_STATE_START_FUNC = "PLANT_OVERLOAD_CENTER_OVER_DYING_STATE_START", },
+	
+	--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	START_STATE					= "PLANT_OVERLOAD_CENTER_WAITSTART",
+	WAIT_STATE					= "PLANT_OVERLOAD_CENTER_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "PLANT_OVERLOAD_CENTER_DAMAGE",
+	SMALL_DAMAGE_LAND_BACK		= "PLANT_OVERLOAD_CENTER_DAMAGE",
+	BIG_DAMAGE_LAND_FRONT		= "PLANT_OVERLOAD_CENTER_DAMAGE",
+	BIG_DAMAGE_LAND_BACK		= "PLANT_OVERLOAD_CENTER_DAMAGE",
+	DOWN_DAMAGE_LAND_FRONT		= "PLANT_OVERLOAD_CENTER_DAMAGE",
+	DOWN_DAMAGE_LAND_BACK		= "PLANT_OVERLOAD_CENTER_DAMAGE",
+	FLY_DAMAGE_FRONT			= "PLANT_OVERLOAD_CENTER_DAMAGE",
+	FLY_DAMAGE_BACK				= "PLANT_OVERLOAD_CENTER_DAMAGE",
+	SMALL_DAMAGE_AIR			= "PLANT_OVERLOAD_CENTER_DAMAGE",	
+	BIG_DAMAGE_AIR				= "PLANT_OVERLOAD_CENTER_DAMAGE",
+	DOWN_DAMAGE_AIR				= "PLANT_OVERLOAD_CENTER_DAMAGE",
+	UP_DAMAGE					= "PLANT_OVERLOAD_CENTER_DAMAGE",
+	DAMAGE_REVENGE				= "PLANT_OVERLOAD_CENTER_DAMAGE",
+	
+	DYING_LAND_FRONT			= "PLANT_OVERLOAD_CENTER_DYING",
+	DYING_LAND_BACK				= "PLANT_OVERLOAD_CENTER_DYING",
+	DYING_SKY					= "PLANT_OVERLOAD_CENTER_DYING",
+
+	REVENGE_ATTACK				= "",	
+}
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_NEAR_FIRST"],
+		TARGET_INTERVAL				= 1,		-- sec
+		TARGET_NEAR_RANGE			= 99999,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 99999,		-- cm
+		TARGET_LOST_RANGE			= 99999,		-- cm
+		TARGET_SUCCESS_RATE			= 100,  --100,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 100,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 0,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 600,
+		DEST_GAP			= 150,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 160,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		WALK_INTERVAL		= 3,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 5,
+		UP_JUMP_RATE		= 100, -- 40,
+		UP_DOWN_RATE		= 20,
+		DOWN_JUMP_RATE		= 100,    --  20,
+		DOWN_DOWN_RATE		= 40,
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 100, --50,		
+		PATROL_RANGE			= 200,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 500,	-- cm
+		ESCAPE_GAP			= 600,	-- 이 거리 보다 멀어지면 도망 성공
+		
+		WALK_INTERVAL		= 1.5,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 10,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+	},
+	
+	
+}
+
+-- Normal Mode ----------------------------------------------------------------------------------------------------------------------
+PLANT_OVERLOAD_CENTER_WAITSTART = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	RIGHT                       = TRUE,
+	
+	NEVER_MOVE					= TRUE,
+	EVENT_INTERVAL_TIME0		= 1,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PLANT_OVERLOAD_CENTER_WAIT",       "CT_PLANT_OVERLOAD_CENTER_WAIT", },
+	},
+	
+	CT_PLANT_OVERLOAD_CENTER_WAIT = 
+	{
+		STATE_TIME_OVER			= 3,
+	},
+}
+
+PLANT_OVERLOAD_CENTER_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+
+    SOUND_PLAY0			= { 0.001, "Plant_OverLord_WaitStart.ogg" },
+	
+	NEVER_MOVE					= TRUE,
+	
+	RIGHT                       = TRUE,
+	
+	GUARD_DEFENCE               = 40,
+	
+	EVENT_INTERVAL_TIME0		= 1,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{	    
+	    { STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"PLANT_OVERLOAD_CENTER_OVER_WAITSTART",	    "CF_PLANT_OVERLOAD_CENTER_CHANGE_OVERMODE",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PLANT_OVERLOAD_CENTER_ATTACK",				"CT_PLANT_OVERLOAD_CENTER_ATTACK",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PLANT_OVERLOAD_CENTER_ATTACK",				"CT_PLANT_OVERLOAD_CENTER_ATTACK2",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PLANT_OVERLOAD_CENTER_ATTACKB",			"CT_PLANT_OVERLOAD_CENTER_ATTACKB",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PLANT_OVERLOAD_CENTER_ATTACKB",			"CT_PLANT_OVERLOAD_CENTER_ATTACKB2",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PLANT_OVERLOAD_CENTER_MAGIC_ATTACK",		"CT_PLANT_OVERLOAD_CENTER_MAGIC_ATTACK",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PLANT_OVERLOAD_CENTER_SUMMON_BINE_READY",	"CT_PLANT_OVERLOAD_CENTER_SUMMON_BINE_READY",	},
+	},
+	
+	CT_PLANT_OVERLOAD_CENTER_ATTACK = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 600,
+		RATE						= 60,
+		SAME_LINE_WITH_TARGET		= TRUE,
+		STATE_TIME_OVER			    = 2,
+	},	
+	CT_PLANT_OVERLOAD_CENTER_ATTACKB = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 500,
+		RATE						= 60,
+		SAME_LINE_WITH_TARGET		= TRUE,
+		STATE_TIME_OVER			    = 2,
+	},
+	CT_PLANT_OVERLOAD_CENTER_ATTACK2 =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 800,
+		RATE						= 5,
+		STATE_TIME_OVER			    = 2,
+	},
+	CT_PLANT_OVERLOAD_CENTER_ATTACKB2 =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 500,
+		RATE						= 30,
+		STATE_TIME_OVER			    = 2,
+	},
+	CT_PLANT_OVERLOAD_CENTER_SUMMON_BINE_READY =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		--DISTANCE_TO_TARGET_NEAR		= 1300,
+		RATE						= 80,
+		STATE_TIME_OVER			    = 2,
+	},
+	CT_PLANT_OVERLOAD_CENTER_MAGIC_ATTACK = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1800,
+		RATE						= 100,
+		STATE_TIME_OVER			    = 2,
+	},
+
+}
+
+
+PLANT_OVERLOAD_CENTER_DAMAGE =
+{
+	ANIM_NAME					= "Damage",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+
+     SOUND_PLAY0			= { 0.080, "Plant_OverLord_Damage.ogg" },
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	RIGHT                       = TRUE,
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED         = TRUE,		
+	
+	GUARD_DEFENCE               = 60,
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+	    { STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"PLANT_OVERLOAD_CENTER_OVER_WAITSTART",	    "CF_PLANT_OVERLOAD_CENTER_CHANGE_OVERMODE",	},
+	    
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PLANT_OVERLOAD_CENTER_ATTACK",				"CT_PLANT_OVERLOAD_CENTER_ATTACK",	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PLANT_OVERLOAD_CENTER_ATTACKB",			"CT_PLANT_OVERLOAD_CENTER_ATTACK",	},
+            
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PLANT_OVERLOAD_CENTER_WAIT",			},
+	},
+	
+	CT_PLANT_OVERLOAD_CENTER_ATTACK = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1300,
+		RATE						= 15,
+	},	
+	CT_PLANT_OVERLOAD_CENTER_ATTACKB = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1300,
+		RATE						= 15,
+	},	
+}
+
+PLANT_OVERLOAD_CENTER_ATTACK = 
+{
+	ANIM_NAME					= "Attack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+
+    SOUND_PLAY0			= { 0.858, "Plant_OverLord_Attack_Slash.ogg" },
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	RIGHT                       = TRUE,
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	
+	GUARD_DEFENCE               = 60,
+	
+	SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED         = TRUE,	
+
+DISABLE_ATTACK_BOX = 
+	{
+	"Ponytail2",
+	"Ponytail3",
+	"Ponytail4",
+	"Ponytail5",
+	"Ponytail6",
+	"Ponytail7",
+	"Ponytail8",
+	"Ponytail9",
+	"Ponytail10",
+	"Ponytail11",
+	"Ponytail12",
+	"Ponytail13",
+	"Ponytail14",
+	"Ponytail15",
+	"Ponytail16",
+	"Ponytail17",
+	"Ponytail18",
+	"Ponytail19",
+	"Ponytail20",
+	"Ponytail21",
+	"Ponytail22",
+	"Ponytail23",
+	"Ponytail24",
+	"Ponytail25",
+	"Ponytail26",
+	"Ponytail27",
+	"Ponytail28",
+	"Ponytail29",
+	"Ponytail30",
+	"Ponytail31",
+	"Ponytail32",
+	"Ponytail33",
+	"Ponytail34",
+	"Ponytail35", 
+	},
+	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PLANT_OVERLOAD_CENTER_WAIT",					},
+	},
+
+
+	    
+
+    ATTACK_TIME0				= { 0.933, 1.133, },    
+	    
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},		
+		
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},	
+}
+
+PLANT_OVERLOAD_CENTER_ATTACKB = 
+{
+	ANIM_NAME					= "AttackB",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+    	
+    GUARD_DEFENCE               = 60,
+        	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	RIGHT                       = TRUE,
+	SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED         = TRUE,
+
+ DISABLE_ATTACK_BOX = 
+	{
+	"Ponytail2",
+	"Ponytail3",
+	"Ponytail4",
+	"Ponytail5",
+	"Ponytail6",
+	"Ponytail7",
+	"Ponytail8",
+	"Ponytail9",
+	"Ponytail10",
+	"Ponytail11",
+	"Ponytail12",
+	"Ponytail13",
+	"Ponytail14",
+	"Ponytail15",
+	"Ponytail16",
+	"Ponytail17",
+	"Ponytail18",
+	"Ponytail19",
+	"Ponytail20",
+	"Ponytail21",
+	"Ponytail22",
+	"Ponytail23",
+	"Ponytail24",
+	"Ponytail25",
+	"Ponytail26",
+	"Ponytail27",
+	"Ponytail28",
+	"Ponytail29",
+	"Ponytail30",
+	"Ponytail31",
+	"Ponytail32",
+	"Ponytail33",
+	"Ponytail34",
+	"Ponytail35", 
+	},
+	
+    SOUND_PLAY0			= { 0.622, "Plant_OverLord_AttackB_Slash1.ogg" },
+    SOUND_PLAY1			= { 1.493, "Plant_OverLord_AttackB_Slash2.ogg" },
+    SOUND_PLAY2			= { 0.413, "Plant_OverLord_Sound2.ogg" },
+	
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PLANT_OVERLOAD_CENTER_WAIT",					},
+	},
+
+
+	    
+	
+	ATTACK_TIME0				= { 0.633, 0.8, },
+        ATTACK_TIME1				= { 1.4, 1.633, },	    
+	    
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},		
+		
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+	
+	DAMAGE_DATA_LAST = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},		
+		
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+	},
+}
+
+PLANT_OVERLOAD_CENTER_MAGIC_ATTACK = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+--    SOUND_PLAY0			= { 0.153, "Plant_Drosera_AttackB.ogg", },
+
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	RIGHT                       = TRUE,
+	--SUPER_ARMOR					= TRUE,
+	--SUPER_ARMOR_NOT_RED         = TRUE,
+	
+	GUARD_DEFENCE               = 60,
+	
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{			
+	    { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		    "PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_C",	    "CT_PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_C1",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		    "PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_C",	    "CT_PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_C",	},
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		    "PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_L",	    "CT_PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_L",	},
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		    "PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_R",	    "CT_PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_R",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PLANT_OVERLOAD_CENTER_WAIT",					},		
+	},
+		
+	CT_PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_C1 = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1000,
+		RATE						= 100,
+	},
+	CT_PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_C = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 300,
+		RATE						= 50,
+	},
+	CT_PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_L = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 675,
+		CHECK_TARGET_DIRECTION      = TRUE,
+		TARGET_RIGHT                = FALSE,
+		RATE						= 80,
+	},
+	CT_PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_R = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 675,
+		CHECK_TARGET_DIRECTION      = TRUE,
+		TARGET_RIGHT                = TRUE,
+		RATE						= 80,
+	},	
+}
+
+PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_C = 
+{
+	ANIM_NAME					= "MagicAttack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+    SOUND_PLAY0			= { 0.001, "Plant_OverLord_Sound1.ogg", },
+
+	GUARD_DEFENCE               = 60,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	RIGHT                       = TRUE,
+	SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED         = TRUE,	
+	
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PLANT_OVERLOAD_CENTER_WAIT",					},
+	},
+	
+	PARTICLE_SEQ = 
+	{
+		--Major, time, Name, weaponBonePos, Pos, StateEndDelete, bTrace, posx, posy, posz, bApplyUnitRotation, rotx, roty, rotz,			
+		{ TRUE, 1.333, "Poison_Sap_Plant_Overload01", FALSE, "Dummy05", FALSE, TRUE, 0, 0, 0, TRUE, 0, 0, 0, },
+		{ TRUE, 1.333, "Poison_Sap_Plant_Overload02", FALSE, "Dummy05", FALSE, TRUE, 0, 0, 0, TRUE, 0, 0, 0, },
+	},
+}
+
+PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_L = 
+{
+	ANIM_NAME					= "MagicAttackR",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+    SOUND_PLAY0			= { 0.001, "Plant_OverLord_Sound1.ogg", },
+
+	GUARD_DEFENCE               = 60,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	RIGHT                       = TRUE,
+	SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED         = TRUE,
+	
+	
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PLANT_OVERLOAD_CENTER_WAIT",					},
+	},
+	
+	PARTICLE_SEQ = 
+	{
+		--Major, time, Name, weaponBonePos, Pos, StateEndDelete, bTrace, posx, posy, posz, bApplyUnitRotation, rotx, roty, rotz,			
+		{ TRUE, 1.333, "Poison_Sap_Plant_Overload01_R", FALSE, "Dummy05", FALSE, TRUE, 0, 20, -20, TRUE, 0, 0, 0, },
+		{ TRUE, 1.333, "Poison_Sap_Plant_Overload02_R", FALSE, "Dummy05", FALSE, TRUE, 0, 20, -20, TRUE, 0, 0, 0, },
+	},
+}
+
+PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_R = 
+{
+	ANIM_NAME					= "MagicAttackL",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+    SOUND_PLAY0			= { 0.001, "Plant_OverLord_Sound1.ogg", },
+
+	GUARD_DEFENCE               = 60,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	RIGHT                       = TRUE,
+	SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED         = TRUE,
+	
+	
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PLANT_OVERLOAD_CENTER_WAIT",					},
+	},
+	
+	PARTICLE_SEQ = 
+	{
+		--Major, time, Name, weaponBonePos, Pos, StateEndDelete, bTrace, posx, posy, posz, bApplyUnitRotation, rotx, roty, rotz,			
+		{ TRUE, 1.333, "Poison_Sap_Plant_Overload01_L", FALSE, "Dummy05", FALSE, TRUE, 0, 20, -20, TRUE, 0, 0, 0, },
+		{ TRUE, 1.333, "Poison_Sap_Plant_Overload02_L", FALSE, "Dummy05", FALSE, TRUE, 0, 20, -20, TRUE, 0, 0, 0, },
+	},
+}
+
+PLANT_OVERLOAD_CENTER_SUMMON_BINE_READY = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+--    SOUND_PLAY0			= { 0.153, "Plant_Drosera_AttackB.ogg", },
+
+	GUARD_DEFENCE               = 60,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	RIGHT                       = TRUE,
+	--SUPER_ARMOR					= TRUE,
+	--SUPER_ARMOR_NOT_RED         = TRUE,
+	
+	
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+	    { STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"PLANT_OVERLOAD_CENTER_SUMMON_BINE",	    "CF_PLANT_OVERLOAD_CENTER_SUMMON_BINE",	},	    
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PLANT_OVERLOAD_CENTER_WAIT",				},		
+	},
+}
+
+PLANT_OVERLOAD_CENTER_SUMMON_BINE = 
+{
+	ANIM_NAME					= "SummonBine",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+    SOUND_PLAY0			= { 0.294, "Plant_OverLord_SummonBine1.ogg", },
+
+	GUARD_DEFENCE               = 60,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	RIGHT                       = TRUE,
+	--SUPER_ARMOR					= TRUE,
+	--SUPER_ARMOR_NOT_RED         = TRUE,
+	
+	
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	ATTACK_TIME0				= { 0.33, 0.65, },
+    ATTACK_TIME1				= { 1.43, 1.8, },	    
+	    
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},		
+		
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+	
+	DAMAGE_DATA_LAST = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},		
+		
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+	},
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PLANT_OVERLOAD_CENTER_WAIT",					},
+	},
+}
+
+PLANT_OVERLOAD_CENTER_DYING = 
+{
+	ANIM_NAME					= "Dying",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+
+    SOUND_PLAY0			= { 0.001, "Plant_OverLord_Voice_Dying1.ogg", },
+	
+	RIGHT                       = TRUE,
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	NEVER_MOVE					= TRUE,
+	
+	DYING_END					= TRUE,
+	DYING_SPEED                 = 1,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+
+-- Over Mode ------------------------------------------------------------------------------------------------------------------
+
+PLANT_OVERLOAD_CENTER_OVER_WAITSTART = 
+{
+	ANIM_NAME					= "Over_WaitStart",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+
+    SOUND_PLAY0			= { 2.345, "Plant_OverLord_Attack_Slash2.ogg" },
+    SOUND_PLAY1			= { 1.330, "Plant_OverLord_Voice_AttackRoar2.ogg" },
+	
+	--INVINCIBLE					= { 0, 100, }, 	
+	SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED         = TRUE,	
+	
+	DEFENCE						= { 0, 100, 30, },
+	
+	GUARD_DEFENCE               = 50,
+	
+	RIGHT                       = TRUE,
+	
+	NEVER_MOVE					= TRUE,
+	EVENT_INTERVAL_TIME0		= 1,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	ATTACK_TIME0				= { 2.066, 2.666, },    
+	    
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},		
+		
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},	
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"PLANT_OVERLOAD_CENTER_OVER_WAIT",  },
+	},
+}
+
+PLANT_OVERLOAD_CENTER_OVER_WAIT = 
+{
+	ANIM_NAME					= "Over_Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+
+    DEFENCE						= { 0, 100, 30, },
+    SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED         = TRUE,	
+        		
+	NEVER_MOVE					= TRUE,
+	
+	RIGHT                       = TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	GUARD_DEFENCE               = 50,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+	    { STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"PLANT_OVERLOAD_CENTER_WAITSTART",	                    "CF_PLANT_OVERLOAD_CENTER_CHANGE_NORMALMODE",	},	    
+	    
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PLANT_OVERLOAD_CENTER_OVER_ATTACK",				"CT_PLANT_OVERLOAD_CENTER_OVER_ATTACK",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PLANT_OVERLOAD_CENTER_OVER_ATTACKB",			    "CT_PLANT_OVERLOAD_CENTER_OVER_ATTACKB",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PLANT_OVERLOAD_CENTER_OVER_ATTACKC",			    "CT_PLANT_OVERLOAD_CENTER_OVER_ATTACKC",	 },
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PLANT_OVERLOAD_CENTER_OVER_MAGIC_ATTACK",		    "CT_PLANT_OVERLOAD_CENTER_OVER_MAGIC_ATTACK",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PLANT_OVERLOAD_CENTER_OVER_SUMMON_BINE_READY",	    "CT_PLANT_OVERLOAD_CENTER_OVER_SUMMON_BINE_READY",	},		
+	},
+	
+	CT_PLANT_OVERLOAD_CENTER_OVER_ATTACK = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 800,
+		SAME_LINE_WITH_TARGET		= TRUE,
+		RATE						= 30,
+	},	
+	CT_PLANT_OVERLOAD_CENTER_OVER_ATTACKB = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 500,
+		RATE						= 30,
+	},
+	CT_PLANT_OVERLOAD_CENTER_OVER_ATTACKC = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 500,
+		RATE						= 40,
+	},	
+	CT_PLANT_OVERLOAD_CENTER_OVER_MAGIC_ATTACK = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1300,
+		RATE						= 50,
+	},
+	CT_PLANT_OVERLOAD_CENTER_OVER_SUMMON_BINE_READY = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		--DISTANCE_TO_TARGET_NEAR		= 1300,
+		RATE						= 60,
+	},	
+}
+
+PLANT_OVERLOAD_CENTER_OVER_DAMAGE =
+{
+	ANIM_NAME					= "Over_Damage",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+    DEFENCE						= { 0, 100, 30, },
+    SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED         = TRUE,	
+	
+    SOUND_PLAY0			= { 0.005, "Plant_OverLord_Damage.ogg" },
+    SOUND_PLAY1			= { 0.002, "Plant_OverLord_Voice_DamageRoar.ogg" },
+	
+	GUARD_DEFENCE               = 50,
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	RIGHT                       = TRUE,
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"PLANT_OVERLOAD_CENTER_OVER_WAIT",				},
+	},
+}
+
+PLANT_OVERLOAD_CENTER_OVER_ATTACK = 
+{
+	ANIM_NAME					= "Attack_Over",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	ANIM_SPEED					= 1.3,
+	
+	DEFENCE						= { 0, 100, 30, },	
+    SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED         = TRUE,	
+
+    SOUND_PLAY0			= { 0.858, "Plant_OverLord_Attack_Slash.ogg" },
+    SOUND_PLAY1			= { 0.158, "Plant_OverLord_Voice_AttackRoar1.ogg" },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	GUARD_DEFENCE               = 50,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	RIGHT                       = TRUE,
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+DISABLE_ATTACK_BOX = 
+	{
+	"Ponytail2",
+	"Ponytail3",
+	"Ponytail4",
+	"Ponytail5",
+	"Ponytail6",
+	"Ponytail7",
+	"Ponytail8",
+	"Ponytail9",
+	"Ponytail10",
+	"Ponytail11",
+	"Ponytail12",
+	"Ponytail13",
+	"Ponytail14",
+	"Ponytail15",
+	"Ponytail16",
+	"Ponytail17",
+	"Ponytail18",
+	"Ponytail19",
+	"Ponytail20",
+	"Ponytail21",
+	"Ponytail22",
+	"Ponytail23",
+	"Ponytail24",
+	"Ponytail25",
+	"Ponytail26",
+	"Ponytail27",
+	"Ponytail28",
+	"Ponytail29",
+	"Ponytail30",
+	"Ponytail31",
+	"Ponytail32",
+	"Ponytail33",
+	"Ponytail34",
+	"Ponytail35", 
+	},
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PLANT_OVERLOAD_CENTER_OVER_WAIT",					},
+	},
+	    
+
+    ATTACK_TIME0				= { 0.966, 1.233, },    
+	    
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},		
+		
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},	
+}
+
+PLANT_OVERLOAD_CENTER_OVER_ATTACKB = 
+{
+	ANIM_NAME					= "AttackB_Over",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	ANIM_SPEED					= 1.3,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+ 
+    SOUND_PLAY0			= { 0.622, "Plant_OverLord_AttackB_Slash1.ogg" },
+    SOUND_PLAY1			= { 1.493, "Plant_OverLord_AttackB_Slash2.ogg" },
+    SOUND_PLAY2			= { 0.385, "Plant_OverLord_Voice_AttackRoar2.ogg" },
+ 
+    GUARD_DEFENCE               = 50,
+    
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	RIGHT                       = TRUE,
+	
+	DEFENCE						= { 0, 100, 30, },	
+    SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED         = TRUE,		
+	
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+DISABLE_ATTACK_BOX = 
+	{
+	"Ponytail2",
+	"Ponytail3",
+	"Ponytail4",
+	"Ponytail5",
+	"Ponytail6",
+	"Ponytail7",
+	"Ponytail8",
+	"Ponytail9",
+	"Ponytail10",
+	"Ponytail11",
+	"Ponytail12",
+	"Ponytail13",
+	"Ponytail14",
+	"Ponytail15",
+	"Ponytail16",
+	"Ponytail17",
+	"Ponytail18",
+	"Ponytail19",
+	"Ponytail20",
+	"Ponytail21",
+	"Ponytail22",
+	"Ponytail23",
+	"Ponytail24",
+	"Ponytail25",
+	"Ponytail26",
+	"Ponytail27",
+	"Ponytail28",
+	"Ponytail29",
+	"Ponytail30",
+	"Ponytail31",
+	"Ponytail32",
+	"Ponytail33",
+	"Ponytail34",
+	"Ponytail35", 
+	},
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PLANT_OVERLOAD_CENTER_OVER_WAIT",					},
+	},
+	
+	ATTACK_TIME0				= { 0.633, 0.8, },
+    ATTACK_TIME1				= { 1.4, 1.633, },	    
+	    
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},		
+		
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+	
+	DAMAGE_DATA_LAST = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},		
+		
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+	},
+}
+
+PLANT_OVERLOAD_CENTER_OVER_ATTACKC = 
+{
+	ANIM_NAME					= "AttackC_Over",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	ANIM_SPEED					= 1.3,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+ 
+    SOUND_PLAY0			= { 0.001, "Plant_OverLord_Voice_AttackRoar3.ogg" },
+ 
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	RIGHT                       = TRUE,
+	
+	GUARD_DEFENCE               = 50,
+	
+	DEFENCE						= { 0, 100, 30, },	
+    SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED         = TRUE,	
+	
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+DISABLE_ATTACK_BOX = 
+	{
+	"Ponytail2",
+	"Ponytail3",
+	"Ponytail4",
+	"Ponytail5",
+	"Ponytail6",
+	"Ponytail7",
+	"Ponytail8",
+	"Ponytail9",
+	"Ponytail10",
+	"Ponytail11",
+	"Ponytail12",
+	"Ponytail13",
+	"Ponytail14",
+	"Ponytail15",
+	"Ponytail16",
+	"Ponytail17",
+	"Ponytail18",
+	"Ponytail19",
+	"Ponytail20",
+	"Ponytail21",
+	"Ponytail22",
+	"Ponytail23",
+	"Ponytail24",
+	"Ponytail25",
+	"Ponytail26",
+	"Ponytail27",
+	"Ponytail28",
+	"Ponytail29",
+	"Ponytail30",
+	"Ponytail31",
+	"Ponytail32",
+	"Ponytail33",
+	"Ponytail34",
+	"Ponytail35", 
+	},
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PLANT_OVERLOAD_CENTER_OVER_WAIT",					},
+	},
+	
+	ATTACK_TIME0				= { 0.9, 1.833, },
+    ATTACK_TIME1				= { 2.866, 3.133, },	    
+	    
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},		
+		
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+	
+	DAMAGE_DATA_LAST = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},		
+		
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+	},
+}
+
+PLANT_OVERLOAD_CENTER_OVER_MAGIC_ATTACK = 
+{
+	ANIM_NAME					= "Over_Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+--    SOUND_PLAY0			= { 0.153, "Plant_Drosera_AttackB.ogg", },
+
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	RIGHT                       = TRUE,	
+	
+	GUARD_DEFENCE               = 50,
+	
+	DEFENCE						= { 0, 100, 30, },	
+    SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED         = TRUE,		
+	
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{			
+	    { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		    "PLANT_OVERLOAD_CENTER_OVER_MAGIC_ATTACK_C",	    "CT_PLANT_OVERLOAD_CENTER_OVER_MAGIC_ATTACK_C1",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		    "PLANT_OVERLOAD_CENTER_OVER_MAGIC_ATTACK_C",	    "CT_PLANT_OVERLOAD_CENTER_OVER_MAGIC_ATTACK_C",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		    "PLANT_OVERLOAD_CENTER_OVER_MAGIC_ATTACK_L",	    "CT_PLANT_OVERLOAD_CENTER_OVER_MAGIC_ATTACK_L",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		    "PLANT_OVERLOAD_CENTER_OVER_MAGIC_ATTACK_R",	    "CT_PLANT_OVERLOAD_CENTER_OVER_MAGIC_ATTACK_R",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PLANT_OVERLOAD_CENTER_OVER_WAIT",					},		
+	},
+		
+	CT_PLANT_OVERLOAD_CENTER_OVER_MAGIC_ATTACK_C1 = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 100,
+		RATE						= 100,
+	},
+	CT_PLANT_OVERLOAD_CENTER_OVER_MAGIC_ATTACK_C = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 300,
+		RATE						= 50,
+	},
+	CT_PLANT_OVERLOAD_CENTER_OVER_MAGIC_ATTACK_L = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 675,
+		CHECK_TARGET_DIRECTION      = TRUE,
+		TARGET_RIGHT                = FALSE,
+		RATE						= 80,
+	},
+	CT_PLANT_OVERLOAD_CENTER_OVER_MAGIC_ATTACK_R = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 675,
+		CHECK_TARGET_DIRECTION      = TRUE,
+		TARGET_RIGHT                = TRUE,
+		RATE						= 80,
+	},	
+}
+
+PLANT_OVERLOAD_CENTER_OVER_MAGIC_ATTACK_C = 
+{
+	ANIM_NAME					= "MagicAttackB",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+    SOUND_PLAY0			= { 0.153, "Plant_OverLord_Voice_AttackRoar4.ogg", },
+
+	GUARD_DEFENCE               = 50,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	RIGHT                       = TRUE,
+	DEFENCE						= { 0, 100, 30, },	
+    SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED         = TRUE,	
+	
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PLANT_OVERLOAD_CENTER_OVER_WAIT",					},
+	},
+	
+	PARTICLE_SEQ = 
+	{
+		--Major, time, Name, weaponBonePos, Pos, StateEndDelete, bTrace, posx, posy, posz, bApplyUnitRotation, rotx, roty, rotz,			
+		{ TRUE, 1.333, "Poison_Sap_Plant_Overload_B01", FALSE, "Dummy05", FALSE, TRUE, 0, 0, 0, TRUE, 0, 0, 0, },
+		{ TRUE, 1.333, "Poison_Sap_Plant_Overload_B02", FALSE, "Dummy05", FALSE, TRUE, 0, 0, 0, TRUE, 0, 0, 0, },
+	},
+}
+
+PLANT_OVERLOAD_CENTER_OVER_MAGIC_ATTACK_L = 
+{
+	ANIM_NAME					= "MagicAttackBR",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+    SOUND_PLAY0			= { 0.153, "Plant_OverLord_Voice_AttackRoar4.ogg", },
+
+	GUARD_DEFENCE               = 50,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	RIGHT                       = TRUE,
+	DEFENCE						= { 0, 100, 30, },	
+    SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED         = TRUE,	
+	
+	
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PLANT_OVERLOAD_CENTER_OVER_WAIT",					},
+	},
+	
+	PARTICLE_SEQ = 
+	{
+		--Major, time, Name, weaponBonePos, Pos, StateEndDelete, bTrace, posx, posy, posz, bApplyUnitRotation, rotx, roty, rotz,			
+		{ TRUE, 1.333, "Poison_Sap_Plant_Overload_B01_R", FALSE, "Dummy05", FALSE, TRUE, 0, 20, -20, TRUE, 0, 0, 0, },
+		{ TRUE, 1.333, "Poison_Sap_Plant_Overload_B02_R", FALSE, "Dummy05", FALSE, TRUE, 0, 20, -20, TRUE, 0, 0, 0, },
+	},
+}
+
+PLANT_OVERLOAD_CENTER_OVER_MAGIC_ATTACK_R = 
+{
+	ANIM_NAME					= "MagicAttackBL",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+    SOUND_PLAY0			= { 0.153, "Plant_OverLord_Voice_AttackRoar4.ogg", },
+
+	GUARD_DEFENCE               = 50,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	RIGHT                       = TRUE,
+	DEFENCE						= { 0, 100, 30, },	
+    SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED         = TRUE,	
+	
+	
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PLANT_OVERLOAD_CENTER_OVER_WAIT",					},
+	},
+	
+	PARTICLE_SEQ = 
+	{
+		--Major, time, Name, weaponBonePos, Pos, StateEndDelete, bTrace, posx, posy, posz, bApplyUnitRotation, rotx, roty, rotz,			
+		{ TRUE, 1.333, "Poison_Sap_Plant_Overload_B01_L", FALSE, "Dummy05", FALSE, TRUE, 0, 20, -20, TRUE, 0, 0, 0, },
+		{ TRUE, 1.333, "Poison_Sap_Plant_Overload_B02_L", FALSE, "Dummy05", FALSE, TRUE, 0, 20, -20, TRUE, 0, 0, 0, },
+	},
+}
+
+PLANT_OVERLOAD_CENTER_OVER_SUMMON_BINE_READY = 
+{
+	ANIM_NAME					= "Over_Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+--    SOUND_PLAY0			= { 0.153, "Plant_Drosera_AttackB.ogg", },
+
+	GUARD_DEFENCE               = 50,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	RIGHT                       = TRUE,
+	DEFENCE						= { 0, 100, 30, },	
+    SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED         = TRUE,	
+	
+	
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+	    { STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"PLANT_OVERLOAD_CENTER_OVER_SUMMON_BINE",	    "CF_PLANT_OVERLOAD_CENTER_OVER_SUMMON_BINE",	},	    
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PLANT_OVERLOAD_CENTER_OVER_WAIT",				},		
+	},
+}
+
+PLANT_OVERLOAD_CENTER_OVER_SUMMON_BINE = 
+{
+	ANIM_NAME					= "SummonBineB",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	ANIM_SPEED					= 1.2,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+    SOUND_PLAY0			= { 0.401, "Plant_OverLord_SummonBine1.ogg", },
+    SOUND_PLAY1			= { 0.001, "Plant_OverLord_Voice_AttackRoar5.ogg", },
+
+	GUARD_DEFENCE               = 50,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	RIGHT                       = TRUE,
+	DEFENCE						= { 0, 100, 30, },	
+    SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED         = TRUE,	
+	
+	
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	ATTACK_TIME0				= { 0.32, 0.5, },
+    ATTACK_TIME1				= { 1.62, 1.9, },	    
+	    
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},		
+		
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+	
+	DAMAGE_DATA_LAST = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},		
+		
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+	},
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PLANT_OVERLOAD_CENTER_OVER_WAIT",					},
+	},
+}
+
+PLANT_OVERLOAD_CENTER_OVER_DYING = 
+{
+	ANIM_NAME					= "Over_Dying",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+
+    SOUND_PLAY0			= { 0.001, "Plant_OverLord_Voice_Dying2.ogg", },
+	
+	RIGHT                       = TRUE,
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	NEVER_MOVE					= TRUE,
+	
+	DYING_END					= TRUE,
+	DYING_SPEED                 = 1,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+--------------------------------------------------------------------------------------------------------------------------
+function CF_PLANT_OVERLOAD_CENTER_SUMMON_BINE( pKTDXApp, pX2Game, pNPCUnit )
+    
+	nBine = pX2Game:LiveNPCNumType_LUA( NPC_UNIT_ID["NUI_PLANT_WHIP_B"] )
+    		
+    dungeonLv = pX2Game:GetGameLevel()
+    if dungeonLv == 0 then
+        -- normal
+        maxBine = 6
+    elseif dungeonLv == 1 then
+        -- hard
+        maxBine = 10
+    else
+        -- expert
+        maxBine = 14
+    end            		    
+    		
+	if nBine <= maxBine - 2 then 
+		return true
+	else
+		return false
+	end
+end
+
+function CF_PLANT_OVERLOAD_CENTER_OVER_SUMMON_BINE( pKTDXApp, pX2Game, pNPCUnit )
+    
+	nBine = pX2Game:LiveNPCNumType_LUA( NPC_UNIT_ID["NUI_PLANT_WHIP_B"] )
+    		
+    dungeonLv = pX2Game:GetGameLevel()
+    if dungeonLv == 0 then
+        -- normal
+        maxBine = 6
+    elseif dungeonLv == 1 then
+        -- hard
+        maxBine = 10
+    else
+        -- expert
+        maxBine = 14
+    end            		    
+    		
+	if nBine <= maxBine - 2 then 
+		return true
+	else
+		return false
+	end
+end
+
+function CF_PLANT_OVERLOAD_CENTER_CHANGE_NORMALMODE( pKTDXApp, pX2Game, pNPCUnit )
+    nOverLoad = pX2Game:LiveNPCNumType_LUA( NPC_UNIT_ID["NUI_PLANT_OVERLOAD_HENIR"] )
+    
+    if nOverLoad > 1 then
+        return true
+    end
+    
+    return false
+end
+
+function CF_PLANT_OVERLOAD_CENTER_CHANGE_OVERMODE( pKTDXApp, pX2Game, pNPCUnit )
+    nOverLoad = pX2Game:LiveNPCNumType_LUA( NPC_UNIT_ID["NUI_PLANT_OVERLOAD_HENIR"] )
+    
+    if nOverLoad == 1 then
+        return true
+    end
+    
+    return false
+end
+--------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
+function PLANT_OVERLOAD_CENTER_WAITSTART_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+    pNPCUnit:SetFlag_LUA(0, false)
+    
+end
+
+function PLANT_OVERLOAD_CENTER_DAMAGE_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+    if pNPCUnit:GetFlag_LUA(0) == true then    
+        pNPCUnit:StateChange_LUA("PLANT_OVERLOAD_CENTER_OVER_DAMAGE", true)
+    end
+end
+
+function PLANT_OVERLOAD_CENTER_DYING_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+    if pNPCUnit:GetFlag_LUA(0) == true then    
+        pNPCUnit:StateChange_LUA("PLANT_OVERLOAD_CENTER_OVER_DYING", true)
+        return
+    end
+
+	pos = pNPCUnit:GetPos()
+	pos.y = pos.y + 100.0
+	GetMinorParticle = pX2Game:GetMinorParticle()
+	
+	pSeq = GetMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DieLight",		pos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+	if pSeq ~= nil then
+	
+		pSeq:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+		pNPCUnit:SetDieSeq( pSeq:GetHandle() )
+	
+	end
+	pNPCUnit:PlaySound_LUA( "DieLight.ogg" )		
+	
+end
+
+
+function PLANT_OVERLOAD_CENTER_ATTACKB_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	
+	if pNPCUnit:AnimEventTimer_LUA( 1.4 ) then
+		pNPCUnit:ClearHitUnitList_LUA()
+		pNPCUnit:SetDamageData_LUA( "DAMAGE_DATA_LAST" )
+	end
+end
+
+function PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+    if pNPCUnit:AnimEventTimer_LUA( 0.1 ) and pNPCUnit:GetFlag_LUA(0) == true then
+	    pX2Game:SetWorldColor_LUA( D3DXCOLOR(1,0.2,0.2,1) )
+    end
+    		
+	if pNPCUnit:AnimEventTimer_LUA( 2.2 ) then
+	    pDamageEffect = pX2Game:GetDamageEffect()
+	    
+	    vDirVector = pNPCUnit:GetDirVector()
+	    vPos = pNPCUnit:GetPos()
+	    vPos1 = MovePos( vPos, vDirVector, -170 )
+	    vPos = pNPCUnit:GetPos()
+	    vPos2 = MovePos( vPos, vDirVector, -170 - 170 )
+	    vPos = pNPCUnit:GetPos()
+	    vPos3 = MovePos( vPos, vDirVector, 170 )
+	    vPos = pNPCUnit:GetPos()
+	    vPos4 = MovePos( vPos, vDirVector, 170 + 170 )
+	    
+	    vPos1.y = vPos1.y + 800
+	    vPos2.y = vPos2.y + 800
+	    vPos3.y = vPos3.y + 800
+	    vPos4.y = vPos4.y + 800
+	    
+	    landPos = pNPCUnit:GetLandPosition_LUA()	    
+	    
+	    if pDamageEffect ~= nil then
+	        pDamageEffect:CreateInstance_LUA( pNPCUnit, "OVERLOAD_MAGICATTACK2", vPos1, landPos.y )
+	        pDamageEffect:CreateInstance_LUA( pNPCUnit, "OVERLOAD_MAGICATTACK2", vPos2, landPos.y )
+	        pDamageEffect:CreateInstance_LUA( pNPCUnit, "OVERLOAD_MAGICATTACK2", vPos3, landPos.y )
+	        pDamageEffect:CreateInstance_LUA( pNPCUnit, "OVERLOAD_MAGICATTACK2", vPos4, landPos.y )
+		end
+	end
+	if pNPCUnit:AnimEventTimer_LUA( 3.0 ) then
+	    pDamageEffect = pX2Game:GetDamageEffect()
+	    
+	    vDirVector = pNPCUnit:GetDirVector()
+	    vPos = pNPCUnit:GetPos()
+	    vPos1 = MovePos( vPos, vDirVector, -170 )
+	    vPos = pNPCUnit:GetPos()
+	    vPos2 = MovePos( vPos, vDirVector, -170 - 170 )
+	    vPos = pNPCUnit:GetPos()
+	    vPos3 = MovePos( vPos, vDirVector, 170 )
+	    vPos = pNPCUnit:GetPos()
+	    vPos4 = MovePos( vPos, vDirVector, 170 + 170 )
+	    
+	    vPos1.y = vPos1.y + 800
+	    vPos2.y = vPos2.y + 800
+	    vPos3.y = vPos3.y + 800
+	    vPos4.y = vPos4.y + 800
+	    
+	    landPos = pNPCUnit:GetLandPosition_LUA()
+	    
+	    if pDamageEffect ~= nil then
+	        pDamageEffect:CreateInstance_LUA( pNPCUnit, "OVERLOAD_MAGICATTACK2", vPos1, landPos.y )
+	        pDamageEffect:CreateInstance_LUA( pNPCUnit, "OVERLOAD_MAGICATTACK2", vPos2, landPos.y )
+	        pDamageEffect:CreateInstance_LUA( pNPCUnit, "OVERLOAD_MAGICATTACK2", vPos3, landPos.y )
+	        pDamageEffect:CreateInstance_LUA( pNPCUnit, "OVERLOAD_MAGICATTACK2", vPos4, landPos.y )
+		end
+	end
+	
+	if pNPCUnit:AnimEventTimer_LUA( 1.5 ) and pNPCUnit:GetFlag_LUA(0) == true then
+	    pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 3.2 )
+	end
+end
+
+function PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_L_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	
+	if pNPCUnit:AnimEventTimer_LUA( 0.1 ) and pNPCUnit:GetFlag_LUA(0) == true then
+	    pX2Game:SetWorldColor_LUA( D3DXCOLOR(1,0.2,0.2,1) )
+    end
+    
+	if pNPCUnit:AnimEventTimer_LUA( 2.2 ) then
+	    pDamageEffect = pX2Game:GetDamageEffect()
+	    vDirVector = pNPCUnit:GetDirVector()
+	    vPos = pNPCUnit:GetPos()
+	    vPos = MovePos( vPos, vDirVector, -400 )	    
+	    vPos.y = vPos.y + 800
+	    landPos = pNPCUnit:GetLandPosition_LUA()		
+		
+	    if pDamageEffect ~= nil then
+	        pDamageEffect:CreateInstance_LUA( pNPCUnit, "OVERLOAD_MAGICATTACK2", vPos, landPos.y )
+		end
+	end
+	if pNPCUnit:AnimEventTimer_LUA( 3.0 ) then
+	    pDamageEffect = pX2Game:GetDamageEffect()
+	    vDirVector = pNPCUnit:GetDirVector()
+	    vPos = pNPCUnit:GetPos()
+	    vPos = MovePos( vPos, vDirVector, -400 )	
+	    vPos.y = vPos.y + 800
+	    landPos = pNPCUnit:GetLandPosition_LUA()
+	    
+	    if pDamageEffect ~= nil then
+	        pDamageEffect:CreateInstance_LUA( pNPCUnit, "OVERLOAD_MAGICATTACK2", vPos, landPos.y )
+		end
+	end
+	
+	if pNPCUnit:AnimEventTimer_LUA( 1.5 ) and pNPCUnit:GetFlag_LUA(0) == true then
+	    pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 3.2 )
+	end
+end
+
+function PLANT_OVERLOAD_CENTER_MAGIC_ATTACK_R_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	
+	if pNPCUnit:AnimEventTimer_LUA( 0.1 ) and pNPCUnit:GetFlag_LUA(0) == true then
+	    pX2Game:SetWorldColor_LUA( D3DXCOLOR(1,0.2,0.2,1) )
+    end
+	
+	if pNPCUnit:AnimEventTimer_LUA( 2.2 ) then
+	    pDamageEffect = pX2Game:GetDamageEffect()
+	    vDirVector = pNPCUnit:GetDirVector()
+	    vPos = pNPCUnit:GetPos()
+	    vPos = MovePos( vPos, vDirVector, 400 )	    
+	    vPos.y = vPos.y + 800
+	    landPos = pNPCUnit:GetLandPosition_LUA()		
+		
+	    if pDamageEffect ~= nil then
+	        pDamageEffect:CreateInstance_LUA( pNPCUnit, "OVERLOAD_MAGICATTACK2", vPos, landPos.y )
+		end
+	end
+	if pNPCUnit:AnimEventTimer_LUA( 3.0 ) then
+	    pDamageEffect = pX2Game:GetDamageEffect()
+	    vDirVector = pNPCUnit:GetDirVector()
+	    vPos = pNPCUnit:GetPos()
+	    vPos = MovePos( vPos, vDirVector, 400 )	
+	    vPos.y = vPos.y + 800
+	    landPos = pNPCUnit:GetLandPosition_LUA()
+	    
+	    if pDamageEffect ~= nil then
+	        pDamageEffect:CreateInstance_LUA( pNPCUnit, "OVERLOAD_MAGICATTACK2", vPos, landPos.y )
+		end
+	end
+	
+	if pNPCUnit:AnimEventTimer_LUA( 1.5 ) and pNPCUnit:GetFlag_LUA(0) == true then
+	    pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 3.2 )
+	end
+end
+
+function PLANT_OVERLOAD_CENTER_SUMMON_BINE_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )	
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+	    nRandRight = pNPCUnit:GetRandVal()
+	    if nRandRight >= 50 then
+	        bRight = true
+	    else
+	        bRight = false
+	    end
+	
+	    pUser = pNPCUnit:GetTargetUser()    
+        if pUser ~= nil then
+            if bRight == true then
+                PosRand = pX2Game:GetLineMap():GetRandomPositionDir( pUser:GetPos(), 500, true, true )
+            else
+		        PosRand = pX2Game:GetLineMap():GetRandomPositionDir( pUser:GetPos(), 500, true, false )
+		    end
+        else
+            if bRight == true then
+		        PosRand = pX2Game:GetLineMap():GetRandomPositionDir( pNPCUnit:GetPos(), 500, true, true )
+            else
+                PosRand = pX2Game:GetLineMap():GetRandomPositionDir( pNPCUnit:GetPos(), 500, true, false )
+            end      
+        end
+
+        LandHieght = pNPCUnit:GetPos()                
+        PosRand.y = LandHieght.y + 100                
+        vPos = pX2Game:GetLineMap():GetLandPosition_LUA( PosRand )
+        
+        --vSummon1 = vPos        
+        
+        if bRight == true then
+            pX2Game:PushCreateNPCReq_Lua( NPC_UNIT_ID["NUI_PLANT_WHIP_B"], pNPCUnit:GetHardLevel(), false, vPos, true, 1.2, true, 0 )            
+        else            
+		    pX2Game:PushCreateNPCReq_Lua( NPC_UNIT_ID["NUI_PLANT_WHIP_B"], pNPCUnit:GetHardLevel(), false, vPos, false, 1.2, true, 0 )		    
+        end
+        --pX2Game:PushCreateNPCReq_Lua( NPC_UNIT_ID["NUI_JUBIGEE"], pNPCUnit:GetHardLevel(), false, vPos, false, 1.0, true, 0 )
+		pX2Game:FlushCreateNPCReq() 
+	end		
+
+	if pNPCUnit:AnimEventTimer_LUA( 1.43 ) then
+	    pNPCUnit:ClearHitUnitList_LUA()
+		pNPCUnit:SetDamageData_LUA( "DAMAGE_DATA_LAST" )
+	end
+	
+	if pNPCUnit:AnimEventTimer_LUA( 0.43 ) then
+	    pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 20.0, 1.0 )
+	end
+end
+
+-- Over Mode --------------------------------------------------------------------------------------------------------------------------------
+
+function PLANT_OVERLOAD_CENTER_OVER_DAMAGE_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+    
+end
+
+
+function PLANT_OVERLOAD_CENTER_OVER_WAITSTART_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+    pNPCUnit:SetFlag_LUA(0, true)
+    pX2Game:SetWorldColor_LUA( D3DXCOLOR(1,0.2,0.2,1) )
+    
+    healedHP = pNPCUnit:GetNowHP() + 2800 * pNPCUnit:GetHardLevel()
+	if healedHP > pNPCUnit:GetMaxHP() then		
+		healedHP = pNPCUnit:GetMaxHP()	
+	end
+	
+	pNPCUnit:SetNowHP_LUA( healedHP )
+end
+
+function PLANT_OVERLOAD_CENTER_OVER_ATTACKC_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+    if pNPCUnit:AnimEventTimer_LUA( 2.86 ) then
+		pNPCUnit:ClearHitUnitList_LUA()
+		pNPCUnit:SetDamageData_LUA( "DAMAGE_DATA_LAST" )
+	end
+end
+
+function PLANT_OVERLOAD_CENTER_OVER_SUMMON_BINE_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )	
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then	
+	
+	    pUser = pNPCUnit:GetTargetUser()    
+        if pUser ~= nil then
+            PosL1 = pX2Game:GetLineMap():GetRandomPositionDir( pUser:GetPos(), 500, true, false )		    
+		    PosR1 = pX2Game:GetLineMap():GetRandomPositionDir( pUser:GetPos(), 500, true, true )
+        else
+            PosL1 = pX2Game:GetLineMap():GetRandomPositionDir( pNPCUnit:GetPos(), 500, true, false )		    
+		    PosR1 = pX2Game:GetLineMap():GetRandomPositionDir( pNPCUnit:GetPos(), 500, true, true )
+        end
+
+        LandHieght = pNPCUnit:GetPos()  
+        PosL1.y = LandHieght.y + 100
+        PosR1.y = LandHieght.y + 100
+        vPosL1 = pX2Game:GetLineMap():GetLandPosition_LUA( PosL1 )
+        vPosR1 = pX2Game:GetLineMap():GetLandPosition_LUA( PosR1 )
+        
+        --vSummon1 = vPosR1
+        --vSummon2 = vPosR2
+        
+        pX2Game:PushCreateNPCReq_Lua( NPC_UNIT_ID["NUI_PLANT_WHIP_B"], pNPCUnit:GetHardLevel(), false, vPosR1, false, 1.2, true, 0 )
+		pX2Game:PushCreateNPCReq_Lua( NPC_UNIT_ID["NUI_PLANT_WHIP_B"], pNPCUnit:GetHardLevel(), false, vPosL1, true, 1.2, true, 0 )
+		--pX2Game:PushCreateNPCReq_Lua( NPC_UNIT_ID["NUI_JUBIGEE"], pNPCUnit:GetHardLevel(), false, vPosR1, false, 1.0, true, 0 )
+		--pX2Game:PushCreateNPCReq_Lua( NPC_UNIT_ID["NUI_JUBIGEE"], pNPCUnit:GetHardLevel(), false, vPosL1, true, 1.0, true, 0 )	
+		pX2Game:FlushCreateNPCReq() 
+	end		
+
+	if pNPCUnit:AnimEventTimer_LUA( 1.43 ) then
+	    pNPCUnit:ClearHitUnitList_LUA()
+		pNPCUnit:SetDamageData_LUA( "DAMAGE_DATA_LAST" )
+	end
+	
+	if pNPCUnit:AnimEventTimer_LUA( 0.45 ) then
+	    pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 20.0, 1.0 )
+	end
+end
+
+function PLANT_OVERLOAD_CENTER_OVER_DYING_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+    if pNPCUnit:GetFlag_LUA(0) == false then    
+        pNPCUnit:StateChange_LUA("PLANT_OVERLOAD_CENTER_DYING", true)
+        return
+    end
+
+	pos = pNPCUnit:GetPos()
+	pos.y = pos.y + 100.0
+	GetMinorParticle = pX2Game:GetMinorParticle()
+	
+	pSeq = GetMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DieLight",		pos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+	if pSeq ~= nil then
+	
+		pSeq:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+		pNPCUnit:SetDieSeq( pSeq:GetHandle() )
+	
+	end
+	pNPCUnit:PlaySound_LUA( "DieLight.ogg" )		
+	
+end
+
+------------------------------------------------------------------------------
+-- UTIL FUNCTION
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+function MovePos( pos, dirvector, dist )
+	
+	pos.x = pos.x + dist * dirvector.x
+	pos.y = pos.y + dist * dirvector.y
+	pos.z = pos.z + dist * dirvector.z
+	
+	return pos
+	
+end

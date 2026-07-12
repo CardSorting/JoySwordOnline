@@ -1,0 +1,351 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 100.0,
+	UNIT_HEIGHT		= 150.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+		"NUI_PHYSIC_TENTACLE_SUMMON_001.tga",
+		"stone.dds",
+	},
+	
+	READY_SOUND = 
+	{	
+		"Plant_Whip_WaitStart.ogg",
+		"Plant_Whip_Attack.ogg",
+		"Plant_Whip_Damage.ogg",
+		"Plant_Whip_Dying.ogg",
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME	= "Motion_Physic_Tentacle.x",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+}
+
+
+INIT_COMPONENT = 
+{
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	-- SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	-- SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	-- SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	
+	FALL_DOWN			= TRUE,
+	
+	DAMAGE_DOWN         = FALSE,
+	DIE_FLY				= FALSE,
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "PHYSIC_TENTACLE_SUMMON_START",							},
+	{ STATE_NAME = "PHYSIC_TENTACLE_SUMMON_WAIT",							LUA_STATE_START_FUNC = "PHYSIC_TENTACLE_SUMMON_WAIT_STATE_START",
+																			LUA_FRAME_MOVE_FUNC ="PHYSIC_TENTACLE_SUMMON_WAIT_FRAME_MOVE",	},
+
+	{ STATE_NAME = "PHYSIC_TENTACLE_SUMMON_ATTACK_LEFT",					},
+	{ STATE_NAME = "PHYSIC_TENTACLE_SUMMON_ATTACK_RIGHT",					},
+	--리액션 관련
+	{ STATE_NAME = "PHYSIC_TENTACLE_SUMMON_DAMAGE",						},
+
+	{ STATE_NAME = "PHYSIC_TENTACLE_SUMMON_DYING",							},
+
+	START_STATE					= "PHYSIC_TENTACLE_SUMMON_START",
+	WAIT_STATE					= "PHYSIC_TENTACLE_SUMMON_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "PHYSIC_TENTACLE_SUMMON_DAMAGE",
+	SMALL_DAMAGE_LAND_BACK		= "PHYSIC_TENTACLE_SUMMON_DAMAGE",
+	BIG_DAMAGE_LAND_FRONT		= "PHYSIC_TENTACLE_SUMMON_DAMAGE",
+	BIG_DAMAGE_LAND_BACK		= "PHYSIC_TENTACLE_SUMMON_DAMAGE",
+	
+	-- fix!! 안넘어지게 테스트
+	DOWN_DAMAGE_LAND_FRONT		= "PHYSIC_TENTACLE_SUMMON_DAMAGE",
+	DOWN_DAMAGE_LAND_BACK		= "PHYSIC_TENTACLE_SUMMON_DAMAGE",
+
+	REVENGE_ATTACK				= "",
+	
+	DYING_LAND_FRONT			= "PHYSIC_TENTACLE_SUMMON_DYING",
+	DYING_LAND_BACK				= "PHYSIC_TENTACLE_SUMMON_DYING",
+	DYING_SKY					= "PHYSIC_TENTACLE_SUMMON_DYING",
+}
+
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_NEAR_FIRST"],
+		TARGET_INTERVAL				= 2,		-- sec
+		TARGET_NEAR_RANGE			= 150,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 500,		-- cm
+		TARGET_LOST_RANGE			= 600,		-- cm
+		TARGET_SUCCESS_RATE			= 100,  --50,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 10,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 100, -- 50,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+}
+
+PHYSIC_TENTACLE_SUMMON_START = 
+{
+	ANIM_NAME					= "Start",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	SOUND_PLAY0			= { 0.012, "Plant_Whip_WaitStart.ogg" },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+	NEVER_MOVE					= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],		"PHYSIC_TENTACLE_SUMMON_WAIT",							},
+		
+	},
+}
+
+PHYSIC_TENTACLE_SUMMON_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	NEVER_MOVE					= TRUE,
+	
+
+	EVENT_INTERVAL_TIME0		= 0.1,
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	  "PHYSIC_TENTACLE_SUMMON_ATTACK_LEFT",  "CT_PHYSIC_TENTACLE_SUMMON_ATTACK_LEFT",					},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	  "PHYSIC_TENTACLE_SUMMON_ATTACK_RIGHT", "CT_PHYSIC_TENTACLE_SUMMON_ATTACK_RIGHT",				},
+	},
+	
+	--타겟이 왼쪽에 있으면 왼쪽 공격
+	CT_PHYSIC_TENTACLE_SUMMON_ATTACK_LEFT = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 500,
+		RATE						= 100,
+		FLAG_TRUE 					= 0,
+	},	
+	--타겟이 오른쪽에 있으면 오른쪽 공격
+	CT_PHYSIC_TENTACLE_SUMMON_ATTACK_RIGHT = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 500,
+		RATE						= 100,
+		FLAG_TRUE 					= 1,
+	},	
+}
+function PHYSIC_TENTACLE_SUMMON_WAIT_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	pNPCUnit:SetFlag_LUA( 0, false )
+	pNPCUnit:SetFlag_LUA( 1, false )
+end
+
+function PHYSIC_TENTACLE_SUMMON_WAIT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	local vTargetUser = pNPCUnit:GetTargetUser()
+	if nil ~= vTargetUser then
+		local vTargetPos = vTargetUser:GetPos()
+		local IsRight = pNPCUnit:GetIsRight()	
+		
+		if true == IsRight then	
+			--내가 오른쪽을 보고 있고
+			if TRUE == pNPCUnit:GetDirPos_LUA(vTargetPos) then
+				--타겟이 오른쪽에 있으면
+				pNPCUnit:SetFlag_LUA( 0, true )
+			else
+				--타겟이 왼쪽에 있으면
+				pNPCUnit:SetFlag_LUA( 1, true )
+			end 
+		else
+			--내가 왼쪽을 보고 있고
+			if TRUE == pNPCUnit:GetDirPos_LUA(vTargetPos) then
+				--타겟이 오른쪽에 있으면
+				pNPCUnit:SetFlag_LUA( 1, true )
+			else
+				--타겟이 왼쪽에 있으면
+				pNPCUnit:SetFlag_LUA( 0, true )
+			end 
+		end
+	end
+end
+
+
+PHYSIC_TENTACLE_SUMMON_ATTACK_LEFT = 
+{
+	ANIM_NAME					= "Attack_A_Left",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	NEVER_MOVE					= TRUE,
+	--SUPER_ARMOR_TIME0			= { 0, 0.5, },
+	
+	ATTACK_TIME0				= { 1.1, 1.2, },
+	
+	SOUND_PLAY0			= { 0.1, "Squish01.ogg" },
+	SOUND_PLAY1			= { 1.0, "Gliter_Thief_Great_AttackB.ogg" },
+	SOUND_PLAY2			= { 1.2, "Landing_Rawmeat03.ogg" },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 2.81,
+		},
+	
+		BACK_SPEED_X			= 1200,
+		BACK_SPEED_Y			= 0.0,
+		
+		STOP_TIME_ATT			= 0.1,		
+		STOP_TIME_DEF			= 0.033,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PHYSIC_TENTACLE_SUMMON_WAIT", },
+	},
+	
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Physic_Tentacle_Attack_L", 0,
+	},
+}
+PHYSIC_TENTACLE_SUMMON_ATTACK_RIGHT = 
+{
+	ANIM_NAME					= "Attack_A_Right",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	NEVER_MOVE					= TRUE,
+	--SUPER_ARMOR_TIME0			= { 0, 0.5, },
+	
+	ATTACK_TIME0				= { 1.150, 1.204, }, 
+	
+	SOUND_PLAY0			= { 0.1, "Squish01.ogg" },
+	SOUND_PLAY1			= { 1.0, "Gliter_Thief_Great_AttackB.ogg" },
+	SOUND_PLAY2			= { 1.2, "Landing_Rawmeat03.ogg" },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 2.81,
+		},
+	
+		BACK_SPEED_X			= 1200,
+		BACK_SPEED_Y			= 0.0,
+		
+		STOP_TIME_ATT			= 0.1,		
+		STOP_TIME_DEF			= 0.033,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PHYSIC_TENTACLE_SUMMON_WAIT", },
+	},
+	
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_MAGIC_TENTACLE_Attack", 0,
+	},
+}
+
+PHYSIC_TENTACLE_SUMMON_DAMAGE = 
+{
+	ANIM_NAME					= "Damage",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0			= { 0.050, "Plant_Whip_Damage.ogg" },
+	
+	NEVER_MOVE					= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PHYSIC_TENTACLE_SUMMON_WAIT", },
+	},
+	
+	EVENT_INTERVAL_TIME0		= 0,
+	EVENT_PROCESS = 
+	{
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	  "PHYSIC_TENTACLE_SUMMON_ATTACK_LEFT",  "CT_PHYSIC_TENTACLE_SUMMON_ATTACK_LEFT",					},
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	  "PHYSIC_TENTACLE_SUMMON_ATTACK_RIGHT", "CT_PHYSIC_TENTACLE_SUMMON_ATTACK_RIGHT",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PHYSIC_TENTACLE_SUMMON_WAIT", },
+	},
+}
+
+PHYSIC_TENTACLE_SUMMON_DYING = 
+{
+	ANIM_NAME					= "Dying",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	SOUND_PLAY0			= { 0.011, "Plant_Whip_Dying.ogg" },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+
+
+
+

@@ -1,0 +1,15 @@
+{
+  "schema": "joysword.enhancement-regression-fixtures/v1",
+  "cases": [
+    {"name": "missing-row", "mutation": "remove_standard_row", "target": 11, "reason": "row mismatch"},
+    {"name": "duplicate-row", "mutation": "duplicate_standard_row", "target": 11, "reason": "duplicate"},
+    {"name": "malformed-total", "mutation": "set_field", "target": 11, "field": "NoChange", "value": "8", "reason": "totals"},
+    {"name": "nan", "mutation": "set_field", "target": 11, "field": "Up1", "value": "NaN", "reason": "non-finite"},
+    {"name": "infinite", "mutation": "set_field", "target": 11, "field": "Up1", "value": "inf", "reason": "non-finite"},
+    {"name": "negative", "mutation": "set_field", "target": 11, "field": "Up1", "value": "-1", "reason": "out-of-range"},
+    {"name": "above-100", "mutation": "set_field", "target": 11, "field": "Up1", "value": "101", "reason": "out-of-range"},
+    {"name": "boundary-total", "mutation": "set_field", "target": 11, "field": "NoChange", "value": "7.00000001", "reason": "totals"},
+    {"name": "incorrect-index", "mutation": "renumber_standard_row", "target": 11, "value": "21", "reason": "row mismatch"},
+    {"name": "identical-high-tier", "mutation": "copy_standard_row_to_range", "source": 11, "start": 10, "end": 20, "reason": "identical high-tier"}
+  ]
+}

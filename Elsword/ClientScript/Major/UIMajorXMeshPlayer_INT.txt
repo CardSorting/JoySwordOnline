@@ -1,0 +1,242 @@
+XMESHPLAYER "UIMajor" 1.00 
+{  
+	TEMPLET "Moru" 
+	{
+		Layer			= 13
+		lifeType		= LT_TIME
+		lifetime		= 999999
+
+		meshType		= X_SKIN_MESH
+		meshName		= "UI_Cash_apart_Mesh.X"
+
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		OutLineWide		= 15
+		
+		lightPos		= xyz(0,50,-500)
+		zEnable			= true
+		ZWriteEnable	= true
+		
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		aniName		= "Normal", XAP_LOOP
+		global initial		color 		= rgba( 1,1,1,1 )		
+	
+		global initial 			size		= XYZ(2.2,2.2,2.2)
+		
+	}
+	TEMPLET "Reward_GreenEll" 
+	{
+		Layer			= 15
+		lifeType		= LT_TIME
+		lifetime		= 999999
+
+		meshType		= X_SKIN_MESH
+		meshName		= "Motion_Reward_GreenEll.x"
+
+		RenderType		= RT_REAL_COLOR
+
+		lightPos		= xyz(5000,1000,-5000)
+		zEnable			= TRUE
+		ZWriteEnable	= true
+
+
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		aniName		= "Wait", XAP_LOOP
+		global at 2		aniName		= "Select", XAP_ONE_WAIT
+		
+		global initial 						size		= XYZ(1,1,1)
+		global fade so from 1000 to 1000.5 	size		= XYZ(0,0,0)
+		
+		
+	}
+	TEMPLET "Reward_YellowEll" 
+	{
+		Layer			= 15
+		lifeType		= LT_TIME
+		lifetime		= 999999
+
+		meshType		= X_SKIN_MESH
+		meshName		= "Motion_Reward_YellowEll.x"
+
+		RenderType		= RT_REAL_COLOR
+
+		lightPos		= xyz(5000,1000,-5000)
+		zEnable			= TRUE
+		ZWriteEnable	= true
+		
+
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		aniName		= "Wait", XAP_LOOP
+		global at 2		aniName		= "Select", XAP_ONE_WAIT
+		
+		global initial 						size		= XYZ(1,1,1)
+		global fade so from 1000 to 1000.5 	size		= XYZ(0,0,0)
+		
+		
+	}
+	TEMPLET "Reward_RedEll" 
+	{
+		Layer			= 15
+		lifeType		= LT_TIME
+		lifetime		= 999999
+
+		meshType		= X_SKIN_MESH
+		meshName		= "Motion_Reward_RedEll.x"
+
+		RenderType		= RT_REAL_COLOR
+
+		lightPos		= xyz(5000,1000,-5000)
+		zEnable			= TRUE
+		ZWriteEnable	= true
+		
+
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		aniName		= "Wait", XAP_LOOP
+		global at 2		aniName		= "Select", XAP_ONE_WAIT
+		
+		global initial 						size		= XYZ(1,1,1)
+		global fade so from 1000 to 1000.5 	size		= XYZ(0,0,0)
+		
+		
+	}
+
+	TEMPLET "Mesh_RedEll_Ready_Light"
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 999
+		meshType		= X_SKIN_MESH
+		meshName		= "Ell_Ready_Light.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= true
+                	ZWriteEnable            = true
+		usedieevent		= true
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+                	drawcount		= 1
+
+		global initial				color		= rgba( 1,0.25,0.4,1 )
+		global initial				aniName		= "Normal", XAP_LOOP
+		global initial				size		= XYZ( 1, 1, 1 )
+	}
+
+	TEMPLET "Mesh_YellowEll_Ready_Light"
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 999
+		meshType		= X_SKIN_MESH
+		meshName		= "Ell_Ready_Light.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= true
+               		ZWriteEnable            = true
+		usedieevent		= true
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+             		drawcount		= 1
+
+		global initial				color		= rgba( 0.7,0.7,0.2,1 )
+		global initial				aniName		= "Normal", XAP_LOOP
+		global initial				size		= XYZ( 1, 1, 1 )
+	}
+	TEMPLET "Mesh_GreenEll_Ready_Light"
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 999
+		meshType		= X_SKIN_MESH
+		meshName		= "Ell_Ready_Light.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= true
+                	ZWriteEnable            = true
+		usedieevent		= true
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+	                drawcount		= 1
+
+		global initial				color		= rgba( 0.35,0.9,0.5,1 )
+		global initial				aniName		= "Normal", XAP_LOOP
+		global initial				size		= XYZ( 1, 1, 1 )
+	}
+
+	TEMPLET "Mesh_ItemReward_Dummy"
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 999
+		meshType		= X_SKIN_MESH
+		meshName		= "Item_Dummy.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+             	  	 ZWriteEnable            = true
+		usedieevent		= true
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+               		 drawcount		= 1
+
+
+		global initial				color		= rgba( 1,1,1,1)
+		global initial				aniName		= "Normal", XAP_LOOP
+		global initial				size		= XYZ( 1, 1, 1 )
+	}
+	TEMPLET "Halloween_Ice_Heater_Wait"
+	{
+		Layer			= 13
+		lifeType		= LT_TIME
+		lifetime		= 999999
+
+		meshType		= X_SKIN_MESH
+		meshName		= "Motion_Soul_machine.X"
+
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		OutLineWide		= 15
+		
+		lightPos		= xyz(0,50,-500)
+		zEnable			= true
+		ZWriteEnable	= true
+
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		aniName		= "Wait", XAP_LOOP
+		global initial		color 		= rgba( 1,1,1,1 )		
+	
+		global initial 			size		= XYZ(2.2,2.2,2.2)
+		
+	}	
+	TEMPLET "Halloween_Ice_Heater_Start" 
+	{
+		Layer			= 13
+		lifeType		= LT_TIME
+		lifetime		= 999999
+
+		meshType		= X_SKIN_MESH
+		meshName		= "Motion_Soul_machine.X"
+
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		OutLineWide		= 15
+		
+		lightPos		= xyz(0,50,-500)
+		zEnable			= True
+		ZWriteEnable	= true
+
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		aniName		= "Start", XAP_ONE
+		global at 4.2		aniName		= "End", XAP_LOOP
+				
+		global initial		color 		= rgba( 1,1,1,1 )		
+		global initial 		size		= XYZ(2.2,2.2,2.2)
+		
+	}
+
+}
+

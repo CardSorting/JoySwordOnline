@@ -1,0 +1,3 @@
+-- JoySword offline custom consumables.
+-- Max Level Scroll reuses item 160267 (Philosopher's Scroll) with patched GameServer logic.
+-- Item.lua entry is updated by scripts/sync-offline-custom-items.py.

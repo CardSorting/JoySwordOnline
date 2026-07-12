@@ -1,0 +1,212 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 100.0,
+	UNIT_HEIGHT		= 150.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+	"Tuto_Low_Actor.ogg"
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_Low_Epic_Actor.x",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 400,
+	RUN_SPEED			= 400,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300,
+}
+
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 1500,
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	--[[
+	USE_SLASH_TRACE		= FALSE,
+	--]]
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	HEAD_BONE_NAME		= "Bip01_Head",
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],	
+	FALL_DOWN			= TRUE,	
+	DAMAGE_DOWN         = FALSE,	
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "LOW_ACTOR_START",							},
+	{ STATE_NAME = "LOW_ACTOR_WAIT",							},
+	{ STATE_NAME = "LOW_ACTOR_TALK",							},
+	{ STATE_NAME = "LOW_ACTOR_RUN",								LUA_FRAME_MOVE_FUNC	= "LOW_ACTOR_RUN_FRAME_MOVE",},
+	{ STATE_NAME = "LOW_ACTOR_DYING",							},
+	
+	START_STATE					= "LOW_ACTOR_START",
+		
+	DYING_LAND_FRONT			= "LOW_ACTOR_DYING",
+	DYING_LAND_BACK				= "LOW_ACTOR_DYING",
+	DYING_SKY					= "LOW_ACTOR_DYING",	
+}
+
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_RANDOM"],
+		TARGET_INTERVAL				= 1,		-- sec
+		TARGET_NEAR_RANGE			= 2000,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 2000,		-- cm
+		TARGET_LOST_RANGE			= 600,		-- cm
+		TARGET_SUCCESS_RATE			= 100,  --50,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 10,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 100, -- 50,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},	
+}
+
+LOW_ACTOR_START = 
+{
+
+	
+	ANIM_NAME					= "Start",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= TRUE,
+	RIGHT = TRUE,
+	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"LOW_ACTOR_WAIT",	"CT_LOW_ACTOR_WAIT",},		
+	},
+	
+	CT_LOW_ACTOR_WAIT =
+	{
+		DISTANCE_TO_TARGET_NEAR 	= 500,
+		RATE 						= 100,
+	},	
+}
+
+LOW_ACTOR_WAIT = 
+{
+	
+	ANIM_SPEED					= 0.8,
+	ANIM_NAME					= "Wait1",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	SOUND_PLAY0			= { 0.1, "Tuto_Low_Actor.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"LOW_ACTOR_TALK",},
+	},
+	
+	TALK_BOX =
+	{
+
+		{ RATE = 100, MESSAGE = STR_ID_18144, },
+	},
+}
+
+LOW_ACTOR_TALK = 
+{
+	ANIM_NAME					= "Talk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	TALK_BOX =
+	{
+		{ RATE = 100, MESSAGE = STR_ID_18145, },
+	},
+	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"LOW_ACTOR_RUN",},
+	},
+}
+
+LOW_ACTOR_RUN = 
+{
+	ANIM_NAME					= "Run",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"LOW_ACTOR_DYING",},
+	},
+	
+	PASSIVE_SPEED_X				= 800,	
+}
+
+LOW_ACTOR_DYING = 
+{
+	ANIM_NAME					= "Dying",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	DYING_END					= TRUE,
+	ADD_POS_Y					= 2000
+}
+	
+function LOW_ACTOR_RUN_FRAME_MOVE( pKTDApp, pX2Game, pNPCUnit )
+	local fStateTime = pNPCUnit:GetStateTime()
+	if fStateTime > 2.0 then
+		local Alpha = 2.88 - fStateTime
+		pNPCUnit:SetUnitFadeStart(RENDER_TYPE["RT_CARTOON_FADE"], 1.0, 1.0, 1.0, 1.0, TRUE, TRUE)	
+		pNPCUnit:SetUnitColor(1, 1, 1, Alpha , TRUE, D3DBLEND["D3DBLEND_SRCALPHA"], D3DBLEND["D3DBLEND_INVSRCALPHA"]) 
+	end
+end
+
+

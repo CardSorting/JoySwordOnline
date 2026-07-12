@@ -1,0 +1,22 @@
+{
+  "session_id": "session-smoke-20260626-212737",
+  "profile": "p2p_forced",
+  "connection_mode": "P2P",
+  "client_switch_connect_mode": 1,
+  "packet_count": 0,
+  "p2p_packet_count": 0,
+  "relay_checker_packet_count": 0,
+  "duration_ms": 0,
+  "packets_per_second": 0,
+  "p2p_packet_ratio": 0,
+  "payload_bytes_min": 0,
+  "payload_bytes_max": 0,
+  "payload_bytes_unique": 0,
+  "markers": [
+    {
+      "type": "session_start",
+      "utc": "2026-06-26T21:27:37.172841+00:00",
+      "note": "profile=p2p_forced connection_mode=P2P"
+    }
+  ]
+}

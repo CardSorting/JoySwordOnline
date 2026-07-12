@@ -1,0 +1,1033 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 120.0,
+	UNIT_HEIGHT		= 150.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	UNIT_SCALE		= 1.0,
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{	
+	"Pet_Summon.wav",
+
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Npc_Event_Raven.x",
+}
+
+INIT_PHYSIC = 
+{	
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 400,
+	RUN_SPEED			= 650,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300,
+}
+
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 2000,
+	--HP_CHANGE_RATE		= -50,
+	MP_CHANGE_RATE		= 0,
+	MP_CHARGE_RATE		= 0,
+	
+	--USE_SLASH_TRACE		= FALSE,
+	
+	--SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+		
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	FALL_DOWN			= TRUE,
+	
+	DAMAGE_DOWN         = FALSE,
+		
+
+	SUMMON_TIME			= 180,
+	
+	NOT_EXTRA_DAMAGE    = TRUE,	
+	DAMAGE_DOWN         = FALSE,
+	DIE_FLY				= FALSE,
+	
+	WEAPON0 = 
+	{
+		WEAPON_FILE_NAME			= "Mesh_Raven_RVC_Cash_Weapon_Sorted.X",
+		WEAPON_BONE_NAME			= "Dummy1_Rhand",
+			
+		USE_SLASH_TRACE				= TRUE,						
+		SLASH_TRACE_TOP_BONE		= "TRACE_START0",
+		SLASH_TRACE_BOTTOM_BONE		= "TRACE_END0",
+	},
+}
+
+
+
+
+INIT_STATE = 
+{	
+	--{ STATE_NAME = "APINK_ANGEL_01_ELSWORD_START",			LUA_FRAME_MOVE_FUNC = "APINK_ANGEL_01_ELSWORD_START_FRAME_MOVE"			},
+	{ STATE_NAME = "APINK_ANGEL_01_ELSWORD_START",					},
+	{ STATE_NAME = "APINK_ANGEL_01_ELSWORD_PRE_WAIT",				},
+	{ STATE_NAME = "APINK_ANGEL_01_ELSWORD_WAIT",					},
+	--{ STATE_NAME = "APINK_ANGEL_01_ELSWORD_END",				LUA_FRAME_MOVE_FUNC = "APINK_ANGEL_01_ELSWORD_DYING_FRAME_MOVE"			},
+	--{ STATE_NAME = "APINK_ANGEL_01_ELSWORD_DYING",			LUA_FRAME_MOVE_FUNC = "APINK_ANGEL_01_ELSWORD_DYING_FRAME_MOVE"			},
+	{ STATE_NAME = "APINK_ANGEL_01_ELSWORD_END",					},
+	{ STATE_NAME = "APINK_ANGEL_01_ELSWORD_DYING",					},
+	
+	-- 치명상(지상)
+	{ STATE_NAME = "APINK_ANGEL_01_ELSWORD_ATTACK_A",		STATE_COOL_TIME = 4,        },
+
+	-- 데들리 레이드
+	{ STATE_NAME = "APINK_ANGEL_01_ELSWORD_ATTACK_B",		STATE_COOL_TIME = 9,        },
+	{ STATE_NAME = "APINK_ANGEL_01_ELSWORD_ATTACK_B_1",	     },
+
+	-- 이그니션 크로우
+	{ STATE_NAME = "APINK_ANGEL_01_ELSWORD_ATTACK_D",		STATE_COOL_TIME = 12,        },
+	{ STATE_NAME = "APINK_ANGEL_01_ELSWORD_ATTACK_D_1",	    LUA_FRAME_MOVE_FUNC = "APINK_ANGEL_04_RAVEN_ATTACK_C_FRAME_MOVE"  },
+
+
+	{ STATE_NAME = "APINK_ANGEL_01_ELSWORD_WALK",					},
+	{ STATE_NAME = "APINK_ANGEL_01_ELSWORD_JUMP_UP",				},
+	{ STATE_NAME = "APINK_ANGEL_01_ELSWORD_JUMP_DOWN",			},
+	{ STATE_NAME = "APINK_ANGEL_01_ELSWORD_JUMP_UP_DIR",			},
+	{ STATE_NAME = "APINK_ANGEL_01_ELSWORD_JUMP_DOWN_DIR",		},
+	{ STATE_NAME = "APINK_ANGEL_01_ELSWORD_JUMP_LANDING",			},
+	
+	--COMMON_FRAME_FUNC			= "APINK_ANGEL_01_ELSWORD_COMMON_FRAME_MOVE",
+	
+	START_STATE					= "APINK_ANGEL_01_ELSWORD_START",
+	WAIT_STATE					= "APINK_ANGEL_01_ELSWORD_WAIT",
+	SUMMON_END_STATE			= "APINK_ANGEL_01_ELSWORD_END",
+	
+--	SMALL_DAMAGE_LAND_FRONT		= "APINK_ANGEL_01_ELSWORD_DAMAGE_FRONT",
+--	SMALL_DAMAGE_LAND_BACK		= "APINK_ANGEL_01_ELSWORD_DAMAGE_BACK",
+--	BIG_DAMAGE_LAND_FRONT		= "APINK_ANGEL_01_ELSWORD_DAMAGE_FRONT",
+--	BIG_DAMAGE_LAND_BACK		= "APINK_ANGEL_01_ELSWORD_DAMAGE_BACK",
+--	DOWN_DAMAGE_LAND_FRONT		= "APINK_ANGEL_01_ELSWORD_DAMAGE_FRONT",
+--	DOWN_DAMAGE_LAND_BACK		= "APINK_ANGEL_01_ELSWORD_DAMAGE_BACK",
+--	FLY_DAMAGE_FRONT			= "APINK_ANGEL_01_ELSWORD_DAMAGE_FRONT",
+--	FLY_DAMAGE_BACK				= "APINK_ANGEL_01_ELSWORD_DAMAGE_BACK",
+--	SMALL_DAMAGE_AIR			= "APINK_ANGEL_01_ELSWORD_DAMAGE_FRONT",	
+--	BIG_DAMAGE_AIR				= "APINK_ANGEL_01_ELSWORD_DAMAGE_FRONT",
+--	DOWN_DAMAGE_AIR				= "APINK_ANGEL_01_ELSWORD_DAMAGE_FRONT",
+--	UP_DAMAGE					= "APINK_ANGEL_01_ELSWORD_DAMAGE_FRONT",
+	
+	DYING_LAND_FRONT			= "APINK_ANGEL_01_ELSWORD_DYING",
+	DYING_LAND_BACK				= "APINK_ANGEL_01_ELSWORD_DYING",
+	DYING_SKY					= "APINK_ANGEL_01_ELSWORD_DYING",
+
+	REVENGE_ATTACK				= "",	
+}
+
+INIT_AI = 
+{
+	ALLY = 
+	{
+		FAR_LOST_RANGE	= 1400,			-- 이 거리보다 멀어지면 유저 옆으로 텔레포트
+		LOST_RANGE		= 1400,			-- 이 거리보다 멀어지면 유저 쪽으로 걸어감
+	},
+
+	TARGET =
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_NEAR_FIRST"],
+		TARGET_INTERVAL 			= 2,
+		TARGET_NEAR_RANGE 			= 1000,
+		TARGET_RANGE 				= 2000,
+		TARGET_LOST_RANGE 			= 5000,
+		TARGET_SUCCESS_RATE 		= 100,
+		ATTACK_TARGET_RATE 			= 100,
+		PRESERVE_LAST_TARGET_RATE 	= 0,
+	},
+	
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 400,
+		DEST_GAP			= 300,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 500,
+		
+		DIR_CHANGE_INTERVAL = 0.5,
+		
+		WALK_INTERVAL		= 0.5,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 0.5,
+		UP_JUMP_RATE		= 100, -- 40,
+		UP_DOWN_RATE		= 20,
+		DOWN_JUMP_RATE		= 100,    --  20,
+		DOWN_DOWN_RATE		= 40,
+		
+		LINE_END_RANGE		= 80,	-- cm
+	},	
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 400,	-- cm
+		ESCAPE_GAP			= 600,	-- 이 거리 보다 멀어지면 도망 성공
+		
+		WALK_INTERVAL		= 1.5,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 10,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+	},
+		
+	ESCAPE_CONDITION = 
+	{
+		RATE				= 100, --30,
+		ESCAPE_RANGE		= 350,		-- 이 범위 안에 들어오면 타격당하지 않아도 RATE에 지정된 확률로 도망
+	}
+	
+	
+}
+
+
+
+APINK_ANGEL_01_ELSWORD_START = 
+{
+	ANIM_NAME					= "Talk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	IS_RIGHT					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	--SOUND_PLAY0 				= { 0.001, "Voice_Hayoung_001.wav" },
+	SOUND_PLAY1 				= { 0.001, "Pet_Summon.wav" },
+	
+	INVINCIBLE			= { 0, 100, },
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"APINK_ANGEL_01_ELSWORD_PRE_WAIT",				},
+	},
+	
+--[[	
+	TALK_BOX =
+	{
+		{ RATE = 50, MESSAGE = STR_ID_17909 },
+		{ RATE = 50, MESSAGE = STR_ID_17913 },
+ 	},
+--]]	
+}
+
+
+APINK_ANGEL_01_ELSWORD_PRE_WAIT = 
+{
+	ANIM_NAME					= "Wait03",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	INVINCIBLE			= { 0, 100, },
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"APINK_ANGEL_01_ELSWORD_WAIT",				},
+	},
+	
+}
+
+
+
+APINK_ANGEL_01_ELSWORD_WAIT = 
+{
+	ANIM_SPEED					= 1.5,
+	ANIM_NAME					= "Wait03",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	-- VIEW_TARGET					= TRUE,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+	EVENT_INTERVAL_TIME0		= 0.5,
+	
+	INVINCIBLE			= { 0, 100, },
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"APINK_ANGEL_01_ELSWORD_JUMP_DOWN",					},
+
+
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"APINK_ANGEL_01_ELSWORD_WAIT",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"APINK_ANGEL_01_ELSWORD_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"APINK_ANGEL_01_ELSWORD_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"APINK_ANGEL_01_ELSWORD_JUMP_UP",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"APINK_ANGEL_01_ELSWORD_JUMP_UP_DIR",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"APINK_ANGEL_01_ELSWORD_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"APINK_ANGEL_01_ELSWORD_JUMP_DOWN_DIR",				},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"APINK_ANGEL_01_ELSWORD_JUMP_UP_DIR",			"CT_APINK_ANGEL_01_ELSWORD_JUMP_UP_DIR",		},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"APINK_ANGEL_01_ELSWORD_ATTACK_B",				"CT_APINK_ANGEL_01_ELSWORD_ATTACK_B",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"APINK_ANGEL_01_ELSWORD_ATTACK_A",				"CT_APINK_ANGEL_01_ELSWORD_ATTACK_A",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"APINK_ANGEL_01_ELSWORD_ATTACK_D",	"CT_APINK_ANGEL_01_ELSWORD_ATTACK_D",	},
+	},
+
+	CT_APINK_ANGEL_01_ELSWORD_JUMP_UP_DIR = 
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		TARGET_ABOVE_ME 			= TRUE,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 50,
+	},
+
+	CT_APINK_ANGEL_01_ELSWORD_ATTACK_A = 
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 500,
+		RATE						= 100,
+	},
+	
+	CT_APINK_ANGEL_01_ELSWORD_ATTACK_B = 
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 500,
+		RATE						= 100,
+	},
+	
+	CT_APINK_ANGEL_01_ELSWORD_ATTACK_D =
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1200,		
+		RATE						= 80,
+	},
+}
+
+
+APINK_ANGEL_01_ELSWORD_WALK = 
+{
+	ANIM_SPEED					= 1.2,
+	ANIM_NAME					= "Dash",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["RUN_SPEED"],
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 0.5,
+	
+	INVINCIBLE			= { 0, 100, },
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"APINK_ANGEL_01_ELSWORD_JUMP_DOWN",					},
+
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"APINK_ANGEL_01_ELSWORD_WAIT",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"APINK_ANGEL_01_ELSWORD_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"APINK_ANGEL_01_ELSWORD_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"APINK_ANGEL_01_ELSWORD_JUMP_UP",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"APINK_ANGEL_01_ELSWORD_JUMP_UP_DIR",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"APINK_ANGEL_01_ELSWORD_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"APINK_ANGEL_01_ELSWORD_JUMP_DOWN_DIR",				},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"APINK_ANGEL_01_ELSWORD_JUMP_UP_DIR",			"CT_APINK_ANGEL_01_ELSWORD_JUMP_UP_DIR",		},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"APINK_ANGEL_01_ELSWORD_ATTACK_B",				"CT_APINK_ANGEL_01_ELSWORD_ATTACK_B",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"APINK_ANGEL_01_ELSWORD_ATTACK_A",				"CT_APINK_ANGEL_01_ELSWORD_ATTACK_A",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"APINK_ANGEL_01_ELSWORD_ATTACK_D",	"CT_APINK_ANGEL_01_ELSWORD_ATTACK_D",	},
+
+	},
+
+	CT_APINK_ANGEL_01_ELSWORD_JUMP_UP_DIR = 
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		TARGET_ABOVE_ME 			= TRUE,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 50,
+	},
+	CT_APINK_ANGEL_01_ELSWORD_ATTACK_A = 
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 500,
+		RATE						= 100,
+	},
+	
+	CT_APINK_ANGEL_01_ELSWORD_ATTACK_B = 
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 100,
+	},
+	CT_APINK_ANGEL_01_ELSWORD_ATTACK_D =
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 275,	
+		RATE						= 100,
+	},
+}
+
+
+APINK_ANGEL_01_ELSWORD_DAMAGE_FRONT =
+{
+	ANIM_NAME					= "DamageSmallFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	-- SOUND_PLAY0 				= { 0.01, "APINK_ANGEL_01_ELSWORD_Voice_Hit01.wav",30 },
+		
+	GUARD_DEFENCE               = 50,
+	GUARD_DEFENCE_FRONT			= TRUE,
+	GUARD_DEFENCE_BACK			= FALSE,
+	
+	-- EFFECT_SET_LIST = 
+	-- {
+		-- "EffectSet_APINK_ANGEL_SHIELD", 0.1,
+	-- },	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"APINK_ANGEL_01_ELSWORD_WAIT",				},
+	},
+}
+
+
+APINK_ANGEL_01_ELSWORD_DAMAGE_BACK =
+{
+	ANIM_NAME					= "DamageSmallBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	GUARD_DEFENCE               = 50,
+	GUARD_DEFENCE_FRONT			= TRUE,
+	GUARD_DEFENCE_BACK			= FALSE,
+	
+	-- SOUND_PLAY0 				= { 0.01, "APINK_ANGEL_01_ELSWORD_Voice_Hit02.wav",30 },
+	
+	-- EFFECT_SET_LIST = 
+	-- {
+		-- "EffectSet_APINK_ANGEL_SHIELD", 0.1,
+	-- },	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"APINK_ANGEL_01_ELSWORD_WAIT",				},
+	},
+}
+
+APINK_ANGEL_01_ELSWORD_JUMP_UP = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	ADD_POS_Y					= 45,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	INVINCIBLE			= { 0, 100, },
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"APINK_ANGEL_01_ELSWORD_JUMP_DOWN",				},
+	},
+}
+
+APINK_ANGEL_01_ELSWORD_JUMP_DOWN = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	INVINCIBLE			= { 0, 100, },
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"APINK_ANGEL_01_ELSWORD_JUMP_LANDING",				},
+	},
+}
+
+APINK_ANGEL_01_ELSWORD_JUMP_UP_DIR = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["RUN_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	ADD_POS_Y					= 45,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	INVINCIBLE			= { 0, 100, },
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"APINK_ANGEL_01_ELSWORD_JUMP_DOWN_DIR",				},
+	},
+}
+
+APINK_ANGEL_01_ELSWORD_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["RUN_SPEED"],
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	INVINCIBLE			= { 0, 100, },
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"APINK_ANGEL_01_ELSWORD_JUMP_LANDING",				},
+	},
+}
+
+APINK_ANGEL_01_ELSWORD_JUMP_LANDING = 
+{
+	ANIM_NAME					= "JumpLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+		
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	INVINCIBLE			= { 0, 100, },
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"APINK_ANGEL_01_ELSWORD_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"APINK_ANGEL_01_ELSWORD_WAIT",					},
+	},
+}
+
+
+APINK_ANGEL_01_ELSWORD_DYING = 
+{
+	ANIM_SPEED					= 0.4,
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	PASSIVE_SPEED_Y				= 150,
+	PASSIVE_SPEED_X				= 0,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= TRUE,
+	SOUND_PLAY0					= { 0.01, "Parasite_House_Summon.wav" },
+	SOUND_PLAY1					= { 0.01, "Parasite_House_Summon.wav" },
+	
+	
+	--NEVER_MOVE					= TRUE,
+	DYING_END					= TRUE,
+	DYING_SPEED					= 1.4,
+	
+--	EFFECT_SET_LIST =
+--	{
+--		"EffectSet_APINK_ANGEL_BUFF", 0,	
+--	},
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+	
+
+
+
+APINK_ANGEL_01_ELSWORD_END = 
+{
+	ANIM_SPEED					= 0.3,
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	PASSIVE_SPEED_Y				= 150,
+	PASSIVE_SPEED_X				= 0,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= TRUE,
+	SOUND_PLAY0					= { 0.01, "Parasite_House_Summon.wav" },
+	SOUND_PLAY1					= { 0.01, "Parasite_House_Summon.wav" },
+	
+	
+	--NEVER_MOVE					= TRUE,
+	DYING_END					= TRUE,
+	DYING_SPEED					= 1.4,
+	
+--	EFFECT_SET_LIST =
+--	{
+--		"EffectSet_APINK_ANGEL_BUFF", 0,	
+--	},
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+	
+
+--[[
+function APINK_ANGEL_01_ELSWORD_DYING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.1 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		local vPos = pNPCUnit:GetBonePos_LUA("Bip01")
+		vPos.y = vPos.y + 200
+		local pParticle = pMinorParticle:CreateSequence_LUA( "ExclamationMarkNPC", vPos, D3DXVECTOR2(100,100), D3DXVECTOR2(3, 1) )
+		if pParticle ~= nil then
+			pParticle:SetPosition( vPos )
+		end
+	end
+end
+
+
+function APINK_ANGEL_01_ELSWORD_MAGIC_ATTACK_A_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+  
+end
+
+
+
+function APINK_ANGEL_01_ELSWORD_MAGIC_ATTACK_A_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	
+	
+end
+--]]
+
+------------------------------------------------------------------------------
+-- Frame Move Function --
+------------------------------------------------------------------------------
+
+
+
+
+
+------------------------------------------------------------------------------
+-- UTIL FUNCTION
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+function MovePos( pos, dirvector, dist )
+	
+	pos.x = pos.x + dist * dirvector.x
+	pos.y = pos.y + dist * dirvector.y
+	pos.z = pos.z + dist * dirvector.z
+	
+	return pos
+	
+end
+
+
+--[[
+function APINK_ANGEL_01_ELSWORD_COMMON_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:GetDamageTypeThisFrame_LUA() == REACT_TYPE["RT_FLY"] or 
+		pNPCUnit:GetDamageTypeThisFrame_LUA() == REACT_TYPE["RT_UP"] or 
+		pNPCUnit:GetDamageTypeThisFrame_LUA() == REACT_TYPE["RT_SMALL_DAMAGE"] or 
+		pNPCUnit:GetDamageTypeThisFrame_LUA() == REACT_TYPE["RT_BIG_DAMAGE"] or 
+		pNPCUnit:GetDamageTypeThisFrame_LUA() == REACT_TYPE["RT_DOWN"] or 
+		pNPCUnit:GetDamageTypeThisFrame_LUA() == REACT_TYPE["RT_DRAG_UP"] then
+		local pEffectSet = pX2Game:GetEffectSet()
+		local hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_APINK_ANGEL_SHIELD", pNPCUnit )
+	end
+	pNPCUnit:InitDamageTypeThisFrame_LUA()
+end
+
+function APINK_ANGEL_01_ELSWORD_START_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.001 ) then
+		local pEffectSet = pX2Game:GetEffectSet()
+		local hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_APINK_ANGEL_FEATHER", pNPCUnit )
+	end		     
+	  
+end	   
+function APINK_ANGEL_01_ELSWORD_DYING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.001 ) then
+		local pEffectSet = pX2Game:GetEffectSet()
+		local hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_APINK_ANGEL_FEATHER", pNPCUnit )
+	end		     
+	if pNPCUnit:AnimEventTimer_LUA( 0.3 ) then
+		local pEffectSet2 = pX2Game:GetEffectSet()
+		local hEffect2 = pEffectSet2:PlayEffectSet_LUA( "EffectSet_APINK_ANGEL_FEATHER", pNPCUnit )
+	end		     
+	if pNPCUnit:AnimEventTimer_LUA( 2.25 ) then
+		local pEffectSet3 = pX2Game:GetEffectSet()
+		local pEffectSet4 = pX2Game:GetEffectSet()
+		local hEffect3 = pEffectSet4:PlayEffectSet_LUA( "EffectSet_APINK_ANGEL_FEATHER_MASS", pNPCUnit )
+		local hEffect4 = pEffectSet5:PlayEffectSet_LUA( "EffectSet_APINK_ANGEL_FEATHER_MASS", pNPCUnit )
+	end		    
+	  
+end
+
+--]]
+
+APINK_ANGEL_01_ELSWORD_ATTACK_A =
+{
+	ANIM_NAME			= "SI_A_RVC_BLEEDING_SLICER",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	
+	INVINCIBLE			= { 0, 100, },
+	
+	SLASH_TRACE			= { 0, 100 },
+	ATTACK_TIME0		= { 0.245, 0.35 },
+
+	SOUND_PLAY0			= { 0.10, "Raven_BleedingSlicer.ogg" },
+	SOUND_PLAY1			= { 0.25, "RavenVoice_Shout03.ogg" },
+	
+	-- SPEED_TIME0			= { 300, 0, 0.01, 2 },
+	-- SPEED_TIME1			= { 0, 0, 0.1, 2 },
+	-- SPEED_TIME2			= { 1200, 900, 0.2, 2 },
+	
+	SKILL_CANCEL_AFTER	= 0.566,
+	WALK_CANCEL_AFTER	= 0.566,
+	DASH_CANCEL_AFTER	= 0.566,
+	
+	SPEED_X				= 750,
+	
+	DAMAGE_DATA =
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+
+		DAMAGE =
+		{
+			PHYSIC				= 2,
+		},
+		
+		BACK_SPEED_X			= 750,
+				
+		CAMERA_CRASH_GAP		= 5.0,
+		CAMERA_CRASH_TIME		= 0.2,
+
+		TECH_POINT				= 20,
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_BLEEDING_SLICER_RAVEN_EVENT", 0,
+	},
+
+		
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"APINK_ANGEL_01_ELSWORD_JUMP_DOWN",								},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"APINK_ANGEL_01_ELSWORD_WALK",									},	
+	},
+	
+
+}
+
+APINK_ANGEL_01_ELSWORD_ATTACK_B =
+{
+
+	ANIM_SPEED			= 1.11,
+	ANIM_NAME			= "SI_SA_RVC_DEADLY_RAID_Start",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+
+	INVINCIBLE			= { 0, 100, },
+
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_TIME0			= { 700, 0, 1.5, 1},
+	
+	-- 주먹으로 친 후 손에서 폭발이 터지는 시간
+	DAMAGEDATA_CHANGE_TIME = 1.866,
+
+	SOUND_PLAY0			=   { 0.05, "RavenVoice_DeadlyRaid_Start1.ogg" },
+	SOUND_PLAY1			=   { 1.75, "RavenVoice_Shout03.ogg" },
+	SOUND_PLAY2			=   { 0.001, "Raven_DeadlyRaid1.ogg" },
+	SOUND_PLAY3			=   { 1.685, "NPCRaven_Slash1.ogg" },
+	SOUND_PLAY4			=   { 1.685, "Raven_NasodCore_Trans_Parry.ogg" },
+
+	UNIT_SLASH_TRACE0 = { 0, 0, 100, SLASH_TRACE_TYPE["STT_DEFAULT"], },        -- HAND_SLASH_TRACE	= TRUE,
+	ATTACK_TIME0		= { 1.766, 1.80 },
+	
+	DISABLE_ATTACK_BOX =
+	{
+		"Sword",
+	},
+
+	-- EFFECT_SET_LIST =
+	-- {	-- 처음 주먹을 움켜쥘 때 카메라 흔들어주기
+		-- "EffectSet_Raven_Deadly_Raid_Start", 0.4,
+	-- },
+	DAMAGE_DATA =
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		ATTACK_TYPE		= ATTACK_TYPE["AT_SPECIAL"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT2"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+
+
+		DAMAGE =
+		{
+			PHYSIC		= 2,
+		},
+
+		CAMERA_CRASH_GAP		= 30.0,
+		CAMERA_CRASH_TIME		= 0.1,
+		
+		STOP_TIME_ATT			= 0.25,
+		FORCE_DOWN				= 0,
+		RATE_MODIFIER			= 0,
+		HIT_ADD_MP				= 0,
+		TECH_POINT				= 0,
+		
+	},
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Raven_Deadly_Raid", 1.73
+	},
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"APINK_ANGEL_01_ELSWORD_JUMP_DOWN",								},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"APINK_ANGEL_01_ELSWORD_ATTACK_B_1",									},	
+	},
+}
+
+	
+	
+--[[
+	TALK_BOX =
+	{
+		{ RATE = 7, MESSAGE = STR_ID_1535 },
+		{ RATE = 7, MESSAGE = STR_ID_1423 },
+		{ RATE = 7, MESSAGE = STR_ID_17919 },
+ 	},
+--]]
+
+APINK_ANGEL_01_ELSWORD_ATTACK_B_1 =
+{
+
+	ANIM_SPEED			= 1.4 * 1.11,
+	ANIM_NAME			= "SI_SA_RVC_DEADLY_RAID_End",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 100, },
+
+	SOUND_PLAY0			=   { 0.9, "RavenVoice_Shout12.ogg" },
+	SOUND_PLAY1			=   { 0.001, "Raven_DeadlyRaid2.ogg" },
+	SOUND_PLAY2			=   { 0.95, "NPCRaven_Slash2.ogg" },
+
+	UNIT_SLASH_TRACE0 = { 0, 0, 100, SLASH_TRACE_TYPE["STT_DEFAULT"], },        -- HAND_SLASH_TRACE	= TRUE,
+	ATTACK_TIME0		= { 0.915, 1.0 },
+	
+	-- 주먹으로 친 후 손에서 폭발이 터지는 시간
+	DAMAGEDATA_CHANGE_TIME = 1.1,
+	
+	DISABLE_ATTACK_BOX =
+	{
+		"Sword",
+	},
+
+	DAMAGE_DATA =
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		ATTACK_TYPE		= ATTACK_TYPE["AT_SPECIAL"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+
+		-- PVP_RATE		= 0.66,
+		PVP_RATE		= 0.8,		-- 2012.9.27. 패치로 1필만 수정
+		
+		DAMAGE =
+		{
+			PHYSIC		= 1.5,
+		},
+
+		CAMERA_CRASH_GAP		= 75.0,
+		CAMERA_CRASH_TIME		= 0.25,
+				
+		ATTACK_TRIGGER_TYPE		= DAMAGE_TRIGGER_TYPE["DTT_RAVEN_RAGE_ATTACK"],
+		
+		STOP_TIME_ATT			= 0.25,
+		FORCE_DOWN				= 0,
+		RATE_MODIFIER			= 0,
+		HIT_ADD_MP				= 0,
+		TECH_POINT				= 0,
+		
+		
+	
+	},
+	EFFECT_SET_LIST =
+	{
+		"APINK_ANGEL_Deadly_Raid_Big", 0.76
+	},
+	SPEED_TIME0			= { 2500, 0, 0.9, 1},
+	SPEED_TIME1			= { 500, 0, 1.1, 2},
+
+	SKILL_CANCEL_AFTER	= 1.5,
+	WALK_CANCEL_AFTER	= 1.5,
+	DASH_CANCEL_AFTER	= 1.5,
+	
+	NORMAL_CAMERA0_RATE			= 50,
+	NORMAL_CAMERA1_RATE			= 50,
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"APINK_ANGEL_01_ELSWORD_JUMP_DOWN",								},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"APINK_ANGEL_01_ELSWORD_WALK",									},	
+	},
+	
+}
+APINK_ANGEL_01_ELSWORD_ATTACK_D =
+{
+	ANIM_SPEED			= 1.33,
+	ANIM_NAME			= "SI_SA_RVC_IGNITION_CROW_Start",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	STATE_STRING		= STR_ID_17931,
+	
+	INVINCIBLE			= { 0, 100, },
+
+	LAND_CONNECT		= FALSE,
+
+	SOUND_PLAY0			=   { 0.13, "RavenVoice_IgnitionCrow1.ogg" },
+	SOUND_PLAY1			=   { 1.9, "RavenVoice_Shout02.ogg" },
+	SOUND_PLAY2			=   { 0.001, "Raven_IgnitionCrow_Overheat1.ogg" },
+	SOUND_PLAY3			=   { 1.637, "Raven_IgnitionCrow_Overheat2.ogg" },
+
+	SPEED_X				= 0.0,
+	SPEED_Y				= 0.0,
+		
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+
+	DELETE_EFFECT_SET_ON_DAMAGE_REACT 	= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"APINK_ANGEL_01_ELSWORD_JUMP_DOWN",								},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"APINK_ANGEL_01_ELSWORD_ATTACK_D_1",							},	
+	
+	},
+
+}
+APINK_ANGEL_01_ELSWORD_ATTACK_D_1 =
+{
+	ANIM_SPEED			= 1.33,
+	ANIM_NAME			= "SI_SA_RVC_IGNITION_CROW_End",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	INVINCIBLE			= { 0, 100, },
+
+	LAND_CONNECT		= FALSE,
+
+	SPEED_X				= 0.0,
+	SPEED_Y				= 0.0,
+
+	SKILL_CANCEL_AFTER	= 0.4,
+	WALK_CANCEL_AFTER	= 0.4,
+	DASH_CANCEL_AFTER	= 0.3,
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"APINK_ANGEL_01_ELSWORD_JUMP_DOWN",								},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"APINK_ANGEL_01_ELSWORD_WALK",									},	
+	},
+}
+
+
+function APINK_ANGEL_04_RAVEN_ATTACK_C_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	
+	if pNPCUnit:AnimEventTimer_LUA( 0.15 ) then		    
+			
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		
+		local landPos = pNPCUnit:GetLandPosition_LUA()
+		local LHandPos = pNPCUnit:GetBonePos_LUA( "Bip01" )
+		
+		local pCEffect = pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_IGNITION_CROW", LHandPos, landPos.y )
+			
+	end
+	
+end	

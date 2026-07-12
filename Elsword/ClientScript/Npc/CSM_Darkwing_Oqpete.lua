@@ -1,0 +1,2079 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 200.0,
+	UNIT_HEIGHT		= 200.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	UNIT_SCALE		= 1,
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{		
+	"Dark_Feather.dds",
+	"Ocupete_Cyclone.tga",
+	"Ocupete_Cyclone_Center.tga",
+	"Ocupete_Dark_Aura.dds",
+	"Ocupete_SpinWind.tga",
+	"Sander_Ocupete_Badak.dds",
+	"Sander_Ocupete_Feather.dds",
+	"Sander_Ocupete_SpinLiner.dds",
+	"Pa_Ran_SpaD_blackSmoke.dds",
+	"soket_earth_quake_smoke02.DDS",
+	"GroundShockWave.dds",
+	"WhitePoint.dds",
+	"rena_C_QuickDashJump_line.dds",
+	"Colorballgray.dds",	
+	},
+	
+	READY_XMESH = 
+	{
+	"Sander_Ocupete_Badak.Y",	
+	},
+	
+	READY_XSKIN_MESH = 
+	{
+	"Ocupete_Cyclone_Effect.x",
+	"Ocupete_Cyclone_Effect_Bottom.x",
+	"Ocupete_Cyclone_Effect_Inside.x",
+	"Ocupete_Cyclone_Effect_Outside.x",
+	"Ocupete_Cyclone_Start.x",
+	"Ocupete_Cyclone_Wait.X",
+	"Ocupete_Liner.x",
+	"Ocupete_Weapon.x",
+	"Ocupete_Wing_Kaze.x",
+	"Ocupete_Wing_Kaze2.x",	
+	"SD_pa_source.X",
+	},
+	
+	READY_SOUND = 
+	{
+	"Darkwing_Oqpete_Voice_AttackB_Loop01.ogg",
+	"Darkwing_Oqpete_Voice_AttackB_Loop02.ogg",
+	"Darkwing_Oqpete_Voice_AttackB_Loop03.ogg",
+	"Darkwing_Oqpete_Voice_AttackB_Ready01.ogg",
+	"Darkwing_Oqpete_Voice_AttackC_Ready01.ogg",
+	"Darkwing_Oqpete_Voice_DamageA01.ogg",
+	"Darkwing_Oqpete_Voice_DamageB01.ogg",
+	"Darkwing_Oqpete_Voice_Dying01.ogg",
+	"Darkwing_Oqpete_Voice_SpecialAttackB01.ogg",
+	"Darkwing_Oqpete_Voice_Wait01.ogg",
+	"BatBig_Fly2.ogg",
+	"Landing_Meat01.ogg",
+	"Landing_Meat02.ogg",
+	"Pet_Fly02.ogg",
+	"BatBig_Fly3.ogg",
+	"Bat_Fly.ogg",
+	"JumpLand2.ogg",
+	"Swing_Big02.ogg",
+	"Wind01.ogg",
+	"Swing_Big01.ogg",
+	"sliding02.ogg",
+	"Nasod_Element_JumpUp.ogg",
+	"Landing_Meat03.ogg",
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME	= "Motion_Darkwing_Oqpete.x",	
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+		
+	WALK_SPEED			= 400,
+	RUN_SPEED			= 1000,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300,
+}
+
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 1500,
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	--SHADOW_SIZE			= 200,
+	--SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	
+	HEAD_BONE_NAME			= "Bip01_Head",
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	
+	FALL_DOWN			= FALSE,
+	
+	
+	DAMAGE_DOWN         = FALSE,	
+	--SKY_DIE             = TRUE,
+	SUMMON_TIME			= 180,
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "DARKWING_OQPETE_FLY_WAIT_START",				LUA_STATE_START_FUNC = "DARKWING_OQPETE_FLY_WAIT_START_STATE_START"		},
+	
+	-- 공중 wait
+	{ STATE_NAME = "DARKWING_OQPETE_FLY_WAIT",						},
+	
+	-- 공중 이동
+	{ STATE_NAME = "DARKWING_OQPETE_FLY_FRONT",					},
+	{ STATE_NAME = "DARKWING_OQPETE_FLY_FRONT_UP",					},
+	{ STATE_NAME = "DARKWING_OQPETE_FLY_FRONT_DOWN",				},
+	{ STATE_NAME = "DARKWING_OQPETE_FLY_BACK",						},
+	{ STATE_NAME = "DARKWING_OQPETE_FLY_BACK_UP",					},
+	{ STATE_NAME = "DARKWING_OQPETE_FLY_BACK_DOWN",				},
+    { STATE_NAME = "DARKWING_OQPETE_FLY_UP",					    },
+    { STATE_NAME = "DARKWING_OQPETE_FLY_DOWN",					    },
+		
+	-- 지상 wait
+	{ STATE_NAME = "DARKWING_OQPETE_LAND_WAIT",					},
+	
+	-- 지상 이동
+	{ STATE_NAME = "DARKWING_OQPETE_LAND_WALK",					},
+	
+	{ STATE_NAME = "DARKWING_OQPETE_LAND_JUMP_UP",					},
+	{ STATE_NAME = "DARKWING_OQPETE_LAND_JUMP_UP_DIR",				},
+	{ STATE_NAME = "DARKWING_OQPETE_LAND_JUMP_DOWN",				LUA_STATE_START_FUNC = "DARKWING_OQPETE_LANDING_STATE_START",				},
+	{ STATE_NAME = "DARKWING_OQPETE_LAND_JUMP_DOWN_DIR",			},
+	{ STATE_NAME = "DARKWING_OQPETE_LAND_JUMP_DOWN_LANDING",		LUA_STATE_START_FUNC = "DARKWING_OQPETE_LANDING_STATE_START",				},
+	
+	-- 공중에서 지상으로 착지
+	{ STATE_NAME = "DARKWING_OQPETE_START_LANDING",				LUA_STATE_START_FUNC = "DARKWING_OQPETE_LANDING_STATE_START", 			
+																STATE_COOL_TIME	= 10, 													},
+	
+	-- 지상에서 공중으로 비행
+	{ STATE_NAME = "DARKWING_OQPETE_START_FLYING",					LUA_STATE_START_FUNC = "DARKWING_OQPETE_START_FLYING_STATE_START",
+																LUA_FRAME_MOVE_FUNC = "DARKWING_OQPETE_START_FLYING_FRAME_MOVE", 			
+																STATE_COOL_TIME	= 10, 													},
+	
+	-- LAND_MODE 기본 공격
+	{ STATE_NAME = "DARKWING_OQPETE_ATTACK_A",					},
+	
+	-- LAND_MODE 차크람 이용해 앞쪽으로 밀면서 공격
+	{ STATE_NAME = "DARKWING_OQPETE_ATTACK_B_READY",				},
+	{ STATE_NAME = "DARKWING_OQPETE_ATTACK_B_LOOP",		},
+	{ STATE_NAME = "DARKWING_OQPETE_ATTACK_B_END",		},	
+	
+	-- LAND_MODE 작은 소용돌이 날리는 공격
+	{ STATE_NAME = "DARKWING_OQPETE_SPECIAL_ATTACK_A",		LUA_STATE_START_FUNC = "DARKWING_OQPETE_SPECIAL_ATTACK_A_START",
+															LUA_FRAME_MOVE_FUNC = "DARKWING_OQPETE_SPECIAL_ATTACK_A_FRAME_MOVE", 		
+															STATE_COOL_TIME	= 5},	
+	
+	
+	-- FLY_MODE 대각선 아래로 돌진 공격
+	{ STATE_NAME = "DARKWING_OQPETE_ATTACK_C_READY",			
+														STATE_COOL_TIME	= 4,	},
+	{ STATE_NAME = "DARKWING_OQPETE_ATTACK_C_START",		},
+	{ STATE_NAME = "DARKWING_OQPETE_ATTACK_C_END",		},	
+	
+	-- FLY_MODE 땅에 박혀서 전진하는 차크람 2개 날리는 공격
+	{ STATE_NAME = "DARKWING_OQPETE_SPECIAL_ATTACK_B",			LUA_FRAME_MOVE_FUNC = "DARKWING_OQPETE_SPECIAL_ATTACK_B_FRAME_MOVE", 		
+																STATE_COOL_TIME	= 5},	
+	--리액션 관련 ( 지상 피격 )
+	{ STATE_NAME = "DARKWING_OQPETE_LAND_DAMAGE_FRONT",			},
+	{ STATE_NAME = "DARKWING_OQPETE_LAND_DAMAGE_BACK",				},
+	{ STATE_NAME = "DARKWING_OQPETE_LAND_DAMAGE_DOWN_FRONT",		},
+	{ STATE_NAME = "DARKWING_OQPETE_LAND_DAMAGE_DOWN_BACK",		},
+	{ STATE_NAME = "DARKWING_OQPETE_LAND_STAND_UP_FRONT",			},
+	{ STATE_NAME = "DARKWING_OQPETE_LAND_STAND_UP_BACK",			},
+
+	{ STATE_NAME = "DARKWING_OQPETE_FLY_DAMAGE_FRONT",				LUA_STATE_START_FUNC = "DARKWING_OQPETE_DAMAGE_REACT_FLY_START_FUNC", 		},
+	{ STATE_NAME = "DARKWING_OQPETE_FLY_DAMAGE_BACK",				LUA_STATE_START_FUNC = "DARKWING_OQPETE_DAMAGE_REACT_FLY_START_FUNC", 		},
+	{ STATE_NAME = "DARKWING_OQPETE_FLY_DAMAGE_FRONT_LANDING",		},
+	{ STATE_NAME = "DARKWING_OQPETE_FLY_DAMAGE_BACK_LANDING",		},
+	
+	{ STATE_NAME = "DARKWING_OQPETE_FLY_DAMAGE_UP",					LUA_STATE_START_FUNC = "DARKWING_OQPETE_DAMAGE_REACT_FLY_START_FUNC", 	},
+	{ STATE_NAME = "DARKWING_OQPETE_FLY_DAMAGE_FALL",				},
+	{ STATE_NAME = "DARKWING_OQPETE_FLY_DAMAGE_DOWN_LANDING",		},
+	
+	{ STATE_NAME = "DARKWING_OQPETE_LAND_AIR_DAMAGE",				},
+	
+	--리액션 관련 ( 공중 피격 )
+	{ STATE_NAME = "DARKWING_OQPETE_AIR_DAMAGE_FRONT",				LUA_STATE_START_FUNC = "DARKWING_OQPETE_AIR_DAMAGE_START_FUNC", 			},
+	{ STATE_NAME = "DARKWING_OQPETE_AIR_DAMAGE_BACK",				LUA_STATE_START_FUNC = "DARKWING_OQPETE_AIR_DAMAGE_START_FUNC", 			},		
+	
+	{ STATE_NAME = "DARKWING_OQPETE_LAND_DYING_FRONT",				},
+	{ STATE_NAME = "DARKWING_OQPETE_LAND_DYING_BACK",				},
+	
+	{ STATE_NAME = "DARKWING_OQPETE_AIR_DYING",					},
+	{ STATE_NAME = "DARKWING_OQPETE_AIR_DYING_FALL",				},
+	{ STATE_NAME = "DARKWING_OQPETE_AIR_DYING_LANDING",			},
+
+{ STATE_NAME = "DARKWING_OQPETE_FLY_END", },
+	
+    START_STATE					= "DARKWING_OQPETE_FLY_WAIT_START",	
+	WAIT_STATE					= "DARKWING_OQPETE_FLY_WAIT",
+	SUMMON_END_STATE			= "DARKWING_OQPETE_FLY_END",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "DARKWING_OQPETE_LAND_DAMAGE_FRONT",
+	SMALL_DAMAGE_LAND_BACK		= "DARKWING_OQPETE_LAND_DAMAGE_BACK",
+	SMALL_DAMAGE_AIR_FRONT		= "DARKWING_OQPETE_AIR_DAMAGE_FRONT",
+	SMALL_DAMAGE_AIR_BACK		= "DARKWING_OQPETE_AIR_DAMAGE_BACK",
+	SMALL_DAMAGE_AIR			= "DARKWING_OQPETE_AIR_DAMAGE_FRONT",
+	
+	BIG_DAMAGE_LAND_FRONT		= "DARKWING_OQPETE_LAND_DAMAGE_FRONT",
+	BIG_DAMAGE_LAND_BACK		= "DARKWING_OQPETE_LAND_DAMAGE_BACK",
+	BIG_DAMAGE_AIR_FRONT		= "DARKWING_OQPETE_AIR_DAMAGE_FRONT",
+	BIG_DAMAGE_AIR_BACK			= "DARKWING_OQPETE_AIR_DAMAGE_BACK",
+	BIG_DAMAGE_AIR				= "DARKWING_OQPETE_AIR_DAMAGE_FRONT",
+	
+	DOWN_DAMAGE_LAND_FRONT		= "DARKWING_OQPETE_LAND_DAMAGE_DOWN_FRONT",
+	DOWN_DAMAGE_LAND_BACK		= "DARKWING_OQPETE_LAND_DAMAGE_DOWN_BACK",
+	DOWN_DAMAGE_AIR				= "DARKWING_OQPETE_AIR_DAMAGE_FRONT",
+	UP_DAMAGE					= "DARKWING_OQPETE_FLY_DAMAGE_UP",
+	
+	FLY_DAMAGE_FRONT			= "DARKWING_OQPETE_FLY_DAMAGE_FRONT",
+	FLY_DAMAGE_BACK				= "DARKWING_OQPETE_FLY_DAMAGE_BACK",
+	REVENGE_ATTACK				= "",
+	--DAMAGE_FLUSH_LAND_FRONT		= "DARKWING_OQPETE_DAMAGE_FRONT",
+	--DAMAGE_FLUSH_LAND_BACK		= "DARKWING_OQPETE_DAMAGE_BACK",
+	DAMAGE_FLUSH_AIR			= "DARKWING_OQPETE_AIR_DAMAGE_FRONT",
+	DAMAGE_REVENGE				= "",
+	
+	DAMAGE_EXTRA_STATES         = {"DARKWING_OQPETE_LAND_STAND_UP_FRONT","DARKWING_OQPETE_LAND_STAND_UP_BACK",
+	"DARKWING_OQPETE_FLY_DAMAGE_FRONT_LANDING","DARKWING_OQPETE_FLY_DAMAGE_BACK_LANDING","DARKWING_OQPETE_FLY_DAMAGE_FALL",
+	"DARKWING_OQPETE_FLY_DAMAGE_DOWN_LANDING","DARKWING_OQPETE_LAND_AIR_DAMAGE",},	
+	
+	WAIT_STATES                 = { "DARKWING_OQPETE_LAND_WAIT", },	
+	
+	DYING_LAND_FRONT			= "DARKWING_OQPETE_LAND_DYING_FRONT",
+	DYING_LAND_BACK				= "DARKWING_OQPETE_LAND_DYING_BACK",
+	DYING_SKY					= "DARKWING_OQPETE_AIR_DYING_LANDING",
+}
+
+
+INIT_AI = 
+{
+	ALLY = 
+	{
+		FAR_LOST_RANGE	= 1400,			-- 이 거리보다 멀어지면 유저 옆으로 텔레포트
+		LOST_RANGE		= 1400,			-- 이 거리보다 멀어지면 유저 쪽으로 걸어감
+	},
+
+	TARGET =
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_NEAR_FIRST"],
+		TARGET_INTERVAL 			= 1,
+		TARGET_NEAR_RANGE 			= 1000,
+		TARGET_RANGE 				= 2000,
+		TARGET_LOST_RANGE 			= 5000,
+		TARGET_SUCCESS_RATE 		= 100,
+		ATTACK_TARGET_RATE 			= 100,
+		PRESERVE_LAST_TARGET_RATE 	= 20,
+	},
+	
+
+	CHASE_MOVE = 
+	{		
+		DEST_GAP			= 300,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 400,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		MOVE_SPLIT_RANGE	= 400,
+		WALK_INTERVAL		= 1,
+		NEAR_WALK_RATE		= 100,		-- 70,
+		FAR_WALK_RATE		= 100,		-- 30,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, 		-- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,		-- 30,
+		DOWN_DOWN_RATE		= 30,
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 100, --50,		
+		PATROL_RANGE			= 300,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	FLY_CHASE_MOVE = 
+	{
+	    DEST_HEIGHT_GAP     = 250,  -- 타겟과 유지할 높이
+	    DEST_LAND_GAP       = 250,  -- 지면상에서의 타겟과 거리기준
+	    DEST_AREA       	= 200,  -- 타겟과의 지면거리를 기준으로 이 범위안에 있으면 도착했다고 판단
+	    
+	    FLY_MOVE_INTERVAL	= 1.5,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 1000,
+		ESCAPE_GAP			= 1500,	-- 이 거리 보다 멀면 도망 성공
+		
+		WALK_INTERVAL		= 1,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+	},
+	
+	ESCAPE_CONDITION = 
+	{
+		--RATE	= 0,
+		--MY_HP	= 0,
+	}	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_FLY_END = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,	
+
+    INVINCIBLE					= { 0, 100, }, 
+    
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	RIGHT						= FALSE,
+	
+	DYING_END					= TRUE,	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,	
+}	
+DARKWING_OQPETE_FLY_WAIT_START = 
+{
+	ANIM_NAME					= "Wait_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	VIEW_TARGET					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,	
+		
+    FLY_AI                      = TRUE,
+    SHOW_NAME                   = TRUE,
+    PASSIVE_SPEED_Y				= 0,
+    ENABLE_HEIGHT_FIX           = TRUE,
+    
+    SPEED_X						= 0,
+	SPEED_Y						= 0,		
+	NEVER_MOVE					= TRUE,
+    ADD_POS_Y					= 400,
+    
+	SOUND_PLAY0					= { 0.01, "Darkwing_Oqpete_Voice_Wait01.ogg", 100, FALSE, -1.0, FALSE },
+			
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"DARKWING_OQPETE_FLY_WAIT",	},
+		
+	},
+}
+
+function DARKWING_OQPETE_FLY_WAIT_START_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	pNPCUnit:SetFlag_LUA( 0, true )		-- 공중 채공 여부 ( 공중에서 피격시 현재 FLY 상태에 따른 스테이트를 적용시키기 위해 )
+
+end
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_FLY_WAIT = 
+{
+	ANIM_NAME					= "Wait_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = TRUE,
+
+    VIEW_TARGET					= TRUE,
+    ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	PASSIVE_SPEED_Y				= 0,
+	
+	EVENT_INTERVAL_TIME0 = 1,
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"DARKWING_OQPETE_SPECIAL_ATTACK_B",		"CT_DARKWING_OQPETE_SPECIAL_ATTACK_B",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"DARKWING_OQPETE_ATTACK_C_READY",		"CT_DARKWING_OQPETE_ATTACK_C_READY",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"DARKWING_OQPETE_START_LANDING",		"CT_DARKWING_OQPETE_START_LANDING",	},
+		
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],			"DARKWING_OQPETE_FLY_BACK",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],		"DARKWING_OQPETE_FLY_BACK_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],	"DARKWING_OQPETE_FLY_BACK_DOWN",		},
+	    	 
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],			"DARKWING_OQPETE_FLY_UP",				},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],			"DARKWING_OQPETE_FLY_DOWN",			},
+	    	    
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],		"DARKWING_OQPETE_FLY_FRONT",			},		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],		"DARKWING_OQPETE_FLY_FRONT_UP",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],	"DARKWING_OQPETE_FLY_FRONT_DOWN",		},
+	},
+	
+	CT_DARKWING_OQPETE_ATTACK_C_READY = 
+	{
+		HAVE_TARGET					= 1,
+		RATE						= 30,
+		DISTANCE_TO_TARGET_NEAR		= 500,
+		DISTANCE_OVER_TARGET_NEAR	= 300,
+		EVENT_INTERVAL_ID			= 0,
+	},
+	CT_DARKWING_OQPETE_SPECIAL_ATTACK_B = 
+	{
+		HAVE_TARGET					= 1,
+		RATE						= 30,
+		DISTANCE_TO_TARGET_NEAR		= 800,
+		EVENT_INTERVAL_ID			= 0,
+	},
+	
+	CT_DARKWING_OQPETE_START_LANDING = 
+	{
+		RATE					= 5,
+		EVENT_INTERVAL_ID		= 0,
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_FLY_FRONT = 
+{
+	ANIM_NAME					= "Walk_Fly_Front",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= 500,
+	PASSIVE_SPEED_Y				= 0,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_INTERVAL_TIME0		= 2,
+	SOUND_PLAY0 = { 0.33, "BatBig_Fly2.ogg"},	
+
+	EVENT_PROCESS = 
+	{		    
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],			"DARKWING_OQPETE_FLY_UP",			},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],			"DARKWING_OQPETE_FLY_DOWN",		},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],			"DARKWING_OQPETE_FLY_BACK",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],		"DARKWING_OQPETE_FLY_BACK_UP",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],	"DARKWING_OQPETE_FLY_BACK_DOWN",	},
+	    
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],				"DARKWING_OQPETE_FLY_WAIT",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],		"DARKWING_OQPETE_FLY_FRONT_UP",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],	"DARKWING_OQPETE_FLY_FRONT_DOWN",	},
+				
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_FLY_FRONT_UP = 
+{
+	ANIM_NAME					= "Walk_Fly_Front",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= 500,
+	PASSIVE_SPEED_Y				= 3,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_INTERVAL_TIME0		= 2,
+		SOUND_PLAY0 = { 0.33, "BatBig_Fly2.ogg"},	
+
+	EVENT_PROCESS = 
+	{	
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],			"DARKWING_OQPETE_FLY_UP",			},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],			"DARKWING_OQPETE_FLY_DOWN",		},
+	    { STATE_CHANGE_TYPE["SCT_AI_WAIT"],				"DARKWING_OQPETE_FLY_WAIT",		},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],			"DARKWING_OQPETE_FLY_BACK",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],		"DARKWING_OQPETE_FLY_BACK_UP",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],	"DARKWING_OQPETE_FLY_BACK_DOWN",	},	
+			
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],		"DARKWING_OQPETE_FLY_FRONT",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],	"DARKWING_OQPETE_FLY_FRONT_DOWN",	},
+		
+		
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_FLY_FRONT_DOWN = 
+{
+	ANIM_NAME					= "Walk_Fly_Front",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= 500,
+	PASSIVE_SPEED_Y				= -3,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_INTERVAL_TIME0		= 2,
+		SOUND_PLAY0 = { 0.33, "BatBig_Fly2.ogg"},	
+
+	EVENT_PROCESS = 
+	{		
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],			"DARKWING_OQPETE_FLY_UP",			},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],			"DARKWING_OQPETE_FLY_DOWN",		},
+	    { STATE_CHANGE_TYPE["SCT_AI_WAIT"],				"DARKWING_OQPETE_FLY_WAIT",		},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],			"DARKWING_OQPETE_FLY_BACK",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],		"DARKWING_OQPETE_FLY_BACK_UP",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],	"DARKWING_OQPETE_FLY_BACK_DOWN",	},
+	    
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],		"DARKWING_OQPETE_FLY_FRONT",		},		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],		"DARKWING_OQPETE_FLY_FRONT_UP",	},			
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_FLY_BACK = 
+{
+	ANIM_NAME					= "Walk_Fly_Back",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= -700,
+	PASSIVE_SPEED_Y				= 0,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+		SOUND_PLAY0 = { 0.33, "BatBig_Fly2.ogg"},
+
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],			"DARKWING_OQPETE_FLY_UP",			},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],			"DARKWING_OQPETE_FLY_DOWN",		},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],		"DARKWING_OQPETE_FLY_BACK_UP",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],	"DARKWING_OQPETE_FLY_BACK_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],				"DARKWING_OQPETE_FLY_WAIT",		},   
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],		"DARKWING_OQPETE_FLY_FRONT",		},		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],		"DARKWING_OQPETE_FLY_FRONT_UP",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],	"DARKWING_OQPETE_FLY_FRONT_DOWN",	},				
+		
+		
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_FLY_BACK_UP = 
+{
+	ANIM_NAME					= "Walk_Fly_Back",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= -700,
+	PASSIVE_SPEED_Y				= 3,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+		SOUND_PLAY0 = { 0.33, "BatBig_Fly2.ogg"},
+
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],			"DARKWING_OQPETE_FLY_UP",			},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],			"DARKWING_OQPETE_FLY_DOWN",		},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],			"DARKWING_OQPETE_FLY_BACK",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],	"DARKWING_OQPETE_FLY_BACK_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],				"DARKWING_OQPETE_FLY_WAIT",		}, 
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],		"DARKWING_OQPETE_FLY_FRONT",		},		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],		"DARKWING_OQPETE_FLY_FRONT_UP",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],	"DARKWING_OQPETE_FLY_FRONT_DOWN",	},
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_FLY_BACK_DOWN = 
+{
+	ANIM_NAME					= "Walk_Fly_Back",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= -700,
+	PASSIVE_SPEED_Y				= -3,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+		SOUND_PLAY0 = { 0.33, "BatBig_Fly2.ogg"},
+
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],			"DARKWING_OQPETE_FLY_UP",			},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],			"DARKWING_OQPETE_FLY_DOWN",		},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],			"DARKWING_OQPETE_FLY_BACK",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],		"DARKWING_OQPETE_FLY_BACK_UP",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],				"DARKWING_OQPETE_FLY_WAIT",		}, 
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],		"DARKWING_OQPETE_FLY_FRONT",		},		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],		"DARKWING_OQPETE_FLY_FRONT_UP",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],	"DARKWING_OQPETE_FLY_FRONT_DOWN",	},
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_FLY_UP = 
+{
+	ANIM_NAME					= "Wait_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    VIEW_TARGET					= TRUE,
+    ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	PASSIVE_SPEED_Y				= 3,
+		
+		
+	EVENT_PROCESS = 
+	{	    
+	    { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"DARKWING_OQPETE_FLY_WAIT",		"CT_DARKWING_OQPETE_FLY_WAIT",	},	    
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				"DARKWING_OQPETE_FLY_DOWN",		},    	    	
+	    { STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"DARKWING_OQPETE_FLY_WAIT",		},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],				"DARKWING_OQPETE_FLY_BACK",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],			"DARKWING_OQPETE_FLY_BACK_UP",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],		"DARKWING_OQPETE_FLY_BACK_DOWN",	},
+	    	    
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],			"DARKWING_OQPETE_FLY_FRONT",		},		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],			"DARKWING_OQPETE_FLY_FRONT_UP",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],		"DARKWING_OQPETE_FLY_FRONT_DOWN",	},				
+	},
+	
+	CT_DARKWING_OQPETE_FLY_WAIT =
+	{
+		STATE_TIME_OVER			= 4,
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_FLY_DOWN = 
+{
+	ANIM_NAME					= "Wait_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    VIEW_TARGET					= TRUE,
+    ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	PASSIVE_SPEED_Y				= -3,
+	
+	
+	EVENT_PROCESS = 
+	{		    
+	    { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"DARKWING_OQPETE_FLY_WAIT",		"CT_DARKWING_OQPETE_FLY_WAIT",	},	
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],			"DARKWING_OQPETE_FLY_UP",			},	    	
+	    { STATE_CHANGE_TYPE["SCT_AI_WAIT"],				"DARKWING_OQPETE_FLY_WAIT",		},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],			"DARKWING_OQPETE_FLY_BACK",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],		"DARKWING_OQPETE_FLY_BACK_UP",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],	"DARKWING_OQPETE_FLY_BACK_DOWN",	},    	 
+	    	    
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],		"DARKWING_OQPETE_FLY_FRONT",		},		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],		"DARKWING_OQPETE_FLY_FRONT_UP",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],	"DARKWING_OQPETE_FLY_FRONT_DOWN",	},		
+		
+	},
+	
+	CT_DARKWING_OQPETE_FLY_WAIT =
+	{
+		STATE_TIME_OVER			= 4,
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_LAND_WAIT = 
+{
+	ANIM_NAME					= "Wait_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+
+    VIEW_TARGET					= TRUE,
+    ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	EVENT_INTERVAL_TIME0		= 1,
+	
+	PASSIVE_SPEED_Y				= 0,
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	EVENT_PROCESS = 
+	{	    
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"DARKWING_OQPETE_LAND_JUMP_DOWN",		},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"DARKWING_OQPETE_ATTACK_A",				"CT_DARKWING_OQPETE_ATTACK_A",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"DARKWING_OQPETE_SPECIAL_ATTACK_A",		"CT_DARKWING_OQPETE_SPECIAL_ATTACK_A",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"DARKWING_OQPETE_ATTACK_B_READY",		"CT_DARKWING_OQPETE_ATTACK_B_READY",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"DARKWING_OQPETE_START_FLYING",			"CT_DARKWING_OQPETE_START_FLYING",		},
+	    	 
+	    { STATE_CHANGE_TYPE["SCT_AI_WALK"],					"DARKWING_OQPETE_LAND_WALK",			},
+	    { STATE_CHANGE_TYPE["SCT_AI_DASH"],					"DARKWING_OQPETE_LAND_WALK",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"DARKWING_OQPETE_LAND_JUMP_UP",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"DARKWING_OQPETE_LAND_JUMP_UP_DIR",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"DARKWING_OQPETE_LAND_JUMP_DOWN",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"DARKWING_OQPETE_LAND_JUMP_DOWN_DIR",	},
+		
+	},
+	
+	CT_DARKWING_OQPETE_ATTACK_A = 
+	{
+		RATE						= 30,
+		DISTANCE_TO_TARGET_NEAR		= 200,
+		EVENT_INTERVAL_ID			= 0,
+	},
+	
+	CT_DARKWING_OQPETE_SPECIAL_ATTACK_A = 
+	{
+		RATE						= 30,
+		DISTANCE_TO_TARGET_NEAR		= 300,		
+		MY_MP_MORE_THAN				= 100,
+		EVENT_INTERVAL_ID			= 0,
+	},
+	
+	CT_DARKWING_OQPETE_ATTACK_B_READY = 
+	{
+		RATE						= 30,
+		DISTANCE_TO_TARGET_NEAR		= 300,
+		EVENT_INTERVAL_ID			= 0,
+	},
+	
+	CT_DARKWING_OQPETE_START_FLYING = 
+	{
+		RATE						= 20,
+		EVENT_INTERVAL_ID			= 0,
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_LAND_WALK = 
+{
+	ANIM_NAME					= "Walk_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	FLY_AI                      = FALSE,
+	
+	EVENT_INTERVAL_TIME0 = 1,
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"DARKWING_OQPETE_LAND_JUMP_DOWN",		},
+	    	
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"DARKWING_OQPETE_ATTACK_A",				"CT_DARKWING_OQPETE_ATTACK_A",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"DARKWING_OQPETE_SPECIAL_ATTACK_A",		"CT_DARKWING_OQPETE_SPECIAL_ATTACK_A",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"DARKWING_OQPETE_ATTACK_B_READY",		"CT_DARKWING_OQPETE_ATTACK_B_READY",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"DARKWING_OQPETE_START_FLYING",			"CT_DARKWING_OQPETE_START_FLYING",		},
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"DARKWING_OQPETE_LAND_WAIT",			},
+	    { STATE_CHANGE_TYPE["SCT_AI_WALK"],					"DARKWING_OQPETE_LAND_WALK",			},
+	    { STATE_CHANGE_TYPE["SCT_AI_DASH"],					"DARKWING_OQPETE_LAND_WALK",			},	    
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"DARKWING_OQPETE_LAND_JUMP_UP",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"DARKWING_OQPETE_LAND_JUMP_UP_DIR",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"DARKWING_OQPETE_LAND_JUMP_DOWN",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"DARKWING_OQPETE_LAND_JUMP_DOWN_DIR",	},
+	},	
+	
+	CT_DARKWING_OQPETE_ATTACK_A = 
+	{
+		RATE						= 30,
+		DISTANCE_TO_TARGET_NEAR		= 300,
+		EVENT_INTERVAL_ID			= 0,
+	},
+	
+	CT_DARKWING_OQPETE_SPECIAL_ATTACK_A = 
+	{
+		RATE						= 30,
+		DISTANCE_TO_TARGET_NEAR		= 300,		
+		MY_MP_MORE_THAN				= 100,
+		EVENT_INTERVAL_ID			= 0,
+	},
+	
+	CT_DARKWING_OQPETE_ATTACK_B_READY = 
+	{
+		RATE						= 30,
+		DISTANCE_TO_TARGET_NEAR		= 300,
+		EVENT_INTERVAL_ID			= 0,
+	},
+	
+	CT_DARKWING_OQPETE_START_FLYING = 
+	{
+		RATE						= 20,
+		EVENT_INTERVAL_ID			= 0,
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_LAND_JUMP_UP = 
+{
+	ANIM_NAME					= "JumpUp_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	
+	FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"DARKWING_OQPETE_LAND_JUMP_DOWN", },
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_LAND_JUMP_UP_DIR = 
+{
+	ANIM_NAME					= "JumpUp_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	
+	ADD_POS_Y					= 45,
+	
+	FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"DARKWING_OQPETE_LAND_JUMP_DOWN_DIR", },
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_LAND_JUMP_DOWN = 
+{
+	ANIM_NAME					= "JumpLanding_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+		SOUND_PLAY0 = { 0.01, "Landing_Meat01.ogg"},
+	SOUND_PLAY1 = { 0.75, "Landing_Meat02.ogg"},
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"DARKWING_OQPETE_LAND_JUMP_DOWN_LANDING", },
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_LAND_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME					= "JumpLanding_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	FLY_AI                      = FALSE,
+		SOUND_PLAY0 = { 0.01, "Landing_Meat01.ogg"},
+	SOUND_PLAY1 = { 0.75, "Landing_Meat02.ogg"},
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"DARKWING_OQPETE_LAND_JUMP_DOWN_LANDING", },
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_LAND_JUMP_DOWN_LANDING = 
+{
+	ANIM_NAME					= "JumpLanding_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+		SOUND_PLAY0 = { 0.01, "Landing_Meat01.ogg"},
+	SOUND_PLAY1 = { 0.75, "Landing_Meat02.ogg"},
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"DARKWING_OQPETE_LAND_WAIT", },
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+	
+DARKWING_OQPETE_START_LANDING =
+{
+	ANIM_NAME					= "JumpDown_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	PASSIVE_SPEED_Y				= INIT_PHYSIC["WALK_SPEED"] * -5.0,
+	
+	FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"DARKWING_OQPETE_LAND_JUMP_DOWN_LANDING", },
+	},	
+}
+	
+----------------------------------------------------------------------------------------------------------------------------------------	
+
+DARKWING_OQPETE_START_FLYING =
+{
+	ANIM_NAME					= "Start_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	FLY_AI                      = FALSE,
+		SOUND_PLAY0 = { 0.45, "Pet_Fly01.ogg"},
+	SOUND_PLAY1 = { 0.85, "Pet_Fly02.ogg"},
+	SOUND_PLAY2 = { 1.41, "BatBig_Fly3.ogg"},
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"DARKWING_OQPETE_FLY_WAIT", },
+	},
+}
+
+function DARKWING_OQPETE_START_FLYING_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	pNPCUnit:SetFlag_LUA( 0, true )	-- 날고 있다.
+
+end
+
+function DARKWING_OQPETE_START_FLYING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 1.328 ) then
+		pNPCUnit:SetSpeedY( 1700 )
+	end
+
+end
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_LAND_DAMAGE_FRONT = 
+{
+	ANIM_NAME					= "DamageFront_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+			SOUND_PLAY0 = { 0.01, "Darkwing_Oqpete_Voice_DamageB01.ogg",30},
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"DARKWING_OQPETE_LAND_WAIT", 				},
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_LAND_DAMAGE_BACK = 
+{
+	ANIM_NAME					= "DamageBack_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Darkwing_Oqpete_Voice_DamageA01.ogg",30},
+	SOUND_PLAY1 = { 0.25, "Bat_Fly.ogg"},	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"DARKWING_OQPETE_LAND_WAIT", 				},
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_LAND_DAMAGE_DOWN_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 40, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Darkwing_Oqpete_Voice_DamageA01.ogg",30},	
+	SOUND_PLAY1 = { 0.70, "JumpLand2.ogg"},	
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"DARKWING_OQPETE_LAND_STAND_UP_FRONT", },
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_LAND_DAMAGE_DOWN_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 40, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Darkwing_Oqpete_Voice_DamageA01.ogg",30},	
+	SOUND_PLAY1 = { 0.70, "JumpLand2.ogg"},	
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"DARKWING_OQPETE_LAND_STAND_UP_BACK", },
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_LAND_STAND_UP_FRONT = 
+{
+	ANIM_NAME					= "DamageStandUpFront_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 40, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.45, "Swing_Big02.ogg"},	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"DARKWING_OQPETE_LAND_WAIT", },
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_LAND_STAND_UP_BACK = 
+{
+	ANIM_NAME					= "DamageStandUpBack_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 40, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"DARKWING_OQPETE_LAND_WAIT", },
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_FLY_DAMAGE_FRONT = 
+{
+	ANIM_NAME					= "DamageAirFlyFront_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Darkwing_Oqpete_Voice_DamageB01.ogg",30},
+	SOUND_PLAY1 = { 0.25, "Bat_Fly.ogg"},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"DARKWING_OQPETE_LAND_DAMAGE_DOWN_FRONT", },
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_FLY_DAMAGE_BACK = 
+{
+	ANIM_NAME					= "DamageAirFlyBack_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Darkwing_Oqpete_Voice_DamageA01.ogg",30},
+	SOUND_PLAY1 = { 0.25, "Bat_Fly.ogg"},
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"DARKWING_OQPETE_LAND_DAMAGE_DOWN_BACK", },
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_FLY_DAMAGE_FRONT_LANDING = 
+{
+	ANIM_NAME					= "Dying_Landing_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 40, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+		SOUND_PLAY0 = { 0.01, "down.ogg"},
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"], "DARKWING_OQPETE_FLY_DAMAGE_FRONT",		},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"DARKWING_OQPETE_LAND_STAND_UP_FRONT", 	},
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_FLY_DAMAGE_BACK_LANDING = 
+{
+	ANIM_NAME					= "Dying_Landing_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 40, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+		SOUND_PLAY0 = { 0.01, "down.ogg"},
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"], "DARKWING_OQPETE_FLY_DAMAGE_BACK",		},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"DARKWING_OQPETE_LAND_STAND_UP_BACK", 	},
+	},
+}
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+	
+DARKWING_OQPETE_AIR_DAMAGE_FRONT = 
+{
+	ANIM_NAME					= "DamageFront_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_Y				= 0,
+	
+	FLY_AI                      = TRUE,
+	
+		SOUND_PLAY0 = { 0.01, "Darkwing_Oqpete_Voice_DamageA01.ogg",30},
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"DARKWING_OQPETE_FLY_WAIT", },
+	},	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_AIR_DAMAGE_BACK = 
+{
+	ANIM_NAME					= "DamageBack_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_Y				= 0,
+	
+	FLY_AI                      = TRUE,
+			
+	SOUND_PLAY0 = { 0.01, "Darkwing_Oqpete_Voice_DamageB01.ogg",30},
+	SOUND_PLAY1 = { 0.25, "Bat_Fly.ogg"},
+	
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"DARKWING_OQPETE_FLY_WAIT", },
+	},
+	
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_LAND_DYING_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+	
+	DYING_END					= TRUE,
+	
+	SOUND_PLAY0 = { 0.01, "Darkwing_Oqpete_Voice_Dying01.ogg"},	
+	SOUND_PLAY1 = { 0.70, "JumpLand2.ogg"},		
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],  	"DARKWING_OQPETE_LAND_JUMP_DOWN",		},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"DARKWING_OQPETE_LAND_STAND_UP_FRONT", 	},
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_LAND_DYING_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+	
+	DYING_END					= TRUE,
+
+	SOUND_PLAY0 = { 0.01, "Darkwing_Oqpete_Voice_Dying01.ogg"},	
+	SOUND_PLAY1 = { 0.70, "JumpLand2.ogg"},	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],  	"DARKWING_OQPETE_LAND_JUMP_DOWN",		},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"DARKWING_OQPETE_LAND_STAND_UP_FRONT", 	},
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_FLY_DAMAGE_UP = 
+{
+	ANIM_NAME					= "DamageAirUp_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	FLY_AI                      = FALSE,
+		
+	SOUND_PLAY0 = { 0.01, "Darkwing_Oqpete_Voice_DamageA01.ogg",30},
+	SOUND_PLAY1 = { 0.25, "Bat_Fly.ogg"},
+	
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],  	"DARKWING_OQPETE_FLY_DAMAGE_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"DARKWING_OQPETE_FLY_DAMAGE_DOWN_LANDING",	},
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_FLY_DAMAGE_FALL = 
+{
+	ANIM_NAME					= "DamageAirFall_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_POSITIVE_Y_SPEED"],  	"DARKWING_OQPETE_FLY_DAMAGE_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"DARKWING_OQPETE_FLY_DAMAGE_DOWN_LANDING",	},
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_FLY_DAMAGE_DOWN_LANDING = 
+{
+	ANIM_NAME					= "DamageDownLanding_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 40, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "down.ogg"},		
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],  	"DARKWING_OQPETE_FLY_DAMAGE_FALL",		},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"DARKWING_OQPETE_LAND_STAND_UP_FRONT", 	},
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_LAND_AIR_DAMAGE =
+{
+	ANIM_NAME					= "DamageAir_Land",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,	
+	
+	FLY_AI                      = FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "Darkwing_Oqpete_Voice_DamageA01.ogg",30},
+	SOUND_PLAY1 = { 0.25, "Bat_Fly.ogg"},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"], "DARKWING_OQPETE_LAND_WAIT",	},
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+-- LAND_MODE 기본 공격
+DARKWING_OQPETE_ATTACK_A =
+{
+	ANIM_NAME					= "Attack_A",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.50, "Swing_Big04.ogg"},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"DARKWING_OQPETE_LAND_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], 				"DARKWING_OQPETE_LAND_WAIT",		},
+	},
+	
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	EFFECT_SET_LIST =
+	{ 
+		"EffectSet_Oqpete_Attack_A", 0, 
+	},
+	
+	ATTACK_TIME0	= { 0.52, 0.59, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE	= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE	= HIT_TYPE["HT_KICK_SLASH"],
+		REACT_TYPE	= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC	= 1.0,
+		},
+		
+		BACK_SPEED_X	= 800,
+		
+		CAN_REVENGE			= TRUE,	
+		RE_ATTACK			= FALSE,
+		CAMERA_CRASH_GAP	= 10.0,	
+		CAMERA_CRASH_TIME	= 0.3,		
+	},	
+}
+DARKWING_OQPETE_SPECIAL_ATTACK_A =
+{
+	ANIM_NAME					= "Special_Attack_A",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED			= TRUE,
+		
+	SOUND_PLAY0 = { 0.21, "Nasod_Element_JumpUp.ogg"},
+	SOUND_PLAY1 = { 0.26, "Pet_Fly02.ogg"},
+	SOUND_PLAY2 = { 1.80, "Landing_Meat02.ogg"},
+	SOUND_PLAY3 = { 1.23, "Wyvern_MagicAttack2.ogg"},
+	SOUND_PLAY4 = { 1.23, "Wind01.ogg"},
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"DARKWING_OQPETE_LAND_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], 				"DARKWING_OQPETE_LAND_WAIT",		},
+	},
+	
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Oqpete_Special_Attack_C", 0,
+	},
+}
+function DARKWING_OQPETE_SPECIAL_ATTACK_A_START( pKTDXApp, pX2Game, pNPCUnit )	
+	pNPCUnit:SetNowMP( pNPCUnit:GetNowMP() - 100)
+end
+function DARKWING_OQPETE_SPECIAL_ATTACK_A_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )	
+	if pNPCUnit:AnimEventTimer_LUA( 0.830 ) then	-- 소용돌이 발사
+		pDamageEffect = pX2Game:GetDamageEffect()
+		pos = pNPCUnit:GetLandPosition_LUA()		
+		pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_OQPETE_SPECILA_ATTACK_A_CYCLONE", pos , pos.y )
+	end
+
+end
+-- LAND_MODE 차크람 이용해 앞쪽으로 밀면서 공격
+DARKWING_OQPETE_ATTACK_B_READY =
+{
+	ANIM_NAME					= "Attack_B_Ready",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	PASSIVE_SPEED_X				= 600,
+
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.20, "Swing_Big01.ogg"},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], 				"DARKWING_OQPETE_ATTACK_B_LOOP",		},
+	},	
+	
+	EFFECT_SET_LIST =
+	{ 
+		"EffectSet_Oqpete_Attack_B_Ready", 0, 
+		"EffectSet_Oqpete_Attack_B", 0,
+	},
+	
+	ATTACK_TIME0	= { 0.5, 0.84, },
+
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE	= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE	= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE	= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC	= 1.0,
+		},
+		
+		BACK_SPEED_X	=  1000,
+		
+		CAN_REVENGE			= TRUE,	
+		
+		CAMERA_CRASH_GAP = 5,
+		CAMERA_CRASH_TIME = 0.5,
+		RE_ATTACK = TRUE,
+		HIT_GAP = 0.2,	
+	},
+}
+-- LAND_MODE 차크람 이용해 앞쪽으로 밀면서 공격
+DARKWING_OQPETE_ATTACK_B_LOOP =
+{
+	ANIM_NAME					= "Attack_B_Loop",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= 800,
+	
+	VIEW_TARGET					= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+		
+	SOUND_SET0_RATE = 33, 
+	SOUND_SET1_RATE = 33, 
+	SOUND_SET2_RATE = 34, 
+
+	SOUND_SET0 =   
+	{
+		NORMAL =
+		{
+			SOUND_PLAY0    = { 0.01, "Darkwing_Oqpete_Voice_AttackB_Loop01.ogg"},                        
+		},                     
+	},
+	SOUND_SET1 =   
+	{
+		NORMAL =
+		{
+			SOUND_PLAY0    = { 0.01, "Darkwing_Oqpete_Voice_AttackB_Loop02.ogg"},                               
+		},                     
+	},
+	SOUND_SET2 =   
+	{
+		NORMAL =
+		{
+			SOUND_PLAY0    = { 0.01, "Darkwing_Oqpete_Voice_AttackB_Loop03.ogg"},                               
+		},                     
+	},
+	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "DARKWING_OQPETE_ATTACK_B_END", "CT_DARKWING_OQPETE_ATTACK_B_END", },
+	},
+	
+	CT_DARKWING_OQPETE_ATTACK_B_END =
+	{
+		STATE_TIME_OVER = 0.2,
+	},
+	
+	
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	EFFECT_SET_LIST =
+	{ 
+		"EffectSet_Oqpete_Attack_B_Loop", 0, 
+	},
+	
+	ATTACK_TIME0	= { 0, 0.18, },
+
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE	= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE	= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE	= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC	= 1.0,
+		},
+		
+		BACK_SPEED_X	= 800,
+		
+		CAN_REVENGE			= TRUE,	
+		
+		CAMERA_CRASH_GAP = 5,
+		CAMERA_CRASH_TIME = 0.2,
+		RE_ATTACK = TRUE,
+		HIT_GAP = 0.2,	
+	},
+}
+-- LAND_MODE 차크람 이용해 앞쪽으로 밀면서 공격
+DARKWING_OQPETE_ATTACK_B_END =
+{
+	ANIM_NAME					= "Attack_B_End",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,		
+	
+	VIEW_TARGET					= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 = { 0.01, "sliding02.ogg"},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"DARKWING_OQPETE_LAND_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], 				"DARKWING_OQPETE_LAND_WAIT",		},
+	},
+	
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	EFFECT_SET_LIST =
+	{ 
+		"EffectSet_Oqpete_Attack_B_End", 0, 
+	},
+}
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_ATTACK_C_READY =
+{
+	ANIM_NAME					= "Attack_C_Ready",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_X				= -250,
+	PASSIVE_SPEED_Y				= 5,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	SOUND_PLAY0 = { 0.01, "Nasod_Element_JumpUp.ogg"},
+	SOUND_PLAY1 = { 0.01, "Darkwing_Oqpete_Voice_AttackC_Ready01.ogg"},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], "DARKWING_OQPETE_ATTACK_C_START",	},
+	},	
+	
+	EFFECT_SET_LIST =
+	{ 
+		"EffectSet_Oqpete_Attack_C_Ready", 0, 
+	},
+}
+
+DARKWING_OQPETE_ATTACK_C_START =
+{
+	ANIM_NAME					= "Attack_C_Start",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= TRUE,	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_X				= 1400,
+	PASSIVE_SPEED_Y				= -20,
+	
+	--FLY_AI						= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0 = { 0.21, "Landing_Meat03.ogg"},
+	SOUND_PLAY1 = { 0.01, "Darkwing_Oqpete_Voice_AttackC_Ready01.ogg"},
+	
+	VIEW_TARGET					= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"DARKWING_OQPETE_ATTACK_C_END",	},	
+	},
+	
+	CT_DARKWING_OQPETE_ATTACK_C_END =
+	{
+		STATE_TIME_OVER = 1,
+	},
+	
+	ATTACK_TIME0	= { 0, 0.33, },
+
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE	= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE	= HIT_TYPE["HT_SWORD_CRASH"],
+		REACT_TYPE	= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			PHYSIC	= 4.0,
+		},
+		
+		BACK_SPEED_X	= 2000,
+		
+		CAN_REVENGE			= TRUE,	
+		
+		CAMERA_CRASH_GAP = 5,
+		CAMERA_CRASH_TIME = 0.2,
+		RE_ATTACK = FALSE,
+	},
+	
+	EFFECT_SET_LIST =
+	{ 
+		"EffectSet_Oqpete_Attack_C_Start", 0, 
+	},
+}
+
+DARKWING_OQPETE_ATTACK_C_END =
+{
+	ANIM_NAME					= "Attack_C_End",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= TRUE,	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_Y				= 0,
+	
+	FLY_AI						= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], "DARKWING_OQPETE_FLY_WAIT",	},
+	},
+}
+
+
+-- FLY_MODE 땅에 박혀서 전진하는 차크람 2개 날리는 공격
+DARKWING_OQPETE_SPECIAL_ATTACK_B =
+{
+	ANIM_NAME					= "Special_Attack_B",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_				= 0,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	SOUND_PLAY0 = { 0.01, "Darkwing_Oqpete_Voice_SpecialAttackB01.ogg"},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"], "DARKWING_OQPETE_FLY_WAIT",	},
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Oqpete_Special_Attack_B", 0,
+	},
+}
+
+function DARKWING_OQPETE_SPECIAL_ATTACK_B_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.75 ) then
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		local landPos = pNPCUnit:GetLandPosition_LUA()
+		local pos = pNPCUnit:GetBonePos_LUA( "Bip01_R_Hand" )
+		pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_OQPETE_SPECILA_ATTACK_A_CHAKRA_01", pos, landPos.y )
+	end
+end
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_AIR_DYING = 
+{
+	ANIM_NAME					= "Dying_Air_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	--LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	-- SPEED_X						= 0,
+	-- SPEED_Y						= 0,	
+	-- PASSIVE_SPEED_Y				= 10000,
+	-- G_ACCEL                     = 0,
+    -- DOWN_ACCEL                  = 0,
+	
+	FLY_AI                      = FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	SOUND_PLAY0 = { 0.01, "Darkwing_Oqpete_Voice_Dying01.ogg"},	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"DARKWING_OQPETE_AIR_DYING_FALL",	},
+	},
+}
+
+function DARKWING_OQPETE_DYING_SKY_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	--pNPCUnit:SetPosition( pNPCUnit:GetPos() )
+
+end
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_AIR_DYING_FALL = 
+{
+	ANIM_NAME					= "Dying_Fall_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+	--LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	SPEED_Y						= -500,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	--FLY_AI                      = FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"DARKWING_OQPETE_AIR_DYING_LANDING",	},
+	},
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DARKWING_OQPETE_AIR_DYING_LANDING = 
+{
+	ANIM_NAME					= "Dying_Landing_Fly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	DYING_END					= TRUE,
+		SOUND_PLAY0 = { 0.01, "down.ogg"},
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+function DARKWING_OQPETE_AIR_DAMAGE_START_FUNC( pKTDXApp, pX2Game, pNPCUnit )			-- 하피 공중 데미지 공통 함수
+
+	if pNPCUnit:GetNowHP() <= 0 then	    
+	    pNPCUnit:StateChange_LUA("DARKWING_OQPETE_DYING_SKY", true)
+	else
+		local bIsFly = pNPCUnit:GetFlag_LUA( 0 )	-- 현재 채공 여부
+		
+		if false == bIsFly then				-- 공중에서 맞았을 때, 지상 착륙 중이면 한바퀴 도는 모션으로 설정
+			pNPCUnit:StateChange_LUA("DARKWING_OQPETE_LAND_AIR_DAMAGE", true)
+		end
+	end
+
+end
+
+function DARKWING_OQPETE_DAMAGE_REACT_FLY_START_FUNC( pKTDXApp, pX2Game, pNPCUnit )		-- 하피 데미지 공통 함수
+
+	if pNPCUnit:GetNowHP() <= 0 then	    
+	    pNPCUnit:StateChange_LUA("DARKWING_OQPETE_DYING_SKY", true)
+	else
+		local bIsFly = pNPCUnit:GetFlag_LUA( 0 )	-- 현재 채공 여부
+		
+		if true == bIsFly then				-- 공중 채공 중이면, 공중 타격 모션으로 설정
+			pNPCUnit:StateChange_LUA("DARKWING_OQPETE_AIR_DAMAGE_FRONT", true)
+		end
+	end
+
+end
+
+function DARKWING_OQPETE_LANDING_STATE_START( pKTDXApp, pX2Game, pNPCUnit )					--  하피 지면 착지 설정 공통 함수
+
+	pNPCUnit:SetFlag_LUA( 0, false )	-- 땅에 있다.
+
+end

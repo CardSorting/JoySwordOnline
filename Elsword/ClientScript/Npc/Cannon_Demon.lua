@@ -1,0 +1,523 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM =
+{
+	UNIT_WIDTH		= 200.0,
+	UNIT_HEIGHT		= 150.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+
+	--UNIT_SCALE      = 1.2,
+}
+
+
+INIT_DEVICE =
+{
+	READY_TEXTURE =
+	{
+		"Cannon_Demon_Cannonball.tga",
+	},
+
+	READY_SOUND =
+	{
+	
+        "Cannon_Demon_Shot.ogg",
+        "Cannon_Demon_AttackA.ogg",		
+        "Cannon_Demon_Back.ogg",
+        "Cannon_Demon_Damage.ogg",
+        "Cannon_Demon_Turn.ogg",
+        "Cannon_Demon_TurnAttackA.ogg",
+        "Cannon_Demon_WaitB.ogg",
+
+	},
+	
+	READY_XMESH = 
+	{
+	},
+
+	READY_XSKIN_MESH =
+	{
+		"Cannon_Demon_Cannonball.X",
+	},
+}
+
+INIT_MOTION =
+{
+	MOTION_FILE_NAME		= "Motion_CANNON_DEMON.x",
+}
+
+INIT_PHYSIC =
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+
+	WALK_SPEED			= 200,
+	RUN_SPEED			= 400,
+	JUMP_SPEED			= 1200,
+	DASH_JUMP_SPEED		= 2000,
+}
+
+
+INIT_COMPONENT =
+{
+	MP_CHANGE_RATE			= 1,
+	MP_CHARGE_RATE			= 130,
+
+	SHADOW_SIZE				= 200,
+	SHADOW_FILE_NAME		= "shadow.dds",
+
+	SMALL_HP_BAR_BLUE		= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED		= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW		= "Small_HP_bar_Yellow.TGA",
+
+	NOT_EXTRA_DAMAGE		= TRUE,
+	--DRAW_SMALL_MP_BAR		= TRUE,
+	--QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	--EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	----MIND_FLAG_HEIGHT		= 230,
+	
+	--HEAD_BONE_NAME = "ARC_Bip01_Head",
+
+	HITTED_TYPE				= HITTED_TYPE["HTD_METAL"],
+
+    --SKY_DIE             = TRUE,
+    DIE_FLY					= 0,
+
+
+	--BOSS_GAGE_FACE_TEX			= "DLG_BossState.tga",
+	--BOSS_GAGE_FACE_TEX_PIECE	= "SUMMON_BOSS",
+	--BOSS_NAME_TEX				= "HQ_BOSS_NAME_SUMMON_BOSS.dds",
+
+}
+
+INIT_STATE =
+{
+	{ STATE_NAME = "CANNON_DEMON_START",							LUA_STATE_START_FUNC = "CANNON_DEMON_START_STATE_START_FUNC"					},
+	{ STATE_NAME = "CANNON_DEMON_DAMAGE_FRONT_SIDE",	},
+	{ STATE_NAME = "CANNON_DEMON_DAMAGE_BACK_SIDE",		},
+	
+	{ STATE_NAME = "CANNON_DEMON_TURN_FROM_FRONT_TO_BACK",			LUA_STATE_START_FUNC = "CANNON_DEMON_TURN_FROM_FRONT_TO_BACK_STATE_START_FUNC"					},
+	{ STATE_NAME = "CANNON_DEMON_TURN_FROM_BACK_TO_FRONT",			LUA_STATE_START_FUNC = "CANNON_DEMON_TURN_FROM_BACK_TO_FRONT_STATE_START_FUNC"					},
+	
+	
+	{ STATE_NAME = "CANNON_DEMON_WAIT_FRONT_SIDE"		},
+	{ STATE_NAME = "CANNON_DEMON_WAIT_BACK_SIDE",		},
+	
+	{ STATE_NAME = "CANNON_DEMON_ATTACK_A_FRONT_SIDE",				LUA_FRAME_MOVE_FUNC = "CANNON_DEMON_ATTACK_A_FRONT_SIDE_FRAME_MOVE",
+																	STATE_COOL_TIME = 8.0,		},
+	{ STATE_NAME = "CANNON_DEMON_ATTACK_A_BACK_SIDE",				LUA_FRAME_MOVE_FUNC = "CANNON_DEMON_ATTACK_A_BACK_SIDE_FRAME_MOVE",
+																	STATE_COOL_TIME = 8.0,		},
+	
+	{ STATE_NAME = "CANNON_DEMON_DYING_FRONT_SIDE"					},
+	{ STATE_NAME = "CANNON_DEMON_DYING_BACK_SIDE"					},
+		
+	START_STATE					= "CANNON_DEMON_START",
+	WAIT_STATE					= "CANNON_DEMON_WAIT_FRONT_SIDE",
+
+	SMALL_DAMAGE_LAND_FRONT		= "CANNON_DEMON_DAMAGE_FRONT_SIDE",
+	SMALL_DAMAGE_LAND_BACK		= "CANNON_DEMON_DAMAGE_FRONT_SIDE",
+	SMALL_DAMAGE_AIR			= "CANNON_DEMON_DAMAGE_FRONT_SIDE",
+
+	BIG_DAMAGE_LAND_FRONT		= "CANNON_DEMON_DAMAGE_FRONT_SIDE",
+	BIG_DAMAGE_LAND_BACK		= "CANNON_DEMON_DAMAGE_FRONT_SIDE",
+	BIG_DAMAGE_AIR				= "CANNON_DEMON_DAMAGE_FRONT_SIDE",
+
+	DOWN_DAMAGE_LAND_FRONT		= "CANNON_DEMON_DAMAGE_FRONT_SIDE",
+	DOWN_DAMAGE_LAND_BACK		= "CANNON_DEMON_DAMAGE_FRONT_SIDE",
+	DOWN_DAMAGE_AIR				= "CANNON_DEMON_DAMAGE_FRONT_SIDE",
+
+	UP_DAMAGE					= "CANNON_DEMON_TURN_FROM_FRONT_TO_BACK",
+
+	FLY_DAMAGE_FRONT			= "CANNON_DEMON_TURN_FROM_FRONT_TO_BACK",
+	FLY_DAMAGE_BACK				= "CANNON_DEMON_TURN_FROM_FRONT_TO_BACK",
+
+	--REVENGE_ATTACK				= "",
+	DAMAGE_REVENGE				= "CANNON_DEMON_DAMAGE_FRONT_SIDE",
+	
+	WAIT_STATES = { "CANNON_DEMON_WAIT_BACK_SIDE", },
+
+	DYING_LAND_FRONT			= "CANNON_DEMON_DYING_FRONT_SIDE",
+	DYING_LAND_BACK				= "CANNON_DEMON_DYING_FRONT_SIDE",
+	--DYING_SKY					= "",
+
+	--DOWN_DAMAGE_AIR_LANDING		= "",
+	--COMMON_FRAME_FUNC			= "CANNON_DEMON_WAIT_FRAME_MOVE",
+
+}
+
+INIT_AI =
+{
+	TARGET =
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_NEAR_FIRST"],
+		TARGET_INTERVAL				= 0.5,		-- sec
+		TARGET_NEAR_RANGE			= 900,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 1500,		-- cm
+		TARGET_LOST_RANGE			= 2000,		-- cm
+		TARGET_SUCCESS_RATE			= 50,  --60,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 90,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 100, -- 60,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE =
+	{
+		MOVE_SPLIT_RANGE	= 700,
+		DEST_GAP			= 800,
+		MOVE_GAP			= 900,
+
+		DIR_CHANGE_INTERVAL = 0.1,
+
+		WALK_INTERVAL		= 3,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 40,
+		UP_DOWN_RATE		= 20,
+		DOWN_JUMP_RATE		= 100,    --  20,
+		DOWN_DOWN_RATE		= 40,
+	},
+
+	PATROL_MOVE =
+	{
+		PATROL_BEGIN_RATE		= 0, --50,
+		PATROL_RANGE			= 500,
+		PATROL_COOL_TIME		= 0.1,
+	},
+
+	ESCAPE_MOVE =
+	{
+		MOVE_SPLIT_RANGE	= 300,	-- cm
+		ESCAPE_GAP			= 1800,	-- 이 거리 보다 멀어지면 도망 성공
+
+		WALK_INTERVAL		= 0.1,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 10,
+
+		JUMP_INTERVAL		= 3,
+		UP_JUMP_RATE		= 50,
+		UP_DOWN_RATE		= 50,
+		DOWN_JUMP_RATE		= 50,
+		DOWN_DOWN_RATE		= 50,
+	},
+
+	ESCAPE_CONDITION =
+	{
+		RATE				= 0, -- 50,
+		ESCAPE_RANGE		= 2000,		-- 이 범위 안에 들어오면 타격당하지 않아도 RATE에 지정된 확률로 도망
+	}
+}
+
+CANNON_DEMON_START =
+{
+	ANIM_NAME					= "WaitA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	NEVER_MOVE					= TRUE,
+	
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"CANNON_DEMON_WAIT_FRONT_SIDE"		},
+	},
+	
+}
+
+CANNON_DEMON_WAIT_FRONT_SIDE =
+{
+	ANIM_NAME					= "WaitA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	NEVER_MOVE					= TRUE,
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"CANNON_DEMON_ATTACK_A_FRONT_SIDE", 		"CT_CANNON_DEMON_ATTACK_A_FRONT_SIDE",					},
+	},
+	
+	CT_CANNON_DEMON_ATTACK_A_FRONT_SIDE =
+	{
+		RATE = 100,
+	}
+}
+
+CANNON_DEMON_ATTACK_A_FRONT_SIDE =
+{
+	ANIM_NAME					= "AttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SUPER_ARMOR_NOT_RED			= TRUE,
+	SUPER_ARMOR					= TRUE,
+	
+	NEVER_MOVE					= TRUE,
+
+	SOUND_PLAY0 = 	{ 0.01,"Cannon_Demon_AttackA.ogg", },
+	SOUND_PLAY1 = 	{ 1.024,"Cannon_Demon_Shot.ogg", },
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"CANNON_DEMON_WAIT_FRONT_SIDE", 			},
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Cannon_Demon_Attack_A_Front_Side", 0.0,
+	},
+	
+	--DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+}
+
+CANNON_DEMON_TURN_FROM_FRONT_TO_BACK =
+{
+	ANIM_NAME					= "Turn",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SUPER_ARMOR_NOT_RED			= TRUE,
+	SUPER_ARMOR					= TRUE,
+	
+	NEVER_MOVE					= TRUE,	
+
+	SOUND_PLAY0 = 	{ 0.84,"Cannon_Demon_Turn.ogg" },
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"CANNON_DEMON_WAIT_BACK_SIDE", 			},
+	},
+}
+
+CANNON_DEMON_TURN_FROM_BACK_TO_FRONT =
+{
+	ANIM_NAME					= "Back",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SUPER_ARMOR_NOT_RED			= TRUE,
+	SUPER_ARMOR					= TRUE,
+	
+	NEVER_MOVE					= TRUE,
+
+		SOUND_PLAY0 = 	{ 0.092,"Cannon_Demon_Back.ogg", },
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"CANNON_DEMON_WAIT_FRONT_SIDE", 			},
+	},	
+}
+
+CANNON_DEMON_WAIT_BACK_SIDE =
+{
+	ANIM_NAME					= "WaitB",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	NEVER_MOVE					= TRUE,
+
+	SOUND_PLAY0 = 	{ 0.024,"Cannon_Demon_WaitB.ogg", },
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"CANNON_DEMON_ATTACK_A_BACK_SIDE", 		"CT_CANNON_DEMON_ATTACK_A_BACK_SIDE",					},
+	},
+	
+	CT_CANNON_DEMON_ATTACK_A_BACK_SIDE =
+	{
+		RATE = 100,
+	}
+}
+
+CANNON_DEMON_ATTACK_A_BACK_SIDE =
+{
+	ANIM_NAME					= "TurnAttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SUPER_ARMOR_NOT_RED			= TRUE,
+	SUPER_ARMOR					= TRUE,
+	
+	NEVER_MOVE					= TRUE,	
+
+	SOUND_PLAY0 = 	{ 0.012,"Cannon_Demon_TurnAttackA.ogg", },
+	SOUND_PLAY1 = 	{ 1.024,"Cannon_Demon_Shot.ogg", },
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"CANNON_DEMON_WAIT_BACK_SIDE", 			},
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Cannon_Demon_Attack_A_Back_Side", 0.0,
+	},
+	
+	--DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+}
+
+CANNON_DEMON_DAMAGE_FRONT_SIDE =
+{
+	ANIM_NAME					= "Damage",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	NEVER_MOVE					= TRUE,
+
+	SOUND_PLAY0 = 	{ 0.042,"Cannon_Demon_Damage.ogg", },
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"CANNON_DEMON_WAIT_FRONT_SIDE", 			},
+	},
+}
+
+CANNON_DEMON_DAMAGE_BACK_SIDE =
+{
+	ANIM_NAME					= "TurnDamage",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SOUND_PLAY0 = 	{ 0.042,"Cannon_Demon_Damage.ogg", },
+	
+	NEVER_MOVE					= TRUE,	
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"CANNON_DEMON_WAIT_BACK_SIDE", 			},
+	},
+	
+}
+
+CANNON_DEMON_DYING_FRONT_SIDE =
+{
+	ANIM_NAME					= "Damage",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	NEVER_MOVE					= TRUE,
+
+	SOUND_PLAY0 = 	{ 0.042,"Cannon_Demon_Damage.ogg", },
+	
+	DYING_END					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+CANNON_DEMON_DYING_BACK_SIDE =
+{
+	ANIM_NAME					= "TurnDamage",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SOUND_PLAY0 = 	{ 0.042,"Cannon_Demon_Damage.ogg", },
+	
+	NEVER_MOVE					= TRUE,
+	
+	DYING_END					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+----------- state function--------------------------------------------------------------
+----------------------------------------------------------------------------------------
+function CANNON_DEMON_START_STATE_START_FUNC(  pKTDXApp, pX2Game, pNPCUnit )
+	pNPCUnit:SetFlag_LUA( 0, false )		-- 0번 인덱스의 플래그가 false이면 front 상태 / true이면 back 상태
+end
+
+function CANNON_DEMON_TURN_FROM_FRONT_TO_BACK_STATE_START_FUNC(  pKTDXApp, pX2Game, pNPCUnit )
+	pNPCUnit:ChangeDamageStateID_LUA( "CANNON_DEMON_DAMAGE_FRONT_SIDE", "CANNON_DEMON_DAMAGE_BACK_SIDE" );
+	pNPCUnit:ChangeDamageStateID_LUA( "CANNON_DEMON_TURN_FROM_FRONT_TO_BACK", "CANNON_DEMON_TURN_FROM_BACK_TO_FRONT" );
+	
+	pNPCUnit:ChangeDyingStateID_LUA( "CANNON_DEMON_DYING_FRONT_SIDE", "CANNON_DEMON_DYING_BACK_SIDE" );	
+	
+	--CHANGE_RIGHT( pNPCUnit );
+end
+
+function CANNON_DEMON_TURN_FROM_BACK_TO_FRONT_STATE_START_FUNC(  pKTDXApp, pX2Game, pNPCUnit )
+	pNPCUnit:ChangeDamageStateID_LUA( "CANNON_DEMON_DAMAGE_BACK_SIDE", "CANNON_DEMON_DAMAGE_FRONT_SIDE" );
+	pNPCUnit:ChangeDamageStateID_LUA( "CANNON_DEMON_TURN_FROM_BACK_TO_FRONT", "CANNON_DEMON_TURN_FROM_FRONT_TO_BACK" );
+	
+	pNPCUnit:ChangeDyingStateID_LUA( "CANNON_DEMON_DYING_BACK_SIDE", "CANNON_DEMON_DYING_FRONT_SIDE" );
+	
+	--CHANGE_RIGHT( pNPCUnit );
+end
+
+function CANNON_DEMON_ATTACK_A_FRONT_SIDE_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 1.02 ) then
+		
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		local vLandPos = pNPCUnit:GetLandPosition_LUA()
+		local vRHandPos = pNPCUnit:GetBonePos_LUA( "Dummy01" )
+		vRHandPos.z = vLandPos.z
+		
+		local vRotDegree = pNPCUnit:GetRotateDegree()
+		
+		pDamageEffect:CreateInstance_LUA2( pNPCUnit, "CANNON_DEMON_ATTACK_A_BALL_FRONT_SIDE", vRHandPos, vLandPos.y, vRotDegree )
+		
+	end	
+
+end
+
+function CANNON_DEMON_ATTACK_A_BACK_SIDE_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 1.02 ) then
+		
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		local vLandPos = pNPCUnit:GetLandPosition_LUA()
+		local vRHandPos = pNPCUnit:GetBonePos_LUA( "Dummy01" )
+		vRHandPos.z = vLandPos.z
+		
+		local vRotDegree = pNPCUnit:GetRotateDegree()
+		
+		pDamageEffect:CreateInstance_LUA2( pNPCUnit, "CANNON_DEMON_ATTACK_A_BALL_BACK_SIDE", vRHandPos, vLandPos.y, vRotDegree )
+		
+	end	
+	
+end
+----------- util function--------------------------------------------------------------
+----------------------------------------------------------------------------------------
+function CHANGE_RIGHT( pNPCUnit )
+	if pNPCUnit:GetIsRight() == true then
+		pNPCUnit:SetIsRight( false );
+	else
+		pNPCUnit:SetIsRight( true );
+	end
+end

@@ -1,0 +1,289 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 75.0,
+	UNIT_HEIGHT		= 100.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	RENDER_PARAM	= RENDER_TYPE["RT_CARTOON"],
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_Box.X",
+	MOTION_CHANGE_TEX_XET	= "Box_Peita.xet",
+	MOTION_ANI_TEX_XET		= "Box_Peita.xet",
+	ADD_ROTATE_Y			= -20.0,
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 0,
+	RUN_SPEED			= 0,
+	JUMP_SPEED			= 0,
+	DASH_JUMP_SPEED		= 0,
+}
+
+
+INIT_COMPONENT = 
+{
+	MP_CHANGE_RATE		= 0,
+	MP_CHARGE_RATE		= 0,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	SHADOW_SIZE			= 0,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	--SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "",
+	EXCLAMATION_MARK_SEQ	= "",
+	
+	HEAD_BONE_NAME			= "Object01",
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_WOOD"],
+	
+	NOT_EXTRA_DAMAGE	= TRUE,
+	
+	CAN_BE_STEPPED_ON = TRUE,
+}
+
+
+
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "BOX_WAIT",					},
+	
+	--리액션 관련
+	{ STATE_NAME = "BOX_GRAPPLED",				},	
+	{ STATE_NAME = "BOX_THROWN",				},	
+	{ STATE_NAME = "BOX_DAMAGE",				},	
+	{ STATE_NAME = "BOX_DYING",					},
+	
+	START_STATE					= "BOX_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "BOX_DAMAGE",
+	SMALL_DAMAGE_LAND_BACK		= "BOX_DAMAGE",
+	BIG_DAMAGE_LAND_FRONT		= "BOX_DAMAGE",
+	BIG_DAMAGE_LAND_BACK		= "BOX_DAMAGE",
+	DOWN_DAMAGE_LAND_FRONT		= "BOX_DAMAGE",
+	DOWN_DAMAGE_LAND_BACK		= "BOX_DAMAGE",
+	FLY_DAMAGE_FRONT			= "BOX_DAMAGE",
+	FLY_DAMAGE_BACK				= "BOX_DAMAGE",
+	SMALL_DAMAGE_AIR			= "BOX_DAMAGE",	
+	BIG_DAMAGE_AIR				= "BOX_DAMAGE",
+	DOWN_DAMAGE_AIR				= "BOX_DAMAGE",
+	UP_DAMAGE					= "BOX_DAMAGE",
+	DAMAGE_REVENGE				= "BOX_DAMAGE",
+	
+	DYING_LAND_FRONT			= "BOX_DYING",
+	DYING_LAND_BACK				= "BOX_DYING",
+	DYING_SKY					= "BOX_DYING",
+
+	REVENGE_ATTACK				= "",	
+	
+	DAMAGE_GRAPPLED_FRONT		= "BOX_GRAPPLED",
+	DAMAGE_GRAPPLED_BACK		= "BOX_GRAPPLED",
+	DAMAGE_THROWN				= "BOX_THROWN",
+	
+	
+}
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 99999,	-- sec
+		TARGET_NEAR_RANGE			= 0,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 0,		-- cm
+		TARGET_LOST_RANGE			= 0,		-- cm
+		TARGET_SUCCESS_RATE			= 0,		-- %
+		ATTACK_TARGET_RATE			= 0,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 0,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE = 
+	{		
+		DEST_GAP			= 150,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 160,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		MOVE_SPLIT_RANGE	= 600,
+		WALK_INTERVAL		= 3,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 5,
+		UP_JUMP_RATE		= 100, -- 40,
+		UP_DOWN_RATE		= 20,
+		DOWN_JUMP_RATE		= 100,    --  20,
+		DOWN_DOWN_RATE		= 40,
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 100, --50,		
+		PATROL_RANGE			= 300,
+		PATROL_COOL_TIME		= 1,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 500,	-- cm
+		ESCAPE_GAP			= 600,	-- 이 거리 보다 멀어지면 도망 성공
+		
+		WALK_INTERVAL		= 1,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 10,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+	},
+	
+	ESCAPE_CONDITION = 
+	{
+		RATE				= 100, -- 50,
+		MY_HP				= 20,		-- %, 전체 HP에 대해 현재 HP의 비율
+		ESCAPE_RANGE		= 600,		-- 이 범위 안에 들어오면 타격당하지 않아도 RATE에 지정된 확률로 도망
+	}
+}
+
+
+
+
+BOX_GRAPPLED = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,	
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+}
+
+
+
+BOX_THROWN = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"BOX_DAMAGE",				},
+	},	
+	
+}
+
+
+BOX_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	--LAND_CONNECT				= FALSE,	-- fix!! 조금 더 재밌는 박스를 위해	
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+-- fix!! 조금 더 재밌는 박스를 위해	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	NEVER_MOVE					= TRUE,
+--	
+
+		
+}
+
+BOX_DAMAGE =
+{
+	ANIM_NAME					= "Damage",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	--LAND_CONNECT				= FALSE,	-- fix!! 조금 더 재밌는 박스를 위해	
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+-- fix!! 조금 더 재밌는 박스를 위해	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	NEVER_MOVE					= TRUE,
+--	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"BOX_WAIT",				},
+	},
+}
+
+
+
+
+
+
+
+BOX_DYING = 
+{
+	ANIM_NAME					= "Broken",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	--LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	NEVER_MOVE					= TRUE,			-- fix!! 조금 더 재밌는 박스를 위해	
+	DYING_END					= TRUE,
+	--DYING_SPEED					= 1,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+	
+
+
+
+
+

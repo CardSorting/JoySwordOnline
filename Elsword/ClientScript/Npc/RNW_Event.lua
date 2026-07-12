@@ -1,0 +1,1126 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 120.0,
+	UNIT_HEIGHT		= 150.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	UNIT_SCALE		= 1.1,
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{	
+	"Pet_Summon.ogg",
+    "Lena_FuriousEngage1.ogg",
+    "Lena_FuriousEngage2.ogg",
+    "Lena_FuriousEngage3.ogg",
+    "Lena_FuriousEngage4.ogg",
+    "Lena_FuriousEngage5.ogg",
+    "FootAttack.ogg",
+    "Raven_Slash2.ogg",
+    "LenaVoice_Shout01.ogg",
+    "LenaVoice_Shout08.ogg",
+    "Parasite_House_Summon.ogg",
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_EVENT_Night_Watcher.x",
+}
+
+INIT_PHYSIC = 
+{	
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 400,
+	RUN_SPEED			= 650,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300,
+}
+
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 2000,
+	--HP_CHANGE_RATE		= -50,
+	MP_CHANGE_RATE		= 0,
+	MP_CHARGE_RATE		= 0,
+	
+	--USE_SLASH_TRACE		= FALSE,
+	
+	--SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+		
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	FALL_DOWN			= TRUE,
+	
+	DAMAGE_DOWN         = FALSE,
+		
+
+	SUMMON_TIME			= 180,
+	
+	NOT_EXTRA_DAMAGE    = TRUE,	
+	DAMAGE_DOWN         = FALSE,
+	DIE_FLY				= FALSE,
+	
+	WEAPON0 = 
+	{
+		WEAPON_FILE_NAME			= "Mesh_Lire_LNW_Effect_Weapon.X",
+		WEAPON_BONE_NAME			= "Dummy1_Rhand",
+			
+		USE_SLASH_TRACE				= TRUE,						
+		SLASH_TRACE_TOP_BONE		= "TRACE_START0",
+		SLASH_TRACE_BOTTOM_BONE		= "TRACE_END0",
+	},	
+	
+}
+
+
+
+
+INIT_STATE = 
+{	
+	--{ STATE_NAME = "APINK_ANGEL_03_RENA_START",			LUA_FRAME_MOVE_FUNC = "APINK_ANGEL_03_RENA_START_FRAME_MOVE"			},
+	{ STATE_NAME = "APINK_ANGEL_03_RENA_START",					},
+	{ STATE_NAME = "APINK_ANGEL_03_RENA_PRE_WAIT",				},
+	{ STATE_NAME = "APINK_ANGEL_03_RENA_WAIT",					},
+	--{ STATE_NAME = "APINK_ANGEL_03_RENA_END",				LUA_FRAME_MOVE_FUNC = "APINK_ANGEL_03_RENA_DYING_FRAME_MOVE"			},
+	--{ STATE_NAME = "APINK_ANGEL_03_RENA_DYING",			LUA_FRAME_MOVE_FUNC = "APINK_ANGEL_03_RENA_DYING_FRAME_MOVE"			},
+	{ STATE_NAME = "APINK_ANGEL_03_RENA_END",					},
+	{ STATE_NAME = "APINK_ANGEL_03_RENA_DYING",					},
+	
+	-- 초롱천사 기본 공격
+	-- 퓨리어스 인게이지
+	{ STATE_NAME = "APINK_ANGEL_03_RENA_ATTACK_A",		STATE_COOL_TIME = 3,        },
+	-- 글라이딩 스트라이크
+	{ STATE_NAME = "APINK_ANGEL_03_RENA_ATTACK_B",		STATE_COOL_TIME = 11,        },
+
+	-- zxxx 콤보
+--	{ STATE_NAME = "APINK_ANGEL_03_RENA_ComboZ",										},
+--	{ STATE_NAME = "APINK_ANGEL_03_RENA_ComboZX",										},
+--	{ STATE_NAME = "APINK_ANGEL_03_RENA_ComboZXX",					},
+--	{ STATE_NAME = "APINK_ANGEL_03_RENA_ComboZXXX",					},
+	
+--리액션 관련
+--	{ STATE_NAME = "APINK_ANGEL_03_RENA_DAMAGE_FRONT",				},	
+--{ STATE_NAME = "APINK_ANGEL_03_RENA_DAMAGE_BACK",				},	
+
+
+	{ STATE_NAME = "APINK_ANGEL_03_RENA_WALK",					},
+	{ STATE_NAME = "APINK_ANGEL_03_RENA_JUMP_UP",				},
+	{ STATE_NAME = "APINK_ANGEL_03_RENA_JUMP_DOWN",			},
+	{ STATE_NAME = "APINK_ANGEL_03_RENA_JUMP_UP_DIR",			},
+	{ STATE_NAME = "APINK_ANGEL_03_RENA_JUMP_DOWN_DIR",		},
+	{ STATE_NAME = "APINK_ANGEL_03_RENA_JUMP_LANDING",			},
+	
+	--COMMON_FRAME_FUNC			= "APINK_ANGEL_03_RENA_COMMON_FRAME_MOVE",
+	
+	START_STATE					= "APINK_ANGEL_03_RENA_START",
+	WAIT_STATE					= "APINK_ANGEL_03_RENA_WAIT",
+	SUMMON_END_STATE			= "APINK_ANGEL_03_RENA_END",
+	
+--	SMALL_DAMAGE_LAND_FRONT		= "APINK_ANGEL_03_RENA_DAMAGE_FRONT",
+--	SMALL_DAMAGE_LAND_BACK		= "APINK_ANGEL_03_RENA_DAMAGE_BACK",
+--	BIG_DAMAGE_LAND_FRONT		= "APINK_ANGEL_03_RENA_DAMAGE_FRONT",
+--	BIG_DAMAGE_LAND_BACK		= "APINK_ANGEL_03_RENA_DAMAGE_BACK",
+--	DOWN_DAMAGE_LAND_FRONT		= "APINK_ANGEL_03_RENA_DAMAGE_FRONT",
+--	DOWN_DAMAGE_LAND_BACK		= "APINK_ANGEL_03_RENA_DAMAGE_BACK",
+--	FLY_DAMAGE_FRONT			= "APINK_ANGEL_03_RENA_DAMAGE_FRONT",
+--	FLY_DAMAGE_BACK				= "APINK_ANGEL_03_RENA_DAMAGE_BACK",
+--	SMALL_DAMAGE_AIR			= "APINK_ANGEL_03_RENA_DAMAGE_FRONT",	
+--	BIG_DAMAGE_AIR				= "APINK_ANGEL_03_RENA_DAMAGE_FRONT",
+--	DOWN_DAMAGE_AIR				= "APINK_ANGEL_03_RENA_DAMAGE_FRONT",
+--	UP_DAMAGE					= "APINK_ANGEL_03_RENA_DAMAGE_FRONT",
+	
+	DYING_LAND_FRONT			= "APINK_ANGEL_03_RENA_DYING",
+	DYING_LAND_BACK				= "APINK_ANGEL_03_RENA_DYING",
+	DYING_SKY					= "APINK_ANGEL_03_RENA_DYING",
+
+	REVENGE_ATTACK				= "",	
+}
+
+INIT_AI = 
+{
+	ALLY = 
+	{
+		FAR_LOST_RANGE	= 1400,			-- 이 거리보다 멀어지면 유저 옆으로 텔레포트
+		LOST_RANGE		= 1400,			-- 이 거리보다 멀어지면 유저 쪽으로 걸어감
+	},
+
+	TARGET =
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_NEAR_FIRST"],
+		TARGET_INTERVAL 			= 2,
+		TARGET_NEAR_RANGE 			= 1000,
+		TARGET_RANGE 				= 2000,
+		TARGET_LOST_RANGE 			= 5000,
+		TARGET_SUCCESS_RATE 		= 100,
+		ATTACK_TARGET_RATE 			= 100,
+		PRESERVE_LAST_TARGET_RATE 	= 0,
+	},
+	
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 400,
+		DEST_GAP			= 300,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 500,
+		
+		DIR_CHANGE_INTERVAL = 0.5,
+		
+		WALK_INTERVAL		= 0.5,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 0.5,
+		UP_JUMP_RATE		= 100, -- 40,
+		UP_DOWN_RATE		= 20,
+		DOWN_JUMP_RATE		= 100,    --  20,
+		DOWN_DOWN_RATE		= 40,
+		
+		LINE_END_RANGE		= 80,	-- cm
+	},	
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 400,	-- cm
+		ESCAPE_GAP			= 600,	-- 이 거리 보다 멀어지면 도망 성공
+		
+		WALK_INTERVAL		= 1.5,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 10,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+	},
+		
+	ESCAPE_CONDITION = 
+	{
+		RATE				= 100, --30,
+		ESCAPE_RANGE		= 350,		-- 이 범위 안에 들어오면 타격당하지 않아도 RATE에 지정된 확률로 도망
+	}
+	
+	
+}
+
+
+
+APINK_ANGEL_03_RENA_START = 
+{
+	ANIM_NAME					= "CSI_SI_A_RNW_START_OF_DELAYED_FIRING",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	IS_RIGHT					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, },
+	
+	--SOUND_PLAY0 				= { 0.001, "Voice_Hayoung_001.ogg" },
+	SOUND_PLAY1 				= { 0.001, "Pet_Summon.ogg" },
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"APINK_ANGEL_03_RENA_PRE_WAIT",				},
+	},
+	
+--[[	
+	TALK_BOX =
+	{
+		{ RATE = 50, MESSAGE = STR_ID_17909 },
+		{ RATE = 50, MESSAGE = STR_ID_17913 },
+ 	},
+--]]	
+}
+
+
+APINK_ANGEL_03_RENA_PRE_WAIT = 
+{
+	ANIM_NAME					= "Wait03",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"APINK_ANGEL_03_RENA_WAIT",				},
+	},
+	
+}
+
+
+
+APINK_ANGEL_03_RENA_WAIT = 
+{
+	ANIM_SPEED					= 1.5,
+	ANIM_NAME					= "Wait03",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	-- VIEW_TARGET					= TRUE,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+	EVENT_INTERVAL_TIME0		= 0.5,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"APINK_ANGEL_03_RENA_JUMP_DOWN",					},
+
+
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"APINK_ANGEL_03_RENA_WAIT",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"APINK_ANGEL_03_RENA_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"APINK_ANGEL_03_RENA_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"APINK_ANGEL_03_RENA_JUMP_UP",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"APINK_ANGEL_03_RENA_JUMP_UP_DIR",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"APINK_ANGEL_03_RENA_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"APINK_ANGEL_03_RENA_JUMP_DOWN_DIR",				},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"APINK_ANGEL_03_RENA_JUMP_UP_DIR",			"CT_APINK_ANGEL_03_RENA_JUMP_UP_DIR",		},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"APINK_ANGEL_03_RENA_ATTACK_B",				"CT_APINK_ANGEL_03_RENA_ATTACK_B",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"APINK_ANGEL_03_RENA_ATTACK_A",				"CT_APINK_ANGEL_03_RENA_ATTACK_A",			},
+--		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"APINK_ANGEL_03_RENA_ComboZ",	"CT_APINK_ANGEL_03_RENA_ComboZ",	},
+	},
+
+	CT_APINK_ANGEL_03_RENA_JUMP_UP_DIR = 
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		TARGET_ABOVE_ME 			= TRUE,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 50,
+	},
+
+	CT_APINK_ANGEL_03_RENA_ATTACK_A = 
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 500,
+		RATE						= 100,
+	},
+	
+	CT_APINK_ANGEL_03_RENA_ATTACK_B = 
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 100,
+	},
+--[[	
+	CT_APINK_ANGEL_03_RENA_ComboZ =
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 275,		
+		RATE						= 100,
+	},
+	--]]
+}
+
+
+APINK_ANGEL_03_RENA_WALK = 
+{
+	ANIM_SPEED					= 1.0,
+	ANIM_NAME					= "Dash",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["RUN_SPEED"],
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 0.5,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"APINK_ANGEL_03_RENA_JUMP_DOWN",					},
+
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"APINK_ANGEL_03_RENA_WAIT",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"APINK_ANGEL_03_RENA_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"APINK_ANGEL_03_RENA_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"APINK_ANGEL_03_RENA_JUMP_UP",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"APINK_ANGEL_03_RENA_JUMP_UP_DIR",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"APINK_ANGEL_03_RENA_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"APINK_ANGEL_03_RENA_JUMP_DOWN_DIR",				},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"APINK_ANGEL_03_RENA_JUMP_UP_DIR",			"CT_APINK_ANGEL_03_RENA_JUMP_UP_DIR",		},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"APINK_ANGEL_03_RENA_ATTACK_B",				"CT_APINK_ANGEL_03_RENA_ATTACK_B",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"APINK_ANGEL_03_RENA_ATTACK_A",				"CT_APINK_ANGEL_03_RENA_ATTACK_A",			},
+	--	{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"APINK_ANGEL_03_RENA_ComboZ",	"CT_APINK_ANGEL_03_RENA_ComboZ",	},
+
+	},
+
+	CT_APINK_ANGEL_03_RENA_JUMP_UP_DIR = 
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		TARGET_ABOVE_ME 			= TRUE,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 50,
+	},
+	CT_APINK_ANGEL_03_RENA_ATTACK_A = 
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 500,
+		RATE						= 100,
+	},
+	
+	CT_APINK_ANGEL_03_RENA_ATTACK_B = 
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 100,
+	},
+	--[[
+	CT_APINK_ANGEL_03_RENA_ComboZ =
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 275,	
+		RATE						= 100,
+	},--]]
+}
+
+
+
+APINK_ANGEL_03_RENA_ATTACK_A =
+{
+	ANIM_NAME					= "CSI_SI_SA_RNW_FURIOUS_ENGAGE",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, },
+	SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED			= TRUE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	
+	DELETE_EFFECT_SET_ON_DIE 	= TRUE, 
+
+	--SOUND_PLAY0			= { 0.225, "Voice_Hayoung_010.ogg" },
+	SOUND_PLAY1			= { 0.001, "Lena_FuriousEngage1.ogg" },
+	SOUND_PLAY2			= { 0.466, "Lena_FuriousEngage2.ogg" },
+	SOUND_PLAY3			= { 0.919, "Lena_FuriousEngage3.ogg" },
+	SOUND_PLAY4			= { 1.17, "Lena_FuriousEngage4.ogg" },
+	SOUND_PLAY5			= { 1.969, "Lena_FuriousEngage5.ogg" },	
+		
+	VIEW_TARGET					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	
+	EFFECT_SET_LIST =
+	{
+		"APINK_ANGEL_Furious_Engage", 0.15,	
+	},
+	
+	DELETE_EFFECT_SET_ON_DAMAGE_REACT 	= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"APINK_ANGEL_03_RENA_JUMP_DOWN",								},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"APINK_ANGEL_03_RENA_WALK",									},	
+	},
+--[[
+	TALK_BOX =
+	{
+		{ RATE = 7, MESSAGE = STR_ID_1535 },
+		{ RATE = 7, MESSAGE = STR_ID_1423 },
+		{ RATE = 7, MESSAGE = STR_ID_17919 },
+ 	},
+--]]	
+}
+
+APINK_ANGEL_03_RENA_ATTACK_B =
+{
+	ANIM_SPEED					= 1.5,
+	ANIM_NAME					= "CSI_SI_SA_RNW_Gliding_Strike",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, },
+	SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED			= TRUE,
+	
+	DELETE_EFFECT_SET_ON_DIE 	= TRUE, 
+
+	-- SPEED_X						= 2000,
+	SPEED_Y						= 0,	
+
+	-- SOUND_PLAY0					= { 0.2,	"Elsword_RageCutter2.ogg" },
+	-- SOUND_PLAY1					= { 0.225, "Voice_Hayoung_010.ogg" },
+	--SOUND_PLAY0     			= { 0.1,    "Voice_Hayoung_009.ogg" },
+	
+	VIEW_TARGET					= TRUE,
+	-- ALLOW_DIR_CHANGE			= FALSE,	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EFFECT_SET_LIST =
+	{
+		"APINK_ANGEL_Gliding_Strike", 0.55,	
+	},	
+	
+	DELETE_EFFECT_SET_ON_DAMAGE_REACT 	= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"APINK_ANGEL_03_RENA_JUMP_DOWN",								},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"APINK_ANGEL_03_RENA_WALK",									},	
+	},
+
+--[[	
+	TALK_BOX =
+	{
+		{ RATE = 7, MESSAGE = STR_ID_1535 },
+		{ RATE = 7, MESSAGE = STR_ID_1423 },
+		{ RATE = 7, MESSAGE = STR_ID_17919 },
+ 	},
+--]]	
+}
+--[[
+APINK_ANGEL_03_RENA_ComboZ = 
+{
+	IMMADIATE_PACKET_SEND		= TRUE,			-- 추가해야함
+
+	ANIM_NAME			= "ComboZ1",
+	ANIM_SPEED			= 1.03,
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	VIEW_TARGET			= TRUE,					-- 추가해야함
+	
+	NATURE_FORCE_POSSIBLE = TRUE,
+	
+	ATTACK_TIME0		= { 0.1, 0.35 },		-- 추가해야함
+	
+	LAND_CONNECT		= FALSE,
+	
+	CHANGE_TIME			= 0.3,				 -- LESI_COMBO_Z2
+	
+	--EVENT_PROCESS_TIME0 = { 0.2, 0.5, 0.5 }, -- LESI_COMBO_RNW_ZZX 필요없음
+	
+	SOUND_PLAY0			= { 0.06, "FootAttack.ogg" },
+	
+	ENABLE_ATTACK_BOX = 
+	{
+		"Rfoot",
+	},
+	
+	DAMAGE_DATA = 
+	{
+		ATTACK_ACTION_TYPE	= ATTACK_ACTION_TYPE["AAT_MELEE"],			
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_KICK_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.1,
+		},
+			
+		FORCE_DOWN			= 7,
+		STOP_TIME_DEF			= 0.05,
+			
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+		
+	    TECH_POINT				= 22,
+	},
+	
+	--COMBO_GUIDE         = { "Z", "Z" }, 필요없음
+	
+	
+	
+	UNIT_SLASH_TRACE0 = { 2, 0.13, 0.24, SLASH_TRACE_TYPE["STT_CONSTANT_WIDTH"], SLASH_TRACE_CONDITION["STC_RENA_NATURE_FORCE"], },       
+	
+	EVENT_PROCESS =
+	{
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"APINK_ANGEL_03_RENA_ComboZX",	"CT_APINK_ANGEL_03_RENA_ComboZX",	},
+	
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"APINK_ANGEL_03_RENA_WAIT",		},
+	},
+	
+	CT_APINK_ANGEL_03_RENA_ComboZX =
+	{
+		ANIM_EVENT_TIMER			= 0.5,
+		ATTACK_SUCCESS				= TRUE, 
+		IS_ANOTHER_TEAM				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 100,
+	},		
+
+}
+
+
+-- 나이트 와처 ZX 콤보
+APINK_ANGEL_03_RENA_ComboZX = 
+{
+	IMMADIATE_PACKET_SEND		= TRUE,			-- 추가해야함
+
+	ANIM_NAME				= "LESI_COMBO_RNW_ZX",
+	ANIM_SPEED				= 1.0,
+	PLAY_TYPE				= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION				= FALSE,
+	
+	LAND_CONNECT			= FALSE,
+	
+	SPEED_X					= 500,
+	
+	SOUND_PLAY0				= { 0.3, "Raven_Slash2.ogg" },
+	SOUND_PLAY1				= { 0.3, "LenaVoice_Shout01.ogg" },
+
+	SLASH_TRACE				= { 0, 100, },	
+	ATTACK_TIME0			= { 0.3, 0.4 },
+
+	WALK_CANCEL_AFTER		= 0.933,
+
+	--DASH_CANCEL_AFTER		= 0.566,
+	--SKILL_CANCEL_AFTER		= 0.5,
+	
+	DISABLE_ATTACK_BOX =
+	{
+		"Sword",
+	},	
+	
+	DAMAGE_DATA = 
+	{
+		ATTACK_ACTION_TYPE	= ATTACK_ACTION_TYPE["AAT_MELEE"],			
+		DAMAGE_TYPE			= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE			= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE			= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC			= 1.6,
+		},
+		
+		BACK_SPEED_X		= 740,
+		
+		STOP_TIME_DEF		= 0.133,
+
+		TECH_POINT			= 80,		
+		FORCE_DOWN			= 15,
+	},
+		
+	UNIT_SLASH_TRACE0 		= { 2, 0.11, 0.28, SLASH_TRACE_TYPE["STT_CONSTANT_WIDTH"], SLASH_TRACE_CONDITION["STC_RENA_NATURE_FORCE"], },       
+	
+	EVENT_PROCESS =
+	{
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"APINK_ANGEL_03_RENA_ComboZXX",	"CT_APINK_ANGEL_03_RENA_ComboZXX",	},
+	
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"APINK_ANGEL_03_RENA_WAIT",		},
+	},
+	
+	CT_APINK_ANGEL_03_RENA_ComboZXX =
+	{
+		IS_ANOTHER_TEAM				= TRUE,
+		ANIM_EVENT_TIMER			= 0.5,
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 100,
+	},	
+	
+}
+
+-- 나이트 와처 ZXX 콤보
+APINK_ANGEL_03_RENA_ComboZXX = 
+{
+	IMMADIATE_PACKET_SEND		= TRUE,			-- 추가해야함
+
+	ANIM_NAME				= "LESI_COMBO_RNW_ZXX",
+	ANIM_SPEED				= 0.85,
+	PLAY_TYPE				= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION				= FALSE,
+	
+	LAND_CONNECT			= FALSE,
+	
+	SPEED_X					= 500,
+	
+	SOUND_PLAY0				= { 0.3, "Raven_Slash2.ogg" },
+	SOUND_PLAY1				= { 0.3, "LenaVoice_Shout01.ogg" },
+
+	SLASH_TRACE				= { 0, 100, },	
+	ATTACK_TIME0			= { 0.25, 0.366 },
+	
+	WALK_CANCEL_AFTER		= 0.5, -- 백워크캔슬
+	DASH_CANCEL_AFTER		= 0.4,
+	SKILL_CANCEL_AFTER		= 0.433,
+	
+	DAMAGE_DATA = 
+	{
+		ATTACK_ACTION_TYPE	= ATTACK_ACTION_TYPE["AAT_MELEE"],			
+		DAMAGE_TYPE			= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE			= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE			= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC			= 2.3,
+		},
+		
+		BACK_SPEED_X		= 740,
+		
+		STOP_TIME_DEF		= 0.166,
+
+		TECH_POINT			= 115,		
+		FORCE_DOWN			= 7,
+	},
+	
+	UNIT_SLASH_TRACE0 		= { 2, 0.11, 0.28, SLASH_TRACE_TYPE["STT_CONSTANT_WIDTH"], SLASH_TRACE_CONDITION["STC_RENA_NATURE_FORCE"], },       
+
+	EVENT_PROCESS =
+	{
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"APINK_ANGEL_03_RENA_ComboZXXX",	"CT_APINK_ANGEL_03_RENA_ComboZXXX",	},
+	
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"APINK_ANGEL_03_RENA_WAIT",		},
+	},
+	
+	CT_APINK_ANGEL_03_RENA_ComboZXXX =
+	{
+		ANIM_EVENT_TIMER			= 0.5,
+		IS_ANOTHER_TEAM				= TRUE,
+		ATTACK_SUCCESS				= TRUE, 
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 100,
+	},	
+	
+}
+
+
+-- 나이트 와처 ZXXX 콤보
+APINK_ANGEL_03_RENA_ComboZXXX = 
+{
+
+	IMMADIATE_PACKET_SEND		= TRUE,			-- 추가해야함
+
+	ANIM_NAME				= "LESI_COMBO_RNW_ZXXX",
+	ANIM_SPEED				= 1.0,
+	PLAY_TYPE				= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION				= FALSE,
+	
+	LAND_CONNECT			= FALSE,
+	
+	SPEED_X					= 500,
+	
+	SOUND_PLAY0				= { 0.3, "Raven_Slash2.ogg" },
+	SOUND_PLAY1				= { 0.2666, "LenaVoice_Shout08.ogg" },
+
+	SLASH_TRACE				= { 0, 100, },	
+	ATTACK_TIME0			= { 0.3, 0.366 },
+	
+	WALK_CANCEL_AFTER		= 0.966,
+	SKILL_CANCEL_AFTER		= 0.6,
+	
+	DAMAGE_DATA = 
+	{
+		ATTACK_ACTION_TYPE	= ATTACK_ACTION_TYPE["AAT_MELEE"],			
+		DAMAGE_TYPE			= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE			= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE			= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			PHYSIC			= 3.0,
+		},
+		
+		BACK_SPEED_X		= 1900,
+		BACK_SPEED_Y		= 700,
+		
+		STOP_TIME_ATT		= 0.066,	
+		STOP_TIME_DEF		= 0.233,
+
+		TECH_POINT			= 240,		
+		FORCE_DOWN			= 0,
+		FORCE_FLY			= TRUE,
+	},
+	
+	UNIT_SLASH_TRACE0	 	= { 2, 0.11, 0.28, SLASH_TRACE_TYPE["STT_CONSTANT_WIDTH"], SLASH_TRACE_CONDITION["STC_RENA_NATURE_FORCE"], },       
+	
+	EVENT_PROCESS =
+	{
+        --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PVP_BOT_LIME_Combo_for_Upper_Attack_JumpX_JUMP",	"CT_PVP_BOT_LIME_Combo_for_Upper_Attack_JumpX_JUMP",	},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"APINK_ANGEL_03_RENA_JUMP_DOWN",								},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"APINK_ANGEL_03_RENA_WALK",									},	
+	},
+
+}
+
+APINK_ANGEL_03_RENA_DAMAGE_FRONT =
+{
+	ANIM_NAME					= "DamageSmallFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	-- SOUND_PLAY0 				= { 0.01, "APINK_ANGEL_03_RENA_Voice_Hit01.ogg",30 },
+		
+	GUARD_DEFENCE               = 50,
+	GUARD_DEFENCE_FRONT			= TRUE,
+	GUARD_DEFENCE_BACK			= FALSE,
+	
+	-- EFFECT_SET_LIST = 
+	-- {
+		-- "EffectSet_APINK_ANGEL_SHIELD", 0.1,
+	-- },	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"APINK_ANGEL_03_RENA_WAIT",				},
+	},
+}
+--]]
+--[[
+APINK_ANGEL_03_RENA_DAMAGE_BACK =
+{
+	ANIM_NAME					= "DamageSmallBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	GUARD_DEFENCE               = 50,
+	GUARD_DEFENCE_FRONT			= TRUE,
+	GUARD_DEFENCE_BACK			= FALSE,
+	
+	-- SOUND_PLAY0 				= { 0.01, "APINK_ANGEL_03_RENA_Voice_Hit02.ogg",30 },
+	
+	-- EFFECT_SET_LIST = 
+	-- {
+		-- "EffectSet_APINK_ANGEL_SHIELD", 0.1,
+	-- },	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"APINK_ANGEL_03_RENA_WAIT",				},
+	},
+}
+--]]
+APINK_ANGEL_03_RENA_JUMP_UP = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	SPEED_X						= 0,
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	ADD_POS_Y					= 45,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"APINK_ANGEL_03_RENA_JUMP_DOWN",				},
+	},
+}
+
+APINK_ANGEL_03_RENA_JUMP_DOWN = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"APINK_ANGEL_03_RENA_JUMP_LANDING",				},
+	},
+}
+
+APINK_ANGEL_03_RENA_JUMP_UP_DIR = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["RUN_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	ADD_POS_Y					= 45,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"APINK_ANGEL_03_RENA_JUMP_DOWN_DIR",				},
+	},
+}
+
+APINK_ANGEL_03_RENA_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["RUN_SPEED"],
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"APINK_ANGEL_03_RENA_JUMP_LANDING",				},
+	},
+}
+
+APINK_ANGEL_03_RENA_JUMP_LANDING = 
+{
+	ANIM_NAME					= "JumpLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+		
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"APINK_ANGEL_03_RENA_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"APINK_ANGEL_03_RENA_WAIT",					},
+	},
+}
+
+
+APINK_ANGEL_03_RENA_DYING = 
+{
+	ANIM_SPEED					= 0.4,
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	PASSIVE_SPEED_Y				= 150,
+	PASSIVE_SPEED_X				= 0,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= TRUE,
+	SOUND_PLAY0					= { 0.01, "Parasite_House_Summon.ogg" },
+	SOUND_PLAY1					= { 0.01, "Parasite_House_Summon.ogg" },
+	
+	
+	--NEVER_MOVE					= TRUE,
+	DYING_END					= TRUE,
+	DYING_SPEED					= 1.4,
+	
+--	EFFECT_SET_LIST =
+--	{
+--		"EffectSet_APINK_ANGEL_BUFF", 0,	
+--	},
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+	
+
+
+
+APINK_ANGEL_03_RENA_END = 
+{
+	ANIM_SPEED					= 0.3,
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	PASSIVE_SPEED_Y				= 150,
+	PASSIVE_SPEED_X				= 0,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= TRUE,
+	SOUND_PLAY0					= { 0.01, "Parasite_House_Summon.ogg" },
+	SOUND_PLAY1					= { 0.01, "Parasite_House_Summon.ogg" },
+	
+	
+	--NEVER_MOVE					= TRUE,
+	DYING_END					= TRUE,
+	DYING_SPEED					= 1.4,
+	
+--	EFFECT_SET_LIST =
+--	{
+--		"EffectSet_APINK_ANGEL_BUFF", 0,	
+--	},
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+	
+
+--[[
+function APINK_ANGEL_03_RENA_DYING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.1 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		local vPos = pNPCUnit:GetBonePos_LUA("Bip01")
+		vPos.y = vPos.y + 200
+		local pParticle = pMinorParticle:CreateSequence_LUA( "ExclamationMarkNPC", vPos, D3DXVECTOR2(100,100), D3DXVECTOR2(3, 1) )
+		if pParticle ~= nil then
+			pParticle:SetPosition( vPos )
+		end
+	end
+end
+
+
+function APINK_ANGEL_03_RENA_MAGIC_ATTACK_A_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+  
+end
+
+
+
+function APINK_ANGEL_03_RENA_MAGIC_ATTACK_A_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	
+	
+end
+--]]
+
+------------------------------------------------------------------------------
+-- Frame Move Function --
+------------------------------------------------------------------------------
+
+
+
+
+
+------------------------------------------------------------------------------
+-- UTIL FUNCTION
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+function MovePos( pos, dirvector, dist )
+	
+	pos.x = pos.x + dist * dirvector.x
+	pos.y = pos.y + dist * dirvector.y
+	pos.z = pos.z + dist * dirvector.z
+	
+	return pos
+	
+end
+
+
+--[[
+function APINK_ANGEL_03_RENA_COMMON_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:GetDamageTypeThisFrame_LUA() == REACT_TYPE["RT_FLY"] or 
+		pNPCUnit:GetDamageTypeThisFrame_LUA() == REACT_TYPE["RT_UP"] or 
+		pNPCUnit:GetDamageTypeThisFrame_LUA() == REACT_TYPE["RT_SMALL_DAMAGE"] or 
+		pNPCUnit:GetDamageTypeThisFrame_LUA() == REACT_TYPE["RT_BIG_DAMAGE"] or 
+		pNPCUnit:GetDamageTypeThisFrame_LUA() == REACT_TYPE["RT_DOWN"] or 
+		pNPCUnit:GetDamageTypeThisFrame_LUA() == REACT_TYPE["RT_DRAG_UP"] then
+		local pEffectSet = pX2Game:GetEffectSet()
+		local hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_APINK_ANGEL_SHIELD", pNPCUnit )
+	end
+	pNPCUnit:InitDamageTypeThisFrame_LUA()
+end
+
+function APINK_ANGEL_03_RENA_START_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.001 ) then
+		local pEffectSet = pX2Game:GetEffectSet()
+		local hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_APINK_ANGEL_FEATHER", pNPCUnit )
+	end		     
+	  
+end	   
+function APINK_ANGEL_03_RENA_DYING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.001 ) then
+		local pEffectSet = pX2Game:GetEffectSet()
+		local hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_APINK_ANGEL_FEATHER", pNPCUnit )
+	end		     
+	if pNPCUnit:AnimEventTimer_LUA( 0.3 ) then
+		local pEffectSet2 = pX2Game:GetEffectSet()
+		local hEffect2 = pEffectSet2:PlayEffectSet_LUA( "EffectSet_APINK_ANGEL_FEATHER", pNPCUnit )
+	end		     
+	if pNPCUnit:AnimEventTimer_LUA( 2.25 ) then
+		local pEffectSet3 = pX2Game:GetEffectSet()
+		local pEffectSet4 = pX2Game:GetEffectSet()
+		local hEffect3 = pEffectSet4:PlayEffectSet_LUA( "EffectSet_APINK_ANGEL_FEATHER_MASS", pNPCUnit )
+		local hEffect4 = pEffectSet5:PlayEffectSet_LUA( "EffectSet_APINK_ANGEL_FEATHER_MASS", pNPCUnit )
+	end		    
+	  
+end
+
+--]]

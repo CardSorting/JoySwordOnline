@@ -1,0 +1,21 @@
+{
+  "validation_pending": true,
+  "schema_valid": null,
+  "last_mutated_at": "2026-07-02T02:48:39.775Z",
+  "last_mutation_tool": "external",
+  "last_mutation_path": "ROADMAP.md",
+  "updated_at": "2026-07-02T02:48:39.780Z",
+  "lineage": [
+    {
+      "operation_id": "833f1fe6-06d3-4cad-a47d-69d15e75b461",
+      "timestamp": "2026-07-02T02:48:39.779Z",
+      "tool": "external",
+      "action": "file_mutated",
+      "schema_valid": null,
+      "health_status": null,
+      "hash": "7a1decef882e88d8",
+      "diff_summary": "",
+      "causality_token": "4c0df94027d45d76"
+    }
+  ]
+}

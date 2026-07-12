@@ -1,0 +1,1681 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+--{{ kimhc // 실시간 엘소드 중 실시간 레벨업 이펙트 // 2009-06-09
+
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_LevelUp",
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_CUSTOM"], 
+	
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Level_Up01",
+		START_TIME = 2.333,		
+
+        --POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT1 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Level_Up06",
+		START_TIME = 2.333,		
+
+        --POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT2 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "RespawnLanding_P04",
+		START_TIME = 2.15,		
+
+        --POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 10,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT3 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "RespawnLanding_P04",
+		START_TIME = 2.25,		
+
+        --POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 60,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT4 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "RespawnLanding_P04",
+		START_TIME = 2.35,		
+
+        --POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 110,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT5 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "RespawnLanding_P04",
+		START_TIME = 2.45,		
+
+        --POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 160,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT6 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "RespawnLanding_P04",
+		START_TIME = 2.55,		
+
+        --POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 210,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	
+}
+
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_LevelUp_LandPosition",
+	
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_MESH_PLAYER_UI_MAJOR"],
+		NAME = "Mesh_LevelUp01.X",
+		START_TIME = 0,		
+
+        USE_LAND_POSITION = TRUE,
+        POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT1 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Level_Up02",
+		START_TIME = 0,		
+
+        USE_LAND_POSITION = TRUE,
+        POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT2 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Level_Up03",
+		START_TIME = 0,	
+		
+		USE_LAND_POSITION = TRUE,
+        POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT3 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Level_Up04",
+		START_TIME = 0,		
+		
+		USE_LAND_POSITION = TRUE,
+        POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT4 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Level_Up05",
+		START_TIME = 0.1,		
+		
+		USE_LAND_POSITION = TRUE,
+        POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+}
+--}} kimhc // 실시간 엘소드 중 실시간 레벨업 이펙트 // 2009-06-09
+
+
+-- 펫 소환 이펙트
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Summon_Pet",
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_CUSTOM"],
+	
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Pet_Level_Up06",
+		START_TIME = 0,		
+        
+        POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT1 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "RespawnLanding_P04",
+		START_TIME = 0.15,		
+        
+        POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = -20,		
+		POSITION_OFFSET_Y = 10,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT2 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "RespawnLanding_P04",
+		START_TIME = 0.25,		
+        
+        POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = -20,		
+		POSITION_OFFSET_Y = 60,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT3 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "RespawnLanding_P04",
+		START_TIME = 0.35,		
+        
+        POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = -20,		
+		POSITION_OFFSET_Y = 110,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT4 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "RespawnLanding_P04",
+		START_TIME = 0.45,		
+        
+        POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = -20,		
+		POSITION_OFFSET_Y = 160,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT5 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "RespawnLanding_P04",
+		START_TIME = 0.55,		
+        
+        POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = -20,		
+		POSITION_OFFSET_Y = 210,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT6 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Pet_Level_Up01",
+		START_TIME = 0,		
+        
+        POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT7 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Pet_Summon02",
+		START_TIME = 0,		
+        
+        POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 10,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+}
+
+-- 펫 진화 이펙트
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Evolution_Pet",
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_CUSTOM"],
+	
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_MESH_PLAYER_UI_MAJOR"],
+		NAME = "Mesh_LevelUp01.X",
+		START_TIME = 0,		
+        
+        POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT1 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Level_Up03",
+		START_TIME = 0,		
+        
+        POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT2 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Level_Up04",
+		START_TIME = 0,		
+        
+        POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT3 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Level_Up05",
+		START_TIME = 0.1,		
+        
+        POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT4 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Level_Up06",
+		START_TIME = 0,		
+        
+        POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT5 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Level_Up02",
+		START_TIME = 0,		
+        
+        POSITION_BONE_NAME = "",
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+}
+
+-- 펫 격려 이펙트
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Cheer_Pet",
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_CUSTOM"],
+	
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Pet_Cheer01",
+		START_TIME = 0,		
+        
+        POSITION_BONE_NAME = "Bip01",
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 50,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},	
+}
+
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Pet_Mystic_A_Cute2", 
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_ANIM"],
+		
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Pa_Pet_Nasod_1_Cute2",
+		
+		START_TIME = 0,
+		
+		TRACE = TRUE,
+		BONE_NAME = "EN_Dummy01",
+	},
+	
+	EFFECT1 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Pa_Pet_Nasod_1_Cute2",
+		
+		START_TIME = 0,
+		
+		TRACE = TRUE,
+		BONE_NAME = "EN_Dummy02",
+	},
+}
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Pet_Mystic_B_Cute1", 
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_ANIM"],
+		
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Pa_Pet_Nasod_2_Cute1",
+		
+		START_TIME = 1.7,
+		
+		TRACE = TRUE,
+		BONE_NAME = "Center_Dummy01",
+		
+		POSITION_OFFSET_X = 30,		
+	},
+}
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Pet_Mystic_C_Cute1", 
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_ANIM"],
+		
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Pa_Pet_Nasod_2_Cute1",
+		
+		START_TIME = 1.75,
+		
+		TRACE = TRUE,
+		BONE_NAME = "Center_Dummy01",
+		
+		POSITION_OFFSET_X = 30,		
+		POSITION_OFFSET_Y = 10,	
+	},
+}
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Pet_Mystic_Nor_Special", 
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_ANIM"],
+		
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Pa_Pet_Nasod_2_SpA_Star",
+		
+		START_TIME = 0.5,
+		
+		TRACE = FALSE,
+	},
+	EFFECT1 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Pa_Pet_Nasod_2_SpA_Hanabi1",
+		
+		START_TIME = 0.9,
+		POSITION_OFFSET_Y = 300,	
+		
+		TRACE = FALSE,
+	},
+	EFFECT2 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Pa_Pet_Nasod_2_SpA_Hanabi2",
+		
+		START_TIME = 0.9,
+		POSITION_OFFSET_Y = 300,	
+		
+		TRACE = FALSE,
+	},
+	EFFECT3 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Pa_Pet_Nasod_2_SpA_Light",
+		
+		START_TIME = 0.9,
+		POSITION_OFFSET_Y = 300,	
+		
+		TRACE = FALSE,
+	},
+}
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Pet_Mystic_Se_Special", 
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_ANIM"],
+		
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Pa_Pet_Nasod_SP_2_SpA_Hanabi1",
+		
+		START_TIME = 0.9,
+		
+		TRACE = FALSE,
+		POSITION_OFFSET_Y = 300,	
+	},
+	EFFECT1 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Pa_Pet_Nasod_SP_2_SpA_Hanabi2",
+		
+		START_TIME = 0.9,
+		POSITION_OFFSET_Y = 300,	
+		
+		TRACE = FALSE,
+	},
+	EFFECT2 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Pa_Pet_Nasod_SP_2_SpA_Light",
+		
+		START_TIME = 0.9,
+		POSITION_OFFSET_Y = 300,	
+		
+		TRACE = FALSE,
+	},
+	EFFECT2 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Pa_Pet_Nasod_SP_2_SpA_Star",
+		
+		START_TIME = 0.5,
+		
+		TRACE = FALSE,
+	},
+}
+
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Pet_Mystic_A_Dash", 
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_ANIM"],
+		
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Pa_Pet_Nasod_1_Dash",
+		
+		START_TIME = 0,
+		
+		TRACE = TRUE,
+		BONE_NAME = "EN_Dummy01",
+		POSITION_OFFSET_X = 5,
+	},
+	
+	EFFECT1 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Pa_Pet_Nasod_1_Dash",
+		
+		START_TIME = 0,
+		
+		TRACE = TRUE,
+		BONE_NAME = "EN_Dummy02",
+		POSITION_OFFSET_X = 5,
+	},
+}
+
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Pet_Hach_Sigh", 
+	
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_ANIM"],
+		
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Pet_Haecheulring_sigh_P01",
+		
+		START_TIME = 0.8,
+		BONE_NAME = "Mouse_01",
+		TRACE = TRUE,
+		APPLY_UNIT_ROTATION = TRUE,
+	},
+}
+
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Pet_Ancient_Dark", 
+	
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_ANIM"],
+		
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "PETIT_ANCIENT_HALLOW_DARK01",
+		
+		START_TIME = 0,
+		BONE_NAME = "Bip01_Spine",
+		TRACE = TRUE,
+		APPLY_UNIT_ROTATION = TRUE,
+	},
+}
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Pet_Ancient_Flame", 
+	
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_ANIM"],
+		
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "PETIT_ANCIENT_HALLOW_FALME01",
+		
+		START_TIME = 0,
+		BONE_NAME = "Bip01_Spine",
+		TRACE = TRUE,
+		APPLY_UNIT_ROTATION = TRUE,
+	},
+}
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Pet_Ancient_Spook", 
+	
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_ANIM"],
+		
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "PETIT_ANCIENT_HALLOW_SPOOK01",
+		
+		START_TIME = 0,
+		BONE_NAME = "Bip01_Spine",
+		TRACE = TRUE,
+		APPLY_UNIT_ROTATION = TRUE,
+	},
+}
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Pet_Ancient_Sprite", 
+	
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_ANIM"],
+		
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "PETIT_ANCIENT_HALLOW_SPRITE01",
+		
+		START_TIME = 0,
+		BONE_NAME = "Bip01_Spine",
+		TRACE = TRUE,
+		APPLY_UNIT_ROTATION = TRUE,
+	},
+}
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Pet_Unicorn_Special", 
+	
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_ANIM"],
+		
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Pet_unicorn_specialA_P01",
+		
+		START_TIME = 0,
+		BONE_NAME = "Bip01_Head",
+		TRACE = TRUE,
+		APPLY_UNIT_ROTATION = TRUE,
+	},
+}
+
+
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Relation_AttachEffect_01", 
+	
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_ANIM"],
+		
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "RelationEffect01_Attach_P01",
+		
+		START_TIME = 0,
+--		BONE_NAME = "Dummy01",
+		TRACE = TRUE,
+	},
+}
+
+
+
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Relation_CloseEffect_01", 
+	
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_ANIM"],
+		
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "RelationEffect01_Close_P01",
+		START_TIME = 0,
+	},
+	EFFECT1 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "RelationEffect01_Close_P02",
+		START_TIME = 0,
+	},
+	EFFECT2 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "RelationEffect01_Close_P03",
+		START_TIME = 0,
+	},
+	EFFECT3 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "RelationEffect01_Close_P04",
+		START_TIME = 0,
+	},
+	EFFECT4 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "RelationEffect01_Close_P05",
+		START_TIME = 0,
+	},
+	EFFECT5 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "RelationEffect01_Close_P06",
+		START_TIME = 0,
+	},
+	EFFECT6 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "RelationEffect01_Close_P07",
+		START_TIME = 0,
+	},
+	EFFECT7 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "RelationEffect01_Close_P08",
+		START_TIME = 0,
+	},
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "RelationEffect01_Close_P01",
+		START_TIME = 0,
+	},
+
+}
+
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Ice_Heater_Wait", 
+	
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_ANIM"],
+		
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Light_Fire_machine01",
+		BONE_NAME = "Object05",
+		START_TIME = 0,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 190,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 2.0,
+		SCALE_Y = 2.0,
+		SCALE_Z = 2.0,
+		SET_OVER_UI = TRUE,
+	},
+}
+
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Ice_Heater_Start", 
+	
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_CUSTOM"],
+		
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "LightParticle_Fire_Machine_Start05",
+		START_TIME = 3.0,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 474+70,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 2.0,
+		SCALE_Y = 2.0,
+		SCALE_Z = 2.0,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT1 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "LightParticle_Fire_Machine_Start04",
+		START_TIME = 3.33,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 474-10,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 2.0,
+		SCALE_Y = 2.0,
+		SCALE_Z = 2.0,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT2 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "LightParticle_Fire_Machine_Start03",
+		START_TIME = 5.53,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 424,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 2.0,
+		SCALE_Y = 2.0,
+		SCALE_Z = 2.0,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT3 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Light_Fire_Machine_Start02",
+		START_TIME = 5.53,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 387,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 2.0,
+		SCALE_Y = 2.0,
+		SCALE_Z = 2.0,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT4 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Light_Fire_Machine_Start01",
+		START_TIME = 5.53,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 387,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 2.0,
+		SCALE_Y = 2.0,
+		SCALE_Z = 2.0,
+		SET_OVER_UI = TRUE,
+	},	
+	
+	EFFECT5 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "LightParticle_Fire_Machine_End01",
+		START_TIME = 5.91,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 400,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 3.0,
+		SCALE_Y = 3.0,
+		SCALE_Z = 3.0,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT6 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Light_Fire_machine_End02",
+		START_TIME = 5.91,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 400,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 3.0,
+		SCALE_Y = 3.0,
+		SCALE_Z = 3.0,
+		SET_OVER_UI = TRUE,
+	},
+}
+
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Mini_Ice_Heater_Start", 
+	
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_CUSTOM"],
+		
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "LightParticle_Fire_Machine_Start05",
+		BONE_NAME = "Object05",
+		START_TIME = 0.7,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 424+70,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 2.0,
+		SCALE_Y = 2.0,
+		SCALE_Z = 2.0,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT1 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "LightParticle_Fire_Machine_Start04",
+		START_TIME = 0.75,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 474-10,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 2.0,
+		SCALE_Y = 2.0,
+		SCALE_Z = 2.0,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT2 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "LightParticle_Fire_Machine_Start03",
+		START_TIME = 2.7,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 424,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 2.0,
+		SCALE_Y = 2.0,
+		SCALE_Z = 2.0,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT3 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Light_Fire_Machine_Start02",
+		START_TIME = 3.08,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 387,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 2.0,
+		SCALE_Y = 2.0,
+		SCALE_Z = 2.0,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT4 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Light_Fire_Machine_Start01",
+		START_TIME = 3.78,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 397,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 2.0,
+		SCALE_Y = 2.0,
+		SCALE_Z = 2.0,
+		SET_OVER_UI = TRUE,
+	},	
+	
+	EFFECT5 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "LightParticle_Fire_Machine_End01",
+		START_TIME = 3.78,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 400,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 3.0,
+		SCALE_Y = 3.0,
+		SCALE_Z = 3.0,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT6 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Light_Fire_machine_End02",
+		START_TIME = 3.78,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 400,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 3.0,
+		SCALE_Y = 3.0,
+		SCALE_Z = 3.0,
+		SET_OVER_UI = TRUE,
+	},
+}
+
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_AllInOne_Ice_Heater_Wait", 
+	
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_ANIM"],
+		
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		BONE_NAME = "Object05",
+		NAME = "Light_Fire_machine01_DarkEL",
+		START_TIME = 0,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 190,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 2.0,
+		SCALE_Y = 2.0,
+		SCALE_Z = 2.0,
+		SET_OVER_UI = TRUE,
+	},
+}
+
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_All_In_One_Ice_Heater_Start", 
+	
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_CUSTOM"],
+		
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "LightParticle_Fire_Machine_Start05",
+		START_TIME = 3.0,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 474+70,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 2.0,
+		SCALE_Y = 2.0,
+		SCALE_Z = 2.0,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT1 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "LightParticle_Fire_Machine_Start04",
+		START_TIME = 3.33,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 474-10,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 2.0,
+		SCALE_Y = 2.0,
+		SCALE_Z = 2.0,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT2 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "LightParticle_Fire_Machine_Start03",
+		START_TIME = 5.53,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 424,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 2.0,
+		SCALE_Y = 2.0,
+		SCALE_Z = 2.0,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT3 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Light_Fire_Machine_Start02_DarkEL",
+		START_TIME = 5.53,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 387,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 2.0,
+		SCALE_Y = 2.0,
+		SCALE_Z = 2.0,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT4 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Light_Fire_Machine_Start01_DarkEL",
+		START_TIME = 5.53,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 387,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 2.0,
+		SCALE_Y = 2.0,
+		SCALE_Z = 2.0,
+		SET_OVER_UI = TRUE,
+	},	
+	
+	EFFECT5 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "LightParticle_Fire_Machine_End01",
+		START_TIME = 5.91,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 400,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 3.0,
+		SCALE_Y = 3.0,
+		SCALE_Z = 3.0,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT6 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Light_Fire_machine_End02_DarkEL",
+		START_TIME = 5.91,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 400,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 3.0,
+		SCALE_Y = 3.0,
+		SCALE_Z = 3.0,
+		SET_OVER_UI = TRUE,
+	},
+}
+
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Ancient_Ice_Heater_Wait", 
+	
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_ANIM"],
+		
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Light_Fire_machine01",
+		BONE_NAME = "Object12",
+		START_TIME = 0,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 190,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 2.0,
+		SCALE_Y = 2.0,
+		SCALE_Z = 2.0,
+		SET_OVER_UI = TRUE,
+	},
+}
+
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Ancient_Ice_Heater_Start", 
+	
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_CUSTOM"],
+		
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Wind_Machine_FX_P02",
+		START_TIME = 0.6,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 362,	
+		POSITION_OFFSET_Z = 0.75,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT1 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Wind_Machine_FX_P02",
+		START_TIME = 3.9,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 362,	
+		POSITION_OFFSET_Z = 0.75,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT2 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Wind_Machine_FX_P01",
+		START_TIME = 3.76,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 362,	
+		POSITION_OFFSET_Z = 0.75,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT3 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Wind_Machine_FX_P03",
+		START_TIME = 3.9,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 362,	
+		POSITION_OFFSET_Z = 0.75,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT4 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Wind_Machine_FX_P04",
+		START_TIME = 1.33,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 362,	
+		POSITION_OFFSET_Z = 0.75,
+		SET_OVER_UI = TRUE,
+	},	
+	
+	EFFECT5 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Wind_Machine_FX_P05",
+		START_TIME = 0.76,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 362,	
+		POSITION_OFFSET_Z = 0.75,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT6 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Wind_Machine_FX_P06",
+		START_TIME = 3.93,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 362,	
+		POSITION_OFFSET_Z = 0.75,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT7 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Wind_Machine_FX_P07",
+		START_TIME = 3.93,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 362,	
+		POSITION_OFFSET_Z = 0.75,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT8 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Wind_Machine_FX_P08",
+		START_TIME = 2.13,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 362,	
+		POSITION_OFFSET_Z = 0.75,
+		SET_OVER_UI = TRUE,
+	},	
+	
+	EFFECT9 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Wind_Machine_FX_P09",
+		START_TIME = 3.93,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 362,	
+		POSITION_OFFSET_Z = 0.75,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT10 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Wind_Machine_FX_P11",
+		START_TIME = 1.66,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 362,	
+		POSITION_OFFSET_Z = 0.75,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT11 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Wind_Machine_FX_P12",
+		START_TIME = 3.93,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 362,	
+		POSITION_OFFSET_Z = 0.75,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT12 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Wind_Machine_FX_P07",
+		START_TIME = 0.6,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 362,	
+		POSITION_OFFSET_Z = 0.75,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT13 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Wind_Machine_FX_P14",
+		START_TIME = 3.33,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 362,	
+		POSITION_OFFSET_Z = 0.75,
+		SET_OVER_UI = TRUE,
+	},
+}
+
+
+
+g_pEffectSet:AddEffectSetTemplet_LUA
+{--커플요청 수락
+	NAME = "EffectSet_Wedding_Heart_01",
+	EFFECT0 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P01",
+		START_TIME = 0.666,
+		BONE_NAME = "Bip01_Footsteps",
+		POSITION_OFFSET_Y = 100,
+	},
+	EFFECT1 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P02",
+		START_TIME = 0.6,
+		BONE_NAME = "Bip01_Footsteps",
+		POSITION_OFFSET_Y = 100,
+	},
+	EFFECT2 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P03",
+		START_TIME = 0.66,
+		BONE_NAME = "Bip01_Footsteps",
+		POSITION_OFFSET_Y = 100,
+	},
+	EFFECT3 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P05",
+		START_TIME = 0.36,
+		BONE_NAME = "Bip01_Footsteps",
+		POSITION_OFFSET_Y = 100,
+	},
+	EFFECT4 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P08",
+		START_TIME = 0.03,
+		BONE_NAME = "Bip01_Footsteps",
+		POSITION_OFFSET_Y = 100,
+	},
+	EFFECT5 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P09",
+		START_TIME = 0.66,
+		BONE_NAME = "Bip01_Footsteps",
+		POSITION_OFFSET_Y = 100,
+	},
+	EFFECT6 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P11",
+		START_TIME = 0.6,
+		BONE_NAME = "Bip01_Footsteps",
+		POSITION_OFFSET_Y = 100,
+	},
+}
+
+g_pEffectSet:AddEffectSetTemplet_LUA
+{--
+	NAME = "EffectSet_Wedding_Heart_02",
+	EFFECT0 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_MESH_PLAYER_GAME_MAJOR"],
+		NAME = "Wedding_Heart_SkillAttack_01",
+		START_TIME = 0.66,
+		BONE_NAME = "Bip01_L_Hand",
+	},
+}
+g_pEffectSet:AddEffectSetTemplet_LUA
+{--
+	NAME = "EffectSet_Wedding_Heart_03",
+	EFFECT0 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_GAME_MAJOR"],
+		NAME = "Wedding_Heart_P12",
+		BONE_NAME = "Box01",
+		TRACE = TRUE,
+	},
+	EFFECT1 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_GAME_MAJOR"],
+		NAME = "Wedding_Heart_P13",
+		BONE_NAME = "Box01",
+		TRACE = TRUE,
+	},
+}
+g_pEffectSet:AddEffectSetTemplet_LUA
+{--
+	NAME = "EffectSet_Wedding_Heart_04",
+	EFFECT0 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_GAME_MAJOR"],
+		NAME = "Wedding_Heart_P14",
+	},
+	EFFECT1 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_GAME_MAJOR"],
+		NAME = "Wedding_Heart_P15",
+	},
+	EFFECT2 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_GAME_MAJOR"],
+		NAME = "Wedding_Heart_P17",
+	},
+	EFFECT3 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_GAME_MAJOR"],
+		NAME = "Wedding_Heart_P07",
+	},
+	EFFECT4 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_GAME_MAJOR"],
+		NAME = "Wedding_Heart_P18",
+	},
+}
+g_pEffectSet:AddEffectSetTemplet_LUA
+{--
+	NAME = "EffectSet_Wedding_Heart_05",
+	EFFECT0 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P19",
+		TRACE = TRUE,		
+	},
+	EFFECT1 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P20",
+		TRACE = TRUE,
+	},
+	EFFECT2 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "EffectSet_RAVEN_HYPER_STEP_EXPLO_P08",
+		TRACE = TRUE,
+	},
+}
+
+g_pEffectSet:AddEffectSetTemplet_LUA
+{--
+	NAME = "EffectSet_Wedding_Heart_07",
+	EFFECT0 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_GAME_MAJOR"],
+		NAME = "Wedding_Heart_P19",
+		BONE_NAME = "Bip01_Footsteps",
+		POSITION_OFFSET_Y = 40,
+		TRACE = TRUE,
+	},
+	EFFECT1 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_GAME_MAJOR"],
+		NAME = "Wedding_Heart_P20",
+		START_TIME = 0.16,
+		BONE_NAME = "Bip01_Footsteps",
+		POSITION_OFFSET_Y = 40,
+		TRACE = TRUE,
+	},
+	EFFECT2 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_GAME_MAJOR"],
+		NAME = "Wedding_Heart_P19",
+		START_TIME = 0.16,
+		BONE_NAME = "Bip01_Footsteps",
+		POSITION_OFFSET_X = 20,
+		POSITION_OFFSET_Y = 40,
+		TRACE = TRUE,
+	},
+	EFFECT3 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_GAME_MAJOR"],
+		NAME = "Wedding_Heart_P20",
+		START_TIME = 0.32,
+		BONE_NAME = "Bip01_Footsteps",
+		POSITION_OFFSET_X = 20,
+		POSITION_OFFSET_Y = 20,
+		TRACE = TRUE,
+	},
+	EFFECT4 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_GAME_MAJOR"],
+		NAME = "Wedding_Heart_P19",
+		START_TIME = 0.32,
+		BONE_NAME = "Bip01_Footsteps",
+		POSITION_OFFSET_X = -20,
+		POSITION_OFFSET_Y = 40,
+		TRACE = TRUE,
+	},
+	EFFECT5 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_GAME_MAJOR"],
+		NAME = "Wedding_Heart_P20",
+		START_TIME = 0.48,
+		BONE_NAME = "Bip01",
+		POSITION_OFFSET_X = -20,
+		POSITION_OFFSET_Y = 20,
+		TRACE = TRUE,
+	},
+}
+g_pEffectSet:AddEffectSetTemplet_LUA
+{--
+	NAME = "EffectSet_Wedding_Heart_08",
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_CUSTOM"],
+
+	EFFECT0 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P01",
+		START_TIME = 0.33,
+	},
+	EFFECT1 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P02",
+		START_TIME = 0.16,
+	},
+	EFFECT2 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P21",
+		START_TIME = 0.36,
+		SCALE_X = 1,
+		SCALE_Y = 1,
+		SCALE_Z = 1,
+	},
+	EFFECT3 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P22",
+		START_TIME = 0.5,
+		SCALE_X = 1.25,
+		SCALE_Y = 1,
+		SCALE_Z = 1.25,
+	},
+	EFFECT4 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P01",
+		START_TIME = 1.33,
+	},
+	EFFECT5 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P03",
+		START_TIME = 1.33,
+	},
+	EFFECT6 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P05",
+		START_TIME = 1,
+	},
+	EFFECT7 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P09",
+		START_TIME = 1.66,
+	},
+	EFFECT8 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P24",
+		START_TIME = 0.33,
+		SCALE_X = 1,
+		SCALE_Y = 1,
+		SCALE_Z = 1,
+	},
+}
+
+g_pEffectSet:AddEffectSetTemplet_LUA
+{--
+	NAME = "EffectSet_Wedding_Heart_06",
+	EFFECT0 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P19",
+		BONE_NAME = "Bip01",
+		TRACE = TRUE,
+	},
+	EFFECT1 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P20",
+		START_TIME = 0.06,
+		BONE_NAME = "Bip01",
+		TRACE = TRUE,
+	},
+}
+
+g_pEffectSet:AddEffectSetTemplet_LUA
+{--
+	NAME = "EffectSet_Wedding_Heart_09",
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_CUSTOM"],
+	EFFECT0 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P01",
+		START_TIME = 0.33,
+		SCALE_X = 0.5,
+		SCALE_Y = 0.5,
+		SCALE_Z = 0.5,
+	},
+	EFFECT1 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P02",
+		START_TIME = 0.16,
+		SCALE_X = 0.5,
+		SCALE_Y = 0.5,
+		SCALE_Z = 0.5,
+	},
+	EFFECT2 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P21",
+		START_TIME = 0.36,
+		SCALE_X = 0.5,
+		SCALE_Y = 0.5,
+		SCALE_Z = 0.5,
+	},
+	EFFECT3 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P01",
+		START_TIME = 1.33,
+		SCALE_X = 0.5,
+		SCALE_Y = 0.5,
+		SCALE_Z = 0.5,
+	},
+	EFFECT4 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P03",
+		START_TIME = 1.33,
+		SCALE_X = 0.5,
+		SCALE_Y = 0.5,
+		SCALE_Z = 0.5,
+	},
+	EFFECT5 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P05",
+		START_TIME = 1,
+		SCALE_X = 0.5,
+		SCALE_Y = 0.5,
+		SCALE_Z = 0.5,
+	},
+	EFFECT6 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MINOR"],
+		NAME = "Wedding_Heart_P24",
+		START_TIME = 0.33,
+		SCALE_X = 0.5,
+		SCALE_Y = 0.5,
+		SCALE_Z = 0.5,
+	},
+}
+
+

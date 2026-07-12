@@ -1,0 +1,211 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+INIT_SYSTEM =
+{
+	UNIT_WIDTH = 200,
+	UNIT_HEIGHT = 100,
+	UNIT_LAYER = X2_LAYER["XL_UNIT_0"],
+	UNIT_SCALE = 1,
+}
+
+INIT_DEVICE =
+{
+	READY_TEXTURE =
+	{		
+	},
+	READY_SOUND =
+	{
+	"Bat_HitEarth.ogg",
+	"Summon_Dryad_Hit.wav",
+	},
+}
+
+INIT_MOTION =
+{
+	MOTION_FILE_NAME = "Motion_Harpy_Nest.x",
+}
+
+INIT_PHYSIC =
+{
+	RELOAD_ACCEL 						 = 2000,
+	G_ACCEL 							 = 4000,
+	MAX_G_SPEED 						 = -2000,
+	WALK_SPEED 							 = 300,
+	RUN_SPEED							 = 600,
+	JUMP_SPEED 					   		 = 1500,
+	DASH_JUMP_SPEED						 = 1800,
+}
+
+INIT_COMPONENT =
+{
+	MP_CHANGE_RATE						= 1,
+	MP_CHARGE_RATE 						= 130,
+	SHADOW_SIZE 						= 200,
+	SHADOW_FILE_NAME					= "shadow.dds",
+	SMALL_HP_BAR_BLUE					= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED 					= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW 				= "Small_HP_bar_Yellow.TGA",
+	QUESTION_MARK_SEQ 					= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ 				= "ExclamationMarkNPC",
+	HEAD_BONE_NAME 						= "Bip01_Head",
+	HITTED_TYPE 						= HITTED_TYPE["HTD_MEAT"],
+	MAX_HYPER_MODE_TIME 				= 30,
+	HYPER_MODE_COUNT					= 0,
+	FALL_DOWN 							= TRUE,
+	DIE_FLY					= 0,
+}
+
+INIT_STATE =
+{
+	{ STATE_NAME = "HARPY_NEST_WAIT",				},
+	{ STATE_NAME = "HARPY_NEST_DAMAGE",				},	
+	{ STATE_NAME = "HARPY_NEST_DYING",				LUA_FRAME_MOVE_FUNC = "HARPY_NEST_DYING_FRAME_MOVE_FUNC", },
+
+
+	START_STATE 					= "HARPY_NEST_WAIT",
+	WAIT_STATE 						= "HARPY_NEST_WAIT",
+	SMALL_DAMAGE_LAND_FRONT 		= "HARPY_NEST_DAMAGE",
+	SMALL_DAMAGE_LAND_BACK			= "HARPY_NEST_DAMAGE",
+	BIG_DAMAGE_LAND_FRONT 			= "HARPY_NEST_DAMAGE",
+	BIG_DAMAGE_LAND_BACK 			= "HARPY_NEST_DAMAGE",	
+	
+	DOWN_DAMAGE_LAND_FRONT 			= "HARPY_NEST_DAMAGE",
+	DOWN_DAMAGE_LAND_BACK 			= "HARPY_NEST_DAMAGE",	
+	
+	FLY_DAMAGE_FRONT 				= "HARPY_NEST_DAMAGE",
+	FLY_DAMAGE_BACK 				= "HARPY_NEST_DAMAGE",
+	SMALL_DAMAGE_AIR 				= "HARPY_NEST_DAMAGE",
+	BIG_DAMAGE_AIR 					= "HARPY_NEST_DAMAGE",
+	DOWN_DAMAGE_AIR 				= "HARPY_NEST_DAMAGE",
+	DOWN_DAMAGE_AIR_LANDING 		= "HARPY_NEST_DAMAGE",
+	UP_DAMAGE						= "HARPY_NEST_DAMAGE",
+	--DAMAGE_REVENGE 				= "HARPY_NEST_DAMAGE_REVENGE",
+	DYING_LAND_FRONT 				= "HARPY_NEST_DYING",
+	DYING_LAND_BACK 				= "HARPY_NEST_DYING",
+	DYING_SKY 						= "HARPY_NEST_DYING",
+	--REVENGE_ATTACK 				= "HARPY_NEST_DAMAGE_REVENGE",
+}
+
+INIT_AI =
+{
+	TARGET =
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_RANDOM"],
+		TARGET_INTERVAL 			= 1,
+		TARGET_NEAR_RANGE 			= 250,
+		TARGET_RANGE 				= 400,
+		TARGET_LOST_RANGE 			= 600,
+		TARGET_SUCCESS_RATE 		= 100,
+		ATTACK_TARGET_RATE 			= 100,
+		PRESERVE_LAST_TARGET_RATE 	= 100,
+	},
+	CHASE_MOVE =
+	{
+		MOVE_SPLIT_RANGE 			= 200,
+		DEST_GAP 					= 150,
+		MOVE_GAP 					= 160,
+		DIR_CHANGE_INTERVAL 		= 0.7,
+		WALK_INTERVAL 				= 3,
+		NEAR_WALK_RATE 				= 100,
+		FAR_WALK_RATE 				= 100,
+		JUMP_INTERVAL 				= 5,
+		UP_JUMP_RATE 				= 0,
+		UP_DOWN_RATE 				= 0,
+		DOWN_JUMP_RATE 				= 0,
+		DOWN_DOWN_RATE 				= 0,
+	},
+	PATROL_MOVE =
+	{
+		PATROL_BEGIN_RATE 			= 50,
+		PATROL_RANGE 				= 50,
+		PATROL_COOL_TIME 			= 5,
+		ONLY_THIS_LINE_GROUP 		= TRUE,
+	},
+	ESCAPE_MOVE =
+	{
+		MOVE_SPLIT_RANGE 			= 500,
+		ESCAPE_GAP 					= 600,
+		WALK_INTERVAL 				= 1.5,
+		NEAR_WALK_RATE 				= 20,
+		FAR_WALK_RATE 				= 20,
+		JUMP_INTERVAL 				= 10,
+		UP_JUMP_RATE 				= 10,
+		UP_DOWN_RATE 				= 10,
+		DOWN_JUMP_RATE 				= 10,
+		DOWN_DOWN_RATE 				= 10,
+	},
+}
+HARPY_NEST_WAIT =
+{
+	ANIM_NAME = "Wait",
+	PLAY_TYPE = XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	NEVER_MOVE = TRUE,
+	TRANSITION = TRUE,
+	CAN_PUSH_UNIT = TRUE,
+	CAN_PASS_UNIT = FALSE,
+	SPEED_X = 0,
+	SPEED_Y = 0,
+	PASSIVE_SPEED_X = 0,
+}
+
+HARPY_NEST_DAMAGE =
+{
+	ANIM_NAME = "Damage",
+	PLAY_TYPE = XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	NEVER_MOVE = TRUE,
+	TRANSITION = FALSE,
+	LAND_CONNECT = FALSE,
+	CAN_PUSH_UNIT = TRUE,
+	CAN_PASS_UNIT = FALSE,
+	
+		SOUND_PLAY0 = { 0.01, "Bat_HitEarth.ogg"},
+
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"HARPY_NEST_WAIT",},
+	},
+}
+HARPY_NEST_DYING =
+{
+	ANIM_NAME = "Dying",
+	PLAY_TYPE = XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	NEVER_MOVE = TRUE,
+	TRANSITION = FALSE,
+	IMMADIATE_PACKET_SEND = TRUE,
+	LAND_CONNECT = FALSE,
+	CAN_PUSH_UNIT = FALSE,
+	CAN_PASS_UNIT = TRUE,
+	INVINCIBLE = 	{ 0,100, },
+	
+	SOUND_PLAY0 = 	{ 0.172,"Summon_Dryad_Hit.wav" },
+	
+	DYING_END = TRUE,
+}
+
+function HARPY_NEST_DYING_FRAME_MOVE_FUNC( pKTDXApp, pX2Game, pNPCUnit )	
+	if pNPCUnit:AnimEventTimer_LUA( 0.8 ) then			
+		local vPos = pNPCUnit:GetPos()		
+		vPos.x = vPos.x - 200
+		pX2Game:CreateNPCReq_LUA( NPC_UNIT_ID["NUI_BABY_HARPY"], pNPCUnit:GetHardLevel(), true, vPos, true, 0, false)
+		vPos.x = vPos.x + 400
+		pX2Game:CreateNPCReq_LUA( NPC_UNIT_ID["NUI_BABY_HARPY"], pNPCUnit:GetHardLevel(), true, vPos, true, 0, false)	
+	end
+	
+	if pNPCUnit:AnimEventTimer_LUA( 1.0 ) then
+		local Rate = pNPCUnit:GetRandVal() % 100	
+		local vPos = pNPCUnit:GetPos()
+		
+		vPos.x = vPos.x - 100		
+		if Rate > 40 then		
+			pX2Game:CreateNPCReq_LUA( NPC_UNIT_ID["NUI_GIANT_HARPY"], pNPCUnit:GetHardLevel(), true, vPos, true, 0, false)	
+		else
+			pX2Game:CreateNPCReq_LUA( NPC_UNIT_ID["NUI_BABY_HARPY"], pNPCUnit:GetHardLevel(), true, vPos, true, 0, false)	
+		end	
+		vPos.x = vPos.x + 100
+		pX2Game:CreateNPCReq_LUA( NPC_UNIT_ID["NUI_BABY_HARPY"], pNPCUnit:GetHardLevel(), true, vPos, true, 0, false)	
+	end
+end
+
+
+

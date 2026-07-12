@@ -1,0 +1,276 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 50.0,
+	UNIT_HEIGHT		= 150.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	RENDER_PARAM	= RENDER_TYPE["RT_CARTOON"],
+}
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_BeeHouse.x",
+	MOTION_CHANGE_TEX_XET	= "Motion_BeeBombHouse.xet",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 0,
+	RUN_SPEED			= 0,
+	JUMP_SPEED			= 0,
+	DASH_JUMP_SPEED		= 0,
+}
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 2250,
+	MP_CHANGE_RATE		= 0,
+	MP_CHARGE_RATE		= 0,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	SHADOW_SIZE			= 0,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "",
+	EXCLAMATION_MARK_SEQ	= "",
+	
+	HEAD_BONE_NAME			= "Hive",
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+
+	HITTED_TYPE			= HITTED_TYPE["HTD_BEEHOUSE"],
+	
+	DAMAGE_DOWN         = FALSE,
+
+	
+
+	
+
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "BEE_BOMB_HOUSE_START",				}, --LUA_STATE_START_FUNC = "BEE_BOMB_HOUSE_START_STATE_START", },
+	{ STATE_NAME = "BEE_BOMB_HOUSE_WAIT",				},
+	{ STATE_NAME = "BEE_BOMB_HOUSE_RESPAWN",			}, --LUA_FRAME_MOVE_FUNC = "BEE_BOMB_HOUSE_RESPAWN_FRAME_MOVE", },
+		
+	--리액션 관련
+	
+	{ STATE_NAME = "BEE_BOMB_HOUSE_DAMAGE",				},	
+	{ STATE_NAME = "BEE_BOMB_HOUSE_DYING",				}, --LUA_STATE_START_FUNC = "BEE_BOMB_HOUSE_DYING_STATE_START", },
+	
+	START_STATE					= "BEE_BOMB_HOUSE_START",
+	WAIT_STATE					= "BEE_BOMB_HOUSE_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "BEE_BOMB_HOUSE_DAMAGE",
+	SMALL_DAMAGE_LAND_BACK		= "BEE_BOMB_HOUSE_DAMAGE",
+	BIG_DAMAGE_LAND_FRONT		= "BEE_BOMB_HOUSE_DAMAGE",
+	BIG_DAMAGE_LAND_BACK		= "BEE_BOMB_HOUSE_DAMAGE",
+	DOWN_DAMAGE_LAND_FRONT		= "BEE_BOMB_HOUSE_DAMAGE",
+	DOWN_DAMAGE_LAND_BACK		= "BEE_BOMB_HOUSE_DAMAGE",
+	FLY_DAMAGE_FRONT			= "BEE_BOMB_HOUSE_DAMAGE",
+	FLY_DAMAGE_BACK				= "BEE_BOMB_HOUSE_DAMAGE",
+	SMALL_DAMAGE_AIR			= "BEE_BOMB_HOUSE_DAMAGE",	
+	BIG_DAMAGE_AIR				= "BEE_BOMB_HOUSE_DAMAGE",
+	DOWN_DAMAGE_AIR				= "BEE_BOMB_HOUSE_DAMAGE",
+	UP_DAMAGE					= "BEE_BOMB_HOUSE_DAMAGE",
+	DAMAGE_REVENGE				= "BEE_BOMB_HOUSE_DAMAGE",
+	
+	DYING_LAND_FRONT			= "BEE_BOMB_HOUSE_DYING",
+	DYING_LAND_BACK				= "BEE_BOMB_HOUSE_DYING",
+	DYING_SKY					= "BEE_BOMB_HOUSE_DYING",
+
+	REVENGE_ATTACK				= "",	
+}
+
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 99999,	-- sec
+		TARGET_NEAR_RANGE			= 0,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 0,		-- cm
+		TARGET_LOST_RANGE			= 0,		-- cm
+		TARGET_SUCCESS_RATE			= 0,		-- %
+		ATTACK_TARGET_RATE			= 0,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 0,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+}
+
+BEE_BOMB_HOUSE_START = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	NEVER_MOVE					= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"BEE_BOMB_HOUSE_WAIT",	},
+	},
+}
+
+BEE_BOMB_HOUSE_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	NEVER_MOVE					= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],			"BEE_BOMB_HOUSE_RESPAWN",	"CF_BEE_BOMB_HOUSE_RESPAWN",	},
+	},
+}
+
+BEE_BOMB_HOUSE_RESPAWN = 
+{
+	ANIM_NAME					= "Start",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	NEVER_MOVE					= TRUE,
+	COOL_TIME					= 2,
+	SUPER_ARMOR					= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"BEE_BOMB_HOUSE_WAIT",	},
+	},
+}
+
+BEE_BOMB_HOUSE_DAMAGE =
+{
+	ANIM_NAME					= "Damage",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	NEVER_MOVE					= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"BEE_BOMB_HOUSE_WAIT",		},
+	},
+}
+
+BEE_BOMB_HOUSE_DYING = 
+{
+	ANIM_NAME					= "DownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+
+
+
+function CF_BEE_BOMB_HOUSE_RESPAWN( pKTDXApp, pX2Game, pNPCUnit )
+
+	nBee_NoDrop = pX2Game:LiveNPCNumType_LUA( NPC_UNIT_ID["NUI_BEEBOMB_NODROP"] )
+	nBee		= pX2Game:LiveNPCNumType_LUA( NPC_UNIT_ID["NUI_BEEBOMB"] )
+		
+	if nBee + nBee_NoDrop < pNPCUnit:GetInt_LUA(0) then
+		return true
+	else
+		return false
+	end
+	
+end
+
+
+--[[
+function BEE_BOMB_HOUSE_START_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	pNPCUnit:SetInt_LUA( 0, pX2Game:LiveNPCNumType_LUA( NPC_UNIT_ID["NUI_BEEBOMB"] ) )
+	
+end
+
+
+function BEE_BOMB_HOUSE_RESPAWN_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.8 ) then		
+		pos = pNPCUnit:GetPos()
+		pos.y = pos.y - 60
+		pX2Game:CreateNPCReq_LUA( NPC_UNIT_ID["NUI_BEEBOMB_NODROP"], pNPCUnit:GetHardLevel(), TRUE, pos, pNPCUnit:GetIsRight(), 0, true )
+		
+		if pX2Game:IsHost() then 
+			nowHP = pNPCUnit:GetNowHP()			
+			pNPCUnit:SetNowHP_LUA( nowHP - 500.0 )
+		end
+	end
+		
+end
+
+
+function BEE_BOMB_HOUSE_DYING_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	pNPCUnit:PlaySound_LUA( "Down.ogg" )
+	pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+
+end
+--]]

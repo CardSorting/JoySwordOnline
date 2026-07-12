@@ -1,0 +1,18666 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 1
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_HYPER_MODE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_HYPER_MODE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_HYPER_MODE"], BUFF_BEHAVIOR_TYPE["BBT_EFFECT_SET_WITH_DAMAGE"],
+			BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DAMAGE_MULTIPLIER_MELEE_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DAMAGE_MULTIPLIER_RANGE_ATTACK"], },
+
+			BBT_CHANGE_HYPER_MODE =
+			{
+			},
+
+			BBT_EFFECT_SET_WITH_DAMAGE =
+			{
+				NOT_USE = TRUE,
+			},
+
+			BBT_CHANGE_FINAL_DAMAGE_MULTIPLIER_MELEE_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+				},
+			},
+
+			BBT_CHANGE_FINAL_DAMAGE_MULTIPLIER_RANGE_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_RELATION_HYPER_MODE_COUNT"],
+				FORCE_TIME =
+				{
+					0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+					0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+					0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 2
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SWORD_FIRE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_SWORD_FIRE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+
+				MULTIPLIER =
+				{
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -1.3,
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+					3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+					3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 3
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_NPC_PHYSIC_ATTACK_ACCEL"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_NPC_PHYSIC_ATTACK_ACCEL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4,
+					1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4,
+					1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 4
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_NPC_PHYSIC_DEFENCE_ACCEL"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_NPC_PHYSIC_DEFENCE_ACCEL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"], },
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4,
+					1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4,
+					1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 5
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_NPC_MAGIC_ATTACK_ACCEL"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_NPC_MAGIC_ATTACK_ACCEL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], },
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4,
+					1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4,
+					1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 6
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_NPC_MAGIC_DEFENCE_ACCEL"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_NPC_MAGIC_DEFENCE_ACCEL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"], },
+
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4,
+					1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4,
+					1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 7
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_SA_COMMON_POWER_ACCEL"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_COMMON_POWER_ACCEL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.100, 1.108, 1.115, 1.123, 1.130, 1.138, 1.145, 1.153, 1.160, 1.168,
+					1.175, 1.183, 1.190, 1.198, 1.205, 1.213, 1.220, 1.228, 1.235, 1.243,
+					1.250, 1.258, 1.265, 1.273, 1.280, 1.288, 1.295, 1.303, 1.310, 1.318,
+				},
+			},
+
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+					60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+					60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 8
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_SA_COMMON_MAGIC_ACCEL"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_COMMON_MAGIC_ACCEL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"]},
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.100, 1.108, 1.115, 1.123, 1.130, 1.138, 1.145, 1.153, 1.160, 1.168,
+					1.175, 1.183, 1.190, 1.198, 1.205, 1.213, 1.220, 1.228, 1.235, 1.243,
+					1.250, 1.258, 1.265, 1.273, 1.280, 1.288, 1.295, 1.303, 1.310, 1.318,
+				},
+			},
+
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+					60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+					60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 9
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_SA_COMMON_SHIELD_ACCEL"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_COMMON_SHIELD_ACCEL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"],
+				BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"],},
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.15, 1.16, 1.17, 1.18, 1.19, 1.20, 1.21, 1.22, 1.23, 1.24, 
+					1.25, 1.26, 1.27, 1.28, 1.29, 1.30, 1.31, 1.32, 1.33, 1.34,
+					1.35, 1.36, 1.37, 1.38, 1.39, 1.40, 1.41, 1.42, 1.43, 1.44,
+				},
+			},
+
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.15, 1.16, 1.17, 1.18, 1.19, 1.20, 1.21, 1.22, 1.23, 1.24, 
+					1.25, 1.26, 1.27, 1.28, 1.29, 1.30, 1.31, 1.32, 1.33, 1.34,
+					1.35, 1.36, 1.37, 1.38, 1.39, 1.40, 1.41, 1.42, 1.43, 1.44,
+				},
+			},
+
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+					60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+					60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 10
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_SA_COMMON_POWER_ADRENALIN"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_COMMON_POWER_ADRENALIN"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"],},
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+				},
+			},
+
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 11
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_SA_COMMON_MAGIC_ADRENALIN"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_COMMON_MAGIC_ADRENALIN"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"]},
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+				},
+			},
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 12
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_SA_COMMON_SHIELD_ADRENALIN"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_COMMON_SHIELD_ADRENALIN"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"],
+				BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"],},
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6,
+					1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6,
+					1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6,
+				},
+			},
+
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6,
+					1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6,
+					1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6,
+				},
+			},
+
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 13
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_SA_COMMON_SPEED_ACCEL"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_COMMON_AURA_SPEED_ACCEL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+			BUFF_BEHAVIOR_TYPE["BBT_CHANGE_JUMP_POWER"],BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"], },
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.03, 1.034, 1.038, 1.042, 1.046, 1.05, 1.054, 1.058, 1.062, 1.066,
+					1.07, 1.074, 1.078, 1.082, 1.086, 1.09, 1.094, 1.098, 1.102, 1.106,
+					1.11, 1.114, 1.118, 1.122, 1.126, 1.13, 1.134, 1.138, 1.142, 1.146,
+				},
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.12, 1.145, 1.17, 1.195, 1.22, 1.245, 1.27, 1.295, 1.32, 1.345, 
+					1.37, 1.395, 1.42, 1.445, 1.47, 1.495, 1.52, 1.545, 1.57, 1.595,
+					1.62, 1.645, 1.67, 1.695, 1.72, 1.745, 1.77, 1.795, 1.82, 1.845,
+				},
+			},
+
+			BBT_CHANGE_JUMP_POWER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.03, 1.034, 1.038, 1.042, 1.046, 1.05, 1.054, 1.058, 1.062, 1.066,
+					1.07, 1.074, 1.078, 1.082, 1.086, 1.09, 1.094, 1.098, 1.102, 1.106,
+					1.11, 1.114, 1.118, 1.122, 1.126, 1.13, 1.134, 1.138, 1.142, 1.146,
+				},
+			},
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+					60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+					60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 14
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_P_AEM_ENERGY_OF_THE_PLENTY_1"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_AEM_ENERGY_OF_THE_PLENTY_POWER"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"], },
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.925, 0.910, 0.895, 0.88, 0.865, 0.850, 0.835, 0.820, 0.805, 0.790,
+					0.775, 0.760, 0.745, 0.73, 0.715, 0.700, 0.685, 0.670, 0.655, 0.640,
+					0.625, 0.610, 0.595, 0.58, 0.565, 0.550, 0.535, 0.520, 0.505, 0.490, 
+					},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+					0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+					0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 15
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_P_AEM_ENERGY_OF_THE_PLENTY_2"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_AEM_ENERGY_OF_THE_PLENTY_MAGIC"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"], },
+
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.925, 0.910, 0.895, 0.88, 0.865, 0.850, 0.835, 0.820, 0.805, 0.790,
+					0.775, 0.760, 0.745, 0.73, 0.715, 0.700, 0.685, 0.670, 0.655, 0.640,
+					0.625, 0.610, 0.595, 0.58, 0.565, 0.550, 0.535, 0.520, 0.505, 0.490, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+					0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+					0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 16
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_P_AEM_ENERGY_OF_THE_PLENTY_3"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_AEM_ENERGY_OF_THE_PLENTY_SHIELD"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.925, 0.910, 0.895, 0.88, 0.865, 0.850, 0.835, 0.820, 0.805, 0.790,
+					0.775, 0.760, 0.745, 0.73, 0.715, 0.700, 0.685, 0.670, 0.655, 0.640,
+					0.625, 0.610, 0.595, 0.58, 0.565, 0.550, 0.535, 0.520, 0.505, 0.490, 
+				},
+			},
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.925, 0.910, 0.895, 0.88, 0.865, 0.850, 0.835, 0.820, 0.805, 0.790,
+					0.775, 0.760, 0.745, 0.73, 0.715, 0.700, 0.685, 0.670, 0.655, 0.640,
+					0.625, 0.610, 0.595, 0.58, 0.565, 0.550, 0.535, 0.520, 0.505, 0.490, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+					0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+					0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 17
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_P_ENS_ENERGY_OF_CONCENTRATION"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_ENS_ENERGY_OF_CONCENTRATION"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_ATTACK"], },
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.03, 1.05, 1.07, 1.09, 1.11, 1.13, 1.15, 1.17, 1.19, 1.21, 
+					1.23, 1.25, 1.27, 1.29, 1.31, 1.33, 1.35, 1.37, 1.39, 1.41, 
+					1.43, 1.45, 1.47, 1.49, 1.51, 1.53, 1.55, 1.57, 1.59, 1.61, 
+				},
+			},
+
+			BBT_CHANGE_CRITICAL_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.025, 1.05, 1.075, 1.1, 1.125, 1.15, 1.175, 1.2, 1.225, 1.25,
+					1.275, 1.3, 1.325, 1.35, 1.375, 1.4, 1.425, 1.45, 1.475, 1.5,
+					1.525, 1.55, 1.575, 1.6, 1.625, 1.65, 1.675, 1.7, 1.725, 1.75,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+					0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+					0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 18
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_A_ES_ENDURANCE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SI_A_ES_ENDURANCE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_SUPER_ARMOR"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER"], },
+
+			BBT_SUPER_ARMOR =
+			{
+			},
+
+			BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1, 0.98, 0.96, 0.94, 0.92, 0.9, 0.88, 0.86, 0.84, 0.82, 
+					0.8, 0.78, 0.76, 0.74, 0.72, 0.7, 0.68, 0.66, 0.64, 0.62, 
+					0.6, 0.58, 0.56, 0.54, 0.52, 0.5, 0.48, 0.46, 0.44, 0.42, 
+ 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3, 3.15, 3.3, 3.45, 3.6, 3.75, 3.9, 4.05, 4.2, 4.35, 
+					4.5, 4.65, 4.8, 4.95, 5.1, 5.25, 5.4, 5.55, 5.7, 5.85, 
+					6, 6.15, 6.3, 6.45, 6.6, 6.75, 6.9, 7.05, 7.2, 7.35, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 19
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_A_ES_ENDURANCE_MEMO"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SI_A_ES_ENDURANCE_MEMO"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_SUPER_ARMOR"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"],	BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"],},
+
+			BBT_SUPER_ARMOR =
+			{
+			},
+
+			BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1, 0.98, 0.96, 0.94, 0.92, 0.9, 0.88, 0.86, 0.84, 0.82, 
+					0.8, 0.78, 0.76, 0.74, 0.72, 0.7, 0.68, 0.66, 0.64, 0.62, 
+					0.6, 0.58, 0.56, 0.54, 0.52, 0.5, 0.48, 0.46, 0.44, 0.42, 
+				},
+			},
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3, 3.15, 3.3, 3.45, 3.6, 3.75, 3.9, 4.05, 4.2, 4.35, 
+					4.5, 4.65, 4.8, 4.95, 5.1, 5.25, 5.4, 5.55, 5.7, 5.85, 
+					6, 6.15, 6.3, 6.45, 6.6, 6.75, 6.9, 7.05, 7.2, 7.35, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 20
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_P_ETK_BRUTAL_SLAYER"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SI_P_ETK_BRUTAL_SLAYER"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ADDITIONAL_ATTACK"], },
+
+			BBT_CHANGE_ADDITIONAL_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					0.275, 0.550, 0.825, 1.100, 1.375, 1.650, 1.925, 2.200, 2.475, 2.750,
+					3.025, 3.300, 3.575, 3.850, 4.125, 4.400, 4.675, 4.950, 5.225, 5.500,
+					5.775, 6.050, 6.325, 6.600, 6.875, 7.150, 7.425, 7.700, 7.975, 8.250,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 21
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_P_COMMON_REVERSAL_SOLDIER"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_REVERSAL_SOLDIER"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					1.040, 1.052, 1.064, 1.076, 1.088, 1.100, 1.112, 1.124, 1.136, 1.148, 
+					1.160, 1.172, 1.184, 1.196, 1.208, 1.220, 1.232, 1.244, 1.256, 1.268, 
+					1.280, 1.292, 1.304, 1.316, 1.328, 1.340, 1.352, 1.364, 1.376, 1.388, 
+				},
+			},
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					1.040, 1.052, 1.064, 1.076, 1.088, 1.100, 1.112, 1.124, 1.136, 1.148, 
+					1.160, 1.172, 1.184, 1.196, 1.208, 1.220, 1.232, 1.244, 1.256, 1.268, 
+					1.280, 1.292, 1.304, 1.316, 1.328, 1.340, 1.352, 1.364, 1.376, 1.388, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_PASS_HP"], },
+
+			BFT_PASS_HP =
+			{
+				PASS_UP = TRUE,
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				CRITERION =
+				{
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 22
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_PROTECTION_OF_EARTH"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_PROTECTION_OF_EARTH"],
+		RATE	=
+		{
+			0.04, 0.07, 0.10, 0.13, 0.16, 0.19, 0.22, 0.25, 0.28, 0.31, 
+			0.34, 0.37, 0.40, 0.43, 0.46, 0.49, 0.52, 0.55, 0.58, 0.61, 
+			0.64, 0.67, 0.70, 0.83, 0.86, 0.89, 0.92, 0.95, 0.98, 1.00, 
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+		COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_EVERY_ATTRIBUTE_DEFENCE"],
+						BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER"], },
+
+			BBT_CHANGE_EVERY_ATTRIBUTE_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 
+					350, 375, 400, 425, 450, 475, 500, 525, 550, 575, 
+					600, 625, 650, 675, 700, 725, 750, 775, 800, 825, 
+				},
+			},
+
+			BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					0.8, 0.75, 0.7, 0.65, 0.6, 0.55, 0.5, 0.45, 0.4, 0.35,
+					0.3, 0.25, 0.2, 0.15, 0.1, 0.05, 0, 0, 0, 0,
+					0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 
+					18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 
+					28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 23
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_A_LWS_NATURE_FORCE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SI_A_LWS_NATURE_FORCE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DAMAGE_MULTIPLIER_MELEE_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FORCE_DOWN_MULTIPLIER_MELEE_ATTACK"],
+				BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ATTACK_SPHERE_SCALE"], },
+
+			BBT_CHANGE_FINAL_DAMAGE_MULTIPLIER_MELEE_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+
+				PERCENT =
+				{
+					1.20, 1.27, 1.34, 1.41, 1.48, 1.55, 1.62, 1.69, 1.76, 1.83, 
+					1.90, 1.97, 2.04, 2.11, 2.18, 2.25, 2.32, 2.39, 2.46, 2.53, 
+					2.60, 2.67, 2.74, 2.81, 2.88, 2.95, 3.02, 3.09, 3.16, 3.23, 
+				},
+			},
+
+			BBT_CHANGE_FORCE_DOWN_MULTIPLIER_MELEE_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+
+				PERCENT =
+				{
+					0.990, 0.985, 0.980, 0.975, 0.970, 0.965, 0.960, 0.955, 0.950, 0.945, 
+					0.940, 0.935, 0.930, 0.925, 0.920, 0.915, 0.910, 0.905, 0.900, 0.895, 
+					0.890, 0.885, 0.880, 0.875, 0.870, 0.865, 0.860, 0.855, 0.850, 0.845, 
+				},
+			},
+
+			BBT_CHANGE_ATTACK_SPHERE_SCALE =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 24
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_SA_RBM_GIGA_DRIVE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SI_SA_RBM_GIGA_DRIVE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DAMAGE_MULTIPLIER_MELEE_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DAMAGE_MULTIPLIER_RANGE_ATTACK"],
+			BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FORCE_DOWN_MULTIPLIER_MELEE_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FORCE_DOWN_MULTIPLIER_RANGE_ATTACK"],
+			BUFF_BEHAVIOR_TYPE["BBT_RESET_SKILL_COOL_TIME"], },
+
+			BBT_CHANGE_FINAL_DAMAGE_MULTIPLIER_MELEE_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+
+				PERCENT =
+				{
+					1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25,
+					1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25,
+					1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25,
+				},
+			},
+
+			BBT_CHANGE_FINAL_DAMAGE_MULTIPLIER_RANGE_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+
+				PERCENT =
+				{
+					1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25,
+					1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25,
+					1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25,
+				},
+			},
+
+			BBT_CHANGE_FORCE_DOWN_MULTIPLIER_MELEE_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+
+				PERCENT =
+				{
+					1.2, 1.22, 1.24, 1.26, 1.28, 1.3, 1.32, 1.34, 1.36, 1.38, 
+					1.4, 1.42, 1.44, 1.46, 1.48, 1.5, 1.52, 1.54, 1.56, 1.58, 
+					1.6, 1.62, 1.64, 1.66, 1.68, 1.7, 1.72, 1.74, 1.76, 1.78, 
+				},
+			},
+
+			BBT_CHANGE_FORCE_DOWN_MULTIPLIER_RANGE_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+
+				PERCENT =
+				{
+					1.2, 1.22, 1.24, 1.26, 1.28, 1.3, 1.32, 1.34, 1.36, 1.38, 
+					1.4, 1.42, 1.44, 1.46, 1.48, 1.5, 1.52, 1.54, 1.56, 1.58, 
+					1.6, 1.62, 1.64, 1.66, 1.68, 1.7, 1.72, 1.74, 1.76, 1.78, 
+				},
+			},
+
+			BBT_RESET_SKILL_COOL_TIME =
+			{
+				SKILL_TYPE = SKILL_TYPE["ST_ACTIVE"],
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 25
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_SA_ESK_ARMAGEDON_BLADE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SI_SA_ESK_ARMAGEDON_BLADE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 
+					25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 
+					35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 26
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_SA_ESK_ARMAGEDON_BLADE_HYPER"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SI_SA_ESK_ARMAGEDON_BLADE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 
+					30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 
+					40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 27
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_NPC_RED_POTION"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_NPC_RED_POTION"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_UNIT_SCALE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"], },
+
+			BBT_CHANGE_UNIT_SCALE =
+			{
+			},
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+
+				PERCENT =
+				{
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					999999, 999999, 999999, 999999, 999999, 999999, 999999, 999999, 999999, 999999,
+					999999, 999999, 999999, 999999, 999999, 999999, 999999, 999999, 999999, 999999,
+					999999, 999999, 999999, 999999, 999999, 999999, 999999, 999999, 999999, 999999,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 28
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_NPC_ALCHEMYST_SECRET_BOSS_TRANSFORM_SCALE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_NPC_ALCHEMYST_SECRET_BOSS_TRANSFORM_SCALE"],
+		RATE	= { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, },
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_UNIT_SCALE"], BUFF_BEHAVIOR_TYPE["BBT_SUPER_ARMOR"],
+				BUFF_BEHAVIOR_TYPE["BBT_CAN_PASS_UNIT"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"], },
+
+			BBT_CHANGE_UNIT_SCALE =
+			{
+			},
+
+			BBT_SUPER_ARMOR =
+			{
+			},
+
+			BBT_CAN_PASS_UNIT =
+			{
+			},
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0,
+					2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0,
+					2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 29
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_VITAL_POINT_STAB"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_VITAL_POINT_STAB"],
+		RATE	= 
+		{ 
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 
+		},
+					
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"], },
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_SWAP_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+
+				SWAP_VALUE =
+				{
+					100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+					100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+					100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], BUFF_FINALIZER_TYPE["BFT_HIT_COUNT"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
+					6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
+					6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
+				},
+			},
+
+			BFT_HIT_COUNT =
+			{
+				BUFF_USE_COUNT_TYPE = BUFF_USE_COUNT_TYPE["BUCT_NOT_USE"],
+				COUNT =
+				{
+					3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 
+					13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 
+					23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 30
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_SA_ETK_PHANTOM_SWORD"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SI_SA_ETK_PHANTOM_SWORD"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CUSTOM_FUNCTION"], },
+
+			BBT_CUSTOM_FUNCTION =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
+					30, 31, 32, 33, 34, 35, 36, 37, 38, 39,
+					40, 41, 42, 43, 44, 45, 46, 47, 48, 49,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 31
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BLOODY_WEAPON"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BLOODY_WEAPON"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DAMAGE_MULTIPLIER_MELEE_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DAMAGE_MULTIPLIER_RANGE_ATTACK"],
+							BUFF_BEHAVIOR_TYPE["BBT_DRAIN_HP_NORMAL_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CREATE_BUFF_FACTOR"], },
+
+			BBT_CHANGE_FINAL_DAMAGE_MULTIPLIER_MELEE_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+				},
+			},
+
+			BBT_CHANGE_FINAL_DAMAGE_MULTIPLIER_RANGE_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+				},
+			},
+
+			BBT_DRAIN_HP_NORMAL_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					0.050, 0.055, 0.060, 0.065, 0.070, 0.075, 0.080, 0.085, 0.090, 0.095, 
+					0.100, 0.105, 0.110, 0.115, 0.120, 0.125, 0.130, 0.135, 0.140, 0.145, 
+					0.150, 0.155, 0.160, 0.165, 0.170, 0.175, 0.180, 0.185, 0.190, 0.195, 
+				},
+			},
+
+			BBT_CREATE_BUFF_FACTOR =
+			{
+				BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_WOUND_BLOODY_WEAPON"],
+				SKILL_ID = 4006,
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 32
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_WOUND_BLOODY_WEAPON"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_WOUND"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_DASH_IMPOSSIBLE"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+
+				MULTIPLIER =
+				{
+					-0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1,
+					-0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1,
+					-0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1,
+				},
+			},
+			BBT_DASH_IMPOSSIBLE =
+			{
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 33
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_SA_ABM_MAGICAL_MAKEUP"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SI_SA_ABM_MAGICAL_MAKEUP"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHARGE_MP_HIT_MELEE_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHARGE_MP_HIT_RANGE_ATTACK"],
+				BUFF_BEHAVIOR_TYPE["BBT_CHARGE_MP_HITTED"], },
+
+			BBT_CHARGE_MP_HIT_MELEE_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.5, 1.53, 1.56, 1.59, 1.62, 1.65, 1.68, 1.71, 1.74, 1.77,
+					1.8, 1.83, 1.86, 1.89, 1.92, 1.95, 1.98, 2.01, 2.04, 2.07,
+					2.1, 2.13, 2.16, 2.19, 2.22, 2.25, 2.28, 2.31, 2.34, 2.37,
+
+				},
+			},
+
+			BBT_CHARGE_MP_HIT_RANGE_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.5, 1.53, 1.56, 1.59, 1.62, 1.65, 1.68, 1.71, 1.74, 1.77,
+					1.8, 1.83, 1.86, 1.89, 1.92, 1.95, 1.98, 2.01, 2.04, 2.07,
+					2.1, 2.13, 2.16, 2.19, 2.22, 2.25, 2.28, 2.31, 2.34, 2.37,
+				},
+			},
+
+			BBT_CHARGE_MP_HITTED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.5, 1.53, 1.56, 1.59, 1.62, 1.65, 1.68, 1.71, 1.74, 1.77,
+					1.8, 1.83, 1.86, 1.89, 1.92, 1.95, 1.98, 2.01, 2.04, 2.07,
+					2.1, 2.13, 2.16, 2.19, 2.22, 2.25, 2.28, 2.31, 2.34, 2.37,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 
+					60, 61, 62, 63, 64, 65, 66, 67, 68, 69,
+					70, 71, 72, 73, 74, 75, 76, 77, 78, 79,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 34
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_A_AV_MANA_SHIELD"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SI_A_AV_MANA_SHIELD"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER"], },
+
+			BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.59, 0.58, 0.57, 0.56, 0.55, 0.54, 0.53, 0.52, 0.51, 0.50, 
+					0.49, 0.48, 0.47, 0.46, 0.45, 0.44, 0.43, 0.42, 0.41, 0.40, 
+					0.39, 0.38, 0.37, 0.36, 0.35, 0.34, 0.33, 0.32, 0.31, 0.30, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], BUFF_FINALIZER_TYPE["BFT_DAMAGE_VALUE"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+				},
+			},
+
+			BFT_DAMAGE_VALUE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MAX_HP"],
+				MULTIPLIER =
+				{
+					0.1, 0.1, 0.11, 0.11, 0.12, 0.12, 0.12, 0.13, 0.13, 0.14, 
+					0.14, 0.14, 0.15, 0.15, 0.16, 0.16, 0.16, 0.17, 0.17, 0.18, 
+					0.18, 0.18, 0.19, 0.19, 0.2, 0.2, 0.2, 0.21, 0.21, 0.21, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 35
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SHADOW_DEFENDER_BARRIER"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SHADOW_DEFENDER_BARRIER"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER"], },
+
+			BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 36
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SI_A_AHM_MEDITATION"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_SI_A_AHM_MEDITATION"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 
+					35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 
+					45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			-- BALANCE_ELEMENTAL_MASTER_20130117 - 메디테이션 효과 상승 및 5초 유지로 변경
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1,
+					5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1,
+					5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 37
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_P_AEM_ELEMENTAL_FRIENDSHIP"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SI_P_AEM_ELEMENTAL_FRIENDSHIP"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ATTRIBUTE_BLAZE_DEFENCE"],
+						BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ATTRIBUTE_WATER_DEFENCE"],
+						BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ATTRIBUTE_NATURE_DEFENCE"],
+						BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ATTRIBUTE_WIND_DEFENCE"],
+						},
+
+			BBT_CHANGE_ATTRIBUTE_BLAZE_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 
+					165, 180, 195, 210, 225, 240, 255, 270, 285, 300, 
+					315, 330, 345, 360, 375, 390, 405, 420, 435, 450, 
+				},
+			},
+			BBT_CHANGE_ATTRIBUTE_WATER_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 
+					165, 180, 195, 210, 225, 240, 255, 270, 285, 300, 
+					315, 330, 345, 360, 375, 390, 405, 420, 435, 450, 
+				},
+			},
+			BBT_CHANGE_ATTRIBUTE_NATURE_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 
+					165, 180, 195, 210, 225, 240, 255, 270, 285, 300, 
+					315, 330, 345, 360, 375, 390, 405, 420, 435, 450, 
+				},
+			},
+			BBT_CHANGE_ATTRIBUTE_WIND_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 
+					165, 180, 195, 210, 225, 240, 255, 270, 285, 300, 
+					315, 330, 345, 360, 375, 390, 405, 420, 435, 450, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 38
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_A_EEG_METAL_DUST_AURA"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SI_A_EEG_METAL_DUST_AURA"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EFFECT_SET_WITH_DAMAGE"], },
+
+			BBT_EFFECT_SET_WITH_DAMAGE =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 39
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_A_EEG_METAL_DUST_AURA_MEMO"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SI_A_EEG_METAL_DUST_AURA_EVE_MEMO11"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EFFECT_SET_WITH_DAMAGE"], },
+
+			BBT_EFFECT_SET_WITH_DAMAGE =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 40
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_SA_CSG_SHARPSHOOTER_SYNDROME"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SI_SA_CSG_SHARPSHOOTER_SYNDROME"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ACCURACY"], },
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.10, 1.12, 1.14, 1.16, 1.18, 1.20, 1.22, 1.24, 1.26, 1.28, 
+					1.30, 1.32, 1.34, 1.36, 1.38, 1.40, 1.42, 1.44, 1.46, 1.48, 
+					1.50, 1.52, 1.54, 1.56, 1.58, 1.60, 1.62, 1.64, 1.66, 1.68, 
+				},
+			},
+
+			BBT_CHANGE_ACCURACY =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.10, 1.12, 1.14, 1.16, 1.18, 1.20, 1.22, 1.24, 1.26, 1.28, 
+					1.30, 1.32, 1.34, 1.36, 1.38, 1.40, 1.42, 1.44, 1.46, 1.48, 
+					1.50, 1.52, 1.54, 1.56, 1.58, 1.60, 1.62, 1.64, 1.66, 1.68, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					20, 22, 24, 26, 28, 30, 32, 34, 36, 38,
+					40, 42, 44, 46, 48, 50, 52, 54, 56, 58,
+					60, 62, 64, 66, 68, 70, 72, 74, 76, 78,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 41
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_STIGMA"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_STIGMA"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_DEFENCE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_EFFECT_SET_WITH_DAMAGE"], },
+
+			BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.02, 1.035, 1.05, 1.065, 1.08, 1.095, 1.11, 1.125, 1.14, 1.155, 
+					1.17, 1.185, 1.2, 1.215, 1.23, 1.245, 1.26, 1.275, 1.29, 1.305, 
+					1.32, 1.335, 1.35, 1.365, 1.38, 1.395, 1.41, 1.425, 1.44, 1.455, 
+				},
+			},
+			BBT_CHANGE_CRITICAL_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.3, 1.33, 1.36, 1.39, 1.42, 1.45, 1.48, 1.51, 1.54, 1.57, 
+					1.6, 1.63, 1.66, 1.69, 1.72, 1.75, 1.78, 1.81, 1.84, 1.87, 
+					1.9, 1.93, 1.96, 1.99, 2.02, 2.05, 2.08, 2.11, 2.14, 2.17, 
+				},
+			},
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.98, 0.96, 0.94, 0.92, 0.9, 0.88, 0.86, 0.84, 0.82, 0.8, 
+					0.78, 0.76, 0.74, 0.72, 0.7, 0.68, 0.66, 0.64, 0.62, 0.6, 
+					0.58, 0.56, 0.54, 0.52, 0.5, 0.48, 0.46, 0.44, 0.42, 0.4, 
+				},
+			},
+			BBT_EFFECT_SET_WITH_DAMAGE =
+			{
+				"EffectSet_Rena_Stigma_NPC",
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+					17, 18, 19, 20, 21, 22, 23, 24, 25, 26,
+					27, 28, 29, 30, 31, 32, 33, 34, 35, 36,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 42
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_WEAPON_BREAK"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_WEAPON_BREAK"],
+		RATE	=
+		{
+			0.21, 0.24, 0.27, 0.30, 0.33, 0.36, 0.39, 0.42, 0.45, 0.48, 
+			0.51, 0.54, 0.57, 0.60, 0.63, 0.66, 0.69, 0.72, 0.75, 0.78, 
+			0.81, 0.84, 0.87, 0.90, 0.93, 0.96, 0.99, 1.00, 1.00, 1.00, 
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67,
+					0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67,
+					0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67,
+				},
+			},
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67,
+					0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67,
+					0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 43
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_WEAPON_BREAK_MEMO"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_WEAPON_BREAK"],
+		RATE	=
+		{
+			0.41, 0.44, 0.47, 0.50, 0.53, 0.56, 0.59, 0.62, 0.65, 0.68, 
+			0.71, 0.74, 0.77, 0.80, 0.83, 0.86, 0.89, 0.92, 0.95, 0.98, 
+			1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67,
+					0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67,
+					0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67,
+				},
+			},
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67,
+					0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67,
+					0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 44
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_SA_EMK_SWORD_FIRE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SI_SA_EMK_SWORD_FIRE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CREATE_BUFF_FACTOR"], },
+
+			BBT_CREATE_BUFF_FACTOR =
+			{
+				BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SWORD_FIRE"],
+				SKILL_ID = 1011,
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 45
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_A_ERS_SWORD_ENCHANT"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SI_A_ERS_SWORD_ENCHANT"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_ATTACK"], },
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				--BALANCE_RUNE_SLAYER_20130214
+				PERCENT =
+				{
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+				},
+			},
+
+			BBT_CHANGE_CRITICAL_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				--BALANCE_RUNE_SLAYER_20130214
+				PERCENT =
+				{
+					1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30,
+					1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30,
+					1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 46
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_SA_EMK_PHOENIX_TALON"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SI_SA_EMK_PHOENIX_TALON"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_JUMP_POWER"],
+			BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_ABSORB_EFFECT_ATTACK"], },
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+				},
+			},
+
+			BBT_CHANGE_JUMP_POWER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+				},
+			},
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					4.0, 4.2, 4.4, 4.6, 4.8, 5.0, 5.2, 5.4, 5.6, 5.8, 
+					6.0, 6.2, 6.4, 6.6, 6.8, 7.0, 7.2, 7.4, 7.6, 7.8, 
+					8.0, 8.2, 8.4, 8.6, 8.8, 9.0, 9.2, 9.4, 9.6, 9.8, 
+				},
+			},
+
+			BBT_ABSORB_EFFECT_ATTACK =
+			{
+				ABSORB_VALUE =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 47
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_AMPLIFICATION_PLACE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_AMPLIFICATION_PLACE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					15, 15.7, 16.4, 17.1, 17.8, 18.5, 19.2, 19.9, 20.6, 21.3, 
+					22, 22.7, 23.4, 24.1, 24.8, 25.5, 26.2, 26.9, 27.6, 28.3, 
+					29, 29.7, 30.4, 31.1, 31.8, 32.5, 33.2, 33.9, 34.6, 35.3, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 48
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SPECTRUM_PLACE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_SPECTRUM_PLACE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					15, 15.7, 16.4, 17.1, 17.8, 18.5, 19.2, 19.9, 20.6, 21.3, 
+					22, 22.7, 23.4, 24.1, 24.8, 25.5, 26.2, 26.9, 27.6, 28.3, 
+					29, 29.7, 30.4, 31.1, 31.8, 32.5, 33.2, 33.9, 34.6, 35.3, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 49
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_PANIC_PANDEMONIUM"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_PANIC"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_REVERSE_LEFT_RIGHT"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANTI_CRITICAL_RATE"], },
+
+			BBT_REVERSE_LEFT_RIGHT =
+			{
+			},
+
+			BBT_CHANGE_ANTI_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					1.15, 1.17, 1.19, 1.21, 1.23, 1.25, 1.27, 1.29, 1.31, 1.33, 
+					1.35, 1.37, 1.39, 1.41, 1.43, 1.45, 1.47, 1.49, 1.51, 1.53, 
+					1.55, 1.57, 1.59, 1.61, 1.63, 1.65, 1.67, 1.69, 1.71, 1.73, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5.0, 5.4, 5.8, 6.2, 6.6, 7.0, 7.4, 7.8, 8.2, 8.6, 
+					9.0, 9.4, 9.8, 10.2, 10.6, 11.0, 11.4, 11.8, 12.2, 12.6, 
+					13.0, 13.4, 13.8, 14.2, 14.6, 15.0, 15.4, 15.8, 16.2, 16.6, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 50
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_LAND_DIMOLISHER"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_LAND_DIMOLISHER"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					11, 14, 17, 20, 23, 26, 29, 32, 35, 38, 
+					41, 44, 47, 50, 53, 56, 59, 62, 65, 68, 
+					71, 74, 77, 80, 83, 86, 89, 92, 95, 98, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 51
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_WONDER_WALL"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_WONDER_WALL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER"], },
+
+			BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7,
+					0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7,
+					0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], BUFF_FINALIZER_TYPE["BFT_DAMAGE_VALUE"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 
+					80, 85, 90, 95, 100, 105, 110, 115, 120, 125,
+					130, 135, 140, 145, 150, 155, 160, 165, 170, 175, 
+				},
+			},
+
+			BFT_DAMAGE_VALUE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+				MULTIPLIER =
+				{
+					8, 8.6, 9.2, 9.8, 10.4, 11, 11.6, 12.2, 12.8, 13.4, 
+					14, 14.6, 15.2, 15.8, 16.4, 17, 17.6, 18.2, 18.8, 19.4, 
+					20, 20.6, 21.2, 21.8, 22.4, 23, 23.6, 24.2, 24.8, 25.4, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 52
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_WONDER_WALL_MEMO"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_WONDER_WALL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER"], },
+
+			BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7,
+					0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7,
+					0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], BUFF_FINALIZER_TYPE["BFT_DAMAGE_VALUE"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 
+					80, 85, 90, 95, 100, 105, 110, 115, 120, 125,
+					130, 135, 140, 145, 150, 155, 160, 165, 170, 175, 
+				},
+			},
+
+			BFT_DAMAGE_VALUE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+				MULTIPLIER =
+				{
+					8, 8.6, 9.2, 9.8, 10.4, 11, 11.6, 12.2, 12.8, 13.4, 
+					14, 14.6, 15.2, 15.8, 16.4, 17, 17.6, 18.2, 18.8, 19.4, 
+					20, 20.6, 21.2, 21.8, 22.4, 23, 23.6, 24.2, 24.8, 25.4, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 53
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_UNFIXED_CLIP"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_UNFIXED_CLIP"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CUSTOM_FUNCTION"], },
+
+			BBT_CUSTOM_FUNCTION =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 
+					15.0, 15.5, 16.0, 16.5, 17.0, 17.5, 18.0, 18.5, 19.0, 19.5, 
+					20.0, 20.5, 21.0, 21.5, 22.0, 22.5, 23.0, 23.5, 24.0, 24.5, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 54
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_CHANCE_TO_REVERSE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_CHANCE_TO_REVERSE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"], },
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_SWAP_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+
+				SWAP_VALUE =
+				{
+					100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+					100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+					100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], BUFF_FINALIZER_TYPE["BFT_HIT_COUNT"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+				},
+			},
+
+			BFT_HIT_COUNT =
+			{
+				BUFF_USE_COUNT_TYPE = BUFF_USE_COUNT_TYPE["BUCT_NOT_USE"],
+				COUNT =
+				{
+					3, 6, 9, 12, 15, 18, 21, 24, 27, 30,
+					33, 36, 39, 42, 45, 48, 51, 54, 57, 60,
+					63, 66, 69, 72, 75, 78, 81, 84, 87, 90,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 55
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_MOVE_JUMP_SLOWDOWN_LEG_SHOT"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_MOVE_JUMP_SLOWDOWN"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_JUMP_POWER"], },
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.75, 0.72, 0.69, 0.66, 0.63, 0.60, 0.57, 0.54, 0.51, 0.48, 
+					0.45, 0.42, 0.39, 0.36, 0.33, 0.30, 0.27, 0.24, 0.21, 0.17, 
+					0.14, 0.11, 0.08, 0.05, 0.02, 0.00, 0.00, 0.00, 0.00, 0.00, 
+
+				},
+			},
+			BBT_CHANGE_JUMP_POWER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.90, 0.89, 0.88, 0.87, 0.86, 0.85, 0.84, 0.83, 0.82, 0.81, 
+					0.80, 0.79, 0.78, 0.77, 0.76, 0.75, 0.74, 0.73, 0.72, 0.71, 
+					0.70, 0.69, 0.68, 0.67, 0.66, 0.65, 0.64, 0.63, 0.62, 0.61, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 
+					15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 
+					25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 56
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_MARK_OF_COMMANDER"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_MARK_OF_COMMANDER"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CUSTOM_FUNCTION"], },
+
+			BBT_CUSTOM_FUNCTION =
+			{
+				0, 								-- 메모 효과 발동할 확률
+				-- 데미지 배율
+			    1.0000,   1.0325,  1.0650,  1.0975,  1.1300,  1.1625,  1.1950,  1.2275,  1.2600,  1.2925,
+				1.3250,   1.3575,  1.3900,  1.4225,  1.4550,  1.4875,  1.5200,  1.5525,  1.5850,  1.6175,
+				1.6500,   1.6825,  1.7150,  1.7475,  1.7800,  1.8125,  1.8450,  1.8775,  1.9100,  1.9425,
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+					15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+					15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 57
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_MARK_OF_COMMANDER_MEMO"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_MARK_OF_COMMANDER"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CUSTOM_FUNCTION"], },
+
+			BBT_CUSTOM_FUNCTION =
+			{
+				0.2, 								-- 메모 효과 발동할 확률
+				-- 데미지 배율
+			    1.0000,   1.0325,  1.0650,  1.0975,  1.1300,  1.1625,  1.1950,  1.2275,  1.2600,  1.2925,
+				1.3250,   1.3575,  1.3900,  1.4225,  1.4550,  1.4875,  1.5200,  1.5525,  1.5850,  1.6175,
+				1.6500,   1.6825,  1.7150,  1.7475,  1.7800,  1.8125,  1.8450,  1.8775,  1.9100,  1.9425,
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+					15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+					15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 58
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_GIANT_MEDICINE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_GIANT_MEDICINE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_UNIT_SCALE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DAMAGE_MULTIPLIER_MELEE_ATTACK"],
+				BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DAMAGE_MULTIPLIER_RANGE_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"], },
+
+			BBT_CHANGE_UNIT_SCALE =
+			{
+			},
+
+			BBT_CHANGE_FINAL_DAMAGE_MULTIPLIER_MELEE_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+				},
+			},
+
+			BBT_CHANGE_FINAL_DAMAGE_MULTIPLIER_RANGE_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+				},
+			},
+
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
+					17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
+					17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 59
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SPRINTER_MEDICINE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_SPRINTER_MEDICINE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_JUMP_POWER"],
+				BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"], },
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+
+			BBT_CHANGE_JUMP_POWER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
+					17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
+					17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 60
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_DWARF_MEDICINE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_DWARF_MEDICINE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_UNIT_SCALE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"],
+				BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"], },
+
+			BBT_CHANGE_UNIT_SCALE =
+			{
+			},
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
+					17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
+					17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 61
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_BRAVE_CREST"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_BRAVE_CREST"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"],
+				BUFF_BEHAVIOR_TYPE["BBT_EFFECT_SET_WITH_DAMAGE"],  },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7,
+					1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7,
+					1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7,
+				},
+			},
+
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+
+			BBT_EFFECT_SET_WITH_DAMAGE =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
+					17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
+					17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 62
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_MAGICAL_CREST"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_MAGICAL_CREST"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"],
+				BUFF_BEHAVIOR_TYPE["BBT_EFFECT_SET_WITH_DAMAGE"], },
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7,
+					1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7,
+					1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7,
+				},
+			},
+
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+
+			BBT_EFFECT_SET_WITH_DAMAGE =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
+					17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
+					17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 63
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_PROTECTION_CREST"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_PROTECTION_CREST"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"], BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"],
+				BUFF_BEHAVIOR_TYPE["BBT_EFFECT_SET_WITH_DAMAGE"], },
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7,
+					1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7,
+					1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7,
+				},
+			},
+
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+
+			BBT_EFFECT_SET_WITH_DAMAGE =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
+					17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
+					17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 64
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_ANTIMAGIC_CREST"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_ANTIMAGIC_CREST"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"], BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"],
+				BUFF_BEHAVIOR_TYPE["BBT_EFFECT_SET_WITH_DAMAGE"], },
+
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7,
+					1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7,
+					1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7, 1.7,
+				},
+			},
+
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+
+			BBT_EFFECT_SET_WITH_DAMAGE =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
+					17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
+					17, 17, 17, 17, 17, 17, 17, 17, 17, 17,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 65
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SUPER_AMOR_CREST"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_SUPER_AMOR_CREST"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_SUPER_ARMOR"], BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"],
+				BUFF_BEHAVIOR_TYPE["BBT_EFFECT_SET_WITH_DAMAGE"], },
+
+			BBT_SUPER_ARMOR =
+			{
+			},
+
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+
+			BBT_EFFECT_SET_WITH_DAMAGE =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 66
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_HYPER_MODE_MEDICINE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_HYPER_MODE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_HYPER_MODE"], BUFF_BEHAVIOR_TYPE["BBT_EFFECT_SET_WITH_DAMAGE"],
+			BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DAMAGE_MULTIPLIER_MELEE_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DAMAGE_MULTIPLIER_RANGE_ATTACK"], },
+
+			BBT_CHANGE_HYPER_MODE =
+			{
+				HYPER_TIME = 20,
+			},
+
+			BBT_EFFECT_SET_WITH_DAMAGE =
+			{
+			},
+
+			BBT_CHANGE_FINAL_DAMAGE_MULTIPLIER_MELEE_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+				},
+			},
+
+			BBT_CHANGE_FINAL_DAMAGE_MULTIPLIER_RANGE_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_RELATION_HYPER_MODE_COUNT"],
+				FORCE_TIME =
+				{
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 67
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SIDE_EFFECT_MEDICINE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_SIDE_EFFECT_MEDICINE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_JUMP_POWER"], BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"], },
+
+			BBT_CHANGE_JUMP_POWER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
+					0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
+					0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
+				},
+			},
+
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 68
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SIDE_EFFECT_CREST"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_SIDE_EFFECT_CREST"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"],
+				BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"],
+				BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"], BUFF_BEHAVIOR_TYPE["BBT_EFFECT_SET_WITH_DAMAGE"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7,
+					0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7,
+					0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7,
+				},
+			},
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7,
+					0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7,
+					0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7,
+				},
+			},
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+				},
+			},
+
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+				},
+			},
+
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+
+			BBT_EFFECT_SET_WITH_DAMAGE =
+			{
+				"Effect_Marker_Symbol_Wrong",
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 69
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_ENTANGLE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_ENTANGLE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_ATTACK_IMPOSSIBLE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_JUMP_POWER"],
+							BUFF_BEHAVIOR_TYPE["BBT_NEVER_MOVE"],
+						--{{2012-11-23-//BALANCE_GRAND_ARCHER_20121213
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"],	},
+						--}}2012-11-23-//BALANCE_GRAND_ARCHER_20121213
+
+			BBT_ATTACK_IMPOSSIBLE =
+			{
+			},
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_SWAP_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				SWAP_VALUE =
+				{
+					0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+					0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+					0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+				},
+			},
+			BBT_CHANGE_JUMP_POWER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_SWAP_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				SWAP_VALUE =
+				{
+					0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+					0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+					0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+				},
+			},
+			BBT_NEVER_MOVE =
+			{
+			},
+		--{{2012-11-23-//BALANCE_GRAND_ARCHER_20121213
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.4, 0.38, 0.36, 0.34, 0.32, 0.3, 0.28, 0.26, 0.24, 0.22, 
+					0.2, 0.18, 0.16, 0.14, 0.12, 0.1, 0.08, 0.06, 0.04, 0.02, 
+					0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+				},
+			},
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.4, 0.38, 0.36, 0.34, 0.32, 0.3, 0.28, 0.26, 0.24, 0.22, 
+					0.2, 0.18, 0.16, 0.14, 0.12, 0.1, 0.08, 0.06, 0.04, 0.02, 
+					0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+				},
+			},
+		--{{2012-11-23-//BALANCE_GRAND_ARCHER_20121213
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 
+					4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 
+					5, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 70
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_ARMOR_BREAK"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_ARMOR_BREAK"],
+		RATE	=
+		{
+			0.21, 0.24, 0.27, 0.30, 0.33, 0.36, 0.39, 0.42, 0.45, 0.48, 
+			0.51, 0.54, 0.57, 0.60, 0.63, 0.66, 0.69, 0.72, 0.75, 0.78, 
+			0.81, 0.84, 0.87, 0.90, 0.93, 0.96, 0.99, 1.00, 1.00, 1.00, 
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"], },
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_SWAP_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				SWAP_VALUE =
+				{
+					0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1,
+					0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1,
+					0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+					7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+					7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 71
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_ARMOR_BREAK_MEMO"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_ARMOR_BREAK"],
+		RATE	=
+		{
+			0.41, 0.44, 0.47, 0.5, 0.53, 0.56, 0.59, 0.62, 0.65, 0.68, 
+			0.71, 0.74, 0.77, 0.8, 0.83, 0.86, 0.89, 0.92, 0.95, 0.98, 
+			1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"], },
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_SWAP_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				SWAP_VALUE =
+				{
+					0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1,
+					0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1,
+					0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+					7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+					7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 72
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_MAGIC_DEFFENCE_DROP"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_MAGIC_DEFFENCE_DROP"],
+		--BALANCE_RUNE_SLAYER_20130214
+		RATE	=
+		{
+			0.05, 0.06, 0.07, 0.08, 0.09, 0.10, 0.11, 0.12, 0.13, 0.14, 
+			0.15, 0.16, 0.17, 0.18, 0.19, 0.20, 0.21, 0.22, 0.23, 0.24, 
+			0.25, 0.26, 0.27, 0.28, 0.29, 0.30, 0.31, 0.32, 0.33, 0.34, 
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"], BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"], },
+
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.60, 0.55, 0.50, 0.45, 0.40, 0.35, 0.30, 0.25, 0.20, 0.15, 
+					0.10, 0.05, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 
+					0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 
+				},
+			},
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
+					6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
+					6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 73
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_BIND"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_BIND"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_FROZEN"], BUFF_BEHAVIOR_TYPE["BBT_NEVER_MOVE"], },
+
+			BBT_FROZEN =
+			{
+			},
+
+			BBT_NEVER_MOVE =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], BUFF_FINALIZER_TYPE["BFT_HITTED_COUNT"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+				},
+			},
+
+			BFT_HITTED_COUNT =
+			{
+				BUFF_USE_COUNT_TYPE = BUFF_USE_COUNT_TYPE["BUCT_NOT_USE"],
+				COUNT =
+				{
+					1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+					1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+					1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 74
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_BIND_WITH_MEMO"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_BIND_WITH_MEMO"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], },
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
+					0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
+					0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 75
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_DEATH_SENTENCE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_DEATH_SENTENCE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_ATTACK_IMPOSSIBLE"],
+			BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_JUMP_POWER"], },
+
+			BBT_ATTACK_IMPOSSIBLE =
+			{
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+				},
+			},
+
+			BBT_CHANGE_JUMP_POWER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_RANDOM_TIME"],
+				RANDOM_TIME =
+				{
+					{ 1, 5, }, { 1, 5, }, { 1, 5, }, { 1, 5, }, { 1, 5, }, { 1, 5, }, { 1, 5, }, { 1, 5, }, { 1, 5, }, { 1, 5, },
+					{ 1, 5, }, { 1, 5, }, { 1, 5, }, { 1, 5, }, { 1, 5, }, { 1, 5, }, { 1, 5, }, { 1, 5, }, { 1, 5, }, { 1, 5, },
+					{ 1, 5, }, { 1, 5, }, { 1, 5, }, { 1, 5, }, { 1, 5, }, { 1, 5, }, { 1, 5, }, { 1, 5, }, { 1, 5, }, { 1, 5, },
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 76
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_ATTACK_ALL_TEAM"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_ATTACK_ALL_TEAM"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_ATTACK_ALL_TEAM"], },
+
+			BBT_ATTACK_ALL_TEAM =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+					15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+					15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 77
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_BLIND_SMOKE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_BLIND_SMOKE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_AVOIDANCE"], },
+
+			BBT_CHANGE_AVOIDANCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.90, 0.85, 0.80, 0.75, 0.70, 0.65, 0.60, 0.55, 0.50, 0.45, 
+					0.40, 0.35, 0.30, 0.25, 0.20, 0.15, 0.10, 0.05, 0.00, 0.00, 
+					0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					4.5, 4.8, 5.1, 5.4, 5.7, 6, 6.3, 6.6, 6.9, 7.2, 
+					7.5, 7.8, 8.1, 8.4, 8.7, 9, 9.3, 9.6, 9.9, 10.2, 
+					10.5, 10.8, 11.1, 11.4, 11.7, 12, 12.3, 12.6, 12.9, 13.2, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 78
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_CALM_REST"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_CALM_REST"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008,
+					0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008,
+					0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008, 0.008,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_STATE_CHANGE"], },
+
+			BFT_STATE_CHANGE =
+			{
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 79
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SI_SA_EIS_RAGE_CUTTER"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_WOUND"],
+		RATE	=
+		{
+			0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05, 0.055, 0.06, 
+			0.065, 0.07, 0.075, 0.08, 0.085, 0.09, 0.095, 0.1, 0.105, 0.11, 
+			0.115, 0.12, 0.125, 0.13, 0.135, 0.14, 0.145, 0.15, 0.155, 0.16, 
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_DASH_IMPOSSIBLE"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+
+				MULTIPLIER =
+				{
+					-0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, 
+					-0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, 
+					-0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, 
+				},
+			},
+			BBT_DASH_IMPOSSIBLE =
+			{
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 80
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SI_P_EIS_MIND_OF_FIGHTER"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_SI_P_EIS_MIND_OF_FIGHTER"],
+		RATE	=
+		{
+			1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+			1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+			1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANTI_CRITICAL_RATE"], },
+
+			BBT_CHANGE_ANTI_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+					1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+					1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_HITTED_COUNT"], },
+
+			BFT_HITTED_COUNT =
+			{
+				BUFF_USE_COUNT_TYPE = BUFF_USE_COUNT_TYPE["BUCT_NOT_USE"],
+				COUNT =
+				{
+					1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 
+					6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 
+					11, 12, 12, 13, 13, 14, 14, 15, 15, 16, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 81
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_P_EIS_LIGHTNING_STEP"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SI_P_EIS_LIGHTNING_STEP"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ADDITIONAL_ATTACK"], },
+
+			BBT_CHANGE_ADDITIONAL_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					2.5, 5, 7.5, 10, 12.5, 15, 17.5, 20, 22.5, 25,
+					27.5, 30, 32.5, 35, 37.5, 40, 42.5, 45, 47.5, 50,
+					52.5, 55, 57.5, 60, 62.5, 65, 67.5, 70, 72.5, 75,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+					3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+					3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 82
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SI_SA_ADW_IMPACT_HAMMER"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_STUN"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_STUN"], },
+
+			BBT_STUN =
+			{
+			},
+		},
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], BUFF_FINALIZER_TYPE["BFT_HITTED_COUNT"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 
+					2.0, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 
+					3.0, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 
+				},
+			},
+
+			BFT_HITTED_COUNT =
+			{
+				BUFF_USE_COUNT_TYPE = BUFF_USE_COUNT_TYPE["BUCT_NOT_USE"],
+				COUNT =
+				{
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 83
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_P_ADW_ADVANCED_TELEPORTATION"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SI_P_ADW_ADVANCED_TELEPORTATION"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ADDITIONAL_ATTACK"], },
+
+			BBT_CHANGE_ADDITIONAL_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 
+					6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 
+					11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0, 15.5, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					1.5, 1.8, 2.1, 2.4, 2.7, 3.0, 3.3, 3.6, 3.9, 4.2, 
+					4.5, 4.8, 5.1, 5.4, 5.7, 6.0, 6.3, 6.6, 6.9, 7.2, 
+					7.5, 7.8, 8.1, 8.4, 8.7, 9.0, 9.3, 9.6, 9.9, 10.2, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 84
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_OVER_HEAT"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_OVER_HEAT"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 85
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_P_RVC_SURVIVAL_TECHNIQUE_OF_MERCENARY"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SI_P_RVC_SURVIVAL_TECHNIQUE_OF_MERCENARY"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_EVERY_ATTRIBUTE_DEFENCE"],	},
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.03, 1.06, 1.09, 1.12, 1.15, 1.18, 1.21, 1.24, 1.27, 1.30, 
+					1.33, 1.36, 1.39, 1.42, 1.45, 1.48, 1.51, 1.54, 1.57, 1.60, 
+					1.63, 1.66, 1.69, 1.72, 1.75, 1.78, 1.81, 1.84, 1.87, 1.90, 
+
+				},
+			},
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.02, 1.03, 1.05, 1.06, 1.08, 1.09, 1.11, 1.12, 1.14, 1.15, 
+					1.17, 1.18, 1.20, 1.21, 1.23, 1.24, 1.26, 1.27, 1.29, 1.30, 
+					1.32, 1.33, 1.35, 1.36, 1.38, 1.39, 1.41, 1.42, 1.44, 1.45, 
+				},
+			},
+
+			BBT_CHANGE_EVERY_ATTRIBUTE_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					25, 35, 45, 55, 65, 75, 85, 95, 105, 115, 
+					125, 135, 145, 155, 165, 175, 185, 195, 205, 215, 
+					225, 235, 245, 255, 265, 275, 285, 295, 305, 315, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_PASS_HP"], },
+
+			BFT_PASS_HP =
+			{
+				PASS_UP = TRUE,
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				CRITERION =
+				{
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 86
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_INDUCTION_PLACE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_INDUCTION_PLACE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					15, 15.7, 16.4, 17.1, 17.8, 18.5, 19.2, 19.9, 20.6, 21.3, 
+					22, 22.7, 23.4, 24.1, 24.8, 25.5, 26.2, 26.9, 27.6, 28.3, 
+					29, 29.7, 30.4, 31.1, 31.8, 32.5, 33.2, 33.9, 34.6, 35.3, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 87
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SI_SA_EBS_ENERGETIC_HEART"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_SI_SA_EBS_ENERGETIC_HEART"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 
+					29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 
+					49, 51, 53, 55, 57, 59, 61, 63, 65, 67, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 88
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SI_A_AHM_MEDITATION"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUF_SI_A_AHM_MEDITATION"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"], },
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75,
+					0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75,
+					0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 89
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SI_SA_CTT_TACTICAL_FIELD"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_SI_SA_CTT_TACTICAL_FIELD"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_SUPER_ARMOR"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"] },
+
+			BBT_SUPER_ARMOR =
+			{
+			},
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.15, 1.17, 1.19, 1.21, 1.23, 1.25, 1.27, 1.29, 1.31, 1.33, 
+					1.35, 1.37, 1.39, 1.41, 1.43, 1.45, 1.47, 1.49, 1.51, 1.53, 
+					1.55, 1.57, 1.59, 1.61, 1.63, 1.65, 1.67, 1.69, 1.71, 1.73, 
+				},
+			},
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.15, 1.17, 1.19, 1.21, 1.23, 1.25, 1.27, 1.29, 1.31, 1.33, 
+					1.35, 1.37, 1.39, 1.41, 1.43, 1.45, 1.47, 1.49, 1.51, 1.53, 
+					1.55, 1.57, 1.59, 1.61, 1.63, 1.65, 1.67, 1.69, 1.71, 1.73, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 90
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_PROTECTION_OF_NUT"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_PROTECTION_OF_NUT"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_ATTACK"], },
+
+			BBT_CHANGE_CRITICAL_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.33333, 1.33333, 1.33333, 1.33333, 1.33333, 1.33333, 1.33333, 1.33333, 1.33333, 1.33333,
+					1.33333, 1.33333, 1.33333, 1.33333, 1.33333, 1.33333, 1.33333, 1.33333, 1.33333, 1.33333,
+					1.33333, 1.33333, 1.33333, 1.33333, 1.33333, 1.33333, 1.33333, 1.33333, 1.33333, 1.33333,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 91
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_PROTECTION_OF_PTAH"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_PROTECTION_OF_PTAH"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CREATE_BUFF_FACTOR"], },
+
+			BBT_CREATE_BUFF_FACTOR =
+			{
+				BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_DOUBLE_ATTACK"],
+				SKILL_ID = 0,
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 92
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_PROTECTION_OF_LAHEL"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_PROTECTION_OF_LAHEL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ATTACK_BY_TYPE"], },
+
+			BBT_CHANGE_ATTACK_BY_TYPE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+				},
+				ATTACK_TYPE = ATTACK_TYPE["AT_SPECIAL"],
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 93
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_PROTECTION_OF_ZACHIEL"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_PROTECTION_OF_ZACHIEL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ENCHANT_ATTACK_RATE"], },
+
+			BBT_CHANGE_ENCHANT_ATTACK_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 94
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_BELSSING_OF_SERAPHIM"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_BELSSING_OF_SERAPHIM"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAX_MP"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_MAX_MP =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+					100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+					100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+				},
+			},
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 95
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_BELSSING_OF_GEB"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_BELSSING_OF_GEB"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 96
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_BELSSING_OF_AMON"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_BELSSING_OF_AMON"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], },
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 97
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_BELSSING_OF_CRONOS"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_BELSSING_OF_CRONOS"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAX_HP"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], },
+
+			BBT_CHANGE_MAX_HP =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+				},
+			},
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02,
+					0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02,
+					0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 98
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_STRENGTHENING_BODY"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_STRENGTHENING_BODY"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 99
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_RALLY_OF_HERO_LEVEL_1"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_RALLY_OF_HERO_LEVEL_1"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAX_HP"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06,
+					1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06,
+					1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06,
+				},
+			},
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06,
+					1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06,
+					1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06,
+				},
+			},
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06,
+					1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06,
+					1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06,
+				},
+			},
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06,
+					1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06,
+					1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06,
+				},
+			},
+
+			BBT_CHANGE_MAX_HP =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06,
+					1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06,
+					1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 100
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_RALLY_OF_HERO_LEVEL_2"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_RALLY_OF_HERO_LEVEL_2"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAX_HP"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12,
+					1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12,
+					1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12,
+				},
+			},
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12,
+					1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12,
+					1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12,
+				},
+			},
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12,
+					1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12,
+					1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12,
+				},
+			},
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12,
+					1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12,
+					1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12,
+				},
+			},
+
+			BBT_CHANGE_MAX_HP =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12,
+					1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12,
+					1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 101
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_RALLY_OF_HERO_LEVEL_3"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_RALLY_OF_HERO_LEVEL_3"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAX_HP"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18,
+					1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18,
+					1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18,
+				},
+			},
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18,
+					1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18,
+					1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18,
+				},
+			},
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18,
+					1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18,
+					1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18,
+				},
+			},
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18,
+					1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18,
+					1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18,
+				},
+			},
+
+			BBT_CHANGE_MAX_HP =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18,
+					1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18,
+					1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 102
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_REST_OF_RELLY"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_REST_OF_RELLY"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 103
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_WARM_ENERGE_OF_EL"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_WARM_ENERGE_OF_EL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 104
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_THANKS_OF_RESIDENTS"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_THANKS_OF_RESIDENTS"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 105
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_BREATH_OF_DRAGON"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_BREATH_OF_DRAGON"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_EVERY_ATTRIBUTE_DEFENCE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_JUMP_POWER"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], },
+
+			BBT_CHANGE_EVERY_ATTRIBUTE_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+					100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+					100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+				},
+			},
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03,
+					1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03,
+					1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03,
+				},
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03,
+					1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03,
+					1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03,
+				},
+			},
+
+			BBT_CHANGE_JUMP_POWER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03,
+					1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03,
+					1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03,
+				},
+			},
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+				},
+			},
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 106
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_BLESSING_OF_EL"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_BLESSING_OF_EL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 107
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_HERO_OF_ELIOS_LEVEL_1"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_HERO_OF_ELIOS_LEVEL_1"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ADDITIONAL_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ADDITIONAL_DEFENCE"], },
+
+			BBT_CHANGE_ADDITIONAL_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0,
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0,
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0,
+				},
+			},
+
+			BBT_CHANGE_ADDITIONAL_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0,
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0,
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 108
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_HERO_OF_ELIOS_LEVEL_2"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_HERO_OF_ELIOS_LEVEL_2"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ADDITIONAL_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ADDITIONAL_DEFENCE"], },
+
+			BBT_CHANGE_ADDITIONAL_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+				},
+			},
+
+			BBT_CHANGE_ADDITIONAL_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 109
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_HERO_OF_ELIOS_LEVEL_3"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_HERO_OF_ELIOS_LEVEL_3"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ADDITIONAL_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ADDITIONAL_DEFENCE"], },
+
+			BBT_CHANGE_ADDITIONAL_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0,
+					15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0,
+					15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0,
+				},
+			},
+
+			BBT_CHANGE_ADDITIONAL_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0,
+					15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0,
+					15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 110
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_HERO_OF_ELIOS_LEVEL_4"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_HERO_OF_ELIOS_LEVEL_4"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ADDITIONAL_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ADDITIONAL_DEFENCE"], },
+
+			BBT_CHANGE_ADDITIONAL_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0,
+					30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0,
+					30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0,
+				},
+			},
+
+			BBT_CHANGE_ADDITIONAL_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0,
+					30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0,
+					30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 111
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_PVP_REVENGE_MODE_LEVEL_1"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_PVP_REVENGE_MODE_LEVEL_1"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER"], BUFF_BEHAVIOR_TYPE["BBT_CHARGE_MP_HITTED"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+
+			BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+					0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+					0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+				},
+			},
+
+			BBT_CHARGE_MP_HITTED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999,
+					9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999,
+					9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 112
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_PVP_REVENGE_MODE_LEVEL_2"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_PVP_REVENGE_MODE_LEVEL_2"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER"], BUFF_BEHAVIOR_TYPE["BBT_CHARGE_MP_HITTED"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+				},
+			},
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+				},
+			},
+
+			BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
+					0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
+					0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
+				},
+			},
+
+			BBT_CHARGE_MP_HITTED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999,
+					9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999,
+					9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 113
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_PVP_REVENGE_MODE_LEVEL_3"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_PVP_REVENGE_MODE_LEVEL_3"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER"], BUFF_BEHAVIOR_TYPE["BBT_CHARGE_MP_HITTED"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+				},
+			},
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+				},
+			},
+
+			BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7,
+					0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7,
+					0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7,
+				},
+			},
+
+			BBT_CHARGE_MP_HITTED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999,
+					9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999,
+					9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 114
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_RETURN_OF_HERO"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_RETURN_OF_HERO"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 115
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SI_A_RST_CUT_TENDON"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_WOUND"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_DASH_IMPOSSIBLE"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+
+				MULTIPLIER =
+				{
+					-0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1,
+					-0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1,
+					-0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1,
+				},
+			},
+			BBT_DASH_IMPOSSIBLE =
+			{
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					4.0, 4.2, 4.4, 4.6, 4.8, 5.0, 5.2, 5.4, 5.6, 5.8, 
+					6.0, 6.2, 6.4, 6.6, 6.8, 7.0, 7.2, 7.4, 7.6, 7.8, 
+					8.0, 8.2, 8.4, 8.6, 8.8, 9.0, 9.2, 9.4, 9.6, 9.8, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 116
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SI_A_RST_CUT_TENDON_MEMO"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_WOUND"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_DASH_IMPOSSIBLE"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+
+				MULTIPLIER =
+				{
+					-0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1,
+					-0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1,
+					-0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1,
+				},
+			},
+			BBT_DASH_IMPOSSIBLE =
+			{
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					7.0, 7.2, 7.4, 7.6, 7.8, 8.0, 8.2, 8.4, 8.6, 8.8, 
+					9.0, 9.2, 9.4, 9.6, 9.8, 10.0, 10.2, 10.4, 10.6, 10.8, 
+					11.0, 11.2, 11.4, 11.6, 11.8, 12.0, 12.2, 12.4, 12.6, 12.8, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 117
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SI_SA_ERS_LUNA_BLADE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_MANA_BURN_REL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				--BALANCE_RUNE_SLAYER_20130214
+				PERCENT =
+				{
+					-0.30, -0.35, -0.40, -0.45, -0.50, -0.55, -0.60, -0.65, -0.70, -0.75, 
+					-0.80, -0.85, -0.90, -0.95, -1.00, -1.00, -1.00, -1.00, -1.00, -1.00,
+					-1.00, -1.00, -1.00, -1.00, -1.00, -1.00, -1.00, -1.00, -1.00, -1.00, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_IMMEDIATE"], },
+
+			BFT_IMMEDIATE =
+			{
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 118
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SI_SA_ELK_SAND_STORM"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_BLIND"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ACCURACY"], },
+
+			BBT_CHANGE_ACCURACY =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
+					0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
+					0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 
+					17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 
+					27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 119
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_DOUBLE_ATTACK"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_DOUBLE_ATTACK"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_DOUBLE_ATTACK"], },
+
+			BBT_DOUBLE_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25,
+					0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25,
+					0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_IMMEDIATE"], },
+
+			BFT_IMMEDIATE =
+			{
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 120
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SI_SA_ADM_AGING"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_AGING"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"],
+					BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"],
+					BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"],
+					BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					0.90, 0.87, 0.84, 0.81, 0.78, 0.75, 0.72, 0.69, 0.66, 0.63, 
+					0.60, 0.57, 0.54, 0.51, 0.48, 0.45, 0.42, 0.39, 0.36, 0.33, 
+					0.30, 0.27, 0.24, 0.21, 0.18, 0.15, 0.12, 0.09, 0.06, 0.03,
+				},
+			},
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					0.90, 0.87, 0.84, 0.81, 0.78, 0.75, 0.72, 0.69, 0.66, 0.63, 
+					0.60, 0.57, 0.54, 0.51, 0.48, 0.45, 0.42, 0.39, 0.36, 0.33, 
+					0.30, 0.27, 0.24, 0.21, 0.18, 0.15, 0.12, 0.09, 0.06, 0.03,
+				},
+			},
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					0.95, 0.93, 0.92, 0.90, 0.89, 0.87, 0.86, 0.84, 0.83, 0.81, 
+					0.80, 0.78, 0.77, 0.75, 0.74, 0.72, 0.71, 0.69, 0.68, 0.66, 
+					0.65, 0.63, 0.62, 0.60, 0.59, 0.57, 0.56, 0.54, 0.53, 0.51, 
+				},
+			},
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					0.95, 0.93, 0.92, 0.90, 0.89, 0.87, 0.86, 0.84, 0.83, 0.81, 
+					0.80, 0.78, 0.77, 0.75, 0.74, 0.72, 0.71, 0.69, 0.68, 0.66, 
+					0.65, 0.63, 0.62, 0.60, 0.59, 0.57, 0.56, 0.54, 0.53, 0.51, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+					15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+					15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 121
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SI_SA_AVP_PHANTOM_BREATHING"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_CURSE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					-7, -8, -9, -10, -11, -12, -13, -14, -15, -16, 
+					-17, -18, -19, -20, -21, -22, -23, -24, -25, -26, 
+					-27, -28, -29, -30, -31, -32, -33, -34, -35, -36, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 122
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_VITALITY_OF_EL"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_VITALITY_OF_EL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 123
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SI_A_LWS_NATURE_FORCE_MEMO"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_SI_A_LWS_NATURE_FORCE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHARGE_MP_HIT_MELEE_ATTACK"], },
+
+			BBT_CHARGE_MP_HIT_MELEE_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75,
+					0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75,
+					0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 124
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_PREMIUM_PC_ROOM"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_PREMIUM_PC_ROOM"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 125
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_PET_AURA_SKILL_LEVEL_1_DEFAULT"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_PET_AURA_SKILL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAX_HP"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_MAX_HP =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+				},
+			},
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06,
+					1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06,
+					1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06,
+				},
+			},
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+				},
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+				},
+			},
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_PHYSIC_ATTACK"],
+				PERCENT =
+				{
+					0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005,
+					0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005,
+					0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005,
+				},
+			},
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0,
+					6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0,
+					6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 126
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_PET_AURA_SKILL_LEVEL_1_70"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_PET_AURA_SKILL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAX_HP"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_MAX_HP =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.22, 1.22, 1.22, 1.22, 1.22, 1.22, 1.22, 1.22, 1.22, 1.22,
+					1.22, 1.22, 1.22, 1.22, 1.22, 1.22, 1.22, 1.22, 1.22, 1.22,
+					1.22, 1.22, 1.22, 1.22, 1.22, 1.22, 1.22, 1.22, 1.22, 1.22,
+				},
+			},
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.166, 1.166, 1.166, 1.166, 1.166, 1.166, 1.166, 1.166, 1.166, 1.166,
+					1.166, 1.166, 1.166, 1.166, 1.166, 1.166, 1.166, 1.166, 1.166, 1.166,
+					1.166, 1.166, 1.166, 1.166, 1.166, 1.166, 1.166, 1.166, 1.166, 1.166,
+				},
+			},
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.055, 1.055, 1.055, 1.055, 1.055, 1.055, 1.055, 1.055, 1.055, 1.055,
+					1.055, 1.055, 1.055, 1.055, 1.055, 1.055, 1.055, 1.055, 1.055, 1.055,
+					1.055, 1.055, 1.055, 1.055, 1.055, 1.055, 1.055, 1.055, 1.055, 1.055,
+				},
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.055, 1.055, 1.055, 1.055, 1.055, 1.055, 1.055, 1.055, 1.055, 1.055,
+					1.055, 1.055, 1.055, 1.055, 1.055, 1.055, 1.055, 1.055, 1.055, 1.055,
+					1.055, 1.055, 1.055, 1.055, 1.055, 1.055, 1.055, 1.055, 1.055, 1.055,
+				},
+			},
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_PHYSIC_ATTACK"],
+				PERCENT =
+				{
+					0.0055, 0.0055, 0.0055, 0.0055, 0.0055, 0.0055, 0.0055, 0.0055, 0.0055, 0.0055,
+					0.0055, 0.0055, 0.0055, 0.0055, 0.0055, 0.0055, 0.0055, 0.0055, 0.0055, 0.0055,
+					0.0055, 0.0055, 0.0055, 0.0055, 0.0055, 0.0055, 0.0055, 0.0055, 0.0055, 0.0055,
+				},
+			},
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					6.6, 6.6, 6.6, 6.6, 6.6, 6.6, 6.6, 6.6, 6.6, 6.6,
+					6.6, 6.6, 6.6, 6.6, 6.6, 6.6, 6.6, 6.6, 6.6, 6.6,
+					6.6, 6.6, 6.6, 6.6, 6.6, 6.6, 6.6, 6.6, 6.6, 6.6,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 127
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_PET_AURA_SKILL_LEVEL_1_80"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_PET_AURA_SKILL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAX_HP"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_MAX_HP =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.24, 1.24, 1.24, 1.24, 1.24, 1.24, 1.24, 1.24, 1.24, 1.24,
+					1.24, 1.24, 1.24, 1.24, 1.24, 1.24, 1.24, 1.24, 1.24, 1.24,
+					1.24, 1.24, 1.24, 1.24, 1.24, 1.24, 1.24, 1.24, 1.24, 1.24,
+				},
+			},
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.272, 1.272, 1.272, 1.272, 1.272, 1.272, 1.272, 1.272, 1.272, 1.272,
+					1.272, 1.272, 1.272, 1.272, 1.272, 1.272, 1.272, 1.272, 1.272, 1.272,
+					1.272, 1.272, 1.272, 1.272, 1.272, 1.272, 1.272, 1.272, 1.272, 1.272,
+				},
+			},
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06,
+					1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06,
+					1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06,
+				},
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06,
+					1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06,
+					1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06, 1.06,
+				},
+			},
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_PHYSIC_ATTACK"],
+				PERCENT =
+				{
+					0.006, 0.006, 0.006, 0.006, 0.006, 0.006, 0.006, 0.006, 0.006, 0.006,
+					0.006, 0.006, 0.006, 0.006, 0.006, 0.006, 0.006, 0.006, 0.006, 0.006,
+					0.006, 0.006, 0.006, 0.006, 0.006, 0.006, 0.006, 0.006, 0.006, 0.006,
+				},
+			},
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					7.2, 7.2, 7.2, 7.2, 7.2, 7.2, 7.2, 7.2, 7.2, 7.2,
+					7.2, 7.2, 7.2, 7.2, 7.2, 7.2, 7.2, 7.2, 7.2, 7.2,
+					7.2, 7.2, 7.2, 7.2, 7.2, 7.2, 7.2, 7.2, 7.2, 7.2,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 128
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_PET_AURA_SKILL_LEVEL_1_90"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_PET_AURA_SKILL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAX_HP"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_MAX_HP =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.26, 1.26, 1.26, 1.26, 1.26, 1.26, 1.26, 1.26, 1.26, 1.26,
+					1.26, 1.26, 1.26, 1.26, 1.26, 1.26, 1.26, 1.26, 1.26, 1.26,
+					1.26, 1.26, 1.26, 1.26, 1.26, 1.26, 1.26, 1.26, 1.26, 1.26,
+				},
+			},
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.378, 1.378, 1.378, 1.378, 1.378, 1.378, 1.378, 1.378, 1.378, 1.378,
+					1.378, 1.378, 1.378, 1.378, 1.378, 1.378, 1.378, 1.378, 1.378, 1.378,
+					1.378, 1.378, 1.378, 1.378, 1.378, 1.378, 1.378, 1.378, 1.378, 1.378,
+				},
+			},
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.065, 1.065, 1.065, 1.065, 1.065, 1.065, 1.065, 1.065, 1.065, 1.065,
+					1.065, 1.065, 1.065, 1.065, 1.065, 1.065, 1.065, 1.065, 1.065, 1.065,
+					1.065, 1.065, 1.065, 1.065, 1.065, 1.065, 1.065, 1.065, 1.065, 1.065,
+				},
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.065, 1.065, 1.065, 1.065, 1.065, 1.065, 1.065, 1.065, 1.065, 1.065,
+					1.065, 1.065, 1.065, 1.065, 1.065, 1.065, 1.065, 1.065, 1.065, 1.065,
+					1.065, 1.065, 1.065, 1.065, 1.065, 1.065, 1.065, 1.065, 1.065, 1.065,
+				},
+			},
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_PHYSIC_ATTACK"],
+				PERCENT =
+				{
+					0.0065, 0.0065, 0.0065, 0.0065, 0.0065, 0.0065, 0.0065, 0.0065, 0.0065, 0.0065,
+					0.0065, 0.0065, 0.0065, 0.0065, 0.0065, 0.0065, 0.0065, 0.0065, 0.0065, 0.0065,
+					0.0065, 0.0065, 0.0065, 0.0065, 0.0065, 0.0065, 0.0065, 0.0065, 0.0065, 0.0065,
+				},
+			},
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					7.8, 7.8, 7.8, 7.8, 7.8, 7.8, 7.8, 7.8, 7.8, 7.8,
+					7.8, 7.8, 7.8, 7.8, 7.8, 7.8, 7.8, 7.8, 7.8, 7.8,
+					7.8, 7.8, 7.8, 7.8, 7.8, 7.8, 7.8, 7.8, 7.8, 7.8,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 129
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_PET_AURA_SKILL_LEVEL00"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_PET_AURA_SKILL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAX_HP"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_MAX_HP =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.28, 1.28, 1.28, 1.28, 1.28, 1.28, 1.28, 1.28, 1.28, 1.28,
+					1.28, 1.28, 1.28, 1.28, 1.28, 1.28, 1.28, 1.28, 1.28, 1.28,
+					1.28, 1.28, 1.28, 1.28, 1.28, 1.28, 1.28, 1.28, 1.28, 1.28,
+				},
+			},
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.484, 1.484, 1.484, 1.484, 1.484, 1.484, 1.484, 1.484, 1.484, 1.484,
+					1.484, 1.484, 1.484, 1.484, 1.484, 1.484, 1.484, 1.484, 1.484, 1.484,
+					1.484, 1.484, 1.484, 1.484, 1.484, 1.484, 1.484, 1.484, 1.484, 1.484,
+				},
+			},
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.07, 1.07, 1.07, 1.07, 1.07, 1.07, 1.07, 1.07, 1.07, 1.07,
+					1.07, 1.07, 1.07, 1.07, 1.07, 1.07, 1.07, 1.07, 1.07, 1.07,
+					1.07, 1.07, 1.07, 1.07, 1.07, 1.07, 1.07, 1.07, 1.07, 1.07,
+				},
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.07, 1.07, 1.07, 1.07, 1.07, 1.07, 1.07, 1.07, 1.07, 1.07,
+					1.07, 1.07, 1.07, 1.07, 1.07, 1.07, 1.07, 1.07, 1.07, 1.07,
+					1.07, 1.07, 1.07, 1.07, 1.07, 1.07, 1.07, 1.07, 1.07, 1.07,
+				},
+			},
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_PHYSIC_ATTACK"],
+				PERCENT =
+				{
+					0.007, 0.007, 0.007, 0.007, 0.007, 0.007, 0.007, 0.007, 0.007, 0.007,
+					0.007, 0.007, 0.007, 0.007, 0.007, 0.007, 0.007, 0.007, 0.007, 0.007,
+					0.007, 0.007, 0.007, 0.007, 0.007, 0.007, 0.007, 0.007, 0.007, 0.007,
+				},
+			},
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					8.4, 8.4, 8.4, 8.4, 8.4, 8.4, 8.4, 8.4, 8.4, 8.4,
+					8.4, 8.4, 8.4, 8.4, 8.4, 8.4, 8.4, 8.4, 8.4, 8.4,
+					8.4, 8.4, 8.4, 8.4, 8.4, 8.4, 8.4, 8.4, 8.4, 8.4,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 130
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_PET_AURA_SKILL_LEVEL_2_DEFAULT"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_PET_AURA_SKILL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAX_HP"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_MAX_HP =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+				},
+			},
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12,
+					1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12,
+					1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12,
+				},
+			},
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_PHYSIC_ATTACK"],
+				PERCENT =
+				{
+					0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01,
+					0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01,
+					0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01,
+				},
+			},
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0,
+					12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0,
+					12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 131
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_PET_AURA_SKILL_LEVEL_2_70"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_PET_AURA_SKILL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAX_HP"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_MAX_HP =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33,
+					1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33,
+					1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33,
+				},
+			},
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.232, 1.232, 1.232, 1.232, 1.232, 1.232, 1.232, 1.232, 1.232, 1.232,
+					1.232, 1.232, 1.232, 1.232, 1.232, 1.232, 1.232, 1.232, 1.232, 1.232,
+					1.232, 1.232, 1.232, 1.232, 1.232, 1.232, 1.232, 1.232, 1.232, 1.232,
+				},
+			},
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.11, 1.11, 1.11, 1.11, 1.11, 1.11, 1.11, 1.11, 1.11, 1.11,
+					1.11, 1.11, 1.11, 1.11, 1.11, 1.11, 1.11, 1.11, 1.11, 1.11,
+					1.11, 1.11, 1.11, 1.11, 1.11, 1.11, 1.11, 1.11, 1.11, 1.11,
+				},
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.11, 1.11, 1.11, 1.11, 1.11, 1.11, 1.11, 1.11, 1.11, 1.11,
+					1.11, 1.11, 1.11, 1.11, 1.11, 1.11, 1.11, 1.11, 1.11, 1.11,
+					1.11, 1.11, 1.11, 1.11, 1.11, 1.11, 1.11, 1.11, 1.11, 1.11,
+				},
+			},
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_PHYSIC_ATTACK"],
+				PERCENT =
+				{
+					0.011, 0.011, 0.011, 0.011, 0.011, 0.011, 0.011, 0.011, 0.011, 0.011,
+					0.011, 0.011, 0.011, 0.011, 0.011, 0.011, 0.011, 0.011, 0.011, 0.011,
+					0.011, 0.011, 0.011, 0.011, 0.011, 0.011, 0.011, 0.011, 0.011, 0.011,
+				},
+			},
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					13.1, 13.1, 13.1, 13.1, 13.1, 13.1, 13.1, 13.1, 13.1, 13.1,
+					13.1, 13.1, 13.1, 13.1, 13.1, 13.1, 13.1, 13.1, 13.1, 13.1,
+					13.1, 13.1, 13.1, 13.1, 13.1, 13.1, 13.1, 13.1, 13.1, 13.1,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 132
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_PET_AURA_SKILL_LEVEL_2_80"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_PET_AURA_SKILL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAX_HP"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_MAX_HP =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.36, 1.36, 1.36, 1.36, 1.36, 1.36, 1.36, 1.36, 1.36, 1.36,
+					1.36, 1.36, 1.36, 1.36, 1.36, 1.36, 1.36, 1.36, 1.36, 1.36,
+					1.36, 1.36, 1.36, 1.36, 1.36, 1.36, 1.36, 1.36, 1.36, 1.36,
+				},
+			},
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.344, 1.344, 1.344, 1.344, 1.344, 1.344, 1.344, 1.344, 1.344, 1.344,
+					1.344, 1.344, 1.344, 1.344, 1.344, 1.344, 1.344, 1.344, 1.344, 1.344,
+					1.344, 1.344, 1.344, 1.344, 1.344, 1.344, 1.344, 1.344, 1.344, 1.344,
+				},
+			},
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12,
+					1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12,
+					1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12,
+				},
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12,
+					1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12,
+					1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12, 1.12,
+				},
+			},
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_PHYSIC_ATTACK"],
+				PERCENT =
+				{
+					0.012, 0.012, 0.012, 0.012, 0.012, 0.012, 0.012, 0.012, 0.012, 0.012,
+					0.012, 0.012, 0.012, 0.012, 0.012, 0.012, 0.012, 0.012, 0.012, 0.012,
+					0.012, 0.012, 0.012, 0.012, 0.012, 0.012, 0.012, 0.012, 0.012, 0.012,
+				},
+			},
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					14.4, 14.4, 14.4, 14.4, 14.4, 14.4, 14.4, 14.4, 14.4, 14.4,
+					14.4, 14.4, 14.4, 14.4, 14.4, 14.4, 14.4, 14.4, 14.4, 14.4,
+					14.4, 14.4, 14.4, 14.4, 14.4, 14.4, 14.4, 14.4, 14.4, 14.4,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 133
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_PET_AURA_SKILL_LEVEL_2_90"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_PET_AURA_SKILL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAX_HP"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_MAX_HP =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39,
+					1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39,
+					1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39, 1.39,
+				},
+			},
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.456, 1.456, 1.456, 1.456, 1.456, 1.456, 1.456, 1.456, 1.456, 1.456,
+					1.456, 1.456, 1.456, 1.456, 1.456, 1.456, 1.456, 1.456, 1.456, 1.456,
+					1.456, 1.456, 1.456, 1.456, 1.456, 1.456, 1.456, 1.456, 1.456, 1.456,
+				},
+			},
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.13, 1.13, 1.13, 1.13, 1.13, 1.13, 1.13, 1.13, 1.13, 1.13,
+					1.13, 1.13, 1.13, 1.13, 1.13, 1.13, 1.13, 1.13, 1.13, 1.13,
+					1.13, 1.13, 1.13, 1.13, 1.13, 1.13, 1.13, 1.13, 1.13, 1.13,
+				},
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.13, 1.13, 1.13, 1.13, 1.13, 1.13, 1.13, 1.13, 1.13, 1.13,
+					1.13, 1.13, 1.13, 1.13, 1.13, 1.13, 1.13, 1.13, 1.13, 1.13,
+					1.13, 1.13, 1.13, 1.13, 1.13, 1.13, 1.13, 1.13, 1.13, 1.13,
+				},
+			},
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_PHYSIC_ATTACK"],
+				PERCENT =
+				{
+					0.013, 0.013, 0.013, 0.013, 0.013, 0.013, 0.013, 0.013, 0.013, 0.013,
+					0.013, 0.013, 0.013, 0.013, 0.013, 0.013, 0.013, 0.013, 0.013, 0.013,
+					0.013, 0.013, 0.013, 0.013, 0.013, 0.013, 0.013, 0.013, 0.013, 0.013,
+				},
+			},
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					15.6, 15.6, 15.6, 15.6, 15.6, 15.6, 15.6, 15.6, 15.6, 15.6,
+					15.6, 15.6, 15.6, 15.6, 15.6, 15.6, 15.6, 15.6, 15.6, 15.6,
+					15.6, 15.6, 15.6, 15.6, 15.6, 15.6, 15.6, 15.6, 15.6, 15.6,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 134
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_PET_AURA_SKILL_LEVEL_2_100"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_PET_AURA_SKILL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAX_HP"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_MAX_HP =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.42, 1.42, 1.42, 1.42, 1.42, 1.42, 1.42, 1.42, 1.42, 1.42,
+					1.42, 1.42, 1.42, 1.42, 1.42, 1.42, 1.42, 1.42, 1.42, 1.42,
+					1.42, 1.42, 1.42, 1.42, 1.42, 1.42, 1.42, 1.42, 1.42, 1.42,
+				},
+			},
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.568, 1.568, 1.568, 1.568, 1.568, 1.568, 1.568, 1.568, 1.568, 1.568,
+					1.568, 1.568, 1.568, 1.568, 1.568, 1.568, 1.568, 1.568, 1.568, 1.568,
+					1.568, 1.568, 1.568, 1.568, 1.568, 1.568, 1.568, 1.568, 1.568, 1.568,
+				},
+			},
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.14, 1.14, 1.14, 1.14, 1.14, 1.14, 1.14, 1.14, 1.14, 1.14,
+					1.14, 1.14, 1.14, 1.14, 1.14, 1.14, 1.14, 1.14, 1.14, 1.14,
+					1.14, 1.14, 1.14, 1.14, 1.14, 1.14, 1.14, 1.14, 1.14, 1.14,
+				},
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.14, 1.14, 1.14, 1.14, 1.14, 1.14, 1.14, 1.14, 1.14, 1.14,
+					1.14, 1.14, 1.14, 1.14, 1.14, 1.14, 1.14, 1.14, 1.14, 1.14,
+					1.14, 1.14, 1.14, 1.14, 1.14, 1.14, 1.14, 1.14, 1.14, 1.14,
+				},
+			},
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_PHYSIC_ATTACK"],
+				PERCENT =
+				{
+					0.014, 0.014, 0.014, 0.014, 0.014, 0.014, 0.014, 0.014, 0.014, 0.014,
+					0.014, 0.014, 0.014, 0.014, 0.014, 0.014, 0.014, 0.014, 0.014, 0.014,
+					0.014, 0.014, 0.014, 0.014, 0.014, 0.014, 0.014, 0.014, 0.014, 0.014,
+				},
+			},
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					16.8, 16.8, 16.8, 16.8, 16.8, 16.8, 16.8, 16.8, 16.8, 16.8,
+					16.8, 16.8, 16.8, 16.8, 16.8, 16.8, 16.8, 16.8, 16.8, 16.8,
+					16.8, 16.8, 16.8, 16.8, 16.8, 16.8, 16.8, 16.8, 16.8, 16.8,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 135
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_PET_AURA_SKILL_LEVEL_3_DEFAULT"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_PET_AURA_SKILL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAX_HP"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_MAX_HP =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4,
+					1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4,
+					1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4,
+				},
+			},
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18,
+					1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18,
+					1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18,
+				},
+			},
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15,
+					1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15,
+					1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15,
+				},
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15,
+					1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15,
+					1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15,
+				},
+			},
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_PHYSIC_ATTACK"],
+				PERCENT =
+				{
+					0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015,
+					0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015,
+					0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015, 0.015,
+				},
+			},
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					18.0, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0,
+					18.0, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0,
+					18.0, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0, 18.0,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 136
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_PET_AURA_SKILL_LEVEL_3_70"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_PET_AURA_SKILL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAX_HP"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_MAX_HP =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.44, 1.44, 1.44, 1.44, 1.44, 1.44, 1.44, 1.44, 1.44, 1.44,
+					1.44, 1.44, 1.44, 1.44, 1.44, 1.44, 1.44, 1.44, 1.44, 1.44,
+					1.44, 1.44, 1.44, 1.44, 1.44, 1.44, 1.44, 1.44, 1.44, 1.44,
+				},
+			},
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.298, 1.298, 1.298, 1.298, 1.298, 1.298, 1.298, 1.298, 1.298, 1.298,
+					1.298, 1.298, 1.298, 1.298, 1.298, 1.298, 1.298, 1.298, 1.298, 1.298,
+					1.298, 1.298, 1.298, 1.298, 1.298, 1.298, 1.298, 1.298, 1.298, 1.298,
+				},
+			},
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.165, 1.165, 1.165, 1.165, 1.165, 1.165, 1.165, 1.165, 1.165, 1.165,
+					1.165, 1.165, 1.165, 1.165, 1.165, 1.165, 1.165, 1.165, 1.165, 1.165,
+					1.165, 1.165, 1.165, 1.165, 1.165, 1.165, 1.165, 1.165, 1.165, 1.165,
+				},
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.165, 1.165, 1.165, 1.165, 1.165, 1.165, 1.165, 1.165, 1.165, 1.165,
+					1.165, 1.165, 1.165, 1.165, 1.165, 1.165, 1.165, 1.165, 1.165, 1.165,
+					1.165, 1.165, 1.165, 1.165, 1.165, 1.165, 1.165, 1.165, 1.165, 1.165,
+				},
+			},
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_PHYSIC_ATTACK"],
+				PERCENT =
+				{
+					0.0165, 0.0165, 0.0165, 0.0165, 0.0165, 0.0165, 0.0165, 0.0165, 0.0165, 0.0165,
+					0.0165, 0.0165, 0.0165, 0.0165, 0.0165, 0.0165, 0.0165, 0.0165, 0.0165, 0.0165,
+					0.0165, 0.0165, 0.0165, 0.0165, 0.0165, 0.0165, 0.0165, 0.0165, 0.0165, 0.0165,
+				},
+			},
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					19.8, 19.8, 19.8, 19.8, 19.8, 19.8, 19.8, 19.8, 19.8, 19.8,
+					19.8, 19.8, 19.8, 19.8, 19.8, 19.8, 19.8, 19.8, 19.8, 19.8,
+					19.8, 19.8, 19.8, 19.8, 19.8, 19.8, 19.8, 19.8, 19.8, 19.8,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 137
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_PET_AURA_SKILL_LEVEL_3_80"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_PET_AURA_SKILL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAX_HP"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_MAX_HP =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.48, 1.48, 1.48, 1.48, 1.48, 1.48, 1.48, 1.48, 1.48, 1.48,
+					1.48, 1.48, 1.48, 1.48, 1.48, 1.48, 1.48, 1.48, 1.48, 1.48,
+					1.48, 1.48, 1.48, 1.48, 1.48, 1.48, 1.48, 1.48, 1.48, 1.48,
+				},
+			},
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.416, 1.416, 1.416, 1.416, 1.416, 1.416, 1.416, 1.416, 1.416, 1.416,
+					1.416, 1.416, 1.416, 1.416, 1.416, 1.416, 1.416, 1.416, 1.416, 1.416,
+					1.416, 1.416, 1.416, 1.416, 1.416, 1.416, 1.416, 1.416, 1.416, 1.416,
+				},
+			},
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18,
+					1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18,
+					1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18,
+				},
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18,
+					1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18,
+					1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18,
+				},
+			},
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_PHYSIC_ATTACK"],
+				PERCENT =
+				{
+					0.018, 0.018, 0.018, 0.018, 0.018, 0.018, 0.018, 0.018, 0.018, 0.018,
+					0.018, 0.018, 0.018, 0.018, 0.018, 0.018, 0.018, 0.018, 0.018, 0.018,
+					0.018, 0.018, 0.018, 0.018, 0.018, 0.018, 0.018, 0.018, 0.018, 0.018,
+				},
+			},
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					21.6, 21.6, 21.6, 21.6, 21.6, 21.6, 21.6, 21.6, 21.6, 21.6,
+					21.6, 21.6, 21.6, 21.6, 21.6, 21.6, 21.6, 21.6, 21.6, 21.6,
+					21.6, 21.6, 21.6, 21.6, 21.6, 21.6, 21.6, 21.6, 21.6, 21.6,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 138
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_PET_AURA_SKILL_LEVEL_3_90"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_PET_AURA_SKILL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAX_HP"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_MAX_HP =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.52, 1.52, 1.52, 1.52, 1.52, 1.52, 1.52, 1.52, 1.52, 1.52,
+					1.52, 1.52, 1.52, 1.52, 1.52, 1.52, 1.52, 1.52, 1.52, 1.52,
+					1.52, 1.52, 1.52, 1.52, 1.52, 1.52, 1.52, 1.52, 1.52, 1.52,
+				},
+			},
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.534, 1.534, 1.534, 1.534, 1.534, 1.534, 1.534, 1.534, 1.534, 1.534,
+					1.534, 1.534, 1.534, 1.534, 1.534, 1.534, 1.534, 1.534, 1.534, 1.534,
+					1.534, 1.534, 1.534, 1.534, 1.534, 1.534, 1.534, 1.534, 1.534, 1.534,
+				},
+			},
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.195, 1.195, 1.195, 1.195, 1.195, 1.195, 1.195, 1.195, 1.195, 1.195,
+					1.195, 1.195, 1.195, 1.195, 1.195, 1.195, 1.195, 1.195, 1.195, 1.195,
+					1.195, 1.195, 1.195, 1.195, 1.195, 1.195, 1.195, 1.195, 1.195, 1.195,
+				},
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.195, 1.195, 1.195, 1.195, 1.195, 1.195, 1.195, 1.195, 1.195, 1.195,
+					1.195, 1.195, 1.195, 1.195, 1.195, 1.195, 1.195, 1.195, 1.195, 1.195,
+					1.195, 1.195, 1.195, 1.195, 1.195, 1.195, 1.195, 1.195, 1.195, 1.195,
+				},
+			},
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_PHYSIC_ATTACK"],
+				PERCENT =
+				{
+					0.0195, 0.0195, 0.0195, 0.0195, 0.0195, 0.0195, 0.0195, 0.0195, 0.0195, 0.0195,
+					0.0195, 0.0195, 0.0195, 0.0195, 0.0195, 0.0195, 0.0195, 0.0195, 0.0195, 0.0195,
+					0.0195, 0.0195, 0.0195, 0.0195, 0.0195, 0.0195, 0.0195, 0.0195, 0.0195, 0.0195,
+				},
+			},
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					23.4, 23.4, 23.4, 23.4, 23.4, 23.4, 23.4, 23.4, 23.4, 23.4,
+					23.4, 23.4, 23.4, 23.4, 23.4, 23.4, 23.4, 23.4, 23.4, 23.4,
+					23.4, 23.4, 23.4, 23.4, 23.4, 23.4, 23.4, 23.4, 23.4, 23.4,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 139
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_PET_AURA_SKILL_LEVEL_3_100"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_PET_AURA_SKILL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAX_HP"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_MAX_HP =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.56, 1.56, 1.56, 1.56, 1.56, 1.56, 1.56, 1.56, 1.56, 1.56,
+					1.56, 1.56, 1.56, 1.56, 1.56, 1.56, 1.56, 1.56, 1.56, 1.56,
+					1.56, 1.56, 1.56, 1.56, 1.56, 1.56, 1.56, 1.56, 1.56, 1.56,
+				},
+			},
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.652, 1.652, 1.652, 1.652, 1.652, 1.652, 1.652, 1.652, 1.652, 1.652,
+					1.652, 1.652, 1.652, 1.652, 1.652, 1.652, 1.652, 1.652, 1.652, 1.652,
+					1.652, 1.652, 1.652, 1.652, 1.652, 1.652, 1.652, 1.652, 1.652, 1.652,
+				},
+			},
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 1.21,
+					1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 1.21,
+					1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 1.21,
+				},
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 1.21,
+					1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 1.21,
+					1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 1.21,
+				},
+			},
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_PHYSIC_ATTACK"],
+				PERCENT =
+				{
+					0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021,
+					0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021,
+					0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021, 0.021,
+				},
+			},
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					25.2, 25.2, 25.2, 25.2, 25.2, 25.2, 25.2, 25.2, 25.2, 25.2,
+					25.2, 25.2, 25.2, 25.2, 25.2, 25.2, 25.2, 25.2, 25.2, 25.2,
+					25.2, 25.2, 25.2, 25.2, 25.2, 25.2, 25.2, 25.2, 25.2, 25.2,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+					60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 140
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_PVP_HERO_NPC_PHYSIC_ATTACK_ACCEL"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_NPC_PHYSIC_ATTACK_ACCEL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4,
+					1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4,
+					1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 141
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_MECHANIZATION_SPEED_UP"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_MECHANIZATION_SPEED_UP"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], },
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+				},
+			},
+		},
+	},
+}
+
+--{{2012-11-23-//BALANCE_GRAND_ARCHER_20121213
+g_pBuffTempletManager:AddBuffFactor_LUA -- 142
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_POWERFUL_BOWSTRING"], --강화된 보우 스트링
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_POWERFUL_BOWSTRING"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_IMMEDIATE"], },
+
+			BFT_IMMEDIATE =
+			{
+			},
+		},
+	},
+}
+--{{2012-11-23-//BALANCE_GRAND_ARCHER_20121213
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 143
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SUPER_ARMOR"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_SUPER_ARMOR"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_SUPER_ARMOR"], },
+
+			BBT_SUPER_ARMOR =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0,
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0,
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 144
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_WALDO_TROCK"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_WALDO_TROCK"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_UNIT_SCALE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"], },
+
+			BBT_CHANGE_UNIT_SCALE =
+			{
+			},
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 145
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_BUGI_TROCK"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_BUGI_TROCK"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+				},
+			},
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+				},
+			},
+
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], BUFF_FINALIZER_TYPE["BFT_LIVE_CREATOR"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+					15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+					15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+				},
+			},
+
+			BFT_LIVE_CREATOR =
+			{
+			},
+		},
+	},
+}
+--치명상
+g_pBuffTempletManager:AddBuffFactor_LUA -- 146
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_BLEEDING"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_BLEEDING"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = FALSE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+				MULTIPLIER =
+				{
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
+					8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
+					8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 147
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_HENIR_FIRE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_HENIR_FIRE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CREATE_BUFF_FACTOR"], },
+
+			BBT_CREATE_BUFF_FACTOR =
+			{
+				BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_HENIR_FIRE"],
+				SKILL_ID = 0,
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0,
+					300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0,
+					300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 148
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_HENIR_WATER"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_HENIR_WATER"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CREATE_BUFF_FACTOR"], },
+
+			BBT_CREATE_BUFF_FACTOR =
+			{
+				BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_HENIR_WATER"],
+				SKILL_ID = 0,
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0,
+					300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0,
+					300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 149
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_HENIR_NATURE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_HENIR_NATURE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ADDITIONAL_DEFENCE"], },
+
+			BBT_CHANGE_ADDITIONAL_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
+					50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
+					50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0,
+					300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0,
+					300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 150
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_HENIR_WIND"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_HENIR_WIND"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+			BUFF_BEHAVIOR_TYPE["BBT_CHANGE_JUMP_POWER"], },
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03,
+					1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03,
+					1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03, 1.03,
+				},
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+
+			BBT_CHANGE_JUMP_POWER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0,
+					300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0,
+					300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 151
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_HENIR_LIGHT"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_HENIR_LIGHT"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ADDITIONAL_ATTACK"], },
+
+			BBT_CHANGE_ADDITIONAL_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0,
+					300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0,
+					300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0, 300.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 152
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_HENIR_FIRE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_FIRE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+				MULTIPLIER =
+				{
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 153
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_HENIR_WATER"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_COLD"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+				MULTIPLIER =
+				{
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+				},
+			},
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85,
+					0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85,
+					0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 154
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_EMPTY_EXP_BUFF"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_EMPTY_EXP_BUFF"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_X2STATE_CHANGE"], },
+
+			BFT_X2STATE_CHANGE =
+			{
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 155
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_KELAINO_RAGE_MODE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_KELAINO_RAGE_MODE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"],},
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+				},
+			},
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_DUNGEON_STAGE_CHANGE"], },
+
+			BFT_DUNGEON_STAGE_CHANGE =
+			{
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 156
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_ARA_FULL_HYPER_MODE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_ARA_FULL_HYPER_MODE"],	-- 아라 3각성 일때 추가로 부여되는 버프
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+			BUFF_BEHAVIOR_TYPE["BBT_CHANGE_JUMP_POWER"], },
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+
+			BBT_CHANGE_JUMP_POWER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999,
+					9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999,
+					9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 157
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_BRUTAL_PIERCING"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_BRUTAL_PIERCING"],
+		RATE	=
+		{
+			0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01,
+			0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01,
+			0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"], },
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.94, 0.88, 0.82, 0.76, 0.70, 0.64, 0.58, 0.52, 0.46, 0.40, 
+					0.34, 0.28, 0.22, 0.16, 0.10, 0.03, 0.00, 0.00, 0.00, 0.00, 
+					0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 
+				},
+			},
+
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.94, 0.88, 0.82, 0.76, 0.70, 0.64, 0.58, 0.52, 0.46, 0.40, 
+					0.34, 0.28, 0.22, 0.16, 0.10, 0.03, 0.00, 0.00, 0.00, 0.00, 
+					0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 158
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_POWER_OF_WHITE_TIGER"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_POWER_OF_WHITE_TIGER"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ADDITIONAL_ATTACK"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"] },
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					1.05, 1.06, 1.07, 1.08, 1.09, 1.1, 1.11, 1.12, 1.13, 1.14, 
+					1.15, 1.16, 1.17, 1.18, 1.19, 1.2, 1.21, 1.22, 1.23, 1.24, 
+					1.25, 1.26, 1.27, 1.28, 1.29, 1.3, 1.31, 1.32, 1.33, 1.34, 
+				},
+			},
+			BBT_CHANGE_ADDITIONAL_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					1.05, 1.06, 1.07, 1.08, 1.09, 1.1, 1.11, 1.12, 1.13, 1.14, 
+					1.15, 1.16, 1.17, 1.18, 1.19, 1.2, 1.21, 1.22, 1.23, 1.24, 
+					1.25, 1.26, 1.27, 1.28, 1.29, 1.3, 1.31, 1.32, 1.33, 1.34, 
+				},
+			},
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					1.05, 1.055, 1.06, 1.065, 1.07, 1.075, 1.08, 1.085, 1.09, 1.095, 
+					1.1, 1.105, 1.11, 1.115, 1.12, 1.125, 1.13, 1.135, 1.14, 1.145, 
+					1.15, 1.155, 1.16, 1.165, 1.17, 1.175, 1.18, 1.185, 1.19, 1.195, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 
+					30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 
+					40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 159
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SI_A_ASD_LOW_BRANDISH"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_CHANGE_AVOIDANCE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_AVOIDANCE"], },
+
+			BBT_CHANGE_AVOIDANCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.20, 1.24, 1.28, 1.32, 1.36, 1.40, 1.44, 1.48, 1.52, 1.56, 
+					1.60, 1.64, 1.68, 1.72, 1.76, 1.80, 1.84, 1.88, 1.92, 1.96, 
+					2.00, 2.04, 2.08, 2.12, 2.16, 2.20, 2.24, 2.28, 2.32, 2.36, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+					1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+					1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 160
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SUPPRESSION"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_SUPPRESSION"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"],
+							BUFF_BEHAVIOR_TYPE["BBT_STUN"], },
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.6, 0.55, 0.5, 0.45, 0.4, 0.35, 0.3, 0.25, 0.2, 0.15,
+					0.1, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05,
+					0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 
+				},
+			},
+
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.6, 0.55, 0.5, 0.45, 0.4, 0.35, 0.3, 0.25, 0.2, 0.15,
+					0.1, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05,
+					0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 
+				},
+			},
+
+			BBT_STUN =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					4.5,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 161
+{	--보프 패시브 극한의 마나 운용
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_LIMITED_MANA_MANAGEMENT"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_LIMITED_MANA_MANAGEMENT"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAX_MP"], },
+
+			BBT_CHANGE_MAX_MP =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					60, 80, 100, 120, 140, 160, 180, 200, 220, 240, 
+					260, 280, 300, 320, 340, 360, 380, 400, 420, 440, 
+					460, 480, 500, 520, 540, 560, 580, 600, 620, 640, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_FINISH_HYPER"], },
+			BFT_FINISH_HYPER =
+			{
+			},
+		},
+	},
+}
+
+--{{BALANCE_RUNE_SLAYER_20130214
+g_pBuffTempletManager:AddBuffFactor_LUA -- 162
+{	--소드 인첸트 아이스
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SWORD_ENCHANT_ICE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_SWORD_ENCHANT_ICE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CREATE_BUFF_FACTOR"], BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"],},
+
+			BBT_CREATE_BUFF_FACTOR =
+			{
+				BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SWORD_ENCHANT_ICE"],
+				SKILL_ID = 1217,
+			},
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 163
+{	--소드 인첸트 파이어
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SWORD_ENCHANT_FIRE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_SWORD_ENCHANT_FIRE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CREATE_BUFF_FACTOR"], BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"],},
+
+			BBT_CREATE_BUFF_FACTOR =
+			{
+				BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SWORD_ENCHANT_FIRE"],
+				SKILL_ID = 1217,
+			},
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 164
+{	--소드 인첸트 포이즌
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SWORD_ENCHANT_POISON"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_SWORD_ENCHANT_POISON"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CREATE_BUFF_FACTOR"], BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"],},
+
+			BBT_CREATE_BUFF_FACTOR =
+			{
+				BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SWORD_ENCHANT_POISON"],
+				SKILL_ID = 1217,
+			},
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 165
+{	--소드 인첸트 아이스 디버프
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SWORD_ENCHANT_ICE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_SWORD_ENCHANT_ICE"],
+		RATE	=
+		{
+			0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02,
+			0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02,
+			0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"],},
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85,
+					0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85,
+					0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85,
+				}
+			},
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+				MULTIPLIER =
+				{
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+				}
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+					3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+					3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 166
+{	--소드 인첸트 파이어 디버프
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SWORD_ENCHANT_FIRE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_SWORD_ENCHANT_FIRE"],
+		RATE	=
+		{
+			0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02,
+			0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02,
+			0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+
+				MULTIPLIER =
+				{
+					-0.45, -0.45, -0.45, -0.45, -0.45, -0.45, -0.45, -0.45, -0.45, -0.45, -0.45,
+					-0.45, -0.45, -0.45, -0.45, -0.45, -0.45, -0.45, -0.45, -0.45, -0.45, -0.45,
+					-0.45, -0.45, -0.45, -0.45, -0.45, -0.45, -0.45, -0.45, -0.45, -0.45, -0.45,
+				}
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 167
+{	--소드 인첸트 포이즌 디버프
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SWORD_ENCHANT_POISON"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_SWORD_ENCHANT_POISON"],
+		RATE	=
+		{
+			0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02,
+			0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02,
+			0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+
+				MULTIPLIER =
+				{
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+				}
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 168
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_POISON_SET_EQUIP_OPTION"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_POISON"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+
+				MULTIPLIER =
+				{
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+				}
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 169
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SECRET_SET_EQUIP_MANA_RECOVERY_VALUE_01"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_SECRET_SET_EQUIP_MANA_RECOVERY_VALUE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+				}
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 170
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SECRET_SET_EQUIP_MANA_RECOVERY_VALUE_02"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_SECRET_SET_EQUIP_MANA_RECOVERY_VALUE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+				}
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 171
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SECRET_SET_EQUIP_MANA_RECOVERY_VALUE_03"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_SECRET_SET_EQUIP_MANA_RECOVERY_VALUE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0,
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0,
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0,
+				}
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 172
+{	-- 대 전투 추장 : 카루 - 각성시 공격력 증가되는 버프
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_KARUSO_BATTLE_MASTER_AWAKE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_KARUSO_BATTLE_MASTER_AWAKE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+				}
+			},
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+				}
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					99999.0, 99999.0, 99999.0, 99999.0, 99999.0, 99999.0, 99999.0, 99999.0, 99999.0, 99999.0,
+					99999.0, 99999.0, 99999.0, 99999.0, 99999.0, 99999.0, 99999.0, 99999.0, 99999.0, 99999.0,
+					99999.0, 99999.0, 99999.0, 99999.0, 99999.0, 99999.0, 99999.0, 99999.0, 99999.0, 99999.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 173
+{	-- chief_of_trockta : magic attack b 시전시 유저들을 스턴 상태로 만드는 버프
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_TROCKTA_MAGICATTACKB_STUN"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_TROCKTA_MAGICATTACKB_STUN"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_STUN"], },
+
+			BBT_STUN =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 174
+{	-- chief_of_trockta : magic attack b 시전시 유저들에게 프레스 시전
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_TROCKTA_MAGICATTACKB_PRESS"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_PRESS"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = FALSE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_UNIT_SCALE"], BUFF_BEHAVIOR_TYPE["BBT_ATTACK_IMPOSSIBLE"], },
+
+			BBT_CHANGE_UNIT_SCALE =
+			{
+			},
+			BBT_ATTACK_IMPOSSIBLE =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 175
+{	-- chief_of_trockta : hp drain 피를 5%씩 회복
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_TROCKTA_HP_DRAIN"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_TROCKTA_HP_DRAIN"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = FALSE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], },
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					0.003, 0.003, 0.003, 0.003, 0.003, 0.003, 0.003, 0.003, 0.003, 0.003, 0.003,
+					0.003, 0.003, 0.003, 0.003, 0.003, 0.003, 0.003, 0.003, 0.003, 0.003, 0.003,
+					0.003, 0.003, 0.003, 0.003, 0.003, 0.003, 0.003, 0.003, 0.003, 0.003, 0.003,
+				}
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 176
+{	--chief_of_trockta : trockta_trap에 걸릴 경우 이동 불가
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_TROCKTA_TRAP"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_TROCKTA_TRAP"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = FALSE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_NEVER_MOVE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_JUMP_POWER"], },
+
+			BBT_NEVER_MOVE =
+			{
+			},
+			BBT_CHANGE_JUMP_POWER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_SWAP_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				SWAP_VALUE =
+				{
+					0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+					0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+					0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], BUFF_FINALIZER_TYPE["BFT_LIVE_CREATOR"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+
+			BFT_LIVE_CREATOR =
+			{
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 177
+{	--울의 분노
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_ANGER_OF_UOOL"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_ANGER_OF_UOOL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_UNIT_SCALE"], BUFF_BEHAVIOR_TYPE["BBT_SUPER_ARMOR"],
+				BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"],
+				BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"],  },
+
+			BBT_CHANGE_UNIT_SCALE =
+			{
+			},
+
+			BBT_SUPER_ARMOR =
+			{
+			},
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2,
+					2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2,
+					2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2,
+				}
+			},
+
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+				}
+			},
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+				},
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+			},
+		},
+
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 178
+{	--스톤 갓의 탈진
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_STONE_GOD_TIRED"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_STONE_GOD_TIRED"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"], },
+
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+				},
+			},
+
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+				},
+			},
+		},
+
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 179
+{	--카르바로스 지침
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_KALLVEROS_TIRED"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_AGING"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"],
+					BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"],
+					BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"],
+					BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+				},
+			},
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+				},
+			},
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+				},
+			},
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
+					6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
+					6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 180
+{	--우노, 쇼타임
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_UNO_SHOW_TIME"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_UNO_SHOW_TIME"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"],
+				BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"], BUFF_BEHAVIOR_TYPE["BBT_SUPER_ARMOR"],
+				BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+				},
+			},
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25,
+					1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25,
+					1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25,
+				},
+			},
+
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25,
+					1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25,
+					1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25,
+				},
+			},
+
+			BBT_SUPER_ARMOR =
+			{
+			},
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+				},
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+					15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+					15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 181
+{	--아라 메모 : 물 흐르듯이( 이화접목 )
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_BREAKING_MEMO"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_BREAKING_MEMO"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_AVOIDANCE"], },
+
+			BBT_CHANGE_AVOIDANCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+					3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+					3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 182
+{	-- 필드 중간 보스 런칭 이벤트 ( 필드 디펜스 ) - 경험치, ED 획득량 증가
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_FIELD_DEFENCE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_FIELD_DEFENCE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 183
+{	-- 만우절 이벤트 - 엘레강스 레인보우 요일별 혜택
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_APRIL_FOOLSDAY"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_APRIL_FOOLSDAY"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 184
+{	-- 어둠의 문 벨런스 설정용 방어력 증가 버프
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_GATE_DEFENCE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_GATE_DEFENCE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER"], },
+
+			BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03,
+					0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03,
+					0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], BUFF_FINALIZER_TYPE["BFT_LIVE_CREATOR"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+				},
+			},
+
+			BFT_LIVE_CREATOR =
+			{
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 185
+{	-- 어둠의 문 벨런스 설정용 마족 소환문 방어력 증가 버프
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_ENEMY_GATE_DEFENCE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_ENEMY_GATE_DEFENCE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER"], },
+
+			BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], BUFF_FINALIZER_TYPE["BFT_LIVE_CREATOR"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+				},
+			},
+
+			BFT_LIVE_CREATOR =
+			{
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 186
+{	-- 어둠의 문 영약 : 거인화 물약
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_ELIXIR_GIANT_POTION"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_ELIXIR_GIANT_POTION"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_UNIT_SCALE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"], },
+
+			BBT_CHANGE_UNIT_SCALE =
+			{
+			},
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 187
+{	-- 어둠의 문 영약 : 이글이글 폭약
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_ELIXIR_BLAZING_BOMB"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_ELIXIR_BLAZING_BOMB"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 188
+{	-- 어둠의 문 영약 : 추적자의 혼
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_ELIXIR_SPIRIT_OF_CHASER"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_ELIXIR_SPIRIT_OF_CHASER"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 189
+{	-- 어둠의 문 영약 : 아기 요정 요람
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_ELIXIR_CRADLE_OF_LITTLE_FAIRY"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_ELIXIR_CRADLE_OF_LITTLE_FAIRY"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03,
+					0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03,
+					0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03, 0.03,
+				},
+			},
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+					30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 190
+{	-- 어둠의 문 영약 : 데니프의 얼음 구슬
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_ELIXIR_ICE_BALL_OF_DENIPH"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_ELIXIR_ICE_BALL_OF_DENIPH"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 191
+{	-- 어둠의 문 영약 : 벤투스의 날개깃
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_ELIXIR_FEATHER_OF_VENTUS"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_ELIXIR_FEATHER_OF_VENTUS"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ATTRIBUTE_WIND_DEFENCE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_AVOIDANCE"],		},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33,
+					1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33,
+					1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33, 1.33,
+				},
+			},
+			BBT_CHANGE_ATTRIBUTE_WIND_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+					100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+					100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+				},
+			},
+			BBT_CHANGE_AVOIDANCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				}
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 192
+{	-- 어둠의 문 영약 : 로쏘의 화염고리
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_ELIXIR_FLAME_RING_OF_ROSSO"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_ELIXIR_FLAME_RING_OF_ROSSO"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 193
+{	-- 어둠의 문 영약 : 거대손 물약
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_ELIXIR_BIG_HAND_POTION"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_ELIXIR_BIG_HAND_POTION"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ADDITIONAL_ATTACK"], },
+
+			BBT_CHANGE_ADDITIONAL_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				}
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 194
+{	-- 2013 어둠의 문 참여자 가짜 버프
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_2013_DEFENSE_FAKE_BUFF"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_2013_DEFENSE_FAKE_BUFF"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 195
+{	-- 2013 어둠의 문 참여자 버프
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_2013_DEFENSE_BUFF"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_2013_DEFENSE_BUFF"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"],
+							BUFF_BEHAVIOR_TYPE["BBT_ADD_SKILL_LEVEL"], },
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				}
+			},
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+				}
+			},
+
+			BBT_ADD_SKILL_LEVEL =
+			{
+				ADD_SKILL_LEVEL = 1,
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 196
+{	-- 2013 어둠의 문 월드 디버프
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_2013_DEFENSE_DEBUFF"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_2013_DEFENSE_DEBUFF"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 197
+{	-- 이벤트용 2013 어둠의 문 참여자 버프
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_2013_DEFENSE_BUFF_EVENT"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_2013_DEFENSE_BUFF_EVENT"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"],
+							BUFF_BEHAVIOR_TYPE["BBT_ADD_SKILL_LEVEL"], },
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15,
+					1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15,
+					1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15,
+				}
+			},
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				}
+			},
+
+			BBT_ADD_SKILL_LEVEL =
+			{
+				ADD_SKILL_LEVEL = 1,
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 198
+{	-- 라이딩 펫 용
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_WHEN_RIDE_ON_PET_FOR_ONLY_MASTER"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_WHEN_RIDE_ON_PET_FOR_ONLY_MASTER"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+		COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"],
+						BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"],
+						BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"],	},
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0,
+					2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0,
+					2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0,
+				}
+			},
+
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0,
+					2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0,
+					2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0,
+				}
+			},
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025,
+					0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025,
+					0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025,
+				}
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_RIDING_ON_OR_NOT"], },
+
+			BFT_RIDING_ON_OR_NOT =
+			{
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 199
+{	-- 탈 것에서 슈퍼 아머
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SUPER_AMOR_FOR_RIDING"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_SUPER_AMOR_CREST"],
+		RATE	=
+		{
+			0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2,
+			0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2,
+			0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_SUPER_ARMOR"], BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"],
+				BUFF_BEHAVIOR_TYPE["BBT_EFFECT_SET_WITH_DAMAGE"], },
+
+			BBT_SUPER_ARMOR =
+			{
+			},
+
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+
+			BBT_EFFECT_SET_WITH_DAMAGE =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+					3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+					3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 200
+{	--공존의 축제 이벤트 버프
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_FESTIVAL_EVENT_BUFF"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_FESTIVAL_EVENT_BUFF"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				}
+			},
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				}
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999,
+					9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999,
+					9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 201
+{ -- 돌사과
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_STONE_APPLE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_STONE_APPLE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_SUPER_ARMOR"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER"], },
+
+			BBT_SUPER_ARMOR =
+			{
+			},
+
+			BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
+					0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
+					0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
+				}
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 202
+{ -- 거인의 사과
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_GIANT_APPLE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_GIANT_APPLE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_UNIT_SCALE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_JUMP_POWER"], },
+
+			BBT_CHANGE_UNIT_SCALE =
+			{
+			},
+
+			BBT_CHANGE_JUMP_POWER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+					1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					110, 110, 110, 110, 110, 110, 110, 110, 110, 110,
+					110, 110, 110, 110, 110, 110, 110, 110, 110, 110,
+					110, 110, 110, 110, 110, 110, 110, 110, 110, 110,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 203
+{ -- 질풍의 사과
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_GALE_APPLE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_GALE_APPLE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"], },
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30,
+					1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30,
+					1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30,
+				},
+			},
+
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					135, 135, 135, 135, 135, 135, 135, 135, 135, 135,
+					135, 135, 135, 135, 135, 135, 135, 135, 135, 135,
+					135, 135, 135, 135, 135, 135, 135, 135, 135, 135,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 204
+{ -- 투지의 물약
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_FIGHTING_SPIRIT_POTION"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_FIGHTING_SPIRIT_POTION"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_UNIT_SCALE"],
+						BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"],
+						BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"],
+						},
+
+			BBT_CHANGE_UNIT_SCALE =
+			{
+			},
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30,
+					1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30,
+					1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30,
+				},
+			},
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30,
+					1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30,
+					1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30, 1.30,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					120, 120, 120, 120, 120, 120, 120, 120, 120, 120,
+					120, 120, 120, 120, 120, 120, 120, 120, 120, 120,
+					120, 120, 120, 120, 120, 120, 120, 120, 120, 120,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 205
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_TRADE_BLOCK"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_TRADE_BLOCK"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 206
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_RIDING_SCORPION_ENERGY_SWORD"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_RIDING_SCORPION_ENERGY_SWORD"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], BUFF_FINALIZER_TYPE["BFT_RIDING_ON_OR_NOT"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+				},
+			},
+
+			BFT_RIDING_ON_OR_NOT =
+			{
+				FINISH_WHEN_RIDING_ON	= FALSE,
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 207
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_ELRIN"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_ELRIN"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 208
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SOYUL"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_SOYUL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"], },
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+				},
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15,
+					1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15,
+					1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 209
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_KUMI"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_KUMI"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"] },
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 210
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_CHOA"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_CHOA"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 211
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_WEY"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_WEY"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 212
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_PANDEMONIUM_FEAR"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_PANDEMONIUM_FEAR"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_SKILL_ATTACK_IMPOSSIBLE"],
+				BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANTI_CRITICAL_RATE"], },
+
+			BBT_SKILL_ATTACK_IMPOSSIBLE =
+			{
+			},
+
+			BBT_CHANGE_ANTI_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					1.15, 1.17, 1.19, 1.21, 1.23, 1.25, 1.27, 1.29, 1.31, 1.33, 
+					1.35, 1.37, 1.39, 1.41, 1.43, 1.45, 1.47, 1.49, 1.51, 1.53, 
+					1.55, 1.57, 1.59, 1.61, 1.63, 1.65, 1.67, 1.69, 1.71, 1.73, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					4.5, 4.7, 4.9, 5.1, 5.3, 5.5, 5.7, 5.9, 6.1, 6.3, 
+					6.5, 6.7, 6.9, 7.1, 7.3, 7.5, 7.7, 7.9, 8.1, 8.3, 
+					8.5, 8.7, 8.9, 9.1, 9.3, 9.5, 9.7, 9.9, 10.1, 10.3, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 213
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SI_SA_CTT_TACTICAL_FIELD_RAID"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_SI_SA_CTT_TACTICAL_FIELD_RAID"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], },
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 
+					20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 
+					30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 
+				},
+			},
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.15, 1.16, 1.17, 1.18, 1.19, 1.20, 1.21, 1.22, 1.23, 1.24, 
+					1.25, 1.26, 1.27, 1.28, 1.29, 1.30, 1.31, 1.32, 1.33, 1.34, 
+					1.35, 1.36, 1.37, 1.38, 1.39, 1.40, 1.41, 1.42, 1.43, 1.44, 
+				},
+			},
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.15, 1.16, 1.17, 1.18, 1.19, 1.20, 1.21, 1.22, 1.23, 1.24, 
+					1.25, 1.26, 1.27, 1.28, 1.29, 1.30, 1.31, 1.32, 1.33, 1.34, 
+					1.35, 1.36, 1.37, 1.38, 1.39, 1.40, 1.41, 1.42, 1.43, 1.44, 
+				},
+			},
+
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 214
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_COMMON_AURA_EL_DEFENCE_ACCEL"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_COMMON_AURA_EL_DEFENCE_ACCEL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_EVERY_ATTRIBUTE_DEFENCE"] },
+
+			BBT_CHANGE_EVERY_ATTRIBUTE_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 
+					125, 130, 135, 140, 145, 150, 155, 160, 165, 170, 
+					175, 180, 185, 190, 195, 200, 205, 210, 215, 220, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+					60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+					60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 215
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_COMMON_AURA_CRITICAL_ACCEL"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_COMMON_AURA_CRITICAL_ACCEL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"] },
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.100, 1.108, 1.115, 1.123, 1.130, 1.138, 1.145, 1.153, 1.160, 1.168, 
+					1.175, 1.183, 1.190, 1.198, 1.205, 1.213, 1.220, 1.228, 1.235, 1.243, 
+					1.250, 1.258, 1.265, 1.273, 1.280, 1.288, 1.295, 1.303, 1.310, 1.318, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+					60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+					60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 216
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_COMMON_AURA_ADDATK_ACCEL"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_COMMON_AURA_ADDATK_ACCEL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ADDITIONAL_ATTACK"], },
+			BBT_CHANGE_ADDITIONAL_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					10, 10.75, 11.5, 12.25, 13, 13.75, 14.5, 15.25, 16, 16.75,
+					17.5, 18.25, 19, 19.75, 20.5, 21.25, 22, 22.75, 23.5, 24.25,
+					25, 25.75, 26.5, 27.25, 28, 28.75, 29.5, 30.25, 31, 31.75,
+				},
+			},
+		},
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+					60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+					60, 60, 60, 60, 60, 60, 60, 60, 60, 60,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 217
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_OVER_HEAT_ENHANCE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_OVER_HEAT_ENHANCE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.11, 1.1175, 1.125, 1.1325, 1.14, 1.1475, 1.155, 1.1625, 1.17, 1.1775, 
+					1.185, 1.1925, 1.2, 1.2075, 1.215, 1.2225, 1.23, 1.2375, 1.245, 1.2525, 
+					1.26, 1.2675, 1.275, 1.2825, 1.29, 1.2975, 1.305, 1.3125, 1.32, 1.3275, 
+				},
+			},
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.11, 1.1175, 1.125, 1.1325, 1.14, 1.1475, 1.155, 1.1625, 1.17, 1.1775, 
+					1.185, 1.1925, 1.2, 1.2075, 1.215, 1.2225, 1.23, 1.2375, 1.245, 1.2525, 
+					1.26, 1.2675, 1.275, 1.2825, 1.29, 1.2975, 1.305, 1.3125, 1.32, 1.3275, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 
+					16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 
+					26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 218
+{	-- 샤이닝 바디
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SHINING_BODY"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SHINING_BODY"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_ABSORB_EFFECT_ATTACK"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"], },
+
+			BBT_ABSORB_EFFECT_ATTACK =
+			{
+				ABSORB_VALUE =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4,
+					1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4,
+					1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 
+					6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 
+					11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0, 15.5, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 219
+{	-- 섀도우 바디
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SHADOW_BODY"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SHADOW_BODY"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_SUPER_ARMOR"], 
+				BUFF_BEHAVIOR_TYPE["BBT_CHANGE_AVOIDANCE"], BUFF_BEHAVIOR_TYPE["BBT_ZX_ATTACK_IMPOSSIBLE"], },
+
+			BBT_SUPER_ARMOR =
+			{
+			},
+			BBT_CHANGE_AVOIDANCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.30, 1.34, 1.38, 1.42, 1.46, 1.50, 1.54, 1.58, 1.62, 1.66, 
+					1.70, 1.74, 1.78, 1.82, 1.86, 1.90, 1.94, 1.98, 2.00, 2.00, 
+					2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00,  
+				},
+			},
+			BBT_ZX_ATTACK_IMPOSSIBLE =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					1.00, 1.25, 1.50, 1.75, 2.00, 2.25, 2.50, 2.75, 3.00, 3.25, 
+					3.50, 3.75, 4.00, 4.25, 4.50, 4.75, 5.00, 5.25, 5.50, 5.75, 
+					6.00, 6.25, 6.50, 6.75, 7.00, 7.25, 7.50, 7.75, 8.00, 8.25, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 220
+{	-- 에너제틱 바디
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_ENERGETIC_BODY"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_ENERGETIC_BODY"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ADDITIONAL_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"], },
+
+			BBT_CHANGE_ADDITIONAL_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5,
+					8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5,
+					13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5,
+				},
+			},
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT = 
+				{
+					1.050, 1.054, 1.058, 1.062, 1.066, 1.07, 1.074, 1.078, 1.082, 1.086, 
+					1.090, 1.094, 1.098, 1.102, 1.106, 1.11, 1.114, 1.118, 1.122, 1.126, 
+					1.130, 1.134, 1.138, 1.142, 1.146, 1.15, 1.154, 1.158, 1.162, 1.166, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 
+					11, 11.5, 12, 12.5, 13, 13.5, 14, 14.5, 15, 15.5, 
+					16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 221
+{-- 엘리시스 패시브 스킬 기사의 숙명 - 공격력 버프 
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_CHIVALRY_ATTACK"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_CHIVALRY_ATTACK"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"],},
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.05, 1.062, 1.074, 1.086, 1.098, 1.11, 1.122, 1.134, 1.146, 1.158,
+					1.17, 1.182, 1.194, 1.206, 1.218, 1.23, 1.242, 1.254, 1.266, 1.278,
+					1.29, 1.302, 1.314, 1.326, 1.338, 1.35, 1.362, 1.374, 1.386, 1.398,
+				},
+			},
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.05, 1.062, 1.074, 1.086, 1.098, 1.11, 1.122, 1.134, 1.146, 1.158,
+					1.17, 1.182, 1.194, 1.206, 1.218, 1.23, 1.242, 1.254, 1.266, 1.278,
+					1.29, 1.302, 1.314, 1.326, 1.338, 1.35, 1.362, 1.374, 1.386, 1.398,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 222
+{-- 엘리시스 패시브 스킬 기사의 숙명 - 방어력 버프 
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_CHIVALRY_DEFENCE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_CHIVALRY_DEFENCE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ADDITIONAL_DEFENCE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_EVERY_ATTRIBUTE_DEFENCE"],},
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.11, 1.12, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18, 1.19,
+					1.2, 1.21, 1.22, 1.23, 1.24, 1.25, 1.26, 1.27, 1.28, 1.29,
+					1.3, 1.31, 1.32, 1.33, 1.34, 1.35, 1.36, 1.37, 1.38, 1.39,
+				},
+			},
+
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.11, 1.12, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18, 1.19,
+					1.2, 1.21, 1.22, 1.23, 1.24, 1.25, 1.26, 1.27, 1.28, 1.29,
+					1.3, 1.31, 1.32, 1.33, 1.34, 1.35, 1.36, 1.37, 1.38, 1.39,
+				},
+			},
+
+			BBT_CHANGE_ADDITIONAL_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.11, 1.12, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18, 1.19,
+					1.2, 1.21, 1.22, 1.23, 1.24, 1.25, 1.26, 1.27, 1.28, 1.29,
+					1.3, 1.31, 1.32, 1.33, 1.34, 1.35, 1.36, 1.37, 1.38, 1.39,
+				},
+			},
+
+			BBT_CHANGE_EVERY_ATTRIBUTE_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					10, 13, 16, 19, 22, 25, 28, 31, 34, 37,
+					40, 43, 46, 49, 52, 55, 58, 61, 64, 67,
+					70, 73, 76, 79, 82, 85, 88, 91, 94, 97,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 223
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_POWER_OF_TIGER"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_POWER_OF_TIGER"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"], },
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.15, 1.22, 1.29, 1.36, 1.43, 1.5, 1.57, 1.64, 1.71, 1.78,
+					1.85, 1.92, 1.99, 2.06, 2.13, 2.2, 2.27, 2.34, 2.41, 2.48,
+					2.55, 2.62, 2.69, 2.76, 2.83, 2.9, 2.97, 3.04, 3.11, 3.18,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 224
+{	--아이레린나 실프
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_AIRELINNA_SYLPH"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SI_SA_LWS_AIRELINNA_SYLPH"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_JUMP_POWER"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"],BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"], },
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.07, 1.09, 1.11, 1.13, 1.15, 1.17, 1.19, 1.21, 1.23, 1.25, 
+					1.27, 1.29, 1.31, 1.33, 1.35, 1.37, 1.39, 1.41, 1.43, 1.45, 
+					1.47, 1.49, 1.51, 1.53, 1.55, 1.57, 1.59, 1.61, 1.63, 1.65, 
+				},
+			},
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.07, 1.09, 1.11, 1.13, 1.15, 1.17, 1.19, 1.21, 1.23, 1.25, 
+					1.27, 1.29, 1.31, 1.33, 1.35, 1.37, 1.39, 1.41, 1.43, 1.45, 
+					1.47, 1.49, 1.51, 1.53, 1.55, 1.57, 1.59, 1.61, 1.63, 1.65, 
+				},
+			},
+			BBT_CHANGE_JUMP_POWER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.07, 1.09, 1.11, 1.13, 1.15, 1.17, 1.19, 1.21, 1.23, 1.25, 
+					1.27, 1.29, 1.31, 1.33, 1.35, 1.37, 1.39, 1.41, 1.43, 1.45, 
+					1.47, 1.49, 1.51, 1.53, 1.55, 1.57, 1.59, 1.61, 1.63, 1.65, 
+				},
+			},
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.01, 1.02, 1.03, 1.04, 1.05, 1.06, 1.07, 1.08, 1.09, 1.10,
+					1.11, 1.12, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18, 1.19, 1.20,
+					1.21, 1.22, 1.23, 1.24, 1.25, 1.26, 1.27, 1.28, 1.29, 1.30,
+				},
+			},
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.01, 1.02, 1.03, 1.04, 1.05, 1.06, 1.07, 1.08, 1.09, 1.10,
+					1.11, 1.12, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18, 1.19, 1.20,
+					1.21, 1.22, 1.23, 1.24, 1.25, 1.26, 1.27, 1.28, 1.29, 1.30,
+				},
+			},
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					28, 32, 36, 40, 44, 48, 52, 56, 60, 64,
+					68, 72, 76, 80, 84, 88, 92, 96, 100, 104,
+					108, 112, 116, 120, 124, 128, 132, 136, 140, 144,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 225
+{	--하이 킥 - 마법 공격력 감소(디버프)
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_HIGH_KICK"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_HIGH_KICK"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], },
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.80, 0.78, 0.76, 0.74, 0.72, 0.70, 0.68, 0.66, 0.64, 0.62, 
+					0.60, 0.58, 0.56, 0.54, 0.52, 0.50, 0.48, 0.46, 0.44, 0.42, 
+					0.40, 0.38, 0.36, 0.34, 0.32, 0.30, 0.28, 0.26, 0.24, 0.22, 
+				},
+			},
+		},
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 
+					15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 
+					25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 226
+{	--백 킥 - 물리 공격력 감소(디버프)
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_BACK_KICK"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_BACK_KICK"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.80, 0.78, 0.76, 0.74, 0.72, 0.70, 0.68, 0.66, 0.64, 0.62, 
+					0.60, 0.58, 0.56, 0.54, 0.52, 0.50, 0.48, 0.46, 0.44, 0.42, 
+					0.40, 0.38, 0.36, 0.34, 0.32, 0.30, 0.28, 0.26, 0.24, 0.22, 
+				},
+			},
+		},
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 
+					15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 
+					25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 227
+{	--로우 킥 - 대시 불가
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_LOW_KICK"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_LEG_SPASM"],
+		RATE	=
+		{
+			0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7,
+			0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7,
+			0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7,
+		},
+		IGNORE_REGIST_FOR_RATE = FALSE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_DASH_IMPOSSIBLE"], },
+
+			BBT_DASH_IMPOSSIBLE =
+			{
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3.5, 3.8, 4.1, 4.4, 4.7, 5.0, 5.3, 5.6, 5.9, 6.2, 
+					6.5, 6.8, 7.1, 7.4, 7.7, 8.0, 8.3, 8.6, 8.9, 9.2, 
+					9.5, 9.8, 10.1, 10.4, 10.7, 11.0, 11.3, 11.6, 11.9, 12.2, 
+
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 228
+{	--날카로운 검 - 출혈
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_CUTTING_SWORD"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_BLEEDING"],
+		RATE	=
+		{
+			0.005, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05, 
+			0.055, 0.06, 0.065, 0.07, 0.075, 0.08, 0.085, 0.09, 0.095, 0.1,
+			0.105, 0.11, 0.115, 0.12, 0.125, 0.13, 0.135, 0.14, 0.145, 0.15,
+		},
+		IGNORE_REGIST_FOR_RATE = FALSE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+				MULTIPLIER =
+				{
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+					4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+					4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 229
+{	--역전의 인내 - 공격력 증가
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_INDURANCE_OF_REVENGE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_INDURANCE_OF_REVENGE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					75, 150, 225, 300, 375, 450, 525, 600, 675, 750, 
+					825, 900, 975, 1050, 1125, 1200, 1275, 1350, 1425, 1500, 
+					1575, 1650, 1725, 1800, 1875, 1950, 2025, 2100, 2175, 2250, 
+				},
+			},
+		},
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 230
+{--엘리시스 닷지&슬래시 - 회피 증가	
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_DODGE_AND_SLASH_AVOIDANCE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_DODGE_AND_SLASH_AVOIDANCE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_AVOIDANCE"], },
+
+			BBT_CHANGE_AVOIDANCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					2,
+				},
+			},
+		},
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"],},
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4,
+					0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4,
+					0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 231
+{--엘리시스 파워 브레이크 - 물리, 마법 방어력
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_ARMOR_DESTROY"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_ARMOR_DESTROY"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"],},
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.79, 0.78, 0.77, 0.76, 0.75, 0.74, 0.73, 0.72, 0.71, 0.7,
+					0.69, 0.68, 0.67, 0.66, 0.65, 0.64, 0.63, 0.62, 0.61, 0.6,
+					0.59, 0.58, 0.57, 0.56, 0.55, 0.54, 0.53, 0.52, 0.51, 0.5,
+				},
+			},
+
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.79, 0.78, 0.77, 0.76, 0.75, 0.74, 0.73, 0.72, 0.71, 0.7,
+					0.69, 0.68, 0.67, 0.66, 0.65, 0.64, 0.63, 0.62, 0.61, 0.6,
+					0.59, 0.58, 0.57, 0.56, 0.55, 0.54, 0.53, 0.52, 0.51, 0.5,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"],},
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
+					8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
+					8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 232
+{--엘리시스 극기-강(强)
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_ENDURANCE_POWER"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_ENDURANCE_POWER"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"],	BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.2, 1.22, 1.24, 1.26, 1.28, 1.3, 1.32, 1.34, 1.36, 1.38,
+					1.4, 1.42, 1.44, 1.46, 1.48, 1.5, 1.52, 1.54, 1.56, 1.58,
+					1.6, 1.62, 1.64, 1.66, 1.68, 1.7, 1.72, 1.74, 1.76, 1.78,			
+				},
+			},
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.2, 1.22, 1.24, 1.26, 1.28, 1.3, 1.32, 1.34, 1.36, 1.38,
+					1.4, 1.42, 1.44, 1.46, 1.48, 1.5, 1.52, 1.54, 1.56, 1.58,
+					1.6, 1.62, 1.64, 1.66, 1.68, 1.7, 1.72, 1.74, 1.76, 1.78,
+				},
+			},
+		},
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"],},
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5, 5.2, 5.4, 5.6, 5.8, 6, 6.2, 6.4, 6.6, 6.8,
+					7, 7.2, 7.4, 7.6, 7.8, 8, 8.2, 8.4, 8.6, 8.8,
+					9, 9.2, 9.4, 9.6, 9.8, 10, 10.2, 10.4, 10.6, 10.8,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 233
+{ -- 엘리시스 승리의 검
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_VICTORIOUS_SWORD"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_VICTORIOUS_SWORD"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], },
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+
+				PERCENT =
+				{
+					1.05, 1.055, 1.06, 1.065, 1.07, 1.075, 1.08, 1.085, 1.09, 1.095,
+					1.1, 1.105, 1.11, 1.115, 1.12, 1.125, 1.13, 1.135, 1.14, 1.145,
+					1.15, 1.155, 1.16, 1.165, 1.17, 1.175, 1.18, 1.185, 1.19, 1.195,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
+					25, 26, 27, 28, 29, 30, 31, 32, 33, 34,
+					35, 36, 37, 38, 39, 40, 41, 42, 43, 44,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 234
+{	--엘소드 웨폰 브레이크
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_ESK_WEAPON_BREAK"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_WEAPON_BREAK"],
+		RATE	=
+		{
+			0.16, 0.19, 0.22, 0.25, 0.28, 0.31, 0.34, 0.37, 0.40, 0.43, 
+			0.46, 0.49, 0.52, 0.55, 0.58, 0.61, 0.64, 0.67, 0.70, 0.73, 
+			0.76, 0.79, 0.82, 0.85, 0.88, 0.91, 0.94, 0.97, 1.00, 1.00,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67,
+					0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67,
+					0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67,
+				},
+			},
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67,
+					0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67,
+					0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 235
+{	--엘소드 소드 실드
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SWORD_SHIELD_BLEEDING"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_BLEEDING"],
+		RATE	=
+		{
+			0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1,
+			0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1,
+			0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+
+				MULTIPLIER =
+				{
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					4.0, 4.2, 4.4, 4.6, 4.8, 5.0, 5.2, 5.4, 5.6, 5.8, 
+					6.0, 6.2, 6.4, 6.6, 6.8, 7.0, 7.2, 7.4, 7.6, 7.8, 
+					8.0, 8.2, 8.4, 8.6, 8.8, 9.0, 9.2, 9.4, 9.6, 9.8, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 236
+{	--엘소드 크리티컬 소드
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_CRITICAL_SWORD"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SI_A_ERS_SWORD_ENCHANT"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_ATTACK"], },
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.05, 1.07, 1.09, 1.11, 1.13, 1.15, 1.17, 1.19, 1.21, 1.23, 
+					1.25, 1.27, 1.29, 1.31, 1.33, 1.35, 1.37, 1.39, 1.41, 1.43, 
+					1.45, 1.47, 1.49, 1.51, 1.53, 1.55, 1.57, 1.59, 1.61, 1.63, 
+				},
+			},
+
+			BBT_CHANGE_CRITICAL_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.15, 1.17, 1.19, 1.21, 1.23, 1.25, 1.27, 1.29, 1.31, 1.33,
+					1.35, 1.37, 1.39, 1.41, 1.43, 1.45, 1.47, 1.49, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 237
+{	-- 엘리시스 검의 길 질풍
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_GALE_WAY_OF_SWORD"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_GALE_WAY_OF_SWORD"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], },
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 238
+{	--엘소드 하쉬 체이서
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_HARSH_SLAYER"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_HARSH_SLAYER"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = FALSE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					-15, -16, -17, -18, -19, -20, -21, -22, -23, -24, 
+					-25, -26, -27, -28, -29, -30, -31, -32, -33, -34, 
+					-35, -36, -37, -38, -39, -40, -41, -42, -43, -44, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_IMMEDIATE"], },
+
+			BFT_IMMEDIATE =
+			{
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 239
+{	--레나 미들킥
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_MIDDLE_KICK"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_MOTION_SLOWDOWN"],
+		RATE	=
+		{
+			0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7,
+			0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7,
+			0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], },
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.875, 0.872, 0.869, 0.866, 0.863, 0.860, 0.857, 0.854, 0.851, 0.848, 
+					0.845, 0.842, 0.839, 0.836, 0.833, 0.830, 0.827, 0.824, 0.821, 0.818, 
+					0.815, 0.812, 0.809, 0.806, 0.803, 0.800, 0.797, 0.794, 0.791, 0.788, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+					15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+					15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 240
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_AIRELINNA_NYMPH"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SI_SA_LWS_AIRELINNA"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],	BUFF_BEHAVIOR_TYPE["BBT_CHANGE_JUMP_POWER"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"],		BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					0.007, 0.0074, 0.0078, 0.0082, 0.0086, 0.009, 0.0094, 0.0098, 0.0102, 0.0106, 
+					0.011, 0.0114, 0.0118, 0.0122, 0.0126, 0.013, 0.0134, 0.0138, 0.0142, 0.0146, 
+					0.015, 0.0154, 0.0158, 0.0162, 0.0166, 0.017, 0.0174, 0.0178, 0.0182, 0.0186, 
+				},
+			},
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.07, 1.09, 1.11, 1.13, 1.15, 1.17, 1.19, 1.21, 1.23, 1.25, 
+					1.27, 1.29, 1.31, 1.33, 1.35, 1.37, 1.39, 1.41, 1.43, 1.45, 
+					1.47, 1.49, 1.51, 1.53, 1.55, 1.57, 1.59, 1.61, 1.63, 1.65, 
+				},
+			},
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.07, 1.09, 1.11, 1.13, 1.15, 1.17, 1.19, 1.21, 1.23, 1.25, 
+					1.27, 1.29, 1.31, 1.33, 1.35, 1.37, 1.39, 1.41, 1.43, 1.45, 
+					1.47, 1.49, 1.51, 1.53, 1.55, 1.57, 1.59, 1.61, 1.63, 1.65, 
+				},
+			},
+			BBT_CHANGE_JUMP_POWER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.07, 1.09, 1.11, 1.13, 1.15, 1.17, 1.19, 1.21, 1.23, 1.25, 
+					1.27, 1.29, 1.31, 1.33, 1.35, 1.37, 1.39, 1.41, 1.43, 1.45, 
+					1.47, 1.49, 1.51, 1.53, 1.55, 1.57, 1.59, 1.61, 1.63, 1.65, 
+				},
+			},
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.02, 1.04, 1.06, 1.08, 1.1, 1.12, 1.14, 1.16, 1.18, 1.20,
+					1.22, 1.24, 1.26, 1.28, 1.3, 1.32, 1.34, 1.36, 1.38, 1.40,
+					1.42, 1.44, 1.46, 1.48, 1.5, 1.52, 1.54, 1.56, 1.58, 1.60,
+				},
+			},
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.02, 1.04, 1.06, 1.08, 1.1, 1.12, 1.14, 1.16, 1.18, 1.20,
+					1.22, 1.24, 1.26, 1.28, 1.3, 1.32, 1.34, 1.36, 1.38, 1.40,
+					1.42, 1.44, 1.46, 1.48, 1.5, 1.52, 1.54, 1.56, 1.58, 1.60,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+					1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+					1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 241
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_LTR_ENTANGLE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_TRAPPING_RANGER_ENTANGLE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+
+				MULTIPLIER =
+				{
+					-0.6, -0.6, -0.6, -0.6, -0.6, -0.6, -0.6, -0.6, -0.6, -0.6,
+					-0.6, -0.6, -0.6, -0.6, -0.6, -0.6, -0.6, -0.6, -0.6, -0.6,
+					-0.6, -0.6, -0.6, -0.6, -0.6, -0.6, -0.6, -0.6, -0.6, -0.6,
+				},
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.7, 0.68, 0.66, 0.64, 0.62, 0.6, 0.58, 0.56, 0.54, 0.52, 
+					0.5, 0.48, 0.46, 0.44, 0.42, 0.4, 0.38, 0.36, 0.34, 0.32, 
+					0.3, 0.28, 0.26, 0.24, 0.22, 0.2, 0.18, 0.16, 0.14, 0.12, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					4.0, 4.2, 4.4, 4.6, 4.8, 5.0, 5.2, 5.4, 5.6, 5.8, 
+					6.0, 6.2, 6.4, 6.6, 6.8, 7.0, 7.2, 7.4, 7.6, 7.8, 
+					8.0, 8.2, 8.4, 8.6, 8.8, 9.0, 9.2, 9.4, 9.6, 9.8, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_IGNITION_CROW_INCINERATION_BURN"], -- 이그니션 크로우 인시너레이션용 화상, 5초 동안 1초 마다 대미지 이펙트 생성
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_IGNITION_CROW_INCINERATION_BURN"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"],	},
+			
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+				
+				MULTIPLIER =
+				{
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+				},
+			},
+		},
+	
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+		
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					6.8, 6.8, 6.8, 6.8, 6.8, 6.8, 6.8, 6.8, 6.8, 6.8,
+					6.8, 6.8, 6.8, 6.8, 6.8, 6.8, 6.8, 6.8, 6.8, 6.8,
+					6.8, 6.8, 6.8, 6.8, 6.8, 6.8, 6.8, 6.8, 6.8, 6.8,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA
+{	--엘소드 냉혹한 학살자 - 스킬 쿨타임 줄이기(액티브)
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_HARSH_SLAYER_ACTIVE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_HARSH_SLAYER_ACTIVE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = FALSE,
+		
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_RESET_SKILL_COOL_TIME"], },
+			
+			BBT_RESET_SKILL_COOL_TIME =
+			{
+				SKILL_TYPE = SKILL_TYPE["ST_ACTIVE"],
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				MULTIPLIER =
+				{
+					-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0,
+					-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0,
+					-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0,
+				},
+			},
+		},
+		
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_IMMEDIATE"], },
+			
+			BFT_IMMEDIATE =
+			{
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA
+{	--엘소드 냉혹한 학살자 - 스킬 쿨타임 줄이기(스폐셜액티브)
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_HARSH_SLAYER_SPECIAL"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_HARSH_SLAYER_SPECIAL"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = FALSE,
+		
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_RESET_SKILL_COOL_TIME"], },
+			
+			BBT_RESET_SKILL_COOL_TIME =
+			{
+				SKILL_TYPE = SKILL_TYPE["ST_SPECIAL_ACTIVE"],
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				MULTIPLIER =
+				{
+					-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0,
+					-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0,
+					-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0,
+				},
+			},
+		},
+		
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_IMMEDIATE"], },
+			
+			BFT_IMMEDIATE =
+			{
+			},
+		},
+	},
+}
+g_pBuffTempletManager:AddBuffFactor_LUA
+{ -- 엘리시스 검의 길 질풍, MP 회수량 증가
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_GALE_MP_GAIN_INCREASE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_GALE_MP_GAIN_INCREASE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHARGE_MP_HIT_MELEE_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHARGE_MP_HIT_RANGE_ATTACK"], 
+				BUFF_BEHAVIOR_TYPE["BBT_CHARGE_MP_HITTED"], },
+			
+			BBT_CHARGE_MP_HIT_MELEE_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+				},
+			},
+			
+			BBT_CHARGE_MP_HIT_RANGE_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+				},
+			},
+			
+			BBT_CHARGE_MP_HITTED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+				},
+			},
+		},
+	
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+		
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+				},
+			},
+		},
+	},
+}
+g_pBuffTempletManager:AddBuffFactor_LUA
+{ -- 엘리시스 검의 길 섬멸_대전( 속성 공격 확률 증가 )
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_ANNIHILATION_WAY_OF_SWORD"],
+	
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_ANNIHILATION_WAY_OF_SWORD"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+		
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ENCHANT_ATTACK_RATE"], },
+		
+			BBT_CHANGE_ENCHANT_ATTACK_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+				},
+			},
+		},
+		
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+			
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					999999, 999999, 999999, 999999, 999999, 999999, 999999, 999999,  999999, 999999,
+					999999, 999999, 999999, 999999, 999999, 999999, 999999, 999999,  999999, 999999,
+					999999, 999999, 999999, 999999, 999999, 999999, 999999, 999999,  999999, 999999,
+				},
+			},
+		},
+	},
+}
+g_pBuffTempletManager:AddBuffFactor_LUA
+{ -- 엘리시스 검의 길 섬멸_대전( 속성 공격 확률 증가 )
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_ANNIHILATION_WAY_OF_SWORD_PVP"],
+	
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_ANNIHILATION_WAY_OF_SWORD"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+		
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ENCHANT_ATTACK_RATE"], },
+		
+			BBT_CHANGE_ENCHANT_ATTACK_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+				},
+			},
+		},
+		
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+			
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					999999, 999999, 999999, 999999, 999999, 999999, 999999, 999999,  999999, 999999,
+					999999, 999999, 999999, 999999, 999999, 999999, 999999, 999999,  999999, 999999,
+					999999, 999999, 999999, 999999, 999999, 999999, 999999, 999999,  999999, 999999,
+				},
+			},
+		},
+	},
+}
+g_pBuffTempletManager:AddBuffFactor_LUA
+{ --엘리시스 검의 길 섬멸 슈아팅 이후 슈퍼아머
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_ANNIHILATION_SUPER_ARMOR"],
+	
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_ANNIHILATION_SUPER_ARMOR"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+		
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_SUPER_ARMOR"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER"], },
+			
+			BBT_SUPER_ARMOR =
+			{
+			},
+			
+			BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85,
+					0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85,
+					0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85,
+				},
+			},
+		},
+		
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+			
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 249
+{ -- 엘리시스 파워 브레이크 속성 저항
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_ATTRIBUTE_DEFENCE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_ATTRIBUTE_DEFENCE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_EVERY_ATTRIBUTE_DEFENCE"],},
+			
+			BBT_CHANGE_EVERY_ATTRIBUTE_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					-50, -53, -56, -59, -62, -65, -68, -71, -74, -77,
+					-80, -83, -86, -89, -92, -95, -98, -101, -104, -107,
+					-110, -113, -116, -119, -122, -125, -128, -131, -134, -137,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"],},
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
+					8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
+					8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 250
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_ARMOR_CRASH"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_ARMOR_BREAK"],
+		RATE	=
+		{
+			0.21, 0.24, 0.27, 0.30, 0.33, 0.36, 0.39, 0.42, 0.45, 0.48, 
+			0.51, 0.54, 0.57, 0.60, 0.63, 0.66, 0.69, 0.72, 0.75, 0.78, 
+			0.81, 0.84, 0.87, 0.90, 0.93, 0.96, 0.99, 1.00, 1.00, 1.00, 
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"], },
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_SWAP_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				SWAP_VALUE =
+				{
+					0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1,
+					0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1,
+					0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+					7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+					7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 251
+{	--로우 킥 - 대시 불가(메모)
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_MIDDLE_KICK_MEMO"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_MOTION_SLOWDOWN"],
+		RATE	=
+		{
+			1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+			1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+			1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], },
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.875, 0.872, 0.869, 0.866, 0.863, 0.860, 0.857, 0.854, 0.851, 0.848, 
+					0.845, 0.842, 0.839, 0.836, 0.833, 0.830, 0.827, 0.824, 0.821, 0.818, 
+					0.815, 0.812, 0.809, 0.806, 0.803, 0.800, 0.797, 0.794, 0.791, 0.788, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+					15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+					15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 252
+{	--엘소드 페이탈 슬랩
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_FATAL_SLAP"],
+
+	BUFF_FACTOR =
+	{
+	
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_WOUND"],
+		RATE	=
+		{
+			0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5,
+			0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1.0,
+			1.00, 1.0, 1.00, 1.0, 1.00, 1.0, 1.00, 1.0, 1.00, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_DASH_IMPOSSIBLE"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+
+				MULTIPLIER =
+				{
+					-0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1,
+					-0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1,
+					-0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1,
+				},
+			},
+			BBT_DASH_IMPOSSIBLE =
+			{
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0,
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0,
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 253
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_ICE_STORM"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_COLD"],
+		RATE	=
+		{
+			0.05, 0.05, 0.05, 0.05, 0.05, 0.08, 0.08, 0.08, 0.08, 0.08,
+			0.1, 0.1, 0.1, 0.1, 0.1, 0.13, 0.13, 0.13, 0.13, 0.13,
+			0.15, 0.15, 0.15, 0.15, 0.15, 0.18, 0.18, 0.18, 0.18, 0.18,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+				MULTIPLIER =
+				{
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+				},
+			},
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85,
+					0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85,
+					0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 254
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SI_P_AEM_ELEMENTAL_FRIENDSHIP_ATTACK"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SI_P_AEM_ELEMENTAL_FRIENDSHIP_ATTACK"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], },
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.01, 1.02, 1.03, 1.04, 1.05, 1.06, 1.07, 1.08, 1.09, 1.10, 
+					1.11, 1.12, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18, 1.19, 1.20, 
+					1.21, 1.22, 1.23, 1.24, 1.25, 1.26, 1.27, 1.28, 1.29, 1.30, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+				},
+			},
+		},
+	},
+}
+
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 255
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_WEAPON_CRASH"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_WEAPON_BREAK"],
+		RATE	=
+		{
+			0.21, 0.24, 0.27, 0.30, 0.33, 0.36, 0.39, 0.42, 0.45, 0.48, 
+			0.51, 0.54, 0.57, 0.60, 0.63, 0.66, 0.69, 0.72, 0.75, 0.78, 
+			0.81, 0.84, 0.87, 0.90, 0.93, 0.96, 0.99, 1.00, 1.00, 1.00, 
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67,
+					0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67,
+					0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67,
+				},
+			},
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67,
+					0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67,
+					0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67, 0.67,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 256
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_FATE_SPACE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_FATE_SPACE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_STUN"],},
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.20,
+					0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.20,
+					0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.20,
+				},
+			},
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.20,
+					0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.20,
+					0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.20,
+				},
+			},
+			BBT_STUN =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+				},
+			},
+		},
+	},
+}
+g_pBuffTempletManager:AddBuffFactor_LUA -- 257
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_MAGIC_POINT_IMMEDIATELY_CHANGE_ONCE_UP"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_MAGIC_POINT_IMMEDIATELY_CHANGE_ONCE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT = 
+				{ 
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_IMMEDIATE"], },
+			
+			BFT_IMMEDIATE =
+			{
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 258
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SET_SKILL_COOLTIME_ONCE_TO_MAX"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SET_SKILL_COOLTIME_ONCE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_RESET_SKILL_COOL_TIME"], },
+
+			BBT_RESET_SKILL_COOL_TIME =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT = 
+				{ 
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_IMMEDIATE"], },
+			
+			BFT_IMMEDIATE =
+			{
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 259
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SI_A_ALD_REFLECTION"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_REFLECT_MAGIC"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_REFLECT_MAGIC"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"],},
+			
+			BBT_REFLECT_MAGIC =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT = 
+				{ 
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+				},
+			},
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.06, 1.07, 1.08, 1.1, 1.11, 1.13, 1.14, 1.156, 1.17, 1.18,
+					1.2, 1.21, 1.22, 1.24, 1.25, 1.26, 1.28, 1.29, 1.30, 1.32,
+					1.33, 1.35, 1.36, 1.37, 1.39, 1.40, 1.41, 1.43, 1.44, 1.45,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3.0, 3.15, 3.3, 3.45, 3.6, 3.75, 3.9, 4.05, 4.2, 4.35,
+					4.5, 4.65, 4.8, 4.95, 5.1, 5.25, 5.4, 5.55, 5.7, 5.85,
+					6.0, 6.15, 6.3, 6.45, 6.6, 6.75, 6.9, 7.05, 7.2, 7.35,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 260
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SI_A_ALD_FINGER_BULLET"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_STUN"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_STUN"], },
+
+			BBT_STUN =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], BUFF_FINALIZER_TYPE["BFT_HITTED_COUNT"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 
+				},
+			},
+
+			BFT_HITTED_COUNT =
+			{
+				BUFF_USE_COUNT_TYPE = BUFF_USE_COUNT_TYPE["BUCT_NOT_USE"],
+				COUNT =
+				{
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 261
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_BORN_TO_BLOOD"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_WOUND"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_DASH_IMPOSSIBLE"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+
+				MULTIPLIER =
+				{
+					-0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1,
+					-0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1,
+					-0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1,
+				},
+			},
+			BBT_DASH_IMPOSSIBLE =
+			{
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 262
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_MAGIC_POINT_IMMEDIATELY_CHANGE_ONCE_DOWN"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_MAGIC_POINT_IMMEDIATELY_CHANGE_ONCE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT = 
+				{ 
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_IMMEDIATE"], },
+			
+			BFT_IMMEDIATE =
+			{
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 263
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_SET_SKILL_COOLTIME_ONCE_TO_MIN"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SET_SKILL_COOLTIME_ONCE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_RESET_SKILL_COOL_TIME"], },
+
+			BBT_RESET_SKILL_COOL_TIME =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT = 
+				{ 
+					0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+					0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+					0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_IMMEDIATE"], },
+			
+			BFT_IMMEDIATE =
+			{
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 264
+{-- 호신강기 사용 불가 안내 디버프
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SELF_PROTECTION_FORTITUDE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_SELF_PROTECTION_FORTITUDE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 265
+{	-- 하멜 비던 샤샤, 물의 보호막
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_WATER_SHIELD"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_WATER_SHIELD"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER"], },
+
+			BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], BUFF_FINALIZER_TYPE["BFT_DAMAGE_VALUE"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+				},
+			},
+
+			BFT_DAMAGE_VALUE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MAX_HP"],
+				MULTIPLIER =
+				{
+					0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1,
+					0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1,
+					0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 266
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SHASHA_HEAL_STAGE0"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_HEALTH_POINT_IMMEDIATELY_CHANGE_ONCE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT = 
+				{ 
+					0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2,
+					0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2,
+					0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_IMMEDIATE"], },
+			
+			BFT_IMMEDIATE =
+			{
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 267
+{	-- 비밀 던전 셋트 옵션 - 물리, 마법 방어력 증가
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_INCREASE_ALL_DEFENCE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_INCREASE_ALL_DEFENCE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"] },
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 
+					1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 
+					1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 
+				},
+			},
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 
+					1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 
+					1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 1.50, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"] },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0,
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0,
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 268
+{	-- 비밀 던전 셋트 옵션 - 상처
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SET_OPTION_WOUND"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_WOUND"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = FALSE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_DASH_IMPOSSIBLE"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+
+				MULTIPLIER =
+				{
+					-0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1,
+					-0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1,
+					-0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1, -0.1,
+				},
+			},
+			
+			BBT_DASH_IMPOSSIBLE =
+			{
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 269
+{	-- 비밀 던전 셋트 옵션 - 데미지 감소 10초
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SET_OPTION_DECREASE_DAMAGE_10_SECONDS"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_DECREASE_DAMAGE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ADDITIONAL_DEFENCE"], },
+							
+			BBT_CHANGE_ADDITIONAL_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.35, 1.35, 1.35, 1.35, 1.35, 1.35, 1.35, 1.35, 1.35, 1.35,
+					1.35, 1.35, 1.35, 1.35, 1.35, 1.35, 1.35, 1.35, 1.35, 1.35,
+					1.35, 1.35, 1.35, 1.35, 1.35, 1.35, 1.35, 1.35, 1.35, 1.35,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 270
+{	-- 비밀 던전 셋트 옵션 - 데미지 감소 20초
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SET_OPTION_DECREASE_DAMAGE_20_SECONDS"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_DECREASE_DAMAGE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ADDITIONAL_DEFENCE"], },
+							
+			BBT_CHANGE_ADDITIONAL_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.35, 1.35, 1.35, 1.35, 1.35, 1.35, 1.35, 1.35, 1.35, 1.35,
+					1.35, 1.35, 1.35, 1.35, 1.35, 1.35, 1.35, 1.35, 1.35, 1.35,
+					1.35, 1.35, 1.35, 1.35, 1.35, 1.35, 1.35, 1.35, 1.35, 1.35,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0,
+					20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0,
+					20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 271
+{	-- 비밀 던전 셋트 옵션 - 크리티컬 데미지 증가 10 퍼센트
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SET_OPTION_CRITICAL_DAMAGE_10_PERCENT"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_CRITICAL_DAMAGE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_ATTACK"], },
+
+			BBT_CHANGE_CRITICAL_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 272
+{	-- 비밀 던전 셋트 옵션 - 크리티컬 데미지 증가 20 퍼센트
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SET_OPTION_CRITICAL_DAMAGE_20_PERCENT"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_CRITICAL_DAMAGE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_ATTACK"], },
+
+			BBT_CHANGE_CRITICAL_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+					1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 273
+{	-- 비밀 던전 셋트 옵션 - 맹독
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SET_OPTION_DEADLY_POISON"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_DEADLY_POISON"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"], 
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_JUMP_POWER"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+
+				MULTIPLIER = 
+				{ 
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, 
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, 
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, 
+				},
+			},
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+
+				PERCENT = 
+				{ 
+					0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 
+					0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 
+					0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 
+				},
+			},
+			BBT_CHANGE_JUMP_POWER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+
+				PERCENT = 
+				{ 
+					0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 
+					0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 
+					0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0,
+					7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0,
+					7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 274
+{	-- 비밀 던전 셋트 옵션 - 속성 발동 확률 증가 2.5 퍼센트
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SET_OPTION_ADD_ENCHANT_RATE_SMALL"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_INCREASE_ENCHANT_ATTACK_RATE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ENCHANT_ATTACK_RATE"], },
+
+			BBT_CHANGE_ENCHANT_ATTACK_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					1.025, 1.025, 1.025, 1.025, 1.025, 1.025, 1.025, 1.025, 1.025, 1.025, 
+					1.025, 1.025, 1.025, 1.025, 1.025, 1.025, 1.025, 1.025, 1.025, 1.025, 
+					1.025, 1.025, 1.025, 1.025, 1.025, 1.025, 1.025, 1.025, 1.025, 1.025, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 275
+{	-- 비밀 던전 셋트 옵션 - 속성 발동 확률 증가 5 퍼센트
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SET_OPTION_ADD_ENCHANT_RATE_MEDIUM"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_INCREASE_ENCHANT_ATTACK_RATE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ENCHANT_ATTACK_RATE"], },
+
+			BBT_CHANGE_ENCHANT_ATTACK_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+					1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05, 1.05,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 276
+{	-- 비밀 던전 셋트 옵션 - 속성 발동 확률 증가 10 퍼센트
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SET_OPTION_ADD_ENCHANT_RATE_LARGE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_INCREASE_ENCHANT_ATTACK_RATE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ENCHANT_ATTACK_RATE"], },
+
+			BBT_CHANGE_ENCHANT_ATTACK_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 277
+{	-- 비밀 던전 셋트 옵션 - 저주
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SET_OPTION_CURSE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_CURSE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					-5.0, -5.0, -5.0, -5.0, -5.0, -5.0, -5.0, -5.0, -5.0, -5.0, 
+					-5.0, -5.0, -5.0, -5.0, -5.0, -5.0, -5.0, -5.0, -5.0, -5.0, 
+					-5.0, -5.0, -5.0, -5.0, -5.0, -5.0, -5.0, -5.0, -5.0, -5.0, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 278
+{	-- 비밀 던전 셋트 옵션 - 동상 3초
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SET_OPTION_COLD_3_SECONDS"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_COLD"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+				MULTIPLIER =
+				{
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+				},
+			},
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85,
+					0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85,
+					0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 
+					3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 
+					3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 279
+{	-- 비밀 던전 셋트 옵션 - 동상 5초
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SET_OPTION_COLD_5_SECONDS"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_COLD"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+				MULTIPLIER =
+				{
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+					-0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5,
+				},
+			},
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85,
+					0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85,
+					0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85, 0.85,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 280
+{	-- 하멜 비밀 던전 - 갑옷 장비
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_HAMEL_SECRET_DUNGEON_ARMOR"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_HAMEL_SECRET_DUNGEON_ARMOR"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER"], },
+
+			BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 
+					0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 
+					0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_X2STATE_CHANGE"], BUFF_FINALIZER_TYPE["BFT_DUNGEON_STAGE_CHANGE"], },
+
+			BFT_X2STATE_CHANGE =
+			{
+			},
+
+			BFT_DUNGEON_STAGE_CHANGE =
+			{
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 281
+{	-- 하멜 비밀 던전 - 날개 장비
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_HAMEL_SECRET_DUNGEON_WING"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_HAMEL_SECRET_DUNGEON_WING"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 
+					2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 
+					2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_X2STATE_CHANGE"], BUFF_FINALIZER_TYPE["BFT_DUNGEON_STAGE_CHANGE"], },
+
+			BFT_X2STATE_CHANGE =
+			{
+			},
+
+			BFT_DUNGEON_STAGE_CHANGE =
+			{
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 282
+{	-- 하멜 비밀 던전 - 무기 장비
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_HAMEL_SECRET_DUNGEON_WEAPON"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_HAMEL_SECRET_DUNGEON_WEAPON"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 
+				},
+			},
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_X2STATE_CHANGE"], BUFF_FINALIZER_TYPE["BFT_DUNGEON_STAGE_CHANGE"], },
+
+			BFT_X2STATE_CHANGE =
+			{
+			},
+
+			BFT_DUNGEON_STAGE_CHANGE =
+			{
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 283
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_SET_OPTION_FIRE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_FIRE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+				MULTIPLIER =
+				{
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+				},
+			},
+		},
+	},
+}
+g_pBuffTempletManager:AddBuffFactor_LUA -- 284
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SHASHA_HEAL_STAGE1TO3"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_HEALTH_POINT_IMMEDIATELY_CHANGE_ONCE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT = 
+				{ 
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+					1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_IMMEDIATE"], },
+			
+			BFT_IMMEDIATE =
+			{
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 285
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_HELLPUTT_DARK_ACTOR_LAST_ATTACK"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SHADOW_DEFENDER_BARRIER"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER"], },
+
+			BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001,
+					0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001,
+					0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
+					8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
+					8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA --호아킨 실드 MAGIC_ATTACK_C
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_ALCHEMYST_BOSS_SHIELD"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_ALCHEMYST_BOSS_SHIELD"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_SUPER_ARMOR"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], },
+
+			BBT_SUPER_ARMOR =
+			{
+			},
+		
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02,
+					0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02,
+					0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], BUFF_FINALIZER_TYPE["BFT_DAMAGE_VALUE"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					14, 14, 14, 14, 14, 14, 14, 14, 14, 14,
+					14, 14, 14, 14, 14, 14, 14, 14, 14, 14,
+					14, 14, 14, 14, 14, 14, 14, 14, 14, 14,
+				},
+			},
+
+			BFT_DAMAGE_VALUE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MAX_HP"],
+				MULTIPLIER =
+				{
+					0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02,
+					0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02,
+					0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 7
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_DELETE_ALCHEMYST_BOSS_SHEILD"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_DELETE_ALCHEMYST_BOSS_SHEILD"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"], },
+
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_IMMEDIATE"], },
+
+			BFT_IMMEDIATE =
+			{
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 288
+{-- 메디테이션 대전 보정
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_SI_A_AHM_MEDITATION_PVP"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_SI_A_AHM_MEDITATION"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					8, 8, 9, 9, 9, 10, 10, 10, 11, 11, 
+					11, 12, 12, 12, 13, 13, 13, 14, 14, 14, 
+					15, 15, 15, 16, 16, 16, 17, 17, 17, 18,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			-- BALANCE_ELEMENTAL_MASTER_20130117 - 메디테이션 효과 상승 및 5초 유지로 변경
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1,
+					5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1,
+					5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 289
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_HP_RECOVERY"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_HP_RECOVERY"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					0.005, 0.0055, 0.006, 0.0065, 0.007, 0.0075, 0.008, 0.0085, 0.009, 0.0095,
+					0.01, 0.0105, 0.011, 0.0115, 0.012, 0.0125, 0.013, 0.0135, 0.014, 0.0145,
+					0.015, 0.0155, 0.016, 0.0165, 0.017, 0.0175, 0.018, 0.0185, 0.019, 0.0195,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 290
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_TELEPORT_CONSUME_MP"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_CHANGE_CONSUME_MP_RATE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CONSUME_MP_RATE"], },
+
+			BBT_CHANGE_CONSUME_MP_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				SKILL_ID = 2202,
+				PERCENT =
+				{
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					2.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 291
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_STIGMA_OF_FIRE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_STIGMA_OF_FIRE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ATTRIBUTE_BLAZE_DEFENCE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"], 
+							BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"],},
+
+			BBT_CHANGE_ATTRIBUTE_BLAZE_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+					1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+					1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+				},
+			},
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.9, 0.8925, 0.885, 0.8775, 0.87, 0.8625, 0.855, 0.8475, 0.84, 0.8325,
+					0.825, 0.8175, 0.81, 0.8025, 0.795, 0.7875, 0.78, 0.7725, 0.765, 0.7575,
+					0.75, 0.7425, 0.735, 0.7275, 0.72, 0.7125, 0.705, 0.6975, 0.69, 0.6825,
+				},
+			},
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+			
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10.1, 10.1, 10.1, 10.1, 10.1, 10.1, 10.1, 10.1, 10.1, 10.1,
+					10.1, 10.1, 10.1, 10.1, 10.1, 10.1, 10.1, 10.1, 10.1, 10.1,
+					10.1, 10.1, 10.1, 10.1, 10.1, 10.1, 10.1, 10.1, 10.1, 10.1,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 292
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_JUDGEMENT_FIRE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_JUDGEMENT_FIRE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+
+				MULTIPLIER =
+				{
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+				},
+			},
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+			
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+					7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+					7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+				},
+			},
+		},
+	},
+}
+
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 293
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_PROVOKE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_CHANGE_ATTACK_AND_DEFENCE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER"],  },
+		
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+					1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1, 1.1,
+				},
+			},
+			BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.1, 1.12, 1.14, 1.16, 1.18, 1.2, 1.22, 1.24, 1.26, 1.28,
+					1.3, 1.32, 1.34, 1.36, 1.38, 1.4, 1.42, 1.44, 1.46, 1.48,
+					1.5, 1.52, 1.54, 1.56, 1.58, 1.6, 1.62, 1.64, 1.66, 1.68,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+			
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1,
+					5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1,
+					5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1, 5.1,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 294
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_UNEXTINGUISHABLE_FIRE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_UNEXTINGUISHABLE_FIRE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+
+				MULTIPLIER =
+				{
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -1.3,
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+				},
+			},
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+			
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0,
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0,
+					5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 295
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_FIRE_BLOSSOMS"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_FIRE_BLOSSOMS"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 
+					5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 296
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_FIRE_BLOSSOMS_APPLY"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_FIRE_BLOSSOMS_APPLY"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], 
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					1.05, 1.06, 1.07, 1.08, 1.09, 1.1, 1.11, 1.12, 1.13, 1.14,
+					1.15, 1.16, 1.17, 1.18, 1.19, 1.2, 1.21, 1.22, 1.23, 1.24,
+					1.25, 1.26,	1.27, 1.28, 1.29, 1.3, 1.31, 1.32, 1.33, 1.34,  
+				},
+			},
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					1.05, 1.06, 1.07, 1.08, 1.09, 1.1, 1.11, 1.12, 1.13, 1.14,
+					1.15, 1.16, 1.17, 1.18, 1.19, 1.2, 1.21, 1.22, 1.23, 1.24,
+					1.25, 1.26,	1.27, 1.28, 1.29, 1.3, 1.31, 1.32, 1.33, 1.34, 
+				},
+			},
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+					1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+					1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 
+					20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 
+				},
+			},
+		},
+	},
+}
+g_pBuffTempletManager:AddBuffFactor_LUA
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_FIRE_BLOSSOMS_APPLY2"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_SET_SKILL_COOLTIME_ONCE2"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = FALSE,
+		
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_RESET_SKILL_COOL_TIME"], },
+			
+			BBT_RESET_SKILL_COOL_TIME =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				MULTIPLIER =
+				{
+					-2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0,
+					-2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0,
+					-2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0,
+				},
+			},
+		},
+		
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_IMMEDIATE"], },
+			
+			BFT_IMMEDIATE =
+			{
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_WAR_PRELUDE"],
+
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_INCREASE_MOVE_SPEED_AND_GAIN_MP_RATE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHARGE_MP_HIT_MELEE_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHARGE_MP_HIT_RANGE_ATTACK"],
+				BUFF_BEHAVIOR_TYPE["BBT_CHARGE_MP_HITTED"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+				BUFF_BEHAVIOR_TYPE["BBT_FINISH_OTHER_BUFF_DEBUFF"],		},
+
+			BBT_CHARGE_MP_HIT_MELEE_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.07, 1.075, 1.08, 1.085, 1.09, 1.095, 1.1, 1.105, 1.11, 1.115,
+					1.12, 1.125, 1.13, 1.135, 1.14, 1.145, 1.15, 1.155, 1.16, 1.165,
+					1.17, 1.175, 1.18, 1.185, 1.19, 1.195, 1.2, 1.205, 1.21, 1.215,
+				},
+			},
+
+			BBT_CHARGE_MP_HIT_RANGE_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.07, 1.075, 1.08, 1.085, 1.09, 1.095, 1.1, 1.105, 1.11, 1.115,
+					1.12, 1.125, 1.13, 1.135, 1.14, 1.145, 1.15, 1.155, 1.16, 1.165,
+					1.17, 1.175, 1.18, 1.185, 1.19, 1.195, 1.2, 1.205, 1.21, 1.215,
+				},
+			},
+
+			BBT_CHARGE_MP_HITTED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.07, 1.075, 1.08, 1.085, 1.09, 1.095, 1.1, 1.105, 1.11, 1.115,
+					1.12, 1.125, 1.13, 1.135, 1.14, 1.145, 1.15, 1.155, 1.16, 1.165,
+					1.17, 1.175, 1.18, 1.185, 1.19, 1.195, 1.2, 1.205, 1.21, 1.215,
+				},
+			},
+			
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.15, 1.16, 1.17, 1.18, 1.19, 1.2, 1.21, 1.22, 1.23, 1.24,
+					1.25, 1.26, 1.27, 1.28, 1.29, 1.3, 1.31, 1.32, 1.33, 1.34,
+					1.35, 1.36, 1.37, 1.38, 1.39, 1.4, 1.41, 1.42, 1.43, 1.44,
+				},
+			},
+			BBT_FINISH_OTHER_BUFF_DEBUFF =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					40, 41, 42, 43, 44, 45, 46, 47, 48, 49,
+					50, 51, 52, 53, 54, 55, 56, 57, 58, 59,
+					60, 61, 62, 63, 64, 65, 66, 67, 68, 69,
+				},
+			},
+		},
+	},
+}
+g_pBuffTempletManager:AddBuffFactor_LUA -- 299
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_FLAME_SWORD"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_FLAME_SWORD"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], },
+
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.05, 1.052, 1.054, 1.056, 1.058, 1.06, 1.062, 1.064, 1.066, 1.068,
+					1.07, 1.072, 1.074, 1.076, 1.078, 1.08, 1.082, 1.084, 1.086, 1.088,
+					1.09, 1.092, 1.094, 1.096, 1.098, 1.1, 1.102, 1.104, 1.106, 1.108,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+	},
+}
+g_pBuffTempletManager:AddBuffFactor_LUA -- 300
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_HIGH_FEVER"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_HIGH_FEVER"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ATTRIBUTE_BLAZE_DEFENCE"],},
+
+			BBT_CHANGE_ATTRIBUTE_BLAZE_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				FIX_VALUE =
+				{
+					-50, -55, -60, -65, -70, -75, -80, -85, -90, -95,
+					-100, -105, -110, -115, -120, -125, -130, -135, -140, -145,
+					-150, -155, -160, -165, -170, -175, -180, -185, -190, -195,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+	},
+}
+g_pBuffTempletManager:AddBuffFactor_LUA -- 301
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_FLAME_SWORD"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_FIRE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+				MULTIPLIER =
+				{
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+					-0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3, -0.3,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+					10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 301
+{	-- 해외팀 작업 머지, 김종훈
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_2013_DEFENCE_ENTER_100_PERCENT_BUFF"],
+	
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_2013_DEFENCE_ENTER_100_PERCENT_BUFF"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_EMPTY"], },
+		},
+	
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+			
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999,
+					9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999,
+					9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999, 9999,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 302
+{	-- 글리터 블루, 방어력 300% 증가
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_GLITER_BLUE_DEFENCE_UP"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_INCREASE_ALL_DEFENCE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"] },
+
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 
+					3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 
+					3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 
+				},
+			},
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 
+					3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 
+					3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"] },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+					10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 304
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_ANCIENT_FIRE_DUNGEON"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_ANCIENT_FIRE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_STUN"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+				MULTIPLIER =
+				{
+					-0.212, -0.225, -0.239, -0.252, -0.265, -0.278, -0.292, -0.305, -0.318, -0.331,
+					-0.345, -0.358, -0.371, -0.384, -0.398, -0.411, -0.424, -0.437, -0.451, -0.464,
+					-0.477, -0.49, -0.504, -0.517, -0.53, -0.544, -0.557, -0.57, -0.583, -0.597,
+				},
+			},
+			BBT_STUN =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+					4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+					4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+				},
+			},
+		},
+	},
+}
+g_pBuffTempletManager:AddBuffFactor_LUA -- 305
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_DEBUFF_ANCIENT_FIRE_PVP"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_ANCIENT_FIRE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+			
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_STUN"], },
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+				MULTIPLIER =
+				{
+					-0.095, -0.101, -0.107, -0.113, -0.119, -0.125, -0.131, -0.137, -0.143, -0.149,
+					-0.155, -0.161, -0.167, -0.173, -0.179, -0.185, -0.191, -0.197, -0.203, -0.209,
+					-0.215, -0.221, -0.227, -0.233, -0.239, -0.245, -0.251, -0.257, -0.262, -0.268,
+				},
+			},
+			BBT_STUN =
+			{
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+					4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+					4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 306
+{	-- 라이딩 펫 용
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_WHEN_RIDE_ON_PET_FOR_ONLY_MASTER_FIX"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_WHEN_RIDE_ON_PET_FOR_ONLY_MASTER_FIX"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+		COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER"],
+						BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"],	},
+
+			BBT_CHANGE_FINAL_DEFENCE_MULTIPLIER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+					0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+				}
+			},
+
+			BBT_CHANGE_NOW_HP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				PERCENT =
+				{
+					0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025,
+					0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025,
+					0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025, 0.025,
+				}
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_RIDING_ON_OR_NOT"], },
+
+			BFT_RIDING_ON_OR_NOT =
+			{
+			},
+		},
+	},
+}
+
+--}} 중국 2주년 버프 시작
+g_pBuffTempletManager:AddBuffFactor_LUA -- 307
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_2YEARS_EVENT_CN_DAMAGE_UP"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_2YEARS_EVENT_CN_DAMAGE_UP"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], },
+
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20,
+					1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20,
+					1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20,
+				},
+			},
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20,
+					1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20,
+					1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 308
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_2YEARS_EVENT_CN_MOVE_JUMP_SPEED_UP"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_2YEARS_EVENT_CN_MOVE_JUMP_SPEED_UP"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_JUMP_POWER"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"], },
+
+			BBT_CHANGE_JUMP_POWER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+				},
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 309
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_2YEARS_EVENT_CN_ACCURACY_AVOID_UP"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_2YEARS_EVENT_CN_ACCURACY_AVOID_UP"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ACCURACY"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_AVOIDANCE"], },
+
+			BBT_CHANGE_ACCURACY =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+				},
+			},
+
+			BBT_CHANGE_AVOIDANCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 310
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_2YEARS_EVENT_CN_CRI_SPEED_UP"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_2YEARS_EVENT_CN_CRI_SPEED_UP"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], },
+
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+				},
+			},
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 311
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_2YEARS_EVENT_CN_DAMAGE_INC_DEC_UP"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_2YEARS_EVENT_CN_DAMAGE_INC_DEC_UP"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ADDITIONAL_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ADDITIONAL_DEFENCE"], },
+
+			BBT_CHANGE_ADDITIONAL_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20,
+					1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20,
+					1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20,
+				},
+			},
+
+			BBT_CHANGE_ADDITIONAL_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20,
+					1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20,
+					1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 311
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_2YEARS_EVENT_CN_ALL_IN_ONE"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_2YEARS_EVENT_CN_ALL_IN_ONE"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ADDITIONAL_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ADDITIONAL_DEFENCE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ACCURACY"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_AVOIDANCE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_CRITICAL_RATE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_JUMP_POWER"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"],},
+
+			BBT_CHANGE_ADDITIONAL_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20,
+					1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20,
+					1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20,
+				},
+			},
+
+			BBT_CHANGE_ADDITIONAL_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20,
+					1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20,
+					1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20,
+				},
+			},
+			
+			BBT_CHANGE_ACCURACY =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+				},
+			},
+
+			BBT_CHANGE_AVOIDANCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+				},
+			},
+			
+			BBT_CHANGE_CRITICAL_RATE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+				},
+			},
+
+			BBT_CHANGE_ANIM_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+				},
+			},
+
+			BBT_CHANGE_JUMP_POWER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+				},
+			},
+
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+					1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02, 1.02,
+				},
+			},
+			
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20,
+					1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20,
+					1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20,
+				},
+			},
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20,
+					1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20,
+					1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 1.20,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+					99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999, 99999,
+				},
+			},
+		},
+	},
+}
+--}} 중국 2주년 버프 끝
+
+
+-- 아라 신전직 이벤트
+g_pBuffTempletManager:AddBuffFactor_LUA -- 309
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_THE_ESSENCE_OF_WEAK_HERETIC_POTION"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_THE_ESSENCE_OF_WEAK_HERETIC_POTION"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], 
+						BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"], },
+						
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25,
+					1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25,
+					1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25,
+				},
+			},						
+		
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25,
+					1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25,
+					1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25,
+				},
+			},	
+			
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
+					0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
+					0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
+				},
+			},	
+
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
+					0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
+					0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
+				},
+			},				
+			
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 310
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_THE_ESSENCE_OF_HERETIC_POTION"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_THE_ESSENCE_OF_HERETIC_POTION"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_ATTACK"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_ATTACK"], 
+						BUFF_BEHAVIOR_TYPE["BBT_CHANGE_PHYSIC_DEFENCE"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAGIC_DEFENCE"], },
+						
+			BBT_CHANGE_PHYSIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+				},
+			},						
+		
+			BBT_CHANGE_MAGIC_ATTACK =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+					1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+				},
+			},	
+			
+			BBT_CHANGE_PHYSIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6,
+					0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6,
+					0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6,
+				},
+			},	
+
+			BBT_CHANGE_MAGIC_DEFENCE =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				PERCENT =
+				{
+					0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6,
+					0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6,
+					0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6,
+				},
+			},				
+			
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+					9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0, 9999.0,
+				},
+			},
+		},
+	},
+}
+
+g_pBuffTempletManager:AddBuffFactor_LUA -- 315
+{
+	BUFF_FACTOR_ID = BUFF_FACTOR_ID["BFI_BUFF_RURIEL_MANA_ENERGIZE_POTION"],
+
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_BUFF_RURIEL_MANA_ENERGIZE_POTION"],
+		RATE	=
+		{
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+			1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_MAX_MP"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_MP_PER_SECOND"], },
+
+			BBT_CHANGE_MAX_MP =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+					100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+					100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+				},
+			},
+
+			BBT_CHANGE_NOW_MP_PER_SECOND =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_FIX_VALUE"],
+				FIX_VALUE =
+				{
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+					2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+				},
+			},
+		},
+
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+					3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 3600,
+				},
+			},
+		},
+	},
+}

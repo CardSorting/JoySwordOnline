@@ -1,0 +1,3 @@
+﻿Data size: 1948
+First 200 bytes as string:
+b'  LogType  \t  Source   \tDestination\t    ip     \t  RegDate  \t  Reason   \t\r\nDisconnect\t1       \t4611686030516534109\t127.0.0.1\t2026-06-28 06:43:14\tIOCP_GetStatus [IOCP_GetStatus Closed by local machine]\t'

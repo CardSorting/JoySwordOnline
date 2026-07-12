@@ -1,0 +1,19 @@
+{
+  "name": "joysword-account-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "JoySword account portal API: PostgreSQL web identities + idempotent MSSQL game-account provisioning.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node scripts/migrate.mjs && node server.js",
+    "migrate": "node scripts/migrate.mjs",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "mssql": "^11.0.1",
+    "pg": "^8.13.1"
+  }
+}

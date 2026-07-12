@@ -1,0 +1,253 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+--[[ KjTiger / 2011/3/22 / 쉐도우 트릭스터 기술, 하멜 던전_5 일반 몬스터/
+	 Special_Attack_B(아군 애니메이션 속도 증가 30%)
+--]]
+
+--------------------------------------------------------------------------
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 0.0,
+	UNIT_HEIGHT		= 0.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	RENDER_PARAM = RENDER_TYPE["RT_REAL_COLOR"],
+}
+--------------------------------------------------------------------------
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+	},
+}
+--------------------------------------------------------------------------
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_ST_TotemB.x",
+}
+--------------------------------------------------------------------------
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 0,
+	RUN_SPEED			= 0,
+	JUMP_SPEED			= 0,
+	DASH_JUMP_SPEED		= 0,
+}
+--------------------------------------------------------------------------
+INIT_COMPONENT = 
+{
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	SHADOW_SIZE			= 0,
+
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	SHOW_ON_MINIMAP		= FALSE,
+
+	NOT_EXTRA_DAMAGE	= TRUE,
+	
+	DIE_FLY 			= FALSE,
+}
+--------------------------------------------------------------------------
+INIT_STATE = 
+{
+	{ STATE_NAME = "SHADOW_TRICKSTER_TOTEM_B_START",	},
+	{ STATE_NAME = "SHADOW_TRICKSTER_TOTEM_B_WAIT",		},
+	
+	{ STATE_NAME = "SHADOW_TRICKSTER_TOTEM_B_BUFF",		}, --LUA_STATE_START_FUNC = "SHADOW_TRICKSTER_TOTEM_B_BUFF_STATE",	},
+	{ STATE_NAME = "SHADOW_TRICKSTER_TOTEM_B_DYING",	},
+	{ STATE_NAME = "SHADOW_TRICKSTER_TOTEM_B_DAMAGE",	},
+	
+	START_STATE		= "SHADOW_TRICKSTER_TOTEM_B_START",
+	
+	SMALL_DAMAGE_LAND_FRONT	= "SHADOW_TRICKSTER_TOTEM_B_DAMAGE",
+	SMALL_DAMAGE_LAND_BACK	= "SHADOW_TRICKSTER_TOTEM_B_DAMAGE",
+	BIG_DAMAGE_LAND_FRONT	= "SHADOW_TRICKSTER_TOTEM_B_DAMAGE",
+	BIG_DAMAGE_LAND_BACK	= "SHADOW_TRICKSTER_TOTEM_B_DAMAGE",
+	DOWN_DAMAGE_LAND_FRONT	= "SHADOW_TRICKSTER_TOTEM_B_DAMAGE",
+	DOWN_DAMAGE_LAND_BACK	= "SHADOW_TRICKSTER_TOTEM_B_DAMAGE",
+	FLY_DAMAGE_FRONT		= "SHADOW_TRICKSTER_TOTEM_B_DAMAGE",
+	FLY_DAMAGE_BACK			= "SHADOW_TRICKSTER_TOTEM_B_DAMAGE",
+	SMALL_DAMAGE_AIR		= "SHADOW_TRICKSTER_TOTEM_B_DAMAGE",	
+	BIG_DAMAGE_AIR			= "SHADOW_TRICKSTER_TOTEM_B_DAMAGE",
+	DOWN_DAMAGE_AIR			= "SHADOW_TRICKSTER_TOTEM_B_DAMAGE",
+	UP_DAMAGE				= "SHADOW_TRICKSTER_TOTEM_B_DAMAGE",
+	DAMAGE_REVENGE			= "SHADOW_TRICKSTER_TOTEM_B_DAMAGE",
+	
+	WAIT_STATES                 = { "SHADOW_TRICKSTER_TOTEM_B_WAIT",	 },	
+	
+	DYING_LAND_FRONT	= "SHADOW_TRICKSTER_TOTEM_B_DYING",
+	DYING_LAND_BACK		= "SHADOW_TRICKSTER_TOTEM_B_DYING",
+	DYING_SKY			= "SHADOW_TRICKSTER_TOTEM_B_DYING",
+}
+--------------------------------------------------------------------------
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_NEAR_FIRST"],
+		TARGET_INTERVAL				= 0.3,	-- sec
+		TARGET_NEAR_RANGE			= 300,	-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 1000,	-- cm
+		TARGET_LOST_RANGE			= 1200,	-- cm
+		TARGET_SUCCESS_RATE			= 100,
+		ATTACK_TARGET_RATE			= 0,	-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 0,	-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+}
+--------------------------------------------------------------------------
+SHADOW_TRICKSTER_TOTEM_B_START = 
+{
+	ANIM_NAME	= "WaitStart",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= FALSE,
+	INVINCIBLE	= { 0, 100, },
+	
+	LAND_CONNECT	= TRUE,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,	
+    
+    SPEED_X	= 0,
+	SPEED_Y	= 0,
+
+	NEVER_MOVE			= TRUE,
+	ALLOW_DIR_CHANGE	= FALSE,
+	VIEW_TARGET			= FALSE,
+    
+    EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"SHADOW_TRICKSTER_TOTEM_B_WAIT"	},
+	},
+}
+--------------------------------------------------------------------------
+SHADOW_TRICKSTER_TOTEM_B_WAIT = 
+{
+	ANIM_NAME	= "Wait",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= FALSE,
+	
+	SUPER_ARMOR			= TRUE,
+	SUPER_ARMOR_NOT_RED = TRUE,
+	LAND_CONNECT		= TRUE,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,	
+
+    SPEED_X	= 0,
+	SPEED_Y	= 0,
+	
+	NEVER_MOVE			= TRUE,
+	ALLOW_DIR_CHANGE	= FALSE,
+	VIEW_TARGET			= FALSE,
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"SHADOW_TRICKSTER_TOTEM_B_BUFF",	"CT_SHADOW_TRICKSTER_TOTEM_B_BUFF"	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"SHADOW_TRICKSTER_TOTEM_B_BUFF",	"CT_SHADOW_TRICKSTER_TOTEM_B_BUFF"	},
+	},
+	
+	CT_SHADOW_TRICKSTER_TOTEM_B_BUFF =
+	{	-- 버프
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 100,		
+	},
+	CT_SHADOW_TRICKSTER_TOTEM_B_BUFF =
+	{	-- 버프
+		EVENT_INTERVAL_ID			= 0,
+		TIMER_ELAPSED0				= 15,
+		RATE						= 100,		
+	},
+}
+--------------------------------------------------------------------------
+SHADOW_TRICKSTER_TOTEM_B_DAMAGE = 
+{
+	ANIM_NAME		= "Damage",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	
+	LAND_CONNECT	= TRUE,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,	
+
+    SPEED_X	= 0,
+	SPEED_Y	= 0,
+	
+	NEVER_MOVE			= TRUE,
+	ALLOW_DIR_CHANGE	= FALSE,
+	VIEW_TARGET			= FALSE,
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"SHADOW_TRICKSTER_TOTEM_B_WAIT"	},
+	},
+}
+--------------------------------------------------------------------------
+SHADOW_TRICKSTER_TOTEM_B_BUFF = 
+{	
+	ANIM_NAME		= "Attack",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+	
+	NEVER_MOVE			= TRUE,
+	ALLOW_DIR_CHANGE	= FALSE,
+	VIEW_TARGET			= FALSE,
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	--DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	
+	DELETE_EFFECT_SET_ON_DIE = TRUE,
+	
+	EFFECT_SET_LIST =
+	{
+		"Effect_Shadow_Trickster_Special_Attack_B", 0,
+	},
+	
+	--[[EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"SHADOW_TRICKSTER_TOTEM_B_BUFF"	},
+	},--]]
+}
+--------------------------------------------------------------------------
+SHADOW_TRICKSTER_TOTEM_B_DYING = 
+{
+	ANIM_NAME		= "Broken",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	INVINCIBLE	= { 0, 100, },
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+	
+	NEVER_MOVE			= TRUE,
+	ALLOW_DIR_CHANGE	= FALSE,
+	VIEW_TARGET			= FALSE,
+	
+	DYING_END	= TRUE,
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+}
+--------------------------------------------------------------------------

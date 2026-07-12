@@ -1,0 +1,251 @@
+﻿
+
+g_pLineMap:SetLandHeight( 900 )
+
+
+
+
+-- RED, BLUE, TEAM START POS
+g_pLineMap:SetTeamStartPos( true, D3DXVECTOR3( -591.254, 1097, -5516 ), true, 0 )
+g_pLineMap:SetTeamStartPos( true, D3DXVECTOR3( -441.853, 1097, -5516 ), true, 0 )
+g_pLineMap:SetTeamStartPos( true, D3DXVECTOR3( -269, 1097, -5516 ), true, 0 )
+g_pLineMap:SetTeamStartPos( true, D3DXVECTOR3( -141.413, 1337, -5516 ), true, 8 )
+
+
+
+
+-- NPC (or else) START POS
+g_pLineMap:AddStartPos( 1, D3DXVECTOR3( -57.7991, 1097, -5516 ), false, 1 )
+g_pLineMap:AddStartPos( 2, D3DXVECTOR3( 164.589, 1097, -5516 ), false, 1 )
+g_pLineMap:AddStartPos( 3, D3DXVECTOR3( 396.24, 1097, -5516 ), false, 1 )
+g_pLineMap:AddStartPos( 4, D3DXVECTOR3( 678.241, 1097, -5516 ), false, 1 )
+g_pLineMap:AddStartPos( 5, D3DXVECTOR3( 171.706, 1337, -5516 ), false, 8 )
+g_pLineMap:AddStartPos( 6, D3DXVECTOR3( 431.966, 1353.08, -5516 ), false, 9 )
+g_pLineMap:AddStartPos( 7, D3DXVECTOR3( 643.553, 1428.73, -5516 ), false, 9 )
+g_pLineMap:AddStartPos( 8, D3DXVECTOR3( 884.001, 1514.7, -5516 ), false, 9 )
+g_pLineMap:AddStartPos( 9, D3DXVECTOR3( 1187.81, 1623.32, -5516 ), false, 9 )
+g_pLineMap:AddStartPos( 10, D3DXVECTOR3( 1332.33, 1657, -5516 ), false, 10 )
+g_pLineMap:AddStartPos( 11, D3DXVECTOR3( 1641.67, 1657, -5516 ), false, 10 )
+g_pLineMap:AddStartPos( 12, D3DXVECTOR3( 980.919, 1097, -5516 ), false, 1 )
+g_pLineMap:AddStartPos( 13, D3DXVECTOR3( 1227.19, 1097, -5516 ), false, 2 )
+g_pLineMap:AddStartPos( 14, D3DXVECTOR3( 1564.87, 1097, -5516 ), false, 2 )
+g_pLineMap:AddStartPos( 15, D3DXVECTOR3( 1423.59, 1337, -5516 ), false, 7 )
+g_pLineMap:AddStartPos( 16, D3DXVECTOR3( 1856.91, 1097, -5516 ), false, 2 )
+g_pLineMap:AddStartPos( 17, D3DXVECTOR3( 2087.38, 1097, -5516 ), false, 2 )
+g_pLineMap:AddStartPos( 18, D3DXVECTOR3( 2442.69, 1097, -5516 ), false, 2 )
+g_pLineMap:AddStartPos( 19, D3DXVECTOR3( 2924.46, 1097, -5516 ), false, 4 )
+g_pLineMap:AddStartPos( 20, D3DXVECTOR3( 2998.77, 1097, -5516 ), false, 4 )
+g_pLineMap:AddStartPos( 21, D3DXVECTOR3( 3226.97, 1097, -5516 ), false, 4 )
+g_pLineMap:AddStartPos( 22, D3DXVECTOR3( 3439.52, 1097, -5516 ), false, 4 )
+g_pLineMap:AddStartPos( 23, D3DXVECTOR3( 3713.19, 1097, -5516 ), false, 5 )
+g_pLineMap:AddStartPos( 24, D3DXVECTOR3( 3957.79, 1097, -5516 ), false, 5 )
+g_pLineMap:AddStartPos( 25, D3DXVECTOR3( 4162.68, 1097, -5516 ), false, 6 )
+g_pLineMap:AddStartPos( 26, D3DXVECTOR3( 4355.78, 1097, -5516 ), false, 6 )
+g_pLineMap:AddStartPos( 27, D3DXVECTOR3( 4530.31, 1097, -5516 ), false, 6 )
+g_pLineMap:AddStartPos( 28, D3DXVECTOR3( 4681, 1097, -5516 ), false, 6 )
+
+
+
+
+
+
+-- LINE DATA -- 
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 0, 
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= -1, 
+	NEXT_LINE		= 1, 
+	LINE_SET		= 0, 
+	"START_POS		= D3DXVECTOR3(-796, 1097, -5516)", 
+	"END_POS		= D3DXVECTOR3(-269, 1097, -5516)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 1, 
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= 0, 
+	NEXT_LINE		= 2, 
+	LINE_SET		= 0, 
+	"START_POS		= D3DXVECTOR3(-269, 1097, -5516)", 
+	"END_POS		= D3DXVECTOR3(1155, 1097, -5516)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 2, 
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= 1, 
+	NEXT_LINE		= 3, 
+	LINE_SET		= 0, 
+	"START_POS		= D3DXVECTOR3(1155, 1097, -5516)", 
+	"END_POS		= D3DXVECTOR3(2580, 1097, -5516)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 3, 
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= 2, 
+	NEXT_LINE		= 4, 
+	LINE_SET		= 1, 
+	"START_POS		= D3DXVECTOR3(2580, 1097, -5516)", 
+	"END_POS		= D3DXVECTOR3(2830, 1097, -5516)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 4, 
+	LINE_TYPE 		= LINE_TYPE["LT_MONSTER_ROAD"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= 3, 
+	NEXT_LINE		= 5, 
+	LINE_SET		= 2, 
+	TRIGGER_ID		= 0, 
+	TRIGGER_ON_LINE	= TRUE,
+	"START_POS		= D3DXVECTOR3(2830, 1097, -5516)", 
+	"END_POS		= D3DXVECTOR3(3447, 1097, -5516)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 5, 
+	LINE_TYPE 		= LINE_TYPE["LT_MONSTER_ROAD"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= 4, 
+	NEXT_LINE		= 6, 
+	LINE_SET		= 2, 
+	"START_POS		= D3DXVECTOR3(3447, 1097, -5516)", 
+	"END_POS		= D3DXVECTOR3(4064, 1097, -5516)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 6, 
+	LINE_TYPE 		= LINE_TYPE["LT_MONSTER_ROAD"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= 5, 
+	NEXT_LINE		= -1, 
+	LINE_SET		= 2, 
+	"START_POS		= D3DXVECTOR3(4064, 1097, -5516)", 
+	"END_POS		= D3DXVECTOR3(4681, 1097, -5516)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 7, 
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= -1, 
+	NEXT_LINE		= -1, 
+	LINE_SET		= 0, 
+	"START_POS		= D3DXVECTOR3(1221, 1337, -5516)", 
+	"END_POS		= D3DXVECTOR3(1634, 1337, -5516)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 8, 
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= -1, 
+	NEXT_LINE		= 9, 
+	LINE_SET		= 0, 
+	"START_POS		= D3DXVECTOR3(-224, 1337, -5516)", 
+	"END_POS		= D3DXVECTOR3(387, 1337, -5516)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 9, 
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= 8, 
+	NEXT_LINE		= 10, 
+	LINE_SET		= 0, 
+	"START_POS		= D3DXVECTOR3(387, 1337, -5516)", 
+	"END_POS		= D3DXVECTOR3(1282, 1657, -5516)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 10, 
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= 9, 
+	NEXT_LINE		= -1, 
+	LINE_SET		= 0, 
+	"START_POS		= D3DXVECTOR3(1282, 1657, -5516)", 
+	"END_POS		= D3DXVECTOR3(1922, 1657, -5516)", 
+}
+
+g_pLineMap:AddLine_LUA
+{
+	LINE_NUM		= 11, 
+	LINE_TYPE 		= LINE_TYPE["LT_NORMAL"], 
+	POTAL_GROUP		= 0, 
+	BEFORE_LINE		= 3, 
+	NEXT_LINE		= 4, 
+	LINE_SET		= 2, 
+	TRIGGER_ID		= 0, 
+	TRIGGER_ON_LINE	= TRUE,
+	"START_POS		= D3DXVECTOR3(2580, 1096, -5516)", 
+	"END_POS		= D3DXVECTOR3(2830, 1097, -5516)", 
+}
+
+
+-- CAMERA DATA 
+
+g_pLineMap:AddTrigger_LUA
+{
+	TRIGGER_ID		= 0,
+	TRIGGER_LOOP	= FALSE,
+	TRIGGER_DATA0 =
+	{
+		TRIGGER_DATA_LINE0 =
+		{
+			TRIGGER_ACTION = TRIGGER_LINE_ACTION_TYPE["TAT_LINE_NONE"],
+			DELAY_TIME = 0,
+		},
+		TRIGGER_DATA_ETC0 =
+		{
+			TRIGGER_ACTION = TRIGGER_ETC_ACTION_TYPE["TAT_ETC_ACTIVE_LAYER"],
+			DELAY_TIME = 5,
+			ACTIVE_LAYER_ID = 0,
+			FADE_TIME = 5.5,
+		},
+		TRIGGER_DATA_ETC1 =
+		{
+			TRIGGER_ACTION = TRIGGER_ETC_ACTION_TYPE["TAT_ETC_ACTIVE_LAYER"],
+			DELAY_TIME = 5.5,
+			ACTIVE_LAYER_ID = 1,
+			FADE_TIME = 6,
+		},
+		TRIGGER_DATA_ETC2 =
+		{
+			TRIGGER_ACTION = TRIGGER_ETC_ACTION_TYPE["TAT_ETC_ACTIVE_LAYER"],
+			DELAY_TIME = 6,
+			ACTIVE_LAYER_ID = 2,
+			FADE_TIME = 6.5,
+		},
+		TRIGGER_DATA_ETC3 =
+		{
+			TRIGGER_ACTION = TRIGGER_ETC_ACTION_TYPE["TAT_ETC_ACTIVE_LAYER"],
+			DELAY_TIME = 6.5,
+			ACTIVE_LAYER_ID = 3,
+			FADE_TIME = 7,
+		},
+		TRIGGER_DATA_ETC4 =
+		{
+			TRIGGER_ACTION = TRIGGER_ETC_ACTION_TYPE["TAT_ETC_ACTIVE_LAYER"],
+			DELAY_TIME = 7,
+			ACTIVE_LAYER_ID = 4,
+			FADE_TIME = 7,
+		},
+	},
+}

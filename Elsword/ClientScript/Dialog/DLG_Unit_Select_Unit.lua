@@ -1,0 +1,74 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+g_pStaticUnit_Select_UnitInfo = g_pUIDialog:CreateStatic()
+g_pUIDialog:AddControl( g_pStaticUnit_Select_UnitInfo )
+g_pStaticUnit_Select_UnitInfo:SetName( "StaticUnit_Select_UnitInfo" )
+
+
+
+
+g_pPictureUnit_Select_UnitInfo_Elsword = g_pUIDialog:CreatePicture()
+g_pStaticUnit_Select_UnitInfo:AddPicture( g_pPictureUnit_Select_UnitInfo_Elsword )
+g_pPictureUnit_Select_UnitInfo_Elsword:SetShow( false )
+
+g_pPictureUnit_Select_UnitInfo_Elsword:SetTex( "DLG_Unit_Select4.TGA", "Unit_Select_Elsword_Info" )
+
+g_pPictureUnit_Select_UnitInfo_Elsword:SetPoint
+{
+
+    USE_TEXTURE_SIZE	= FALSE,
+	IS_RECT			= FALSE,
+
+	"LEFT_TOP		= D3DXVECTOR2(0,0)",
+	"RIGHT_TOP		= D3DXVECTOR2(601,0)",
+	"LEFT_BOTTOM	= D3DXVECTOR2(0,768)",
+	"RIGHT_BOTTOM	= D3DXVECTOR2(601,768)",
+
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pPictureUnit_Select_UnitInfo_Arme = g_pUIDialog:CreatePicture()
+g_pStaticUnit_Select_UnitInfo:AddPicture( g_pPictureUnit_Select_UnitInfo_Arme )
+g_pPictureUnit_Select_UnitInfo_Arme:SetShow( false )
+
+g_pPictureUnit_Select_UnitInfo_Arme:SetTex( "DLG_Unit_Select5.TGA", "Unit_Select_Arme_Info" )
+
+g_pPictureUnit_Select_UnitInfo_Arme:SetPoint
+{
+
+    USE_TEXTURE_SIZE	= FALSE,
+	IS_RECT			= FALSE,
+
+	"LEFT_TOP		= D3DXVECTOR2(0,0)",
+	"RIGHT_TOP		= D3DXVECTOR2(601,0)",
+	"LEFT_BOTTOM	= D3DXVECTOR2(0,768)",
+	"RIGHT_BOTTOM	= D3DXVECTOR2(601,768)",
+
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+g_pPictureUnit_Select_UnitInfo_Lire = g_pUIDialog:CreatePicture()
+g_pStaticUnit_Select_UnitInfo:AddPicture( g_pPictureUnit_Select_UnitInfo_Lire )
+g_pPictureUnit_Select_UnitInfo_Lire:SetShow( false )
+
+g_pPictureUnit_Select_UnitInfo_Lire:SetTex( "DLG_Unit_Select6.TGA", "Unit_Select_Lire_Info" )
+
+g_pPictureUnit_Select_UnitInfo_Lire:SetPoint
+{
+
+    USE_TEXTURE_SIZE	= FALSE,
+	IS_RECT			= FALSE,
+
+	"LEFT_TOP		= D3DXVECTOR2(0,0)",
+	"RIGHT_TOP		= D3DXVECTOR2(601,0)",
+	"LEFT_BOTTOM	= D3DXVECTOR2(0,768)",
+	"RIGHT_BOTTOM	= D3DXVECTOR2(601,768)",
+
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}

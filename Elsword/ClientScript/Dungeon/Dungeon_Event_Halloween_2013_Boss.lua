@@ -1,0 +1,158 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+
+STAGE_LIST = 
+{
+	DUNGEON_MAP =
+	{
+		STAGE0 =
+		{
+			SUB_STAGE0 = { 147, 67, TRUE },
+		},
+	},
+
+	STAGE0 =
+	{
+		WORLD_ID = WORLD_ID["WI_EVENT_HALLOWEEN_2013"],
+		START_MOTION = TRUE,
+
+		READY_NPC = 
+		{
+			NPC_UNIT_ID["NUI_EVENT_GRAVESTONE"],
+			NPC_UNIT_ID["NUI_EVENT_COFFIN"],
+			NPC_UNIT_ID["NUI_EVENT_PUMPKIN_FARM"],
+			NPC_UNIT_ID["NUI_EVENT_ASIAN_COFFIN"],
+			NPC_UNIT_ID["NUI_EVENT_GLITER_ZOMBIE"],
+			NPC_UNIT_ID["NUI_EVENT_HALLOWEEN_LINKER"],
+			NPC_UNIT_ID["NUI_EVENT_PUMPKIN_MAGICIAN"],
+			NPC_UNIT_ID["NUI_EVENT_GANGSHI_PPORU"],
+			NPC_UNIT_ID["NUI_EVENT_HOVALANCHE"],
+		},
+
+		SUB_STAGE0 =
+		{
+			START_LINE_SET      = -1,
+			MAIN_LINE_SET       = 0,
+			END_LINE_SET        = 1,
+
+			GO_TYPE             = GO_TYPE["GT_NONE"],
+
+			CLEAR_COND0 =
+			{
+				CLEAR_CONDITION["CC_TIME"],
+				CLEAR_TIME = 240,
+
+				NEXT_STAGE0 = { CLEAR_TYPE["CT_STAGE"], 1, 0, 100, },
+			},
+
+			CREATED_NPC_DROP_TIMES =
+			{
+				{
+					NPC_ID = NPC_UNIT_ID["NUI_EVENT_GLITER_ZOMBIE"],
+					DROP_TIMES = 10,
+				},
+				{
+					NPC_ID = NPC_UNIT_ID["NUI_EVENT_HALLOWEEN_LINKER"],
+					DROP_TIMES = 10,
+				},
+				{
+					NPC_ID = NPC_UNIT_ID["NUI_EVENT_PUMPKIN_MAGICIAN"],
+					DROP_TIMES = 10,
+				},
+				{
+					NPC_ID = NPC_UNIT_ID["NUI_EVENT_GANGSHI_PPORU"],
+					DROP_TIMES = 10,
+				},
+			},
+
+			NPC_GROUP =
+			{
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_EVENT_HOVALANCHE"],
+					START_POS	= { 4, },
+					FOCUS_CAMERA	= FALSE,
+					STOP_AT_START_STATE = TRUE,
+					IS_RIGHT		= FALSE,
+					KEY_CODE		= 1,
+					GAGE_BAR	= FALSE,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_EVENT_COFFIN"],
+					START_POS	= { 4, },
+					GAGE_BAR	= FALSE,
+					IS_RIGHT	= TRUE,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_EVENT_GRAVESTONE"],
+					START_POS	= { 2, },
+					GAGE_BAR	= FALSE,
+					IS_RIGHT	= TRUE,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_EVENT_ASIAN_COFFIN"],
+					START_POS	= { 1, },
+					GAGE_BAR	= FALSE,
+					IS_RIGHT	= TRUE,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_EVENT_PUMPKIN_FARM"],
+					START_POS	= { 3, },
+					GAGE_BAR	= FALSE,
+					IS_RIGHT	= TRUE,
+				},
+			},
+
+			TRIGGER_LIST =
+			{
+			},
+		},
+	},
+
+	STAGE1 =
+	{
+		WORLD_ID = WORLD_ID["WI_EVENT_HALLOWEEN_2013"],
+
+		READY_NPC = 
+		{
+			NPC_UNIT_ID["NUI_EVENT_HOVALANCHE_SUBSTAGE1"],
+		},
+	
+		SUB_STAGE0 =
+		{
+			START_LINE_SET      = -1,
+			MAIN_LINE_SET       = 0,
+			END_LINE_SET        = 1,
+
+			GO_TYPE             = GO_TYPE["GT_NONE"],
+
+			CLEAR_COND0 =
+			{
+				CLEAR_CONDITION["CC_KILL_KEYCODE_NPC"],
+				NPC_KEYCODE = { 1 },
+
+				NEXT_STAGE0 = { CLEAR_TYPE["CT_GAME"], 0, 0, 100, },
+			},
+
+			NPC_GROUP =
+			{
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_EVENT_HOVALANCHE_SUBSTAGE1"],
+					START_POS	= { 11, },
+					--SHOW_BOSS_NAME	= TRUE,
+					FOCUS_CAMERA	= TRUE,
+					STOP_AT_START_STATE = TRUE,
+					MONSTER_GRADE	= 1,
+					KEY_CODE		= 1,
+					IS_RIGHT		= FALSE,
+				},
+			},
+
+			TRIGGER_LIST =
+			{
+			},
+		},
+
+	},
+	
+}

@@ -1,0 +1,332 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 50.0,
+	UNIT_HEIGHT		= 150.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	UNIT_SCALE		= 1.4,
+
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+		"SI_A_CTT_REMOTE_MORTAR_Effect.tga",
+	},
+	
+	READY_SOUND = 
+	{
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME	= "SI_A_CTT_REMOTE_MORTAR_Effect.x",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 400,
+	RUN_SPEED			= 400,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300,
+}
+
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 1500,
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	--SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	--SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	--SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	
+	HEAD_BONE_NAME			= "REMOTE_MORTAR_Head",
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	
+	FALL_DOWN			= TRUE,
+	
+	DAMAGE_DOWN         = FALSE,
+	
+	
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "REMOTE_MORTAR_APINK_START",				LUA_STATE_START_FUNC = "REMOTE_MORTAR_APINK_STATE_START",				},
+	
+	{ STATE_NAME = "REMOTE_MORTAR_APINK_WAIT",				},
+												
+	{ STATE_NAME = "REMOTE_MORTAR_APINK_ATTACK",			STATE_COOL_TIME = 1,      		LUA_FRAME_MOVE_FUNC = "REMOTE_MORTAR_APINK_ATTACK_STATE_END"	},
+	
+	--리액션 관련
+	{ STATE_NAME = "REMOTE_MORTAR_APINK_DYING",				},
+	{ STATE_NAME = "REMOTE_MORTAR_APINK_DYING_REAL",				},
+
+
+{ STATE_NAME = "REMOTE_MORTAR_APINK_DAMAGE", },
+	
+	START_STATE					= "REMOTE_MORTAR_APINK_START",
+	WAIT_STATE					= "REMOTE_MORTAR_APINK_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "REMOTE_MORTAR_APINK_DAMAGE",
+	SMALL_DAMAGE_LAND_BACK		= "REMOTE_MORTAR_APINK_DAMAGE",
+	BIG_DAMAGE_LAND_FRONT		= "REMOTE_MORTAR_APINK_DAMAGE",
+	BIG_DAMAGE_LAND_BACK		= "REMOTE_MORTAR_APINK_DAMAGE",
+	DOWN_DAMAGE_LAND_FRONT		= "REMOTE_MORTAR_APINK_DAMAGE",
+	DOWN_DAMAGE_LAND_BACK		= "REMOTE_MORTAR_APINK_DAMAGE",
+	FLY_DAMAGE_FRONT			= "REMOTE_MORTAR_APINK_DAMAGE",
+	FLY_DAMAGE_BACK				= "REMOTE_MORTAR_APINK_DAMAGE",
+	SMALL_DAMAGE_AIR			= "REMOTE_MORTAR_APINK_DAMAGE",	
+	BIG_DAMAGE_AIR				= "REMOTE_MORTAR_APINK_DAMAGE",
+	DOWN_DAMAGE_AIR				= "REMOTE_MORTAR_APINK_DAMAGE",
+	UP_DAMAGE					= "REMOTE_MORTAR_APINK_DAMAGE",
+	DAMAGE_REVENGE				= "REMOTE_MORTAR_APINK_DAMAGE",
+	
+	DYING_LAND_FRONT			= "REMOTE_MORTAR_APINK_DYING_REAL",
+	DYING_LAND_BACK				= "REMOTE_MORTAR_APINK_DYING_REAL",
+	DYING_SKY					= "REMOTE_MORTAR_APINK_DYING_REAL",
+	
+	-- COMMON_FRAME_FUNC           = "REMOTE_MORTAR_APINK_COMMON_FRAME_MOVE",
+
+	REVENGE_ATTACK				= "",	
+	
+}
+
+INIT_AI = 
+{
+	ALLY = 
+	{
+		FAR_LOST_RANGE	= 1400,			-- 이 거리보다 멀어지면 유저 옆으로 텔레포트
+		LOST_RANGE		= 1400,			-- 이 거리보다 멀어지면 유저 쪽으로 걸어감
+	},
+
+	TARGET =
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_NEAR_FIRST"],
+		TARGET_INTERVAL 			= 2,
+		TARGET_NEAR_RANGE 			= 2000,
+		TARGET_RANGE 				= 2000,
+		TARGET_LOST_RANGE 			= 2500,
+		TARGET_SUCCESS_RATE 		= 100,
+		ATTACK_TARGET_RATE 			= 100,
+		PRESERVE_LAST_TARGET_RATE 	= 0,
+	},
+	
+}
+
+REMOTE_MORTAR_APINK_START = 
+{
+	ANIM_NAME		= "Start",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= TRUE,
+	LAND_CONNECT	= TRUE,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,		
+
+	PASSIVE_SPEED_X	= 0,
+	PASSIVE_SPEED_Y	= 0,
+	NEVER_MOVE		= TRUE,
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"REMOTE_MORTAR_APINK_WAIT",	},
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_REMOTE_MORTAR_APINK_Start", 0,
+	},
+}
+
+REMOTE_MORTAR_APINK_WAIT = 
+{
+	ANIM_NAME		= "Wait",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= TRUE,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,	
+
+	PASSIVE_SPEED_X	= 0,
+	PASSIVE_SPEED_Y	= 0,
+	NEVER_MOVE		= TRUE,
+	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	EVENT_INTERVAL_TIME0		= 0.5,
+
+	EVENT_PROCESS = 
+	{		
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"REMOTE_MORTAR_APINK_ATTACK",			"CT_REMOTE_MORTAR_APINK_APINK_ATTACK",		},
+	},
+
+	CT_REMOTE_MORTAR_APINK_APINK_ATTACK = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 100,
+	},
+}
+
+REMOTE_MORTAR_APINK_DAMAGE = 
+{
+	ANIM_NAME		= "Damage",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= TRUE,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,	
+
+	PASSIVE_SPEED_X	= 0,
+	PASSIVE_SPEED_Y	= 0,
+	NEVER_MOVE		= TRUE,
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"REMOTE_MORTAR_APINK_WAIT",	},
+	},
+}
+
+REMOTE_MORTAR_APINK_ATTACK = 
+{
+	ANIM_NAME		= "Attack",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= TRUE,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,	
+
+	PASSIVE_SPEED_X	= 0,
+	PASSIVE_SPEED_Y	= 0,
+	NEVER_MOVE		= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"REMOTE_MORTAR_APINK_WAIT",	},
+	},
+
+	SOUND_PLAY0			= { 0.001, "Cannon_Demon_Shot.ogg" },
+
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_REMOTE_MORTAR_APINK_Fire", 0,
+	},
+}
+
+REMOTE_MORTAR_APINK_DYING = 
+{
+	ANIM_NAME		= "Wait",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	INVINCIBLE		= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,	
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_REMOTE_MORTAR_APINK_End", 0,
+	},
+	
+	-- 시작 모션 후 5초 뒤 부터 행동을 시작합니다.
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"REMOTE_MORTAR_APINK_DYING_REAL",		"CT_REMOTE_MORTAR_APINK_DYING_REAL"	},
+	},
+	CT_REMOTE_MORTAR_APINK_DYING_REAL =
+	{
+		STATE_TIME_OVER	= 2.0,
+	},
+}
+REMOTE_MORTAR_APINK_DYING_REAL = 
+{
+	ANIM_NAME		= "Wait",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	INVINCIBLE		= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+	
+	DYING_END		= TRUE,
+}
+
+function REMOTE_MORTAR_APINK_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	pNPCUnit:SetInt_LUA(0, 1)						-- 탄 발사 순서
+	
+end
+
+function REMOTE_MORTAR_APINK_ATTACK_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.5 ) then
+		local iMaxFireNum = 10	-- 발사 가능한 탄 갯수
+		if iMaxFireNum < pNPCUnit:GetInt_LUA(0) then					-- 발사된 탄수 검사
+		
+			pNPCUnit:StateChange_LUA( "REMOTE_MORTAR_APINK_DYING", true )	-- 모든 탄 발사시 사망
+			
+			return
+			
+		end
+	end
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.08 ) then
+	
+		-- local targetpos = pNPCUnit:GetNearestNPCPos()	
+		local targetpos = pNPCUnit:GetNearestActiveNPCPos()	
+	
+		local pDamageEffect1 = pX2Game:GetDamageEffect()
+		local pDamageEffect2 = pX2Game:GetDamageEffect()
+		local pos = pNPCUnit:GetLandPosition_LUA()
+		pDamageEffect2:CreateInstanceParabolic_LUA( pNPCUnit, "CTT_REMOTE_MORTAR_SHELL_ATTACK", pNPCUnit:GetBonePos_LUA( "Dummy01" ), targetpos, D3DXVECTOR3(0, -6000.0, 0), 1.5, 4.0 )	
+		
+		pNPCUnit:SetInt_LUA(0, pNPCUnit:GetInt_LUA(0) + 1 )			-- 발사 카운트 증가		
+	end
+	
+
+
+end
+
+
+--------------------------------------------------------------------------
+function MovePos( pos, dirvector, dist )
+	pos.x = pos.x + dist * dirvector.x
+	pos.y = pos.y + dist * dirvector.y
+	pos.z = pos.z + dist * dirvector.z
+	
+	return pos
+end
+--------------------------------------------------------------------------

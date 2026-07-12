@@ -1,0 +1,405 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+--{{	#ifdef	SERV_FISHING_HOLE
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_FISHING_SUCCESS", 
+	
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_CUSTOM"],
+	
+	
+	EFFECT0 = 
+	{	 
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "fishing_Success_01",
+		
+		START_TIME = 0,
+		POSITION_OFFSET_X = 0,	
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,	
+
+		POS_RELATIVE_TO_UNIT 		= TRUE, 
+
+		TRACE 		= FALSE, 
+	},
+	EFFECT1 = 
+	{	 
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "fishing_Success_02",
+		
+		START_TIME = 0,
+		POSITION_OFFSET_X = 0,	
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,	
+
+		POS_RELATIVE_TO_UNIT 		= TRUE, 
+
+		TRACE 		= FALSE, 
+	},
+	EFFECT2 = 
+	{	 
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "fishing_Success_03",
+		
+		START_TIME = 0,
+		POSITION_OFFSET_X = 0,	
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,	
+
+		POS_RELATIVE_TO_UNIT 		= TRUE, 
+
+		TRACE 		= FALSE, 
+	},
+	EFFECT3 = 
+	{	 
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "fishing_Success_04",
+		
+		START_TIME = 0,
+		POSITION_OFFSET_X = 0,	
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,	
+
+		POS_RELATIVE_TO_UNIT 		= TRUE, 
+
+		TRACE 		= FALSE, 
+	},
+
+	CAMERA_SHAKE0 =
+	{
+	},
+}
+--}}	#endif	SERV_FISHING_HOLE
+
+--{{ HANABI_VILLAGE
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Flame_Red_Village", 
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_CUSTOM"], 
+	
+	EFFECT0 = 
+	{
+		EFFECT_TYPE		= EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME			= "LED_Raven_Nuclear_Eye02",
+		START_TIME		= 10.4,
+		POS_RELATIVE_TO_UNIT 	= TRUE, 
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y 			= 100, 
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+		
+	
+	EFFECT1 =	
+	{
+		EFFECT_TYPE		= EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME			= "LightParticle_Event01",
+		START_TIME		= 0.4,
+		POS_RELATIVE_TO_UNIT 	= TRUE, 
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y 			= 100, 
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+
+	EFFECT2 =	
+	{
+		EFFECT_TYPE		= EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME			= "LightParticle_Event02",
+		START_TIME		= 0.3,
+		
+		POS_RELATIVE_TO_UNIT 	= TRUE, 
+		
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y 			= 100, 
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT3 =	
+	{
+		EFFECT_TYPE		= EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME			= "LightParticle_Event03",
+		START_TIME		= 0.35,
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT4 =	
+	{
+		EFFECT_TYPE		= EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME			= "LightParticle_Event04",
+		START_TIME		= 0,
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT5 =	
+	{
+		EFFECT_TYPE		= EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],		
+		NAME			= "LightParticle_Event05",
+		START_TIME		= 0.4,
+		
+		POSITION_OFFSET_Y 			= 50, 
+		
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT6 =	
+	{
+		EFFECT_TYPE		= EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],		
+		NAME			= "LightParticle_Event10",
+		START_TIME		= 0,
+		
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+}
+
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Flame_Blue_Village", 
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_CUSTOM"], 
+	
+	EFFECT0 = 
+	{
+		EFFECT_TYPE		= EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME			= "LightParticle_Event_Blue01",
+		START_TIME		= 0.4,
+		
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+		
+	
+	EFFECT1 =	
+	{
+		EFFECT_TYPE		= EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME			= "LightParticle_Event_Blue02",
+		START_TIME		= 0.45,
+		
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+
+	EFFECT2 =	
+	{
+		EFFECT_TYPE		= EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME			= "LightParticle_Event_Blue03",
+		START_TIME		= 0.4,
+		
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	
+	EFFECT3 =	
+	{
+		EFFECT_TYPE		= EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME			= "LightParticle_Event_Blue04",
+		START_TIME		= 0,
+		
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT4 =	
+	{
+		EFFECT_TYPE		= EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],		
+		NAME			= "LightParticle_Event_Blue05",
+		START_TIME		= 0.4,
+		
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT5 =	
+	{
+		EFFECT_TYPE		= EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"], 
+		NAME			= "LightParticle_Event_Blue10",
+		START_TIME		= 0,
+		
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+	EFFECT6 =	
+	{
+		EFFECT_TYPE		= EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],	
+		NAME			= "LightParticle_Event_Blue12",
+		START_TIME		= 0.4,
+		
+		POSITION_OFFSET_X = 0,		
+		POSITION_OFFSET_Y = 0,	
+		POSITION_OFFSET_Z = 0,
+
+		TRACE = TRUE,
+	},
+}
+--}} HANABI_VILLAGE
+
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Halloween_Ice_Heater_Wait", 
+	
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_ANIM"],
+		
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Light_Fire_machine01",
+		BONE_NAME = "Object12",
+		START_TIME = 0,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 430,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 2.0,
+		SCALE_Y = 2.0,
+		SCALE_Z = 2.0,
+		SET_OVER_UI = TRUE,
+	},
+}
+
+g_pEffectSet:AddEffectSetTemplet_LUA
+{
+	NAME = "EffectSet_Halloween_Ice_Heater_Start", 
+	
+	EVENT_TIMER_TYPE = EFFECT_SET_TIMER_TYPE["ESTT_CUSTOM"],
+		
+	EFFECT0 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Light_Fire_machine01",
+		START_TIME = 0.6,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 530,	
+		POSITION_OFFSET_Z = 0.75,
+		SCALE_X = 2.0,
+		SCALE_Y = 2.0,
+		SCALE_Z = 2.0,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT1 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Wind_Machine_FX_P07",
+		START_TIME = 3.93,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 230,	
+		POSITION_OFFSET_Z = 0.75,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT2 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Wind_Machine_FX_P08",
+		START_TIME = 2.13,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 230,	
+		POSITION_OFFSET_Z = 0.75,
+		SET_OVER_UI = TRUE,
+	},	
+	
+	EFFECT3 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Wind_Machine_FX_P09",
+		START_TIME = 3.93,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 230,	
+		POSITION_OFFSET_Z = 0.75,
+		SET_OVER_UI = TRUE,
+	},
+	
+	
+	EFFECT4 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Wind_Machine_FX_P12",
+		START_TIME = 3.93,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 230,	
+		POSITION_OFFSET_Z = 0.75,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT5 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Wind_Machine_FX_P07",
+		START_TIME = 0.6,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 230,	
+		POSITION_OFFSET_Z = 0.75,
+		SET_OVER_UI = TRUE,
+	},
+	
+	EFFECT6 = 
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_UI_MAJOR"],
+		NAME = "Wind_Machine_FX_P14",
+		START_TIME = 3.33,
+		POSITION_OFFSET_X = 512,		
+		POSITION_OFFSET_Y = 230,	
+		POSITION_OFFSET_Z = 0.75,
+		SET_OVER_UI = TRUE,
+	},
+}
+
+g_pEffectSet:AddEffectSetTemplet_LUA
+{--
+	NAME = "EffectSet_Firework_Pporu_Attack01_Fire_NEW",
+	EFFECT0 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_DAMAGE_EFFECT"],
+		NAME = "PET_PETTE_PPORU_FIREWORK_ATTACK1",		
+		BONE_NAME = "Bip01_R_Hand",
+		REVERSE_Y = TRUE,
+		BONE_TRACE_TARGET_MESH = TRUE,
+	},
+	EFFECT1 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_GAME_MAJOR"],
+		NAME = "Pet_Firework_Pporu_Attack01_P01",
+		BONE_NAME = "Dummy02",
+		TRACE_MATRIX = TRUE,
+		REVERSE_Y = TRUE,
+	},
+	EFFECT2 =
+	{
+		EFFECT_TYPE = EFFECT_TYPE["ET_PARTICLE_GAME_MAJOR"],
+		NAME = "Firework_Pporu_Attack01_Fire_P03",
+		BONE_NAME = "Dummy02",
+		TRACE_MATRIX = TRUE,
+		REVERSE_Y = TRUE,
+	},
+}

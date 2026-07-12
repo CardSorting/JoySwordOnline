@@ -1,0 +1,4 @@
+﻿=== Found 3 select files in data063.kom ===
+  DLG_Sever_Select_Background01.tet
+  DLG_Sever_Select_Background02.tet
+  DLG_Sever_Select_Background03.tet

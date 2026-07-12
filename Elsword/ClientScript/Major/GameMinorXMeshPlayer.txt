@@ -1,0 +1,830 @@
+
+XMESHPLAYER "UIMinor" 1.00 
+{  
+	TEMPLET "DropDown" 
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "Effect_ElSword_dropdown.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		usedieevent		= false
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial					aniName		= "dropdown", XAP_ONE
+		global initial					color		= rgba( 1,1,1,0.7 )
+		global fade so from 0.2 to 0.3	color		= rgba( 1,1,1,0 )
+	}
+	TEMPLET "DropDownRed" 
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "Effect_ElSword_dropdown.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		usedieevent		= false
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_DESTALPHA
+
+		global initial					aniName		= "dropdown", XAP_ONE
+		global initial					color		= rgba( 1,0.3,0.3,0.6 )
+		global fade so from 0.2 to 0.3	color		= rgba( 1,1,1,0 )
+	}
+	
+	TEMPLET "ArmeEvasion" 
+	{
+		Layer			= 14
+		lifeType		= LT_TIME
+		lifetime		= 0.3
+		meshType		= X_SKIN_MESH
+		meshName		= "Arme_Evasion.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		usedieevent		= false
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_DESTALPHA
+
+		global initial			aniName		= "Evasion", XAP_ONE
+		global initial			AniSpeed	= 2
+		global initial			color		= rgba( 1,1,1,1 )
+		global fade so final	color		= rgba( 1,1,1,0 )
+		global initial			size		= XYZ(1.5,1.5,1.5)
+	}
+	TEMPLET "AirSlash01" 
+	{
+		Layer				= 14
+		lifeType			= LT_PLAY_COUNT
+		playCount			= 1
+		meshType			= X_SKIN_MESH
+		meshName			= "AirSlash01.X"
+		RenderType			= RT_REAL_COLOR
+		zEnable				= false
+		usedieevent			= false
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		DrawCount			= 2
+		
+		global initial color		= rgba( 1,1,1,0 )  
+		global fade so from 0.133 to 0.166 color  = rgba( 1,1,1,1 )
+		global fade so from 0.266 to 0.3 color  = rgba( 1,1,1,0 )
+
+		global initial  aniName		= "AirSlash01", XAP_ONE
+		global initial  size		= XYZ( 1.2, 1.2, 1.2 )
+	}  
+	TEMPLET "AirSlash02" 
+	{		
+		Layer				= 14
+		lifeType			= LT_PLAY_COUNT
+		playCount			= 1
+		meshType			= X_SKIN_MESH
+		meshName			= "AirSlash02.X"
+		RenderType			= RT_REAL_COLOR
+		zEnable				= false
+		usedieevent			= false
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		DrawCount			= 2
+		
+		global initial   color  = rgba( 1,1,1,0 )  
+		global fade so from 0.0 to 0.05 color  = rgba( 1,1,1,1 )
+		global fade so from 0.233 to 0.4 color  = rgba( 1,1,1,0 )
+
+		global initial  aniName  = "AirSlash02", XAP_ONE
+		global initial  size  = XYZ( 0.95, 0.95, 0.95 )
+	}  
+	TEMPLET "AirSlash01_Hyper" 
+	{
+		Layer				= 14
+		lifeType			= LT_PLAY_COUNT
+		playCount			= 1
+		meshType			= X_SKIN_MESH
+		meshName			= "AirSlash01.X"
+		RenderType			= RT_REAL_COLOR
+		zEnable				= false
+		usedieevent			= false
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		DrawCount			= 2
+		
+		global initial color		= rgba( 1,1,1,0 )  
+		global fade so from 0.133 to 0.166 color  = rgba( 1,1,1,1 )
+		global fade so from 0.266 to 0.3 color  = rgba( 1,1,1,0 )
+
+		global initial  aniName		= "AirSlash01", XAP_ONE
+		global initial  size		= XYZ( 1.2, 1.2, 1.2 )
+	}  
+	TEMPLET "AirSlash02_Hyper" 
+	{		
+		Layer				= 14
+		lifeType			= LT_PLAY_COUNT
+		playCount			= 1
+		meshType			= X_SKIN_MESH
+		meshName			= "AirSlash02.X"
+		RenderType			= RT_REAL_COLOR
+		zEnable				= false
+		usedieevent			= false
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		DrawCount			= 2
+		
+		global initial   color  = rgba( 1,1,1,0 )  
+		global fade so from 0.0 to 0.05 color  = rgba( 1,1,1,1 )
+		global fade so from 0.233 to 0.4 color  = rgba( 1,1,1,0 )
+
+		global initial  aniName  = "AirSlash02", XAP_ONE
+		global initial  size  = XYZ( 0.95, 0.95, 0.95 )
+	}  
+	TEMPLET "AssaultKick01" 
+	{
+		Layer				= 14
+		lifeType			= LT_PLAY_COUNT
+		playCount			= 1
+		meshType			= X_SKIN_MESH
+		meshName			= "AssaultKick01.X"
+		RenderType			= RT_REAL_COLOR
+		zEnable				= false
+		usedieevent			= false
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		global initial color = rgba( 1,1,1,0 )  
+		global fade so from 0.0333 to 0.1333   color  = rgba( 1,1,1,0.6 )
+		global fade so from 0.2 to 0.533 color  = rgba( 1,1,1,0 )
+
+		global initial  aniName  = "AssaultKick01", XAP_ONE
+		global initial  size  = XYZ( 1, 1, 1 )
+	}
+	TEMPLET "AssaultKick02" 
+	{
+		Layer				= 14
+		lifeType			= LT_PLAY_COUNT
+		playCount			= 1
+		meshType			= X_SKIN_MESH
+		meshName			= "AssaultKick02.X"
+		RenderType			= RT_REAL_COLOR
+		zEnable				= false
+		usedieevent			= false
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		DrawCount			= 2
+		
+		global initial color  = rgba( 1,1,1,0 )  
+		global fade so from 0.033 to 0.1   color  = rgba( 1,1,1,0.7 )
+		global fade so from 0.266 to 0.633 color  = rgba( 1,1,1,0 )
+
+		global initial  aniName  = "AssaultKick02", XAP_ONE
+		global initial  size  = XYZ( 1, 1, 1 )
+	}
+	TEMPLET "AssaultKick01Red" 
+	{
+		Layer				= 14
+		lifeType			= LT_PLAY_COUNT
+		playCount			= 1
+		meshType			= X_SKIN_MESH
+		meshName			= "AssaultKick01.X"
+		RenderType			= RT_REAL_COLOR
+		zEnable				= false
+		usedieevent			= false
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		global initial color = rgba( 1,0,0,0 )  
+		global fade so from 0.0333 to 0.1333   color  = rgba( 1,0,0,0.6 )
+		global fade so from 0.2 to 0.533 color  = rgba( 1,0,0,0 )
+
+		global initial  aniName  = "AssaultKick01", XAP_ONE
+		global initial  size  = XYZ( 1, 1, 1 )
+	}
+	TEMPLET "AssaultKick02Red" 
+	{
+		Layer				= 14
+		lifeType			= LT_PLAY_COUNT
+		playCount			= 1
+		meshType			= X_SKIN_MESH
+		meshName			= "AssaultKick02.X"
+		RenderType			= RT_REAL_COLOR
+		zEnable				= false
+		usedieevent			= false
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		DrawCount			= 2
+		
+		global initial color  = rgba( 1,0.3,0.3,0 )  
+		global fade so from 0.033 to 0.266   color  = rgba( 1,0.3,0.3,0.7 )
+		global fade so from 0.266 to 0.633 color  = rgba( 1,0.3,0.3,0 )
+
+		global initial  aniName  = "AssaultKick01", XAP_ONE
+		global initial  size  = XYZ( 1, 1, 1 )
+	}
+
+	TEMPLET "RespawnLanding01" 
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "RespawnLanding01.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		global initial				color		= rgba( 1,1,1,0 )		
+		global fade so from 0.033 to 0.266  	color		= rgba( 1,1,1,0.9 )
+		global fade so from 0.733 to 1.066  	color		= rgba( 1,1,1,0 )
+		
+		global initial		aniName		= "Normal", XAP_ONE
+		global initial		size		= XYZ( 1, 1, 1 )
+	}
+	TEMPLET "RespawnLanding02" 
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "RespawnLanding02.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		global initial				color		= rgba( 1,1,1,0 )		
+		global fade so from 0.033 to 0.266  	color		= rgba( 1,1,1,0.5 )
+		global fade so from 0.733 to 1.066  	color		= rgba( 1,1,1,0 )
+
+		global initial		aniName		= "Normal", XAP_ONE
+		global initial		size		= XYZ( 1, 1, 1 )
+	}
+	TEMPLET "FatalFury01" 
+	{
+		Layer				= 14
+		lifeType			= LT_PLAY_COUNT
+		playCount			= 1
+		meshType			= X_SKIN_MESH
+		meshName			= "FatalFury01.X"
+		RenderType			= RT_REAL_COLOR
+		zEnable				= false
+		usedieevent			= false
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		DrawCount			= 2
+		
+		global initial    color  = rgba( 1,1,1,0 )  
+		global fade so from 0.001 to 0.066   color  = rgba( 1,1,1,1 )
+		global fade so from 0.1   to 0.266 color  = rgba( 1,1,1,0.3 )
+		global fade so from 0.266 to 0.6 color  = rgba( 1,1,1,0 )
+
+		global initial  aniName  = "FatalFury01", XAP_ONE
+		global initial  size  = XYZ( 1, 1, 1 )
+	}
+	TEMPLET "GustScrew01" 
+	{
+		Layer				= 14
+		lifeType			= LT_PLAY_COUNT
+		playCount			= 1
+		meshType			= X_SKIN_MESH
+		meshName			= "GustScrew01.X"
+		RenderType			= RT_REAL_COLOR
+		zEnable				= false
+		usedieevent			= false
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		
+		global initial color						= rgba( 1,1,1,0 )  
+		global fade so from 0.001 to 0.066 color	= rgba( 1,1,1,1 )
+		global fade so from 0.866 to 1.2   color	= rgba( 1,1,1,0 )
+		global initial aniName						= "GustScrew01", XAP_ONE
+		global initial size							= XYZ( 1, 1, 1 )
+	}
+	TEMPLET "GustScrew02" 
+	{
+		Layer				= 14
+		lifeType			= LT_PLAY_COUNT
+		playCount			= 1
+		meshType			= X_SKIN_MESH
+		meshName			= "GustScrew02.X"
+		RenderType			= RT_REAL_COLOR
+		zEnable				= false
+		usedieevent			= false
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		
+		global initial color						= rgba( 1,1,1,0 )  
+		global fade so from 0.533 to 0.633 color	= rgba( 1,1,1,1 )
+		global fade so from 1.666 to 2   color		= rgba( 1,1,1,0 )
+
+		global initial aniName						= "GustScrew02", XAP_ONE
+		global initial size							= XYZ( 0.9, 0.9, 0.9 )
+	}
+	TEMPLET "SpiralBlast01" 
+	{
+		Layer				= 14
+		lifeType			= LT_PLAY_COUNT
+		playCount			= 1
+		meshType			= X_SKIN_MESH
+		meshName			= "SpiralBlast01.X"
+		RenderType			= RT_REAL_COLOR
+		zEnable				= false
+		usedieevent			= false
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		global initial color						= rgba( 1,1,1,0 )  
+		global fade so from 0.001 to 0.233 color	= rgba( 1,1,1,1 )
+		global fade so from 0.333 to 0.833 color	= rgba( 1,1,1,0 )
+
+		global initial  aniName		= "SpiralBlast01", XAP_ONE
+		global initial  size		= XYZ( 1, 1, 1 )
+	}
+	TEMPLET "Catastrophe01" 
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "Catastrophe01.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		Drawcount		= 2
+		global initial				color		= rgba( 1,1,1,0 )		
+		global fade so from 0.001 to 0.166  	color		= rgba( 1,1,1,1 )
+		global fade so from 0.666 to 1  	color		= rgba( 1,1,1,0 )
+
+		global initial		aniName		= "Catastrophe01", XAP_ONE
+		global initial		size		= XYZ( 1.3, 1.3, 1.3 )
+	}
+	TEMPLET "Catastrophe02" 
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "Catastrophe02.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		Drawcount		= 2
+		global initial				color		= rgba( 1,1,1,0 )		
+		global fade so from 0.001   to 0.066  	color		= rgba( 1,1,1,1 )
+		global fade so from 0.066 to 0.333   	color		= rgba( 1,1,1,0 )
+
+		global initial		aniName		= "Catastrophe02", XAP_ONE
+		global initial		size		= XYZ( 1, 1, 1 )
+	}
+	TEMPLET "Catastrophe02-1" 
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "Catastrophe02.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		Drawcount		= 2
+		global initial				color		= rgba( 1,1,1,0 )		
+		global fade so from 0.001   to 0.066  	color		= rgba( 1,1,1,1 )
+		global fade so from 0.066 to 0.333   	color		= rgba( 1,1,1,0 )
+
+		global initial		aniName		= "Catastrophe02", XAP_ONE
+		global initial		size		= XYZ( 1.2, 1.2, 1.2 )
+	}
+	TEMPLET "Catastrophe03" 
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "Catastrophe03.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		global initial				color		= rgba( 1,1,1,0 )		
+		global fade so from 0.001 to 0.166  	color		= rgba( 1,1,1,0.8 )
+		global fade so from 1.5   to 1.833   	color		= rgba( 1,1,1,0 )
+
+		global initial		aniName		= "Catastrophe03", XAP_ONE
+		global initial		size		= XYZ( 1, 1, 1 )
+	}
+	TEMPLET "Catastrophe04" 
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "Catastrophe04.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		global initial				color		= rgba( 1,1,1,0 )		
+		global fade so from 1.433 to 1.533  	color		= rgba( 1,1,1,1 )
+		global fade so from 1.666 to 1.833   	color		= rgba( 1,1,1,0 )
+
+		global initial		aniName		= "Catastrophe04", XAP_ONE
+		global initial		size		= XYZ( 1, 1, 1 )
+	}
+	TEMPLET "SpinningKick01"
+	{
+		Layer				= 14
+		lifeType			= LT_PLAY_COUNT
+		playCount			= 1
+		meshType			= X_SKIN_MESH
+		meshName			= "SpinningKick01.X"
+		RenderType			= RT_REAL_COLOR
+		zEnable				= false
+		usedieevent			= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		DrawCount			= 1
+
+		global initial						color		= rgba(1,1,1,0)
+		global Fade so From 0.01 to 0.033	color		= rgba(1,1,1,1)
+		global Fade so From 0.7 to 0.9		color		= rgba(1,1,1,0)
+		global initial						aniName		= "Normal", XAP_ONE
+		global initial						size		= XYZ( 1,1,1 )
+	}
+	TEMPLET "CrescentKick01"
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "CrescentKick01.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		DrawCount		= 1
+
+		global initial				color		= rgba(1,1,1,0)
+		global Fade so From 0.01 to 0.1		color		= rgba(1,1,1,1)
+		global Fade so From 0.233 to 0.566	color		= rgba(1,1,1,0)
+		global initial		aniName		= "Normal", XAP_ONE
+		global initial		size		= XYZ( 1,1,1 )
+	}
+	TEMPLET "CrescentKick02"
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "CrescentKick02.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		DrawCount		= 1
+
+		global initial				color		= rgba(1,1,1,0)
+		global Fade so From 0.01 to 0.1		color		= rgba(1,1,1,1)
+		global Fade so From 0.366 to 0.7	color		= rgba(1,1,1,0)
+		global initial		aniName		= "Normal", XAP_ONE
+		global initial		size		= XYZ( 1,1,1 )
+	}
+	TEMPLET "CrescentKick03"
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "CrescentKick03.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		DrawCount		= 1
+
+		global initial				color		= rgba(1,1,1,0)
+		global Fade so From 0.01 to 0.1		color		= rgba(1,1,1,1)
+		global Fade so From 0.2 to 0.4	color		= rgba(1,1,1,0)
+		global initial		aniName		= "Normal", XAP_ONE
+		global initial		size		= XYZ( 1,1,1 )
+	}
+	TEMPLET "DiveKinkBombing01"
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "DiveKickBombing01.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		DrawCount		= 1
+
+		global initial				color		= rgba(1,1,1,0)
+		global Fade so From 0.01 to 0.033	color		= rgba(1,1,1,1)
+		global Fade so From 0.2 to 0.4	color		= rgba(1,1,1,0)
+		global initial		aniName		= "Normal", XAP_ONE
+		global initial		size		= XYZ( 1.3,1.3,1.3 )
+	}
+	
+	TEMPLET "Altera_core_Boss_Destroy"
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount       = 1
+		meshType		= X_SKIN_MESH
+		meshName		= "Altera_core_Boss_DestroyRock1.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= true
+		usedieevent		= false		
+		
+		drawcount		= 1
+					
+		global initial				aniName		= "normal", XAP_ONE		
+	}
+	
+	TEMPLET "Stone_Property01"
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "Stone_Property01.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= true
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		drawcount		= 1
+
+		global initial				color 		= rgba( 1,1,1,1 )		
+	
+
+		global initial				aniName		= "stone_Property01", XAP_ONE
+		global initial				size		= XYZ( 1, 1, 1 )
+	}
+	
+	TEMPLET "NUCLEAR_Effect_Dust01" 
+	{
+		Layer			= 15
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "SI_SA_ROT_NUCLEAR_Effect_Dust01.X"
+		RenderType		= RT_REAL_COLOR
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		zEnable			= True
+		ZWriteEnable 		= False
+		drawcount		= 1
+
+		global initial				color		= rgba( 1,1,1,1 )		
+		global fade so from 0.001 to 0.0333  	color		= rgba( 1,1,1,1 )
+		global fade so from 0.1 to 0.4 	color		= rgba( 1,1,1,0 )
+
+		global initial				aniName		= "Normal", XAP_ONE
+		global initial				size		= XYZ( 0.7, 0.7, 0.7 )
+	}
+	TEMPLET "NUCLEAR_Effect_Dust02" 
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "SI_SA_ROT_NUCLEAR_Effect_Dust02.X"
+		RenderType		= RT_REAL_COLOR
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		zEnable			= True
+		ZWriteEnable 		= False
+		drawcount		= 1
+
+		global initial				color		= rgba( 1,1,1,1 )		
+		global fade so from 0.001 to 0.0333  	color		= rgba( 1,1,1,1 )
+		global fade so from 0.1 to 0.4 	color		= rgba( 1,1,1,0 )
+
+		global initial				aniName		= "Normal", XAP_ONE
+		global initial				size		= XYZ( 0.7, 0.7, 0.7 )
+	}
+	TEMPLET "NUCLEAR_Effect_Explosion_Dust01" 
+	{
+		Layer			= 15
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "SI_SA_ROT_NUCLEAR_Effect_Dust01.X"
+		RenderType		= RT_REAL_COLOR
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		zEnable			= True
+		ZWriteEnable 		= False
+		drawcount		= 1
+
+		global initial				color		= rgba( 1,1,1,1 )		
+		global fade so from 0.001 to 0.0333  	color		= rgba( 1,1,1,1 )
+		global fade so from 0.1 to 0.4 	color		= rgba( 1,1,1,0 )
+
+		global initial				aniName		= "Normal", XAP_ONE
+		global initial				size		= XYZ( 1.2, 1.2, 1.2 )
+	}
+	TEMPLET "NUCLEAR_Effect_Explosion_Dust02" 
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "SI_SA_ROT_NUCLEAR_Effect_Dust02.X"
+		RenderType		= RT_REAL_COLOR
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		zEnable			= True
+		ZWriteEnable 		= False
+		drawcount		= 1
+
+		global initial				color		= rgba( 1,1,1,1 )		
+		global fade so from 0.001 to 0.0333  	color		= rgba( 1,1,1,1 )
+		global fade so from 0.1 to 0.4 	color		= rgba( 1,1,1,0 )
+
+		global initial				aniName		= "Normal", XAP_ONE
+		global initial				size		= XYZ( 1.2, 1.2, 1.2 )
+	}
+	TEMPLET "NUCLEAR_Effect_Bomb01"
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "SI_SA_ROT_NUCLEAR_Effect_Bomb01.X"
+		RenderType		= RT_REAL_COLOR
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		zEnable			= True
+		ZWriteEnable 		= False
+	
+		global initial				color		= rgba( 0,0,0,0 )
+		global fade so from 0.0 to 0.1	  	color		= rgba( 1,1,1,1 )		
+		global fade so from 0.8 to 1.0	  	color		= rgba( 0.0,0.0,0,0 )
+		global initial				aniName		= "Normal", XAP_ONE
+		global initial				size		= XYZ( 1, 1, 1 )
+	}
+	TEMPLET "NUCLEAR_Effect_Bomb02"
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "SI_SA_ROT_NUCLEAR_Effect_Bomb02.X"
+		RenderType		= RT_REAL_COLOR
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+	
+		global initial				color		= rgba( 0,0,0,0 )
+		global fade so from 0.0 to 0.1	  	color		= rgba( 1,1,1,1 )		
+		global fade so from 0.6 to 0.9	  	color		= rgba( 0.0,0.0,0,0 )
+		global initial				aniName		= "Normal", XAP_ONE
+		global initial				size		= XYZ( 1, 1, 1 )
+	}
+	
+	TEMPLET "Summon_Dryad_Effect_Vine_Bottom" 
+	{
+		Layer			= 14
+		lifeType		= LT_TIME
+		lifeTime		= 20
+		meshType		= X_SKIN_MESH
+		meshName		= "Summon_Dryad_Effect_Vine_Bottom.X"
+		zEnable			= true
+		ZWriteEnable 		= True
+		usedieevent		= false
+
+		global initial		color		= rgba( 1, 1, 1, 1 )
+		global initial		aniName		= "Summon_Dryad_Effect_Vine_Bottom_Start", XAP_ONE
+		global initial		size		= XYZ( 1, 1, 1 )
+		
+		global at 0.233		aniname		= "Summon_Dryad_Effect_Vine_Bottom_Wait", XAP_LOOP
+	}
+	
+	TEMPLET "Summon_Oread_Effect_Bottom"
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "Summon_Oread_Effect_Bottom.X"
+		RenderType		= RT_REAL_COLOR
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		zEnable			= True
+		ZWriteEnable 		= True
+		drawcount		= 1
+		
+
+		global initial				color		= rgba( 0,0,0,0 )
+		global fade so from 0.0 to 0.1	  	color		= rgba( 1,1,1,1 )		
+		global fade so from 1.1 to 1.6	  	color		= rgba( 0.0,0.0,0,0 )
+		global initial				aniName		= "Normal", XAP_ONE
+		global initial				size		= XYZ( 1, 1, 1 )
+    }
+    
+    TEMPLET "Mesh_VICTOR_AttackA_ShockWave" 
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "Victor_AttackA_Ground.X"
+		RenderType		= RT_REAL_COLOR
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		zEnable			= true
+		ZWriteEnable 		= false
+		drawcount		= 1
+
+		global initial				color		= rgba( 1,1,1,0.7 )		
+		global initial				aniName		= "Normal", XAP_ONE
+		global initial				size		= XYZ( 1.5, 2, 1.5 )
+	}
+	TEMPLET "Mesh_VICTOR_AttackBCombo_ShockWave" 
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "Victor_AttackA_Ground.X"
+		RenderType		= RT_REAL_COLOR
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		zEnable			= true
+		ZWriteEnable 		= false
+		drawcount		= 1
+
+		global initial				color		= rgba( 1,0.8,0.6,0.7 )		
+		global initial				aniName		= "Normal", XAP_ONE
+		global initial				size		= XYZ( 4, 4, 4 )
+	}
+	TEMPLET "Mesh_WaterFall_Water" 
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "Water_Fall.X"
+		RenderType		= RT_REAL_COLOR
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		zEnable			= true
+		ZWriteEnable 		= False
+		drawcount		= 1
+
+		global initial				color		= rgba( 0.85,0.91,1,0.4 )		
+		global fade so from 0.001 to 0.4 	color		= rgba( 0.82,0.92,0.98,0.7 )
+		global fade so from 0.4 to 0.67 	color		= rgba( 0.83,0.94,0.99,0 )
+		global initial				aniName		= "Normal", XAP_ONE
+		global initial				size		= XYZ( 1, 1.3, 1 )
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1219 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+--[[ KjTiger / 2011/8/12 / 블러디 글리터 방패병, 벨더 비밀 던전 몬스터/
+	 Guard 특성 추가
+	 포션 상태
+--]]
+
+--------------------------------------------------------------------------
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 120.0,
+	UNIT_HEIGHT		= 150.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	UNIT_SCALE      = 1.2,
+}
+--------------------------------------------------------------------------
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+		"BLOODY_GLITER_GREAT_Map01.tga",
+		"BLOODY_GLITER_GREAT_Map02.tga",
+		"BLOODY_GLITER_GREAT_Map03.tga",
+		"Bloody_Gliter_belder_Weapon_Guard.tga",
+	},
+	
+	READY_SOUND = 
+	{
+		"Glitter_Shield_Attack.ogg",
+		"Glitter_StandUp.ogg",
+		"Glitter_Dash.ogg",
+		"Glitter_Landing.ogg",
+		"Glitter_ShieldHit.ogg",
+		
+		"GlitterVoice_AttackRoar1.ogg",
+		"GlitterVoice_AttackRoar2.ogg",
+		
+		"GlitterVoice_DeathRoar.ogg",
+		"GlitterVoice_HurtRoar1.ogg",
+		"GlitterVoice_HurtRoar2.ogg",	
+		"BLOODY_GLITER_SHIELD_Guard01.ogg",
+	},
+		
+	READY_XMESH = 
+	{
+	},
+	
+	READY_XSKIN_MESH = 
+	{
+	},
+}
+--------------------------------------------------------------------------
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_BLOODY_GLITER_SHIELD.x",
+	MOTION_CHANGE_TEX_XET	= "NUI_BLOODY_GLITER_GREAT.xet",
+	MOTION_ANI_TEX_XET		= "NUI_BLOODY_GLITER_GREAT.xet",
+}
+--------------------------------------------------------------------------
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL	= 2000,
+	G_ACCEL			= 4000,
+	MAX_G_SPEED		= -2000,
+	
+	WALK_SPEED		= 400,
+	RUN_SPEED		= 600,
+	JUMP_SPEED		= 1500,
+	DASH_JUMP_SPEED	= 1800,
+}
+--------------------------------------------------------------------------
+INIT_COMPONENT = 
+{
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+		
+	HITTED_TYPE	= HITTED_TYPE["HTD_MEAT"],
+	FALL_DOWN	= TRUE,
+	
+	USE_GUARD_COLLISION_BOX		= FALSE,
+			
+	WEAPON0 = 
+	{
+		WEAPON_FILE_NAME	= "NUI_GLITER_GREAT_Shield.X",
+		WEAPON_BONE_NAME	= "Dummy1_Rhand",
+		USE_SLASH_TRACE		= FALSE,
+		WEAPON_XET_NAME		= "Bloody_Gliter_belder_Weapon_Guard.xet",
+	},
+}
+--------------------------------------------------------------------------
+INIT_STATE = 
+{
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_START",		},
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_WAIT",		},
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_WAIT_HABIT",	},
+
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_SIEGE_ATTACK",	STATE_COOL_TIME = 4, },
+		
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_WALK",			LUA_STATE_END_FUNC = "BLOODY_GLITER_SHIELD_WALK_STATE_END"	},
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_FORCED_WALK",	LUA_STATE_END_FUNC = "BLOODY_GLITER_SHIELD_WALK_STATE_END"	},
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_JUMP_UP",		},
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_JUMP_DOWN",	LUA_STATE_END_FUNC = "BLOODY_GLITER_SHIELD_JUMP_DOWN_STATE_END"	},
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_JUMP_UP_DIR",	},
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_JUMP_DOWN_DIR",LUA_STATE_END_FUNC = "BLOODY_GLITER_SHIELD_JUMP_DOWN_DIR_STATE_END"	},
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_JUMP_LANDING",	},
+
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_ATTACK",				STATE_COOL_TIME	= 2, },
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_DASH_ATTACK_READY",	LUA_STATE_END_FUNC = "BLOODY_GLITER_SHIELD_DASH_ATTACK_READY_STATE_END", STATE_COOL_TIME = 8, },
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_DASH_ATTACK",			LUA_FRAME_MOVE_FUNC = "BLOODY_GLITER_SHIELD_DASH_ATTACK_FRAME_MOVE",	},
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_DASH_ATTACK_END",		},
+	
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_DRINK_POTION",	LUA_STATE_START_FUNC = "BLOODY_GLITER_SHIELD_DRINK_POTION_STATE_START",	
+														LUA_STATE_END_FUNC = "BLOODY_GLITER_SHIELD_DRINK_POTION_STATE_END",	},
+		
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_DAMAGE_BIG_BACK",	},
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_DAMAGE_DOWN_BACK",	LUA_FRAME_MOVE_FUNC = "BLOODY_GLITER_SHIELD_DAMAGE_DOWN_BACK_FRAME_MOVE"	},
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_DAMAGE_FLY_BACK",	},
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_DAMAGE_AIR",		},
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_DAMAGE_AIR_DOWN",	},
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_DAMAGE_AIR_UP",	},
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_DAMAGE_AIR_FALL",	},
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_DAMAGE_AIR_DOWN_LANDING",	LUA_FRAME_MOVE_FUNC = "BLOODY_GLITER_SHIELD_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE"	},
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_STAND_UP_FRONT",	},
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_STAND_UP_BACK",	},
+	
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_DAMAGE_GUARD",		LUA_STATE_START_FUNC = "BLOODY_GLITER_SHIELD_DAMAGE_GUARD_STATE_START", 
+															LUA_STATE_END_FUNC = "BLOODY_GLITER_SHIELD_DAMAGE_GUARD_STATE_END"	},
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_DAMAGE_GUARD_LAND",	},	
+	
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_DYING_LAND_FRONT",	LUA_STATE_START_FUNC = "BLOODY_GLITER_SHIELD_DYING_LAND_STATE_START",	},
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_DYING_LAND_BACK",	LUA_STATE_START_FUNC = "BLOODY_GLITER_SHIELD_DYING_LAND_STATE_START",	},
+	{ STATE_NAME = "BLOODY_GLITER_SHIELD_DYING_SKY",		LUA_STATE_START_FUNC = "BLOODY_GLITER_SHIELD_DYING_LAND_STATE_START",	},
+	
+	START_STATE					= "BLOODY_GLITER_SHIELD_START",
+	WAIT_STATE					= "BLOODY_GLITER_SHIELD_WAIT",
+	SMALL_DAMAGE_LAND_FRONT		= "BLOODY_GLITER_SHIELD_DAMAGE_GUARD",
+	SMALL_DAMAGE_LAND_BACK		= "BLOODY_GLITER_SHIELD_DAMAGE_BIG_BACK",
+	BIG_DAMAGE_LAND_FRONT		= "BLOODY_GLITER_SHIELD_DAMAGE_GUARD",
+	BIG_DAMAGE_LAND_BACK		= "BLOODY_GLITER_SHIELD_DAMAGE_BIG_BACK",
+	DOWN_DAMAGE_LAND_FRONT		= "BLOODY_GLITER_SHIELD_DAMAGE_GUARD_LAND",
+	DOWN_DAMAGE_LAND_BACK		= "BLOODY_GLITER_SHIELD_DAMAGE_DOWN_BACK",
+	FLY_DAMAGE_FRONT			= "BLOODY_GLITER_SHIELD_DAMAGE_GUARD",
+	FLY_DAMAGE_BACK				= "BLOODY_GLITER_SHIELD_DAMAGE_FLY_BACK",
+	SMALL_DAMAGE_AIR			= "BLOODY_GLITER_SHIELD_DAMAGE_AIR",	
+	BIG_DAMAGE_AIR				= "BLOODY_GLITER_SHIELD_DAMAGE_AIR",
+	DOWN_DAMAGE_AIR				= "BLOODY_GLITER_SHIELD_DAMAGE_AIR_DOWN",
+	DOWN_DAMAGE_AIR_LANDING		= "BLOODY_GLITER_SHIELD_DAMAGE_AIR_DOWN_LANDING",
+	UP_DAMAGE					= "BLOODY_GLITER_SHIELD_DAMAGE_AIR_UP",
+	DAMAGE_REVENGE				= "BLOODY_GLITER_SHIELD_DAMAGE_GUARD",
+	
+	DAMAGE_EXTRA_STATES         = {"BLOODY_GLITER_SHIELD_DAMAGE_AIR_FALL","BLOODY_GLITER_SHIELD_STAND_UP_FRONT","BLOODY_GLITER_SHIELD_STAND_UP_BACK",
+	"BLOODY_GLITER_SHIELD_JUMP_DOWN","BLOODY_GLITER_SHIELD_JUMP_LANDING",},
+	
+	
+	DYING_LAND_FRONT			= "BLOODY_GLITER_SHIELD_DYING_LAND_FRONT",
+	DYING_LAND_BACK				= "BLOODY_GLITER_SHIELD_DYING_LAND_BACK",
+	DYING_SKY					= "BLOODY_GLITER_SHIELD_DYING_SKY",
+
+	REVENGE_ATTACK				= "",
+	
+	SMALL_DAMAGE_LAND_GUARD		= "BLOODY_GLITER_SHIELD_DAMAGE_GUARD",
+	BIG_DAMAGE_LAND_GUARD		= "BLOODY_GLITER_SHIELD_DAMAGE_GUARD",
+	DOWN_DAMAGE_LAND_GUARD		= "BLOODY_GLITER_SHIELD_DAMAGE_GUARD_LAND",
+	
+	COMMON_FRAME_FUNC           = "BLOODY_GLITER_SHIELD_COMMON_FRAME_FUNC",
+}
+--------------------------------------------------------------------------
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 3,
+		TARGET_NEAR_RANGE			= 200,
+		TARGET_RANGE				= 800,
+		TARGET_LOST_RANGE			= 1200,
+		TARGET_SUCCESS_RATE			= 100,
+		ATTACK_TARGET_RATE			= 100,
+		PRESERVE_LAST_TARGET_RATE	= 100,
+	},
+
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 600,
+		DEST_GAP			= 150,
+		MOVE_GAP			= 160,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		WALK_INTERVAL		= 2,
+		NEAR_WALK_RATE		= 100,
+		FAR_WALK_RATE		= 100,
+		
+		JUMP_INTERVAL		= 5,
+		UP_JUMP_RATE		= 100,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,
+		DOWN_DOWN_RATE		= 40,
+		
+		LINE_END_RANGE		= 80,
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE	= 100,
+		PATROL_RANGE		= 200,
+		PATROL_COOL_TIME	= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 500,
+		ESCAPE_GAP			= 600,
+		
+		WALK_INTERVAL		= 1.5,
+		NEAR_WALK_RATE		= 100,
+		FAR_WALK_RATE		= 100,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,
+		DOWN_DOWN_RATE		= 30,
+		
+		LINE_END_RANGE		= 80,
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_SIEGE_ATTACK = 
+{
+	ANIM_NAME		= "Attack",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	SPEED_X	= 0,
+	SPEED_Y	= 0,	
+
+	VIEW_TARGET				= TRUE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+	NEVER_MOVE				= TRUE,
+	
+    SOUND_PLAY0	= { 0.612, "Glitter_Shield_Attack.ogg" },
+    SOUND_PLAY1	= { 0.651, "GlitterVoice_AttackRoar1.ogg" },
+	
+
+	VIEW_TARGET				= TRUE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+	NEVER_MOVE				= TRUE,
+	FALL_DOWN				= FALSE,
+	
+	EVENT_PROCESS = 
+	{		
+		--{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"BLOODY_GLITER_SHIELD_SIEGE_WAIT",	},
+	},
+
+	ATTACK_TIME0	= { 0.6, 0.7, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE	= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE	= HIT_TYPE["HT_METAL_PUNCH_HIT"],
+		REACT_TYPE	= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			PHYSIC	= 1.0,
+		},
+		
+		BACK_SPEED_X	= 1000,
+		BACK_SPEED_Y	= 600,
+		
+		CAMERA_CRASH_GAP	= 5.0,	
+		CAMERA_CRASH_TIME	= 0.2,		
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_START = 
+{
+	ANIM_NAME	= "WaitHabit",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	IMMADIATE_PACKET_SEND	= TRUE,	
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"BLOODY_GLITER_SHIELD_WAIT",	"CT_BLOODY_GLITER_SHIELD_WAIT"	},
+	},
+	
+	CT_BLOODY_GLITER_SHIELD_WAIT = 
+	{
+		STATE_TIME_OVER	= 3.5,
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_WAIT = 
+{
+	ANIM_NAME		= "Wait",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION		= TRUE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,	
+	
+	SPEED_X	= 0,
+	SPEED_Y	= 0,
+	
+	PASSIVE_SPEED_X	= 0,
+	
+	ALLOW_DIR_CHANGE		= TRUE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+	EVENT_INTERVAL_TIME0	= 2,
+
+    GUARD_DEFENCE		= 95,
+	GUARD_DEFENCE_FRONT	= TRUE,
+	GUARD_DEFENCE_BACK	= FALSE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_SHIELD_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"BLOODY_GLITER_SHIELD_DASH_ATTACK_READY",	"CT_BLOODY_GLITER_SHIELD_DASH_ATTACK",	},
+ 		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"BLOODY_GLITER_SHIELD_ATTACK",				"CT_BLOODY_GLITER_SHIELD_ATTACK",		},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"BLOODY_GLITER_SHIELD_WAIT_HABIT",			"CT_BLOODY_GLITER_SHIELD_WAIT_HABIT",	},
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"BLOODY_GLITER_SHIELD_WALK",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"BLOODY_GLITER_SHIELD_FORCED_WALK",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"BLOODY_GLITER_SHIELD_JUMP_UP",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"BLOODY_GLITER_SHIELD_JUMP_UP_DIR",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"BLOODY_GLITER_SHIELD_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"BLOODY_GLITER_SHIELD_JUMP_DOWN_DIR",},
+	},
+	
+	CT_BLOODY_GLITER_SHIELD_ATTACK = 
+	{
+		EVENT_INTERVAL_ID	= 0,
+		DISTANCE_TO_TARGET_NEAR	= 400,
+		RATE	= 80,
+	},
+	CT_BLOODY_GLITER_SHIELD_DASH_ATTACK = 
+	{
+		EVENT_INTERVAL_ID	= 0,
+		DISTANCE_TO_TARGET_NEAR	= 1000,
+		RATE	= 50,
+	},
+
+	CT_BLOODY_GLITER_SHIELD_WAIT_HABIT = 
+	{
+		ANIM_PLAY_COUNT	= 2,
+		RATE			= 60,
+		HAVE_TARGET		= 0,
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_WAIT_HABIT = 
+{
+	ANIM_NAME	= "WaitHabit",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	IMMADIATE_PACKET_SEND	= TRUE,	
+
+	EVENT_INTERVAL_TIME0	= 2,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_SHIELD_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_GLITER_SHIELD_WAIT",		},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_WALK = 
+{
+	ANIM_NAME	= "Walk",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	PASSIVE_SPEED_X		= INIT_PHYSIC["WALK_SPEED"],
+	ALLOW_DIR_CHANGE	= TRUE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_INTERVAL_TIME0	= 2,
+	EVENT_INTERVAL_TIME1	= 3,
+	
+	GUARD_DEFENCE               = 95,
+	GUARD_DEFENCE_FRONT			= TRUE,
+	GUARD_DEFENCE_BACK			= FALSE,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_SHIELD_JUMP_DOWN_DIR",		},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"BLOODY_GLITER_SHIELD_ATTACK",				"CT_BLOODY_GLITER_SHIELD_ATTACK",	},
+   	    { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"BLOODY_GLITER_SHIELD_DASH_ATTACK_READY",	"CT_BLOODY_GLITER_SHIELD_DASH_ATTACK",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"BLOODY_GLITER_SHIELD_WAIT",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"BLOODY_GLITER_SHIELD_FORCED_WALK",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"BLOODY_GLITER_SHIELD_JUMP_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"BLOODY_GLITER_SHIELD_JUMP_UP_DIR",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"BLOODY_GLITER_SHIELD_JUMP_DOWN",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"BLOODY_GLITER_SHIELD_JUMP_DOWN_DIR",	},
+	},
+	
+	CT_BLOODY_GLITER_SHIELD_ATTACK = 
+	{
+		EVENT_INTERVAL_ID	= 0,
+		DISTANCE_TO_TARGET_NEAR	= 400,
+		RATE	= 80,
+	},
+	-- CT_BLOODY_GLITER_SHIELD_ATTACK = 
+	CT_BLOODY_GLITER_SHIELD_DASH_ATTACK =
+	{
+		EVENT_INTERVAL_ID	= 0,
+		DISTANCE_TO_TARGET_NEAR	= 	1000,
+		RATE	= 50,
+	},
+}
+
+function BLOODY_GLITER_SHIELD_WALK_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+end
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_FORCED_WALK = 
+{
+	ANIM_NAME	= "Walk",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	
+	PASSIVE_SPEED_X	= INIT_PHYSIC["RUN_SPEED"],
+	
+	ALLOW_DIR_CHANGE		= TRUE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_INTERVAL_TIME0	= 2,
+	EVENT_INTERVAL_TIME1	= 3,
+	
+
+    GUARD_DEFENCE		= 95,
+	GUARD_DEFENCE_FRONT	= TRUE,
+	GUARD_DEFENCE_BACK	= FALSE,
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_SHIELD_JUMP_DOWN_DIR",		},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"BLOODY_GLITER_SHIELD_ATTACK",				"CT_BLOODY_GLITER_SHIELD_ATTACK",	},
+       	{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"BLOODY_GLITER_SHIELD_DASH_ATTACK_READY",	"CT_BLOODY_GLITER_SHIELD_DASH_ATTACK",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"BLOODY_GLITER_SHIELD_WAIT",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"BLOODY_GLITER_SHIELD_WALK",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"BLOODY_GLITER_SHIELD_JUMP_UP",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"BLOODY_GLITER_SHIELD_JUMP_UP_DIR",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"BLOODY_GLITER_SHIELD_JUMP_DOWN",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"BLOODY_GLITER_SHIELD_JUMP_DOWN_DIR",	},
+	},
+	
+	CT_BLOODY_GLITER_SHIELD_ATTACK = 
+	{
+		COMMAND_FALSE0	= GROUP_AI_COMMAND["GAI_CMD_FORCED_MOVE"],
+		COMMAND_FALSE1	= GROUP_AI_COMMAND["GAI_CMD_SKILL_A"],	
+		EVENT_INTERVAL_ID	= 0,
+		DISTANCE_TO_TARGET_NEAR	= 400,
+		RATE	= 80,
+	},
+	
+	-- CT_BLOODY_GLITER_SHIELD_ATTACK = 
+	CT_BLOODY_GLITER_SHIELD_DASH_ATTACK =
+	{
+		COMMAND_TRUE0		= GROUP_AI_COMMAND["GAI_CMD_SKILL_A"],
+		EVENT_INTERVAL_ID	= 0,
+		DISTANCE_TO_TARGET_NEAR	= 	1000,
+		RATE	= 50,
+	},
+
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_JUMP_UP = 
+{
+	ANIM_NAME		= "JumpUp",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION		= TRUE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	SPEED_X	= 0,
+	SPEED_Y	= INIT_PHYSIC["JUMP_SPEED"],
+	
+	ADD_POS_Y	= 45, 
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"BLOODY_GLITER_SHIELD_JUMP_DOWN",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_JUMP_DOWN = 
+{
+	ANIM_NAME	= "JumpDown",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BLOODY_GLITER_SHIELD_JUMP_LANDING",	},
+	},
+}
+
+function BLOODY_GLITER_SHIELD_JUMP_DOWN_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+end
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_JUMP_UP_DIR = 
+{
+	ANIM_NAME	= "JumpUp",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+		
+	PASSIVE_SPEED_X	= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y			= INIT_PHYSIC["JUMP_SPEED"],
+	ADD_POS_Y		= 45, 
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"BLOODY_GLITER_SHIELD_JUMP_DOWN_DIR",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME	= "JumpDown",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	PASSIVE_SPEED_X	= INIT_PHYSIC["WALK_SPEED"],
+	IMMADIATE_PACKET_SEND	= TRUE,
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BLOODY_GLITER_SHIELD_JUMP_LANDING",	},
+	},
+}
+
+function BLOODY_GLITER_SHIELD_JUMP_DOWN_DIR_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+end
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_JUMP_LANDING = 
+{
+	ANIM_NAME		= "JumpLanding",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= TRUE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+    SOUND_PLAY0	= { 0.103, "Glitter_Landing.ogg" },
+
+	SPEED_X	= 0,
+	SPEED_Y	= 0,
+		
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_SHIELD_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_GLITER_SHIELD_WAIT",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_ATTACK = 
+{
+	ANIM_NAME	= "Attack",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	VIEW_TARGET		= TRUE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+    SOUND_PLAY0	= { 0.612, "Glitter_Shield_Attack.ogg" },
+    SOUND_PLAY1	= { 0.651, "GlitterVoice_AttackRoar1.ogg" },
+	SOUND_PLAY2	= { 0.25, "BLOODY_GLITER_SHIELD_Guard01.ogg" },
+	
+    GUARD_DEFENCE		= 80,
+	GUARD_DEFENCE_FRONT	= TRUE,
+	GUARD_DEFENCE_BACK	= FALSE,
+	
+	SPEED_X	= 500,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_SHIELD_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_GLITER_SHIELD_WAIT",	},
+	},
+
+	ATTACK_TIME0	= { 0.6, 0.7, },
+
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE	= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE	= HIT_TYPE["HT_METAL_PUNCH_HIT"],
+		REACT_TYPE	= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			PHYSIC	= 1.0,
+		},
+		
+		BACK_SPEED_X	= 1000,
+		BACK_SPEED_Y	= 600,
+		
+		CAMERA_CRASH_GAP	= 5.0,	
+		CAMERA_CRASH_TIME	= 0.2,		
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_BLOODY_GILTER_SHIELD_THORN", 0.2,
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_DASH_ATTACK_READY = 
+{
+	ANIM_NAME	= "DashReady",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= TRUE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	VIEW_TARGET				= TRUE,
+	ALLOW_DIR_CHANGE		= FALSE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_SHIELD_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_GLITER_SHIELD_DASH_ATTACK",	},		
+	},
+}
+
+function BLOODY_GLITER_SHIELD_DASH_ATTACK_READY_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	pNPCUnit:SetGroupAISelfCommandTransit_LUA( true )
+end
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_DASH_ATTACK_END = 
+{
+	ANIM_NAME	= "DashEnd",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	ALLOW_DIR_CHANGE		= FALSE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+    GUARD_DEFENCE			= 80,
+	GUARD_DEFENCE_FRONT		= TRUE,
+	GUARD_DEFENCE_BACK		= FALSE,
+
+    SOUND_PLAY0	= { 0.325, "Glitter_Landing.ogg" },
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_SHIELD_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_GLITER_SHIELD_WAIT",	},		
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_DASH_ATTACK =
+{
+	ANIM_NAME		= "DashAttack",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+    SOUND_PLAY0	= { 0.152, "GlitterVoice_AttackRoar2.ogg" },
+	
+	PASSIVE_SPEED_X	= 1200,
+		
+	ALLOW_DIR_CHANGE		= FALSE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	GUARD_DEFENCE		= 80,
+	GUARD_DEFENCE_FRONT	= TRUE,
+	GUARD_DEFENCE_BACK	= FALSE,
+
+	EVENT_INTERVAL_TIME0	= 0.1,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"BLOODY_GLITER_SHIELD_DASH_ATTACK_END",	"CT_BLOODY_GLITER_SHIELD_DASH_ATTACK_END"	},
+	},
+		
+	CT_BLOODY_GLITER_SHIELD_DASH_ATTACK_END = 
+	{
+		EVENT_INTERVAL_ID	= 0,	
+		STATE_TIME_OVER		= 0.72,
+	},
+
+	ATTACK_TIME0	= { 0.01, 100, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE	= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE	= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE	= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			PHYSIC	= 1.0,
+		},
+		
+		BACK_SPEED_X	= 1500,
+		BACK_SPEED_Y	= 1000,
+		
+		CAMERA_CRASH_GAP	= 5.0,	
+		CAMERA_CRASH_TIME	= 0.2,	
+		
+		RE_ATTACK	= TRUE,		
+		HIT_GAP		= 0.4,	
+	},
+}
+
+function BLOODY_GLITER_SHIELD_DASH_ATTACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+    if pNPCUnit:AnimEventTimer_LUA( 0.15 ) then
+        local pMinorParticle = pX2Game:GetMinorParticle()
+        if pMinorParticle ~= nil then
+			pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+        end
+        
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 800 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 0.2 )
+		end
+    end
+    
+    if pNPCUnit:AnimEventTimer_LUA( 0.35 ) then
+        local pMinorParticle = pX2Game:GetMinorParticle()
+        if pMinorParticle ~= nil then
+	        pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+        end	        
+
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 800 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 0.2 )
+		end
+    end
+end
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_DAMAGE_BIG_BACK = 
+{
+	ANIM_NAME	= "DamegeBack",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+    SOUND_PLAY0	= { 0.174, "GlitterVoice_HurtRoar1.ogg" , 24 },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"BLOODY_GLITER_SHIELD_WAIT",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_DAMAGE_GUARD = 
+{
+	ANIM_NAME	= "Guard",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= FALSE,
+
+	GUARD_DEFENCE		= 80,
+	GUARD_DEFENCE_FRONT	= TRUE,
+	GUARD_DEFENCE_BACK	= FALSE,
+	
+	SOUND_PLAY0		= { 0.01, "BLOODY_GLITER_SHIELD_Guard01.ogg" },
+	REFLECT_MAGIC	= { 0.01, 0.7, 0, },
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_BLOODY_GILTER_SHIELD_REFLECT", 0.0,
+	},
+			
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"BLOODY_GLITER_SHIELD_WAIT",	},
+	},
+}
+
+function BLOODY_GLITER_SHIELD_DAMAGE_GUARD_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	pNPCUnit:PulseWeaponRenderEffect( D3DXCOLOR(0.9, 0.9, 0.9, 0.6), D3DXCOLOR(0.9, 0.9, 0.9, 0.1), 1, 9999 )
+end
+
+function BLOODY_GLITER_SHIELD_DAMAGE_GUARD_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	pNPCUnit:SetEnableWeaponRenderEffect( false )
+end
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_DAMAGE_GUARD_LAND = 
+{
+	ANIM_NAME	= "Guard",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= FALSE,
+
+	GUARD_DEFENCE		= 80,
+	GUARD_DEFENCE_FRONT	= TRUE,
+	GUARD_DEFENCE_BACK	= FALSE,
+	
+	SOUND_PLAY0	= { 0.01, "Glitter_ShieldHit.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"BLOODY_GLITER_SHIELD_WAIT",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_DAMAGE_DOWN_BACK = 
+{
+	ANIM_NAME	= "DamegeDownBack",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	SUPER_ARMOR	= TRUE,
+	DEFENCE		= { 0, 100, 70, },
+
+    SOUND_PLAY0	= { 0.174, "GlitterVoice_HurtRoar1.ogg" , 24 },
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_SHIELD_DAMAGE_AIR_FALL",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_GLITER_SHIELD_STAND_UP_BACK",	},
+	},
+}
+
+function BLOODY_GLITER_SHIELD_DAMAGE_DOWN_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.45 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+end
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_DAMAGE_FLY_BACK = 
+{
+	ANIM_NAME	= "DamegeAirFlyBack",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= FALSE,	
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BLOODY_GLITER_SHIELD_DAMAGE_DOWN_BACK",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_DAMAGE_AIR = 
+{
+	ANIM_NAME	= "DamegeAirSmall",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BLOODY_GLITER_SHIELD_WAIT",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_DAMAGE_AIR_DOWN = 
+{
+	ANIM_NAME	= "DamegeAirDown",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BLOODY_GLITER_SHIELD_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_DAMAGE_AIR_UP = 
+{
+	ANIM_NAME	= "DamegeAirUp",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"BLOODY_GLITER_SHIELD_DAMAGE_AIR_FALL",	},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BLOODY_GLITER_SHIELD_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_DAMAGE_AIR_FALL = 
+{
+	ANIM_NAME	= "DamegeAirFall",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_POSITIVE_Y_SPEED"],	"BLOODY_GLITER_SHIELD_DAMAGE_AIR_UP",	},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BLOODY_GLITER_SHIELD_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_DAMAGE_AIR_DOWN_LANDING = 
+{
+	ANIM_NAME	= "DamegeAirDownLanding",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	SUPER_ARMOR	= TRUE,
+	DEFENCE		= { 0, 100, 70, },
+
+    SOUND_PLAY0	= { 0.103, "GlitterVoice_HurtRoar1.ogg" },
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT			= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_SHIELD_DAMAGE_AIR_FALL",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_GLITER_SHIELD_STAND_UP_FRONT",	},
+	},
+}
+
+function BLOODY_GLITER_SHIELD_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		local pos = pNPCUnit:GetLandPosition_LUA()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+		pos.y = pos.y + 5
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "GroundShockWave", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(1,-1) )
+		
+		local pParticle = pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "AirDownTick", pNPCUnit:GetPos(), D3DXVECTOR2(200,200), D3DXVECTOR2(10,-1) )
+		if pParticle ~= nil then
+			pParticle:SetLandPosition( pos.y - 5 )
+		end
+		
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 500 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 0.1 )
+		end		
+		
+	elseif pNPCUnit:AnimEventTimer_LUA( 0.1 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+end
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_STAND_UP_FRONT = 
+{
+	ANIM_NAME	= "DamegeStandUpFront",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= TRUE,	
+	
+	SUPER_ARMOR	= TRUE,
+	DEFENCE		= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_SHIELD_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_GLITER_SHIELD_WAIT",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_STAND_UP_BACK = 
+{
+	ANIM_NAME	= "DamegeStandUpBack",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= TRUE,
+	
+	SUPER_ARMOR	= TRUE,
+	DEFENCE		= { 0, 100, 70, },
+		
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_SHIELD_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_GLITER_SHIELD_WAIT", },
+	},	
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_DYING_LAND_FRONT = 
+{
+	ANIM_NAME	= "DamegeDownBack",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= TRUE,
+
+	INVINCIBLE	= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+
+    SOUND_PLAY0	= { 0.250, "GlitterVoice_DeathRoar.ogg" },
+	
+	DYING_END	= TRUE,
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_DYING_LAND_BACK = 
+{
+	ANIM_NAME	= "DamegeDownBack",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= TRUE,
+	
+	INVINCIBLE	= { 0, 100, }, 		
+
+    SOUND_PLAY0	= { 0.250, "GlitterVoice_DeathRoar.ogg" },
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+	DYING_END	= TRUE,	
+	IMMADIATE_PACKET_SEND	= TRUE,
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_DYING_SKY = 
+{
+	ANIM_NAME	= "DamegeAirDownLanding",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	INVINCIBLE	= { 0, 100, }, 		
+    SOUND_PLAY0	= { 0.103, "GlitterVoice_DeathRoar.ogg" },
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+	DYING_END		= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+function BLOODY_GLITER_SHIELD_DYING_LAND_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	local pos = pNPCUnit:GetPos()
+	pos.y = pos.y + 100.0
+	local GetMinorParticle = pX2Game:GetMinorParticle()
+	
+	local pSeq = GetMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DieLight",		pos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+	if pSeq ~= nil then
+		pSeq:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+		pNPCUnit:SetDieSeq( pSeq:GetHandle() )
+	end
+
+	pNPCUnit:PlaySound_LUA( "DieLight.ogg" )
+end
+--------------------------------------------------------------------------
+BLOODY_GLITER_SHIELD_DRINK_POTION = 
+{
+	ANIM_NAME	= "DrinkPotion_Flask",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	RIGHT		= FALSE,
+
+	DEFENCE		= { 0, 100, 90, },
+	
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= FALSE,
+	SUPER_ARMOR		= TRUE,
+	
+	SOUND_PLAY0			= { 0.7, "Gliter_Alchemyst_DrinkPotion.ogg" },
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_SHIELD_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_GLITER_SHIELD_WAIT", },
+	},
+}
+
+function BLOODY_GLITER_SHIELD_DRINK_POTION_STATE_START( pKTDApp, pX2Game, pNPCUnit )
+	if nil ~= pNPCUnit then
+		local pEffectSet = pX2Game:GetEffectSet()
+		
+		if pNPCUnit:GetInt_LUA( 0 ) == 1 then
+			local hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_GILTER_POTION_RED", pNPCUnit )
+		elseif pNPCUnit:GetInt_LUA( 0 ) == 2 then
+			local hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_GILTER_POTION_YELLOW", pNPCUnit )
+		else
+			local iRandInx = pNPCUnit:GetRandVal() % 2
+			pNPCUnit:SetInt_LUA( 1, iRandInx )
+			
+			if 0 == iRandInx then 
+				local hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_GILTER_POTION_RED", pNPCUnit )
+			else
+				local hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_GILTER_POTION_YELLOW", pNPCUnit )
+			end
+		end
+	end
+end
+
+function BLOODY_GLITER_SHIELD_DRINK_POTION_STATE_END( pKTDApp, pX2Game, pNPCUnit )
+	if nil ~= pNPCUnit then
+		local pEffectSet = pX2Game:GetEffectSet()
+		
+		if pNPCUnit:GetInt_LUA( 0 ) == 1 then
+			pNPCUnit:SetBuffFactorToGameUnitByBuffFactorID_LUA( BUFF_FACTOR_ID["BFI_NPC_RED_POTION"] )
+		elseif pNPCUnit:GetInt_LUA( 0 ) == 2 then
+			pNPCUnit:SetRageForce( 99999 )
+			local hEffect = pEffectSet:PlayEffectSet_LUA( "Effectset_Gliter_Yellow_Potion", pNPCUnit )
+		else
+			if 0 == pNPCUnit:GetInt_LUA( 1 ) then 
+				pNPCUnit:SetBuffFactorToGameUnitByBuffFactorID_LUA( BUFF_FACTOR_ID["BFI_NPC_RED_POTION"] )
+			else
+				pNPCUnit:SetRageForce( 99999 )
+				local hEffect = pEffectSet:PlayEffectSet_LUA( "Effectset_Gliter_Yellow_Potion", pNPCUnit )
+			end
+		end
+	end
+end
+--------------------------------------------------------------------------
+function BLOODY_GLITER_SHIELD_COMMON_FRAME_FUNC( pKTDApp, pX2Game, pNPCUnit )
+	if nil ~= pNPCUnit and false == pNPCUnit:GetFlag_LUA( 0 ) then
+		local maxHP = pNPCUnit:GetMaxHP()
+		
+		if pNPCUnit:GetNowHP() < maxHP * 0.6 then
+			pNPCUnit:StateChange_LUA( "BLOODY_GLITER_SHIELD_DRINK_POTION", false )
+			local index = pX2Game:GetNowStageIndex()
+			pNPCUnit:SetFlag_LUA( 0, true )
+			pNPCUnit:SetInt_LUA( 0, index )
+		end
+	end
+end
+--------------------------------------------------------------------------

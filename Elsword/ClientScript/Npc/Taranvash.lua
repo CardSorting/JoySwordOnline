@@ -1,0 +1,1786 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+-- NUI_TARANVASH_THE_SHINE
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 400.0,
+	UNIT_HEIGHT		= 150.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	UNIT_SCALE		= 1,
+	--APPLY_EFFECTSET_SCALE = TRUE,
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+		"stone.dds",
+		"PlusHPMP.dds",
+		"ColorBallGray.dds",
+		"ColorBallBlue.dds",
+		"Water_Ball01.dds",
+		"Particle_Blur.dds",
+		"Sap_Gray01.dds",
+		"GroundShockWave02.dds",
+		"steam_BP.dds",
+		"Ring.dds",
+		"AeroTornado04.dds",
+		"Condense_Light01.dds",
+		"CenterLight_Gray01.dds",
+		"Circle_Light02.dds",
+	},
+	
+	READY_SOUND = 
+	{	 
+		"Swing_Medium01.ogg",
+		"Swing_Medium02.ogg",
+		"Landing_RawMeat01.ogg",
+		"Landing_RawMeat02.ogg",
+		"Landing_Big_Meat01.ogg",
+		"Landing_Big_Meat02.ogg",
+		"Taranvash_MagicAttackA01.ogg",
+		"Taranvash_MagicAttackB01.ogg",
+		"Taranvash_MagicAttackB02.ogg",
+		"Taranvash_SpecialAttackA01.ogg",
+		"Taranvash_SpecialAttackA02.ogg",
+		"Taranvash_SpecialAttackB01.ogg",
+		"Taranvash_SpecialAttackC01.ogg",
+		"Taranvash_Voice_WaitStart01.ogg",
+		"Taranvash_Voice_Win01.ogg",
+		"Taranvash_Voice_Dying01.ogg",
+		"Taranvash_Voice_AttackA01.ogg",
+		"Taranvash_Voice_AttackA02.ogg",
+		"Taranvash_Voice_MagicAttackA01.ogg",
+		"Taranvash_Voice_MagicAttackB01.ogg",
+		"Taranvash_Voice_SpecialAttackA01.ogg",
+		"Taranvash_Voice_SpecialAttackC01.ogg",
+		"Taranvash_DashEnd.ogg",
+	},
+
+	READY_XMESH = 
+	{
+		"Thief_Fat_JumpAttackA_Stone02.Y",
+		"Lire_Uplight01.Y",
+		"Water_Impact01.Y",
+		"Laser_Impact01.Y",
+		"Jump_Wind01.Y",
+		"Arme_ChargeMp2.Y",
+	},
+	
+	READY_XSKIN_MESH = 
+	{
+		"Taranvash_AttackA_Mesh01.X",
+		"Taranvash_AttackA_Mesh02.X",
+		"Taranvash_StandUpAttackFront_Mesh01.X",
+		"Taranvash_MagicAttackA_Mesh01.X",
+		"DummyAttackBox_50x50x50.X",
+		"Taranvash_SpecialAttackA_Mesh01.X",
+		"Taranvash_SpecialAttackA_Mesh02.X",
+		"Taranvash_SpecialAttackA_Mesh03.X",
+		"Taranvash_SpecialAttackC_Mesh01.X",
+		"FlowWind01.X",		
+	},
+
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_TARANVASH.x",
+	MOTION_MULTI_TEX_XET	= "Taranvash.xet",
+	MULTI_TEX_SPEED			= { 2, 0, 0.5, },
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -5000,
+	
+	WALK_SPEED			= 500,
+	RUN_SPEED			= 850,
+	JUMP_SPEED			= 2000,
+	DASH_JUMP_SPEED		= 2300,
+}
+
+
+INIT_COMPONENT = 
+{
+	IMMUNITY_TIME_STOP = TRUE,
+	--HP_CHANGE_RATE		= 500,
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+
+	
+	SHADOW_SIZE			= 300,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	--MIND_FLAG_HEIGHT		= 230,
+	HEAD_BONE_NAME			= "Bip01_Head",
+	
+    BOSS_GAGE_FACE_TEX			= "DLG_BossState.tga",
+	BOSS_GAGE_FACE_TEX_PIECE	= "NUI_TARANVASH_THE_SHINE",
+	BOSS_NAME_TEX				= "HQ_BOSS_NAME_TARANVASH_THE_SHINE.dds",
+
+	--NOT_CULL  = TRUE,
+  	
+	RAGE_COUNT_MAX		= 30,
+	RAGE_TIME_MAX		= 3,
+		
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	FALL_DOWN			= TRUE,
+	DIE_FLY				= 0,
+
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "TARANVASH_WAITSTART",						LUA_FRAME_MOVE_FUNC		= "TARANVASH_WAITSTART_FRAME_MOVE",		},
+	
+	{ STATE_NAME = "TARANVASH_WIN",								},
+	
+	{ STATE_NAME = "TARANVASH_WAIT",							},
+	
+	{ STATE_NAME = "TARANVASH_WALK",							LUA_STATE_END_FUNC = "TARANVASH_WALK_STATE_END",							},
+
+	
+	{ STATE_NAME = "TARANVASH_DASH",							},
+	{ STATE_NAME = "TARANVASH_DASH_END",						},		
+	
+
+	{ STATE_NAME = "TARANVASH_JUMP_UP_READY",					},
+	{ STATE_NAME = "TARANVASH_JUMP_UP",							},
+	{ STATE_NAME = "TARANVASH_JUMP_DOWN",						LUA_STATE_END_FUNC = "TARANVASH_JUMP_DOWN_STATE_END",			},
+	{ STATE_NAME = "TARANVASH_JUMP_UP_DIR_READY",				},
+	{ STATE_NAME = "TARANVASH_JUMP_UP_DIR",						},
+	{ STATE_NAME = "TARANVASH_JUMP_DOWN_DIR",					LUA_STATE_END_FUNC = "TARANVASH_JUMP_DOWN_DIR_STATE_END",	},
+	{ STATE_NAME = "TARANVASH_JUMP_LANDING",					},	
+	
+	{ STATE_NAME = "TARANVASH_STAND_UP_ATTACK_FRONT",			},
+	{ STATE_NAME = "TARANVASH_STAND_UP_ATTACK_BACK",			},
+	{ STATE_NAME = "TARANVASH_ATTACKA",							LUA_FRAME_MOVE_FUNC = "TARANVASH_ATTACKA_FRAME_MOVE", },
+	
+	{ STATE_NAME = "TARANVASH_MAGICATTACKA",					STATE_COOL_TIME	=7	, 	},
+	{ STATE_NAME = "TARANVASH_MAGICATTACKB",					STATE_COOL_TIME	=15	, 	},
+	{ STATE_NAME = "TARANVASH_SPECIALATTACK_A",					STATE_COOL_TIME	=25	, 	},
+	{ STATE_NAME = "TARANVASH_SPECIALATTACK_B",					STATE_COOL_TIME	=10	, 	},
+	{ STATE_NAME = "TARANVASH_SPECIALATTACK_C",					LUA_FRAME_MOVE_FUNC		= "TARANVASH_SPECIALATTACK_C_FRAME_MOVE",		STATE_COOL_TIME	=2	, 		},
+	{ STATE_NAME = "TARANVASH_SPECIALATTACK_C_COMBO",			LUA_STATE_START_FUNC	= "TARANVASH_SPECIALATTACK_C_COMBO_STATE_START",
+																LUA_FRAME_MOVE_FUNC		= "TARANVASH_SPECIALATTACK_C_COMBO_FRAME_MOVE",	},
+	
+	--리액션 관련
+	{ STATE_NAME = "TARANVASH_DAMAGE_FRONT",					LUA_FRAME_MOVE_FUNC = "TARANVASH_DAMAGE_FRONT_FRAME_MOVE"				},
+	{ STATE_NAME = "TARANVASH_DAMAGE_BACK",						LUA_FRAME_MOVE_FUNC = "TARANVASH_DAMAGE_BACK_FRAME_MOVE"				},
+	{ STATE_NAME = "TARANVASH_DAMAGE_DOWN_FRONT",				LUA_FRAME_MOVE_FUNC = "TARANVASH_DAMAGE_DOWN_FRONT_FRAME_MOVE"			},
+	{ STATE_NAME = "TARANVASH_DAMAGE_DOWN_BACK",				LUA_FRAME_MOVE_FUNC = "TARANVASH_DAMAGE_DOWN_BACK_FRAME_MOVE"			},
+	{ STATE_NAME = "TARANVASH_DAMAGE_FLY_FRONT",				},
+	{ STATE_NAME = "TARANVASH_DAMAGE_FLY_BACK",					},
+	{ STATE_NAME = "TARANVASH_DAMAGE_AIR",						},
+	{ STATE_NAME = "TARANVASH_DAMAGE_AIR_DOWN",					},
+	{ STATE_NAME = "TARANVASH_DAMAGE_AIR_UP",					},
+	{ STATE_NAME = "TARANVASH_DAMAGE_AIR_FALL",					},
+	{ STATE_NAME = "TARANVASH_DAMAGE_AIR_DOWN_LANDING",			LUA_FRAME_MOVE_FUNC = "TARANVASH_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE"	},
+	
+	{ STATE_NAME = "TARANVASH_STAND_UP_FRONT",					},
+	{ STATE_NAME = "TARANVASH_STAND_UP_BACK",					},
+	
+	{ STATE_NAME = "TARANVASH_DAMAGE_REVENGE",					},	
+	
+	
+	{ STATE_NAME = "TARANVASH_DYING_LAND_FRONT",				LUA_STATE_START_FUNC = "TARANVASH_DYING_LAND_STATE_START",},
+	{ STATE_NAME = "TARANVASH_DYING_LAND_BACK",					LUA_STATE_START_FUNC = "TARANVASH_DYING_LAND_STATE_START",},
+	{ STATE_NAME = "TARANVASH_DYING_SKY",						LUA_STATE_START_FUNC = "TARANVASH_DYING_LAND_STATE_START",},
+	
+	
+	
+	START_STATE					= "TARANVASH_WAITSTART",
+	WAIT_STATE					= "TARANVASH_WAIT",
+	
+	
+	
+	SMALL_DAMAGE_LAND_FRONT		= "TARANVASH_DAMAGE_FRONT",
+	SMALL_DAMAGE_LAND_BACK		= "TARANVASH_DAMAGE_BACK",
+	BIG_DAMAGE_LAND_FRONT		= "TARANVASH_DAMAGE_FRONT",
+	BIG_DAMAGE_LAND_BACK		= "TARANVASH_DAMAGE_BACK",
+	DOWN_DAMAGE_LAND_FRONT		= "TARANVASH_DAMAGE_DOWN_FRONT",
+	DOWN_DAMAGE_LAND_BACK		= "TARANVASH_DAMAGE_DOWN_BACK",
+	FLY_DAMAGE_FRONT			= "TARANVASH_DAMAGE_FLY_FRONT",
+	FLY_DAMAGE_BACK				= "TARANVASH_DAMAGE_FLY_BACK",
+	SMALL_DAMAGE_AIR			= "TARANVASH_DAMAGE_AIR",	
+	BIG_DAMAGE_AIR				= "TARANVASH_DAMAGE_AIR",
+	DOWN_DAMAGE_AIR				= "TARANVASH_DAMAGE_AIR_DOWN",
+	DOWN_DAMAGE_AIR_LANDING				= "TARANVASH_DAMAGE_AIR_DOWN_LANDING",
+	UP_DAMAGE					= "TARANVASH_DAMAGE_AIR_UP",
+	DAMAGE_REVENGE				= "TARANVASH_DAMAGE_REVENGE",
+	
+	DAMAGE_EXTRA_STATES         = { "TARANVASH_DAMAGE_AIR_FALL","TARANVASH_STAND_UP_FRONT","TARANVASH_STAND_UP_BACK",
+		"TARANVASH_STAND_UP_ATTACK_FRONT","TARANVASH_STAND_UP_ATTACK_BACK",
+		"TARANVASH_JUMP_DOWN","TARANVASH_JUMP_LANDING",},	
+	
+	DYING_LAND_FRONT			= "TARANVASH_DYING_LAND_FRONT",
+	DYING_LAND_BACK				= "TARANVASH_DYING_LAND_BACK",
+	DYING_SKY					= "TARANVASH_DYING_SKY",
+
+	REVENGE_ATTACK				= "",	
+	
+	COMMON_FRAME_FUNC			= "TARANVASH_COMMON_FRAME_MOVE",
+}
+
+
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 2,		-- sec
+		TARGET_NEAR_RANGE			= 8000,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 9000,		-- cm
+		TARGET_LOST_RANGE			= 9000,		-- cm
+		TARGET_SUCCESS_RATE			= 100,  --50,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 30,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 100, -- 30,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 1000,
+		DEST_GAP			= 400,	
+		MOVE_GAP			= 600,
+		
+		DIR_CHANGE_INTERVAL = 0.1,
+		
+		WALK_INTERVAL		= 1,
+		NEAR_WALK_RATE		= 60,   --  70,
+		FAR_WALK_RATE		= 50,   -- 30,
+		
+		JUMP_INTERVAL		= 5,
+		UP_JUMP_RATE		= 0, -- 40,
+		UP_DOWN_RATE		= 20,
+		DOWN_JUMP_RATE		= 100,    --  20,
+		DOWN_DOWN_RATE		= 40,
+		
+		LINE_END_RANGE		= 80,	-- cm
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 100, --50,		
+		PATROL_RANGE			= 200,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 500,	-- cm
+		ESCAPE_GAP			= 600,	-- 이 거리 보다 멀어지면 도망 성공
+		
+		WALK_INTERVAL		= 1.5,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 10,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+		
+		LINE_END_RANGE		= 80,	-- cm
+	},
+
+}
+
+
+
+
+
+
+TARANVASH_WAITSTART = 
+{
+	ANIM_NAME					= "WaitStart",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	SHOW	= FALSE,
+
+	IMMADIATE_PACKET_SEND		= TRUE,	
+	
+	SOUND_PLAY0					= { 0.80, "Taranvash_Voice_WaitStart01.ogg" },
+	SOUND_PLAY1					= { 0.30, "Landing_Big_Metal02.ogg" },
+	
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"TARANVASH_WAIT",						},
+	},
+	
+	
+	
+}
+
+
+TARANVASH_WIN =
+{
+	ANIM_NAME					= "Win",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	SPEED_X = 0,
+	SPEED_Y = 0,
+	
+	NEVER_MOVE					= TRUE,
+	RIGHT						= TRUE,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	SOUND_PLAY0					= { 0.01 , "Taranvash_Voice_Win01.ogg" },
+}
+
+TARANVASH_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	SHOW						= TRUE,
+	
+	PASSIVE_SPEED_X				= 0,
+	VIEW_TARGET					  = TRUE,
+	ALLOW_DIR_CHANGE			= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	EVENT_INTERVAL_TIME0		= 0.2,
+	
+	ALARM =
+	{
+		--DANGER  				 = TRUE,  				    	    --DANGER 표시
+		ALARM_MESSAGE 			 = STR_ID_15190,  		  		    --경고 문구
+		DELAY   				 = 0,  				    	 		--이 스테이트가 시작되고 이 시간이 경과 후에 경고가 나갑니다.
+		REPEAT   				 = FALSE,  		 		   		    --한 번만 반복 FALSE, 이 스테이트 취할때 마다 반복 TRUE
+		ALARM_COLOR_TYPE		 = ALARM_COLOR_TYPE["ACT_MAGENTA"],  --경고 문구 색깔 (ACT_RED, ACT_BLUE, ACT_YELLOW ,ACT_ORANGE, ACT_MAGENTA
+		DISAPPEAR_TIME  		 = 8, 				  			    -- 표시 지속 시간
+	},
+	
+	
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"TARANVASH_WIN",						"CF_TARANVASH_WIN",	},	
+		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"TARANVASH_JUMP_DOWN",					},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"TARANVASH_ATTACKA",						"CT_TARANVASH_ATTACKA",				},	
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"TARANVASH_MAGICATTACKA",					"CT_TARANVASH_MAGICATTACKA",},	
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"TARANVASH_MAGICATTACKB",					"CT_TARANVASH_MAGICATTACKB",},	
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"TARANVASH_SPECIALATTACK_A",				"CT_TARANVASH_SPECIALATTACK_A",},	
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"TARANVASH_SPECIALATTACK_B",				"CT_TARANVASH_SPECIALATTACK_B",		},	
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"TARANVASH_SPECIALATTACK_C",				"CT_TARANVASH_SPECIALATTACK_C",		},	
+		
+
+
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"TARANVASH_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"TARANVASH_DASH",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"TARANVASH_JUMP_UP_READY",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"TARANVASH_JUMP_UP_DIR_READY",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"TARANVASH_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"TARANVASH_JUMP_DOWN_DIR",				},
+	},
+
+	CT_TARANVASH_ATTACKA = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 800,
+		RATE						= 30,
+	},	
+	CT_TARANVASH_MAGICATTACKA = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_OVER_TARGET_NEAR	= 800,
+		RATE						= 30,
+	},	
+	CT_TARANVASH_MAGICATTACKB = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 800,
+		RATE						= 30,
+	},	
+	CT_TARANVASH_SPECIALATTACK_A = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 30,
+	},	
+	CT_TARANVASH_SPECIALATTACK_B = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_OVER_TARGET_NEAR	= 600,
+		RATE						= 40,
+	},
+	CT_TARANVASH_SPECIALATTACK_C = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 50,
+	},	
+	
+	
+
+}
+
+
+TARANVASH_WALK = 
+{
+	ANIM_SPEED					= 1.5,
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 0.2,
+	EVENT_INTERVAL_TIME1		= 3,
+	
+	
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"TARANVASH_WIN",							"CF_TARANVASH_WIN",	},	
+		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"TARANVASH_JUMP_DOWN_DIR",				},
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"TARANVASH_WAIT",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"TARANVASH_DASH",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"TARANVASH_JUMP_UP_READY",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"TARANVASH_JUMP_UP_DIR_READY",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"TARANVASH_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"TARANVASH_JUMP_DOWN_DIR",				},
+	},
+	
+
+	
+}
+
+
+TARANVASH_DASH = 
+{
+	ANIM_SPEED					= 1.3,
+	ANIM_NAME					= "Dash",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+
+	LAND_CONNECT					= FALSE,
+	
+	--SUPER_ARMOR					= TRUE,
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0			= { 0.59, "Landing_RawMeat01.ogg" },
+	SOUND_PLAY1			= { 0.30, "Landing_RawMeat02.ogg" },
+	
+	PASSIVE_SPEED_X				= 1200,
+	
+	ALLOW_DIR_CHANGE			= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"TARANVASH_JUMP_DOWN_DIR",			},				
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],						"TARANVASH_DASH_END",				},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],			"TARANVASH_DASH_END",						"CF_TARANVASH_DASH_END",				},
+	},
+	
+}
+
+
+
+
+
+TARANVASH_DASH_END = 
+{
+	ANIM_NAME					= "DashEnd",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0			= { 0.001, "Taranvash_DashEnd.ogg" },
+	
+	SPEED_X						= 0,
+	
+	ALLOW_DIR_CHANGE			= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	ATTACK_TIME0				= { 0, 0.34, },
+	DISABLE_ATTACK_BOX = 
+	{		
+		--"RHand",
+		--"LHand",
+		"Tail01",
+		"Tail02",
+		
+	},
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1,
+		},
+		
+		BACK_SPEED_X			= 700,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,	
+
+		RE_ATTACK				= FALSE,		
+		HIT_GAP					= 00,		
+	},
+	
+	EVENT_PROCESS = 
+	{		
+		--{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"TARANVASH_JUMP_DOWN_DIR",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"TARANVASH_WAIT",						},
+	},
+}
+
+
+TARANVASH_JUMP_UP_READY = 
+{
+	ANIM_NAME					= "JumpReady",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"TARANVASH_JUMP_UP",						},
+	},
+	
+}
+
+TARANVASH_JUMP_UP = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"TARANVASH_JUMP_DOWN",			},
+	},
+}
+
+TARANVASH_JUMP_DOWN = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+		 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"TARANVASH_JUMP_LANDING",				},
+	},
+}
+
+TARANVASH_JUMP_UP_DIR_READY = 
+{
+	ANIM_NAME					= "JumpReady",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"TARANVASH_JUMP_UP_DIR",						},
+	},
+	
+}
+
+TARANVASH_JUMP_UP_DIR = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+			
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"TARANVASH_JUMP_DOWN_DIR",				},
+	},
+	
+}
+
+TARANVASH_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	 
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"TARANVASH_JUMP_LANDING",				},
+	},
+}
+
+TARANVASH_JUMP_LANDING = 
+{
+	ANIM_NAME					= "JumpLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	SOUND_PLAY0					= { 0.01, "Landing_Big_Metal01.ogg" },	
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"TARANVASH_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"TARANVASH_WAIT",						},
+	},
+}
+
+
+TARANVASH_DAMAGE_REVENGE = 
+{
+	ANIM_NAME					= "DamageRevenge",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	CUSTOM_STATE_DELETE_EFFECT_SET	= TRUE,
+	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"TARANVASH_WAIT",												},
+	},
+}
+
+
+TARANVASH_DAMAGE_FRONT = 
+{
+	ANIM_NAME					= "DamageFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0 				= { 0.01, "Taranvash_Voice_Hit01.ogg", 20 },
+	
+	EVENT_PROCESS = 
+	{
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"TARANVASH_SPECIALATTACK_C",						"CT_TARANVASH_SPECIALATTACK_C",				},	
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"TARANVASH_WAIT",												},
+	},
+	
+	-- CT_TARANVASH_ATTACKA = 
+	CT_TARANVASH_SPECIALATTACK_C = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 10,
+	},	
+}
+
+
+TARANVASH_DAMAGE_BACK = 
+{
+	ANIM_NAME					= "DamageBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SOUND_PLAY0 				= { 0.01, "Taranvash_Voice_Hit02.ogg",20 },
+	
+	EVENT_PROCESS = 
+	{
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"TARANVASH_SPECIALATTACK_C",						"CT_TARANVASH_SPECIALATTACK_C",				},	
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"TARANVASH_WAIT",												},
+	},
+	
+	-- CT_TARANVASH_ATTACKA = 
+	CT_TARANVASH_SPECIALATTACK_C = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 10,
+	},	
+}
+
+
+
+
+
+
+TARANVASH_DAMAGE_DOWN_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SOUND_PLAY0					= { 0.043, "Landing_Big_Metal01.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"TARANVASH_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"TARANVASH_STAND_UP_ATTACK_FRONT",	"CT_TARANVASH_STAND_UP_ATTACK_FRONT", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"TARANVASH_STAND_UP_FRONT",			},
+	},
+	
+	CT_TARANVASH_STAND_UP_ATTACK_FRONT = 
+	{
+		ANIM_PLAY_COUNT		= 1,
+		RATE				= 30,
+	},
+}
+
+TARANVASH_DAMAGE_DOWN_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0					= { 0.043, "Landing_Big_Metal02.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"TARANVASH_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"TARANVASH_STAND_UP_ATTACK_BACK",	"CT_TARANVASH_STAND_UP_ATTACK_BACK", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"TARANVASH_STAND_UP_BACK",			},
+	},
+	
+	CT_TARANVASH_STAND_UP_ATTACK_BACK = 
+	{
+		ANIM_PLAY_COUNT		= 1,
+		RATE				= 30,
+	},
+}
+
+TARANVASH_DAMAGE_FLY_FRONT = 
+{
+	ANIM_NAME					= "DamageFlyFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,	
+		
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0 				= { 0.01, "Taranvash_Voice_Hit03.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"TARANVASH_DAMAGE_AIR_DOWN_LANDING",		},
+	},
+}
+
+TARANVASH_DAMAGE_FLY_BACK = 
+{
+	ANIM_NAME					= "DamageFlyBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0 				= { 0.01, "Taranvash_Voice_Hit04.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"TARANVASH_DAMAGE_DOWN_BACK",		},
+	},
+}
+
+TARANVASH_DAMAGE_AIR = 
+{
+	ANIM_NAME					= "DamageAirSmall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0 				= { 0.01, "Taranvash_Voice_Hit01.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"TARANVASH_WAIT",					},
+	},
+	
+	VIEW_TARGET					= TRUE,
+	ALLOW_DIR_CHANGE			= TRUE,
+}
+
+TARANVASH_DAMAGE_AIR_DOWN = 
+{
+	ANIM_NAME					= "DamageAirDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"TARANVASH_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+TARANVASH_DAMAGE_AIR_UP = 
+{
+	ANIM_NAME					= "DamageAirUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_Y				= -1,
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"] * 0.6,
+			
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"TARANVASH_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"TARANVASH_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+TARANVASH_DAMAGE_AIR_FALL = 
+{
+	ANIM_NAME					= "DamageAirFall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_POSITIVE_Y_SPEED"],		"TARANVASH_DAMAGE_AIR_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"TARANVASH_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+TARANVASH_DAMAGE_AIR_DOWN_LANDING = 
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0					= { 0.043, "Landing_Big_Metal02.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"TARANVASH_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"TARANVASH_STAND_UP_ATTACK_FRONT",	"CT_TARANVASH_STAND_UP_ATTACK_FRONT", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"TARANVASH_STAND_UP_FRONT",			},
+	},
+	
+	CT_TARANVASH_STAND_UP_ATTACK_FRONT = 
+	{
+		ANIM_PLAY_COUNT		= 1,
+		RATE				= 30,
+	},
+	
+}
+
+TARANVASH_STAND_UP_FRONT = 
+{
+	ANIM_NAME					= "DamageStandUpFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0					= { 0.290, "Unohound_StandUp2.ogg" },	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"TARANVASH_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"TARANVASH_WAIT",				},
+	},
+}
+
+TARANVASH_STAND_UP_BACK = 
+{
+	ANIM_NAME					= "DamageStandUpBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+		
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"TARANVASH_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"TARANVASH_WAIT", },
+	},		
+}
+
+
+
+TARANVASH_DYING_LAND_FRONT = 
+{
+	ANIM_NAME					= "Dying",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+
+    SOUND_PLAY0					= { 0.001, "Taranvash_Voice_Dying01.ogg" },	
+	SOUND_PLAY1					= { 2.20, "Landing_Big_Metal01.ogg" },		
+	
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+	
+TARANVASH_DYING_LAND_BACK = 
+{
+	ANIM_NAME					= "Dying",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+
+    SOUND_PLAY0					= { 0.001, "Taranvash_Voice_Dying01.ogg" },	
+	SOUND_PLAY1					= { 2.20, "Landing_Big_Metal01.ogg" },		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+TARANVASH_DYING_SKY = 
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+
+    SOUND_PLAY0					= { 0.001, "Taranvash_Voice_Dying01.ogg" },	
+	SOUND_PLAY1					= { 0.196, "Landing_Big_Metal01.ogg" },	
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+
+--- Attack-------------------------------------------------------------------	
+
+TARANVASH_STAND_UP_ATTACK_FRONT = 
+{
+	ANIM_NAME					= "StandUpAttackFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	ANIM_WAIT_TIME				= 1,
+	MIND_FLAG					= MIND_FLAG["MF_STAND_UP_ATTACK"],
+	
+	SUPER_ARMOR					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0					= { 0.6 , "Swing_Medium01.ogg" },
+	
+	ATTACK_TIME0				= { 0.524, 0.7, },
+	DISABLE_ATTACK_BOX = 
+	{		
+		--"RHand",
+		--"LHand",
+		"Tail01",
+		"Tail02",
+		
+	},
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1,
+		},
+		
+		BACK_SPEED_X			= 700,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,	
+
+		RE_ATTACK				= FALSE,		
+		HIT_GAP					= 00,		
+	},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"TARANVASH_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"TARANVASH_WAIT",				},
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EFFECTSET_TARANVASH_STANDUP_ATTACK_FRONT", 0.0,
+	},
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+}
+
+TARANVASH_STAND_UP_ATTACK_BACK = 
+{
+	ANIM_NAME					= "StandUpAttackBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	ANIM_WAIT_TIME				= 1,
+	MIND_FLAG					= MIND_FLAG["MF_STAND_UP_ATTACK"],
+	
+	SUPER_ARMOR					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SOUND_PLAY0					= { 0.7, "Swing_Medium02.ogg" },
+	
+	ATTACK_TIME0				= { 0.7, 100, },
+	DISABLE_ATTACK_BOX = 
+	{		
+		"RHand",
+		"LHand",
+		--"Tail01",
+		--"Tail02",
+		
+	},
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1,
+		},
+		
+		BACK_SPEED_X			= 700,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,	
+
+		RE_ATTACK				= FALSE,		
+		HIT_GAP					= 00,		
+	},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"TARANVASH_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"TARANVASH_WAIT",				},
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EFFECTSET_TARANVASH_STANDUP_ATTACK_BACK", 0.0,
+	},
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+}
+
+TARANVASH_ATTACKA = 
+{
+	ANIM_SPEED					= 2,
+	ANIM_NAME					= "AttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	--SUPER_ARMOR					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0					= { 0.36 , "Swing_Medium01.ogg" },
+	SOUND_PLAY1 				= { 1.10 , "Swing_Medium02.ogg" },
+	SOUND_PLAY2 				= { 0.36 , "Taranvash_Voice_AttackA01.ogg",30 },
+	SOUND_PLAY3 				= { 1.10 , "Taranvash_Voice_AttackA02.ogg",30 },
+	
+	DISABLE_ATTACK_BOX = 
+	{		
+		"RHand",
+		"LHand",
+		"Tail01",
+		"Tail02",
+		
+	},		
+	ATTACK_TIME0				= { 0.38, 0.7, },
+	ATTACK_TIME1				= { 1.15, 1.45, },
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1,
+		},
+		
+		ENABLE_ATTACKBOX =
+		{
+			"RHand",
+		},
+		DISABLE_ATTACKBOX = 
+		{
+			"LHand",
+		},
+		
+		--BACK_SPEED_X			= 1000,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,	
+
+		RE_ATTACK				= FALSE,		
+		HIT_GAP					= 0.2,		
+	},
+	DAMAGE_DATA_LAST = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1,
+		},
+		
+		ENABLE_ATTACKBOX =
+		{
+			"LHand",
+		},
+		DISABLE_ATTACKBOX = 
+		{
+			"RHand",
+		},
+		
+		--BACK_SPEED_X			= 1000,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,	
+
+		RE_ATTACK				= FALSE,		
+		HIT_GAP					= 0.2,		
+	},
+			
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"TARANVASH_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"TARANVASH_WAIT",				},
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EFFECTSET_TARANVASH_ATTACKA", 0.0,
+	},
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+}
+
+TARANVASH_MAGICATTACKA = 
+{
+	ANIM_NAME					= "MagicAttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	
+	SOUND_PLAY0					= { 1.25, "Taranvash_Voice_MagicAttackA01.ogg" },
+	SOUND_PLAY1					= { 0.15, "Taranvash_SpecialAttackA01.ogg" },
+	SOUND_PLAY2					= { 2.09, "Taranvash_MagicAttackA01.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"TARANVASH_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"TARANVASH_WAIT",				},
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EFFECTSET_TARANVASH_MAGIC_ATTACK_A", 0.0,
+	},
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+}
+
+TARANVASH_MAGICATTACKB = 
+{
+	ANIM_NAME					= "MagicAttackB",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+			
+	SOUND_PLAY0					= { 0.95, "Taranvash_Voice_MagicAttackB01.ogg" },
+	SOUND_PLAY1					= { 0.25, "Taranvash_MagicAttackB01.ogg"},
+	SOUND_PLAY2					= { 1.65, "Taranvash_MagicAttackB02.ogg"},
+	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"TARANVASH_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"TARANVASH_WAIT",				},
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EFFECTSET_TARANVASH_MAGIC_ATTACK_B", 0.0,
+	},
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+}
+
+TARANVASH_SPECIALATTACK_A = 
+{
+	ANIM_SPEED					= 0.8,
+	ANIM_NAME					= "SpecialAttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0					= { 0.001, "Taranvash_Voice_SpecialAttackA01.ogg" },
+	SOUND_PLAY1					= { 0.25, "Taranvash_SpecialAttackA01.ogg"},
+	SOUND_PLAY2					= { 1.95, "Taranvash_SpecialAttackA02.ogg"},
+	
+	ALARM =
+	{
+		DANGER  				 = TRUE,  				    	    --DANGER 표시
+		ALARM_MESSAGE 			 = STR_ID_15188,  		  		    --경고 문구
+		DELAY   				 = 0,  				    	 		--이 스테이트가 시작되고 이 시간이 경과 후에 경고가 나갑니다.
+		REPEAT   				 = TRUE,  		 		   		    --한 번만 반복 FALSE, 이 스테이트 취할때 마다 반복 TRUE
+		ALARM_COLOR_TYPE		 = ALARM_COLOR_TYPE["ACT_ORANGE"],  --경고 문구 색깔 (ACT_RED, ACT_BLUE, ACT_YELLOW ,ACT_ORANGE, ACT_MAGENTA
+		DISAPPEAR_TIME  		 = 5, 				  			    -- 표시 지속 시간
+	},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"TARANVASH_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"TARANVASH_WAIT",				},
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EFFECTSET_TARANVASH_SPECIAL_ATTACK_A", 0.0,
+	},
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+}
+
+TARANVASH_SPECIALATTACK_B = 
+{
+	ANIM_NAME					= "SpecialAttackB",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	REFLECT_MAGIC = { 1.6, 10, },
+	
+	--SOUND_PLAY0					= { 0.001, "Taranvash_Voice_SpecialAttackB01.ogg"},
+	SOUND_PLAY0					= { 0.01, "Taranvash_SpecialAttackB01.ogg"},	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"TARANVASH_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"TARANVASH_WAIT",				},
+	},
+	
+	
+
+	EFFECT_SET_LIST =
+	{
+		"EFFECTSET_TARANVASH_SPECIAL_ATTACK_B", 0.0,
+	},
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+
+}
+
+TARANVASH_SPECIALATTACK_C = 
+{
+	ANIM_NAME					= "SpecialAttackC",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"TARANVASH_SPECIALATTACK_C_COMBO",				},
+	},	
+}
+
+TARANVASH_SPECIALATTACK_C_COMBO = 
+{
+	ANIM_NAME					= "SpecialAttackC_Combo",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SOUND_PLAY0					= { 0.01, "Taranvash_Voice_SpecialAttackC01.ogg", 50},
+	SOUND_PLAY1					= { 0.250, "Swing_Medium01.ogg" },
+	SOUND_PLAY2					= { 0.01, "Taranvash_SpecialAttackC01.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"TARANVASH_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"TARANVASH_WAIT",				},
+	},
+
+	EFFECT_SET_LIST =
+	{
+		"EFFECTSET_TARANVASH_SPECIALATTACK_C", 0.0,
+	},
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+
+}
+
+
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+function TARANVASH_ATTACKA_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	
+	if pNPCUnit:AnimEventTimer_LUA( 1.0 ) then
+		pNPCUnit:ClearHitUnitList_LUA()
+		pNPCUnit:SetDamageData_LUA( "DAMAGE_DATA_LAST" )
+	end
+	
+end
+
+function TARANVASH_WALK_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmokeBig", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+
+
+function TARANVASH_JUMP_DOWN_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmokeBig", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+function TARANVASH_JUMP_DOWN_DIR_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmokeBig", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+
+
+function TARANVASH_DAMAGE_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.047 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmokeBig", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function TARANVASH_DAMAGE_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.06 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmokeBig", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function TARANVASH_DAMAGE_DOWN_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.41 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )		
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmokeBig", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+
+end
+
+function TARANVASH_DAMAGE_DOWN_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.45 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )		
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmokeBig", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+
+end
+
+function TARANVASH_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+		
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		local pos = pNPCUnit:GetLandPosition_LUA()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmokeBig", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+		pos.y = pos.y + 5
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "GroundShockWave", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(1,-1) )
+		local pParticle = pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "AirDownTick", pNPCUnit:GetPos(), D3DXVECTOR2(200,200), D3DXVECTOR2(10,-1) )
+		if pParticle ~= nil then 
+			pParticle:SetLandPosition( pos.y - 5 )
+		end
+		
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 500 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 0.1 )
+		end		
+		
+	elseif pNPCUnit:AnimEventTimer_LUA( 0.1 ) then
+		
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )		
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmokeBig", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+		
+	end
+
+end
+
+
+
+
+
+
+
+function TARANVASH_DYING_LAND_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pos = pNPCUnit:GetPos()
+	pos.y = pos.y + 100.0
+	local GetMinorParticle = pX2Game:GetMinorParticle()
+	
+	local pSeq = GetMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DieLight",		pos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+	if pSeq ~= nil then
+	
+		pSeq:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+		pNPCUnit:SetDieSeq( pSeq:GetHandle() )
+	
+	end
+	pNPCUnit:PlaySound_LUA( "DieLight.ogg" )
+	
+end
+
+
+
+
+------------------------------------------------------------------------------
+function MovePos( pos, dirvector, dist )
+	
+	pos.x = pos.x + dist * dirvector.x
+	pos.y = pos.y + dist * dirvector.y
+	pos.z = pos.z + dist * dirvector.z
+	
+	return pos
+	
+end
+
+
+
+--------------------------------------------------------------------
+
+function CF_TARANVASH_DASH_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:GetStateTime() < 0.1 then
+		return false 
+	end
+	
+	
+ 	local bIsRight = pNPCUnit:GetIsRight()
+	local vStartPos = pNPCUnit:GetLineGroupStartPos()
+	local vEndPos = pNPCUnit:GetLineGroupEndPos()
+
+ 	
+ 	if bIsRight == true and pNPCUnit:GetDistanceFrom(vEndPos) < 300.0 then
+ 	
+ 	    return true
+ 	    
+   	end
+   	
+   	if bIsRight == false and pNPCUnit:GetDistanceFrom(vStartPos) < 300.0 then
+
+		return true
+  	
+    end
+
+     if pNPCUnit:GetStateTime() > 5.0 then
+		return true
+	end
+    
+    return false 	
+
+end
+
+function CF_TARANVASH_WIN( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pX2Game:LiveUserUnitNum() == 0 then
+		return true
+	else
+		return false
+	end
+
+end
+
+function TARANVASH_WAITSTART_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+-- Fade Start 
+    if pNPCUnit:AnimEventTimer_LUA(0.001) then
+        pNPCUnit:SetUnitFadeStart(RENDER_TYPE["RT_CARTOON_FADE_NONTEX"], 1.0, 1.0, 1.0, 0.0, true, true)
+        pNPCUnit:SetUnitFadeMove(0.3, 0.0, 0.0, 0.0, 0.001)
+        pNPCUnit:SetShow(true)
+    end  
+
+    if pNPCUnit:AnimEventTimer_LUA(0.25) then
+        pNPCUnit:SetUnitFadeStart(RENDER_TYPE["RT_CARTOON_FADE"], 1.0, 1.0, 1.0, 0.0, false, true)
+        pNPCUnit:SetUnitFadeMove(0.1, 0.0, 0.0, 0.0, 0.01)        
+    end
+-- Fade End    
+end
+
+function TARANVASH_SPECIALATTACK_C_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+-- Fade Start    
+
+    if pNPCUnit:AnimEventTimer_LUA(0.001) then
+        pNPCUnit:SetUnitFadeStart(RENDER_TYPE["RT_CARTOON_FADE"], 1.0, 1.0, 1.0, 1.0, false, true)
+        pNPCUnit:SetUnitFadeMove(0.6, 0.0, 0.0, 0.0, -0.04)
+    end
+    
+    if pNPCUnit:AnimEventTimer_LUA(0.3) then
+        pNPCUnit:SetUnitFadeStart(RENDER_TYPE["RT_CARTOON_FADE_NONTEX"], 1.0, 1.0, 1.0, 1.0, true, true)
+        pNPCUnit:SetUnitFadeMove(0.3, 0.0, 0.0, 0.0, -0.1)
+       -- pNPCUnit:SetUnitFadeScale(0.4, -0.1, 0.1, -0.1)
+    end  
+
+-- Fade End    
+end
+
+function TARANVASH_SPECIALATTACK_C_COMBO_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	local pUser = pNPCUnit:GetTargetUser()    
+    if pUser ~= nil then
+        local unitPos = pUser:GetPos() 
+        if pNPCUnit:GetRandVal() % 2 == 0 then
+            -- 유저기준 오른쪽            
+            WalkPos = pX2Game:GetLineMap():GetRandomPositionDir( unitPos, 800, true, true )
+            bIsRight = false                
+        else
+            -- 유저기준 왼쪽
+            WalkPos = pX2Game:GetLineMap():GetRandomPositionDir( unitPos, 800, true, false )
+            bIsRight = true                
+        end
+        WalkLandPos = pX2Game:GetLineMap():GetLandPosition_LUA( WalkPos )
+        pNPCUnit:SetPosition( WalkLandPos , bIsRight)
+    end
+end
+
+function TARANVASH_SPECIALATTACK_C_COMBO_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+-- Fade Start 
+    if pNPCUnit:AnimEventTimer_LUA(0.001) then
+        pNPCUnit:SetUnitFadeStart(RENDER_TYPE["RT_CARTOON_FADE_NONTEX"], 1.0, 1.0, 1.0, 0.0, true, true)
+        pNPCUnit:SetUnitFadeMove(0.2, 0.0, 0.0, 0.0, 0.01)
+    end  
+
+    if pNPCUnit:AnimEventTimer_LUA(0.23) then
+        pNPCUnit:SetUnitFadeStart(RENDER_TYPE["RT_CARTOON_FADE"], 1.0, 1.0, 1.0, 0.0, false, true)
+        pNPCUnit:SetUnitFadeMove(0.1, 0.0, 0.0, 0.0, 0.02)        
+    end
+-- Fade End
+end
+
+function TARANVASH_COMMON_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	local pXSkinAnim = pNPCUnit:GetXSkinAnim()
+
+	if pNPCUnit:GetReflectMagic_LUA() == true then		
+		pXSkinAnim:SetUseTex( 2, true )
+	else
+		pXSkinAnim:SetUseTex( 2, false )
+	end
+
+end

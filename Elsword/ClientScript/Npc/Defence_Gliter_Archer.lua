@@ -1,0 +1,1403 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 120.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+		"Glitter_Archer_BowReady1.ogg",
+		"Glitter_Archer_BowReady2.ogg",
+		"Glitter_Archer_BowShot.ogg",
+		"Glitter_Archer_StandUp.ogg",
+        "Glitter_Dash.ogg",
+		"Glitter_Landing.ogg",
+		
+        "GlitterVoice_AttackRoar1.ogg",
+        "GlitterVoice_AttackRoar2.ogg",
+	 
+    	"GlitterVoice_DeathRoar.ogg",
+    	"GlitterVoice_HurtRoar1.ogg",
+    	"GlitterVoice_HurtRoar2.ogg",
+
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME			= "NUI_GLITER_ARCHER.x",
+	MOTION_CHANGE_TEX_XET		= "DEFENCE_GLITER_LANCE.xet",
+	MOTION_ANI_TEX_XET			= "DEFENCE_GLITER_LANCE.xet",	
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 400,
+	RUN_SPEED			= 600,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300,
+}
+
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 5000,
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	
+	
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	
+	FALL_DOWN			= TRUE,
+
+	WEAPON0 = 
+	{
+		WEAPON_FILE_NAME	= "Gliter_Weapon_Bow_001.X",
+		WEAPON_BONE_NAME	= "Dummy1_Rhand",
+			
+		USE_SLASH_TRACE		= FALSE,
+	},
+	
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "GLITER_ARCHER_START",							},
+
+
+	{ STATE_NAME = "GLITER_ARCHER_SIEGE_WAIT",						LUA_STATE_START_FUNC = "GLITER_ARCHER_SIEGE_WAIT_STATE_START",			},
+	{ STATE_NAME = "GLITER_ARCHER_SIEGE_ATTACK",					LUA_FRAME_MOVE_FUNC = "GLITER_ARCHER_SIEGE_ATTACK_FRAME_MOVE"			},
+
+	
+	
+	{ STATE_NAME = "GLITER_ARCHER_WAIT",							LUA_FRAME_MOVE_FUNC = "GLITER_ARCHER_WAIT_FRAME_MOVE",					},
+	{ STATE_NAME = "GLITER_ARCHER_WAIT_HABIT",						LUA_FRAME_MOVE_FUNC = "GLITER_ARCHER_WALK_FRAME_MOVE",
+																	LUA_STATE_END_FUNC 	= "GLITER_ARCHER_WALK_STATE_END"					},
+	
+	
+	
+	
+	{ STATE_NAME = "GLITER_ARCHER_WALK",							LUA_FRAME_MOVE_FUNC = "GLITER_ARCHER_WALK_FRAME_MOVE",
+																	LUA_STATE_END_FUNC  = "GLITER_ARCHER_WALK_STATE_END"					},
+	{ STATE_NAME = "GLITER_ARCHER_JUMP_UP",							},
+	{ STATE_NAME = "GLITER_ARCHER_JUMP_DOWN",						LUA_STATE_END_FUNC  = "GLITER_ARCHER_JUMP_DOWN_STATE_END"				},
+	{ STATE_NAME = "GLITER_ARCHER_JUMP_UP_DIR",						},
+	{ STATE_NAME = "GLITER_ARCHER_JUMP_DOWN_DIR",					LUA_STATE_END_FUNC  = "GLITER_ARCHER_JUMP_DOWN_DIR_STATE_END"			},
+	{ STATE_NAME = "GLITER_ARCHER_JUMP_LANDING",					},
+	{ STATE_NAME = "GLITER_ARCHER_DASH",							},
+	{ STATE_NAME = "GLITER_ARCHER_DASH_END",						},
+	
+	{ STATE_NAME = "GLITER_ARCHER_ATTACK",							LUA_FRAME_MOVE_FUNC = "GLITER_ARCHER_ATTACK_FRAME_MOVE"					},
+	--{ STATE_NAME = "GLITER_ARCHER_ATTACK_B",						LUA_FRAME_MOVE_FUNC = "GLITER_ARCHER_ATTACK_B_FRAME_MOVE",				 },
+
+	
+	
+	--리액션 관련
+	{ STATE_NAME = "GLITER_ARCHER_DAMAGE_FRONT",					LUA_FRAME_MOVE_FUNC = "GLITER_ARCHER_DAMAGE_FRONT_FRAME_MOVE"			},
+	{ STATE_NAME = "GLITER_ARCHER_DAMAGE_BACK",						LUA_FRAME_MOVE_FUNC = "GLITER_ARCHER_DAMAGE_BACK_FRAME_MOVE"				},
+	{ STATE_NAME = "GLITER_ARCHER_DAMAGE_DOWN_FRONT",				LUA_FRAME_MOVE_FUNC = "GLITER_ARCHER_DAMAGE_DOWN_FRONT_FRAME_MOVE"		},
+	{ STATE_NAME = "GLITER_ARCHER_DAMAGE_DOWN_BACK",				LUA_FRAME_MOVE_FUNC = "GLITER_ARCHER_DAMAGE_DOWN_BACK_FRAME_MOVE"		},
+	{ STATE_NAME = "GLITER_ARCHER_DAMAGE_FLY_FRONT",				},
+	{ STATE_NAME = "GLITER_ARCHER_DAMAGE_FLY_BACK",					},
+	{ STATE_NAME = "GLITER_ARCHER_DAMAGE_AIR",						},
+	{ STATE_NAME = "GLITER_ARCHER_DAMAGE_AIR_DOWN",					},
+	{ STATE_NAME = "GLITER_ARCHER_DAMAGE_AIR_UP",					},
+	{ STATE_NAME = "GLITER_ARCHER_DAMAGE_AIR_FALL",					},
+	{ STATE_NAME = "GLITER_ARCHER_DAMAGE_AIR_DOWN_LANDING",			LUA_FRAME_MOVE_FUNC = "GLITER_ARCHER_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE"	},
+	{ STATE_NAME = "GLITER_ARCHER_STAND_UP_FRONT",					},
+	{ STATE_NAME = "GLITER_ARCHER_STAND_UP_BACK",					},
+	{ STATE_NAME = "GLITER_ARCHER_ROLLING_STAND_UP_FRONT",			LUA_FRAME_MOVE_FUNC = "GLITER_ARCHER_ROLLING_STAND_UP_FRONT_FRAME_MOVE"		},
+	{ STATE_NAME = "GLITER_ARCHER_ROLLING_STAND_UP_BACK",			LUA_FRAME_MOVE_FUNC = "GLITER_ARCHER_ROLLING_STAND_UP_BACK_FRAME_MOVE"		},
+	
+	{ STATE_NAME = "GLITER_ARCHER_DYING_LAND_FRONT",				LUA_STATE_START_FUNC = "GLITER_ARCHER_DYING_LAND_STATE_START",				 },
+	{ STATE_NAME = "GLITER_ARCHER_DYING_LAND_BACK",					LUA_STATE_START_FUNC = "GLITER_ARCHER_DYING_LAND_STATE_START",				 },
+	{ STATE_NAME = "GLITER_ARCHER_DYING_SKY",						LUA_STATE_START_FUNC = "GLITER_ARCHER_DYING_LAND_STATE_START",				 },
+	
+	
+	
+	
+	START_STATE					= "GLITER_ARCHER_START",		
+	WAIT_STATE					= "GLITER_ARCHER_WAIT",
+	SIEGE_STATE					= "GLITER_ARCHER_SIEGE_WAIT",
+	
+	
+	
+	SMALL_DAMAGE_LAND_FRONT		= "GLITER_ARCHER_DAMAGE_FRONT",
+	SMALL_DAMAGE_LAND_BACK		= "GLITER_ARCHER_DAMAGE_BACK",
+	BIG_DAMAGE_LAND_FRONT		= "GLITER_ARCHER_DAMAGE_FRONT",
+	BIG_DAMAGE_LAND_BACK		= "GLITER_ARCHER_DAMAGE_BACK",
+	DOWN_DAMAGE_LAND_FRONT		= "GLITER_ARCHER_DAMAGE_DOWN_FRONT",
+	DOWN_DAMAGE_LAND_BACK		= "GLITER_ARCHER_DAMAGE_DOWN_BACK",
+	FLY_DAMAGE_FRONT			= "GLITER_ARCHER_DAMAGE_FLY_FRONT",
+	FLY_DAMAGE_BACK				= "GLITER_ARCHER_DAMAGE_FLY_BACK",
+	SMALL_DAMAGE_AIR			= "GLITER_ARCHER_DAMAGE_AIR",	
+	BIG_DAMAGE_AIR				= "GLITER_ARCHER_DAMAGE_AIR",
+	DOWN_DAMAGE_AIR				= "GLITER_ARCHER_DAMAGE_AIR_DOWN",
+	DOWN_DAMAGE_AIR_LANDING				= "GLITER_ARCHER_DAMAGE_AIR_DOWN_LANDING",
+	UP_DAMAGE					= "GLITER_ARCHER_DAMAGE_AIR_UP",
+	DAMAGE_REVENGE				= "",
+	
+	DAMAGE_EXTRA_STATES         = {"GLITER_ARCHER_DAMAGE_AIR_FALL","GLITER_ARCHER_STAND_UP_FRONT","GLITER_ARCHER_STAND_UP_BACK",
+	"GLITER_ARCHER_ROLLING_STAND_UP_FRONT","GLITER_ARCHER_ROLLING_STAND_UP_BACK","GLITER_ARCHER_JUMP_DOWN","GLITER_ARCHER_JUMP_LANDING",},	
+	
+	DYING_LAND_FRONT			= "GLITER_ARCHER_DYING_LAND_FRONT",
+	DYING_LAND_BACK				= "GLITER_ARCHER_DYING_LAND_BACK",
+	DYING_SKY					= "GLITER_ARCHER_DYING_SKY",
+
+	REVENGE_ATTACK				= "",	
+}
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 3,		-- sec
+		TARGET_NEAR_RANGE			= 1000,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 1200,		-- cm
+		TARGET_LOST_RANGE			= 1300,		-- cm
+		TARGET_SUCCESS_RATE			= 100,  --80,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 80,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 100, -- 80,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+		
+		TARGET_NPC					= TRUE,
+		
+		MANUAL_TARGETING_FUNC		= "GLITER_ARCHER_MANUAL_TARGET",
+		
+	},
+
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 500,
+		DEST_GAP			= 600,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 700,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		WALK_INTERVAL		= 3,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 9999,
+		UP_JUMP_RATE		= 0, -- 40,
+		UP_DOWN_RATE		= 0,
+		DOWN_JUMP_RATE		= 0,    --  20,
+		DOWN_DOWN_RATE		= 0,
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 50, --50,		
+		PATROL_RANGE			= 150,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	--[[
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 500,	-- cm
+		ESCAPE_GAP			= 600,	-- 이 거리 보다 멀어지면 도망 성공
+		
+		WALK_INTERVAL		= 1.5,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+	},
+	
+	ESCAPE_CONDITION = 
+	{
+		RATE				= 50,
+		ESCAPE_RANGE		= 400,		-- 이 범위 안에 들어오면 타격당하지 않아도 RATE에 지정된 확률로 도망
+	}
+	--]]
+}
+
+
+
+
+
+GLITER_ARCHER_SIEGE_WAIT = 
+{
+	ANIM_NAME					= "Siege",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	INVINCIBLE					= { 0, 10000, },
+	NEVER_MOVE					= TRUE,
+	FALL_DOWN					= FALSE,
+	
+	EVENT_INTERVAL_TIME0		= 1,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GLITER_ARCHER_SIEGE_ATTACK",			"CT_GLITER_ARCHER_SIEGE_ATTACK",	},
+	},
+	
+	CT_GLITER_ARCHER_SIEGE_ATTACK = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 600,
+		RATE						= 80,
+	},
+}
+
+
+
+GLITER_ARCHER_SIEGE_ATTACK = 
+{
+	ANIM_NAME					= "SiegeAttack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+
+    SOUND_PLAY0			= { 0.035, "Glitter_Archer_BowShot.ogg" },
+    SOUND_PLAY1			= { 1.194, "Glitter_Archer_BowReady1.ogg" },
+	
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	INVINCIBLE					= { 0, 1000, },
+	NEVER_MOVE					= TRUE,
+	FALL_DOWN					= FALSE,
+	
+			
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GLITER_ARCHER_SIEGE_WAIT",					},
+	},
+	
+}
+
+
+
+
+
+GLITER_ARCHER_START =
+{
+	ANIM_NAME					= "WaitHabit",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,	
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GLITER_ARCHER_WAIT",				},
+	},
+}
+
+
+
+GLITER_ARCHER_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	EVENT_INTERVAL_TIME0		= 1,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_ARCHER_JUMP_DOWN",					},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GLITER_ARCHER_ATTACK",						"CT_GLITER_ARCHER_ATTACK",	},
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GLITER_ARCHER_ATTACK_B",					"CT_GLITER_ARCHER_ATTACK_B",	},
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"GLITER_ARCHER_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"GLITER_ARCHER_DASH",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"GLITER_ARCHER_JUMP_UP",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"GLITER_ARCHER_JUMP_UP_DIR",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"GLITER_ARCHER_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"GLITER_ARCHER_JUMP_DOWN_DIR",				},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GLITER_ARCHER_WAIT_HABIT",					"CT_GLITER_ARCHER_WAIT_HABIT",		},
+	},
+	
+	CT_GLITER_ARCHER_ATTACK = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		=600,
+		RATE						= 80,
+	},
+	
+	-- CT_GLITER_ARCHER_ATTACK_B = 
+	-- {
+		-- EVENT_INTERVAL_ID			= 0,
+		-- DISTANCE_TO_TARGET_NEAR		= 520,
+		-- TARGET_BELOW_ME				= TRUE,
+		-- RATE						= 90,
+	-- },
+	
+	CT_GLITER_ARCHER_WAIT_HABIT = 
+	{
+		ANIM_PLAY_COUNT		= 5,
+		RATE				= 50,
+		HAVE_TARGET					= 0,		-- false
+	},
+	
+}
+
+
+GLITER_ARCHER_WAIT_HABIT = 
+{
+	ANIM_NAME					= "WaitHabit",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_ARCHER_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GLITER_ARCHER_WAIT",						},
+	},
+}
+
+GLITER_ARCHER_WALK = 
+{
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_ARCHER_JUMP_DOWN_DIR",			},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GLITER_ARCHER_ATTACK",					"CT_GLITER_ARCHER_ATTACK",	},
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GLITER_ARCHER_ATTACK_B",				"CT_GLITER_ARCHER_ATTACK_B",	},
+
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"GLITER_ARCHER_WAIT",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"GLITER_ARCHER_DASH",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"GLITER_ARCHER_JUMP_UP",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"GLITER_ARCHER_JUMP_UP_DIR",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"GLITER_ARCHER_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"GLITER_ARCHER_JUMP_DOWN_DIR",			},
+	},
+	
+	CT_GLITER_ARCHER_ATTACK = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 600,
+		RATE						= 80,
+	},
+	
+	-- CT_GLITER_ARCHER_ATTACK_B = 
+	-- {
+		-- EVENT_INTERVAL_ID			= 0,
+		-- DISTANCE_TO_TARGET_NEAR		= 520,
+		-- TARGET_BELOW_ME				= TRUE,		
+		-- RATE						= 90,
+	-- },
+}
+
+GLITER_ARCHER_JUMP_UP = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	ADD_POS_Y					= 45,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"GLITER_ARCHER_JUMP_DOWN",				},
+	},
+	
+
+}
+
+GLITER_ARCHER_JUMP_DOWN = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"GLITER_ARCHER_JUMP_LANDING",				},
+	},
+}
+
+GLITER_ARCHER_JUMP_UP_DIR = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	ADD_POS_Y					= 45,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"GLITER_ARCHER_JUMP_DOWN_DIR",				},
+	},
+	
+}
+
+GLITER_ARCHER_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"GLITER_ARCHER_JUMP_LANDING",				},
+	},
+}
+
+GLITER_ARCHER_JUMP_LANDING = 
+{
+	ANIM_NAME					= "JumpLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    SOUND_PLAY0			= { 0.118, "Glitter_Landing.ogg" },
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+		
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_ARCHER_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GLITER_ARCHER_WAIT",					},
+	},
+}
+
+
+GLITER_ARCHER_DASH =
+{
+	ANIM_NAME					= "Dash",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+
+	PASSIVE_SPEED_X				= INIT_PHYSIC["RUN_SPEED"],
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 1,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_ARCHER_JUMP_DOWN_DIR",				},
+		
+
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"GLITER_ARCHER_DASH_END",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"GLITER_ARCHER_WALK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"GLITER_ARCHER_JUMP_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"GLITER_ARCHER_JUMP_UP_DIR",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"GLITER_ARCHER_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"GLITER_ARCHER_JUMP_DOWN_DIR",				},
+	},
+	
+	
+
+	
+}
+
+GLITER_ARCHER_DASH_END = 
+{
+	ANIM_NAME					= "DashEnd",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= 100,
+
+    SOUND_PLAY0			= { 0.325, "Glitter_Landing.ogg" },
+
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_ARCHER_JUMP_DOWN_DIR",				},
+		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GLITER_ARCHER_WAIT",							},
+			
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"GLITER_ARCHER_WAIT",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"GLITER_ARCHER_WALK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"GLITER_ARCHER_JUMP_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"GLITER_ARCHER_JUMP_UP_DIR",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"GLITER_ARCHER_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"GLITER_ARCHER_JUMP_DOWN_DIR",				},
+	},
+}
+
+
+GLITER_ARCHER_ATTACK = 
+{
+	ANIM_NAME					= "Attack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	ANIM_SPEED					= 1.5,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+
+    SOUND_PLAY0			= { 0.791, "Glitter_Archer_BowReady1.ogg" },
+    SOUND_PLAY1			= { 2.044, "Glitter_Archer_BowShot.ogg" },
+    SOUND_PLAY2			= { 2.099, "Glitter_Scream3.ogg" },
+
+
+
+
+	
+	VIEW_TARGET					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+			
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_ARCHER_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GLITER_ARCHER_WAIT",					},
+	},
+}
+
+-- GLITER_ARCHER_ATTACK_B = 
+-- {
+	-- ANIM_NAME					= "AttackB",
+	-- PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	-- TRANSITION					= FALSE,
+	-- LAND_CONNECT				= FALSE,
+	
+	-- CAN_PUSH_UNIT				= TRUE,
+	-- CAN_PASS_UNIT				= FALSE,
+	
+	-- ANIM_SPEED					= 2,
+	
+	-- SPEED_X						= 0,
+	-- SPEED_Y						= 0,	
+
+    -- SOUND_PLAY0			= { 1.146, "Glitter_Archer_BowReady2.ogg" },
+    -- SOUND_PLAY1			= { 2.722, "Glitter_Archer_BowShot.ogg" },
+    -- SOUND_PLAY2			= { 2.744, "Glitter_Scream3.ogg" },
+	
+	-- VIEW_TARGET					= FALSE,
+	-- IMMADIATE_PACKET_SEND		= TRUE,
+	
+			
+	-- EVENT_PROCESS = 
+	-- {		
+		-- { STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_ARCHER_JUMP_DOWN",				},
+		-- { STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GLITER_ARCHER_WAIT",					},
+	-- },
+
+	
+	-- TALK_BOX =
+	-- {
+		-- { RATE = 8, MESSAGE = STR_ID_1674 },
+	-- },	
+-- }
+
+
+
+GLITER_ARCHER_DAMAGE_FRONT = 
+{
+	ANIM_NAME					= "DamageFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= -150,
+	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"GLITER_ARCHER_WAIT",												},
+	},
+}
+
+GLITER_ARCHER_DAMAGE_BACK = 
+{
+	ANIM_NAME					= "DamageBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	PASSIVE_SPEED_X				= 150,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    SOUND_PLAY0			= { 0.075, "GlitterVoice_HurtRoar1.ogg", 24 },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"GLITER_ARCHER_WAIT",												},
+	},
+}
+
+GLITER_ARCHER_DAMAGE_DOWN_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+
+    SOUND_PLAY0			= { 0.220, "GlitterVoice_HurtRoar1.ogg", 24 },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"GLITER_ARCHER_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"GLITER_ARCHER_ROLLING_STAND_UP_FRONT",	"CT_GLITER_ARCHER_ROLLING_STAND_UP_FRONT", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"GLITER_ARCHER_STAND_UP_FRONT",			},
+	},
+	
+	CT_GLITER_ARCHER_ROLLING_STAND_UP_FRONT = 
+	{
+		ANIM_PLAY_COUNT		= 1,
+		RATE				= 10,
+	},
+}
+
+GLITER_ARCHER_DAMAGE_DOWN_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+
+    SOUND_PLAY0			= { 0.220, "GlitterVoice_HurtRoar1.ogg", 24 },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"GLITER_ARCHER_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"GLITER_ARCHER_ROLLING_STAND_UP_BACK",	"CT_GLITER_ARCHER_ROLLING_STAND_UP_BACK", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"GLITER_ARCHER_STAND_UP_BACK",			},
+	},
+	
+	CT_GLITER_ARCHER_ROLLING_STAND_UP_BACK = 
+	{
+		ANIM_PLAY_COUNT		= 1,
+		RATE				= 10,
+	},
+}
+
+GLITER_ARCHER_DAMAGE_FLY_FRONT = 
+{
+	ANIM_NAME					= "DamageAirFlyFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"GLITER_ARCHER_DAMAGE_DOWN_FRONT",		},
+	},
+}
+
+GLITER_ARCHER_DAMAGE_FLY_BACK = 
+{
+	ANIM_NAME					= "DamageAirFlyBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"GLITER_ARCHER_DAMAGE_DOWN_BACK",		},
+	},
+}
+
+GLITER_ARCHER_DAMAGE_AIR = 
+{
+	ANIM_NAME					= "DamageAirSmall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"GLITER_ARCHER_WAIT",					},
+	},
+}
+
+GLITER_ARCHER_DAMAGE_AIR_DOWN = 
+{
+	ANIM_NAME					= "DamageAirDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"GLITER_ARCHER_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+GLITER_ARCHER_DAMAGE_AIR_UP = 
+{
+	ANIM_NAME					= "DamageAirUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"GLITER_ARCHER_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"GLITER_ARCHER_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+GLITER_ARCHER_DAMAGE_AIR_FALL = 
+{
+	ANIM_NAME					= "DamageAirFall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_POSITIVE_Y_SPEED"],		"GLITER_ARCHER_DAMAGE_AIR_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"GLITER_ARCHER_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+GLITER_ARCHER_DAMAGE_AIR_DOWN_LANDING = 
+{
+	ANIM_NAME					= "DamageDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+
+    SOUND_PLAY0			= { 0.011, "GlitterVoice_HurtRoar1.ogg", 24 },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_ARCHER_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GLITER_ARCHER_ROLLING_STAND_UP_FRONT",	"CT_GLITER_ARCHER_ROLLING_STAND_UP_FRONT", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GLITER_ARCHER_STAND_UP_FRONT",			},
+	},
+	
+	CT_GLITER_ARCHER_ROLLING_STAND_UP_FRONT = 
+	{
+		ANIM_PLAY_COUNT		= 1,
+		RATE				= 10,
+	},
+}
+
+GLITER_ARCHER_STAND_UP_FRONT = 
+{
+	ANIM_NAME					= "DamageStandUpFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+
+    SOUND_PLAY0			= { 0.866, "Glitter_Archer_StandUp.ogg" },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_ARCHER_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GLITER_ARCHER_WAIT",				},
+	},
+}
+
+GLITER_ARCHER_STAND_UP_BACK = 
+{
+	ANIM_NAME					= "DamageStandUpBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+
+    SOUND_PLAY0			= { 0.571, "Glitter_Archer_StandUp.ogg" },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_ARCHER_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GLITER_ARCHER_WAIT", },
+	},		
+}
+
+GLITER_ARCHER_ROLLING_STAND_UP_FRONT = 
+{
+	ANIM_NAME					= "RollingStandUpFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	MIND_FLAG			= MIND_FLAG["MF_STAND_UP_ATTACK"],
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		--{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_ARCHER_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GLITER_ARCHER_WAIT",				},
+	},
+}
+
+
+GLITER_ARCHER_ROLLING_STAND_UP_BACK = 
+{
+	ANIM_NAME					= "RollingStandUpBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	MIND_FLAG			= MIND_FLAG["MF_STAND_UP_ATTACK"],
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLIP_DIR_END				= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		--{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_ARCHER_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"GLITER_ARCHER_WAIT", },
+	},	
+	
+		
+	ATTACK_TIME0				= { 0.3, 0.96, },	
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+			FIRE		= 0.0,
+			ICE			= 0.0,
+			EARTH		= 0.0,
+			LIGHTNING	= 0.0,
+			DARK		= 0.0,
+			LIGHT		= 0.0,
+			UNIVERSAL	= 0.0,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		STOP_TIME_ATT			= 0.0,		
+		STOP_TIME_DEF			= 0.0,	
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 0.0,	
+		CLEAR_SCREEN_COLOR_A	= 0.0,
+		CLEAR_SCREEN_COLOR_R	= 1.0,
+		CLEAR_SCREEN_COLOR_G	= 1.0,
+		CLEAR_SCREEN_COLOR_B	= 1.0,
+
+		RE_ATTACK				= FALSE,		
+		HIT_GAP					= 0.0,				
+	},
+}
+
+
+GLITER_ARCHER_DYING_LAND_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+
+    SOUND_PLAY0			= { 0.250, "GlitterVoice_DeathRoar.ogg" },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+	
+GLITER_ARCHER_DYING_LAND_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+
+    SOUND_PLAY0			= { 0.250, "GlitterVoice_DeathRoar.ogg" },
+	
+	DYING_END					= TRUE,	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+GLITER_ARCHER_DYING_SKY = 
+{
+	ANIM_NAME					= "DamageDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+
+    SOUND_PLAY0			= { 0.10, "GlitterVoice_DeathRoar.ogg" },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+
+
+
+
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+
+function GLITER_ARCHER_SIEGE_WAIT_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	
+	pNPCUnit:SetShowGage( false )
+
+end
+
+
+
+function GLITER_ARCHER_SIEGE_ATTACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+		
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		
+		
+		local vLandPos = pNPCUnit:GetLandPosition_LUA()
+		local vRHandPos = pNPCUnit:GetBonePos_LUA( "Dummy1_Rhand" )
+		
+		local vRotDegree = pNPCUnit:GetRotateDegree()
+		vRotDegree.z = vRotDegree.z + 30
+		
+		pDamageEffect:CreateInstance_LUA2( pNPCUnit, "ARROW_CROSSBOW", vRHandPos, vLandPos.y, vRotDegree )
+		
+	end	
+
+end
+
+
+function GLITER_ARCHER_WAIT_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	
+	pNPCUnit:SetShowGage( true )
+
+end
+
+
+
+
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+function GLITER_ARCHER_WAIT_HABIT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+end
+
+function GLITER_ARCHER_WALK_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+function GLITER_ARCHER_JUMP_DOWN_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+function GLITER_ARCHER_JUMP_DOWN_DIR_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+function GLITER_ARCHER_DAMAGE_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.047 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function GLITER_ARCHER_DAMAGE_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.06 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function GLITER_ARCHER_DAMAGE_DOWN_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.3 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+
+end
+
+function GLITER_ARCHER_DAMAGE_DOWN_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.2 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+
+end
+
+function GLITER_ARCHER_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		local pos = pNPCUnit:GetLandPosition_LUA()
+		pMinorParticle:CreateSequence_LUA( "DownSmoke", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+		pos.y = pos.y + 5
+		pMinorParticle:CreateSequence_LUA( "GroundShockWave", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(1,-1) )
+		local pParticle = pMinorParticle:CreateSequence_LUA( "AirDownTick", pNPCUnit:GetPos(), D3DXVECTOR2(200,200), D3DXVECTOR2(10,-1) )
+		if pParticle ~= nil then
+			pParticle:SetLandPosition( pos.y - 5 )
+		end
+		
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 500 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 0.1 )
+		end		
+		
+	elseif pNPCUnit:AnimEventTimer_LUA( 0.44 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+
+end
+
+function GLITER_ARCHER_ROLLING_STAND_UP_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 1.15 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function GLITER_ARCHER_ROLLING_STAND_UP_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 1.15 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+
+
+
+function GLITER_ARCHER_DYING_LAND_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	
+	local pos = pNPCUnit:GetPos()
+	pos.y = pos.y + 100.0
+	local GetMinorParticle = pX2Game:GetMinorParticle()
+	
+	local pSeq = GetMinorParticle:CreateSequence_LUA( "DieLight",		pos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+	if pSeq ~= nil then
+	
+		pSeq:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+		pNPCUnit:SetDieSeq( pSeq:GetHandle() )
+	
+	end
+	pNPCUnit:PlaySound_LUA( "DieLight.ogg" )
+	
+end
+
+
+function GLITER_ARCHER_ATTACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 2.0 ) then
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		local pos = pNPCUnit:GetLandPosition_LUA()		
+		pDamageEffect:CreateInstance_LUA( pNPCUnit, "ARROW_CROSSBOW", pNPCUnit:GetBonePos_LUA( "Dummy1_Rhand" ), pos.y )	
+	end	
+
+end
+
+
+-- function GLITER_ARCHER_ATTACK_B_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	-- if pNPCUnit:AnimEventTimer_LUA( 2.64 ) then
+		
+		-- pDamageEffect = pX2Game:GetDamageEffect()
+		
+		
+		-- vLandPos = pNPCUnit:GetLandPosition_LUA()
+		-- vRHandPos = pNPCUnit:GetBonePos_LUA( "Dummy1_Rhand" )
+		
+		-- vRotDegree = pNPCUnit:GetRotateDegree()
+		-- vRotDegree.z = vRotDegree.z - 90
+		
+		-- pDamageEffect:CreateInstance_LUA2( pNPCUnit, "ARROW_CROSSBOW", vRHandPos, vLandPos.y, vRotDegree )
+		
+	-- end	
+
+-- end
+
+function GLITER_ARCHER_MANUAL_TARGET( pKTDXApp, pX2Game, pNPCUnit )
+	
+	local pNearestNpc = pX2Game:GetNearestNpcInSpecificRangeByNpcId_LUA( pNPCUnit:GetPos(), NPC_UNIT_ID["NUI_DEFENCE_CRYSTAL"], 999999 )
+	
+	if nil ~= pNearestNpc then
+		pNPCUnit:SetTargetUnit( pNearestNpc )
+	end
+
+end
+
+
+
+
+
+function GLITER_ARCHER_WALK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	
+	if pX2Game:AnyUserUnitInRange( pNPCUnit:GetPos(), 600 ) == true then
+		local TargetPos = pX2Game:GetNearestUserUnitPos_LUA( pNPCUnit:GetPos(), 0, 999999 )
+	        
+		local bIsRight = pNPCUnit:GetIsRight()
+	        
+		if pNPCUnit:IsRightTarget_LUA(pNPCUnit, TargetPos) == true then
+			if( bIsRight == true ) then
+				GLITER_ARCHER_DO_ATTACK(pX2Game, pNPCUnit)
+				return
+			end
+		else
+			if( bIsRight == false ) then
+				GLITER_ARCHER_DO_ATTACK(pX2Game, pNPCUnit)
+				return
+			end
+		end
+	end
+
+end
+
+
+
+function GLITER_ARCHER_WAIT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	
+	if pX2Game:AnyUserUnitInRange( pNPCUnit:GetPos(), 600 ) == true then
+		local TargetPos = pX2Game:GetNearestUserUnitPos_LUA( pNPCUnit:GetPos(), 0, 999999 )
+	        
+		local bIsRight = pNPCUnit:GetIsRight()
+	        
+		if pNPCUnit:IsRightTarget_LUA(pNPCUnit, TargetPos) == true then
+			if( bIsRight == true ) then
+				GLITER_ARCHER_DO_ATTACK(pX2Game, pNPCUnit)
+				return
+			end
+		else
+			if( bIsRight == false ) then
+				GLITER_ARCHER_DO_ATTACK(pX2Game, pNPCUnit)
+				return
+			end
+		end
+	end
+
+end
+
+
+function GLITER_ARCHER_DO_ATTACK(pX2Game, pNPCUnit)
+
+	pNPCUnit:StateChange_LUA( "GLITER_ARCHER_ATTACK" )
+	
+end
+

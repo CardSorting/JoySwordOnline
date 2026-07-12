@@ -1,0 +1,6168 @@
+particlesystem "UIMajor" 1.00 
+{
+	eventsequence "UI_Event_Ghost_StartEffect"
+	{
+		particleType		= PT_2D_PLANE
+		Layer			= 21
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		lifetime		= 5
+		TriggerCount		= 1
+		DrawCount		= 1
+		ZEnable				= false
+		RESOLUTIONCONVERT	= true
+		
+		initial						texture		= "DLG_UI_Common_Texture_TW_02.tga"
+		initial						color		= rgba(1,1,1,0)
+		fade so from 0.01 to 0.2			color		= rgba(1,1,1,1)
+		fade so from 0.9 to 1.5				color		= rgba(1,1,1,0)
+		initial						size		= XYZ(512,512,1)	
+	}
+	eventsequence "RewardDecreaseEDPicCharRed" 
+	{
+		particleType		= PT_2D_PLANE
+		Layer				= 21
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 100
+		gravity				= XYZ(0,0,0)
+		emitrate			= 0
+		emitradius			= XYZ(0,0,0)
+		LandPos				= 0
+		RESOLUTIONCONVERT	= true
+		UseLand				= false
+		ZEnable				= false
+		blackholepos		= xyz( 0,0,0 )
+		
+		lifetime			= 2.5
+		initial size		= XYZ(20,20,1)
+		initial Velocity	= XYZ(0,-100,0)
+		at 0.1 Velocity		= XYZ(0,100,0)
+		at 0.2 Velocity		= XYZ(0,-50,0)
+		at 0.3 Velocity		= XYZ(0,0,0)
+		fade so from 0.2 to 0.25 size	= XYZ(20,10,1)
+		fade so from 0.25 to 0.3 size	= XYZ(20,20,1)
+		
+		at 1.8 Velocity		= XYZ(0,-70,0)
+		
+		fade so from 2.4 to 2.5 size	= XYZ(20,0,1)
+		initial color					= RGBA(1,0,0,1)
+		fade so from 2 to 2.5 color	= RGBA(1,1,0,0)
+	}
+	
+	eventsequence "Clear_Mark" 
+	{
+		particleType		= PT_2D_PLANE
+		Layer				= 22
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		RESOLUTIONCONVERT	= true
+		
+		lifetime			= 99999
+		initial texture		= "HQ_CLEAR_MARK.dds"
+		
+		initial						size	= XYZ(128,128,1)		
+		initial						position	= XYZ(679,206,0)
+	}
+	eventsequence "Fail_Mark" 
+	{
+		particleType		= PT_2D_PLANE
+		Layer				= 22
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		RESOLUTIONCONVERT	= true
+		
+		lifetime			= 99999
+		initial texture		= "HQ_FAIL_MARK.dds"
+		
+		initial						size	= XYZ(128,128,1)		
+		initial						position	= XYZ(679,206,0)
+	}
+	eventsequence "New_Rank_SS" 
+	{
+		particleType		= PT_2D_PLANE
+		Layer				= 22
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		RESOLUTIONCONVERT	= true
+		
+		lifetime			= 99999
+		initial texture		= "HQ_New_Rank_SS.dds"
+		
+		initial						size	= XYZ(256,256,1)
+		fade so from 0.01 to 0.2	size	= XYZ(170,170,1)
+		
+		initial						position	= XYZ(780,473,0)
+		fade so from 0.01 to 0.2	position	= XYZ(674,373,0)
+		
+		initial						resetcrash	= 0.01
+		fade so from 0.2 to 0.3		crash		= XYZ(random(-20,20),random(-20,20),0)
+	}
+	eventsequence "New_Rank_S" 
+	{
+		particleType		= PT_2D_PLANE
+		Layer				= 22
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		RESOLUTIONCONVERT	= true
+		
+		lifetime			= 99999
+		initial texture		= "HQ_New_Rank_S.dds"
+		
+		initial						size	= XYZ(256,256,1)
+		fade so from 0.01 to 0.2	size	= XYZ(170,170,1)
+		
+		initial						position	= XYZ(780,473,0)
+		fade so from 0.01 to 0.2	position	= XYZ(674,373,0)
+		
+		initial						resetcrash	= 0.01
+		fade so from 0.2 to 0.3		crash		= XYZ(random(-20,20),random(-20,20),0)
+	}
+	eventsequence "New_Rank_A" 
+	{
+		particleType		= PT_2D_PLANE
+		Layer				= 22
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		RESOLUTIONCONVERT	= true
+		
+		lifetime			= 99999
+		initial texture		= "HQ_New_Rank_A.dds"
+		
+		initial						size	= XYZ(256,256,1)
+		fade so from 0.01 to 0.2	size	= XYZ(170,170,1)
+		
+		initial						position	= XYZ(780,473,0)
+		fade so from 0.01 to 0.2	position	= XYZ(674,373,0)
+		
+		initial						resetcrash	= 0.01
+		fade so from 0.2 to 0.3		crash		= XYZ(random(-20,20),random(-20,20),0)
+	}
+	eventsequence "New_Rank_B" 
+	{
+		particleType		= PT_2D_PLANE
+		Layer				= 22
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		RESOLUTIONCONVERT	= true
+		
+		lifetime			= 99999
+		initial texture		= "HQ_New_Rank_B.dds"
+		
+		initial						size	= XYZ(256,256,1)
+		fade so from 0.01 to 0.2	size	= XYZ(170,170,1)
+		
+		initial						position	= XYZ(780,473,0)
+		fade so from 0.01 to 0.2	position	= XYZ(674,373,0)
+		
+		initial						resetcrash	= 0.01
+		fade so from 0.2 to 0.3		crash		= XYZ(random(-20,20),random(-20,20),0)
+	}
+	eventsequence "New_Rank_C" 
+	{
+		particleType		= PT_2D_PLANE
+		Layer				= 22
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		RESOLUTIONCONVERT	= true
+		
+		lifetime			= 99999
+		initial texture		= "HQ_New_Rank_C.dds"
+		
+		initial						size	= XYZ(256,256,1)
+		fade so from 0.01 to 0.2	size	= XYZ(170,170,1)
+		
+		initial						position	= XYZ(780,473,0)
+		fade so from 0.01 to 0.2	position	= XYZ(674,373,0)
+		
+		initial						resetcrash	= 0.01
+		fade so from 0.2 to 0.3		crash		= XYZ(random(-20,20),random(-20,20),0)
+	}
+	eventsequence "New_Rank_D" 
+	{
+		particleType		= PT_2D_PLANE
+		Layer				= 22
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		RESOLUTIONCONVERT	= true
+		
+		lifetime			= 99999
+		initial texture		= "HQ_New_Rank_D.dds"
+		
+		initial						size	= XYZ(256,256,1)
+		fade so from 0.01 to 0.2	size	= XYZ(170,170,1)
+		
+		initial						position	= XYZ(780,473,0)
+		fade so from 0.01 to 0.2	position	= XYZ(674,373,0)
+		
+		initial						resetcrash	= 0.01
+		fade so from 0.2 to 0.3		crash		= XYZ(random(-20,20),random(-20,20),0)
+	}
+	eventsequence "New_Rank_E" 
+	{
+		particleType		= PT_2D_PLANE
+		Layer				= 22
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		RESOLUTIONCONVERT	= true
+		
+		lifetime			= 99999
+		initial texture		= "HQ_New_Rank_E.dds"
+		
+		initial						size	= XYZ(256,256,1)
+		fade so from 0.01 to 0.2	size	= XYZ(170,170,1)
+		
+		initial						position	= XYZ(780,473,0)
+		fade so from 0.01 to 0.2	position	= XYZ(674,373,0)
+		
+		initial						resetcrash	= 0.01
+		fade so from 0.2 to 0.3		crash		= XYZ(random(-20,20),random(-20,20),0)
+	}
+	eventsequence "New_Rank_F" 
+	{
+		particleType		= PT_2D_PLANE
+		Layer				= 22
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		RESOLUTIONCONVERT	= true
+		
+		lifetime			= 99999
+		initial texture		= "HQ_New_Rank_F.dds"
+		
+		initial						size	= XYZ(256,256,1)
+		fade so from 0.01 to 0.2	size	= XYZ(170,170,1)
+		
+		initial						position	= XYZ(780,473,0)
+		fade so from 0.01 to 0.2	position	= XYZ(674,373,0)
+		
+		initial						resetcrash	= 0.01
+		fade so from 0.2 to 0.3		crash		= XYZ(random(-20,20),random(-20,20),0)
+	}
+		eventsequence "TaiwanIndexLogo" 
+	{
+		particleType		= PT_2D_PLANE
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		RESOLUTIONCONVERT	= true
+		
+		lifetime			= 9999
+		initial texture		= "HQ_TaiwanIndexLogo.dds"
+		
+		initial						size	= XYZ(1024,768,0)
+		initial						color	= rgba(0,0,0,1)
+		fade so from 0.01 to 1.5	color	= rgba(1,1,1,1)
+		fade so from 2.5  to 4		color	= rgba(0,0,0,1)
+	}
+	eventsequence "TaiwanGameastorLogo" 
+	{
+		particleType		= PT_2D_PLANE
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		RESOLUTIONCONVERT	= true
+		
+		lifetime			= 9999
+		initial texture		= "HQ_Gameastor.dds"
+		
+		initial						size	= XYZ(1024,768,0)
+		initial						color	= rgba(0,0,0,1)
+		fade so from 0.01 to 1.5	color	= rgba(1,1,1,1)
+		fade so from 2.5  to 4		color	= rgba(0,0,0,1)
+	}
+	eventsequence "HongkongIndexLogo" 
+	{
+		particleType		= PT_2D_PLANE
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		RESOLUTIONCONVERT	= true
+		
+		lifetime			= 9999
+		initial texture		= "HQ_HongkongIndexLogo.dds"
+		
+		initial						size	= XYZ(1024,768,0)
+		initial						color	= rgba(0,0,0,1)
+		fade so from 0.01 to 1.5	color	= rgba(1,1,1,1)
+		fade so from 2.5  to 4		color	= rgba(0,0,0,1)
+	}
+	
+	eventsequence "KOGLogo" 
+	{
+		particleType		= PT_2D_PLANE
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		RESOLUTIONCONVERT	= true
+		
+		lifetime			= 9999
+		initial texture		= "HQ_KOGLogo.dds"
+		
+		initial						size	= XYZ(411,181,0)
+		initial						color	= rgba(0,0,0,1)
+		fade so from 0.01 to 1.5	color	= rgba(1,1,1,1)
+		fade so from 14  to 15.5	color	= rgba(0,0,0,1)
+	}
+	
+	eventsequence "KOGSpecailLogo" 
+	{
+		particleType		= PT_2D_PLANE
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		RESOLUTIONCONVERT	= true
+		
+		lifetime			= 9999
+		initial texture		= "HQ_KOGLogo_Spring.dds"
+		
+		initial						size	= XYZ(1024,768,0)
+		initial						color	= rgba(0,0,0,1)
+		fade so from 0.01 to 1.5	color	= rgba(1,1,1,1)
+		fade so from 14  to 15.5	color	= rgba(0,0,0,1)
+	}
+	eventsequence "FishPushDown"
+	{
+	  	particleType		= PT_2D_PLANE
+		meshRenderType		= RT_REAL_COLOR		
+		Layer			    = 15
+		
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity			= XYZ(0,0,0)
+		emitradius		= XYZ(0,0,0)
+		lifetime		= 999999
+		emitrate		= 60
+		triggerCount		= 1
+  		BillboardType  		= BT_all
+		Trace			= true
+		Drawcount		= 1
+	
+		initial			texture		= "Bottom_Fish_Down_TW.dds"
+		
+		initial			size	= XYZ(170,170,1)				
+	}
+		eventsequence "TITLE_5020" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5020.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+
+	eventsequence "TITLE_5030"
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5030.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	
+	eventsequence "TITLE_5050"
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5050.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	
+	eventsequence "TITLE_5070"
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5070.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	
+	eventsequence "TITLE_5080"
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5080.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	
+	eventsequence "TITLE_5090" 
+	{
+		particleType  = PT_3D_PLANE
+	  	meshRenderType  = RT_REAL_COLOR  
+  		Layer    = 14
+ 		sourceblendmode  = D3DBLEND_SRCALPHA
+  		destblendmode  = D3DBLEND_INVSRCALPHA
+  		numparticles  = 1
+  		gravity    = XYZ(0,0,0)
+  		BillboardType  = BT_ALL
+  		ZEnable    = true  
+  		TRACE    = true
+  		lifetime   = 99999
+  		ZWriteEnable     = false
+  
+  		initial   texture  = "Title_5090_1.tga"
+ 		at 0.15   texture  = "Title_5090_2.tga"
+  		at 0.30   texture  = "Title_5090_3.tga"
+  		at 0.45   texture  = "Title_5090_4.tga"
+ 	 	at 0.60   texture  = "Title_5090_5.tga"
+  		at 0.75   texture  = "Title_5090_6.tga"
+  		at 0.90   texture  = "Title_5090_7.tga"  
+  		at 1.04   EventTimer = 0.14
+  
+  		initial   size  = XYZ( 148, 68, 1 )
+ 	} 
+	eventsequence "TITLE_5101"
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5101.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_5102"
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5102.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_5103"
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5103.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}	
+	eventsequence "TITLE_5120"
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5120.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}	
+	eventsequence "TITLE_5130"
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5130.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}	
+	eventsequence "TITLE_10381" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle10381.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+eventsequence "TITLE_5106" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5106.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	
+	
+-- 발렌타인 이벤트 --
+
+	
+		eventsequence "TITLE_5108" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5108.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+
+
+		eventsequence "TITLE_5109" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5109.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}	
+	
+		eventsequence "TITLE_5110" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5110.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}		
+	
+		eventsequence "TITLE_5111" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5111.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}	
+
+		eventsequence "TITLE_5112" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5112.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}		
+		eventsequence "TITLE_5113" 
+	{
+		particleType		= PT_3D_PLANE
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		BillboardType		= BT_all
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			texture		= "Title_5113.tga"
+		at 1.00			texture		= "Title_5113_1.tga"
+		at 1.30			texture		= "Title_5113.tga"
+		at 2.30			texture		= "Title_5113_1.tga"
+		at 2.60			texture		= "Title_5113.tga"
+		at 3.60			texture		= "Title_5113_1.tga"
+		at 4.60			texture		= "Title_5113_2.tga"
+		at 6.10			texture		= "Title_5113.tga"
+		at 6.24			EventTimer	= 0.14
+
+		initial			size		= XYZ( 150, 100, 1 )
+	}	
+
+
+-- 디펜스 던전이벤트 --
+
+		eventsequence "TITLE_5117" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5117.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+
+		eventsequence "TITLE_5118" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5118.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+
+		eventsequence "TITLE_5514" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5514.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+
+	--이벤트 타이틀 중국 시작_20110115_임성식
+	eventsequence "TITLE_15000" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle15000.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_15001" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle15001.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_15002" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle15002.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_15004" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle15004.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_15005" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle15005.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_35200" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle35200.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_35070" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle35070.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_35021" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle35021.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_45000" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle45000.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_50001" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50001.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_50002" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50002.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+
+	eventsequence "TITLE_50020" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50020.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+
+	eventsequence "TITLE_50021" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50021.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+
+	eventsequence "TITLE_50030" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50030.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+
+	eventsequence "TITLE_50040" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50040.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+
+	eventsequence "TITLE_50050" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50050.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+
+	eventsequence "TITLE_50070" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50070.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+
+	eventsequence "TITLE_50071" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50071.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+
+	eventsequence "TITLE_55002" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle55002.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+
+-- 2011.11.03 김민곤 / 감마니아 전용 칭호 추가
+
+	eventsequence "TITLE_5160" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5160.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+
+-- 2011.12.15 김민곤 / 환각의 벨더 칭호
+
+	eventsequence "TITLE_5170" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5170.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+
+
+
+-- 타이틀 끝 --		
+	eventsequence "acce_snowLight_P01"
+	{
+		--Mesh    		= "acce_highLight_light.Y"  		
+		Mesh    		= "acce_highLightSnow.Y"
+		particleType  		= PT_MESH
+		meshRenderType  	= RT_REAL_COLOR
+		Layer    		= 14
+		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 1
+		emitrate		= 100		
+  		BillboardType  		= BT_Y
+		lifetime   		= 999999999
+  		TriggerTime   		= 0.1
+  		trace			= true
+		zEnable			= false
+		ZWriteEnable 		= false
+		
+     		initial  		 	 color  	= rgba(1,1,1,1)
+		fade so from 0.01 to 0.1       color  		= rgba(1,1,1,1)
+  		
+  		initial   			 size 	 	= XYZ(1,0,1)	
+		fade so from 0.01 to 0.1        size  		= XYZ(1,1,1)
+	}
+
+	eventsequence "acce_highLightSnow_snow"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 100
+  		gravity    		= XYZ(0,-13,0)
+  		emitradius   		= XYZ(random(-130,130),random(400,550),-150)
+  		lifetime   		= 7
+		emitrate		= 15
+  		BillboardType  		= BT_all
+		trace 			= true
+		DrawCount		= 2
+  		initial texture 	= "acce_highLightSnow_snow.dds"
+
+  		initial     		color 		= rgba(1,1,1,0)
+		fade so from 0 to 1 	color  		= rgba(1,1,1,1)
+		fade so from 6 to 7 	color  		= rgba(1,1,1,0)
+
+  		initial     		size		= XYZ(4,4,1)
+
+  		initial     		rotate		= XYZ(0,0,random(0,180))
+
+	}	
+		eventsequence "LightParticle_Pipe01"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 30
+  		gravity    		= XYZ(0,100,0)
+  		emitradius   		= XYZ(0,0,0)
+  		lifetime   		= 0.6
+		emitrate		= 2
+		triggertime		= 9999
+  		BillboardType  		= BT_all
+		Zenable			= False
+		DrawCount		= 1
+
+  		initial texture 	= "Heart01.dds"
+  		initial     			color 		= rgba(1,1,1,0)
+		fade so from 0.001 to 0.1	color 		= rgba(1,1,1,1)
+		fade so from 0.4 to 0.6		color 		= rgba(1,1,1,0)
+  		initial     			size		= XYZ(20,20,1)
+		initial				Scale		= 0.1
+		Fade so from 0.001 to 0.1	Scale		= random(8,13)
+		fade so from 0.4 to 0.6	 	Scale		= random(0.8,1.2)
+		initial				rotate		= xyz(0,0,random(-15,15))
+  		initial     			velocity	= XYZ(random(-70,70),random(-30,80),random(-70,70))
+	}
+	eventsequence "LightParticle_Horn"
+	{
+		particleType = PT_3D_PLANE
+		Layer = 15
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode = D3DBLEND_DESTALPHA
+		emitradius  = XYZ(random(-20,20),random(-20,20),random(-20,20))
+		numparticles = 8
+		emitrate = 12
+		lifetime = 0.3
+		triggerTime = 999999999
+		BillboardType = BT_All
+		Trace = True
+		DrawCount    = 2
+ 
+		initial texture  = "Light_Horn.dds"
+		Initial scale = random(0.8,1.5)
+ 
+		initial      color = rgba(0,0,0,0.5)
+		fade so from 0.01 to 0.15 color  = rgba(random(0.2,0.8),random(0,0.2),random(0,0.2),1)
+		fade so from 0.15 to 0.3 color   = rgba(random(0.2,0.8),random(0,0.1),random(0,0.1),0)
+ 
+		initial rotate = XYZ(0,0,random(-180,180))
+		fade so from 0.001 to 10.0 rotate = XYZ(0,0,0)
+ 
+		initial      size = XYZ(0,0,1)
+		fade so from 0.01 to 0.15  size  = XYZ(random(50,60),random(50,60),1)
+		fade so from 0.15 to 0.3 size   = XYZ(0,0,1)
+ 
+		initial velocity = XYZ(random(-100,100),random(-100,100),random(-100,100))
+		fade so from 0.01 to 0.5 velocity = XYZ(0,0,0)
+	}
+	eventsequence "LightParticle_Galaxy01"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 30
+  		gravity    		= XYZ(0,-200,0)
+  		emitradius   		= XYZ(0,0,0)
+  		lifetime   		= 0.6
+		emitrate		= 20
+		triggertime		= 100000
+  		BillboardType  		= BT_all
+		Zenable			= False
+		DrawCount		= 1
+
+  		initial texture 	= "Star1.dds"
+  		initial     			color 		= rgba(random(0.1,1),random(0.1,1),random(0.1,1),0)
+ 		fade so from 0.1 to 0.2 	color  		= rgba(random(0.1,1),random(0.1,1),random(0.1,1),1)
+ 		fade so from 0.4 to 0.6 	color  		= rgba(random(0.1,1),random(0.1,1),random(0.1,1),0)
+  		initial     			size		= XYZ(20,20,1)
+		initial				Scale		= random(0.6,1.8)
+		fade so from 0.4 to 0.6	 	Scale		= 0.2
+		initial				rotate		= xyz(0,0,random(-90,90))
+  		initial     			velocity	= XYZ(random(-170,170),random(-30,90),random(-170,170))
+	}
+	eventsequence "LightParticle_Galaxy02"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 30
+  		gravity    		= XYZ(0,-200,0)
+  		emitradius   		= XYZ(0,0,0)
+  		lifetime   		= 0.6
+		emitrate		= 20
+		triggertime		= 100000
+  		BillboardType  		= BT_all
+		Zenable			= False
+		DrawCount		= 1
+
+  		initial texture 	= "Star2.dds"
+  		initial     			color 		= rgba(random(0.1,1),random(0.1,1),random(0.1,1),0)
+ 		fade so from 0.1 to 0.2 	color  		= rgba(random(0.1,1),random(0.1,1),random(0.1,1),1)
+ 		fade so from 0.4 to 0.6 	color  		= rgba(random(0.1,1),random(0.1,1),random(0.1,1),0)
+  		initial     			size		= XYZ(20,20,1)
+		initial				Scale		= random(0.6,1.8)
+		fade so from 0.4 to 0.6	 	Scale		= 0.2
+		initial				rotate		= xyz(0,0,random(-90,90))
+  		initial     			velocity	= XYZ(random(-170,170),random(-30,90),random(-170,170))
+	}
+	eventsequence "LightParticle_Galaxy04"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 30
+  		gravity    		= XYZ(0,-200,0)
+  		emitradius   		= XYZ(random(-5,5),random(10,20),random(-5,5))
+  		lifetime   		= 0.6
+		emitrate		= 20
+		triggertime		= 100000
+  		BillboardType  		= BT_all
+		Zenable			= False
+		DrawCount		= 1
+		trace		= true
+
+  		initial texture 	= "Star2.dds"
+  		initial     			color 		= rgba(random(0.1,1),random(0.1,1),random(0.1,1),0)
+ 		fade so from 0.1 to 0.2 	color  		= rgba(random(0.1,1),random(0.1,1),random(0.1,1),1)
+ 		fade so from 0.4 to 0.6 	color  		= rgba(random(0.1,1),random(0.1,1),random(0.1,1),0)
+  		initial     			size		= XYZ(20,20,1)
+		initial				Scale		= random(0.6,1.8)
+		fade so from 0.4 to 0.6	 	Scale		= 0.2
+		initial     		rotate		= XYZ(0,0,random(-180,180))
+		fade so from 0 to 1 rotate         = XYZ(0,0,random(-80,80))
+  		initial     		velocity	= XYZ(random(-200,200),random(150,250),random(-200,200))
+		fade so from 0.3 to 1 	velocity	= XYZ(random(-200,200),random(-250,-350),random(-200,200))
+
+	}	
+	eventsequence "tigerSet_accessories_line01" 
+	{
+		particleType		= PT_SkinMesh
+		meshRenderType		= RT_REAL_COLOR
+		Layer			= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		numparticles		= random(1,5)
+		lifetime		= random(1.5,5)
+		emitrate		= random(1.5,5)
+		triggertime		= 9999999
+		BillboardType		= BT_NONE
+		ZWriteEnable 		= false
+		Mesh			= "Mesh_Common_AC_Lowbody_60001929_Sorted.X"
+		Drawcount		= 1
+		trace			= true
+				
+		initial				color		= rgba(1,1,1,0)
+		Fade so From 0.1 to 0.25	color		= rgba(1,1,1,1)
+		Fade so From 0.25 to 0.53	color		= rgba(1,1,1,0)
+		initial				rotate		= XYZ(random(200,225),random(20,50),0)
+		Initial				Scale		= random(0.55,0.65)
+		Fade so From 0.1 to 0.6		Scale		= random(0.45,1.2)
+	}
+	eventsequence "tigerSet_accessories_line02" 
+	{
+		particleType		= PT_SkinMesh
+		meshRenderType		= RT_REAL_COLOR
+		Layer			= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		numparticles		= random(1,5)
+		lifetime		= random(1.5,5)
+		emitrate		= random(1.5,5)
+		triggertime		= 9999999
+		BillboardType		= BT_NONE
+		ZWriteEnable 		= false
+		Mesh			= "Mesh_Common_AC_Lowbody_60001929_Sorted.X"
+		Drawcount		= 1
+		Trace			= True		
+		
+		initial				color		= rgba(1,1,1,0)
+		Fade so From 0.1 to 0.25	color		= rgba(1,1,1,1)
+		Fade so From 0.25 to 0.53	color		= rgba(1,1,1,0)
+		initial				rotate		= XYZ(random(-215,-180),random(20,50),0)
+		Initial				Scale		= random(0.55,0.65)
+		Fade so From 0.1 to 0.6		Scale		= random(1.45,1.8)
+	}
+		eventsequence "Reward_Effect01"
+	{
+		particleType		= PT_2D_PLANE
+		meshRenderType  	= RT_REAL_COLOR
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		numparticles		= 100
+		gravity			= XYZ(0,0,0)
+		emitradius		= XYZ(0,0,0)
+		BillboardType		= BT_NONE
+		lifetime   		= 0.2
+		emitrate		= 70
+		triggerCount		= 7
+  		Drawcount		= 1.5
+
+  		initial texture 	= "GuideArrow02.dds"
+  		initial     			color 		= rgba(1,1,1,1)
+ 		fade so from 0.001 to 0.1 	color  		= rgba(1,1,1,1)
+ 		fade so from 0.1 to 0.2 	color  		= rgba(1,1,1,0)
+  		initial     			size		= XYZ(180,180,1)
+		fade so final			size		= XYZ(350,350,1)
+	}
+	eventsequence "Reward_Effect02"
+	{
+  		particleType  		= PT_2D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 50
+  		gravity    		= XYZ(0,0,0)
+  		emitradius   		= XYZ(random(-60,60),random(-60,60),random(-60,60))
+  		lifetime   		= 0.6
+		emitrate		= 100
+		triggertime		= 0.2
+  		BillboardType  		= BT_all
+		DrawCount		= 2
+
+  		initial texture 	= "Explosion_Sphere.dds"
+  		initial     			color 		= rgba(random(0.1,1),random(0.1,1),random(0.1,1),1)
+ 		fade so from 0.2 to 0.6 	color  		= rgba(random(0.1,1),random(0.1,1),random(0.1,1),0)
+  		initial     			size		= XYZ(80,80,1)
+		Initial				Scale		= random(0.5,1.5)
+		fade so from 0.2 to 0.6	 	Scale		= random(0.3,0.5)
+		initial				rotate		= xyz(0,0,random(-90,90))
+  		initial     			velocity	= XYZ(random(-100,100),random(-100,100),random(-100,100))
+	}
+
+	eventsequence "Pa_Reward_YellowEll_Select"
+	{
+  		particleType  		= PT_2D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 20
+  		gravity    		= XYZ(0,0,0)
+  		emitradius   		= XYZ(0,0,0)
+  		lifetime   		= 0.6
+		emitrate		= 100
+		triggertime		= 0.2
+  		BillboardType  		= BT_all
+		DrawCount		= 1
+
+  		initial texture 	= "Explosion_Sphere.dds"
+  		initial     			color 		= rgba(0.85,0.7,0.1,0)
+ 		fade so from 0.1 to 0.2 	color  		= rgba(0.85,0.7,0.1,1)
+ 		fade so from 0.35 to 0.6 	color  		= rgba(0.85,0.7,0.1,0)
+  		initial     			size		= XYZ(120,120,1)
+		fade so from 0.35 to 0.6	size           	= XYZ(20,20,1)
+		initial				rotate		= xyz(0,0,random(-90,90))
+  		initial     			velocity	= XYZ(random(-250,250),random(-250,250),random(-250,250))
+	}
+	eventsequence "Pa_Reward_YellowEll_Select_Ring" 
+	{
+		particleType		= PT_2D_PLANE
+		meshRenderType  	= RT_REAL_COLOR
+		Layer    		= 14
+		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 20
+  		gravity    		= XYZ(0,0,0)
+  		emitradius   		= XYZ(0,0,0)
+  		lifetime   		= 2.6
+  		EmitRate   		= 10
+  		TriggerCount   		= 1
+  		BillboardType  		= BT_All
+		Zenable			= False
+		ZWriteEnable 		= False
+  		DrawCount   		= 2
+
+  
+		initial texture						= "Explosion_Light_Ring01.tga"
+   		initial    				color  		= rgba(1,1,1,0)
+		fade so from 0.001 to 0.1		color  		= rgba(1,1,1,1)
+  		fade so from 0.5 to 1.5			color  		= rgba(1,1,1,0)
+  		initial    				size	  	= XYZ(150,150,1)
+		Fade so from 0.001 to 0.1		size	  	= XYZ(200,200,1)
+		Fade so from 0.1 to 1.3			Size		= XYZ(250,250,1)
+		Fade so from 1.3 to 1.5			size	  	= XYZ(320,320,1)
+	}
+
+	eventsequence "Pa_Reward_GreenEll_Select"
+	{
+  		particleType  		= PT_2D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 20
+  		gravity    		= XYZ(0,0,0)
+  		emitradius   		= XYZ(0,0,0)
+  		lifetime   		= 0.6
+		emitrate		= 100
+		triggertime		= 0.2
+  		BillboardType  		= BT_all
+		DrawCount		= 1
+
+  		initial texture 	= "Explosion_Sphere.dds"
+  		initial     			color 		= rgba(0.2,0.85,0.45,0)
+ 		fade so from 0.1 to 0.2 	color  		= rgba(0.2,0.85,0.45,1)
+ 		fade so from 0.35 to 0.6 	color  		= rgba(0.2,0.85,0.45,0)
+  		initial     			size		= XYZ(120,120,1)
+		fade so from 0.35 to 0.6	size           	= XYZ(20,20,1)
+		initial				rotate		= xyz(0,0,random(-90,90))
+  		initial     			velocity	= XYZ(random(-250,250),random(-250,250),random(-250,250))
+	}
+	eventsequence "Pa_Reward_GreenEll_Select_Ring" 
+	{
+		particleType		= PT_2D_PLANE
+		meshRenderType  	= RT_REAL_COLOR
+		Layer    		= 14
+		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 20
+  		gravity    		= XYZ(0,0,0)
+  		emitradius   		= XYZ(0,0,0)
+  		lifetime   		= 2.6
+  		EmitRate   		= 10
+  		TriggerCount   		= 1
+  		BillboardType  		= BT_All
+		Zenable			= False
+		ZWriteEnable 		= False
+  		DrawCount   		= 2
+
+  
+		initial texture						= "Explosion_Light_Ring01.tga"
+   		initial    				color  		= rgba(0.7,1,0.9,0)
+		fade so from 0.001 to 0.1		color  		= rgba(0.7,1,0.9,1)
+  		fade so from 0.5 to 1.5			color  		= rgba(0.7,1,0.9,0)
+  		initial    				size	  	= XYZ(150,150,1)
+		Fade so from 0.001 to 0.1		size	  	= XYZ(200,200,1)
+		Fade so from 0.1 to 1.3			Size		= XYZ(250,250,1)
+		Fade so from 1.3 to 1.5			size	  	= XYZ(320,320,1)
+	}
+
+	eventsequence "Pa_Reward_RedEll_Select"
+	{
+  		particleType  		= PT_2D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 20
+  		gravity    		= XYZ(0,0,0)
+  		emitradius   		= XYZ(0,0,0)
+  		lifetime   		= 0.6
+		emitrate		= 100
+		triggertime		= 0.2
+  		BillboardType  		= BT_all
+		DrawCount		= 1
+
+  		initial texture 	= "Explosion_Sphere.dds"
+  		initial     			color 		= rgba(1,0.15,0.35,0)
+ 		fade so from 0.1 to 0.2 	color  		= rgba(1,0.15,0.35,1)
+ 		fade so from 0.35 to 0.6 	color  		= rgba(1,0.15,0.35,0)
+  		initial     			size		= XYZ(120,120,1)
+		fade so from 0.35 to 0.6	size           	= XYZ(20,20,1)
+		initial				rotate		= xyz(0,0,random(-90,90))
+  		initial     			velocity	= XYZ(random(-250,250),random(-250,250),random(-250,250))
+	}
+	eventsequence "Pa_Reward_RedEll_Select_Ring" 
+	{
+		particleType		= PT_2D_PLANE
+		meshRenderType  	= RT_REAL_COLOR
+		Layer    		= 14
+		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 20
+  		gravity    		= XYZ(0,0,0)
+  		emitradius   		= XYZ(0,0,0)
+  		lifetime   		= 2.6
+  		EmitRate   		= 10
+  		TriggerCount   		= 1
+  		BillboardType  		= BT_All
+		Zenable			= False
+		ZWriteEnable 		= False
+  		DrawCount   		= 2
+
+  
+		initial texture						= "Explosion_Light_Ring01.tga"
+   		initial    				color  		= rgba(0.9,0.7,0.4,0)
+		fade so from 0.001 to 0.1		color  		= rgba(0.95,0.65,0.45,1)
+  		fade so from 0.5 to 1.5			color  		= rgba(1,0.75,0.35,0)
+  		initial    				size	  	= XYZ(150,150,1)
+		Fade so from 0.001 to 0.1		size	  	= XYZ(200,200,1)
+		Fade so from 0.1 to 1.3			Size		= XYZ(250,250,1)
+		Fade so from 1.3 to 1.5			size	  	= XYZ(320,320,1)
+	}
+
+
+	eventsequence "Pa_ItemReward_OutBox"
+	{
+  		particleType  		= PT_2D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 30
+  		gravity    		= XYZ(0,0,0)
+  		emitradius   		= XYZ(0,0,0)
+  		lifetime   		= 0.5
+		emitrate		= 3
+		triggertime		= 7
+  		BillboardType  		= BT_all
+		Zenable			= False
+		Drawcount		= 1
+		Trace			= True
+
+
+  		initial texture 	= "Skill_Ready_Box01.dds"
+		initial     			color 	= rgba(random(0.05,0.5),random(0.1,0.92),random(0.4,1),0.1)
+ 		fade so from 0.001 to 0.05 	color  	= rgba(random(0.1,0.9),random(0.25,1),random(0.05,1),0.5)
+ 		fade so from 0.3  to 0.5  	color  	= rgba(random(0.05,0.5),random(0.1,0.92),random(0.4,1),0)
+  		initial     			size	= XYZ(120,120,1)
+		fade so from 0.01 to 0.1	size    = XYZ(80,80,1)
+  	}
+	eventsequence "Pa_ItemReward_Light"
+	{
+  		particleType  		= PT_2D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 20
+  		gravity    		= XYZ(0,0,0)
+  		emitradius   		= XYZ(random(-2,2),random(-2,2),0)
+  		lifetime   		= 2
+		emitrate		= 10
+		triggertime		= 9
+		BillboardType  		= BT_all
+		DrawCount		= 2
+
+
+  		initial texture 	= "Explosion_Sphere.dds"
+  		initial     			color 		= rgba(random(0.05,0.5),random(0.1,0.92),random(0.4,1),1)
+ 		fade so from 0.001 to 0.5 	color  		= rgba(random(0.1,0.9),random(0.25,1),random(0.05,1),1)
+  		fade so from 0.5 to 2 	color  		= rgba(random(0.1,0.9),random(0.25,1),random(0.05,1),0)
+		initial     			size		= XYZ(45,45,1)
+		Initial				Scale		= random(0.6,1.2)
+		fade so from 0.001 to 2		Scale		= random(0.2,0.4)
+		initial				rotate		= xyz(0,0,random(-90,90))
+  		initial     			velocity	= XYZ(random(0,0),random(0,0),random(0,0))
+	}
+	eventsequence "HyperBallTickPVPCount" 
+	{		
+		particleType		= PT_2D_PLANE
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		numparticles		= 30
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(random(-700,700),random(-700,700),random(-700,700))
+		lifetime			= random(0.2,0.4)
+		RESOLUTIONCONVERT	= true
+		
+		initial				texture		= "EnergyBallRed.dds"
+		initial				color		= rgba(1,0,0,1)
+		initial				size		= XYZ(random(100,300),random(20,80),1)
+		fade so final		size		= XYZ(random(0,50),0,1)
+		
+		initial				BLACKHOLETIME = random(0.05,0.1)
+	}
+	eventsequence "HyperBallRingPVPCount" 
+	{
+		particleType		= PT_2D_PLANE
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		numparticles		= 10
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		lifetime			= 0.7
+		RESOLUTIONCONVERT	= true
+		DrawCount			= 10
+		
+		initial				texture		= "RingAlpha.dds"
+		initial				color		= rgba(1,0,0,1)
+		fade so final		color		= rgba(1,0,0,0)
+		initial				size		= XYZ(0,0,1)
+		fade so final		size		= XYZ(100,100,1)
+	}
+	eventsequence "Ice_Ora_Event01" 
+ 	{
+  		particleType  		= PT_3D_PLANE  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 60
+  		gravity    		= XYZ(0,500,0)
+  		emitradius   		= XYZ(random(-30,30),random(-50,70),random(-30,30))
+		emitrate		= 10
+  		lifetime   		= 0.6
+		TriggerTime		= 99999
+		ZEnable			= True
+		Trace			= False
+  		BillboardType  		= BT_all
+		DrawCount		= 1
+  
+  		initial      			texture  	= "Gate_Light01_Gray.dds"
+  		initial      			color  		= rgba(0.0,random(0,0.2),1,random(0,0.5))
+  		fade so from 0.0001 to 0.2 	color  		= rgba(0.0,random(0,0.5),1,random(0,1.0))
+  		fade so from 0.2 to 0.6 	color  		= rgba(0.0,random(0,0.2),1,random(0,0.5))
+  		initial      			size  		= XYZ(200,200,1)
+  		fade so final    		Scale 		= random(1.2,1.3)
+  		initial      			rotate  	= XYZ(random(-180,180),random(0,0),random(-180,180))
+  		initial      			dirSpeed 	= 60
+ 	}
+		eventsequence "acce_winter_wisp_elsword_P01"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 13
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_INVSRCALPHA
+  		numparticles  		= 15
+		emitrate		= 20
+  		emitradius   		= XYZ(random(-5,5),random(-5,5),random(-5,5))
+  		lifetime   		= 0.8
+		triggertime		= 999999999
+  		BillboardType  		= BT_all
+		trace			= true
+
+  		initial 			texture 	= "Mesh_Common_AC_Face1_81160_Sorted_P02.DDS"
+  		initial     			color 		= rgba(1,1,1,0)
+		fade so from 0.001 to 0.2 	color		= rgba(1,1,1,0.8)
+ 		fade so from 0.6 to 0.8		color  		= rgba(1,1,1,0)
+  		initial     			size		= XYZ(10,10,1)
+		fade so from 0.001 to 0.1	size		= XYZ(random(50,60),random(50,60),1)
+		fade so from 0.3 to 0.8		size           	= XYZ(5,5,1)
+  		initial     			rotate		= XYZ(0,0,random(-180,180))
+  		initial     			velocity	= XYZ(random(-10,10),random(-10,80),random(-10,10))
+	}	
+	eventsequence "acce_winter_wisp_elsword_P02"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA  
+  		numparticles  		= 20
+		emitrate		= 20
+  		emitradius   		= XYZ(random(-8,8),random(-8,8),random(-8,8))
+  		lifetime   		= 0.8
+		triggertime		= 999999999
+  		BillboardType  		= BT_all
+		trace			= true
+
+
+  		initial 			texture 	= "Mesh_Common_AC_Face1_81160_Sorted_P02.DDS"
+  		initial     			color 		= rgba(0.4,0.7,1,0)
+		fade so from 0.01 to 0.3 	color		= rgba(0.4,0.7,1,0.6)
+ 		fade so from 0.6 to 0.8		color  		= rgba(0.4,0.7,1,0)
+  		initial     			size		= XYZ(5,5,1)
+		fade so from 0.001 to 0.1	size		= XYZ(random(30,40),random(30,40),1)
+		fade so from 0.3 to 0.8		size           	= XYZ(5,5,1)
+  		initial     			rotate		= XYZ(0,0,random(-50,50))
+  		initial     			velocity	= XYZ(random(-20,20),random(-20,100),random(-20,20))
+	}	
+	eventsequence "acce_winter_wisp_elsword_P03"
+	{
+		Mesh    		= "Mesh_Common_AC_Face1_81160_Sorted_P01.Y"  		
+		particleType  	= PT_MESH
+		meshRenderType  = RT_REAL_COLOR
+		Layer    		= 14
+		sourceblendmode = D3DBLEND_SRCALPHA
+  		destblendmode  	= D3DBLEND_DESTALPHA  
+  		numparticles  	= 1
+		emitrate	= 1000 		
+  		BillboardType  	= BT_Y  
+		lifetime   		= 2.4
+  		TriggerTime   	= 999999999
+  		DrawCount   	= 2
+		trace			= true
+		zEnable			= true
+		ZWriteEnable 	= false
+		
+  
+   		initial  		 			color  	= rgba(0.6,0.8,1,0.4)
+  		fade so from 0.01 to 0.8 	color  	= rgba(0.6,0.8,1,1)
+		fade so from 1.2 to 2  		color  	= rgba(0.6,0.8,1,0.4)
+  		initial   					size 	= XYZ(1.7,1.7,1.7)
+		fade so from 0.1 to 1		size 	= XYZ(1.9,1.9,1.9)
+		fade so from 1 to 2			size 	= XYZ(1.7,1.7,1.7)
+		initial     				rotate	= XYZ(0,-30,0)
+	}
+	
+	eventsequence "acce_winter_wisp_Aisha_P01"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 13
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_INVSRCALPHA
+  		numparticles  		= 15
+		emitrate		= 20
+  		emitradius   		= XYZ(random(-5,5),random(-5,5),random(-5,5))
+  		lifetime   		= 0.8
+		triggertime		= 999999999
+  		BillboardType  		= BT_all
+		trace			= true
+
+  		initial 			texture 	= "Mesh_Common_AC_Face1_81160_Sorted_P02.DDS"
+  		initial     			color 		= rgba(1,1,1,0)
+		fade so from 0.001 to 0.2 	color		= rgba(1,1,1,0.7)
+ 		fade so from 0.6 to 0.8		color  		= rgba(1,1,1,0)
+  		initial     			size		= XYZ(10,10,1)
+		fade so from 0.001 to 0.1	size		= XYZ(random(50,60),random(50,60),1)
+		fade so from 0.3 to 0.8		size           	= XYZ(5,5,1)
+  		initial     			rotate		= XYZ(0,0,random(-180,180))
+  		initial     			velocity	= XYZ(random(-10,10),random(-10,80),random(-10,10))
+	}	
+	eventsequence "acce_winter_wisp_Aisha_P02"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA  
+  		numparticles  		= 20
+		emitrate		= 20
+  		emitradius   		= XYZ(random(-8,8),random(-8,8),random(-8,8))
+  		lifetime   		= 0.8
+		triggertime		= 999999999
+  		BillboardType  		= BT_all
+		trace			= true
+
+
+  		initial 			texture 	= "Mesh_Common_AC_Face1_81160_Sorted_P02.DDS"
+  		initial     			color 		= rgba(0.4,0.7,1,0)
+		fade so from 0.01 to 0.3 	color		= rgba(0.4,0.7,1,0.8)
+ 		fade so from 0.6 to 0.8		color  		= rgba(0.4,0.7,1,0)
+  		initial     			size		= XYZ(5,5,1)
+		fade so from 0.001 to 0.1	size		= XYZ(random(30,40),random(30,40),1)
+		fade so from 0.3 to 0.8		size           	= XYZ(5,5,1)
+  		initial     			rotate		= XYZ(0,0,random(-50,50))
+  		initial     			velocity	= XYZ(random(-20,20),random(-20,100),random(-20,20))
+	}	
+	eventsequence "acce_winter_wisp_Aisha_P03"
+	{
+		Mesh    		= "Mesh_Common_AC_Face1_81160_Sorted_P01.Y"  		
+		particleType  	= PT_MESH
+		meshRenderType  = RT_REAL_COLOR
+		Layer    		= 14
+		sourceblendmode = D3DBLEND_SRCALPHA
+  		destblendmode  	= D3DBLEND_DESTALPHA  
+  		numparticles  	= 1
+		emitrate	= 1000 		
+  		BillboardType  	= BT_Y  
+		lifetime   		= 2.4
+  		TriggerTime   	= 999999999
+  		DrawCount   	= 2
+		trace			= true
+		zEnable			= true
+		ZWriteEnable 	= false
+		
+  
+   		initial  		 			color  	= rgba(0.6,0.8,1,0.4)
+  		fade so from 0.01 to 0.8 	color  	= rgba(0.6,0.8,1,1)
+		fade so from 1.2 to 2  		color  	= rgba(0.6,0.8,1,0.4)
+  		initial   					size 	= XYZ(1.7,1.7,1.7)
+		fade so from 0.1 to 1		size 	= XYZ(1.9,1.9,1.9)
+		fade so from 1 to 2			size 	= XYZ(1.7,1.7,1.7)
+		initial     				rotate	= XYZ(0,-30,0)
+	}
+
+	eventsequence "acce_winter_wisp_Rena_P01"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 13
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_INVSRCALPHA
+  		numparticles  		= 15
+		emitrate		= 20
+  		emitradius   		= XYZ(random(-5,5),random(-5,5),random(-5,5))
+  		lifetime   		= 0.8
+		triggertime		= 999999999
+  		BillboardType  		= BT_all
+		trace			= true
+
+  		initial 			texture 	= "Mesh_Common_AC_Face1_81160_Sorted_P02.DDS"
+  		initial     			color 		= rgba(1,1,1,0)
+		fade so from 0.001 to 0.2 	color		= rgba(1,1,1,0.5)
+ 		fade so from 0.6 to 0.8		color  		= rgba(1,1,1,0)
+  		initial     			size		= XYZ(10,10,1)
+		fade so from 0.001 to 0.1	size		= XYZ(random(50,60),random(50,60),1)
+		fade so from 0.3 to 0.8		size           	= XYZ(5,5,1)
+  		initial     			rotate		= XYZ(0,0,random(-180,180))
+  		initial     			velocity	= XYZ(random(-10,10),random(-10,80),random(-10,10))
+	}	
+	eventsequence "acce_winter_wisp_Rena_P02"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA  
+  		numparticles  		= 20
+		emitrate		= 20
+  		emitradius   		= XYZ(random(-8,8),random(-8,8),random(-8,8))
+  		lifetime   		= 0.8
+		triggertime		= 999999999
+  		BillboardType  		= BT_all
+		trace			= true
+
+
+  		initial 			texture 	= "Mesh_Common_AC_Face1_81160_Sorted_P02.DDS"
+  		initial     			color 		= rgba(0.4,0.7,1,0)
+		fade so from 0.01 to 0.3 	color		= rgba(0.4,0.7,1,0.8)
+ 		fade so from 0.6 to 0.8		color  		= rgba(0.4,0.7,1,0)
+  		initial     			size		= XYZ(5,5,1)
+		fade so from 0.001 to 0.1	size		= XYZ(random(30,40),random(30,40),1)
+		fade so from 0.3 to 0.8		size           	= XYZ(5,5,1)
+  		initial     			rotate		= XYZ(0,0,random(-50,50))
+  		initial     			velocity	= XYZ(random(-20,20),random(-20,100),random(-20,20))
+	}	
+	eventsequence "acce_winter_wisp_Rena_P03"
+	{
+		Mesh    		= "Mesh_Common_AC_Face1_81160_Sorted_P01.Y"  		
+		particleType  	= PT_MESH
+		meshRenderType  = RT_REAL_COLOR
+		Layer    		= 14
+		sourceblendmode = D3DBLEND_SRCALPHA
+  		destblendmode  	= D3DBLEND_DESTALPHA  
+  		numparticles  	= 1
+		emitrate	= 1000  		
+  		BillboardType  	= BT_Y  
+		lifetime   		= 2.4
+  		TriggerTime   	= 999999999
+  		DrawCount   	= 2
+		trace			= true
+		zEnable			= true
+		ZWriteEnable 	= false
+		
+  
+   		initial  		 			color  	= rgba(0.6,0.8,1,0.2)
+  		fade so from 0.01 to 0.8 	color  	= rgba(0.6,0.8,1,1)
+		fade so from 1.2 to 2  		color  	= rgba(0.6,0.8,1,0.2)
+  		initial   					size 	= XYZ(1.7,1.7,1.7)
+		fade so from 0.1 to 1		size 	= XYZ(1.9,1.9,1.9)
+		fade so from 1 to 2			size 	= XYZ(1.7,1.7,1.7)
+		initial     				rotate	= XYZ(0,-30,0)
+	}
+
+	eventsequence "acce_winter_wisp_Raven_P01"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 13
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_INVSRCALPHA
+  		numparticles  		= 15
+		emitrate		= 20
+  		emitradius   		= XYZ(random(-5,5),random(-5,5),random(-5,5))
+  		lifetime   		= 0.8
+		triggertime		= 999999999
+  		BillboardType  		= BT_all
+		trace			= true
+
+  		initial 			texture 	= "Mesh_Common_AC_Face1_81160_Sorted_P02.DDS"
+  		initial     			color 		= rgba(1,1,1,0)
+		fade so from 0.001 to 0.2 	color		= rgba(1,1,1,1)
+ 		fade so from 0.6 to 0.8		color  		= rgba(1,1,1,0)
+  		initial     			size		= XYZ(10,10,1)
+		fade so from 0.001 to 0.1	size		= XYZ(random(50,60),random(50,60),1)
+		fade so from 0.3 to 0.8		size           	= XYZ(5,5,1)
+  		initial     			rotate		= XYZ(0,0,random(-180,180))
+  		initial     			velocity	= XYZ(random(-10,10),random(-10,80),random(-10,10))
+	}	
+	eventsequence "acce_winter_wisp_Raven_P02"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_INVSRCALPHA
+  		numparticles  		= 20
+		emitrate		= 20
+  		emitradius   		= XYZ(random(-8,8),random(-8,8),random(-8,8))
+  		lifetime   		= 0.8
+		triggertime		= 999999999
+  		BillboardType  		= BT_all
+		trace			= true
+
+
+  		initial 			texture 	= "Mesh_Common_AC_Face1_81160_Sorted_P02.DDS"
+  		initial     			color 		= rgba(0.4,0.7,1,0)
+		fade so from 0.01 to 0.3 	color		= rgba(0.4,0.7,1,0.8)
+ 		fade so from 0.6 to 0.8		color  		= rgba(0.4,0.7,1,0)
+  		initial     			size		= XYZ(5,5,1)
+		fade so from 0.001 to 0.1	size		= XYZ(random(30,40),random(30,40),1)
+		fade so from 0.3 to 0.8		size           	= XYZ(5,5,1)
+  		initial     			rotate		= XYZ(0,0,random(-50,50))
+  		initial     			velocity	= XYZ(random(-20,20),random(-20,100),random(-20,20))
+	}	
+	eventsequence "acce_winter_wisp_Raven_P03"
+	{
+		Mesh    		= "Mesh_Common_AC_Face1_81160_Sorted_P01.Y"  		
+		particleType  	= PT_MESH
+		meshRenderType  = RT_REAL_COLOR
+		Layer    		= 14
+		sourceblendmode = D3DBLEND_SRCALPHA
+  		destblendmode  	= D3DBLEND_DESTALPHA  
+  		numparticles  	= 1
+		emitrate	= 1000 		
+  		BillboardType  	= BT_Y  
+		lifetime   		= 2.4
+		TriggerTime   	= 999999999
+  		DrawCount   	= 2
+		trace			= true
+		zEnable			= true
+		ZWriteEnable 	= false
+		
+  
+   		initial  		 			color  	= rgba(0.6,0.8,1,0.4)
+  		fade so from 0.01 to 0.8 	color  	= rgba(0.6,0.8,1,0.8)
+		fade so from 1.2 to 2  		color  	= rgba(0.6,0.8,1,0.4)
+  		initial   					size 	= XYZ(1.7,1.7,1.7)
+		fade so from 0.1 to 1		size 	= XYZ(1.9,1.9,1.9)
+		fade so from 1 to 2			size 	= XYZ(1.7,1.7,1.7)
+		initial     				rotate	= XYZ(0,-30,0)
+	}
+
+	eventsequence "acce_winter_wisp_Eve_P01"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 13
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_INVSRCALPHA
+  		numparticles  		= 15
+		emitrate		= 20
+  		emitradius   		= XYZ(random(-5,5),random(-5,5),random(-5,5))
+  		lifetime   		= 0.8
+		triggertime		= 999999999
+  		BillboardType  		= BT_all
+		trace			= true
+
+  		initial 			texture 	= "Mesh_Common_AC_Face1_81160_Sorted_P02.DDS"
+  		initial     			color 		= rgba(1,1,1,0)
+		fade so from 0.001 to 0.2 	color		= rgba(1,1,1,0.7)
+ 		fade so from 0.6 to 0.8		color  		= rgba(1,1,1,0)
+  		initial     			size		= XYZ(10,10,1)
+		fade so from 0.001 to 0.1	size		= XYZ(random(50,60),random(50,60),1)
+		fade so from 0.3 to 0.8		size           	= XYZ(5,5,1)
+  		initial     			rotate		= XYZ(0,0,random(-180,180))
+  		initial     			velocity	= XYZ(random(-10,10),random(-10,80),random(-10,10))
+	}	
+	eventsequence "acce_winter_wisp_Eve_P02"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA  
+  		numparticles  		= 20
+		emitrate		= 20
+  		emitradius   		= XYZ(random(-8,8),random(-8,8),random(-8,8))
+  		lifetime   		= 0.8
+		triggertime		= 999999999
+  		BillboardType  		= BT_all
+		trace			= true
+
+
+  		initial 			texture 	= "Mesh_Common_AC_Face1_81160_Sorted_P02.DDS"
+  		initial     			color 		= rgba(0.4,0.7,1,0)
+		fade so from 0.01 to 0.3 	color		= rgba(0.4,0.7,1,0.8)
+ 		fade so from 0.6 to 0.8		color  		= rgba(0.4,0.7,1,0)
+  		initial     			size		= XYZ(5,5,1)
+		fade so from 0.001 to 0.1	size		= XYZ(random(30,40),random(30,40),1)
+		fade so from 0.3 to 0.8		size           	= XYZ(5,5,1)
+  		initial     			rotate		= XYZ(0,0,random(-50,50))
+  		initial     			velocity	= XYZ(random(-20,20),random(-20,100),random(-20,20))
+	}	
+	eventsequence "acce_winter_wisp_Eve_P03"
+	{
+		Mesh    		= "Mesh_Common_AC_Face1_81160_Sorted_P01.Y"  		
+		particleType  	= PT_MESH
+		meshRenderType  = RT_REAL_COLOR
+		Layer    		= 14
+		sourceblendmode = D3DBLEND_SRCALPHA
+  		destblendmode  	= D3DBLEND_DESTALPHA  
+  		numparticles  	= 1
+		emitrate	= 1000 		
+  		BillboardType  	= BT_Y  
+		lifetime   		= 2.4
+  		TriggerTime   	= 999999999
+  		DrawCount   	= 2
+		trace			= true
+		zEnable			= true
+		ZWriteEnable 	= false
+		
+  
+   		initial  		 			color  	= rgba(0.6,0.8,1,0.4)
+  		fade so from 0.01 to 0.8 	color  	= rgba(0.6,0.8,1,1)
+		fade so from 1.2 to 2  		color  	= rgba(0.6,0.8,1,0.4)
+  		initial   					size 	= XYZ(1.7,1.7,1.7)
+		fade so from 0.1 to 1		size 	= XYZ(1.9,1.9,1.9)
+		fade so from 1 to 2			size 	= XYZ(1.7,1.7,1.7)
+		initial     				rotate	= XYZ(0,-30,0)
+	}
+
+	eventsequence "acce_winter_wisp_Chung_P01"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 13
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_INVSRCALPHA
+  		numparticles  		= 15
+		emitrate		= 20
+  		emitradius   		= XYZ(random(-5,5),random(-5,5),random(-5,5))
+  		lifetime   		= 0.8
+		triggertime		= 999999999
+  		BillboardType  		= BT_all
+		trace			= true
+
+  		initial 			texture 	= "Mesh_Common_AC_Face1_81160_Sorted_P02.DDS"
+  		initial     			color 		= rgba(1,1,1,0)
+		fade so from 0.001 to 0.2 	color		= rgba(1,1,1,0.5)
+ 		fade so from 0.6 to 0.8		color  		= rgba(1,1,1,0)
+  		initial     			size		= XYZ(10,10,1)
+		fade so from 0.001 to 0.1	size		= XYZ(random(50,60),random(50,60),1)
+		fade so from 0.3 to 0.8		size           	= XYZ(5,5,1)
+  		initial     			rotate		= XYZ(0,0,random(-180,180))
+  		initial     			velocity	= XYZ(random(-10,10),random(-10,80),random(-10,10))
+	}	
+	eventsequence "acce_winter_wisp_Chung_P02"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA  
+  		numparticles  		= 20
+		emitrate		= 20
+  		emitradius   		= XYZ(random(-8,8),random(-8,8),random(-8,8))
+  		lifetime   		= 0.8
+		triggertime		= 999999999
+  		BillboardType  		= BT_all
+		trace			= true
+
+
+  		initial 			texture 	= "Mesh_Common_AC_Face1_81160_Sorted_P02.DDS"
+  		initial     			color 		= rgba(0.4,0.7,1,0)
+		fade so from 0.01 to 0.3 	color		= rgba(0.4,0.7,1,0.8)
+ 		fade so from 0.6 to 0.8		color  		= rgba(0.4,0.7,1,0)
+  		initial     			size		= XYZ(5,5,1)
+		fade so from 0.001 to 0.1	size		= XYZ(random(30,40),random(30,40),1)
+		fade so from 0.3 to 0.8		size           	= XYZ(5,5,1)
+  		initial     			rotate		= XYZ(0,0,random(-50,50))
+  		initial     			velocity	= XYZ(random(-20,20),random(-20,100),random(-20,20))
+	}	
+	eventsequence "acce_winter_wisp_Chung_P03"
+	{
+		Mesh    		= "Mesh_Common_AC_Face1_81160_Sorted_P01.Y"  		
+		particleType  	= PT_MESH
+		meshRenderType  = RT_REAL_COLOR
+		Layer    		= 14
+		sourceblendmode = D3DBLEND_SRCALPHA
+  		destblendmode  	= D3DBLEND_DESTALPHA  
+  		numparticles  	= 1
+		emitrate	= 1000 		
+  		BillboardType  	= BT_Y  
+		lifetime   	= 2.4		
+  		TriggerTime   	= 999999999
+  		DrawCount   	= 2
+		trace			= true
+		zEnable			= true
+		ZWriteEnable 	= false
+		
+  
+   		initial  				 	color  	= rgba(0.6,0.8,1,0.4)
+  		fade so from 0.01 to 0.8 	color  	= rgba(0.6,0.8,1,1)
+		fade so from 1.2 to 2  		color  	= rgba(0.6,0.8,1,0.4)
+  		initial   					size 	= XYZ(1.7,1.7,1.7)
+		fade so from 0.1 to 1		size 	= XYZ(1.9,1.9,1.9)
+		fade so from 1 to 2			size 	= XYZ(1.7,1.7,1.7)
+		initial     				rotate	= XYZ(0,-30,0)
+	}
+	eventsequence "TITLE_5180"
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5180.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_5190"
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5190.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_5210" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5210.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "Dark_Ora_Event01" 
+ 	{
+  		particleType  		= PT_3D_PLANE  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 60
+  		gravity    		= XYZ(0,500,0)
+  		emitradius   		= XYZ(random(-30,30),random(-50,70),random(-30,30))
+		emitrate		= 10
+  		lifetime   		= 0.6
+		TriggerTime		= 99999
+		ZEnable			= True
+		Trace			= False
+  		BillboardType  		= BT_all
+		DrawCount		= 1
+  
+  		initial      			texture  	= "Gate_Light01_Black.dds"
+		initial      			color  		= rgba(random(0.5,0.8),0,random(0.6,0.9),random(0,0.5))
+  		fade so from 0.0001 to 0.2 	color  	= rgba(random(0.7,0.9),0,random(0.8,1.0),random(0,1.0))
+  		fade so from 0.2 to 0.6 	color  	= rgba(random(0.4,0.6),0,random(0.5,0.7),random(0,0.5))
+  		initial      			size  		= XYZ(180,180,1)
+  		fade so final    		Scale 		= random(1.2,1.3)
+  		initial      			rotate  	= XYZ(random(-180,180),random(0,0),random(-180,180))
+  		initial      			dirSpeed 	= 50
+ 	}
+	--{{	#ifdef	SERV_FiSHING_HOLE
+	eventsequence "fishing_Success_01"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+		gravity    		= XYZ(0,random(10,30),0)
+  		numparticles  		= 1
+		emitrate		= 100
+  		lifetime   		= 0.8		
+		triggertime		= 0.1
+  		BillboardType  		= BT_all
+		ZEnable    		= false  	
+
+		initial				texture 	= "Heal01.dds"
+
+  		initial     			color 		= rgba(0.1,0.1,1.0,0)
+ 		fade so from 0.001 to 0.1 	color  		= rgba(0.8,0.8,1.0,1)
+ 		fade so from 0.3 to 0.8    	color  		= rgba(0.8,0.1,1.0,0)
+
+  		initial     	          	size		= XYZ(300,0,1)
+		fade so from 0.01 to 0.1 	size        	= XYZ(400,500,1)
+		fade so from 0.2 to 1.0 	size        	= XYZ(400,2000,1)
+
+		initial				scale		= random(1,2)
+
+  		initial     			velocity	= XYZ(0,300,0)
+		fade so from 0.1 to 10.0 	velocity	= XYZ(0,0,0)
+	}
+	eventsequence "fishing_Success_02"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+		emitradius   		= XYZ(random(-80,80),random(-100,100),random(-80,80))
+		gravity    		= XYZ(0,random(10,30),0)
+  		numparticles  		= 30		
+  		emitrate		= 15
+  		lifetime   		= 1		
+		triggertime		= 1.0
+		ZEnable    		= false
+  		BillboardType  		= BT_all
+  		DrawCount   		= 1
+
+		initial 			texture 	= "Explosion_Sphere.dds"
+  		initial     			color 		= rgba(random(0.5,1.0),random(0.5,1.0),random(0.5,1.0),0)
+ 		fade so from 0.001 to 0.15	color  		= rgba(random(0.5,1.0),random(0.5,1.0),random(0.5,1.0),random(0.7,1.0))
+		fade so from 0.4 to 0.6 	color  		= rgba(random(0.5,1.0),random(0.5,1.0),random(0.0,0.5),random(0.0,0.2))
+ 		fade so from 0.6 to 0.8 	color  		= rgba(random(0.5,1.0),random(0.5,1.0),random(0.0,0.5),0)
+  		initial     			size		= XYZ(100,100,1)
+		fade so from 0.25 to 0.5 	size            = XYZ(64,64,1)
+		initial				scale		= random(1,5)
+  		initial     			rotate		= XYZ(0,0,0)
+  		fade so final   		rotate 		= XYZ(0,0,0)
+  		initial     			velocity	= XYZ(random(-50,50),random(250,500),random(-50,50))
+		fade so from 0.25 to 10.0 	velocity	= XYZ(0,0,0)
+	}
+	eventsequence "fishing_Success_03"
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR
+		Layer			= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		numparticles		= 1		
+		emitrate		= 1000
+		triggercount		= 1
+		lifetime		= 1
+		BillboardType		= BT_NONE
+		Mesh			= "Arme_ChargeMp2.Y"
+		ZEnable			= false
+		
+		initial				color		= rgba(0.1,0.1,1.0,0)
+		Fade so From 0.001 to 0.1	color		= rgba(0.8,0.8,1.0,1)
+		Fade so From 0.1 to 0.4		color		= rgba(0.8,0.1,1.0,0)
+
+		initial				size		= XYZ(0.1,1.7,0.0.3)
+		Fade so From 0.001 to 0.15	Size		= XYZ(1.5,1.5,1.5)
+		Fade so From 0.15 to 0.4	Size		= XYZ(3.0,1.5,3.0)
+	}
+	eventsequence "fishing_Success_04"
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR
+		Layer			= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		numparticles		= 1		
+		emitrate		= 100
+		lifetime		= 0.4
+		triggercount		= 1
+		BillboardType		= BT_NONE
+		Mesh			= "Arme_ChargeMp2.Y"
+		ZEnable			= false
+		
+		initial				color		= rgba(0.1,0.1,1.0,0)
+		Fade so From 0.001 to 0.1	color		= rgba(0.8,0.8,1.0,1)
+		Fade so From 0.1 to 0.4		color		= rgba(0.1,0.1,1.0,0)
+
+		initial				size		= XYZ(1,0,1)
+		Fade so From 0.01 to 0.1	Size		= XYZ(1,8,1)
+		Fade so From 0.1 to 0.4		Size		= XYZ(0.3,12,0.3)
+	}
+	--}}	#endif	SERV_FiSHING_HOLE
+
+	eventsequence "TITLE_5220" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5220.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_5230" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5230.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_5240" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5240.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_5250" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5250.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_5260" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5260.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_5270" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5270.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_5280" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5280.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_5290" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5290.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_5300" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5300.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_5310" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5310.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_5320" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5320.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_5330" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5330.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+
+	eventsequence "TITLE_5340" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5340.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+
+	eventsequence "TITLE_5350" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5350.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_5360" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5360.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_5370" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5370.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_100000" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle100000.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+
+	eventsequence "UI_Ariel_Coupon_Selected_Reward_Effect"
+	{
+		particleType		= PT_2D_PLANE
+		Layer			= 21
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		numparticles		= 1
+		gravity			= XYZ(0,0,0)
+		emitrate		= 1
+		emitradius		= XYZ(0,0,0)
+		lifetime		= 0.8
+		TriggerCount		= 9999
+		BillboardType		= BT_all
+		DrawCount		= 2
+
+		initial						texture		= "UI_Memo_Start02.dds"
+		initial						color		= rgba(1,0.5,0,0.5)
+		fade so from 0.01 to 0.3			color		= rgba(1,0.5,0,0.9)
+		fade so from 0.5 to 0.8				color		= rgba(1,0,0,0)
+		initial						size		= XYZ(90,90,1)
+		fade so from 0.01 to 0.25			size		= XYZ(70,70,1)
+	
+	}
+	eventsequence "TITLE_50080" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50080.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+
+	eventsequence "TITLE_50081" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50081.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+
+	eventsequence "TITLE_50082" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50082.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "Halloween_210000131"
+	{
+		particleType		= PT_3D_PLANE
+		Layer				= 15
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		emitradius 		= XYZ(random(-10,10),random(-10,10),random(-10,10))
+		numparticles		= 10
+		emitrate		= 10
+		lifetime		= 0.5
+		triggerTime		= 999999999
+		BillboardType		= BT_All
+		Trace			= True
+		
+		initial					texture 	= "Steam_BP.DDS"
+		Initial					scale		= random(0.8,1.2)
+		
+		initial					color		= rgba(0,random(0.8,1),0,0)
+		fade so from 0.01 to 0.1		color 		= rgba(0,random(0.8,1),0,1)
+ 		fade so from 0.2 to 0.5			color		= rgba(0,random(0.8,1),0,0)
+
+		initial					rotate		= XYZ(0,0,random(-180,180))
+		fade so from 0.001 to 1.5		rotate		= XYZ(0,0,0)
+
+		initial     				size		= XYZ(random(30,50),random(30,50),1)
+		fade so from 0.01 to 0.06 		size		= XYZ(random(60,70),random(60,70),1)
+		fade so from 0.06 to 0.5		size		= XYZ(random(80,100),random(80,100),1)
+
+		initial					velocity	= XYZ(random(-100,100),random(-100,100),random(-100,100))
+		fade so from 0.01 to 0.2		velocity	= XYZ(0,0,0)
+	}
+	eventsequence "Halloween_210000132"
+	{
+		particleType		= PT_3D_PLANE
+		Layer				= 15
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		emitradius 		= XYZ(random(-10,10),random(-10,10),random(-10,10))
+		numparticles		= 10
+		emitrate		= 10
+		lifetime		= 0.5
+		triggerTime		= 999999999
+		BillboardType		= BT_All
+		Trace			= True
+		
+		initial					texture 	= "Steam_BP.DDS"
+		Initial					scale		= random(0.8,1.2)
+		
+		initial					color		= rgba(random(0.6,0.8),random(0.2,0.3),random(0.6,0.8),0)
+		fade so from 0.01 to 0.1		color 		= rgba(random(0.6,0.8),random(0.2,0.3),random(0.6,0.8),1)
+ 		fade so from 0.2 to 0.5			color		= rgba(random(0.6,0.8),random(0.2,0.3),random(0.6,0.8),0)
+
+		initial					rotate		= XYZ(0,0,random(-180,180))
+		fade so from 0.001 to 1.5		rotate		= XYZ(0,0,0)
+
+		initial     				size		= XYZ(random(30,50),random(30,50),1)
+		fade so from 0.01 to 0.06 		size		= XYZ(random(60,70),random(60,70),1)
+		fade so from 0.06 to 0.5		size		= XYZ(random(80,100),random(80,100),1)
+
+		initial					velocity	= XYZ(random(-100,100),random(-100,100),random(-100,100))
+		fade so from 0.01 to 0.2		velocity	= XYZ(0,0,0)
+	}
+	eventsequence "Halloween_210000133"
+	{
+		particleType		= PT_3D_PLANE
+		Layer				= 15
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		emitradius 		= XYZ(random(-10,10),random(-10,10),random(-10,10))
+		numparticles		= 10
+		emitrate		= 10
+		lifetime		= 0.5
+		triggerTime		= 999999999
+		BillboardType		= BT_All
+		Trace			= True
+		
+		initial					texture 	= "Steam_BP.DDS"
+		Initial					scale		= random(0.8,1.2)
+		
+		initial					color		= rgba(random(0.7,0.9),random(0.6,0.8),random(0.6,0.8),0)
+		fade so from 0.01 to 0.1		color 		= rgba(random(0.7,0.9),random(0.6,0.8),random(0.6,0.8),1)
+ 		fade so from 0.2 to 0.5			color		= rgba(random(0.7,0.9),random(0.6,0.8),random(0.6,0.8),0)
+
+		initial					rotate		= XYZ(0,0,random(-180,180))
+		fade so from 0.001 to 1.5		rotate		= XYZ(0,0,0)
+
+		initial     				size		= XYZ(random(30,50),random(30,50),1)
+		fade so from 0.01 to 0.06 		size		= XYZ(random(60,70),random(60,70),1)
+		fade so from 0.06 to 0.5		size		= XYZ(random(80,100),random(80,100),1)
+
+		initial					velocity	= XYZ(random(-100,100),random(-100,100),random(-100,100))
+		fade so from 0.01 to 0.2		velocity	= XYZ(0,0,0)
+	}
+	eventsequence "Halloween_210000134"
+	{
+		particleType		= PT_3D_PLANE
+		Layer				= 15
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		emitradius 		= XYZ(random(-10,10),random(-10,10),random(-10,10))
+		numparticles		= 10
+		emitrate		= 10
+		lifetime		= 0.5
+		triggerTime		= 999999999
+		BillboardType		= BT_All
+		Trace			= True
+		
+		initial					texture 	= "Steam_BP.DDS"
+		Initial					scale		= random(0.8,1.2)
+		
+		initial					color		= rgba(random(0.7,0.9),random(0.1,0.3),random(0.1,0.3),0)
+		fade so from 0.01 to 0.1		color 		= rgba(random(0.7,0.9),random(0.1,0.3),random(0.1,0.3),1)
+ 		fade so from 0.2 to 0.5			color		= rgba(random(0.7,0.9),random(0.1,0.3),random(0.1,0.3),0)
+
+		initial					rotate		= XYZ(0,0,random(-180,180))
+		fade so from 0.001 to 1.5		rotate		= XYZ(0,0,0)
+
+		initial     				size		= XYZ(random(30,50),random(30,50),1)
+		fade so from 0.01 to 0.06 		size		= XYZ(random(60,70),random(60,70),1)
+		fade so from 0.06 to 0.5		size		= XYZ(random(80,100),random(80,100),1)
+
+		initial					velocity	= XYZ(random(-100,100),random(-100,100),random(-100,100))
+		fade so from 0.01 to 0.2		velocity	= XYZ(0,0,0)
+	}
+	eventsequence "Halloween_210000135"
+	{
+		particleType		= PT_3D_PLANE
+		Layer				= 15
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		emitradius 		= XYZ(random(-10,10),random(-10,10),random(-10,10))
+		numparticles		= 10
+		emitrate		= 10
+		lifetime		= 0.5
+		triggerTime		= 999999999
+		BillboardType		= BT_All
+		Trace			= True
+		
+		initial					texture 	= "Steam_BP.DDS"
+		Initial					scale		= random(0.8,1.2)
+		
+		initial					color		= rgba(1,random(0.9,1),random(0.6,0.7),0)
+		fade so from 0.01 to 0.1		color 		= rgba(1,random(0.9,1),random(0.6,0.7),1)
+ 		fade so from 0.2 to 0.5			color		= rgba(1,random(0.9,1),random(0.6,0.7),0)
+
+		initial					rotate		= XYZ(0,0,random(-180,180))
+		fade so from 0.001 to 1.5		rotate		= XYZ(0,0,0)
+
+		initial     				size		= XYZ(random(30,50),random(30,50),1)
+		fade so from 0.01 to 0.06 		size		= XYZ(random(60,70),random(60,70),1)
+		fade so from 0.06 to 0.5		size		= XYZ(random(80,100),random(80,100),1)
+
+		initial					velocity	= XYZ(random(-100,100),random(-100,100),random(-100,100))
+		fade so from 0.01 to 0.2		velocity	= XYZ(0,0,0)
+	}
+	eventsequence "Halloween_210000136"
+	{
+		particleType		= PT_3D_PLANE
+		Layer				= 15
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		emitradius 		= XYZ(random(-10,10),random(-10,10),random(-10,10))
+		numparticles		= 10
+		emitrate		= 10
+		lifetime		= 0.5
+		triggerTime		= 999999999
+		BillboardType		= BT_All
+		Trace			= True
+		
+		initial					texture 	= "Steam_BP.DDS"
+		Initial					scale		= random(0.8,1.2)
+		
+		initial					color		= rgba(random(0.4,0.5),random(0.1,0.3),random(0.1,0.3),0)
+		fade so from 0.01 to 0.1		color 		= rgba(random(0.4,0.5),random(0.1,0.3),random(0.1,0.3),1)
+ 		fade so from 0.2 to 0.5			color		= rgba(random(0.4,0.5),random(0.1,0.3),random(0.1,0.3),0)
+
+		initial					rotate		= XYZ(0,0,random(-180,180))
+		fade so from 0.001 to 1.5		rotate		= XYZ(0,0,0)
+
+		initial     				size		= XYZ(random(30,50),random(30,50),1)
+		fade so from 0.01 to 0.06 		size		= XYZ(random(60,70),random(60,70),1)
+		fade so from 0.06 to 0.5		size		= XYZ(random(80,100),random(80,100),1)
+
+		initial					velocity	= XYZ(random(-100,100),random(-100,100),random(-100,100))
+		fade so from 0.01 to 0.2		velocity	= XYZ(0,0,0)
+	}
+	eventsequence "TITLE_100010" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle100010.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_100011" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle100011.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_100012" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle100012.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_100013" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle100013.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_100014" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle100014.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_5380" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5380.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "screenShotMode_title_season2_HK"
+	{
+  		particleType  		= PT_2D_PLANE 
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 24
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_INVSRCALPHA
+  		numparticles  		= 1
+ 		emitrate		= 100  	
+  		lifetime   		= 999999999	
+		triggertime		= 0.1
+  		RESOLUTIONCONVERT	= true
+		zEnable			= false
+		ZWriteEnable 		= false
+
+
+  		initial 			texture 	= "screenShotMode_title_season2_HK.dds"
+ 
+ 		initial     			color 		= rgba(1,1,1,1)
+ 		initial     			size		= XYZ(150,75,1)
+	}
+	eventsequence "TITLE_100100" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle100100.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_100110" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle100110.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_100120" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle100120.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_100130" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle100130.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_100140" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle100140.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_100150" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle100150.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_100160" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle100160.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_100170" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle100170.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5650" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5650.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	
+	
+	
+	----------------------------------------------------------------------
+	-- ES_INT
+	----------------------------------------------------------------------	
+	eventsequence "LeafParticle_01"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_INVSRCALPHA
+  		numparticles  		= 4
+  		gravity    		= XYZ(0,-120,0)
+  		emitradius   		= XYZ(random(-5,5),random(8,14),random(-5,5))
+  		lifetime   		= 1
+		emitrate		= 4
+  		BillboardType  		= BT_all
+		triggertime		= 100000
+		Trace			= true
+		DrawCount		= 2
+  		initial texture 	= "LeafParticle_01.dds"
+
+  		initial     			size		= XYZ(3,3,1)
+		fade so from 0.01 to 0.5	size		= XYZ(25,25,1)
+		fade so from 0.5 to 0.1		size		= XYZ(8,8,1)
+		initial				rotate		= xyz(0,0,random(-180,180))
+		fade so from 0.1 to 0.9		rotate		= XYZ(0,0,random(-80,80))
+  		initial     			velocity	= XYZ(random(-250,250),random(120,220),random(-200,200))
+		fade so from 0.3 to 0.9		velocity	= XYZ(0,random(-250,-450),random(-200,200))
+	}
+	eventsequence "LeafParticle_02"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_INVSRCALPHA
+  		numparticles  		= 5
+  		gravity    		= XYZ(0,-120,0)
+  		emitradius   		= XYZ(random(-5,5),random(8,14),random(-5,5))
+  		lifetime   		= 1
+		emitrate		= 5
+  		BillboardType  		= BT_all
+		triggertime		= 100000
+		Trace			= true
+		DrawCount		= 2
+  		initial texture 	= "LeafParticle_02.dds"
+
+  		initial     			size		= XYZ(3,3,1)
+		fade so from 0.01 to 0.5	size		= XYZ(25,25,1)
+		fade so from 0.5 to 0.1		size		= XYZ(8,8,1)
+		initial				rotate		= xyz(0,0,random(-180,180))
+		fade so from 0.1 to 0.9		rotate		= XYZ(0,0,random(-80,80))
+  		initial     			velocity	= XYZ(random(-250,250),random(120,220),random(-200,200))
+		fade so from 0.3 to 0.9		velocity	= XYZ(0,random(-250,-450),random(-200,200))
+	}
+	eventsequence "TITLE_5670" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5670.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_5680" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5680.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}	
+	eventsequence "TITLE_5690" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5690.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5700" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5700.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5710" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5710.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}			
+	eventsequence "TITLE_5400" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5400.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "Event_Effect_El_Field_01"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 10
+  		emitrate   		= 10
+  		lifetime   		= 0.2
+  		triggertime   		= 999999999
+  		BillboardType  		= BT_All
+		Drawcount		= 1
+		Trace			= True
+
+ 		initial 			texture  	= "WhiteCircle02.dds"
+
+    		initial     			color 		= rgba(0.3, 1, 0.3, 0)
+		fade so from 0.01 to 0.1		color		= rgba(0.7, 1, 0.8, 0.6)
+		fade so from 0.1 to 0.2		color  		= rgba(0.3, 1, 0.3, 0)
+
+  		initial     			size		= XYZ(330,330,1)
+		fade so from 0.01 to 0.2	 size		= XYZ(350,350,1)
+
+		initial				rotate		= xyz(0,0,random(0,360))
+	}
+	eventsequence "Event_Effect_El_Field_02"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+		gravity    		= XYZ(random(-30,30),random(-10,50),random(-30,30))
+		emitradius   		= XYZ(random(-10,10),random(-50,50),random(-10,10))
+  		numparticles  		= 6
+  		emitrate   		= 6
+  		lifetime   		= 1
+  		triggertime   		= 10000
+  		BillboardType  		= BT_all
+		Drawcount		= 1
+		zEnable			= false
+		ZWriteEnable 		= false
+		Trace			= True
+
+ 		initial 			texture  	= "Steam_BP.dds"
+
+    		initial     			color 		= rgba(1,1,1,0)
+		fade so from 0.01 to 0.3		color		= rgba(0.4, 1, 0.6, random(0.1,0.15))
+		fade so from 0.3 to 0.8		color  		= rgba(0.1, 1, 0.3, random(0.01,0.10))
+		fade so from 0.8 to 1		color  		= rgba(0, 0, 1, 0)
+
+  		initial     			size		= XYZ(random(100,150),random(100,150),1)
+		fade so from 0.01 to 1		 size		= XYZ(random(300,350),random(300,350),1)
+		initial				scale		= random(1,1.2)
+
+		initial				velocity	= xyz(random(-30,30),random(-10,50),random(-30,30))
+		fade so from 0.01 to 1		velocity	= xyz(0,random(10,30),0)
+		 	
+	}
+	
+	
+	
+	----------------------------------------------------------------------	
+	-- ES_JP
+	----------------------------------------------------------------------	
+    	eventsequence "PotalGateDescription" 
+        {
+	    	particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR
+	    	Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 10
+		gravity			= XYZ(0,0,0)
+	    	lifetime		= 0.3
+	    	emitrate		= 10
+	    	TriggerTime		= 99999
+
+	    	BillboardType		= BT_all
+	    	Mesh			= "DungeonGateGuide.Y"
+		ZEnable			= false 
+		initial				size		= XYZ(1.6,1.6,1.6)   		
+	}
+	eventsequence "TITLE_5501" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5501.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5502" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5502.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5503" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5503.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5505" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5505.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5507" 
+	{
+		particleType		= PT_3D_PLANE
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		BillboardType		= BT_ALL
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			texture		= "Title_5507_1.tga"
+		at 0.15			texture		= "Title_5507_2.tga"
+		at 0.30			texture		= "Title_5507_3.tga"
+		at 0.45			texture		= "Title_5507_4.tga"
+		at 0.60			texture		= "Title_5507_5.tga"
+		at 0.75			texture		= "Title_5507_6.tga"
+		at 0.90			texture		= "Title_5507_7.tga"		
+		at 1.04			EventTimer	= 0.14
+		
+		initial			size		= XYZ( 148, 68, 1 )
+	}	
+	eventsequence "TITLE_5508" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5508.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5513" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5513.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5515" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5515.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5521" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5521.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5522" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5522.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5530" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5530.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5540" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5540.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5550" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5550.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5560" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5560.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5580" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5580.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5590" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5590.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5600" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5600.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5610" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5610.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5620" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5620.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5630" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5630.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5640" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5640.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5660" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5660.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}							
+	eventsequence "LightParticle_Carrot01"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 5
+  		gravity    		= XYZ(0,-30,0)
+  		emitradius   		= XYZ(0,0,0)
+  		lifetime   		= 1.3
+		emitrate		= 3
+		triggertime		= 100000
+  		BillboardType  		= BT_all
+		Zenable			= False
+		DrawCount		= 1
+		trace		= true
+
+  		initial texture 	= "Note1.dds"
+  		initial     			color 		= rgba(random(0.1,1),random(0.1,1),random(0.1,1),0)
+ 		fade so from 0.1 to 0.2 	color  		= rgba(random(0.1,1),random(0.1,1),random(0.1,1),1)
+ 		fade so from 1 to 1.3 		color  		= rgba(random(0.1,1),random(0.1,1),random(0.1,1),0)
+  		initial     			size		= XYZ(20,20,1)
+		initial				Scale		= random(0.6,1.2)
+		fade so from 1 to 1.3	 	Scale		= 0.2
+		initial				rotate		= xyz(0,0,random(-90,90))
+  		initial     			velocity	= XYZ(random(-40,40),random(-20,40),random(-40,40))
+	}
+	eventsequence "LightParticle_Carrot02"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 5
+  		gravity    		= XYZ(0,-30,0)
+  		emitradius   		= XYZ(0,0,0)
+  		lifetime   		= 1.3
+		emitrate		= 3
+		triggertime		= 100000
+  		BillboardType  		= BT_all
+		Zenable			= False
+		DrawCount		= 1
+		trace		= true
+
+  		initial texture 	= "Note2.dds"
+  		initial     			color 		= rgba(random(0.1,1),random(0.1,1),random(0.1,1),0)
+ 		fade so from 0.1 to 0.2 	color  		= rgba(random(0.1,1),random(0.1,1),random(0.1,1),1)
+ 		fade so from 1 to 1.3 		color  		= rgba(random(0.1,1),random(0.1,1),random(0.1,1),0)
+  		initial     			size		= XYZ(20,20,1)
+		initial				Scale		= random(0.6,1.2)
+		fade so from 1 to 1.3	 	Scale		= 0.2
+		initial				rotate		= xyz(0,0,random(-90,90))
+  		initial     			velocity	= XYZ(random(-40,40),random(-20,40),random(-40,40))
+	}
+	eventsequence "LightParticle_Event_Blue01"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 2500
+  		gravity    		= XYZ(0,-1500,0)
+  		emitradius   		= XYZ(0,0,0)
+  		UseLand    		= true
+		landpos			= 240
+  		lifetime   		= 0.8
+		emitrate		= 250
+		triggertime		= 0.2
+  		BillboardType  		= BT_all
+		DrawCount		= 2
+
+  		initial texture 	= "Explosion_Sphere.dds"
+  		initial     			color 		= rgba(0,0.3,1,0)
+ 		fade so from 0.1 to 0.2 	color  		= rgba(0,0.3,1,1)
+ 		fade so from 0.5 to 0.8 	color  		= rgba(0,0.3,1,0)
+  		initial     			size		= XYZ(100,100,1)
+		fade so from 0.3 to 0.8	 	size           	= XYZ(30,30,1)
+		initial				rotate		= xyz(0,0,random(-90,90))
+  		initial     			velocity	= XYZ(random(-650,650),random(-100,1050),random(-650,650))
+	}
+	eventsequence "LightParticle_Event_Blue02"
+	{
+		particleType  		= PT_3D_PLANE
+		meshRenderType		= RT_REAL_COLOR
+		Layer			= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		numparticles		= 150
+		gravity			= XYZ(0,0,0)
+		emitradius		= XYZ(0,0,0)
+		lifetime		= 0.5
+		emitrate		= 150
+		triggerTime		= 0.4
+		BillboardType		= BT_none
+		DrawCount		= 2
+
+  		initial texture 				= "ColorBallGray.dds"
+  		initial      			color  		= rgba(0,0.5,1,0)
+		fade so from 0.05 to 0.1  	color  		= rgba(0,0.5,1,1)
+  		fade so from 0.3 to 0.5  	color  		= rgba(0,0.5,1,0)
+  		initial      			size  		= XYZ(5,5,1)
+		initial 			rotate 		= xyz(0,0,random(-180,180))
+		initial				DirSpeed 	= 1100
+  		initial      			velocity 	= XYZ(0,0,0)
+  		initial     			stretch  = 1.0
+  		fade so from 0.1 to 0.2 	stretch  = random(20,40)
+  		fade so from 0.4 to 0.5		stretch  = 1.0
+	}
+	eventsequence "LightParticle_Event_Blue03"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 20
+  		gravity    		= XYZ(0,0,0)
+  		emitradius   		= XYZ(0,0,0)
+  		UseLand    		= true
+  		lifetime   		= 1.2
+		emitrate		= 20
+  		BillboardType  		= BT_all
+		TriggerTime		= 0.1
+		ZEnable			= false
+		Trace			= true
+		Drawcount		= 1
+
+  		initial texture 	= "Particle_Blur.dds"
+  		initial     			color 		= rgba(0,0.5,1,0)
+ 		fade so from 0.001 to 0.1 	color  		= rgba(0,0.5,1,0.3)
+ 		fade so from 0.1 to 1.2 	color  		= rgba(0,0.5,1,0)
+  		initial     			size		= XYZ(100,100,1)
+		Fade so from 0.001 to 0.1	size		= XYZ(2000,2000,1)
+		Fade so from 0.1 to 1.2 	size		= XYZ(1500,1500,1)
+	}
+	eventsequence "LightParticle_Event_Blue04"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 100
+  		gravity    		= XYZ(0,0,0)
+  		emitradius   		= XYZ(0,0,0)
+  		UseLand    		= true
+  		lifetime   		= 0.4
+		emitrate		= 70
+		triggerCount		= 10
+  		BillboardType  		= BT_all
+		Trace			= true
+		Drawcount		= 1
+
+  		initial texture 	= "GuideArrow01.dds"
+  		initial     			color 		= rgba(0,0.7,1,0)
+ 		fade so from 0.001 to 0.1 	color  		= rgba(0,0.7,1,0.5)
+ 		fade so from 0.3 to 0.4 	color  		= rgba(0,0.7,1,0)
+  		initial     			size		= XYZ(600,50,1)
+		fade so final			size		= XYZ(600,200,1)
+	}
+	eventsequence "LightParticle_Event_Blue05"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_destALPHA
+		numparticles  		= 200
+  		gravity    		= XYZ(0,100,0)
+  		emitradius   		= XYZ(random(-15,50),random(-20,20),random(-15,15))
+  		UseLand    		= true
+  		lifetime   		= 0.8
+		emitrate		= 100
+  		BillboardType  		= BT_all
+		triggertime		= 0.3
+		Drawcount		= 5
+
+  		initial 		texture 	= "Fire_Flame01.Tga"
+  		initial     		color 		= rgba(0,0.2,1,0)
+ 		fade so from 0.001 to 0.1 color  	= rgba(0,0.2,1,1)
+ 		fade so from 0.65 to 0.8 color  	= rgba(0,0.2,1,0)
+  		initial     		size		= XYZ(90,90,1)
+		fade so from 0.2 to 0.6 size           = XYZ(10,10,1)
+  		initial     		rotate		= XYZ(0,0,random(-180,180))
+		fade so from 0 to 0.5 rotate         = XYZ(0,0,random(-100,100))
+   		initial     		velocity	= XYZ(random(-200,200),random(-300,300),random(-200,200))
+	}
+	eventsequence "LightParticle_Event_Blue10"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_destALPHA
+		numparticles  		= 50
+  		gravity    		= XYZ(0,100,0)
+  		emitradius   		= XYZ(random(-15,15),random(-10,10),random(-15,15))
+  		UseLand    		= true
+  		lifetime   		= 0.8
+		emitrate		= 80
+  		BillboardType  		= BT_all
+		triggertime		= 0.3
+		Drawcount		= 5
+
+  		initial 		texture 	= "Fire_Flame01.Tga"
+  		initial     		color 		= rgba(0,0.2,1,0)
+ 		fade so from 0.001 to 0.15 color  	= rgba(0,0.2,1,1)
+ 		fade so from 0.65 to 0.8 color  	= rgba(0,0.2,1,0)
+  		initial     		size		= XYZ(70,70,1)
+		fade so from 0.2 to 0.6 size           = XYZ(10,10,1)
+  		initial     		rotate		= XYZ(0,0,random(-180,180))
+		fade so from 0 to 0.5 rotate         = XYZ(0,0,random(-100,100))
+   		initial     		velocity	= XYZ(random(-30,30),random(100,200),random(-30,30))
+	}
+	eventsequence "LightParticle_Event_Blue12"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 15
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 100
+  		gravity    		= XYZ(0,0,0)
+  		emitradius   		= XYZ(0,0,0)
+  		UseLand    		= true
+  		lifetime   		= 0.2
+		emitrate		= 30
+		triggertime		= 0.2
+  		BillboardType  		= BT_all
+		ZEnable			= false
+		Trace			= true
+		Drawcount		= 2
+
+  		initial texture 	= "CenterLight_Gray01.dds"
+  		initial     			color 		= rgba(0.3,0.6,1,0)
+ 		fade so from 0.001 to 0.1 	color  		= rgba(0.3,0.6,1,0.65)
+ 		fade so from 0.1 to 0.2 	color  		= rgba(0.3,0.6,1,0)
+  		initial     			size		= XYZ(10,10,1)
+		fade so final			size		= XYZ(2500,2500,1)
+	}
+	eventsequence "LED_Raven_Nuclear_Eye02"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 15
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 100
+  		gravity    		= XYZ(0,0,0)
+  		emitradius   		= XYZ(0,0,0)
+  		UseLand    		= true
+  		lifetime   		= 0.2
+		emitrate		= 30
+		triggertime		= 0.2
+  		BillboardType  		= BT_all
+		ZEnable			= false
+		Trace			= true
+		Drawcount		= 2
+
+  		initial texture 	= "CenterLight_Gray01.dds"
+  		initial     			color 		= rgba(1,0.6,0.3,0)
+ 		fade so from 0.001 to 0.1 	color  		= rgba(1,0.6,0.3,0.65)
+ 		fade so from 0.1 to 0.2 	color  		= rgba(1,0.6,0.3,0)
+  		initial     			size		= XYZ(10,10,1)
+		fade so final			size		= XYZ(2500,2500,1)
+	}	
+	eventsequence "LightParticle_Event01"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 2500
+  		gravity    		= XYZ(0,-1500,0)
+  		emitradius   		= XYZ(0,0,0)
+  		UseLand    		= true
+		landpos			= 240
+  		lifetime   		= 0.8
+		emitrate		= 250
+		triggertime		= 0.2
+  		BillboardType  		= BT_all
+		DrawCount		= 2
+
+  		initial texture 	= "Explosion_Sphere.dds"
+  		initial     			color 		= rgba(1,0.3,0,0)
+ 		fade so from 0.1 to 0.2 	color  		= rgba(1,0.3,0,1)
+ 		fade so from 0.5 to 0.8 	color  		= rgba(1,0.3,0,0)
+  		initial     			size		= XYZ(100,100,1)
+		fade so from 0.3 to 0.8	 	size           	= XYZ(30,30,1)
+		initial				rotate		= xyz(0,0,random(-90,90))
+  		initial     			velocity	= XYZ(random(-650,650),random(-100,1050),random(-650,650))
+	}
+	eventsequence "LightParticle_Event02"
+	{
+		particleType  		= PT_3D_PLANE
+		meshRenderType		= RT_REAL_COLOR
+		Layer			= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		numparticles		= 150
+		gravity			= XYZ(0,0,0)
+		emitradius		= XYZ(0,0,0)
+		lifetime		= 0.5
+		emitrate		= 150
+		triggerTime		= 0.4
+		BillboardType		= BT_none
+		DrawCount		= 2
+
+  		initial texture 				= "ColorBallGray.dds"
+  		initial      			color  		= rgba(1,0.5,0,0)
+		fade so from 0.05 to 0.1  	color  		= rgba(1,0.5,0,1)
+  		fade so from 0.3 to 0.5  	color  		= rgba(1,0.5,0,0)
+  		initial      			size  		= XYZ(5,5,1)
+		initial 			rotate 		= xyz(0,0,random(-180,180))
+		initial				DirSpeed 	= 1100
+  		initial      			velocity 	= XYZ(0,0,0)
+  		initial     			stretch  = 1.0
+  		fade so from 0.1 to 0.2 	stretch  = random(20,40)
+  		fade so from 0.4 to 0.5		stretch  = 1.0
+	}
+	eventsequence "LightParticle_Event03"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 20
+  		gravity    		= XYZ(0,0,0)
+  		emitradius   		= XYZ(0,0,0)
+  		UseLand    		= true
+  		lifetime   		= 1.2
+		emitrate		= 20
+  		BillboardType  		= BT_all
+		TriggerTime		= 0.1
+		ZEnable			= false
+		Trace			= true
+		Drawcount		= 1
+
+  		initial texture 	= "Particle_Blur.dds"
+  		initial     			color 		= rgba(1,0.5,0,0)
+ 		fade so from 0.001 to 0.1 	color  		= rgba(1,0.5,0,0.3)
+ 		fade so from 0.1 to 1.2 	color  		= rgba(1,0.5,0,0)
+  		initial     			size		= XYZ(100,100,1)
+		Fade so from 0.001 to 0.1	size		= XYZ(2000,2000,1)
+		Fade so from 0.1 to 1.2 	size		= XYZ(1500,1500,1)
+	}
+	eventsequence "LightParticle_Event04"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 100
+  		gravity    		= XYZ(0,0,0)
+  		emitradius   		= XYZ(0,0,0)
+  		UseLand    		= true
+  		lifetime   		= 0.4
+		emitrate		= 70
+		triggerCount		= 10
+  		BillboardType  		= BT_all
+		Trace			= true
+		Drawcount		= 1
+
+  		initial texture 	= "GuideArrow01.dds"
+  		initial     			color 		= rgba(1,0.7,0,0)
+ 		fade so from 0.001 to 0.1 	color  		= rgba(1,0.7,0,0.5)
+ 		fade so from 0.3 to 0.4 	color  		= rgba(1,0.7,0,0)
+  		initial     			size		= XYZ(600,50,1)
+		fade so final			size		= XYZ(600,200,1)
+	}
+	eventsequence "LightParticle_Event10"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_destALPHA
+		numparticles  		= 50
+  		gravity    		= XYZ(0,100,0)
+  		emitradius   		= XYZ(random(-15,15),random(-10,10),random(-15,15))
+  		UseLand    		= true
+  		lifetime   		= 0.8
+		emitrate		= 80
+  		BillboardType  		= BT_all
+		triggertime		= 0.3
+
+  		initial 		texture 	= "Fire_Flame01.Tga"
+  		initial     		color 		= rgba(1,1,1,0)
+ 		fade so from 0.001 to 0.15 color  	= rgba(1,1,1,1)
+ 		fade so from 0.65 to 0.8 color  	= rgba(1,1,1,0)
+  		initial     		size		= XYZ(70,70,1)
+		fade so from 0.2 to 0.6 size           = XYZ(10,10,1)
+  		initial     		rotate		= XYZ(0,0,random(-180,180))
+		fade so from 0 to 0.5 rotate         = XYZ(0,0,random(-100,100))
+   		initial     		velocity	= XYZ(random(-30,30),random(100,200),random(-30,30))
+	}	
+	eventsequence "MusicParticle_01"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 4
+  		gravity    		= XYZ(0,-120,0)
+  		emitradius   		= XYZ(random(-5,5),random(8,14),random(-5,5))
+  		lifetime   		= 1
+		emitrate		= 4
+  		BillboardType  		= BT_all
+		triggertime		= 100000
+		Trace			= true
+		DrawCount		= 2
+  		initial texture 	= "MusicParticle_01.dds"
+  		initial     			color 		= rgba(random(0.1,1),random(0.1,1),random(0.1,1),0)
+ 		fade so from 0.1 to 0.2		color  		= rgba(random(0.1,1),random(0.1,0.5),random(0.1,1),0.5)
+		fade so from 0.3 to 0.7		color  		= rgba(random(0.3,0.7),random(0.1,0.5),random(0.1,1),1)
+		fade so from 0.7 to 0.9 	color  		= rgba(0,random(0.1,0.5),random(0.1,1),0)
+  		initial     			size		= XYZ(3,3,1)
+		fade so from 0.01 to 0.5	size		= XYZ(25,25,1)
+		fade so from 0.5 to 0.1		size		= XYZ(8,8,1)
+		initial				rotate		= xyz(0,0,random(-180,180))
+		fade so from 0.1 to 0.9		rotate		= XYZ(0,0,random(-80,80))
+  		initial     			velocity	= XYZ(random(-250,250),random(120,220),random(-200,200))
+		fade so from 0.3 to 0.9		velocity	= XYZ(0,random(-250,-450),random(-200,200))
+	}
+	eventsequence "MusicParticle_02"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 5
+  		gravity    		= XYZ(0,-120,0)
+  		emitradius   		= XYZ(random(-5,5),random(8,14),random(-5,5))
+  		lifetime   		= 1
+		emitrate		= 5
+  		BillboardType  		= BT_all
+		triggertime		= 100000
+		Trace			= true
+		DrawCount		= 2
+  		initial texture 	= "MusicParticle_02.dds"
+  		initial     			color 		= rgba(0,random(0.1,1),random(0.1,1),0)
+ 		fade so from 0.1 to 0.2		color  		= rgba(0,random(0.1,1),random(0.1,1),0.5)
+		fade so from 0.3 to 0.7		color  		= rgba(random(0.3,0.7),random(0.1,1),1,1)
+		fade so from 0.7 to 0.9 	color  		= rgba(0,random(0.1,1),random(0.1,1),0)
+  		initial     			size		= XYZ(3,3,1)
+		fade so from 0.01 to 0.5	size		= XYZ(25,25,1)
+		fade so from 0.5 to 0.1		size		= XYZ(8,8,1)
+		initial				rotate		= xyz(0,0,random(-180,180))
+		fade so from 0.1 to 0.9		rotate		= XYZ(0,0,random(-80,80))
+  		initial     			velocity	= XYZ(random(-250,250),random(120,220),random(-200,200))
+		fade so from 0.3 to 0.9		velocity	= XYZ(0,random(-250,-450),random(-200,200))
+	}	
+	eventsequence "acce_bronze_01"
+	{
+		particleType		= PT_3D_PLANE
+		Layer			= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 5
+		emitrate		= 10		
+		BillboardType		= BT_All
+		lifetime		= 0.5
+		triggerTime		= 999999999
+		
+		initial      			texture 	= "Mesh_Common_Cash_AC_ARM_67005290.dds"
+
+		initial     			color 		= rgba(1,random(0.8,1),random(0.8,1),1)
+ 		fade so from 0.3 to 0.5		color  		= rgba(1,random(0.8,1),random(0.8,1),0)
+
+		initial				rotate		= XYZ(random(-180,180),random(-500,500),random(-180,180))
+		fade so from 0.01 to 0.3	rotate		= XYZ(0,0,0)
+
+		initial      			size  		= XYZ(10,10,1)
+
+		initial				scale		= random(1,2.5)
+
+		initial     			velocity	= XYZ(random(-300,300),random(-300,300),random(-300,300))
+		fade so from 0.01 to 0.5	velocity	= XYZ(0,0,0)
+	}
+	eventsequence "acce_gold_01"
+	{
+		particleType		= PT_3D_PLANE
+		Layer			= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 5
+		emitrate		= 10		
+		BillboardType		= BT_All
+		lifetime		= 0.5
+		triggerTime		= 999999999
+		
+		initial      			texture 	= "Mesh_Common_Cash_AC_ARM_67005291.dds"
+
+		initial     			color 		= rgba(1,random(0.8,1),random(0.8,1),1)
+ 		fade so from 0.3 to 0.5		color  		= rgba(1,random(0.8,1),random(0.8,1),0)
+
+		initial				rotate		= XYZ(random(-180,180),random(-500,500),random(-180,180))
+		fade so from 0.01 to 0.3	rotate		= XYZ(0,0,0)
+
+		initial      			size  		= XYZ(10,10,1)
+
+		initial				scale		= random(1,2.5)
+
+		initial     			velocity	= XYZ(random(-300,300),random(-300,300),random(-300,300))
+		fade so from 0.01 to 0.5	velocity	= XYZ(0,0,0)
+	}
+	eventsequence "CompanyLogo_JP" 
+	{
+		particleType		= PT_2D_PLANE
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		RESOLUTIONCONVERT	= true
+		
+		lifetime			= 9999
+		initial texture		= "HQ_CompanyLogo.dds"
+		
+		initial						size	= XYZ(1024,768,0)
+		initial						color	= rgba(0,0,0,1)
+		fade so from 0.01 to 1.5	color	= rgba(1,1,1,1)
+		fade so from 14  to 15.5	color	= rgba(0,0,0,1)
+	}
+	eventsequence "DeliberationLogo_JP" 
+	{
+		particleType		= PT_2D_PLANE
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		RESOLUTIONCONVERT	= true
+		
+		lifetime			= 9999
+		initial texture		= "HQ_DeliberationLogo.dds"
+		
+		initial						size	= XYZ(512,300,0)
+		initial						color	= rgba(0,0,0,1)
+		fade so from 0.01 to 1.5	color	= rgba(1,1,1,1)
+		fade so from 2.5  to 4		color	= rgba(0,0,0,1)
+	}
+	eventsequence "tigerSet_accessories_line01_Blue" 
+	{
+		particleType		= PT_SkinMesh
+		meshRenderType		= RT_REAL_COLOR
+		Layer			= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		numparticles		= random(1,5)
+		lifetime		= random(1.5,5)
+		emitrate		= random(1.5,5)
+		triggertime		= 9999999
+		BillboardType		= BT_NONE
+		ZWriteEnable 		= false
+		Mesh			= "Mesh_Common_AC_Lowbody_60001929_A_Sorted.X"
+		Drawcount		= 3
+		trace			= true
+				
+		initial				color		= rgba(0,0.1,1,0)
+		Fade so From 0.1 to 0.25	color		= rgba(0,0.1,1,1)
+		Fade so From 0.25 to 0.53	color		= rgba(0,0.1,1,0)
+		initial				rotate		= XYZ(random(200,225),random(20,50),0)
+		Initial				Scale		= random(0.55,0.65)
+		Fade so From 0.1 to 0.6		Scale		= random(0.45,1.2)
+	}
+	eventsequence "tigerSet_accessories_line02_Blue" 
+	{
+		particleType		= PT_SkinMesh
+		meshRenderType		= RT_REAL_COLOR
+		Layer			= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		numparticles		= random(1,5)
+		lifetime		= random(1.5,5)
+		emitrate		= random(1.5,5)
+		triggertime		= 9999999
+		BillboardType		= BT_NONE
+		ZWriteEnable 		= false
+		Mesh			= "Mesh_Common_AC_Lowbody_60001929_A_Sorted.X"
+		Drawcount		= 3
+		Trace			= True
+		
+		initial				color		= rgba(0,0.1,1,0)
+		Fade so From 0.1 to 0.25	color		= rgba(0,0.1,1,1)
+		Fade so From 0.25 to 0.53	color		= rgba(0,0.1,1,0)
+		initial				rotate		= XYZ(random(-215,-180),random(20,50),0)
+		Initial				Scale		= random(0.55,0.65)
+		Fade so From 0.1 to 0.6		Scale		= random(0.45,1.8)
+	}
+	eventsequence "tigerSet_accessories_line01_Red" 
+	{
+		particleType		= PT_SkinMesh
+		meshRenderType		= RT_REAL_COLOR
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		numparticles		= random(1,5)
+		lifetime			= random(1.5,5)
+		emitrate			= random(1.5,5)
+		triggertime			= 9999999
+		BillboardType		= BT_NONE
+		ZWriteEnable 		= false
+		Mesh				= "Mesh_Common_AC_Lowbody_60001929_A_Sorted.X"
+		Drawcount			= 1
+		trace				= true
+				
+		initial						color		= rgba(1,0.1,0,0)
+		Fade so From 0.1 to 0.25	color		= rgba(1,0.1,0,1)
+		Fade so From 0.25 to 0.53	color		= rgba(1,0.1,0,0)
+		initial						rotate		= XYZ(random(200,225),random(20,50),0)
+		Initial						Scale		= random(0.55,0.65)
+		Fade so From 0.1 to 0.6		Scale		= random(0.45,1.2)
+	}
+	eventsequence "tigerSet_accessories_line02_Red" 
+	{
+		particleType		= PT_SkinMesh
+		meshRenderType		= RT_REAL_COLOR
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		numparticles		= random(1,5)
+		lifetime			= random(1.5,5)
+		emitrate			= random(1.5,5)
+		triggertime			= 9999999
+		BillboardType		= BT_NONE
+		ZWriteEnable 		= false
+		Mesh				= "Mesh_Common_AC_Lowbody_60001929_A_Sorted.X"
+		Drawcount			= 1
+		Trace				= True
+		
+		initial						color		= rgba(1,0.1,0,0)
+		Fade so From 0.1 to 0.25	color		= rgba(1,0.1,0,1)
+		Fade so From 0.25 to 0.53	color		= rgba(1,0.1,0,0)
+		initial						rotate		= XYZ(random(-215,-180),random(20,50),0)
+		Initial						Scale		= random(0.55,0.65)
+		Fade so From 0.1 to 0.6		Scale		= random(1.45,1.8)
+	}
+	eventsequence "RVC_buff_OverHit_P01"
+ 	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    			= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_INVSRCALPHA
+		numparticles  		= 4
+		emitrate			= 4
+		gravity    			= XYZ(0,200,0)
+  		emitradius   		= XYZ(random(-10,10),random(-10,10),random(-10,10))
+  		lifetime   			= 0.6
+		triggerTime			= 99999
+  		BillboardType  		= BT_all
+		
+  		initial 						texture 	= "Steam_BP.DDS"
+
+  		initial     					color 		= rgba(0.1,0,0,0)
+		fade so from 0.01 to 0.2 		color  		= rgba(random(0.1,0.2),0,0,random(0.2,0.3))
+		fade so from 0.2 to 0.6			color  		= rgba(0.1,0,0,0)
+
+  		initial     					size		= XYZ(60,60,1)
+		fade so from 0.01 to 0.1	 	size        = XYZ(150,150,1)
+		fade so from 0.1 to 3 	 		size        = XYZ(300,300,1)
+
+		initial							scale		= random(1,1.3)
+
+  		initial     					rotate		= XYZ(0,0,random(-180,180))
+		fade so from 0.0 to 0.05 		rotate      = XYZ(0,0,random(-10,10))
+		fade so from 0.05 to 3			rotate      = XYZ(0,0,0)
+
+   		initial     					velocity	= XYZ(random(-100,100),random(50,150),random(-100,100))
+		fade so from 0.01 to 0.6			velocity	= XYZ(0,random(10,30),0)
+ 	}	                            	  
+	eventsequence "RVC_buff_OverHit_P02"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    			= 15
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA  
+  		gravity    			= XYZ(0,200,0)
+  		emitradius   		= XYZ(random(-10,10),random(-10,10),random(-10,10))
+		numparticles  		= 30
+		emitrate			= 30
+  		lifetime   			= 0.56
+		triggertime			= 99999
+  		BillboardType  		= BT_all
+		Trace				= True
+  			
+		initial 						texture 	= "secretVelder_perpit_fire_flame.dds"
+		
+		initial     					color 		= rgba(1,0,0,0)
+ 		fade so from 0.01 to 0.03		color  		= rgba(1,1,1,random(0.9,1.0))
+		fade so from 0.1 to 0.3 		color  		= rgba(random(0.9,1.0),random(0.9,1.0),random(0.9,1.0),random(0.5,0.8))
+		fade so from 0.3 to 0.4 		color  		= rgba(random(0.9,1.0),random(0.9,1.0),random(0.9,1.0),random(0.1,0.5))
+ 		fade so from 0.4 to 0.56 		color  		= rgba(1,0,0,0)
+
+  		initial     					size		= XYZ(5,5,1)
+		fade so from 0.01 to 0.06 		size        = XYZ(15,15,1)
+		fade so from 0.06 to 0.3 		size        = XYZ(25,25,0)
+		fade so from 0.3 to 0.6 		size        = XYZ(0,0,0)
+
+		initial							scale		= random(1,1.3)
+
+		initial							rotate		= xyz(0,0,random(-180,180))
+		fade so from 0.01 to 5.0 		rotate      = XYZ(0,0,0)
+
+   		initial     					velocity	= XYZ(random(-200,200),random(-200,200),random(-200,200))
+		fade so from 0.01 to 0.1		velocity	= XYZ(random(-50,50),random(-50,50),random(-50,50))
+		fade so from 0.1 to 0.8			velocity	= XYZ(0,random(10,60),0)
+	}
+	eventsequence "FieldNPC_Name"
+	{
+	    particleType		= PT_2D_PLANE
+		meshRenderType		= RT_REAL_COLOR		
+		Layer			    = 15
+		
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity			= XYZ(0,0,0)
+		emitradius		= XYZ(0,0,0)
+		lifetime		= 99999
+		emitrate		= 60
+		triggerCount		= 1
+  		BillboardType  		= BT_all
+		Trace			= true
+		Drawcount		= 1
+	
+		initial			texture		= "Npc_Name_ANNE.dds"
+		initial						size	= XYZ(128,64,1)
+		
+						
+	}
+
+	eventsequence "Jewelry_Rose_Effect01"
+	{
+		particleType    	= PT_3D_PLANE
+		meshRenderType   	= RT_REAL_COLOR  
+		Layer      		= 14
+		sourceblendmode   	= D3DBLEND_SRCALPHA
+		destblendmode    	= D3DBLEND_INVSRCALPHA
+		numparticles    	= 6
+  		gravity    		= XYZ(0,-100,0)
+  		emitradius   		= XYZ(random(-5,5),random(10,20),random(-5,5))
+  		lifetime   		= 0.6
+		emitrate		= 6
+  		BillboardType  		= BT_all
+		triggertime		= 100000
+		DrawCount     		= 1
+
+
+  		initial 		texture 	= "Rose_Effect01.Tga"
+  		initial     			color 		= rgba(random(0.1,1),random(0.1,1),random(0.1,1),0)
+ 		fade so from 0.1 to 0.2 	color  		= rgba(random(0.1,1),random(0.1,1),random(0.1,1),1)
+ 		fade so from 0.3 to 0.6	 	color  		= rgba(random(0.1,1),random(0.1,1),random(0.1,1),0)
+  		initial     		size		= XYZ(5,5,1)
+		fade so from 0.01 to 0.3 size           = XYZ(30,30,1)
+		fade so from 0.3 to 0.6 size           = XYZ(10,10,1)
+  		initial     		rotate		= XYZ(0,0,random(-180,180))
+		fade so from 0 to 0.6 rotate         = XYZ(0,0,random(-80,80))
+   		initial     		velocity	= XYZ(random(-200,200),random(100,200),random(-200,200))
+		fade so from 0.3 to 0.6 	velocity	= XYZ(random(-200,200),random(-300,-500),random(-200,200))
+	}
+	eventsequence "Jewelry_Rose_Effect02"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+		numparticles  		= 4
+  		gravity    		= XYZ(0,-100,0)
+  		emitradius   		= XYZ(random(-5,5),random(10,20),random(-5,5))
+  		lifetime   		= 1
+		emitrate		= 4
+  		BillboardType  		= BT_all
+		triggertime		= 100000
+		DrawCount     		= 1
+
+
+  		initial 		texture 	= "Rose_Effect01.Tga"
+  		initial     			color 		= rgba(random(0.1,1),random(0.1,1),random(0.1,1),0)
+ 		fade so from 0.1 to 0.2 	color  		= rgba(random(0.1,1),random(0.1,1),random(0.1,1),1)
+ 		fade so from 0.5 to 1	 	color  		= rgba(random(0.1,1),random(0.1,1),random(0.1,1),0)
+  		initial     		size		= XYZ(5,5,1)
+		fade so from 0.01 to 0.5 size           = XYZ(30,30,1)
+		fade so from 0.5 to 1 size           = XYZ(10,10,1)
+  		initial     		rotate		= XYZ(0,0,random(-180,180))
+		fade so from 0 to 1 rotate         = XYZ(0,0,random(-80,80))
+   		initial     		velocity	= XYZ(random(-200,200),random(150,250),random(-200,200))
+		fade so from 0.3 to 1 	velocity	= XYZ(random(-200,200),random(-300,-500),random(-200,200))
+	}
+
+	eventsequence "acce_Arborday_Apricot_01_CN"
+	{
+		particleType		= PT_3D_PLANE
+		Layer			= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 5
+		emitrate		= 5		
+		BillboardType		= BT_All
+		lifetime		= 2
+		triggerTime		= 999999999
+		
+		initial      			texture 	= "Heart_Effect01.Tga"
+
+		initial     			color 		= rgba(1,random(0,0.5),random(0,0.5),1)
+ 		fade so from 0.3 to 0.5		color  		= rgba(1,random(0,0.5),random(0,0.5),0)
+
+		initial				rotate		= XYZ(random(-180,180),random(-500,500),random(-180,0))
+		fade so from 0.01 to 0.3	rotate		= XYZ(0,0,0)
+
+		initial      			size  		= XYZ(5,5,1)
+
+		initial				scale		= random(2,3)
+
+		initial     			velocity	= XYZ(random(-200,200),random(-200,200),random(-200,200))
+		fade so from 0.01 to 0.5	velocity	= XYZ(0,0,0)
+	}
+	eventsequence "TITLE_35080" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle35080.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_35090" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle35090.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_35000" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle35000.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_35007" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle35007.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_35008" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle35008.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_35009" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle35009.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_35170" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle35170.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_35180" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle35180.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_35210" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle35210.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_40130" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle40130.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_35010" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle35010.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_60040" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle60040.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_60050" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle60050.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_60060" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle60060.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_60070" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle60070.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+
+	eventsequence "TITLE_60080" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle60080.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+
+	eventsequence "TITLE_60090" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle60090.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}	
+	eventsequence "TITLE_70000" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle70000.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_70010" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle70010.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_70020" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle70020.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	
+	eventsequence "TITLE_70030" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle70030.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_40140" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle40140.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_40150" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle40150.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "Magic_Girl_Wing_Effect_Int"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 50
+  		gravity    		= XYZ(0,100,0)
+  		emitradius   		= XYZ(0,random(-70,130),60)
+  		UseLand    		= true
+  		lifetime   		= 1.7
+		emitrate		= 30
+		triggertime		= 999999999
+  		BillboardType  		= BT_all
+		drawcount		= 1
+		Trace			= True
+
+  		initial texture 	= "ColorBallRed.dds"
+  		initial     			color 		= rgba(1,1,1,0.6)
+  		fade so from 0.1 to 0.5		color 		= rgba(1,1,1,1)
+		fade so from 0.5 to 0.7		color 		= rgba(1,1,1,0.8)
+		fade so from 0.7 to 1.0		color 		= rgba(1,1,1,0)
+  		initial     			size		= XYZ(15,15,1)
+  		fade so from 0.1 to 0.2		size		= XYZ(10,10,1)
+		fade so from 0.2 to 0.3		size		= XYZ(25,25,1)
+		fade so from 0.3 to 0.4		size		= XYZ(15,15,1)
+		fade so from 0.4 to 0.5		size		= XYZ(25,25,1)
+		fade so from 0.5 to 0.6		size		= XYZ(10,10,1)
+		fade so from 0.6 to 0.7		size		= XYZ(25,25,1)
+		fade so from 0.7 to 0.8		size		= XYZ(5,5,1)
+		fade so from 0.8 to 0.9		size		= XYZ(10,10,1)
+		fade so from 0.9 to 1		size		= XYZ(5,5,1)
+		initial     			DirSpeed	= random(300,500)
+		fade so final			rotate		= XYZ(0,random(400,600),0)
+	}
+
+	eventsequence "TITLE_5410" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5410.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5420" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5420.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}	
+	eventsequence "TITLE_5430" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5430.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5440" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5440.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5450" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5450.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+	eventsequence "TITLE_5460" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle5460.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	
+	}
+
+-- 130912/이경철/중추절 이벤트 칭호
+	eventsequence "TITLE_50100" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50100.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_50101" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50101.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_50102" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50102.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_50103" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50103.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_50104" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50104.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_50105" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50105.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_50106" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50106.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_50107" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50107.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_50108" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50108.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_50109" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50109.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_50110" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50110.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_50111" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50111.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_50112" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50112.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_50113" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50113.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_50114" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle50114.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+
+-- 130926/이경철/2013 할로윈 이벤트 칭호
+	eventsequence "TITLE_40160" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle40160.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "TITLE_40170" 
+	{
+		particleType		= PT_MESH
+		meshRenderType		= RT_REAL_COLOR		
+		Layer				= 14
+		sourceblendmode		= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		numparticles		= 1
+		gravity				= XYZ(0,0,0)
+		emitradius			= XYZ(0,0,0)
+		BillboardType		= BT_all
+		Mesh				= "Titlesymbol.Y"
+		CHANGETEXXET		= "UnitTitle40170.xet"
+		ZEnable				= true		
+		TRACE				= true
+		lifetime			= 99999
+		ZWriteEnable	    = false
+		
+		initial			size		= XYZ( 1.2, 1.2, 0.5 )
+	}
+	eventsequence "EffectSet_PUMPKIN_TANYA_Wait"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 0.500
+		NumParticles		= 30
+		DrawCount			= 2
+		Layer				= 16
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "Black_Light.dds"
+		Initial						Size = XYZ(10, 10, 1)
+		Fade so From 0.000 to 0.500	Size = XYZ(130, 130, 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+		Initial						Color = RGBA(1, 0.500, 0, 0)
+		Fade so From 0.000 to 0.250	Color = RGBA(1, 0.500, 0, 1)
+		Fade so From 0.250 to 0.500	Color = RGBA(1, 1, 1, 0)
+	}	
+	eventsequence "EffectSet_PUMPKIN_LAEL_Wait"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 0.500
+		NumParticles		= 30
+		DrawCount			= 2
+		Layer				= 16
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "Black_Light.dds"
+		Initial						Size = XYZ(10, 10, 1)
+		Fade so From 0.000 to 0.500	Size = XYZ(130, 130, 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+		Initial						Color = RGBA(0.100, 0.500, 1, 0)
+		Fade so From 0.000 to 0.250	Color = RGBA(0.100, 0.500, 1, 1)
+		Fade so From 0.250 to 0.500	Color = RGBA(1, 1, 1, 0)
+	}
+	eventsequence "EffectSet_PUMPKIN_LOJETA_Wait"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 0.500
+		NumParticles		= 30
+		DrawCount			= 2
+		Layer				= 16
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "Black_Light.dds"
+		Initial						Size = XYZ(10, 10, 1)
+		Fade so From 0.000 to 0.500	Size = XYZ(130, 130, 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+		Initial						Color = RGBA(0.100, 1, 0.200, 0)
+		Fade so From 0.000 to 0.250	Color = RGBA(0.100, 1, 0.200, 1)
+		Fade so From 0.250 to 0.500	Color = RGBA(1, 1, 1, 0)
+	}		
+	eventsequence "EffectSet_PUMPKIN_NARENEA_Wait"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 0.500
+		NumParticles		= 30
+		DrawCount			= 2
+		Layer				= 16
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "Black_Light.dds"
+		Initial						Size = XYZ(10, 10, 1)
+		Fade so From 0.000 to 0.500	Size = XYZ(130, 130, 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+		Initial						Color = RGBA(1, 0.500, 1, 0)
+		Fade so From 0.000 to 0.250	Color = RGBA(1, 0.500, 1, 1)
+		Fade so From 0.250 to 0.500	Color = RGBA(1, 0.500, 1, 0)
+	}
+	eventsequence "EffectSet_PUMPKIN_ELDENA_Wait"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 0.500
+		NumParticles		= 30
+		DrawCount			= 2
+		Layer				= 16
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "Black_Light.dds"
+		Initial						Size = XYZ(10, 10, 1)
+		Fade so From 0.000 to 0.500	Size = XYZ(random(130, 250), random(130, 250), 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+		Initial						Color = RGBA(random(0.100, 1), random(0.100, 1), random(0.100, 1), 0)
+		Fade so From 0.000 to 0.250	Color = RGBA(random(0.100, 1), random(0.100, 1), random(0.100, 1), 1)
+		Fade so From 0.250 to 0.500	Color = RGBA(random(0.100, 1), random(0.100, 1), random(0.100, 1), 0)
+	}
+	eventsequence "EffectSet_PUMPKIN_ELDENA_Wait02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 6
+		Lifetime			= 0.600
+		NumParticles		= 6
+		TriggerTime			= 100000
+		DrawCount			= 2
+		Layer				= 14
+		Emitradius			= XYZ(random(-5, 5), random(10, 20), random(-5, 5))
+		Gravity				= XYZ(0, -100, random(-1000, -100))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "Pumpkin_Effect01.Tga"
+		Initial						Color = RGBA(random(0.100, 1), random(0.100, 1), random(0.100, 1), 0)
+		Fade so From 0.100 to 0.200	Color = RGBA(random(0.100, 1), random(0.100, 1), random(0.100, 1), 1)
+		Fade so From 0.300 to 0.600	Color = RGBA(random(0.100, 1), random(0.100, 1), random(0.100, 1), 0)
+		Initial						Size = XYZ(5, 5, 1)
+		Fade so From 0.010 to 0.300	Size = XYZ(30, 30, 1)
+		Fade so From 0.300 to 0.600	Size = XYZ(10, 10, 1)
+		Initial						Rotate = XYZ(0, 0, random(-360, 360))
+		Fade so From 0.000 to 0.600	Rotate = XYZ(0, 0, random(-80, 80))
+		Initial						Velocity = XYZ(random(-200, 200), random(-50, 200), random(-200, 200))
+		Fade so From 0.300 to 0.600	Velocity = XYZ(random(-200, 200), random(-300, -500), random(-200, 200))
+	}		
+	eventsequence "Event_Effect_Nine_Tail_Red"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 1
+  		emitrate   		= 100
+  		lifetime   		= 999999999
+  		triggertime   		= 999999999
+  		BillboardType  		= BT_All
+		Drawcount		= 1
+		Trace			= True
+
+ 		initial 			texture  	= "WhiteCircle02.dds"
+
+    		initial     			color 		= rgba(0.9, 0.4, 0.4, 0.5)
+
+  		initial     			size		= XYZ(180,180,1)
+		--fade so from 0.01 to 0.2	 size		= XYZ(200,200,1)
+
+		initial				rotate		= xyz(0,0,random(0,0))
+	}
+	eventsequence "Event_Effect_Nine_Tail_Blue"
+	{
+  		particleType  		= PT_3D_PLANE
+  		meshRenderType  	= RT_REAL_COLOR  
+  		Layer    		= 14
+  		sourceblendmode  	= D3DBLEND_SRCALPHA
+  		destblendmode  		= D3DBLEND_DESTALPHA
+  		numparticles  		= 1
+  		emitrate   		= 100
+  		lifetime   		= 999999999
+  		triggertime   		= 999999999
+  		BillboardType  		= BT_All
+		Drawcount		= 1
+		Trace			= True
+
+ 		initial 			texture  	= "WhiteCircle02.dds"
+
+    		initial     			color 		= rgba(0.5, 0.8, 0.8, 0.5)
+
+
+  		initial     			size		= XYZ(180,180,1)
+		--fade so from 0.01 to 0.2	 size		= XYZ(200,200,1)
+
+		initial				rotate		= xyz(0,0,random(0,0))
+	}	
+}

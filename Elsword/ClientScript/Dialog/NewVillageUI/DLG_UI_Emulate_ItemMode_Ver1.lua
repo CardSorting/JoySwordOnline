@@ -1,0 +1,2013 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+g_pStatic_emulate = g_pUIDialog:CreateStatic()
+g_pUIDialog:AddControl( g_pStatic_emulate )
+g_pStatic_emulate:SetName( "emulate" )
+
+----------BG
+
+g_pPicture_bg1 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_bg1 )
+
+g_pPicture_bg1:SetTex( "DLG_UI_Common_Texture01.TGA", "emulate_bg_left" )
+
+g_pPicture_bg1:SetPoint
+{
+    
+	"LEFT_TOP		= D3DXVECTOR2(3,2)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pPicture_bg1 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_bg1 )
+
+g_pPicture_bg1:SetTex( "DLG_UI_Common_Texture01.TGA", "emulate_bg_middle" )
+
+g_pPicture_bg1:SetPoint
+{
+    ADD_SIZE_X = 993,
+	"LEFT_TOP		= D3DXVECTOR2(15,2)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pPicture_bg1 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_bg1 )
+
+g_pPicture_bg1:SetTex( "DLG_UI_Common_Texture01.TGA", "emulate_bg_right" )
+
+g_pPicture_bg1:SetPoint
+{
+    
+	"LEFT_TOP		= D3DXVECTOR2(1010,2)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+-------------gray BG 1
+
+g_pPicture_bg2 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_bg2 )
+
+g_pPicture_bg2:SetTex( "DLG_UI_Common_Texture01.TGA", "emulate_bg2_left" )
+
+g_pPicture_bg2:SetPoint
+{
+    
+	"LEFT_TOP		= D3DXVECTOR2(17,55)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pPicture_bg2 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_bg2 )
+
+g_pPicture_bg2:SetTex( "DLG_UI_Common_Texture01.TGA", "emulate_bg2_middle" )
+
+g_pPicture_bg2:SetPoint
+{
+    ADD_SIZE_X = 127,
+	"LEFT_TOP		= D3DXVECTOR2(25,55)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pPicture_bg2 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_bg2 )
+
+g_pPicture_bg2:SetTex( "DLG_UI_Common_Texture01.TGA", "emulate_bg2_right" )
+
+g_pPicture_bg2:SetPoint
+{
+  
+	"LEFT_TOP		= D3DXVECTOR2(153,55)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+---------GRAY BG  2
+
+g_pPicture_bg3 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_bg3 )
+
+g_pPicture_bg3:SetTex( "DLG_UI_Common_Texture01.TGA", "emulate_bg2_left" )
+
+g_pPicture_bg3:SetPoint
+{
+  
+	"LEFT_TOP		= D3DXVECTOR2(166,55)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pPicture_bg3 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_bg3 )
+
+g_pPicture_bg3:SetTex( "DLG_UI_Common_Texture01.TGA", "emulate_bg2_middle" )
+
+g_pPicture_bg3:SetPoint
+{
+    ADD_SIZE_X = 824,
+	"LEFT_TOP		= D3DXVECTOR2(174,55)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pPicture_bg3 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_bg3 )
+
+g_pPicture_bg3:SetTex( "DLG_UI_Common_Texture01.TGA", "emulate_bg2_right" )
+
+g_pPicture_bg3:SetPoint
+{
+    
+	"LEFT_TOP		= D3DXVECTOR2(999,55)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+------ BG2
+
+g_pPicture_bg4 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_bg4 )
+
+g_pPicture_bg4:SetTex( "DLG_UI_Common_Texture01.TGA", "emulate_bg3_left" )
+
+g_pPicture_bg4:SetPoint
+{
+  
+	"LEFT_TOP		= D3DXVECTOR2(172,102)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pPicture_bg4 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_bg4 )
+
+g_pPicture_bg4:SetTex( "DLG_UI_Common_Texture01.TGA", "emulate_bg3_middle" )
+
+g_pPicture_bg4:SetPoint
+{
+    ADD_SIZE_X = 810,
+	"LEFT_TOP		= D3DXVECTOR2(181,102)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pPicture_bg4 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_bg4 )
+
+g_pPicture_bg4:SetTex( "DLG_UI_Common_Texture01.TGA", "emulate_bg3_right" )
+
+g_pPicture_bg4:SetPoint
+{
+   
+	"LEFT_TOP		= D3DXVECTOR2(992,102)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+
+------------------ 대전 종류    ----------------------------------->>   활성화 상태
+
+---------전체
+
+g_pRadioButton_all = g_pUIDialog:CreateRadioButton()
+g_pUIDialog:AddControl( g_pRadioButton_all )
+
+g_pRadioButton_all:SetFixOverByCheck( true )
+g_pRadioButton_all:SetShowOffBGByCheck( true )
+
+g_pRadioButton_all:SetName( "UI_PvP_Lobby_All_Tab" )
+
+g_pRadioButton_all:SetNormalTex( "DLG_UI_Button02_A.tga", "all_view_normal" )
+
+
+g_pRadioButton_all:SetOverTex( "DLG_UI_Button02_A.tga", "all_view_over" )
+
+
+g_pRadioButton_all:SetCheckedTex( "DLG_UI_Button02_A.tga", "all_view_down" )
+
+
+g_pRadioButton_all:SetBGPoint
+{
+	ADD_SIZE_X		= -10,
+	"LEFT_TOP		= D3DXVECTOR2(177,71)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pRadioButton_all:SetBGMouseOverPoint
+{
+	ADD_SIZE_X		= -10,
+	"LEFT_TOP		= D3DXVECTOR2(177,71)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pRadioButton_all:SetRBPoint
+{
+
+ 	USE_TEXTURE_SIZE	= FALSE,
+	ADD_SIZE_X		= -10,
+ 	"LEFT_TOP		= D3DXVECTOR2(180,74)",
+	"RIGHT_BOTTOM	= D3DXVECTOR2(249,104)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pRadioButton_all:SetCheckPoint
+{
+	ADD_SIZE_X		= -10,
+ 	"LEFT_TOP		= D3DXVECTOR2(180,68)",
+ 	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pRadioButton_all:SetGroupID( 1 )
+g_pRadioButton_all:SetCustomMsgChecked( UI_PVP_LOBBY_CUSTOM_MSG["UPLCM_GAMETYPE_ALL"] ) 
+
+
+
+---------팀 매치
+
+g_pRadioButton_team = g_pUIDialog:CreateRadioButton()
+g_pUIDialog:AddControl( g_pRadioButton_team )
+
+g_pRadioButton_team:SetFixOverByCheck( true )
+g_pRadioButton_team:SetShowOffBGByCheck( true )
+
+g_pRadioButton_team:SetName( "UI_PvP_Lobby_Team_Tab" )
+
+g_pRadioButton_team:SetNormalTex( "DLG_UI_Button02_A.tga", "team_normal" )
+
+
+g_pRadioButton_team:SetOverTex( "DLG_UI_Button02_A.tga", "team_over" )
+
+
+g_pRadioButton_team:SetCheckedTex( "DLG_UI_Button02_A.tga", "team_down" )
+
+
+g_pRadioButton_team:SetBGPoint
+{
+	ADD_SIZE_X		= -10,
+	"LEFT_TOP		= D3DXVECTOR2(245-9-10,71)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pRadioButton_team:SetBGMouseOverPoint
+{
+	ADD_SIZE_X		= -10,
+	"LEFT_TOP		= D3DXVECTOR2(245-9-10,71)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pRadioButton_team:SetRBPoint
+{
+
+ 	USE_TEXTURE_SIZE	= FALSE,
+	ADD_SIZE_X		= -10,
+ 	"LEFT_TOP		= D3DXVECTOR2(245-9-10,71)",
+	"RIGHT_BOTTOM	= D3DXVECTOR2(316-9-10,104)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pRadioButton_team:SetCheckPoint
+{
+	ADD_SIZE_X		= -10,
+ 	"LEFT_TOP		= D3DXVECTOR2(248-9-10,68)",
+ 	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pRadioButton_team:SetGroupID( 1 )
+g_pRadioButton_team:SetCustomMsgChecked( UI_PVP_LOBBY_CUSTOM_MSG["UPLCM_GAMETYPE_TEAM"] ) 
+
+
+
+---------------팀 데스매치
+
+
+g_pRadioButton_death = g_pUIDialog:CreateRadioButton()
+g_pUIDialog:AddControl( g_pRadioButton_death )
+
+g_pRadioButton_death:SetFixOverByCheck( true )
+g_pRadioButton_death:SetShowOffBGByCheck( true )
+
+g_pRadioButton_death:SetName( "UI_PvP_Lobby_TeamDeath_Tab" )
+
+g_pRadioButton_death:SetNormalTex( "DLG_UI_Button02_A.tga", "death_normal" )
+
+
+g_pRadioButton_death:SetOverTex( "DLG_UI_Button02_A.tga", "death_over" )
+
+
+g_pRadioButton_death:SetCheckedTex( "DLG_UI_Button02_A.tga", "death_down" )
+
+
+g_pRadioButton_death:SetBGPoint
+{
+	ADD_SIZE_X		= -10,
+	"LEFT_TOP		= D3DXVECTOR2(313+6-15,71)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pRadioButton_death:SetBGMouseOverPoint
+{
+	ADD_SIZE_X		= -10,
+	"LEFT_TOP		= D3DXVECTOR2(313+6-15,71)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pRadioButton_death:SetRBPoint
+{
+
+ 	USE_TEXTURE_SIZE	= FALSE,
+	ADD_SIZE_X		= -10,
+ 	"LEFT_TOP		= D3DXVECTOR2(313+6-15,71)",
+	"RIGHT_BOTTOM	= D3DXVECTOR2(384+6-15,104)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pRadioButton_death:SetCheckPoint
+{
+	ADD_SIZE_X		= -10,
+ 	"LEFT_TOP		= D3DXVECTOR2(316+6-15,68)",
+ 	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pRadioButton_death:SetGroupID( 1 )
+g_pRadioButton_death:SetCustomMsgChecked( UI_PVP_LOBBY_CUSTOM_MSG["UPLCM_GAMETYPE_TEAM_DEATH"] ) 
+
+
+
+---서바이벌
+
+
+g_pRadioButton_survival = g_pUIDialog:CreateRadioButton()
+g_pUIDialog:AddControl( g_pRadioButton_survival )
+
+g_pRadioButton_survival:SetFixOverByCheck( true )
+g_pRadioButton_survival:SetShowOffBGByCheck( true )
+
+g_pRadioButton_survival:SetName( "UI_PvP_Lobby_Survival_Tab" )
+
+g_pRadioButton_survival:SetNormalTex( "DLG_UI_Button02.tga", "survival_normal" )
+
+
+g_pRadioButton_survival:SetOverTex( "DLG_UI_Button02.tga", "survival_over" )
+
+
+g_pRadioButton_survival:SetCheckedTex( "DLG_UI_Button02.tga", "survival_down" )
+
+
+g_pRadioButton_survival:SetBGPoint
+{
+	ADD_SIZE_X		= -10,
+	"LEFT_TOP		= D3DXVECTOR2(381+50-36,71)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pRadioButton_survival:SetBGMouseOverPoint
+{
+	ADD_SIZE_X		= -10,
+	"LEFT_TOP		= D3DXVECTOR2(381+50-36,71)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pRadioButton_survival:SetRBPoint
+{
+
+ 	USE_TEXTURE_SIZE	= FALSE,
+	ADD_SIZE_X		= -10,
+ 	"LEFT_TOP		= D3DXVECTOR2(381+50-36,71)",
+	"RIGHT_BOTTOM	= D3DXVECTOR2(453+50-36,104)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pRadioButton_survival:SetCheckPoint
+{
+	ADD_SIZE_X		= -10,
+ 	"LEFT_TOP		= D3DXVECTOR2(384+50-36,68)",
+ 	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pRadioButton_survival:SetGroupID( 1 )
+g_pRadioButton_survival:SetCustomMsgChecked( UI_PVP_LOBBY_CUSTOM_MSG["UPLCM_GAMETYPE_SURVIVAL"] ) 
+
+
+
+---------------title
+
+g_pPicture_bg5 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_bg5 )
+
+g_pPicture_bg5:SetTex( "DLG_UI_Title01.TGA", "emulate" )
+
+g_pPicture_bg5:SetPoint
+{
+   
+	"LEFT_TOP		= D3DXVECTOR2(17,15)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+------------------------------------------------ info 1
+
+g_pPicture_info = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_info )
+
+g_pPicture_info:SetTex( "DLG_UI_Common_Texture02.TGA", "unlock" )
+
+g_pPicture_info:SetPoint
+{
+   
+	"LEFT_TOP		= D3DXVECTOR2(191,116)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+g_pPicture_line4 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_line4 )
+
+g_pPicture_line4:SetTex( "DLG_UI_Common_Texture01.TGA", "bar2" )
+
+g_pPicture_line4:SetPoint
+{
+   ADD_SIZE_Y = 18,
+	"LEFT_TOP		= D3DXVECTOR2(209,116)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pPicture_info = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_info )
+
+g_pPicture_info:SetTex( "DLG_UI_Title01_A.TGA", "situation" )
+
+g_pPicture_info:SetPoint
+{
+   
+	"LEFT_TOP		= D3DXVECTOR2(216,119)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+g_pPicture_line5 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_line5 )
+
+g_pPicture_line5:SetTex( "DLG_UI_Common_Texture01.TGA", "bar2" )
+
+g_pPicture_line5:SetPoint
+{
+   ADD_SIZE_Y = 18,
+	"LEFT_TOP		= D3DXVECTOR2(252,116)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+g_pPicture_info = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_info )
+
+g_pPicture_info:SetTex( "DLG_UI_Title01_A.TGA", "game_form" )
+
+g_pPicture_info:SetPoint
+{
+   
+	"LEFT_TOP		= D3DXVECTOR2(258,119)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pPicture_bar = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_bar )
+
+g_pPicture_bar:SetTex( "DLG_UI_Common_Texture01.TGA", "bar2" )
+
+g_pPicture_bar:SetPoint
+{
+   ADD_SIZE_Y = 18,
+	"LEFT_TOP		= D3DXVECTOR2(252+61,116)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pPicture_Item = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_Item )
+
+g_pPicture_Item:SetTex( "DLG_UI_Title01_A.TGA", "Item3" )
+
+g_pPicture_Item:SetPoint
+{
+   
+	"LEFT_TOP		= D3DXVECTOR2(258+61 + 5,119)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pPicture_bar = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_bar )
+
+g_pPicture_bar:SetTex( "DLG_UI_Common_Texture01.TGA", "bar2" )
+
+g_pPicture_bar:SetPoint
+{
+   ADD_SIZE_Y = 18,
+	"LEFT_TOP		= D3DXVECTOR2(315+47 - 1,116)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+g_pPicture_info = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_info )
+
+g_pPicture_info:SetTex( "DLG_UI_Title01_A.TGA", "staff_2" )
+
+g_pPicture_info:SetPoint
+{
+   
+	"LEFT_TOP		= D3DXVECTOR2(322+47 - 5,119 - 2)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pPicture_bar = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_bar)
+
+g_pPicture_bar:SetTex( "DLG_UI_Common_Texture01.TGA", "bar2" )
+
+g_pPicture_bar:SetPoint
+{
+   ADD_SIZE_Y = 18,
+	"LEFT_TOP		= D3DXVECTOR2(352+47 + 10,116)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pPicture_info = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_info )
+
+g_pPicture_info:SetTex( "DLG_UI_Title01_A.TGA", "kill" )
+
+g_pPicture_info:SetPoint
+{
+   
+	"LEFT_TOP		= D3DXVECTOR2(359+47 + 10,119 + 1)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pPicture_bar = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_bar )
+
+g_pPicture_bar:SetTex( "DLG_UI_Common_Texture01.TGA", "bar2" )
+
+g_pPicture_bar:SetPoint
+{
+   ADD_SIZE_Y = 18,
+	"LEFT_TOP		= D3DXVECTOR2(388+47 + 10,116)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+g_pPicture_info = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_info )
+
+g_pPicture_info:SetTex( "DLG_UI_Title01_A.TGA", "bang_name" )
+
+g_pPicture_info:SetPoint
+{
+   
+	"LEFT_TOP		= D3DXVECTOR2(396+47 + 10,119)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+------------------------------------------------ info 2
+
+g_pPicture_info = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_info )
+
+g_pPicture_info:SetTex( "DLG_UI_Common_Texture02.TGA", "unlock" )
+
+g_pPicture_info:SetPoint
+{
+   
+	"LEFT_TOP		= D3DXVECTOR2(595,116)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+g_pPicture_bar = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_bar )
+
+g_pPicture_bar:SetTex( "DLG_UI_Common_Texture01.TGA", "bar2" )
+
+g_pPicture_bar:SetPoint
+{
+   ADD_SIZE_Y = 18,
+	"LEFT_TOP		= D3DXVECTOR2(614,116)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+g_pPicture_info = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_info )
+
+g_pPicture_info:SetTex( "DLG_UI_Title01_A.TGA", "situation" )
+
+g_pPicture_info:SetPoint
+{
+   
+	"LEFT_TOP		= D3DXVECTOR2(621,119)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pPicture_bar = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_bar )
+
+g_pPicture_bar:SetTex( "DLG_UI_Common_Texture01.TGA", "bar2" )
+
+g_pPicture_bar:SetPoint
+{
+   ADD_SIZE_Y = 18,
+	"LEFT_TOP		= D3DXVECTOR2(657,116)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pPicture_info = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_info )
+
+g_pPicture_info:SetTex( "DLG_UI_Title01_A.TGA", "game_form" )
+
+g_pPicture_info:SetPoint
+{		
+   
+	"LEFT_TOP		= D3DXVECTOR2(663,119)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+g_pPicture_bar = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_bar )
+
+g_pPicture_bar:SetTex( "DLG_UI_Common_Texture01.TGA", "bar2" )
+
+g_pPicture_bar:SetPoint
+{
+   ADD_SIZE_Y = 18,
+	"LEFT_TOP		= D3DXVECTOR2(656+61,116)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pPicture_Item = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_Item )
+
+g_pPicture_Item:SetTex( "DLG_UI_Title01_A.TGA", "Item3" )
+
+g_pPicture_Item:SetPoint
+{
+   
+	"LEFT_TOP		= D3DXVECTOR2(663+61 + 5,119)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+g_pPicture_bar = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_bar )
+
+g_pPicture_bar:SetTex( "DLG_UI_Common_Texture01.TGA", "bar2" )
+
+g_pPicture_bar:SetPoint
+{
+   ADD_SIZE_Y = 18,
+	"LEFT_TOP		= D3DXVECTOR2(720+47 - 1,116)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+g_pPicture_info = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_info )
+
+g_pPicture_info:SetTex( "DLG_UI_Title01_A.TGA", "staff_2" )
+
+g_pPicture_info:SetPoint
+{
+   
+	"LEFT_TOP		= D3DXVECTOR2(727+47 - 5,119 - 2)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+g_pPicture_bar = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_bar )
+
+g_pPicture_bar:SetTex( "DLG_UI_Common_Texture01.TGA", "bar2" )
+
+g_pPicture_bar:SetPoint
+{
+   ADD_SIZE_Y = 18,
+	"LEFT_TOP		= D3DXVECTOR2(757+47 + 10,116)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+g_pPicture_info = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_info )
+
+g_pPicture_info:SetTex( "DLG_UI_Title01_A.TGA", "kill" )
+
+g_pPicture_info:SetPoint
+{
+   
+	"LEFT_TOP		= D3DXVECTOR2(765+47 + 10,119 + 1)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pPicture_bar = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_bar )
+
+g_pPicture_bar:SetTex( "DLG_UI_Common_Texture01.TGA", "bar2" )
+
+g_pPicture_bar:SetPoint
+{
+   ADD_SIZE_Y = 18,
+	"LEFT_TOP		= D3DXVECTOR2(793+47 + 10,116)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+
+g_pPicture_info = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_info )
+
+g_pPicture_info:SetTex( "DLG_UI_Title01_A.TGA", "bang_name" )
+
+g_pPicture_info:SetPoint
+{
+   
+	"LEFT_TOP		= D3DXVECTOR2(801+47 + 10,119)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+
+---------------- bar
+
+
+
+g_pPicture_line1 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_line1 )
+
+g_pPicture_line1:SetTex( "DLG_UI_Common_Texture01.TGA", "bar1" )
+
+g_pPicture_line1:SetPoint
+{
+   ADD_SIZE_X = 135,
+	"LEFT_TOP		= D3DXVECTOR2(21,151)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pPicture_line2 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_line2 )
+
+g_pPicture_line2:SetTex( "DLG_UI_Common_Texture01.TGA", "bar1" )
+
+g_pPicture_line2:SetPoint
+{
+   ADD_SIZE_X = 135,
+	"LEFT_TOP		= D3DXVECTOR2(21,247)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+g_pPicture_line3 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_line3 )
+
+g_pPicture_line3:SetTex( "DLG_UI_Common_Texture01.TGA", "bar1" )
+
+g_pPicture_line3:SetPoint
+{
+   ADD_SIZE_X = 996,
+	"LEFT_TOP		= D3DXVECTOR2(14,48)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pPicture_line4 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_line4 )
+
+g_pPicture_line4:SetTex( "DLG_UI_Common_Texture13.TGA", "bar_v" )
+
+g_pPicture_line4:SetPoint
+{
+	"LEFT_TOP		= D3DXVECTOR2(685,58)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pPicture_line5 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_line5 )
+
+g_pPicture_line5:SetTex( "DLG_UI_Common_Texture13.TGA", "bar_v" )
+
+g_pPicture_line5:SetPoint
+{
+	"LEFT_TOP		= D3DXVECTOR2(895,58)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+
+-------------------------  채널   ----------------------------->    비활성   상태일 때 
+
+-- 연습 
+g_pStatic_Practice_Inactive = g_pUIDialog:CreateStatic()
+g_pUIDialog:AddControl( g_pStatic_Practice_Inactive )
+g_pStatic_Practice_Inactive:SetName( "ChannelInactive0" )
+
+g_pPicture_practice = g_pUIDialog:CreatePicture()
+g_pStatic_Practice_Inactive:AddPicture( g_pPicture_practice )
+													   
+g_pPicture_practice:SetTex( "DLG_UI_Common_Texture02.TGA", "practice_noactive" )
+
+g_pPicture_practice:SetPoint
+{
+   
+	"LEFT_TOP		= D3DXVECTOR2(21,59)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+-- 자유 
+g_pStatic_Free_Inactive = g_pUIDialog:CreateStatic()
+g_pUIDialog:AddControl( g_pStatic_Free_Inactive )
+g_pStatic_Free_Inactive:SetName( "ChannelInactive1" )
+
+g_pPicture_free = g_pUIDialog:CreatePicture()
+g_pStatic_Free_Inactive:AddPicture( g_pPicture_free )
+
+g_pPicture_free:SetTex( "DLG_UI_Common_Texture02.TGA", "free_noactive" )
+
+g_pPicture_free:SetPoint
+{
+   
+	"LEFT_TOP		= D3DXVECTOR2(21,105)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+-- 대회
+g_pStatic_Tournament_Inactive = g_pUIDialog:CreateStatic()
+g_pUIDialog:AddControl( g_pStatic_Tournament_Inactive )
+g_pStatic_Tournament_Inactive:SetName( "ChannelInactive2" ) 
+
+g_pPicture_match = g_pUIDialog:CreatePicture()
+g_pStatic_Tournament_Inactive:AddPicture( g_pPicture_match )
+
+g_pPicture_match:SetTex( "DLG_UI_Common_Texture02.TGA", "match_noactive" )
+
+g_pPicture_match:SetPoint
+{
+   
+	"LEFT_TOP		= D3DXVECTOR2(21,251+46+46)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+----------------------채널  활성화 버튼
+
+------연습
+
+g_pRadioButton_practice = g_pUIDialog:CreateRadioButton()
+g_pUIDialog:AddControl( g_pRadioButton_practice )
+
+g_pRadioButton_practice:SetFixOverByCheck( true )
+g_pRadioButton_practice:SetShowOffBGByCheck( true )
+
+g_pRadioButton_practice:SetName( "Channel0" )
+g_pRadioButton_practice:AddDummyInt( PVP_CHANNEL_CLASS["PCC_PLAY"] )
+g_pRadioButton_practice:SetCustomMsgChecked( UI_PVP_LOBBY_CUSTOM_MSG["UPLCM_SELECT_CHANNEL"] )
+g_pRadioButton_practice:SetGuideDesc( STR_ID_2714 )
+
+g_pRadioButton_practice:SetNormalTex( "DLG_UI_Button02.tga", "practice_normal" )
+
+
+g_pRadioButton_practice:SetOverTex( "DLG_UI_Button02.tga", "practice_over" )
+
+
+g_pRadioButton_practice:SetCheckedTex( "DLG_UI_Button02.tga", "practice_over" )
+
+
+g_pRadioButton_practice:SetBGPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(21,59)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pRadioButton_practice:SetBGMouseOverPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(18,56)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pRadioButton_practice:SetRBPoint
+{
+
+ 	USE_TEXTURE_SIZE	= FALSE,
+
+ 	"LEFT_TOP		= D3DXVECTOR2(21,59)",
+	"RIGHT_BOTTOM	= D3DXVECTOR2(157,103)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pRadioButton_practice:SetCheckPoint
+{
+    ADD_SIZE_X = -2,
+	ADD_SIZE_Y = -2,
+ 	"LEFT_TOP		= D3DXVECTOR2(18+1,56+1)",
+ 	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pRadioButton_practice:SetGroupID( 2 )
+
+
+------자유
+
+
+
+g_pRadioButton_free = g_pUIDialog:CreateRadioButton()
+g_pUIDialog:AddControl( g_pRadioButton_free )
+
+g_pRadioButton_free:SetFixOverByCheck( true )
+g_pRadioButton_free:SetShowOffBGByCheck( true )
+
+g_pRadioButton_free:SetName( "Channel1" )
+g_pRadioButton_free:AddDummyInt( PVP_CHANNEL_CLASS["PCC_FREE"] )
+g_pRadioButton_free:SetCustomMsgChecked( UI_PVP_LOBBY_CUSTOM_MSG["UPLCM_SELECT_CHANNEL"] )
+g_pRadioButton_free:SetGuideDesc( STR_ID_2715 )
+
+g_pRadioButton_free:SetNormalTex( "DLG_UI_Button02.tga", "free_normal" )
+
+
+g_pRadioButton_free:SetOverTex( "DLG_UI_Button02.tga", "free_over" )
+
+
+g_pRadioButton_free:SetCheckedTex( "DLG_UI_Button02.tga", "free_over" )
+
+
+g_pRadioButton_free:SetBGPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(21,105)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pRadioButton_free:SetBGMouseOverPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(18,102)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pRadioButton_free:SetRBPoint
+{
+
+ 	USE_TEXTURE_SIZE	= FALSE,
+
+ 	"LEFT_TOP		= D3DXVECTOR2(21,105)",
+	"RIGHT_BOTTOM	= D3DXVECTOR2(157,149)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pRadioButton_free:SetCheckPoint
+{
+      ADD_SIZE_X = -2,
+	ADD_SIZE_Y = -2,
+ 	"LEFT_TOP		= D3DXVECTOR2(18+1,102+1)",
+ 	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pRadioButton_free:SetGroupID( 2 )
+
+
+--------대회
+
+
+g_pRadioButton_match = g_pUIDialog:CreateRadioButton()
+g_pUIDialog:AddControl( g_pRadioButton_match )
+
+g_pRadioButton_match:SetFixOverByCheck( true )
+g_pRadioButton_match:SetShowOffBGByCheck( true )
+
+g_pRadioButton_match:SetName( "Channel2" )
+g_pRadioButton_match:AddDummyInt( PVP_CHANNEL_CLASS["PCC_TOURNAMENT"] )
+g_pRadioButton_match:SetCustomMsgChecked( UI_PVP_LOBBY_CUSTOM_MSG["UPLCM_SELECT_CHANNEL"] )
+--ChannelGuide5 = string.format( "토요일 정오 12시~오후 5시" )
+--g_pRadioButton_match:SetGuideDescByString( ChannelGuide5 )
+
+g_pRadioButton_match:SetNormalTex( "DLG_UI_Button02.tga", "match_normal" )
+
+
+g_pRadioButton_match:SetOverTex( "DLG_UI_Button02.tga", "match_over" )
+
+g_pRadioButton_match:SetCheckedTex( "DLG_UI_Button02.tga", "match_over" )
+
+g_pRadioButton_match:SetBGPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(21,343)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pRadioButton_match:SetBGMouseOverPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(18,340)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pRadioButton_match:SetRBPoint
+{
+
+ 	USE_TEXTURE_SIZE	= FALSE,
+
+ 	"LEFT_TOP		= D3DXVECTOR2(21,343)",
+	"RIGHT_BOTTOM	= D3DXVECTOR2(157,387)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pRadioButton_match:SetCheckPoint
+{
+     ADD_SIZE_X = -2,
+	ADD_SIZE_Y = -2,
+ 	"LEFT_TOP		= D3DXVECTOR2(18+1,340+1)",
+ 	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pRadioButton_match:SetGroupID( 2 )
+
+
+
+g_pPicture_Disable1 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_Disable1 )
+
+g_pPicture_Disable1:SetTex( "DLG_UI_BUTTON02.TGA", "room_normal" )
+
+g_pPicture_Disable1:SetPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(185,140)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pPicture_Disable2 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_Disable2 )
+
+g_pPicture_Disable2:SetTex( "DLG_UI_BUTTON02.TGA", "room_normal" )
+
+g_pPicture_Disable2:SetPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(185,140+42)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pPicture_Disable3 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_Disable3 )
+
+g_pPicture_Disable3:SetTex( "DLG_UI_BUTTON02.TGA", "room_normal" )
+
+g_pPicture_Disable3:SetPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(185,140+42+42)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pPicture_Disable4 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_Disable4 )
+
+g_pPicture_Disable4:SetTex( "DLG_UI_BUTTON02.TGA", "room_normal" )
+
+g_pPicture_Disable4:SetPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(185,140+42+42+42)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pPicture_Disable5 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_Disable5)
+
+g_pPicture_Disable5:SetTex( "DLG_UI_BUTTON02.TGA", "room_normal" )
+
+g_pPicture_Disable5:SetPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(185,140+42+42+42+42)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+g_pPicture_Disable6 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_Disable6)
+
+g_pPicture_Disable6:SetTex( "DLG_UI_BUTTON02.TGA", "room_normal" )
+
+g_pPicture_Disable6:SetPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(185,140+42+42+42+42+42)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pPicture_Disable7 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_Disable7 )
+
+g_pPicture_Disable7:SetTex( "DLG_UI_BUTTON02.TGA", "room_normal" )
+
+g_pPicture_Disable7:SetPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(185+404,140)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pPicture_Disable8 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_Disable8 )
+
+g_pPicture_Disable8:SetTex( "DLG_UI_BUTTON02.TGA", "room_normal" )
+
+g_pPicture_Disable8:SetPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(185+404,140+42)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pPicture_Disable9 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_Disable9 )
+
+g_pPicture_Disable9:SetTex( "DLG_UI_BUTTON02.TGA", "room_normal" )
+
+g_pPicture_Disable9:SetPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(185+404,140+42+42)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pPicture_Disable10 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_Disable10 )
+
+g_pPicture_Disable10:SetTex( "DLG_UI_BUTTON02.TGA", "room_normal" )
+
+g_pPicture_Disable10:SetPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(185+404,140+42+42+42)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pPicture_Disable11 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_Disable11)
+
+g_pPicture_Disable11:SetTex( "DLG_UI_BUTTON02.TGA", "room_normal" )
+
+g_pPicture_Disable11:SetPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(185+404,140+42+42+42+42)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+g_pPicture_Disable12 = g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_Disable12)
+
+g_pPicture_Disable12:SetTex( "DLG_UI_BUTTON02.TGA", "room_normal" )
+
+g_pPicture_Disable12:SetPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(185+404,140+42+42+42+42+42)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+
+
+--------------------------------------------------------------------------------------
+------------------------------ 바로가기 버튼 ------------------------------------
+--------------------------------------------------------------------------------------
+
+
+
+
+g_pButtonTeam_Item = g_pUIDialog:CreateButton()
+g_pUIDialog:AddControl( g_pButtonTeam_Item )
+g_pButtonTeam_Item:SetName( "UI_PvP_Lobby_Team_Item_Quickstart" )
+g_pButtonTeam_Item:SetNormalTex( "DLG_UI_Button15.tga", "Team_Item_Normal" )
+
+g_pButtonTeam_Item:SetOverTex( "DLG_UI_Button15.tga", "Team_Item_Over" )
+
+g_pButtonTeam_Item:SetDownTex( "DLG_UI_Button15.tga", "Team_Item_Over" )
+
+g_pButtonTeam_Item:SetNormalPoint
+{
+	
+    "LEFT_TOP		= D3DXVECTOR2(476+2,54+2)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonTeam_Item:SetOverPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(476,54)",
+
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonTeam_Item:SetDownPoint
+{
+      ADD_SIZE_X = -2,
+     ADD_SIZE_Y = -2,
+ 	"LEFT_TOP		= D3DXVECTOR2(476+1,54+1)",
+
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonTeam_Item:SetCustomMsgMouseUp( UI_PVP_LOBBY_CUSTOM_MSG["UPLCM_QUICKSTART_TEAM_ITEMMODE"] )
+
+---------------------------------------------------------------------------------------------------------
+
+
+
+g_pButtonTeam_Power = g_pUIDialog:CreateButton()
+g_pUIDialog:AddControl( g_pButtonTeam_Power )
+g_pButtonTeam_Power:SetName( "UI_PvP_Lobby_Team_Quickstart" )
+g_pButtonTeam_Power:SetNormalTex( "DLG_UI_Button15.tga", "Team_Power_Normal" )
+
+g_pButtonTeam_Power:SetOverTex( "DLG_UI_Button15.tga", "Team_Power_Over" )
+
+g_pButtonTeam_Power:SetDownTex( "DLG_UI_Button15.tga", "Team_Power_Over" )
+
+g_pButtonTeam_Power:SetNormalPoint
+{
+	
+    "LEFT_TOP		= D3DXVECTOR2(578+2,54+2)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonTeam_Power:SetOverPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(578,54)",
+
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonTeam_Power:SetDownPoint
+{
+      ADD_SIZE_X = -2,
+     ADD_SIZE_Y = -2,
+ 	"LEFT_TOP		= D3DXVECTOR2(578+1,54+1)",
+
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonTeam_Power:SetCustomMsgMouseUp( UI_PVP_LOBBY_CUSTOM_MSG["UPLCM_QUICKSTART_TEAM"] )
+
+---------------------------------------------------------------------------------------------------------
+
+g_pButtonDeath_Item = g_pUIDialog:CreateButton()
+g_pUIDialog:AddControl( g_pButtonDeath_Item )
+g_pButtonDeath_Item:SetName( "UI_PvP_Lobby_TeamDeath_Item_Quickstart" )
+g_pButtonDeath_Item:SetNormalTex( "DLG_UI_Button15.tga", "Death_Item_Normal" )
+
+g_pButtonDeath_Item:SetOverTex( "DLG_UI_Button15.tga", "Death_Item_Over" )
+
+g_pButtonDeath_Item:SetDownTex( "DLG_UI_Button15.tga", "Death_Item_Over" )
+
+g_pButtonDeath_Item:SetNormalPoint
+{
+	
+    "LEFT_TOP		= D3DXVECTOR2(686+2,54+2)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonDeath_Item:SetOverPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(686,54)",
+
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonDeath_Item:SetDownPoint
+{
+      ADD_SIZE_X = -2,
+     ADD_SIZE_Y = -2,
+ 	"LEFT_TOP		= D3DXVECTOR2(686+1,54+1)",
+
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonDeath_Item:SetCustomMsgMouseUp( UI_PVP_LOBBY_CUSTOM_MSG["UPLCM_QUICKSTART_TEAM_DEATH_ITEMMODE"] )
+
+
+---------------------------------------------------------------------------------------------------------
+
+
+g_pButtonDeath_Power = g_pUIDialog:CreateButton()
+g_pUIDialog:AddControl( g_pButtonDeath_Power )
+g_pButtonDeath_Power:SetName( "UI_PvP_Lobby_TeamDeath_Quickstart" )
+g_pButtonDeath_Power:SetNormalTex( "DLG_UI_Button15.tga", "Death_Power_Normal" )
+
+g_pButtonDeath_Power:SetOverTex( "DLG_UI_Button15.tga", "Death_Power_Over" )
+
+g_pButtonDeath_Power:SetDownTex( "DLG_UI_Button15.tga", "Death_Power_Over" )
+
+g_pButtonDeath_Power:SetNormalPoint
+{
+	
+    "LEFT_TOP		= D3DXVECTOR2(788+2,54+2)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonDeath_Power:SetOverPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(788,54)",
+
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonDeath_Power:SetDownPoint
+{
+      ADD_SIZE_X = -2,
+     ADD_SIZE_Y = -2,
+ 	"LEFT_TOP		= D3DXVECTOR2(788+1,54+1)",
+
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonDeath_Power:SetCustomMsgMouseUp( UI_PVP_LOBBY_CUSTOM_MSG["UPLCM_QUICKSTART_TEAM_DEATH"] )
+
+
+---------------------------------------------------------------------------------------------------------
+
+g_pButtonSurvival_Item = g_pUIDialog:CreateButton()
+g_pUIDialog:AddControl( g_pButtonSurvival_Item )
+g_pButtonSurvival_Item:SetName( "UI_PvP_Lobby_Survival_Quickstart" )
+g_pButtonSurvival_Item:SetNormalTex( "DLG_UI_Button15.tga", "Survival_Item_Normal" )
+
+g_pButtonSurvival_Item:SetOverTex( "DLG_UI_Button15.tga", "Survival_Item_Over" )
+
+g_pButtonSurvival_Item:SetDownTex( "DLG_UI_Button15.tga", "Survival_Item_Over" )
+
+g_pButtonSurvival_Item:SetNormalPoint
+{
+	
+    "LEFT_TOP		= D3DXVECTOR2(896+2,54+2)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonSurvival_Item:SetOverPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(896,54)",
+
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonSurvival_Item:SetDownPoint
+{
+      ADD_SIZE_X = -2,
+     ADD_SIZE_Y = -2,
+ 	"LEFT_TOP		= D3DXVECTOR2(896+1,54+1)",
+
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonSurvival_Item:SetCustomMsgMouseUp( UI_PVP_LOBBY_CUSTOM_MSG["UPLCM_QUICKSTART_SURVIVAL"] )
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+---HELP 버튼
+
+
+g_pButton_Help = g_pUIDialog:CreateButton()
+g_pUIDialog:AddControl( g_pButton_Help )
+g_pButton_Help:SetName( "Help" )
+g_pButton_Help:SetNormalTex( "DLG_UI_Button14.tga", "Help_NORMAL" )
+
+g_pButton_Help:SetOverTex( "DLG_UI_Button14.tga", "Help_OVER" )
+
+g_pButton_Help:SetDownTex( "DLG_UI_Button14.tga", "Help_OVER" )
+
+g_pButton_Help:SetNormalPoint
+{
+
+
+ 	"LEFT_TOP		= D3DXVECTOR2(957,17)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButton_Help:SetOverPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(957-4,17-4)",
+
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButton_Help:SetDownPoint
+{
+     ADD_SIZE_X = -2 ,
+	  ADD_SIZE_Y = -2 ,
+
+ 	"LEFT_TOP		= D3DXVECTOR2(957-4+1,17-4+1)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButton_Help:SetCustomMsgMouseUp( STATE_MENU_UI_CUSTOM_MSG["SMUCM_OPEN_ELLIOS_GUIDE_GO_TO_PAGE"] )
+g_pButton_Help:AddDummyInt(30)
+
+
+
+
+
+----------------EXIT 버튼
+
+
+g_pButtonX = g_pUIDialog:CreateButton()
+g_pUIDialog:AddControl( g_pButtonX )
+g_pButtonX:SetName( "UI_PvP_Lobby_Exit" )
+g_pButtonX:SetNormalTex( "DLG_UI_BUTTON01.tga", "EXIT_NORMAL" )
+
+g_pButtonX:SetOverTex( "DLG_UI_BUTTON01.tga", "EXIT_OVER" )
+
+g_pButtonX:SetDownTex( "DLG_UI_BUTTON01.tga", "EXIT_OVER" )
+
+g_pButtonX:SetNormalPoint
+{
+	
+    "LEFT_TOP		= D3DXVECTOR2(983,17)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonX:SetOverPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(979,13)",
+
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonX:SetDownPoint
+{
+      ADD_SIZE_X = -2,
+     ADD_SIZE_Y = -2,
+ 	"LEFT_TOP		= D3DXVECTOR2(979+1,13+1)",
+
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonX:SetCustomMsgMouseUp( UI_PVP_LOBBY_CUSTOM_MSG["UPLCM_EXIT"] ) 
+
+
+
+
+
+
+
+----------    << 버튼
+
+
+g_pButtonL_arrow = g_pUIDialog:CreateButton()
+g_pUIDialog:AddControl( g_pButtonL_arrow )
+g_pButtonL_arrow:SetName( "UI_PvP_Lobby_Roomlist_LArrow" )
+g_pButtonL_arrow:SetNormalTex( "DLG_UI_BUTTON01.tga", "L_arrow_normal" )
+
+g_pButtonL_arrow:SetOverTex( "DLG_UI_BUTTON01.tga", "L_arrow_over" )
+
+g_pButtonL_arrow:SetDownTex( "DLG_UI_BUTTON01.tga", "L_arrow_over" )
+
+g_pButtonL_arrow:SetNormalPoint
+{
+	
+    "LEFT_TOP		= D3DXVECTOR2(540,403)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonL_arrow:SetOverPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(540,402)",
+
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonL_arrow:SetDownPoint
+{
+      ADD_SIZE_X = -2,
+     ADD_SIZE_Y = -2,
+ 	"LEFT_TOP		= D3DXVECTOR2(540+1,402+1)",
+
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonL_arrow:SetCustomMsgMouseUp( UI_PVP_LOBBY_CUSTOM_MSG["UPLCM_ROOMLIST_PREV_PAGE"] )
+
+--->>  버튼
+
+g_pButtonR_arrow = g_pUIDialog:CreateButton()
+g_pUIDialog:AddControl( g_pButtonR_arrow )
+g_pButtonR_arrow:SetName( "UI_PvP_Lobby_Roomlist_RArrow" )
+g_pButtonR_arrow:SetNormalTex( "DLG_UI_BUTTON01.tga", "R_arrow_normal" )
+
+g_pButtonR_arrow:SetOverTex( "DLG_UI_BUTTON01.tga", "R_arrow_over" )
+
+g_pButtonR_arrow:SetDownTex( "DLG_UI_BUTTON01.tga", "R_arrow_over" )
+
+g_pButtonR_arrow:SetNormalPoint
+{
+	
+    "LEFT_TOP		= D3DXVECTOR2(617,403)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonR_arrow:SetOverPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(616,402)",
+
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonR_arrow:SetDownPoint
+{
+      ADD_SIZE_X = -2,
+     ADD_SIZE_Y = -2,
+ 	"LEFT_TOP		= D3DXVECTOR2(616+1,402+1)",
+
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonR_arrow:SetCustomMsgMouseUp( UI_PVP_LOBBY_CUSTOM_MSG["UPLCM_ROOMLIST_NEXT_PAGE"] )
+
+-----페이지
+g_pPicture_page= g_pUIDialog:CreatePicture()
+g_pStatic_emulate:AddPicture( g_pPicture_page)
+
+g_pPicture_page:SetTex( "DLG_UI_COMMON_TEXTURE01.TGA", "page_bar" )
+
+g_pPicture_page:SetPoint
+{
+    
+	"LEFT_TOP		= D3DXVECTOR2(557,401)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+-----페이지 번호
+
+g_pStatic_number = g_pUIDialog:CreateStatic()
+g_pUIDialog:AddControl( g_pStatic_number )
+g_pStatic_number:SetName( "UI_PvP_Lobby_Roomlist_PageNum" )
+
+g_pStatic_number:AddString
+{
+	-- MSG 			= "1/3",
+	FONT_INDEX		= XUF_DODUM_13_SEMIBOLD,
+	SORT_FLAG		= DRAW_TEXT["DT_CENTER"],
+	"POS 			= D3DXVECTOR2(585,407-1)",
+	"COLOR			= D3DXCOLOR(0.0,0.0,0.0,0.7)",
+	"OUTLINE_COLOR		= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+}
+
+
+
+
+-----------------------------------------------------
+-- 방 리스트
+-----------------------------------------------------
+-- 제일 왼쪽 위에 있는 방리스트 버튼의 왼쪽 위 위치 : 이게 기준점입니다.
+-- 기준점 기준으로 다른 스태틱/버튼들의 위치가 계산되어 있습니다.
+
+LEFT_TOP_X = 185
+LEFT_TOP_Y = 140
+
+DISTANCE_X = 404
+DISTANCE_Y = 42
+
+ListID = 0
+tempX = 0
+tempY = 0
+
+
+for i = 0, 5 do
+
+	for j = 0, 1 do
+
+			tempX = LEFT_TOP_X + (j * DISTANCE_X)
+			tempY = LEFT_TOP_Y + (i * DISTANCE_Y)
+
+			-- 버튼 ( 이름은 ListButton0 1 2.. )
+			pButton_List = g_pUIDialog:CreateButton()
+			g_pUIDialog:AddControl( pButton_List )
+			ButtonName = string.format( "ListButton%d", ListID )
+			pButton_List:SetName( ButtonName )
+
+			pButton_List:SetNormalTex( "DLG_UI_BUTTON02.tga", "room_normal" )
+			pButton_List:SetOverTex( "DLG_UI_BUTTON02.tga", "room_over" )
+			pButton_List:SetNormalPoint
+			{
+	
+				"LEFT_TOP		= D3DXVECTOR2(tempX,tempY)",
+				"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+				CHANGE_TIME		= 0.0,
+			}
+			pButton_List:SetOverPoint
+			{
+	
+				"LEFT_TOP		= D3DXVECTOR2(tempX-1,tempY-1)",
+
+				"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+				CHANGE_TIME		= 0.0,
+			}
+			pButton_List:SetCustomMsgMouseUp( UI_PVP_LOBBY_CUSTOM_MSG["UPLCM_JOIN_ROOM"] )
+
+			-- 인덱스용 더미 인트를 넣어둔다
+			pButton_List:AddDummyInt( ListID )
+
+			-- 스태틱 만들고 ( 이름은 ListStatic0 1 2.. )
+			g_pStatic_list = g_pUIDialog:CreateStatic()
+			g_pUIDialog:AddControl( g_pStatic_list )
+			StaticName = string.format( "ListStatic%d", ListID )
+			g_pStatic_list:SetName( StaticName )
+
+			-- 자물쇠 달고 ( Picture0 )
+			g_pPicture_unlock1 = g_pUIDialog:CreatePicture()
+			g_pStatic_list:AddPicture( g_pPicture_unlock1 )
+			g_pPicture_unlock1:SetTex( "DLG_UI_Common_Texture02.TGA", "unlock" )
+			g_pPicture_unlock1:SetPoint
+			{
+    
+				"LEFT_TOP		= D3DXVECTOR2(tempX + 6, tempY + 10)",
+				"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+				CHANGE_TIME		= 0.0,
+			}
+
+			-- 상태 표시하고( Picture1 )
+			g_pPicture_situation = g_pUIDialog:CreatePicture()
+			g_pStatic_list:AddPicture( g_pPicture_situation )
+			g_pPicture_situation:SetTex( "DLG_UI_Title01.TGA", "wait" )
+			g_pPicture_situation:SetPoint
+			{
+    
+				"LEFT_TOP		= D3DXVECTOR2(tempX + 30, tempY + 13)",
+				"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+				CHANGE_TIME		= 0.0,
+			}			
+
+			-- 인원수 표시하고 ( String0 )
+			g_pStatic_list:AddString
+			{
+				-- MSG 			= "8/8",
+				FONT_INDEX		= XUF_DODUM_11_NORMAL,
+				SORT_FLAG		= DRAW_TEXT["DT_CENTER"],
+				"POS 			= D3DXVECTOR2(tempX + 149 + 47+5,tempY + 16 - 4)",
+				"COLOR			= D3DXCOLOR(0.0,0.0,0.0,0.7)",
+				"OUTLINE_COLOR		= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+			}
+
+			-- 킬수 표시하고 ( String1 )
+			g_pStatic_list:AddString
+			{
+				-- MSG 			= "24",
+				FONT_INDEX		= XUF_DODUM_11_NORMAL,
+				SORT_FLAG		= DRAW_TEXT["DT_CENTER"],
+				"POS 			= D3DXVECTOR2(tempX + 186 + 53,tempY + 16 - 4)",
+				"COLOR			= D3DXCOLOR(0.0,0.0,0.0,0.7)",
+				"OUTLINE_COLOR		= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+			}
+
+			-- 방제 표시하고 ( String2 )
+			g_pStatic_list:AddString
+			{
+				MSG 			= STR_ID_1276,
+				FONT_INDEX		= XUF_DODUM_11_NORMAL,
+				SORT_FLAG		= DRAW_TEXT["DT_VCENTER"],
+				"POS 			= D3DXVECTOR2(tempX + 211 + 60 ,tempY + 16)",
+				"COLOR			= D3DXCOLOR(0.0,0.0,0.0,0.7)",
+				"OUTLINE_COLOR		= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+			}
+			
+			-- 게임방식 표시하고 ( String3 )
+			-- String 색상은 현재 하드코딩 되어 있습니다. 이쪽에서 수정하지 않아도 됩니다. 
+			-- 색상 팀매치 0099FF, 팀데스 009900, 서바이벌 E50000 
+			g_pStatic_list:AddString
+			{
+				MSG 			= STR_ID_1143,
+				FONT_INDEX		= XUF_DODUM_11_NORMAL,
+				SORT_FLAG		= DRAW_TEXT["DT_CENTER"],
+				"POS 			= D3DXVECTOR2(tempX + 66 + 29, tempY + 16 - 4)",
+				"COLOR			= D3DXCOLOR(0.0, 0.6, 1.0, 1.0)",
+				"OUTLINE_COLOR		= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+			}
+
+            -- 아이템모드 표시하고 ( String.4 )
+			g_pStatic_list:AddString
+			{
+				MSG 			= STR_ID_4817,
+				FONT_INDEX		= XUF_DODUM_11_NORMAL,
+				SORT_FLAG		= DRAW_TEXT["DT_CENTER"],
+				"POS 			= D3DXVECTOR2(tempX + 152 + 3-2,tempY + 16 - 4)",
+				"COLOR			= D3DXCOLOR(0.0,0.0,0.0,0.7)",
+				"OUTLINE_COLOR		= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+			}
+			ListID = ListID + 1
+
+	end
+
+end
+
+
+
+----------------- 비활성 상태 바로가기 및 선택 탭  
+
+
+-- 팀매치  
+g_pStatic_TeamInactive = g_pUIDialog:CreateStatic()
+g_pUIDialog:AddControl( g_pStatic_TeamInactive )
+g_pStatic_TeamInactive:SetName( "Static_Team_Inactive" )
+
+g_pPicture_team = g_pUIDialog:CreatePicture()
+g_pStatic_TeamInactive:AddPicture( g_pPicture_team )
+
+g_pPicture_team:SetTex( "DLG_UI_Common_Texture02.TGA", "team_noactive" )
+
+g_pPicture_team:SetPoint
+{
+    
+	"LEFT_TOP		= D3DXVECTOR2(657,56)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+                   
+g_pPicture_team = g_pUIDialog:CreatePicture()
+g_pStatic_TeamInactive:AddPicture( g_pPicture_team )
+
+g_pPicture_team:SetTex( "DLG_UI_Common_Texture02.TGA", "team_match_noactive" )
+
+g_pPicture_team:SetPoint
+{
+   
+	"LEFT_TOP		= D3DXVECTOR2(245,71)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+-- 팀데스매치  
+g_pStatic_TeamDeathInactive = g_pUIDialog:CreateStatic()
+g_pUIDialog:AddControl( g_pStatic_TeamDeathInactive )
+g_pStatic_TeamDeathInactive:SetName( "Static_TeamDeath_Inactive" )
+
+g_pPicture_death = g_pUIDialog:CreatePicture()
+g_pStatic_TeamDeathInactive:AddPicture( g_pPicture_death )
+
+g_pPicture_death:SetTex( "DLG_UI_Common_Texture02.TGA", "death_noactive" )
+
+g_pPicture_death:SetPoint
+{
+    
+	"LEFT_TOP		= D3DXVECTOR2(771,56)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pPicture_death = g_pUIDialog:CreatePicture()
+g_pStatic_TeamDeathInactive:AddPicture( g_pPicture_death )
+
+g_pPicture_death:SetTex( "DLG_UI_Common_Texture02.TGA", "death_match_noactive" )
+
+g_pPicture_death:SetPoint
+{
+   
+	"LEFT_TOP		= D3DXVECTOR2(313,71)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+-- 서바이벌 
+
+g_pStatic_Survival_Inactive = g_pUIDialog:CreateStatic()
+g_pUIDialog:AddControl( g_pStatic_Survival_Inactive )
+g_pStatic_Survival_Inactive:SetName( "Static_Survival_Inactive" )
+
+g_pPicture_survival = g_pUIDialog:CreatePicture()
+g_pStatic_Survival_Inactive:AddPicture( g_pPicture_survival )
+
+g_pPicture_survival:SetTex( "DLG_UI_Common_Texture02.TGA", "survival_noactive" )
+
+g_pPicture_survival:SetPoint
+{
+    
+	"LEFT_TOP		= D3DXVECTOR2(885,56)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pPicture_survival = g_pUIDialog:CreatePicture()
+g_pStatic_Survival_Inactive:AddPicture( g_pPicture_survival )
+
+g_pPicture_survival:SetTex( "DLG_UI_Common_Texture02.TGA", "survival_match_noactive" )
+
+g_pPicture_survival:SetPoint
+{
+   
+	"LEFT_TOP		= D3DXVECTOR2(381,71)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+-- 전체 
+g_pStatic_All_Inactive = g_pUIDialog:CreateStatic()
+g_pUIDialog:AddControl( g_pStatic_All_Inactive )
+g_pStatic_All_Inactive:SetName( "Static_All_Inactive" )
+
+
+g_pPicture_view = g_pUIDialog:CreatePicture()
+g_pStatic_All_Inactive:AddPicture( g_pPicture_view )
+
+g_pPicture_view:SetTex( "DLG_UI_Common_Texture02.TGA", "all_view_noactive" )
+
+g_pPicture_view:SetPoint
+{
+   
+	"LEFT_TOP		= D3DXVECTOR2(177,71)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+-------------방 만들기 버튼
+
+
+g_pButtonroom = g_pUIDialog:CreateButton()
+g_pUIDialog:AddControl( g_pButtonroom )
+g_pButtonroom:SetName( "UI_PvP_Lobby_Create_Room" )
+g_pButtonroom:SetNormalTex( "DLG_UI_BUTTON02.tga", "make_normal" )
+
+g_pButtonroom:SetOverTex( "DLG_UI_BUTTON02.tga", "make_over" )
+
+g_pButtonroom:SetDownTex( "DLG_UI_BUTTON02.tga", "make_over" )
+
+g_pButtonroom:SetNormalPoint
+{
+	
+    "LEFT_TOP		= D3DXVECTOR2(852,397)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonroom:SetOverPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(848,393)",
+
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonroom:SetDownPoint
+{
+     ADD_SIZE_X = -2,
+     ADD_SIZE_Y = -2,
+ 	"LEFT_TOP		= D3DXVECTOR2(848+1,393+1)",
+
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonroom:SetCustomMsgMouseUp( UI_PVP_LOBBY_CUSTOM_MSG["UPLCM_CREATE_ROOM"] )
+
+

@@ -1,0 +1,50 @@
+=== gup_get_unit_info_by_useruid ===
+Changed database context to 'Game01'.
+CREATE PROCEDURE [dbo].[gup_get_unit_info_by_useruid]
+	@iUserUID_ [bigint]
+AS
+SET NOCOUNT ON;
+
+SELECT  a.UnitUID
+,       a.UnitClass
+,       a.[Exp]
+,       a.[Level]
+,       a.GamePoint
+,		c.Rating
+,       a.BaseHP
+,       a.AtkPhysic
+,       a.AtkMagic
+,       a.DefPhysic
+,       a.DefMagic
+,       a.SPoint
+,		CASE WHEN b.NickName LIKE '%[_]%' THEN '__DELETED__' ELSE b.NickName END
+,       a.LastPosition
+    FROM dbo.GUnit as a WITH(NOLOCK)
+		JOIN dbo.GUnitPVP AS c WITH (NOLOCK) ON a.UnitUID = c.UnitUID
+        JOIN dbo.GUnitNickName as b WITH(NOLOCK)
+            ON a.UserUID = @iUserUID_ AND a.Deleted = 0 AND a.UnitUID = b.UnitUID --∞é¡∞á£δÉ£ ∞£á∞áÇ ∞áòδ│┤ ∞¥╜∞û┤Ω░êΩ╣îδ┤É...
+				ORDER BY a.LastDate DESC
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ∞║Éδª¡φä░ ∞é¡∞á£ φöäδí£∞ä╕∞èñ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+SELECT A.UnitUID, A.UnitClass, A.[Exp], A.[Level], A.GamePoint
+	, D.Rating
+	, A.BaseHP, A.AtkPhysic, A.AtkMagic, A.DefPhysic, A.DefMagic, A.SPoint, B.NickName
+	, A.LastPosition
+	, A.LastDate												--$$∞ä£δ▓ä∞ùÉ∞ä£ ∞║Éδª¡φä░ φæ£∞ï£ ∞ê£∞ä£δÑ╝ ∞áòφòÿΩ╕░ ∞£äφò┤ ∞╢öΩ░Ç(Maxpia)
+	, A.Deleted, C.DelAbleDate, C.RestoreAbleDate				-- ∞║Éδª¡φä░ ∞é¡∞á£ δîÇΩ╕░ ∞╢öΩ░Çδí£ ∞╢öΩ░Ç(Maxpia)
+	FROM dbo.GUnit AS A WITH(NOLOCK)
+	JOIN dbo.GUnitNickName AS B WITH(NOLOCK)
+		ON A.UnitUID = B.UnitUID
+	LEFT OUTER JOIN dbo.GUnitWaitDelete AS C WITH(NOLOCK)
+		ON A.UnitUID = C.UnitUID
+	JOIN dbo.GUnitPVP AS D WITH(NOLOCK)
+		ON A.UnitUID = D.UnitUID
+	WHERE A.UserUID = @UserUID
+		AND (
+			A.Deleted = 0	-- ∞é¡∞á£δÉ£ ∞£á∞áÇ ∞áòδ│┤ ∞¥╜∞û┤Ω░êΩ╣îδ┤É...
+			OR ( A.Deleted = 1 AND ISNULL(C.Deleted, 1) = 0)	-- ∞║Éδª¡φä░ ∞é¡∞á£ δîÇΩ╕░ ∞╢öΩ░Çδí£ ∞╢öΩ░Ç(Maxpia)
+		)
+	--ORDER BY A.LastDate DESC									--$$∞ä£δ▓ä∞ùÉ∞ä£ ∞áòδá¼ ∞▓ÿδª¼φòÿΩ╕░δí£φò¿.(Maxpia)
+//

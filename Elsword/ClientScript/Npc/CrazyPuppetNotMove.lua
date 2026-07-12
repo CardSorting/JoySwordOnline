@@ -1,0 +1,441 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 350.0,
+	UNIT_HEIGHT		= 250.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	UNIT_SCALE		= 2,
+	APPLY_EFFECTSET_SCALE = TRUE, --거인 소인 되었을때 이펙트 크기도 변하게 하는 옵션 
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+	"Giant_Puppet_MagicAttackA02.ogg",
+	"Giant_Puppet_MagicAttackB02.ogg",
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_CRAZY_PUPPET_NOT_MOVE.x",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 0,
+	MAX_G_SPEED			= 0,
+	
+	WALK_SPEED			= 0,
+	RUN_SPEED			= 0,
+	JUMP_SPEED			= 0,
+	DASH_JUMP_SPEED		= 0,
+}
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 1000,
+	MP_CHANGE_RATE		= 0,
+	MP_CHARGE_RATE		= 0,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	SHADOW_SIZE			= 0,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "",
+	EXCLAMATION_MARK_SEQ	= "",
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_NO_SOUND"],
+	
+	NOT_EXTRA_DAMAGE	= TRUE,
+
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "CARZYPUPPETNOTMOVE_START",					},
+	{ STATE_NAME = "CARZYPUPPETNOTMOVE_WAIT",					},
+	{ STATE_NAME = "CARZYPUPPETNOTMOVE_ATTACK_LEFT",			LUA_FRAME_MOVE_FUNC = "CARZYPUPPETNOTMOVE_ATTACK_LEFT_FRAME_MOVE",		},
+	{ STATE_NAME = "CARZYPUPPETNOTMOVE_ATTACK_RIGHT",			LUA_FRAME_MOVE_FUNC = "CARZYPUPPETNOTMOVE_ATTACK_RIGHT_FRAME_MOVE",		},
+	
+	--리액션 관련	
+	{ STATE_NAME = "CARZYPUPPETNOTMOVE_DYING",						}, --	LUA_FRAME_MOVE_FUNC = "CARZYPUPPETNOTMOVE_DYING_FRAME_MOVE" },
+	
+	START_STATE					= "CARZYPUPPETNOTMOVE_START",
+	WAIT_STATE          = "CARZYPUPPETNOTMOVE_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "",
+	SMALL_DAMAGE_LAND_BACK		= "",
+	BIG_DAMAGE_LAND_FRONT		= "",
+	BIG_DAMAGE_LAND_BACK		= "",
+	DOWN_DAMAGE_LAND_FRONT		= "",
+  DOWN_DAMAGE_LAND_BACK		= "",
+	FLY_DAMAGE_FRONT			= "",
+	FLY_DAMAGE_BACK				= "",
+	SMALL_DAMAGE_AIR			= "",	
+	BIG_DAMAGE_AIR				= "",
+	DOWN_DAMAGE_AIR				= "",
+	UP_DAMAGE					= "",
+	DAMAGE_REVENGE				= "",
+	
+	DYING_LAND_FRONT			= "CARZYPUPPETNOTMOVE_DYING",
+	DYING_LAND_BACK				= "CARZYPUPPETNOTMOVE_DYING",
+	DYING_SKY					= "CARZYPUPPETNOTMOVE_DYING",
+
+	REVENGE_ATTACK				= "",	
+}
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_RANDOM"],
+		TARGET_INTERVAL				= 99999,	-- sec
+		TARGET_NEAR_RANGE			= 2000,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 5000,		-- cm
+		TARGET_LOST_RANGE			= 6000,		-- cm
+		TARGET_SUCCESS_RATE			= 100,		-- %
+		ATTACK_TARGET_RATE			= 50,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 30,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE = 
+	{		
+		DEST_GAP			= 150,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 160,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		MOVE_SPLIT_RANGE	= 600,
+		WALK_INTERVAL		= 3,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 5,
+		UP_JUMP_RATE		= 100, -- 40,
+		UP_DOWN_RATE		= 20,
+		DOWN_JUMP_RATE		= 100,    --  20,
+		DOWN_DOWN_RATE		= 40,
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 100, --50,		
+		PATROL_RANGE			= 300,
+		PATROL_COOL_TIME		= 1,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 500,	-- cm
+		ESCAPE_GAP			= 600,	-- 이 거리 보다 멀어지면 도망 성공
+		
+		WALK_INTERVAL		= 1,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 10,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+	},
+	
+	ESCAPE_CONDITION = 
+	{
+		RATE				= 100, -- 50,
+		MY_HP				= 20,		-- %, 전체 HP에 대해 현재 HP의 비율
+		ESCAPE_RANGE		= 600,		-- 이 범위 안에 들어오면 타격당하지 않아도 RATE에 지정된 확률로 도망
+	}
+}
+
+CARZYPUPPETNOTMOVE_START = 
+{
+	ANIM_NAME					= "WaitStart",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	RIGHT               = TRUE,
+	NEVER_MOVE					= TRUE,
+		
+  INVINCIBLE					= { 0, 100, }, 			
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CARZYPUPPETNOTMOVE_WAIT",						},
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Crazy_Puppet_Not_Move_Weapon_Fire", 2.0,
+	},
+	DELETE_EFFECT_SET_ON_DIE = TRUE,
+	
+	IMMUNITY_LIST_AT_THIS_STATE =
+	{
+		BUFF_TEMPLET_ID["BTI_DEBUFF_CAULDRON_MADNESS_SOUP"],	
+	}
+}
+
+CARZYPUPPETNOTMOVE_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	RIGHT               = TRUE,
+	NEVER_MOVE					= TRUE,
+	
+	SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED = TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	  "CARZYPUPPETNOTMOVE_ATTACK_LEFT",  "CT_CARZYPUPPETNOTMOVE_ATTACK_LEFT",				},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	  "CARZYPUPPETNOTMOVE_ATTACK_RIGHT",  "CT_CARZYPUPPETNOTMOVE_ATTACK_RIGHT",				},
+	},
+	
+	
+	CT_CARZYPUPPETNOTMOVE_ATTACK_LEFT = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1000,
+		CHECK_TARGET_DIRECTION  = TRUE,
+		TARGET_RIGHT    = FALSE,
+		RATE						= 100,
+	},	
+	CT_CARZYPUPPETNOTMOVE_ATTACK_RIGHT = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1000,
+		CHECK_TARGET_DIRECTION  = TRUE,
+		TARGET_RIGHT    = TRUE,
+		RATE						= 100,
+	},	
+	
+	IMMUNITY_LIST_AT_THIS_STATE =
+	{
+		BUFF_TEMPLET_ID["BTI_DEBUFF_CAULDRON_MADNESS_SOUP"],	
+	}
+}
+
+CARZYPUPPETNOTMOVE_ATTACK_LEFT =
+{
+  ANIM_NAME					= "ATTACK_LEFT",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	RIGHT               = TRUE,
+	
+	SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED = TRUE,
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	NEVER_MOVE					= TRUE,
+	
+	SOUND_PLAY0 = 	{ 2.00,"Giant_Puppet_MagicAttackA02.ogg"},
+	
+	ATTACK_TIME0				= { 1.9, 2.1, },
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1,
+		},
+		
+		BACK_SPEED_X			= 1000,
+		BACK_SPEED_Y			= 700,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,	
+
+		RE_ATTACK				= TRUE,		
+		HIT_GAP					= 0.2,		
+	},
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				      "CARZYPUPPETNOTMOVE_WAIT", },		
+	},	
+	
+	IMMUNITY_LIST_AT_THIS_STATE =
+	{
+		BUFF_TEMPLET_ID["BTI_DEBUFF_CAULDRON_MADNESS_SOUP"],	
+	}
+
+}
+
+CARZYPUPPETNOTMOVE_ATTACK_RIGHT =
+{
+  ANIM_NAME					= "ATTACK_RIGHT",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	RIGHT               = TRUE,
+	
+	SUPER_ARMOR					= TRUE,
+	SUPER_ARMOR_NOT_RED = TRUE,
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	NEVER_MOVE					= TRUE,
+	
+	SOUND_PLAY0 = 	{ 2.00,"Giant_Puppet_MagicAttackB02.ogg"},
+	
+	ATTACK_TIME0				= { 1.9, 2.1, },
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1,
+		},
+		
+		BACK_SPEED_X			= 1000,
+		BACK_SPEED_Y			= 700,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,	
+
+		RE_ATTACK				= TRUE,		
+		HIT_GAP					= 0.2,		
+	},
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				      "CARZYPUPPETNOTMOVE_WAIT", },		
+	},
+	
+	IMMUNITY_LIST_AT_THIS_STATE =
+	{
+		BUFF_TEMPLET_ID["BTI_DEBUFF_CAULDRON_MADNESS_SOUP"],	
+	}
+}
+	
+
+CARZYPUPPETNOTMOVE_DYING = 
+{
+	ANIM_NAME					= "Dying",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+  RIGHT               = TRUE,
+
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	NEVER_MOVE					= TRUE,
+	DYING_END					= TRUE,
+	DYING_SPEED					= 0.65,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	IMMUNITY_LIST_AT_THIS_STATE =
+	{
+		BUFF_TEMPLET_ID["BTI_DEBUFF_CAULDRON_MADNESS_SOUP"],	
+	}
+	
+}
+	
+-------------------------------------------------------------------------------
+
+function CARZYPUPPETNOTMOVE_ATTACK_LEFT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 2.85 ) then				
+	
+		local pEffectSet = pX2Game:GetEffectSet()
+
+		local hEffectTemp = pNPCUnit:GetEffectSet_LUA( 0 )
+		if hEffectTemp ~= nil then
+			pEffectSet:StopEffectSet_LUA( hEffectTemp )
+			pNPCUnit:ClearEffectSet_LUA( 0 )
+		end
+
+		local hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_Crazy_Puppet_Not_Move_Fire_left", pNPCUnit )
+	
+		if nil ~= hEffect then
+			pNPCUnit:SetEffectSet_LUA( 0, hEffect )
+		end
+	end
+end
+
+function CARZYPUPPETNOTMOVE_ATTACK_RIGHT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 2.85 ) then	
+		local pEffectSet = pX2Game:GetEffectSet()
+
+		local hEffectTemp = pNPCUnit:GetEffectSet_LUA( 1 )
+		if hEffectTemp ~= nil then
+			pEffectSet:StopEffectSet_LUA( hEffectTemp )
+			pNPCUnit:ClearEffectSet_LUA( 1 )
+		end
+
+		local hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_Crazy_Puppet_Not_Move_Fire_right", pNPCUnit )
+	
+		if nil ~= hEffect then
+			pNPCUnit:SetEffectSet_LUA( 1, hEffect )
+		end
+	end
+end
+
+
+function CARZYPUPPETNOTMOVE_DYING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then				
+	end
+
+end
+
+
+
+
+

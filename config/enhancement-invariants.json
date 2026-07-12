@@ -1,0 +1,29 @@
+{
+  "schema": "joysword.enhancement-invariants/v1",
+  "version": 1,
+  "canonical_source": "Elsword/ServerResource/EnchantTable.lua",
+  "generated_runtime_copies": [
+    "Elsword/GameServer/EnchantTable.lua"
+  ],
+  "legacy_archive": "Elsword/GameServer/Edited Enhancement tables put in GameServer and ServerResources.zip",
+  "legacy_member": "EnchantTable.lua.bak",
+  "approved_probability_section_sha256": "3c35bbfb8bc9a819c050e4b6226becb9c6ca32697d4e5210f3bd6d234eb7ddd3",
+  "allow_legacy_divergence": false,
+  "strict_total_tolerance": 1e-9,
+  "high_tier_start": 10,
+  "approved_adjacent_success_increases": {
+    "standard": [
+      {"from": 13, "to": 14, "reason": "Untouched legacy standard table resumes at 1% for target +14."}
+    ],
+    "event": [
+      {"from": 11, "to": 12, "reason": "Untouched timed-event table raises target +12 from 0.7% to 1%."},
+      {"from": 13, "to": 14, "reason": "Untouched timed-event table resumes at 1% for target +14."}
+    ],
+    "rare": []
+  },
+  "migration": {
+    "id": "legacy-curve-restoration-v1",
+    "reason": "Remove the development Up1=100 override and lock the untouched bundled legacy probability section.",
+    "review_required_for_change": true
+  }
+}

@@ -1,0 +1,11834 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+			
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 70.0,
+	UNIT_HEIGHT		= 150.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	DUNGEON_SPEECH =
+	{
+		STR_ID_4020,
+		STR_ID_4021,
+		STR_ID_4022,
+		STR_ID_4023,
+	},
+
+}
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{		
+		--컷인
+		"HQ_CutIn_Aisha_1.dds",
+		"HQ_CutIn_Aisha_2.dds",
+		"HQ_CutIn_Aisha_3.dds",
+		
+		"HQ_CutIn_Aisha_EM_1.dds",
+		"HQ_CutIn_Aisha_VP_1.dds",
+		
+		"Count_Barrier01.dds",
+		"PlusHPMP.dds",
+		"Arme_ring2.dds",
+		
+		
+	},
+	
+	READY_SOUND = 
+	{
+--	"AishaVoice_EnergyDrain_01.ogg",
+--	"AishaVoice_EnergySpurt_01.ogg",
+--	"AishaVoice_GuilotinePresst_01.ogg",
+--	"AishaVoice_GuilotinePresst_02.ogg",
+--	"AishaVoice_HeavyPress_01.ogg",
+--	"AishaVoice_MagicalMakeup_01.ogg",
+--	"AishaVoice_ManaIntake_02.ogg",
+--	"AishaVoice_SuperNova_01.ogg",
+--	"Aisha__Heavy_Press.ogg",
+--	"Aisha_Aura_Speed_Accelerator.ogg",
+--	"Aisha_Circle_Flame2.ogg",
+--	"Aisha_Energy_Drain.ogg",
+--	"Aisha_Energy_Spurt.ogg",
+--	"Aisha_Fire_Road.ogg",
+--	"Aisha_Guillotine_Press.ogg",
+--	"Aisha_Magical_Makeup.ogg",
+--	"Aisha_Super_Nova.ogg",
+--	"Body_Spin.ogg",
+--	"Energy.ogg",
+--	"AishaVoice_BM_Start.ogg",
+--	"AishaVoice_BM_Lose.ogg",
+--	"AishaVoice_BM_Lose2.ogg",
+--	"AishaVoice_BM_Win.ogg",
+--	"AishaVoice_BM_Win2.ogg",
+	
+	
+	},
+	
+	READY_XSKIN_MESH = 
+	{
+		
+		"Arme_ComboX3Up-1.X",
+		"Arme_ComboX3Up-2.X",
+		"Arme_ComboX3Up-3.X",
+		"Arme_Evasion.X",
+		"Arme_EvasionAttack.X",
+		"ChargeMPA.X",
+		"ChargeMPB.X",
+		"Arme_SpecialAttack_LightningBolts2a-0.X",
+		
+		"SpecialAttack_MeteoCall3a-1.X",
+		"Arme_FireballS.X",
+		"Arme_FireballB.X",
+		"Effect_ElSword_dropdown.X",
+		
+		"Arme_SI_A_AV_ManaShield_Mesh01.X",
+	},
+	
+	READY_XMESH = 
+	{		
+		"Arme_ChargeMp1.y",
+		"Arme_ChargeMp2.Y",
+	
+		"Ring_Plane.y",
+		"Arme_SpecialAttack_LightningBolts2a-1.Y",
+		"Arme_SpecialAttack_LightningBolts2a-2.y",
+		"Arme_SpecialAttack_LightningBolts2a-3.y",
+		"Arme_SpecialAttack_LightningBolts2a-4.y",
+		"Arme_SpecialAttack_LightningBolts2a-5.y",
+		"Arme_SpecialAttack_LightningBolts2a-6.y",
+		"Arme_SpecialAttack_LightningBolts2a-1_1.Y",
+		"Arme_SpecialAttack_LightningBolts2a-2_1.y",
+		"Arme_SpecialAttack_LightningBolts2a-3_1.y",
+		"Arme_SpecialAttack_LightningBolts2a-4_1.y",
+		"Arme_SpecialAttack_LightningBolts2a-5_1.y",
+		"Arme_SpecialAttack_LightningBolts2a-6_1.y",
+	},
+}
+
+INIT_MOTION = 
+{
+	--MOTION_FILE_NAME	= "Motion_Arme_VioletMage.x",
+	MOTION_FILE_NAME	= "Motion_Arme_Common.x",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 500,
+	RUN_SPEED			= 700,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300,
+}
+
+INIT_COMPONENT = 
+{
+	--MAX_HP				= 800,
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW	= "Small_HP_bar_Yellow.TGA",
+	
+	HYPER_MODE_COUNT	= 1,
+	MAX_HYPER_MODE_TIME	= 30,
+		
+	QUESTION_MARK_SEQ		= "QuestionMark",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMark",
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+INIT_COMMON_RANDOM_STATE = 
+{
+	ARME_VIOLET_MAGE =
+	{
+		START_STATE_LIST = 
+		{
+			"AVSI_START", 100, 	
+		},
+		WIN_STATE_LIST = 
+		{
+			"AVSI_WIN", 50,
+			"AVSI_WIN2", 50,
+		},
+		LOSE_STATE_LIST = 
+		{
+			"AVSI_LOSE", 50,
+			"AVSI_LOSE2", 50,
+		},
+	}, 
+	
+	
+	ARME_HIGH_MAGICIAN =
+	{
+		START_STATE_LIST = 
+		{
+			"AVSI_AHM_START", 80, 
+			"AVSI_START", 20,			
+		},
+		WIN_STATE_LIST = 
+		{
+			"AVSI_AHM_WIN", 40,
+			"AVSI_AHM_WIN2", 40,
+			"AVSI_WIN", 10,
+			"AVSI_WIN2", 10,
+		},
+		LOSE_STATE_LIST = 
+		{
+			"AVSI_AHM_LOSE", 40,
+			"AVSI_AHM_LOSE2", 40,
+			"AVSI_LOSE", 10,
+			"AVSI_LOSE2", 10,
+		},
+	}, 
+	
+	
+	
+	
+	ARME_DARK_MAGICIAN =
+	{
+		START_STATE_LIST = 
+		{
+			"AVSI_ADM_START", 80, 
+			"AVSI_START", 20,
+		},
+		WIN_STATE_LIST = 
+		{
+			"AVSI_ADM_WIN", 40,
+			"AVSI_ADM_WIN2", 40,
+			"AVSI_WIN", 10,
+			"AVSI_WIN2", 10,
+		},
+		LOSE_STATE_LIST = 
+		{
+			"AVSI_ADM_LOSE", 40,
+			"AVSI_ADM_LOSE2", 40,
+			"AVSI_LOSE", 10,
+			"AVSI_LOSE2", 10,
+		},
+	}, 
+	
+	ARME_BATTLE_MAGICIAN =
+	{
+		START_STATE_LIST = 
+		{
+			"AVSI_ABM_START", 80, 
+			"AVSI_START", 20,
+		},
+		WIN_STATE_LIST = 
+		{
+			"AVSI_ABM_WIN", 40,
+			"AVSI_ABM_WIN2", 40,
+			"AVSI_WIN", 10,
+			"AVSI_WIN2", 10,
+		},
+		LOSE_STATE_LIST = 
+		{
+			"AVSI_ABM_LOSE", 40,
+			"AVSI_ABM_LOSE2", 40,
+			"AVSI_LOSE", 10,
+			"AVSI_LOSE2", 10,
+		},
+	}, 
+	
+	
+	
+	
+	
+	ARME_ELEMENTAL_MASTER =
+	{
+		START_STATE_LIST = 
+		{
+			"AVSI_AEM_START", 80, 	
+			"AVSI_AHM_START", 15, 
+			"AVSI_START", 5,					
+		},
+		WIN_STATE_LIST = 
+		{
+			"AVSI_AEM_WIN", 35,
+			"AVSI_AEM_WIN2", 35,
+			"AVSI_AHM_WIN", 10,
+			"AVSI_AHM_WIN2", 10,
+			"AVSI_WIN", 5,
+			"AVSI_WIN2", 5,
+		},
+		LOSE_STATE_LIST = 
+		{
+			"AVSI_AEM_LOSE", 35,
+			"AVSI_AEM_LOSE2", 35,
+			"AVSI_AHM_LOSE", 10,
+			"AVSI_AHM_LOSE2", 10,
+			"AVSI_LOSE", 5,
+			"AVSI_LOSE2", 5,
+		},
+	}, 
+	
+	
+	
+	ARME_VOID_PRINCESS =
+	{
+		START_STATE_LIST = 
+		{
+			"AVSI_AVP_START", 80, 	
+			"AVSI_ADM_START", 15, 
+			"AVSI_START", 5,			
+		},
+		WIN_STATE_LIST = 
+		{
+			"AVSI_AVP_WIN", 35,
+			"AVSI_AVP_WIN2", 35,
+			"AVSI_ADM_WIN", 10,
+			"AVSI_ADM_WIN2", 10,
+			"AVSI_WIN", 5,
+			"AVSI_WIN2", 5,
+		},
+		LOSE_STATE_LIST = 
+		{
+			"AVSI_AVP_LOSE", 35,
+			"AVSI_AVP_LOSE2", 35,
+			"AVSI_ADM_LOSE", 10,
+			"AVSI_ADM_LOSE2", 10,
+			"AVSI_LOSE", 5,
+			"AVSI_LOSE2", 5,
+		},
+	}, 
+	
+	ARME_DIMENSION_WITCH =
+	{
+		START_STATE_LIST = 
+		{
+			"AVSI_ADW_START", 80, 	
+			"AVSI_ABM_START", 15, 
+			"AVSI_START", 5,			
+		},
+		WIN_STATE_LIST = 
+		{
+			"AVSI_ADW_WIN", 35,
+			"AVSI_ADW_WIN2", 35,
+			"AVSI_ABM_WIN", 10,
+			"AVSI_ABM_WIN2", 10,
+			"AVSI_WIN", 5,
+			"AVSI_WIN2", 5,
+		},
+		LOSE_STATE_LIST = 
+		{
+			"AVSI_ADW_LOSE", 35,
+			"AVSI_ADW_LOSE2", 35,
+			"AVSI_ABM_LOSE", 10,
+			"AVSI_ABM_LOSE2", 10,
+			"AVSI_LOSE", 5,
+			"AVSI_LOSE2", 5,
+		},
+	}, 
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AVSI_DIE_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, },
+
+	SOUND_PLAY0	            	= { 0.19, "AishaVoice_DieScream1.ogg" },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	NORMAL_CAMERA0_RATE			= 30,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 40,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 300,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= -30,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 300,
+			ANGLEDEGREE		= 50,
+		},
+	},
+}
+
+AVSI_DIE_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SOUND_PLAY0	            	= { 0.19, "AishaVoice_DieScream1.ogg" },
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	NORMAL_CAMERA0_RATE			= 30,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 40,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 800,
+			HEIGHT			= 30,
+			ANGLEDEGREE		= -80,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 800,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 80,
+		},
+	},
+}
+
+AVSI_START_INTRUDE = 
+{
+	ANIM_NAME					= "RespawnLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	INVINCIBLE					= { 0, 100, },
+}
+
+
+
+
+
+
+
+
+
+
+
+AVSI_START = 
+{
+	ANIM_NAME					= "Start",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	
+	SOUND_PLAY0			= { 0.5, "Sound_Arme_Start1.ogg", 100, TRUE },	
+	
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+	
+	NORMAL_CAMERA0_RATE			= 20,
+	NORMAL_CAMERA1_RATE			= 40,
+	NORMAL_CAMERA2_RATE			= 40,
+	
+	
+	HIT_CAMERA0_RATE			= 0,
+	HIT_CAMERA1_RATE			= 0,
+	HIT_CAMERA2_RATE			= 0,
+	
+	CAMERA0 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			LOOK_OFFSET_X	= 0,
+			LOOK_OFFSET_Y	= 0,
+			LOOK_OFFSET_Z	= 0,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 0,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 0,	
+			TRACKINGTIME	= 0.3,
+		},
+	},	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 1.413, 3.001 },
+		
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine1",
+			DISTANCE		= 320,
+			HEIGHT			= -60,
+			ANGLEDEGREE		= 20,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_L_Hand",
+			DISTANCE		= 280,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -50,
+			LOOKATDISTANCE	= 0,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= 90,
+			ANGLEDEGREE		= -40,
+			LOOKATDISTANCE	= 0,
+		},
+	},
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 1.617, 2.985 },
+	
+	
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_L_Hand",
+			DISTANCE		= 330,
+			HEIGHT			= 150,
+			ANGLEDEGREE		= -50,
+			TRACKINGTIME	= 1,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 230,
+			HEIGHT			= 100,
+			ANGLEDEGREE		= -50,
+			EYEDISTANCE		= 0,
+			TRACKINGTIME	= 0.5,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= 100,
+			ANGLEDEGREE		= -40,
+			EYEDISTANCE		= 0,
+			TRACKINGTIME	= 0.3,
+		},
+	},
+}
+
+
+AVSI_WIN = 
+{
+	ANIM_NAME					= "Win",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	RIGHT						= TRUE,
+		
+	INVINCIBLE					= { 0, 100, },
+
+	SOUND_PLAY0			= { 0.01, "Sound_Arme_Win1_1.ogg", 100, TRUE },	
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+		
+	NORMAL_CAMERA0_RATE			= 10,
+	NORMAL_CAMERA1_RATE			= 45,
+	NORMAL_CAMERA2_RATE			= 45,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 0.5, 2.0, },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 50,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 500,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 0,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= -50,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 1.5, },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= 50,
+			ANGLEDEGREE		= -70,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 300,
+			HEIGHT			= 50,
+			ANGLEDEGREE		= -100,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+}
+
+AVSI_WIN2 = 
+{
+	ANIM_NAME					= "Win",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	RIGHT						= TRUE,
+		
+	INVINCIBLE					= { 0, 100, },
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+	
+	NORMAL_CAMERA0_RATE			= 10,
+	NORMAL_CAMERA1_RATE			= 45,
+	NORMAL_CAMERA2_RATE			= 45,
+
+	SOUND_PLAY0			= { 0.01, "Sound_Arme_Win1_1.ogg", 100, TRUE },	
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 0.5, 1.5, },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 70,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 500,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 50,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= -50,
+			ANGLEDEGREE		= 20,
+		},
+	},
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 1.5, },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= 50,
+			ANGLEDEGREE		= -70,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 300,
+			HEIGHT			= 50,
+			ANGLEDEGREE		= -30,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+}
+
+AVSI_LOSE = 
+{
+	ANIM_NAME					= "LobbyLose",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+		
+	RIGHT						= TRUE,
+	INVINCIBLE					= { 0, 100, },	
+
+	SOUND_PLAY0			= { 0.01, "Sound_Arme_Lose1_1.ogg", 100, TRUE },	
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+	
+	NORMAL_CAMERA0_RATE			= 10,
+	NORMAL_CAMERA1_RATE			= 45,
+	NORMAL_CAMERA2_RATE			= 45,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -50,
+		},
+	}
+}
+
+AVSI_LOSE2 = 
+{
+	ANIM_NAME					= "Lose",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+		
+	RIGHT						= TRUE,
+	INVINCIBLE					= { 0, 100, },	
+
+	SOUND_PLAY0			= { 0.01, "Sound_Arme_Lose1_2.ogg", 100, TRUE },	
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+	
+	NORMAL_CAMERA0_RATE			= 10,
+	NORMAL_CAMERA1_RATE			= 45,
+	NORMAL_CAMERA2_RATE			= 45,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -50,
+		},
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- high magician
+
+AVSI_AHM_START = 
+{
+	ANIM_NAME					= "HM_Start",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	SOUND_PLAY0			= { 0.5, "Sound_Arme_Start1.ogg", 100, TRUE },	
+	
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+	
+	NORMAL_CAMERA0_RATE			= 20,
+	NORMAL_CAMERA1_RATE			= 40,
+	NORMAL_CAMERA2_RATE			= 40,
+	
+	
+	HIT_CAMERA0_RATE			= 0,
+	HIT_CAMERA1_RATE			= 0,
+	HIT_CAMERA2_RATE			= 0,
+	
+	CAMERA0 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			LOOK_OFFSET_X	= 0,
+			LOOK_OFFSET_Y	= 0,
+			LOOK_OFFSET_Z	= 0,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 0,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 0,	
+			TRACKINGTIME	= 0.3,
+		},
+	},	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 0.2, },
+		
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 300,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -90,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 10,
+			LOOKATDISTANCE	= 0,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 20,
+			LOOKATDISTANCE	= 0,
+		},
+	},
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 1.5, },
+	
+	
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= -70,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 250,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 0,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 0,	
+			TRACKINGTIME	= 0.15,
+		},
+	},
+}
+
+
+AVSI_AHM_WIN = 
+{
+	ANIM_NAME					= "HM_Win",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	RIGHT						= TRUE,
+		
+	INVINCIBLE					= { 0, 100, },
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+		
+	NORMAL_CAMERA0_RATE			= 10,
+	NORMAL_CAMERA1_RATE			= 45,
+	NORMAL_CAMERA2_RATE			= 45,
+
+	SOUND_PLAY0			= { 0.01, "Sound_Arme_Win1_2.ogg", 100, TRUE },	
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 0.5, 2.0, },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 100,
+			ANGLEDEGREE		= -50,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 500,
+			HEIGHT			= 100,
+			ANGLEDEGREE		= 50,
+			TRACKINGTIME	= 1.6,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= -50,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 1.5, },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine",
+			DISTANCE		= 400,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 0,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine",
+			DISTANCE		= 300,
+			HEIGHT			= 50,
+			ANGLEDEGREE		= -10,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+}
+
+AVSI_AHM_WIN2 = 
+{
+	ANIM_NAME					= "HM_Win2",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	RIGHT						= TRUE,
+		
+	INVINCIBLE					= { 0, 100, },
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+
+	SOUND_PLAY0			= { 0.01, "Sound_Arme_Win1_3.ogg", 100, TRUE },	
+	
+	NORMAL_CAMERA0_RATE			= 10,
+	NORMAL_CAMERA1_RATE			= 45,
+	NORMAL_CAMERA2_RATE			= 45,
+
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 0.5, 0.6, },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 500,
+			HEIGHT			= 300,
+			ANGLEDEGREE		= 0,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 500,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 50,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 500,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -50,
+			TRACKINGTIME	= 3,
+		},
+	},
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 1.5, },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 500,
+			HEIGHT			= 50,
+			ANGLEDEGREE		= -70,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 500,
+			HEIGHT			= 300,
+			ANGLEDEGREE		= 10,
+		
+		},
+	},
+}
+
+AVSI_AHM_LOSE = 
+{
+	ANIM_NAME					= "HM_Lose",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+		
+	RIGHT						= TRUE,
+	INVINCIBLE					= { 0, 100, },	
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+	
+	NORMAL_CAMERA0_RATE			= 10,
+	NORMAL_CAMERA1_RATE			= 45,
+	NORMAL_CAMERA2_RATE			= 45,
+
+	SOUND_PLAY0			= { 0.01, "Sound_Arme_Lose1_3.ogg", 100, TRUE },	
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -50,
+		},
+	}
+}
+
+AVSI_AHM_LOSE2 = 
+{
+	ANIM_NAME					= "HM_Lose2",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+		
+	RIGHT						= TRUE,
+	INVINCIBLE					= { 0, 100, },	
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+	
+	NORMAL_CAMERA0_RATE			= 10,
+	NORMAL_CAMERA1_RATE			= 45,
+	NORMAL_CAMERA2_RATE			= 45,
+
+	SOUND_PLAY0			= { 0.4, "Sound_Arme_Lose1_4.ogg", 100, TRUE },	
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -50,
+		},
+	}
+}
+
+
+
+
+-- dark magician
+AVSI_ADM_START = 
+{
+	ANIM_NAME					= "DM_Start",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	SOUND_PLAY0			= { 0.5, "Sound_Arme_Start1.ogg", 100, TRUE },	
+	
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+	
+	NORMAL_CAMERA0_RATE			= 20,
+	NORMAL_CAMERA1_RATE			= 40,
+	NORMAL_CAMERA2_RATE			= 40,
+	
+	
+	HIT_CAMERA0_RATE			= 0,
+	HIT_CAMERA1_RATE			= 0,
+	HIT_CAMERA2_RATE			= 0,
+	
+	CAMERA0 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			LOOK_OFFSET_X	= 0,
+			LOOK_OFFSET_Y	= 0,
+			LOOK_OFFSET_Z	= 0,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 0,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 0,	
+			TRACKINGTIME	= 0.3,
+		},
+	},	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 0.2, },
+		
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 300,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -90,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 10,
+			LOOKATDISTANCE	= 0,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 20,
+			LOOKATDISTANCE	= 0,
+		},
+	},
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 1.5, },
+	
+	
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= -70,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 250,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 0,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 0,	
+			TRACKINGTIME	= 0.15,
+		},
+	},
+}
+
+
+AVSI_ADM_WIN = 
+{
+	ANIM_NAME					= "DM_Win",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	RIGHT						= TRUE,
+		
+	INVINCIBLE					= { 0, 100, },
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+		
+	NORMAL_CAMERA0_RATE			= 10,
+	NORMAL_CAMERA1_RATE			= 45,
+	NORMAL_CAMERA2_RATE			= 45,
+
+	SOUND_PLAY0			= { 0.01, "Sound_Arme_Win1_4.ogg", 100, TRUE },	
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 0.5, 2.0, },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 50,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 500,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 0,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= -50,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 0.1, 1.4},
+		
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine",
+			DISTANCE		= 400,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= -70,
+		},
+		
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 40,
+			TRACKINGTIME	= 1.6,
+		},
+		
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine",
+			DISTANCE		= 400,
+			HEIGHT			= -50,
+			ANGLEDEGREE		= 0,
+		},
+	},
+}
+
+AVSI_ADM_WIN2 = 
+{
+	ANIM_NAME					= "DM_Win2",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	RIGHT						= TRUE,
+		
+	INVINCIBLE					= { 0, 100, },
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+	
+	NORMAL_CAMERA0_RATE			= 10,
+	NORMAL_CAMERA1_RATE			= 45,
+	NORMAL_CAMERA2_RATE			= 45,
+
+	SOUND_PLAY0			= { 0.01, "Sound_Arme_Win1_5.ogg", 100, TRUE },	
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 0.1, 1.6, },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 70,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 500,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -50,
+			TRACKINGTIME	= 1.6,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine",
+			DISTANCE		= 400,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 20,
+		},
+	},
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = {1.7, },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine",
+			DISTANCE		= 400,
+			HEIGHT			= -50,
+			ANGLEDEGREE		= 0,
+		},
+						
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine",
+			DISTANCE		= 350,
+			HEIGHT			= 60,
+			ANGLEDEGREE		= -30,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+}
+
+AVSI_ADM_LOSE = 
+{
+	ANIM_NAME					= "DM_Lose",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+		
+	RIGHT						= TRUE,
+	INVINCIBLE					= { 0, 100, },	
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+	
+	NORMAL_CAMERA0_RATE			= 10,
+	NORMAL_CAMERA1_RATE			= 45,
+	NORMAL_CAMERA2_RATE			= 45,
+
+	SOUND_PLAY0			= { 0.01, "Sound_Arme_Lose1_5.ogg", 100, TRUE },	
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -50,
+		},
+	}
+}
+
+AVSI_ADM_LOSE2 = 
+{
+	ANIM_NAME					= "DM_Lose2",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+		
+	RIGHT						= TRUE,
+	INVINCIBLE					= { 0, 100, },	
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+	
+	NORMAL_CAMERA0_RATE			= 10,
+	NORMAL_CAMERA1_RATE			= 45,
+	NORMAL_CAMERA2_RATE			= 45,
+
+	SOUND_PLAY0			= { 0.3, "Sound_Arme_Lose1_6.ogg", 100, TRUE },	
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -50,
+		},
+	}
+}
+
+-- battle magician
+AVSI_ABM_START = 
+{
+	ANIM_NAME					= "BM_Start",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	SOUND_PLAY0			= { 0.001, "AishaVoice_BM_Start.ogg", 100, TRUE },	
+	
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+	
+	NORMAL_CAMERA0_RATE			= 20,
+	NORMAL_CAMERA1_RATE			= 40,
+	NORMAL_CAMERA2_RATE			= 40,
+	
+	
+
+	
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 0.6, 2 },
+		
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 300,
+			HEIGHT			= -30,
+			ANGLEDEGREE		= -90,
+			TRACKINGTIME	= 0.3,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 500,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= -30,
+			LOOKATDISTANCE	= 0,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 300,
+			HEIGHT			= -65,
+			ANGLEDEGREE		= -60,
+			LOOKATDISTANCE	= 0,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 2 },
+	
+	
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.3,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 270,
+			HEIGHT			= -50,
+			ANGLEDEGREE		= -50,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 0,	
+			TRACKINGTIME	= 0.15,
+		},
+	},
+}
+
+
+AVSI_ABM_WIN = 
+{
+	ANIM_NAME					= "BM_Win",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	RIGHT						= TRUE,
+		
+	INVINCIBLE					= { 0, 100, },
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+		
+	NORMAL_CAMERA0_RATE			= 20,
+	NORMAL_CAMERA1_RATE			= 40,
+	NORMAL_CAMERA2_RATE			= 40,
+
+	SOUND_PLAY0			= { 1.34, "AishaVoice_BM_Win.ogg", 100, TRUE },	
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 0.7, 2.1, },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 250,
+			HEIGHT			= -50,
+			ANGLEDEGREE		= 50,
+			TRACKINGTIME	= 0.5,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 500,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.5,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 300,
+			HEIGHT			= 35,
+			ANGLEDEGREE		= -10,
+			TRACKINGTIME	= 0.5,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 1.1, 2.036 },
+		
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 700,
+			HEIGHT			= -50,
+			ANGLEDEGREE		= 60,
+			TRACKINGTIME	= 1.1,
+		},
+		
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine",
+			DISTANCE		= 500,
+			HEIGHT			= 30,
+			ANGLEDEGREE		= -30,
+			TRACKINGTIME	= 1.5,
+		},
+		
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 300,
+			HEIGHT			= -60,
+			ANGLEDEGREE		= 20,
+			TRACKINGTIME	= 0.3,
+		},
+	},
+}
+
+AVSI_ABM_WIN2 = 
+{
+	ANIM_NAME					= "BM_Win2",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	RIGHT						= TRUE,
+		
+	INVINCIBLE					= { 0, 100, },
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+	
+	NORMAL_CAMERA0_RATE			= 20,
+	NORMAL_CAMERA1_RATE			= 40,
+	NORMAL_CAMERA2_RATE			= 40,
+
+	SOUND_PLAY0			= { 2.566, "AishaVoice_BM_Win2.ogg", 100, TRUE },	
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 0.49, 1.6, },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 400,
+			HEIGHT			= -60,
+			ANGLEDEGREE		= 70,
+			TRACKINGTIME	= 0.5,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 800,
+			HEIGHT			= 500,
+			ANGLEDEGREE		= -30,
+			TRACKINGTIME	= 0.5,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 170,
+			HEIGHT			= -30,
+			ANGLEDEGREE		= -10,
+			TRACKINGTIME	= 0.5,
+		},
+	},
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = {1.56, 2.244 },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 700,
+			HEIGHT			= 500,
+			ANGLEDEGREE		= 0,
+		},
+						
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_R_Hand",
+			DISTANCE		= 200,
+			HEIGHT			= 100,
+			ANGLEDEGREE		= 50,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 150,
+			HEIGHT			= -30,
+			ANGLEDEGREE		= 30,
+			TRACKINGTIME	= 0.5,
+		},
+	},
+}
+
+AVSI_ABM_LOSE = 
+{
+	ANIM_NAME					= "BM_Lose",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+		
+	RIGHT						= TRUE,
+	INVINCIBLE					= { 0, 100, },	
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+	
+	NORMAL_CAMERA0_RATE			= 20,
+	NORMAL_CAMERA1_RATE			= 40,
+	NORMAL_CAMERA2_RATE			= 40,
+
+	SOUND_PLAY0			= { 0.001, "AishaVoice_BM_Lose.ogg", 100, TRUE },	
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 1.24 },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 400,
+			HEIGHT			= -60,
+			ANGLEDEGREE		= 10,
+			TRACKINGTIME	= 0.5,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 310,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -20,
+			TRACKINGTIME	= 1,
+		},
+	},
+	CAMERA2 = 
+	{
+	
+		SUB_CAMERA_TIMING = { 0.755, 1.6 },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 500,
+			HEIGHT			= -70,
+			ANGLEDEGREE		= 30,
+			TRACKINGTIME	= 0.5,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 300,
+			HEIGHT			= -30,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.5,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine",
+			DISTANCE		= 350,
+			HEIGHT			= -60,
+			ANGLEDEGREE		= -60,
+			TRACKINGTIME	= 0.5,
+		},
+	},
+}
+
+AVSI_ABM_LOSE2 = 
+{
+	ANIM_NAME					= "BM_Lose2",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+		
+	RIGHT						= TRUE,
+	INVINCIBLE					= { 0, 100, },	
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+	
+	NORMAL_CAMERA0_RATE			= 20,
+	NORMAL_CAMERA1_RATE			= 40,
+	NORMAL_CAMERA2_RATE			= 40,
+	SOUND_PLAY0			= { 0.001, "AishaVoice_BM_Lose2.ogg", 100, TRUE },	
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 1.24 },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 400,
+			HEIGHT			= -60,
+			ANGLEDEGREE		= 30,
+			TRACKINGTIME	= 0.5,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 270,
+			HEIGHT			= -50,
+			ANGLEDEGREE		= -60,
+			TRACKINGTIME	= 1,
+		},
+	},
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 1.584 },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 300,
+			HEIGHT			= -30,
+			ANGLEDEGREE		= -40,
+			TRACKINGTIME	= 0.5,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= -60,
+			ANGLEDEGREE		= 20,
+			TRACKINGTIME	= 1,
+		},
+	},
+}
+
+
+
+-- elemental master
+AVSI_AEM_START = 
+{
+	ANIM_NAME					= "EM_Start",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	SOUND_PLAY0			= { 1.738, "AishaVoice_EM_Start.ogg", 100, TRUE },	
+	
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+	
+	NORMAL_CAMERA0_RATE			= 20,
+	NORMAL_CAMERA1_RATE			= 40,
+	NORMAL_CAMERA2_RATE			= 40,
+	
+	
+	HIT_CAMERA0_RATE			= 0,
+	HIT_CAMERA1_RATE			= 0,
+	HIT_CAMERA2_RATE			= 0,
+	
+	CAMERA0 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			LOOK_OFFSET_X	= 0,
+			LOOK_OFFSET_Y	= 0,
+			LOOK_OFFSET_Z	= 0,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 0,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 0,	
+			TRACKINGTIME	= 0.3,
+		},
+	},	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = {1, 2, },
+		
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 300,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -70,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 0,
+			LOOKATDISTANCE	= 0,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= -50,
+			LOOKATDISTANCE	= 0,
+		},
+	},
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 0.1, 1.5,2 },
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 700,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 50,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 400,
+			HEIGHT			= -60,
+			ANGLEDEGREE		= -50,
+			TRACKINGTIME	= 1,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 200,
+			HEIGHT			= -150,
+			ANGLEDEGREE		= 20,
+			TRACKINGTIME	= 0.5,
+		},
+		SUB_CAMERA3 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 400,
+			HEIGHT			= -60,
+			ANGLEDEGREE		= 50,
+			TRACKINGTIME	= 1,
+		},
+	},
+	
+	
+	
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Aisha_AEM_Start", 0, 
+	},
+	
+	
+}
+
+
+AVSI_AEM_WIN = 
+{
+	ANIM_NAME					= "EM_Win",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	RIGHT						= TRUE,
+		
+	INVINCIBLE					= { 0, 100, },
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+
+	SOUND_PLAY0			= { 0.680, "AishaVoice_EM_Win.ogg", 100, TRUE },	
+	
+	NORMAL_CAMERA0_RATE			= 10,
+	NORMAL_CAMERA1_RATE			= 45,
+	NORMAL_CAMERA2_RATE			= 45,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 0.5, 2.0, },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 800,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= -30,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 500,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 0,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 300,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= -50,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 2, },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= 50,
+			ANGLEDEGREE		= -70,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 150,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -15,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+	
+	
+		
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Aisha_AEM_Win", 0, 
+	},
+	
+}
+
+AVSI_AEM_WIN2 = 
+{
+	ANIM_NAME					= "EM_Win2",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	RIGHT						= TRUE,
+		
+	INVINCIBLE					= { 0, 100, },
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+	
+	NORMAL_CAMERA0_RATE			= 10,
+	NORMAL_CAMERA1_RATE			= 45,
+	NORMAL_CAMERA2_RATE			= 45,
+
+	SOUND_PLAY0			= { 1.691, "AishaVoice_EM_Win2.ogg", 100, TRUE },	
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 1.2, 2.5, },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 200,
+			HEIGHT			= -20,
+			ANGLEDEGREE		= 0,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 500,
+			HEIGHT			= 300,
+			ANGLEDEGREE		= 30,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 700,
+			HEIGHT			= -50,
+			ANGLEDEGREE		= 10,
+		},
+	},
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 2.5, },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= -50,
+			ANGLEDEGREE		= -20,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine",
+			DISTANCE		= 300,
+			HEIGHT			= 100,
+			ANGLEDEGREE		= 20,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+}
+
+AVSI_AEM_LOSE = 
+{
+	ANIM_NAME					= "EM_Lose",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+		
+	RIGHT						= TRUE,
+	INVINCIBLE					= { 0, 100, },	
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+
+	SOUND_PLAY0			= { 1.420, "AishaVoice_EM_Lose.ogg", 100, TRUE },	
+	
+	NORMAL_CAMERA0_RATE			= 10,
+	NORMAL_CAMERA1_RATE			= 45,
+	NORMAL_CAMERA2_RATE			= 45,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 500,
+			HEIGHT			= 100,
+			ANGLEDEGREE		= -50,
+		},
+	}
+}
+
+AVSI_AEM_LOSE2 = 
+{
+	ANIM_NAME					= "EM_Lose2",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+		
+	RIGHT						= TRUE,
+	INVINCIBLE					= { 0, 100, },	
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+
+	SOUND_PLAY0			= { 0.412, "AishaVoice_EM_Lose2.ogg", 100, TRUE },	
+	
+	NORMAL_CAMERA0_RATE			= 10,
+	NORMAL_CAMERA1_RATE			= 45,
+	NORMAL_CAMERA2_RATE			= 45,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 300,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= -50,
+		},
+	}
+}
+
+
+
+
+
+
+
+-- void princess
+AVSI_AVP_START = 
+{
+	ANIM_NAME					= "VP_Start",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	SOUND_PLAY0			= { 0.747, "AishaVoice_VP_Start.ogg", 100, TRUE },	
+	
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+	
+	NORMAL_CAMERA0_RATE			= 20,
+	NORMAL_CAMERA1_RATE			= 40,
+	NORMAL_CAMERA2_RATE			= 40,
+	
+	
+	HIT_CAMERA0_RATE			= 0,
+	HIT_CAMERA1_RATE			= 0,
+	HIT_CAMERA2_RATE			= 0,
+	
+	CAMERA0 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			LOOK_OFFSET_X	= 0,
+			LOOK_OFFSET_Y	= 0,
+			LOOK_OFFSET_Z	= 0,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 0,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 0,	
+			TRACKINGTIME	= 0.3,
+		},
+	},	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 1.5, 2, },
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 150,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -50,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 400,
+			HEIGHT			= -50,
+			ANGLEDEGREE		= 40,
+			TRACKINGTIME	= 0.6,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 300,
+			HEIGHT			= 50,
+			ANGLEDEGREE		= -40,
+			TRACKINGTIME	= 0.6,
+		},
+	},
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 1.5, },
+	
+	
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= 100,
+			ANGLEDEGREE		= -40,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 150,
+			HEIGHT			= -30,
+			ANGLEDEGREE		= -70,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 0,	
+			TRACKINGTIME	= 0.15,
+		},
+	},
+}
+
+
+AVSI_AVP_WIN = 
+{
+	ANIM_NAME					= "VP_Win",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	RIGHT						= TRUE,
+		
+	INVINCIBLE					= { 0, 100, },
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+
+	SOUND_PLAY0			= { 1.894, "AishaVoice_VP_Win.ogg", 100, TRUE },	
+	
+	NORMAL_CAMERA0_RATE			= 10,
+	NORMAL_CAMERA1_RATE			= 45,
+	NORMAL_CAMERA2_RATE			= 45,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 1, 2.5, },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 300,
+			HEIGHT			= 300,
+			ANGLEDEGREE		= 0,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= 100,
+			ANGLEDEGREE		= 40,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 500,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 10,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 2.2, },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= -40,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine",
+			DISTANCE		= 300,
+			HEIGHT			= 100,
+			ANGLEDEGREE		= 10,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+}
+
+AVSI_AVP_WIN2 = 
+{
+	ANIM_NAME					= "VP_Win2",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	RIGHT						= TRUE,
+		
+	INVINCIBLE					= { 0, 100, },
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+
+	SOUND_PLAY0			= { 0.810, "AishaVoice_VP_Win2.ogg", 100, TRUE },	
+	
+	NORMAL_CAMERA0_RATE			= 10,
+	NORMAL_CAMERA1_RATE			= 45,
+	NORMAL_CAMERA2_RATE			= 45,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 0.3, 2, },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 800,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 50,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 700,
+			HEIGHT			= -350,
+			ANGLEDEGREE		= -30,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine",
+			DISTANCE		= 400,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 20,
+
+		},
+	},
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 1.5, },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 450,
+			HEIGHT			= 150,
+			ANGLEDEGREE		= 0,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 50,
+			ANGLEDEGREE		= -40,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+	
+	
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Aisha_AVP_Win2", 0, 
+	},
+	
+	
+}
+
+AVSI_AVP_LOSE = 
+{
+	ANIM_NAME					= "VP_Lose",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+		
+	RIGHT						= TRUE,
+	INVINCIBLE					= { 0, 100, },	
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+	
+	NORMAL_CAMERA0_RATE			= 10,
+	NORMAL_CAMERA1_RATE			= 45,
+	NORMAL_CAMERA2_RATE			= 45,
+
+	SOUND_PLAY0			= { 0.541, "AishaVoice_VP_Lose.ogg", 100, TRUE },	
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= 0,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= -40,
+		},
+	}
+}
+
+AVSI_AVP_LOSE2 = 
+{
+	ANIM_NAME					= "VP_Lose2",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+		
+	RIGHT						= TRUE,
+	INVINCIBLE					= { 0, 100, },	
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+
+	SOUND_PLAY0			= { 3.440, "AishaVoice_VP_Lose2.ogg", 100, TRUE },	
+	
+	NORMAL_CAMERA0_RATE			= 10,
+	NORMAL_CAMERA1_RATE			= 45,
+	NORMAL_CAMERA2_RATE			= 45,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -50,
+		},
+	},
+	
+	
+	
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Aisha_AVP_Lose2", 0, 
+	},
+}
+
+
+-- DIMENSION_WITCH
+AVSI_ADW_START = 
+{
+	ANIM_NAME					= "DW_Start",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	SOUND_PLAY0			= { 0.001, "Sound_Arme_Start2.ogg", 100, TRUE },	
+	SOUND_PLAY1			= { 3.4, "Sound_Arme_Start3.ogg", 100, TRUE },
+	
+	
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+	
+	NORMAL_CAMERA0_RATE			= 20,
+	NORMAL_CAMERA1_RATE			= 40,
+	NORMAL_CAMERA2_RATE			= 40,
+	
+	
+	HIT_CAMERA0_RATE			= 0,
+	HIT_CAMERA1_RATE			= 0,
+	HIT_CAMERA2_RATE			= 0,
+	
+	CAMERA0 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			LOOK_OFFSET_X	= 0,
+			LOOK_OFFSET_Y	= 0,
+			LOOK_OFFSET_Z	= 0,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 0,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 0,	
+			TRACKINGTIME	= 0.3,
+		},
+	},	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 1.481, 1.823, 3.281 },
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 250,
+			HEIGHT			= -10,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.6,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 300,
+			HEIGHT			= 50,
+			ANGLEDEGREE		= -10,
+			TRACKINGTIME	= 0.8,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_R_Hand",
+			DISTANCE		= 500,
+			HEIGHT			= 70,
+			ANGLEDEGREE		= -25,
+			TRACKINGTIME	= 1,
+		},
+		SUB_CAMERA3 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine1",
+			DISTANCE		= 220,
+			HEIGHT			= 10,
+			ANGLEDEGREE		= -15,
+			TRACKINGTIME	= 0.6,
+		},
+	},
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 0.9, 1.5, 1.938, 2.969 },
+	
+	
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 250,
+			HEIGHT			= 150,
+			ANGLEDEGREE		= -20,
+			TRACKINGTIME	= 0.7,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Pelvis",
+			DISTANCE		= 200,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -30,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 0,	
+			TRACKINGTIME	= 0.8,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -60,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 0,	
+			TRACKINGTIME	= 0.2,
+		},
+		SUB_CAMERA3 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_R_Hand",
+			DISTANCE		= 350,
+			HEIGHT			= 50,
+			ANGLEDEGREE		= -45,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 0,	
+			TRACKINGTIME	= 0.5,
+		},
+		SUB_CAMERA4 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_L_Hand",
+			DISTANCE		= 200,
+			HEIGHT			= 70,
+			ANGLEDEGREE		= -10,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 0,	
+			TRACKINGTIME	= 0.25,
+		},
+	},
+}
+
+
+AVSI_ADW_WIN = 
+{
+	ANIM_NAME					= "DW_Win",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	RIGHT						= TRUE,
+		
+	INVINCIBLE					= { 0, 100, },
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+
+	SOUND_PLAY0			= { 1.894, "Sound_Arme_Win2.ogg", 100, TRUE },	
+	
+	NORMAL_CAMERA0_RATE			= 10,
+	NORMAL_CAMERA1_RATE			= 45,
+	NORMAL_CAMERA2_RATE			= 45,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 0.684, 1.922 },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_R_Hand",
+			DISTANCE		= 300,
+			HEIGHT			= -50,
+			ANGLEDEGREE		= 30,
+			TRACKINGTIME	= 0.3,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_R_Hand",
+			DISTANCE		= 250,
+			HEIGHT			= -30,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.3,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 200,
+			HEIGHT			= 15,
+			ANGLEDEGREE		= -10,
+			TRACKINGTIME	= 1,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 0.849, 1.885 },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 350,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 35,
+			TRACKINGTIME	= 1,	
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 270,
+			HEIGHT			= 20,
+			ANGLEDEGREE		= 25,
+			TRACKINGTIME	= 1,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine1",
+			DISTANCE		= 155,
+			HEIGHT			= 20,
+			ANGLEDEGREE		= 10,
+			TRACKINGTIME	= 0.6,
+		},
+	},
+}
+
+AVSI_ADW_WIN2 = 
+{
+	ANIM_NAME					= "DW_Win2",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	RIGHT						= TRUE,
+		
+	INVINCIBLE					= { 0, 100, },
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+
+	SOUND_PLAY0			= { 0.810, "Sound_Arme_Win3.ogg", 100, TRUE },	
+	
+	NORMAL_CAMERA0_RATE			= 10,
+	NORMAL_CAMERA1_RATE			= 45,
+	NORMAL_CAMERA2_RATE			= 45,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 0.7, 1.397 },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_R_Hand",
+			DISTANCE		= 400,
+			HEIGHT			= 50,
+			ANGLEDEGREE		= -10,
+			TRACKINGTIME	= 0.6,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_R_Hand",
+			DISTANCE		= 300,
+			HEIGHT			= 100,
+			ANGLEDEGREE		= -20,
+			TRACKINGTIME	= 0.7,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_L_Hand",
+			DISTANCE		= 150,
+			HEIGHT			= 20,
+			ANGLEDEGREE		= 25,
+			TRACKINGTIME	= 0.4,
+
+		},
+	},
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 0.949, 2.106 },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 350,
+			HEIGHT			= 50,
+			ANGLEDEGREE		= -50,
+			TRACKINGTIME	= 0.5,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_R_Hand",
+			DISTANCE		= 400,
+			HEIGHT			= -30,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.3,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Pelvis",
+			DISTANCE		= 330,
+			HEIGHT			= -60,
+			ANGLEDEGREE		= 25,
+			TRACKINGTIME	= 0.6,
+		},
+	},
+		
+}
+
+AVSI_ADW_LOSE = 
+{
+	ANIM_NAME					= "DW_Lose",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+		
+	RIGHT						= TRUE,
+	INVINCIBLE					= { 0, 100, },	
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+	
+	NORMAL_CAMERA0_RATE			= 10,
+	NORMAL_CAMERA1_RATE			= 45,
+	NORMAL_CAMERA2_RATE			= 45,
+
+	SOUND_PLAY0			= { 0.001, "Sound_Arme_Lose2_1.ogg", 100, TRUE },	
+	SOUND_PLAY1			= { 1.3, "Sound_Arme_Lose2_2.ogg", 100, TRUE },	
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 0.613, 1.613 },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 350,
+			HEIGHT			= 300,
+			ANGLEDEGREE		= -30,
+			TRACKINGTIME	= 0.5,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 400,
+			HEIGHT			= 30,
+			ANGLEDEGREE		= 15,
+			TRACKINGTIME	= 0.3,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 300,
+			HEIGHT			= 5,
+			ANGLEDEGREE		= 30,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 0.603, 1.517 },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 350,
+			HEIGHT			= 150,
+			ANGLEDEGREE		= -10,
+			TRACKINGTIME	= 0.5,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_L_Hand",
+			DISTANCE		= 300,
+			HEIGHT			= 100,
+			ANGLEDEGREE		= 10,
+			TRACKINGTIME	= 0.3,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 280,
+			HEIGHT			= 70,
+			ANGLEDEGREE		= -30,
+			TRACKINGTIME	= 0.7,
+		},
+	}
+}
+
+AVSI_ADW_LOSE2 = 
+{
+	ANIM_NAME					= "DW_Lose2",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+		
+	RIGHT						= TRUE,
+	INVINCIBLE					= { 0, 100, },	
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+
+	SOUND_PLAY0			= { 0.1, "Sound_Arme_Lose4.ogg", 100, TRUE },	
+	SOUND_PLAY1			= { 2.740, "Sound_Arme_Lose3.ogg", 100, TRUE },	
+	
+	NORMAL_CAMERA0_RATE			= 10,
+	NORMAL_CAMERA1_RATE			= 45,
+	NORMAL_CAMERA2_RATE			= 45,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 0.667, 2.344 },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_R_Hand",
+			DISTANCE		= 250,
+			HEIGHT			= 100,
+			ANGLEDEGREE		= 10,
+			TRACKINGTIME	= 0.5,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_R_Foot",
+			DISTANCE		= 450,
+			HEIGHT			= 300,
+			ANGLEDEGREE		= -20,
+			TRACKINGTIME	= 0.3,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine",
+			DISTANCE		= 350,
+			HEIGHT			= 30,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.7,
+		},
+	},
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 0.776, 2.535 },
+	
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 350,
+			HEIGHT			= 300,
+			ANGLEDEGREE		= -30,
+			TRACKINGTIME	= 0.5,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Pelvis",
+			DISTANCE		= 350,
+			HEIGHT			= 50,
+			ANGLEDEGREE		= -40,
+			TRACKINGTIME	= 0.3,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine1",
+			DISTANCE		= 420,
+			HEIGHT			= -40,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.7,
+		},
+	},
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AVSI_WAIT = 
+{
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	HEAD_IK = TRUE,
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+}
+
+AVSI_WALK = 
+{
+	ANIM_NAME			= "Walk",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	HEAD_IK = TRUE,
+}
+
+AVSI_JUMP_READY =
+{
+	ANIM_NAME			= "JumpReady",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT		= FALSE,
+	HEAD_IK = TRUE,
+}
+
+AVSI_JUMP_UP =
+{
+	ANIM_NAME			= "JumpUp",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT		= FALSE,
+	
+	COMBO_GUIDE         = { "J", "J" },
+	HEAD_IK = TRUE,
+}
+
+AVSI_JUMP_DOWN =
+{
+	ANIM_NAME			= "JumpDown",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT		= FALSE,
+	
+	COMBO_GUIDE         = { "J", "J" },
+	HEAD_IK = TRUE,
+}
+
+AVSI_JUMP_LEVITATION =
+{
+	ANIM_NAME			= "JumpDown",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT		= FALSE,
+	
+	COMBO_GUIDE         = { "J", "J" },
+	HEAD_IK = TRUE,
+}
+
+AVSI_JUMP_LANDING =
+{
+	ANIM_NAME			= "JumpLanding",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT		= FALSE,
+	
+	SOUND_PLAY0			= { 0.01, "Step.ogg" },
+	HEAD_IK = TRUE,
+}
+
+AVSI_DASH =
+{
+	ANIM_NAME			= "Dash",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT		= TRUE,
+	
+	COMBO_GUIDE         = { "R", "R" },
+}
+
+AVSI_DASH_END =
+{
+	ANIM_NAME			= "DashEnd",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	
+	SLOW_FACTOR			= 1.0,
+	SOUND_PLAY0			= { 0.01, "Step.ogg" },
+}
+
+AVSI_DASH_JUMP = 
+{
+	ANIM_NAME			= "DashJump",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT		= FALSE,
+	
+	SOUND_PLAY0			= { 0.01, "Step.ogg" },
+	
+	COMBO_GUIDE         = { "A", "A" },
+	
+}
+
+AVSI_DASH_JUMP_LEVITATION = 
+{
+	ANIM_NAME			= "DashJump",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT		= FALSE,
+	
+	COMBO_GUIDE         = { "A", "A" },
+}
+
+AVSI_DASH_JUMP_LANDING = 
+{
+	ANIM_NAME			= "DashJumpLanding",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT		= FALSE,
+	SOUND_PLAY0			= { 0.01, "Step.ogg" },
+	
+}
+
+AVSI_DASH_JUMP_POWER_LANDING = 
+{
+	ANIM_NAME			= "DashJumpLanding",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT		= FALSE,
+	SOUND_PLAY0			= { 0.01, "Step.ogg" },
+}
+
+AVSI_HYPER_MODE = 
+{
+	ANIM_NAME			= "BoostPower",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	CAN_PUSH_UNIT		= FALSE,
+	CAN_PASS_UNIT		= FALSE,
+	
+	SPEED_X				= 0.0,
+	SPEED_Y				= 0.0,
+	
+	SOUND_PLAY0			= { 0.2, "Stickslash1.ogg" },
+	SOUND_PLAY1			= { 0.47, "Energy.ogg" },
+	SOUND_PLAY2			= { 0.63, "Break.ogg" },
+	SOUND_PLAY3			= { 0.63, "Change.ogg" },
+	
+		
+	INVINCIBLE			= { 0, 100, },
+	AFTER_IMAGE			= { 0.1, 100, },
+		
+	--STOP_MY_UNIT0		= { 0.5, 0.5, },
+	--STOP_OTHER_UNIT0	= { 0.08, 2.1, },
+	STOP_OTHER_UNIT0		= { 0.08, 1.6, },
+	
+	
+	NORMAL_CAMERA0_RATE			= 50,
+	NORMAL_CAMERA1_RATE			= 50,
+	NORMAL_CAMERA2_RATE			= 0,
+	
+	CAMERA0 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 0,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 0,	
+			TRACKINGTIME	= 0.3,
+		},
+	},
+	CAMERA1 = 
+	{
+		SUB_CAMERA0 =
+		{			
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= 400,
+			ANGLEDEGREE		= -70,
+		},
+		SUB_CAMERA1 =
+		{			
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 700,
+			HEIGHT			= -20,
+			ANGLEDEGREE		= -20,
+			TRACKINGTIME	= 0.4,
+		},
+	},	
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_UNIT_POSITION"],
+			LOOK_OFFSET_Y	= 100,
+			DISTANCE		= 400,
+			HEIGHT			= -90,
+			ANGLEDEGREE		= -30,
+		},
+	},
+}
+
+AVSI_CHARGE_MP = 
+{
+	ANIM_NAME			= "ChargeSoul",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	CAN_PUSH_UNIT		= FALSE,
+	
+	ADD_MP_CHANGE_RATE		= 10.0,
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	
+}
+
+AVSI_DAMAGE_GROGGY = 
+{
+	ANIM_NAME			= "Fatal",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION			= TRUE,
+	LAND_CONNECT		= FALSE,
+}
+
+AVSI_DAMAGE_SMALL_FRONT = 
+{
+	ANIM_NAME			= "DamageSmallFront",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT		= FALSE,
+	TRANSITION			= FALSE,
+}
+
+AVSI_DAMAGE_SMALL_BACK =
+{
+	ANIM_NAME			= "DamageSmallBack",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT		= FALSE,
+	TRANSITION			= FALSE,
+}
+
+AVSI_DAMAGE_BIG_FRONT = 
+{
+	ANIM_NAME			= "DamageBigFront",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT		= FALSE,
+	TRANSITION			= FALSE,
+
+	SOUND_PLAY0		= { 0.1, "AishaVoice_DamageScream04.ogg" , 20 },
+	
+}
+
+AVSI_DAMAGE_BIG_BACK = 
+{
+	ANIM_NAME			= "DamageBigBack",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT		= FALSE,
+	TRANSITION			= FALSE,
+
+	SOUND_PLAY0		= { 0.1, "AishaVoice_DamageScream04.ogg" , 20 },
+	
+}
+
+AVSI_DAMAGE_DOWN_FRONT = 
+{
+	ANIM_NAME			= "DamageDownFront",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT		= TRUE,
+	TRANSITION			= FALSE,
+	
+	CAN_PUSH_UNIT		= FALSE,
+	INVINCIBLE			= { 0, 100, },
+	
+	SOUND_PLAY0			= { 0.19, "Down.ogg" },
+	SOUND_PLAY1	    	= { 0.19, "AishaVoice_DamageScream03.ogg" },
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	CAMERA1 = 
+	{
+		{			
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 300,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= -30,
+		},
+	},	
+	CAMERA2 = 
+	{
+		{			
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 300,
+			ANGLEDEGREE		= 50,
+		},
+	},
+}
+
+AVSI_DAMAGE_DOWN_BACK = 
+{
+	ANIM_NAME			= "DamageDownBack",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT		= TRUE,
+	TRANSITION			= FALSE,
+	
+	CAN_PUSH_UNIT		= FALSE,
+	INVINCIBLE			= { 0, 100, },
+	
+	SOUND_PLAY0			= { 0.32, "Down.ogg" },
+	SOUND_PLAY1	    	= { 0.19, "AishaVoice_DamageScream03.ogg" },
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	CAMERA1 = 
+	{
+		{			
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 800,
+			HEIGHT			= 30,
+			ANGLEDEGREE		= -80,
+		},
+	},	
+	CAMERA2 = 
+	{
+		{			
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 800,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 80,
+		},
+	},
+}
+
+AVSI_DAMAGE_STANDUP_FRONT = 
+{
+	ANIM_NAME			= "DamageStandUpFront",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	CAN_PUSH_UNIT		= FALSE,
+	INVINCIBLE			= { 0, 100, },
+}
+
+AVSI_DAMAGE_STANDUP_BACK = 
+{
+	ANIM_NAME			= "DamageStandUpBack",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	CAN_PUSH_UNIT		= FALSE,
+	INVINCIBLE			= { 0, 100, },
+}
+
+AVSI_DAMAGE_AIR_SMALL = 
+{
+	ANIM_NAME			= "DamageAirSmall",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	
+	LAND_CONNECT		= FALSE,
+}
+
+AVSI_DAMAGE_AIR_DOWN = 
+{
+	ANIM_NAME			= "DamageAirDown",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+
+--	SOUND_PLAY0		= { 0.1, "AishaVoice_DamageScream01.ogg" },
+	
+	LAND_CONNECT		= FALSE,
+}
+
+AVSI_DAMAGE_AIR_DOWN_INVINCIBLE = 
+{
+	ANIM_NAME			= "DamageAirDown",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+
+--	SOUND_PLAY0		= { 0.1, "AishaVoice_DamageScream01.ogg" },
+	
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 100, },
+}
+
+AVSI_DAMAGE_AIR_DOWN_LANDING =
+{
+	ANIM_NAME			= "DamageAirDownLanding",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT		= FALSE,
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= TRUE,
+	CAN_PUSH_UNIT		= FALSE,
+	INVINCIBLE			= { 0, 100, },
+	
+	SOUND_PLAY0			= { 0.029, "Down.ogg" },
+	SOUND_PLAY1			= { 0.46, "Down.ogg" },
+	SOUND_PLAY2	        = { 0.1, "AishaVoice_DamageScream02.ogg" },
+
+}
+
+AVSI_DAMAGE_AIR_FALL =
+{
+	ANIM_NAME			= "DamageAirFall",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+}
+
+AVSI_DAMAGE_AIR_UP =
+{
+	ANIM_NAME				= "DamageAirUp",
+	PLAY_TYPE				= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION				= FALSE,
+	
+	LAND_CONNECT			= FALSE,
+
+	SOUND_PLAY0		= { 0.1, "AishaVoice_DamageScream01.ogg" },
+	
+	NORMAL_CAMERA0_RATE		= 100,
+	NORMAL_CAMERA1_RATE		= 0,
+	NORMAL_CAMERA2_RATE		= 0,
+	
+	CAMERA1 = 
+	{
+		{			
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 800,
+			HEIGHT			= 400,
+			ANGLEDEGREE		= -80,
+		},
+	},	
+	CAMERA2 = 
+	{
+		{			
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 800,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 80,
+		},
+	},
+}
+
+AVSI_DAMAGE_AIR_FLY_FRONT = 
+{
+	ANIM_NAME			= "DamageAirFlyFront",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+
+	SOUND_PLAY0		= { 0.1, "AishaVoice_DamageScream01.ogg" },
+	
+	LAND_CONNECT		= FALSE,
+}
+
+AVSI_DAMAGE_AIR_FLY_BACK =
+{
+	ANIM_NAME			= "DamageAirFlyBack",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+
+	SOUND_PLAY0		= { 0.1, "AishaVoice_DamageScream01.ogg" },
+	
+	LAND_CONNECT		= FALSE,
+}
+
+AVSI_DAMAGE_REVENGE =
+{
+	ANIM_NAME			= "DamageRevenge",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	STOP_MY_UNIT0		= { 0.5, 0.2, },
+	
+	NORMAL_CAMERA0_RATE		= 40,
+	NORMAL_CAMERA1_RATE		= 30,
+	NORMAL_CAMERA2_RATE		= 30,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA0 = 
+		{			
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 500,
+			HEIGHT			= 100,
+			ANGLEDEGREE		= -40,
+		},
+		SUB_CAMERA1 = 
+		{			
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 500,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 40,
+		},
+	},	
+	CAMERA2 = 
+	{
+		SUB_CAMERA0 = 
+		{			
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 500,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 40,
+		},
+		SUB_CAMERA1 = 
+		{			
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 700,
+			HEIGHT			= 100,
+			ANGLEDEGREE		= -40,
+			TRACKINGTIME	= 0.5,
+		},
+	},
+}
+
+AVSI_A_AV_TELEPORT_START = 
+{
+	ANIM_NAME			= "EvasionStart",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	
+	LAND_CONNECT		= FALSE,
+	TRANSITION			= FALSE,
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,	
+	
+	MOVE_TIME			= 0.8,
+}
+
+AVSI_A_AV_TELEPORT_END = 
+{
+	ANIM_NAME			= "EvasionEnd",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	
+	LAND_CONNECT		= FALSE,
+	TRANSITION			= FALSE,
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+	
+	SLASH_TRACE			= { 0, 100, },
+	INVINCIBLE			= { 0, 0.4, },
+	
+	SOUND_PLAY0			= { 0.03, "Sound_Arme_shout2.ogg" },
+}
+
+AVSI_TELEPORT_STAND_UP_START = 
+{
+	ANIM_NAME			= "EvasionStart",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	
+	LAND_CONNECT		= FALSE,
+	TRANSITION			= FALSE,
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,	
+	
+	INVINCIBLE			= { 0, 100, },
+	MOVE_TIME			= 0.8,
+}
+
+AVSI_TELEPORT_STAND_UP_END = 
+{
+	ANIM_NAME			= "EvasionEnd",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	
+	LAND_CONNECT		= FALSE,
+	TRANSITION			= FALSE,
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+	
+	SLASH_TRACE			= { 0, 100, },
+	INVINCIBLE			= { 0, 100, },
+	
+	SOUND_PLAY0			= { 0.03, "Sound_Arme_shout2.ogg" },
+}
+
+AVSI_TELEPORT_STANDUP_ATTACK = 
+{
+	ANIM_NAME			= "EvasionEnd",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	
+	LAND_CONNECT		= FALSE,
+	TRANSITION			= FALSE,
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+	
+	SLASH_TRACE			= { 0, 100, },
+	INVINCIBLE			= { 0, 0.4, },
+	
+	SOUND_PLAY0			= { 0.03, "Sound_Arme_shout2.ogg" },
+		
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_MAGIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			MAGIC		= 1.7,			
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		STOP_RESERVE_TIME_ATT	= 0.0,
+		STOP_RESERVE_TIME_DEF	= 0.0,
+		STOP_TIME_ATT			= 0.2,		
+		STOP_TIME_DEF			= 0.0,	
+		CAMERA_CRASH_GAP		= 10.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 1,	
+		CLEAR_SCREEN_COLOR_A	= 0.0,
+		CLEAR_SCREEN_COLOR_R	= 1.0,
+		CLEAR_SCREEN_COLOR_G	= 1.0,
+		CLEAR_SCREEN_COLOR_B	= 1.0,
+
+		RE_ATTACK				= FALSE,
+		HIT_GAP					= 0.0,
+		
+		--TECH_POINT				= 40,
+	},
+}
+
+AVSI_COMBO_Z1 = 
+{
+	ANIM_NAME			= "ComboZ1",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= TRUE,
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+	
+	SLASH_TRACE			= { 0, 100, },
+	ATTACK_TIME0		= { 0.15, 0.2, },
+	
+	SOUND_PLAY0			= { 0.15, "Stickslash1.ogg" },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+			
+
+		DAMAGE = 
+		{
+			PHYSIC		= 0.9,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 0,	
+		
+		STOP_TIME_DEF			= 0.03,
+		
+		FORCE_DOWN			= 7,
+		TECH_POINT				= 18,
+	},
+	
+	COMBO_GUIDE         = { "Z", "Z" },
+}
+
+AVSI_COMBO_Z2 = 
+{
+	ANIM_NAME			= "ComboZ2",
+	ANIM_SPEED			= 1.2,
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= TRUE,
+	
+	SPEED_X				= INIT_PHYSIC["WALK_SPEED"] * 1.5,
+	SPEED_Y				= 0,
+	
+	SLASH_TRACE			= { 0, 100, },
+	ATTACK_TIME0		= { 0.3, 0.4, },
+	
+	-- BALANCE_ELEMENTAL_MASTER_20130117		스킬 캔슬 구간 추가
+	SKILL_CANCEL_AFTER	= 0.33,
+	
+	SOUND_PLAY0			= { 0.3, "Stickslash1.ogg" },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.2,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		STOP_TIME_DEF			= 0.05,
+		
+		CAMERA_CRASH_GAP		= 10.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 0,	
+		
+		
+		FORCE_DOWN			= 7,
+		TECH_POINT				= 24,
+	},
+	
+	COMBO_GUIDE         = { "Z", "ZZ" },
+}
+
+AVSI_COMBO_Z3 = 
+{
+	ANIM_NAME			= "ComboZ3",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= INIT_PHYSIC["RUN_SPEED"] * 1.2,
+	SPEED_Y				= 0,
+	
+	SLASH_TRACE			= { 0, 0.57, },
+	ATTACK_TIME0		= { 0.3, 0.36, },
+	
+	SOUND_PLAY0			= { 0.07, "StickSlash2.ogg" },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH2"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.4,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		
+		CAMERA_CRASH_GAP		= 10.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 1,
+
+        STOP_TIME_DEF			= 0.1,		
+		
+		--FORCE_DOWN			= 7,
+		TECH_POINT				= 112,
+	},
+	
+	COMBO_GUIDE         = { "Z", "ZZZ" },
+}
+
+AVSI_COMBO_Z3up = 
+{
+	ANIM_NAME			= "ComboZ3Up",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y				= 0,
+	
+	SLASH_TRACE			= { 0, 100, },
+	ATTACK_TIME0		= { 0.06, 0.2, },
+	
+	SOUND_PLAY0			= { 0.06, "Sound_Arme_shout3.ogg" },	
+	SOUND_PLAY1			= { 0.09, "StickSlash2.ogg" },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_MAGIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			MAGIC		= 1.0,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= INIT_PHYSIC["JUMP_SPEED"],
+				
+		CAMERA_CRASH_GAP		= 10.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 1,	
+		
+		
+		FORCE_DOWN			= 7,
+		TECH_POINT				= 100,
+		FORCE_FLY				= TRUE,
+	},
+	
+	COMBO_GUIDE         = { "Z", "ZZupZ" },
+}
+
+AVSI_COMBO_Z4up = 
+{
+	ANIM_NAME			= "ComboZ4Upa",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+	
+	SLASH_TRACE			= { 0, 100, },	
+	
+	SOUND_PLAY0			= { 0.2, "Sound_Arme_shout2.ogg" },	
+	SOUND_PLAY1			= { 0.328, "Aisha_ComboZ4Up.ogg" },	
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_MAGIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			MAGIC		= 0.6,
+		},
+		
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= INIT_PHYSIC["JUMP_SPEED"] * 0.5,
+				
+		CAMERA_CRASH_GAP		= 20.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 0,	
+		
+		CAN_REVENGE				= FALSE,
+		RE_ATTACK				= TRUE,		
+		HIT_GAP					= 0.1,
+		RATE_MODIFIER			= 0.25,
+
+		
+		TECH_POINT				= 48,
+		FORCE_FLY				= TRUE,
+	},
+	
+	HIT_CAMERA0_RATE		= 40,
+	HIT_CAMERA1_RATE		= 30,
+	HIT_CAMERA2_RATE		= 30,
+	
+	CAMERA1 = 
+	{
+		{			
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_IMPACT_POINT"],
+			DISTANCE		= 1000,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -50,
+		},
+	},	
+	CAMERA2 = 
+	{
+		{			
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_IMPACT_POINT"],
+			DISTANCE		= 1000,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 50,
+		},
+	},
+	
+	COMBO_GUIDE         = { "Z", "ZZupZZ" },
+}
+
+AVSI_COMBO_X1 = 
+{
+	ANIM_NAME			= "ComboX1",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	ANIM_SPEED			= 1.4,
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= TRUE,
+	
+	SPEED_X				= 100,
+	SPEED_Y				= 0,
+	
+	SLASH_TRACE			= { 0, 100, },
+	
+	SOUND_PLAY0			= { 0.266, "Stickslash1.ogg" },
+	SOUND_PLAY1			= { 0.266, "Sound_Arme_shout2.ogg" },
+	
+	COMBO_GUIDE         = { "X", "X" },
+}
+
+AVSI_COMBO_X2 = 
+{
+	ANIM_NAME			= "ComboX2",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	ANIM_SPEED			= 1.4,
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= TRUE,
+	
+	SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y				= 0,
+	
+	SLASH_TRACE			= { 0, 100, },	
+	
+	SOUND_PLAY0			= { 0.5, "Stickslash1.ogg" },
+	SOUND_PLAY1			= { 0.5, "Sound_Arme_shout2.ogg" },
+	
+	WALK_CANCEL_AFTER	= 0.9,
+	DASH_CANCEL_AFTER	= 0.9,
+	SKILL_CANCEL_AFTER	= 0.9,
+	
+	COMBO_GUIDE         = { "X", "XX" },
+}
+
+AVSI_COMBO_X3 = 
+{
+	ANIM_NAME			= "ComboX3",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+		
+	NORMAL_CAMERA0_RATE			= 80,
+	NORMAL_CAMERA1_RATE			= 20,
+	
+	SOUND_PLAY0			= { 0.366, "Stickslash1.ogg" },
+	SOUND_PLAY1			= { 0.366, "Sound_Arme_shout6.ogg" },
+	
+	WALK_CANCEL_AFTER	= 0.733,
+	DASH_CANCEL_AFTER	= 0.733,
+	SKILL_CANCEL_AFTER	= 0.733,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 70,
+		},
+	},
+	
+	COMBO_GUIDE         = { "X", "XXX" },
+}
+
+-- BALANCE_ELEMENTAL_MASTER_20130117 - 4번째 파이어볼 발사 전 차지 스테이트 추가
+AVSI_COMBO_X4_CHARGE = 
+{
+	ANIM_NAME			= "ComboX4_Charge",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE"],
+	TRANSITION			= FALSE,
+	ANIM_SPEED			= 0.5,
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+}
+
+-- BALANCE_ELEMENTAL_MASTER_20130117 - 차지 파이어볼 발사 스테이트
+AVSI_COMBO_X4_CHARGE_FIRE = 
+{
+	ANIM_NAME			= "ComboX4",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= TRUE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+		
+	NORMAL_CAMERA0_RATE			= 80,
+	NORMAL_CAMERA1_RATE			= 20,
+	
+	SOUND_PLAY0			= { 0.166, "Sound_Arme_shout3.ogg" },
+	
+	WALK_CANCEL_AFTER	= 0.933,
+	DASH_CANCEL_AFTER	= 0.766,
+	SKILL_CANCEL_AFTER	= 0.766,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 70,
+		},
+	},
+	
+	COMBO_GUIDE         = { "X", "XXXX" },
+}
+
+AVSI_COMBO_X4 = 
+{
+	ANIM_NAME			= "ComboX4",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= TRUE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+		
+	NORMAL_CAMERA0_RATE			= 80,
+	NORMAL_CAMERA1_RATE			= 20,
+	
+	SOUND_PLAY0			= { 0.166, "Sound_Arme_shout3.ogg" },
+	
+	WALK_CANCEL_AFTER	= 0.933,
+	DASH_CANCEL_AFTER	= 0.766,
+	SKILL_CANCEL_AFTER	= 0.766,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 70,
+		},
+	},
+	
+	COMBO_GUIDE         = { "X", "XXXX" },
+}
+
+AVSI_COMBO_X3front = 
+{
+	ANIM_NAME			= "ComboX3F",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+	
+	
+	SOUND_PLAY0			= { 0.47, "Sound_Arme_shout2.ogg" },
+	SOUND_PLAY1			= { 0.452, "Aisha_ComboZ4Up.ogg" },	
+		
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_MAGIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			MAGIC		= 0.6,
+		},
+		
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= INIT_PHYSIC["JUMP_SPEED"] * 0.3,
+				
+		CAMERA_CRASH_GAP		= 20.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 1,	
+		
+		CAN_REVENGE				= FALSE,
+		RE_ATTACK				= TRUE,		
+		HIT_GAP					= 0.09,
+		RATE_MODIFIER			= 0.4,	
+		
+		TECH_POINT				= 48,
+		FORCE_FLY				= TRUE,
+	},
+	
+	COMBO_GUIDE         = { "X", "XXRightX" },
+}
+
+AVSI_COMBO_X3down = 
+{
+	ANIM_NAME			= "ComboX3Up",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+	
+	SOUND_PLAY0			= { 0.3, "Sound_Arme_shout2.ogg" },
+	SOUND_PLAY1			= { 0.360, "Aisha_ComboX3Up.ogg" },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_MAGIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH2"],
+		REACT_TYPE		= REACT_TYPE["RT_UP"],
+		
+		DAMAGE = 
+		{
+			MAGIC		= 1.7,
+		},
+		
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= INIT_PHYSIC["JUMP_SPEED"] * 1.2,
+		
+		STOP_TIME_ATT			= 0.0,		
+		STOP_TIME_DEF			= 0.0,	
+					
+		CAMERA_CRASH_GAP		= 10.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 1,	
+		
+		FORCE_DOWN			= 7,
+		CAN_REVENGE				= FALSE,
+		
+		TECH_POINT				= 170,
+	},
+	
+	COMBO_GUIDE         = { "X", "XXDownX" },
+}
+
+AVSI_HIGH_MAGICIAN_COMBO_X3down = 
+{
+	ANIM_NAME			= "ComboXXDownX",
+	ANIM_SPEED			= 1.0,
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+	
+	SOUND_PLAY0			= { 0.3, "Sound_Arme_shout2.ogg" },
+	
+	WALK_CANCEL_AFTER	= 1.0,
+	DASH_CANCEL_AFTER	= 0.766,
+	SKILL_CANCEL_AFTER	= 0.766,
+}
+
+AVSI_HIGH_MAGICIAN_COMBO_X4down = 
+{
+	ANIM_NAME			= "ComboXXDownXX",
+	ANIM_SPEED			= 1.2,
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+	
+	SOUND_PLAY0			= { 0.3, "Sound_Arme_shout2.ogg" },
+	--SOUND_PLAY1			= { 0.360, "Aisha_ComboX3Up.ogg" },
+	
+	WALK_CANCEL_AFTER	= 1.133,
+	DASH_CANCEL_AFTER	= 0.9,
+	SKILL_CANCEL_AFTER	= 0.9,
+}
+
+AVSI_DARK_MAGICIAN_COMBO_X3down = 
+{
+	ANIM_NAME			= "ComboX3Up",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+	
+	SOUND_PLAY0			= { 0.3, "Sound_Arme_shout2.ogg" },
+	SOUND_PLAY1			= { 0.360, "Aisha_ComboX3Up.ogg" },
+		
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_MAGIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH2"],
+		REACT_TYPE		= REACT_TYPE["RT_UP"],
+		
+		DAMAGE = 
+		{
+			MAGIC		= 1.7,
+		},
+		
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= INIT_PHYSIC["JUMP_SPEED"] * 1.2,
+		
+		STOP_TIME_ATT			= 0.0,		
+		STOP_TIME_DEF			= 0.0,	
+					
+		CAMERA_CRASH_GAP		= 10.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 1,	
+		
+		FORCE_DOWN			= 7,
+		CAN_REVENGE				= FALSE,
+		
+		TECH_POINT				= 170,
+	},
+}
+
+AVSI_DARK_MAGICIAN_COMBO_X4down = 
+{
+	ANIM_NAME			= "DM_ComboX4Upa",
+	ANIM_START_TIME		= 0.2,
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+	
+	
+	SOUND_PLAY0			= { 0.44, "Sound_Arme_shout2.ogg" },
+	SOUND_PLAY1			= { 0.452, "Aisha_ComboZ4Up.ogg" },
+		
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_MAGIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			MAGIC		= 0.6,
+		},
+		
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= INIT_PHYSIC["JUMP_SPEED"] * 0.3,
+				
+		CAMERA_CRASH_GAP		= 20.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 1,	
+		
+		CAN_REVENGE				= FALSE,
+		RE_ATTACK				= TRUE,		
+		HIT_GAP					= 0.1,
+		RATE_MODIFIER			= 0.5,
+		
+		TECH_POINT				= 48,
+		FORCE_FLY				= TRUE,
+	},
+}
+
+AVSI_HIGH_MAGICIAN_COMBO_X2 = 
+{
+	ANIM_NAME			= "ComboX2",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	ANIM_SPEED			= 1.4,
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= TRUE,
+	
+	SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y				= 0,
+	
+	SLASH_TRACE			= { 0, 100, },	
+	
+	SOUND_PLAY0			= { 0.266, "Stickslash1.ogg" },
+	SOUND_PLAY1			= { 0.266, "Sound_Arme_shout2.ogg" },
+}
+
+AVSI_HIGH_MAGICIAN_COMBO_X3back = 
+{
+	ANIM_NAME			= "DashAttackX",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	AFTER_IMAGE			= { 0, 100, },
+	INVINCIBLE			= { 0, 0.35, },
+	
+	CAN_PASS_UNIT		= TRUE,
+	CAN_PUSH_UNIT		= FALSE,
+	
+	SPEED_X				= 1200,
+		
+	NORMAL_CAMERA0_RATE			= 50,
+	NORMAL_CAMERA1_RATE			= 50,
+	
+	SOUND_PLAY0			= { 0.266, "Sound_Arme_shout3.ogg" },
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 800,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -50,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+}
+
+AVSI_DARK_MAGICIAN_COMBO_X2 = 
+{
+	ANIM_NAME			= "ComboX2",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	ANIM_SPEED			= 1.4,
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= TRUE,
+	
+	SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y				= 0,
+	
+	SLASH_TRACE			= { 0, 100, },	
+	
+	SOUND_PLAY0			= { 0.266, "Stickslash1.ogg" },
+	SOUND_PLAY1			= { 0.266, "Sound_Arme_shout2.ogg" },
+}
+
+AVSI_DARK_MAGICIAN_COMBO_X3back = 
+{
+	ANIM_NAME			= "ComboX3F",
+	ANIM_START_TIME		= 0.7,
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	AFTER_IMAGE			= { 0, 100, },
+	INVINCIBLE			= { 0, 1.1, },
+	
+	CAN_PASS_UNIT		= TRUE,
+	CAN_PUSH_UNIT		= FALSE,
+
+	SOUND_PLAY0			= { 0.47, "Sound_Arme_shout2.ogg" },
+	SOUND_PLAY1			= { 0.540, "Arme_GuideDarkBall2.ogg" },
+	
+	SPEED_X				= -1400,
+		
+	NORMAL_CAMERA0_RATE			= 50,
+	NORMAL_CAMERA1_RATE			= 50,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 800,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -50,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+}
+
+AVSI_DASH_COMBO_Z1 = 
+{
+	ANIM_NAME			= "DashComboZ1",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	SLASH_TRACE			= { 0.13, 0.54, },
+	ATTACK_TIME0		= { 0.13, 0.2, },
+	
+	SOUND_PLAY0			= { 0.05, "Stickslash1.ogg" },		--
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.5,
+		},
+		
+		BACK_SPEED_X	= 580,
+		
+		STOP_TIME_DEF			= 0.1,
+		
+		FORCE_DOWN        = 7,
+		
+		TECH_POINT				= 112,			
+	},
+	
+	COMBO_GUIDE         = { "R", "RZ" },
+}
+
+AVSI_DASH_COMBO_Z2 = 
+{
+	ANIM_NAME			= "DashComboZ2",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	SLASH_TRACE			= { 0, 0.27, },
+	ATTACK_TIME0		= { 0.1, 0.16, },
+	
+	
+	SOUND_PLAY0			= { 0.01, "Stickslash1.ogg" },		--
+	SOUND_PLAY1			= { 0.067, "Sound_Arme_shout1.ogg" },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH2"],
+		REACT_TYPE		= REACT_TYPE["RT_UP"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 2.2,
+		},
+		
+		FORCE_DOWN			= 7,
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"] * 1.5,
+		BACK_SPEED_Y			= INIT_PHYSIC["JUMP_SPEED"] * 1.3,
+					
+		CAMERA_CRASH_GAP		= 10.0,
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 1,	
+		
+		
+		TECH_POINT				= 220,
+	},
+	
+	COMBO_GUIDE         = { "R", "RZZ" },
+}
+
+AVSI_DASH_COMBO_Z2a = 
+{
+	ANIM_NAME			= "DashComboZ2a",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	SLASH_TRACE			= { 0, 100, },
+	--ATTACK_TIME0		= { 0.33, 0.5, },
+	
+	SPEED_X				= 500.0,
+	
+	SOUND_PLAY0			= { 0.03, "Sound_Arme_shout1.ogg" },
+	SOUND_PLAY1			= { 0.25, "Stickslash1.ogg" },		
+	
+--[[
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH2"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 2.2,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"] * 0.7,
+					
+		CAMERA_CRASH_GAP		= 5.0,
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 1,	
+		
+		TECH_POINT				= 176,
+	},
+--]]
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	DELETE_EFFECT_SET_ON_DAMAGE_REACT = TRUE, 
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Aisha_DashZX", 0,
+	},
+	
+	COMBO_GUIDE         = { "R", "RZX" },
+}
+
+-- BALANCE_ELEMENTAL_MASTER_20130117 - 엘리멘탈 마스터 대시 콤보 ZX
+AVSI_EM_DASH_COMBO_Z2a = 
+{
+	ANIM_NAME			= "DashComboZ2a",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	SLASH_TRACE			= { 0, 100, },
+	--ATTACK_TIME0		= { 0.33, 0.5, },
+	
+	SPEED_X				= 500.0,
+	
+	SOUND_PLAY0			= { 0.03, "Sound_Arme_shout1.ogg" },
+	SOUND_PLAY1			= { 0.25, "Stickslash1.ogg" },		
+	
+--[[
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH2"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 2.2,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"] * 0.7,
+					
+		CAMERA_CRASH_GAP		= 5.0,
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 1,	
+		
+		TECH_POINT				= 176,
+	},
+--]]
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	DELETE_EFFECT_SET_ON_DAMAGE_REACT = TRUE, 
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Aisha_EM_DashZX", 0,
+	},
+	
+	COMBO_GUIDE         = { "R", "RZX" },
+}
+
+AVSI_DARK_MAGICIAN_DASH_COMBO_Z2a = 
+{
+	ANIM_NAME			= "DashComboZ2a",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	SLASH_TRACE			= { 0, 100, },
+	--ATTACK_TIME0		= { 0.33, 0.43, },
+	
+	SPEED_X				= 500.0,
+	
+	SOUND_PLAY0			= { 0.03, "Sound_Arme_shout1.ogg" },
+	SOUND_PLAY1			= { 0.25, "Stickslash1.ogg" },		
+	
+--[[
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH2"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 2.2,
+		},
+		
+		BACK_SPEED_X			= 0.0,
+					
+		CAMERA_CRASH_GAP		= 5.0,
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 1,	
+		
+		STOP_TIME_DEF			= 0.1,
+		TECH_POINT				= 60,
+		
+		FORCE_DOWN			= 15,
+	},
+--]]
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	DELETE_EFFECT_SET_ON_DAMAGE_REACT = TRUE, 
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Aisha_ADM_DashZX", 0,
+	},
+}
+
+AVSI_DARK_MAGICIAN_DASH_COMBO_Z3up =
+{
+	ANIM_NAME			= "DM_DashComboZ3a",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	SLASH_TRACE			= { 0, 100, },
+	ATTACK_TIME0		= { 0.24, 0.34, },
+	
+	SOUND_PLAY0			= { 0.24, "StickSlash1.ogg" },
+	
+	SPEED_X				= 850,
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH2"],
+		REACT_TYPE		= REACT_TYPE["RT_UP"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["WALK_SPEED"],
+		BACK_SPEED_Y			= INIT_PHYSIC["JUMP_SPEED"] * 1.4,
+			
+		CAMERA_CRASH_GAP		= 10.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 1,
+		
+		FORCE_DOWN			= 15,
+		TECH_POINT				= 100,
+	},	
+}
+
+AVSI_DASH_ATTACK_X = 
+{
+	ANIM_NAME			= "DashAttackX",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+
+ 	CAN_PASS_UNIT		= TRUE,
+	CAN_PUSH_UNIT		= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	COMBO_GUIDE         = { "R", "RX" },
+}
+
+AVSI_HIGH_MAGICION_DASH_ATTACK_X = 
+{
+	ANIM_NAME			= "DashAttackX",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	CAN_PASS_UNIT		= TRUE,
+	CAN_PUSH_UNIT		= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+}
+
+AVSI_HIGH_MAGICION_DASH_ATTACK_X2 = 
+{
+	ANIM_NAME			= "HM_ComboX3",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= -700,
+	SPEED_Y				= 0,
+		
+	NORMAL_CAMERA0_RATE			= 80,
+	NORMAL_CAMERA1_RATE			= 20,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 70,
+		},
+	},
+}
+
+AVSI_JUMP_ATTACK_Z = 
+{	
+	ANIM_NAME			= "JumpAttackZ",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	SLASH_TRACE			= { 0, 100, },
+	ATTACK_TIME0		= { 0.13, 100, },
+	
+	SOUND_PLAY0			= { 0.1, "Stickslash1.ogg" },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.3,
+		},
+					
+		FORCE_DOWN			= 15,
+		
+		-- 디멘션 위치 패시브 마력의 지팡이 - 마력 강타
+		CREATE_DAMAGE_EFFECT_NAME = "DAMAGE_EFFECT_ADW_MAGICAL_ATTACK",		
+		
+		CAMERA_CRASH_GAP		= 5.0,
+		CAMERA_CRASH_TIME		= 0.2,
+		
+		STOP_TIME_DEF			= 0.05,
+		
+		--TECH_POINT				= 40,
+	},
+	
+	COMBO_GUIDE         = { "J", "JZ" },
+}
+
+AVSI_JUMP_ATTACK_X = 
+{
+	ANIM_NAME			= "JumpAttackX",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= 0.01,
+	SPEED_Y				= 0.01,
+	
+	COMBO_GUIDE         = { "J", "JX" },
+}
+
+AVSI_DASH_JUMP_ATTACK_Z = 
+{
+	ANIM_NAME			= "DashJumpAttackZ",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= 500.0,
+	SPEED_Y				= INIT_PHYSIC["RUN_SPEED"],
+	
+	SLASH_TRACE			= { 0.16, 0.34, },
+	ATTACK_TIME0		= { 0.2, 0.26, },
+		
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_MAGIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_UP"],
+		
+		DAMAGE = 
+		{
+			MAGIC		= 1.7,
+		},
+		
+		STOP_TIME_DEF			= 0.35,
+		
+		-- 디멘션 위치 패시브 마력의 지팡이 - 마력 강타
+		CREATE_DAMAGE_EFFECT_NAME = "DAMAGE_EFFECT_ADW_MAGICAL_ATTACK",
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUNSPEED"],
+		BACK_SPEED_Y			= INIT_PHYSIC["JUMP_SPEED"] * 1.01,
+				
+		CAMERA_CRASH_GAP		= 20.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 1,
+		
+		FORCE_DOWN				= 20,
+		TECH_POINT				= 136,
+	},
+	
+	COMBO_GUIDE         = { "A", "AZ" },
+}
+
+AVSI_DASH_JUMP_ATTACK_X = 
+{
+	ANIM_NAME			= "DashJumpAttackX",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= 500.0,
+	SPEED_Y				= INIT_PHYSIC["RUN_SPEED"],
+	
+	COMBO_GUIDE         = { "A", "AX" },
+}
+
+AVSI_DASH_JUMP_ATTACK_X2 = 
+{
+	ANIM_NAME			= "DashJumpAttackX",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= 500.0,
+	SPEED_Y				= INIT_PHYSIC["RUN_SPEED"],
+	
+	COMBO_GUIDE         = { "A", "AXX" },
+}
+
+AVSI_HIGH_MAGICIAN_DASH_JUMP_ATTACK_X = 
+{
+	ANIM_NAME			= "DashJumpAttackX",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= 500.0,
+	SPEED_Y				= INIT_PHYSIC["RUN_SPEED"],
+}
+
+--[[AVSI_HIGH_MAGICIAN_DASH_JUMP_ATTACK_X2 = 
+{
+	ANIM_NAME			= "DashJumpAttackX",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= 500.0,
+	SPEED_Y				= INIT_PHYSIC["RUN_SPEED"],
+}
+--]]
+
+
+AVSI_SI_AV_POWER_ATTACK1 = 
+{
+	ANIM_NAME			= "ComboX1",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= INIT_PHYSIC["RUN_SPEED"],
+	SPEED_Y				= 0,
+	
+	SLASH_TRACE			= { 0, 100, },
+	ATTACK_TIME0		= { 0.19, 0.23, },	
+	INVINCIBLE			= { 0, 0.8, },
+	AFTER_IMAGE			= { 0.1, 100, },		
+	--STOP_ALL_UNIT0		= { 0.08, 0.6, 0.3 },
+	STOP_OTHER_UNIT0		= { 0.08, 0.3, },
+	
+	SOUND_PLAY0			= { 0.19, "Stickslash1.ogg" },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 3.0,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"] * 2.5,
+		BACK_SPEED_Y			= 0,
+		
+		STOP_TIME_ATT			= 0.1,		
+		STOP_TIME_DEF			= 0.0,	
+				
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 1,	
+		
+		--TECH_POINT				= 20,				
+	},
+}
+
+AVSI_SI_AV_POWER_ATTACK2 = 
+{
+	ANIM_NAME			= "ComboX1",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= INIT_PHYSIC["RUN_SPEED"],
+	SPEED_Y				= 0,
+	
+	SLASH_TRACE			= { 0, 100, },
+	ATTACK_TIME0		= { 0.19, 0.23, },	
+	INVINCIBLE			= { 0, 0.8, },
+	AFTER_IMAGE			= { 0.1, 100, },		
+	--STOP_ALL_UNIT0		= { 0.08, 0.6, 0.3 },
+	STOP_OTHER_UNIT0		= { 0.08, 0.3, },
+	
+	SOUND_PLAY0			= { 0.19, "Stickslash1.ogg" },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 3.0,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"] * 2.5,
+		BACK_SPEED_Y			= 0,
+		
+		STOP_TIME_ATT			= 0.1,		
+		STOP_TIME_DEF			= 0.0,	
+				
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 1,	
+		
+		--TECH_POINT				= 20,				
+	},
+}
+
+AVSI_SI_AV_POWER_ATTACK3 = 
+{
+	ANIM_NAME			= "ComboX1",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= INIT_PHYSIC["RUN_SPEED"],
+	SPEED_Y				= 0,
+	
+	SLASH_TRACE			= { 0, 100, },
+	ATTACK_TIME0		= { 0.19, 0.23, },	
+	INVINCIBLE			= { 0, 0.8, },
+	AFTER_IMAGE			= { 0.1, 100, },		
+	--STOP_ALL_UNIT0		= { 0.08, 0.6, 0.3 },
+	STOP_OTHER_UNIT0		= { 0.08, 0.3, },
+	
+	SOUND_PLAY0			= { 0.19, "Stickslash1.ogg" },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 3.0,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"] * 2.5,
+		BACK_SPEED_Y			= 0,
+		
+		STOP_TIME_ATT			= 0.1,		
+		STOP_TIME_DEF			= 0.0,	
+				
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 1,	
+		
+		--TECH_POINT				= 20,				
+	},
+}
+
+
+
+
+AVSI_SI1_AV_BINDING_CIRCLE = 
+{
+	ANIM_NAME			= "SP1a_BindingCircle",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 0.6, },
+	AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.08, 1.3, 0.6 },
+	
+	SPEED_X				= 0.0,
+	SPEED_Y				= 0.0,
+			
+	--STOP_ALL_UNIT0		= { 0.08, 1.2, 0.6, },
+	STOP_OTHER_UNIT0		= { 0.08, 0.6, },
+	STATE_STRING		= STR_ID_4241,
+	
+	
+	SOUND_PLAY0			= { 0.01, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.05, "AishaVoice_BindingCircle.ogg" },
+	SOUND_PLAY2			= { 0.350, "Arme_BindingCircle.ogg" },
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 1000,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.1,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 1000,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 70,
+			TRACKINGTIME	= 0.1,
+		},
+	},
+}
+
+AVSI_SI1_AV_BINDING_CIRCLE_HYPER = 
+{
+	ANIM_NAME			= "SP1a_BindingCircle",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 0.6, },
+	AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.08, 1.3, 0.6, },
+	STATE_STRING		= STR_ID_4241,
+	
+	SPEED_X				= 0.0,
+	SPEED_Y				= 0.0,
+			
+	--STOP_ALL_UNIT0		= { 0.08, 1.2, 0.6, },
+	STOP_OTHER_UNIT0		= { 0.08, 0.6, },
+	
+	SOUND_PLAY0			= { 0.01, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.05, "AishaVoice_BindingCircle.ogg" },
+	SOUND_PLAY2			= { 0.350, "Arme_BindingCircle.ogg" },
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 1000,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.1,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 1000,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 70,
+			TRACKINGTIME	= 0.1,
+		},
+	},
+}
+
+AVSI_SI2_AV_LIGHTNING_BOLT = 
+{
+	ANIM_NAME			= "SP2a_LightningBolts",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+		
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 1.4, },
+	SLASH_TRACE			= { 0, 100, },
+	AFTER_IMAGE			= { 1.2, 100, },
+	
+	STOP_OTHER_UNIT0	= { 0.08, 1.3, },
+	--STOP_ALL_UNIT0		= { 0.22, 1.0, 0.6, },
+	STOP_OTHER_UNIT1		= { 0.22, 0.4, },
+	STATE_STRING		= STR_ID_4242,
+	
+	SPEED_X				= 0.0,
+	SPEED_Y				= 0.0,
+	
+	SOUND_PLAY0			= { 0.2, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.17, "AishaVoice_LightningBolt.ogg" },
+	SOUND_PLAY2			= { 0.4, "lightning.ogg" },
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 1000,
+			HEIGHT			= 100,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 70,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+--[[ damage effect로 옮김, AISHA_LIGHTNING_BOLT_HYPER
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_MAGIC"],
+		ATTACK_TYPE		= ATTACK_TYPE["AT_SPECIAL"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_FLY"],
+		
+		DUNGEON_RATE    = 1.2,
+		
+		DAMAGE = 
+		{
+			MAGIC		= 0.65,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["WALK_SPEED"],
+		BACK_SPEED_Y			= INIT_PHYSIC["JUMP_SPEED"] / 3,
+		
+		STOP_RESERVE_TIME_ATT	= 0.0,
+		STOP_RESERVE_TIME_DEF	= 0.0,
+		STOP_TIME_ATT			= 0.0,		
+		STOP_TIME_DEF			= 0.0,	
+		CAMERA_CRASH_GAP		= 20.0,	
+		CAMERA_CRASH_TIME		= 0.5,
+
+		CAN_REVENGE				= FALSE,
+		RE_ATTACK				= TRUE,
+		HIT_GAP					= 0.05,
+		
+		TECH_POINT				= 120,
+		FORCE_FLY				= TRUE,
+	},
+--]]	
+}
+
+AVSI_SI2_AV_LIGHTNING_BOLT_HYPER = 
+{
+	ANIM_NAME			= "SP2a_LightningBolts",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+		
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 1.4, },
+	SLASH_TRACE			= { 0, 100, },
+	AFTER_IMAGE			= { 1.2, 100, },
+	
+	STOP_OTHER_UNIT0	= { 0.08, 1.3, },
+	--STOP_ALL_UNIT0		= { 0.22, 1, 0.6, },
+	STOP_OTHER_UNIT1		= { 0.22, 0.4, },
+	STATE_STRING		= STR_ID_4242,
+	
+	SPEED_X				= 0.0,
+	SPEED_Y				= 0.0,
+	
+	SOUND_PLAY0			= { 0.2, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.17, "AishaVoice_LightningBolt.ogg" },
+	SOUND_PLAY2			= { 0.4, "lightning.ogg" },
+	
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 1200,
+			HEIGHT			= -50,
+			ANGLEDEGREE		= -80,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 1200,
+			HEIGHT			= 100,
+			ANGLEDEGREE		= -80,
+			TRACKINGTIME	= 0.2,
+		},
+	},
+	
+--[[ damage effect로 옮김, AISHA_LIGHTNING_BOLT_HYPER
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_MAGIC"],
+		ATTACK_TYPE		= ATTACK_TYPE["AT_SPECIAL"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_FLY"],
+		
+		DUNGEON_RATE    = 1.2,
+		
+		DAMAGE = 
+		{
+			MAGIC		= 0.65,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["WALK_SPEED"],
+		BACK_SPEED_Y			= INIT_PHYSIC["JUMP_SPEED"] / 3,
+		
+		STOP_RESERVE_TIME_ATT	= 0.0,
+		STOP_RESERVE_TIME_DEF	= 0.0,
+		STOP_TIME_ATT			= 0.0,		
+		STOP_TIME_DEF			= 0.0,	
+		CAMERA_CRASH_GAP		= 20.0,	
+		CAMERA_CRASH_TIME		= 0.5,
+
+		CAN_REVENGE				= FALSE,
+		RE_ATTACK				= TRUE,
+		HIT_GAP					= 0.05,
+		
+		TECH_POINT				= 180,
+		FORCE_FLY				= TRUE,
+	}
+--]]	
+}
+
+AVSI_SI3_AV_METEO_CALL = 
+{
+	ANIM_NAME			= "SP3a_MeteoCall",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	PASSIVE_SPEED_X		= 0.0,
+	PASSIVE_SPEED_Y		= 0.0,
+	
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 2.0, },
+	AFTER_IMAGE			= { 0.4, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.08, 1.8, 0.2, },
+	STOP_OTHER_UNIT0		= { 0.08, 1.6, },
+	STOP_MY_UNIT0		= { 1.8, 0.6, },
+	STOP_OTHER_UNIT1		= { 1.8, 0.9, },
+	STATE_STRING		= STR_ID_4243,
+
+	
+	SOUND_SET0_RATE = 70,
+	SOUND_SET1_RATE = 30,
+
+	SOUND_SET0 =
+	{
+		NORMAL =
+		{
+			SOUND_PLAY0			= { 0.05, "Energy.ogg" },
+			SOUND_PLAY1			= { 0.1, "AishaVoice_MeteoCall.ogg" },
+			SOUND_PLAY2			= { 1.097, "fireball.ogg" },
+			SOUND_PLAY3			= { 1.766, "Energy.ogg" },
+			SOUND_PLAY4			= { 1.766, "Sound_Arme_shout4.ogg" },
+			SOUND_PLAY5			= { 1.844, "bomb.ogg" },
+		},
+	},
+
+	SOUND_SET1 =
+	{
+		NORMAL =
+		{
+			SOUND_PLAY0			= { 0.05, "Energy.ogg" },
+			SOUND_PLAY1			= { 0.1, "AishaVoice_MeteorCall03.ogg" },
+			SOUND_PLAY2			= { 1.097, "fireball.ogg" },
+			SOUND_PLAY3			= { 1.766, "Energy.ogg" },
+			SOUND_PLAY4			= { 1.766, "AishaVoice_MeteorCall02.ogg" },
+			SOUND_PLAY5			= { 1.844, "bomb.ogg" },		
+			SOUND_PLAY6			= { 1.933, "Sound_Arme_shout4.ogg" },
+		},
+	},
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_L_Finger1Nub",
+			LOOK_OFFSET_Y	= 50,
+			DISTANCE		= 300,
+			HEIGHT			= -200,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_UNIT_POSITION"],
+			LOOK_OFFSET_Y	= 400,
+			DISTANCE		= 600,
+			HEIGHT			= -400,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_UNIT_POSITION"],
+			DISTANCE		= 600,
+			LOOKATDISTANCE	= 500,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 70,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_L_Finger1Nub",
+			LOOK_OFFSET_Y	= 50,
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_UNIT_POSITION"],
+			LOOK_OFFSET_Y	= 400,
+			DISTANCE		= 500,
+			HEIGHT			= 700,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			DISTANCE		= 1500,
+			HEIGHT			= 700,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+}
+
+AVSI_SI3_AV_METEO_CALL_HYPER = 
+{
+	ANIM_NAME			= "SP3a_MeteoCall",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	PASSIVE_SPEED_X		= 0.0,
+	PASSIVE_SPEED_Y		= 0.0,
+	
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 2.0, },
+	AFTER_IMAGE			= { 0.4, 100, },
+	STATE_STRING		= STR_ID_4243,
+	
+	--STOP_ALL_UNIT0		= { 0.08, 1.8, 0.2, },
+	STOP_OTHER_UNIT0		= { 0.08, 1.6, },
+	--STOP_ALL_UNIT1		= { 1.8, 0.9, 0.6, },
+	STOP_OTHER_UNIT1		= { 1.8, 0.3, },
+	
+	SOUND_SET0_RATE = 70,
+	SOUND_SET1_RATE = 30,
+
+	SOUND_SET0 =
+	{
+		NORMAL =
+		{
+			SOUND_PLAY0			= { 0.05, "Energy.ogg" },
+			SOUND_PLAY1			= { 0.1, "AishaVoice_MeteoCall.ogg" },
+			SOUND_PLAY2			= { 1.097, "fireball.ogg" },
+			SOUND_PLAY3			= { 1.766, "Energy.ogg" },
+			SOUND_PLAY4			= { 1.766, "Sound_Arme_shout4.ogg" },
+			SOUND_PLAY5			= { 1.844, "bomb.ogg" },
+		},
+	},
+
+	SOUND_SET1 =
+	{
+		NORMAL =
+		{
+			SOUND_PLAY0			= { 0.05, "Energy.ogg" },
+			SOUND_PLAY1			= { 0.1, "AishaVoice_MeteorCall03.ogg" },
+			SOUND_PLAY2			= { 1.097, "fireball.ogg" },
+			SOUND_PLAY3			= { 1.766, "Energy.ogg" },
+			SOUND_PLAY4			= { 1.766, "AishaVoice_MeteorCall02.ogg" },
+			SOUND_PLAY5			= { 1.844, "bomb.ogg" },		
+			SOUND_PLAY6			= { 1.933, "Sound_Arme_shout4.ogg" },
+		},
+	},
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_L_Finger1Nub",
+			LOOK_OFFSET_Y	= 50,
+			DISTANCE		= 300,
+			HEIGHT			= -200,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_UNIT_POSITION"],
+			LOOK_OFFSET_Y	= 400,
+			DISTANCE		= 600,
+			HEIGHT			= -400,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_UNIT_POSITION"],
+			DISTANCE		= 600,
+			LOOKATDISTANCE	= 500,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 70,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_L_Finger1Nub",
+			LOOK_OFFSET_Y	= 50,
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_UNIT_POSITION"],
+			LOOK_OFFSET_Y	= 400,
+			DISTANCE		= 500,
+			HEIGHT			= 700,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			DISTANCE		= 1500,
+			HEIGHT			= 700,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+}
+
+
+AVSI_SI1_AV_CHAIN_FIRE_BALL = 
+{
+	ANIM_NAME			= "SP1a_ChainFireBall",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	AFTER_IMAGE			= { 0.1, 100, },
+		
+	STATE_STRING		= STR_ID_4244,
+	
+	SOUND_PLAY0			= { 0.01, "AishaVoice_ChainFireBall.ogg" },
+	
+	NORMAL_CAMERA0_RATE			= 100,
+	NORMAL_CAMERA1_RATE			= 0,
+	NORMAL_CAMERA2_RATE			= 0,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 1000,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.1,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 1000,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 70,
+			TRACKINGTIME	= 0.1,
+		},
+	},
+}
+
+
+
+AVSI_SI1_AV_CHAIN_FIRE_BALL_HYPER = 
+{
+	ANIM_NAME			= "SP1a_ChainFireBall",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	STATE_STRING		= STR_ID_4244,
+	
+	
+	SOUND_PLAY0			= { 0.01, "AishaVoice_ChainFireBall.ogg" },
+	
+	NORMAL_CAMERA0_RATE			= 100,
+	NORMAL_CAMERA1_RATE			= 0,
+	NORMAL_CAMERA2_RATE			= 0,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 1000,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.1,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 1000,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 70,
+			TRACKINGTIME	= 0.1,
+		},
+	},
+}
+
+
+AVSI_SI1_AV_HELL_STONE = 
+{
+	ANIM_NAME			= "SP1a_HellStone",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 0.7, },
+	AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.1, 1.2, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.1, 0.6, },
+	STATE_STRING		= STR_ID_4245,
+	
+	
+	SOUND_PLAY0			= { 0.01, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.05, "AishaVoice_HellStone.ogg" },
+	SOUND_PLAY2			= { 0.364, "Arme_HellStone1.ogg" },
+	SOUND_PLAY3			= { 0.373, "Arme_HellStone2.ogg" },
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 800,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= -30,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 300,
+			ANGLEDEGREE		= 50,
+		},
+	},
+}
+
+AVSI_SI1_AV_HELL_STONE_HYPER = 
+{
+	ANIM_NAME			= "SP1a_HellStone",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 0.7, },
+	AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.1, 1.2, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.1, 0.6, },
+	STATE_STRING		= STR_ID_4245,
+	
+	
+	SOUND_PLAY0			= { 0.01, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.05, "AishaVoice_HellStone.ogg" },
+	SOUND_PLAY2			= { 0.364, "Arme_HellStone1.ogg" },
+	SOUND_PLAY3			= { 0.373, "Arme_HellStone3.ogg" },
+
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 800,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= -30,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 300,
+			ANGLEDEGREE		= 50,
+		},
+	},
+}
+
+AVSI_SI2_AV_GUIDE_FIRE_BALL = 
+{
+	ANIM_NAME			= "SP2a_GuideDarkBall",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 1.3, },
+	AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.3, 1.2, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.3, 0.6, },
+	STATE_STRING		= STR_ID_4246,
+	
+	
+	SOUND_PLAY0			= { 0.01, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.1, "AishaVoice_MagicMissile.ogg" },
+	SOUND_PLAY2			= { 0.540, "Arme_GuideDarkBall2.ogg" },
+
+	NORMAL_CAMERA0_RATE			= 30,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 40,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 30,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 800,
+			HEIGHT			= 300,
+			ANGLEDEGREE		= -50,
+		},
+	},
+}
+
+AVSI_SI2_AV_GUIDE_FIRE_BALL_HYPER = 
+{
+	ANIM_NAME			= "SP2a_GuideDarkBall",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 1.3, },
+	AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.3, 1.2, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.3, 0.6, },
+	STATE_STRING		= STR_ID_4246,
+	
+	
+	SOUND_PLAY0			= { 0.01, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.1, "AishaVoice_MagicMissile.ogg" },
+	SOUND_PLAY2			= { 0.540, "Arme_GuideDarkBall2.ogg" },
+
+	
+	NORMAL_CAMERA0_RATE			= 30,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 40,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 30,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 800,
+			HEIGHT			= 300,
+			ANGLEDEGREE		= -50,
+		},
+	},
+}
+
+
+AVSI_SI2_AV_LAND_OF_FLAME = 
+{
+	ANIM_NAME			= "SP2a_GustScrew",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 1.3, },
+	AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.28, 1.2, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.28, 0.6, },
+	
+	
+	SOUND_PLAY0			= { 0.28, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.1, "AishaVoice_GustScrew.ogg" },
+	SOUND_PLAY2			= { 0.452, "Arme_GustScrew.ogg" },
+	
+	
+	NORMAL_CAMERA0_RATE			= 100,
+	NORMAL_CAMERA1_RATE			= 0,
+	NORMAL_CAMERA2_RATE			= 0,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 1000,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.1,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 1000,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 70,
+			TRACKINGTIME	= 0.1,
+		},
+	},
+}
+
+AVSI_SI2_AV_GUST_SCREW = 
+{
+	ANIM_NAME			= "SP2a_GustScrew",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 1.3, },
+	AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.28, 1.2, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.28, 0.6, },
+	STATE_STRING		= STR_ID_4247,
+	
+	
+	SOUND_PLAY0			= { 0.28, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.1, "AishaVoice_GustScrew.ogg" },
+	SOUND_PLAY2			= { 0.452, "Arme_GustScrew.ogg" },
+
+	
+	NORMAL_CAMERA0_RATE			= 100,
+	NORMAL_CAMERA1_RATE			= 0,
+	NORMAL_CAMERA2_RATE			= 0,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 1000,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.1,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 1000,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 70,
+			TRACKINGTIME	= 0.1,
+		},
+	},
+}
+
+AVSI_SI2_AV_GUST_SCREW_HYPER = 
+{
+	ANIM_NAME			= "SP2a_GustScrew",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 1.3, },
+	AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.28, 1.2, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.28, 0.6, },
+	STATE_STRING		= STR_ID_4247,
+	
+	
+	SOUND_PLAY0			= { 0.28, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.1, "AishaVoice_GustScrew.ogg" },
+	SOUND_PLAY2			= { 0.452, "Arme_GustScrew.ogg" },
+
+	
+	NORMAL_CAMERA0_RATE			= 100,
+	NORMAL_CAMERA1_RATE			= 0,
+	NORMAL_CAMERA2_RATE			= 0,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 1000,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.1,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 1000,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 70,
+			TRACKINGTIME	= 0.1,
+		},
+	},
+}
+
+
+AVSI_SI3_AV_GUST_STORM = 
+{
+	ANIM_NAME			= "SP3a_GustStorm",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 2, },
+	AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.12, 1.2, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.12, 0.6, },
+	STATE_STRING		= STR_ID_4248,
+	
+	
+	SOUND_PLAY0			= { 0.12, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.1, "AishaVoice_GustStorm.ogg" },
+	SOUND_PLAY2			= { 0.53, "Arme_GustScrew.ogg" },
+	SOUND_PLAY3			= { 0.452, "Sound_Arme_shout4.ogg" },
+
+	
+	NORMAL_CAMERA0_RATE			= 100,
+	NORMAL_CAMERA1_RATE			= 0,
+	NORMAL_CAMERA2_RATE			= 0,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 1000,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.1,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 1000,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 70,
+			TRACKINGTIME	= 0.1,
+		},
+	},
+}
+
+AVSI_SI3_AV_GUST_STORM_HYPER = 
+{
+	ANIM_NAME			= "SP3a_GustStorm",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 2, },
+	AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.12, 1.2, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.12, 0.6, },
+	STATE_STRING		= STR_ID_4248,
+	
+	
+	SOUND_PLAY0			= { 0.12, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.1, "AishaVoice_GustStorm.ogg" },
+	SOUND_PLAY2			= { 0.53, "Arme_GustScrew.ogg" },
+	SOUND_PLAY3			= { 0.452, "Sound_Arme_shout4.ogg" },
+
+	
+	NORMAL_CAMERA0_RATE			= 100,
+	NORMAL_CAMERA1_RATE			= 0,
+	NORMAL_CAMERA2_RATE			= 0,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 1000,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.1,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.15,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 1000,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 70,
+			TRACKINGTIME	= 0.1,
+		},
+	},
+}
+
+
+AVSI_SI3_AV_CATASTROPHE = 
+{
+	ANIM_NAME			= "SP3a_PlasmaCuter",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 2.7, },
+	--AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.3, 1.2, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.3, 0.6, },
+	STATE_STRING		= STR_ID_4249,
+	
+	
+	SOUND_PLAY0			= { 0.01, "Energy.ogg" },
+    SOUND_PLAY1			= { 0.15, "AishaVoice_PlasmaCutter.ogg" },
+    SOUND_PLAY2			= { 0.723, "Arme_PlasmaCuter.ogg" },
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			LOOKATDISTANCE	= 1000,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 70,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+		
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			EYEDISTANCE		= 1000,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+}
+
+AVSI_SI3_AV_CATASTROPHE_HYPER = 
+{
+	ANIM_NAME			= "SP3a_PlasmaCuter",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 2.7, },
+	--AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.3, 1.2, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.3, 0.6, },
+	STATE_STRING		= STR_ID_4249,
+	
+	SOUND_PLAY0			= { 0.01, "Energy.ogg" },
+    SOUND_PLAY1			= { 0.1, "AishaVoice_PlasmaCutter.ogg" },
+    SOUND_PLAY2			= { 0.723, "Arme_PlasmaCuter.ogg" },
+    SOUND_PLAY3			= { 1.023, "Arme_PlasmaCuter2.ogg" },
+--    SOUND_PLAY3			= { 1.923, "Arme_PlasmaCuter.ogg" }
+    SOUND_PLAY4			= { 1.323, "Arme_PlasmaCuter.ogg" },
+	SOUND_PLAY5			= { 1.723, "Arme_PlasmaCuter2.ogg" },
+
+	
+	NORMAL_CAMERA0_RATE			= 100,
+	NORMAL_CAMERA1_RATE			= 0,
+	NORMAL_CAMERA2_RATE			= 0,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			LOOKATDISTANCE	= 1000,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 70,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+		
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 500,
+			EYEDISTANCE		= 1000,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= -70,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+}
+
+AVSI_SI1_AV_CHAIN_BURST = 
+{
+	ANIM_NAME			= "HM_SP1a_ChainBurst",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	STATE_STRING		= STR_ID_4250,
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 60,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 800,
+			HEIGHT			= 300,
+			ANGLEDEGREE		= -60,
+		},
+	},
+		
+	
+	INVINCIBLE			= { 0, 1.8, },
+	AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.165, 1.6, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.165, 1.0, },
+
+	SOUND_PLAY0			= { 0.01, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.05, "AishaVoice_ChainBurst.ogg" },
+	SOUND_PLAY2			= { 0.174, "Arme_ChainBurst1.ogg" },
+	SOUND_PLAY3			= { 0.607, "Arme_ChainBurst2.ogg" },
+	SOUND_PLAY4			= { 1.82, "Arme_ChainBurst3.ogg" },
+
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+}
+
+AVSI_SI1_AV_CHAIN_BURST_HYPER = 
+{
+	ANIM_NAME			= "HM_SP1a_ChainBurst",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	INVINCIBLE			= { 0, 1.8, },
+	AFTER_IMAGE			= { 0.1, 100, },
+	
+	STATE_STRING		= STR_ID_4250,
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 60,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 800,
+			HEIGHT			= 300,
+			ANGLEDEGREE		= -60,
+		},
+	},
+		
+
+	SOUND_PLAY0			= { 0.01, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.05, "AishaVoice_ChainBurst.ogg" },
+	SOUND_PLAY2			= { 0.174, "Arme_ChainBurst1.ogg" },
+	SOUND_PLAY3			= { 0.607, "Arme_ChainBurst2.ogg" },
+	SOUND_PLAY4			= { 1.82, "Arme_ChainBurst3.ogg" },
+	
+	--STOP_ALL_UNIT0		= { 0.165, 1.6, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.165, 1.0, },
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+}
+
+
+AVSI_SI_AV_COMMON_BUFF = 
+{
+	ANIM_NAME			= "BoostPower",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	CAN_PUSH_UNIT		= FALSE,
+	CAN_PASS_UNIT		= FALSE,
+	
+	SPEED_X				= 0.0,
+	SPEED_Y				= 0.0,
+	
+	SOUND_PLAY0			= { 0.2, "Stickslash1.ogg" },
+	SOUND_PLAY1			= { 0.63, "Break.ogg" },
+	SOUND_PLAY2			= { 0.63, "Change.ogg" },
+	
+		
+	-- INVINCIBLE			= { 0, 100, },
+	AFTER_IMAGE			= { 0.1, 100, },
+		
+	--STOP_ALL_UNIT0		= { 0.08, 1.9, 0.5 },
+	--STOP_ALL_UNIT0  = { 0.08, 1.65, 0.5 },
+	-- STOP_OTHER_UNIT0		= { 0.08, 1.15, },
+	
+	NORMAL_CAMERA0_RATE			= 50,
+	NORMAL_CAMERA1_RATE			= 50,
+	NORMAL_CAMERA2_RATE			= 0,
+	
+	CAMERA0 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			DISTANCE		= 1500,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 0,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 0,	
+			TRACKINGTIME	= 0.3,
+		},
+	},
+	CAMERA1 = 
+	{
+		SUB_CAMERA0 =
+		{			
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= 400,
+			ANGLEDEGREE		= -70,
+		},
+		SUB_CAMERA1 =
+		{			
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 700,
+			HEIGHT			= -20,
+			ANGLEDEGREE		= -20,
+			TRACKINGTIME	= 0.4,
+		},
+	},	
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_UNIT_POSITION"],
+			LOOK_OFFSET_Y	= 100,
+			DISTANCE		= 400,
+			HEIGHT			= -90,
+			ANGLEDEGREE		= -30,
+		},
+	},
+}
+
+
+AVSI_SI_AV_COMMON_BUFF_HYPER = 
+{
+	ANIM_NAME			= "BoostPower",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	CAN_PUSH_UNIT		= FALSE,
+	CAN_PASS_UNIT		= FALSE,
+	
+	SPEED_X				= 0.0,
+	SPEED_Y				= 0.0,
+	
+	SOUND_PLAY0			= { 0.2, "Stickslash1.ogg" },
+	SOUND_PLAY1			= { 0.47, "Energy.ogg" },
+	SOUND_PLAY2			= { 0.63, "Break.ogg" },
+	SOUND_PLAY3			= { 0.63, "Change.ogg" },
+	
+		
+	-- INVINCIBLE			= { 0, 100, },
+	AFTER_IMAGE			= { 0.1, 100, },
+		
+	--STOP_ALL_UNIT0		= { 0.08, 1.9, 0.5 },
+	--STOP_ALL_UNIT0  = { 0.08, 1.65, 0.5 },
+	-- STOP_OTHER_UNIT0		= { 0.08, 1.15, },
+	
+	
+		
+	NORMAL_CAMERA0_RATE			= 50,
+	NORMAL_CAMERA1_RATE			= 50,
+	NORMAL_CAMERA2_RATE			= 0,
+	
+	CAMERA0 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			DISTANCE		= 1500,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 0,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 0,	
+			TRACKINGTIME	= 0.3,
+		},
+	},
+	CAMERA1 = 
+	{
+		SUB_CAMERA0 =
+		{			
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= 400,
+			ANGLEDEGREE		= -70,
+		},
+		SUB_CAMERA1 =
+		{			
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 700,
+			HEIGHT			= -20,
+			ANGLEDEGREE		= -20,
+			TRACKINGTIME	= 0.4,
+		},
+	},	
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_UNIT_POSITION"],
+			LOOK_OFFSET_Y	= 100,
+			DISTANCE		= 400,
+			HEIGHT			= -90,
+			ANGLEDEGREE		= -30,
+		},
+	},
+}
+
+
+AVSI_SI2_AV_DARK_CLOUD = 
+{
+	ANIM_NAME			= "DM_SP2a_DarkCloud",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	INVINCIBLE			= { 0, 1.2, },
+	AFTER_IMAGE			= { 0.1, 100, },
+	
+	STATE_STRING		= STR_ID_4251,
+		
+	--STOP_ALL_UNIT0		= { 0.19, 1.6, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.19, 1.0, },
+
+	SOUND_PLAY0			= { 0.01, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.1, "AishaVoice_DarkCloud.ogg" },
+	SOUND_PLAY2			= { 0.621, "Arme_DarkCloud1.ogg" },
+--	SOUND_PLAY3			= { 0.821, "Arme_DarkCloud2.ogg" },
+
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+}
+
+AVSI_SI2_AV_DARK_CLOUD_HYPER = 
+{
+	ANIM_NAME			= "DM_SP2a_DarkCloud",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	INVINCIBLE			= { 0, 1.2, },
+	AFTER_IMAGE			= { 0.1, 100, },
+	
+	STATE_STRING		= STR_ID_4251,
+		
+	--STOP_ALL_UNIT0		= { 0.19, 1.6, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.19, 1.0, },
+
+	SOUND_PLAY0			= { 0.01, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.1, "AishaVoice_DarkCloud.ogg" },
+	SOUND_PLAY2			= { 0.621, "Arme_DarkCloud1.ogg" },
+--	SOUND_PLAY3			= { 0.821, "Arme_DarkCloud2.ogg" },
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+}
+-- 이거 인퍼널 웨이브입니다 ㄷㄷㄷ(lenoas, 2011.2.28)
+
+AVSI_SI2_AV_BIND_ATTACK = 
+{
+	ANIM_SPEED			= 1.3,
+	ANIM_NAME			= "HM_SP3a_BlindAttack",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 3.5, },
+	SLASH_TRACE			= { 0, 100, },
+	ATTACK_TIME0		= { 0.17, 0.25, },
+	ATTACK_TIME1		= { 0.51, 0.57, },
+	ATTACK_TIME2		= { 0.87, 0.93, },
+	
+	--STOP_ALL_UNIT0		= { 0.15, 1.2, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.15, 0.6, },
+	--STOP_ALL_UNIT1		= { 2.5, 1.2, 0.6 },
+	STOP_OTHER_UNIT1		= { 2.5, 0.6, },
+
+	SOUND_PLAY0			= { 0.01, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.03, "AishaVoice_InfernalWave.ogg" },
+	SOUND_PLAY2			= { 0.264, "Stickslash1.ogg" },
+	SOUND_PLAY3			= { 0.744, "Stickslash1.ogg" },
+	SOUND_PLAY4			= { 0.747, "Sound_Arme_shout2.ogg" },
+	SOUND_PLAY5			= { 1.272, "Stickslash1.ogg" },
+	SOUND_PLAY6			= { 1.274, "Sound_Arme_shout2.ogg" },
+	SOUND_PLAY7			= { 2.099, "lightning.ogg" },
+	SOUND_PLAY8			= { 3.313, "Sound_Arme_shout4.ogg" },
+	SOUND_PLAY9			= { 3.313, "fireball.ogg" },
+	SOUND_PLAY10			= { 3.425, "bomb.ogg" },
+	
+	STATE_STRING		= STR_ID_4252,
+	
+	NORMAL_CAMERA0_RATE			= 30,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 40,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 800,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= -30,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 1000,
+			HEIGHT			= 300,
+			ANGLEDEGREE		= 50,
+		},
+	},
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		ATTACK_TYPE		= ATTACK_TYPE["AT_SPECIAL"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH2"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		PVP_RATE		= 0.66,
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 2.35,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 0,
+		
+		CAN_REVENGE				= FALSE,
+					
+		CAMERA_CRASH_GAP		= 15.0,
+		CAMERA_CRASH_TIME		= 0.3,
+		CLEAR_SCREEN			= 1,	
+		
+		FORCE_FLY				= TRUE,
+		HIT_ADD_MP				= 1.67,
+		TECH_POINT				= 41,
+	},
+}
+
+-- 이건 인퍼널 웨이브 각성입니다 ㅎㄷㄷㄷ(lenoas, 2011.2.28)
+
+
+AVSI_SI2_AV_BIND_ATTACK_HYPER = 
+{
+	ANIM_SPEED			= 1.3,
+	ANIM_NAME			= "HM_SP3a_BlindAttack",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	INVINCIBLE			= { 0, 3.5, },
+	SLASH_TRACE			= { 0, 100, },
+	ATTACK_TIME0		= { 0.17, 0.25, },
+	ATTACK_TIME1		= { 0.51, 0.57, },
+	ATTACK_TIME2		= { 0.87, 0.93, },
+	
+	--STOP_ALL_UNIT0		= { 0.15, 1.2, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.15, 0.6, },
+	--STOP_ALL_UNIT1		= { 2.5, 1.2, 0.6 },
+	STOP_OTHER_UNIT1		= { 2.5, 0.6, },
+	
+	STATE_STRING		= STR_ID_4252,
+	
+	NORMAL_CAMERA0_RATE			= 30,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 40,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 800,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= -30,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 1000,
+			HEIGHT			= 300,
+			ANGLEDEGREE		= 50,
+		},
+	},
+
+	SOUND_PLAY0			= { 0.01, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.03, "AishaVoice_InfernalWave.ogg" },
+	SOUND_PLAY2			= { 0.264, "Stickslash1.ogg" },
+	SOUND_PLAY3			= { 0.744, "Stickslash1.ogg" },
+	SOUND_PLAY4			= { 0.747, "Sound_Arme_shout2.ogg" },
+	SOUND_PLAY5			= { 1.272, "Stickslash1.ogg" },
+	SOUND_PLAY6			= { 1.274, "Sound_Arme_shout2.ogg" },
+	SOUND_PLAY7			= { 2.099, "lightning.ogg" },
+	SOUND_PLAY8			= { 3.313, "Sound_Arme_shout4.ogg" },
+	SOUND_PLAY9			= { 3.313, "fireball.ogg" },
+	SOUND_PLAY10		= { 3.425, "bomb.ogg" },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		ATTACK_TYPE		= ATTACK_TYPE["AT_SPECIAL"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH2"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		PVP_RATE		= 0.66,
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 2.35,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 0,
+		
+		CAN_REVENGE				= FALSE,
+					
+		CAMERA_CRASH_GAP		= 15.0,
+		CAMERA_CRASH_TIME		= 0.3,
+		CLEAR_SCREEN			= 1,	
+		
+		FORCE_FLY				= TRUE,
+		HIT_ADD_MP				= 1.67,
+		TECH_POINT				= 41,
+	},
+}
+
+
+
+
+
+--#ifdef WALL_JUMP_TEST
+AVSI_WALL_LANDING =
+{
+	ANIM_NAME			= "DashJumpLanding",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT		= FALSE,
+	
+	SOUND_PLAY0			= { 0.02, "Step.ogg" },
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+}
+--#endif WALL_JUMP_TEST
+
+
+
+
+
+
+
+
+
+AVSI_PEPPER_RUN_READY =
+{
+	ANIM_NAME			= "Dash",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	AFTER_IMAGE			= { 0, 100, },
+	SUPER_ARMOR			= TRUE,
+	INVINCIBLE			= { 0, 100, },
+	
+}
+
+AVSI_PEPPER_RUN =
+{
+	ANIM_NAME			= "Dash",
+	ANIM_SPEED			= 2,
+	
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	SUPER_ARMOR			= TRUE,
+	INVINCIBLE			= { 0, 100, },
+	
+	CAN_PUSH_UNIT		= FALSE,
+	CAN_PASS_UNIT		= TRUE,
+	
+	AFTER_IMAGE			= { 0, 100, },
+	ATTACK_TIME0		= { 0, 100 },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_UP"],
+		
+		BACK_SPEED_Y			= INIT_PHYSIC["JUMP_SPEED"] * 1.3,
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+		BUFF_FACTOR =
+		{
+			BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_FIRE"],
+			RATE	=
+			{
+				1,
+			},
+			IGNORE_REGIST_FOR_RATE = TRUE,
+
+			BEHAVIOR =
+			{
+				COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], },
+				
+				BBT_CHANGE_NOW_HP_PER_SECOND =
+				{
+					BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+					BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+
+					MULTIPLIER =
+					{
+						-0.3,
+					},
+				},
+			},
+		
+			FINALIZER =
+			{
+				COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+			
+				BFT_TIME =
+				{
+					BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+					NORMAL_TIME =
+					{
+						10,
+					},
+				},
+			},
+		},
+		
+		CAMERA_CRASH_GAP		= 20.0,	
+		CAMERA_CRASH_TIME		= 0.3,	
+		
+		RE_ATTACK				= TRUE,		
+		HIT_GAP					= 1,		
+		
+		FORCE_DOWN			= 30,
+		
+		TECH_POINT				= 30,
+	},
+}
+
+AVSI_PEPPER_RUN_END =
+{
+	ANIM_NAME			= "DashEnd",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT		= FALSE,
+	
+	
+	SOUND_PLAY0			= { 0.02, "Step.ogg" },	
+}
+
+
+	
+AVSI_PEPPER_RUN_JUMP_UP =
+{
+	ANIM_NAME			= "Dash",
+	ANIM_SPEED			= 2,
+	SUPER_ARMOR			= TRUE,
+	INVINCIBLE			= { 0, 100, },
+	
+	
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT		= FALSE,
+	
+	
+	AFTER_IMAGE			= { 0, 100, },
+	ATTACK_TIME0		= { 0, 100 },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_UP"],
+		
+		BACK_SPEED_Y			= INIT_PHYSIC["JUMP_SPEED"] * 1.3,
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+		BUFF_FACTOR =
+		{
+			BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_FIRE"],
+			RATE	=
+			{
+				1,
+			},
+			IGNORE_REGIST_FOR_RATE = TRUE,
+
+			BEHAVIOR =
+			{
+				COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], },
+				
+				BBT_CHANGE_NOW_HP_PER_SECOND =
+				{
+					BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+					BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+
+					MULTIPLIER =
+					{
+						-0.3,
+					},
+				},
+			},
+		
+			FINALIZER =
+			{
+				COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+			
+				BFT_TIME =
+				{
+					BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+					NORMAL_TIME =
+					{
+						10,
+					},
+				},
+			},
+		},
+				
+		CAMERA_CRASH_GAP		= 20.0,	
+		CAMERA_CRASH_TIME		= 0.3,	
+		
+		RE_ATTACK				= TRUE,		
+		HIT_GAP					= 1,		
+		
+		FORCE_DOWN			= 30,
+		
+		TECH_POINT				= 30,
+	},
+}
+
+AVSI_PEPPER_RUN_JUMP_DOWN =
+{
+	ANIM_NAME			= "Dash",
+	ANIM_SPEED			= 2,
+	SUPER_ARMOR			= TRUE,
+	INVINCIBLE			= { 0, 100, },
+	
+	
+	
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT		= FALSE,
+	
+	AFTER_IMAGE			= { 0, 100, },
+	ATTACK_TIME0		= { 0, 100 },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_UP"],
+		
+		BACK_SPEED_Y			= INIT_PHYSIC["JUMP_SPEED"] * 1.3,
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+		BUFF_FACTOR =
+		{
+			BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_FIRE"],
+			RATE	=
+			{
+				1,
+			},
+			IGNORE_REGIST_FOR_RATE = TRUE,
+
+			BEHAVIOR =
+			{
+				COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], },
+				
+				BBT_CHANGE_NOW_HP_PER_SECOND =
+				{
+					BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+					BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+
+					MULTIPLIER =
+					{
+						-0.3,
+					},
+				},
+			},
+		
+			FINALIZER =
+			{
+				COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+			
+				BFT_TIME =
+				{
+					BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+					NORMAL_TIME =
+					{
+						10,
+					},
+				},
+			},
+		},
+				
+		CAMERA_CRASH_GAP		= 20.0,	
+		CAMERA_CRASH_TIME		= 0.3,	
+		
+		RE_ATTACK				= TRUE,		
+		HIT_GAP					= 1,		
+		
+		FORCE_DOWN			= 30,
+		
+		TECH_POINT				= 30,
+		
+	},
+}
+
+
+
+-- 아이템 던지기
+AVSI_THROW_ITEM =
+{
+	ANIM_NAME			= "Throw1",
+	ANIM_SPEED			= 1.8,
+	--APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	SUPER_ARMOR			= FALSE,
+	LAND_CONNECT		= FALSE,
+
+	WALK_CANCEL_AFTER				= 1400.0,
+	DASH_CANCEL_AFTER				= 180.0,
+	
+	SOUND_PLAY0			= { 0.5, "Aisha_Throw_Item.ogg" },
+}
+
+-- 탈 것
+AVSI_RIDING_START =		-- 던전 시작 시 탈 것을 타고 있을 경우 해당 스테이트를 사용한다.
+{
+	ANIM_NAME		= "Ride_1",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= FALSE,
+	INVINCIBLE	= { 0, 100, },
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+}
+
+AVSI_RIDING_ON =			-- 던전/ 필드에서 탑승
+{
+	ANIM_NAME		= "Ride_1",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= FALSE,
+	INVINCIBLE	= { 0, 100, },
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+}
+
+AVSI_RIDING_OFF =			-- 던전/ 필드에서 내림
+{
+	ANIM_NAME		= "Wait",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= TRUE,
+	LAND_CONNECT	= FALSE,
+	INVINCIBLE	= { 0, 100, },
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+}
+
+AVSI_RIDING_WAIT_HABIT =		-- 습관
+{
+	ANIM_NAME		= "Ride_1",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY	= FALSE,
+	LAND_CONNECT	= FALSE,
+}
+
+AVSI_RIDING_WAIT =			-- 대기
+{
+	ANIM_NAME	= "Ride_1",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	HEAD_IK		= TRUE,
+	LAND_CONNECT	= FALSE,
+}
+
+AVSI_RIDING_WALK =			-- 걷기
+{
+	ANIM_NAME		= "Ride_1",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= FALSE,
+}
+
+AVSI_RIDING_JUMP_READY =		-- 점프 시작
+{
+	ANIM_NAME		= "Ride_1",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+	HEAD_IK			= TRUE,
+}
+
+AVSI_RIDING_JUMP_UP =		-- 점프 업
+{
+	ANIM_NAME		= "Ride_1",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= FALSE,
+}
+
+AVSI_RIDING_JUMP_DOWN =		-- 점프 다운
+{
+	ANIM_NAME	= "Ride_1",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= FALSE,
+}
+
+AVSI_RIDING_JUMP_LANDING =	-- 점프 착지
+{
+	ANIM_NAME	= "Ride_1",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+	SOUND_PLAY0			= { 0.02, "Step.ogg" },
+}
+
+AVSI_RIDING_DASH =			-- 대시
+{
+	ANIM_NAME		= "Ride_1",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+}
+
+AVSI_RIDING_DASH_END =		-- 대시 종료
+{
+	ANIM_NAME	= "Ride_1",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= FALSE,
+}
+
+AVSI_RIDING_DASH_JUMP =		-- 대시 점프
+{
+	ANIM_NAME		= "Ride_1",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+}
+
+AVSI_RIDING_DASH_JUMP_LANDING =	-- 대시 점프 착지
+{
+	ANIM_NAME		= "Ride_1",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= FALSE,
+}
+
+AVSI_RIDING_DAMAGE_FRONT =	-- 피격 앞
+{
+	ANIM_NAME		= "Ride_1",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION		= TRUE,
+	LAND_CONNECT	= FALSE,
+}
+
+AVSI_RIDING_DAMAGE_FRONT =	-- 피격 뒤
+{
+	ANIM_NAME		= "Ride_1",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION		= TRUE,
+	LAND_CONNECT	= FALSE,
+}
+
+AVSI_RIDING_ATTACK_Z =		-- 공격 Z
+{
+	ANIM_NAME		= "Ride_1",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+}
+
+AVSI_RIDING_ATTACK_X =		-- 공격 X
+{
+	ANIM_NAME		= "Ride_1",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+}
+
+AVSI_RIDING_JUMP_ATTACK_Z =		-- 점프 공격 Z
+{
+	ANIM_NAME		= "Ride_1",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+}
+
+AVSI_RIDING_ATTACK_SPECIAL =		-- 특수 공격
+{
+	ANIM_NAME		= "Ride_1",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+	INVINCIBLE		= { 0, 100, },
+}
+
+AVSI_RIDING_DIE =			-- 죽은 상태
+{
+	ANIM_NAME	= "DamageAirDownLanding",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE"],
+	TRANSITION	= FALSE,
+	INVINCIBLE	= { 0, 100, },
+}
+
+AVSI_RIDING_SPECIAL_MOVE =	-- 특수 이동
+{
+	ANIM_NAME	= "Ride_1",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= FALSE,
+}
+----
+AVSI_RIDING_HYPER_MODE = -- 각성	
+{
+	ANIM_NAME	= "Ride_1",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= FALSE,
+}
+
+
+
+
+
+AVSI_SI_A_AV_CIRCLE_FLAME_READY = 
+{	
+	ANIM_NAME			= "SI_A_AV_CIRCLE_FLAME_Ready",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT		= FALSE,
+	
+	CAN_PUSH_UNIT		= FALSE,
+	CAN_PASS_UNIT		= FALSE,
+	
+	--SPEED_X				= 0,
+	--SPEED_Y				= 0,
+	
+	
+}
+
+
+AVSI_SI_A_AV_CIRCLE_FLAME = 
+{	
+	ANIM_NAME			= "SI_A_AV_CIRCLE_FLAME",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT		= FALSE,
+	
+	CAN_PUSH_UNIT		= FALSE,
+	CAN_PASS_UNIT		= FALSE,
+	
+	--SPEED_X				= 0,
+	--SPEED_Y				= 0,
+	
+
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Aisha_Circle_Flame", 0,
+	},	
+	
+	SOUND_PLAY0			= { 0.01, "Aisha_Circle_Flame.ogg" },	
+	SOUND_PLAY1			= { 0.22, "Sound_Arme_shout5.ogg" },
+    SOUND_PLAY2			= { 0.01, "Aisha_Circle_Flame2.ogg" },	
+
+}
+
+AVSI_SI_A_AV_CIRCLE_FLAME_MEMO = 
+{	
+	ANIM_NAME			= "SI_A_AV_CIRCLE_FLAME",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT		= FALSE,
+	
+	CAN_PUSH_UNIT		= FALSE,
+	CAN_PASS_UNIT		= FALSE,
+	
+	--SPEED_X				= 0,
+	--SPEED_Y				= 0,
+	
+
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Aisha_Circle_Flame_Memo", 0,
+	},	
+	
+	SOUND_PLAY0			= { 0.01, "Aisha_Circle_Flame.ogg" },	
+	SOUND_PLAY1			= { 0.22, "Sound_Arme_shout5.ogg" },	
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AVSI_SA_AHM_BLIZZARDSHOWER = 
+{
+	ANIM_NAME			= "SI_SA_AHM_BLIZZARDSHOWER",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	
+	INVINCIBLE			= { 0, 1.8, },		-- fix!!
+	AFTER_IMAGE			= { 0.1, 100, },
+	
+	SOUND_SET0_RATE = 70,
+	SOUND_SET1_RATE = 30,
+
+	SOUND_SET0 =
+	{
+		NORMAL =
+		{
+			SOUND_PLAY0			= { 0.023, "Arme_BlizzardShower.ogg" },	
+			SOUND_PLAY1			= { 0.01, "AishaVoice_BlizzardShower.ogg" },
+			SOUND_PLAY2			= { 0.001, "Energy.ogg" },
+		},
+	},
+
+	SOUND_SET1 =
+	{
+		NORMAL =
+		{
+			SOUND_PLAY0			= { 0.023, "Arme_BlizzardShower.ogg" },	
+			SOUND_PLAY1			= { 0.01, "AishaVoice_BlizzardShower02.ogg" },
+			SOUND_PLAY2			= { 0.001, "Energy.ogg" },
+		},
+	},
+	
+	STATE_STRING		= STR_ID_4253,
+	--STOP_ALL_UNIT0		= { 0.04, 1.6, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.04, 1.0, },
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 500,
+			HEIGHT			= -200,
+			ANGLEDEGREE		= 0,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 500,
+			ANGLEDEGREE		= 0,
+		},
+	},
+
+}
+
+
+
+
+
+
+AVSI_SA_AHM_BLIZZARDSHOWER_HYPER = 
+{
+	ANIM_NAME			= "SI_SA_AHM_BLIZZARDSHOWER",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	
+	INVINCIBLE			= { 0, 1.8, },		-- fix!!
+	AFTER_IMAGE			= { 0.1, 100, },
+	
+	SOUND_SET0_RATE = 70,
+	SOUND_SET1_RATE = 30,
+
+	SOUND_SET0 =
+	{
+		NORMAL =
+		{
+			SOUND_PLAY0			= { 0.023, "Arme_BlizzardShower.ogg" },	
+			SOUND_PLAY1			= { 0.01, "AishaVoice_BlizzardShower.ogg" },
+			SOUND_PLAY2			= { 0.001, "Energy.ogg" },
+		},
+	},
+
+	SOUND_SET1 =
+	{
+		NORMAL =
+		{
+			SOUND_PLAY0			= { 0.023, "Arme_BlizzardShower.ogg" },	
+			SOUND_PLAY1			= { 0.01, "AishaVoice_BlizzardShower02.ogg" },
+			SOUND_PLAY2			= { 0.001, "Energy.ogg" },
+		},
+	},
+	STATE_STRING		= STR_ID_4253,
+	--STOP_ALL_UNIT0		= { 0.04, 1.6, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.04, 1.0, },
+	
+	NORMAL_CAMERA0_RATE			= 30,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 40,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 500,
+			HEIGHT			= -200,
+			ANGLEDEGREE		= 0,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 500,
+			ANGLEDEGREE		= 0,
+		},
+	},
+
+}
+
+
+AVSI_SA_AHM_METEOSHOWER = 
+{
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	ANIM_NAME			= "EM_METEOR_SHOWER_Start",
+	ANIM_SPEED			= 1.5,
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	
+	INVINCIBLE			= { 0, 1.8, },		-- fix!!
+	--AFTER_IMAGE			= { 0.1, 100, },
+	
+    SOUND_PLAY0			= { 0.001, "Energy.ogg" },
+    SOUND_PLAY1			= { 0.01, "AishaVoice_MeteorShower.ogg" },
+    SOUND_PLAY2			= { 0.16, "Aisha_MeteorShower_Ready.ogg" },
+    SOUND_PLAY3			= { 2.440, "Aisha_MeteorShower_FireLoop.ogg" },
+	
+	STATE_STRING		= STR_ID_9741,
+	--STOP_ALL_UNIT0		= { 0.04, 1.6, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.04, 1.0, },
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 500,
+			HEIGHT			= -200,
+			ANGLEDEGREE		= 0,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 500,
+			ANGLEDEGREE		= 0,
+		},
+	},
+
+}
+
+
+AVSI_SA_AHM_METEOSHOWER_HYPER = 
+{
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	ANIM_NAME			= "EM_METEOR_SHOWER_Start",
+	ANIM_SPEED			= 1.5,
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	
+	INVINCIBLE			= { 0, 1.8, },		-- fix!!
+	--AFTER_IMAGE			= { 0.1, 100, },
+	
+    SOUND_PLAY0			= { 0.001, "Energy.ogg" },
+    SOUND_PLAY1			= { 0.01, "AishaVoice_MeteorShower.ogg" },
+    SOUND_PLAY2			= { 0.16, "Aisha_MeteorShower_Ready.ogg" },
+    SOUND_PLAY3			= { 2.440, "Aisha_MeteorShower_FireLoop.ogg" },
+   
+	STATE_STRING		= STR_ID_9741,
+	--STOP_ALL_UNIT0		= { 0.04, 1.6, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.04, 1.0, },
+	
+	NORMAL_CAMERA0_RATE			= 30,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 40,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 500,
+			HEIGHT			= -200,
+			ANGLEDEGREE		= 0,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 500,
+			ANGLEDEGREE		= 0,
+		},
+	},
+
+}
+
+-- BALANCE_ELEMENTAL_MASTER_20130117 - 메테오 샤워 루프 스테이트 추가
+AVSI_SA_AHM_METEOSHOWER_LOOP = 
+{
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	ANIM_NAME			= "EM_METEOR_SHOWER_Loop",
+	ANIM_SPEED			= 1.5,
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	
+	SUPER_ARMOR			= TRUE,
+	
+	IMMUNITY_LIST_AT_THIS_STATE =
+	{
+		BUFF_TEMPLET_ID["BTI_DEBUFF_PRESS"],
+		BUFF_TEMPLET_ID["BTI_DEBUFF_STUN"],
+	},
+	--AFTER_IMAGE			= { 0.1, 100, },
+}
+
+-- BALANCE_ELEMENTAL_MASTER_20130117 - 메테오 샤워 종료 스테이트 추가
+AVSI_SA_AHM_METEOSHOWER_END =
+{
+	ANIM_NAME			= "EM_METEOR_SHOWER_End",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT		= FALSE,
+}
+
+AVSI_SA_ADM_DEATHFIELD = 
+{
+	ANIM_NAME			= "SI_SA_ADM_DEATHNOTE",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	
+	INVINCIBLE			= { 0, 1.8, },		-- fix!!
+	AFTER_IMAGE			= { 0.1, 100, },
+	
+	RIGHT				= TRUE,
+	SOUND_PLAY0			= { 0.274, "Arme_DeathNote.ogg" },	
+	SOUND_PLAY1			= { 0.01, "AishaVoice_DeathField.ogg" },
+    SOUND_PLAY2			= { 0.001, "Energy.ogg" },
+	
+	STATE_STRING		= STR_ID_4254,
+	--STOP_ALL_UNIT0		= { 0.04, 1.6, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.04, 1.0, },
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,	
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= -200,
+			ANGLEDEGREE		= 20,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 300,
+			ANGLEDEGREE		= -20,
+		},
+	},
+	
+	
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Aisha_DeathField", 0,
+	},
+
+
+}
+
+
+
+
+
+
+AVSI_SA_ADM_DEATHFIELD_HYPER = 
+{
+	ANIM_NAME			= "SI_SA_ADM_DEATHNOTE",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	
+	INVINCIBLE			= { 0, 1.8, },		-- fix!!
+	AFTER_IMAGE			= { 0.1, 100, },
+	
+	RIGHT				= TRUE,
+	
+	
+	SOUND_PLAY0			= { 0.274, "Arme_DeathNote.ogg" },	
+	SOUND_PLAY1			= { 0.01, "AishaVoice_DeathField.ogg" },
+    SOUND_PLAY2			= { 0.001, "Energy.ogg" },
+    
+	STATE_STRING		= STR_ID_4254,
+	--STOP_ALL_UNIT0		= { 0.04, 1.6, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.04, 1.0, },
+	
+	NORMAL_CAMERA0_RATE			= 30,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 40,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= -200,
+			ANGLEDEGREE		= -20,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 300,
+			ANGLEDEGREE		= 20,
+		},
+	},
+	
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Aisha_DeathField", 0,
+	},
+
+
+}
+
+
+
+
+
+AVSI_FROZEN = 
+{
+	ANIM_NAME			= "DamageAirUp",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= TRUE,
+	LAND_CONNECT		= TRUE,
+	
+	
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_FrozenStone_Test", 0,
+	},
+
+}
+
+
+AVSI_A_ADM_MANA_INTAKE =
+{
+    ANIM_NAME			= "SI_A_ADM_MANA_INTAKE",
+	ANIM_SPEED			= 1.1,
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,	
+	
+	STATE_STRING		= STR_ID_4364,
+	
+	DELETE_EFFECT_SET_ON_DAMAGE_REACT = TRUE, 
+
+	SOUND_PLAY0			= { 0.1, "Aisha_Mana_Intake.ogg" },	
+	
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Aisha_MANA_INTAKE", 0,
+	},
+}
+
+AVSI_A_ADM_MANA_INTAKE_HYPER =
+{
+    ANIM_NAME			= "SI_A_ADM_MANA_INTAKE",
+	ANIM_SPEED			= 1.1,
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,	
+	
+	STATE_STRING		= STR_ID_4364,
+	
+	DELETE_EFFECT_SET_ON_DAMAGE_REACT = TRUE, 
+
+	SOUND_PLAY0			= { 0.1, "Aisha_Mana_Intake.ogg" },	
+	
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Aisha_MANA_INTAKE", 0,
+	},
+}
+
+AVSI_SA_AHM_BLAZE_STEP =
+{
+    ANIM_NAME			= "SI_SA_AHM_BLAZE_STEP",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,	
+	
+	INVINCIBLE			= { 0, 100, },
+	
+	STATE_STRING		= STR_ID_4503,
+	--STOP_ALL_UNIT0		= { 0.04, 1.6, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.04, 1.0, },
+	
+	DELETE_EFFECT_SET_ON_DAMAGE_REACT = TRUE, 
+
+
+	SOUND_SET0_RATE = 70,
+	SOUND_SET1_RATE = 30,
+
+	SOUND_SET0 =
+	{
+		NORMAL =
+		{
+			SOUND_PLAY0			= { 0.001, "AishaVoice_BlazeStep.ogg" },	
+			SOUND_PLAY1			= { 0.001, "Energy.ogg" },	
+			SOUND_PLAY2			= { 0.092, "Aisha_BlazeStep.ogg" },	
+		},
+	},
+
+	SOUND_SET1 =
+	{
+		NORMAL =
+		{
+			SOUND_PLAY0			= { 0.001, "AishaVoice_BlazeStep02.ogg" },	
+			SOUND_PLAY1			= { 0.001, "Energy.ogg" },	
+			SOUND_PLAY2			= { 0.092, "Aisha_BlazeStep.ogg" },			
+		},
+	},
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 20,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= -30,
+			ANGLEDEGREE		= -20,
+		},
+	},
+	
+	
+	
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Aisha_Blaze_step", 0,
+	},
+}
+
+AVSI_SA_AHM_BLAZE_STEP_HYPER =
+{
+    ANIM_NAME			= "SI_SA_AHM_BLAZE_STEP",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,	
+	
+	INVINCIBLE			= { 0, 100, },
+	
+	STATE_STRING		= STR_ID_4503,
+	--STOP_ALL_UNIT0		= { 0.04, 1.6, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.04, 1.0, },
+	
+	DELETE_EFFECT_SET_ON_DAMAGE_REACT = TRUE, 
+
+	SOUND_SET0_RATE = 70,
+	SOUND_SET1_RATE = 30,
+
+	SOUND_SET0 =
+	{
+		NORMAL =
+		{
+			SOUND_PLAY0			= { 0.001, "AishaVoice_BlazeStep.ogg" },	
+			SOUND_PLAY1			= { 0.001, "Energy.ogg" },	
+			SOUND_PLAY2			= { 0.092, "Aisha_BlazeStep.ogg" },	
+		},
+	},
+
+	SOUND_SET1 =
+	{
+		NORMAL =
+		{
+			SOUND_PLAY0			= { 0.001, "AishaVoice_BlazeStep02.ogg" },	
+			SOUND_PLAY1			= { 0.001, "Energy.ogg" },	
+			SOUND_PLAY2			= { 0.092, "Aisha_BlazeStep.ogg" },			
+		},
+	},
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 20,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= -30,
+			ANGLEDEGREE		= -20,
+		},
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Aisha_Blaze_step", 0,
+	},
+}
+
+AVSI_SA_ADM_AGING =
+{
+    ANIM_NAME			= "SI_SA_ADM_AGING",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,	
+	
+	INVINCIBLE			= { 0, 1.4, },
+	
+	STATE_STRING		= STR_ID_4504,
+	--STOP_ALL_UNIT0		= { 0.02, 2.5, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.03, 1.9, },
+	
+	SOUND_PLAY0			= { 0.001, "Energy.ogg" },	
+	SOUND_PLAY1			= { 0.226, "Aisha_Aging1.ogg" },	
+	SOUND_PLAY2			= { 1.401, "Aisha_Aging2.ogg" },
+	SOUND_PLAY3			= { 1.811, "Aisha_Aging3.ogg" },
+	SOUND_PLAY4			= { 0.001, "AishaVoice_Aging.ogg" },
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 1500,
+			HEIGHT			= -50,
+			ANGLEDEGREE		= -70,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= -20,
+		},
+	},
+	
+	
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Aisha_Aging", 0,
+	},	
+}
+
+AVSI_SA_ADM_AGING_HYPER =
+{
+    ANIM_NAME			= "SI_SA_ADM_AGING",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,	
+	
+	INVINCIBLE			= { 0, 1.4, },
+	
+	STATE_STRING		= STR_ID_4504,
+	--STOP_ALL_UNIT0		= { 0.02, 2.5, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.03, 1.9, },
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Aisha_Aging", 0,
+	},
+	
+	SOUND_PLAY0			= { 0.001, "Energy.ogg" },	
+	SOUND_PLAY1			= { 0.226, "Aisha_Aging1.ogg" },	
+	SOUND_PLAY2			= { 1.401, "Aisha_Aging2.ogg" },
+	SOUND_PLAY3			= { 1.811, "Aisha_Aging3.ogg" },
+	SOUND_PLAY4			= { 0.001, "AishaVoice_Aging.ogg" },
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 1500,
+			HEIGHT			= -50,
+			ANGLEDEGREE		= -70,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= -20,
+		},
+	},
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- 아이샤 2차 전직
+
+
+
+AVSI_A_AEM_STONE_WALL = 
+{	
+	ANIM_NAME			= "SI_A_AEM_STONE_WALL",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	CAN_PUSH_UNIT		= FALSE,
+	CAN_PASS_UNIT		= FALSE,
+	
+
+	SOUND_PLAY0			= { 0.422, "Sound_Arme_shout2.ogg" },	
+    SOUND_PLAY1			= { 0.373, "Aisha_EM_Stone_Wall.ogg" },	
+
+	
+	SKIP_TIME = 0.66,
+	
+	STATE_STRING		= STR_ID_4822,
+	
+}
+
+
+
+
+
+
+
+
+
+
+AVSI_SA_AEM_CYCLONE = 
+{	
+	ANIM_NAME			= "SI_SA_AEM_CYCLONE",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	CAN_PUSH_UNIT		= FALSE,
+	CAN_PASS_UNIT		= FALSE,
+	
+	INVINCIBLE			= { 0, 0.9, },
+	--AFTER_IMAGE			= { 0.1, 100, },
+
+	SOUND_PLAY0			= { 0.001, "Energy.ogg" },	
+	SOUND_PLAY1			= { 0.230, "AishaVoice_Cyclone.ogg" },	
+	SOUND_PLAY2			= { 0.230, "Aisha_EM_Cyclone.ogg" },
+	
+	SLASH_TRACE			= { 0, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.1, 1.2, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.1, 0.6, },
+	STATE_STRING		= STR_ID_4823,
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	ATTACK_TIME0		= { 0.23, 0.38, },
+
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_MAGIC"],
+		ATTACK_TYPE		= ATTACK_TYPE["AT_SPECIAL"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		PVP_RATE		= 0.66,
+		
+		DAMAGE = 
+		{
+			MAGIC		= 1,
+		},
+		
+		BACK_SPEED_X			= 850,
+		BACK_SPEED_Y			= 0,
+				
+		CAMERA_CRASH_GAP		= 20.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 0,	
+		
+		HIT_ADD_MP				= 0,
+		
+		CAN_REVENGE				= FALSE,
+		RE_ATTACK				= FALSE,		
+		
+	},
+
+	CAMERA1 = 
+	{
+	SUB_CAMERA_TIMING = { 0.5, },
+		
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 300,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -20,
+		},
+		
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 1000,
+			HEIGHT			= 100,
+			ANGLEDEGREE		= -60,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 400,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 10,
+		},
+	},
+	
+	
+}
+
+
+
+
+AVSI_SA_AVP_HELL_DROP = 
+{
+	ANIM_NAME			= "SI_SA_AVP_HELL_DROP_Ready",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 100, },
+	--AFTER_IMAGE			= { 0.1, 100, },
+	
+	TECH_POINT			= 500,
+	
+	--STOP_ALL_UNIT0		= { 0.1, 1.6, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.1, 1.0, },
+	STATE_STRING		= STR_ID_4825,
+
+	SOUND_PLAY0			= { 0.001, "Energy.ogg" },	
+	SOUND_PLAY1			= { 0.001, "AishaVoice_HellDrop.ogg" },	
+	SOUND_PLAY2			= { 0.680, "Aisha_VP_Summon_Bat_00.ogg" },
+	SOUND_PLAY3			= { 0.480, "Aisha_VP_Hell_Drop_01.ogg" },
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 300,
+			HEIGHT			= -60,
+			ANGLEDEGREE		= -40,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= -50,
+		},
+	},
+	
+	
+}
+
+
+
+			
+
+AVSI_HELL_DROP_CONTROL_IDLE = 
+{
+	ANIM_NAME			= "SI_SA_AVP_HELL_DROP",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	--INVINCIBLE			= { 0, 0.7, },
+	--AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.1, 1.2, 0.6 },
+	STATE_STRING		= STR_ID_4825,
+	
+}
+
+
+
+
+
+AVSI_HELL_DROP_CONTROL_LEFT = 
+{
+	ANIM_NAME			= "SI_SA_AVP_HELL_DROP",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	--INVINCIBLE			= { 0, 0.7, },
+	--AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.1, 1.2, 0.6 },
+	STATE_STRING		= STR_ID_4825,
+	
+}
+
+
+
+
+
+
+
+AVSI_HELL_DROP_CONTROL_RIGHT = 
+{
+	ANIM_NAME			= "SI_SA_AVP_HELL_DROP",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	--INVINCIBLE			= { 0, 0.7, },
+	--AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.1, 1.2, 0.6 },
+	STATE_STRING		= STR_ID_4825,
+	
+}
+
+
+
+
+
+
+AVSI_HELL_DROP_CONTROL_UP = 
+{
+	ANIM_NAME			= "SI_SA_AVP_HELL_DROP",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	--INVINCIBLE			= { 0, 0.7, },
+	--AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.1, 1.2, 0.6 },
+	STATE_STRING		= STR_ID_4825,
+	
+}
+
+
+
+
+
+AVSI_HELL_DROP_CONTROL_DOWN = 
+{
+	ANIM_NAME			= "SI_SA_AVP_HELL_DROP",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	--INVINCIBLE			= { 0, 0.7, },
+	--AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.1, 1.2, 0.6 },
+	STATE_STRING		= STR_ID_4825,
+	
+}
+
+
+
+
+
+
+
+AVSI_HELL_DROP_CONTROL_UP_LEFT = 
+{
+	ANIM_NAME			= "SI_SA_AVP_HELL_DROP",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	--INVINCIBLE			= { 0, 0.7, },
+	--AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.1, 1.2, 0.6 },
+	STATE_STRING		= STR_ID_4825,
+	
+}
+
+
+AVSI_HELL_DROP_CONTROL_UP_RIGHT = 
+{
+	ANIM_NAME			= "SI_SA_AVP_HELL_DROP",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	--INVINCIBLE			= { 0, 0.7, },
+	--AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.1, 1.2, 0.6 },
+	STATE_STRING		= STR_ID_4825,
+	
+}
+
+
+
+
+
+AVSI_HELL_DROP_CONTROL_DOWN_LEFT = 
+{
+	ANIM_NAME			= "SI_SA_AVP_HELL_DROP",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	--INVINCIBLE			= { 0, 0.7, },
+	--AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.1, 1.2, 0.6 },
+	STATE_STRING		= STR_ID_4825,
+	
+}
+
+
+AVSI_HELL_DROP_CONTROL_DOWN_RIGHT = 
+{
+	ANIM_NAME			= "SI_SA_AVP_HELL_DROP",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	--INVINCIBLE			= { 0, 0.7, },
+	--AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.1, 1.2, 0.6 },
+	STATE_STRING		= STR_ID_4825,
+	
+}
+
+
+
+
+
+
+AVSI_HELL_DROP_CONTROL_FIRE = 
+{
+	ANIM_NAME			= "SI_SA_AVP_HELL_DROP_End",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	--INVINCIBLE			= { 0, 0.7, },
+	--AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.1, 1.2, 0.6 },
+	STATE_STRING		= STR_ID_4825,
+	
+}
+
+
+
+
+
+
+
+
+-- 아이샤 2차전직 콤보
+
+
+
+
+
+AVSI_AEM_ZZupZZ =
+{
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE, 
+
+	ANIM_NAME			= "ComboZ4Upa",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+	
+	SLASH_TRACE			= { 0, 100, },	
+	
+	SOUND_PLAY0			= { 0.2, "Sound_Arme_shout2.ogg" },	
+	
+	DISABLE_GRAVITY_TIME_START = 0,
+	DISABLE_GRAVITY_TIME_END = 0.8,
+
+
+	
+	COMBO_GUIDE         = { "Z", "ZZupZZ" },
+	
+}
+	
+
+AVSI_AEM_XXfrontX = 
+{
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE, 
+
+	ANIM_NAME			= "EM_Combo_X2F",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+	
+	
+	SOUND_PLAY0			= { 0.47, "Sound_Arme_shout2.ogg" },
+
+	
+	COMBO_GUIDE         = { "X", "XXRightX" },
+}
+
+
+
+AVSI_AEM_XZ = 
+{
+	ANIM_NAME			= "EM_Combo_Xz",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y				= 0,
+	
+	SLASH_TRACE			= { 0, 100, },	
+	
+	NORMAL_CAMERA0_RATE			= 95,
+	NORMAL_CAMERA1_RATE			= 5,
+	
+	--SOUND_PLAY0			= { 0.266, "Aisha_EM_Combo_XZ.ogg" },
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 800,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= -60,
+		},
+	},
+	
+}
+
+AVSI_AEM_XZZ =
+{
+
+	ANIM_NAME			= "EM_Combo_Xzz_Charge",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+	
+	--SOUND_PLAY0			= { 0.233, "Aisha_EM_Combo_XZZ.ogg" },
+	
+	-- BALANCE_ELEMENTAL_MASTER_20130117 - 캔슬 타이밍 추가
+	DASH_CANCEL_AFTER	= 1.4,
+	SKILL_CANCEL_AFTER	= 1.4,
+	
+	SLASH_TRACE			= { 0, 100, },	
+	
+	NORMAL_CAMERA0_RATE			= 60,
+	NORMAL_CAMERA1_RATE			= 20,
+	NORMAL_CAMERA2_RATE			= 20,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 800,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= -60,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 50,
+		},
+	},
+	
+}
+
+-- BALANCE_ELEMENTAL_MASTER_20130117 - XZZ 콤보 종료 스테이트 추가
+AVSI_AEM_XZZ_END =
+{
+	ANIM_NAME			= "EM_Combo_Xzz",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT		= FALSE,
+}
+
+
+
+
+
+
+
+
+
+
+
+
+AVSI_AVP_ZZfrontZ =
+{
+	ANIM_NAME			= "VP_ComboZ3",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= INIT_PHYSIC["RUN_SPEED"] * 1.2,
+	SPEED_Y				= 0,
+
+	ANIM_SPEED			= 1.1,
+
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE, 
+	
+	SLASH_TRACE			= { 0, 0.57, },
+	
+	SOUND_PLAY0			= { 0.357, "StickSlash2.ogg" },
+	SOUND_PLAY1			= { 0.360, "Sound_Arme_shout6.ogg" }, 
+	SOUND_PLAY2			= { 0.460, "Aisha_VP_ComboZ3.ogg" }, 
+	
+	NORMAL_CAMERA0_RATE			= 95,
+	NORMAL_CAMERA1_RATE			= 5,
+
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 500,
+			HEIGHT			= -60,
+			ANGLEDEGREE		= -40,
+		},
+	},
+	
+
+	DELETE_EFFECT_SET_ON_DAMAGE_REACT = TRUE, 
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Aisha_Void_Princess_ZZfrontZ", 0,
+	},
+	
+
+
+	
+	COMBO_GUIDE         = { "Z", "ZZZ" },
+}
+
+
+
+
+
+
+AVSI_AVP_ZZfrontZZ =
+{
+	ANIM_NAME			= "VP_ComboZ4",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+		
+	PASSIVE_SPEED_X		= 350,
+	PASSIVE_SPEED_Y		= 100,
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE, 
+	
+	SLASH_TRACE			= { 0, 100, },
+
+	SOUND_PLAY0			= { 0.200, "Aisha_VP_ComboZ4.ogg" },
+	SOUND_PLAY1			= { 0.317, "Sound_Arme_shout4.ogg" },
+	
+
+	NORMAL_CAMERA0_RATE			= 60,
+	NORMAL_CAMERA1_RATE			= 20,
+	NORMAL_CAMERA2_RATE			= 20,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 700,
+			HEIGHT			= -60,
+			ANGLEDEGREE		= -40,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 300,
+			ANGLEDEGREE		= 50,
+		},
+	},
+
+
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE, 
+	DELETE_EFFECT_SET_ON_DAMAGE_REACT = TRUE, 
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Aisha_Void_Princess_ZZfrontZZ", 0,
+	},
+	
+}
+
+
+
+
+AVSI_AVP_ZZfrontZZ_FALL =
+{
+	ANIM_NAME			= "JumpDown",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT		= FALSE,
+}
+
+
+AVSI_AVP_DASH_JUMP_X = 
+{
+	ANIM_NAME			= "DashJumpAttackX",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= 500.0,
+	SPEED_Y				= INIT_PHYSIC["RUN_SPEED"],
+	
+	
+	COMBO_GUIDE         = { "A", "AX" },
+}
+
+
+
+
+
+
+
+
+
+
+AVSI_A_AVP_SUMMON_BAT = 
+{
+	ANIM_NAME			= "SI_A_AVP_SUMMON_BAT",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	--INVINCIBLE			= { 0, 1.2, }, //액티브스킬은 무적타임이 들어가지 않습니다.
+	AFTER_IMAGE			= { 0.1, 100, },
+	
+	STATE_STRING		= STR_ID_24704,
+		
+	--STOP_ALL_UNIT0		= { 0.19, 1.6, 0.6 },
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+	
+	SOUND_PLAY0			= { 0.01, "Aisha_VP_Summon_Bat_00.ogg" },
+
+	
+	SKIP_TIME = 0.66,
+	
+	
+	DISABLE_GRAVITY_TIME_START = 0,
+	DISABLE_GRAVITY_TIME_END = 0.4,
+	
+	
+	
+}
+	
+
+
+
+
+
+
+AVSI_SA_AVP_PHANTOM_BREATHING = 
+{
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	ANIM_NAME			= "VP_PHANTOM_BREATHING",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 100, },
+	--AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.1, 1.6, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.1, 1.0, },
+	STATE_STRING		= STR_ID_24706,
+
+	SOUND_PLAY0			= { 0.001, "Energy.ogg" },	
+    SOUND_PLAY1			= { 0.01, "AishaVoice_PhantomBreathing.ogg" },
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= -60,
+			ANGLEDEGREE		= 40,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= -50,
+		},
+	},
+	
+	
+}
+
+AVSI_SA_AVP_PHANTOM_BREATHING_HYPER = 
+{
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	ANIM_NAME			= "VP_PHANTOM_BREATHING",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 100, },
+	--AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.1, 1.6, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.1, 1.0, },
+	STATE_STRING		= STR_ID_24706,
+
+	SOUND_PLAY0			= { 0.001, "Energy.ogg" },	
+    SOUND_PLAY1			= { 0.01, "AishaVoice_PhantomBreathing.ogg" },
+	
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= -60,
+			ANGLEDEGREE		= 40,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= -50,
+		},
+	},
+	
+	
+}
+
+
+-- 배틀매지션 추가 전직
+
+AVSI_ABM_COMBO_Z1 = 
+{
+	-- 2012년 상반기 밸런싱 패치(lenoas) 기본 모션 속도 10% 향상
+	ANIM_SPEED			= 1.05 * 1.1,
+	ANIM_NAME			= "ABM_ComboZ",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	SLASH_TRACE			= { 0, 100, },
+	ATTACK_TIME0		= { 0.166, 0.233, },
+		
+	SPEED_X				= 740.0,
+
+
+	-- SOUND_PLAY0			= { 0.03, "Sound_Arme_shout1.ogg" },
+	SOUND_PLAY0			= { 0.18, "Stickslash1.ogg" },		
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH2"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		-- 디멘션 위치 패시브 마력의 지팡이 - 마력 강타
+		CREATE_DAMAGE_EFFECT_NAME = "DAMAGE_EFFECT_ADW_MAGICAL_ATTACK",
+
+		DAMAGE = 
+		{
+			PHYSIC		= 1.25,
+		},
+							
+		BACK_SPEED_X			= 675,
+		STOP_TIME_DEF			= 0.05,
+
+		
+		CAMERA_CRASH_GAP		= 5.0,
+		CAMERA_CRASH_TIME		= 0.2,
+		-- CLEAR_SCREEN			= 1,	
+		
+		FORCE_DOWN				= 7,
+		TECH_POINT				= 25,
+	},
+}
+AVSI_ABM_COMBO_Z2 = 
+{
+	-- 2012년 상반기 밸런싱 패치(lenoas) 기본 모션 속도 10% 향상
+	ANIM_SPEED			= 1.1,
+	ANIM_NAME			= "ABM_ComboZZ",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	SLASH_TRACE			= { 0, 100, },
+	ATTACK_TIME0		= { 0.2, 0.266, },
+
+	SPEED_X				= 875.0,
+		
+	-- SOUND_PLAY0			= { 0.03, "Sound_Arme_shout1.ogg" },
+	SOUND_PLAY0			= { 0.18, "Stickslash1.ogg" },		
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH2"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		-- 디멘션 위치 패시브 마력의 지팡이 - 마력 강타
+		CREATE_DAMAGE_EFFECT_NAME = "DAMAGE_EFFECT_ADW_MAGICAL_ATTACK",
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.25,
+		},
+							
+		BACK_SPEED_X			= 740,
+		STOP_TIME_DEF			= 0.05,
+
+		
+		CAMERA_CRASH_GAP		= 5.0,
+		CAMERA_CRASH_TIME		= 0.2,
+		-- CLEAR_SCREEN			= 1,	
+		
+		FORCE_DOWN				= 7,
+		TECH_POINT				= 25,
+	},
+}
+AVSI_ABM_COMBO_Z3 = 
+{
+	-- 2012년 상반기 밸런싱 패치(lenoas) 기본 모션 속도 10% 향상
+	ANIM_SPEED			= 0.95 * 1.1,
+	ANIM_NAME			= "ABM_ComboZZZ",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	SLASH_TRACE			= { 0, 100, },
+	ATTACK_TIME0		= { 0.266, 0.3, },
+	
+	SPEED_X				= 925.0,
+
+	SOUND_PLAY0			= { 0.24, "Stickslash1.ogg" },		
+	SOUND_PLAY1			= { 0.24, "Sound_Arme_shout6.ogg" },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH2"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		-- 디멘션 위치 패시브 마력의 지팡이 - 마력 강타
+		CREATE_DAMAGE_EFFECT_NAME = "DAMAGE_EFFECT_ADW_MAGICAL_ATTACK",
+
+		DAMAGE = 
+		{
+			PHYSIC		= 1.7,
+		},
+		
+		BACK_SPEED_X			= 740,
+		
+		--STOP_TIME_ATT			= 0.066,	
+		STOP_TIME_DEF			= 0.133,
+							
+		CAMERA_CRASH_GAP		= 5.0,
+		CAMERA_CRASH_TIME		= 0.2,
+		-- CLEAR_SCREEN			= 1,
+		
+		STOP_TIME_DEF			= 0.1,
+		
+		FORCE_DOWN				= 15,
+		TECH_POINT				= 85,
+	},
+}
+AVSI_ABM_COMBO_Z4 = 
+{
+	-- 2012년 상반기 밸런싱 패치(lenoas) 기본 모션 속도 10% 향상
+	ANIM_SPEED			= 1.05 * 1.1,
+	ANIM_NAME			= "ABM_ComboZZZZ",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	SLASH_TRACE			= { 0, 100, },
+	ATTACK_TIME0		= { 0.533, 0.633, },
+		
+	SPEED_TIME0 = { 1000.0, 0.0, 0.25, 1, },
+	
+	SOUND_PLAY0			= { 0.6, "Sound_Arme_shout1.ogg" },
+	SOUND_PLAY1			= { 0.33, "Stickslash2.ogg" },		
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH2"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 2.0,
+		},
+		-- 디멘션 위치 패시브 마력의 지팡이 - 마력 강타
+		CREATE_DAMAGE_EFFECT_NAME = "DAMAGE_EFFECT_ADW_MAGICAL_ATTACK",
+							
+		BACK_SPEED_X			= 650,
+		BACK_SPEED_Y			= -2500,
+		
+		STOP_TIME_ATT			= 0.1,	
+		STOP_TIME_DEF			= 0.166,
+		
+		CAMERA_CRASH_GAP		= 5.0,
+		CAMERA_CRASH_TIME		= 0.2,
+		-- CLEAR_SCREEN			= 1,	
+		
+		-- FORCE_DOWN				= 7,
+		TECH_POINT				= 160,
+	},
+	
+	HIT_CAMERA0_RATE	= 50,
+	HIT_CAMERA1_RATE	= 25,
+	HIT_CAMERA2_RATE	= 25,
+	
+	CAMERA1 = 
+	{
+		{						
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine",
+			DISTANCE		= 1000.0,
+			HEIGHT			= -50.0,
+			EYEDISTANCE		= 100,
+			LOOKATDISTANCE	= 200,
+			ANGLEDEGREE		= 40,
+			TRACKINGTIME	= 0.666,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		{			
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine",
+			DISTANCE		= 1100.0,
+			HEIGHT			= 150.0,
+			EYEDISTANCE		= 100,
+			LOOKATDISTANCE	= 300,
+			ANGLEDEGREE		= -30,
+			TRACKINGTIME	= 0.666,
+		},
+	},
+}
+
+AVSI_ABM_DASH_COMBO_Z2a = 
+{
+	ANIM_NAME			= "DashComboZ2a",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	SLASH_TRACE			= { 0, 100, },
+	--ATTACK_TIME0		= { 0.33, 0.5, },
+	
+	SPEED_X				= 500.0,
+	
+	SOUND_PLAY0			= { 0.03, "Sound_Arme_shout1.ogg" },
+	SOUND_PLAY1			= { 0.25, "Stickslash1.ogg" },		
+	
+--[[
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH2"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 2.2,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"] * 0.7,
+					
+		CAMERA_CRASH_GAP		= 5.0,
+		CAMERA_CRASH_TIME		= 0.2,
+		-- CLEAR_SCREEN			= 1,	
+		
+		TECH_POINT				= 176,
+	},
+--]]
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	DELETE_EFFECT_SET_ON_DAMAGE_REACT = TRUE, 
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Aisha_ABM_DashZX", 0,
+	},
+	
+
+	COMBO_GUIDE         = { "R", "RZX" },
+}
+
+ABM_DASH_COMBO_ZXX = 
+{
+	ANIM_NAME			= "ABM_DashComboZxx",
+	ANIM_SPEED			= 1.5,
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	ATTACK_TIME0		= { 0.366, 0.566, },
+	
+	SPEED_TIME0 = { 2500.0, 0.0, 0.33, 2, },
+	SPEED_TIME1 = { 300.0, 0.0, 0.58, 2, },
+	-- SPEED_TIME2 = { 600.0, 0.0, 0.55, 2, },
+		
+	CAN_PUSH_UNIT		= FALSE,
+	-- CAN_PASS_UNIT		= FALSE,
+
+	SOUND_PLAY0			= { 0.356, "Sound_Arme_shout7.ogg" },
+	SOUND_PLAY1			= { 0.384, "StickSlash3.ogg" },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.4,
+		},
+		
+		BACK_SPEED_X			= 600,
+					
+		-- 디멘션 위치 패시브 마력의 지팡이 - 마력 강타
+		CREATE_DAMAGE_EFFECT_NAME = "DAMAGE_EFFECT_ADW_MAGICAL_ATTACK",
+		
+		CAMERA_CRASH_GAP		= 5.0,
+		CAMERA_CRASH_TIME		= 0.2,
+		-- CLEAR_SCREEN			= 1,	
+		
+		STOP_TIME_DEF			= 0.15,
+		-- STOP_TIME_DEF = 0.4,
+		
+		FORCE_DOWN = 7,
+		TECH_POINT	= 140,
+	},
+}
+
+ABM_DASH_COMBO_ZXXX = 
+{
+	ANIM_NAME			= "ABM_DashComboZxxx",
+	ANIM_SPEED			= 1.2,
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_TIME0 = { 700.0, 0.0, 0.001, 2, },
+	SPEED_TIME1 = { 0.0, 0.0, 1.1, 2, },
+	
+	SPEED_Y				= 0,
+	
+	SOUND_PLAY0			= { 0.766, "Sound_Arme_shout2.ogg" },
+	SOUND_PLAY1			= { 0.8, "Aisha_ComboX3Up.ogg" },
+		
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_MAGIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH2"],
+		REACT_TYPE		= REACT_TYPE["RT_UP"],
+		
+		DAMAGE = 
+		{
+			MAGIC		= 1.7,
+		},
+		
+		BACK_SPEED_X			= 550,
+		BACK_SPEED_Y			= INIT_PHYSIC["JUMP_SPEED"] * 1.2,
+		
+		STOP_TIME_ATT			= 0.0,	
+		STOP_TIME_DEF			= 0.2,	
+					
+		CAMERA_CRASH_GAP		= 10.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		-- CLEAR_SCREEN			= 1,	
+		
+		FORCE_DOWN				= 7,
+		CAN_REVENGE				= FALSE,
+		
+		TECH_POINT				= 170,
+	},
+	HIT_CAMERA0_RATE	= 60,
+	HIT_CAMERA1_RATE	= 25,
+	HIT_CAMERA2_RATE	= 15,
+	
+	CAMERA1 = 
+	{
+		{						
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_IMPACT_POINT"],
+			DISTANCE		= 900.0,
+			HEIGHT			= -30.0,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 200,
+			ANGLEDEGREE		= 30,
+			TRACKINGTIME	= 0.666,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		{			
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_IMPACT_POINT"],
+			DISTANCE		= 1200.0,
+			HEIGHT			= 180.0,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 200,
+			ANGLEDEGREE		= -30,
+			TRACKINGTIME	= 0.666,
+		},
+	},
+	
+}
+
+AVSI_ABM_DASH_JUMP_ATTACK_X = 
+{
+	ANIM_NAME			= "DashJumpAttackX",
+	-- ANIM_NAME			= "ABM_DashJumpComboX",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= 500.0,
+	SPEED_Y				= 500.0,
+	-- SPEED_Y				= INIT_PHYSIC["RUN_SPEED"],
+}
+
+AVSI_A_AV_FIRE_ROAD = 
+{
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	ANIM_NAME			= "SI_A_AV_FIRE_ROAD",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,	
+	LAND_CONNECT		= FALSE,
+	STATE_STRING		= STR_ID_15332,
+	SPEED_X				= 0,
+	SPEED_Y				= 0,	
+	SLASH_TRACE			= { 0, 100, },
+	ATTACK_TIME0		= { 0.21, 0.36, },	
+	SOUND_PLAY0			= { 0.15, "Stickslash1.ogg" },
+	SOUND_PLAY1			= { 0.17, "Aisha_Fire_Road.ogg" },
+	SOUND_PLAY2			= { 0.17, "Sound_Arme_shout6.ogg" }, 
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		PVP_RATE 		= 0.6,
+		DAMAGE 			= {	PHYSIC		= 0.69,	},		
+		BACK_SPEED_X			= 600,
+		BACK_SPEED_Y			= 0.0,		
+		--STOP_TIME_DEF			= 0.2,		
+		-- 디멘션 위치 패시브 마력의 지팡이 - 마력 강타
+		CREATE_DAMAGE_EFFECT_NAME = "DAMAGE_EFFECT_ADW_MAGICAL_ATTACK",		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 0,
+	},
+}
+
+AVSI_A_ABM_ENERGY_DRAIN_READY =
+{
+	ANIM_SPEED			= 1.85,
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	ANIM_NAME			= "SI_A_ABM_ENERGY_DRAIN_Ready",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+
+	STATE_STRING		= STR_ID_15333,
+
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+	
+	SOUND_PLAY0			= { 0.001, "AishaVoice_EnergyDrain_01.ogg" },
+    SOUND_PLAY1			= { 0.16, "Aisha_Energy_Drain.ogg" },
+	
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Aisha_ABM_EnegryDrainReady", 0, 
+	},	
+}
+
+AVSI_A_ABM_ENERGY_DRAIN_SUCCESS =
+{
+	ANIM_SPEED			= 1.5,
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	ANIM_NAME			= "SI_A_ABM_ENERGY_DRAIN_Success",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+
+	SOUND_PLAY0			= { 0.286, "Sound_Arme_shout6.ogg" },
+	
+	ATTACK_TIME0		= { 0, 0, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_MAGIC"],
+		HIT_TYPE		= HIT_TYPE["HT_DEFAULT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		PVP_RATE		= 0.6,
+		DAMAGE = 
+		{
+			MAGIC		= 0.34,
+		},		
+		
+		DRAIN_HP_RATE			= 1,
+		DRAIN_MP_REACT			= 30,
+		DRAIN_MP_RATE_REACT		= 1,
+		DRAIN_HP_PARTICLE_WEAPON	= TRUE,
+
+		BACK_SPEED_X			= 0.0,
+		BACK_SPEED_Y			= 0.0,
+		
+		TECH_POINT				= 50, -- 2012. 6. 5. 테크 포인트 없는 스킬들 테크 추가(MP 1당 5)
+		
+		STOP_TIME_DEF			= 0.3,
+		
+		CAN_REVENGE				= FALSE,
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 0,
+	},
+	
+	NORMAL_CAMERA0_RATE	= 60,
+	NORMAL_CAMERA1_RATE	= 20,
+	NORMAL_CAMERA1_RATE	= 20,
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			ANGLEDEGREE		= 10,
+			LOOKATDISTANCE	= -50,
+			TRACKINGTIME	= 0.5,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			ANGLEDEGREE		= -10,
+			LOOKATDISTANCE	= -50,
+			TRACKINGTIME	= 0.5,
+		},
+	},
+}
+
+AVSI_A_ABM_ENERGY_DRAIN_FAIL =
+{
+	ANIM_SPEED			= 1.5,
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	ANIM_NAME			= "SI_A_ABM_ENERGY_DRAIN_Fail",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+}
+
+AVSI_SI_SA_ABM_HEAVY_PRESS =
+{	
+	ANIM_SPEED			= 1.1,
+	ANIM_NAME			= "SI_SA_ABM_HEAVY_PRESS",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+
+	SLASH_TRACE			= { 0, 100, },
+	
+	STATE_STRING		= STR_ID_15334,
+
+	-- SPEED_X				= 0,
+	-- SPEED_Y				= 0,
+
+	SPEED_TIME0 = { 800.0, 0.0, 0.45, 1, },
+	SPEED_TIME1 = { 400.0, 0.0, 0.88, 1, },
+	SPEED_TIME2 = { 1000.0, 0.0, 1.40, 1, },
+	SPEED_TIME3 = { 300.0, 0.0, 2.04, 2, },
+	
+	
+	INVINCIBLE			= { 0.033, 2.2, },
+	
+	STOP_OTHER_UNIT0		= { 0.033, 0.6, },
+	
+	-- STOP_ALL_UNIT0		= { 0.1, 1.2, 0.6 },
+
+	SOUND_PLAY0			= { 0.15, "AishaVoice_HeavyPress_01.ogg" },	
+	SOUND_PLAY1			= { 0.59, "Aisha__Heavy_Press.ogg" },	
+	SOUND_PLAY2			= { 0.59, "GroundHit2.ogg" },
+	SOUND_PLAY3			= { 1.15, "Aisha__Heavy_Press.ogg" },
+	SOUND_PLAY4			= { 1.15, "GroundHit2.ogg" },	
+    SOUND_PLAY5			= { 1.99, "Aisha__Heavy_Press.ogg" },
+	SOUND_PLAY6			= { 1.99, "GroundHit2.ogg" },
+	SOUND_PLAY7			= { 1.99, "GroundHit2.ogg" },
+	SOUND_PLAY8			= { 1.80, "Sound_Arme_shout3.ogg" }, 
+
+	APPLY_MEMO = 602014,
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Aisha_ABM_heavyPress", 0, 
+	},
+	
+	NORMAL_CAMERA0_RATE	= 40,
+	NORMAL_CAMERA1_RATE	= 30,
+	NORMAL_CAMERA2_RATE	= 30,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 1.0, },
+		
+		SUB_CAMERA0 =
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -60,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 100,
+			TRACKINGTIME	= 0.333,
+		},
+		SUB_CAMERA1 =
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 1000,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 30,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 200,
+			TRACKINGTIME	= 0.333,
+		},
+	},
+	CAMERA2 = 
+	{	
+		SUB_CAMERA_TIMING = { 1.0, },
+		
+		SUB_CAMERA0 =
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 800,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 40,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 100,
+			TRACKINGTIME	= 0.333,
+		},
+		SUB_CAMERA1 =
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 1300,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= -20,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 300,
+			TRACKINGTIME	= 0.333,
+		},
+	},
+    
+}
+
+AVSI_SI_SA_ABM_ENERGY_SPURT =
+{	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	ANIM_NAME			= "SI_SA_ABM_ENERGY_SPURT",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+
+	STATE_STRING		= STR_ID_15335,
+
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+
+	INVINCIBLE			= { 0.033, 1.75, },
+	
+	STOP_OTHER_UNIT0		= { 0.033, 1.15, },
+	-- STOP_ALL_UNIT0		= { 0.03, 1.2, 0.3},
+	
+	SOUND_PLAY0			= { 0.15, "AishaVoice_EnergySpurt_01.ogg" },
+	SOUND_PLAY1			= { 0.19, "Aisha_Energy_Spurt.ogg" },
+	SOUND_PLAY3			= { 0.01, "Energy.ogg" },
+	
+	APPLY_MEMO = 602015,
+	
+	DELETE_EFFECT_SET_ON_DAMAGE_REACT = TRUE, 
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Aisha_ABM_EnergySpurt", 0, 
+	},	
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 0.4, 0.7, 1.0, },
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			LOOK_OFFSET_X	= 0,
+			LOOK_OFFSET_Y	= 0,
+			LOOK_OFFSET_Z	= 0,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 0,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 0,	
+			TRACKINGTIME	= 0.35,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 500,
+			LOOK_OFFSET_X	= 0,
+			LOOK_OFFSET_Y	= 0,
+			LOOK_OFFSET_Z	= 0,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 0,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 0,	
+			TRACKINGTIME	= 0.5,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 500,
+			HEIGHT			= 100,
+			EYEDISTANCE		= 100,
+			--LOOKATDISTANCE	= 100,
+			-- ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 1,
+		},
+		SUB_CAMERA3 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			LOOK_OFFSET_X	= 0,
+			LOOK_OFFSET_Y	= 0,
+			LOOK_OFFSET_Z	= 0,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 0,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 0,	
+			TRACKINGTIME	= 0.3,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 1.05, 1.15 },
+		
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+		},		
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 700,
+			TRACKINGTIME	= 0.1,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			TRACKINGTIME	= 0.1,
+		},
+	},
+}
+
+AVSI_SI_SA_ABM_GUILLOTINE_PRESS_START =
+{	
+	ANIM_NAME			= "SI_SA_ABM_GUILLOTINE_PRESS_Start",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+
+	STATE_STRING		= STR_ID_15336,
+
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+
+	INVINCIBLE			= { 0.033, 100, },
+	
+	STOP_OTHER_UNIT0		= { 0.033, 0.99, },
+	-- STOP_ALL_UNIT0		= { 0.03, 1.2, 0.3},
+	
+	DISABLE_GRAVITY_TIME_START = 0,
+	DISABLE_GRAVITY_TIME_END = 0.69,
+	
+    SOUND_PLAY0			= { 0.15, "AishaVoice_GuilotinePresst_01.ogg" },
+	SOUND_PLAY1			= { 0.16, "Body_Spin.ogg" },
+	SOUND_PLAY2			= { 0.18, "Aisha_Guillotine_Press.ogg" },
+	
+	-- NORMAL_CAMERA0_RATE			= 0,
+	-- NORMAL_CAMERA1_RATE			= 100,
+	
+	-- CAMERA1 = 
+	-- {
+		-- SUB_CAMERA_TIMING = { 0.39, },
+		-- SUB_CAMERA1 = 
+		-- {
+			-- CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			-- LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			-- LOOK_PARTS		= "Bip01",
+			-- DISTANCE		= 550,
+			-- HEIGHT			= 100,
+			-- -- EYEDISTANCE		= 100,
+			-- --LOOKATDISTANCE	= 100,
+			-- -- ANGLEDEGREE		= 0,
+			-- TRACKINGTIME	= 0.25,
+		-- },
+	-- }
+}
+
+AVSI_SI_SA_ABM_GUILLOTINE_PRESS_LOOP =
+{	
+	ANIM_NAME			= "SI_SA_ABM_GUILLOTINE_PRESS_Loop",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+
+	SPEED_X				= 0,
+	
+	INVINCIBLE			= { 0, 100, },
+	
+--	SOUND_PLAY0			= { 0.15, "Sound_Arme_shout5.ogg" },
+    
+	ENABLE_ATTACK_BOX = 
+	{
+		"Lfoot",
+		"Rfoot",
+	},
+
+	ATTACK_TIME0		= { 0.01, 100, },
+	DAMAGE_DATA =
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		ATTACK_TYPE		= ATTACK_TYPE["AT_SPECIAL"],
+		HIT_TYPE		= HIT_TYPE["HT_KICK_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+
+		DAMAGE =
+		{
+			PHYSIC		= 0.5,
+		},
+		BUFF_FACTOR =
+		{
+			BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_STUN"],
+			RATE	=
+			{
+				1,
+			},
+			IGNORE_REGIST_FOR_RATE = TRUE,
+
+			BEHAVIOR =
+			{
+				COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_STUN"], },
+				
+				BBT_STUN =
+				{
+				},
+			},
+		
+			FINALIZER =
+			{
+				COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], BUFF_FINALIZER_TYPE["BFT_HITTED_COUNT"], },
+			
+				BFT_TIME =
+				{
+					BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+					NORMAL_TIME =
+					{
+						3,
+					},
+				},
+
+				BFT_HITTED_COUNT =
+				{
+					BUFF_USE_COUNT_TYPE = BUFF_USE_COUNT_TYPE["BUCT_NOT_USE"],
+					COUNT =
+					{
+						2,
+					},
+				},
+			},
+		},
+
+        BACK_SPEED_X   = 0,
+		BACK_SPEED_Y   = 0,
+
+		-- 2012년 상반기 밸런싱(lenoas) MP를 과다하게 추가로 획득하던 오류 수정
+		HIT_ADD_MP		= 0,
+		
+		STOP_RESERVE_TIME_ATT	= 0.0,
+		STOP_RESERVE_TIME_DEF	= 0.0,
+		STOP_TIME_ATT			= 0.0,
+		STOP_TIME_DEF			= 0.05,
+		CAMERA_CRASH_GAP		= 15.0,
+		CAMERA_CRASH_TIME		= 0.2,	
+
+		CAN_REVENGE				= FALSE,
+		RE_ATTACK				= FALSE,
+		--HIT_GAP                 = 0.05,
+		--TECH_POINT				= 250,
+	},
+	
+	-- NORMAL_CAMERA0_RATE			= 0,
+	-- NORMAL_CAMERA1_RATE			= 100,
+	
+	-- CAMERA1 = 
+	-- {
+		-- {
+			-- CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			-- LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			-- LOOK_PARTS		= "Bip01",
+			-- DISTANCE		= 550,
+			-- HEIGHT			= 100,
+			-- -- EYEDISTANCE		= 100,
+			-- --LOOKATDISTANCE	= 100,
+			-- -- ANGLEDEGREE		= 0,
+		-- },
+	-- }
+}
+
+AVSI_SI_SA_ABM_GUILLOTINE_PRESS_END =
+{	
+	ANIM_SPEED			= 1.3,
+	ANIM_NAME			= "SI_SA_ABM_GUILLOTINE_PRESS_End",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+
+	CAN_PASS_UNIT_TIME0 = { 0.2,	TRUE, },
+	CAN_PASS_UNIT_TIME1 = { 1.15,	FALSE, },
+
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+
+	INVINCIBLE			= { 0, 1.37, },
+	
+	SOUND_PLAY0			= { 1.000, "Sound_Arme_shout4.ogg" },
+	SOUND_PLAY1			= { 0.001, "GroundHit2.ogg" },
+	SOUND_PLAY2			= { 0.001, "GroundHit2.ogg" },
+	SOUND_PLAY3			= { 1.073, "GroundHit2.ogg" },
+	SOUND_PLAY4			= { 1.073, "GroundHit2.ogg" },
+	SOUND_PLAY5			= { 1.073, "GroundHit2.ogg" },
+	
+	ENABLE_ATTACK_BOX = 
+	{
+		"Lfoot",
+		"Rfoot",
+	},
+
+	ATTACK_TIME0		= { 1.04, 1.12 },
+	DAMAGE_DATA =
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		ATTACK_TYPE		= ATTACK_TYPE["AT_SPECIAL"],
+		HIT_TYPE		= HIT_TYPE["HT_KICK_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+
+		DAMAGE =
+		{
+			PHYSIC		= 0.5,
+		},
+
+        BACK_SPEED_X   = 0,
+		BACK_SPEED_Y   = 0,
+
+		-- 2012년 상반기 밸런싱(lenoas) MP를 과다하게 추가로 획득하던 오류 수정
+		HIT_ADD_MP		= 0,
+
+		STOP_RESERVE_TIME_ATT	= 0.0,
+		STOP_RESERVE_TIME_DEF	= 0.0,
+		STOP_TIME_ATT			= 0.0,
+		STOP_TIME_DEF			= 0.05,
+		CAMERA_CRASH_GAP		= 15.0,
+		CAMERA_CRASH_TIME		= 0.2,		
+		STOP_TIME_DEF			= 0.2,	
+
+		CAN_REVENGE				= FALSE,
+		RE_ATTACK				= FALSE,
+		--HIT_GAP                 = 0.05,
+		--TECH_POINT				= 250,
+	},
+
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Aisha_ABM_guillotinePress", 0, 
+	},		
+	
+	NORMAL_CAMERA0_RATE			= 70,
+	NORMAL_CAMERA1_RATE			= 30,
+	
+	CAMERA0 = 
+	{
+		SUB_CAMERA_TIMING = { 0.4, },
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 800,
+			HEIGHT			= 100,
+			-- EYEDISTANCE		= 100,
+			--LOOKATDISTANCE	= 100,
+			-- ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.4,
+		},
+		SUB_CAMERA1 = 
+		{
+		},
+	},
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 0.4, },
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 800,
+			HEIGHT			= 100,
+			-- EYEDISTANCE		= 100,
+			--LOOKATDISTANCE	= 100,
+			-- ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.4,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 1000,
+			HEIGHT			= 1300,
+			TRACKINGTIME	= 0.5,
+		},
+	},
+	
+}
+
+AVSI_SI_SA_ABM_SUPER_NOVA =
+{	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	ANIM_NAME			= "SI_SA_ABM_SUPER_NOVA",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+
+	STOP_OTHER_UNIT0		= { 0.033, 2.0, },
+	STATE_STRING		= STR_ID_15337,
+
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+
+	INVINCIBLE			= { 0.033, 3.25, },
+	-- STOP_ALL_UNIT0		= { 0.03, 1.2, 0.3},
+	
+	SOUND_PLAY0			= { 0.15, "AishaVoice_SuperNova_01.ogg" },
+    SOUND_PLAY1			= { 0.08, "Aisha_Super_Nova.ogg" },
+	SOUND_PLAY2			= { 0.01, "Energy.ogg" },
+	SOUND_PLAY3			= { 2.00, "Sound_Arme_shout5.ogg" },
+	
+	NORMAL_CAMERA0_RATE	= 40,
+	NORMAL_CAMERA1_RATE	= 30,
+	NORMAL_CAMERA2_RATE	= 30,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 0.3, 1.8, },
+		SUB_CAMERA0 =
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_R_Hand",
+			DISTANCE		= 750,
+			ANGLEDEGREE		= 50,
+			TRACKINGTIME	= 0.1,
+		},
+		SUB_CAMERA1 =
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_R_Hand",
+			DISTANCE		= 750,
+			ANGLEDEGREE		= -50,
+			TRACKINGTIME	= 1.5,
+		},
+		SUB_CAMERA2 =
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine",
+			DISTANCE		= 1200,
+			ANGLEDEGREE		= 45,
+			LOOKATDISTANCE	= 100,
+			TRACKINGTIME	= 0.3,
+		},
+	},
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 1.8, },
+		SUB_CAMERA0 =
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 1000,
+			ANGLEDEGREE		= 45,
+			HEIGHT			= 650,
+			TRACKINGTIME	= 1.5,
+		},
+		SUB_CAMERA1 =
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Dummy1_Rhand",
+			DISTANCE		= 1300,
+			ANGLEDEGREE		= 45,
+			HEIGHT			= 650,
+			TRACKINGTIME	= 0.1,
+		},
+	},
+}
+
+AVSI_SI_SA_ABM_MAGICAL_MAKEUP =
+{	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	ANIM_NAME			= "SI_SA_ABM_MAGICAL_MAKEUP",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+
+	STATE_STRING		= STR_ID_15338,
+
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+
+	INVINCIBLE			= { 0, 100, },
+	STOP_OTHER_UNIT0		= { 0.033, 2.99, },
+	-- STOP_ALL_UNIT0		= { 0.03, 1.2, 0.3},
+	
+	SOUND_PLAY0			= { 0.15, "AishaVoice_MagicalMakeup_01.ogg" },
+	SOUND_PLAY1			= { 0.01, "Aisha_Magical_Makeup.ogg" },
+	SOUND_PLAY3			= { 0.01, "Energy.ogg" },
+	
+	NORMAL_CAMERA0_RATE			= 0,
+	NORMAL_CAMERA1_RATE			= 50,
+	NORMAL_CAMERA2_RATE			= 50,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 0.4, 1.9, },
+		SUB_CAMERA0 =
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Footsteps",
+			LOOK_OFFSET_X	= 0,
+			LOOK_OFFSET_Y	= 0,
+			LOOK_OFFSET_Z	= 0,
+			DISTANCE		= 250.0,
+			HEIGHT			= 0.0,
+			ANGLEDEGREE		= 45,
+			TRACKINGTIME	= 0.2,
+		},
+		SUB_CAMERA1 =
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Footsteps",
+			-- LOOK_OFFSET_X	= 1000,
+			LOOK_OFFSET_Y	= 175,
+			-- LOOK_OFFSET_Z	= 1000,
+			DISTANCE		= 125.0,
+			HEIGHT			= 50.0,
+			ANGLEDEGREE		= -20,
+			EYEDISTANCE		= 15,
+			LOOKATDISTANCE	= 15,	
+			TRACKINGTIME	= 0.9,
+		},
+		SUB_CAMERA2 =
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			LOOK_OFFSET_X	= 0,
+			LOOK_OFFSET_Y	= 10,
+			LOOK_OFFSET_Z	= 0,
+			DISTANCE		= 450.0,
+			HEIGHT			= 40.0,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 0.4, 1.9, },
+		SUB_CAMERA0 =
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Footsteps",
+			LOOK_OFFSET_X	= 0,
+			LOOK_OFFSET_Y	= 0,
+			LOOK_OFFSET_Z	= 0,
+			DISTANCE		= 450.0,
+			HEIGHT			= -25.0,
+			ANGLEDEGREE		= 45,
+			TRACKINGTIME	= 0.2,
+		},
+		SUB_CAMERA1 =
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			-- LOOK_OFFSET_X	= 1000,
+			-- LOOK_OFFSET_Y	= 225,
+			-- LOOK_OFFSET_Z	= 1000,
+			DISTANCE		= 650.0,
+			HEIGHT			= -150.0,
+			ANGLEDEGREE		= -10,
+			TRACKINGTIME	= 0.9,
+		},
+		SUB_CAMERA2 =
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			LOOK_OFFSET_X	= 0,
+			LOOK_OFFSET_Y	= 0,
+			LOOK_OFFSET_Z	= 0,
+			DISTANCE		= 1500.0,
+			HEIGHT			= 0.0,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.15,
+		},
+	},
+
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Aisha_ABM_MagicalMakeup", 0, 
+	},	
+}
+
+
+-- DIMENSION_WITCH
+AVSI_DIMENSION_WITCH_DASH_ATTACK_X = 
+{
+	ANIM_NAME			= "DashAttackX",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	-- SOUND_PLAY0			= { 0.2, "Sound_Arme_shout8.ogg" },
+	
+	CAN_PASS_UNIT		= TRUE,
+	CAN_PUSH_UNIT		= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+}
+
+AVSI_DIMENSION_WITCH_DASH_ATTACK_X2 = 
+{
+	ANIM_SPEED			= 1.2,
+	ANIM_NAME			= "ADW_DashComboXX",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	WALK_CANCEL_AFTER	= 1.6,
+	DASH_CANCEL_AFTER	= 1.4,
+	SKILL_CANCEL_AFTER	= 1.4,
+	
+	SOUND_PLAY0			= { 0.001, "Aisha_DashXX1.ogg" },
+	SOUND_PLAY1			= { 0.65, "Aisha_DashXX2.ogg" },
+	
+
+	DELETE_EFFECT_SET_ON_DAMAGE_REACT = TRUE,
+	-- DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_ADW_COMBO_DASH_XX", 0, 
+	},	
+	NORMAL_CAMERA0_RATE	= 60,
+	NORMAL_CAMERA1_RATE	= 20,
+	NORMAL_CAMERA2_RATE	= 20,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 0.66, },
+		
+		SUB_CAMERA0 =
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 1000,
+			HEIGHT			= 100,
+			ANGLEDEGREE		= 30,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 200,
+			TRACKINGTIME	= 0.333,
+		},
+		SUB_CAMERA1 =
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 900,
+			HEIGHT			= 30,
+			ANGLEDEGREE		= 10,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 50,
+			TRACKINGTIME	= 0.666,
+		},
+	},
+	CAMERA2 = 
+	{	
+		SUB_CAMERA_TIMING = { 0.66, },
+		
+		SUB_CAMERA0 =
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 1300,
+			HEIGHT			= 250,
+			ANGLEDEGREE		= -40,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 200,
+			TRACKINGTIME	= 0.333,
+		},
+		SUB_CAMERA1 =
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 900,
+			HEIGHT			= 100,
+			ANGLEDEGREE		= -10,
+			EYEDISTANCE		= 0,
+			LOOKATDISTANCE	= 200,
+			TRACKINGTIME	= 0.666,
+		},
+	},
+}
+-- xx밑x 이후 블랙홀 공격
+AVSI_ADW_COMBO_ADD_X =
+{
+	ANIM_NAME			= "ADW_ComboX3UpX",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= TRUE,
+	
+	LAND_CONNECT		= FALSE,
+
+	WALK_CANCEL_AFTER	= 1.5,
+	DASH_CANCEL_AFTER	= 1.5,
+	SKILL_CANCEL_AFTER	= 1.5,
+	
+	SOUND_PLAY0			= { 0.001, "Aisha_MagicAttackX1.ogg" },
+	SOUND_PLAY1			= { 0.175, "Aisha_MagicAttackX2.ogg" },
+	SOUND_PLAY2			= { 0.18, "Aisha_MagicAttackX3.ogg" },
+
+	DELETE_EFFECT_SET_ON_DAMAGE_REACT = TRUE,
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_ADW_COMBO_ADD_X", 0.0, 
+	},	
+}
+-- 대시zxxx 이후 블랙홀 공격
+AVSI_ADW_COMBO_ADD_X2 =
+{
+	ANIM_NAME			= "ADW_ComboX3UpX2",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= TRUE,
+	
+	LAND_CONNECT		= FALSE,
+
+	WALK_CANCEL_AFTER	= 1.5,
+	DASH_CANCEL_AFTER	= 1.5,
+	SKILL_CANCEL_AFTER	= 1.5,
+	
+	SOUND_PLAY0			= { 0.731, "Aisha_MagicAttackX1.ogg" },
+	SOUND_PLAY1			= { 0.905, "Aisha_MagicAttackX2.ogg" },
+	SOUND_PLAY2			= { 0.91, "Aisha_MagicAttackX3.ogg" },
+
+	DELETE_EFFECT_SET_ON_DAMAGE_REACT = TRUE,
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_ADW_COMBO_ADD_X", 0.476, 
+	},	
+}
+
+
+AVSI_SI_A_ADW_DISTORTION =
+{	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	
+	ANIM_SPEED			= 2.5,
+	
+	STATE_STRING			= STR_ID_17923,
+	
+	SOUND_PLAY0			= { 0.03, "Sound_Arme_shout8.ogg" },
+	SOUND_PLAY1			= { 0.01, "Aisha_Distortion1.ogg" },
+	SOUND_PLAY2			= { 0.457, "Aisha_Distortion2.ogg" },
+	
+	ANIM_NAME			= "SI_A_ADW_DISTORTION",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+}
+-- 임팩트 해머(Impact Hammer) : 모닝스타(구녹음분)사운드가 
+-- 신녹음분인 스크류드라이버와 호환이 되지 않아 스킬명 변경
+AVSI_SI_SA_ADW_MORNING_STAR =
+{	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	
+	ANIM_SPEED			= 1.2,
+	
+	SOUND_PLAY0			= { 0.01, "AishaVoice_ImpactHammer1.ogg" },
+	SOUND_PLAY1			= { 1.376, "AishaVoice_ImpactHammer2.ogg" },
+	SOUND_PLAY2			= { 0.001, "Aisha_ImpactHammer1.ogg" },
+	SOUND_PLAY3			= { 0.399, "Aisha_ImpactHammer2.ogg" },
+	SOUND_PLAY4			= { 1.503, "Aisha_ImpactHammer3.ogg" },
+	
+	ANIM_NAME			= "SI_SA_ADW_MORNING_STAR",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	STATE_STRING			= STR_ID_17924,
+	
+	LAND_CONNECT		= FALSE,
+
+	-- PASSIVE_SPEED_X				= 0,
+	SPEED_Y				= 0,
+		
+	INVINCIBLE			= { 0.0, 2.0, },
+	STOP_OTHER_UNIT0	= { 0.03, 1.5, },
+	
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 35,
+	NORMAL_CAMERA2_RATE			= 25,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 1.4, 1.5 },
+		
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			ANGLEDEGREE		= 40,
+			DISTANCE		= 700,
+			LOOKATDISTANCE	= -50,
+			LOOK_OFFSET_X	= 4500,
+			LOOK_OFFSET_Y	= -2500,
+			TRACKINGTIME	= 0.7,
+		},		
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			ANGLEDEGREE		= 40,
+			DISTANCE		= 500,
+			LOOKATDISTANCE	= -50,
+			LOOK_OFFSET_X	= 4500,
+			LOOK_OFFSET_Y	= -2500,
+			TRACKINGTIME	= 0.1,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			ANGLEDEGREE		= 50,
+			DISTANCE		= 900,
+			LOOKATDISTANCE	= -50,
+			LOOK_OFFSET_X	= 4500,
+			LOOK_OFFSET_Y	= -2500,
+			TRACKINGTIME	= 0.1,
+		},
+	},
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 1.4, 1.5 },
+		
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			ANGLEDEGREE		= 30,
+			DISTANCE		= 700,
+			LOOKATDISTANCE	= -50,
+			HEIGHT			= 700,
+			LOOK_OFFSET_X	= 4500,
+			LOOK_OFFSET_Y	= -2500,
+			TRACKINGTIME	= 0.7,
+		},		
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			ANGLEDEGREE		= 30,
+			DISTANCE		= 500,
+			LOOKATDISTANCE	= -50,
+			HEIGHT			= 700,
+			LOOK_OFFSET_X	= 4500,
+			LOOK_OFFSET_Y	= -2500,
+			TRACKINGTIME	= 0.1,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			ANGLEDEGREE		= 40,
+			DISTANCE		= 900,
+			HEIGHT			= 700,
+			LOOKATDISTANCE	= -50,
+			LOOK_OFFSET_X	= 4500,
+			LOOK_OFFSET_Y	= -2500,
+			TRACKINGTIME	= 0.1,
+		},
+	},
+}
+
+AVSI_SI_SA_ADW_SCREWDRIVER =
+{	
+	ANIM_SPEED			= 1.5,
+	
+	SOUND_PLAY0			= { 0.15, "AishaVoice_Screwdriver.ogg" },
+	SOUND_PLAY1			= { 0.001, "Aisha_ScrewDriver1.ogg" },
+	SOUND_PLAY2			= { 0.24, "Aisha_ScrewDriver2.ogg" },
+	SOUND_PLAY3			= { 1.134, "Aisha_ScrewDriver3.ogg" },
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	
+	ANIM_NAME			= "SI_SA_ADW_SCREWDRIVER",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	STATE_STRING			= STR_ID_24712,
+	
+	LAND_CONNECT		= FALSE,
+
+	CAN_PUSH_UNIT		= TRUE,
+	CAN_PASS_UNIT		= FALSE,
+
+	INVINCIBLE			= { 0, 2.3, },	
+	STOP_OTHER_UNIT0	= { 0.03, 2.0, },
+	
+	AFTER_IMAGE			= { 1.3, 1.75, },
+
+	CAN_PASS_UNIT_TIME0 = { 0.001, FALSE, }, 
+	CAN_PASS_UNIT_TIME1 = { 1.366, TRUE, },
+	CAN_PASS_UNIT_TIME2 = { 2.233, FALSE, },
+
+	SPEED_TIME0 = { 3000.0, 0.0, 1.300, 2, },
+	SPEED_TIME1 = { 3000.0, 0.0, 1.433, 2, },
+	SPEED_TIME2 = { 1000.0, 0.0, 1.55, 2, },
+	SPEED_TIME3 = { 600.0, 0.0, 2.2, 2, },
+
+	-- DELETE_EFFECT_SET_ON_DAMAGE_REACT = TRUE,
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_ADW_SCREWDRIVER", 0, 
+	},	
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 1.0, 1.3, },
+		
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 600,
+			TRACKINGTIME	= 0.3,
+		},		
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			ANGLEDEGREE		= 40,
+			DISTANCE		= 1000,
+			LOOKATDISTANCE	= -50,
+			LOOK_OFFSET_X	= 4500,
+			LOOK_OFFSET_Y	= -2500,
+			TRACKINGTIME	= 0.3,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			ANGLEDEGREE		= 40,
+			DISTANCE		= 1500,
+			LOOKATDISTANCE	= -50,
+			LOOK_OFFSET_X	= 4500,
+			LOOK_OFFSET_Y	= -2500,
+			TRACKINGTIME	= 0.3,
+		},
+	},
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 0.9, 1.2 },
+		
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			ANGLEDEGREE		= 30,
+			DISTANCE		= 700,
+			LOOKATDISTANCE	= -50,
+			HEIGHT			= 700,
+			LOOK_OFFSET_X	= 4500,
+			LOOK_OFFSET_Y	= -2500,
+			TRACKINGTIME	= 0.7,
+		},		
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			ANGLEDEGREE		= 30,
+			DISTANCE		= 500,
+			LOOKATDISTANCE	= -50,
+			HEIGHT			= 500,
+			LOOK_OFFSET_X	= 4500,
+			LOOK_OFFSET_Y	= -2500,
+			TRACKINGTIME	= 0.1,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			ANGLEDEGREE		= 65,
+			DISTANCE		= 2000,
+			HEIGHT			= 1000,
+			LOOKATDISTANCE	= -50,
+			LOOK_OFFSET_X	= 4500,
+			LOOK_OFFSET_Y	= -2500,
+			TRACKINGTIME	= 0.5,
+		},
+	},
+}
+
+
+-- 변신 테스트
+AVSI_TRANSFORMED = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	INVINCIBLE					= { 0, 9999, },
+}
+
+-- 개편되는 스킬들 --
+SI_A_AV_ICICLE_WAVE =
+{	-- 아이시클 웨이브
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	ANIM_NAME			= "SI_A_AV_FIRE_ROAD",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	STATE_STRING		= STR_ID_24697,
+	SPEED_X				= 0,
+	SPEED_Y				= 0,	
+	SLASH_TRACE			= { 0, 100, },
+	ATTACK_TIME0		= { 0.21, 0.36, },	
+	SOUND_PLAY0			= { 0.15, "Stickslash1.ogg" },
+	SOUND_PLAY1			= { 0.21, "Ice_Pillar_Trap_BrokenB01.ogg" },
+	SOUND_PLAY2			= { 0.17, "Sound_Arme_shout6.ogg" }, 
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		PVP_RATE 		= 0.6,
+		DAMAGE 			= {	PHYSIC		= 0.69,	},		
+		BACK_SPEED_X			= 600,
+		BACK_SPEED_Y			= 0.0,		
+		--STOP_TIME_DEF			= 0.2,		
+		-- 디멘션 위치 패시브 마력의 지팡이 - 마력 강타
+		CREATE_DAMAGE_EFFECT_NAME = "DAMAGE_EFFECT_ADW_MAGICAL_ATTACK",		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 0,
+	},
+
+	EFFECT_SET_LIST = { "Effectset_A_AV_ICICLE_WAVE", 0, },
+}
+
+AVSI_SA_AV_ICE_STORM =
+{	-- 아이스 스톰
+	ANIM_NAME			= "SP3a_GustStorm",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 2, },
+	AFTER_IMAGE			= { 0.1, 100, },
+	STOP_OTHER_UNIT0	= { 0.12, 0.6, },
+	STATE_STRING		= STR_ID_24698,
+
+	SOUND_PLAY0			= { 0.12, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.1, "AishaVoice_IceStorm.ogg" },
+	SOUND_PLAY2			= { 0.53, "Arme_GustScrew.ogg" },
+	SOUND_PLAY3			= { 0.452, "Sound_Arme_shout4.ogg" },
+}
+
+AVSI_A_AHM_AQUA_SHOWER =
+{	-- 아쿠아 샤워 (워터 캐논)
+	ANIM_NAME			= "HM_SP1a_ChainBurst",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	
+	STATE_STRING		= STR_ID_25364,
+	
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+	
+	EFFECT_SET_LIST = 
+	{
+		"Effectset_SA_AHM_AQUA_SHOWER_BALL", 0.5, 
+	},
+	
+	DELETE_EFFECT_SET_ON_DAMAGE_REACT = TRUE, 
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 60,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 800,
+			HEIGHT			= 300,
+			ANGLEDEGREE		= -60,
+		},
+	},
+
+	
+	INVINCIBLE			= { 0, 1.8, },
+	AFTER_IMAGE			= { 0.1, 100, },
+	
+	--STOP_ALL_UNIT0		= { 0.165, 1.6, 0.6 },
+	STOP_OTHER_UNIT0		= { 0.165, 1.0, },
+
+	
+	SOUND_PLAY0			= { 0.01, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.05, "AishaPartVoice_Water.ogg" },
+	SOUND_PLAY2			= { 1.2, "AishaPartVoice_Cannon.ogg" },
+	SOUND_PLAY3			= { 0.174, "Arme_ChainBurst1.ogg" },
+	SOUND_PLAY4			= { 0.607, "Arme_ChainBurst2.ogg" },
+	SOUND_PLAY5			= { 1.82, "Arme_ChainBurst3.ogg" },
+
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+}
+
+AVSI_SA_AHM_AHM_LIGHTNING_SHOWER =
+{	-- 라이트닝 샤워
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	ANIM_NAME			= "EM_METEOR_SHOWER_Start",
+	ANIM_SPEED			= 1.5,
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+
+	INVINCIBLE			= { 0, 1.8, },
+	
+	SOUND_PLAY0			= { 0.001, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.01, "AishaVoice_LightningShower.ogg" },
+	SOUND_PLAY2			= { 0.16, "Aisha_MeteorShower_Ready.ogg" },
+	SOUND_PLAY3			= { 2.440, "Aisha_MeteorShower_FireLoop.ogg" },
+
+	STATE_STRING		= STR_ID_24700,
+	STOP_OTHER_UNIT0		= { 0.04, 1.0, },
+
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 500,
+			HEIGHT			= -200,
+			ANGLEDEGREE		= 0,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 500,
+			ANGLEDEGREE		= 0,
+		},
+	},
+}
+
+AVSI_SA_AHM_LIGHTNING_SHOWER_LOOP = 
+{	-- 라이트닝 샤워
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	ANIM_NAME			= "EM_METEOR_SHOWER_Loop",
+	ANIM_SPEED			= 1.5,
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	
+	STATE_STRING		= STR_ID_24700,
+	
+	SUPER_ARMOR			= TRUE,
+	
+	IMMUNITY_LIST_AT_THIS_STATE =
+	{
+		BUFF_TEMPLET_ID["BTI_DEBUFF_PRESS"],
+		BUFF_TEMPLET_ID["BTI_DEBUFF_STUN"],
+	},
+}
+
+AVSI_SA_AHM_LIGHTNING_SHOWER_END =
+{	-- 라이트닝 샤워
+	ANIM_NAME			= "EM_METEOR_SHOWER_End",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT		= FALSE,
+	
+	STATE_STRING		= STR_ID_24700,
+}
+
+AVSI_SA_AEM_CHAIN_LIGHTNING = 
+{	-- 체인 라이트닝
+	ANIM_NAME			= "SP2a_GuideDarkBall",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+
+	SOUND_PLAY0			= { 0.01, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.1, "AishaVoice_ChainLightning.ogg" },
+	SOUND_PLAY2			= { 0.540, "Arme_GuideDarkBall2.ogg" },
+	
+	STOP_OTHER_UNIT0		= { 0.0, 0.6, },
+	
+	SLASH_TRACE			= { 0.033, 100 },
+	STATE_STRING		= STR_ID_24702,
+	INVINCIBLE		= { 0, 100, },
+}
+
+AVSI_A_AVP_SUMMON_BAT_HEAVY = 
+{	-- 쁘띠 앙고르 - 헤비 돌
+	ANIM_NAME			= "SI_A_AVP_SUMMON_BAT",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	AFTER_IMAGE			= { 0.1, 100, },
+
+	STATE_STRING		= STR_ID_24705,
+
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+	SOUND_PLAY0			= { 0.01, "Aisha_VP_Summon_Bat_00.ogg" },
+	SKIP_TIME = 0.66,
+
+	DISABLE_GRAVITY_TIME_START = 0,
+	DISABLE_GRAVITY_TIME_END = 0.4,
+}
+
+AVSI_SA_AVP_PHANTOM_BREATHING_DARK_HOLE = 
+{	-- 팬텀 브리딩 - 다크홀
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	ANIM_NAME			= "VP_PHANTOM_BREATHING",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+
+	LAND_CONNECT		= FALSE,
+	INVINCIBLE			= { 0, 100, },
+	STOP_OTHER_UNIT0		= { 0.1, 1.0, },
+	STATE_STRING		= STR_ID_24707,
+
+	SOUND_PLAY0			= { 0.001, "Energy.ogg" },	
+	SOUND_PLAY1			= { 0.01, "AishaVoice_PhantomBreathing.ogg" },
+
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= -60,
+			ANGLEDEGREE		= 40,
+		},
+	},
+	
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 600,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= -50,
+		},
+	},
+}
+
+AVSI_A_ABM_VITAL_DRAIN_READY =
+{	-- 바이탈 드레인
+	ANIM_SPEED			= 1.85,
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	ANIM_NAME			= "SI_A_ABM_ENERGY_DRAIN_Ready",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+
+	STATE_STRING		= STR_ID_24708,
+
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+	
+	SOUND_PLAY0			= { 0.001, "AishaVoice_EnergyDrain_01.ogg" },
+    SOUND_PLAY1			= { 0.16, "Aisha_Energy_Drain.ogg" },
+	
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Aisha_ABM_EnegryDrainReady", 0, 
+	},
+}
+
+AVSI_A_ABM_VITAL_DRAIN_SUCCESS =
+{	-- 바이탈 드레인
+	ANIM_SPEED			= 1.5,
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	ANIM_NAME			= "SI_A_ABM_ENERGY_DRAIN_Success",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+
+	SOUND_PLAY0			= { 0.286, "Sound_Arme_shout6.ogg" },
+	
+	ATTACK_TIME0		= { 0, 0, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_MAGIC"],
+		HIT_TYPE		= HIT_TYPE["HT_DEFAULT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		PVP_RATE		= 0.6,
+		DAMAGE = 
+		{
+			MAGIC		= 1.02,
+		},		
+		
+		DRAIN_HP_RATE			= 1,
+		DRAIN_MP_REACT			= 30,
+		DRAIN_MP_RATE_REACT		= 1,
+		DRAIN_HP_PARTICLE_WEAPON	= TRUE,
+
+		BACK_SPEED_X			= 0.0,
+		BACK_SPEED_Y			= 0.0,
+		
+		TECH_POINT				= 50,
+		HIT_ADD_MP				= 1,
+		STOP_TIME_DEF			= 0.3,
+		
+		CAN_REVENGE				= FALSE,
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 0,
+	},
+	
+	NORMAL_CAMERA0_RATE	= 60,
+	NORMAL_CAMERA1_RATE	= 20,
+	NORMAL_CAMERA1_RATE	= 20,
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			ANGLEDEGREE		= 10,
+			LOOKATDISTANCE	= -50,
+			TRACKINGTIME	= 0.5,
+		},
+	},
+	CAMERA2 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			ANGLEDEGREE		= -10,
+			LOOKATDISTANCE	= -50,
+			TRACKINGTIME	= 0.5,
+		},
+	},
+}
+
+AVSI_A_ABM_VITAL_DRAIN_FAIL =
+{	-- 바이탈 드레인
+	ANIM_SPEED			= 1.5,
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	ANIM_NAME			= "SI_A_ABM_ENERGY_DRAIN_Fail",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+}
+
+AVSI_SI_A_ADW_WORM_HOLE =
+{	-- 웜홀
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	ANIM_SPEED			= 2.5,
+	LAND_CONNECT		= FALSE,
+	SPEED_X				= 0,
+	SPEED_Y				= 0,
+
+	STATE_STRING			= STR_ID_24711,
+
+	SOUND_PLAY0			= { 0.03, "Sound_Arme_shout8.ogg" },
+	SOUND_PLAY1			= { 0.01, "Aisha_Distortion1.ogg" },
+	SOUND_PLAY2			= { 0.457, "Aisha_Distortion2.ogg" },
+	
+	ANIM_NAME			= "SI_A_ADW_DISTORTION",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+}
+
+AVSI_SI_SA_ADW_SCREWDRIVER_DRILLER =
+{	-- 스크류 드라이버 - 드릴러
+	ANIM_NAME		= "SI_SA_ADW_SCREWDRIVER",
+	ANIM_SPEED		= 1.75,
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+
+	STATE_STRING			= STR_ID_24713,
+
+	LAND_CONNECT		= FALSE,
+	CAN_PUSH_UNIT		= TRUE,
+	CAN_PASS_UNIT		= FALSE,
+
+	INVINCIBLE			= { 0, 2.3, },
+	STOP_OTHER_UNIT0	= { 0.03, 2.0, },
+
+	AFTER_IMAGE			= { 1.3, 1.75, },
+	EFFECT_SET_LIST = { "EffectSet_ADW_SCREWDRIVER_Driller", 0, },
+
+	SPEED_TIME0 = { 5000.0, 0.0, 1.300, 2, },
+	SPEED_TIME1 = { 5000.0, 0.0, 1.433, 2, },
+	SPEED_TIME2 = { 1000.0, 0.0, 1.55, 2, },
+	SPEED_TIME3 = { 600.0, 0.0, 2.2, 2, },
+
+	SOUND_PLAY0	= { 0.15, "AishaVoice_Screwdriver.ogg" },
+	SOUND_PLAY1	= { 0.001, "Aisha_ScrewDriver1.ogg" },
+	SOUND_PLAY2	= { 0.24, "Aisha_ScrewDriver2.ogg" },
+	SOUND_PLAY3	= { 1.134, "Aisha_ScrewDriver3.ogg" },
+
+	NORMAL_CAMERA0_RATE			= 40,
+	NORMAL_CAMERA1_RATE			= 30,
+	NORMAL_CAMERA2_RATE			= 30,
+
+	CAMERA1 = 
+	{
+		SUB_CAMERA_TIMING = { 1.0, 1.3, },
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 600,
+			TRACKINGTIME	= 0.3,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			ANGLEDEGREE		= 40,
+			DISTANCE		= 1000,
+			LOOKATDISTANCE	= -50,
+			LOOK_OFFSET_X	= 4500,
+			LOOK_OFFSET_Y	= -2500,
+			TRACKINGTIME	= 0.3,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			ANGLEDEGREE		= 40,
+			DISTANCE		= 1500,
+			LOOKATDISTANCE	= -50,
+			LOOK_OFFSET_X	= 4500,
+			LOOK_OFFSET_Y	= -2500,
+			TRACKINGTIME	= 0.3,
+		},
+	},
+	CAMERA2 = 
+	{
+		SUB_CAMERA_TIMING = { 0.9, 1.2 },
+		
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			ANGLEDEGREE		= 30,
+			DISTANCE		= 700,
+			LOOKATDISTANCE	= -50,
+			HEIGHT			= 700,
+			LOOK_OFFSET_X	= 4500,
+			LOOK_OFFSET_Y	= -2500,
+			TRACKINGTIME	= 0.7,
+		},		
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			ANGLEDEGREE		= 30,
+			DISTANCE		= 500,
+			LOOKATDISTANCE	= -50,
+			HEIGHT			= 500,
+			LOOK_OFFSET_X	= 4500,
+			LOOK_OFFSET_Y	= -2500,
+			TRACKINGTIME	= 0.1,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_NORMAL_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			ANGLEDEGREE		= 65,
+			DISTANCE		= 2000,
+			HEIGHT			= 1000,
+			LOOKATDISTANCE	= -50,
+			LOOK_OFFSET_X	= 4500,
+			LOOK_OFFSET_Y	= -2500,
+			TRACKINGTIME	= 0.5,
+		},
+	},
+}
+
+AVSI_HA_AEM_ELEMENTAL_STORM =
+{	-- 엘리멘탈 스톰
+	ANIM_NAME		= "AEM_Elemental_Storm",
+	ANIM_SPEED		= 1.3,
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	CHANGE_WORLD_COLOR	= TRUE,
+	SHOW_SKILL_CUT_IN_TIME = 0.01,
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	SPEED_TIME0		= { 0, 0, 0.0, 2,},
+	STOP_OTHER_UNIT0 = { 0.0, 1.5, },
+
+	INVINCIBLE			= { 0, 6.56, },
+	
+	EFFECT_SET_LIST_EX = 
+	{ 
+		{ "EffectSet_SA_AEM_ELEMENTAL_STORM_preFX", 0.1, },	--이펙트
+		{ "EffectSet_SA_AEM_ELEMENTAL_STORM_FX_ICICLE", 1.4, },	--이펙트
+		{ "EffectSet_SA_AEM_ELEMENTAL_STORM_FX_LIGHTNING", 2.5, },	--이펙트
+		{ "EffectSet_SA_AEM_ELEMENTAL_STORM_FX_FLAME", 4.0, },	--이펙트
+		{ "EffectSet_SA_AEM_ELEMENTAL_STORM_Damage_ICICLE", 1.3, },	--데미지
+		{ "EffectSet_SA_AEM_ELEMENTAL_STORM_Damage_LIGHTNING", 2.5, },	--데미지
+		{ "EffectSet_SA_AEM_ELEMENTAL_STORM_Damage_FLAME", 4.0, },	--데미지
+	},
+
+	STATE_STRING			= STR_ID_26282,
+
+	LAND_CONNECT		= FALSE,
+	CAN_PUSH_UNIT		= TRUE,
+	CAN_PASS_UNIT		= FALSE,
+	
+	SOUND_PLAY0			= { 0.01, "Aisha_ElementalStorm_Ready.ogg", },
+	SOUND_PLAY1			= { 1.4, "Aisha_ElementalStorm_IceCrystal.ogg", },
+	SOUND_PLAY2			= { 1.6, "Ice_Rock_Broken01.ogg", },
+	SOUND_PLAY3			= { 1.8, "Ice_Pillar_Trap_BrokenB01.ogg", },
+	SOUND_PLAY4			= { 1.8, "lightning.ogg", },
+	SOUND_PLAY5			= { 2.4, "lightning.ogg", },
+	SOUND_PLAY6			= { 3.2, "lightning.ogg", },
+	SOUND_PLAY7			= { 2.6, "Aisha_ElementalStorm_IceCrystal.ogg", },
+	SOUND_PLAY8			= { 2.8, "Ice_Rock_Broken01.ogg", },
+	SOUND_PLAY9			= { 3.0, "Ice_Pillar_Trap_BrokenB01.ogg", },
+	SOUND_PLAY10		= { 3.2, "Aisha_ElementalStorm_IceCrystal.ogg", },
+	SOUND_PLAY11		= { 0.01, "AishaVoice_ElementalStorm1.ogg", },
+	SOUND_PLAY12		= { 1.25, "AishaVoice_ElementalStorm2.ogg", },
+	SOUND_PLAY13		= { 4.0, "FireWall.ogg", },
+	-- SOUND_PLAY14		= { 4.0, "FireWall.ogg", },
+	
+	NORMAL_CAMERA0_RATE			= 100,
+	CAMERA0 = 
+	{
+		SUB_CAMERA_TIMING = { 0.1, 1, 1.2 , 2, 2.5 , 2.9 , 4.2 },
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 50,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= 50,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine1",
+			DISTANCE		= 300,
+			HEIGHT			= -50,
+			ANGLEDEGREE		= -30,
+			TRACKINGTIME	= 0.2,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 100,
+			HEIGHT			= 50,
+			ANGLEDEGREE		= -50,
+		},
+		SUB_CAMERA3 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 1000,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.3,
+		},
+		SUB_CAMERA4 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine1",
+			DISTANCE		= 100,
+			HEIGHT			= -50,
+			ANGLEDEGREE		= -30,
+			TRACKINGTIME	= 1,
+		},
+		SUB_CAMERA5 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 1500,
+			HEIGHT			= 500,
+			ANGLEDEGREE		= 0,
+		},
+		SUB_CAMERA6 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 200,
+			HEIGHT			= -60,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 1,
+		},
+		SUB_CAMERA7 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 1500,
+			HEIGHT			= 500,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.1,
+		},
+	},
+}
+
+AVSI_HA_AVP_ABYSS_ANGOR =
+{	-- 어비스 앙고르
+	ANIM_NAME		= "AVP_Abyss_Angor",
+	ANIM_SPEED		= 1.0,
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	CHANGE_WORLD_COLOR	= TRUE,
+	SHOW_SKILL_CUT_IN_TIME = 0.01,
+	
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	SPEED_TIME0		= { 0, 0, 0.0, 2,},
+	STOP_OTHER_UNIT0 = { 0.0, 2.2, },
+
+
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_HA_AVP_Abyss_Angor_FX", 0,
+		"EffectSet_HA_AVP_Abyss_Angor_FX_Attack", 0,
+	},
+
+	STATE_STRING			= STR_ID_26283,
+
+	LAND_CONNECT		= FALSE,
+	CAN_PUSH_UNIT		= TRUE,
+	CAN_PASS_UNIT		= FALSE,
+	
+	INVINCIBLE			= { 0, 100, },
+	
+	SOUND_SET0_RATE = 50,
+	SOUND_SET1_RATE = 50,
+
+	SOUND_SET0 =
+	{
+		NORMAL =
+		{	
+			SOUND_PLAY0			= { 0.20, "Aisha_AbyssAngor_Summon.ogg", },
+			SOUND_PLAY1			= { 1.60, "Wally9Armor_ChargeBall4.ogg", },
+			SOUND_PLAY2			= { 3.12, "Aisha_AbyssAngor_Laser.ogg", },
+			SOUND_PLAY3			= { 5.14, "Mana_Eater_MagicAttack.ogg", },
+			SOUND_PLAY4			= { 0.01, "AishaVoice_AbyssAngor1.ogg", },
+		},
+	},
+	SOUND_SET1 =
+	{
+		NORMAL =
+		{	
+			SOUND_PLAY0			= { 0.20, "Aisha_AbyssAngor_Summon.ogg", },
+			SOUND_PLAY1			= { 1.60, "Wally9Armor_ChargeBall4.ogg", },
+			SOUND_PLAY2			= { 3.12, "Aisha_AbyssAngor_Laser.ogg", },
+			SOUND_PLAY3			= { 5.14, "Mana_Eater_MagicAttack.ogg", },
+			SOUND_PLAY4			= { 0.01, "AishaVoice_AbyssAngor2.ogg", },
+			SOUND_PLAY5			= { 1.0, "AishaVoice_AbyssAngor3.ogg", },
+		},
+	},
+	
+	NORMAL_CAMERA0_RATE			= 100,	
+	CAMERA0 = 
+	{
+		SUB_CAMERA_TIMING = {0.1, 2.6, 2.9, 3.6 },		
+		SUB_CAMERA0 = 		
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 300,
+			HEIGHT			= 100,
+			ANGLEDEGREE		= 60,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine1",
+			DISTANCE		= 700,
+			HEIGHT			= -50,
+			ANGLEDEGREE		= -20,
+			TRACKINGTIME	= 1.3,
+		},		
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 80,
+			HEIGHT			= 130,
+			ANGLEDEGREE		= -70,
+	 	},
+		SUB_CAMERA3 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 800,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.3,
+			LOOK_APPLY_ROTATE_OFFSET_X	= 400,
+	 	},
+		SUB_CAMERA4 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01",
+			DISTANCE		= 1500,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 1,
+			LOOK_APPLY_ROTATE_OFFSET_X	= 650,
+	 	},		
+	},
+}
+
+AVSI_HA_ADW_FATE_SPACE =
+{	-- 페이트 스페이스
+	ANIM_NAME		= "ADW_Fate_Space",
+	ANIM_SPEED		= 1.0,
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	APPLY_ANIM_SPEED_BY_ITEM_ABILITY = FALSE,
+	CHANGE_WORLD_COLOR	= TRUE,
+	SHOW_SKILL_CUT_IN_TIME = 0.01,
+	INVINCIBLE			= { 0, 6.26, },
+	STOP_OTHER_UNIT0 = { 0.0, 1.0, },
+
+	EFFECT_SET_LIST = { "EffectSet_SA_ADW_FATE_SPACE_FX", 0, },
+
+	STATE_STRING			= STR_ID_26284,
+
+	LAND_CONNECT		= FALSE,
+	CAN_PUSH_UNIT		= TRUE,
+	CAN_PASS_UNIT		= FALSE,
+	
+	SOUND_SET0_RATE = 50,
+	SOUND_SET1_RATE = 50,
+
+	SOUND_SET0 =
+	{
+		NORMAL =
+		{	
+			SOUND_PLAY0			= { 0.65, "Aisha_FateSpace1.ogg", },
+			SOUND_PLAY1			= { 0.01, "AishaVoice_FateSpace1.ogg", },
+			SOUND_PLAY2			= { 3.03, "Aisha_FateSpace2.ogg", },
+			SOUND_PLAY3			= { 4.18, "Aisha_FateSpace3.ogg", },
+		},
+	},
+	SOUND_SET1 =
+	{
+		NORMAL =
+		{	
+			SOUND_PLAY0			= { 0.65, "Aisha_FateSpace1.ogg", },
+			SOUND_PLAY1			= { 0.01, "AishaVoice_FateSpace2.ogg", },
+			SOUND_PLAY2			= { 3.03, "Aisha_FateSpace2.ogg", },
+			SOUND_PLAY3			= { 4.18, "Aisha_FateSpace3.ogg", },
+		},
+	},
+	
+	NORMAL_CAMERA0_RATE			= 100,
+	CAMERA0 = 
+	{
+		SUB_CAMERA_TIMING = { 0.1, 2, 2.2 ,  3.5 , 3.8 ,3.9 ,5.2 },
+		SUB_CAMERA0 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 50,
+			HEIGHT			= -50,
+			ANGLEDEGREE		= 50,
+		},
+		SUB_CAMERA1 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine1",
+			DISTANCE		= 1500,
+			HEIGHT			= -100,
+			ANGLEDEGREE		= -30,
+			TRACKINGTIME	= 1,
+		},
+		SUB_CAMERA2 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 80,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 60,
+		},
+		SUB_CAMERA3 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 1000,
+			HEIGHT			= 0,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 1,
+		},
+		SUB_CAMERA4 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 1500,
+			HEIGHT			= 500,
+			ANGLEDEGREE		= 0,
+		},
+		SUB_CAMERA5 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 200,
+			HEIGHT			= -60,
+			ANGLEDEGREE		= -90,			
+		},
+		SUB_CAMERA6 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Spine1",
+			DISTANCE		= 1300,
+			HEIGHT			= 200,
+			ANGLEDEGREE		= -20,
+			TRACKINGTIME	= 2,
+		},
+		SUB_CAMERA7 = 
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_TRACKING"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 1500,
+			HEIGHT			= 500,
+			ANGLEDEGREE		= 0,
+			TRACKINGTIME	= 0.1,
+		},
+	},
+}

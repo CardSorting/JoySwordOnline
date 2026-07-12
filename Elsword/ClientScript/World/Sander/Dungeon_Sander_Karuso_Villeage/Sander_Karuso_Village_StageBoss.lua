@@ -1,0 +1,276 @@
+﻿-- Sander_Karuso_Village_StageBoss.lua
+
+
+
+g_pWorld:SetLightPos( 50000, -50000, 200000 )
+g_pWorld:SetLineMap( "Sander_Karuso_Village_StageBoss_LineMap.lua" )
+g_pWorld:SetBGM( "Music025_Boss.ogg" )
+
+g_pWorld:AddEffectBGM_LUA( "Amb_Sander_DrySander0_Wind.ogg" ) 
+g_pWorld:AddEffectBGM_LUA( "Amb_Sander_DrySander1_Eagle.ogg" ) 
+g_pWorld:Add3DEffectBGM_LUA( "Amb_Sander_Karuso_Villeage0_Crystal.ogg", -4022, 50432, -1641, 5000 )  
+
+
+
+g_pWorld:SetFogWorld( 0, 10400, 0, 0, -0.76, D3DXCOLOR( 0.819608, 1, 1, 1.0 ) )
+g_pWorld:SetProjection( 10, 500000, 4, 50, 0, 0, 0 )
+
+g_pWorldLayer = g_pWorld:CreateWorldLayer()
+g_pWorldLayer:SetLayer(X2_LAYER["XL_SKY_WORLD_OBJECT_OVER_EFFECT_0"])
+g_pWorldLayer:SetBlendType(1)
+g_pWorldLayer:SetTex( "ruben_village_Layer.tga" )
+g_pWorldLayer:SetAlphaObject(true)
+g_pWorldLayer:SetPos(0, 0, 1, 1)
+g_pWorldLayer:SetColor(D3DXCOLOR(1, 1, 1, 1))
+g_pWorldLayer:SetTexUV(0, 0)
+
+g_pWorldLayer:SetFeedBackUV(0, 0)
+
+g_pWorldLayer:SetLayerId(0)
+g_pWorldLayer:SetInitShow( true )
+g_pWorldLayer = g_pWorld:CreateWorldLayer()
+g_pWorldLayer:SetLayer(X2_LAYER["XL_SKY_WORLD_OBJECT_OVER_EFFECT_0"])
+g_pWorldLayer:SetBlendType(1)
+g_pWorldLayer:SetTex( "SNOW_FOG.tga" )
+g_pWorldLayer:SetAlphaObject(true)
+g_pWorldLayer:SetPos(0, 0, 1, 1)
+g_pWorldLayer:SetColor(D3DXCOLOR(1, 1, 1, 0.321569))
+g_pWorldLayer:SetTexUV(0, 0)
+
+g_pWorldLayer:SetFeedBackUV(0, 0)
+
+g_pWorldLayer:SetLayerId(1)
+g_pWorldLayer:SetInitShow( true )
+-- SKY / CLOUD -- 
+-- STATIC MESH -- 
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Sander_Karuso_Village_All_Ground1.Y" )
+g_pObjectMesh:SetXMeshLOD( "Sander_Karuso_Village_All_Ground1.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 0, 10400, 0, 0, D3DXCOLOR(0.819608, 1, 1, 1), -0.76 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Sander_Karuso_Village_All_ground2.Y" )
+g_pObjectMesh:SetXMeshLOD( "Sander_Karuso_Village_All_ground2.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 0, 10400, 0, 0, D3DXCOLOR(0.819608, 1, 1, 1), -0.76 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Sander_Karuso_Village_All_ground3.Y" )
+g_pObjectMesh:SetXMeshLOD( "Sander_Karuso_Village_All_ground3.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 0, 10400, 0, 0, D3DXCOLOR(0.819608, 1, 1, 1), -0.76 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Sander_Karuso_Village_All_Ground_Sand.Y" )
+g_pObjectMesh:SetXMeshLOD( "Sander_Karuso_Village_All_Ground_Sand.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 0, 10400, 0, 0, D3DXCOLOR(0.819608, 1, 1, 1), -0.76 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Sander_Karuso_Village_Allsky.Y" )
+g_pObjectMesh:SetXMeshLOD( "Sander_Karuso_Village_Allsky.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 0, 10400, 0, 0, D3DXCOLOR(0.819608, 1, 1, 1), -0.76 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Sander_Karuso_Village_Boss_Balpan.Y" )
+g_pObjectMesh:SetXMeshLOD( "Sander_Karuso_Village_Boss_Balpan.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 0, 10400, 0, 0, D3DXCOLOR(0.819608, 1, 1, 1), -0.76 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Sander_Karuso_Village_Boss_BalpanDark.Y" )
+g_pObjectMesh:SetXMeshLOD( "Sander_Karuso_Village_Boss_BalpanDark.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(0.431373, 0.360784, 0.27451, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 0, 10400, 0, 0, D3DXCOLOR(0.819608, 1, 1, 1), -0.76 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Sander_Karuso_Village_Boss_Dol.Y" )
+g_pObjectMesh:SetXMeshLOD( "Sander_Karuso_Village_Boss_Dol.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 0, 10400, 0, 0, D3DXCOLOR(0.819608, 1, 1, 1), -0.76 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Sander_Karuso_Village_Boss_Dot.Y" )
+g_pObjectMesh:SetXMeshLOD( "Sander_Karuso_Village_Boss_Dot.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 0, 10400, 0, 0, D3DXCOLOR(0.819608, 1, 1, 1), -0.76 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Sander_Karuso_Village_Boss_Ground.Y" )
+g_pObjectMesh:SetXMeshLOD( "Sander_Karuso_Village_Boss_Ground.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 0, 10400, 0, 0, D3DXCOLOR(0.819608, 1, 1, 1), -0.76 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Sander_Karuso_Village_Boss_Jewel.Y" )
+g_pObjectMesh:SetXMeshLOD( "Sander_Karuso_Village_Boss_Jewel.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(0.768627, 0.87451, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 0, 10400, 0, 0, D3DXCOLOR(0.819608, 1, 1, 1), -0.76 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Sander_Karuso_Village_Boss_Jewel_UV.Y" )
+g_pObjectMesh:SetXMeshLOD( "Sander_Karuso_Village_Boss_Jewel_UV.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetTex0UVSpeed( 0, 0.5 )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 0, 10400, 0, 0, D3DXCOLOR(0.819608, 1, 1, 1), -0.76 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Sander_Karuso_Village_Boss_Mid_Tower.Y" )
+g_pObjectMesh:SetXMeshLOD( "Sander_Karuso_Village_Boss_Mid_Tower.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 0, 10400, 0, 0, D3DXCOLOR(0.819608, 1, 1, 1), -0.76 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Sander_Karuso_Village_Boss_MidTower_UV.Y" )
+g_pObjectMesh:SetXMeshLOD( "Sander_Karuso_Village_Boss_MidTower_UV.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetTex0UVSpeed( 0, -1 )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(0.611765, 0.45098, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 0, 10400, 0, 0, D3DXCOLOR(0.819608, 1, 1, 1), -0.76 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Sander_Karuso_Village_Boss_Silrape.Y" )
+g_pObjectMesh:SetXMeshLOD( "Sander_Karuso_Village_Boss_Silrape.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 0, 10400, 0, 0, D3DXCOLOR(0.819608, 1, 1, 1), -0.76 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Sander_Karuso_Village_SBoss_MainGround.Y" )
+g_pObjectMesh:SetXMeshLOD( "Sander_Karuso_Village_SBoss_MainGround.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetFog( 0, 10400, 0, 0, D3DXCOLOR(0.819608, 1, 1, 1), -0.76 )
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "Sander_Karuso_Village_Boss_Sun.Y" )
+g_pObjectMesh:SetXMeshLOD( "Sander_Karuso_Village_Boss_Sun.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetOriginalColorFactor( D3DXCOLOR(1, 1, 1, 1))
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( false, false )
+g_pObjectMesh:SetNotRenderWhenHidden( false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+g_pObjectMesh:SetFog( 0, 0, 0, 0, D3DXCOLOR(0.819608, 1, 1, 1), -0.76 )
+
+
+-- SKIN MESH -- 
+-- PARTICLE -- 

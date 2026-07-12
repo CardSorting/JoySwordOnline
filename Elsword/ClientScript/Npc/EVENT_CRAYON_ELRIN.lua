@@ -1,0 +1,2578 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+--[[ / 2013/6/10 / 크레용팝 이벤트 NPC
+	 
+--]]
+
+-- 바운딩 박스와 캐릭터의 크기 배율을 결정합니다.
+INIT_SYSTEM =
+{
+	UNIT_WIDTH		= 70.0,
+	UNIT_HEIGHT		= 150.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	--UNIT_SCALE      = 1.5,
+}
+--------------------------------------------------------------------------
+-- 미리 로딩할 텍스쳐와 사운드, 메시를 결정합니다.
+INIT_DEVICE =
+{
+	READY_TEXTURE =
+	{
+		"Smoke.dds",
+		"GroundShockWave02.dds",
+		"AeroTornado04.dds",
+		"Whitecircle02.dds",
+		"Condense_Light01.dds",
+		"GroundShockWave.dds",
+		"Lire_Kick_Impact01.dds",
+		"Ground_Wind_Effect02.tga",
+		"SlideKick_Impact01.tga",
+		"Lire_Leaf01.tga",
+		"Moon_MagicSquare01.dds",
+	},
+	READY_SOUND =
+	{
+		"FootAttack.ogg",
+		"FootAttack2.ogg",
+		"sliding.ogg",
+		"Lena_WS_Nature_Force1.ogg",
+		"Lena_WS_Nature_Force2.ogg",
+		"Lena_ReflexMagic.ogg",
+		"LenaVoice_DamageScream01.ogg",
+		"LenaVoice_DamageScream02.ogg",
+		"LenaVoice_DamageScream03.ogg",
+		"LenaVoice_DamageScream04.ogg",
+		"LenaVoice_DieScream1.ogg",
+	},
+	READY_XMESH = 
+	{
+		"Wind_Liner02.Y",
+		"Lire_FeatherA.Y",
+		"Lire_Leaf01.Y",
+	},
+	READY_XSKIN_MESH = 
+	{	
+		
+		"Slide_Ground_Wind01.X",
+		"Wind_Liner02.X",
+		"Lire_SI_SA_Slide_Kick_Mesh03.X",
+		"Lire_SI_SA_Slide_Kick_Mesh02.X",
+		"Lire_SI_A_Lws_Nature_Force_Mesh01.X",
+	},
+}
+--------------------------------------------------------------------------
+-- 이 NPC가 사용 할 모션을 결정합니다.
+INIT_MOTION =
+{
+	MOTION_FILE_NAME	= "Motion_EVENT_CRAYON_ELRIN.x",
+}
+--------------------------------------------------------------------------
+INIT_PHYSIC =
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4500,
+	MAX_G_SPEED			= -2000,
+	
+	--모든 기본 이/점속이 10% 향상되어 있습니다.
+	WALK_SPEED			= 500*1.1,
+	RUN_SPEED			= 725*1.1,
+	JUMP_SPEED			= 1500*1.1,
+	DASH_JUMP_SPEED		= 2200*1.1,
+}
+--------------------------------------------------------------------------
+INIT_COMPONENT =
+{
+	-- 최대MP가 300이고 초당 MP가 4씩 회복됩니다.
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 100,
+	-- DRAW_SMALL_MP_BAR	= TRUE,
+    USE_SLASH_TRACE     = FALSE,
+
+	HYPER_MODE_COUNT	= 1,
+	MAX_HYPER_MODE_TIME	= 60,
+	
+	
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+
+    --MIND_FLAG_HEIGHT		= 230,
+
+	HYPER_BOOST_RIGHT	= "HyperBoostRightGreen",
+	HYPER_BOOST_LEFT	= "HyperBoostLeftGreen",
+	HYPER_MODE_COLOR_R = 0.3,
+	HYPER_MODE_COLOR_G = 1.0,
+	HYPER_MODE_COLOR_B = 0.3,
+	HYPER_MODE_COLOR_A = 1.0,
+	
+	AFTER_IMAGE_LAYER = X2_LAYER["XL_SKY_WORLD_OBJECT_2"],
+	
+	AFTER_IMAGE_COLOR_R = 0.5, 
+	AFTER_IMAGE_COLOR_G = 0.5, 
+	AFTER_IMAGE_COLOR_B = 0.5,
+	AFTER_IMAGE_COLOR_A = 0.5,
+	
+	AFTER_IMAGE_DEST_ALPHA_BLEND = TRUE,
+	
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	FALL_DOWN			= TRUE,
+	
+	DIE_FLY			= FALSE,
+		
+	FORCE_DOWN_GAGE_MAX = 100,
+	-- NOT_EXTRA_DAMAGE	= TRUE,
+	
+	DEFENCE_RATE	= 30,
+	
+	
+}
+--------------------------------------------------------------------------
+-- 스테이트와 모션을 지정합니다.(Initializing NPC's states)
+INIT_STATE =
+{
+	-- 시작모션입니다. 1개의 시작모션을 가지고 있습니다.
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_START",					LUA_FRAME_MOVE_FUNC = "EVENT_CRAYON_ELRIN_START_FRAME_MOVE"			},
+	
+	
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_STANDUP_WAIT",							},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_WAIT",							},
+	-- -- 기상 시 무적을 주는 wait 상태입니다.
+	
+
+	-- 이동과 관련된 동작(걷기, 뛰기, 타격 실패시 뒤돌아보기, 뛰다 멈추기, 뒤로 걸어가기, 뒤로 대시) 입니다.
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_WALK",							},
+    { STATE_NAME = "EVENT_CRAYON_ELRIN_DASH",							},
+    
+    { STATE_NAME = "EVENT_CRAYON_ELRIN_DASH_END",						LUA_FRAME_MOVE_FUNC = "EVENT_CRAYON_ELRIN_DASH_STATE_END",						},
+
+	-- 점프와 관련된 동작(뛰어오르기, 뛰어내리기, 착지, 2단 점프) 입니다.
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_JUMP_UP",						},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DOUBLE_JUMP_UP",						},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DASH_DOUBLE_JUMP_UP",						},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_JUMP_DOWN",						LUA_STATE_END_FUNC = "EVENT_CRAYON_ELRIN_JUMP_DOWN_STATE_END"					},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_JUMP_DOWN_ACT",					LUA_STATE_END_FUNC = "EVENT_CRAYON_ELRIN_JUMP_DOWN_STATE_END"					},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_JUMP_DOWN_NOACT",				LUA_STATE_END_FUNC = "EVENT_CRAYON_ELRIN_JUMP_DOWN_STATE_END"					},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_JUMP_UP_DIR",					},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_JUMP_UP_DIR_for_Jump_X",					},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_JUMP_DOWN_DIR",					LUA_STATE_END_FUNC = "EVENT_CRAYON_ELRIN_JUMP_DOWN_DIR_STATE_END"				},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_JUMP_LANDING",					},
+	
+	-- zzzz 콤보
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_ComboZ",										},
+	
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_ComboZZ",						},
+	
+	-- 대시점프 Z
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DashJump",						},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DashJump_Down",						},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DashJump_landing",				},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DashJumpComboZ_Direct",								},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DashJumpComboZ",								},
+	
+	
+	
+	-- 대시 zzz 콤보
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DashComboZ",										},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DashComboZZ",					},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DashComboZZZ",					},
+	
+	
+	
+	-- 띄우는 공격을 행하였을 때 기다렸다가 발차기나 여타 스킬로 이어갈 수 있도록 해주는 콤보 스테이트 입니다.
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_Combo_for_Upper_Attack",										},
+	-- 대시z로 띄웠을 때 화살 한발로 잡고 다시 때리기 시작합니다.
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_Combo_for_Upper_Attack_JumpX_JUMP",										},
+	
+	
+	-- 리액션 관련
+	
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DAMAGE_AIR",				},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DAMAGE_AIR_DOWN",				},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DAMAGE_AIR_DOWN_LANDING",				},
+	
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DAMAGE_AIR_UP",				},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DAMAGE_AIR_FALL",				},
+	
+	-- 정면에서 맞았을 때의 리액션 입니다. (small, big, down, fly)
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DAMAGE_SMALL_FRONT",			LUA_FRAME_MOVE_FUNC = "EVENT_CRAYON_ELRIN_DAMAGE_FRONT_FRAME_MOVE"				},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DAMAGE_BIG_FRONT",				LUA_FRAME_MOVE_FUNC = "EVENT_CRAYON_ELRIN_DAMAGE_FRONT_FRAME_MOVE"				},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DAMAGE_DOWN_FRONT",				LUA_FRAME_MOVE_FUNC = "EVENT_CRAYON_ELRIN_DAMAGE_DOWN_FRONT_FRAME_MOVE"		},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DAMAGE_FLY_FRONT",				},
+	
+	-- 후면에서 맞았을 때의 리액션 입니다. (small, big, down, fly)
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DAMAGE_SMALL_BACK",				LUA_FRAME_MOVE_FUNC = "EVENT_CRAYON_ELRIN_DAMAGE_BACK_FRAME_MOVE"				},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DAMAGE_BIG_BACK",				LUA_FRAME_MOVE_FUNC = "EVENT_CRAYON_ELRIN_DAMAGE_BACK_FRAME_MOVE"				},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DAMAGE_DOWN_BACK",				LUA_FRAME_MOVE_FUNC = "EVENT_CRAYON_ELRIN_DAMAGE_DOWN_BACK_FRAME_MOVE"			},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DAMAGE_FLY_BACK",				},
+	
+	
+	-- 반격에 당했을 때의 모션입니다.
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DAMAGE_REVENGE",				},
+
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_STAND_UP_FRONT",				},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_STAND_UP_BACK",				},
+	
+	-- 죽을 때의 모션입니다.
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DYING_FRONT",					LUA_STATE_START_FUNC = "EVENT_CRAYON_ELRIN_DYING_LAND_STATE_START",			},
+	{ STATE_NAME = "EVENT_CRAYON_ELRIN_DYING_BACK",					LUA_STATE_START_FUNC = "EVENT_CRAYON_ELRIN_DYING_LAND_STATE_START",			},
+
+	
+	-- NPC 리액트별 state 연결
+	START_STATE					= "EVENT_CRAYON_ELRIN_START",
+	WAIT_STATE					= "EVENT_CRAYON_ELRIN_WAIT",
+	SUMMON_END_STATE			= "EVENT_CRAYON_ELRIN_WAIT",
+
+	SMALL_DAMAGE_LAND_FRONT		= "EVENT_CRAYON_ELRIN_DAMAGE_SMALL_FRONT",
+	SMALL_DAMAGE_LAND_BACK		= "EVENT_CRAYON_ELRIN_DAMAGE_SMALL_BACK",
+	BIG_DAMAGE_LAND_FRONT		= "EVENT_CRAYON_ELRIN_DAMAGE_BIG_FRONT",
+	BIG_DAMAGE_LAND_BACK		= "EVENT_CRAYON_ELRIN_DAMAGE_BIG_BACK",
+	DOWN_DAMAGE_LAND_FRONT		= "EVENT_CRAYON_ELRIN_DAMAGE_BIG_FRONT",
+	DOWN_DAMAGE_LAND_BACK		= "EVENT_CRAYON_ELRIN_DAMAGE_BIG_BACK",
+	FLY_DAMAGE_FRONT			= "EVENT_CRAYON_ELRIN_DAMAGE_FLY_FRONT",
+	FLY_DAMAGE_BACK				= "EVENT_CRAYON_ELRIN_DAMAGE_FLY_BACK",
+	SMALL_DAMAGE_AIR			= "EVENT_CRAYON_ELRIN_DAMAGE_AIR",
+	BIG_DAMAGE_AIR				= "EVENT_CRAYON_ELRIN_DAMAGE_AIR",
+	DOWN_DAMAGE_AIR				= "EVENT_CRAYON_ELRIN_DAMAGE_AIR",
+	DOWN_DAMAGE_AIR_LANDING		= "EVENT_CRAYON_ELRIN_DAMAGE_AIR",
+	UP_DAMAGE					= "EVENT_CRAYON_ELRIN_DAMAGE_AIR",
+	DAMAGE_REVENGE				= "EVENT_CRAYON_ELRIN_DAMAGE_REVENGE",
+	
+	DAMAGE_EXTRA_STATES         = {  "EVENT_CRAYON_ELRIN_DAMAGE_AIR_DOWN","EVENT_CRAYON_ELRIN_DAMAGE_AIR_FALL","EVENT_CRAYON_ELRIN_DAMAGE_AIR_DOWN_LANDING",
+	"EVENT_CRAYON_ELRIN_DAMAGE_AIR_UP","EVENT_CRAYON_ELRIN_DAMAGE_DOWN_BACK",
+	"EVENT_CRAYON_ELRIN_STAND_UP_FRONT","EVENT_CRAYON_ELRIN_STAND_UP_BACK",
+	"EVENT_CRAYON_ELRIN_JUMP_DOWN","EVENT_CRAYON_ELRIN_JUMP_LANDING","EVENT_CRAYON_ELRIN_JUMP_DOWN_NOACT",},	
+
+	-- 죽을 때의 모션 연결입니다.
+	DYING_LAND_FRONT			= "EVENT_CRAYON_ELRIN_DYING_FRONT",
+	DYING_LAND_BACK				= "EVENT_CRAYON_ELRIN_DYING_BACK",
+	DYING_SKY					= "EVENT_CRAYON_ELRIN_DYING_FRONT",
+
+	REVENGE_ATTACK				= "",
+}
+--------------------------------------------------------------------------
+-- 기본 AI 설정입니다.
+INIT_AI =
+{
+	ALLY = 
+	{
+		FAR_LOST_RANGE	= 1000,			-- 이 거리보다 멀어지면 유저 옆으로 텔레포트
+		LOST_RANGE		= 1000,			-- 이 거리보다 멀어지면 유저 쪽으로 걸어감
+	},
+
+
+	TARGET =
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_NEAR_FIRST"],
+		TARGET_INTERVAL				= 1,		-- sec
+		TARGET_NEAR_RANGE			= 800,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 9999,		-- cm
+		TARGET_LOST_RANGE			= 9999,		-- cm
+		TARGET_SUCCESS_RATE			= 100,  --50,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 30,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 0, -- 30,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE =
+	{
+	
+		DEST_GAP			= 700,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 300,
+		
+		DIR_CHANGE_INTERVAL = 0.2,
+		
+		MOVE_SPLIT_RANGE	= 400,
+		WALK_INTERVAL		= 1,
+		NEAR_WALK_RATE		= 0,   --  70,
+		FAR_WALK_RATE		= 0,   -- 30,
+		
+		
+
+		JUMP_INTERVAL		= 5,
+		UP_JUMP_RATE		= 40, -- 40,
+		UP_DOWN_RATE		= 20,
+		DOWN_JUMP_RATE		= 100,    --  20,
+		DOWN_DOWN_RATE		= 100,
+
+		LINE_END_RANGE		= 100,	-- cm
+	},
+}
+--------------------------------------------------------------------------
+
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_START =
+{
+	ANIM_SPEED					= 1,
+	
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+		
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	-- 시작 모션 후 5초 뒤 부터 행동을 시작합니다.
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"EVENT_CRAYON_ELRIN_WAIT",			},
+	},
+}
+
+-- 시작 시 엠 50을 채워줍니다.
+function EVENT_CRAYON_ELRIN_START_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.001 ) then
+		local nowMp = pNPCUnit:GetNowMP() 
+		pNPCUnit:SetNowMP(nowMp +50)
+		local pEffectSet = pX2Game:GetEffectSet()
+		local hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_FRIENDSHIP_NATURE", pNPCUnit )
+	end		     
+	  
+end	
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_WAIT =
+{
+	ANIM_NAME	= "Wait",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	SPEED_X	= 0,
+	SPEED_Y	= 0,
+
+	VIEW_TARGET     = TRUE, 
+		
+	PASSIVE_SPEED_X	= 0,
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	-- 0.1초 간격으로 다음에 할 행동을 결정합니다.
+	EVENT_INTERVAL_TIME0	= 0.1,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"EVENT_CRAYON_ELRIN_JUMP_DOWN_ACT",														},
+
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],			"EVENT_CRAYON_ELRIN_DASH",																	},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],			"EVENT_CRAYON_ELRIN_JUMP_UP",																},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],		"EVENT_CRAYON_ELRIN_JUMP_UP_DIR",															},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],			"EVENT_CRAYON_ELRIN_JUMP_DOWN_ACT",																},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],		"EVENT_CRAYON_ELRIN_JUMP_DOWN_DIR",															},
+		
+		-- 정지하고 있을 때는 다음의 행동을 수행할 수 있습니다. (z입력, 걷기, 뛰기, 대시점프, 걷기와 뛰기는 강제로 수행 시키는 부분입니다.)
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_ComboZ",     					"CT_EVENT_CRAYON_ELRIN_ComboZ",       	     	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_JUMP_UP_DIR_for_Jump_X",   	"CT_EVENT_CRAYON_ELRIN_JUMP_UP_DIR_for_Jump_X",           	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_DashComboZ",     				"CT_EVENT_CRAYON_ELRIN_DashComboZ",           	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_DashJumpComboZ_Direct",    	"CT_EVENT_CRAYON_ELRIN_DashJumpComboZ_Direct",           	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_DASH",         				"CT_EVENT_CRAYON_ELRIN_DASH",       		    },
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_JUMP_UP_DIR",         		"CT_EVENT_CRAYON_ELRIN_JUMP_UP_DIR",     	 	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_JUMP_UP",         			"CT_EVENT_CRAYON_ELRIN_JUMP_UP",     		 	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_DashJump",          			"CT_EVENT_CRAYON_ELRIN_DashJump",      			},
+		  		
+		
+	},
+
+	
+	CT_EVENT_CRAYON_ELRIN_JUMP_UP_DIR_for_Jump_X =
+	{
+		TARGET_ABOVE_ME 			= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_OVER_TARGET_NEAR	= 500,	
+		DISTANCE_TO_TARGET_NEAR		= 1000,	
+		RATE						= 10,
+	},
+
+
+	CT_EVENT_CRAYON_ELRIN_ComboZ =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 275,	
+		RATE						= 90,
+	},
+	CT_EVENT_CRAYON_ELRIN_DashComboZ =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 900,	
+		RATE						= 50,
+		SAME_LINE_WITH_TARGET		= TRUE,
+	},
+	CT_EVENT_CRAYON_ELRIN_DashJumpComboZ_Direct =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_OVER_TARGET_NEAR	= 900,
+		RATE						= 20,
+		SAME_LINE_WITH_TARGET		= TRUE,
+	},
+	CT_EVENT_CRAYON_ELRIN_DASH =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_OVER_TARGET_NEAR	= 400,
+		RATE						= 20,
+	},
+		
+	CT_EVENT_CRAYON_ELRIN_DashJump =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1000,
+		RATE						= 20,
+		SAME_LINE_WITH_TARGET		= TRUE,
+	},
+	
+	CT_EVENT_CRAYON_ELRIN_JUMP_UP_DIR =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 700,	
+		RATE						= 20,
+	},
+	
+	CT_EVENT_CRAYON_ELRIN_JUMP_UP =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 700,	
+		RATE						= 20,
+	},
+	
+}
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_STANDUP_WAIT =
+{
+	ANIM_NAME	= "Wait",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	INVINCIBLE = { -1, -1, 0.7, 0.7 },
+	
+	SPEED_X	= 0,
+	SPEED_Y	= 0,
+
+	VIEW_TARGET     = TRUE, 
+		
+	PASSIVE_SPEED_X	= 0,
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	-- 0.1초 간격으로 다음에 할 행동을 결정합니다.
+	EVENT_INTERVAL_TIME0	= 0.1,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"EVENT_CRAYON_ELRIN_JUMP_DOWN_ACT",														},
+	
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],			"EVENT_CRAYON_ELRIN_DASH",																	},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],			"EVENT_CRAYON_ELRIN_JUMP_UP",																},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],		"EVENT_CRAYON_ELRIN_JUMP_UP_DIR",															},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],			"EVENT_CRAYON_ELRIN_JUMP_DOWN_ACT",																},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],		"EVENT_CRAYON_ELRIN_JUMP_DOWN_DIR",															},
+		
+		-- 정지하고 있을 때는 다음의 행동을 수행할 수 있습니다. (z입력, 걷기, 뛰기, 대시점프, 걷기와 뛰기는 강제로 수행 시키는 부분입니다.)
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_ComboZ",     					"CT_EVENT_CRAYON_ELRIN_ComboZ",       	     	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_JUMP_UP_DIR_for_Jump_X",   	"CT_EVENT_CRAYON_ELRIN_JUMP_UP_DIR_for_Jump_X",           	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_DashComboZ",     				"CT_EVENT_CRAYON_ELRIN_DashComboZ",           	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_DashJumpComboZ_Direct",    	"CT_EVENT_CRAYON_ELRIN_DashJumpComboZ_Direct",           	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_DASH",         				"CT_EVENT_CRAYON_ELRIN_DASH",       		    },
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_JUMP_UP_DIR",         		"CT_EVENT_CRAYON_ELRIN_JUMP_UP_DIR",     	 	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_JUMP_UP",         			"CT_EVENT_CRAYON_ELRIN_JUMP_UP",     		 	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_DashJump",          			"CT_EVENT_CRAYON_ELRIN_DashJump",      			},
+		  		
+		
+	},
+
+	
+	CT_EVENT_CRAYON_ELRIN_JUMP_UP_DIR_for_Jump_X =
+	{
+		TARGET_ABOVE_ME 			= TRUE,
+		SAME_LINE_WITH_TARGET		= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_OVER_TARGET_NEAR	= 500,	
+		DISTANCE_TO_TARGET_NEAR		= 1000,	
+		RATE						= 10,
+	},
+
+	CT_EVENT_CRAYON_ELRIN_ComboZ =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 275,	
+		RATE						= 90,
+	},
+	CT_EVENT_CRAYON_ELRIN_DashComboZ =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 900,	
+		RATE						= 50,
+		SAME_LINE_WITH_TARGET		= TRUE,
+	},
+	CT_EVENT_CRAYON_ELRIN_DashJumpComboZ_Direct =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_OVER_TARGET_NEAR	= 900,
+		RATE						= 20,
+		SAME_LINE_WITH_TARGET		= TRUE,
+	},
+	CT_EVENT_CRAYON_ELRIN_DASH =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_OVER_TARGET_NEAR	= 400,
+		RATE						= 20,
+	},
+	
+	CT_EVENT_CRAYON_ELRIN_DashJump =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1000,
+		RATE						= 20,
+		SAME_LINE_WITH_TARGET		= TRUE,
+	},
+	
+	CT_EVENT_CRAYON_ELRIN_JUMP_UP_DIR =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 700,	
+		RATE						= 20,
+	},
+	
+	CT_EVENT_CRAYON_ELRIN_JUMP_UP =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 700,	
+		RATE						= 20,
+	},
+	
+}
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_WALK =
+{
+	ANIM_NAME	= "Walk",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+
+	-- 0.1초 간격으로 다음에 할 행동을 결정합니다. 
+	EVENT_INTERVAL_TIME0	= 0.1,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"EVENT_CRAYON_ELRIN_JUMP_DOWN_ACT",													},
+
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],			"EVENT_CRAYON_ELRIN_WALK",																	},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],			"EVENT_CRAYON_ELRIN_DASH",																	},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],			"EVENT_CRAYON_ELRIN_JUMP_UP_DIR",																},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],		"EVENT_CRAYON_ELRIN_JUMP_UP_DIR",															},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],			"EVENT_CRAYON_ELRIN_JUMP_DOWN_ACT",															},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],		"EVENT_CRAYON_ELRIN_JUMP_DOWN_DIR",														},
+		
+		-- 정지하고 있을 때는 다음의 행동을 수행할 수 있습니다. (z입력, 걷기, 뛰기, 대시점프, 걷기와 뛰기는 강제로 수행 시키는 부분입니다.)
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_ComboZ",     					"CT_EVENT_CRAYON_ELRIN_ComboZ",       	     	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_JUMP_UP_DIR_for_Jump_X",   	"CT_EVENT_CRAYON_ELRIN_JUMP_UP_DIR_for_Jump_X",           	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_DashComboZ",     				"CT_EVENT_CRAYON_ELRIN_DashComboZ",           	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_DashJumpComboZ_Direct",    	"CT_EVENT_CRAYON_ELRIN_DashJumpComboZ_Direct",           	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_DASH",         				"CT_EVENT_CRAYON_ELRIN_DASH",       		    },
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_JUMP_UP_DIR",         		"CT_EVENT_CRAYON_ELRIN_JUMP_UP_DIR",     	 	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_JUMP_UP",         			"CT_EVENT_CRAYON_ELRIN_JUMP_UP",     		 	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_DashJump",          			"CT_EVENT_CRAYON_ELRIN_DashJump",      			},
+	
+	},
+
+	
+
+	CT_EVENT_CRAYON_ELRIN_JUMP_UP_DIR_for_Jump_X =
+	{
+		TARGET_ABOVE_ME 			= TRUE,
+		SAME_LINE_WITH_TARGET		= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_OVER_TARGET_NEAR	= 500,	
+		DISTANCE_TO_TARGET_NEAR		= 1000,	
+		RATE						= 10,
+	},
+
+	
+	CT_EVENT_CRAYON_ELRIN_ComboZ =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 275,	
+		RATE						= 90,
+	},
+	CT_EVENT_CRAYON_ELRIN_DashComboZ =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 900,	
+		RATE						= 50,
+		SAME_LINE_WITH_TARGET		= TRUE,
+	},
+	CT_EVENT_CRAYON_ELRIN_DashJumpComboZ_Direct =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_OVER_TARGET_NEAR	= 900,
+		RATE						= 20,
+		SAME_LINE_WITH_TARGET		= TRUE,
+	},
+	CT_EVENT_CRAYON_ELRIN_DASH =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_OVER_TARGET_NEAR	= 400,
+		RATE						= 20,
+	},
+		
+	CT_EVENT_CRAYON_ELRIN_DashJump =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1000,
+		RATE						= 20,
+		SAME_LINE_WITH_TARGET		= TRUE,
+	},
+	
+	
+	CT_EVENT_CRAYON_ELRIN_JUMP_UP_DIR =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 700,	
+		RATE						= 20,
+	},
+	
+	CT_EVENT_CRAYON_ELRIN_JUMP_UP =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 700,	
+		RATE						= 20,
+	},
+		
+}
+
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_DASH =
+{
+	ANIM_NAME					= "Dash",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	ANIM_SPEED					= 1,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	PASSIVE_SPEED_X				= INIT_PHYSIC["RUN_SPEED"],
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+
+	-- 0.1초 간격으로 다음에 할 행동을 결정합니다. 
+	EVENT_INTERVAL_TIME0	= 0.1,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"EVENT_CRAYON_ELRIN_JUMP_DOWN_ACT",													},
+
+		
+		-- 달려가다가 일정 거리 안이 되면 달리기를 멈추는 동작입니다.
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_DASH_END",          		"CT_EVENT_CRAYON_ELRIN_DASH_END",      		},
+		
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],			"EVENT_CRAYON_ELRIN_DASH",																	},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],			"EVENT_CRAYON_ELRIN_JUMP_UP_DIR",																},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],		"EVENT_CRAYON_ELRIN_DashJump",															},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],			"EVENT_CRAYON_ELRIN_JUMP_DOWN_ACT",															},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],		"EVENT_CRAYON_ELRIN_JUMP_DOWN_DIR",														},
+		
+		-- 정지하고 있을 때는 다음의 행동을 수행할 수 있습니다. (z입력, 걷기, 뛰기, 대시점프, 걷기와 뛰기는 강제로 수행 시키는 부분입니다.)
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_DashComboZ",     			"CT_EVENT_CRAYON_ELRIN_DashComboZ",           	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_DashJump",          		"CT_EVENT_CRAYON_ELRIN_DashJump",      		},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_DashJump",          		"CT_EVENT_CRAYON_ELRIN_DashJump2",      		},
+		
+	},
+	
+	
+	-- 슬라이딩! 슬라이딩!
+	
+	CT_EVENT_CRAYON_ELRIN_DASH_JUMP_UP_for_DashJump_X =
+	{
+		TARGET_BELOW_ME 			= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_OVER_TARGET_NEAR	= 550,	
+		DISTANCE_TO_TARGET_NEAR		= 1200,	
+		RATE						= 50,
+		SAME_LINE_WITH_TARGET		= TRUE,
+	},
+	CT_EVENT_CRAYON_ELRIN_JUMP_UP_DIR_for_Jump_X =
+	{
+		TARGET_ABOVE_ME 			= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1200,	
+		RATE						= 50,
+		SAME_LINE_WITH_TARGET		= TRUE,
+	},
+
+	CT_EVENT_CRAYON_ELRIN_Aero_Strafe =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 700,	
+		MY_MP_MORE_THAN				= 200,
+		RATE						= 100,
+	},
+
+	CT_EVENT_CRAYON_ELRIN_DashComboZ =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 800,
+		RATE						= 40,
+	},
+
+	CT_EVENT_CRAYON_ELRIN_DashJump =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 700,
+		RATE						= 20,
+	},
+		
+	
+	CT_EVENT_CRAYON_ELRIN_DASH_END =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 700,
+		RATE						= 100,
+	},
+
+	
+	CT_EVENT_CRAYON_ELRIN_DashJump2 =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 450,
+		RATE						= 80,
+	},
+}
+
+
+
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+-- move & jump
+-- 이동 및 점프에 관한 동작 구현부분입니다.
+
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_DASH_END =
+{
+	ANIM_NAME			= "DashEnd",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SOUND_PLAY0			= { 0.02, "Step.ogg" },
+	
+	SPEED_X						= INIT_PHYSIC["RUN_SPEED"]*0.75,
+
+	ALLOW_DIR_CHANGE			= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS =
+	{
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_WAIT",         			"CT_PVP_BOT_TURN_WAIT_POSITION",       		    },
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_WAIT",         			"CT_PVP_BOT_TURN_WAIT_POSITION2",       		    },
+		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"EVENT_CRAYON_ELRIN_JUMP_DOWN_DIR",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"EVENT_CRAYON_ELRIN_WAIT",			},
+	},
+	CT_PVP_BOT_TURN_WAIT_POSITION =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 550,	
+		RATE						= 50,
+	},
+	CT_PVP_BOT_TURN_WAIT_POSITION2 =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,	
+		RATE						= 100,
+	},
+}
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_JUMP_UP =
+{
+	ANIM_NAME		= "JumpUp",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION		= TRUE,
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	SPEED_X			= 300,
+	SPEED_Y			= INIT_PHYSIC["JUMP_SPEED"],
+
+	ADD_POS_Y		= 45,
+
+
+	-- 0.01초 간격으로 다음에 할 행동을 결정합니다. 
+	EVENT_INTERVAL_TIME0	= 0.05,
+	
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	EVENT_PROCESS =
+	{
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"EVENT_CRAYON_ELRIN_DOUBLE_JUMP_UP",    "CT_EVENT_CRAYON_ELRIN_DOUBLE_JUMP_UP",     },
+		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"EVENT_CRAYON_ELRIN_JUMP_DOWN_ACT",		},
+	},
+	CT_EVENT_CRAYON_ELRIN_DOUBLE_JUMP_UP =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		TARGET_ABOVE_ME				= TRUE,
+		DISTANCE_OVER_TARGET_NEAR	= 300,
+		RATE						= 20,
+	},
+}
+
+EVENT_CRAYON_ELRIN_JUMP_DOWN =
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	-- 0.01초 간격으로 다음에 할 행동을 결정합니다. 
+	EVENT_INTERVAL_TIME0	= 0.05,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS =
+	{
+        { STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"EVENT_CRAYON_ELRIN_JUMP_LANDING",	},
+	},
+	
+	
+	CT_EVENT_CRAYON_ELRIN_DOUBLE_JUMP_UP =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		TARGET_ABOVE_ME				= TRUE,
+		DISTANCE_OVER_TARGET_NEAR	= 300,
+		RATE						= 15,
+	},
+}
+EVENT_CRAYON_ELRIN_JUMP_DOWN_ACT =
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	-- 0.01초 간격으로 다음에 할 행동을 결정합니다. 
+	EVENT_INTERVAL_TIME0	= 0.05,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS =
+	{
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"EVENT_CRAYON_ELRIN_DOUBLE_JUMP_UP",    "CT_EVENT_CRAYON_ELRIN_DOUBLE_JUMP_UP",     },
+        
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"EVENT_CRAYON_ELRIN_JUMP_LANDING",	},
+	},
+	
+	
+	CT_EVENT_CRAYON_ELRIN_DOUBLE_JUMP_UP =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		TARGET_ABOVE_ME				= TRUE,
+		DISTANCE_OVER_TARGET_NEAR	= 300,
+		RATE						= 15,
+	},
+}
+EVENT_CRAYON_ELRIN_JUMP_DOWN_NOACT =
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"EVENT_CRAYON_ELRIN_JUMP_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_JUMP_UP_DIR_for_Jump_X =
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+
+	ADD_POS_Y					= 45,
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	EVENT_PROCESS =
+	{
+        { STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"EVENT_CRAYON_ELRIN_JUMP_DOWN_DIR",		},
+	},
+	
+}
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_JUMP_UP_DIR =
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+
+	ADD_POS_Y					= 45,
+
+	-- 0.01초 간격으로 다음에 할 행동을 결정합니다. 
+	EVENT_INTERVAL_TIME0	= 0.05,
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	EVENT_PROCESS =
+	{
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"EVENT_CRAYON_ELRIN_DOUBLE_JUMP_UP",    "CT_EVENT_CRAYON_ELRIN_DOUBLE_JUMP_UP",     },
+        { STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"EVENT_CRAYON_ELRIN_JUMP_DOWN_DIR",		},
+	},
+	
+	CT_EVENT_CRAYON_ELRIN_DOUBLE_JUMP_UP =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		TARGET_ABOVE_ME				= TRUE,
+		DISTANCE_OVER_TARGET_NEAR	= 300,
+		RATE						= 15,
+	},
+}
+
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_JUMP_DOWN_DIR =
+{
+	ANIM_NAME			= "JumpDown",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	HEAD_IK = TRUE,
+
+	-- 0.01초 간격으로 다음에 할 행동을 결정합니다. 
+	EVENT_INTERVAL_TIME0	= 0.05,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS =
+	{
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"EVENT_CRAYON_ELRIN_DOUBLE_JUMP_UP",    "CT_EVENT_CRAYON_ELRIN_DOUBLE_JUMP_UP",     },
+        
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"EVENT_CRAYON_ELRIN_JUMP_LANDING",	},
+	},
+	
+	
+	CT_EVENT_CRAYON_ELRIN_DOUBLE_JUMP_UP =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		TARGET_ABOVE_ME				= TRUE,
+		DISTANCE_OVER_TARGET_NEAR	= 300,
+		RATE						= 15,
+	},
+
+
+	
+}
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_JUMP_LANDING =
+{
+	ANIM_NAME			= "JumpLanding",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT		= FALSE,
+	
+	SOUND_PLAY0			= { 0.02, "Step.ogg" },
+	
+	TRANSITION					= TRUE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	HEAD_IK = TRUE,
+
+	EVENT_PROCESS =
+	{
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"EVENT_CRAYON_ELRIN_JUMP_UP",          	"CT_EVENT_CRAYON_ELRIN_JUMP_UP",      		},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_WAIT",         			"CT_PVP_BOT_TURN_WAIT_POSITION",       		    },
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_WAIT",         			"CT_PVP_BOT_TURN_WAIT_POSITION2",       		    },
+		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"EVENT_CRAYON_ELRIN_JUMP_DOWN_ACT",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"EVENT_CRAYON_ELRIN_WAIT",		},
+	},
+	CT_EVENT_CRAYON_ELRIN_JUMP_UP =
+	{
+		ANIM_EVENT_TIMER			= 0.133,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1000,	
+		RATE						= 20,
+	},
+	CT_PVP_BOT_TURN_WAIT_POSITION =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 550,	
+		RATE						= 50,
+	},
+	CT_PVP_BOT_TURN_WAIT_POSITION2 =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,	
+		RATE						= 100,
+	},
+}
+
+--------------------------------------------------------------------------
+-- 대시 점프
+
+EVENT_CRAYON_ELRIN_DashJump = 
+{
+	ANIM_NAME					= "DashJump",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	ADD_POS_Y		= 45,
+	PASSIVE_SPEED_X = INIT_PHYSIC["RUN_SPEED"],
+	SPEED_Y = INIT_PHYSIC["DASH_JUMP_SPEED"]*0.6,
+	--SPEED_TIME0 = { INIT_PHYSIC["RUN_SPEED"] * 5, INIT_PHYSIC["JUMP_SPEED"]*5, 0.033, 1, },
+	
+	
+	-- 0.01초 간격으로 다음에 할 행동을 결정합니다. 
+	EVENT_INTERVAL_TIME0	= 0.05,
+
+
+	EVENT_PROCESS =
+	{
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"EVENT_CRAYON_ELRIN_DASH_DOUBLE_JUMP_UP",    "CT_EVENT_CRAYON_ELRIN_DOUBLE_JUMP_UP",     },
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"EVENT_CRAYON_ELRIN_DashJumpComboZ",	"CT_EVENT_CRAYON_ELRIN_DashJumpComboZ1",	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"EVENT_CRAYON_ELRIN_DashJumpComboZ",	"CT_EVENT_CRAYON_ELRIN_DashJumpComboZ2",	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"EVENT_CRAYON_ELRIN_DashJumpComboZ",	"CT_EVENT_CRAYON_ELRIN_DashJumpComboZ3",	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"EVENT_CRAYON_ELRIN_DashJumpComboZ",	"CT_EVENT_CRAYON_ELRIN_DashJumpComboZ4",	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"EVENT_CRAYON_ELRIN_DashJumpComboZ",	"CT_EVENT_CRAYON_ELRIN_DashJumpComboZ5",	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"EVENT_CRAYON_ELRIN_DashJumpComboZ",	"CT_EVENT_CRAYON_ELRIN_DashJumpComboZ6",	},
+	
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"EVENT_CRAYON_ELRIN_DashJump_Down",		},
+		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"EVENT_CRAYON_ELRIN_DashJump_landing",											},
+	},
+	
+	
+	CT_EVENT_CRAYON_ELRIN_DOUBLE_JUMP_UP =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		TARGET_ABOVE_ME				= TRUE,
+		DISTANCE_OVER_TARGET_NEAR	= 300,
+		RATE						= 20,
+	},
+	CT_EVENT_CRAYON_ELRIN_DashJump_Z =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 700,	
+		RATE						= 50,
+	},
+	CT_EVENT_CRAYON_ELRIN_DashJump_X =
+	{
+		TARGET_BELOW_ME 			= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 900,	
+		RATE						= 50,
+	},
+	CT_EVENT_CRAYON_ELRIN_DashJumpComboZ1 =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 500,
+		RATE						= 75,
+	},
+	CT_EVENT_CRAYON_ELRIN_DashJumpComboZ2 =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 700,
+		RATE						= 50,
+	},
+	CT_EVENT_CRAYON_ELRIN_DashJumpComboZ3 =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1000,
+		RATE						= 25,
+	},
+	CT_EVENT_CRAYON_ELRIN_DashJumpComboZ4 =
+	{
+		ANIM_EVENT_TIMER			= 0.2,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 500,
+		RATE						= 50,
+	},
+	CT_EVENT_CRAYON_ELRIN_DashJumpComboZ5 =
+	{
+		ANIM_EVENT_TIMER			= 0.2,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 700,
+		RATE						= 25,
+	},
+	CT_EVENT_CRAYON_ELRIN_DashJumpComboZ6 =
+	{
+		ANIM_EVENT_TIMER			= 0.2,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1000,
+		RATE						= 12,
+	},
+	
+}
+
+EVENT_CRAYON_ELRIN_DashJump_Down = 
+{
+	ANIM_NAME					= "DashJump",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION			= FALSE,
+	
+	LAND_CONNECT		= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	--SPEED_TIME0 = { INIT_PHYSIC["RUN_SPEED"] * 5, INIT_PHYSIC["JUMP_SPEED"]*5, 0.033, 1, },
+	
+	
+	-- 0.05초 간격으로 다음에 할 행동을 결정합니다. 
+	EVENT_INTERVAL_TIME0	= 0.05,
+
+
+	EVENT_PROCESS =
+	{
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"EVENT_CRAYON_ELRIN_DASH_DOUBLE_JUMP_UP",    "CT_EVENT_CRAYON_ELRIN_DOUBLE_JUMP_UP",     },
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"EVENT_CRAYON_ELRIN_DashJump_landing",	"CT_EVENT_CRAYON_ELRIN_DashJump_landing",	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"EVENT_CRAYON_ELRIN_DashJumpComboZ",	"CT_EVENT_CRAYON_ELRIN_DashJumpComboZ2",	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"EVENT_CRAYON_ELRIN_DashJumpComboZ",	"CT_EVENT_CRAYON_ELRIN_DashJumpComboZ3",	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"EVENT_CRAYON_ELRIN_DashJumpComboZ",	"CT_EVENT_CRAYON_ELRIN_DashJumpComboZ4",	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"EVENT_CRAYON_ELRIN_DashJumpComboZ",	"CT_EVENT_CRAYON_ELRIN_DashJumpComboZ5",	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"EVENT_CRAYON_ELRIN_DashJumpComboZ",	"CT_EVENT_CRAYON_ELRIN_DashJumpComboZ6",	},
+	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"EVENT_CRAYON_ELRIN_DashJump_landing",											},
+	},
+	
+	CT_EVENT_CRAYON_ELRIN_DOUBLE_JUMP_UP =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		TARGET_ABOVE_ME				= TRUE,
+		DISTANCE_OVER_TARGET_NEAR	= 300,
+		RATE						= 20,
+	},
+	CT_EVENT_CRAYON_ELRIN_DashJumpComboZ2 =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 700,
+		RATE						= 50,
+	},
+	CT_EVENT_CRAYON_ELRIN_DashJumpComboZ3 =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1000,
+		RATE						= 25,
+	},
+	CT_EVENT_CRAYON_ELRIN_DashJumpComboZ4 =
+	{
+		ANIM_EVENT_TIMER			= 0.2,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 500,
+		RATE						= 50,
+	},
+	CT_EVENT_CRAYON_ELRIN_DashJumpComboZ5 =
+	{
+		ANIM_EVENT_TIMER			= 0.2,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 700,
+		RATE						= 25,
+	},
+	CT_EVENT_CRAYON_ELRIN_DashJumpComboZ6 =
+	{
+		ANIM_EVENT_TIMER			= 0.2,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1000,
+		RATE						= 12,
+	},
+	CT_EVENT_CRAYON_ELRIN_DashJump_landing =
+	{
+		FOOT_ON_LINE				= TRUE,
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 100,
+	},
+
+}
+
+-- 대시 점프 랜딩모션 입니다.
+EVENT_CRAYON_ELRIN_DashJump_landing = 
+{
+	ANIM_NAME			= "DashJumpLanding",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT		= FALSE,
+	
+	SOUND_PLAY0			= { 0.02, "Step.ogg" },	
+	
+	TRANSITION			= FALSE,
+		
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+
+	EVENT_PROCESS =
+	{
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_WAIT",         			"CT_PVP_BOT_TURN_WAIT_POSITION",       		    },
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_WAIT",         			"CT_PVP_BOT_TURN_WAIT_POSITION2",       		    },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"EVENT_CRAYON_ELRIN_WAIT",											},
+	},
+	CT_PVP_BOT_TURN_WAIT_POSITION =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 550,	
+		RATE						= 50,
+	},
+	CT_PVP_BOT_TURN_WAIT_POSITION2 =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,	
+		RATE						= 100,
+	},
+}
+
+--------------------------------------------------------------------------
+--  2단 점프 입니다.(일반)
+EVENT_CRAYON_ELRIN_DOUBLE_JUMP_UP =
+{
+	ANIM_NAME			= "DoubleJump",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	ANIM_SPEED			= 1.3,
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_Y				= INIT_PHYSIC["JUMP_SPEED"],
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	-- 0.05초 간격으로 다음에 할 행동을 결정합니다. 
+	EVENT_INTERVAL_TIME0	= 0.05,
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"EVENT_CRAYON_ELRIN_JUMP_LANDING",	},
+	},
+}
+
+--  2단 점프 입니다.(대시 중)
+EVENT_CRAYON_ELRIN_DASH_DOUBLE_JUMP_UP =
+{
+	ANIM_NAME			= "DoubleJump",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	ANIM_SPEED			= 1.3,
+	LAND_CONNECT		= FALSE,
+	
+	PASSIVE_SPEED_X		= INIT_PHYSIC["RUN_SPEED"] * 1.1,
+	SPEED_Y				= INIT_PHYSIC["JUMP_SPEED"],
+	
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	
+	-- 0.05초 간격으로 다음에 할 행동을 결정합니다. 
+	EVENT_INTERVAL_TIME0	= 0.05,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"EVENT_CRAYON_ELRIN_JUMP_LANDING",	},
+	},
+}
+
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+-- attack
+-- 공격에 대한 구현 부분입니다.
+
+
+
+-- 대시점프 z 입니다.
+
+EVENT_CRAYON_ELRIN_DashJumpComboZ_Direct = 
+{
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	ANIM_NAME			= "DashJumpAttackZ",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	
+	
+	LAND_CONNECT		= FALSE,
+	ATTACK_TIME0		= { 0.1, 0.35 },	
+	
+	SPEED_X				= INIT_PHYSIC["RUN_SPEED"] * 2.0,
+	SPEED_Y				= 1250,
+	
+	SOUND_PLAY0			= { 0.12, "FootAttack.ogg" },
+	
+	ENABLE_ATTACK_BOX = 
+	{
+		"Lfoot",
+	},
+	
+	DAMAGE_DATA = 
+	{
+					
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_KICK_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+		
+        CRITICAL_RATE			= 0.33,
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 200,
+					
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		
+		FORCE_DOWN			= 20,
+		
+		TECH_POINT				= 50,
+	
+	},	
+	
+	UNIT_SLASH_TRACE0 = { 1, 0.1, 0.37, SLASH_TRACE_TYPE["STT_CONSTANT_WIDTH"], SLASH_TRACE_CONDITION["STC_RENA_NATURE_FORCE"], },     
+
+	EVENT_PROCESS =
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"EVENT_CRAYON_ELRIN_DashJump_landing",	},
+	},
+}
+
+EVENT_CRAYON_ELRIN_DashJumpComboZ = 
+{
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	ANIM_NAME			= "DashJumpAttackZ",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	
+	
+	LAND_CONNECT		= FALSE,
+	ATTACK_TIME0		= { 0.1, 0.35 },	
+	
+	SPEED_X				= INIT_PHYSIC["RUN_SPEED"] * 2.0,
+	SPEED_Y				= INIT_PHYSIC["JUMP_SPEED"] * 0.3,
+	
+	SOUND_PLAY0			= { 0.12, "FootAttack.ogg" },
+	
+	ENABLE_ATTACK_BOX = 
+	{
+		"Lfoot",
+	},
+	
+	DAMAGE_DATA = 
+	{
+					
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_KICK_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+		
+        CRITICAL_RATE			= 0.33,
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 200,
+					
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		
+		FORCE_DOWN			= 20,
+		
+		TECH_POINT				= 50,
+	
+	},	
+	
+	UNIT_SLASH_TRACE0 = { 1, 0.1, 0.37, SLASH_TRACE_TYPE["STT_CONSTANT_WIDTH"], SLASH_TRACE_CONDITION["STC_RENA_NATURE_FORCE"], },     
+
+	EVENT_PROCESS =
+	{	
+       { STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"EVENT_CRAYON_ELRIN_DashJump_landing",	},
+	},
+
+}
+
+
+
+
+--ZZfrontZZZ 콤보 입니다.
+EVENT_CRAYON_ELRIN_ComboZ = 
+{
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	ANIM_NAME			= "ComboZ1",
+	ANIM_SPEED			= 1.03 * 1.25,
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	VIEW_TARGET			= TRUE,
+	
+	
+	
+	ATTACK_TIME0		= { 0.1, 0.35 },	
+	
+	LAND_CONNECT		= FALSE,
+	
+	CHANGE_TIME			= 0.3,
+	
+	SOUND_PLAY0			= { 0.06, "FootAttack.ogg" },
+	
+	ENABLE_ATTACK_BOX = 
+	{
+		"Rfoot",
+	},
+	
+	DAMAGE_DATA = 
+	{
+					
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_KICK_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.1,
+		},
+			
+        CRITICAL_RATE			= 0.33,
+		
+		FORCE_DOWN			= 6,
+		STOP_TIME_DEF			= 0.05,
+			
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+		
+	    TECH_POINT				= 22,
+	},
+	
+	UNIT_SLASH_TRACE0 = { 2, 0.13, 0.24, SLASH_TRACE_TYPE["STT_CONSTANT_WIDTH"], SLASH_TRACE_CONDITION["STC_RENA_NATURE_FORCE"], },   
+
+	EVENT_PROCESS =
+	{
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"EVENT_CRAYON_ELRIN_ComboZZ",	"CT_EVENT_CRAYON_ELRIN_ComboZZ",	},
+        { STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"EVENT_CRAYON_ELRIN_JUMP_DOWN_ACT",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"EVENT_CRAYON_ELRIN_WAIT",		},
+	},
+	
+	CT_EVENT_CRAYON_ELRIN_ComboZZ =
+	{
+		ANIM_EVENT_TIMER			= 0.31,
+		ATTACK_SUCCESS				= TRUE, 
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 100,
+	},
+}
+
+EVENT_CRAYON_ELRIN_ComboZZ =
+{
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	ANIM_NAME			= "ComboZ2",
+	ANIM_SPEED			= 1.2 * 1.25,
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	ATTACK_TIME0		= { 0.35, 0.41, },
+		
+	
+	
+	LAND_CONNECT		= FALSE,
+	CHANGE_TIME			= 0.5,
+	SKIP_TIME			= 0.65,
+	
+	SPEED_X				= INIT_PHYSIC["RUN_SPEED"],
+	
+	SOUND_PLAY0			= { 0.31, "FootAttack.ogg" },
+	
+	ENABLE_ATTACK_BOX = 
+	{
+		"Lfoot",
+	},
+	
+	DAMAGE_DATA = 
+	{
+					
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_KICK_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.3,
+		},
+		
+        CRITICAL_RATE			= 0.33,
+		
+		FORCE_DOWN			= 5,
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		STOP_TIME_ATT			= 0.05,
+			
+		CAMERA_CRASH_GAP		= 10.0,	
+		CAMERA_CRASH_TIME		= 0.2,	
+		
+	    TECH_POINT				= 26,
+	},
+	
+	UNIT_SLASH_TRACE0 = { 1, 0.29, 0.4, SLASH_TRACE_TYPE["STT_CONSTANT_WIDTH"], SLASH_TRACE_CONDITION["STC_RENA_NATURE_FORCE"], },      
+
+	EVENT_PROCESS =
+	{
+        { STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"EVENT_CRAYON_ELRIN_JUMP_DOWN_ACT",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"EVENT_CRAYON_ELRIN_WAIT",		},
+	},
+
+}
+
+
+EVENT_CRAYON_ELRIN_DashComboZ =
+{
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	ANIM_NAME			= "DashComboZ1",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	
+	
+	LAND_CONNECT		= FALSE,
+	
+	SOUND_PLAY0			= { 0.21, "sliding.ogg" },
+	
+
+	TALK_BOX =
+	{
+		{ RATE = 20, MESSAGE = STR_ID_12424 },
+	},
+
+	ENABLE_ATTACK_BOX = 
+	{
+		"Lfoot",
+	},
+	
+	ATTACK_TIME0		= { 0.1, 0.36 },
+		
+	CHANGE_TIME			= 0.5,
+	SKIP_TIME			= 0.55,	
+	
+	DAMAGE_DATA = 
+	{
+					
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_KICK_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.3,
+		},
+		
+        CRITICAL_RATE			= 0.33,
+		
+		FORCE_DOWN			= 7,
+		CAMERA_CRASH_GAP		= 10.0,
+		CAMERA_CRASH_TIME		= 0.2,
+		
+		STOP_TIME_ATT			= 0.05,
+		STOP_TIME_DEF			= 0.05,
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+			
+		HIT_GAP					= 0.1,	
+		
+		TECH_POINT				= 97,
+		
+	},
+	
+	UNIT_SLASH_TRACE0 = { 1, 0.12, 0.6, SLASH_TRACE_TYPE["STT_CONSTANT_WIDTH"], SLASH_TRACE_CONDITION["STC_RENA_NATURE_FORCE"], },  
+	EVENT_PROCESS =
+	{
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"EVENT_CRAYON_ELRIN_DashComboZZ",	"CT_EVENT_CRAYON_ELRIN_DashComboZZ",	},
+	
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"EVENT_CRAYON_ELRIN_WAIT",		},
+	},
+	
+	CT_EVENT_CRAYON_ELRIN_DashComboZZ =
+	{
+		ANIM_EVENT_TIMER			= 0.5,
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 90,
+	},	
+}
+EVENT_CRAYON_ELRIN_DashComboZZ =
+{
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	ANIM_NAME			= "DashComboZ2",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_12424 },
+		{ RATE = 25, MESSAGE = STR_ID_12425 },
+	},
+
+	
+	
+	LAND_CONNECT		= FALSE,
+	
+	SOUND_PLAY0			= { 0.21, "sliding.ogg" },
+	
+	ENABLE_ATTACK_BOX = 
+	{
+		"Lfoot",
+	},
+	
+	ATTACK_TIME0		= { 0.1, 0.36 },
+		
+	CHANGE_TIME			= 0.56,
+	SKIP_TIME			= 0.6,	
+	
+	DAMAGE_DATA = 
+	{
+					
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_KICK_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.6,
+		},
+		
+        CRITICAL_RATE			= 0.33,
+		
+		FORCE_DOWN			= 5,
+		CAMERA_CRASH_GAP		= 10.0,
+		CAMERA_CRASH_TIME		= 0.2,
+		
+		STOP_TIME_ATT			= 0.05,
+		STOP_TIME_DEF			= 0.05,
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+			
+		HIT_GAP					= 0.1,	
+		
+		TECH_POINT				= 120,
+		
+	},
+	
+	
+	UNIT_SLASH_TRACE0 = { 1, 0.12, 0.6, SLASH_TRACE_TYPE["STT_CONSTANT_WIDTH"], SLASH_TRACE_CONDITION["STC_RENA_NATURE_FORCE"], },        
+	
+	EVENT_PROCESS =
+	{
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"EVENT_CRAYON_ELRIN_DashComboZZZ",	"CT_EVENT_CRAYON_ELRIN_DashComboZZZ",	},
+	
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"EVENT_CRAYON_ELRIN_WAIT",		},
+	},
+	
+	CT_EVENT_CRAYON_ELRIN_DashComboZZZ =
+	{
+		ANIM_EVENT_TIMER			= 0.5,
+		ATTACK_SUCCESS				= TRUE, 
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 90,
+	},	
+}
+
+
+EVENT_CRAYON_ELRIN_DashComboZZZ =
+{
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	ANIM_NAME			= "DashComboZ2",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	
+	
+	LAND_CONNECT		= FALSE,
+	
+	SPEED_X				= INIT_PHYSIC["RUN_SPEED"] * 1.2,
+	
+	SOUND_PLAY0			= { 0.10, "FootAttack2.ogg" },
+	
+	ENABLE_ATTACK_BOX = 
+	{
+		"Rfoot",
+	},
+	
+	ATTACK_TIME0		= { 0.19, 0.26 },	
+	SKIP_TIME			= 0.65,
+	
+	DAMAGE_DATA = 
+	{
+					
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_KICK_SLASH2"],
+		REACT_TYPE		= REACT_TYPE["RT_UP"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 2.0,
+		},
+		
+        CRITICAL_RATE			= 0.33,
+		
+		FORCE_DOWN			= 10,
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= INIT_PHYSIC["JUMP_SPEED"],
+
+		CAMERA_CRASH_GAP		= 10.0,
+		CAMERA_CRASH_TIME		= 0.2,
+				
+		CLEAR_SCREEN			= 1,
+		
+		TECH_POINT				= 300,
+	},
+	
+	COMBO_GUIDE         = { "R", "RZZ" },
+	
+	
+	UNIT_SLASH_TRACE0 = { 2, 0.16, 0.37, SLASH_TRACE_TYPE["STT_CONSTANT_WIDTH"], SLASH_TRACE_CONDITION["STC_RENA_NATURE_FORCE"], },           
+	
+	EVENT_PROCESS =
+	{
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"EVENT_CRAYON_ELRIN_Combo_for_Upper_Attack_JumpX_JUMP",	"CT_EVENT_CRAYON_ELRIN_Combo_for_Upper_Attack_JumpX_JUMP",	},
+		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"EVENT_CRAYON_ELRIN_Combo_for_Upper_Attack",		},
+	},
+	
+	
+	CT_EVENT_CRAYON_ELRIN_Combo_for_Upper_Attack_JumpX_JUMP = 
+	{
+		ANIM_EVENT_TIMER			= 0.7,
+		RATE						= 20,
+	},
+}
+
+
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+-- special ablilities(active, special active skills)
+-- 액티브, 스페셜 액티브 스킬들에 대한 정의입니다.
+
+
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+-- Combo
+-- UP 공격에 대한 콤보 구현 부분입니다.
+
+EVENT_CRAYON_ELRIN_Combo_for_Upper_Attack =
+{
+	ANIM_NAME	= "Wait",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= TRUE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	SPEED_X	= 0,
+	SPEED_Y	= 0,
+
+	VIEW_TARGET     = TRUE, 
+		
+	PASSIVE_SPEED_X	= 0,
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	-- 0.01초 간격으로 다음에 할 행동을 결정합니다.
+	EVENT_INTERVAL_TIME0	= 0.01,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"EVENT_CRAYON_ELRIN_JUMP_DOWN_ACT",														},
+
+		-- 정지하고 있을 때는 다음의 행동을 수행할 수 있습니다. (z입력, 걷기, 뛰기, 대시점프, 걷기와 뛰기는 강제로 수행 시키는 부분입니다.)
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_ComboZ",    		 	"CT_EVENT_CRAYON_ELRIN_ComboZ",           	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "EVENT_CRAYON_ELRIN_DashComboZ",    		 	"CT_EVENT_CRAYON_ELRIN_DashComboZ",           	},
+		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"EVENT_CRAYON_ELRIN_WAIT",												},
+		  		
+	},	
+	-- 잡자!
+	
+	CT_EVENT_CRAYON_ELRIN_DashComboZ =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 300,	
+		MY_MP_MORE_THAN				= 40,
+		RATE						= 30,
+	},
+	CT_EVENT_CRAYON_ELRIN_ComboZ =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 350,	
+		MY_MP_MORE_THAN				= 40,
+		RATE						= 30,
+	},
+
+}
+
+EVENT_CRAYON_ELRIN_Combo_for_Upper_Attack_JumpX_JUMP =
+{
+	ANIM_NAME		= "JumpUp",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION		= TRUE,
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	SPEED_X			= 300,
+	SPEED_Y			= INIT_PHYSIC["JUMP_SPEED"],
+
+	ADD_POS_Y		= 45,
+
+
+	-- 0.01초 간격으로 다음에 할 행동을 결정합니다. 
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	EVENT_PROCESS =
+	{
+       
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"EVENT_CRAYON_ELRIN_JUMP_DOWN_ACT",		},
+	},
+	
+}
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+-- (damaged) react
+-- 리액트에 대한 구현 부분입니다.
+
+
+
+EVENT_CRAYON_ELRIN_DAMAGE_REVENGE =
+{
+	ANIM_NAME					= "DamageRevenge",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"EVENT_CRAYON_ELRIN_WAIT",												},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_DAMAGE_SMALL_FRONT =
+{
+	ANIM_NAME					= "DamageSmallFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"EVENT_CRAYON_ELRIN_JUMP_DOWN_NOACT",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"EVENT_CRAYON_ELRIN_WAIT",		},
+	},
+
+}
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_DAMAGE_SMALL_BACK =
+{
+	ANIM_NAME					= "DamageSmallBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"EVENT_CRAYON_ELRIN_JUMP_DOWN_NOACT",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"EVENT_CRAYON_ELRIN_WAIT",		},
+	},
+	CT_PVP_BOT_EPIK_MANA_BREAK =
+	{
+		ANIM_EVENT_TIMER			= 0.2,
+		EVENT_INTERVAL_ID			= 0,
+		MY_MP_MORE_THAN				= 100,
+		RATE						= 3,
+	},
+	
+}
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_DAMAGE_BIG_FRONT =
+{
+	ANIM_NAME					= "DamageBigFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SOUND_PLAY0	    	= { 0.1, "LenaVoice_DamageScream04.ogg" , 20 },
+	
+
+	EVENT_PROCESS =
+	{
+				{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"EVENT_CRAYON_ELRIN_JUMP_DOWN_NOACT",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"EVENT_CRAYON_ELRIN_WAIT",		},
+	},
+
+}
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_DAMAGE_BIG_BACK =
+{
+	ANIM_NAME					= "DamageBigBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SOUND_PLAY0	    	= { 0.1, "LenaVoice_DamageScream04.ogg" , 20 },
+	
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"EVENT_CRAYON_ELRIN_JUMP_DOWN_NOACT",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"EVENT_CRAYON_ELRIN_WAIT",		},
+	},
+	CT_PVP_BOT_EPIK_MANA_BREAK =
+	{
+		ANIM_EVENT_TIMER			= 0.2,
+		EVENT_INTERVAL_ID			= 0,
+		MY_MP_MORE_THAN				= 100,
+		RATE						= 3,
+	},
+	
+}
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_DAMAGE_DOWN_FRONT =
+{
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE			= { 0, 100, },
+
+
+
+	SOUND_PLAY0			= { 0.19, "Down.ogg" },
+	SOUND_PLAY1	    	= { 0.1, "LenaVoice_DamageScream03.ogg" },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"EVENT_CRAYON_ELRIN_DAMAGE_AIR_FALL",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"EVENT_CRAYON_ELRIN_STAND_UP_FRONT",	},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_DAMAGE_DOWN_BACK =
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE			= { 0, 100, },
+
+	SOUND_PLAY0			= { 0.32, "Down.ogg" },
+	SOUND_PLAY1	    	= { 0.1, "LenaVoice_DamageScream03.ogg" },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"EVENT_CRAYON_ELRIN_DAMAGE_AIR_FALL",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"EVENT_CRAYON_ELRIN_STAND_UP_BACK",		},
+	},
+
+}
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_DAMAGE_FLY_FRONT =
+{
+	ANIM_NAME					= "DamageAirFlyFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SOUND_PLAY0	    	= { 0.1, "LenaVoice_DamageScream01.ogg" },
+	
+	EVENT_PROCESS =
+	{
+		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"EVENT_CRAYON_ELRIN_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+
+}
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_DAMAGE_FLY_BACK =
+{
+	ANIM_NAME					= "DamageAirFlyBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SOUND_PLAY0	    	= { 0.1, "LenaVoice_DamageScream01.ogg" },
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"EVENT_CRAYON_ELRIN_DAMAGE_DOWN_BACK",	},
+	},
+
+}
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_DAMAGE_AIR =
+{
+	ANIM_NAME					= "DamageAirSmall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"EVENT_CRAYON_ELRIN_WAIT",	},
+	},
+
+	VIEW_TARGET					= TRUE,
+	ALLOW_DIR_CHANGE			= TRUE,
+}
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_DAMAGE_AIR_DOWN =
+{
+	ANIM_NAME					= "DamageAirDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"EVENT_CRAYON_ELRIN_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_DAMAGE_AIR_UP =
+{
+	ANIM_NAME					= "DamageAirUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SOUND_PLAY0	    	= { 0.1, "LenaVoice_DamageScream01.ogg" },
+	
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"EVENT_CRAYON_ELRIN_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"EVENT_CRAYON_ELRIN_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_DAMAGE_AIR_FALL =
+{
+	ANIM_NAME					= "DamageAirFall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_POSITIVE_Y_SPEED"],	"EVENT_CRAYON_ELRIN_DAMAGE_AIR_UP",			    },
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"EVENT_CRAYON_ELRIN_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_DAMAGE_AIR_DOWN_LANDING =
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE			= { 0, 100, },
+
+	SOUND_PLAY0			= { 0.029, "Down.ogg" },
+	SOUND_PLAY1			= { 0.46, "Down.ogg" },
+	SOUND_PLAY2	    	= { 0.1, "LenaVoice_DamageScream02.ogg" },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"EVENT_CRAYON_ELRIN_DAMAGE_AIR_FALL",		},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"EVENT_CRAYON_ELRIN_STAND_UP_FRONT",		},
+	},
+
+}
+
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_STAND_UP_FRONT =
+{
+	ANIM_NAME					= "DamageStandUpFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 40, },
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"EVENT_CRAYON_ELRIN_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"EVENT_CRAYON_ELRIN_WAIT",		},
+	},
+}
+--------------------------------------------------------------------------
+EVENT_CRAYON_ELRIN_STAND_UP_BACK =
+{
+	ANIM_NAME					= "DamageStandUpBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 40, },
+
+    --SOUND_PLAY0			= { 0.283, "CSM_KIM_SWORD_StandUp.ogg" },
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"EVENT_CRAYON_ELRIN_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"EVENT_CRAYON_ELRIN_WAIT",		},
+	},
+}
+
+EVENT_CRAYON_ELRIN_DYING_FRONT = 
+{
+	ANIM_SPEED					= 0.3,
+
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, },
+
+	TALK_BOX =
+	{
+		{ RATE = 30, MESSAGE = STR_ID_12437 },
+		{ RATE = 30, MESSAGE = STR_ID_12438 },
+		{ RATE = 30, MESSAGE = STR_ID_12439 },
+	},
+
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	SOUND_PLAY0					= { 0.19, "Down.ogg" }, 
+	SOUND_PLAY1	            	= { 0.19, "LenaVoice_DieScream1.ogg" },
+	
+	DYING_END					= TRUE,
+	DYING_SPEED					= 1,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+EVENT_CRAYON_ELRIN_DYING_BACK = 
+{
+	ANIM_SPEED					= 0.3,
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+
+	TALK_BOX =
+	{
+		{ RATE = 30, MESSAGE = STR_ID_12437 },
+		{ RATE = 30, MESSAGE = STR_ID_12438 },
+		{ RATE = 30, MESSAGE = STR_ID_12439 },
+	},
+
+	INVINCIBLE					= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	SOUND_PLAY0					= { 0.32, "Down.ogg" }, 
+	SOUND_PLAY1	            	= { 0.19, "LenaVoice_DieScream1.ogg" },
+	
+	DYING_END					= TRUE,
+	DYING_SPEED					= 1,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+--------------------------------------------------------------------------
+function EVENT_CRAYON_ELRIN_WALK_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+end
+--------------------------------------------------------------------------
+function EVENT_CRAYON_ELRIN_JUMP_DOWN_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+end
+--------------------------------------------------------------------------
+function EVENT_CRAYON_ELRIN_JUMP_DOWN_DIR_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+end
+--------------------------------------------------------------------------
+function EVENT_CRAYON_ELRIN_DASH_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.166 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+end
+--------------------------------------------------------------------------
+function EVENT_CRAYON_ELRIN_DAMAGE_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.047 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+		local nowMp = pNPCUnit:GetNowMP() 
+		pNPCUnit:SetNowMP(nowMp + 6)
+	end
+end
+--------------------------------------------------------------------------
+function EVENT_CRAYON_ELRIN_DAMAGE_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.06 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+		local nowMp = pNPCUnit:GetNowMP() 
+		pNPCUnit:SetNowMP(nowMp + 6)
+	end
+end
+--------------------------------------------------------------------------
+function EVENT_CRAYON_ELRIN_DAMAGE_DOWN_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.634 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+		local nowMp = pNPCUnit:GetNowMP() 
+		pNPCUnit:SetNowMP(nowMp + 6)
+	end
+end
+--------------------------------------------------------------------------
+function EVENT_CRAYON_ELRIN_DAMAGE_DOWN_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.620 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+		local nowMp = pNPCUnit:GetNowMP() 
+		pNPCUnit:SetNowMP(nowMp + 6)
+	end
+end
+--------------------------------------------------------------------------
+function EVENT_CRAYON_ELRIN_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		local pos = pNPCUnit:GetLandPosition_LUA()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+		pos.y = pos.y + 5
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "GroundShockWave", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(1,-1) )
+		local pParticle = pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "AirDownTick", pNPCUnit:GetPos(), D3DXVECTOR2(200,200), D3DXVECTOR2(10,-1) )
+		if pParticle ~= nil then
+			pParticle:SetLandPosition( pos.y - 5 )
+		end
+
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 500 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 0.1 )
+		end
+
+	elseif pNPCUnit:AnimEventTimer_LUA( 0.1 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+		local nowMp = pNPCUnit:GetNowMP() 
+		pNPCUnit:SetNowMP(nowMp + 6)
+	end
+end
+--------------------------------------------------------------------------
+function EVENT_CRAYON_ELRIN_STAND_UP_ATTACK_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+    if pNPCUnit:AnimEventTimer_LUA( 0.35 ) then
+        local pMinorParticle = pX2Game:GetMinorParticle()
+        pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+    end
+end
+--------------------------------------------------------------------------
+function EVENT_CRAYON_ELRIN_STAND_UP_ATTACK_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+    if pNPCUnit:AnimEventTimer_LUA( 0.35 ) then
+        local pMinorParticle = pX2Game:GetMinorParticle()
+        pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+    end
+end
+--------------------------------------------------------------------------
+function EVENT_CRAYON_ELRIN_DYING_LAND_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	-- local pos = pNPCUnit:GetPos()
+	-- pos.y = pos.y + 100.0
+	-- local GetMinorParticle = pX2Game:GetMinorParticle()
+
+	-- local pSeq = GetMinorParticle:CreateSequence_LUA( "DieLight", pos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+	-- if pSeq ~= nil then
+		-- pSeq:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+		-- pNPCUnit:SetDieSeq( pSeq:GetHandle() )
+	-- end
+	-- pNPCUnit:PlaySound_LUA( "DieLight.ogg" )
+end
+--------------------------------------------------------------------------
+function MovePos( pos, dirvector, dist )
+	pos.x = pos.x + dist * dirvector.x
+	pos.y = pos.y + dist * dirvector.y
+	pos.z = pos.z + dist * dirvector.z
+
+	return pos
+end
+
+function EVENT_CRAYON_ELRIN_Slide_Double_Kick_S_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+		
+	pX2Game:SetWorldColor_LUA( D3DXCOLOR(0.1,0.1,0.1,3) )
+	
+	if pNPCUnit:AnimEventTimer_LUA( 0.001 ) then
+	
+		pNPCUnit:ActiveSkillShow_LUA( "HQ_Dungeon_Clear_Elsword.tga", 1, 1, 9999, 9999, 0)
+
+		local nowMp = pNPCUnit:GetNowMP() 
+		pNPCUnit:SetNowMP(nowMp - 100)
+	end		
+        
+	  
+end	
+
+function EVENT_CRAYON_ELRIN_Slide_Double_Kick_F_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+		
+	pX2Game:SetWorldColor_LUA( D3DXCOLOR(0.1,0.1,0.1,3) )
+	
+	if pNPCUnit:AnimEventTimer_LUA( 0.001 ) then
+	
+		local nowMp = pNPCUnit:GetNowMP() 
+		pNPCUnit:SetNowMP(nowMp + 50)
+	end		
+        
+	  
+end	
+
+
+function EVENT_CRAYON_ELRIN_DashJump_X_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	
+	
+	if pNPCUnit:AnimEventTimer_LUA( 0.31 ) then	
+		
+		if pNPCUnit:GetNowMP() < 4.0 then
+			local pEffectSet = pX2Game:GetEffectSet()
+			local hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_PVP_BOT_MAGIC_FAIL_LOW_DEGREE", pNPCUnit )		
+		else
+			local pEffectSet = pX2Game:GetEffectSet()
+			local hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_EVENT_CRAYON_ELRIN_DASHJUMP_X", pNPCUnit )
+			nowMp = pNPCUnit:GetNowMP()
+			pNPCUnit:SetNowMP(nowMp - 4)
+		end
+	end
+	
+end	
+
+function EVENT_CRAYON_ELRIN_DashJump_XXX_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	
+	
+	if pNPCUnit:AnimEventTimer_LUA( 0.31 ) then	
+		
+		if pNPCUnit:GetNowMP() < 4.0 then
+			local pEffectSet = pX2Game:GetEffectSet()
+			local hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_PVP_BOT_MAGIC_FAIL_LOW_DEGREE", pNPCUnit )		
+		else
+			local pEffectSet = pX2Game:GetEffectSet()
+			local hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_EVENT_CRAYON_ELRIN_DASHJUMP_XXX", pNPCUnit )
+			nowMp = pNPCUnit:GetNowMP()
+			pNPCUnit:SetNowMP(nowMp - 10)
+		end
+	end
+	
+end	
+
+
+function CF_PVP_BOT_CHECK_BACK_ESCAPE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:GetStateTime() < 0.1 then
+		return false 
+	end
+	
+	
+ 	local bIsRight = pNPCUnit:GetIsRight()
+	local vStartPos = pNPCUnit:GetLineGroupStartPos()
+	local vEndPos = pNPCUnit:GetLineGroupEndPos()
+
+ 	
+ 	if bIsRight == true and pNPCUnit:GetDistanceFrom(vEndPos) < 280.0 then
+ 	
+ 	    return true
+ 	    
+   	end
+   	
+   	if bIsRight == false and pNPCUnit:GetDistanceFrom(vStartPos) < 280.0 then
+
+		return true
+  	
+    end
+    
+    return false 	
+
+end
+
+
+
+function PVP_BOT_EPIK_MANA_BREAK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )			
+	if pNPCUnit:AnimEventTimer_LUA( 0.000001) then	
+		local nowMp = pNPCUnit:GetNowMP() 
+		pNPCUnit:SetNowMP(nowMp - 100)
+	end	
+end	

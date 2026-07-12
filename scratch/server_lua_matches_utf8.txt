@@ -1,0 +1,6 @@
+=== Matches in Elsword\LoginServer\config_lg_US_SERVICE.lua (1 matches) ===
+  Line 1: -- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+=== Matches in Elsword\GameServer\config_gs_US_SERVICE.lua (2 matches) ===
+  Line 1: -- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+  Line 30: -- NetLayer:SetPacketAuthFailLimit( 100 ) -- if over 100 unauthorized packets are sent set their status to fail(?)
+=== Matches in Elsword\CenterServer\Config\US\config_cn_US_SERVICE.lua (0 matches) ===

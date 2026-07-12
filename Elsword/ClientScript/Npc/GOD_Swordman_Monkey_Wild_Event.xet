@@ -1,0 +1,4 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+g_pXET:AddChangeTexture( "Monkey_Rolling_body.tga",		"GOD_SWORDMAN_MONKEY_WILD_C_body.tga" 	)
+g_pXET:AddChangeTexture( "Monkey_Rolling_Head.tga",		"GOD_SWORDMAN_MONKEY_WILD_C_Head.tga" 	)

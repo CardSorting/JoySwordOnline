@@ -1,0 +1,1312 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+--[[ KjTiger / 2011/8/16 / 블러디 글리터 암살병, 벨더 비밀 던전 몬스터/
+	 레이븐 기술 사용( 쉐도우 스텝, 쉐도우 피어싱 )
+	 포션 상태
+--]]
+
+--------------------------------------------------------------------------
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH	= 120.0,
+	UNIT_HEIGHT	= 150.0,
+	UNIT_LAYER	= X2_LAYER["XL_UNIT_0"],
+	UNIT_SCALE	= 1.0,
+}
+--------------------------------------------------------------------------
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+		"NUI_BLOODY_GLITER_THIEF01.tga",
+		"NUI_BLOODY_GLITER_THIEF02.tga",
+	},
+	
+	READY_SOUND = 
+	{
+		"GliterGreatVoice_AttackRoar1.ogg",
+		"GliterGreatVoice_AttackRoar2.ogg",
+		
+		"GlitterVoice_DeathRoar.ogg",
+		
+		"GlitterVoice_HurtRoar1.ogg",
+		"GlitterVoice_HurtRoar2.ogg",
+		
+		"Glitter_Landing.ogg",
+		
+		"Gliter_Thief_Great_AttackA.ogg",
+		"Gliter_Thief_Great_AttackB.ogg",
+		"Gliter_Thief_Great_AttackBReady.ogg",
+		"BLOODY_GLITER_THIEF_DashAttack01.ogg",
+	},
+}
+--------------------------------------------------------------------------
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME	= "Motion_BLOODY_GLITER_THIEF.x",
+	MOTION_CHANGE_TEX_XET	= "NUI_BLOODY_GLITER_THIEF.xet",
+	MOTION_ANI_TEX_XET		= "NUI_BLOODY_GLITER_THIEF.xet",
+}
+--------------------------------------------------------------------------
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL	= 2000,
+	G_ACCEL			= 4000,
+	MAX_G_SPEED		= -2000,
+
+	WALK_SPEED		= 800,
+	RUN_SPEED		= 900,
+	JUMP_SPEED		= 1500,
+	DASH_JUMP_SPEED		= 1800,
+}
+--------------------------------------------------------------------------
+INIT_COMPONENT = 
+{
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+
+	HITTED_TYPE	= HITTED_TYPE["HTD_MEAT"],
+	FALL_DOWN	= TRUE,
+	
+	USE_AFTER_IMAGE		= TRUE,
+	AFTER_IMAGE_COLOR_R	= 1,
+	AFTER_IMAGE_COLOR_G	= 1,
+	AFTER_IMAGE_COLOR_B	= 1,
+	AFTER_IMAGE_COLOR_A = 0.8,
+	AFTER_IMAGE_LAYER = X2_LAYER["XL_SKY_WORLD_OBJECT_2"],
+	
+	INVISIBLE =
+	{
+		MAX_ALPHA = 3,
+		MIN_ALPHA = -2,
+		SPEED = 1,
+		ALPHA_LOWER_BOUND = 0.27,
+		ALWAYS_INVISIBLE = FALSE,	
+	},
+	
+	WEAPON0 = 
+	{
+		WEAPON_FILE_NAME	= "THIEF_GREAT_Dagger.X",
+		WEAPON_BONE_NAME	= "Dummy1_Rhand",
+		
+		USE_SLASH_TRACE			= TRUE,
+		SLASH_TRACE_TOP_BONE	= "TRACE_START0",
+		SLASH_TRACE_BOTTOM_BONE	= "TRACE_END0",
+	},
+}
+--------------------------------------------------------------------------
+INIT_STATE = 
+{
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_START",	},
+	
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_WAIT",	},
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_WAIT_HABIT",	},
+	
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_WALK",	LUA_STATE_END_FUNC = "BLOODY_GLITER_THIEF_WALK_STATE_END"	},
+	
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_DASH",	},
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_DASH_END",	},
+
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_JUMP_UP",		},
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_JUMP_DOWN",		LUA_STATE_END_FUNC = "BLOODY_GLITER_THIEF_JUMP_DOWN_STATE_END"	},
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_JUMP_UP_DIR",	},
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_JUMP_DOWN_DIR",	LUA_STATE_END_FUNC = "BLOODY_GLITER_THIEF_JUMP_DOWN_DIR_STATE_END"	},
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_JUMP_LANDING",	},
+
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_ATTACK_A",			},
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_DASH_ATTACK_READY",	},
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_DASH_ATTACK",		},
+	
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_DRINK_POTION",	LUA_STATE_START_FUNC = "BLOODY_GLITER_THIEF_DRINK_POTION_STATE_START",
+														LUA_STATE_END_FUNC = "BLOODY_GLITER_THIEF_DRINK_POTION_STATE_END",	},
+		
+	--리액션 관련
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_DAMAGE_FRONT",		LUA_FRAME_MOVE_FUNC = "BLOODY_GLITER_THIEF_DAMAGE_FRONT_FRAME_MOVE"	},
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_DAMAGE_BACK",		LUA_FRAME_MOVE_FUNC = "BLOODY_GLITER_THIEF_DAMAGE_BACK_FRAME_MOVE"	},
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_DAMAGE_DOWN_FRONT",	LUA_FRAME_MOVE_FUNC = "BLOODY_GLITER_THIEF_DAMAGE_DOWN_FRONT_FRAME_MOVE"	},
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_DAMAGE_DOWN_BACK",	LUA_FRAME_MOVE_FUNC = "BLOODY_GLITER_THIEF_DAMAGE_DOWN_BACK_FRAME_MOVE"	},
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_DAMAGE_FLY_FRONT",	},
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_DAMAGE_FLY_BACK",	},
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_DAMAGE_AIR",		},
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_DAMAGE_AIR_DOWN",	},
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_DAMAGE_AIR_UP",		},
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_DAMAGE_AIR_FALL",	},
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_DAMAGE_AIR_DOWN_LANDING",	LUA_FRAME_MOVE_FUNC = "BLOODY_GLITER_THIEF_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE"	},
+	
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_STAND_UP_FRONT",	},
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_STAND_UP_BACK",		},
+
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_STAND_UP_ATTACK_FRONT",	},
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_STAND_UP_ATTACK_BACK",	},
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_DAMAGE_AVOID_BACK",		},
+	
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_DYING_LAND_FRONT",	LUA_STATE_START_FUNC = "BLOODY_GLITER_THIEF_DYING_LAND_STATE_START",},
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_DYING_LAND_BACK",	LUA_STATE_START_FUNC = "BLOODY_GLITER_THIEF_DYING_LAND_STATE_START",},
+	{ STATE_NAME = "BLOODY_GLITER_THIEF_DYING_SKY",			LUA_STATE_START_FUNC = "BLOODY_GLITER_THIEF_DYING_LAND_STATE_START",},
+	
+	START_STATE	= "BLOODY_GLITER_THIEF_START",
+	WAIT_STATE	= "BLOODY_GLITER_THIEF_WAIT",
+		
+	SMALL_DAMAGE_LAND_FRONT	= "BLOODY_GLITER_THIEF_DAMAGE_FRONT",
+	SMALL_DAMAGE_LAND_BACK	= "BLOODY_GLITER_THIEF_DAMAGE_BACK",
+	BIG_DAMAGE_LAND_FRONT	= "BLOODY_GLITER_THIEF_DAMAGE_FRONT",
+	BIG_DAMAGE_LAND_BACK	= "BLOODY_GLITER_THIEF_DAMAGE_BACK",
+	DOWN_DAMAGE_LAND_FRONT	= "BLOODY_GLITER_THIEF_DAMAGE_DOWN_FRONT",
+	DOWN_DAMAGE_LAND_BACK	= "BLOODY_GLITER_THIEF_DAMAGE_DOWN_BACK",
+	FLY_DAMAGE_FRONT		= "BLOODY_GLITER_THIEF_DAMAGE_FLY_FRONT",
+	FLY_DAMAGE_BACK			= "BLOODY_GLITER_THIEF_DAMAGE_FLY_BACK",
+	SMALL_DAMAGE_AIR		= "BLOODY_GLITER_THIEF_DAMAGE_AIR",	
+	BIG_DAMAGE_AIR			= "BLOODY_GLITER_THIEF_DAMAGE_AIR",
+	DOWN_DAMAGE_AIR			= "BLOODY_GLITER_THIEF_DAMAGE_AIR_DOWN",
+	DOWN_DAMAGE_AIR_LANDING	= "BLOODY_GLITER_THIEF_DAMAGE_AIR_DOWN_LANDING",
+	UP_DAMAGE				= "BLOODY_GLITER_THIEF_DAMAGE_AIR_UP",
+	
+	DAMAGE_EXTRA_STATES         = {"BLOODY_GLITER_THIEF_DAMAGE_AIR_FALL","BLOODY_GLITER_THIEF_STAND_UP_FRONT","BLOODY_GLITER_THIEF_STAND_UP_BACK",
+	"BLOODY_GLITER_THIEF_STAND_UP_ATTACK_FRONT","BLOODY_GLITER_THIEF_STAND_UP_ATTACK_BACK","BLOODY_GLITER_THIEF_DAMAGE_AVOID_BACK",
+	"BLOODY_GLITER_THIEF_JUMP_DOWN","BLOODY_GLITER_THIEF_JUMP_LANDING",	},
+	
+
+	DYING_LAND_FRONT	= "BLOODY_GLITER_THIEF_DYING_LAND_FRONT",
+	DYING_LAND_BACK		= "BLOODY_GLITER_THIEF_DYING_LAND_BACK",
+	DYING_SKY			= "BLOODY_GLITER_THIEF_DYING_SKY",
+
+	REVENGE_ATTACK	= "",
+	
+	COMMON_FRAME_FUNC           = "BLOODY_GLITER_THIEF_COMMON_FRAME_FUNC",
+}
+--------------------------------------------------------------------------
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 	= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL		= 3,
+		TARGET_NEAR_RANGE	= 250,
+		TARGET_RANGE		= 800,
+		TARGET_LOST_RANGE	= 1200,
+		TARGET_SUCCESS_RATE	= 100,
+		ATTACK_TARGET_RATE	= 100,
+		PRESERVE_LAST_TARGET_RATE	= 100,
+	},
+
+	CHASE_MOVE = 
+	{		
+		DEST_GAP	= 350,
+		MOVE_GAP	= 400,
+		
+		MOVE_SPLIT_RANGE	= 600,
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		WALK_INTERVAL	= 3,
+		NEAR_WALK_RATE	= 100,
+		FAR_WALK_RATE	= 100,
+		
+		JUMP_INTERVAL		= 5,
+		UP_JUMP_RATE		= 100,
+		UP_DOWN_RATE		= 20,
+		DOWN_JUMP_RATE		= 100,
+		DOWN_DOWN_RATE		= 40,
+		
+		LINE_END_RANGE		= 80,
+	},
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 100,
+		PATROL_RANGE			= 200,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 500,
+		ESCAPE_GAP			= 600,
+		
+		WALK_INTERVAL		= 1.5,
+		NEAR_WALK_RATE		= 100,
+		FAR_WALK_RATE		= 100,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,
+		DOWN_DOWN_RATE		= 30,
+		
+		LINE_END_RANGE		= 80,
+	},
+}
+--------------------------------------------------------------------------
+INIT_SUB_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 	= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL		= 2,
+		TARGET_NEAR_RANGE	= 150,
+		TARGET_RANGE		= 800,
+		TARGET_LOST_RANGE	= 1200,
+		TARGET_SUCCESS_RATE	= 100,
+		ATTACK_TARGET_RATE	= 100,
+		PRESERVE_LAST_TARGET_RATE	= 0,
+	},
+
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 600,
+		DEST_GAP			= 600,
+		MOVE_GAP			= 700,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		WALK_INTERVAL		= 3,
+		NEAR_WALK_RATE		= 100,
+		FAR_WALK_RATE		= 100,
+		
+		JUMP_INTERVAL		= 5,
+		UP_JUMP_RATE		= 0,
+		UP_DOWN_RATE		= 0,
+		DOWN_JUMP_RATE		= 0,
+		DOWN_DOWN_RATE		= 0,
+		
+		LINE_END_RANGE		= 80,
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 100,
+		PATROL_RANGE			= 200,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		ESCAPE_GAP	= 700,
+		MOVE_SPLIT_RANGE	= 500,
+				
+		WALK_INTERVAL	= 1.5,
+		NEAR_WALK_RATE	= 100,
+		FAR_WALK_RATE	= 100,
+		
+		JUMP_INTERVAL	= 10,
+		UP_JUMP_RATE	= 0, 
+		UP_DOWN_RATE	= 0,
+		DOWN_JUMP_RATE	= 0,
+		DOWN_DOWN_RATE	= 0,
+		
+		LINE_END_RANGE	= 80,
+	},
+
+	ESCAPE_CONDITION = 
+	{
+		RATE	= 100,
+		MY_HP	= 100,
+		ESCAPE_RANGE	= 100,
+	}
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_START = 
+{
+	ANIM_NAME	= "WaitHabit",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	IMMADIATE_PACKET_SEND	= TRUE,	
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"BLOODY_GLITER_THIEF_WAIT",	"CT_BLOODY_GLITER_THIEF_WAIT"	},
+	},
+	
+	CT_BLOODY_GLITER_THIEF_WAIT = 
+	{
+		STATE_TIME_OVER	= 2.8,
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_WAIT = 
+{
+	ANIM_NAME	= "Wait",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,	
+	
+	SPEED_X	= 0,
+	SPEED_Y	= 0,
+	
+	PASSIVE_SPEED_X	= 0,
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	EVENT_INTERVAL_TIME0	= 1,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_THIEF_JUMP_DOWN",	},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"BLOODY_GLITER_THIEF_ATTACK_A",		"CT_BLOODY_GLITER_THIEF_ATTACK_A",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"BLOODY_GLITER_THIEF_WAIT_HABIT",	"CT_BLOODY_GLITER_THIEF_WAIT_HABIT",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"BLOODY_GLITER_THIEF_DASH_ATTACK_READY",	"CT_BLOODY_GLITER_THIEF_DASH_ATTACK_READY",	},
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],	"BLOODY_GLITER_THIEF_WALK",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],	"BLOODY_GLITER_THIEF_DASH",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],	"BLOODY_GLITER_THIEF_JUMP_UP",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],	"BLOODY_GLITER_THIEF_JUMP_UP_DIR",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],		"BLOODY_GLITER_THIEF_JUMP_DOWN",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],	"BLOODY_GLITER_THIEF_JUMP_DOWN_DIR",	},
+	},
+	
+	CT_BLOODY_GLITER_THIEF_ATTACK_A = 
+	{
+		RATE	= 50,
+		EVENT_INTERVAL_ID	= 0,
+		DISTANCE_TO_TARGET_NEAR	= 400,
+	},
+	
+	CT_BLOODY_GLITER_THIEF_WAIT_HABIT = 
+	{
+		RATE	= 60,
+		HAVE_TARGET	= 0,
+		ANIM_PLAY_COUNT	= 1,
+	},
+	
+	CT_BLOODY_GLITER_THIEF_DASH_ATTACK_READY = 
+	{
+		RATE	= 70,
+		EVENT_INTERVAL_ID	= 0,
+		DISTANCE_OVER_TARGET_NEAR	= 600,
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_WAIT_HABIT = 
+{
+	ANIM_NAME	= "WaitHabit",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= TRUE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_THIEF_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_GLITER_THIEF_WAIT",		},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_WALK = 
+{
+	ANIM_NAME	= "Dash",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	PASSIVE_SPEED_X	= INIT_PHYSIC["WALK_SPEED"],
+	
+	ALLOW_DIR_CHANGE	= TRUE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_INTERVAL_TIME0	= 2,
+	EVENT_INTERVAL_TIME1	= 3,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_THIEF_JUMP_DOWN_DIR",	},
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"BLOODY_GLITER_THIEF_ATTACK_A",			"CT_BLOODY_GLITER_THIEF_ATTACK_A",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"BLOODY_GLITER_THIEF_DASH_ATTACK_READY",	"CT_BLOODY_GLITER_THIEF_DASH_ATTACK_READY",	},
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],	"BLOODY_GLITER_THIEF_WAIT",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],	"BLOODY_GLITER_THIEF_DASH",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],	"BLOODY_GLITER_THIEF_JUMP_UP",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],	"BLOODY_GLITER_THIEF_JUMP_UP_DIR",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],		"BLOODY_GLITER_THIEF_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],	"BLOODY_GLITER_THIEF_JUMP_DOWN_DIR",	},
+	},
+
+	CT_BLOODY_GLITER_THIEF_ATTACK_A = 
+	{
+		RATE	= 50,
+		EVENT_INTERVAL_ID	= 0,
+		DISTANCE_TO_TARGET_NEAR	= 400,
+	},
+	
+	CT_BLOODY_GLITER_THIEF_DASH_ATTACK_READY = 
+	{
+		RATE	= 70,
+		EVENT_INTERVAL_ID	= 0,
+		DISTANCE_OVER_TARGET_NEAR	= 600,
+	},
+}
+
+function BLOODY_GLITER_THIEF_WALK_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+end
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_DASH = 
+{
+	ANIM_NAME	= "Dash",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	PASSIVE_SPEED_X	= INIT_PHYSIC["RUN_SPEED"],
+	
+	ALLOW_DIR_CHANGE	= TRUE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_INTERVAL_TIME0	= 1,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_THIEF_JUMP_DOWN_DIR",	},
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],	"BLOODY_GLITER_THIEF_DASH_END",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],	"BLOODY_GLITER_THIEF_DASH_END",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],	"BLOODY_GLITER_THIEF_JUMP_UP",	},
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],	"BLOODY_GLITER_THIEF_JUMP_UP_DIR",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],		"BLOODY_GLITER_THIEF_JUMP_DOWN",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],	"BLOODY_GLITER_THIEF_JUMP_DOWN_DIR",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_DASH_END = 
+{
+	ANIM_NAME	= "DashEnd",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	SPEED_X	= INIT_PHYSIC["RUN_SPEED"],
+	
+	ALLOW_DIR_CHANGE	= FALSE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_THIEF_JUMP_DOWN_DIR",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_GLITER_THIEF_WAIT",			},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_JUMP_UP = 
+{
+	ANIM_NAME	= "JumpUp",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+	
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	SPEED_X	= 0,
+	SPEED_Y	= INIT_PHYSIC["JUMP_SPEED"],
+	
+	ADD_POS_Y	= 45, 
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"BLOODY_GLITER_THIEF_JUMP_DOWN",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_JUMP_DOWN = 
+{
+	ANIM_NAME	= "JumpDown",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+	
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BLOODY_GLITER_THIEF_JUMP_LANDING",	},
+	},
+}
+
+function BLOODY_GLITER_THIEF_JUMP_DOWN_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+end
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_JUMP_UP_DIR = 
+{
+	ANIM_NAME	= "JumpUp",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+	
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+		
+	PASSIVE_SPEED_X	= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y			= INIT_PHYSIC["JUMP_SPEED"],
+	
+	ADD_POS_Y	= 45, 
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"BLOODY_GLITER_THIEF_JUMP_DOWN_DIR",		},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME	= "JumpDown",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+	
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	PASSIVE_SPEED_X	= INIT_PHYSIC["WALK_SPEED"],
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BLOODY_GLITER_THIEF_JUMP_LANDING",	},
+	},
+}
+
+function BLOODY_GLITER_THIEF_JUMP_DOWN_DIR_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+end
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_JUMP_LANDING = 
+{
+	ANIM_NAME	= "JumpLanding",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= TRUE,
+	
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+    SOUND_PLAY0	= { 0.091, "Glitter_Landing.ogg" },
+
+	SPEED_X	= 0,
+	SPEED_Y	= 0,
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_THIEF_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_GLITER_THIEF_WAIT",		},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_DAMAGE_FRONT = 
+{
+	ANIM_NAME	= "DamageFront",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"BLOODY_GLITER_THIEF_WAIT",	},
+	},
+}
+
+function BLOODY_GLITER_THIEF_DAMAGE_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.047 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+end
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_DAMAGE_BACK = 
+{
+	ANIM_NAME	= "DamageBack",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+    SOUND_PLAY0	= { 0.174, "GlitterVoice_HurtRoar1.ogg" , 24 },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"BLOODY_GLITER_THIEF_WAIT",	},
+	},
+}
+
+function BLOODY_GLITER_THIEF_DAMAGE_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.06 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+end
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_DAMAGE_DOWN_FRONT = 
+{
+	ANIM_NAME	= "DamageDownFront",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	SUPER_ARMOR	= TRUE,
+	DEFENCE		= { 0, 100, 70, },
+
+    SOUND_PLAY0	= { 0.275, "GlitterVoice_HurtRoar1.ogg" , 24 },
+	
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_THIEF_DAMAGE_AIR_FALL",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"BLOODY_GLITER_THIEF_STAND_UP_ATTACK_FRONT",	"CT_BLOODY_GLITER_THIEF_STAND_UP_ATTACK_FRONT",	},	
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_GLITER_THIEF_STAND_UP_FRONT",	},
+	},
+	
+	CT_BLOODY_GLITER_THIEF_STAND_UP_ATTACK_FRONT =
+	{
+		RATE	= 100,
+		ANIM_PLAY_COUNT	= 1,
+		DISTANCE_TO_TARGET_NEAR	= 400,
+	},
+}
+
+function BLOODY_GLITER_THIEF_DAMAGE_DOWN_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.41 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )		
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+end
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_DAMAGE_DOWN_BACK = 
+{
+	ANIM_NAME	= "DamageDownBack",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	
+	SUPER_ARMOR	= TRUE,
+	DEFENCE		= { 0, 100, 70, },
+    SOUND_PLAY0	= { 0.174, "GlitterVoice_HurtRoar1.ogg" , 24 },
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_THIEF_DAMAGE_AIR_FALL",		},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"BLOODY_GLITER_THIEF_DAMAGE_AVOID_BACK",	"CT_BLOODY_GLITER_THIEF_DAMAGE_AVOID_BACK",	},	
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_GLITER_THIEF_STAND_UP_BACK",		},
+	},
+
+	CT_BLOODY_GLITER_THIEF_DAMAGE_AVOID_BACK =
+	{
+		RATE	= 100,
+		ANIM_PLAY_COUNT	= 1,
+		DISTANCE_TO_TARGET_NEAR	= 400,
+	},
+}
+
+function BLOODY_GLITER_THIEF_DAMAGE_DOWN_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.45 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )		
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+end
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_DAMAGE_FLY_FRONT = 
+{
+	ANIM_NAME	= "DamageAirFlyFront",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= TRUE,
+	
+	LAND_CONNECT	= FALSE,	
+		
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BLOODY_GLITER_THIEF_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_DAMAGE_FLY_BACK = 
+{
+	ANIM_NAME	= "DamageAirFlyBack",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,	
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BLOODY_GLITER_THIEF_DAMAGE_DOWN_BACK",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_DAMAGE_AIR = 
+{
+	ANIM_NAME	= "DamageAirSmall",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BLOODY_GLITER_THIEF_WAIT",	},
+	},
+	
+	VIEW_TARGET	= TRUE,
+	ALLOW_DIR_CHANGE	= TRUE,
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_DAMAGE_AIR_DOWN = 
+{
+	ANIM_NAME	= "DamageAirDown",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BLOODY_GLITER_THIEF_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_DAMAGE_AIR_UP = 
+{
+	ANIM_NAME	= "DamageAirUp",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"BLOODY_GLITER_THIEF_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BLOODY_GLITER_THIEF_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_DAMAGE_AIR_FALL = 
+{
+	ANIM_NAME	= "DamageAirFall",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_POSITIVE_Y_SPEED"],	"BLOODY_GLITER_THIEF_DAMAGE_AIR_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BLOODY_GLITER_THIEF_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_DAMAGE_AIR_DOWN_LANDING = 
+{
+	ANIM_NAME	= "DamageDownLanding",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	
+	SUPER_ARMOR	= TRUE,
+	DEFENCE		= { 0, 100, 70, },
+    SOUND_PLAY0	= { 0.103, "GlitterVoice_HurtRoar1.ogg", 24 },
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_THIEF_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"BLOODY_GLITER_THIEF_STAND_UP_ATTACK_FRONT",	"CT_BLOODY_GLITER_THIEF_STAND_UP_ATTACK_FRONT",	},	
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_GLITER_THIEF_STAND_UP_FRONT",			},
+	},
+	
+	CT_BLOODY_GLITER_THIEF_STAND_UP_ATTACK_FRONT =
+	{
+		RATE	= 100,
+		ANIM_PLAY_COUNT	= 1,
+		DISTANCE_TO_TARGET_NEAR	= 400,
+	},
+}
+
+function BLOODY_GLITER_THIEF_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		local pos = pNPCUnit:GetLandPosition_LUA()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+		pos.y = pos.y + 5
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "GroundShockWave", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(1,-1) )
+		local pParticle = pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "AirDownTick", pNPCUnit:GetPos(), D3DXVECTOR2(200,200), D3DXVECTOR2(10,-1) )
+		
+		if pParticle ~= nil then 
+			pParticle:SetLandPosition( pos.y - 5 )
+		end
+		
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 500 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 0.1 )
+		end		
+		
+	elseif pNPCUnit:AnimEventTimer_LUA( 0.1 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )		
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+end
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_STAND_UP_ATTACK_FRONT = 
+{
+	ANIM_NAME	= "DamageStandUpFront",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,	
+	
+	SUPER_ARMOR	= TRUE,
+	DEFENCE		= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_BLOODY_GLITER_THIEF_Boss_DamageStandAttackFront", 0,	
+	},	
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_THIEF_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_GLITER_THIEF_WAIT",			},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_STAND_UP_ATTACK_BACK = 
+{
+	ANIM_NAME	= "DamageStandUpBack",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	
+	SUPER_ARMOR	= TRUE,
+	DEFENCE		= { 0, 100, 70, },
+		
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_THIEF_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_GLITER_THIEF_WAIT", },
+	},		
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_DAMAGE_AVOID_BACK =
+{
+	ANIM_NAME	= "DamageAviodBack",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,	
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_THIEF_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_GLITER_THIEF_WAIT",			},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_STAND_UP_FRONT = 
+{
+	ANIM_NAME	= "DamageStandUpFront",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	SUPER_ARMOR	= TRUE,
+	DEFENCE		= { 0, 100, 70, },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_THIEF_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_GLITER_THIEF_WAIT",			},
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_STAND_UP_BACK = 
+{
+	ANIM_NAME	= "DamageStandUpBack",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	LAND_CONNECT	= FALSE,
+	
+	SUPER_ARMOR	= TRUE,
+	DEFENCE		= { 0, 100, 70, },
+		
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_THIEF_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_GLITER_THIEF_WAIT", },
+	},		
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_DYING_LAND_FRONT = 
+{
+	ANIM_NAME	= "DamageDownFront",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+	LAND_CONNECT	= FALSE,
+
+	INVINCIBLE	= { 0, 100, }, 		
+    SOUND_PLAY0	= { 0.196, "GlitterVoice_DeathRoar.ogg" },
+	
+	DYING_END	= TRUE,
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+}
+
+function BLOODY_GLITER_THIEF_DYING_LAND_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	local pos = pNPCUnit:GetPos()
+	pos.y = pos.y + 100.0
+	local GetMinorParticle = pX2Game:GetMinorParticle()
+	
+	local pSeq = GetMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DieLight",		pos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+
+	if pSeq ~= nil then
+		pSeq:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+		pNPCUnit:SetDieSeq( pSeq:GetHandle() )
+	end
+	
+	pNPCUnit:PlaySound_LUA( "DieLight.ogg" )
+end
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_DYING_LAND_BACK = 
+{
+	ANIM_NAME	= "DamageDownBack",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+	LAND_CONNECT	= FALSE,
+	
+	INVINCIBLE	= { 0, 100, }, 		
+    SOUND_PLAY0	= { 0.250, "GlitterVoice_DeathRoar.ogg" },
+	
+	DYING_END	= TRUE,	
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_DYING_SKY = 
+{
+	ANIM_NAME	= "DamageDownLanding",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+	LAND_CONNECT	= FALSE,
+	
+	INVINCIBLE	= { 0, 100, }, 		
+    SOUND_PLAY0	= { 0.103, "GlitterVoice_DeathRoar.ogg" },
+	
+	DYING_END	= TRUE,
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_ATTACK_A = 
+{
+	ANIM_NAME	= "AttackA",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	SPEED_X	= 0,
+	SPEED_Y	= 0,
+
+    SOUND_PLAY0	= { 0.314, "GliterGreatVoice_AttackRoar2.ogg" },
+    SOUND_PLAY1	= { 0.223, "BLOODY_GLITER_THIEF_AttackA.ogg" },
+	
+	VIEW_TARGET	= TRUE,
+	ALLOW_DIR_CHANGE	= FALSE,	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_THIEF_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"BLOODY_GLITER_THIEF_DAMAGE_AVOID_BACK",	"CT_BLOODY_GLITER_THIEF_DAMAGE_AVOID_BACK",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_GLITER_THIEF_WAIT",	},
+	},
+	
+	CT_BLOODY_GLITER_THIEF_DAMAGE_AVOID_BACK =
+	{
+		ANIM_EVENT_TIMER	= 0.4,
+		RATE				= 100,
+		ATTACK_SUCCESS		= TRUE,
+	},
+
+	ATTACK_TIME0	= { 0.32, 0.4, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+				
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 10.0,	
+		CAMERA_CRASH_TIME		= 0.3,		
+		CAN_REVENGE			= TRUE,	
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_DASH_ATTACK_READY =
+{
+	ANIM_NAME	= "DASH_ATTACK_READY",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= FALSE,
+		
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+	
+	AFTER_IMAGE	= { 0, 100, },
+	INVINCIBLE	= { 0, 100, },
+	INVISIBLE_STATE	= { 0, 0.38 },
+
+	PASSIVE_SPEED_X	= 1200,
+	ALLOW_DIR_CHANGE	= FALSE,
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"BLOODY_GLITER_THIEF_DASH_ATTACK",	"CT_BLOODY_GLITER_THIEF_DASH_ATTACK"	},
+	},
+	
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_RAVEN_SHADOW_STEP", 0,
+	},
+	
+	CT_BLOODY_GLITER_THIEF_DASH_ATTACK =
+	{
+		RATE	= 70,
+		STATE_TIME_OVER	= 0.4,
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_DASH_ATTACK =
+{
+	ANIM_NAME	= "DASH_ATTACK",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	
+	LAND_CONNECT	= FALSE,
+	TRANSITION		= FALSE,
+
+	SPEED_X	= 0,
+	SPEED_Y	= 0,
+	
+	SOUND_PLAY0	= { 0.14, "BLOODY_GLITER_THIEF_DashAttack01.ogg" },
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],		"BLOODY_GLITER_THIEF_WAIT",	},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_THIEF_JUMP_DOWN",	},
+	},
+	
+	ATTACK_TIME0	= { 0.146, 0.198, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+				
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 10.0,	
+		CAMERA_CRASH_TIME		= 0.3,		
+		CAN_REVENGE			= TRUE,	
+	},
+}
+--------------------------------------------------------------------------
+BLOODY_GLITER_THIEF_DRINK_POTION = 
+{
+	ANIM_NAME	= "DrinkPotion_Flask",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	RIGHT		= FALSE,
+	
+	DEFENCE		= { 0, 100, 90, },
+	
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= FALSE,
+	SUPER_ARMOR		= TRUE,
+	
+	SOUND_PLAY0			= { 0.7, "Gliter_Alchemyst_DrinkPotion.ogg" },
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BLOODY_GLITER_THIEF_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BLOODY_GLITER_THIEF_WAIT", },
+	},
+}
+
+function BLOODY_GLITER_THIEF_DRINK_POTION_STATE_START( pKTDApp, pX2Game, pNPCUnit )
+	if nil ~= pNPCUnit then
+		local pEffectSet = pX2Game:GetEffectSet()
+		
+		if pNPCUnit:GetInt_LUA( 0 ) == 1 then
+			local hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_GILTER_POTION_RED", pNPCUnit )
+		elseif pNPCUnit:GetInt_LUA( 0 ) == 2 then
+			local hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_GILTER_POTION_YELLOW", pNPCUnit )
+		else
+			local iRandInx = pNPCUnit:GetRandVal() % 2
+			pNPCUnit:SetInt_LUA( 1, iRandInx )
+			
+			if 0 == iRandInx then 
+				local hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_GILTER_POTION_RED", pNPCUnit )
+			else
+				local hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_GILTER_POTION_YELLOW", pNPCUnit )
+			end
+		end
+	end
+end
+
+function BLOODY_GLITER_THIEF_DRINK_POTION_STATE_END( pKTDApp, pX2Game, pNPCUnit )
+	if nil ~= pNPCUnit then
+		local pEffectSet = pX2Game:GetEffectSet()
+		
+		if pNPCUnit:GetInt_LUA( 0 ) == 1 then
+			pNPCUnit:SetBuffFactorToGameUnitByBuffFactorID_LUA( BUFF_FACTOR_ID["BFI_NPC_RED_POTION"] )
+		elseif pNPCUnit:GetInt_LUA( 0 ) == 2 then
+			pNPCUnit:SetRageForce( 99999 )
+			local hEffect = pEffectSet:PlayEffectSet_LUA( "Effectset_Gliter_Yellow_Potion", pNPCUnit )
+		else
+			if 0 == pNPCUnit:GetInt_LUA( 1 ) then 
+				pNPCUnit:SetBuffFactorToGameUnitByBuffFactorID_LUA( BUFF_FACTOR_ID["BFI_NPC_RED_POTION"] )
+			else
+				pNPCUnit:SetRageForce( 99999 )
+				local hEffect = pEffectSet:PlayEffectSet_LUA( "Effectset_Gliter_Yellow_Potion", pNPCUnit )
+			end
+		end
+	end
+end
+--------------------------------------------------------------------------
+function BLOODY_GLITER_THIEF_COMMON_FRAME_FUNC( pKTDApp, pX2Game, pNPCUnit )
+	if nil ~= pNPCUnit and false == pNPCUnit:GetFlag_LUA( 0 ) then
+		local maxHP = pNPCUnit:GetMaxHP()
+		
+		if pNPCUnit:GetNowHP() < maxHP * 0.6 then
+			pNPCUnit:StateChange_LUA( "BLOODY_GLITER_THIEF_DRINK_POTION", false )
+			local index = pX2Game:GetNowStageIndex()
+			pNPCUnit:SetFlag_LUA( 0, true )
+			pNPCUnit:SetInt_LUA( 0, index )
+		end
+	end
+end
+--------------------------------------------------------------------------
+function MovePos( pos, dirvector, dist )
+	pos.x = pos.x + dist * dirvector.x
+	pos.y = pos.y + dist * dirvector.y
+	pos.z = pos.z + dist * dirvector.z
+	
+	return pos
+end
+--------------------------------------------------------------------------

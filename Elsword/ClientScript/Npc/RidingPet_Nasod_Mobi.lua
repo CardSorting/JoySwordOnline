@@ -1,0 +1,443 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 250.0,
+	UNIT_HEIGHT		= 230.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+
+	SPEECH =
+	{
+		STR_ID_4016,
+	},
+}
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+		"Riding_Nasod_Mobi01.tga",
+		"Riding_Nasod_Mobi02.tga",
+		"Riding_Mobi_Misail.dds",
+	},
+
+	READY_SOUND = 
+	{
+		"RidingPet_Mobi_AttackX.ogg",
+		"RidingPet_Mobi_AttackZ.ogg",
+		"RidingPet_Mobi_DamageBack.ogg",
+		"RidingPet_Mobi_DamageFront.ogg",
+		"RidingPet_Mobi_DashEnd.ogg",
+		"RidingPet_Mobi_Dying.ogg",
+		"RidingPet_Mobi_JumpAttackZ.ogg",
+		"RidingPet_Mobi_Start.ogg",
+		"RidingPet_Mobi_WaitHabit.ogg",
+	},
+
+	READY_XSKIN_MESH = 
+	{
+		"Riding_Mobi_Misail.x",
+	},
+
+	READY_XMESH =
+	{
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME	= "Motion_Riding_Nasod_Mobi.x",
+	RIDING_MOTION		= "Ride_1",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+
+	WALK_SPEED			= 700,
+	RUN_SPEED			= 1000, --750,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300, -- 2300
+
+	IGNORE_LINE_SPEED	= FALSE,
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "NASOD_MOBI_START", },
+	{ STATE_NAME = "NASOD_MOBI_WAIT", },
+	{ STATE_NAME = "NASOD_MOBI_WAIT_HABIT", },
+	{ STATE_NAME = "NASOD_MOBI_WALK", },
+
+	{ STATE_NAME = "NASOD_MOBI_JUMP_UP", },
+	{ STATE_NAME = "NASOD_MOBI_JUMP_DOWN", },
+	{ STATE_NAME = "NASOD_MOBI_JUMP_LANDING", },
+
+	{ STATE_NAME = "NASOD_MOBI_DASH", },
+	{ STATE_NAME = "NASOD_MOBI_DASH_END", },
+	{ STATE_NAME = "NASOD_MOBI_DASH_JUMP", },
+	{ STATE_NAME = "NASOD_MOBI_DASH_JUMP_LANDING", },
+
+	{ STATE_NAME = "NASOD_MOBI_DAMAGE_FRONT", },
+	{ STATE_NAME = "NASOD_MOBI_DAMAGE_BACK", },
+	{ STATE_NAME = "NASOD_MOBI_DYING", },
+	
+	{ STATE_NAME = "NASOD_MOBI_ATTACK_Z", },
+	{ STATE_NAME = "NASOD_MOBI_JUMP_ATTACK_Z", },
+	{ STATE_NAME = "NASOD_MOBI_ATTACK_X", },
+	{ STATE_NAME = "NASOD_MOBI_ATTACK_SPECIAL", },
+
+	{ STATE_NAME = "NASOD_MOBI_SIT_READY", },
+	{ STATE_NAME = "NASOD_MOBI_SIT_WAIT", },
+	{ STATE_NAME = "NASOD_MOBI_STAND_UP", },
+	
+	{ STATE_NAME = "NASOD_MOBI_BOOST_DASH", },
+
+	START_STATE		= "NASOD_MOBI_START",
+	WAIT_STATE		= "NASOD_MOBI_WAIT",
+	HABIT_STATE		= "NASOD_MOBI_WAIT_HABIT",
+	WALK_STATE		= "NASOD_MOBI_WALK",
+
+	JUMP_READY_STATE	= "NASOD_MOBI_JUMP_READY",
+	JUMP_UP_STATE		= "NASOD_MOBI_JUMP_UP",
+	JUMP_DOWN_STATE		= "NASOD_MOBI_JUMP_DOWN",
+	JUMP_LANDING_STATE	= "NASOD_MOBI_JUMP_LANDING",
+
+	DASH_STATE				= "NASOD_MOBI_DASH",
+	DASH_END_STATE			= "NASOD_MOBI_DASH_END",
+	DASH_JUMP_UP_STATE		= "NASOD_MOBI_DASH_JUMP",
+	DASH_JUMP_LANDING_STATE	= "NASOD_MOBI_DASH_JUMP_LANDING",
+
+	DAMAGE_FRONT_STATE	= "NASOD_MOBI_DAMAGE_FRONT",
+	DAMAGE_BACK_STATE	= "NASOD_MOBI_DAMAGE_BACK",
+	DYING_STATE_STATE	= "NASOD_MOBI_DYING",
+
+	ATTACK_Z_STATE			= "NASOD_MOBI_ATTACK_Z",
+	JUMP_ATTACK_Z_STATE		= "NASOD_MOBI_JUMP_ATTACK_Z",
+	ATTACK_X_STATE			= "NASOD_MOBI_ATTACK_X",
+	ATTACK_SPECIAL_STATE	= "NASOD_MOBI_ATTACK_SPECIAL",
+
+	SIT_READY_STATE = "NASOD_MOBI_SIT_READY",
+	SIT_WAIT_STATE = "NASOD_MOBI_SIT_WAIT",
+	STAND_UP_STATE = "NASOD_MOBI_STAND_UP",
+	
+	SPECIAL_MOVE_STATE = "NASOD_MOBI_BOOST_DASH",
+}
+
+-- 상태 정의 --
+-- 시작 --
+NASOD_MOBI_START = 
+{
+	ANIM_NAME	= "Start",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= TRUE,
+	EFFECT_SET_LIST = { "EffectSet_Riding_Pet_Summon", 0.001, },
+	
+    SOUND_PLAY0	= { 0.01, "RidingPet_Mobi_Start.ogg", },
+    SOUND_PLAY1	= { 0.001, "RidingPet_Summon.ogg", },
+	SKILL_CANCEL_AFTER	= 0.001,
+}
+----
+
+-- 대기 --
+NASOD_MOBI_WAIT = 
+{
+	ANIM_NAME	= "Wait",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+}
+-----
+
+-- 습관 --
+NASOD_MOBI_WAIT_HABIT = 
+{
+	ANIM_NAME	= "WaitHabit",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+    SOUND_PLAY0	= { 0.01, "RidingPet_Mobi_WaitHabit.ogg", },
+}
+----
+
+-- 걷기 --
+NASOD_MOBI_WALK = 
+{
+	ANIM_NAME	= "Walk",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+}
+----
+
+-- 점프 업 --
+NASOD_MOBI_JUMP_UP = 
+{
+	ANIM_NAME		= "JumpUp",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+}
+----
+
+-- 점프 다운 --
+NASOD_MOBI_JUMP_DOWN =
+{
+	ANIM_NAME		= "JumpDown",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+}
+----
+
+-- 점프 착지 --
+NASOD_MOBI_JUMP_LANDING =
+{
+	ANIM_NAME		= "JumpDownLading",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+	TRANSITION		= TRUE,
+}
+----
+
+-- 달리기 ---
+NASOD_MOBI_DASH =
+{
+	ANIM_NAME		= "Dash",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+}
+----
+
+-- 달리다가 멈춤 --
+NASOD_MOBI_DASH_END =
+{
+	ANIM_NAME	= "DashEnd",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	
+    SOUND_PLAY0	= { 0.01, "RidingPet_Mobi_DashEnd.ogg", },
+	
+}
+----
+
+-- 달리다가 점프 --
+NASOD_MOBI_DASH_JUMP =
+{
+	ANIM_NAME		= "DashJump",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+	SOUND_PLAY0			= { 0.02, "Step.ogg" },
+}
+----
+
+-- 달리다가 점프 착지 --
+NASOD_MOBI_DASH_JUMP_LANDING =
+{
+	ANIM_NAME		= "DashJumpLanding",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+}
+----
+
+-- 앞 데미지 --
+NASOD_MOBI_DAMAGE_FRONT = 
+{
+	ANIM_NAME		= "DamageFront",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+	
+    SOUND_PLAY0	= { 0.01, "RidingPet_Mobi_DamageFront.ogg", },
+	
+}
+----
+
+-- 뒤 데미지 --
+NASOD_MOBI_DAMAGE_BACK = 
+{
+	ANIM_NAME		= "DamageBack",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+	
+    SOUND_PLAY0	= { 0.01, "RidingPet_Mobi_DamageBack.ogg", },
+	
+}
+----
+
+-- 죽음 --
+NASOD_MOBI_DYING =
+{
+	ANIM_NAME		= "Dying",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	INVINCIBLE		= { 0, 100, },
+
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+	
+    SOUND_PLAY0	= { 0.01, "RidingPet_Mobi_Dying.ogg", },
+	
+}
+----
+
+-- Z 공격 --
+NASOD_MOBI_ATTACK_Z =
+{
+	ANIM_NAME		= "Attack_Z",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= FALSE,
+
+	--SPEED_TIME0		= { -100, -1, 0.00, 3 },
+	SPEED_TIME0		= { 2000, -1, 0.176, 3 },
+	SPEED_TIME1		= { 0, -1, 0.400, 3 },
+
+    SOUND_PLAY0	= { 0.001, "RidingPet_Mobi_AttackZ.ogg", },
+	
+	EFFECT_SET_LIST = { "EffectSet_Riding_Mobi_AttackZ", 0.01, },
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	DELETE_EFFECT_SET_ON_DAMAGE_REACT = TRUE,
+	DELETE_EFFECT_SET_ON_DIE = TRUE,
+	SKILL_CANCEL_AFTER	= 0.5,
+	WALK_CANCEL_AFTER	= 0.5,
+	DASH_CANCEL_AFTER	= 0.5,
+}
+----
+
+-- 점프 Z 공격 --
+NASOD_MOBI_JUMP_ATTACK_Z =
+{
+	ANIM_NAME		= "Jump_Attack_Z",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+	--APPLY_ANIM_MOVE	= FALSE,
+
+	SPEED_TIME0		= { 2000, -100, 0.0, 3 },
+	SPEED_TIME1		= { -1, -1, 0.28, 3 },
+	SPEED_TIME2		= { 800, 0, 0.29, 2 },
+	--SPEED_TIME2		= { 100, -1600, 0.6, 2 },
+
+    SOUND_PLAY0	= { 0.001, "RidingPet_Mobi_JumpAttackZ.ogg", },
+
+	EFFECT_SET_LIST = { "EffectSet_Riding_Mobi_Jump_AttackZ", 0.01, },
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	DELETE_EFFECT_SET_ON_DAMAGE_REACT = TRUE,
+	DELETE_EFFECT_SET_ON_DIE = TRUE
+}
+----
+
+-- X 공격 --
+NASOD_MOBI_ATTACK_X =
+{
+	ANIM_NAME		= "Attack_X",
+	ANIM_SPEED		= 0.9,
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+	SUPER_ARMOR		= TRUE,
+	SUPER_ARMOR_NOT_RED	= TRUE,
+
+	--SPEED_TIME0		= { -50, -1, 0.04, 3 },
+	SPEED_TIME0		= { 2800, -1, 0.244, 3 },
+	SPEED_TIME1		= { 100, -1, 0.541, 3 },
+	SPEED_TIME2		= { 0, -1, 0.750, 3 },
+
+    SOUND_PLAY0	= { 0.001, "RidingPet_Mobi_AttackX.ogg", },
+	
+	EFFECT_SET_LIST = { "EffectSet_Riding_Mobi_AttackX", 0.01, },
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	DELETE_EFFECT_SET_ON_DAMAGE_REACT = TRUE,
+	DELETE_EFFECT_SET_ON_DIE = TRUE,
+	SKILL_CANCEL_AFTER	= 0.65,
+	WALK_CANCEL_AFTER	= 0.65,
+	DASH_CANCEL_AFTER	= 0.65,
+}
+----
+
+-- SPECIAL 공격 --
+NASOD_MOBI_ATTACK_SPECIAL =
+{
+	ANIM_NAME		= "Skill_C",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+	SUPER_ARMOR		= TRUE,
+	SUPER_ARMOR_NOT_RED	= TRUE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+    SOUND_PLAY0	= { 1.04, "Pet_Mystic_Missile.ogg", },
+    SOUND_PLAY1	= { 1.3, "Pet_Mystic_Missile.ogg", },
+    SOUND_PLAY2	= { 1.64, "Pet_Mystic_Missile.ogg", },
+    SOUND_PLAY3	= { 1.94, "Pet_Mystic_Missile.ogg", },
+	
+	EFFECT_SET_LIST = { 
+		"EffectSet_Riding_Mobi_SpecialAttack", 1.069,
+		"EffectSet_Riding_Mobi_SpecialAttack", 1.119,
+		"EffectSet_Riding_Mobi_SpecialAttack", 1.169,
+		"EffectSet_Riding_Mobi_SpecialAttack", 1.219,
+		"EffectSet_Riding_Mobi_SpecialAttack", 1.269,
+		"EffectSet_Riding_Mobi_SpecialAttack", 1.319,
+		"EffectSet_Riding_Mobi_SpecialAttack", 1.369,
+		"EffectSet_Riding_Mobi_SpecialAttack", 1.419,
+		"EffectSet_Riding_Mobi_SpecialAttack", 1.469,
+		"EffectSet_Riding_Mobi_SpecialAttack", 1.519,
+		"EffectSet_Riding_Mobi_SpecialAttack", 1.619,
+		"EffectSet_Riding_Mobi_SpecialAttack", 1.619,
+		"EffectSet_Riding_Mobi_SpecialAttack", 1.619,
+	},
+	SKILL_CANCEL_AFTER	= 1.8,
+	WALK_CANCEL_AFTER	= 1.8,
+	DASH_CANCEL_AFTER	= 1.8,
+	NORMAL_CAMERA1_RATE			= 30,
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 1200,
+			HEIGHT			= 300,
+			ANGLEDEGREE		= 60,
+		},
+	},
+}
+----
+
+NASOD_MOBI_SIT_READY = 
+{
+	ANIM_NAME		= "SitDown",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+}
+
+NASOD_MOBI_SIT_WAIT = 
+{
+	ANIM_NAME		= "SitWait",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+}
+
+NASOD_MOBI_STAND_UP = 
+{
+	ANIM_NAME		= "StandUp",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+}
+
+-- 특수 이동 ---
+NASOD_MOBI_BOOST_DASH =
+{
+	ANIM_NAME		= "Dash",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+}
+----EffectSet_Riding_Mobi_Booster 사용 합니다. Effectset

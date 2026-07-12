@@ -1,0 +1,255 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+-- barricadeA.lua
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 150.0,
+	UNIT_HEIGHT		= 240.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	RENDER_PARAM	= RENDER_TYPE["RT_CARTOON"],
+	
+	UNIT_SCALE		= 1.2,
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+	
+	"Barricade_Broken.ogg",
+	
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_BARRICADE_DEMON.X",
+	--MOTION_MULTI_TEX_XET	= "smallGate.xet",
+	--MULTI_TEX_SPEED			= { 2, 0, 0.5, },
+	ADD_ROTATE_Y			= -20.0,
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 0,
+	MAX_G_SPEED			= 0,
+	
+	WALK_SPEED			= 0,
+	RUN_SPEED			= 0,
+	JUMP_SPEED			= 0,
+	DASH_JUMP_SPEED		= 0,
+}
+
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 2000,
+	MP_CHANGE_RATE		= 0,
+	MP_CHARGE_RATE		= 0,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	SHADOW_SIZE			= 0,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	
+	HEAD_BONE_NAME			= "Object01",
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_WOOD"],
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	
+	NOT_EXTRA_DAMAGE	= TRUE,
+}
+
+
+
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "BARRICADE_DEMON_WAIT",					},
+	
+	--리액션 관련
+	{ STATE_NAME = "BARRICADE_DEMON_DAMAGE",				},	
+	{ STATE_NAME = "BARRICADE_DEMON_DYING",					LUA_FRAME_MOVE_FUNC = "BARRICADE_DEMON_DYING_FRAME_MOVE"			},
+	
+	START_STATE					= "BARRICADE_DEMON_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "BARRICADE_DEMON_DAMAGE",
+	SMALL_DAMAGE_LAND_BACK		= "BARRICADE_DEMON_DAMAGE",
+	BIG_DAMAGE_LAND_FRONT		= "BARRICADE_DEMON_DAMAGE",
+	BIG_DAMAGE_LAND_BACK		= "BARRICADE_DEMON_DAMAGE",
+	DOWN_DAMAGE_LAND_FRONT		= "BARRICADE_DEMON_DAMAGE",
+	DOWN_DAMAGE_LAND_BACK		= "BARRICADE_DEMON_DAMAGE",
+	FLY_DAMAGE_FRONT			= "BARRICADE_DEMON_DAMAGE",
+	FLY_DAMAGE_BACK				= "BARRICADE_DEMON_DAMAGE",
+	SMALL_DAMAGE_AIR			= "BARRICADE_DEMON_DAMAGE",	
+	BIG_DAMAGE_AIR				= "BARRICADE_DEMON_DAMAGE",
+	DOWN_DAMAGE_AIR				= "BARRICADE_DEMON_DAMAGE",
+	UP_DAMAGE					= "BARRICADE_DEMON_DAMAGE",
+	DAMAGE_REVENGE				= "BARRICADE_DEMON_DAMAGE",
+	
+	DYING_LAND_FRONT			= "BARRICADE_DEMON_DYING",
+	DYING_LAND_BACK				= "BARRICADE_DEMON_DYING",
+	DYING_SKY					= "BARRICADE_DEMON_DYING",
+
+	REVENGE_ATTACK				= "",	
+}
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_NEAR_FIRST"],
+		TARGET_INTERVAL				= 1,	-- sec
+		TARGET_NEAR_RANGE			= 2500,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 2000,		-- cm
+		TARGET_LOST_RANGE			= 2500,		-- cm
+		TARGET_SUCCESS_RATE			= 100,  --80,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 80,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 100, -- 50,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE = 
+	{		
+		DEST_GAP			= 150,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 160,
+		
+		DIR_CHANGE_INTERVAL = 9999,
+		
+		MOVE_SPLIT_RANGE	= 600,
+		WALK_INTERVAL		= 3,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 5,
+		UP_JUMP_RATE		= 100, -- 40,
+		UP_DOWN_RATE		= 20,
+		DOWN_JUMP_RATE		= 100,    --  20,
+		DOWN_DOWN_RATE		= 40,
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 0,		
+		PATROL_RANGE			= 0,
+		PATROL_COOL_TIME		= 1,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 500,	-- cm
+		ESCAPE_GAP			= 600,	-- 이 거리 보다 멀어지면 도망 성공
+		
+		WALK_INTERVAL		= 1,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 10,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+	},
+	
+}
+
+
+
+BARRICADE_DEMON_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	NEVER_MOVE					= TRUE,
+
+	EVENT_INTERVAL_TIME0		= 2,
+	
+}
+
+
+BARRICADE_DEMON_DAMAGE =
+{
+	ANIM_NAME					= "Damage",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	NEVER_MOVE					= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"BARRICADE_DEMON_WAIT",				},
+	},
+}
+
+
+BARRICADE_DEMON_DYING = 
+{
+	ANIM_NAME					= "Broken",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	SOUND_PLAY0			= { 0.001, "Barricade_Broken.ogg" },
+	
+	NEVER_MOVE					= TRUE,
+	DYING_END					= TRUE,
+	--DYING_SPEED					= 1,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+	
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------
+function BARRICADE_DEMON_DYING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.5 ) then
+
+
+	end
+	
+end

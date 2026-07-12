@@ -1,0 +1,16 @@
+# Remote state backend for the JoySword Azure infrastructure.
+#
+# The azurerm backend keeps Terraform state in a locked Azure blob so that
+# concurrent applies cannot corrupt it (blob lease = state lock). Copy this to
+# backend.hcl (gitignored via *.tfvars / secrets policy) and initialize with:
+#
+#   terraform init -backend-config=backend.hcl
+#
+# The storage account below should be SEPARATE from the artifact storage account
+# created by this configuration (never store state in a resource you also manage).
+
+resource_group_name  = "joysword-tfstate-rg"
+storage_account_name = "jstfstateuniquesuffix"
+container_name       = "tfstate"
+key                  = "azure/prod.terraform.tfstate"
+use_azuread_auth     = true

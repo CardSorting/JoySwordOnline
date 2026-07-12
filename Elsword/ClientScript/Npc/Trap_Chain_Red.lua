@@ -1,0 +1,186 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 50.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	--ALPHA_BLEND		= TRUE,
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+	"ChainTrap_Attack.ogg",
+	"ChainTrap_Attack1.ogg",
+	
+	},
+	
+	READY_XMESH = 
+	{
+	},
+	
+	READY_XSKIN_MESH = 
+	{	    
+	},
+	
+}
+
+INIT_MOTION = 
+{
+	MOTION_CHANGE_TEX_XET		= "Peita_Heart_Chain_WeightA.xet",
+	MOTION_FILE_NAME		= "NUI_TRAP_CHAIN.X",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 0,
+	RUN_SPEED			= 0,
+	JUMP_SPEED			= 0,
+	DASH_JUMP_SPEED		= 0,
+}
+
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 9225,
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	--SHADOW_SIZE			= 200,
+	--SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	--SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	--QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	--EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+		
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	--HEAD_BONE_NAME		= "Altera_Plain_Recyle_Mine",
+		
+	SHOW_ON_MINIMAP		= FALSE,
+	
+
+	
+
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "TRAP_CHAIN_ATTACK", },
+	{ STATE_NAME = "TRAP_CHAIN_ATTACK_END", },
+
+
+	START_STATE					= "TRAP_CHAIN_ATTACK",
+	
+}
+
+
+TRAP_CHAIN_ATTACK = 
+{
+	ANIM_NAME					= "Attack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+
+    SOUND_PLAY0					= { 0.001, "ChainTrap_Attack.ogg" },	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	NEVER_MOVE					= TRUE,
+	
+	ATTACK_TIME0				= { 0.0, 1000, },
+		
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_FLY"],
+		DAMAGE_TIME		= 999999,
+		
+
+		CAN_REVENGE		= FALSE,
+		ATTACK_ALL_TEAM	= TRUE,
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1,
+		},
+
+		BACK_SPEED_X			= 300,
+		BACK_SPEED_Y			= 1000,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"TRAP_CHAIN_ATTACK_END",	},
+	},
+}
+
+TRAP_CHAIN_ATTACK_END = 
+{
+	ANIM_NAME					= "Attack_End",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+
+    SOUND_PLAY0					= { 0.001, "ChainTrap_Attack1.ogg" },	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	NEVER_MOVE					= TRUE,
+	
+	ATTACK_TIME0				= { 0.0, 1000, },
+		
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_FLY"],
+		DAMAGE_TIME		= 999999,
+		
+
+		CAN_REVENGE		= FALSE,
+		ATTACK_ALL_TEAM	= TRUE,
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1,
+		},
+
+		BACK_SPEED_X			= 300,
+		BACK_SPEED_Y			= 1000,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"TRAP_CHAIN_ATTACK",	},
+	},
+}

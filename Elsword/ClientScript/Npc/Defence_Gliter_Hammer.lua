@@ -1,0 +1,1623 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 120.0,
+	UNIT_HEIGHT		= 150.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+	
+	 "GlitterVoice_AttackRoar1.ogg",
+	 "GlitterVoice_AttackRoar2.ogg",
+	 
+	 "GlitterVoice_DeathRoar.ogg",
+	 "GlitterVoice_HurtRoar1.ogg",
+	 "GlitterVoice_HurtRoar2.ogg",
+	 
+     "Glitter_Hammer_HitGround.ogg",
+     "Glitter_Hammer_Attack1.ogg",
+     "Glitter_Hammer_AttackB.ogg",
+     "Glitter_Hammer_Combo.ogg",
+     "Glitter_Hammer_JumpAttack.ogg",
+	 "Glitter_Landing.ogg",
+	 
+	
+	
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "NUI_GLITER_HAMMER.x",
+	MOTION_CHANGE_TEX_XET	= "DEFENCE_GLITER_LANCE.xet",
+	MOTION_ANI_TEX_XET		= "DEFENCE_GLITER_LANCE.xet",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 400,
+	RUN_SPEED			= 700,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 1800,
+}
+
+
+INIT_COMPONENT = 
+{
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+
+	
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	----MIND_FLAG_HEIGHT		= 230,
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	FALL_DOWN			= TRUE,
+	
+	WEAPON0 = 
+	{
+		WEAPON_FILE_NAME			= "Gliter_Weapon_Hammer_001.X",
+		WEAPON_BONE_NAME			= "Dummy1_Rhand",
+		
+	},
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "GLITER_HAMMER_START",							},
+	
+	{ STATE_NAME = "GLITER_HAMMER_WAIT",							LUA_FRAME_MOVE_FUNC = "GLITER_HAMMER_WAIT_FRAME_MOVE",						},
+	{ STATE_NAME = "GLITER_HAMMER_WAIT_HABIT",						},
+	
+	{ STATE_NAME = "GLITER_HAMMER_WALK",							LUA_FRAME_MOVE_FUNC = "GLITER_HAMMER_WALK_FRAME_MOVE",
+																	LUA_STATE_END_FUNC = "GLITER_HAMMER_WALK_STATE_END"							},
+
+	
+	{ STATE_NAME = "GLITER_HAMMER_DASH",							},
+	{ STATE_NAME = "GLITER_HAMMER_DASH_END",						},
+		
+
+	{ STATE_NAME = "GLITER_HAMMER_JUMP_UP",							},
+	{ STATE_NAME = "GLITER_HAMMER_JUMP_DOWN",						LUA_STATE_END_FUNC = "GLITER_HAMMER_JUMP_DOWN_STATE_END"					},
+	{ STATE_NAME = "GLITER_HAMMER_JUMP_UP_DIR",						},
+	{ STATE_NAME = "GLITER_HAMMER_JUMP_DOWN_DIR",					LUA_STATE_END_FUNC = "GLITER_HAMMER_JUMP_DOWN_DIR_STATE_END"				},
+	{ STATE_NAME = "GLITER_HAMMER_JUMP_LANDING",					},
+	
+	
+	
+	{ STATE_NAME = "GLITER_HAMMER_JUMP_UP_DIR_FOR_ATTACK",			 },
+	{ STATE_NAME = "GLITER_HAMMER_JUMP_ATTACK",				 STATE_COOL_TIME = 5,				},
+	{ STATE_NAME = "GLITER_HAMMER_JUMP_ATTACK_LANDING",				LUA_FRAME_MOVE_FUNC = "GLITER_HAMMER_JUMP_ATTACK_LANDING_FRAME_MOVE",				},
+
+
+	{ STATE_NAME = "GLITER_HAMMER_ATTACK_READY",					},
+	{ STATE_NAME = "GLITER_HAMMER_ATTACK",							LUA_FRAME_MOVE_FUNC = "GLITER_HAMMER_ATTACK_FRAME_MOVE",					},
+	{ STATE_NAME = "GLITER_HAMMER_ATTACK_B",						LUA_FRAME_MOVE_FUNC = "GLITER_HAMMER_ATTACK_B_FRAME_MOVE",						},
+		
+	{ STATE_NAME = "GLITER_HAMMER_COMBO",							},
+	
+	
+	
+	
+	--리액션 관련
+	{ STATE_NAME = "GLITER_HAMMER_DAMAGE_FRONT",					LUA_FRAME_MOVE_FUNC = "GLITER_HAMMER_DAMAGE_FRONT_FRAME_MOVE"				},
+	{ STATE_NAME = "GLITER_HAMMER_DAMAGE_BACK",						LUA_FRAME_MOVE_FUNC = "GLITER_HAMMER_DAMAGE_BACK_FRAME_MOVE"				},
+	{ STATE_NAME = "GLITER_HAMMER_DAMAGE_DOWN_FRONT",				LUA_FRAME_MOVE_FUNC = "GLITER_HAMMER_DAMAGE_DOWN_FRONT_FRAME_MOVE"			},
+	{ STATE_NAME = "GLITER_HAMMER_DAMAGE_DOWN_BACK",				LUA_FRAME_MOVE_FUNC = "GLITER_HAMMER_DAMAGE_DOWN_BACK_FRAME_MOVE"			},
+	{ STATE_NAME = "GLITER_HAMMER_DAMAGE_FLY_FRONT",				},
+	{ STATE_NAME = "GLITER_HAMMER_DAMAGE_FLY_BACK",					},
+	{ STATE_NAME = "GLITER_HAMMER_DAMAGE_AIR",						},
+	{ STATE_NAME = "GLITER_HAMMER_DAMAGE_AIR_DOWN",					},
+	{ STATE_NAME = "GLITER_HAMMER_DAMAGE_AIR_UP",					},
+	{ STATE_NAME = "GLITER_HAMMER_DAMAGE_AIR_FALL",					},
+	{ STATE_NAME = "GLITER_HAMMER_DAMAGE_AIR_DOWN_LANDING",			LUA_FRAME_MOVE_FUNC = "GLITER_HAMMER_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE"	},
+	
+	{ STATE_NAME = "GLITER_HAMMER_STAND_UP_FRONT",					},
+	{ STATE_NAME = "GLITER_HAMMER_STAND_UP_BACK",					},
+	
+	{ STATE_NAME = "GLITER_HAMMER_DAMAGE_REVENGE",					},
+	
+	
+	
+	
+	{ STATE_NAME = "GLITER_HAMMER_DYING_LAND_FRONT",				LUA_STATE_START_FUNC = "GLITER_HAMMER_DYING_LAND_STATE_START",},
+	{ STATE_NAME = "GLITER_HAMMER_DYING_LAND_BACK",					LUA_STATE_START_FUNC = "GLITER_HAMMER_DYING_LAND_STATE_START",},
+	{ STATE_NAME = "GLITER_HAMMER_DYING_SKY",						LUA_STATE_START_FUNC = "GLITER_HAMMER_DYING_LAND_STATE_START",},
+	
+	
+	
+	START_STATE					= "GLITER_HAMMER_START",
+	WAIT_STATE					= "GLITER_HAMMER_WAIT",
+	
+	
+	
+	SMALL_DAMAGE_LAND_FRONT		= "GLITER_HAMMER_DAMAGE_FRONT",
+	SMALL_DAMAGE_LAND_BACK		= "GLITER_HAMMER_DAMAGE_BACK",
+	BIG_DAMAGE_LAND_FRONT		= "GLITER_HAMMER_DAMAGE_FRONT",
+	BIG_DAMAGE_LAND_BACK		= "GLITER_HAMMER_DAMAGE_BACK",
+	DOWN_DAMAGE_LAND_FRONT		= "GLITER_HAMMER_DAMAGE_DOWN_FRONT",
+	DOWN_DAMAGE_LAND_BACK		= "GLITER_HAMMER_DAMAGE_DOWN_BACK",
+	FLY_DAMAGE_FRONT			= "GLITER_HAMMER_DAMAGE_FLY_FRONT",
+	FLY_DAMAGE_BACK				= "GLITER_HAMMER_DAMAGE_FLY_BACK",
+	SMALL_DAMAGE_AIR			= "GLITER_HAMMER_DAMAGE_AIR",	
+	BIG_DAMAGE_AIR				= "GLITER_HAMMER_DAMAGE_AIR",
+	DOWN_DAMAGE_AIR				= "GLITER_HAMMER_DAMAGE_AIR_DOWN",
+	DOWN_DAMAGE_AIR_LANDING				= "GLITER_HAMMER_DAMAGE_AIR_DOWN_LANDING",
+	UP_DAMAGE					= "GLITER_HAMMER_DAMAGE_AIR_UP",
+	DAMAGE_REVENGE				= "GLITER_HAMMER_DAMAGE_REVENGE",
+	
+	DAMAGE_EXTRA_STATES         = {"GLITER_HAMMER_DAMAGE_AIR_FALL","GLITER_HAMMER_STAND_UP_FRONT","GLITER_HAMMER_STAND_UP_BACK",
+	"GLITER_HAMMER_JUMP_DOWN","GLITER_HAMMER_JUMP_LANDING",},	
+	
+	DYING_LAND_FRONT			= "GLITER_HAMMER_DYING_LAND_FRONT",
+	DYING_LAND_BACK				= "GLITER_HAMMER_DYING_LAND_BACK",
+	DYING_SKY					= "GLITER_HAMMER_DYING_SKY",
+
+	REVENGE_ATTACK				= "",	
+}
+
+
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 3,		-- sec
+		TARGET_NEAR_RANGE			= 250,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 600,		-- cm
+		TARGET_LOST_RANGE			= 800,		-- cm
+		TARGET_SUCCESS_RATE			= 100,  --50,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 30,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 100, -- 30,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+		
+		TARGET_NPC					= TRUE,	
+		MANUAL_TARGETING_FUNC		= "GLITER_HAMMER_MANUAL_TARGET",
+	},
+	
+
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 600,
+		DEST_GAP			= 150,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 160,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		WALK_INTERVAL		= 3,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 9999,
+		UP_JUMP_RATE		= 0, -- 40,
+		UP_DOWN_RATE		= 0,
+		DOWN_JUMP_RATE		= 0,    --  20,
+		DOWN_DOWN_RATE		= 0,
+		
+		LINE_END_RANGE		= 80,	-- cm
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 50, --50,		
+		PATROL_RANGE			= 200,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	--[[
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 500,	-- cm
+		ESCAPE_GAP			= 600,	-- 이 거리 보다 멀어지면 도망 성공
+		
+		WALK_INTERVAL		= 1.5,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 10,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+		
+		LINE_END_RANGE		= 80,	-- cm
+	},
+	--]]
+}
+
+
+
+
+
+
+GLITER_HAMMER_START = 
+{
+	ANIM_NAME					= "WaitHabit",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,	
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"GLITER_HAMMER_WAIT",		"CT_GLITER_HAMMER_WAIT"				},
+	},
+	
+	CT_GLITER_HAMMER_WAIT = 
+	{
+		STATE_TIME_OVER			= 1,
+	},
+}
+
+
+
+GLITER_HAMMER_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	PASSIVE_SPEED_X				= 0,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	EVENT_INTERVAL_TIME0		= 1,
+	
+	EVENT_PROCESS = 
+	{		
+		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_HAMMER_JUMP_DOWN",					},
+		
+		
+		-- { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GLITER_HAMMER_COMBO",						"CT_GLITER_HAMMER_COMBO",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GLITER_HAMMER_ATTACK_READY",				"CT_GLITER_HAMMER_ATTACK_READY",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GLITER_HAMMER_JUMP_UP_DIR_FOR_ATTACK",		"CT_GLITER_HAMMER_JUMP_UP_DIR_FOR_ATTACK",		},
+		
+		
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GLITER_HAMMER_WAIT_HABIT",					"CT_GLITER_HAMMER_WAIT_HABIT",		},
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"GLITER_HAMMER_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"GLITER_HAMMER_DASH",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"GLITER_HAMMER_JUMP_UP",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"GLITER_HAMMER_JUMP_UP_DIR",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"GLITER_HAMMER_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"GLITER_HAMMER_JUMP_DOWN_DIR",				},
+	},
+	
+	CT_GLITER_HAMMER_ATTACK_READY = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 50,
+	},
+	
+	CT_GLITER_HAMMER_JUMP_UP_DIR_FOR_ATTACK = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 700,
+		RATE						= 50,
+	},
+	                          --[[
+	CT_GLITER_HAMMER_COMBO = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 600,
+		RATE						= 50,
+	},                         --]]
+	
+	CT_GLITER_HAMMER_WAIT_HABIT = 
+	{
+		ANIM_PLAY_COUNT				= 1,
+		RATE						= 60,
+		HAVE_TARGET					= 0,		-- false
+	},
+		
+}
+
+
+
+
+GLITER_HAMMER_WAIT_HABIT = 
+{
+	ANIM_NAME					= "WaitHabit",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_HAMMER_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GLITER_HAMMER_WAIT",						},
+	},
+}
+
+
+GLITER_HAMMER_WALK = 
+{
+	ANIM_NAME					= "Dash",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= 700,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	EVENT_INTERVAL_TIME1		= 3,
+	
+	EVENT_PROCESS = 
+	{		
+		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_HAMMER_JUMP_DOWN_DIR",				},
+				
+		-- { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GLITER_HAMMER_COMBO",						"CT_GLITER_HAMMER_COMBO",			},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GLITER_HAMMER_ATTACK_READY",				"CT_GLITER_HAMMER_ATTACK_READY",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GLITER_HAMMER_JUMP_UP_DIR_FOR_ATTACK",		"CT_GLITER_HAMMER_JUMP_UP_DIR_FOR_ATTACK",		},
+		
+
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"GLITER_HAMMER_WAIT",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"GLITER_HAMMER_DASH",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"GLITER_HAMMER_JUMP_UP",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"GLITER_HAMMER_JUMP_UP_DIR",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"GLITER_HAMMER_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"GLITER_HAMMER_JUMP_DOWN_DIR",				},
+	},
+	
+	CT_GLITER_HAMMER_ATTACK_READY = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 50,
+	},
+	
+	
+	CT_GLITER_HAMMER_JUMP_UP_DIR_FOR_ATTACK = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 700,
+		RATE						= 50,
+	},
+	
+	                 --[[
+	CT_GLITER_HAMMER_COMBO = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 600,
+		RATE						= 50,
+	},
+	                --]]
+	
+	
+}
+
+
+GLITER_HAMMER_DASH = 
+{
+	ANIM_NAME					= "Dash",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["RUN_SPEED"],
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 1,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_HAMMER_JUMP_DOWN_DIR",			},
+		
+		-- { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GLITER_HAMMER_COMBO",						"CT_GLITER_HAMMER_COMBO",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GLITER_HAMMER_JUMP_UP_DIR_FOR_ATTACK",	"CT_GLITER_HAMMER_JUMP_UP_DIR_FOR_ATTACK",		},
+		
+
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"GLITER_HAMMER_DASH_END",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"GLITER_HAMMER_DASH_END",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"GLITER_HAMMER_JUMP_UP",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"GLITER_HAMMER_JUMP_UP_DIR",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"GLITER_HAMMER_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"GLITER_HAMMER_JUMP_DOWN_DIR",			},
+	},
+	
+	
+		
+	CT_GLITER_HAMMER_JUMP_UP_DIR_FOR_ATTACK = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 700,
+		RATE						= 50,
+	},
+	               --[[
+	
+	CT_GLITER_HAMMER_COMBO = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 600,
+		RATE						= 50,
+	},
+	       --]]
+
+}
+
+
+
+GLITER_HAMMER_DASH_END = 
+{
+	ANIM_NAME					= "DashEnd",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= INIT_PHYSIC["RUN_SPEED"],
+	
+	ALLOW_DIR_CHANGE			= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_HAMMER_JUMP_DOWN_DIR",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GLITER_HAMMER_WAIT",						},
+	},
+}
+
+
+
+
+GLITER_HAMMER_JUMP_UP = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	
+	ADD_POS_Y					= 45, 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"GLITER_HAMMER_JUMP_DOWN",			},
+	},
+	
+}
+
+GLITER_HAMMER_JUMP_DOWN = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"GLITER_HAMMER_JUMP_LANDING",				},
+	},
+}
+
+GLITER_HAMMER_JUMP_UP_DIR = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	
+	ADD_POS_Y					= 45, 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"GLITER_HAMMER_JUMP_DOWN_DIR",				},
+	},
+	
+}
+
+GLITER_HAMMER_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"GLITER_HAMMER_JUMP_LANDING",				},
+	},
+}
+
+GLITER_HAMMER_JUMP_LANDING = 
+{
+	ANIM_NAME					= "JumpLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+    SOUND_PLAY0			= { 0.091, "Glitter_Landing.ogg" },
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_HAMMER_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GLITER_HAMMER_WAIT",						},
+	},
+}
+
+
+
+GLITER_HAMMER_JUMP_UP_DIR_FOR_ATTACK = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["DASH_JUMP_SPEED"],
+	
+	
+	VIEW_TARGET					= TRUE,
+	
+	ADD_POS_Y					= 45, 
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"GLITER_HAMMER_JUMP_ATTACK",				},
+	},
+	
+}
+
+
+
+GLITER_HAMMER_JUMP_ATTACK = 
+{
+	ANIM_NAME					= "JumpAttack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	SPEED_Y					= INIT_PHYSIC["G_ACCEL"] * -0.9,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    SOUND_PLAY0			= { 0.224, "GlitterVoice_AttackRoar1.ogg" },
+    SOUND_PLAY1			= { 0.226, "Glitter_Hammer_JumpAttack.ogg" },
+	
+	VIEW_TARGET					= FALSE,
+	ALLOW_DIR_CHANGE			= FALSE,	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"GLITER_HAMMER_JUMP_ATTACK_LANDING",				},
+	},
+	
+		
+	
+	ATTACK_TIME0				= { 0.1, 100, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+		
+		
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= -500,
+		
+		CAMERA_CRASH_GAP		= 10.0,	
+		CAMERA_CRASH_TIME		= 0.3,	
+		CAN_REVENGE			= TRUE,		
+	},
+
+}
+
+
+
+GLITER_HAMMER_JUMP_ATTACK_LANDING = 
+{
+	ANIM_NAME					= "JumpAttackLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+
+    SOUND_PLAY0			= { 0.001, "Glitter_Hammer_HitGround.ogg" },
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_HAMMER_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GLITER_HAMMER_WAIT",						},
+	},
+}
+
+
+
+
+GLITER_HAMMER_ATTACK_READY = 
+{
+	ANIM_NAME					= "AttackReady",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	--SUPER_ARMOR					= TRUE,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+	VIEW_TARGET					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"GLITER_HAMMER_DAMAGE_AIR_FALL",			},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GLITER_HAMMER_ATTACK",			"CT_GLITER_HAMMER_ATTACK",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GLITER_HAMMER_ATTACK_B",			"CT_GLITER_HAMMER_ATTACK_B",	},
+		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"GLITER_HAMMER_WAIT",						},
+	},
+	
+	CT_GLITER_HAMMER_ATTACK = 
+	{
+		ANIM_PLAY_COUNT				= 1,
+		RATE						= 100,
+	},
+
+
+	CT_GLITER_HAMMER_ATTACK_B = 
+	{
+		ANIM_PLAY_COUNT				= 1,
+		RATE						= 0,
+	},
+}
+
+
+
+GLITER_HAMMER_ATTACK = 
+{
+	ANIM_NAME					= "Attack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+
+    SOUND_PLAY0			= { 0.152, "GlitterVoice_AttackRoar1.ogg" },
+    SOUND_PLAY1			= { 0.125, "Glitter_Hammer_Attack1.ogg" },
+    SOUND_PLAY2			= { 0.219, "Glitter_Hammer_HitGround.ogg" },
+	
+	VIEW_TARGET					= FALSE,
+	ALLOW_DIR_CHANGE			= FALSE,	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_HAMMER_JUMP_DOWN",								},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GLITER_HAMMER_WAIT",									},	
+	},
+	
+	ATTACK_TIME0				= { 0.14, 0.24, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+		
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 10.0,	
+		CAMERA_CRASH_TIME		= 0.3,	
+		CAN_REVENGE			= TRUE,	
+		
+	},
+
+}
+
+
+
+GLITER_HAMMER_ATTACK_B =
+{
+	ANIM_NAME					= "AttackB",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	
+    SOUND_PLAY0			= { 0.684, "Glitter_Hammer_AttackB.ogg" },
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	
+	VIEW_TARGET					= FALSE,
+	ALLOW_DIR_CHANGE			= FALSE,	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_HAMMER_JUMP_DOWN",								},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GLITER_HAMMER_STAND_UP_FRONT",							},	
+	},
+	
+	ATTACK_TIME0				= { 0.72, 0.8, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+		
+		BUFF_FACTOR =
+		{
+			BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_PRESS"],
+			RATE	=
+			{
+				1,
+			},
+			IGNORE_REGIST_FOR_RATE = FALSE,
+
+			BEHAVIOR =
+			{	
+				COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_UNIT_SCALE"], BUFF_BEHAVIOR_TYPE["BBT_ATTACK_IMPOSSIBLE"], },
+		
+				BBT_CHANGE_UNIT_SCALE = 
+				{
+				},
+				BBT_ATTACK_IMPOSSIBLE = 
+				{
+				},
+			},
+		
+			FINALIZER =
+			{
+				COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+			
+				BFT_TIME =
+				{
+					BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+					NORMAL_TIME =
+					{
+						2,
+					},
+				},
+			},
+		},
+		
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 10.0,	
+		CAMERA_CRASH_TIME		= 0.3,	
+		CAN_REVENGE			= TRUE,		
+	},
+	
+}
+
+
+
+
+
+
+
+GLITER_HAMMER_COMBO = 
+{
+	ANIM_NAME					= "Combo",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+
+    SOUND_PLAY0			= { 0.713, "GlitterVoice_AttackRoar2.ogg" },
+    SOUND_PLAY1			= { 0.714, "Glitter_Hammer_Combo.ogg" },
+	
+	VIEW_TARGET					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_HAMMER_JUMP_DOWN",								},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GLITER_HAMMER_WAIT",									},	
+	},
+	
+	ATTACK_TIME0				= { 0.72, 0.79, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+		
+		BACK_SPEED_X			= 2000,
+		BACK_SPEED_Y			= 2500,
+		
+		CAMERA_CRASH_GAP		= 10.0,	
+		CAMERA_CRASH_TIME		= 0.3,		
+		CAN_REVENGE			= TRUE,	
+	},
+
+}
+
+
+
+GLITER_HAMMER_DAMAGE_REVENGE = 
+{
+	ANIM_NAME					= "DamageRevenge",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"GLITER_HAMMER_WAIT",												},
+	},
+}
+
+
+GLITER_HAMMER_DAMAGE_FRONT = 
+{
+	ANIM_NAME					= "DamageFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	PASSIVE_SPEED_X				= -150,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"GLITER_HAMMER_WAIT",												},
+	},
+}
+
+GLITER_HAMMER_DAMAGE_BACK = 
+{
+	ANIM_NAME					= "DamageBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	PASSIVE_SPEED_X				= 150,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    SOUND_PLAY0			= { 0.174, "GlitterVoice_HurtRoar1.ogg" , 24 },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"GLITER_HAMMER_WAIT",												},
+	},
+}
+
+
+
+
+
+GLITER_HAMMER_DAMAGE_DOWN_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	PASSIVE_SPEED_X				= -150,
+
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+
+    SOUND_PLAY0			= { 0.275, "GlitterVoice_HurtRoar1.ogg" , 24 },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"GLITER_HAMMER_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"GLITER_HAMMER_STAND_UP_FRONT",			},
+	},
+	
+}
+
+GLITER_HAMMER_DAMAGE_DOWN_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	PASSIVE_SPEED_X				= 150,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 50, },
+
+    SOUND_PLAY0			= { 0.174, "GlitterVoice_HurtRoar1.ogg" , 24 },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"GLITER_HAMMER_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"GLITER_HAMMER_STAND_UP_BACK",			},
+	},
+	
+}
+
+GLITER_HAMMER_DAMAGE_FLY_FRONT = 
+{
+	ANIM_NAME					= "DamageAirFlyFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,	
+	
+	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"GLITER_HAMMER_DAMAGE_AIR_DOWN_LANDING",		},
+	},
+}
+
+GLITER_HAMMER_DAMAGE_FLY_BACK = 
+{
+	ANIM_NAME					= "DamageAirFlyBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"GLITER_HAMMER_DAMAGE_DOWN_BACK",		},
+	},
+}
+
+GLITER_HAMMER_DAMAGE_AIR = 
+{
+	ANIM_NAME					= "DamageAirSmall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"GLITER_HAMMER_WAIT",					},
+	},
+	
+	VIEW_TARGET					= TRUE,
+	ALLOW_DIR_CHANGE			= TRUE,
+}
+
+GLITER_HAMMER_DAMAGE_AIR_DOWN = 
+{
+	ANIM_NAME					= "DamageAirDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"GLITER_HAMMER_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+GLITER_HAMMER_DAMAGE_AIR_UP = 
+{
+	ANIM_NAME					= "DamageAirUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"GLITER_HAMMER_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"GLITER_HAMMER_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+GLITER_HAMMER_DAMAGE_AIR_FALL = 
+{
+	ANIM_NAME					= "DamageAirFall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_POSITIVE_Y_SPEED"],		"GLITER_HAMMER_DAMAGE_AIR_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"GLITER_HAMMER_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+GLITER_HAMMER_DAMAGE_AIR_DOWN_LANDING = 
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+
+    SOUND_PLAY0			= { 0.103, "GlitterVoice_HurtRoar1.ogg", 24 },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_HAMMER_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GLITER_HAMMER_STAND_UP_FRONT",			},
+	},
+	
+}
+
+GLITER_HAMMER_STAND_UP_FRONT = 
+{
+	ANIM_NAME					= "DamageStandUpFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_HAMMER_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GLITER_HAMMER_WAIT",				},
+	},
+}
+
+GLITER_HAMMER_STAND_UP_BACK = 
+{
+	ANIM_NAME					= "DamageStandUpBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GLITER_HAMMER_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GLITER_HAMMER_WAIT", },
+	},		
+}
+
+
+
+GLITER_HAMMER_DYING_LAND_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+
+    SOUND_PLAY0			= { 0.196, "GlitterVoice_DeathRoar.ogg" },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+	
+GLITER_HAMMER_DYING_LAND_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+
+    SOUND_PLAY0			= { 0.250, "GlitterVoice_DeathRoar.ogg" },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+GLITER_HAMMER_DYING_SKY = 
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+
+    SOUND_PLAY0			= { 0.103, "GlitterVoice_DeathRoar.ogg" },
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+
+function GLITER_HAMMER_WALK_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+
+
+function GLITER_HAMMER_JUMP_DOWN_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+function GLITER_HAMMER_JUMP_DOWN_DIR_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+
+
+function GLITER_HAMMER_ATTACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+end
+
+
+
+function GLITER_HAMMER_DAMAGE_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.047 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function GLITER_HAMMER_DAMAGE_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.06 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function GLITER_HAMMER_DAMAGE_DOWN_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.41 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )		
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+
+end
+
+function GLITER_HAMMER_DAMAGE_DOWN_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.45 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )		
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+
+end
+
+function GLITER_HAMMER_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+		
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		local pos = pNPCUnit:GetLandPosition_LUA()
+		pMinorParticle:CreateSequence_LUA( "DownSmoke", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+		pos.y = pos.y + 5
+		pMinorParticle:CreateSequence_LUA( "GroundShockWave", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(1,-1) )
+		local pParticle = pMinorParticle:CreateSequence_LUA( "AirDownTick", pNPCUnit:GetPos(), D3DXVECTOR2(200,200), D3DXVECTOR2(10,-1) )
+		if pParticle ~= nil then 
+			pParticle:SetLandPosition( pos.y - 5 )
+		end
+		
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 500 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 0.1 )
+		end		
+		
+	elseif pNPCUnit:AnimEventTimer_LUA( 0.1 ) then
+		
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )		
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+		
+	end
+
+end
+
+
+
+
+
+
+
+function GLITER_HAMMER_DYING_LAND_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pos = pNPCUnit:GetPos()
+	pos.y = pos.y + 100.0
+	local GetMinorParticle = pX2Game:GetMinorParticle()
+	
+	local pSeq = GetMinorParticle:CreateSequence_LUA( "DieLight",		pos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+	if pSeq ~= nil then
+	
+		pSeq:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+		pNPCUnit:SetDieSeq( pSeq:GetHandle() )
+	
+	end
+	pNPCUnit:PlaySound_LUA( "DieLight.ogg" )
+	
+end
+
+
+
+
+
+
+--------------------------------------------------------------------
+function GLITER_HAMMER_ATTACK_B_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+    
+end
+
+
+--------------------------------------------------------------------
+function GLITER_HAMMER_JUMP_ATTACK_LANDING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+    if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+      	
+		local pos = pNPCUnit:GetLandPosition_LUA()
+		
+		local vDirVector		= pNPCUnit:GetDirVector()
+		local bIsRight		= pNPCUnit:GetIsRight()
+		local rotDegree		= pNPCUnit:GetRotateDegree()
+		
+		
+		if bIsRight == true then 
+			pos = MovePos( pos, vDirVector, 280 )
+		else
+			pos = MovePos( pos, vDirVector, -280 )
+		end
+			
+		
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		pDamageEffect:CreateInstance_LUA( pNPCUnit, "GLITER_HAMMER_JUMPATTACK_LANDING", pos, pos.y )
+		
+		local pMajorXMeshPlayer = pX2Game:GetMajorXMeshPlayer()
+        pMajorXMeshPlayer:CreateInstance_LUA( "Gliter_Hammer_JumpAttack01", pos, rotDegree, rotDegree, 14 )
+        
+		
+		pos.y = pos.y + 2
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "GroundShockWave", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(1,-1) )
+				
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 800 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 0.2 )
+		end		
+        
+    end
+    
+end
+
+
+
+
+
+------------------------------------------------------------------------------
+function MovePos( pos, dirvector, dist )
+	
+	pos.x = pos.x + dist * dirvector.x
+	pos.y = pos.y + dist * dirvector.y
+	pos.z = pos.z + dist * dirvector.z
+	
+	return pos
+	
+end
+
+
+
+function GLITER_HAMMER_MANUAL_TARGET( pKTDXApp, pX2Game, pNPCUnit )
+	
+	local pNearestNpc = pX2Game:GetNearestNpcInSpecificRangeByNpcId_LUA( pNPCUnit:GetPos(), NPC_UNIT_ID["NUI_DEFENCE_CRYSTAL"], 999999 )
+	
+	if nil ~= pNearestNpc then
+		pNPCUnit:SetTargetUnit( pNearestNpc )
+	end
+
+end
+
+
+
+
+
+function GLITER_HAMMER_WALK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	
+	if pX2Game:AnyUserUnitInRange( pNPCUnit:GetPos(), 500 ) == true then
+		local TargetPos = pX2Game:GetNearestUserUnitPos_LUA( pNPCUnit:GetPos(), 0, 999999 )
+	        
+		local bIsRight = pNPCUnit:GetIsRight()
+	        
+		if pNPCUnit:IsRightTarget_LUA(pNPCUnit, TargetPos) == true then
+			if( bIsRight == true ) then
+				GLITER_HAMMER_DO_ATTACK(pX2Game, pNPCUnit)
+				return
+			end
+		else
+			if( bIsRight == false ) then
+				GLITER_HAMMER_DO_ATTACK(pX2Game, pNPCUnit)
+				return
+			end
+		end
+	end
+
+	local iCrystallSmallKeyCode = pNPCUnit:GetKeyCode() + 5
+	local pUnitCrystallSmall = pX2Game:GetKeyCodeNPC( iCrystallSmallKeyCode )
+	if pUnitCrystallSmall ~= nil then
+		local TargetPos = pUnitCrystallSmall:GetPos()
+		local distance = pX2Game:GetDist_LUA(pNPCUnit:GetPos(), TargetPos)
+		if distance <= 500 then
+			local bIsRight = pNPCUnit:GetIsRight()
+		        
+			if pNPCUnit:IsRightTarget_LUA(pNPCUnit, TargetPos) == true then
+				if( bIsRight == true ) then
+					GLITER_HAMMER_DO_ATTACK(pX2Game, pNPCUnit)
+					return
+				end
+			else
+				if( bIsRight == false ) then
+					GLITER_HAMMER_DO_ATTACK(pX2Game, pNPCUnit)
+					return
+				end
+			end
+		end
+	end
+
+end
+
+
+
+function GLITER_HAMMER_WAIT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	
+	if pX2Game:AnyUserUnitInRange( pNPCUnit:GetPos(), 400 ) == true then
+		local TargetPos = pX2Game:GetNearestUserUnitPos_LUA( pNPCUnit:GetPos(), 0, 999999 )
+	        
+		local bIsRight = pNPCUnit:GetIsRight()
+	        
+		if pNPCUnit:IsRightTarget_LUA(pNPCUnit, TargetPos) == true then
+			if( bIsRight == true ) then
+				GLITER_HAMMER_DO_ATTACK(pX2Game, pNPCUnit)
+				return
+			end
+		else
+			if( bIsRight == false ) then
+				GLITER_HAMMER_DO_ATTACK(pX2Game, pNPCUnit)
+				return
+			end
+		end
+	end
+
+	local iCrystallSmallKeyCode = pNPCUnit:GetKeyCode() + 5
+	local pUnitCrystallSmall = pX2Game:GetKeyCodeNPC( iCrystallSmallKeyCode )
+	if pUnitCrystallSmall ~= nil then
+		local TargetPos = pUnitCrystallSmall:GetPos()
+		local distance = pX2Game:GetDist_LUA(pNPCUnit:GetPos(), TargetPos)
+		if distance <= 400 then
+			local bIsRight = pNPCUnit:GetIsRight()
+		        
+			if pNPCUnit:IsRightTarget_LUA(pNPCUnit, TargetPos) == true then
+				if( bIsRight == true ) then
+					GLITER_HAMMER_DO_ATTACK(pX2Game, pNPCUnit)
+					return
+				end
+			else
+				if( bIsRight == false ) then
+					GLITER_HAMMER_DO_ATTACK(pX2Game, pNPCUnit)
+					return
+				end
+			end
+		end
+	end
+
+end
+
+
+function GLITER_HAMMER_DO_ATTACK(pX2Game, pNPCUnit)
+	local iRate = pNPCUnit:GetRandVal() % 100
+	
+	if iRate < 20 then
+		pNPCUnit:StateChange_LUA( "GLITER_HAMMER_ATTACK_READY" )
+	elseif iRate < 50 then
+		pNPCUnit:StateChange_LUA( "GLITER_HAMMER_ATTACK_READY" )
+	else
+		pNPCUnit:StateChange_LUA( "GLITER_HAMMER_ATTACK_READY" )
+	end
+end
+

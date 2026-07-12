@@ -1,0 +1,171 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 50.0,
+	UNIT_HEIGHT		= 100.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	RENDER_PARAM	= RENDER_TYPE["RT_CARTOON"],
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_Flame.x",
+	--ADD_ROTATE_Y			= -20.0
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL			= 0,
+	MAX_G_SPEED		= 0,
+	
+	WALK_SPEED		= 0,
+	RUN_SPEED		= 0,
+	JUMP_SPEED		= 0,
+	DASH_JUMP_SPEED		= 0,
+}
+
+
+INIT_COMPONENT = 
+{
+	MAX_HP			= 1000,
+	MP_CHANGE_RATE		= 0,
+	MP_CHARGE_RATE		= 0,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	--SHADOW_SIZE			= 0,
+	--SHADOW_FILE_NAME	= "shadow.dds",
+	
+	--SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	--SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	--SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "",
+	EXCLAMATION_MARK_SEQ	= "",
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	
+	HARD_LEVEL =
+	{
+        	HP			= 1,
+
+		ATK_PHYSIC		= 0,
+		ATK_MAGIC		= 0,
+		ATK_FIRE		= 0,
+		ATK_ICE			= 0,
+		ATK_EARTH		= 0,
+		ATK_LIGHTNING	= 0,
+		ATK_DARK		= 0,
+		ATK_LIGHT		= 0,
+		ATK_UNIVERSAL	= 0,
+
+		DEF_PHYSIC		= 0,
+		DEF_MAGIC		= 0,
+		DEF_FIRE		= 0,
+		DEF_ICE			= 0,
+		DEF_EARTH		= 0,
+		DEF_LIGHTNING	= 0,
+		DEF_DARK		= 0,
+		DEF_LIGHT		= 0,
+		DEF_UNIVERSAL	= 0,
+
+		TRIGGER_RATE	= 0,
+	},
+
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "FLAME_WAIT",					},
+	{ STATE_NAME = "FLAME_DYING",					},
+
+	--리액션 관련
+	START_STATE				= "FLAME_WAIT",
+	
+	WAIT_STATE					= "FLAME_WAIT",	
+	
+	DYING_LAND_FRONT			= "FLAME_DYING",
+	DYING_LAND_BACK				= "FLAME_DYING",
+	DYING_SKY				= "FLAME_DYING",
+
+	REVENGE_ATTACK				= "",	
+}
+
+INIT_DEVICE = 
+{
+ READY_SOUND = 
+ {
+  "GS_Sacrifice_of_Hero.ogg",
+ },
+}
+
+FLAME_WAIT = 
+{
+	ANIM_NAME				= "Wait",
+	PLAY_TYPE				= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,	
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	NEVER_MOVE				= TRUE,
+	
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Flame_RED_Event_WAIT", 0,	
+	},
+}
+
+FLAME_DYING = 
+{
+	ANIM_NAME				= "Dying",
+	PLAY_TYPE				= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION				= FALSE,
+	LAND_CONNECT			= FALSE,
+	SOUND_PLAY0 			= { 0.047, "GS_Sacrifice_of_Hero.ogg" },
+
+	INVINCIBLE				= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	NEVER_MOVE				= TRUE,
+	DYING_END				= TRUE,
+	DYING_SPEED				= 0.8,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Flame_Red_Event_Dying", 0,	
+	},
+}
+	
+
+
+
+
+

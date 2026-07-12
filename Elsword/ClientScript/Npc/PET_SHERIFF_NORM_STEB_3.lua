@@ -1,0 +1,1506 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+SOUND_FIX_TIME = -0.05
+
+INIT_SYSTEM =
+{
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	UNIT_SCALE		= 1.0,
+}
+
+
+INIT_DEVICE =
+{
+	READY_XSKIN_MESH =
+	{
+		"DummyAttackBox_50x50x50.X"
+	},
+
+	READY_TEXTURE =
+	{
+	},
+
+	READY_SOUND =
+	{
+	"Pet_Hungry.ogg",
+	"Pet_Stuffed.ogg",
+	"Pet_Eat01.ogg",
+	--"Pet_SHERIFF_Attack_B.ogg",
+	"Pet_DashEnd.ogg",
+	--"Pet_SHERIFF_Hello.ogg",
+	"Chung_CannonGun_Trigger.ogg",
+	--"Pet_SHERIFF_Cute1.ogg",
+	"Pet_SHERIFF_Cute2.ogg",
+	"Airship_Gunner_GunShot.ogg",
+	},
+}
+
+INIT_MOTION =
+{
+	MOTION_FILE_NAME		= "Motion_PET_SHERIFF_STEB_3.x",
+	MOTION_ANI_TEX_XET		= "PET_SHERIFF_STEB_3_EYE.xet",	
+}
+
+
+INIT_COMPONENT =
+{
+	MAX_HP				= 6000,
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+
+
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+
+	FALL_DOWN			= TRUE,
+
+
+
+}
+
+INIT_STATE =
+{
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_SUMMON",			 },
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_WAIT_HABIT",		STATE_COOL_TIME = 20, },
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_WAIT",						},
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_WALK",						},
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_DASH",						},
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_DASH_END",					},
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_JUMP_UP",					},
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_JUMP_DOWN",				},
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_JUMP_UP_DIR",				},
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_JUMP_DOWN_DIR",			},
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_JUMP_LANDING",				},
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_EAT",				},
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_HUNGRY",				},
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_STUFFED",				},
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_SLEEP_START",				},
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_SLEEP_LOOP",				},
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_SLEEP_END",				},
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_AFRAID",				STATE_COOL_TIME = 10, },
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_HELLO",				},
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_HAPPY1",				},
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_HAPPY2",				},
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_CUTE1",				STATE_COOL_TIME = 10, },
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_CUTE2",				STATE_COOL_TIME = 10, },
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_SAD",				},
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_CHEER",			LUA_FRAME_MOVE_FUNC = "SHERIFF_NORM_STEB_3_CHEER_FRAME_MOVE",   STATE_COOL_TIME = 180,	 },
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_SPECIAL",				},
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_ATTACK",			LUA_FRAME_MOVE_FUNC = "SHERIFF_NORM_STEB_3_ATTACK_FRAME_MOVE",	},
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_SIT_START",				},
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_SIT_LOOP",				},
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_SIT_END",				},
+	{ STATE_NAME = "SHERIFF_NORM_STEB_3_NOTKNOW",				},
+
+	START_STATE					= "SHERIFF_NORM_STEB_3_SUMMON",
+	WAIT_HABIT					= "SHERIFF_NORM_STEB_3_WAIT_HABIT",
+	WAIT_STATE					= "SHERIFF_NORM_STEB_3_WAIT",
+	EAT_STATE           = "SHERIFF_NORM_STEB_3_EAT",
+	HUNGRY_STATE       = "SHERIFF_NORM_STEB_3_HUNGRY",
+	STUFFED_STATE       = "SHERIFF_NORM_STEB_3_STUFFED",
+	SLEEP_START_STATE   = "SHERIFF_NORM_STEB_3_SLEEP_START",
+	SLEEP_LOOP_STATE   = "SHERIFF_NORM_STEB_3_SLEEP_LOOP",
+	SLEEP_END_STATE     = "SHERIFF_NORM_STEB_3_SLEEP_END",
+	AFRAID_STATE        = "SHERIFF_NORM_STEB_3_AFRAID",
+	HELLO_STATE         = "SHERIFF_NORM_STEB_3_HELLO",
+	HAPPY1_STATE         = "SHERIFF_NORM_STEB_3_HAPPY1",
+	HAPPY2_STATE         = "SHERIFF_NORM_STEB_3_HAPPY2",
+	CUTE1_STATE          = "SHERIFF_NORM_STEB_3_CUTE1",
+	CUTE2_STATE          = "SHERIFF_NORM_STEB_3_CUTE2",
+	SAD_STATE           = "SHERIFF_NORM_STEB_3_SAD",
+	CHEER_STATE         = "SHERIFF_NORM_STEB_3_CHEER",
+	SPECIAL_STATE       = "SHERIFF_NORM_STEB_3_SPECIAL",
+	ATTACK_STATE      = "SHERIFF_NORM_STEB_3_ATTACK",
+	SIT_START_STATE     = "SHERIFF_NORM_STEB_3_SIT_START",
+	SIT_LOOP_STATE     = "SHERIFF_NORM_STEB_3_SIT_LOOP",
+	SIT_END_STATE       = "SHERIFF_NORM_STEB_3_SIT_END",
+	NOTKNOW_STATE       = "SHERIFF_NORM_STEB_3_NOTKNOW",
+}
+
+INIT_AI =
+{
+	TARGET =
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 0.5,		-- sec
+		TARGET_NEAR_RANGE			= 200,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 10000,		-- cm
+		TARGET_LOST_RANGE			= 2000,	-- cm
+		TARGET_SUCCESS_RATE			= 100,  --70,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 80,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 100, -- 80,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE =
+	{
+		MOVE_SPLIT_RANGE	= 100,
+		DEST_GAP			= 200,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 100,
+		RUN_GAP				= 500,
+
+		DIR_CHANGE_INTERVAL = 0.3,
+
+		WALK_INTERVAL		= 1,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+
+		JUMP_INTERVAL		= 0,
+		UP_JUMP_RATE		= 0, -- 40,
+		UP_DOWN_RATE		= 0,
+		DOWN_JUMP_RATE		= 0,    --  20,
+		DOWN_DOWN_RATE		= 0,
+	},
+
+}
+
+SHERIFF_NORM_STEB_3_SUMMON =
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	MOVE_TYPE           = 0,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	ALLOW_DIR_CHANGE			= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHERIFF_NORM_STEB_3_WAIT",						},
+	},
+}
+
+SHERIFF_NORM_STEB_3_WAIT =
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+
+	MOVE_TYPE           = 0,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+	EVENT_INTERVAL_TIME0		= 2,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],      "SHERIFF_NORM_STEB_3_ATTACK",						"CF_PETATTACK_SHERIFF_NORM_STEB_3"    },
+
+		{ STATE_CHANGE_TYPE["SCT_AI_DIR_CHANGE"],			"SHERIFF_NORM_STEB_3_WALK",						},
+
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"SHERIFF_NORM_STEB_3_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"SHERIFF_NORM_STEB_3_DASH",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"SHERIFF_NORM_STEB_3_JUMP_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"SHERIFF_NORM_STEB_3_JUMP_UP_DIR",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"SHERIFF_NORM_STEB_3_JUMP_DOWN_DIR",				},
+	},
+}
+
+
+SHERIFF_NORM_STEB_3_WALK =
+{
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	MOVE_TYPE           = 1,
+	PASSIVE_SPEED_X_BY_USER			= 1.2,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_INTERVAL_TIME0		= 2,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN_DIR",				},
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],      "SHERIFF_NORM_STEB_3_ATTACK",						"CF_PETATTACK_SHERIFF_NORM_STEB_3"    },
+
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"SHERIFF_NORM_STEB_3_WAIT",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"SHERIFF_NORM_STEB_3_DASH",						},
+
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"SHERIFF_NORM_STEB_3_JUMP_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"SHERIFF_NORM_STEB_3_JUMP_UP_DIR",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"SHERIFF_NORM_STEB_3_JUMP_DOWN_DIR",				},
+	},
+
+}
+
+SHERIFF_NORM_STEB_3_DASH =
+{
+	ANIM_NAME					= "Dash",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+
+	MOVE_TYPE           = 2,
+	PASSIVE_SPEED_X_BY_USER			= 1.4,
+
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_INTERVAL_TIME0		= 1,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN_DIR",				},
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],      "SHERIFF_NORM_STEB_3_ATTACK",						"CF_PETATTACK_SHERIFF_NORM_STEB_3"    },
+
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"SHERIFF_NORM_STEB_3_DASH_END",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"SHERIFF_NORM_STEB_3_WALK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"SHERIFF_NORM_STEB_3_JUMP_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"SHERIFF_NORM_STEB_3_JUMP_UP_DIR",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"SHERIFF_NORM_STEB_3_JUMP_DOWN_DIR",				},
+	},
+	
+	TALK_BOX_1 =
+	{
+		{ RATE = 7, MESSAGE = STR_ID_24107  },
+		{ RATE = 7, MESSAGE = STR_ID_24108  },
+		{ RATE = 7, MESSAGE = STR_ID_24109  },
+	},
+	TALK_BOX_2 =
+	{
+		{ RATE = 7, MESSAGE = STR_ID_24110  },
+		{ RATE = 7, MESSAGE = STR_ID_24109  },
+		{ RATE = 7, MESSAGE = STR_ID_24107  },
+	},
+	TALK_BOX =
+	{
+		{ RATE = 7, MESSAGE = STR_ID_24111  },
+		{ RATE = 7, MESSAGE = STR_ID_24112  },
+		{ RATE = 7, MESSAGE = STR_ID_24113  },
+	},
+
+
+}
+
+SHERIFF_NORM_STEB_3_DASH_END =
+{
+	ANIM_NAME					= "DashEnd",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SPEED_X				= 700,
+
+	SOUND_PLAY0					= { 0.01, "Pet_DashEnd.ogg" },
+
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN_DIR",				},
+
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHERIFF_NORM_STEB_3_WAIT",							},
+
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"SHERIFF_NORM_STEB_3_WAIT",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"SHERIFF_NORM_STEB_3_WALK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"SHERIFF_NORM_STEB_3_JUMP_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"SHERIFF_NORM_STEB_3_JUMP_UP_DIR",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"SHERIFF_NORM_STEB_3_JUMP_DOWN_DIR",				},
+	},
+}
+
+
+SHERIFF_NORM_STEB_3_JUMP_UP =
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	MOVE_TYPE           = 3,
+	SPEED_Y_BY_USER			= 1,
+	ADD_POS_Y					= 45,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS =
+	{
+
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"SHERIFF_NORM_STEB_3_JUMP_DOWN",				},
+	},
+
+
+}
+
+SHERIFF_NORM_STEB_3_JUMP_DOWN =
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"SHERIFF_NORM_STEB_3_JUMP_LANDING",				},
+	},
+}
+
+SHERIFF_NORM_STEB_3_JUMP_UP_DIR =
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	MOVE_TYPE           = 4,
+	PASSIVE_SPEED_X_BY_USER = 1.2,
+	SPEED_Y_BY_USER			= 1,
+	ADD_POS_Y					= 45,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS =
+	{
+
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"SHERIFF_NORM_STEB_3_JUMP_DOWN_DIR",				},
+	},
+
+
+}
+
+SHERIFF_NORM_STEB_3_JUMP_DOWN_DIR =
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+
+	MOVE_TYPE           = 1,
+	PASSIVE_SPEED_X_BY_USER = 1,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"SHERIFF_NORM_STEB_3_JUMP_LANDING",				},
+	},
+}
+
+SHERIFF_NORM_STEB_3_JUMP_LANDING =
+{
+	ANIM_NAME					= "JumpDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SOUND_PLAY0					= { 0.093, "JumpLand.ogg" },
+
+	MOVE_TYPE = 0,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHERIFF_NORM_STEB_3_WAIT",					},
+	},
+
+}
+
+
+
+SHERIFF_NORM_STEB_3_WAIT_HABIT =
+{
+	ANIM_NAME					= "WaitHabit",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	MOVE_TYPE           = 0,
+	
+	--SOUND_PLAY0					= { 0.24, "Pet_PANDA_STICK_WaitHabit.ogg" },
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	ALLOW_DIR_CHANGE			= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHERIFF_NORM_STEB_3_WAIT",						},
+	},
+
+	TALK_BOX_1 =
+	{
+		{ RATE = 7, MESSAGE = STR_ID_24116  },
+		{ RATE = 7, MESSAGE = STR_ID_24126  },
+		{ RATE = 7, MESSAGE = STR_ID_24117  },
+	},
+	TALK_BOX_2 =
+	{
+		{ RATE = 7, MESSAGE = STR_ID_24127  },
+		{ RATE = 7, MESSAGE = STR_ID_24128  },
+		{ RATE = 7, MESSAGE = STR_ID_24129  },
+	},
+	TALK_BOX =
+	{
+		{ RATE = 7, MESSAGE = STR_ID_24130  },
+		{ RATE = 7, MESSAGE = STR_ID_24131  },
+		{ RATE = 7, MESSAGE = STR_ID_24132  },
+	},
+}
+
+SHERIFF_NORM_STEB_3_EAT =
+{
+	ANIM_NAME					= "Eat",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	MOVE_TYPE           = 0,
+	
+	SOUND_PLAY0					= { 0.9, "Pet_Eat01.ogg" },
+
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+		ALLOW_DIR_CHANGE			= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHERIFF_NORM_STEB_3_WAIT",						},
+	},
+
+	TALK_BOX_1 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24133, },
+		{ RATE = 33, MESSAGE = STR_ID_24134, },
+		{ RATE = 33, MESSAGE = STR_ID_24135, },
+	},
+	TALK_BOX_2 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24133, },
+		{ RATE = 33, MESSAGE = STR_ID_24134, },
+		{ RATE = 33, MESSAGE = STR_ID_24135, },
+	},
+	TALK_BOX =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24141, },
+		{ RATE = 33, MESSAGE = STR_ID_24142, },
+		{ RATE = 33, MESSAGE = STR_ID_24143, },
+	},
+}
+
+SHERIFF_NORM_STEB_3_HUNGRY =
+{
+	ANIM_NAME					= "Hungry",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	MOVE_TYPE           = 0,
+
+	SOUND_PLAY0					= { 0.031, "Pet_Hungry.ogg" },
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+		ALLOW_DIR_CHANGE			= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHERIFF_NORM_STEB_3_WAIT",						},
+	},
+
+	TALK_BOX_1 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24144 },
+		{ RATE = 33, MESSAGE = STR_ID_24145 },
+		{ RATE = 33, MESSAGE = STR_ID_24146 },
+	},
+	TALK_BOX_2 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24153 },
+		{ RATE = 33, MESSAGE = STR_ID_24154 },
+		{ RATE = 33, MESSAGE = STR_ID_24155 },
+	},
+	TALK_BOX =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24156 },
+		{ RATE = 33, MESSAGE = STR_ID_24157 },
+		{ RATE = 33, MESSAGE = STR_ID_24158 },
+	},
+}
+
+
+SHERIFF_NORM_STEB_3_STUFFED =
+{
+	ANIM_NAME					= "Stuffed",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	MOVE_TYPE           = 0,
+
+	SOUND_PLAY0					= { 0.442, "Pet_Stuffed.ogg" },
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+		ALLOW_DIR_CHANGE			= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHERIFF_NORM_STEB_3_WAIT",						},
+	},
+
+	TALK_BOX_1 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24168 },
+		{ RATE = 33, MESSAGE = STR_ID_24159 },
+		{ RATE = 33, MESSAGE = STR_ID_24160 },
+	},
+	TALK_BOX_2 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24169 },
+		{ RATE = 33, MESSAGE = STR_ID_24170 },
+		{ RATE = 33, MESSAGE = STR_ID_24171 },
+	},
+	TALK_BOX =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24172 },
+		{ RATE = 33, MESSAGE = STR_ID_24173 },
+		{ RATE = 33, MESSAGE = STR_ID_24174 },
+	},
+}
+
+SHERIFF_NORM_STEB_3_SLEEP_START =
+{
+	ANIM_NAME					= "Sleep",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	MOVE_TYPE           = 0,
+
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+		ALLOW_DIR_CHANGE			= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHERIFF_NORM_STEB_3_SLEEP_LOOP",						},
+	},
+	TALK_BOX_1 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24185, },
+		{ RATE = 33, MESSAGE = STR_ID_24186, },
+		{ RATE = 33, MESSAGE = STR_ID_24187, },
+	},
+	TALK_BOX_2 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24188, },
+		{ RATE = 33, MESSAGE = STR_ID_24189, },
+		{ RATE = 33, MESSAGE = STR_ID_24190, },
+	},
+	TALK_BOX =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24183, },
+		{ RATE = 33, MESSAGE = STR_ID_24191, },
+		{ RATE = 33, MESSAGE = STR_ID_24192, },
+	},
+}
+
+SHERIFF_NORM_STEB_3_SLEEP_LOOP =
+{
+	ANIM_NAME					= "SleepLoop",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+
+	MOVE_TYPE           = 0,
+	
+	--SOUND_PLAY0					= { 0.17, "Pet_PANDA_STICK_SleepLoop.ogg" },
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+		ALLOW_DIR_CHANGE			= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+	},
+}
+
+SHERIFF_NORM_STEB_3_SLEEP_END =
+{
+	ANIM_NAME					= "SleepEnd",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	MOVE_TYPE           = 0,
+
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	ALLOW_DIR_CHANGE			= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHERIFF_NORM_STEB_3_WAIT",						},
+	},
+
+	TALK_BOX_1 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24193,   },
+		{ RATE = 33, MESSAGE = STR_ID_24194,   },
+		{ RATE = 33, MESSAGE = STR_ID_24195,   },
+	},
+	TALK_BOX_2 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24196,   },
+		{ RATE = 33, MESSAGE = STR_ID_24197,   },
+		{ RATE = 33, MESSAGE = STR_ID_24198,   },
+	},
+	TALK_BOX =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24202,   },
+		{ RATE = 33, MESSAGE = STR_ID_24203,   },
+		{ RATE = 33, MESSAGE = STR_ID_24204,   },
+	},
+
+}
+
+SHERIFF_NORM_STEB_3_AFRAID =
+{
+	ANIM_NAME					= "Afraid",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	MOVE_TYPE           = 0,
+
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	ALLOW_DIR_CHANGE			= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHERIFF_NORM_STEB_3_WAIT",						},
+	},
+
+	TALK_BOX_1 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24205,  },
+		{ RATE = 33, MESSAGE = STR_ID_24206,  },
+		{ RATE = 33, MESSAGE = STR_ID_24207,  },
+	},
+	TALK_BOX_2 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24208,  },
+		{ RATE = 33, MESSAGE = STR_ID_24209,  },
+		{ RATE = 33, MESSAGE = STR_ID_24210,  },
+	},
+	TALK_BOX =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24214,  },
+		{ RATE = 33, MESSAGE = STR_ID_24215,  },
+		{ RATE = 33, MESSAGE = STR_ID_24216,  },
+	},
+}
+
+SHERIFF_NORM_STEB_3_HELLO =
+{
+	ANIM_NAME					= "Hello",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	MOVE_TYPE           = 0,
+
+	--SOUND_PLAY0					= { 0.54, "Pet_PANDA_STICK_Hello.ogg" },
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	ALLOW_DIR_CHANGE			= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHERIFF_NORM_STEB_3_WAIT",						},
+	},
+
+	TALK_BOX_1 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24217,  },
+		{ RATE = 33, MESSAGE = STR_ID_24218,  },
+		{ RATE = 33, MESSAGE = STR_ID_24219,  },
+	},
+	TALK_BOX_2 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24220,  },
+		{ RATE = 33, MESSAGE = STR_ID_24217,  },
+		{ RATE = 33, MESSAGE = STR_ID_24219,  },
+	},
+	TALK_BOX =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24221,  },
+		{ RATE = 33, MESSAGE = STR_ID_24222,  },
+		{ RATE = 33, MESSAGE = STR_ID_24223,  },
+	},
+}
+
+SHERIFF_NORM_STEB_3_HAPPY1 =
+{
+	ANIM_NAME					= "Cute1",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	MOVE_TYPE           = 0,
+
+	SOUND_PLAY0					= { 0.35, "Pet_PettePporu_Cute2.ogg" },
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	ALLOW_DIR_CHANGE			= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHERIFF_NORM_STEB_3_WAIT",						},
+	},
+
+	TALK_BOX_1 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24224,  },
+		{ RATE = 33, MESSAGE = STR_ID_24225,  },
+		{ RATE = 33, MESSAGE = STR_ID_24226,  },
+	},
+	TALK_BOX_2 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24227,  },
+		{ RATE = 33, MESSAGE = STR_ID_24228,  },
+		{ RATE = 33, MESSAGE = STR_ID_24229,  },
+	},
+	TALK_BOX =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24233,  },
+		{ RATE = 33, MESSAGE = STR_ID_24234,  },
+		{ RATE = 33, MESSAGE = STR_ID_24236,  },
+	},
+}
+
+SHERIFF_NORM_STEB_3_HAPPY2 =
+{
+	ANIM_NAME					= "Cute2",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	MOVE_TYPE           = 0,
+
+	SOUND_PLAY0					= { 0.6, "Pet_SHERIFF_Cute2.ogg" },
+	SOUND_PLAY1					= { 1.1, "Pet_SHERIFF_Cute2.ogg" },
+	SOUND_PLAY2					= { 1.6, "Pet_SHERIFF_Cute2.ogg" },
+	SOUND_PLAY3					= { 2.1, "Pet_SHERIFF_Cute2.ogg" },
+	SOUND_PLAY4					= { 2.6, "Pet_SHERIFF_Cute2.ogg" },
+	SOUND_PLAY5					= { 3.1, "Pet_SHERIFF_Cute2.ogg" },
+	SOUND_PLAY6					= { 3.6, "Pet_SHERIFF_Cute2.ogg" },
+	SOUND_PLAY7					= { 4.1, "Pet_SHERIFF_Cute2.ogg" },
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	ALLOW_DIR_CHANGE			= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHERIFF_NORM_STEB_3_WAIT",						},
+	},
+
+	TALK_BOX_1 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24224,  },
+		{ RATE = 33, MESSAGE = STR_ID_24225,  },
+		{ RATE = 33, MESSAGE = STR_ID_24226,  },
+	},
+	TALK_BOX_2 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24227,  },
+		{ RATE = 33, MESSAGE = STR_ID_24228,  },
+		{ RATE = 33, MESSAGE = STR_ID_24229,  },
+	},
+	TALK_BOX =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24233,  },
+		{ RATE = 33, MESSAGE = STR_ID_24234,  },
+		{ RATE = 33, MESSAGE = STR_ID_24236,  },
+	},
+}
+
+SHERIFF_NORM_STEB_3_CUTE1 =
+{
+	ANIM_NAME					= "Cute1",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	MOVE_TYPE           = 0,
+
+	SOUND_PLAY0					= { 0.35, "Pet_PettePporu_Cute2.ogg" },
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	ALLOW_DIR_CHANGE			= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHERIFF_NORM_STEB_3_WAIT",						},
+	},
+
+	TALK_BOX_1 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24249,  },
+		{ RATE = 33, MESSAGE = STR_ID_24250,  },
+		{ RATE = 33, MESSAGE = STR_ID_24251,  },
+	},
+	TALK_BOX_2 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24246,  },
+		{ RATE = 33, MESSAGE = STR_ID_24247,  },
+		{ RATE = 33, MESSAGE = STR_ID_24248,  },
+	},
+	TALK_BOX =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24252,  },
+		{ RATE = 33, MESSAGE = STR_ID_24253,  },
+		{ RATE = 33, MESSAGE = STR_ID_24254,  },
+	},
+
+}
+
+SHERIFF_NORM_STEB_3_CUTE2 =
+{
+	ANIM_NAME					= "Cute2",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	MOVE_TYPE           = 0,
+
+	SOUND_PLAY0					= { 0.6, "Pet_SHERIFF_Cute2.ogg" },
+	SOUND_PLAY1					= { 1.1, "Pet_SHERIFF_Cute2.ogg" },
+	SOUND_PLAY2					= { 1.6, "Pet_SHERIFF_Cute2.ogg" },
+	SOUND_PLAY3					= { 2.1, "Pet_SHERIFF_Cute2.ogg" },
+	SOUND_PLAY4					= { 2.6, "Pet_SHERIFF_Cute2.ogg" },
+	SOUND_PLAY5					= { 3.1, "Pet_SHERIFF_Cute2.ogg" },
+	SOUND_PLAY6					= { 3.6, "Pet_SHERIFF_Cute2.ogg" },
+	SOUND_PLAY7					= { 4.1, "Pet_SHERIFF_Cute2.ogg" },
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	ALLOW_DIR_CHANGE			= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHERIFF_NORM_STEB_3_WAIT",						},
+	},
+
+	TALK_BOX_1 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24249,  },
+		{ RATE = 33, MESSAGE = STR_ID_24250,  },
+		{ RATE = 33, MESSAGE = STR_ID_24251,  },
+	},
+	TALK_BOX_2 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24246,  },
+		{ RATE = 33, MESSAGE = STR_ID_24247,  },
+		{ RATE = 33, MESSAGE = STR_ID_24248,  },
+	},
+	TALK_BOX =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24252,  },
+		{ RATE = 33, MESSAGE = STR_ID_24253,  },
+		{ RATE = 33, MESSAGE = STR_ID_24254,  },
+	},
+}
+
+SHERIFF_NORM_STEB_3_SAD =
+{
+	ANIM_NAME					= "Afraid",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	MOVE_TYPE           = 0,
+
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	ALLOW_DIR_CHANGE			= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHERIFF_NORM_STEB_3_WAIT",						},
+	},
+
+	TALK_BOX_1 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24255,  },
+		{ RATE = 33, MESSAGE = STR_ID_24256,  },
+		{ RATE = 33, MESSAGE = STR_ID_24210,  },
+	},
+	TALK_BOX_2 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24257,  },
+		{ RATE = 33, MESSAGE = STR_ID_24258,  },
+		{ RATE = 33, MESSAGE = STR_ID_24259,  },
+	},
+	TALK_BOX =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24260,  },
+		{ RATE = 33, MESSAGE = STR_ID_24261,  },
+		{ RATE = 33, MESSAGE = STR_ID_24263,  },
+	},
+
+}
+
+SHERIFF_NORM_STEB_3_CHEER =
+{
+	ANIM_NAME					= "Cheer",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	MOVE_TYPE           = 0,
+
+	SOUND_PLAY0					= { 0.005, "Pet_Cheer_Common.ogg" },
+		
+	SOUND_PLAY1					= { 1.4+SOUND_FIX_TIME, "Chung_CannonGun_Trigger.ogg" },
+	SOUND_PLAY2					= { 1.6+SOUND_FIX_TIME, "Chung_CannonGun_Trigger.ogg" },
+	SOUND_PLAY3					= { 1.93+SOUND_FIX_TIME, "Chung_CannonGun_Trigger.ogg" },
+	SOUND_PLAY4					= { 2.2+SOUND_FIX_TIME, "Chung_CannonGun_Trigger.ogg" },
+	SOUND_PLAY5					= { 2.47+SOUND_FIX_TIME, "Chung_CannonGun_Trigger.ogg" },
+	SOUND_PLAY6					= { 2.72+SOUND_FIX_TIME, "Chung_CannonGun_Trigger.ogg" },
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	ALLOW_DIR_CHANGE			= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHERIFF_NORM_STEB_3_WAIT",						},
+	},
+
+	TALK_BOX_1 =
+	{
+		{ RATE = 33, MESSAGE = STR_ID_24264 },
+		{ RATE = 34, MESSAGE = STR_ID_24265 },
+		{ RATE = 33, MESSAGE = STR_ID_24266 },
+	},
+	TALK_BOX_2 =
+	{
+		{ RATE = 33, MESSAGE = STR_ID_24264 },
+		{ RATE = 34, MESSAGE = STR_ID_24265 },
+		{ RATE = 33, MESSAGE = STR_ID_24266 },
+	},
+	TALK_BOX =
+	{
+		{ RATE = 33, MESSAGE = STR_ID_24270 },
+		{ RATE = 34, MESSAGE = STR_ID_24271 },
+		{ RATE = 33, MESSAGE = STR_ID_24272 },
+	},
+}
+
+SHERIFF_NORM_STEB_3_SPECIAL =
+{
+	ANIM_NAME					= "Special_A",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	MOVE_TYPE           = 0,
+
+	SOUND_PLAY0					= { 0.9, "Chung_CannonGun_Trigger.ogg" },
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	ALLOW_DIR_CHANGE			= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHERIFF_NORM_STEB_3_WAIT",						},
+	},
+
+	TALK_BOX_1 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24273 },
+		{ RATE = 33, MESSAGE = STR_ID_24274 },
+		{ RATE = 33, MESSAGE = STR_ID_24275 },
+	},
+	TALK_BOX_2 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24273 },
+		{ RATE = 33, MESSAGE = STR_ID_24274 },
+		{ RATE = 33, MESSAGE = STR_ID_24275 },
+	},
+	TALK_BOX =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24279 },
+		{ RATE = 33, MESSAGE = STR_ID_24280 },
+		{ RATE = 33, MESSAGE = STR_ID_24281 },
+	},
+}
+
+SHERIFF_NORM_STEB_3_ATTACK =
+{
+	ANIM_NAME					= "Attack_C",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	ANIM_SPEED					= 1.3,
+	TRANSITION					= TRUE,
+
+	MOVE_TYPE           = 0,
+	VIEW_TARGET			= TRUE,
+
+	SOUND_PLAY0					= { 0.65+SOUND_FIX_TIME, "Airship_Gunner_GunShot.ogg" },
+	SOUND_PLAY1					= { 1.32+SOUND_FIX_TIME, "Airship_Gunner_GunShot.ogg" },
+	SOUND_PLAY2					= { 1.7+SOUND_FIX_TIME, "Airship_Gunner_GunShot.ogg" },
+	
+	SOUND_PLAY3					= { 2.27+SOUND_FIX_TIME, "Airship_Gunner_GunShot.ogg" },
+	SOUND_PLAY4					= { 2.37+SOUND_FIX_TIME, "Airship_Gunner_GunShot.ogg" },
+	SOUND_PLAY5					= { 2.47+SOUND_FIX_TIME, "Airship_Gunner_GunShot.ogg" },
+	SOUND_PLAY6					= { 2.57+SOUND_FIX_TIME, "Airship_Gunner_GunShot.ogg" },
+	SOUND_PLAY7					= { 2.67+SOUND_FIX_TIME, "Airship_Gunner_GunShot.ogg" },
+	SOUND_PLAY8					= { 2.77+SOUND_FIX_TIME, "Airship_Gunner_GunShot.ogg" },
+	
+	SOUND_PLAY9					= { 3.65+SOUND_FIX_TIME, "Airship_Gunner_GunShot.ogg" },
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHERIFF_NORM_STEB_3_WAIT",						},
+	},
+
+	TALK_BOX_1 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24282 },
+		{ RATE = 33, MESSAGE = STR_ID_24283 },
+		{ RATE = 33, MESSAGE = STR_ID_24284 },
+	},
+	TALK_BOX_2 =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24289 },
+		{ RATE = 33, MESSAGE = STR_ID_24291 },
+		{ RATE = 33, MESSAGE = STR_ID_24292 },
+	},
+	TALK_BOX =
+	{
+		{ RATE = 34, MESSAGE = STR_ID_24293 },
+		{ RATE = 33, MESSAGE = STR_ID_24294 },
+		{ RATE = 33, MESSAGE = STR_ID_24290 },
+	},
+}
+
+
+SHERIFF_NORM_STEB_3_SIT_START =
+{
+	ANIM_NAME					= "SitReady",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	MOVE_TYPE           = 0,
+
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	ALLOW_DIR_CHANGE			= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHERIFF_NORM_STEB_3_SIT_LOOP",						},
+	},
+
+	TALK_BOX_1 =
+	{
+		{ RATE = 33, MESSAGE = STR_ID_24297,  },
+		{ RATE = 33, MESSAGE = STR_ID_24297,  },
+		{ RATE = 34, MESSAGE = STR_ID_24297,  },
+	},
+	TALK_BOX_2 =
+	{
+		{ RATE = 33, MESSAGE = STR_ID_24297,  },
+		{ RATE = 33, MESSAGE = STR_ID_24297,  },
+		{ RATE = 34, MESSAGE = STR_ID_24297,  },
+	},
+	TALK_BOX =
+	{
+		{ RATE = 33, MESSAGE = STR_ID_24297,  },
+		{ RATE = 33, MESSAGE = STR_ID_24297,  },
+		{ RATE = 34, MESSAGE = STR_ID_24297,  },
+	},
+}
+
+SHERIFF_NORM_STEB_3_SIT_LOOP =
+{
+	ANIM_NAME					= "Sit",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+
+	MOVE_TYPE           = 0,
+
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	ALLOW_DIR_CHANGE			= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+	},
+}
+
+SHERIFF_NORM_STEB_3_SIT_END =
+{
+	ANIM_NAME					= "SitEnd",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	MOVE_TYPE           = 0,
+
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	ALLOW_DIR_CHANGE			= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHERIFF_NORM_STEB_3_WAIT",						},
+	},
+
+	TALK_BOX_1 =
+	{
+		{ RATE = 33, MESSAGE = STR_ID_24300,   },
+		{ RATE = 33, MESSAGE = STR_ID_24300,   },
+		{ RATE = 34, MESSAGE = STR_ID_24300,   },
+	},
+	TALK_BOX_2 =
+	{
+		{ RATE = 33, MESSAGE = STR_ID_24300,   },
+		{ RATE = 33, MESSAGE = STR_ID_24300,   },
+		{ RATE = 34, MESSAGE = STR_ID_24300,   },
+	},
+	TALK_BOX =
+	{
+		{ RATE = 33, MESSAGE = STR_ID_24300,   },
+		{ RATE = 33, MESSAGE = STR_ID_24300,   },
+		{ RATE = 34, MESSAGE = STR_ID_24300,   },
+	},
+}
+
+SHERIFF_NORM_STEB_3_NOTKNOW =
+{
+	ANIM_NAME					= "DoNotKnow",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	MOVE_TYPE           = 0,
+
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	ALLOW_DIR_CHANGE			= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHERIFF_NORM_STEB_3_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHERIFF_NORM_STEB_3_WAIT",						},
+	},
+
+	-- TALK_BOX_1 =
+ 	-- {
+		-- { RATE = 20, MESSAGE = STR_ID_5600,   },
+		-- { RATE = 20, MESSAGE = STR_ID_5601,   },
+		-- { RATE = 20, MESSAGE = STR_ID_5602,   },
+		-- { RATE = 20, MESSAGE = STR_ID_5603,   },
+		-- { RATE = 20, MESSAGE = STR_ID_5604,   },
+	-- },
+	-- TALK_BOX_2 =
+ 	-- {
+		-- { RATE = 20, MESSAGE = STR_ID_5600,   },
+		-- { RATE = 20, MESSAGE = STR_ID_5601,   },
+		-- { RATE = 20, MESSAGE = STR_ID_5602,   },
+		-- { RATE = 20, MESSAGE = STR_ID_5603,   },
+		-- { RATE = 20, MESSAGE = STR_ID_5604,   },
+	-- },
+	-- TALK_BOX =
+ 	-- {
+		-- { RATE = 20, MESSAGE = STR_ID_5600,   },
+		-- { RATE = 20, MESSAGE = STR_ID_5601,   },
+		-- { RATE = 20, MESSAGE = STR_ID_5602,   },
+		-- { RATE = 20, MESSAGE = STR_ID_5603,   },
+		-- { RATE = 20, MESSAGE = STR_ID_5604,   },
+	-- },
+}
+
+
+
+
+
+function SHERIFF_NORM_STEB_3_ATTACK_FRAME_MOVE( pKTDXApp, pX2Game, pPet )
+	
+	if pPet:AnimEventTimer( 0.65 ) then
+		ShotLeftGunBulletFirst_Norm03( pKTDXApp, pX2Game, pPet )
+	end
+	if pPet:AnimEventTimer( 1.32 ) then
+		ShotLeftGunBulletFirst_Norm03( pKTDXApp, pX2Game, pPet )
+	end	
+	if pPet:AnimEventTimer( 1.7 ) then
+		ShotRightGunBulletFirst_Norm03( pKTDXApp, pX2Game, pPet )
+	end	
+	--{{ 연사 부분
+	if pPet:AnimEventTimer( 2.27 ) then
+		ShotRightGunBulletSecond_Norm03( pKTDXApp, pX2Game, pPet )
+	end	
+	if pPet:AnimEventTimer( 2.37 ) then
+		ShotLeftGunBulletSecond_Norm03( pKTDXApp, pX2Game, pPet )
+	end
+	if pPet:AnimEventTimer( 2.47 ) then
+		ShotRightGunBulletSecond_Norm03( pKTDXApp, pX2Game, pPet )
+	end
+	if pPet:AnimEventTimer( 2.57 ) then
+		ShotLeftGunBulletSecond_Norm03( pKTDXApp, pX2Game, pPet )
+	end
+	if pPet:AnimEventTimer( 2.67 ) then
+		ShotRightGunBulletSecond_Norm03( pKTDXApp, pX2Game, pPet )
+	end
+	if pPet:AnimEventTimer( 2.77 ) then
+		ShotLeftGunBulletSecond_Norm03( pKTDXApp, pX2Game, pPet )
+	end
+	--}} 연사 부분
+	
+	if pPet:AnimEventTimer( 3.65 ) then
+		ShotLeftGunBulletLast_Norm03( pKTDXApp, pX2Game, pPet )
+		ShotRightGunBulletLast_Norm03( pKTDXApp, pX2Game, pPet )
+	end
+end
+
+function CF_PETATTACK_SHERIFF_NORM_STEB_3( pKTDXApp, pX2Game, pPet )
+
+	if pX2Game ~= nil then
+		if pX2Game:IsHost() == false then
+			return false
+		end
+	end
+
+	if pPet:IsAttacking() == true then
+
+		local fDist = pPet:GetDistTarget()
+		if fDist <= 300 then
+			return true
+		end
+	end
+
+	return false
+	
+end
+
+-- 총알 쏘는 함수 ( 왼쪽 )
+function ShotLeftGunBulletFirst_Norm03( pKTDXApp, pX2Game, pPet )
+	local pDamageEffect = pX2Game:GetDamageEffect()
+
+	if pDamageEffect ~= nil then
+		local vLandPos = pPet:GetLandPosition_LUA()
+		local vPos = pPet:GetBonePos_LUA("Bip01_L_Finger1Nub")
+		local vRot = pPet:GetRotateDegree()
+		
+		
+		local pMasterUnit = pPet:GetMaster()
+		if pMasterUnit ~= nil and pMasterUnit:GetNowHP() > 0 then
+			pDamageEffect:CreateInstanceByPet_LUA( pMasterUnit, "PET_SHERIFF_NORM_STEP_03_ATTACK_FIRST", vPos, vLandPos, vRot )
+			--pPet:PlaySound_LUA( "Chung_Pistol_Trigger.ogg" )
+		end
+	end
+end
+
+-- 총알 쏘는 함수 ( 오른쪽 )
+function ShotRightGunBulletFirst_Norm03( pKTDXApp, pX2Game, pPet )
+	local pDamageEffect = pX2Game:GetDamageEffect()
+
+	if pDamageEffect ~= nil then
+		local vLandPos = pPet:GetLandPosition_LUA()
+		local vPos = pPet:GetBonePos_LUA("Bip01_R_Finger1Nub")
+		local vRot = pPet:GetRotateDegree()
+
+		local pMasterUnit = pPet:GetMaster()
+		if pMasterUnit ~= nil and pMasterUnit:GetNowHP() > 0 then
+			pDamageEffect:CreateInstanceByPet_LUA( pMasterUnit, "PET_SHERIFF_NORM_STEP_03_ATTACK_FIRST", vPos, vLandPos, vRot )
+			--pPet:PlaySound_LUA( "Chung_Pistol_Trigger.ogg" )
+		end
+	end
+end
+
+-- 총알 쏘는 함수 ( 왼쪽 )
+function ShotLeftGunBulletSecond_Norm03( pKTDXApp, pX2Game, pPet )
+	local pDamageEffect = pX2Game:GetDamageEffect()
+
+	if pDamageEffect ~= nil then
+		local vLandPos = pPet:GetLandPosition_LUA()
+		local vPos = pPet:GetBonePos_LUA("Bip01_L_Finger1Nub")
+		local vRot = pPet:GetRotateDegree()
+
+		local pMasterUnit = pPet:GetMaster()
+		if pMasterUnit ~= nil and pMasterUnit:GetNowHP() > 0 then
+			pDamageEffect:CreateInstanceByPet_LUA( pMasterUnit, "PET_SHERIFF_NORM_STEP_03_ATTACK_SECOND", vPos, vLandPos, vRot )
+			--pPet:PlaySound_LUA( "Chung_Pistol_Trigger.ogg" )
+		end
+	end
+end
+
+-- 총알 쏘는 함수 ( 오른쪽 )
+function ShotRightGunBulletSecond_Norm03( pKTDXApp, pX2Game, pPet )
+	local pDamageEffect = pX2Game:GetDamageEffect()
+
+	if pDamageEffect ~= nil then
+		local vLandPos = pPet:GetLandPosition_LUA()
+		local vPos = pPet:GetBonePos_LUA("Bip01_R_Finger1Nub")
+		local vRot = pPet:GetRotateDegree()
+
+		local pMasterUnit = pPet:GetMaster()
+		if pMasterUnit ~= nil and pMasterUnit:GetNowHP() > 0 then
+			pDamageEffect:CreateInstanceByPet_LUA( pMasterUnit, "PET_SHERIFF_NORM_STEP_03_ATTACK_SECOND", vPos, vLandPos, vRot )
+			--pPet:PlaySound_LUA( "Chung_Pistol_Trigger.ogg" )
+		end
+	end
+end
+
+-- 총알 쏘는 함수 ( 왼쪽 )
+function ShotLeftGunBulletLast_Norm03( pKTDXApp, pX2Game, pPet )
+	local pDamageEffect = pX2Game:GetDamageEffect()
+
+	if pDamageEffect ~= nil then
+		local vLandPos = pPet:GetLandPosition_LUA()
+		local vPos = pPet:GetBonePos_LUA("Bip01_L_Finger1Nub")
+		local vRot = pPet:GetRotateDegree()
+
+		local pMasterUnit = pPet:GetMaster()
+		if pMasterUnit ~= nil and pMasterUnit:GetNowHP() > 0 then
+			pDamageEffect:CreateInstanceByPet_LUA( pMasterUnit, "PET_SHERIFF_NORM_STEP_03_ATTACK_LAST", vPos, vLandPos, vRot )
+			--pPet:PlaySound_LUA( "Chung_Pistol_Trigger.ogg" )
+		end
+	end
+end
+
+-- 총알 쏘는 함수 ( 오른쪽 )
+function ShotRightGunBulletLast_Norm03( pKTDXApp, pX2Game, pPet )
+	local pDamageEffect = pX2Game:GetDamageEffect()
+
+	if pDamageEffect ~= nil then
+		local vLandPos = pPet:GetLandPosition_LUA()
+		local vPos = pPet:GetBonePos_LUA("Bip01_R_Finger1Nub")
+		local vRot = pPet:GetRotateDegree()
+
+		local pMasterUnit = pPet:GetMaster()
+		if pMasterUnit ~= nil and pMasterUnit:GetNowHP() > 0 then
+			pDamageEffect:CreateInstanceByPet_LUA( pMasterUnit, "PET_SHERIFF_NORM_STEP_03_ATTACK_LAST", vPos, vLandPos, vRot )
+			--pPet:PlaySound_LUA( "Chung_Pistol_Trigger.ogg" )
+		end
+	end
+end
+
+function SHERIFF_NORM_STEB_3_CHEER_FRAME_MOVE( pKTDXApp, pX2Game, pPet )
+	
+	if pPet:AnimEventTimer( 1.4 ) then
+		ShotRightForCheer_Norm03( pKTDXApp, pX2Game, pPet )
+	end
+	if pPet:AnimEventTimer( 1.6 ) then
+		ShotLeftForCheer_Norm03( pKTDXApp, pX2Game, pPet )
+	end	
+	if pPet:AnimEventTimer( 1.93 ) then
+		ShotRightForCheer_Norm03( pKTDXApp, pX2Game, pPet )
+	end	
+
+	if pPet:AnimEventTimer( 2.2 ) then
+		ShotLeftForCheer_Norm03( pKTDXApp, pX2Game, pPet )
+	end	
+	if pPet:AnimEventTimer( 2.47 ) then
+		ShotRightForCheer_Norm03( pKTDXApp, pX2Game, pPet )
+	end
+	if pPet:AnimEventTimer( 2.72 ) then
+		ShotLeftForCheer_Norm03( pKTDXApp, pX2Game, pPet )
+	end
+end
+
+-- 격려용 총 쏘는 함수
+function ShotRightForCheer_Norm03( pKTDXApp, pX2Game, pPet )
+	local pMajorParticle = pX2Game:GetMajorParticle()
+
+	if pMajorParticle ~= nil then
+		local vPos = pPet:GetBonePos_LUA("Dummy02")
+
+		local pMasterUnit = pPet:GetMaster()
+		if pMasterUnit ~= nil and pMasterUnit:GetNowHP() > 0 then
+			pMajorParticle:CreateSequence_LUA( "Pet_Sheriff_Norm_Step1_Attack02", vPos, D3DXVECTOR2(1000,1000), D3DXVECTOR2(1,1) )
+		end
+	end
+end
+
+function ShotLeftForCheer_Norm03( pKTDXApp, pX2Game, pPet )
+	local pMajorParticle = pX2Game:GetMajorParticle()
+
+	if pMajorParticle ~= nil then
+		local vPos = pPet:GetBonePos_LUA("Dummy01")
+
+		local pMasterUnit = pPet:GetMaster()
+		if pMasterUnit ~= nil and pMasterUnit:GetNowHP() > 0 then
+			pMajorParticle:CreateSequence_LUA( "Pet_Sheriff_Norm_Step1_Attack02", vPos, D3DXVECTOR2(1000,1000), D3DXVECTOR2(1,1) )
+		end
+	end
+end

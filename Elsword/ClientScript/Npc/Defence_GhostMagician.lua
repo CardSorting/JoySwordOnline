@@ -1,0 +1,1270 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 50.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+		"flame.ogg",
+		"StickSlash3.ogg",
+		"StickSlash4.ogg",
+	},
+	
+	READY_XSKIN_MESH = 
+	{
+		"FireBall01_GhostMagician.X",	
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_GhostMagician.x",
+	MOTION_CHANGE_TEX_XET		= "DEFENCE_GHOST_MAGICIAN.xet",
+	MOTION_ANI_TEX_XET	= "DEFENCE_GHOST_MAGICIAN.xet",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 300,
+	RUN_SPEED			= 600,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300,
+}
+
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 4000,
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	
+		
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	
+	FALL_DOWN			= TRUE,
+	
+	
+	WEAPON0 = 
+	{
+		WEAPON_FILE_NAME	= "Weapon_GhostMagician.X",
+		WEAPON_BONE_NAME	= "Dummy1_Rhand",
+			
+		USE_SLASH_TRACE		= FALSE,
+	},
+
+		
+
+	
+
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "GHOST_MAGICIAN_WAIT",						LUA_FRAME_MOVE_FUNC = "GHOST_MAGICIAN_WAIT_FRAME_MOVE", },
+	{ STATE_NAME = "GHOST_MAGICIAN_WALK",						LUA_FRAME_MOVE_FUNC = "GHOST_MAGICIAN_WALK_FRAME_MOVE",
+																LUA_STATE_END_FUNC = "GHOST_MAGICIAN_WALK_STATE_END"						},
+	{ STATE_NAME = "GHOST_MAGICIAN_JUMP_UP",					},
+	{ STATE_NAME = "GHOST_MAGICIAN_JUMP_DOWN",				LUA_STATE_END_FUNC = "GHOST_MAGICIAN_JUMP_DOWN_STATE_END" },
+	{ STATE_NAME = "GHOST_MAGICIAN_JUMP_UP_DIR",				},
+	{ STATE_NAME = "GHOST_MAGICIAN_JUMP_DOWN_DIR",			LUA_STATE_END_FUNC = "GHOST_MAGICIAN_JUMP_DOWN_DIR_STATE_END" },
+	{ STATE_NAME = "GHOST_MAGICIAN_JUMP_LANDING",				},
+	
+	{ STATE_NAME = "GHOST_MAGICIAN_ATTACK",					LUA_FRAME_MOVE_FUNC = "GHOST_MAGICIAN_ATTACK_FRAME_MOVE"		},
+	{ STATE_NAME = "GHOST_MAGICIAN_FIRE_BALL",				LUA_FRAME_MOVE_FUNC = "GHOST_MAGICIAN_FIRE_BALL_FRAME_MOVE",	},
+	
+	
+	--리액션 관련
+	{ STATE_NAME = "GHOST_MAGICIAN_DAMAGE_SMALL",				LUA_FRAME_MOVE_FUNC = "GHOST_MAGICIAN_DAMAGE_SMALL_FRAME_MOVE"			},
+	{ STATE_NAME = "GHOST_MAGICIAN_DAMAGE_BIG",				LUA_FRAME_MOVE_FUNC = "GHOST_MAGICIAN_DAMAGE_BIG_FRAME_MOVE"				},
+	{ STATE_NAME = "GHOST_MAGICIAN_DAMAGE_DOWN_FRONT",		LUA_FRAME_MOVE_FUNC = "GHOST_MAGICIAN_DAMAGE_DOWN_FRONT_FRAME_MOVE"		},
+	{ STATE_NAME = "GHOST_MAGICIAN_DAMAGE_DOWN_BACK",			LUA_FRAME_MOVE_FUNC = "GHOST_MAGICIAN_DAMAGE_DOWN_BACK_FRAME_MOVE"		},
+	{ STATE_NAME = "GHOST_MAGICIAN_DAMAGE_FLY_FRONT",			},
+	{ STATE_NAME = "GHOST_MAGICIAN_DAMAGE_FLY_BACK",			},
+	{ STATE_NAME = "GHOST_MAGICIAN_DAMAGE_AIR",				},
+	{ STATE_NAME = "GHOST_MAGICIAN_DAMAGE_AIR_DOWN",			},
+	{ STATE_NAME = "GHOST_MAGICIAN_DAMAGE_AIR_UP",			},
+	{ STATE_NAME = "GHOST_MAGICIAN_DAMAGE_AIR_FALL",			},	
+	{ STATE_NAME = "GHOST_MAGICIAN_DAMAGE_AIR_DOWN_LANDING",	LUA_FRAME_MOVE_FUNC = "GHOST_MAGICIAN_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE"	},
+	{ STATE_NAME = "GHOST_MAGICIAN_STAND_UP_FRONT",			},
+	{ STATE_NAME = "GHOST_MAGICIAN_STAND_UP_BACK",			},
+	{ STATE_NAME = "GHOST_MAGICIAN_STAND_UP_ATTACK_FRONT",	LUA_FRAME_MOVE_FUNC = "GHOST_MAGICIAN_STAND_UP_ATTACK_FRONT_FRAME_MOVE"	},
+	{ STATE_NAME = "GHOST_MAGICIAN_STAND_UP_ATTACK_BACK",	LUA_FRAME_MOVE_FUNC = "GHOST_MAGICIAN_STAND_UP_ATTACK_BACK_FRAME_MOVE"	},
+	{ STATE_NAME = "GHOST_MAGICIAN_DAMAGE_REVENGE",			},
+	
+	{ STATE_NAME = "GHOST_MAGICIAN_DYING_LAND_FRONT",			LUA_STATE_START_FUNC = "GHOST_MAGICIAN_DYING_LAND_STATE_START", },
+	{ STATE_NAME = "GHOST_MAGICIAN_DYING_LAND_BACK",			LUA_STATE_START_FUNC = "GHOST_MAGICIAN_DYING_LAND_STATE_START", },
+	{ STATE_NAME = "GHOST_MAGICIAN_DYING_SKY",				LUA_STATE_START_FUNC = "GHOST_MAGICIAN_DYING_LAND_STATE_START", },
+	
+	START_STATE					= "GHOST_MAGICIAN_WAIT",
+	WAIT_STATE					= "GHOST_MAGICIAN_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "GHOST_MAGICIAN_DAMAGE_SMALL",
+	SMALL_DAMAGE_LAND_BACK		= "GHOST_MAGICIAN_DAMAGE_SMALL",
+	BIG_DAMAGE_LAND_FRONT		= "GHOST_MAGICIAN_DAMAGE_BIG",
+	BIG_DAMAGE_LAND_BACK		= "GHOST_MAGICIAN_DAMAGE_BIG",
+	DOWN_DAMAGE_LAND_FRONT		= "GHOST_MAGICIAN_DAMAGE_BIG",
+	DOWN_DAMAGE_LAND_BACK		= "GHOST_MAGICIAN_DAMAGE_BIG",
+	FLY_DAMAGE_FRONT			= "GHOST_MAGICIAN_DAMAGE_FLY_FRONT",
+	FLY_DAMAGE_BACK				= "GHOST_MAGICIAN_DAMAGE_FLY_BACK",
+	SMALL_DAMAGE_AIR			= "GHOST_MAGICIAN_DAMAGE_AIR",	
+	BIG_DAMAGE_AIR				= "GHOST_MAGICIAN_DAMAGE_AIR",
+	DOWN_DAMAGE_AIR				= "GHOST_MAGICIAN_DAMAGE_AIR_DOWN",
+	DOWN_DAMAGE_AIR_LANDING				= "GHOST_MAGICIAN_DAMAGE_AIR_DOWN_LANDING",
+	UP_DAMAGE					= "GHOST_MAGICIAN_DAMAGE_AIR_UP",
+	DAMAGE_REVENGE				= "GHOST_MAGICIAN_DAMAGE_REVENGE",
+	
+	DAMAGE_EXTRA_STATES         = {"GHOST_MAGICIAN_DAMAGE_DOWN_FRONT","GHOST_MAGICIAN_DAMAGE_DOWN_BACK","GHOST_MAGICIAN_DAMAGE_AIR_FALL","GHOST_MAGICIAN_STAND_UP_FRONT",
+	"GHOST_MAGICIAN_STAND_UP_BACK","GHOST_MAGICIAN_STAND_UP_ATTACK_FRONT","GHOST_MAGICIAN_STAND_UP_ATTACK_BACK","GHOST_MAGICIAN_JUMP_DOWN","GHOST_MAGICIAN_JUMP_LANDING",},	
+	
+	DYING_LAND_FRONT			= "GHOST_MAGICIAN_DYING_LAND_FRONT",
+	DYING_LAND_BACK				= "GHOST_MAGICIAN_DYING_LAND_BACK",
+	DYING_SKY					= "GHOST_MAGICIAN_DYING_SKY",
+
+	REVENGE_ATTACK				= "",	
+}
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 3,		-- sec
+		TARGET_NEAR_RANGE			= 400,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 800,		-- cm
+		TARGET_LOST_RANGE			= 1100,		-- cm
+		TARGET_SUCCESS_RATE			= 100,  --40,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 30,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 100, -- 30,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+		
+		TARGET_NPC					= TRUE,
+		MANUAL_TARGETING_FUNC		= "GHOST_MAGICIAN_MANUAL_TARGET",
+	},
+
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 600,
+		DEST_GAP			= 400,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 900,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		WALK_INTERVAL		= 3,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 9999,
+		UP_JUMP_RATE		= 0,
+		UP_DOWN_RATE		= 0,
+		DOWN_JUMP_RATE		= 0,   
+		DOWN_DOWN_RATE		= 0,
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 100, --50,		
+		PATROL_RANGE			= 200,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 500,	-- 코드에서 안쓰이는 옵션
+		ESCAPE_GAP			= 600,	-- 이 거리 보다 멀어지면 도망 성공(이스케이프 모드 취소)
+		
+		WALK_INTERVAL		= 1.5,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 10,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 0, -- 20,
+		UP_DOWN_RATE		= 0,
+		DOWN_JUMP_RATE		= 0,    --  20,
+		DOWN_DOWN_RATE		= 0,
+	},
+}
+
+
+GHOST_MAGICIAN_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	EVENT_INTERVAL_TIME0		= 0,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GHOST_MAGICIAN_JUMP_DOWN",					},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GHOST_MAGICIAN_FIRE_BALL",				"CT_GHOST_MAGICIAN_FIRE_BALL",	},	
+
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"GHOST_MAGICIAN_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"GHOST_MAGICIAN_JUMP_UP_DIR",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"GHOST_MAGICIAN_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"GHOST_MAGICIAN_JUMP_DOWN_DIR",				},
+	},
+	
+	CT_GHOST_MAGICIAN_FIRE_BALL = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 500,
+		RATE						= 80,
+	},
+}
+
+GHOST_MAGICIAN_WAIT2 = 
+{
+	ANIM_NAME					= "WaitZero",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,	
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GHOST_MAGICIAN_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GHOST_MAGICIAN_WAIT",						},
+	},
+	TALK_BOX =
+	{
+		{ RATE = 1, MESSAGE = STR_ID_11388 },
+	},
+}
+
+GHOST_MAGICIAN_WAIT3 = 
+{
+	ANIM_NAME					= "WaitHabit",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GHOST_MAGICIAN_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GHOST_MAGICIAN_WAIT",						},
+	},
+}
+
+GHOST_MAGICIAN_WALK = 
+{
+	ANIM_SPEED					= 0.7,
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= 150,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 0,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GHOST_MAGICIAN_JUMP_DOWN_DIR",				},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GHOST_MAGICIAN_FIRE_BALL",				"CT_GHOST_MAGICIAN_FIRE_BALL",	},	
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"GHOST_MAGICIAN_WAIT",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"GHOST_MAGICIAN_JUMP_UP_DIR",					},
+		--{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"GHOST_MAGICIAN_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"GHOST_MAGICIAN_JUMP_DOWN_DIR",				},
+	},
+	
+	CT_GHOST_MAGICIAN_FIRE_BALL = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 500,
+		RATE						= 50,
+	},
+}
+
+GHOST_MAGICIAN_JUMP_UP = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	ADD_POS_Y					= 45,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"GHOST_MAGICIAN_JUMP_DOWN",				},
+	},
+}
+
+GHOST_MAGICIAN_JUMP_DOWN = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"GHOST_MAGICIAN_JUMP_LANDING",				},
+	},
+}
+
+GHOST_MAGICIAN_JUMP_UP_DIR = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	ADD_POS_Y					= 45,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"GHOST_MAGICIAN_JUMP_DOWN_DIR",				},
+	},
+}
+
+GHOST_MAGICIAN_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"GHOST_MAGICIAN_JUMP_LANDING",				},
+	},
+}
+
+GHOST_MAGICIAN_JUMP_LANDING = 
+{
+	ANIM_NAME					= "JumpDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+		
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GHOST_MAGICIAN_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GHOST_MAGICIAN_WAIT",					},
+	},
+}
+
+GHOST_MAGICIAN_ATTACK = 
+{
+	ANIM_NAME					= "Attack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    SOUND_PLAY0			= { 0.470, "StickSlash3.ogg" },
+    SOUND_PLAY1			= { 1.339, "StickSlash3.ogg" },
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	
+	VIEW_TARGET					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+			
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GHOST_MAGICIAN_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GHOST_MAGICIAN_WAIT",					},
+	},
+	
+	ATTACK_TIME0				= { 0.451, 0.663, },
+	ATTACK_TIME1				= { 1.317, 1.546, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["WALK_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+	
+	DAMAGE_DATA_LAST = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["WALK_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 1, MESSAGE = STR_ID_11389 },
+		{ RATE = 1, MESSAGE = STR_ID_11388 },
+	},
+}
+
+
+GHOST_MAGICIAN_FIRE_BALL = 
+{
+	ANIM_NAME					= "FireBall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	
+	VIEW_TARGET					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"GHOST_MAGICIAN_WAIT",												},
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 1, MESSAGE = STR_ID_11388 },
+		{ RATE = 1, MESSAGE = STR_ID_11389 },
+	},
+}
+
+
+
+GHOST_MAGICIAN_DAMAGE_SMALL = 
+{
+	ANIM_NAME					= "DamageSmall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"GHOST_MAGICIAN_WAIT",												},
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 1, MESSAGE = STR_ID_11389 },
+		{ RATE = 1, MESSAGE = STR_ID_11388 },
+	},
+}
+
+GHOST_MAGICIAN_DAMAGE_BIG = 
+{
+	ANIM_NAME					= "DamageBig",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+
+	TALK_BOX = 
+	{
+		{ RATE = 1, MESSAGE = STR_ID_11388 },
+	},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"GHOST_MAGICIAN_WAIT",												},
+	},
+}
+
+GHOST_MAGICIAN_DAMAGE_DOWN_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 5, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"GHOST_MAGICIAN_DAMAGE_AIR_FALL",			},
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"GHOST_MAGICIAN_STAND_UP_ATTACK_FRONT",	"CT_GHOST_MAGICIAN_STAND_UP_ATTACK_FRONT", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"GHOST_MAGICIAN_STAND_UP_FRONT",			},
+	},
+	
+	-- CT_GHOST_MAGICIAN_STAND_UP_ATTACK_FRONT = 
+	-- {
+		-- ANIM_PLAY_COUNT		= 1,
+		-- RATE				= 20,
+	-- },
+	
+	TALK_BOX =
+	{
+		{ RATE = 1, MESSAGE = STR_ID_11388 },
+		{ RATE = 1, MESSAGE = STR_ID_11389 },
+	},
+}
+
+GHOST_MAGICIAN_DAMAGE_DOWN_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 5, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"GHOST_MAGICIAN_DAMAGE_AIR_FALL",			},
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"GHOST_MAGICIAN_STAND_UP_ATTACK_BACK",	"CT_GHOST_MAGICIAN_STAND_UP_ATTACK_BACK", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"GHOST_MAGICIAN_STAND_UP_BACK",			},
+	},
+	
+	-- CT_GHOST_MAGICIAN_STAND_UP_ATTACK_BACK = 
+	-- {
+		-- ANIM_PLAY_COUNT		= 1,
+		-- RATE				= 20,
+	-- },
+	
+	TALK_BOX =
+	{
+		{ RATE = 1, MESSAGE = STR_ID_11389 },
+		{ RATE = 1, MESSAGE = STR_ID_11388 },
+	},
+}
+
+GHOST_MAGICIAN_DAMAGE_FLY_FRONT = 
+{
+	ANIM_NAME					= "DamageAirFall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	ADD_ROTATE_Z				= -45.0,	
+	
+	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"GHOST_MAGICIAN_DAMAGE_AIR_DOWN_LANDING",		},
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 1, MESSAGE = STR_ID_11388 },
+	},
+}
+
+GHOST_MAGICIAN_DAMAGE_FLY_BACK = 
+{
+	ANIM_NAME					= "DamageAirUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	ADD_ROTATE_Z				= -45.0,	
+	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"GHOST_MAGICIAN_DAMAGE_DOWN_BACK",		},
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 1, MESSAGE = STR_ID_1433 },
+	},
+}
+
+GHOST_MAGICIAN_DAMAGE_AIR = 
+{
+	ANIM_NAME					= "DamageAirSmall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"GHOST_MAGICIAN_WAIT",					},
+	},
+}
+
+GHOST_MAGICIAN_DAMAGE_AIR_DOWN = 
+{
+	ANIM_NAME					= "DamageAirDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"GHOST_MAGICIAN_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+GHOST_MAGICIAN_DAMAGE_AIR_UP = 
+{
+	ANIM_NAME					= "DamageAirUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"GHOST_MAGICIAN_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"GHOST_MAGICIAN_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 1, MESSAGE = STR_ID_11388 },
+	},
+}
+
+GHOST_MAGICIAN_DAMAGE_AIR_FALL = 
+{
+	ANIM_NAME					= "DamageAirFall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_POSITIVE_Y_SPEED"],		"GHOST_MAGICIAN_DAMAGE_AIR_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"GHOST_MAGICIAN_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+GHOST_MAGICIAN_DAMAGE_AIR_DOWN_LANDING = 
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 5, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GHOST_MAGICIAN_DAMAGE_AIR_FALL",			},
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GHOST_MAGICIAN_STAND_UP_ATTACK_FRONT",	"CT_GHOST_MAGICIAN_STAND_UP_ATTACK_FRONT", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GHOST_MAGICIAN_STAND_UP_FRONT",			},
+	},
+	
+	-- CT_GHOST_MAGICIAN_STAND_UP_ATTACK_FRONT = 
+	-- {
+		-- ANIM_PLAY_COUNT		= 1,
+		-- RATE				= 20,
+	-- },
+}
+
+GHOST_MAGICIAN_STAND_UP_FRONT = 
+{
+	ANIM_NAME					= "DamageStandUpFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 5, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GHOST_MAGICIAN_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GHOST_MAGICIAN_WAIT",				},
+	},
+}
+
+GHOST_MAGICIAN_STAND_UP_BACK = 
+{
+	ANIM_NAME					= "DamageStandUpBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 5, },
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GHOST_MAGICIAN_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GHOST_MAGICIAN_WAIT", },
+	},		
+}
+
+GHOST_MAGICIAN_STAND_UP_ATTACK_FRONT = 
+{
+	ANIM_NAME					= "StandUpAttackFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	ANIM_WAIT_TIME				= 1,
+
+	MIND_FLAG					= MIND_FLAG["MF_STAND_UP_ATTACK"],
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 5, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    SOUND_PLAY0			= { 0.627, "StickSlash4.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		--{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GHOST_MAGICIAN_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GHOST_MAGICIAN_WAIT",				},
+	},
+		
+	ATTACK_TIME0				= { 0.40, 0.60, },	
+	ATTACK_TIME1				= { 1.00, 1.10, },	
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+			FIRE		= 0.0,
+			ICE			= 0.0,
+			EARTH		= 0.0,
+			LIGHTNING	= 0.0,
+			DARK		= 0.0,
+			LIGHT		= 0.0,
+			UNIVERSAL	= 0.0,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		STOP_TIME_ATT			= 0.0,		
+		STOP_TIME_DEF			= 0.0,	
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 0.0,	
+		CLEAR_SCREEN_COLOR_A	= 0.0,
+		CLEAR_SCREEN_COLOR_R	= 1.0,
+		CLEAR_SCREEN_COLOR_G	= 1.0,
+		CLEAR_SCREEN_COLOR_B	= 1.0,
+
+		RE_ATTACK				= FALSE,		
+		HIT_GAP					= 0.0,				
+	},
+	
+}
+
+GHOST_MAGICIAN_STAND_UP_ATTACK_BACK = 
+{
+	ANIM_NAME					= "StandUpAttackBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	ANIM_WAIT_TIME				= 1,
+
+	MIND_FLAG					= MIND_FLAG["MF_STAND_UP_ATTACK"],
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 5, },
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    SOUND_PLAY0			= { 0.637, "StickSlash4.ogg" },
+	
+	FLIP_DIR_END				= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		--{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GHOST_MAGICIAN_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GHOST_MAGICIAN_WAIT", },
+	},	
+	
+		
+	ATTACK_TIME0				= { 0.40, 0.60, },	
+	ATTACK_TIME1				= { 1.00, 1.10, },	
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_ROD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+			FIRE		= 0.0,
+			ICE			= 0.0,
+			EARTH		= 0.0,
+			LIGHTNING	= 0.0,
+			DARK		= 0.0,
+			LIGHT		= 0.0,
+			UNIVERSAL	= 0.0,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		STOP_TIME_ATT			= 0.0,		
+		STOP_TIME_DEF			= 0.0,	
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 0.0,	
+		CLEAR_SCREEN_COLOR_A	= 0.0,
+		CLEAR_SCREEN_COLOR_R	= 1.0,
+		CLEAR_SCREEN_COLOR_G	= 1.0,
+		CLEAR_SCREEN_COLOR_B	= 1.0,
+
+		RE_ATTACK				= FALSE,		
+		HIT_GAP					= 0.0,				
+	},
+}
+
+GHOST_MAGICIAN_DAMAGE_REVENGE = 
+{
+	ANIM_NAME					= "DamageRevenge",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"GHOST_MAGICIAN_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GHOST_MAGICIAN_WAIT",					},
+	},
+}
+
+
+
+
+GHOST_MAGICIAN_DYING_LAND_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+	
+GHOST_MAGICIAN_DYING_LAND_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+GHOST_MAGICIAN_DYING_SKY = 
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+--타겟 관련 펑션
+function GHOST_MAGICIAN_MANUAL_TARGET( pKTDXApp, pX2Game, pNPCUnit )
+	
+	local pNearestNpc = pX2Game:GetNearestNpcInSpecificRangeByNpcId_LUA( pNPCUnit:GetPos(), NPC_UNIT_ID["NUI_DEFENCE_CRYSTAL"], 999999 )
+	
+	if nil ~= pNearestNpc then
+		pNPCUnit:SetTargetUnit( pNearestNpc )
+	end
+
+end
+
+
+
+
+
+function GHOST_MAGICIAN_WALK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	
+	if pX2Game:AnyUserUnitInRange( pNPCUnit:GetPos(), 400 ) == true then
+		local TargetPos = pX2Game:GetNearestUserUnitPos_LUA( pNPCUnit:GetPos(), 0, 999999 )
+	        
+		local bIsRight = pNPCUnit:GetIsRight()
+	        
+		if pNPCUnit:IsRightTarget_LUA(pNPCUnit, TargetPos) == true then
+			if( bIsRight == true ) then
+				pNPCUnit:StateChange_LUA( "GHOST_MAGICIAN_FIRE_BALL" )
+			end
+		else
+			if( bIsRight == false ) then
+				pNPCUnit:StateChange_LUA( "GHOST_MAGICIAN_FIRE_BALL" )
+			end
+		end
+	end
+end
+
+
+
+function GHOST_MAGICIAN_WAIT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	
+	if pX2Game:AnyUserUnitInRange( pNPCUnit:GetPos(), 400 ) == true then
+		local TargetPos = pX2Game:GetNearestUserUnitPos_LUA( pNPCUnit:GetPos(), 0, 999999 )
+	        
+		local bIsRight = pNPCUnit:GetIsRight()
+	        
+		if pNPCUnit:IsRightTarget_LUA(pNPCUnit, TargetPos) == true then
+			if( bIsRight == true ) then
+				pNPCUnit:StateChange_LUA( "GHOST_MAGICIAN_FIRE_BALL" )
+			end
+		else
+			if( bIsRight == false ) then
+				pNPCUnit:StateChange_LUA( "GHOST_MAGICIAN_FIRE_BALL" )
+			end
+		end
+	end
+
+end
+
+
+
+
+
+
+
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+function GHOST_MAGICIAN_WAIT2_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.34 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function GHOST_MAGICIAN_WAIT3_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.7 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function GHOST_MAGICIAN_WALK_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+function GHOST_MAGICIAN_JUMP_DOWN_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+function GHOST_MAGICIAN_JUMP_DOWN_DIR_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+function GHOST_MAGICIAN_DAMAGE_SMALL_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.047 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function GHOST_MAGICIAN_DAMAGE_BIG_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.06 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function GHOST_MAGICIAN_DAMAGE_DOWN_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.3 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+
+end
+
+function GHOST_MAGICIAN_DAMAGE_DOWN_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.2 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+
+end
+
+function GHOST_MAGICIAN_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		local pos = pNPCUnit:GetLandPosition_LUA()
+		pMinorParticle:CreateSequence_LUA( "DownSmoke", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+		pos.y = pos.y + 5
+		pMinorParticle:CreateSequence_LUA( "GroundShockWave", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(1,-1) )
+		local pParticle = pMinorParticle:CreateSequence_LUA( "AirDownTick", pNPCUnit:GetPos(), D3DXVECTOR2(200,200), D3DXVECTOR2(10,-1) )
+		if pParticle ~= nil then 
+			pParticle:SetLandPosition( pos.y - 5 )
+		end
+		
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 500 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 0.1 )
+		end		
+		
+	elseif pNPCUnit:AnimEventTimer_LUA( 0.44 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+
+end
+
+function GHOST_MAGICIAN_STAND_UP_ATTACK_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 1.15 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function GHOST_MAGICIAN_STAND_UP_ATTACK_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 1.15 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:CreateSequence_LUA( "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+
+function GHOST_MAGICIAN_DYING_LAND_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	
+	local pos = pNPCUnit:GetPos()
+	pos.y = pos.y + 100.0
+	local GetMinorParticle = pX2Game:GetMinorParticle()
+	
+	local pSeq = GetMinorParticle:CreateSequence_LUA( "DieLight",		pos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+	if pSeq ~= nil then
+	
+		pSeq:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+		pNPCUnit:SetDieSeq( pSeq:GetHandle() )
+	
+	end
+	pNPCUnit:PlaySound_LUA( "DieLight.ogg" )
+	
+end
+
+
+function GHOST_MAGICIAN_ATTACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	
+	if pNPCUnit:AnimEventTimer_LUA( 0.664 ) then
+		pNPCUnit:ClearHitUnitList_LUA()
+		pNPCUnit:SetDamageData_LUA( "DAMAGE_DATA_LAST" )
+	end
+	
+end
+
+function GHOST_MAGICIAN_FIRE_BALL_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	
+	if pNPCUnit:AnimEventTimer_LUA( 1.366 ) then
+		
+		local pDamageEffect = pX2Game:GetDamageEffect()
+		local pos = pNPCUnit:GetLandPosition_LUA()		
+		if pDamageEffect ~= nil then
+		    pDamageEffect:CreateInstance_LUA( pNPCUnit, "MONSTER_FIREBALL", pNPCUnit:GetBonePos_LUA( "Dummy2_Lhand" ), pos.y )
+        end		
+	end
+	
+end
+
+

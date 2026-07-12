@@ -1,0 +1,88 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+
+STAGE_LIST = 
+{
+
+	DUNGEON_MAP =
+	{
+		STAGE0 =
+		{
+			SUB_STAGE0 = { 118, 67 },
+		},
+	},
+
+	STAGE0 =
+	{
+		WORLD_ID = WORLD_ID["WI_DEFENCE_DUNGEON_STAGE"],
+		START_MOTION = TRUE,
+		
+		READY_NPC = 
+		{
+			NPC_UNIT_ID["NUI_DEFENCE_SOLDIER_BENDERS"],
+			NPC_UNIT_ID["NUI_DEFENCE_LIZARDMAN_HIGH"],
+			NPC_UNIT_ID["NUI_DEFENCE_AIRSHIP_SOLDIER_SWORDMAN"],
+			NPC_UNIT_ID["NUI_DEFENCE_GLITER_LANCE"],
+			NPC_UNIT_ID["NUI_DEFENCE_GLITER_LANCE_GREAT"],
+			NPC_UNIT_ID["NUI_DEFENCE_SHADOW_BLAST"],
+			NPC_UNIT_ID["NUI_DEFENCE_DARKNESS_BOSS"],
+			
+			NPC_UNIT_ID["NUI_DEFENCE_THIEF_THIN_ZERO"],
+			NPC_UNIT_ID["NUI_DEFENCE_GHOST_MAGICIAN"],
+			NPC_UNIT_ID["NUI_DEFENCE_NASOD_GUARD"],
+			NPC_UNIT_ID["NUI_DEFENCE_GOLEM_STONE"],
+			NPC_UNIT_ID["NUI_DEFENCE_WALLY_8TH"],
+			NPC_UNIT_ID["NUI_DEFENCE_RAVEN_CLONE"],
+			NPC_UNIT_ID["NUI_DEFENCE_UNOHOUND"],
+		},
+
+		SUB_STAGE0 =
+		{
+			START_LINE_SET      = -1,
+			MAIN_LINE_SET       = 0,
+			END_LINE_SET        = -1,
+
+			GO_TYPE             = GO_TYPE["GT_NONE"],
+
+			CLEAR_COND0 =
+			{
+				CLEAR_CONDITION["CC_KILL_NPC_TYPE"],
+				NPC_ID	 =
+				{ 
+					NPC_UNIT_ID["NUI_DEFENCE_CRYSTAL"],
+				},
+
+				NEXT_STAGE0 = { CLEAR_TYPE["CT_GAME"], 0, 0, 100 },
+			},
+
+			NPC_GROUP =
+			{
+				 {
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_CRYSTAL"],
+					KEY_CODE	= 1,
+					START_POS	= { 4, },	
+				},
+				 {
+					 NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_CRYSTAL"],
+					 KEY_CODE	= 2,
+					 START_POS	= { 3, },	
+				 },
+				 {
+					 NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_CRYSTAL"],
+					 KEY_CODE	= 3,
+					 START_POS	= { 2, },	
+				},
+				
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_DARKNESS_BOSS"],
+					START_POS	= { 1, },
+				},
+			},
+
+			TRIGGER_LIST =
+			{
+			},
+		},
+	},
+}

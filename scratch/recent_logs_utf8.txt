@@ -1,0 +1,7 @@
+﻿=== Found 6 files modified in the last 15 minutes ===
+  2026-06-28 20:05:38 - Elsword\GameServer\log\AbnormalDisconnectLog_2026-06-28_200537.txt (788 bytes)
+  2026-06-28 20:05:34 - Elsword\GlobalServer\Statistics\SI_LOG_SERV_DISCONNECT.txt (1966 bytes)
+  2026-06-28 20:05:33 - Elsword\CenterServer\Statistics\SI_LOG_SERV_DISCONNECT.txt (1948 bytes)
+  2026-06-28 20:05:33 - Elsword\LoginServer\Statistics\SI_LOG_SERV_DISCONNECT.txt (1948 bytes)
+  2026-06-28 20:04:13 - Elsword\offline\client-pvp-hint.txt (294 bytes)
+  2026-06-28 20:04:13 - Elsword\GameServer\log\pvp-profile-startup.log (742 bytes)

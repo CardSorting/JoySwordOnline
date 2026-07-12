@@ -1,0 +1,27 @@
+subscription_id = "00000000-0000-0000-0000-000000000000"
+tenant_id       = "00000000-0000-0000-0000-000000000000"
+location        = "centralus"
+
+resource_group_name = "joysword-prod-rg"
+
+artifact_storage_account_name = "jsartuniquesuffix"
+key_vault_name                = "js-kv-unique-suffix"
+alert_email                   = "operator@example.com"
+operator_object_id            = "00000000-0000-0000-0000-000000000000"
+web_app_name                  = "joysword-web-unique-suffix"
+postgres_server_name          = "joysword-pg-unique-suffix"
+
+# Required (no defaults) — fill these in before plan/apply.
+operator_ip            = "203.0.113.10"                     # operator public IP allowed to RDP
+server_source_image_id = "/subscriptions/<sub>/resourceGroups/<rg>/providers/Microsoft.Compute/images/<image>"
+release_version        = "2026.07.04-10"
+admin_ssh_public_key   = "ssh-ed25519 AAAA... operator@example.com"  # recovery key; no public SSH rule is created
+
+# --- Resilience / performance tunables (optional; sane prod defaults shown) ---
+# vm_zone                   = "1"            # pin VM + data disk to one AZ
+# os_disk_type              = "Premium_LRS"  # OS disk SKU
+# data_disk_type            = "Premium_LRS"  # SQL data disk SKU
+# data_disk_size_gb         = 64
+# artifact_replication_type = "ZRS"          # zone-redundant artifact storage
+# blob_retention_days       = 14             # soft-delete window
+

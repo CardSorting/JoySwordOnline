@@ -1,0 +1,47 @@
+{
+  "name": "default",
+  "description": "JoySword offline baseline — matches pre-stabilization GameSysValTable.lua values.",
+  "client_switch_connect_mode": 0,
+  "client_connection_mode_label": "Default",
+  "baseline_note": "No changes from original audit values except JOYSWORD profile marker block.",
+  "gamesysval": {
+    "lan_bug_out_just_log": true,
+    "lan_bug_out_check": {
+      "bLanBugOutCheck": false,
+      "byteLanBugOutCheckMaxCount": 0,
+      "fLanBugOutCheckTime": 1.0,
+      "byteLanBugOutCheckCount": 10,
+      "fLanBugOutCheckTermMin": 1.0,
+      "fLanBugOutCheckTerm": 0.0,
+      "fLanBugOutCheckRepeatTerm": 0.5
+    },
+    "lan_bug_out_verify": {
+      "bLanBugOutVerify": false,
+      "byteLanBugOutVerifyMaxCount": 10,
+      "fLanBugOutVerifyTime": 1.0,
+      "byteLanBugOutVerifyCount": 10,
+      "fLanBugOutVerifyTermMin": 1.0,
+      "fLanBugOutVerifyTerm": 0.0,
+      "fLanBugOutVerifyRepeatTerm": 0.5
+    },
+    "check_change_host_time": 180,
+    "max_ping_score": 5000,
+    "host_check_term": 3.0,
+    "battle_field_check_change_host_time": 180
+  },
+  "udp_relay_checker": {
+    "enabled": false,
+    "print_log": false,
+    "port": 26424,
+    "time_gap": 5.0,
+    "db_update_time_gap": 300.0,
+    "server_class": 3
+  },
+  "tr_server": {
+    "worker_thread_count": 6
+  },
+  "room_manager": {
+    "zu_tick_time": 300,
+    "battle_field_zu_tick_time": 20
+  }
+}

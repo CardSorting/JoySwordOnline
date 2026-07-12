@@ -1,0 +1,4854 @@
+particlesystem "GameMajor" 1.00
+{
+	eventsequence "PROTECT_GUARD_PHYSIC_AttackA_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 15
+		Lifetime			= 0.300
+		NumParticles		= 10
+		TriggerCount		= 2
+		Layer				= 14
+		Emitradius			= XYZ(0, 2, 0)
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "GroundShockWave02.dds"
+		Initial						Color = RGBA(random(0.500, 1), random(0.500, 1), 1, 0.600)
+		Fade so From 0.100 to 0.300	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(0, 0, 1)
+		Fade so From 0.001 to 0.070	Size = XYZ(500, 500, 1)
+		Fade so From 0.070 to 0.300	Size = XYZ(900, 900, 1)
+		Initial						Rotate = XYZ(90, 0, 0)
+	}
+	eventsequence "PROTECT_GUARD_PHYSIC_AttackA_P02"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 15
+		Lifetime			= 0.200
+		NumParticles		= 5
+		TriggerCount		= 1
+		Layer				= 14
+		BillBoardType		= BT_Y
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZWriteEnable		= FALSE
+		Mesh				= "Impact_Wave_Half01.Y"
+
+		Initial						Color = RGBA(1, random(0.400, 0.800), random(0.300, 0.700), 1)
+		Fade so From 0.001 to 0.200	Color = RGBA(random(0.500, 1), random(0.300, 0.500), random(0.200, 0.400), 0)
+		Initial						Size = XYZ(0, 0, 0)
+		Fade so From 0.001 to 0.050	Size = XYZ(1, 1, 1)
+		Fade so From 0.050 to 0.200	Size = XYZ(1.300, 1.300, 1.300)
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 20
+		Lifetime			= 0.200
+		NumParticles		= 50
+		TriggerTime			= 3
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		UseLand				= TRUE
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "Water_Ball01.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 0.100	Color = RGBA(1, 1, 1, 0.400)
+		Fade so From 0.100 to 0.400	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(440, 440, 1)
+		Fade so From 0.000 to 0.200	Size = XYZ(470, 470, 1)
+		Initial						Rotate = XYZ(random(0, 10), 0, random(0, -10))
+		Fade so From 0.000 to 0.200	Rotate = XYZ(random(10, 30), 0, random(-10, -30))
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 40
+		Lifetime			= 0.500
+		NumParticles		= 50
+		TriggerTime			= 1
+		DrawCount			= 2
+		Layer				= 14
+		Emitradius			= XYZ(random(-60, 60), 60, random(-60, 60))
+		Gravity				= XYZ(0, 150, 0)
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "Laguz_Bouble01.tga"
+		Initial						Color = RGBA(0.200, 0.400, 1, 0)
+		Fade so From 0.001 to 0.150	Color = RGBA(0.200, 0.400, 1, 1)
+		Fade so From 0.400 to 0.600	Color = RGBA(0.200, 0.400, 1, 0)
+		Initial						Size = XYZ(15, 15, 1)
+		Initial						Scale = random(0.700, 1)
+		Fade so From 0.250 to 0.400	Scale = random(0.200, 0.400)
+		Initial						Velocity = XYZ(0, random(150, 250), 0)
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 60
+		Lifetime			= 0.800
+		NumParticles		= 100
+		TriggerTime			= 0.600
+		Layer				= 14
+		Emitradius			= XYZ(random(-60, 60), random(-50, 50), 0)
+		Gravity				= XYZ(0, 100, 0)
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+
+		Initial						Texture = "Explosion_Sphere.dds"
+		Initial						Color = RGBA(0.200, 0.500, 1, 1)
+		Fade so From 0.400 to 0.800	Color = RGBA(0.200, 0.500, 1, 0)
+		Initial						Size = XYZ(100, 100, 1)
+		Initial						Scale = random(0.500, 1.500)
+		Fade so From 0.400 to 0.800	Scale = random(0.300, 0.500)
+		Initial						Rotate = XYZ(0, 0, random(-90, 90))
+		Initial						Velocity = XYZ(random(-50, 50), random(-50, 50), random(-50, 50))
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_P04"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 50
+		Lifetime			= 0.600
+		NumParticles		= 30
+		TriggerTime			= 0.400
+		Layer				= 14
+		Gravity				= XYZ(0, -300, 0)
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "Explosion_Sphere.dds"
+		Initial						Color = RGBA(0.400, 0.700, 1, 1)
+		Fade so From 0.200 to 0.600	Color = RGBA(0.400, 0.700, 1, 0)
+		Initial						Size = XYZ(70, 70, 1)
+		Initial						Scale = random(0.500, 1.500)
+		Fade so From 0.200 to 0.600	Scale = random(0.300, 0.500)
+		Initial						Rotate = XYZ(0, 0, random(-90, 90))
+		Initial						Velocity = XYZ(random(-50, 50), random(-50, 50), random(-50, 50))
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_P05"
+	{
+		particleType		= PT_SKINMESH
+		Emitrate			= 60
+		Lifetime			= 0.467
+		NumParticles		= 50
+		TriggerTime			= 0.200
+		DrawCount			= 2
+		Layer				= 14
+		Emitradius			= XYZ(random(-5, 5), 0, 0)
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZWriteEnable		= FALSE
+		Mesh				= "WindWard_XMesh01.X"
+
+		Initial						Color = RGBA(0.300, 0.700, 1, 0)
+		Fade so From 0.001 to 0.100	Color = RGBA(0.300, 0.700, 1, 0.800)
+		Fade so From 0.100 to 0.467	Color = RGBA(0.300, 0.700, 1, 0)
+		Initial						Rotate = XYZ(random(-180, 180), random(15, 20), random(-5, 5))
+		Initial						Size = XYZ(random(0.200, 0.500), 1, 1)
+		Initial						Scale = random(0.300, 0.500)
+		Fade so From 0.001 to 0.200	Scale = random(0.800, 1.200)
+		Fade so From 0.000 to 0.467	Scale = random(1.500, 1.700)
+		Initial						Velocity = XYZ(random(-150, -300), 0, 0)
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_P06"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 60
+		Lifetime			= 0.200
+		NumParticles		= 5
+		TriggerCount		= 1
+		DrawCount			= 2
+		Layer				= 15
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+
+		Initial						Texture = "RingAlpha.dds"
+		Initial						Color = RGBA(0.300, 0.500, 1, 0)
+		Fade so From 0.001 to 0.060	Color = RGBA(0.300, 0.500, 1, 1)
+		Initial						Size = XYZ(250, 250, 1)
+		Fade so From 0.000 to 0.200	Size = XYZ(1, 1, 1)
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_P07"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 5
+		Lifetime			= 0.400
+		NumParticles		= 50
+		TriggerCount		= 2
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "PlusHPMP.dds"
+		Initial						Color = RGBA(0.200, 0.500, 1, 0.600)
+		Fade so From 0.000 to 0.400	Color = RGBA(0.200, 0.500, 1, 0)
+		Initial						Size = XYZ(180, 180, 1)
+		Fade so From 0.000 to 0.400	Size = XYZ(620, 620, 1)
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_P08"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 15
+		Lifetime			= 0.300
+		NumParticles		= 20
+		TriggerTime			= 0.600
+		Layer				= 16
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "aisha_active_heavyPress_energy.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.000 to 0.300	Color = RGBA(1, 1, 1, 0.400)
+		Initial						Size = XYZ(120, 120, 1)
+		Fade so From 0.000 to 0.200	Size = XYZ(140, 140, 1)
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_P09"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 0.800
+		NumParticles		= 30
+		TriggerTime			= 0.800
+		Layer				= 13
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Trace				= TRUE
+
+		Initial						Texture = "AHM_FREEZING_POINT_01.tga"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.000 to 0.100	Color = RGBA(1, 1, 1, 1)
+		Fade so From 0.100 to 0.800	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(130, 130, 1)
+		Fade so From 0.000 to 0.100	Size = XYZ(random(225, 240), random(225, 240), 1)
+		Fade so From 0.100 to 0.800	Size = XYZ(285, 285, 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_P10"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 200
+		Lifetime			= 0.600
+		NumParticles		= 100
+		TriggerTime			= 1.800
+		DrawCount			= 2
+		Layer				= 14
+		Emitradius			= XYZ(random(-500, 500), random(-100, 1000), random(0, 300))
+		Gravity				= XYZ(0, -500, 0)
+		BillBoardType		= BT_Y
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		UseLand				= TRUE
+
+		Initial						Texture = "Colorballgray.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 0.150	Color = RGBA(0.400, 0.700, 1, 0.500)
+		Fade so From 0.200 to 0.600	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(3, 3, 1)
+		Fade so From 0.001 to 0.500	Size = XYZ(1, random(200, 400), 1)
+		Initial						Velocity = XYZ(0, random(-500, -300), 0)
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_P11"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 30
+		Lifetime			= 0.600
+		NumParticles		= 60
+		TriggerTime			= 1.500
+		Layer				= 15
+		Emitradius			= XYZ(random(0, 300), random(-100, 100), random(0, 300))
+		Gravity				= XYZ(0, random(-100, 150), 0)
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+
+		Initial						Texture = "PlusHPMP.dds"
+		Initial						Color = RGBA(0.400, random(0.400, 0.600), 1, 0)
+		Fade so From 0.001 to 0.200	Color = RGBA(random(0.100, 0.400), random(0.400, 0.800), 1, 1)
+		Fade so From 0.550 to 0.600	Color = RGBA(0.200, random(0.400, 0.500), 1, 0)
+		Initial						Size = XYZ(50, 50, 1)
+		Initial						Scale = random(1, 1.500)
+		Initial						Velocity = XYZ(random(400, 600), 0, 0)
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_P12"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 100
+		Lifetime			= 0.400
+		NumParticles		= 100
+		TriggerTime			= 1.800
+		DrawCount			= 2
+		Layer				= 14
+		Emitradius			= XYZ(random(-500, 500), 35, random(-150, 150))
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		UseLand				= TRUE
+
+		Initial						Texture = "Ring.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 0.033	Color = RGBA(1, 1, 1, 1)
+		Fade so From 0.100 to 0.400	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(0, 0, 1)
+		Fade so From 0.001 to 0.100	Size = XYZ(50, 50, 1)
+		Fade so From 0.100 to 0.400	Size = XYZ(70, 70, 1)
+		Initial						Rotate = XYZ(90, 0, 0)
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_P13"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 10
+		Lifetime			= 0.300
+		NumParticles		= 20
+		TriggerTime			= 0.900
+		DrawCount			= 2
+		Layer				= 15
+		Gravity				= XYZ(2000, 0, 0)
+		AddRotateRel		= XYZ(0, 25, 0)
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+		Mesh				= "Ring_Plane.Y"
+
+		Initial						Color = RGBA(0.400, 0.500, 1, 0.600)
+		Fade so From 0.000 to 0.300	Color = RGBA(0.200, 0.500, 1, 0)
+		Initial						Size = XYZ(1, 1, 1)
+		Fade so From 0.000 to 0.300	Size = XYZ(2.800, 2.800, 2.800)
+		Initial						Velocity = XYZ(500, 0, 0)
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_P14"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 20
+		Lifetime			= 0.300
+		NumParticles		= 20
+		TriggerTime			= 0.900
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "Arme_ICEballS2.tga"
+		Initial						Color = RGBA(random(0, 0.700), random(0, 0.700), random(0.700, 1), 0)
+		Fade so From 0.001 to 0.100	Color = RGBA(random(0, 0.700), random(0, 0.700), random(0.700, 1), 1)
+		Fade so From 0.100 to 0.300	Color = RGBA(random(0, 0.700), random(0, 0.700), random(0.700, 1), 0)
+		Initial						Size = XYZ(300, 300, 1)
+		Fade so From 0.100 to 0.300	Size = XYZ(random(300, 350), random(300, 350), 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_P15"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 100
+		Lifetime			= 0.600
+		NumParticles		= 50
+		TriggerCount		= 20
+		Layer				= 13
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+		Mesh				= "SA_AHM_AQUA_SHOWER.Y"
+
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 0.100	Color = RGBA(1, 1, 1, 0.400)
+		Fade so From 0.200 to 0.600	Color = RGBA(random(0.100, 0.500), random(0.100, 0.600), 1, 0)
+		Initial						Size = XYZ(1, 1, 1)
+		Initial						Scale = 0.100
+		Fade so From 0.001 to 0.100	Scale = random(10, 12)
+		Fade so From 0.100 to 0.600	Scale = 1.250
+		Initial						Rotate = XYZ(random(-180, 180), random(-180, 180), random(-180, 180))
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_P16"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 30
+		Lifetime			= 0.400
+		NumParticles		= 50
+		TriggerTime			= 0.300
+		DrawCount			= 2
+		Layer				= 15
+		BillBoardType		= BT_Y
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+
+		Initial						Texture = "Arme_ICEballS2.tga"
+		Initial						Color = RGBA(1, 0.250, 0.700, 0)
+		Fade so From 0.000 to 0.100	Color = RGBA(1, 0.250, 0.700, 1)
+		Fade so From 0.100 to 0.400	Color = RGBA(1, 0.250, 0.700, 0)
+		Initial						Size = XYZ(200, 200, 1)
+		Fade so From 0.000 to 0.400	Size = XYZ(210, 210, 1)
+		Initial						Rotate = XYZ(0, 0, random(-180, 180))
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_P17"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 20
+		Lifetime			= 0.600
+		NumParticles		= 20
+		TriggerTime			= 0.900
+		Layer				= 14
+		Emitradius			= XYZ(random(-20, 20), random(-2.500, 2.500), random(-20, 20))
+		Gravity				= XYZ(random(-20, 20), random(-20, 20), random(-20, 20))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "RS_New_Sword_ICE.dds"
+		Initial						Color = RGBA(0.500, 0.750, 1, 0)
+		Fade so From 0.001 to 0.200	Color = RGBA(0.500, 0.750, 1, 0.500)
+		Fade so From 0.600 to 1.000	Color = RGBA(random(0.500, 1), random(0, 0.500), random(0.600, 1), 0)
+		Initial						Size = XYZ(10, 10, 1)
+		Fade so From 0.010 to 0.030	Size = XYZ(random(50, 60), random(50, 60), 1)
+		Fade so From 0.030 to 0.300	Size = XYZ(random(120, 130), random(120, 130), 1)
+		Fade so From 0.300 to 1.000	Size = XYZ(0, 0, 0)
+		Initial						Scale = random(1.200, 1.400)
+		Initial						Rotate = XYZ(0, 0, random(-180, 180))
+		Initial						Velocity = XYZ(random(-60, 60), random(-60, 60), random(-60, 60))
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_P18"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 0.700
+		NumParticles		= 20
+		TriggerTime			= 0.900
+		Layer				= 15
+		Emitradius			= XYZ(random(-15, 15), random(-15, 15), random(-15, 15))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "Steam_BP.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 0.066	Color = RGBA(1, 1, 1, 0.500)
+		Fade so From 0.100 to 0.330	Color = RGBA(0.160, 0, 0, random(0.500, 0.800))
+		Fade so From 0.330 to 0.700	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(random(80, 90), random(80, 90), 1)
+		Fade so From 0.010 to 0.100	Size = XYZ(random(90, 100), random(90, 100), 1)
+		Fade so From 0.330 to 0.700	Size = XYZ(random(90, 100), random(90, 100), 1)
+		Initial						Scale = random(1, 1.200)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+		Initial						Velocity = XYZ(random(-70, 70), random(-50, 50), random(-70, 70))
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_P19"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 50
+		Lifetime			= 1.600
+		NumParticles		= 30
+		TriggerTime			= 0.900
+		Layer				= 14
+		Emitradius			= XYZ(random(-15, 15), random(-15, 15), random(-15, 15))
+		Gravity				= XYZ(random(-5, 5), random(-5, 5), random(-5, 5))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "acce_userAvatar_201205_bubble.DDS"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 0.300	Color = RGBA(1, 1, 1, 1)
+		Fade so From 1.000 to 1.400	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(random(15, 20), random(15, 20), random(15, 20))
+		Fade so From 0.300 to 1.500	Size = XYZ(random(1, 5), random(1, 5), random(1, 5))
+		Initial						Velocity = XYZ(random(-120, 120), random(-120, 120), random(-120, 120))
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_Buff_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 30
+		Lifetime			= 0.150
+		NumParticles		= 2
+		TriggerCount		= 2
+		DrawCount			= 2
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "aisha_active_heavyPress_energy.dds"
+		Initial						Color = RGBA(random(0.300, 0.500), random(0.600, 0.800), random(0.800, 1), 1)
+		Fade so From 0.000 to 0.150	Color = RGBA(random(0.200, 0.400), random(0.300, 0.600), random(0.800, 1), 1)
+		Initial						Size = XYZ(550, 550, 1)
+		Fade so From 0.000 to 0.150	Size = XYZ(0, 0, 1)
+		Initial						Rotate = XYZ(0, 0, 0)
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_Buff_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 5
+		Lifetime			= 0.400
+		NumParticles		= 50
+		TriggerCount		= 2
+		DrawCount			= 2
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "AHM_FREEZING_POINT_01.tga"
+		Initial						Color = RGBA(random(0.300, 0.500), random(0.500, 0.600), random(0.800, 1), 0.600)
+		Fade so From 0.000 to 0.400	Color = RGBA(random(0.200, 0.400), random(0.500, 0.800), 1, 0)
+		Initial						Size = XYZ(280, 280, 1)
+		Fade so From 0.000 to 0.400	Size = XYZ(420, 420, 1)
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_Buff_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 30
+		Lifetime			= 0.600
+		NumParticles		= 50
+		TriggerCount		= 3
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "aisha_active_heavyPress_energy.dds"
+		Initial						Color = RGBA(random(0.200, 0.500), 0.500, 1, 1)
+		Fade so From 0.001 to 0.100	Color = RGBA(random(0.200, 0.500), 0.500, 1, 0.600)
+		Fade so From 0.400 to 0.600	Color = RGBA(random(0.600, 1), 0.500, random(0.100, 1), 0)
+		Initial						Size = XYZ(390, 390, 1)
+		Fade so From 0.001 to 0.050	Size = XYZ(280, 280, 1)
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_Buff_P04"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 30
+		Lifetime			= 0.600
+		NumParticles		= 10
+		TriggerCount		= 3
+		DrawCount			= 2
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "CTT_SA_TACTICAL_FIELD_circleField.dds"
+		Initial						Color = RGBA(random(0.200, 0.400), random(0.300, 0.600), random(0.500, 1), random(0.200, 0.400))
+		Fade so From 0.001 to 0.100	Color = RGBA(random(0.200, 0.400), random(0.600, 0.800), random(0.800, 1), random(0.200, 0.300))
+		Fade so From 0.400 to 0.600	Color = RGBA(random(0.200, 0.400), random(0.100, 0.800), random(0.400, 1), 0)
+		Initial						Size = XYZ(390, 390, 1)
+		Fade so From 0.001 to 0.050	Size = XYZ(280, 280, 1)
+		Fade so From 0.200 to 0.600	Rotate = XYZ(1, 1, 360)
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_Buff_Wait_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 5
+		Lifetime			= 1
+		NumParticles		= 5
+		TriggerTime			= 1
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "AHM_FREEZING_POINT_01.tga"
+		Initial						Color = RGBA(random(0.300, 0.500), random(0.500, 0.600), random(0.800, 1), 0.600)
+		Fade so From 0.000 to 1.000	Color = RGBA(random(0.200, 0.400), random(0.500, 0.800), 1, 0)
+		Initial						Size = XYZ(280, 280, 1)
+		Fade so From 0.000 to 0.400	Size = XYZ(320, 320, 1)
+		Initial						Rotate = XYZ(1, 1, 0)
+		Fade so From 0.001 to 1.000	Rotate = XYZ(1, 1, 40)
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_Buff_Wait_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= random(15, 30)
+		Lifetime			= 0.600
+		NumParticles		= 3
+		TriggerTime			= 0.600
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "aisha_active_heavyPress_energy.dds"
+		Initial						Color = RGBA(random(0.200, 0.500), 0.500, 1, random(0.200, 0.400))
+		Fade so From 0.001 to 0.100	Color = RGBA(random(0.200, 0.500), 0.500, 1, 0.400)
+		Fade so From 0.400 to 0.600	Color = RGBA(random(0.600, 1), 0.500, random(0.100, 1), 0)
+		Initial						Size = XYZ(300, 300, 1)
+		Fade so From 0.001 to 0.600	Size = XYZ(320, 320, 1)
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_Buff_Wait_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 30
+		Lifetime			= 0.600
+		NumParticles		= 3
+		TriggerTime			= 0.600
+		DrawCount			= 2
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "CTT_SA_TACTICAL_FIELD_circleField.dds"
+		Initial						Color = RGBA(random(0.200, 0.400), random(0.300, 0.600), random(0.500, 1), random(0.200, 0.400))
+		Fade so From 0.001 to 0.100	Color = RGBA(random(0.200, 0.400), random(0.600, 0.800), random(0.800, 1), random(0.200, 0.300))
+		Fade so From 0.400 to 0.600	Color = RGBA(random(0.200, 0.400), random(0.100, 0.800), random(0.400, 1), 0)
+		Initial						Size = XYZ(300, 300, 1)
+		Fade so From 0.001 to 0.050	Size = XYZ(280, 280, 1)
+		Fade so From 0.200 to 0.600	Rotate = XYZ(1, 1, 360)
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_Buff_Wait_P04"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 50
+		Lifetime			= 1.600
+		NumParticles		= 30
+		TriggerTime			= 1.600
+		Layer				= 14
+		Emitradius			= XYZ(random(-15, 15), random(-15, 15), random(-15, 15))
+		Gravity				= XYZ(random(-5, 5), random(-5, 5), random(-5, 5))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "acce_userAvatar_201205_bubble.DDS"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 0.300	Color = RGBA(1, 1, 1, 1)
+		Fade so From 1.000 to 1.400	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(random(15, 20), random(15, 20), random(15, 20))
+		Fade so From 0.300 to 1.500	Size = XYZ(random(1, 5), random(1, 5), random(1, 5))
+		Initial						Velocity = XYZ(random(-120, 120), random(-120, 120), random(-120, 120))
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_Buff_Wait_P05"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 20
+		Lifetime			= 0.300
+		NumParticles		= 20
+		TriggerTime			= 9999
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "Arme_ICEballS2.tga"
+		Initial						Color = RGBA(random(0, 0.700), random(0, 0.700), random(0.700, 1), 0)
+		Fade so From 0.001 to 0.100	Color = RGBA(random(0, 0.700), random(0, 0.700), random(0.700, 1), 1)
+		Fade so From 0.100 to 0.300	Color = RGBA(random(0, 0.700), random(0, 0.700), random(0.700, 1), 0)
+		Initial						Size = XYZ(300, 300, 1)
+		Fade so From 0.100 to 0.300	Size = XYZ(random(300, 350), random(300, 350), 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+	}
+	eventsequence "SHASHA_STAGE0_AttackA_Buff_Wait_P06"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 40
+		Lifetime			= 0.600
+		NumParticles		= 50
+		TriggerTime			= 0.600
+		DrawCount			= 2
+		Layer				= 14
+		Emitradius			= XYZ(random(-80, 80), random(-80, 80), random(-80, 80))
+		Gravity				= XYZ(0, 150, 0)
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "Laguz_Bouble01.tga"
+		Initial						Color = RGBA(0.200, 0.400, 1, 0)
+		Fade so From 0.001 to 0.150	Color = RGBA(0.200, 0.400, 1, 1)
+		Fade so From 0.400 to 0.600	Color = RGBA(random(0.200, 1), 0.400, 1, 0)
+		Initial						Size = XYZ(20, 20, 1)
+		Initial						Scale = random(0.700, 1)
+		Fade so From 0.250 to 0.400	Scale = random(0.200, 0.400)
+		Initial						Velocity = XYZ(0, random(150, 250), 0)
+	}
+	eventsequence "SHASHA_STAGE12_HEAL_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 5
+		Lifetime			= 0.400
+		NumParticles		= 50
+		TriggerTime			= 1.200
+		DrawCount			= 2
+		Layer				= 15
+		BillBoardType		= BT_Y
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "Arme_ICEballS2.tga"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.000 to 0.100	Color = RGBA(1, 1, 1, 0.600)
+		Fade so From 0.200 to 0.400	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(350, 350, 1)
+		Fade so From 0.200 to 0.400	Size = XYZ(370, 370, 1)
+	}
+	eventsequence "SHASHA_STAGE12_HEAL_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 7
+		Lifetime			= 0.800
+		NumParticles		= 60
+		TriggerTime			= 1.200
+		Layer				= 15
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "Condense_pulse01.dds"
+		Initial						Color = RGBA(random(0.200, 0.400), random(0.200, 0.300), random(0.600, 1), 0)
+		Fade so From 0.001 to 0.100	Color = RGBA(random(0.100, 0.200), random(0.200, 0.500), random(0.600, 1), 0.300)
+		Fade so From 0.200 to 0.800	Color = RGBA(0.300, 0.600, 1, 0)
+		Initial						Size = XYZ(600, 600, 1)
+		Fade so From 0.001 to 0.800	Size = XYZ(1600, 1600, 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+	}
+	eventsequence "SHASHA_STAGE12_HEAL_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= random(30, 60)
+		Lifetime			= 1
+		NumParticles		= 5
+		TriggerTime			= 1
+		Layer				= 14
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+
+		Initial						Texture = "Arme_Ring2.dds"
+		Initial						Color = RGBA(0.500, 0.700, 1, 0)
+		Fade so From 0.001 to 0.100	Color = RGBA(random(0.100, 0.500), 0.700, 1, random(0.200, 0.600))
+		Fade so From 0.102 to 0.200	Color = RGBA(random(0.300, 0.500), 0.700, 1, random(0.600, 0.900))
+		Fade so From 0.200 to 1.000	Color = RGBA(random(0.100, 0.600), random(0.200, 0.700), 1, 0)
+		Initial						Size = XYZ(0, 0, 1)
+		Fade so From 0.001 to 0.100	Size = XYZ(800, 800, 1)
+		Fade so From 0.100 to 0.400	Size = XYZ(900, 900, 1)
+		Initial						Rotate = XYZ(0, 0, 0)
+	}
+	eventsequence "PROTECT_GUARD_PHYSIC_Attack_B_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 50
+		Lifetime			= 2
+		NumParticles		= 1
+		TriggerCount		= 1
+		DrawCount			= 5
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+
+		Initial						Texture = "PROTECT_GUARD_PHYSIC_Attack_B_Slash.tga"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.200 to 0.210	Color = RGBA(1, 1, random(0, 1), 1)
+		Fade so From 0.500 to 0.700	Color = RGBA(1, random(0, 1), 0, 0)
+		Initial						Rotate = XYZ(0, 0, 30)
+		Initial						DIRSPEED = random(3000, 10000)
+		Fade so From 0.010 to 0.500	DIRSPEED = 1
+		Initial						Stretch = 30
+		Initial						Size = XYZ(500, 1, 5)
+		Fade so From 0.001 to 0.100	Size = XYZ(1000, 650, 1)
+		Fade so From 0.200 to 0.500	Size = XYZ(500, 10, 1)
+	}
+	eventsequence "PROTECT_GUARD_PHYSIC_Special_Attack_Ready_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 0.200
+		NumParticles		= 20
+		TriggerTime			= 9999
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+
+		Initial						Texture = "ColorBallFire.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 0.100	Color = RGBA(1, 1, 1, 1)
+		Fade so From 0.100 to 0.200	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(300, 300, 1)
+		Fade so From 0.000 to 0.200	Size = XYZ(400, 400, 1)
+	}
+	eventsequence "PROTECT_GUARD_PHYSIC_Special_Attack_Ready_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 15
+		Lifetime			= 0.400
+		NumParticles		= 15
+		TriggerTime			= 0.400
+		DrawCount			= 2
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "aisha_active_guillotinePress_circleParticle.dds"
+		Initial						Color = RGBA(1, random(0.100, 0.500), random(0.100, 0.300), 0)
+		Fade so From 0.001 to 0.100	Color = RGBA(1, random(0.200, 0.500), random(0.100, 0.300), 1)
+		Fade so From 0.230 to 0.400	Color = RGBA(1, random(0.100, 0.500), 1, 0)
+		Initial						Rotate = XYZ(0, 0, random(0, 180))
+		Initial						Size = XYZ(900, 900, 1)
+		Initial						Scale = 1
+		Fade so From 0.000 to 0.400	Scale = random(0, 0.100)
+		Initial						DIRSPEED = 10
+		Initial						Stretch = random(1, 2)
+	}
+	eventsequence "PROTECT_GUARD_PHYSIC_Special_Attack_Ready_P04"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 30
+		Lifetime			= 0.400
+		NumParticles		= 30
+		TriggerTime			= 0.400
+		Layer				= 15
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "SA_AYR_ENERGY_CANNON_Map03.dds"
+		Initial						Color = RGBA(1, random(0.200, 0.500), 0.300, 0)
+		Fade so From 0.000 to 0.100	Color = RGBA(1, random(0.100, 0.500), random(0.100, 0.300), 1)
+		Fade so From 0.100 to 0.400	Color = RGBA(1, random(0.100, 0.500), random(0.100, 0.300), 0)
+		Initial						Size = XYZ(random(400, 500), random(400, 500), 1)
+		Fade so From 0.000 to 0.400	Size = XYZ(random(200, 300), random(200, 300), 1)
+		Initial						Rotate = XYZ(0, 0, 360)
+	}
+	eventsequence "PROTECT_GUARD_PHYSIC_Special_Attack_Ready_P05"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= random(10, 20)
+		Lifetime			= 0.800
+		NumParticles		= 15
+		TriggerTime			= 1.600
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Trace				= TRUE
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "SA_AEM_ELEMENTAL_STORM_FIRE.dds"
+		Initial						Color = RGBA(1, random(0, 1), random(0, 1), 0)
+		Fade so From 0.010 to 0.060	Color = RGBA(1, random(0.100, 0.400), random(0, 0.100), random(0.600, 0.700))
+		Fade so From 0.060 to 0.400	Color = RGBA(1, 0, 0, 0)
+		Initial						Size = XYZ(400, 400, 1)
+		Fade so From 0.010 to 0.400	Size = XYZ(200, 200, 1)
+		Initial						Scale = random(0.800, 1.200)
+		Initial						Rotate = XYZ(0, 0, 10)
+	}
+	eventsequence "PROTECT_GUARD_PHYSIC_Special_Attack_Ready_P06"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= random(10, 20)
+		Lifetime			= 0.800
+		NumParticles		= 15
+		TriggerTime			= 1.600
+		Layer				= 15
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "SA_AEM_ELEMENTAL_STORM_FIRE.dds"
+		Initial						Color = RGBA(1, random(0.500, 1), random(0, 1), 0)
+		Fade so From 0.010 to 0.060	Color = RGBA(1, random(0.500, 1), random(0, 0.100), random(0.600, 0.700))
+		Fade so From 0.060 to 0.400	Color = RGBA(1, 0, 0, 0)
+		Initial						Size = XYZ(400, 400, 1)
+		Fade so From 0.010 to 0.400	Size = XYZ(200, 200, 1)
+		Initial						Scale = random(0.800, 1.200)
+		Initial						Rotate = XYZ(0, 0, 10)
+	}
+	eventsequence "PROTECT_GUARD_PHYSIC_Special_Attack_Ready_P07"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= random(10, 20)
+		Lifetime			= 0.600
+		NumParticles		= 15
+		TriggerTime			= 0.600
+		Layer				= 15
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "SA_AEM_ELEMENTAL_STORM_FIRE.dds"
+		Initial						Color = RGBA(1, random(0.500, 1), random(0, 1), 0)
+		Fade so From 0.010 to 0.060	Color = RGBA(1, random(0.500, 1), random(0, 0.100), random(0.600, 0.700))
+		Fade so From 0.060 to 0.600	Color = RGBA(1, 0, 0, 0)
+		Initial						Size = XYZ(400, 400, 1)
+		Fade so From 0.010 to 0.400	Size = XYZ(200, 200, 1)
+		Initial						Scale = random(0.800, 1.200)
+		Initial						Rotate = XYZ(0, 0, 90)
+	}
+	eventsequence "PROTECT_GUARD_PHYSIC_SPA_P01"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 9
+		Lifetime			= 0.500
+		NumParticles		= 8
+		TriggerTime			= 0.500
+		Layer				= 14
+		Emitradius			= XYZ(0, 2, 0)
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+		Mesh				= "SA_SPK_BURST_WAVE_FIRE.Y"
+
+		Initial						Color = RGBA(1, 0.300, 0.200, 1)
+		Fade so From 0.001 to 0.200	Color = RGBA(1, 0.400, 0.100, 0.200)
+		Fade so From 0.222 to 0.500	Color = RGBA(0.200, 0.300, 1, 0)
+		Initial						Size = XYZ(0.300, 12, 0.300)
+		Fade so From 0.001 to 0.200	Size = XYZ(4, 3, 4)
+		Fade so From 0.201 to 0.500	Size = XYZ(5, 4, 5)
+		Initial						Rotate = XYZ(0, random(0, 360), 0)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Magic_Attack_A_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 200
+		Lifetime			= 0.800
+		NumParticles		= 200
+		TriggerTime			= 2.400
+		Layer				= 13
+		Emitradius			= XYZ(random(-60, 60), random(-50, 50), 0)
+		Gravity				= XYZ(0, 100, 0)
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+
+		Initial						Texture = "ARTILLERY_STRIKE_QUANTUM_BALLISTA_FIRE.dds"
+		Initial						Color = RGBA(random(0.200, 0.500), random(0.200, 0.500), 1, 1)
+		Fade so From 0.400 to 0.800	Color = RGBA(random(0.200, 0.400), 0.500, 1, 0)
+		Initial						Size = XYZ(random(40, 50), random(40, 50), 1)
+		Initial						Scale = random(0.500, 1.500)
+		Fade so From 0.400 to 0.800	Scale = random(0.300, 0.500)
+		Initial						Rotate = XYZ(0, 0, random(-90, 90))
+		Initial						Velocity = XYZ(random(-50, 50), random(-50, 50), random(-50, 50))
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Magic_Attack_A_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 0.800
+		NumParticles		= 20
+		TriggerTime			= 2.400
+		DrawCount			= 2
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "WhitePoint.dds"
+		Initial						Color = RGBA(random(0, 1), random(0, 1), 1, 0)
+		Fade so From 0.010 to 0.060	Color = RGBA(random(0.200, 0.400), random(0.200, 0.400), random(0.800, 1), random(0.400, 0.700))
+		Fade so From 0.060 to 0.400	Color = RGBA(random(0.100, 0.500), 0, 1, 0)
+		Initial						Size = XYZ(random(600, 700), random(600, 700), 1)
+		Fade so From 0.010 to 0.400	Size = XYZ(random(200, 300), random(200, 300), 1)
+		Initial						Scale = random(0.800, 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Magic_Attack_A_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 200
+		Lifetime			= 0.800
+		NumParticles		= 200
+		TriggerTime			= 2.400
+		Layer				= 14
+		Emitradius			= XYZ(random(-60, 60), random(-50, 50), 0)
+		Gravity				= XYZ(0, 100, 0)
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "ARTILLERY_STRIKE_QUANTUM_BALLISTA_FIRE.dds"
+		Initial						Color = RGBA(random(0.200, 0.500), random(0.200, 0.500), 1, 1)
+		Fade so From 0.400 to 0.800	Color = RGBA(random(0.200, 0.400), 0.500, 1, 0)
+		Initial						Size = XYZ(random(40, 50), random(40, 50), 1)
+		Initial						Scale = random(0.500, 1.500)
+		Fade so From 0.400 to 0.800	Scale = random(0.300, 0.500)
+		Initial						Rotate = XYZ(0, 0, random(-90, 90))
+		Initial						Velocity = XYZ(random(-50, 50), random(-50, 50), random(-50, 50))
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Magic_Attack_A_Trap_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 50
+		Lifetime			= 1
+		NumParticles		= 25
+		TriggerTime			= 1
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "LGA_shot_Ring_01.tga"
+		Initial						Color = RGBA(0, 0, random(0, 0.500), 0)
+		Fade so From 0.001 to 0.750	Color = RGBA(random(0, 0.100), 0, random(0, 0.100), 0.500)
+		Fade so From 0.511 to 1.000	Color = RGBA(0, 0, 0, 0)
+		Initial						Rotate = XYZ(0, 0, random(-180, 180))
+		Initial						Size = XYZ(600, 600, 1)
+		Fade so From 0.010 to 1.000	Size = XYZ(0, 0, 1)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Magic_Attack_A_Trap_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 100
+		Lifetime			= 0.600
+		NumParticles		= 13
+		TriggerTime			= 0.300
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		ZEnable				= FALSE
+
+		Initial						Texture = "HummingWind04.dds"
+		Initial						Color = RGBA(0, 0, random(0, 1), 0)
+		Fade so From 0.000 to 0.200	Color = RGBA(0, 0, 0, 0.300)
+		Fade so From 0.200 to 0.400	Color = RGBA(0, 0, 0, 0)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+		Initial						Size = XYZ(0, 0, 1)
+		Fade so From 0.000 to 0.200	Size = XYZ(320, 320, 1)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Magic_Attack_A_Trap_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 1
+		NumParticles		= 30
+		TriggerTime			= 1
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		ZEnable				= FALSE
+
+		Initial						Texture = "Sprriggan_Light_Ball_02.Tga"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 0.100	Color = RGBA(1, 1, 1, 0.500)
+		Fade so From 0.300 to 0.500	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(200, 200, 1)
+		Fade so From 0.001 to 1.000	Size = XYZ(500, 500, 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Magic_Attack_A_Trap_P04"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 120
+		Lifetime			= 0.300
+		NumParticles		= 3
+		TriggerTime			= 1
+		Layer				= 13
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "Condense_pulse01.dds"
+		Initial						Color = RGBA(0, 0, 0, 0)
+		Fade so From 0.000 to 0.300	Color = RGBA(0, 0, 0, 1)
+		Initial						Size = XYZ(1700, 1700, 1)
+		Fade so From 0.001 to 0.300	Size = XYZ(1, 1, 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+		Initial						Velocity = XYZ(0, 0, 0)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Magic_Attack_A_Trap_P05"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 0.500
+		NumParticles		= 3
+		TriggerTime			= 1
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		ZEnable				= FALSE
+
+		Initial						Texture = "Arme_Ring2.dds"
+		Initial						Color = RGBA(0, 0, 0, 0)
+		Fade so From 0.001 to 0.300	Color = RGBA(0, 0, 0, 0.200)
+		Fade so From 0.300 to 4.000	Color = RGBA(0, 0, 0, 0.200)
+		Fade so From 4.000 to 4.500	Color = RGBA(0, 0, 0, 0)
+		Initial						Size = XYZ(800, 800, 1)
+		Fade so From 0.001 to 1.000	Size = XYZ(700, 700, 1)
+		Fade so From 1.000 to 4.000	Size = XYZ(1500, 1500, 1)
+		Fade so From 4.000 to 4.800	Size = XYZ(10, 10, 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 2))
+		Fade so From 0.100 to 4.500	Rotate = XYZ(0, 0, 60)
+		Initial						Velocity = XYZ(0, 0, 0)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Magic_Attack_A_Trap_P06"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 200
+		Lifetime			= 0.500
+		NumParticles		= 100
+		TriggerTime			= 0.200
+		Layer				= 15
+		Emitradius			= XYZ(random(-180, 180), random(-20, 320), random(-180, 180))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+
+		Initial						Texture = "Pa_Ran_SpaD_Smoke02.DDS"
+		Initial						Color = RGBA(0, random(0.100, 1), random(0.500, 1), 0)
+		Fade so From 0.010 to 0.060	Color = RGBA(0, random(0.100, 0.500), random(0.400, 1), random(0.300, 0.500))
+		Fade so From 0.060 to 0.400	Color = RGBA(random(0.100, 0.200), 0.500, random(0.100, 1), random(0.010, 0.200))
+		Fade so From 0.400 to 0.500	Color = RGBA(0.500, 1, random(0.500, 1), 0)
+		Initial						Size = XYZ(130, 130, 1)
+		Fade so From 0.010 to 0.100	Size = XYZ(320, 320, 1)
+		Fade so From 0.100 to 0.500	Size = XYZ(350, 350, 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+		Initial						Velocity = XYZ(random(-900, 900), random(220, 800), random(-900, 900))
+		Fade so From 0.100 to 0.200	Velocity = XYZ(random(-50, 50), random(-10, 10), random(-10, 10))
+		Fade so From 0.200 to 0.500	Velocity = XYZ(random(10, 50), 0, 0)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Magic_Attack_A_Trap_P09"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 1
+		NumParticles		= 20
+		TriggerTime			= 1
+		DrawCount			= 2
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "WhitePoint.dds"
+		Initial						Color = RGBA(random(0, 1), random(0, 1), 1, 0)
+		Fade so From 0.010 to 0.060	Color = RGBA(random(0.200, 0.400), random(0.200, 0.400), random(0.800, 1), random(0.400, 0.700))
+		Fade so From 0.060 to 0.500	Color = RGBA(random(0.100, 0.500), 0, 1, 0)
+		Initial						Size = XYZ(random(600, 700), random(600, 700), 1)
+		Fade so From 0.010 to 0.400	Size = XYZ(random(200, 300), random(200, 300), 1)
+		Initial						Scale = random(0.800, 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Magic_Attack_A_Trap"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 20
+		Lifetime			= 1
+		NumParticles		= 20
+		TriggerTime			= 1
+		DrawCount			= 5
+		Layer				= 15
+		Emitradius			= XYZ(random(-20, 20), random(-20, 20), random(-20, 20))
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZWriteEnable		= FALSE
+		Mesh				= "AEM_M_lightning01.Y"
+
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.010 to 0.050	Color = RGBA(random(0.400, 0.500), random(0.100, 0.500), random(0.800, 1), random(0.600, 1))
+		Fade so From 0.050 to 0.100	Color = RGBA(0.200, random(0.300, 0.600), 1, random(0.300, 0.600))
+		Fade so From 0.100 to 0.500	Color = RGBA(0, 0, 0, 0)
+		Initial						Size = XYZ(random(1.400, 1.600), random(1.400, 1.600), random(1.400, 1.600))
+		Initial						Rotate = XYZ(random(0, 360), random(0, 360), random(0, 360))
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Magic_Attack_A_Trap2"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 1
+		Lifetime			= 1
+		NumParticles		= 1
+		TriggerTime			= 1
+		DrawCount			= random(5, 10)
+		Layer				= 14
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZWriteEnable		= FALSE
+		Mesh				= "PROTECT_GUARD_MAGIC_UV.Y"
+
+		Initial						Color = RGBA(random(0.200, 0.400), 0.300, 1, 0.700)
+		Fade so From 0.001 to 0.450	Color = RGBA(random(0.200, 0.400), 0.300, 1, 0.700)
+		Initial						Size = XYZ(0.100, 0.100, 0.100)
+		Initial						Rotate = XYZ(0, 0, 0)
+		Fade so From 0.001 to 1.000	Rotate = XYZ(0, 360, 0)
+		Fade so From 0.000 to 1.000	TEX2UV = XY(1, -1)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Magic_Attack_A_Trap3"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 20
+		Lifetime			= 1.560
+		NumParticles		= 10
+		TriggerTime			= 1
+		DrawCount			= 2
+		Layer				= 14
+		Emitradius			= XYZ(random(-3, 3), random(-3, 3), random(-3, 3))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "Gear_Water.tga"
+		Initial						Color = RGBA(random(0.100, 0.300), random(0.200, 0.400), 1, 0)
+		Fade so From 0.001 to 0.460	Color = RGBA(random(0.100, 1), random(0.300, 0.500), random(0.800, 1), 0.200)
+		Fade so From 1.000 to 1.560	Color = RGBA(random(0.100, 0.300), random(0.300, 0.500), random(0.800, 1), 0)
+		Initial						Size = XYZ(random(50, 100), random(50, 100), 1)
+		Fade so From 0.300 to 1.500	Size = XYZ(random(150, 200), random(150, 200), 1)
+		Initial						Velocity = XYZ(random(-25, 2), random(-25, 25), random(-25, 25))
+		Initial						Rotate = XYZ(0, 0, random(-360, 360))
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Magic_Attack_A_Trap_RE"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 0.350
+		NumParticles		= 10
+		TriggerTime			= 0.100
+		DrawCount			= 2
+		Layer				= 15
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+
+		Initial						Texture = "PROTECT_GUARD_MAGIC_Map02.dds"
+		Initial						Color = RGBA(1, 1, 1, 1)
+		Fade so From 0.010 to 0.080	Color = RGBA(1, 1, 1, 1)
+		Fade so From 0.100 to 0.200	Color = RGBA(1, 1, 1, 0.600)
+		Fade so From 0.200 to 0.300	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(100, 100, 1)
+		Fade so From 0.100 to 0.300	Size = XYZ(1500, 1500, 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Attack_B_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 1
+		NumParticles		= 10
+		TriggerTime			= 1
+		Layer				= 15
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_BLENDFACTOR
+		ZEnable				= FALSE
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "PROTECT_GUARD_MAGIC_Map04.dds"
+		Initial						Color = RGBA(random(0.400, 0.800), random(0.300, 0.600), random(0.500, 1), random(0.100, 0.200))
+		Fade so From 0.001 to 0.400	Color = RGBA(random(0.250, 0.500), random(0.500, 1), random(0.300, 1), random(0.200, 0.400))
+		Initial						Size = XYZ(512, 512, 1)
+		Fade so From 0.000 to 0.400	Size = XYZ(256, 256, 1)
+		Initial						Rotate = XYZ(0, 0, -180)
+		Fade so From 0.400 to 1.000	Rotate = XYZ(1, 1, 360)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Attack_B_P02"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 20
+		Lifetime			= 0.300
+		NumParticles		= 10
+		TriggerTime			= 2.100
+		DrawCount			= 3
+		Layer				= 14
+		Gravity				= XYZ(random(-5, 5), random(-5, 5), random(-5, 5))
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+		Mesh				= "Ring_Plane.Y"
+
+		Initial						Color = RGBA(random(0.200, 0.400), random(0.400, 0.800), random(0.800, 1), random(0.200, 0.400))
+		Fade so From 0.000 to 0.300	Color = RGBA(0.400, 0.400, 1, 0)
+		Initial						Size = XYZ(1.500, 1.500, 1.500)
+		Fade so From 0.000 to 0.300	Size = XYZ(2, 2, 2)
+		Initial						Velocity = XYZ(random(-10, 10), random(-10, 10), random(-10, 10))
+		Initial						Rotate = XYZ(0, 90, 0)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Magic_Attack_B_P04"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 30
+		Lifetime			= 2
+		NumParticles		= 5
+		TriggerTime			= 2
+		DrawCount			= 2
+		Layer				= 15
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZWriteEnable		= FALSE
+		Mesh				= "PROTECT_GUARD_MAGIC_UV.Y"
+
+		Initial						Color = RGBA(random(0.200, 0.400), 0.300, 1, 0.700)
+		Fade so From 0.001 to 0.100	Color = RGBA(random(0.200, 0.400), 0.300, 1, 0.700)
+		Initial						Size = XYZ(0.300, 0.300, 0.300)
+		Initial						Rotate = XYZ(0, 0, 0)
+		Fade so From 0.001 to 3.000	Rotate = XYZ(0, 360, 0)
+		Fade so From 0.100 to 2.000	TEX0UV = XY(1, 1)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Attack_B_Projecticle_P01"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 30
+		Lifetime			= 2
+		NumParticles		= 10
+		TriggerTime			= 2
+		DrawCount			= 2
+		Layer				= 14
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_DESTCOLOR
+		DestBlendMode	= D3DBLEND_INVDESTCOLOR
+		Trace				= TRUE
+		ZWriteEnable		= FALSE
+		Mesh				= "PROTECT_GUARD_MAGIC_UV.Y"
+
+		Initial						Color = RGBA(random(0.200, 0.400), 0.300, 1, 0.700)
+		Fade so From 0.001 to 0.100	Color = RGBA(random(0.200, 0.400), 0.300, 1, 0.700)
+		Fade so From 1.800 to 2.000	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(0.300, 0.300, 0.300)
+		Initial						Rotate = XYZ(0, 0, 0)
+		Fade so From 0.001 to 2.000	Rotate = XYZ(0, 360, 0)
+		Fade so From 1.000 to 2.000	TEX0UV = XY(random(-0.500, 0.500), random(-0.500, 0.500))
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Attack_B_Projecticle_HIT_P01"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 20
+		Lifetime			= 0.300
+		NumParticles		= 10
+		TriggerTime			= 0.600
+		DrawCount			= 3
+		Layer				= 14
+		Gravity				= XYZ(random(-5, 5), random(-5, 5), random(-5, 5))
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+		Mesh				= "Ring_Plane.Y"
+
+		Initial						Color = RGBA(random(0.200, 0.400), random(0.400, 0.800), random(0.800, 1), random(0.200, 0.400))
+		Fade so From 0.000 to 0.300	Color = RGBA(0.400, 0.400, 1, 0)
+		Initial						Size = XYZ(1.500, 1.500, 1.500)
+		Fade so From 0.000 to 0.300	Size = XYZ(2, 2, 2)
+		Initial						Velocity = XYZ(random(-10, 10), random(-10, 10), random(-10, 10))
+		Initial						Rotate = XYZ(0, 90, 0)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Attack_B_Projecticle_HIT_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 0.500
+		NumParticles		= 10
+		TriggerTime			= 0.500
+		Layer				= 15
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_BLENDFACTOR
+		ZEnable				= FALSE
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "PROTECT_GUARD_MAGIC_Map04.dds"
+		Initial						Color = RGBA(random(0.400, 0.800), random(0.300, 0.600), random(0.500, 1), random(0.100, 0.200))
+		Fade so From 0.001 to 0.400	Color = RGBA(random(0.250, 0.500), random(0.500, 1), random(0.300, 1), random(0.200, 0.400))
+		Initial						Size = XYZ(512, 512, 1)
+		Fade so From 0.000 to 0.400	Size = XYZ(256, 256, 1)
+		Initial						Rotate = XYZ(0, 0, -180)
+		Fade so From 0.100 to 0.500	Rotate = XYZ(1, 1, 360)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Attack_B_Projecticle_HIT_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 20
+		Lifetime			= 1.560
+		NumParticles		= 10
+		TriggerTime			= 1
+		DrawCount			= 2
+		Layer				= 14
+		Emitradius			= XYZ(random(-3, 3), random(-3, 3), random(-3, 3))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "Gear_Water.tga"
+		Initial						Color = RGBA(random(0.100, 0.300), random(0.200, 0.400), 1, 0)
+		Fade so From 0.001 to 0.460	Color = RGBA(random(0.100, 1), random(0.300, 0.500), random(0.800, 1), 0.200)
+		Fade so From 1.000 to 1.560	Color = RGBA(random(0.100, 0.300), random(0.300, 0.500), random(0.800, 1), 0)
+		Initial						Size = XYZ(random(50, 100), random(50, 100), 1)
+		Fade so From 0.300 to 1.500	Size = XYZ(random(150, 200), random(150, 200), 1)
+		Initial						Velocity = XYZ(random(-25, 2), random(-25, 25), random(-25, 25))
+		Initial						Rotate = XYZ(0, 0, random(-360, 360))
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Special_Attack_P01"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 10
+		Lifetime			= 1
+		NumParticles		= 10
+		TriggerTime			= 20
+		Layer				= 14
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		ZWriteEnable		= FALSE
+		Mesh				= "PROTECT_GUARD_MAGIC_01.Y"
+
+		Initial						Color = RGBA(1, random(0.100, 1), 1, 0)
+		Fade so From 0.001 to 0.100	Color = RGBA(random(0.100, 0.200), random(0.500, 1), 1, 0.500)
+		Fade so From 0.300 to 0.500	Color = RGBA(random(0.100, 0.200), random(0.100, 1), 1, 0)
+		Initial						Size = XYZ(1, 1, 1)
+		Fade so From 0.001 to 1.000	Size = XYZ(random(1.200, 1.500), random(1.200, 1.500), random(1.200, 1.500))
+		Initial						Rotate = XYZ(0, 0, 0)
+		Fade so From 0.001 to 0.100	Rotate = XYZ(0, 360, 0)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Special_Attack_P02"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 10
+		Lifetime			= 3
+		NumParticles		= 10
+		TriggerTime			= 20
+		Layer				= 14
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZWriteEnable		= FALSE
+		Mesh				= "PROTECT_GUARD_MAGIC_02.Y"
+
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.000 to 1.800	Color = RGBA(1, 1, 1, 0.100)
+		Fade so From 1.800 to 2.500	Color = RGBA(1, 1, 1, 0.400)
+		Fade so From 2.500 to 3.000	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(1.200, 1.200, 1.200)
+		Fade so From 1.500 to 1.800	Size = XYZ(1, 1, 1)
+		Initial						Rotate = XYZ(0, 0, 0)
+		Fade so From 0.001 to 1.800	Rotate = XYZ(0, random(-90, 90), 0)
+		Fade so From 1.800 to 2.500	Rotate = XYZ(0, random(-90, 90), 0)
+		Fade so From 2.500 to 3.000	Rotate = XYZ(0, random(-90, 90), 0)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Special_Attack_P03"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 10
+		Lifetime			= 3
+		NumParticles		= 5
+		TriggerTime			= 18.500
+		Layer				= 14
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		ZWriteEnable		= FALSE
+		Mesh				= "PROTECT_GUARD_MAGIC_03.Y"
+
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.000 to 1.000	Color = RGBA(1, 1, 1, 0.200)
+		Fade so From 2.000 to 3.000	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(1, 1, 1)
+		Initial						Rotate = XYZ(0, 0, 0)
+		Fade so From 0.000 to 3.000	Rotate = XYZ(0, 360, 0)
+		Initial						Velocity = XYZ(random(-10, 10), 0, random(-10, 10))
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Special_Attack_P04"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 30
+		Lifetime			= 1.200
+		NumParticles		= 30
+		TriggerTime			= 18.500
+		DrawCount			= 3
+		Layer				= 14
+		Emitradius			= XYZ(random(-100, 100), 0, random(-100, 100))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "Pa_Ran_SpaD_Smoke02.DDS"
+		Initial						Color = RGBA(random(0.500, 1), 1, 1, 0)
+		Fade so From 0.000 to 0.500	Color = RGBA(0.100, random(0.100, 0.500), 1, 0.300)
+		Fade so From 0.500 to 1.200	Color = RGBA(random(0.100, 0.200), random(0.500, 0.800), 1, 0)
+		Initial						Size = XYZ(50, 50, 1)
+		Fade so From 0.000 to 0.100	Size = XYZ(330, 330, 1)
+		Fade so From 0.100 to 1.200	Size = XYZ(350, 350, 1)
+		Initial						Rotate = XYZ(0, 0, random(-180, 180))
+		Initial						Velocity = XYZ(random(-10, 10), random(50, 200), random(-10, 10))
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Special_Attack_P05"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 50
+		Lifetime			= 0.600
+		NumParticles		= 50
+		TriggerTime			= 20
+		DrawCount			= 2
+		Layer				= 14
+		Emitradius			= XYZ(random(-350, 350), 0, random(-300, 300))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_BLENDFACTOR
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "Pa_Ran_SpaD_Smoke02.DDS"
+		Initial						Color = RGBA(0.100, random(0.100, 0.500), 1, 0)
+		Fade so From 0.000 to 0.100	Color = RGBA(0.100, random(0.100, 0.500), 1, 0.400)
+		Fade so From 0.100 to 0.600	Color = RGBA(0.100, random(0.100, 0.500), 1, 0)
+		Initial						Size = XYZ(200, 200, 1)
+		Fade so From 0.000 to 0.050	Size = XYZ(300, 300, 1)
+		Fade so From 0.050 to 0.600	Size = XYZ(400, 400, 1)
+		Initial						Rotate = XYZ(0, 0, random(-180, 180))
+		Initial						Velocity = XYZ(random(-10, 10), random(10, 50), random(-10, 10))
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Special_Attack_P06"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 10
+		Lifetime			= 0.300
+		NumParticles		= 4
+		TriggerTime			= 20
+		Layer				= 14
+		Emitradius			= XYZ(0, 2, 0)
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+		ZWriteEnable		= FALSE
+		Mesh				= "Lire_Uplight01.Y"
+
+		Initial						Color = RGBA(random(0.100, 1), 0.300, 1, 0)
+		Fade so From 0.001 to 0.450	Color = RGBA(random(0.100, 1), 0.300, 1, 0.200)
+		Fade so From 0.450 to 0.450	Color = RGBA(random(0.100, 1), 0.300, 1, 0)
+		Initial						Size = XYZ(0.300, 8, 0.300)
+		Fade so From 0.001 to 0.300	Size = XYZ(1.500, 3, 1.500)
+		Fade so From 0.450 to 0.300	Size = XYZ(1.700, 4, 1.700)
+		Initial						Rotate = XYZ(0, random(0, 360), 0)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Special_Attack_P07"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 10
+		Lifetime			= 0.300
+		NumParticles		= 4
+		TriggerTime			= 3
+		Layer				= 14
+		Emitradius			= XYZ(0, 2, 0)
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+		ZWriteEnable		= FALSE
+		Mesh				= "Lire_Uplight01.Y"
+
+		Initial						Color = RGBA(random(0.100, 0.500), random(0.300, 0.800), 1, 0)
+		Fade so From 0.001 to 0.450	Color = RGBA(random(0.100, 0.400), random(0.300, 0.800), 1, 0.500)
+		Fade so From 0.450 to 0.450	Color = RGBA(random(0.100, 0.400), random(0.300, 0.600), 1, 0)
+		Initial						Size = XYZ(0.300, 12, 0.300)
+		Fade so From 0.001 to 0.300	Size = XYZ(1.500, 3, 1.500)
+		Fade so From 0.450 to 0.300	Size = XYZ(1.700, 4, 1.700)
+		Initial						Rotate = XYZ(0, random(0, 360), 0)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Special_Attack_P08"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 20
+		Lifetime			= 2
+		NumParticles		= 30
+		TriggerTime			= 18
+		Layer				= 14
+		Emitradius			= XYZ(random(-100, 100), random(0, 10), random(-100, 100))
+		Gravity				= XYZ(random(10, 100), random(10, 100), random(10, 100))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "ColorBallGray.dds"
+		Initial						Color = RGBA(random(0.100, 0.200), random(0.100, 0.700), 0.920, 1)
+		Fade so From 0.001 to 0.300	Color = RGBA(random(0.100, 0.200), random(0.500, 0.720), 0.980, 1)
+		Fade so From 1.000 to 2.000	Color = RGBA(random(0.100, 1), random(0.100, 0.690), 0.940, 0)
+		Initial						Scale = 3
+		Initial						Velocity = XYZ(random(-100, 100), random(50, 100), random(-100, 100))
+		Fade so From 0.000 to 0.300	Velocity = XYZ(random(-200, 200), random(50, 500), random(-200, 200))
+		Fade so From 1.000 to 2.000	Velocity = XYZ(random(-100, 100), random(-50, 200), random(-100, 100))
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Special_Attack_P09"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 20
+		Lifetime			= 2
+		NumParticles		= 30
+		TriggerTime			= 18
+		Layer				= 14
+		Emitradius			= XYZ(random(-400, 400), random(0, 10), random(-400, 400))
+		Gravity				= XYZ(random(10, 100), random(10, 100), random(10, 100))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "ColorBallGray.dds"
+		Initial						Color = RGBA(random(0.100, 0.200), random(0.100, 0.700), 0.920, 1)
+		Fade so From 0.001 to 0.300	Color = RGBA(random(0.150, 0.330), random(0.150, 0.720), 0.980, 1)
+		Fade so From 1.000 to 2.000	Color = RGBA(random(0.100, 0.330), random(0.100, 0.660), 0.940, 0)
+		Initial						Scale = 3
+		Initial						Velocity = XYZ(random(-100, 100), random(50, 100), random(-100, 100))
+		Fade so From 0.000 to 0.300	Velocity = XYZ(random(-200, 200), random(50, 500), random(-200, 200))
+		Fade so From 1.000 to 2.000	Velocity = XYZ(random(-100, 100), random(-50, 200), random(-100, 100))
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Special_Attack_P10"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 2.500
+		NumParticles		= 5
+		TriggerTime			= 18.500
+		Layer				= 14
+		Emitradius			= XYZ(random(-150, 150), 0, random(-150, 150))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+
+		Initial						Texture = "stone_AirShip.dds"
+		Initial						Color = RGBA(0.500, 0.500, 0.500, 1)
+		Fade so From 0.100 to 0.200	Color = RGBA(0.500, 0.500, 0.500, 1)
+		Fade so From 2.400 to 2.500	Color = RGBA(0.500, 0.500, 0.500, 0)
+		Initial						Size = XYZ(random(8, 25), random(8, 25), 1)
+		Initial						Rotate = XYZ(0, 0, random(-90, 90))
+		Fade so From 0.000 to 2.500	Rotate = XYZ(0, 0, random(-10, 10))
+		Initial						Velocity = XYZ(random(-10, 10), random(50, 200), random(-10, 10))
+		Fade so From 2.000 to 2.500	Velocity = XYZ(random(-10, 10), random(10, 20), random(-10, 10))
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Special_Attack_P11"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 2
+		NumParticles		= 5
+		TriggerTime			= 18
+		Layer				= 14
+		Emitradius			= XYZ(random(-300, 300), 0, random(-300, 300))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+
+		Initial						Texture = "stone_AirShip.dds"
+		Initial						Color = RGBA(0.500, 0.500, 0.500, 1)
+		Fade so From 0.100 to 0.200	Color = RGBA(0.500, 0.500, 0.500, 1)
+		Fade so From 1.900 to 2.000	Color = RGBA(0.500, 0.500, 0.500, 0)
+		Initial						Size = XYZ(random(8, 25), random(8, 25), 1)
+		Initial						Rotate = XYZ(0, 0, random(-90, 90))
+		Fade so From 0.000 to 2.000	Rotate = XYZ(0, 0, random(-10, 10))
+		Initial						Velocity = XYZ(random(-10, 10), random(50, 200), random(-10, 10))
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Special_Attack_P12"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 50
+		Lifetime			= 2.500
+		NumParticles		= 50
+		TriggerTime			= 17.500
+		Layer				= 14
+		Emitradius			= XYZ(random(-400, 400), 0, random(-400, 400))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "SA_AYR_ENERGY_CANNON_rock.dds"
+		Initial						Color = RGBA(0.500, 0.500, random(0.500, 1), random(0.500, 1))
+		Fade so From 1.700 to 2.300	Color = RGBA(random(0.500, 1), random(0.500, 1), 1, 0)
+		Initial						Size = XYZ(random(12, 24), random(12, 24), 1)
+		Initial						Rotate = XYZ(0, 0, random(-90, 90))
+		Fade so From 0.000 to 2.500	Rotate = XYZ(0, 0, random(-10, 10))
+		Initial						Velocity = XYZ(random(-10, 10), random(100, 150), random(-10, 10))
+		Fade so From 0.000 to 1.700	Velocity = XYZ(random(-10, 10), random(100, 150), random(-10, 10))
+		Fade so From 1.700 to 2.300	Velocity = XYZ(random(-10, 10), random(-800, -750), random(-10, 10))
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Special_Attack_P13"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 9
+		Lifetime			= 0.500
+		NumParticles		= 8
+		TriggerTime			= 20
+		Layer				= 14
+		Emitradius			= XYZ(0, 2, 0)
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+		Mesh				= "SA_SPK_BURST_WAVE_FIRE.Y"
+
+		Initial						Color = RGBA(random(0.100, 0.200), random(0, 0.300), 1, 1)
+		Fade so From 0.001 to 0.200	Color = RGBA(random(0.100, 0.200), random(0.100, 0.200), 1, random(0.300, 0.600))
+		Fade so From 0.222 to 0.500	Color = RGBA(0.200, random(0.100, 0.200), 1, 0)
+		Initial						Size = XYZ(0.300, 12, 0.300)
+		Fade so From 0.001 to 0.200	Size = XYZ(4, 3, 4)
+		Fade so From 0.201 to 0.500	Size = XYZ(5, 4, 5)
+		Initial						Rotate = XYZ(0, random(0, 360), 0)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Special_Attack_P14"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 200
+		Lifetime			= 0.600
+		NumParticles		= 100
+		TriggerTime			= 20
+		DrawCount			= 2
+		Layer				= 14
+		Emitradius			= XYZ(random(-500, 500), random(-100, 1000), random(0, 300))
+		Gravity				= XYZ(0, -500, 0)
+		BillBoardType		= BT_Y
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		UseLand				= TRUE
+
+		Initial						Texture = "Colorballgray.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 0.150	Color = RGBA(0.400, 0.700, 1, 0.500)
+		Fade so From 0.200 to 0.600	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(3, 3, 1)
+		Fade so From 0.001 to 0.500	Size = XYZ(1, random(200, 400), 1)
+		Initial						Velocity = XYZ(0, random(-500, -300), 0)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Special_Attack_P15"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 100
+		Lifetime			= 0.400
+		NumParticles		= 100
+		TriggerTime			= 20
+		DrawCount			= 2
+		Layer				= 14
+		Emitradius			= XYZ(random(-500, 500), random(-35, 35), random(-500, 500))
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		UseLand				= TRUE
+
+		Initial						Texture = "Ring.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 0.033	Color = RGBA(1, 1, 1, 1)
+		Fade so From 0.100 to 0.400	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(0, 0, 1)
+		Fade so From 0.001 to 0.100	Size = XYZ(50, 50, 1)
+		Fade so From 0.100 to 0.400	Size = XYZ(70, 70, 1)
+		Initial						Rotate = XYZ(90, 0, 0)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Special_Attack_P16"
+	{
+		particleType		= PT_SKINMESH
+		Emitrate			= 10
+		Lifetime			= 0.600
+		NumParticles		= 5
+		TriggerCount		= 5
+		Layer				= 14
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		ZWriteEnable		= FALSE
+		Mesh				= "Lire_SI_SA_Gungnir_Mesh05.X"
+
+		Initial						Color = RGBA(0, 0, 0, 0)
+		Fade so From 0.010 to 0.100	Color = RGBA(0, 0, 0, random(0.800, 1))
+		Fade so From 0.100 to 0.600	Color = RGBA(0, 0, 0, 0)
+		Initial						Size = XYZ(0.800, 0.800, 0.800)
+		Fade so From 0.100 to 0.600	Size = XYZ(1, 1, 1)
+		Initial						Rotate = XYZ(0, random(0, 180), 0)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Special_Attack_P17"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 15
+		Lifetime			= 0.700
+		NumParticles		= 15
+		TriggerTime			= 20
+		DrawCount			= 2
+		Layer				= 15
+		Emitradius			= XYZ(random(-400, 400), 0, random(-400, 400))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+
+		Initial						Texture = "Explosion_Fire01.dds"
+		Initial						Color = RGBA(random(0.100, 0.200), random(0.400, 0.600), random(0.600, 1), 0)
+		Fade so From 0.010 to 0.200	Color = RGBA(random(0.200, 0.300), 0.400, 1, 1)
+		Fade so From 0.300 to 0.700	Color = RGBA(random(0.400, 0.600), random(0.400, 0.600), random(0.400, 1), 0)
+		Initial						Size = XYZ(random(5, 10), random(5, 10), 1)
+		Fade so From 0.010 to 0.200	Size = XYZ(random(10, 20), random(200, 250), 1)
+		Fade so From 0.200 to 0.700	Size = XYZ(0, random(500, 800), 1)
+		Initial						Velocity = XYZ(0, random(200, 2500), 0)
+		Fade so From 0.100 to 1.000	Velocity = XYZ(0, 0, 0)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Teleport_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 40
+		Lifetime			= 2
+		NumParticles		= 40
+		TriggerTime			= 0.660
+		Layer				= 14
+		Emitradius			= XYZ(random(-100, 100), random(0, 10), random(-100, 100))
+		Gravity				= XYZ(random(10, 100), random(10, 100), random(10, 100))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "ColorBallGray.dds"
+		Initial						Color = RGBA(random(0.100, 0.200), random(0.100, 0.700), 0.920, 1)
+		Fade so From 0.001 to 0.300	Color = RGBA(random(0.100, 0.200), random(0.500, 0.720), 0.980, 1)
+		Fade so From 1.000 to 2.000	Color = RGBA(random(0.100, 1), random(0.100, 0.690), 0.940, 0)
+		Initial						Scale = 3
+		Initial						Velocity = XYZ(random(-100, 100), random(50, 100), random(-100, 100))
+		Fade so From 0.000 to 0.300	Velocity = XYZ(random(-200, 200), random(50, 500), random(-200, 200))
+		Fade so From 1.000 to 2.000	Velocity = XYZ(random(-100, 100), random(-50, 200), random(-100, 100))
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Teleport_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 5
+		Lifetime			= 2
+		NumParticles		= 15
+		TriggerTime			= 2
+		Layer				= 13
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+
+		Initial						Texture = "PROTECT_GUARD_MAGIC_Map09.dds"
+		Initial						Color = RGBA(random(0, 0.100), random(0.200, 0.400), 1, 0)
+		Fade so From 0.001 to 0.300	Color = RGBA(0.500, 0.500, 1, 0.400)
+		Fade so From 0.400 to 2.000	Color = RGBA(0.600, random(0.500, 1), 1, 0)
+		Initial						Size = XYZ(400, 400, 1)
+		Fade so From 0.001 to 1.000	Size = XYZ(random(800, 900), random(800, 900), 1)
+		Initial						Rotate = XYZ(90, 0, 0)
+		Initial						Scale = random(1, 3)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Teleport_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 50
+		Lifetime			= 0.800
+		NumParticles		= 10
+		TriggerTime			= 0.800
+		Layer				= 15
+		Emitradius			= XYZ(random(-150, 150), random(0, 10), random(-150, 150))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "state_potion_flare.DDS"
+		Initial						Color = RGBA(0.200, 0.200, 0.600, 0)
+		Fade so From 0.010 to 0.200	Color = RGBA(0.200, random(0.200, 0.500), random(0.600, 1), 1)
+		Fade so From 0.400 to 0.800	Color = RGBA(random(0, 1), random(0, 1), random(0, 1), 0)
+		Initial						Size = XYZ(8, random(50, 100), 1)
+		Fade so From 0.010 to 0.800	Size = XYZ(0, random(350, 400), 1)
+		Initial						Scale = random(1, 2)
+		Initial						Velocity = XYZ(0, random(700, 800), 0)
+		Fade so From 0.100 to 1.000	Velocity = XYZ(0, random(250, 500), 0)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Teleport_P04"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 100
+		Lifetime			= 0.400
+		NumParticles		= 100
+		TriggerTime			= 0.400
+		Layer				= 15
+		Emitradius			= XYZ(random(-100, 100), random(-100, 100), random(-100, 100))
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "EEP_servant_call_slash_02.tga"
+		Initial						Color = RGBA(1, 1, 1, 1)
+		Fade so From 0.001 to 0.050	Color = RGBA(0, random(0, 0.500), 1, 0.200)
+		Fade so From 0.100 to 0.200	Color = RGBA(1, 1, 1, 1)
+		Initial						Size = XYZ(random(15, 30), 15, 15)
+		Fade so From 0.100 to 0.170	Size = XYZ(40, 0, 1)
+		Initial						Rotate = XYZ(0, 45, 0)
+		Fade so From 0.171 to 0.200	Rotate = XYZ(1, 180, 1)
+		Fade so From 0.000 to 0.200	Velocity = XYZ(random(-1, 1), 1000, 1)
+		Initial						Scale = random(0.800, 2)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_Teleport_P05"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 15
+		Lifetime			= 0.700
+		NumParticles		= 15
+		TriggerTime			= 0.500
+		DrawCount			= 2
+		Layer				= 15
+		Emitradius			= XYZ(random(-300, 300), 0, random(-300, 300))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "Explosion_Fire01.dds"
+		Initial						Color = RGBA(random(0.100, 0.200), random(0.300, 0.600), random(0.800, 1), 0)
+		Fade so From 0.010 to 0.200	Color = RGBA(random(0.200, 0.300), random(0.200, 0.400), random(0.800, 1), 1)
+		Fade so From 0.300 to 0.700	Color = RGBA(random(0.400, 0.600), random(0.400, 1), random(0.400, 0.800), 0)
+		Initial						Size = XYZ(random(5, 10), random(5, 10), 1)
+		Fade so From 0.010 to 0.200	Size = XYZ(random(10, 20), random(200, 250), 1)
+		Fade so From 0.200 to 0.700	Size = XYZ(0, random(500, 800), 1)
+		Initial						Velocity = XYZ(0, random(200, 2500), 0)
+		Fade so From 0.100 to 1.000	Velocity = XYZ(0, 0, 0)
+	}
+	eventsequence "HELLPUTT_Remake_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 0.350
+		NumParticles		= 10
+		TriggerTime			= 0.100
+		DrawCount			= 2
+		Layer				= 15
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+
+		Initial						Texture = "PROTECT_GUARD_MAGIC_Map02.dds"
+		Initial						Color = RGBA(1, 1, 1, 1)
+		Fade so From 0.010 to 0.080	Color = RGBA(1, 1, 1, 1)
+		Fade so From 0.100 to 0.200	Color = RGBA(1, 1, 1, 0.600)
+		Fade so From 0.200 to 0.300	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(100, 100, 1)
+		Fade so From 0.100 to 0.300	Size = XYZ(1500, 1500, 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_EX_P01"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 20
+		Lifetime			= 0.300
+		NumParticles		= 10
+		TriggerTime			= 2
+		DrawCount			= 3
+		Layer				= 14
+		Gravity				= XYZ(random(-5, 5), random(-5, 5), random(-5, 5))
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+		Mesh				= "Ring_Plane.Y"
+
+		Initial						Color = RGBA(random(0.200, 0.400), random(0.400, 0.800), random(0.800, 1), random(0.200, 0.400))
+		Fade so From 0.000 to 0.300	Color = RGBA(0.400, 0.400, 1, 0)
+		Initial						Size = XYZ(0.750, 0.750, 0.750)
+		Fade so From 0.000 to 0.300	Size = XYZ(1, 1, 1)
+		Initial						Velocity = XYZ(random(-10, 10), random(-10, 10), random(-10, 10))
+		Initial						Rotate = XYZ(0, 90, 0)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_EX_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 20
+		Lifetime			= 2
+		NumParticles		= 10
+		TriggerTime			= 2
+		DrawCount			= 2
+		Layer				= 14
+		Emitradius			= XYZ(random(-3, 3), random(-3, 3), random(-3, 3))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "Gear_Water.tga"
+		Initial						Color = RGBA(random(0.100, 0.300), random(0.200, 0.400), 1, 0)
+		Fade so From 0.001 to 0.460	Color = RGBA(random(0.100, 1), random(0.300, 0.500), random(0.800, 1), 0.200)
+		Fade so From 1.560 to 2.000	Color = RGBA(random(0.100, 0.300), random(0.300, 0.500), random(0.800, 1), 0)
+		Initial						Size = XYZ(random(50, 100), random(50, 100), 1)
+		Fade so From 0.300 to 1.500	Size = XYZ(random(150, 200), random(150, 200), 1)
+		Initial						Velocity = XYZ(random(-25, 2), random(-25, 25), random(-25, 25))
+		Initial						Rotate = XYZ(0, 0, random(-360, 360))
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_EX_P03"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 40
+		Lifetime			= 1
+		NumParticles		= 10
+		TriggerTime			= 2
+		Layer				= 15
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZWriteEnable		= FALSE
+		Mesh				= "PROTECT_GUARD_MAGIC_UV.Y"
+
+		Initial						Color = RGBA(random(0.200, 0.400), 0.300, 1, 0.700)
+		Fade so From 0.001 to 0.100	Color = RGBA(random(0.200, 0.400), 0.300, 1, 0.700)
+		Fade so From 0.800 to 1.000	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(0.150, 0.150, 0.150)
+		Initial						Rotate = XYZ(0, 0, 0)
+		Fade so From 0.001 to 1.000	Rotate = XYZ(0, 360, 0)
+		Fade so From 0.500 to 1.000	TEX0UV = XY(1, 1)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_EX_P04"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 0.600
+		NumParticles		= 10
+		TriggerTime			= 2
+		Layer				= 15
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_BLENDFACTOR
+		ZEnable				= FALSE
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "PROTECT_GUARD_MAGIC_Map04.dds"
+		Initial						Color = RGBA(random(0.400, 0.800), random(0.300, 0.600), random(0.500, 1), random(0.100, 0.200))
+		Fade so From 0.001 to 0.400	Color = RGBA(random(0.250, 0.500), random(0.500, 1), random(0.300, 1), random(0.200, 0.400))
+		Fade so From 0.400 to 0.560	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(256, 256, 1)
+		Fade so From 0.000 to 0.400	Size = XYZ(random(128, 256), random(128, 256), 1)
+		Initial						Rotate = XYZ(0, 0, -180)
+		Fade so From 0.400 to 1.000	Rotate = XYZ(1, 1, 360)
+	}
+	eventsequence "PROTECT_GUARD_MAGIC_EX_P05"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 40
+		Lifetime			= 0.150
+		NumParticles		= 20
+		TriggerTime			= 2
+		DrawCount			= 7
+		Layer				= 13
+		Emitradius			= XYZ(random(-5, 5), random(-5, 5), random(-5, 5))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "Explosion_Fire01.dds"
+		Initial						Color = RGBA(0.100, 0.300, 1, 1)
+		Fade so From 0.001 to 0.050	Color = RGBA(0.100, 0.300, 1, 1)
+		Fade so From 0.100 to 0.000	Color = RGBA(0, 0, 1, 0)
+		Initial						Size = XYZ(1, 1, 1)
+		Initial						Scale = 1
+		at 0.001						Size = XYZ(50, 50, 0)
+		Fade so From 0.001 to 0.050	Scale = random(1.500, 2)
+		Fade so From 0.050 to 0.150	Scale = random(0.100, 0.150)
+	}
+	eventsequence "PROTECT_GUARD_PHYSIC_ELSWORD_BUFF"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 4
+		Lifetime			= 1
+		NumParticles		= 2
+		TriggerTime			= 9999
+		Layer				= 14
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTCOLOR
+		Trace				= TRUE
+		ZWriteEnable		= FALSE
+		Mesh				= "PROTECT_GUARD_PHYSIC_BUFF_ELSWORD.Y"
+
+		Initial						Color = RGBA(1, 1, 1, random(0.600, 0.800))
+		Fade so From 0.001 to 1.000	Color = RGBA(1, 1, 1, random(0.600, 0.800))
+		Initial						Size = XYZ(1, 1, 1)
+	}
+	eventsequence "PROTECT_GUARD_PHYSIC_EX_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 0.350
+		NumParticles		= 10
+		TriggerTime			= 0.100
+		DrawCount			= 2
+		Layer				= 15
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+
+		Initial						Texture = "PROTECT_GUARD_MAGIC_Map11.dds"
+		Initial						Color = RGBA(1, 1, 1, 1)
+		Fade so From 0.010 to 0.080	Color = RGBA(1, 1, 1, 1)
+		Fade so From 0.100 to 0.200	Color = RGBA(1, 1, 1, 0.600)
+		Fade so From 0.200 to 0.300	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(100, 100, 1)
+		Fade so From 0.100 to 0.300	Size = XYZ(1500, 1500, 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+	}
+	eventsequence "PROTECT_GUARD_PHYSIC_EX_P02"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 40
+		Lifetime			= 1
+		NumParticles		= 10
+		TriggerTime			= 2
+		Layer				= 15
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZWriteEnable		= FALSE
+		Mesh				= "PROTECT_GUARD_PHYSIC_UV.Y"
+
+		Initial						Color = RGBA(random(0.200, 0.400), 0.300, 1, 0.700)
+		Fade so From 0.001 to 0.100	Color = RGBA(random(0.200, 0.400), 0.300, 1, 0.700)
+		Fade so From 0.800 to 1.000	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(0.150, 0.150, 0.150)
+		Initial						Rotate = XYZ(0, 0, 0)
+		Fade so From 0.001 to 1.000	Rotate = XYZ(0, 360, 0)
+		Fade so From 0.500 to 1.000	TEX0UV = XY(1, 1)
+	}
+	eventsequence "PROTECT_GUARD_PHYSIC_EX_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 20
+		Lifetime			= 2
+		NumParticles		= 10
+		TriggerTime			= 2
+		DrawCount			= 2
+		Layer				= 14
+		Emitradius			= XYZ(random(-3, 3), random(-3, 3), random(-3, 3))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "Gear_Water.tga"
+		Initial						Color = RGBA(1, random(0.200, 0.400), random(0.100, 0.300), 0)
+		Fade so From 0.001 to 0.460	Color = RGBA(random(0.800, 1), random(0.300, 0.500), random(0.100, 1), 0.200)
+		Fade so From 1.560 to 2.000	Color = RGBA(random(0.800, 1), random(0.300, 0.500), random(0.100, 0.300), 0)
+		Initial						Size = XYZ(random(50, 100), random(50, 100), 1)
+		Fade so From 0.300 to 1.500	Size = XYZ(random(150, 200), random(150, 200), 1)
+		Initial						Velocity = XYZ(random(-25, 2), random(-25, 25), random(-25, 25))
+		Initial						Rotate = XYZ(0, 0, random(-360, 360))
+	}
+	eventsequence "PROTECT_GUARD_PHYSIC_EX_P04"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 20
+		Lifetime			= 0.300
+		NumParticles		= 10
+		TriggerTime			= 2
+		DrawCount			= 3
+		Layer				= 14
+		Gravity				= XYZ(random(-5, 5), random(-5, 5), random(-5, 5))
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+		Mesh				= "Ring_Plane.Y"
+
+		Initial						Color = RGBA(1, random(0.400, 0.800), random(0.200, 0.400), random(0.200, 0.400))
+		Fade so From 0.000 to 0.300	Color = RGBA(1, 0.400, 0.400, 0)
+		Initial						Size = XYZ(0.750, 0.750, 0.750)
+		Fade so From 0.000 to 0.300	Size = XYZ(1, 1, 1)
+		Initial						Velocity = XYZ(random(-10, 10), random(-10, 10), random(-10, 10))
+		Initial						Rotate = XYZ(0, 90, 0)
+	}
+	eventsequence "PROTECT_GUARD_PHYSIC_EX_P05"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 0.600
+		NumParticles		= 10
+		TriggerTime			= 2
+		Layer				= 15
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_BLENDFACTOR
+		ZEnable				= FALSE
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "PROTECT_GUARD_MAGIC_Map12.dds"
+		Initial						Color = RGBA(1, random(0.300, 0.600), random(0.500, 0.600), random(0.100, 0.200))
+		Fade so From 0.001 to 0.400	Color = RGBA(1, random(0.500, 1), random(0.300, 0.600), random(0.200, 0.400))
+		Fade so From 0.400 to 0.560	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(256, 256, 1)
+		Fade so From 0.000 to 0.400	Size = XYZ(random(128, 256), random(128, 256), 1)
+		Initial						Rotate = XYZ(0, 0, -180)
+		Fade so From 0.400 to 1.000	Rotate = XYZ(1, 1, 360)
+	}
+	eventsequence "PROTECT_GUARD_PHYSIC_EX_P06"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 40
+		Lifetime			= 0.150
+		NumParticles		= 20
+		TriggerTime			= 2
+		DrawCount			= 7
+		Layer				= 13
+		Emitradius			= XYZ(random(-5, 5), random(-5, 5), random(-5, 5))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "Explosion_Fire01.dds"
+		Initial						Color = RGBA(1, 0.300, 0.100, 1)
+		Fade so From 0.001 to 0.050	Color = RGBA(1, 0.300, random(0.100, 0.300), 1)
+		Fade so From 0.100 to 0.100	Color = RGBA(1, random(0, 0.600), random(0.600, 1), 0)
+		Initial						Size = XYZ(1, 1, 1)
+		Initial						Scale = 1
+		at 0.001						Size = XYZ(50, 50, 0)
+		Fade so From 0.001 to 0.050	Scale = random(1.500, 2)
+		Fade so From 0.050 to 0.150	Scale = random(0.100, 0.150)
+	}
+	eventsequence "Hamel_Enchant_Buff_Weapon_RE_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 100
+		Lifetime			= 0.600
+		NumParticles		= 50
+		TriggerTime			= 9999
+		Layer				= 14
+		Emitradius			= XYZ(random(-120, 30), random(-30, 30), random(-30, 30))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+
+		Initial						Texture = "Steam_Bp.dds"
+		Initial						Color = RGBA(0, 0, 0, 0)
+		Fade so From 0.001 to 0.200	Color = RGBA(random(0, 0.100), random(0, 0.100), random(0, 0.100), random(0.400, 0.600))
+		Fade so From 0.600 to 1.000	Color = RGBA(random(0.200, 1), random(0.100, 0.400), random(0.100, 0.400), 0)
+		Initial						Size = XYZ(50, 50, 1)
+		Fade so From 0.001 to 0.100	Size = XYZ(random(130, 150), random(130, 150), 1)
+		Fade so From 0.300 to 0.800	Size = XYZ(random(10, 15), random(10, 15), 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 180))
+		Initial						Velocity = XYZ(random(-50, 50), random(-50, 50), random(-50, 50))
+	}
+	eventsequence "Hamel_Enchant_Buff_Weapon_RE_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 50
+		Lifetime			= 0.600
+		NumParticles		= 100
+		TriggerTime			= 9999
+		Layer				= 14
+		Emitradius			= XYZ(random(-120, 30), random(-30, 30), random(-30, 30))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "Steam_Bp.dds"
+		Initial						Color = RGBA(random(0, 0.200), random(0, 0.100), random(0, 1), 0)
+		Fade so From 0.001 to 0.200	Color = RGBA(random(0, 0.200), random(0, 0.100), random(0, 0.100), random(0.400, 0.600))
+		Fade so From 0.600 to 1.000	Color = RGBA(random(0.200, 1), 0.400, 0.700, 0)
+		Initial						Size = XYZ(50, 50, 1)
+		Fade so From 0.001 to 0.100	Size = XYZ(random(130, 150), random(130, 150), 1)
+		Fade so From 0.300 to 0.800	Size = XYZ(random(10, 15), random(10, 15), 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 180))
+		Initial						Velocity = XYZ(random(-30, 30), random(-30, 30), random(-30, 30))
+	}
+	eventsequence "Hamel_Enchant_Buff_Weapon_RE_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 200
+		Lifetime			= 0.700
+		NumParticles		= 200
+		TriggerTime			= 9999
+		Layer				= 14
+		Emitradius			= XYZ(random(-100, 30), random(-30, 30), random(-20, 20))
+		Gravity				= XYZ(0, random(0, 900), 0)
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "elsword_active_swordFall_crack.dds"
+		Initial						Color = RGBA(random(0, 1), random(0, 0.600), random(0, 0.400), random(0.400, 0.600))
+		Fade so From 0.600 to 0.700	Color = RGBA(random(0.500, 1), 0, 0, 0)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+		Initial						Size = XYZ(random(70, 100), random(70, 100), 1)
+		Fade so From 0.300 to 0.700	Size = XYZ(0, 0, 1)
+		Initial						Velocity = XYZ(random(-40, 40), random(-30, 40), 0)
+	}
+	eventsequence "Hamel_Enchant_Buff_Weapon_RE_EVE_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 100
+		Lifetime			= 0.600
+		NumParticles		= 50
+		TriggerTime			= 9999
+		Layer				= 14
+		Emitradius			= XYZ(random(-30, 30), random(-30, 30), random(-30, 30))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+
+		Initial						Texture = "Steam_Bp.dds"
+		Initial						Color = RGBA(0, 0, 0, 0)
+		Fade so From 0.001 to 0.200	Color = RGBA(random(0, 0.100), random(0, 0.100), random(0, 0.100), random(0.400, 0.600))
+		Fade so From 0.600 to 1.000	Color = RGBA(random(0.200, 1), random(0.100, 0.400), random(0.100, 0.400), 0)
+		Initial						Size = XYZ(50, 50, 1)
+		Fade so From 0.001 to 0.100	Size = XYZ(random(130, 150), random(130, 150), 1)
+		Fade so From 0.300 to 0.800	Size = XYZ(random(10, 15), random(10, 15), 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 180))
+		Initial						Velocity = XYZ(random(-50, 50), random(-50, 50), random(-50, 50))
+	}
+	eventsequence "Hamel_Enchant_Buff_Weapon_RE_EVE_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 50
+		Lifetime			= 0.600
+		NumParticles		= 100
+		TriggerTime			= 9999
+		Layer				= 14
+		Emitradius			= XYZ(random(-30, 30), random(-30, 30), random(-30, 30))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "Steam_Bp.dds"
+		Initial						Color = RGBA(random(0, 0.200), random(0, 0.100), random(0, 1), 0)
+		Fade so From 0.001 to 0.200	Color = RGBA(random(0, 0.200), random(0, 0.100), random(0, 0.100), random(0.400, 0.600))
+		Fade so From 0.600 to 1.000	Color = RGBA(random(0.200, 1), 0.400, 0.700, 0)
+		Initial						Size = XYZ(50, 50, 1)
+		Fade so From 0.001 to 0.100	Size = XYZ(random(130, 150), random(130, 150), 1)
+		Fade so From 0.300 to 0.800	Size = XYZ(random(10, 15), random(10, 15), 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 180))
+		Initial						Velocity = XYZ(random(-30, 30), random(-30, 30), random(-30, 30))
+	}
+	eventsequence "Hamel_Enchant_Buff_Weapon_RE_EVE_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 200
+		Lifetime			= 0.700
+		NumParticles		= 200
+		TriggerTime			= 9999
+		Layer				= 14
+		Emitradius			= XYZ(random(-20, 20), random(-20, 30), random(-20, 20))
+		Gravity				= XYZ(0, random(0, 900), 0)
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "elsword_active_swordFall_crack.dds"
+		Initial						Color = RGBA(random(0, 1), random(0, 0.600), random(0, 0.400), random(0.400, 0.600))
+		Fade so From 0.600 to 0.700	Color = RGBA(random(0.500, 1), 0, 0, 0)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+		Initial						Size = XYZ(random(70, 100), random(70, 100), 1)
+		Fade so From 0.300 to 0.700	Size = XYZ(0, 0, 1)
+		Initial						Velocity = XYZ(0, random(0, 60), 0)
+	}
+	eventsequence "Hamel_Enchant_Buff_Weapon_RE_CHUNG_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 200
+		Lifetime			= 0.600
+		NumParticles		= 100
+		TriggerTime			= 9999
+		Layer				= 14
+		Emitradius			= XYZ(random(-120, 120), random(-40, 40), random(-40, 40))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+
+		Initial						Texture = "Steam_Bp.dds"
+		Initial						Color = RGBA(0, 0, 0, 0)
+		Fade so From 0.001 to 0.200	Color = RGBA(random(0, 0.100), random(0, 0.100), random(0, 0.100), random(0.400, 0.600))
+		Fade so From 0.600 to 1.000	Color = RGBA(random(0.200, 1), random(0.100, 0.400), random(0.100, 0.400), 0)
+		Initial						Size = XYZ(50, 50, 1)
+		Fade so From 0.001 to 0.100	Size = XYZ(random(130, 150), random(130, 150), 1)
+		Fade so From 0.300 to 0.800	Size = XYZ(random(10, 15), random(10, 15), 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 180))
+		Initial						Velocity = XYZ(random(-50, 50), random(-50, 50), random(-50, 50))
+	}
+	eventsequence "Hamel_Enchant_Buff_Weapon_RE_CHUNG_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 50
+		Lifetime			= 0.600
+		NumParticles		= 100
+		TriggerTime			= 9999
+		Layer				= 14
+		Emitradius			= XYZ(random(-100, 100), random(-30, 30), random(-30, 30))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "Steam_Bp.dds"
+		Initial						Color = RGBA(random(0, 0.200), random(0, 0.100), random(0, 1), 0)
+		Fade so From 0.001 to 0.200	Color = RGBA(random(0, 0.200), random(0, 0.100), random(0, 0.100), random(0.400, 0.600))
+		Fade so From 0.600 to 1.000	Color = RGBA(random(0.200, 1), 0.400, 0.700, 0)
+		Initial						Size = XYZ(50, 50, 1)
+		Fade so From 0.001 to 0.100	Size = XYZ(random(130, 150), random(130, 150), 1)
+		Fade so From 0.300 to 0.800	Size = XYZ(random(10, 15), random(10, 15), 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 180))
+		Initial						Velocity = XYZ(random(-30, 30), random(-30, 30), random(-30, 30))
+	}
+	eventsequence "Hamel_Enchant_Buff_Weapon_RE_CHUNG_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 200
+		Lifetime			= 0.700
+		NumParticles		= 200
+		TriggerTime			= 9999
+		Layer				= 14
+		Emitradius			= XYZ(random(-120, 120), random(-40, 40), random(-40, 40))
+		Gravity				= XYZ(0, random(0, 900), 0)
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "elsword_active_swordFall_crack.dds"
+		Initial						Color = RGBA(random(0.500, 1), random(0, 0.600), random(0, 0.400), random(0.400, 0.600))
+		Fade so From 0.600 to 0.700	Color = RGBA(random(0.500, 1), 0, 0, 0)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+		Initial						Size = XYZ(random(70, 100), random(70, 100), 1)
+		Fade so From 0.300 to 0.700	Size = XYZ(0, 0, 1)
+		Initial						Velocity = XYZ(random(-200, 200), random(-100, 100), random(-50, 50))
+	}
+	eventsequence "Hamel_Enchant_Buff_Weapon_RE_CHUNG_P04"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 40
+		Lifetime			= 0.800
+		NumParticles		= 40
+		Layer				= 15
+		Emitradius			= XYZ(random(-100, 100), random(-30, 30), random(-30, 30))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "Arme_Critical2.dds"
+		Initial						Color = RGBA(1, 0, 0, 0)
+		Fade so From 0.010 to 0.400	Color = RGBA(1, random(0, 0.100), random(0, 0.100), 1)
+		Fade so From 0.600 to 0.700	Color = RGBA(1, random(0, 0.100), random(0, 0.100), 0)
+		Initial						Size = XYZ(30, 30, 1)
+		Fade so From 0.400 to 0.500	Size = XYZ(10, 10, 1)
+		Initial						Rotate = XYZ(0, 0, random(-360, 360))
+		Initial						Velocity = XYZ(random(-80, 80), random(-80, 80), random(-80, 80))
+	}
+	eventsequence "Hamel_Enchant_Buff_Weapon_RE_P04"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 40
+		Lifetime			= 0.800
+		NumParticles		= 30
+		Layer				= 15
+		Emitradius			= XYZ(random(-100, 10), random(-10, 10), random(-10, 10))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "Arme_Critical2.dds"
+		Initial						Color = RGBA(1, 0, random(0, 0.500), 0)
+		Fade so From 0.010 to 0.400	Color = RGBA(1, 0, random(0, 0.500), 1)
+		Fade so From 0.600 to 0.700	Color = RGBA(1, 0, random(0, 0.500), 0)
+		Initial						Size = XYZ(30, 30, 1)
+		Fade so From 0.400 to 0.500	Size = XYZ(10, 10, 1)
+		Initial						Rotate = XYZ(0, 0, random(-360, 360))
+		Initial						Velocity = XYZ(random(-80, 80), random(-80, 80), random(-80, 80))
+	}
+	eventsequence "Hamel_Enchant_Buff_Weapon_RE_ELLE_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 100
+		Lifetime			= 0.600
+		NumParticles		= 50
+		TriggerTime			= 9999
+		Layer				= 14
+		Emitradius			= XYZ(random(-120, 30), random(-30, 30), random(-80, 30))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+
+		Initial						Texture = "Steam_Bp.dds"
+		Initial						Color = RGBA(0, 0, 0, 0)
+		Fade so From 0.001 to 0.200	Color = RGBA(random(0, 0.100), random(0, 0.100), random(0, 0.100), random(0.400, 0.600))
+		Fade so From 0.600 to 1.000	Color = RGBA(random(0.200, 1), random(0.100, 0.400), random(0.100, 0.400), 0)
+		Initial						Size = XYZ(50, 50, 1)
+		Fade so From 0.001 to 0.100	Size = XYZ(random(130, 150), random(130, 150), 1)
+		Fade so From 0.300 to 0.800	Size = XYZ(random(10, 15), random(10, 15), 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 180))
+		Initial						Velocity = XYZ(random(-50, 50), random(-50, 50), random(-50, 50))
+	}
+	eventsequence "Hamel_Enchant_Buff_Weapon_RE_ELLE_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 50
+		Lifetime			= 0.600
+		NumParticles		= 100
+		TriggerTime			= 9999
+		Layer				= 14
+		Emitradius			= XYZ(random(-120, 30), random(-30, 30), random(-80, 30))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "Steam_Bp.dds"
+		Initial						Color = RGBA(random(0, 0.200), random(0, 0.100), random(0, 1), 0)
+		Fade so From 0.001 to 0.200	Color = RGBA(random(0, 0.200), random(0, 0.100), random(0, 0.100), random(0.400, 0.600))
+		Fade so From 0.600 to 1.000	Color = RGBA(random(0.200, 1), 0.400, 0.700, 0)
+		Initial						Size = XYZ(50, 50, 1)
+		Fade so From 0.001 to 0.100	Size = XYZ(random(130, 150), random(130, 150), 1)
+		Fade so From 0.300 to 0.800	Size = XYZ(random(10, 15), random(10, 15), 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 180))
+		Initial						Velocity = XYZ(random(-30, 30), random(-30, 30), random(-30, 30))
+	}
+	eventsequence "Hamel_Enchant_Buff_Weapon_RE_ELLE_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 200
+		Lifetime			= 0.700
+		NumParticles		= 200
+		TriggerTime			= 9999
+		Layer				= 14
+		Emitradius			= XYZ(random(-100, 30), random(-30, 30), random(-20, 20))
+		Gravity				= XYZ(0, random(0, 900), 0)
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "elsword_active_swordFall_crack.dds"
+		Initial						Color = RGBA(random(0, 1), random(0, 0.600), random(0, 0.400), random(0.400, 0.600))
+		Fade so From 0.600 to 0.700	Color = RGBA(random(0.500, 1), 0, 0, 0)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+		Initial						Size = XYZ(random(70, 100), random(70, 100), 1)
+		Fade so From 0.300 to 0.700	Size = XYZ(0, 0, 1)
+		Initial						Velocity = XYZ(random(-40, 40), random(-30, 40), 0)
+	}
+	eventsequence "Hamel_Enchant_Buff_Weapon_RE_ELLE_P04"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 40
+		Lifetime			= 0.800
+		NumParticles		= 30
+		Layer				= 15
+		Emitradius			= XYZ(random(-100, 10), random(-10, 10), random(-10, 10))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "Arme_Critical2.dds"
+		Initial						Color = RGBA(1, 0, random(0, 0.500), 0)
+		Fade so From 0.010 to 0.400	Color = RGBA(1, 0, random(0, 0.500), 1)
+		Fade so From 0.600 to 0.700	Color = RGBA(1, 0, random(0, 0.500), 0)
+		Initial						Size = XYZ(30, 30, 1)
+		Fade so From 0.400 to 0.500	Size = XYZ(10, 10, 1)
+		Initial						Rotate = XYZ(0, 0, random(-360, 360))
+		Initial						Velocity = XYZ(random(-80, 80), random(-80, 80), random(-80, 80))
+	}
+	eventsequence "HELLPUTT_DARK_BOSS_AURA_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 5
+		Lifetime			= 2
+		NumParticles		= 10
+		TriggerTime			= 1000000000
+		Layer				= 14
+		Emitradius			= XYZ(random(-20, 20), random(-20, 20), random(-20, 20))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+
+		Initial						Texture = "Pa_Ran_SpaD_blackAura.DDS"
+		Initial						Color = RGBA(0.500, 1, 1, 0)
+		Fade so From 0.010 to 0.400	Color = RGBA(0.100, 0.100, 1, random(0.200, 0.400))
+		Fade so From 0.400 to 2.000	Color = RGBA(0, 0, 0, 0)
+		Initial						Size = XYZ(310, 310, 1)
+		Fade so From 0.000 to 0.100	Size = XYZ(330, 330, 1)
+		Fade so From 0.100 to 2.000	Size = XYZ(360, 360, 1)
+		Initial						Rotate = XYZ(0, 0, random(-180, 180))
+		Initial						Velocity = XYZ(random(-10, 10), random(120, 150), random(-10, 10))
+		Fade so From 0.300 to 2.000	Velocity = XYZ(random(-10, 10), random(20, 50), random(-10, 10))
+	}
+	eventsequence "HELLPUTT_DARK_BOSS_AURA_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 1
+		NumParticles		= 10
+		TriggerTime			= 1000000000
+		Layer				= 15
+		Emitradius			= XYZ(random(-20, 20), random(-50, 50), random(-20, 20))
+		Gravity				= XYZ(0, random(10, 30), 0)
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "acce_unicorn_aurora.DDS"
+		Initial						Color = RGBA(random(0.500, 1), random(0, 0.100), random(0, 0.300), 0)
+		Fade so From 0.010 to 0.200	Color = RGBA(1, random(0, 0.100), random(0.300, 0.500), random(0.100, 0.200))
+		Fade so From 0.330 to 1.000	Color = RGBA(random(0.500, 1), random(0, 0.100), random(0.300, 0.500), 0)
+		Initial						Size = XYZ(210, 210, 1)
+		Fade so From 0.010 to 0.060	Size = XYZ(220, 220, 1)
+		Fade so From 0.060 to 1.000	Size = XYZ(240, 240, 1)
+		Initial						Rotate = XYZ(0, 0, random(-180, 180))
+		Fade so From 0.010 to 10.000	Rotate = XYZ(0, 0, 0)
+		Initial						Velocity = XYZ(random(-25, 25), random(25, 50), random(-25, 25))
+		Fade so From 0.010 to 10.000	Velocity = XYZ(random(-20, 20), random(50, 80), random(-20, 20))
+	}
+	eventsequence "HELLPUTT_DARK_BOSS_AURA_P03"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 20
+		Lifetime			= 1
+		NumParticles		= 5
+		TriggerTime			= 9999
+		DrawCount			= 5
+		Layer				= 15
+		Emitradius			= XYZ(random(-20, 20), random(-20, 20), random(-20, 20))
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZWriteEnable		= FALSE
+		Mesh				= "AEM_M_lightning01.Y"
+
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.010 to 0.050	Color = RGBA(1, random(0.100, 0.500), random(0.400, 0.500), random(0.600, 1))
+		Fade so From 0.050 to 0.100	Color = RGBA(1, random(0.300, 0.600), random(0.100, 0.500), random(0.300, 0.600))
+		Fade so From 0.100 to 0.500	Color = RGBA(1, 0, 0, 0)
+		Initial						Size = XYZ(random(1.400, 1.600), random(1.400, 1.600), random(1.400, 1.600))
+		Initial						Rotate = XYZ(random(0, 360), random(0, 360), random(0, 360))
+	}
+	eventsequence "EffectSet_SHADOW_EX_P02"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 40
+		Lifetime			= 1
+		NumParticles		= 10
+		TriggerTime			= 9999
+		Layer				= 15
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Trace				= TRUE
+		ZWriteEnable		= FALSE
+		Mesh				= "PROTECT_GUARD_PHYSIC_UV.Y"
+
+		Initial						Color = RGBA(random(0.200, 0.400), 0.300, 1, 0.700)
+		Fade so From 0.001 to 0.100	Color = RGBA(1, 1, 1, 0.700)
+		Fade so From 0.800 to 1.000	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(0.150, 0.150, 0.150)
+		Initial						Rotate = XYZ(0, 0, 0)
+		Fade so From 0.001 to 1.000	Rotate = XYZ(0, 360, 0)
+		Fade so From 0.500 to 1.000	TEX0UV = XY(1, 1)
+	}
+	eventsequence "EffectSet_SHADOW_EX_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 20
+		Lifetime			= 2
+		NumParticles		= 20
+		TriggerTime			= 9999
+		DrawCount			= 2
+		Layer				= 14
+		Emitradius			= XYZ(random(-3, 3), random(-3, 3), random(-3, 3))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "Gear_Water.tga"
+		Initial						Color = RGBA(0, 0, 0, 0)
+		Fade so From 0.001 to 0.460	Color = RGBA(0, 0, 0, 0.200)
+		Fade so From 1.560 to 2.000	Color = RGBA(random(0.800, 1), random(0.300, 0.500), random(0.100, 0.300), 0)
+		Initial						Size = XYZ(random(50, 100), random(50, 100), 1)
+		Fade so From 0.300 to 1.500	Size = XYZ(random(150, 200), random(150, 200), 1)
+		Initial						Velocity = XYZ(random(-25, 2), random(-25, 25), random(-25, 25))
+		Initial						Rotate = XYZ(0, 0, random(-360, 360))
+	}
+	eventsequence "EffectSet_SHADOW_EX_P04"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 20
+		Lifetime			= 0.300
+		NumParticles		= 10
+		TriggerTime			= 9999
+		DrawCount			= 3
+		Layer				= 14
+		Gravity				= XYZ(random(-5, 5), random(-5, 5), random(-5, 5))
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+		ZWriteEnable		= FALSE
+		Mesh				= "Ring_Plane.Y"
+
+		Initial						Color = RGBA(0, 0, 0, random(0.200, 0.400))
+		Fade so From 0.000 to 0.300	Color = RGBA(1, 0.400, 0.400, 0)
+		Initial						Size = XYZ(0.750, 0.750, 0.750)
+		Fade so From 0.000 to 0.300	Size = XYZ(1, 1, 1)
+		Initial						Velocity = XYZ(random(-10, 10), random(-10, 10), random(-10, 10))
+		Initial						Rotate = XYZ(0, 90, 0)
+	}
+	eventsequence "EffectSet_SHADOW_EX_P05"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 0.600
+		NumParticles		= 10
+		TriggerTime			= 9999
+		Layer				= 15
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "PROTECT_GUARD_MAGIC_Map12.dds"
+		Initial						Color = RGBA(0, 0, 0, random(0.100, 0.200))
+		Fade so From 0.001 to 0.400	Color = RGBA(0, 0, 0, random(0.200, 0.400))
+		Fade so From 0.400 to 0.560	Color = RGBA(0, 0, 0, 0)
+		Initial						Size = XYZ(256, 256, 1)
+		Fade so From 0.000 to 0.400	Size = XYZ(random(128, 256), random(128, 256), 1)
+		Initial						Rotate = XYZ(0, 0, -180)
+		Fade so From 0.400 to 1.000	Rotate = XYZ(1, 1, 360)
+	}
+	eventsequence "EffectSet_SHADOW_EX_P06"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 40
+		Lifetime			= 0.150
+		NumParticles		= 20
+		TriggerTime			= 9999
+		DrawCount			= 7
+		Layer				= 13
+		Emitradius			= XYZ(random(-5, 5), random(-5, 5), random(-5, 5))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		ZEnable				= FALSE
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "Explosion_Fire01.dds"
+		Initial						Color = RGBA(0, 0, 0, 1)
+		Fade so From 0.001 to 0.050	Color = RGBA(0, 0, 0, 1)
+		Fade so From 0.100 to 0.100	Color = RGBA(1, random(0, 0.600), random(0.600, 1), 0)
+		Initial						Size = XYZ(1, 1, 1)
+		Initial						Scale = 1
+		at 0.001						Size = XYZ(50, 50, 0)
+		Fade so From 0.001 to 0.050	Scale = random(1.500, 2)
+		Fade so From 0.050 to 0.150	Scale = random(0.100, 0.150)
+	}
+	eventsequence "EffectSet_SHADOW_EX_P07"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 0.350
+		NumParticles		= 10
+		TriggerTime			= 0.100
+		DrawCount			= 2
+		Layer				= 15
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		ZEnable				= FALSE
+
+		Initial						Texture = "PROTECT_GUARD_MAGIC_Map13.dds"
+		Initial						Color = RGBA(0, 0, 0, 1)
+		Fade so From 0.010 to 0.080	Color = RGBA(0, 0, 0, 1)
+		Fade so From 0.100 to 0.200	Color = RGBA(0, 0, 0, 0.600)
+		Fade so From 0.200 to 0.300	Color = RGBA(0, 0, 0, 0)
+		Initial						Size = XYZ(100, 100, 1)
+		Fade so From 0.100 to 0.300	Size = XYZ(1500, 1500, 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+	}
+	eventsequence "HELLPUTT_DARK_BOSS_AURA_LOCK_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 30
+		Lifetime			= 1
+		NumParticles		= 15
+		TriggerTime			= 9999
+		Layer				= 16
+		Emitradius			= XYZ(random(-200, 200), random(-200, 200), random(-200, 200))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Trace				= TRUE
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "Ran_flame02.tga"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.010 to 0.100	Color = RGBA(1, random(0.600, 0.800), random(0.300, 0.600), random(0.500, 1))
+		Fade so From 0.800 to 1.000	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(15, 15, 1)
+		Fade so From 0.010 to 0.100	Size = XYZ(30, 30, 1)
+		Fade so From 0.200 to 1.000	Size = XYZ(0, 0, 1)
+		Initial						Scale = random(0.800, 1.300)
+		Initial						Rotate = XYZ(0, 0, random(-180, 180))
+		Initial						Velocity = XYZ(random(-300, 300), random(-300, 300), random(-300, 300))
+		Fade so From 0.010 to 0.300	Velocity = XYZ(random(-200, 200), random(-200, 200), random(-200, 200))
+		Fade so From 0.300 to 1.000	Velocity = XYZ(random(-30, 30), random(-30, 30), random(-30, 30))
+		Initial						DIRSPEED = random(-20, 20)
+	}
+	eventsequence "HELLPUTT_DARK_BOSS_AURA_LOCK_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 0.500
+		NumParticles		= 3
+		DrawCount			= 2
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		ZEnable				= FALSE
+
+		Initial						Texture = "Arme_Ring2.dds"
+		Initial						Color = RGBA(0, 0, 0, 0)
+		Fade so From 0.001 to 0.300	Color = RGBA(0, 0, 0, 0.200)
+		Fade so From 0.300 to 4.000	Color = RGBA(0, 0, 0, 0.200)
+		Fade so From 4.000 to 4.500	Color = RGBA(0, 0, 0, 0)
+		Initial						Size = XYZ(1000, 1000, 1)
+		Fade so From 0.001 to 1.000	Size = XYZ(1000, 1000, 1)
+		Fade so From 1.000 to 4.000	Size = XYZ(random(1000, 1100), random(1000, 1100), 1)
+		Fade so From 4.000 to 4.800	Size = XYZ(10, 10, 1)
+		Initial						Rotate = XYZ(0, 0, random(0, 2))
+		Fade so From 0.100 to 4.500	Rotate = XYZ(0, 0, 60)
+		Initial						Velocity = XYZ(0, 0, 0)
+	}
+	eventsequence "HELLPUTT_DARK_BOSS_AURA_LOCK_P03"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 20
+		Lifetime			= 0.660
+		NumParticles		= 10
+		TriggerTime			= 9999
+		Layer				= 14
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_BOTHINVSRCALPHA
+		Trace				= TRUE
+		ZWriteEnable		= FALSE
+		Mesh				= "darkness_attackA_curse_Sphere.Y"
+
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.010 to 0.100	Color = RGBA(0, 1, random(0, 0.200), random(0, 0.100))
+		Fade so From 0.350 to 0.660	Color = RGBA(0, 1, 0.100, 0)
+		Initial						Rotate = XYZ(random(0, 10), random(0, 10), random(0, 10))
+		Fade so From 0.010 to 0.500	Rotate = XYZ(random(10, 20), random(10, 20), random(10, 20))
+		Initial						Size = XYZ(3, 3, 3)
+	}
+	eventsequence "HELLPUTT_DARK_BOSS_AURA_LOCK_P04"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 10
+		Lifetime			= 2.500
+		NumParticles		= 10
+		TriggerTime			= 9999
+		Layer				= 14
+		Gravity				= XYZ(random(-5, 5), random(-5, 5), random(-5, 5))
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Trace				= TRUE
+		ZWriteEnable		= FALSE
+		Mesh				= "Ring_Plane.Y"
+
+		Initial						Color = RGBA(0, 0, 0, random(0.200, 0.400))
+		Fade so From 0.000 to 2.500	Color = RGBA(1, 0.400, 0.400, 0)
+		Initial						Size = XYZ(5, 5, 5)
+		Fade so From 0.100 to 1.000	Size = XYZ(5.500, 5.500, 5.500)
+		Initial						Velocity = XYZ(random(-10, 10), random(-10, 10), random(-10, 10))
+		Initial						Rotate = XYZ(0, 90, 0)
+	}
+	eventsequence "HELLPUTT_DARK_BOSS_AURA_LOCK_P05"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 10
+		Lifetime			= 0.660
+		NumParticles		= 10
+		TriggerTime			= 9999
+		Layer				= 15
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZWriteEnable		= FALSE
+		Mesh				= "PROTECT_GUARD_PHYSIC_START_M01.X"
+
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.010 to 0.100	Color = RGBA(0, 1, random(0, 0.200), random(0.100, 0.200))
+		Fade so From 0.350 to 0.660	Color = RGBA(0, 1, 0.100, 0)
+		Initial						Rotate = XYZ(random(0, 10), random(0, 10), random(0, 10))
+		Fade so From 0.010 to 0.500	Rotate = XYZ(random(10, 20), random(10, 20), random(10, 20))
+		Initial						Size = XYZ(3, 3, 3)
+	}
+	eventsequence "HELLPUTT_DARK_BOSS_Dying_Change_White"
+	{
+		particleType		= PT_2D_PLANE
+		Emitrate			= 1000
+		Lifetime			= 3
+		NumParticles		= 1
+		TriggerCount		= 1
+		Layer				= 21
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "WhiteImage.dds"
+		Initial						Position = XYZ(960, 600, 0)
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.010 to 1.000	Color = RGBA(1, 1, 1, 1)
+		Fade so From 1.750 to 3.000	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(1920, 1200, 1)
+	}
+	eventsequence "HELLPUTT_DARK_BOSS_Dying_Change_White2"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 1000
+		Lifetime			= 5
+		NumParticles		= 1
+		TriggerCount		= 1
+		Layer				= 21
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "WhiteImage.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.010 to 1.750	Color = RGBA(1, 1, 1, 1)
+		Fade so From 3.000 to 5.000	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(10000, 10000, 1)
+	}
+	eventsequence "HELLPUTT_DARK_BOSS_Dying_LAST_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 1000
+		Lifetime			= 9999
+		NumParticles		= 1
+		TriggerCount		= 1
+		Layer				= 15
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		ZEnable				= FALSE
+		ZWriteEnable		= FALSE
+		ResolutionConvert	= TRUE
+
+		Initial						Texture = "HQ_Present_Chung_Prol1.dds"
+		Initial						Size = XYZ(337, 690, 1)
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.010 to 2.000	Color = RGBA(1, 1, 1, 1)
+		Fade so From 6.000 to 9.000	Color = RGBA(1, 1, 1, 0)
+		Initial						Position = XYZ(180, 584, 0)
+		Fade so From 0.010 to 3.000	Position = XYZ(180, 384, 0)
+	}
+	eventsequence "HELLPUTT_DARK_BOSS_Dying_LAST_P02"
+	{
+		particleType		= PT_2D_PLANE
+		Emitrate			= 1000
+		Lifetime			= 9999
+		NumParticles		= 1
+		TriggerCount		= 1
+		Layer				= 15
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		ResolutionConvert	= TRUE
+
+		Initial						Texture = "HQ_Present_Chung_Prol2.dds"
+		Initial						Size = XYZ(401, 690, 1)
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.010 to 2.000	Color = RGBA(1, 1, 1, 1)
+		Initial						Position = XYZ(500, 184, 0)
+		Fade so From 0.010 to 4.000	Position = XYZ(500, 384, 0)
+	}
+	eventsequence "HELLPUTT_DARK_BOSS_Dying_LAST_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 0.050
+		NumParticles		= 1
+		TriggerCount		= 10
+		Layer				= 20
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+		ZWriteEnable		= FALSE
+		ResolutionConvert	= TRUE
+
+		Initial						Texture = "Finish_Effect01.dds"
+		Initial						Size = XYZ(5000, 5000, 0)
+	}
+	eventsequence "HELLPUTT_DARK_BOSS_Dying_LAST_P04"
+	{
+		particleType		= PT_2D_PLANE
+		Emitrate			= 1000
+		Lifetime			= 99999
+		NumParticles		= 1
+		TriggerCount		= 1
+		Layer				= 15
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		ResolutionConvert	= TRUE
+
+		Initial						Texture = "HQ_WhiteBack.dds"
+		Initial						Position = XYZ(512, 384, 0)
+		Initial						Size = XYZ(1024, 768, 0)
+		Initial						Color = RGBA(0, 0, 0, 0)
+		Fade so From 0.010 to 0.500	Color = RGBA(0, 0, 0, 0.700)
+	}
+	eventsequence "HELLPUTT_DARK_BOSS_Dying_LAST_P05"
+	{
+		particleType		= PT_2D_PLANE
+		Emitrate			= 1000
+		Lifetime			= 0.100
+		NumParticles		= 1
+		TriggerCount		= 1
+		Layer				= 21
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ResolutionConvert	= TRUE
+
+		Initial						Texture = "Finish_Effect01.dds"
+		Initial						Color = RGBA(1, 1, 1, 1)
+		Initial						Position = XYZ(512, 384, 0)
+		Initial						Size = XYZ(1024, 768, 1)
+		Fade so From 0.050 to 0.100	Size = XYZ(1229, 922, 1)
+	}
+	eventsequence "HELLPUTT_DARK_BOSS_Dying_Change_White3"
+	{
+		particleType		= PT_2D_PLANE
+		Emitrate			= 1000
+		Lifetime			= 4.500
+		NumParticles		= 1
+		TriggerCount		= 1
+		Layer				= 21
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ResolutionConvert	= TRUE
+
+		Initial						Texture = "WhiteImage.dds"
+		Initial						Position = XYZ(512, 384, 0)
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.010 to 1.750	Color = RGBA(1, 1, 1, 1)
+		Fade so From 3.000 to 4.500	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(1024, 768, 1)
+	}
+	eventsequence "HELLPUTT_DARK_BOSS_AURA_LOCK_EXPLOSION_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 30
+		Lifetime			= 0.600
+		NumParticles		= 8
+		TriggerTime			= 0.300
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "HummingWind04.dds"
+		Initial						Color = RGBA(0, 0, 0, 0)
+		Fade so From 0.000 to 0.200	Color = RGBA(0, 0, 0, 0.600)
+		Fade so From 0.200 to 0.400	Color = RGBA(0, 0, 0, 0)
+		Initial						Rotate = XYZ(0, 0, random(0, 360))
+		Initial						Size = XYZ(0, 0, 1)
+		Fade so From 0.000 to 0.200	Size = XYZ(900, 900, 1)
+	}
+	eventsequence "HELLPUTT_DARK_BOSS_AURA_LOCK_EXPLOSION_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 20
+		Lifetime			= 0.300
+		NumParticles		= 100
+		TriggerCount		= 1
+		DrawCount			= 3
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "Nasod_King_Laser03.dds"
+		Initial						Color = RGBA(random(0, 1), 0, 0, 0)
+		Fade so From 0.010 to 0.150	Color = RGBA(1, 0, 0, 1)
+		Fade so From 0.150 to 0.300	Color = RGBA(random(0.500, 1), 0, random(0, 1), 0)
+		Initial						Size = XYZ(1000, 1000, 1)
+		Fade so From 0.000 to 0.300	Size = XYZ(7500, 7500, 1)
+	}
+	eventsequence "HELLPUTT_DARK_BOSS_AURA_LOCK_EXPLOSION_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 60
+		Lifetime			= 1.200
+		NumParticles		= 100
+		TriggerCount		= 1
+		DrawCount			= 2
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Trace				= TRUE
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "Particle_Blur.dds"
+		Initial						Color = RGBA(0, 0, 0, 0)
+		Fade so From 0.010 to 1.000	Color = RGBA(0, 0, 0, 0.700)
+		Fade so From 1.000 to 1.200	Color = RGBA(1, 0, 0, 0)
+		Initial						Size = XYZ(500, 500, 1)
+		Fade so From 0.000 to 1.200	Size = XYZ(2500, 2500, 1)
+	}
+	eventsequence "HELLPUTT_DARK_BOSS_AURA_LOCK_EXPLOSION_P04"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 2
+		Lifetime			= 0.500
+		NumParticles		= 10
+		DrawCount			= 2
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "ThunderBall03.dds"
+		Initial						Color = RGBA(0, 0, 0, 0)
+		Fade so From 0.010 to 0.100	Color = RGBA(0, 0, 0, 1)
+		Fade so From 0.100 to 0.500	Color = RGBA(0, 0, 0, 0)
+		Initial						Size = XYZ(800, 800, 1)
+		Fade so From 0.010 to 1.000	Size = XYZ(300, 300, 1)
+		Initial						Rotate = XYZ(0, 0, random(-180, 180))
+	}
+	eventsequence "HELLPUTT_DARK_BOSS_AURA_LOCK_EXPLOSION_P05"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 3
+		Lifetime			= 0.500
+		NumParticles		= 10
+		TriggerTime			= 4.800
+		DrawCount			= 2
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "ThunderBall02.dds"
+		Initial						Color = RGBA(0, 0, 0, 0)
+		Fade so From 0.010 to 0.100	Color = RGBA(0, 0, 0, 1)
+		Fade so From 0.100 to 0.500	Color = RGBA(0, 0, 0, 0)
+		Initial						Size = XYZ(800, 800, 1)
+		Fade so From 0.010 to 1.000	Size = XYZ(300, 300, 1)
+		Initial						Rotate = XYZ(0, 0, random(-180, 180))
+	}
+	eventsequence "ShaSha_Summon_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 30
+		Lifetime			= 0.800
+		NumParticles		= 100
+		TriggerTime			= 0.700
+		Layer				= 14
+		Emitradius			= XYZ(random(-100, 100), random(-10, 10), random(-100, 100))
+		Gravity				= XYZ(0, -20, 0)
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		UseLand				= TRUE
+
+		Initial						Texture = "Explosion_Sphere.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 0.150	Color = RGBA(1, 1, 1, 1)
+		Fade so From 0.600 to 0.800	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(100, 100, 1)
+		Fade so From 0.250 to 0.500	Size = XYZ(64, 64, 1)
+		Initial						Rotate = XYZ(0, 0, 0)
+		Fade so From 0.000 to 0.800	Rotate = XYZ(0, 0, 0)
+		Initial						Velocity = XYZ(0, random(250, 350), 0)
+	}
+	eventsequence "ShaSha_Summon_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 60
+		Lifetime			= 0.400
+		NumParticles		= 2
+		TriggerCount		= 2
+		Layer				= 14
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+
+		Initial						Texture = "Arme_Ring2.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 0.033	Color = RGBA(1, 1, 1, 1)
+		Fade so From 0.033 to 0.400	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(200, 200, 1)
+		Fade so From 0.000 to 0.400	Size = XYZ(300, 300, 1)
+		Initial						Rotate = XYZ(85, 0, 0)
+	}
+	eventsequence "ShaSha_Summon_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 100
+		Lifetime			= 0.800
+		NumParticles		= 100
+		TriggerTime			= 0.800
+		Layer				= 14
+		Emitradius			= XYZ(random(-80, 80), random(90, 110), random(-80, 80))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "Heal01.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 0.150	Color = RGBA(0.400, 0.700, 1, 0.300)
+		Fade so From 0.400 to 0.600	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(80, 64, 1)
+		Fade so From 0.001 to 0.400	Size = XYZ(80, 400, 1)
+		Initial						Velocity = XYZ(0, 0, 0)
+	}
+	eventsequence "ShaSha_Summon_P04"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 0.800
+		NumParticles		= 50
+		TriggerTime			= 0.500
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+
+		Initial						Texture = "WhitePoint.dds"
+		Initial						Color = RGBA(0.500, 0.500, 1, 0)
+		Fade so From 0.001 to 0.330	Color = RGBA(0.500, 0.500, 0.500, 1)
+		Fade so From 0.000 to 0.800	Color = RGBA(0.500, 0.500, 1, 0.700)
+		Initial						Rotate = XYZ(90, 0, 0)
+		Initial						Size = XYZ(100, 100, 1)
+		Fade so From 0.001 to 0.100	Size = XYZ(800, 800, 1)
+		Fade so From 0.000 to 0.800	Size = XYZ(600, 600, 1)
+	}
+	eventsequence "Common_Moon_AC_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 4
+		NumParticles		= 2
+		TriggerTime			= 9999
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+
+		Initial						Texture = "Common_Moon_AC_Map04.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 1.000	Color = RGBA(1, 1, 1, 0.500)
+		Fade so From 1.000 to 4.000	Color = RGBA(0.600, 0.600, 0.800, 0)
+		Initial						Size = XYZ(5, 5, 1)
+		Fade so From 0.100 to 0.200	Size = XYZ(10, 10, 1)
+		Initial						Rotate = XYZ(0, 0, 0)
+		Fade so From 2.000 to 4.000	Rotate = XYZ(1, 1, 90)
+	}
+	eventsequence "Common_Moon_AC_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 30
+		Lifetime			= 0.200
+		NumParticles		= 100
+		Layer				= 15
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+
+		Initial						Texture = "CenterLight_Gray01.dds"
+		Initial						Color = RGBA(0.600, 0.600, 0.800, 0)
+		Fade so From 0.001 to 0.100	Color = RGBA(0.600, 0.600, 0.800, 0.600)
+		Fade so From 0.100 to 0.200	Color = RGBA(0.600, 0.600, 0.800, 0)
+		Initial						Size = XYZ(10, 10, 1)
+		Fade so From 0.000 to 0.200	Size = XYZ(210, 210, 1)
+	}
+	eventsequence "Common_Moon_AC_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 0.250
+		NumParticles		= 50
+		TriggerTime			= 0.800
+		Layer				= 15
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+
+		Initial						Texture = "White_pulse01.dds"
+		Initial						Color = RGBA(0.500, 0.800, 1, 0)
+		Fade so From 0.000 to 0.100	Color = RGBA(0.500, 0.800, 1, 1)
+		Fade so From 0.100 to 0.250	Color = RGBA(0.500, 0.800, 1, 0)
+		Initial						Size = XYZ(100, 100, 1)
+		Fade so From 0.000 to 0.250	Size = XYZ(110, 110, 1)
+		Initial						Rotate = XYZ(0, 0, random(-180, 180))
+	}
+	eventsequence "Common_Moon_AC_P04"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 3
+		Lifetime			= 0.600
+		NumParticles		= 20
+		TriggerTime			= 99999
+		Layer				= 15
+		Emitradius			= XYZ(0, 1, 0)
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+
+		Initial						Texture = "Lantern01.tga"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 0.300	Color = RGBA(random(0, 1), random(0, 1), random(0, 1), 1)
+		Fade so From 0.300 to 0.600	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(50, 50, 1)
+		Fade so From 0.001 to 0.300	Size = XYZ(80, 80, 1)
+		Fade so From 0.300 to 0.600	Size = XYZ(50, 50, 1)
+		Initial						Rotate = XYZ(0, 0, random(-180, 180))
+	}
+	eventsequence "Common_Moon_AC_SizeXYZ_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 20
+		Lifetime			= 4
+		NumParticles		= 2
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+
+		Initial						Texture = "Colorballgray.dds"
+		Initial						Color = RGBA(1, 0.600, 0.300, 0)
+		Fade so From 0.001 to 1.000	Color = RGBA(1, 0.600, 0.300, 0.500)
+		Fade so From 2.000 to 3.000	Color = RGBA(1, 0.600, 0.300, 1)
+		Fade so From 3.000 to 4.000	Color = RGBA(1, 0, 0, 0)
+		Initial						Size = XYZ(5, 5, 1)
+		Fade so From 0.000 to 2.000	Size = XYZ(50, 1, 1)
+		Initial						Rotate = XYZ(0, 0, 0)
+		Fade so From 2.000 to 3.000	Rotate = XYZ(0, 0, 20)
+	}
+	eventsequence "Common_Moon_AC_SizeXYZ_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 20
+		Lifetime			= 4
+		NumParticles		= 2
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+
+		Initial						Texture = "Colorballgray.dds"
+		Initial						Color = RGBA(1, 0.600, 0.300, 0)
+		Fade so From 0.001 to 1.000	Color = RGBA(1, 0.600, 0.300, 0.500)
+		Fade so From 2.000 to 3.000	Color = RGBA(1, 0.600, 0.300, 1)
+		Fade so From 3.000 to 4.000	Color = RGBA(1, 0, 0, 0)
+		Initial						Size = XYZ(5, 5, 1)
+		Fade so From 0.000 to 2.000	Size = XYZ(50, 1, 1)
+		Initial						Rotate = XYZ(0, 0, 90)
+		Fade so From 2.000 to 3.000	Rotate = XYZ(0, 0, 115)
+	}
+	eventsequence "Common_Moon_AC_SizeXYZ_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 15
+		Lifetime			= 0.200
+		NumParticles		= 20
+		TriggerCount		= 3
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+
+		Initial						Texture = "Colorballgray.dds"
+		Initial						Color = RGBA(0.300, 0.600, 1, 0)
+		Fade so From 0.001 to 0.100	Color = RGBA(0.300, 0.600, 1, 1)
+		Fade so From 0.100 to 0.200	Color = RGBA(0.300, 0.600, 1, 0)
+		Initial						Size = XYZ(15, 15, 1)
+		Fade so From 0.000 to 0.200	Size = XYZ(5, 500, 1)
+	}
+	eventsequence "Common_Moon_AC_Moon_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 4
+		NumParticles		= 1
+		TriggerTime			= 9999
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+
+		Initial						Texture = "Common_Moon_AC_Map01.dds"
+		Initial						Color = RGBA(1, random(0, 0.500), 0, 0)
+		Fade so From 0.001 to 3.000	Color = RGBA(random(0.500, 1), 0.500, 0.200, 1)
+		Fade so From 3.000 to 4.000	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(20, 20, 20)
+		Initial						Rotate = XYZ(0, 0, -40)
+		Fade so From 2.000 to 4.000	Rotate = XYZ(0, 0, 240)
+		Initial						Scale = 1
+		Fade so From 1.000 to 3.000	Scale = 1.200
+		Fade so From 3.000 to 4.000	Scale = 1
+	}
+	eventsequence "Common_Moon_AC_Moon_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 100
+		Lifetime			= 4
+		NumParticles		= 50
+		TriggerTime			= 9999
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+
+		Initial						Texture = "Colorballgray.dds"
+		Initial						Color = RGBA(1, random(0.400, 0.800), random(0.200, 0.400), 0)
+		Fade so From 0.250 to 0.400	Color = RGBA(1, random(0.400, 0.800), random(0.200, 0.400), 1)
+		Fade so From 3.000 to 4.000	Color = RGBA(random(0.500, 1), 1, random(0.200, 1), 0)
+		Initial						Rotate = XYZ(0, 0, random(-180, 180))
+		Fade so From 3.000 to 4.000	Rotate = XYZ(360, 360, 360)
+		Initial						DIRSPEED = 4
+		Fade so From 0.000 to 1.000	Stretch = 1
+		Fade so From 0.500 to 0.600	DIRSPEED = 1
+		Initial						Stretch = 0.100
+		Fade so From 0.501 to 0.800	Stretch = random(0.125, 0.500)
+		Initial						Size = XYZ(random(2, 4), 2, 2)
+		Fade so From 0.400 to 4.000	Size = XYZ(2, 2, 2)
+	}
+	eventsequence "Common_Moon_AC_Moon_P01_Blue"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 4
+		NumParticles		= 1
+		TriggerTime			= 9999
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+
+		Initial						Texture = "Common_Moon_AC_Map01.dds"
+		Initial						Color = RGBA(0.200, 1, 1, 0)
+		Fade so From 0.001 to 3.000	Color = RGBA(0, random(0.200, 0.400), 1, 1)
+		Fade so From 3.000 to 4.000	Color = RGBA(0, 0, 1, 0)
+		Initial						Size = XYZ(20, 20, 20)
+		Initial						Rotate = XYZ(0, 0, -40)
+		Fade so From 2.000 to 4.000	Rotate = XYZ(0, 0, 240)
+		Initial						Scale = 1
+		Fade so From 1.000 to 3.000	Scale = 1.200
+		Fade so From 3.000 to 4.000	Scale = 1
+	}
+	eventsequence "Common_Moon_AC_SizeXYZ_P01_Blue"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 20
+		Lifetime			= 4
+		NumParticles		= 2
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+
+		Initial						Texture = "Colorballgray.dds"
+		Initial						Color = RGBA(0.300, 0.600, 1, 0)
+		Fade so From 0.001 to 1.000	Color = RGBA(0.300, 0.600, 1, 0.500)
+		Fade so From 2.000 to 3.000	Color = RGBA(0.300, 0.600, 1, 1)
+		Fade so From 3.000 to 4.000	Color = RGBA(0, 0, 1, 0)
+		Initial						Size = XYZ(5, 5, 1)
+		Fade so From 0.000 to 2.000	Size = XYZ(50, 1, 1)
+		Initial						Rotate = XYZ(0, 0, 0)
+		Fade so From 2.000 to 3.000	Rotate = XYZ(0, 0, 20)
+	}
+	eventsequence "Common_Moon_AC_SizeXYZ_P02_Blue"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 20
+		Lifetime			= 4
+		NumParticles		= 2
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+
+		Initial						Texture = "Colorballgray.dds"
+		Initial						Color = RGBA(0.300, 0.600, 1, 0)
+		Fade so From 0.001 to 1.000	Color = RGBA(0.300, 0.600, 1, 0.500)
+		Fade so From 2.000 to 3.000	Color = RGBA(0.300, 0.600, 1, 1)
+		Fade so From 3.000 to 4.000	Color = RGBA(0, 0, 1, 0)
+		Initial						Size = XYZ(5, 5, 1)
+		Fade so From 0.000 to 2.000	Size = XYZ(50, 1, 1)
+		Initial						Rotate = XYZ(0, 0, 90)
+		Fade so From 2.000 to 3.000	Rotate = XYZ(0, 0, 115)
+	}
+	eventsequence "Common_Moon_AC_P01_Blue"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 4
+		NumParticles		= 2
+		TriggerTime			= 9999
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+
+		Initial						Texture = "Common_Moon_AC_Map05.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 1.000	Color = RGBA(1, 1, 1, 0.500)
+		Fade so From 1.000 to 4.000	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(5, 5, 1)
+		Fade so From 0.100 to 0.200	Size = XYZ(10, 10, 1)
+		Initial						Rotate = XYZ(0, 0, 0)
+		Fade so From 2.000 to 4.000	Rotate = XYZ(1, 1, 90)
+	}
+	eventsequence "Common_Moon_AC_Moon_P01_Pupple"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 4
+		NumParticles		= 1
+		TriggerTime			= 9999
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+
+		Initial						Texture = "Common_Moon_AC_Map01.dds"
+		Initial						Color = RGBA(1, random(0, 0.500), 1, 0)
+		Fade so From 0.001 to 3.000	Color = RGBA(1, 0.500, 1, 1)
+		Fade so From 3.000 to 4.000	Color = RGBA(1, 0.500, 1, 0)
+		Initial						Size = XYZ(20, 20, 20)
+		Initial						Rotate = XYZ(0, 0, -40)
+		Fade so From 2.000 to 4.000	Rotate = XYZ(0, 0, 240)
+		Initial						Scale = 1
+		Fade so From 1.000 to 3.000	Scale = 1.200
+		Fade so From 3.000 to 4.000	Scale = 1
+	}
+	eventsequence "Common_Moon_AC_SizeXYZ_P01_Pupple"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 20
+		Lifetime			= 4
+		NumParticles		= 2
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+
+		Initial						Texture = "Colorballgray.dds"
+		Initial						Color = RGBA(1, 0.600, 1, 0)
+		Fade so From 0.001 to 1.000	Color = RGBA(1, 0.600, 1, 0.500)
+		Fade so From 2.000 to 3.000	Color = RGBA(1, 0.600, 1, 1)
+		Fade so From 3.000 to 4.000	Color = RGBA(1, 0, 1, 0)
+		Initial						Size = XYZ(5, 5, 1)
+		Fade so From 0.000 to 2.000	Size = XYZ(50, 1, 1)
+		Initial						Rotate = XYZ(0, 0, 0)
+		Fade so From 2.000 to 3.000	Rotate = XYZ(0, 0, 20)
+	}
+	eventsequence "Common_Moon_AC_SizeXYZ_P02_Pupple"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 20
+		Lifetime			= 4
+		NumParticles		= 2
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+
+		Initial						Texture = "Colorballgray.dds"
+		Initial						Color = RGBA(1, 0.600, 1, 0)
+		Fade so From 0.001 to 1.000	Color = RGBA(1, 0.600, 1, 0.500)
+		Fade so From 2.000 to 3.000	Color = RGBA(1, 0.600, 1, 1)
+		Fade so From 3.000 to 4.000	Color = RGBA(1, 0, 1, 0)
+		Initial						Size = XYZ(5, 5, 1)
+		Fade so From 0.000 to 2.000	Size = XYZ(50, 1, 1)
+		Initial						Rotate = XYZ(0, 0, 90)
+		Fade so From 2.000 to 3.000	Rotate = XYZ(0, 0, 115)
+	}
+	eventsequence "Common_Moon_AC_P01_Pupple"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 10
+		Lifetime			= 4
+		NumParticles		= 2
+		TriggerTime			= 9999
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+
+		Initial						Texture = "Common_Moon_AC_Map06.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 1.000	Color = RGBA(1, 1, 1, 0.500)
+		Fade so From 1.000 to 4.000	Color = RGBA(0.600, 0.600, 0.800, 0)
+		Initial						Size = XYZ(5, 5, 1)
+		Fade so From 0.100 to 0.200	Size = XYZ(10, 10, 1)
+		Initial						Rotate = XYZ(0, 0, 0)
+		Fade so From 2.000 to 4.000	Rotate = XYZ(1, 1, 90)
+	}
+	eventsequence "SGM_DASH_JUMP_COMBO_XZ_Ground_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 30
+		Lifetime			= 0.200
+		NumParticles		= 15
+		TriggerCount		= 4
+		Layer				= 14
+		Emitradius			= XYZ(0, 2, 0)
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		UseLand				= TRUE
+		ZWriteEnable		= FALSE
+
+		Initial						Texture = "GroundShockWave02.dds"
+		Initial						Color = RGBA(1, random(0.200, 0.500), 0.200, 0.600)
+		Fade so From 0.100 to 0.300	Color = RGBA(1, random(0, 0.500), random(0, 0.200), 0)
+		Initial						Size = XYZ(0, 0, 1)
+		Fade so From 0.001 to 0.070	Size = XYZ(600, 600, 1)
+		Fade so From 0.070 to 0.300	Size = XYZ(1000, 1000, 1)
+		Initial						Rotate = XYZ(90, 0, 0)
+	}
+	eventsequence "SGM_DASH_JUMP_COMBO_XZ_Ground_P02"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 15
+		Lifetime			= 0.200
+		NumParticles		= 5
+		TriggerCount		= 1
+		Layer				= 14
+		BillBoardType		= BT_Y
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZWriteEnable		= FALSE
+		Mesh				= "Impact_Wave_Half01.Y"
+
+		Initial						Color = RGBA(1, 0, 0, 1)
+		Fade so From 0.001 to 0.200	Color = RGBA(1, random(0.100, 0.200), random(0, 0.100), 0)
+		Initial						Size = XYZ(0, 0, 0)
+		Fade so From 0.001 to 0.050	Size = XYZ(1, 1, 1)
+		Fade so From 0.050 to 0.200	Size = XYZ(1.300, 1.300, 1.300)
+	}
+	eventsequence "SGM_XXX_Start_P01"
+	{
+		particleType		= PT_SKINMESH
+		Emitrate			= 10
+		Lifetime			= 0.400
+		NumParticles		= 2
+		TriggerTime			= 9999
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_ONE
+		Trace				= TRUE
+		ZWriteEnable		= FALSE
+		Mesh				= "Spin_Liner_Fire02.X"
+
+		Initial						Color = RGBA(1, 1, 1, 1)
+		Fade so From 0.001 to 0.100	Color = RGBA(1, 1, 1, 1)
+		Fade so From 0.100 to 0.400	Color = RGBA(1, 0.300, 0, 0)
+		Initial						Rotate = XYZ(random(-15, 15), random(-180, 180), 0)
+		Initial						Size = XYZ(0.900, 1, 0.900)
+		Initial						Scale = random(2, 2.300)
+	}
+	eventsequence "A_SGM_DRASTIC_CHARGE_LOOP_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 120
+		Lifetime			= 0.600
+		NumParticles		= 5
+		TriggerTime			= 3
+		Layer				= 14
+		Emitradius			= XYZ(random(-100, 100), random(0, 25), random(-50, 50))
+		Gravity				= XYZ(0, -1500, 0)
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		UseLand				= TRUE
+
+		Initial						Texture = "Mesh_Elsword_Event_AC_Upbody21A_Effect.tga"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 0.066	Color = RGBA(1, 1, 1, 0.800)
+		Fade so From 0.400 to 0.600	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(20, 20, 1)
+		Fade so From 0.300 to 0.600	Size = XYZ(10, 10, 1)
+		Initial						Velocity = XYZ(random(-150, 150), random(400, 800), random(-50, 50))
+	}
+	eventsequence "A_SGM_DRASTIC_CHARGE_LOOP_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 120
+		Lifetime			= 0.600
+		NumParticles		= 60
+		TriggerTime			= 9999
+		Layer				= 14
+		Emitradius			= XYZ(random(-100, 100), random(0, 10), random(-50, 50))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		UseLand				= TRUE
+
+		Initial						Texture = "Mesh_Elsword_Event_AC_Upbody21A_Effect.tga"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 0.066	Color = RGBA(1, 1, 1, 0.800)
+		Fade so From 0.400 to 0.600	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(20, 20, 1)
+		Fade so From 0.300 to 0.600	Size = XYZ(10, 10, 1)
+		Initial						Velocity = XYZ(random(-150, 150), random(100, 200), random(-50, 50))
+	}
+	eventsequence "A_SGM_DRASTIC_CHARGE_LOOP_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 300
+		Lifetime			= random(0.560, 1)
+		NumParticles		= 500
+		TriggerTime			= 9999
+		Layer				= 16
+		Emitradius			= XYZ(random(-10, 10), random(-10, 10), random(-10, 10))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "EL_FIRE_04.dds"
+		Initial						Color = RGBA(1, random(0.500, 1), random(0.200, 1), random(0.300, 0.600))
+		Fade so From 0.330 to 0.560	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(random(5, 50), random(5, 50), 1)
+		Fade so From 0.560 to 0.830	Size = XYZ(0, 0, 1)
+		Initial						Rotate = XYZ(0, 0, random(-90, 90))
+		Initial						Velocity = XYZ(random(-110, 130), random(-110, 130), random(-110, 130))
+	}
+	eventsequence "A_SGM_DRASTIC_CHARGE_LOOP_P04"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 300
+		Lifetime			= random(0.560, 1)
+		NumParticles		= 500
+		TriggerTime			= 9999
+		Layer				= 15
+		Emitradius			= XYZ(random(-10, 10), random(-10, 10), random(-10, 10))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "EL_FIRE_03.dds"
+		Initial						Color = RGBA(1, random(0.200, 0.500), random(0.200, 0.300), 0.300)
+		Fade so From 0.330 to 0.560	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(random(5, 100), random(5, 100), 1)
+		Fade so From 0.560 to 0.830	Size = XYZ(0, 0, 1)
+		Initial						Rotate = XYZ(0, 0, random(-90, 90))
+		Initial						Velocity = XYZ(random(-110, 130), random(-110, 130), random(-110, 130))
+	}
+	eventsequence "SGM_XXX_Loop_Ground_P01"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 10
+		Lifetime			= 0.300
+		NumParticles		= 2
+		TriggerTime			= 9999
+		Layer				= 14
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZWriteEnable		= FALSE
+		Mesh				= "SI_A_ARA_STONE_CUTTER_Ground_Wave.Y"
+
+		Initial						Color = RGBA(1, 1, 1, 1)
+		Fade so From 0.050 to 0.300	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(1.400, 1.400, 1.400)
+		Initial						Rotate = XYZ(0, 0, 0)
+		Fade so From 0.050 to 0.300	Rotate = XYZ(0, -360, 0)
+	}
+	eventsequence "A_SGM_DRASTIC_CHARGE_Power_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 30
+		Lifetime			= 0.200
+		NumParticles		= 14
+		TriggerTime			= 3
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_ONE
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "A_SGM_DRASTIC_CHARGE_Power.dds"
+		Initial						Color = RGBA(1, 0.550, random(0.250, 0.500), 1)
+		Fade so From 0.000 to 0.200	Color = RGBA(1, 0.550, 0.300, 0)
+		Initial						Size = XYZ(350, 350, 1)
+	}
+	eventsequence "A_SGM_DRASTIC_CHARGE_Power_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 100
+		Lifetime			= 0.300
+		NumParticles		= 200
+		TriggerTime			= 3
+		Layer				= 14
+		Emitradius			= XYZ(random(-110, 50), random(-110, 110), random(-110, 110))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "Colorballgray.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.010 to 0.150	Color = RGBA(1, random(0.400, 0.600), random(0.200, 0.400), 1)
+		Fade so From 0.200 to 0.300	Color = RGBA(1, 0, 0, 0)
+		Initial						Size = XYZ(10, 5, 1)
+		Fade so From 0.010 to 0.300	Size = XYZ(3, 700, 1)
+		Initial						Velocity = XYZ(random(-500, -600), 0, 0)
+		Initial						Rotate = XYZ(0, 0, 90)
+	}
+	eventsequence "A_SGM_DRASTIC_CHARGE_Power_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 40
+		Lifetime			= 0.350
+		NumParticles		= 60
+		TriggerTime			= 0.300
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "Arme_Ring2.dds"
+		Initial						Color = RGBA(1, 0.550, 0.200, 0)
+		Fade so From 0.000 to 0.100	Color = RGBA(1, random(0.200, 0.550), random(0.100, 0.300), 0.700)
+		Fade so From 0.100 to 0.350	Color = RGBA(1, 0.350, 0.166, 0)
+		Initial						Size = XYZ(200, 200, 1)
+		Fade so From 0.010 to 0.100	Size = XYZ(450, 450, 1)
+		Fade so From 0.200 to 0.350	Size = XYZ(470, 470, 1)
+		Initial						Rotate = XYZ(0, -60, 0)
+		Initial						Velocity = XYZ(-200, 0, 0)
+	}
+	eventsequence "A_SGM_DRASTIC_CHARGE_Power_P04"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 30
+		Lifetime			= 0.200
+		NumParticles		= 15
+		TriggerTime			= 3
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_ONE
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "A_SGM_DRASTIC_CHARGE_Power_P01.dds"
+		Initial						Color = RGBA(1, 0.550, random(0.250, 0.500), 1)
+		Fade so From 0.000 to 0.200	Color = RGBA(1, 0.550, 0.300, 0)
+		Initial						Size = XYZ(450, 450, 1)
+		Initial						Rotate = XYZ(0, 0, 360)
+		Fade so From 0.100 to 0.200	Rotate = XYZ(0, 0, 180)
+	}
+	eventsequence "A_SGM_SNAP_CRESHER_LOOP_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 30
+		Lifetime			= 0.200
+		NumParticles		= 15
+		TriggerTime			= 0.200
+		Layer				= 14
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "A_SGM_DRASTIC_CHARGE_Power_P01.dds"
+		Initial						Color = RGBA(1, 0.550, random(0.250, 0.500), 0.400)
+		Fade so From 0.100 to 0.200	Color = RGBA(1, 0.550, 0.300, 0)
+		Initial						Size = XYZ(450, 450, 1)
+		Initial						Rotate = XYZ(0, 0, 0)
+		Fade so From 0.001 to 0.200	Rotate = XYZ(0, 0, -180)
+	}
+	eventsequence "A_SGM_SNAP_CRESHER_LOOP_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 30
+		Lifetime			= 0.200
+		NumParticles		= 15
+		TriggerTime			= 0.200
+		DrawCount			= 2
+		Layer				= 15
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "A_SGM_DRASTIC_CHARGE_Power_P01.dds"
+		Initial						Color = RGBA(1, 0.550, random(0.250, 0.500), 0.400)
+		Fade so From 0.100 to 0.200	Color = RGBA(1, 0.550, 0.300, 0)
+		Initial						Size = XYZ(450, 450, 1)
+		Initial						Rotate = XYZ(0, 0, 0)
+		Fade so From 0.001 to 0.200	Rotate = XYZ(0, 0, -180)
+	}
+	eventsequence "A_SGM_SNAP_CRESHER_LOOP_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 60
+		Lifetime			= 0.400
+		NumParticles		= 2
+		TriggerCount		= 2
+		DrawCount			= 2
+		Layer				= 14
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "Arme_Ring2.dds"
+		Initial						Color = RGBA(1, random(0.200, 0.400), random(0, 0.200), 0)
+		Fade so From 0.001 to 0.100	Color = RGBA(1, random(0.200, 0.400), random(0, 0.200), 0.800)
+		Fade so From 0.102 to 0.200	Color = RGBA(1, random(0.200, 0.400), random(0, 0.200), 0.200)
+		Fade so From 0.200 to 0.400	Color = RGBA(1, random(0.200, 0.400), random(0, 0.200), 0)
+		Initial						Size = XYZ(0, 0, 1)
+		Fade so From 0.001 to 0.100	Size = XYZ(500, 500, 1)
+		Fade so From 0.100 to 0.400	Size = XYZ(530, 530, 1)
+		Initial						Rotate = XYZ(0, 0, 0)
+	}
+	eventsequence "A_SGM_PROVOKE_READY_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 60
+		Lifetime			= 0.400
+		NumParticles		= 2
+		TriggerCount		= 2
+		DrawCount			= 2
+		Layer				= 14
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "A_SGM_DRASTIC_CHARGE_Power_P03.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 0.100	Color = RGBA(1, 1, 11, 0.800)
+		Fade so From 0.102 to 0.200	Color = RGBA(1, 1, 1, 0.200)
+		Fade so From 0.200 to 0.400	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(0, 0, 1)
+		Fade so From 0.001 to 0.100	Size = XYZ(500, 500, 1)
+		Fade so From 0.100 to 0.400	Size = XYZ(530, 530, 1)
+		Initial						Rotate = XYZ(0, 0, 0)
+	}
+	eventsequence "SGM_PROVOKE_Revenge_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 60
+		Lifetime			= 0.400
+		NumParticles		= 2
+		TriggerCount		= 2
+		Layer				= 14
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+
+		Initial						Texture = "SGM_D_J_C_XZ_Landing2.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 0.100	Color = RGBA(1, random(0.300, 0.600), random(0.200, 0.400), 0.900)
+		Fade so From 0.102 to 0.200	Color = RGBA(1, 1, 1, 0.200)
+		Fade so From 0.200 to 0.400	Color = RGBA(1, 0, 0, 0)
+		Initial						Size = XYZ(0, 0, 1)
+		Fade so From 0.001 to 0.100	Size = XYZ(450, 450, 1)
+		Fade so From 0.100 to 0.400	Size = XYZ(500, 500, 1)
+		Initial						Rotate = XYZ(0, 0, 0)
+	}
+	eventsequence "SGM_DASH_JUMP_COMBO_XZ_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 60
+		Lifetime			= 0.400
+		NumParticles		= 30
+		TriggerCount		= 9999
+		DrawCount			= 2
+		Layer				= 14
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "A_SGM_DRASTIC_CHARGE_Power_P03.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 0.100	Color = RGBA(1, 1, 1, random(0.100, 0.250))
+		Fade so From 0.102 to 0.200	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(300, 300, 0)
+		Fade so From 0.010 to 0.100	Size = XYZ(400, 400, 0)
+		Fade so From 0.100 to 0.200	Size = XYZ(450, 450, 0)
+		Initial						Rotate = XYZ(0, 0, -60)
+	}
+	eventsequence "A_SGM_SNAP_CRESHER_LOOP_P04"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 30
+		Lifetime			= 0.200
+		NumParticles		= 10
+		TriggerTime			= 0.200
+		DrawCount			= 4
+		Layer				= 15
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "elsword_active_crecentCut_crecent.dds"
+		Initial						Color = RGBA(1, 0.400, random(0, 0.200), 0.400)
+		Fade so From 0.100 to 0.200	Color = RGBA(random(0.800, 1), random(0.250, 0.500), random(0.100, 0.200), 0)
+		Initial						Size = XYZ(800, 800, 1)
+		Initial						Rotate = XYZ(0, 0, 90)
+		Fade so From 0.001 to 0.200	Rotate = XYZ(0, 0, -180)
+	}
+	eventsequence "A_SGM_SNAP_CRESHER_LOOP_P05"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 30
+		Lifetime			= 0.200
+		NumParticles		= 15
+		TriggerTime			= 0.200
+		DrawCount			= 2
+		Layer				= 14
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "A_SGM_SONIC_BLADE_Map02.dds"
+		Initial						Color = RGBA(1, 0.200, random(0, 0.200), 0.400)
+		Fade so From 0.100 to 0.200	Color = RGBA(1, random(0, 0.200), random(0, 0.200), 0)
+		Initial						Size = XYZ(800, 800, 1)
+		Initial						Rotate = XYZ(0, 0, 90)
+		Fade so From 0.001 to 0.200	Rotate = XYZ(0, 0, -180)
+	}
+	eventsequence "A_SGM_SNAP_CRESHER_LOOP_P06"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 30
+		Lifetime			= 0.200
+		NumParticles		= 15
+		TriggerTime			= 0.200
+		DrawCount			= 5
+		Layer				= 14
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "A_SGM_DRASTIC_CHARGE_Power_P02.dds"
+		Initial						Color = RGBA(1, 0.500, random(0, 0.200), 0.400)
+		Fade so From 0.100 to 0.200	Color = RGBA(1, random(0.200, 0.500), random(0.100, 0.200), 0)
+		Initial						Size = XYZ(800, 800, 1)
+		Initial						Rotate = XYZ(0, 0, 45)
+		Fade so From 0.001 to 0.200	Rotate = XYZ(0, 0, -180)
+	}
+	eventsequence "A_SGM_SNAP_CRESHER_LOOP_P07"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 30
+		Lifetime			= 0.200
+		NumParticles		= 5
+		TriggerTime			= 0.200
+		DrawCount			= 5
+		Layer				= 15
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "A_SGM_DRASTIC_CHARGE_Power_P01.dds"
+		Initial						Color = RGBA(1, 0.500, random(0, 0.200), 0.400)
+		Fade so From 0.100 to 0.200	Color = RGBA(1, random(0.200, 0.500), random(0.100, 0.200), 0)
+		Initial						Size = XYZ(800, 800, 1)
+		Initial						Rotate = XYZ(0, 0, 45)
+		Fade so From 0.001 to 0.200	Rotate = XYZ(0, 0, -180)
+	}
+	eventsequence "A_SGM_DRASTIC_CHARGE_END_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 120
+		Lifetime			= 0.600
+		NumParticles		= 60
+		TriggerTime			= 1
+		Layer				= 14
+		Emitradius			= XYZ(random(-100, 100), random(0, 10), random(-50, 50))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		UseLand				= TRUE
+
+		Initial						Texture = "Mesh_Elsword_Event_AC_Upbody21A_Effect.tga"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 0.066	Color = RGBA(1, 1, 1, 0.800)
+		Fade so From 0.400 to 0.600	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(20, 20, 1)
+		Fade so From 0.300 to 0.600	Size = XYZ(10, 10, 1)
+		Initial						Velocity = XYZ(random(-150, 150), random(100, 200), random(-50, 50))
+	}
+	eventsequence "A_SGM_DRASTIC_CHARGE_END_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 300
+		Lifetime			= random(0.560, 0.700)
+		NumParticles		= 500
+		TriggerTime			= 1
+		Layer				= 16
+		Emitradius			= XYZ(random(-10, 10), random(-10, 10), random(-10, 10))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "EL_FIRE_04.dds"
+		Initial						Color = RGBA(1, random(0.500, 1), random(0.200, 1), random(0.300, 0.600))
+		Fade so From 0.330 to 0.560	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(random(5, 50), random(5, 50), 1)
+		Fade so From 0.560 to 0.830	Size = XYZ(0, 0, 1)
+		Initial						Rotate = XYZ(0, 0, random(-90, 90))
+		Initial						Velocity = XYZ(random(-110, 130), random(-110, 130), random(-110, 130))
+	}
+	eventsequence "A_SGM_DRASTIC_CHARGE_END_P04"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 300
+		Lifetime			= random(0.560, 0.700)
+		NumParticles		= 500
+		TriggerTime			= 1
+		Layer				= 15
+		Emitradius			= XYZ(random(-10, 10), random(-10, 10), random(-10, 10))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "EL_FIRE_03.dds"
+		Initial						Color = RGBA(1, random(0.200, 0.500), random(0.200, 0.300), 0.300)
+		Fade so From 0.330 to 0.560	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(random(5, 100), random(5, 100), 1)
+		Fade so From 0.560 to 0.830	Size = XYZ(0, 0, 1)
+		Initial						Rotate = XYZ(0, 0, random(-90, 90))
+		Initial						Velocity = XYZ(random(-110, 130), random(-110, 130), random(-110, 130))
+	}
+	eventsequence "SA_SGM_WAR_PRELUDE_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 60
+		Lifetime			= 0.600
+		NumParticles		= 60
+		TriggerCount		= 1
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+
+		Initial						Texture = "SA_SGM_WAR_PRELUDE_Map01.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.000 to 0.200	Color = RGBA(1, 1, 1, 1)
+		Fade so From 0.200 to 0.600	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(50, 50, 1)
+		Fade so From 0.010 to 0.200	Size = XYZ(4000, 4000, 1)
+		Fade so From 0.200 to 0.600	Size = XYZ(4500, 4500, 1)
+		Initial						Rotate = XYZ(0, 0, 0)
+		Initial						Velocity = XYZ(0, 0, 0)
+	}
+	eventsequence "SA_SGM_WAR_PRELUDE_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 60
+		Lifetime			= 0.300
+		NumParticles		= 60
+		TriggerCount		= 1
+		DrawCount			= 2
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+
+		Initial						Texture = "Condense_Pulse01.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.010 to 0.033	Color = RGBA(1, 0, 0, 0.600)
+		Fade so From 0.150 to 0.300	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(50, 50, 1)
+		Fade so From 0.010 to 0.300	Size = XYZ(5500, 5500, 1)
+		Initial						Rotate = XYZ(0, 0, 0)
+		Initial						Velocity = XYZ(0, 0, 0)
+	}
+	eventsequence "SA_SGM_WAR_PRELUDE_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 15
+		Lifetime			= 0.200
+		NumParticles		= 15
+		TriggerTime			= 0.200
+		DrawCount			= 3
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_ONE
+
+		Initial						Texture = "Mesh_Elsword_Event_AC_Upbody21A_Effect.tga"
+		Initial						Color = RGBA(1, 1, 0, 0.300)
+		Fade so From 0.000 to 0.200	Color = RGBA(1, random(0.500, 1), random(0, 0.200), 0)
+		Initial						Size = XYZ(500, 500, 1)
+		Fade so From 0.001 to 0.033	Size = XYZ(1000, 1000, 1)
+		Fade so From 0.033 to 0.200	Size = XYZ(800, 800, 1)
+		Initial						Rotate = XYZ(0, 0, 0)
+		Initial						Velocity = XYZ(0, 0, 0)
+	}
+	eventsequence "SA_SGM_WAR_PRELUDE_P04"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 15
+		Lifetime			= 0.350
+		NumParticles		= 10
+		TriggerCount		= 4
+		Layer				= 13
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "GroundShockWave02.dds"
+		Initial						Color = RGBA(0.400, 0.800, 1, 0.500)
+		Fade so From 0.200 to 0.350	Color = RGBA(0.300, 0.700, 1, 0)
+		Initial						Size = XYZ(0, 0, 1)
+		Fade so From 0.001 to 0.100	Size = XYZ(800, 800, 1)
+		Fade so From 0.100 to 0.350	Size = XYZ(1000, 1000, 1)
+		Initial						Rotate = XYZ(90, 0, 0)
+	}
+	eventsequence "SA_SGM_WAR_PRELUDE_P05"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 1000
+		Lifetime			= 0.500
+		NumParticles		= 100
+		TriggerTime			= 0.500
+		DrawCount			= 6
+		Layer				= 14
+		Gravity				= XYZ(0, -50, 0)
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "ColorBallGray.dds"
+		Initial						Color = RGBA(1, random(0, 0.500), random(0, 0.500), 0)
+		Fade so From 0.100 to 0.200	Color = RGBA(1, 0.200, 0, 1)
+		Fade so From 0.300 to 0.450	Color = RGBA(1, random(0.200, 0.500), 0, 0)
+		Initial						Size = XYZ(random(10, 30), random(10, 30), 1)
+		Fade so From 0.200 to 0.500	Size = XYZ(random(1, 5), random(1, 5), 1)
+		Initial						Rotate = XYZ(0, 0, random(-90, 90))
+		Fade so From 0.000 to 0.500	Rotate = XYZ(0, 0, random(-90, 90))
+		Initial						Velocity = XYZ(random(-1200, 1200), random(-1200, 1200), random(-1200, 1200))
+		Fade so From 0.200 to 0.500	Velocity = XYZ(0, 0, 0)
+	}
+	eventsequence "SA_SGM_WAR_PRELUDE_P06"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 40
+		Lifetime			= 1
+		NumParticles		= 40
+		TriggerTime			= 1
+		DrawCount			= 3
+		Layer				= 14
+		Emitradius			= XYZ(random(-280, 280), 0, random(-280, 280))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+
+		Initial						Texture = "stone_AirShip.dds"
+		Initial						Color = RGBA(0.500, 0.500, 0.500, 0)
+		Fade so From 0.100 to 0.200	Color = RGBA(0.500, 0.500, 0.500, 1)
+		Fade so From 0.500 to 1.000	Color = RGBA(0.500, 0.500, 0.500, 0)
+		Initial						Size = XYZ(random(8, 25), random(8, 25), 1)
+		Fade so From 0.200 to 0.500	Size = XYZ(random(8, 20), random(8, 20), 1)
+		Initial						Rotate = XYZ(0, 0, random(-90, 90))
+		Fade so From 0.000 to 1.000	Rotate = XYZ(0, 0, random(-90, 90))
+		Initial						Velocity = XYZ(random(-10, 10), random(50, 300), random(-10, 10))
+	}
+	eventsequence "SA_SGM_WAR_PRELUDE_P07"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 200
+		Lifetime			= 7
+		NumParticles		= 5
+		TriggerCount		= 1
+		Layer				= 13
+		BillBoardType		= BT_Y
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		ZWriteEnable		= FALSE
+		Mesh				= "CHUNG_GIGANTIC_IMPACT_Bottom_Broken.Y"
+
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 1.000	Color = RGBA(1, 1, 1, 1)
+		Fade so From 5.000 to 6.000	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(2.200, 2.200, 2.200)
+	}
+	eventsequence "SA_SGM_WAR_PRELUDE_P08"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 15
+		Lifetime			= 0.350
+		NumParticles		= 10
+		TriggerTime			= 0.200
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+
+		Initial						Texture = "Pulsewave01.dds"
+		Initial						Color = RGBA(1, 0, 0, 0)
+		Fade so From 0.100 to 0.150	Color = RGBA(1, 0, 0, 0.700)
+		Fade so From 0.150 to 0.350	Color = RGBA(1, random(0, 1), 0, 0)
+		Initial						Size = XYZ(0, 0, 1)
+		Fade so From 0.001 to 0.100	Size = XYZ(600, 600, 1)
+		Fade so From 0.100 to 0.350	Size = XYZ(2000, 2000, 1)
+		Initial						Rotate = XYZ(0, 0, random(-180, 180))
+	}
+	eventsequence "SA_SGM_WAR_PRELUDE_P09"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 5
+		Lifetime			= 0.350
+		NumParticles		= 10
+		TriggerTime			= 0.200
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+
+		Initial						Texture = "Arme_Ring2.dds"
+		Initial						Color = RGBA(0.300, 0.600, 1, 0.500)
+		Fade so From 0.100 to 0.350	Color = RGBA(0.300, 0.600, 1, 0)
+		Initial						Size = XYZ(0, 0, 1)
+		Fade so From 0.001 to 0.100	Size = XYZ(600, 600, 1)
+		Fade so From 0.100 to 0.350	Size = XYZ(2000, 2000, 1)
+		Initial						Rotate = XYZ(0, 0, random(-180, 180))
+	}
+	eventsequence "SA_SGM_WAR_PRELUDE_P10"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 15
+		Lifetime			= 0.350
+		NumParticles		= 10
+		TriggerCount		= 4
+		Layer				= 13
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+
+		Initial						Texture = "SGM_D_J_C_XZ_Landing2.dds"
+		Initial						Color = RGBA(1, 0.800, 1, 0.500)
+		Fade so From 0.200 to 0.350	Color = RGBA(1, random(0.500, 0.600), random(0, 0.500), 0)
+		Initial						Size = XYZ(0, 0, 1)
+		Fade so From 0.001 to 0.100	Size = XYZ(1300, 1300, 1)
+		Fade so From 0.100 to 0.350	Size = XYZ(1800, 1800, 1)
+		Initial						Rotate = XYZ(0, 0, -180)
+	}
+	eventsequence "A_SGM_CRITICAL_DIVE_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 100
+		Lifetime			= 0.300
+		NumParticles		= 60
+		TriggerTime			= 0.500
+		Layer				= 14
+		Emitradius			= XYZ(random(-110, 50), random(-110, 110), random(-110, 110))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "Colorballgray.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.010 to 0.150	Color = RGBA(1, random(0.400, 0.600), random(0.200, 0.400), 1)
+		Fade so From 0.200 to 0.300	Color = RGBA(1, 0, 0, 0)
+		Initial						Size = XYZ(10, 5, 1)
+		Fade so From 0.010 to 0.300	Size = XYZ(3, 700, 1)
+		Initial						Velocity = XYZ(random(-500, -600), 0, 0)
+		Initial						Rotate = XYZ(0, 0, 90)
+	}
+	eventsequence "A_SGM_CRITICAL_DIVE_P02"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 30
+		Lifetime			= 0.300
+		NumParticles		= 20
+		TriggerTime			= 0.200
+		DrawCount			= 3
+		Layer				= 14
+		AddRotateRel		= XYZ(0, 20, 0)
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+		Mesh				= "Ring_Plane.y"
+		ChangeTexXet			= "A_SGM_CRITICAL_DIVE.XET"
+
+		Initial						Texture = "RingAlpha.dds"
+		Initial						Color = RGBA(1, 1, 1, 1)
+		Fade so From 0.000 to 0.300	Color = RGBA(1, 0, 0, 0)
+		Initial						Size = XYZ(0, 0, 1)
+		Fade so From 0.000 to 0.300	Size = XYZ(random(3, 4), random(3, 4), random(3, 4))
+		Initial						Rotate = XYZ(0, 0, 0)
+	}
+	eventsequence "A_SGM_CRITICAL_DIVE_P03"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 30
+		Lifetime			= 0.300
+		NumParticles		= 50
+		TriggerTime			= 0.200
+		Layer				= 14
+		AddRotateRel		= XYZ(0, 20, 0)
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		ZWriteEnable		= FALSE
+		Mesh				= "AssaultSlash02.Y"
+
+		Initial						Texture = "RingAlpha.dds"
+		Initial						Color = RGBA(1, 1, 1, 1)
+		Fade so From 0.200 to 0.300	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(1, 1, 1)
+		Fade so From 0.000 to 0.300	Size = XYZ(0, 0, 0)
+	}
+	eventsequence "A_SGM_CRITICAL_DIVE_P05"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 30
+		Lifetime			= 0.300
+		NumParticles		= 15
+		TriggerTime			= 0.300
+		DrawCount			= 2
+		Layer				= 14
+		AddRotateRel		= XYZ(0, 20, 0)
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+		Mesh				= "Ring_Plane.y"
+		ChangeTexXet			= "A_SGM_CRITICAL_DIVE.XET"
+
+		Initial						Texture = "RingAlpha.dds"
+		Initial						Color = RGBA(1, 1, 1, 1)
+		Fade so From 0.000 to 0.300	Color = RGBA(1, 0, 0, 0)
+		Initial						Size = XYZ(0, 0, 1)
+		Fade so From 0.000 to 0.300	Size = XYZ(random(2, 3), random(2, 3), random(2, 3))
+		Initial						Rotate = XYZ(random(-90, 90), random(-90, 90), random(-90, 90))
+	}
+	eventsequence "A_SGM_CRITICAL_DIVE_P06"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 1000
+		Lifetime			= 0.500
+		NumParticles		= 100
+		TriggerTime			= 0.500
+		DrawCount			= 6
+		Layer				= 14
+		Gravity				= XYZ(0, -50, 0)
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "ColorBallGray.dds"
+		Initial						Color = RGBA(1, random(0, 0.500), random(0, 0.500), 0)
+		Fade so From 0.100 to 0.200	Color = RGBA(1, 0.200, 0, 1)
+		Fade so From 0.300 to 0.450	Color = RGBA(1, random(0.200, 0.500), 0, 0)
+		Initial						Size = XYZ(random(5, 20), random(5, 20), 1)
+		Fade so From 0.200 to 0.500	Size = XYZ(random(1, 5), random(1, 5), 1)
+		Initial						Rotate = XYZ(0, 0, random(-90, 90))
+		Fade so From 0.000 to 0.500	Rotate = XYZ(0, 0, random(-90, 90))
+		Initial						Velocity = XYZ(random(-800, 800), random(-800, 800), random(-800, 800))
+		Fade so From 0.200 to 0.500	Velocity = XYZ(0, 0, 0)
+	}
+	eventsequence "A_SGM_CRITICAL_DIVE_P07"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 60
+		Lifetime			= 0.600
+		NumParticles		= 15
+		TriggerCount		= 1
+		DrawCount			= 3
+		Layer				= 13
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		ZWriteEnable		= FALSE
+		Mesh				= "Up_Light01_Mesh.Y"
+
+		Initial						Color = RGBA(1, 0, random(0, 0.500), 1)
+		Fade so From 0.001 to 0.400	Color = RGBA(1, 0, 0, 1)
+		Fade so From 0.400 to 0.600	Color = RGBA(1, 0, 0, 0)
+		Initial						Size = XYZ(1, 5, 1)
+		Fade so From 0.001 to 0.400	Size = XYZ(0.100, 10, 1)
+		Fade so From 0.400 to 0.600	Size = XYZ(0, 0, 1)
+		Initial						Rotate = XYZ(0, 0, -90)
+	}
+	eventsequence "A_SGM_CRITICAL_DIVE_P08"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 100
+		Lifetime			= 0.600
+		NumParticles		= 10
+		TriggerTime			= 0.100
+		Layer				= 15
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "waldo_trock_specialAttackB_particle.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.010 to 0.060	Color = RGBA(1, 1, 1, 1)
+		Fade so From 0.300 to 0.600	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(0, 0, 1)
+		Fade so From 0.010 to 0.100	Size = XYZ(20, 20, 1)
+		Fade so From 0.100 to 0.600	Size = XYZ(0, 0, 1)
+		Initial						Velocity = XYZ(random(-3000, -500), random(-500, 500), random(-1000, 1000))
+		Fade so From 0.060 to 0.600	Velocity = XYZ(random(-300, -100), random(-150, -50), 0)
+	}
+	eventsequence "SA_SGM_JUGGERNAUT_BUSTER_LOOP_P01"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 10
+		Lifetime			= 0.300
+		NumParticles		= 2
+		TriggerTime			= 2
+		Layer				= 14
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZWriteEnable		= FALSE
+		Mesh				= "SI_A_ARA_STONE_CUTTER_Ground_Wave.Y"
+
+		Initial						Color = RGBA(1, 1, 1, 1)
+		Fade so From 0.050 to 0.300	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(1.400, 1.400, 1.400)
+		Initial						Rotate = XYZ(0, 0, 0)
+		Fade so From 0.050 to 0.300	Rotate = XYZ(0, 360, 0)
+	}
+	eventsequence "SA_SGM_JUGGERNAUT_BUSTER_LOOP_P02"
+	{
+		particleType		= PT_SKINMESH
+		Emitrate			= 30
+		Lifetime			= 0.800
+		NumParticles		= 30
+		TriggerTime			= 1.660
+		DrawCount			= 2
+		Layer				= 14
+		Emitradius			= XYZ(0, random(-60, 80), 0)
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Trace				= TRUE
+		ZWriteEnable		= FALSE
+		Mesh				= "Spin_Liner03.X"
+
+		Initial						Color = RGBA(1, 0.300, 0, 0)
+		Fade so From 0.001 to 0.100	Color = RGBA(1, 0.300, 0.100, 1)
+		Fade so From 0.600 to 0.800	Color = RGBA(1, 0.300, 0, 0)
+		Initial						Rotate = XYZ(15, 360, 0)
+		Initial						Size = XYZ(0.800, 0.300, 0.800)
+		Initial						Scale = random(2, 2.800)
+	}
+	eventsequence "HA_SGM_SWORD_OF_RELICS_Ground_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 100
+		Lifetime			= 4
+		NumParticles		= 1
+		TriggerTime			= 0.100
+		Layer				= 13
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		UseLand				= TRUE
+
+		Initial						Texture = "ARA_SA_FallingDragon_down.DDS"
+		Initial						Color = RGBA(1, 1, 1, 1)
+		Fade so From 2.000 to 4.000	Color = RGBA(1, 1, 1, 0)
+		Initial						Rotate = XYZ(90, 90, 0)
+		Initial						Size = XYZ(100, 100, 1)
+		Fade so From 0.010 to 0.060	Size = XYZ(500, 500, 1)
+	}
+	eventsequence "HA_SGM_SWORD_OF_RELICS_FX_P01"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 800
+		Lifetime			= 0.300
+		NumParticles		= 100
+		TriggerTime			= 0.200
+		Layer				= 15
+		Emitradius			= XYZ(random(-50, 50), random(-500, 500), random(-50, 50))
+		BillBoardType		= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "HELLPUTT_COMET_CRASHER_Explosion_02.tga"
+		Initial						Color = RGBA(1, 0.540, 0.300, 1)
+		Fade so From 0.150 to 0.300	Color = RGBA(1, 0.240, 0.100, 0)
+		Initial						Size = XYZ(random(-150, 150), 200, 1)
+		Fade so From 0.150 to 0.300	Size = XYZ(random(-50, 50), 3000, 1)
+		Initial						Rotate = XYZ(0, 0, 0)
+		Initial						Velocity = XYZ(random(-15, 15), random(-50, 50), random(-15, 15))
+		Fade so From 0.010 to 0.300	Velocity = XYZ(random(-50, 50), random(-8000, 6000), 0)
+	}
+	eventsequence "HA_SGM_SWORD_OF_RELICS_FX_P02"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 100
+		Lifetime			= 1
+		NumParticles		= 30
+		TriggerTime			= 0.500
+		Layer				= 14
+		Emitradius			= XYZ(random(-200, 200), random(-110, 110), random(-110, 110))
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+
+		Initial						Texture = "Colorballgray.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.010 to 0.150	Color = RGBA(1, random(0.200, 0.400), random(0.100, 0.300), 1)
+		Fade so From 0.160 to 0.200	Color = RGBA(1, 0, 0, 0)
+		Initial						Size = XYZ(10, 5, 1)
+		Fade so From 0.010 to 0.200	Size = XYZ(3, 700, 1)
+		Initial						Velocity = XYZ(0, random(-1000, -500), 0)
+		Initial						Rotate = XYZ(0, 0, 0)
+	}
+	eventsequence "HA_SGM_SWORD_OF_RELICS_P03"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 30
+		Lifetime			= 0.400
+		NumParticles		= 1
+		TriggerTime			= 0.190
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZEnable				= FALSE
+
+		Initial						Texture = "Condense_Pulse01.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.010 to 0.033	Color = RGBA(1, random(0.200, 0.300), random(0.100, 0.200), 1)
+		Fade so From 0.300 to 0.400	Color = RGBA(1, 0, 0, 0)
+		Initial						Size = XYZ(50, 50, 1)
+		Fade so From 0.010 to 0.400	Size = XYZ(5500, 5500, 1)
+		Initial						Rotate = XYZ(0, 0, 0)
+		Initial						Velocity = XYZ(0, 0, 0)
+	}
+	eventsequence "HA_SGM_SWORD_OF_RELICS_P04"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 60
+		Lifetime			= 0.600
+		NumParticles		= 15
+		TriggerCount		= 2
+		DrawCount			= 3
+		Layer				= 14
+		BillBoardType		= BT_Y
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		ZWriteEnable		= FALSE
+		Mesh				= "Up_Light01_Mesh.Y"
+
+		Initial						Color = RGBA(1, 0, random(0, 0.500), 1)
+		Fade so From 0.001 to 0.400	Color = RGBA(1, 0, 0, 1)
+		Fade so From 0.400 to 0.600	Color = RGBA(1, 0, 0, 0)
+		Initial						Size = XYZ(1, 100, 1)
+		Fade so From 0.001 to 0.400	Size = XYZ(0.100, 200, 1)
+		Fade so From 0.400 to 0.600	Size = XYZ(0, 200, 1)
+	}
+	eventsequence "HA_SGM_SWORD_OF_RELICS_P05"
+	{
+		particleType		= PT_MESH
+		Emitrate			= 60
+		Lifetime			= 0.600
+		NumParticles		= 15
+		TriggerCount		= 2
+		DrawCount			= random(7, 8)
+		Layer				= 15
+		BillBoardType		= BT_Y
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		ZWriteEnable		= FALSE
+		Mesh				= "Up_Light01_Mesh.Y"
+
+		Initial						Color = RGBA(1, random(0.300, 0.500), 0.300, 0)
+		Fade so From 0.001 to 0.400	Color = RGBA(random(0.700, 1), 0.600, 0.300, 1)
+		Fade so From 0.400 to 0.600	Color = RGBA(1, 0.600, 0.300, 0)
+		Initial						Size = XYZ(2, 50, 1)
+		Fade so From 0.001 to 0.400	Size = XYZ(0.100, 30, 1)
+		Fade so From 0.400 to 0.600	Size = XYZ(0, 0, 1)
+	}
+	eventsequence "HA_SGM_SWORD_OF_RELICS_P06"
+	{
+		particleType		= PT_2D_PLANE
+		Emitrate			= 10
+		Lifetime			= 1.030
+		NumParticles		= 4
+		TriggerTime			= 3
+		Layer				= 13
+		BillBoardType		= BT_Y
+		SourceBlendMode	= D3DBLEND_SRCCOLOR
+		DestBlendMode	= D3DBLEND_DESTCOLOR
+		ZEnable				= FALSE
+
+		Initial						Texture = "BlackImage.dds"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.001 to 0.030	Color = RGBA(1, 1, 1, 0.500)
+		Initial						Size = XYZ(1920, 1200, 1)
+		Initial						Position = XYZ(640, 480, 1)
+	}
+	eventsequence "HA_SGM_SWORD_OF_RELICS_P07"
+	{
+		particleType		= PT_3D_PLANE
+		Emitrate			= 100
+		Lifetime			= 6
+		NumParticles		= 1
+		TriggerTime			= 6
+		Layer				= 14
+		BillBoardType		= BT_ALL
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		UseLand				= TRUE
+		ZEnable				= FALSE
+
+		Initial						Texture = "A_SPK_SWORD_ERUPTION_Squair.tga"
+		Initial						Color = RGBA(1, 1, 1, 0)
+		Fade so From 0.500 to 2.000	Color = RGBA(1, 1, 1, 1)
+		Fade so From 4.000 to 6.000	Color = RGBA(1, 1, 1, 0)
+		Initial						Size = XYZ(50, 50, 1)
+		Fade so From 0.860 to 1.000	Size = XYZ(250, 250, 1)
+		Fade so From 1.000 to 2.000	Size = XYZ(270, 270, 1)
+		Fade so From 2.000 to 2.100	Size = XYZ(450, 450, 1)
+		Initial						Rotate = XYZ(90, 0, 0)
+		Fade so From 0.100 to 6.000	Rotate = XYZ(90, 0, -10)
+	}
+}

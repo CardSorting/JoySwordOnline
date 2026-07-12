@@ -1,0 +1,252 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+
+INIT_SYSTEM = 
+{
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	UNIT_SCALE      = 1,
+}
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+	},
+		
+	READY_XMESH = 
+	{
+	},
+	
+	READY_XSKIN_MESH = 
+	{
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME = "Motion_gripseed.x",	
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 350,
+	RUN_SPEED			= 450,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 1500,
+}
+
+INIT_COMPONENT =
+{
+	MAX_HP              = 30000,
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_STONE"],
+	
+	FALL_DOWN			= TRUE,
+
+	NOT_CULL  			= TRUE,
+	
+	NO_RENDER_NAME		= TRUE,
+}
+
+INIT_STATE =
+{
+	{ STATE_NAME = "SEED_OF_DARK_PORTAL_START",		LUA_STATE_START_FUNC = "SEED_OF_DARK_PORTAL_STATE_START",		},
+	{ STATE_NAME = "SEED_OF_DARK_PORTAL_PLAY",		LUA_STATE_START_FUNC = "SEED_OF_DARK_PORTAL_PLAY_STATE_START",	},	
+	{ STATE_NAME = "SEED_OF_DARK_PORTAL_WAIT",		LUA_STATE_START_FUNC = "SEED_OF_DARK_PORTAL_WAIT_STATE_START",	},	
+	{ STATE_NAME = "SEED_OF_DARK_PORTAL_DYING",		},	
+	
+	START_STATE					= "SEED_OF_DARK_PORTAL_START",
+	WAIT_STATE					= "SEED_OF_DARK_PORTAL_WAIT",
+		
+	SMALL_DAMAGE_LAND_FRONT		= "SEED_OF_DARK_PORTAL_START",
+	SMALL_DAMAGE_LAND_BACK		= "SEED_OF_DARK_PORTAL_START",
+	BIG_DAMAGE_LAND_FRONT		= "SEED_OF_DARK_PORTAL_START",
+	BIG_DAMAGE_LAND_BACK		= "SEED_OF_DARK_PORTAL_START",
+	DOWN_DAMAGE_LAND_FRONT		= "SEED_OF_DARK_PORTAL_START",
+	DOWN_DAMAGE_LAND_BACK		= "SEED_OF_DARK_PORTAL_START",
+	FLY_DAMAGE_FRONT			= "SEED_OF_DARK_PORTAL_START",
+	FLY_DAMAGE_BACK				= "SEED_OF_DARK_PORTAL_START",
+	SMALL_DAMAGE_AIR			= "SEED_OF_DARK_PORTAL_START",	
+	BIG_DAMAGE_AIR				= "SEED_OF_DARK_PORTAL_START",
+	DOWN_DAMAGE_AIR				= "SEED_OF_DARK_PORTAL_START",
+	DOWN_DAMAGE_AIR_LANDING		= "SEED_OF_DARK_PORTAL_START",
+	UP_DAMAGE					= "SEED_OF_DARK_PORTAL_START",
+	DAMAGE_REVENGE				= "",
+
+	DYING_LAND_FRONT			= "SEED_OF_DARK_PORTAL_DYING",
+	DYING_LAND_BACK				= "SEED_OF_DARK_PORTAL_DYING",
+	DYING_SKY					= "SEED_OF_DARK_PORTAL_DYING",
+}
+
+INIT_AI = 
+{
+	NO_BRAIN = TRUE,
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+SEED_OF_DARK_PORTAL_START = 
+{
+	ANIM_NAME		= "Start",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+	
+	SPEED_X	= 0,
+	SPEED_Y	= 0,
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	EVENT_PROCESS = 
+	{								
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"SEED_OF_DARK_PORTAL_PLAY",	"CT_SEED_OF_DARK_PORTAL_PLAY", },
+	},
+	
+	CT_SEED_OF_DARK_PORTAL_PLAY = 
+	{
+		STATE_TIME_OVER			= 3,
+	},
+}
+
+function SEED_OF_DARK_PORTAL_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	
+	pNPCUnit:SetShow( false )
+
+end
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+SEED_OF_DARK_PORTAL_PLAY = 
+{
+	ANIM_NAME		= "Start",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+	
+	SPEED_X	= 0,
+	SPEED_Y	= 0,
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	EVENT_PROCESS = 
+	{								
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"SEED_OF_DARK_PORTAL_WAIT",	"CT_SEED_OF_DARK_PORTAL_WAIT", },
+	},
+	
+	CT_SEED_OF_DARK_PORTAL_WAIT = 
+	{
+		STATE_TIME_OVER			= 7,
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Seed_Of_DarkPortal_Play", 0.0,	
+	},
+	
+	FOCUS_CAMERA_AT_CURRENT_STATE 	= TRUE,
+	--STOP_AT_CURRENT_STATE 			= TRUE,
+	
+	SOUND_PLAY0	= { 1.5, "DarkGate_Open.ogg", 100, FALSE, 99999, FALSE },
+	
+	ALARM =
+	{
+		DANGER  				 = TRUE,  				    	    --DANGER 표시
+		ALARM_MESSAGE 			 = STR_ID_24052,  		  		    --경고 문구
+		DELAY   				 = 1.0,  				    	 		--이 스테이트가 시작되고 이 시간이 경과 후에 경고가 나갑니다.
+		REPEAT   				 = TRUE,  		 		   		    --한 번만 반복 FALSE, 이 스테이트 취할때 마다 반복 TRUE
+		ALARM_COLOR_TYPE		 = ALARM_COLOR_TYPE["ACT_ORANGE"],  --경고 문구 색깔 (ACT_RED, ACT_BLUE, ACT_YELLOW ,ACT_ORANGE, ACT_MAGENTA
+		DISAPPEAR_TIME  		 = 3, 				  			    -- 표시 지속 시간
+	},
+}
+
+function SEED_OF_DARK_PORTAL_PLAY_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	
+	pNPCUnit:SetShow( true )
+	pNPCUnit:SetShowGage( false )
+
+end
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+SEED_OF_DARK_PORTAL_WAIT = 
+{
+	ANIM_NAME		= "End",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+	
+	SPEED_X	= 0,
+	SPEED_Y	= 0,
+	
+	PASSIVE_SPEED_X = 0,
+	PASSIVE_SPEED_Y = 0,
+	
+	IMMADIATE_PACKET_SEND	= TRUE,
+	
+	EVENT_PROCESS = 
+	{								
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"SEED_OF_DARK_PORTAL_DYING",	"CT_SEED_OF_DARK_PORTAL_DYING", },
+	},
+	
+	CT_SEED_OF_DARK_PORTAL_DYING = 
+	{
+		STATE_TIME_OVER			= 10,
+	},
+	
+}
+
+function SEED_OF_DARK_PORTAL_WAIT_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	
+	pNPCUnit:SetShowGage( true )
+
+end
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+SEED_OF_DARK_PORTAL_DYING = 
+{
+	ANIM_NAME		= "End",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+	
+	DYING_END		= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}

@@ -1,0 +1,969 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+--[[
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_PROTECTION_OF_NUT"],
+
+	m_fBuffPeriodSecond = 300,
+	
+--	m_bEndBuffAtTheLeaveDungeonRoom = True,
+--	m_bEndBuffAtTheEndDungeonGame = True,
+	
+--	USING_BUFF_ROOM_TYPE =
+--	{
+--		USING_USING_ROOM_TYPE["URT_VILLAGE"],
+--		USING_USING_ROOM_TYPE["URT_DUNGEON"],
+--	},
+	
+--	SOCKET_OPTION = 
+--	{
+--		1301,
+--		2330,
+--		1916,
+--	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_PROTECTION_OF_NUT"],
+	},
+}
+
+--]]
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_PROTECTION_OF_NUT"],
+
+	m_fBuffPeriodSecond = 180,
+	
+	m_bEndBuffAtTheUserDied = True,
+	
+
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_PROTECTION_OF_NUT"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_PROTECTION_OF_PTAH"],
+	
+	m_fBuffPeriodSecond = 180,
+	
+	m_bEndBuffAtTheUserDied = True,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_PROTECTION_OF_PTAH"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_PROTECTION_OF_LAHEL"],
+
+	m_fBuffPeriodSecond = 180,
+
+	m_bEndBuffAtTheUserDied = True,
+
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_PROTECTION_OF_LAHEL"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_PROTECTION_OF_ZACHIEL"],
+
+	m_fBuffPeriodSecond = 180,
+	
+	m_bEndBuffAtTheUserDied = True,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_PROTECTION_OF_ZACHIEL"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_BELSSING_OF_SERAPHIM"],
+
+	m_fBuffPeriodSecond = 3600,
+
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_BELSSING_OF_SERAPHIM"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_BELSSING_OF_GEB"],
+
+	m_fBuffPeriodSecond = 3600,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_BELSSING_OF_GEB"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_BELSSING_OF_AMON"],
+
+	m_fBuffPeriodSecond = 3600,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_BELSSING_OF_AMON"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_BELSSING_OF_CRONOS"],
+
+	m_fBuffPeriodSecond = 3600,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_BELSSING_OF_CRONOS"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_STRENGTHENING_BODY"],
+
+	m_fBuffPeriodSecond = 300,			-- 5 분
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_STRENGTHENING_BODY"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_RALLY_OF_HERO_LEVEL_1"],
+
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_RALLY_OF_HERO_LEVEL_1"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_RALLY_OF_HERO_LEVEL_2"],
+
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_RALLY_OF_HERO_LEVEL_2"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_RALLY_OF_HERO_LEVEL_3"],
+
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_RALLY_OF_HERO_LEVEL_3"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_DEBUFF_REST_OF_RELLY"],
+
+	m_fBuffPeriodSecond = 300,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_DEBUFF_REST_OF_RELLY"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_WARM_ENERGE_OF_EL"],
+
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_WARM_ENERGE_OF_EL"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_THANKS_OF_RESIDENTS"],
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_THANKS_OF_RESIDENTS"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_BREATH_OF_DRAGON"],
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_BREATH_OF_DRAGON"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_BLESSING_OF_EL"],
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_BLESSING_OF_EL"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_HERO_OF_ELIOS_LEVEL_1"],
+
+	m_fBuffPeriodSecond = 3600,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	SOCKET_OPTION = 
+	{
+		60913,
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_HERO_OF_ELIOS_LEVEL_1"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_HERO_OF_ELIOS_LEVEL_2"],
+
+	m_fBuffPeriodSecond = 3600,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	SOCKET_OPTION = 
+	{
+		60918,
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_HERO_OF_ELIOS_LEVEL_2"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_HERO_OF_ELIOS_LEVEL_3"],
+
+	m_fBuffPeriodSecond = 3600,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	SOCKET_OPTION = 
+	{
+		60923,
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_HERO_OF_ELIOS_LEVEL_3"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_HERO_OF_ELIOS_LEVEL_4"],
+
+	m_fBuffPeriodSecond = 3600,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	SOCKET_OPTION = 
+	{
+		60928,
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_HERO_OF_ELIOS_LEVEL_4"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_PVP_REVENGE_MODE_LEVEL_1"],
+
+	m_bEndBuffAtTheLeavePvpRoom = True;
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_PVP"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_PVP_REVENGE_MODE_LEVEL_1"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_PVP_REVENGE_MODE_LEVEL_2"],
+
+	m_bEndBuffAtTheLeavePvpRoom = True;
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_PVP"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_PVP_REVENGE_MODE_LEVEL_2"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_PVP_REVENGE_MODE_LEVEL_3"],
+
+	m_bEndBuffAtTheLeavePvpRoom = True;
+
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_PVP"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_PVP_REVENGE_MODE_LEVEL_3"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_RETURN_OF_HERO"],
+
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_PVP"],
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	SOCKET_OPTION = 
+	{
+		20210,
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_RETURN_OF_HERO"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_PREMIUM_PC_ROOM"],
+
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_PVP"],
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	SOCKET_OPTION = 
+	{
+		--60913, --해외팀 PC방 시스템 개편으로 제거, 경험치 버프 25%
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_PREMIUM_PC_ROOM"],
+	},
+}
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_FIELD_DEFENCE"],
+
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_FIELD_DEFENCE"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{	-- 만우절 이벤트 - 엘레강스 레인보우 요일별 혜택
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_APRIL_FOOLSDAY"],		
+
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+		USING_ROOM_TYPE["URT_PVP"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_APRIL_FOOLSDAY"],
+	},
+}
+
+-- 어둠의 문 : 영약 세팅
+BuffManager:AddBuffInfo
+{
+	-- 어둠의 문 영약 : 거인화 물약
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_ELIXIR_GIANT_POTION"],
+
+	m_fBuffPeriodSecond = 1800,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_ELIXIR_GIANT_POTION"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	-- 어둠의 문 영약 : 이글이글 폭약
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_ELIXIR_BLAZING_BOMB"],
+
+	m_fBuffPeriodSecond = 1800,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_ELIXIR_BLAZING_BOMB"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	-- 어둠의 문 영약 : 추적자의 혼
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_ELIXIR_SPIRIT_OF_CHASER"],
+
+	m_fBuffPeriodSecond = 1800,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_ELIXIR_SPIRIT_OF_CHASER"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	-- 어둠의 문 영약 : 아기 요정 요람
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_ELIXIR_CRADLE_OF_LITTLE_FAIRY"],
+
+	m_fBuffPeriodSecond = 1800,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_ELIXIR_CRADLE_OF_LITTLE_FAIRY"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	-- 어둠의 문 영약 : 데니프의 얼음 구슬
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_ELIXIR_ICE_BALL_OF_DENIPH"],
+
+	m_fBuffPeriodSecond = 1800,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_ELIXIR_ICE_BALL_OF_DENIPH"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	-- 어둠의 문 영약 : 벤투스의 날개깃
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_ELIXIR_FEATHER_OF_VENTUS"],
+
+	m_fBuffPeriodSecond = 1800,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_ELIXIR_FEATHER_OF_VENTUS"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	-- 어둠의 문 영약 : 로쏘의 화염고리
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_ELIXIR_FLAME_RING_OF_ROSSO"],
+
+	m_fBuffPeriodSecond = 1800,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_ELIXIR_FLAME_RING_OF_ROSSO"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	-- 어둠의 문 영약 : 거대손 물약
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_ELIXIR_BIG_HAND_POTION"],
+
+	m_fBuffPeriodSecond = 1800,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_ELIXIR_BIG_HAND_POTION"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	-- 어둠의 문 벨런스 설정용 방어력 증가 버프
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_GATE_DEFENCE"],
+
+	--m_fBuffPeriodSecond = 1800,
+	
+	m_bEndBuffAtTheLeaveDungeonRoom = True,
+	m_bEndBuffAtTheEndDungeonGame = True,
+	m_bEndBuffAtTheUserDied = True,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_GATE_DEFENCE"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	-- 2013 어둠의 문 참여자 가짜 버프
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_2013_DEFENSE_FAKE_BUFF"],
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_2013_DEFENSE_FAKE_BUFF"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	-- 2013 어둠의 문 참여자 진짜 버프
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_2013_DEFENSE_BUFF"],
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_2013_DEFENSE_BUFF"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	-- 2013 어둠의 문 월드 디버프
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_2013_DEFENSE_DEBUFF"],
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_2013_DEFENSE_DEBUFF"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	-- 이벤트용 2013 어둠의 문 참여자 버프
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_2013_DEFENSE_BUFF_EVENT"],
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_2013_DEFENSE_BUFF_EVENT"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	-- 이벤트용 2013 공존의 축제
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_FESTIVAL_EVENT_BUFF"],
+	
+	m_bEndBuffAtTheLeaveDungeonRoom		= True,
+	m_bEndBuffAtTheEndDungeonGame		= True,
+	m_bEndBuffAtTheLeaveBattleFieldRoom	= True,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_FESTIVAL_EVENT_BUFF"],
+	},
+}
+
+-- #ifdef SERV_NEW_UNIT_TRADE_LIMIT
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_TRADE_BLOCK"],
+
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_PVP"],
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_TRADE_BLOCK"],
+	},
+}
+-- #endif SERV_NEW_UNIT_TRADE_LIMIT
+
+BuffManager:AddBuffInfo
+{
+	-- 이벤트용 크래용팝 엘린
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_ELRIN"],
+	
+	m_bEndBuffAtTheLeaveDungeonRoom		= True,
+	m_bEndBuffAtTheEndDungeonGame		= True,
+	m_bEndBuffAtTheLeaveBattleFieldRoom	= True,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_ELRIN"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	-- 이벤트용 크래용팝 소율
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_SOYUL"],
+	
+	m_bEndBuffAtTheLeaveDungeonRoom		= True,
+	m_bEndBuffAtTheEndDungeonGame		= True,
+	m_bEndBuffAtTheLeaveBattleFieldRoom	= True,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_SOYUL"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	-- 이벤트용 크래용팝 금미
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_KUMI"],
+	
+	m_bEndBuffAtTheLeaveDungeonRoom		= True,
+	m_bEndBuffAtTheEndDungeonGame		= True,
+	m_bEndBuffAtTheLeaveBattleFieldRoom	= True,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_KUMI"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	-- 이벤트용 크래용팝 초아
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_CHOA"],
+	
+	m_bEndBuffAtTheLeaveDungeonRoom		= True,
+	m_bEndBuffAtTheEndDungeonGame		= True,
+	m_bEndBuffAtTheLeaveBattleFieldRoom	= True,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	SOCKET_OPTION = 
+	{
+		60914,
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_CHOA"],
+	},
+}
+
+BuffManager:AddBuffInfo
+{
+	-- 이벤트용 크래용팝 웨이
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_WEY"],
+	
+	m_bEndBuffAtTheLeaveDungeonRoom		= True,
+	m_bEndBuffAtTheEndDungeonGame		= True,
+	m_bEndBuffAtTheLeaveBattleFieldRoom	= True,
+	
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	SOCKET_OPTION = 
+	{
+		20216,
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_WEY"],
+	},
+}
+
+-- #ifdef SERV_NEW_DEFENCE_DUNGEON_ENTER_100_PERCENT_EVENT
+BuffManager:AddBuffInfo
+{
+	m_eBuffID = BUFF_TEMPLET_ID["BTI_BUFF_2013_DEFENCE_ENTER_100_PERCENT_BUFF"],
+
+	USING_BUFF_ROOM_TYPE =
+	{
+		USING_ROOM_TYPE["URT_PVP"],
+		USING_ROOM_TYPE["URT_DUNGEON"],
+		USING_ROOM_TYPE["URT_BATTLE_FIELD"],
+	},
+	
+	BUFF_FACTOR =
+	{
+		BUFF_FACTOR_ID["BFI_BUFF_2013_DEFENCE_ENTER_100_PERCENT_BUFF"],
+	},
+}
+-- //#endif //SERV_NEW_DEFENCE_DUNGEON_ENTER_100_PERCENT_EVENT

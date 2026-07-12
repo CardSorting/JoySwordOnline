@@ -1,0 +1,415 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 300.0,
+	UNIT_HEIGHT		= 230.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+
+	SPEECH =
+	{
+		STR_ID_4016,
+	},
+}
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+		"Riding_Ancient_Pporu01.tga",
+		"Riding_Ancient_Pporu02.tga",
+		"Riding_Ancient_Pporu03.tga",
+		"Riding_Ancient_Pporu_Fireball01.tga",
+		"Riding_Ancient_Pporu_Fireball02.tga",
+	},
+
+	READY_SOUND = 
+	{
+		"RidingPet_AncientPproru_AttackX.ogg",
+		"RidingPet_AncientPproru_DamageBack.ogg",
+		"RidingPet_AncientPproru_DamageFront.ogg",
+		"RidingPet_AncientPproru_Dash_End.ogg",
+		"RidingPet_AncientPproru_DashJumpLanding.ogg",
+		"RidingPet_AncientPproru_Dying.ogg",
+		"RidingPet_AncientPproru_Start.ogg",
+		"RidingPet_AncientPproru_WaitHabit.ogg",
+	},
+
+	READY_XSKIN_MESH = 
+	{
+		"Riding_Bbori_AttackX_AttackBox.X",
+		"Riding_Bboru_FireballS.X",
+		"Riding_Bboru_SP_C_AttackBox.X",
+		"Riding_Pporu_Skill_C_Attack_Line.X",
+	},
+
+	READY_XMESH =
+	{
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME	= "Motion_Riding_Ancient_Pporu.x",
+	RIDING_MOTION		= "Ride_1",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+
+	WALK_SPEED			= 700,
+	RUN_SPEED			= 1000, --750,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300, -- 2300
+
+	IGNORE_LINE_SPEED	= FALSE,
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "ANCIENT_PPORU_START", },
+	{ STATE_NAME = "ANCIENT_PPORU_WAIT", },
+	{ STATE_NAME = "ANCIENT_PPORU_WAIT_HABIT", },
+	{ STATE_NAME = "ANCIENT_PPORU_WALK", },
+	
+	{ STATE_NAME = "ANCIENT_PPORU_JUMP_UP", },
+	{ STATE_NAME = "ANCIENT_PPORU_JUMP_DOWN", },
+	{ STATE_NAME = "ANCIENT_PPORU_JUMP_LANDING", },
+	
+	{ STATE_NAME = "ANCIENT_PPORU_DASH", },
+	{ STATE_NAME = "ANCIENT_PPORU_DASH_END", },
+	{ STATE_NAME = "ANCIENT_PPORU_DASH_JUMP", },
+	{ STATE_NAME = "ANCIENT_PPORU_DASH_JUMP_LANDING", },
+	
+	{ STATE_NAME = "ANCIENT_PPORU_DAMAGE_FRONT", },
+	{ STATE_NAME = "ANCIENT_PPORU_DAMAGE_BACK", },
+	{ STATE_NAME = "ANCIENT_PPORU_DYING", },
+
+	{ STATE_NAME = "ANCIENT_PPORU_ATTACK_Z", },
+	{ STATE_NAME = "ANCIENT_PPORU_JUMP_ATTACK_Z", },
+	{ STATE_NAME = "ANCIENT_PPORU_ATTACK_X", },
+	{ STATE_NAME = "ANCIENT_PPORU_ATTACK_SPECIAL", },
+
+	{ STATE_NAME = "ANCIENT_PPORU_SIT_READY", },
+	{ STATE_NAME = "ANCIENT_PPORU_SIT_WAIT", },
+	{ STATE_NAME = "ANCIENT_PPORU_STAND_UP", },
+	
+	{ STATE_NAME = "ANCIENT_PPORU_ARIAL_DASH", },
+
+	START_STATE		= "ANCIENT_PPORU_START",
+	WAIT_STATE		= "ANCIENT_PPORU_WAIT",
+	HABIT_STATE		= "ANCIENT_PPORU_WAIT_HABIT",
+	WALK_STATE		= "ANCIENT_PPORU_WALK",
+
+	JUMP_UP_STATE		= "ANCIENT_PPORU_JUMP_UP",
+	JUMP_DOWN_STATE		= "ANCIENT_PPORU_JUMP_DOWN",
+	JUMP_LANDING_STATE	= "ANCIENT_PPORU_JUMP_LANDING",
+
+	DASH_STATE				= "ANCIENT_PPORU_DASH",
+	DASH_END_STATE			= "ANCIENT_PPORU_DASH_END",
+	DASH_JUMP_UP_STATE		= "ANCIENT_PPORU_DASH_JUMP",
+	DASH_JUMP_LANDING_STATE	= "ANCIENT_PPORU_DASH_JUMP_LANDING",
+
+	DAMAGE_FRONT_STATE	= "ANCIENT_PPORU_DAMAGE_FRONT",
+	DAMAGE_BACK_STATE	= "ANCIENT_PPORU_DAMAGE_BACK",
+	DYING_STATE_STATE	= "ANCIENT_PPORU_DYING",
+
+	ATTACK_Z_STATE			= "ANCIENT_PPORU_ATTACK_Z",
+	JUMP_ATTACK_Z_STATE		= "ANCIENT_PPORU_JUMP_ATTACK_Z",
+	ATTACK_X_STATE			= "ANCIENT_PPORU_ATTACK_X",
+	ATTACK_SPECIAL_STATE	= "ANCIENT_PPORU_ATTACK_SPECIAL",
+
+	SIT_READY_STATE = "ANCIENT_PPORU_SIT_READY",
+	SIT_WAIT_STATE = "ANCIENT_PPORU_SIT_WAIT",
+	STAND_UP_STATE = "ANCIENT_PPORU_STAND_UP",
+	
+	SPECIAL_MOVE_STATE = "ANCIENT_PPORU_ARIAL_DASH",
+}
+
+-- 상태 정의 --
+-- 시작 --
+ANCIENT_PPORU_START = 
+{
+	ANIM_NAME	= "Start",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= TRUE,
+	EFFECT_SET_LIST = { "EffectSet_Riding_Pet_Summon", 0.001, },
+	
+    SOUND_PLAY0	= { 0.01, "RidingPet_AncientPproru_Start.ogg", },
+    SOUND_PLAY1	= { 0.001, "RidingPet_Summon.ogg", },
+	SKILL_CANCEL_AFTER	= 0.001,
+}
+----
+
+-- 대기 --
+ANCIENT_PPORU_WAIT = 
+{
+	ANIM_NAME	= "Wait",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+}
+-----
+
+-- 습관 --
+ANCIENT_PPORU_WAIT_HABIT = 
+{
+	ANIM_NAME	= "WaitHabit",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+    SOUND_PLAY0	= { 0.01, "RidingPet_AncientPproru_WaitHabit.ogg", },
+}
+----
+
+-- 걷기 --
+ANCIENT_PPORU_WALK = 
+{
+	ANIM_NAME	= "Walk",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+}
+----
+
+-- 점프 업 --
+ANCIENT_PPORU_JUMP_UP = 
+{
+	ANIM_NAME		= "JumpUp",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+}
+----
+
+-- 점프 다운 --
+ANCIENT_PPORU_JUMP_DOWN =
+{
+	ANIM_NAME		= "JumpDown",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+}
+----
+
+-- 점프 착지 --
+ANCIENT_PPORU_JUMP_LANDING =
+{
+	ANIM_NAME		= "JumpDownLanding",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+	TRANSITION		= TRUE,
+}
+----
+
+-- 달리기 ---
+ANCIENT_PPORU_DASH =
+{
+	ANIM_NAME		= "Dash",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= TRUE,
+}
+----
+
+-- 달리다가 멈춤 --
+ANCIENT_PPORU_DASH_END =
+{
+	ANIM_NAME	= "DashEnd",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	
+    SOUND_PLAY0	= { 0.01, "RidingPet_AncientPproru_Dash_End.ogg", },
+	
+}
+----
+
+-- 달리다가 점프 --
+ANCIENT_PPORU_DASH_JUMP =
+{
+	ANIM_NAME		= "DashJump",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+	SOUND_PLAY0			= { 0.02, "Step.ogg" },
+}
+----
+
+-- 달리다가 점프 착지 --
+ANCIENT_PPORU_DASH_JUMP_LANDING =
+{
+	ANIM_NAME		= "DashJumpLanding",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+	
+	SOUND_PLAY0			= { 0.09, "RidingPet_AncientPproru_DashJumpLanding.ogg" },
+}
+----
+
+-- 앞 데미지 --
+ANCIENT_PPORU_DAMAGE_FRONT = 
+{
+	ANIM_NAME		= "DamageFront",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+	
+    SOUND_PLAY0	= { 0.02, "RidingPet_AncientPproru_DamageFront.ogg", 40, },
+	
+}
+----
+
+-- 뒤 데미지 --
+ANCIENT_PPORU_DAMAGE_BACK = 
+{
+	ANIM_NAME		= "DamageBack",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+	
+    SOUND_PLAY0	= { 0.02, "RidingPet_AncientPproru_DamageBack.ogg", 40, },
+	
+}
+----
+
+-- 죽음 --
+ANCIENT_PPORU_DYING =
+{
+	ANIM_NAME		= "Dying",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	INVINCIBLE		= { 0, 100, },
+
+    SOUND_PLAY0	= { 0.01, "RidingPet_AncientPproru_Dying.ogg", },
+    SOUND_PLAY1	= { 0.9, "Down.ogg", },
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+}
+----
+
+-- Z 공격 --
+ANCIENT_PPORU_ATTACK_Z =
+{
+	ANIM_NAME		= "Attack_Z",
+	ANIM_SPEED		= 1.16,
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= FALSE,
+	TRANSITION		= TRUE,
+
+	EFFECT_SET_LIST = { "EffectSet_Riding_Ancient_Pporu_AttackZ", 0.26, },
+	SKILL_CANCEL_AFTER	= 0.6,
+	WALK_CANCEL_AFTER	= 0.6,
+	DASH_CANCEL_AFTER	= 0.6,
+}
+----
+
+-- 점프 Z 공격 --
+ANCIENT_PPORU_JUMP_ATTACK_Z =
+{
+	ANIM_NAME		= "Jump_Attack_Z",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	--SPEED_X				= 500.0,
+	--SPEED_Y				= 500.0,
+	SPEED_TIME0		= { 0, 0, 0.01, 3 },
+	SPEED_TIME1		= { -1, -1, 0.20, 3 },
+	SPEED_TIME2		= { -500, 500, 0.21, 2 },
+
+	EFFECT_SET_LIST = { "EffectSet_Riding_Ancient_Pporu_JumpAttackZ", 0.26, },
+}
+----
+
+-- X 공격 --
+ANCIENT_PPORU_ATTACK_X =
+{
+	ANIM_NAME		= "Attack_X",
+	ANIM_SPEED		= 1.05,
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+	
+	SUPER_ARMOR		= TRUE,
+	SUPER_ARMOR_NOT_RED	= TRUE,
+
+    SOUND_PLAY0	= { 0.001, "RidingPet_AncientPproru_AttackX.ogg", },
+
+	EFFECT_SET_LIST = { "EffectSet_Riding_Ancient_Pporu_AttackX_RE", 0.001, },
+	SKILL_CANCEL_AFTER	= 0.68,
+	WALK_CANCEL_AFTER	= 0.68,
+	DASH_CANCEL_AFTER	= 0.68,
+}
+----
+
+-- SPECIAL 공격 --
+ANCIENT_PPORU_ATTACK_SPECIAL =
+{
+	ANIM_NAME		= "Skill_C",
+	ANIM_SPEED		= 1.25,
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+	
+	SUPER_ARMOR		= TRUE,
+	SUPER_ARMOR_NOT_RED	= TRUE,
+
+	INVINCIBLE		= { 0, 100, },
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	EFFECT_SET_LIST = { "EffectSet_Riding_Ancient_Pporu_SpecialAttack", 0.439, },
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	DELETE_EFFECT_SET_ON_DIE = TRUE,
+	SKILL_CANCEL_AFTER	= 2.4,
+	WALK_CANCEL_AFTER	= 2.4,
+	DASH_CANCEL_AFTER	= 2.4,
+	NORMAL_CAMERA1_RATE			= 30,
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 1500,
+			HEIGHT			= 600,
+			ANGLEDEGREE		= 35,
+		},
+	},
+}
+----
+
+ANCIENT_PPORU_SIT_READY = 
+{
+	ANIM_NAME		= "SitDown",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+}
+
+ANCIENT_PPORU_SIT_WAIT = 
+{
+	ANIM_NAME		= "SitWait",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+}
+
+ANCIENT_PPORU_STAND_UP = 
+{
+	ANIM_NAME		= "StandUp",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+}
+
+ANCIENT_PPORU_ARIAL_DASH = 
+{
+	ANIM_NAME		= "Dash",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+	
+	PASSIVE_SPEED_X	= INIT_PHYSIC["RUN_SPEED"] * 1.5,
+	EFFECT_SET_LIST = { "EffectSet_Riding_ncient_Pporu_araial_dash", 0.0, },
+}

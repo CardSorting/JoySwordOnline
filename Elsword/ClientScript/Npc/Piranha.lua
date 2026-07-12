@@ -1,0 +1,1040 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 100.0,
+	UNIT_HEIGHT		= 300.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{	
+	},
+	
+	READY_SOUND = 
+	{	
+		"Piranha_AttackA_Ready.ogg",
+		"Piranha_AttackA.ogg",
+		"Piranha_Dying.ogg",
+	},
+
+	READY_XMESH = 
+	{
+	},
+	
+	READY_XSKIN_MESH = 
+	{
+	},
+	
+
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME	= "Motion_PIRANHA.x",	
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+		
+	WALK_SPEED			= 400,
+	RUN_SPEED			= 1000,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300,
+}
+
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 1500,
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	--SHADOW_SIZE			= 200,
+	--SHADOW_FILE_NAME	= "shadow.dds",
+	
+	--SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	--SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	--SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+		
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	
+	HEAD_BONE_NAME			= "COLLISION_SPHERE1",
+	
+	FALL_DOWN			= FALSE,
+	
+	SKY_DIE             = TRUE,		
+	DAMAGE_DOWN         = FALSE,		
+	DIE_FLY             = 0,
+}
+
+INIT_STATE = 
+{	
+	{ STATE_NAME = "PIRANHA_START",						     },
+	{ STATE_NAME = "PIRANHA_FLY_WAIT",						},
+	{ STATE_NAME = "PIRANHA_FLY_FRONT",						},
+	{ STATE_NAME = "PIRANHA_FLY_FRONT_UP",					},
+	{ STATE_NAME = "PIRANHA_FLY_FRONT_DOWN",					},
+	{ STATE_NAME = "PIRANHA_FLY_BACK",						},
+	{ STATE_NAME = "PIRANHA_FLY_BACK_UP",					},
+	{ STATE_NAME = "PIRANHA_FLY_BACK_DOWN",					},
+  { STATE_NAME = "PIRANHA_FLY_UP",					        },
+  { STATE_NAME = "PIRANHA_FLY_DOWN",					    },
+	  
+	{  STATE_NAME = "PIRANHA_ATTACKA_READY",				},
+	{  STATE_NAME = "PIRANHA_ATTACKB_READY",				},
+  { STATE_NAME = "PIRANHA_ATTACKA",				},
+  { STATE_NAME = "PIRANHA_ATTACKB",				},
+ 	{  STATE_NAME = "PIRANHA_ATTACK_END",				},
+	
+	--리액션 관련		
+	{ STATE_NAME = "PIRANHA_DAMAGE_FRONT",				},
+	{ STATE_NAME = "PIRANHA_DAMAGE_BACK",					},	
+	{ STATE_NAME = "PIRANHA_DAMAGEREVENGE",				},
+	{ STATE_NAME = "PIRANHA_DYING",					      LUA_STATE_START_FUNC = "PIRANHA_DYING_STATE_START", },
+	
+
+  START_STATE					= "PIRANHA_START",	
+	WAIT_STATE					= "PIRANHA_FLY_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "PIRANHA_DAMAGE_FRONT",
+	SMALL_DAMAGE_LAND_BACK		= "PIRANHA_DAMAGE_BACK",
+	--SMALL_DAMAGE_AIR			= "PIRANHA_DAMAGE_AIR",
+	SMALL_DAMAGE_AIR_FRONT		= "PIRANHA_DAMAGE_FRONT",
+	SMALL_DAMAGE_AIR_BACK		= "PIRANHA_DAMAGE_BACK",
+	
+	BIG_DAMAGE_LAND_FRONT		= "PIRANHA_DAMAGE_FRONT",
+	BIG_DAMAGE_LAND_BACK		= "PIRANHA_DAMAGE_BACK",
+	--BIG_DAMAGE_AIR			= "PIRANHA_DAMAGE_AIR",
+	BIG_DAMAGE_AIR_FRONT		= "PIRANHA_DAMAGE_FRONT",
+	BIG_DAMAGE_AIR_BACK			= "PIRANHA_DAMAGE_BACK",
+	
+	DOWN_DAMAGE_LAND_FRONT		= "PIRANHA_DAMAGE_FRONT",
+	DOWN_DAMAGE_LAND_BACK		= "PIRANHA_DAMAGE_BACK",
+	DOWN_DAMAGE_AIR				= "PIRANHA_DAMAGE_FRONT",
+	UP_DAMAGE					= "PIRANHA_DAMAGE_FRONT",
+	FLY_DAMAGE_FRONT			= "PIRANHA_DAMAGE_FRONT",
+	FLY_DAMAGE_BACK				= "PIRANHA_DAMAGE_BACK",
+	REVENGE_ATTACK				= "",
+	DAMAGE_FLUSH_LAND_FRONT		= "PIRANHA_DAMAGE_FRONT",
+	DAMAGE_FLUSH_LAND_BACK		= "PIRANHA_DAMAGE_BACK",
+	DAMAGE_FLUSH_AIR			= "PIRANHA_DAMAGE_FRONT",
+	DAMAGE_REVENGE				= "PIRANHA_DAMAGEREVENGE",
+	
+	DYING_LAND_FRONT			= "PIRANHA_DYING",
+	DYING_LAND_BACK				= "PIRANHA_DYING",
+	DYING_SKY					= "PIRANHA_DYING",		
+}
+
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_RANDOM"],
+		TARGET_INTERVAL				= 2,		-- sec
+		TARGET_NEAR_RANGE			= 300,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 600,		-- cm
+		TARGET_LOST_RANGE			= 800,		-- cm
+		TARGET_SUCCESS_RATE			= 10,		-- %
+		ATTACK_TARGET_RATE			= 10,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 10,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE = 
+	{		
+		DEST_GAP			= 550,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 400,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		MOVE_SPLIT_RANGE	= 400,
+		WALK_INTERVAL		= 1,
+		NEAR_WALK_RATE		= 70,   --  70,
+		FAR_WALK_RATE		= 30,   -- 30,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 100, --50,		
+		PATROL_RANGE			= 300,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	FLY_CHASE_MOVE = 
+	{
+	    DEST_HEIGHT_GAP     = 50,  -- 타겟과 유지할 높이
+	    DEST_LAND_GAP       = 350,  -- 지면상에서의 타겟과 거리기준
+	    DEST_AREA       = 100,  -- 타겟과의 지면거리를 기준으로 이 범위안에 있으면 도착했다고 판단
+	    
+	    FLY_MOVE_INTERVAL		= 2,
+	    UNDERWATER_MODE	= TRUE,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 1000,
+		ESCAPE_GAP			= 1500,	-- 이 거리 보다 멀면 도망 성공
+		
+		WALK_INTERVAL		= 1,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+	},
+	
+	ESCAPE_CONDITION = 
+	{
+		--RATE	= 0,
+		--MY_HP	= 0,
+	}	
+}
+
+PIRANHA_START = 
+{
+	ANIM_NAME					= "WaitHabit",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,		
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+    RIGHT                       = TRUE,		
+		
+    --FLY_AI                      = FALSE,
+    PASSIVE_SPEED_Y				= 0,
+    ENABLE_HEIGHT_FIX           = TRUE,
+    SHOW_NAME                   = TRUE,
+    
+    SPEED_X						= 1000,
+	SPEED_Y						= 0,		
+	NEVER_MOVE					= TRUE,
+    --ADD_POS_Y					= 400,
+    		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],		"PIRANHA_FLY_WAIT",							},
+		
+	},
+}
+
+
+
+
+PIRANHA_FLY_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+		
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,		
+	
+    VIEW_TARGET					= TRUE,
+    ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	PASSIVE_SPEED_Y				= 0,
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	EVENT_PROCESS = 
+	{	    
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],					    "PIRANHA_FLY_BACK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],					"PIRANHA_FLY_BACK_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],				"PIRANHA_FLY_BACK_DOWN",						},
+	    	 
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],				    "PIRANHA_FLY_UP",						        },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				    "PIRANHA_FLY_DOWN",						    },
+	    	    
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],				    "PIRANHA_FLY_FRONT",						    },		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],					"PIRANHA_FLY_FRONT_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],			    "PIRANHA_FLY_FRONT_DOWN",						},		
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PIRANHA_ATTACKA_READY",		      "CT_PIRANHA_ATTACKA",	},	
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PIRANHA_ATTACKA_READY",		      "CT_PIRANHA_ATTACKA2",	},    
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PIRANHA_ATTACKB_READY",		      "CT_PIRANHA_ATTACKB",	},    
+	},
+	
+	CT_PIRANHA_ATTACKA =
+	{
+	  EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 600,
+		RATE                    = 20,
+	},
+	-- CT_PIRANHA_ATTACKA =
+	CT_PIRANHA_ATTACKA2 =
+	{
+	  EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 400,
+		RATE                    = 30,
+	},
+	CT_PIRANHA_ATTACKB =
+	{
+    EVENT_INTERVAL_ID           = 0,
+    DISTANCE_TO_TARGET_NEAR	= 700,
+	  RATE                    = 50,
+	},	
+	
+}
+
+PIRANHA_FLY_FRONT = 
+{
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,		
+	
+	PASSIVE_SPEED_X				= 500,
+	PASSIVE_SPEED_Y				= 0,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		    
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],				    "PIRANHA_FLY_UP",						        },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				    "PIRANHA_FLY_DOWN",						    },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],					    "PIRANHA_FLY_BACK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],					"PIRANHA_FLY_BACK_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],				"PIRANHA_FLY_BACK_DOWN",						},
+	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PIRANHA_FLY_ATTACK_READY",		    "PIRANHA_ATTACKA_READY",	},	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PIRANHA_FLY_MAGIC_ATTACK_A",		    "PIRANHA_ATTACKB_READY",	},
+	    
+	    
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					        "PIRANHA_FLY_WAIT",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],					"PIRANHA_FLY_FRONT_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],				"PIRANHA_FLY_FRONT_DOWN",						},
+				
+	},
+	
+	PIRANHA_ATTACKA_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 600,
+		RATE                    = 20,
+	},
+	PIRANHA_ATTACKB_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+	    DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 30,
+	},
+}
+PIRANHA_FLY_FRONT_UP = 
+{
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,		
+	
+	PASSIVE_SPEED_X				= 400,
+	PASSIVE_SPEED_Y				= 2,
+
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{	
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],				    "PIRANHA_FLY_UP",						        },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				    "PIRANHA_FLY_DOWN",						    },
+	    { STATE_CHANGE_TYPE["SCT_AI_WAIT"],					        "PIRANHA_FLY_WAIT",							},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],					    "PIRANHA_FLY_BACK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],					"PIRANHA_FLY_BACK_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],				"PIRANHA_FLY_BACK_DOWN",						},	
+			
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PIRANHA_FLY_ATTACK_READY",		    "PIRANHA_ATTACKA_READY",	},	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PIRANHA_FLY_MAGIC_ATTACK_A",		    "PIRANHA_ATTACKB_READY",	},	    
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],					"PIRANHA_FLY_FRONT",						    },
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],				"PIRANHA_FLY_FRONT_DOWN",						},
+		
+		
+	},
+	
+	PIRANHA_ATTACKA_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 600,
+		RATE                    = 20,
+	},
+	PIRANHA_ATTACKB_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+	    DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 30,
+	},
+}
+PIRANHA_FLY_FRONT_DOWN = 
+{
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,		
+	
+	
+	PASSIVE_SPEED_X				= 400,
+	PASSIVE_SPEED_Y				= -2,
+
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],				    "PIRANHA_FLY_UP",						        },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				    "PIRANHA_FLY_DOWN",						    },
+	    { STATE_CHANGE_TYPE["SCT_AI_WAIT"],					        "PIRANHA_FLY_WAIT",							},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],					    "PIRANHA_FLY_BACK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],					"PIRANHA_FLY_BACK_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],				"PIRANHA_FLY_BACK_DOWN",						},
+	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PIRANHA_FLY_ATTACK_READY",		    "PIRANHA_ATTACKA_READY",	},	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PIRANHA_FLY_MAGIC_ATTACK_A",		    "PIRANHA_ATTACKB_READY",	},	    
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],				    "PIRANHA_FLY_FRONT",						    },		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],					"PIRANHA_FLY_FRONT_UP",						},			
+	},
+	
+	PIRANHA_ATTACKA_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 600,
+		RATE                    = 20,
+	},
+	PIRANHA_ATTACKB_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+	    DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 30,
+	},
+}
+
+PIRANHA_FLY_BACK = 
+{
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,		
+	
+
+	FLIP_DIR_END        = TRUE,
+	
+	SPEED_X				= 400,	-- 뒤로 빠지지 않고 전방 상단으로 날아감
+	SPEED_Y				= 500,
+	--PASSIVE_SPEED_X				= 500,
+	--PASSIVE_SPEED_Y				= 0,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],				    "PIRANHA_FLY_UP",						        },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				    "PIRANHA_FLY_DOWN",						    },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],					"PIRANHA_FLY_BACK_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],				"PIRANHA_FLY_BACK_DOWN",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					        "PIRANHA_FLY_WAIT",							},
+	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PIRANHA_FLY_ATTACK_READY",		    "PIRANHA_ATTACKA_READY",	},	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PIRANHA_FLY_MAGIC_ATTACK_A",		    "PIRANHA_ATTACKB_READY",	},	    
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],				    "PIRANHA_FLY_FRONT",						    },		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],					"PIRANHA_FLY_FRONT_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],			    "PIRANHA_FLY_FRONT_DOWN",						},				
+		
+		
+	},	
+	
+	PIRANHA_ATTACKA_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 600,
+		RATE                    = 20,
+	},
+	PIRANHA_ATTACKB_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+	    DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 30,
+	},
+}
+PIRANHA_FLY_BACK_UP = 
+{
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,		
+	
+		FLIP_DIR_END        = TRUE,
+		
+	SPEED_X				= 800,
+	--PASSIVE_SPEED_X				= 700,
+	PASSIVE_SPEED_Y				= 2,
+
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],				    "PIRANHA_FLY_UP",						        },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				    "PIRANHA_FLY_DOWN",						    },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],					    "PIRANHA_FLY_BACK",							},		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],				"PIRANHA_FLY_BACK_DOWN",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					        "PIRANHA_FLY_WAIT",							},			    
+		
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PIRANHA_FLY_ATTACK_READY",		    "PIRANHA_ATTACKA_READY",	},	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PIRANHA_FLY_MAGIC_ATTACK_A",		    "PIRANHA_ATTACKB_READY",	},	    
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],				    "PIRANHA_FLY_FRONT",						    },		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],					"PIRANHA_FLY_FRONT_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],			    "PIRANHA_FLY_FRONT_DOWN",						},		
+		
+	},	
+	
+	PIRANHA_ATTACKA_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 600,
+		RATE                    = 20,
+	},
+	PIRANHA_ATTACKB_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+	    DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 30,
+	},
+}
+PIRANHA_FLY_BACK_DOWN = 
+{
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,		
+	
+	FLIP_DIR_END        = TRUE,
+		
+	SPEED_X				= 800,
+	--PASSIVE_SPEED_X				= 700,
+	PASSIVE_SPEED_Y				= -2,
+
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],				    "PIRANHA_FLY_UP",						        },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				    "PIRANHA_FLY_DOWN",						    },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],					    "PIRANHA_FLY_BACK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],					"PIRANHA_FLY_BACK_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					        "PIRANHA_FLY_WAIT",							},
+		
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PIRANHA_FLY_ATTACK_READY",		    "PIRANHA_ATTACKA_READY",	},	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PIRANHA_FLY_MAGIC_ATTACK_A",		    "PIRANHA_ATTACKB_READY",	},	    
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],				    "PIRANHA_FLY_FRONT",						    },		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],					"PIRANHA_FLY_FRONT_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],			    "PIRANHA_FLY_FRONT_DOWN",						},		
+			
+	},	
+	
+	PIRANHA_ATTACKA_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 600,
+		RATE                    = 20,
+	},
+	PIRANHA_ATTACKB_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+	    DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 30,
+	},
+}
+
+
+PIRANHA_FLY_UP = 
+{
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+		
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,		
+
+    VIEW_TARGET					= TRUE,
+    ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	PASSIVE_SPEED_Y				= 3,
+		
+		
+	EVENT_PROCESS = 
+	{	    
+	    { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			        "PIRANHA_FLY_WAIT",		                    "CT_PIRANHA_FLY_WAIT",	},	    
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				        "PIRANHA_FLY_DOWN",						    },    	    	
+	    { STATE_CHANGE_TYPE["SCT_AI_WAIT"],					        "PIRANHA_FLY_WAIT",							},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],					    "PIRANHA_FLY_BACK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],					"PIRANHA_FLY_BACK_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],				"PIRANHA_FLY_BACK_DOWN",						},
+		
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PIRANHA_FLY_ATTACK_READY",		    "PIRANHA_ATTACKA_READY",	},	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PIRANHA_FLY_MAGIC_ATTACK_A",		    "PIRANHA_ATTACKB_READY",	},	    
+	    	    
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],				    "PIRANHA_FLY_FRONT",						    },		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],					"PIRANHA_FLY_FRONT_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],			    "PIRANHA_FLY_FRONT_DOWN",					},				
+	},
+	
+	CT_PIRANHA_FLY_WAIT =
+	{
+		STATE_TIME_OVER			= 4,
+	},
+	
+	
+	PIRANHA_ATTACKA_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 600,
+		RATE                    = 20,
+	},	
+	PIRANHA_ATTACKB_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+	    DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 30,
+	},
+	
+	
+}
+PIRANHA_FLY_DOWN = 
+{
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+		
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,		
+
+    VIEW_TARGET					= TRUE,
+    ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	PASSIVE_SPEED_Y				= -3,
+	
+	
+	EVENT_PROCESS = 
+	{		    
+	    { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			        "PIRANHA_FLY_WAIT",		                    "CT_PIRANHA_FLY_WAIT",	},	
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],				    "PIRANHA_FLY_UP",						        },	    	
+	    { STATE_CHANGE_TYPE["SCT_AI_WAIT"],					        "PIRANHA_FLY_WAIT",							},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],					    "PIRANHA_FLY_BACK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],					"PIRANHA_FLY_BACK_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],				"PIRANHA_FLY_BACK_DOWN",						},    	 
+		
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PIRANHA_FLY_ATTACK_READY",		    "PIRANHA_ATTACKA_READY",	},	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PIRANHA_FLY_MAGIC_ATTACK_A",		    "PIRANHA_ATTACKB_READY",	},	    
+	    	    
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],				    "PIRANHA_FLY_FRONT",						    },		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],					"PIRANHA_FLY_FRONT_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],			    "PIRANHA_FLY_FRONT_DOWN",						},		
+		
+	},
+	
+	CT_PIRANHA_FLY_WAIT =
+	{
+		STATE_TIME_OVER			= 4,
+	},
+	
+		
+	PIRANHA_ATTACKA_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 600,
+		RATE                    = 20,
+	},	
+	PIRANHA_ATTACKB_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+	    DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 30,
+	},	
+}
+
+PIRANHA_ATTACKA_READY =
+{
+	ANIM_NAME					= "AttackA_Ready",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,		
+		
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_Y				= 0,
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	--FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0 				= { 0.001, "Piranha_AttackA_Ready.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PIRANHA_ATTACKA", },
+	},	
+}
+
+PIRANHA_ATTACKB_READY =
+{
+	ANIM_NAME					= "AttackA_Ready",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,		
+		
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_Y				= 0,
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	--FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PIRANHA_ATTACKB", },
+	},
+	
+}
+
+PIRANHA_ATTACK_END =
+{
+	ANIM_NAME					= "AttackA_End",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,		
+		
+	SPEED_X						= 100,
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	--FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PIRANHA_FLY_WAIT", },
+	},	
+}
+
+PIRANHA_ATTACKA =
+{
+	ANIM_NAME					= "AttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,		
+	
+	ALLOW_DIR_CHANGE			= FALSE,
+		
+	SPEED_X						= 1400,
+	SPEED_Y						= 0,	
+	--PASSIVE_SPEED_X   			= 500,
+	PASSIVE_SPEED_Y				= 0,
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	ATTACK_TIME0				= { 0.01, 0.72, },
+
+	SOUND_PLAY0					= { 0.01, "Piranha_AttackA.ogg" },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH2"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 0.5,
+
+		},
+				
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PIRANHA_ATTACK_END", },
+	},
+	
+}
+
+PIRANHA_ATTACKB =
+{
+	ANIM_NAME					= "AttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,		
+	
+	ALLOW_DIR_CHANGE			= FALSE,
+		
+	SPEED_X						= 1600,
+	SPEED_Y						= 0,	
+	--PASSIVE_SPEED_X       		= 700,
+	PASSIVE_SPEED_Y				= 0,
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	ATTACK_TIME0				= { 0.01, 0.72, },
+	
+	SOUND_PLAY0					= { 0.01, "Piranha_AttackA.ogg" },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH2"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 0.8,
+
+		},
+		
+		
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PIRANHA_ATTACK_END", },
+	},
+	
+}
+
+PIRANHA_DAMAGEREVENGE =
+{
+	ANIM_NAME					= "DamageRevenge",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,		
+	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_Y				= 0,
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	--FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PIRANHA_FLY_WAIT", },
+	},
+	
+}
+
+PIRANHA_DAMAGE_FRONT = 
+{
+	ANIM_NAME					= "DamageFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,		
+	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_Y				= 0,
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	--FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PIRANHA_FLY_WAIT", },
+	},
+	
+}
+
+PIRANHA_DAMAGE_BACK = 
+{
+	ANIM_NAME					= "DamageBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,		
+	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_Y				= 0,
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	--FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"PIRANHA_FLY_WAIT", },
+	},
+	
+}
+
+PIRANHA_DYING = 
+{
+	ANIM_NAME					= "Dying",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= TRUE,
+
+	SOUND_PLAY0					= { 0.01, "Piranha_Dying.ogg" },
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	NOTUSE_LANDCONNECT  = TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,		
+    SOUND_PLAY0					= { 0.094, "Wyvern_DyingLanding.ogg" },
+
+	FLY_AI                      = FALSE,
+	
+	DYING_END					= TRUE,
+	DYING_SPEED					= 1,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+
+------------------------------------------------------------------------------------------------------------------
+
+
+function PIRANHA_DYING_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+
+	local pos = pNPCUnit:GetPos()
+	pos.y = pos.y + 100.0
+	local GetMinorParticle = pX2Game:GetMinorParticle()
+	
+	local pSeq = GetMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DieLight",		pos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+	if pSeq ~= nil then
+	
+		pSeq:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+		pNPCUnit:SetDieSeq( pSeq:GetHandle() )
+	
+	end
+	
+	local GetMajorParticle = pX2Game:GetMajorParticle()
+	GetMajorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DamageImpact",			pos, D3DXVECTOR2(100,200), D3DXVECTOR2(2,10) )
+	GetMajorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DamageImpactCore",		pos, D3DXVECTOR2(100,200), D3DXVECTOR2(2,10) )
+	GetMajorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DamageImpactRingRed",		pos, D3DXVECTOR2(100,200), D3DXVECTOR2(2,10) )
+	
+	pNPCUnit:PlaySound_LUA( "DieLight.ogg" )
+	
+end

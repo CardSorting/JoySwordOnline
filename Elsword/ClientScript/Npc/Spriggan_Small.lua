@@ -1,0 +1,1993 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 100.0,
+	UNIT_HEIGHT		= 80.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+		"Spriggan_Small_WaitStart.ogg",
+		"Spriggan_Small_AttackA1.ogg",
+		"Spriggan_Small_AttackA2.ogg",
+		"Spriggan_Small_AttackA3.ogg",
+		"Spriggan_Small_MagicAttackA1.ogg",
+		"Spriggan_Small_Dying.ogg",
+	},
+	
+	READY_XMESH = 
+	{	    
+	   
+	},
+	
+	READY_XSKIN_MESH = 
+	{	    
+	    "_Motion_Spriggan_Big.x", -- Spriggan_Big 모션 미리 로딩
+	},	
+	
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "_Motion_Spriggan_Small.x",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 400,
+	RUN_SPEED			= 600,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 1800,
+}
+
+
+INIT_COMPONENT = 
+{
+	IMMUNITY_TIME_STOP = TRUE,
+	MP_CHANGE_RATE		= 2,
+	MP_CHARGE_RATE		= 1200,
+
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	--MIND_FLAG_HEIGHT		= 80,
+	
+	HEAD_BONE_NAME		= "Bone19",
+
+	BOSS_GAGE_FACE_TEX		= "DLG_BossState.tga",
+	BOSS_GAGE_FACE_TEX_PIECE	= "SPRIGGAN",
+	BOSS_NAME_TEX			= "HQ_BOSS_NAME_SPRIGGAN.dds",	
+
+
+	RAGE_TIME_MAX	= 5,
+	RAGE_HP_PERCENT = 40,
+
+
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	
+	FALL_DOWN			= TRUE,
+	
+	DIE_FLY             = 0,
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "SPRIGGAN_SMALL_WAIT",						},
+	{ STATE_NAME = "SPRIGGAN_SMALL_START",						LUA_STATE_START_FUNC = "SPRIGGAN_SMALL_WAIT_START_STATE_START",
+																LUA_FRAME_MOVE_FUNC = "SPRIGGAN_SMALL_WAIT_START_FRAME_MOVE", },
+	
+	{ STATE_NAME = "SPRIGGAN_SMALL_WALK",						},
+	{ STATE_NAME = "SPRIGGAN_SMALL_DASH",						},
+
+	{ STATE_NAME = "SPRIGGAN_SMALL_ATTACK_A",					LUA_FRAME_MOVE_FUNC = "SPRIGGAN_SMALL_ATTACK_A_FRAME_MOVE", STATE_COOL_TIME	= 8,},
+	{ STATE_NAME = "SPRIGGAN_SMALL_ATTACK_A_ESCAPE",			LUA_FRAME_MOVE_FUNC = "SPRIGGAN_SMALL_ATTACK_A_FRAME_MOVE", STATE_COOL_TIME	= 10,},
+	{ STATE_NAME = "SPRIGGAN_SMALL_MAGIC_ATTACK_A",				LUA_STATE_START_FUNC = "SPRIGGAN_SMALL_MAGIC_ATTACK_A_STATE_START", STATE_COOL_TIME	= 4,},
+	{ STATE_NAME = "SPRIGGAN_SMALL_SPECIAL_ATTACK",				},
+	
+	{ STATE_NAME = "SPRIGGAN_SMALL_ATTACK_B_FRONT",				LUA_STATE_START_FUNC = "SPRIGGAN_SMALL_ATTACK_B_FRONT_STATE_START",
+																LUA_FRAME_MOVE_FUNC = "SPRIGGAN_SMALL_ATTACK_B_FRAME_MOVE", STATE_COOL_TIME	= 4,},
+	{ STATE_NAME = "SPRIGGAN_SMALL_ATTACK_B_BACK",				LUA_STATE_START_FUNC = "SPRIGGAN_SMALL_ATTACK_B_BACK_STATE_START",
+																LUA_FRAME_MOVE_FUNC = "SPRIGGAN_SMALL_ATTACK_B_FRAME_MOVE", STATE_COOL_TIME	= 4,},
+	
+	
+	
+	{ STATE_NAME = "SPRIGGAN_SMALL_JUMP_UP",					},
+	{ STATE_NAME = "SPRIGGAN_SMALL_JUMP_DOWN",					},
+	{ STATE_NAME = "SPRIGGAN_SMALL_JUMP_UP_DIR",				STATE_COOL_TIME	= 3,},
+	{ STATE_NAME = "SPRIGGAN_SMALL_JUMP_DOWN_DIR",				},
+	{ STATE_NAME = "SPRIGGAN_SMALL_DASH_JUMP_UP_DIR",			STATE_COOL_TIME	= 3,},
+	{ STATE_NAME = "SPRIGGAN_SMALL_DASH_JUMP_DOWN_DIR",			},	
+	{ STATE_NAME = "SPRIGGAN_SMALL_JUMP_LANDING",				},
+
+	{ STATE_NAME = "SPRIGGAN_SMALL_STAND_UP_FRONT",				},
+	{ STATE_NAME = "SPRIGGAN_SMALL_STAND_UP_BACK",				},
+	
+	{ STATE_NAME = "SPRIGGAN_SMALL_DAMAGE_FRONT",				},
+	{ STATE_NAME = "SPRIGGAN_SMALL_DAMAGE_BACK",				},
+	{ STATE_NAME = "SPRIGGAN_SMALL_DAMAGE_DOWN_FRONT",			},
+	{ STATE_NAME = "SPRIGGAN_SMALL_DAMAGE_DOWN_BACK",			},
+	{ STATE_NAME = "SPRIGGAN_SMALL_DAMAGE_FLY_FRONT",			},
+	{ STATE_NAME = "SPRIGGAN_SMALL_DAMAGE_FLY_BACK",			},
+	{ STATE_NAME = "SPRIGGAN_SMALL_DAMAGE_AIR",					},
+	{ STATE_NAME = "SPRIGGAN_SMALL_DAMAGE_AIR_DOWN",			},
+	{ STATE_NAME = "SPRIGGAN_SMALL_DAMAGE_AIR_UP",				},
+	{ STATE_NAME = "SPRIGGAN_SMALL_DAMAGE_AIR_FALL",			},
+	{ STATE_NAME = "SPRIGGAN_SMALL_DAMAGE_AIR_DOWN_LANDING",	},
+	{ STATE_NAME = "SPRIGGAN_SMALL_DAMAGE_REVENGE",				},
+	
+	{ STATE_NAME = "SPRIGGAN_SMALL_DYING_LAND_FRONT",			LUA_STATE_START_FUNC = "SPRIGGAN_SMALL_DYING_LAND_STATE_START"},
+	{ STATE_NAME = "SPRIGGAN_SMALL_DYING_LAND_BACK",			LUA_STATE_START_FUNC = "SPRIGGAN_SMALL_DYING_LAND_STATE_START"},
+	{ STATE_NAME = "SPRIGGAN_SMALL_DYING_SKY",					LUA_STATE_START_FUNC = "SPRIGGAN_SMALL_DYING_LAND_STATE_START"},
+	
+	START_STATE					= "SPRIGGAN_SMALL_START",
+	WAIT_STATE					= "SPRIGGAN_SMALL_WAIT",
+	RAGE_STATE					= "SPRIGGAN_SMALL_WAIT",
+
+	SMALL_DAMAGE_LAND_FRONT		= "SPRIGGAN_SMALL_DAMAGE_FRONT",
+	SMALL_DAMAGE_LAND_BACK		= "SPRIGGAN_SMALL_DAMAGE_BACK",
+	BIG_DAMAGE_LAND_FRONT		= "SPRIGGAN_SMALL_DAMAGE_FRONT",
+	BIG_DAMAGE_LAND_BACK		= "SPRIGGAN_SMALL_DAMAGE_BACK",
+	DOWN_DAMAGE_LAND_FRONT		= "SPRIGGAN_SMALL_DAMAGE_DOWN_FRONT",
+	DOWN_DAMAGE_LAND_BACK		= "SPRIGGAN_SMALL_DAMAGE_DOWN_BACK",
+	FLY_DAMAGE_FRONT			= "SPRIGGAN_SMALL_DAMAGE_FLY_FRONT",
+	FLY_DAMAGE_BACK				= "SPRIGGAN_SMALL_DAMAGE_FLY_BACK",
+	SMALL_DAMAGE_AIR			= "SPRIGGAN_SMALL_DAMAGE_AIR",	
+	BIG_DAMAGE_AIR				= "SPRIGGAN_SMALL_DAMAGE_AIR",
+	DOWN_DAMAGE_AIR				= "SPRIGGAN_SMALL_DAMAGE_AIR",
+	DOWN_DAMAGE_AIR_LANDING		= "SPRIGGAN_SMALL_DAMAGE_AIR_DOWN_LANDING",
+	UP_DAMAGE					= "SPRIGGAN_SMALL_DAMAGE_AIR_UP",
+	DAMAGE_REVENGE				= "SPRIGGAN_SMALL_DAMAGE_REVENGE",
+	
+	DAMAGE_EXTRA_STATES         = { "SPRIGGAN_SMALL_DAMAGE_AIR_DOWN","SPRIGGAN_SMALL_DAMAGE_AIR_FALL","SPRIGGAN_SMALL_STAND_UP_FRONT","SPRIGGAN_SMALL_STAND_UP_BACK",
+		"SPRIGGAN_SMALL_JUMP_DOWN","SPRIGGAN_SMALL_JUMP_LANDING",},	
+	
+	DYING_LAND_FRONT			= "SPRIGGAN_SMALL_DYING_LAND_FRONT",
+	DYING_LAND_BACK				= "SPRIGGAN_SMALL_DYING_LAND_BACK",
+	DYING_SKY					= "SPRIGGAN_SMALL_DYING_SKY",
+
+	REVENGE_ATTACK				= "",
+	COMMON_FRAME_FUNC           = "SPRIGGAN_SMALL_COMMON_FRAME_MOVE",
+}
+
+
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 2,		-- sec
+		TARGET_NEAR_RANGE			= 1000,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 10500,		-- cm
+		TARGET_LOST_RANGE			= 10800,		-- cm
+		TARGET_SUCCESS_RATE			= 100,  --50,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 30,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 100, -- 30,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+		
+	},
+
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 700,
+		DEST_GAP			= 105,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 108,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		WALK_INTERVAL		= 0.5,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 0,   -- 30,
+		
+		JUMP_INTERVAL		= 4,
+		UP_JUMP_RATE		= 0, -- 40,
+		UP_DOWN_RATE		= 0,
+		DOWN_JUMP_RATE		= 0,    --  20,
+		DOWN_DOWN_RATE		= 0,
+		
+		--LINE_END_RANGE		= 100,	-- cm
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 100, --50,		
+		PATROL_RANGE			= 200,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 500,	-- cm
+		ESCAPE_GAP			= 600,	-- 이 거리 보다 멀어지면 도망 성공
+		
+		WALK_INTERVAL		= 1.5,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 10,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+		
+		--LINE_END_RANGE		= 80,	-- cm
+	},
+
+}
+
+
+INIT_SUB_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 2,		-- sec
+		TARGET_NEAR_RANGE			= 1000,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 10500,		-- cm
+		TARGET_LOST_RANGE			= 10800,		-- cm
+		TARGET_SUCCESS_RATE			= 100,  --50,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 30,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 100, -- 30,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+	
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 600,
+		DEST_GAP			= 10500,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 10800,
+		
+		DIR_CHANGE_INTERVAL = 0.5,
+		
+		WALK_INTERVAL		= 3,
+		NEAR_WALK_RATE		= 40,   -- 70,
+		FAR_WALK_RATE		= 40,   -- 30,
+		
+		JUMP_INTERVAL		= 4,
+		UP_JUMP_RATE		= 0, -- 40,
+		UP_DOWN_RATE		= 0,
+		DOWN_JUMP_RATE		= 0,    --  20,
+		DOWN_DOWN_RATE		= 0,
+		
+		LINE_END_RANGE		= 80,	-- cm
+		
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 100, --50,		
+		PATROL_RANGE			= 200,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 500,	-- cm
+		ESCAPE_GAP			= 600,	-- 이 거리 보다 멀어지면 도망 성공
+		
+		WALK_INTERVAL		= 1.5,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 10,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+		
+		--LINE_END_RANGE		= 80,	-- cm
+	},
+}
+
+
+SPRIGGAN_SMALL_START = 
+{
+	ANIM_NAME					= "WaitStart",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,	
+	
+	SOUND_PLAY0					= { 2.0, "Spriggan_Small_WaitStart.ogg" },
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Spriggan_Small_Start", 0,	
+	},	
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SPRIGGAN_SMALL_WAIT",						},
+	},
+
+}
+
+SPRIGGAN_SMALL_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	VIEW_TARGET					= TRUE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	PASSIVE_SPEED_X				= 0,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	EVENT_INTERVAL_TIME0		= 0.5,
+	
+	EVENT_PROCESS = 
+	{		
+		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SPRIGGAN_SMALL_JUMP_DOWN",				},
+		
+		-- 스프리건 빅 HIDE 상태
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"SPRIGGAN_SMALL_JUMP_UP_DIR",			"CF_SPRIGGAN_SMALL_JUMP_UP_DIR"			},		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"SPRIGGAN_SMALL_ATTACK_A",				"CF_SPRIGGAN_SMALL_ATTACK_A"			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"SPRIGGAN_SMALL_MAGIC_ATTACK_A",		"CF_SPRIGGAN_SMALL_MAGIC_ATTACK_A"		},
+
+		-- 스프리건 빅 WAIT 상태
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"SPRIGGAN_SMALL_SPECIAL_ATTACK",		"CF_SPRIGGAN_SMALL_SPECIAL_ATTACK"		},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"SPRIGGAN_SMALL_ATTACK_B_FRONT",		"CF_SPRIGGAN_SMALL_ATTACK_B_FRONT"		},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"SPRIGGAN_SMALL_ATTACK_B_BACK",			"CF_SPRIGGAN_SMALL_ATTACK_B_BACK"		},
+				
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"SPRIGGAN_SMALL_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"SPRIGGAN_SMALL_DASH",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"SPRIGGAN_SMALL_JUMP_UP",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"SPRIGGAN_SMALL_JUMP_UP_DIR",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"SPRIGGAN_SMALL_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"SPRIGGAN_SMALL_JUMP_DOWN_DIR",			},
+	},
+}
+
+
+
+SPRIGGAN_SMALL_WALK = 
+{
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 0.3,
+	
+	EVENT_PROCESS = 
+	{		
+		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SPRIGGAN_SMALL_JUMP_DOWN_DIR",			},
+				
+		-- 스프리건 빅 HIDE 상태
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"SPRIGGAN_SMALL_JUMP_UP_DIR",			"CF_SPRIGGAN_SMALL_JUMP_UP_DIR"			},		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"SPRIGGAN_SMALL_ATTACK_A",				"CF_SPRIGGAN_SMALL_ATTACK_A"			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"SPRIGGAN_SMALL_MAGIC_ATTACK_A",		"CF_SPRIGGAN_SMALL_MAGIC_ATTACK_A"		},
+
+		-- 스프리건 빅 WAIT 상태
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"SPRIGGAN_SMALL_SPECIAL_ATTACK",		"CF_SPRIGGAN_SMALL_SPECIAL_ATTACK"		},
+		
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"SPRIGGAN_SMALL_WAIT",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"SPRIGGAN_SMALL_DASH",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"SPRIGGAN_SMALL_JUMP_UP",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"SPRIGGAN_SMALL_JUMP_UP_DIR",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"SPRIGGAN_SMALL_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"SPRIGGAN_SMALL_JUMP_DOWN_DIR",			},
+	},
+}
+
+
+SPRIGGAN_SMALL_DASH = 
+{
+	ANIM_NAME					= "Dash",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["RUN_SPEED"],
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 0.2,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SPRIGGAN_SMALL_JUMP_DOWN_DIR",			},
+		
+		-- 스프리건 빅 HIDE 상태
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"SPRIGGAN_SMALL_DASH_JUMP_UP_DIR",		"CF_SPRIGGAN_SMALL_JUMP_UP_DIR"			},		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"SPRIGGAN_SMALL_ATTACK_A",				"CF_SPRIGGAN_SMALL_ATTACK_A"			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"SPRIGGAN_SMALL_MAGIC_ATTACK_A",		"CF_SPRIGGAN_SMALL_MAGIC_ATTACK_A"		},
+
+		-- 스프리건 빅 WAIT 상태
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"SPRIGGAN_SMALL_SPECIAL_ATTACK",		"CF_SPRIGGAN_SMALL_SPECIAL_ATTACK"		},
+		
+		
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"SPRIGGAN_SMALL_WAIT",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"SPRIGGAN_SMALL_WALK",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"SPRIGGAN_SMALL_JUMP_UP",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"SPRIGGAN_SMALL_JUMP_UP_DIR",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"SPRIGGAN_SMALL_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"SPRIGGAN_SMALL_JUMP_DOWN_DIR",			},
+	},
+}
+
+
+SPRIGGAN_SMALL_JUMP_UP = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	
+	ADD_POS_Y					= 45, 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"SPRIGGAN_SMALL_JUMP_DOWN",			},
+	},
+	
+}
+
+SPRIGGAN_SMALL_JUMP_DOWN = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"SPRIGGAN_SMALL_JUMP_LANDING",				},
+	},
+}
+
+SPRIGGAN_SMALL_JUMP_UP_DIR = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	
+	ADD_POS_Y					= 45, 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"SPRIGGAN_SMALL_JUMP_DOWN_DIR",				},
+	},
+	
+}
+
+SPRIGGAN_SMALL_DASH_JUMP_UP_DIR = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	PASSIVE_SPEED_X				= INIT_PHYSIC["RUN_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	
+	ADD_POS_Y					= 45, 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"SPRIGGAN_SMALL_DASH_JUMP_DOWN_DIR",				},
+	},
+	
+}
+
+
+SPRIGGAN_SMALL_DASH_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["RUN_SPEED"],
+	 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"SPRIGGAN_SMALL_JUMP_LANDING",				},
+	},
+}
+
+SPRIGGAN_SMALL_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"SPRIGGAN_SMALL_JUMP_LANDING",				},
+	},
+}
+
+
+SPRIGGAN_SMALL_JUMP_LANDING = 
+{
+	ANIM_NAME					= "JumpDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SPRIGGAN_SMALL_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SPRIGGAN_SMALL_WAIT",						},
+	},
+}
+
+
+SPRIGGAN_SMALL_ATTACK_A = 
+{
+	ANIM_NAME					= "AttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Spriggan_Small_Attack_A", 0,	
+	},
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SPRIGGAN_SMALL_JUMP_DOWN",										},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SPRIGGAN_SMALL_WAIT",												},	
+	},
+	
+	ATTACK_TIME0				= { 0.58, 0.66, },
+	ATTACK_TIME1				= { 1.08, 1.16, },
+	ATTACK_TIME2				= { 1.34, 1.48, },	
+	
+	SOUND_PLAY0					= { 0.5, "Spriggan_Small_AttackA1.ogg" },
+	SOUND_PLAY1					= { 1.0, "Spriggan_Small_AttackA2.ogg" },	
+	SOUND_PLAY2					= { 1.37, "Spriggan_Small_AttackA3.ogg" },
+	
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1,
+		},
+		
+		BACK_SPEED_X			= 750,
+		BACK_SPEED_Y			= 0.0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+	
+	DAMAGE_DATA_NEXT = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1,
+		},
+		
+		BACK_SPEED_X			= 600,
+		BACK_SPEED_Y			= 0.0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+		
+	
+	DAMAGE_DATA_LAST = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1,
+		},
+		
+		BACK_SPEED_X			= 1200,
+		BACK_SPEED_Y			= 0.0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+}
+
+
+SPRIGGAN_SMALL_ATTACK_A_ESCAPE = 
+{
+	ANIM_NAME					= "AttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+
+	SOUND_PLAY0					= { 0.5, "Spriggan_Small_AttackA1.ogg" },
+	SOUND_PLAY1					= { 1.0, "Spriggan_Small_AttackA2.ogg" },	
+	SOUND_PLAY2					= { 1.37, "Spriggan_Small_AttackA3.ogg" },
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Spriggan_Small_Attack_A", 0,	
+	},
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SPRIGGAN_SMALL_JUMP_DOWN",										},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SPRIGGAN_SMALL_WAIT",												},	
+	},
+	
+	ATTACK_TIME0				= { 0.58, 0.66, },
+	ATTACK_TIME1				= { 1.08, 1.16, },
+	ATTACK_TIME2				= { 1.34, 1.48, },	
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1,
+		},
+		
+		BACK_SPEED_X			= 750,
+		BACK_SPEED_Y			= 0.0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+	
+	DAMAGE_DATA_NEXT = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1,
+		},
+		
+		BACK_SPEED_X			= 600,
+		BACK_SPEED_Y			= 0.0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+		
+	
+	DAMAGE_DATA_LAST = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1,
+		},
+		
+		BACK_SPEED_X			= 1200,
+		BACK_SPEED_Y			= 0.0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+}
+
+
+SPRIGGAN_SMALL_ATTACK_B_FRONT = 
+{
+	ANIM_NAME					= "AttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SUPER_ARMOR					= FALSE,
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+
+	
+	VIEW_TARGET					= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SPRIGGAN_SMALL_JUMP_DOWN",										},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SPRIGGAN_SMALL_WAIT",			"CT_SPRIGGAN_SMALL_WAIT",		},	
+	},
+	
+	CT_SPRIGGAN_SMALL_WAIT = 
+	{
+		ANIM_EVENT_TIMER			= 1.25,
+		RATE						= 100,
+	},
+	
+	ATTACK_TIME0				= { 0.58, 0.66, },
+	ATTACK_TIME1				= { 1.08, 1.16, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1,
+		},
+		
+		BACK_SPEED_X			= 750,
+		BACK_SPEED_Y			= 0.0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+	
+	DAMAGE_DATA_NEXT = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1,
+		},
+		
+		BACK_SPEED_X			= 600,
+		BACK_SPEED_Y			= 0.0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+}
+
+
+
+SPRIGGAN_SMALL_ATTACK_B_BACK = 
+{
+	ANIM_NAME					= "AttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SUPER_ARMOR					= FALSE,
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+
+	
+	VIEW_TARGET					= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SPRIGGAN_SMALL_JUMP_DOWN",										},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SPRIGGAN_SMALL_WAIT",			"CT_SPRIGGAN_SMALL_WAIT",		},	
+	},
+	
+	CT_SPRIGGAN_SMALL_WAIT = 
+	{
+		ANIM_EVENT_TIMER			= 1.25,
+		RATE						= 100,
+	},
+	
+	ATTACK_TIME0				= { 0.58, 0.66, },
+	ATTACK_TIME1				= { 1.08, 1.16, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1,
+		},
+		
+		BACK_SPEED_X			= 750,
+		BACK_SPEED_Y			= 0.0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+	
+	DAMAGE_DATA_NEXT = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1,
+		},
+		
+		BACK_SPEED_X			= 600,
+		BACK_SPEED_Y			= 0.0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+}
+
+
+
+
+SPRIGGAN_SMALL_MAGIC_ATTACK_A = 
+{
+	ANIM_NAME					= "MagicAttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+
+	SOUND_PLAY0					= { 0.42, "Spriggan_Small_MagicAttackA1.ogg" },
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SPRIGGAN_SMALL_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SPRIGGAN_SMALL_WAIT",					},	
+
+	},
+}
+
+
+SPRIGGAN_SMALL_SPECIAL_ATTACK = 
+{
+	ANIM_NAME					= "SpecialAttack_All",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+
+
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SPRIGGAN_SMALL_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SPRIGGAN_SMALL_WAIT",					},	
+
+	},
+}
+
+
+SPRIGGAN_SMALL_DAMAGE_REVENGE = 
+{
+	ANIM_NAME					= "DamageRevenge",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"SPRIGGAN_SMALL_WAIT",												},
+	},
+}
+
+
+SPRIGGAN_SMALL_DAMAGE_FRONT = 
+{
+	ANIM_NAME					= "Damage",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	
+	EVENT_INTERVAL_TIME0		= 0.3,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"SPRIGGAN_SMALL_ATTACK_A_ESCAPE",			"CT_SPRIGGAN_SMALL_ATTACK_A_ESCAPE",			},	
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SPRIGGAN_SMALL_WAIT",												},
+	},
+	
+	CT_SPRIGGAN_SMALL_ATTACK_A_ESCAPE =
+	{
+	    EVENT_INTERVAL_ID			= 0,
+		RATE	                    = 5,
+	},
+
+}
+
+SPRIGGAN_SMALL_DAMAGE_BACK = 
+{
+	ANIM_NAME					= "Damage",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	EVENT_INTERVAL_TIME0		= 0.3,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"SPRIGGAN_SMALL_ATTACK_A_ESCAPE",			"CT_SPRIGGAN_SMALL_ATTACK_A_ESCAPE",			},	
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SPRIGGAN_SMALL_WAIT",												},
+	},
+	
+	CT_SPRIGGAN_SMALL_ATTACK_A_ESCAPE =
+	{
+	    EVENT_INTERVAL_ID			= 0,
+		RATE	                    = 5,
+	},
+}
+
+
+
+
+
+SPRIGGAN_SMALL_DAMAGE_DOWN_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"SPRIGGAN_SMALL_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"SPRIGGAN_SMALL_STAND_UP_FRONT",			},
+	},
+	
+}
+
+SPRIGGAN_SMALL_DAMAGE_DOWN_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"SPRIGGAN_SMALL_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"SPRIGGAN_SMALL_STAND_UP_BACK",			},
+	},
+	
+}
+
+SPRIGGAN_SMALL_DAMAGE_FLY_FRONT = 
+{
+	ANIM_NAME					= "DamageAirFlyFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,	
+	
+	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"SPRIGGAN_SMALL_DAMAGE_AIR_DOWN_LANDING",		},
+	},
+}
+
+SPRIGGAN_SMALL_DAMAGE_FLY_BACK = 
+{
+	ANIM_NAME					= "DamageAirFlyBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"SPRIGGAN_SMALL_DAMAGE_DOWN_BACK",		},
+	},
+}
+
+SPRIGGAN_SMALL_DAMAGE_AIR = 
+{
+	ANIM_NAME					= "DamageAir",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"SPRIGGAN_SMALL_WAIT",					},
+	},
+	
+	VIEW_TARGET					= TRUE,
+	ALLOW_DIR_CHANGE			= TRUE,
+
+	
+	
+	ATTACK_TIME0				= { 0.15, 0.24, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+		
+		
+		CAMERA_CRASH_GAP		= 10.0,	
+		CAMERA_CRASH_TIME		= 0.2,	
+		
+		BACK_SPEED_X		= 1500,
+		BACK_SPEED_Y		= -1000,
+		
+	},
+	
+}
+
+SPRIGGAN_SMALL_DAMAGE_AIR_DOWN = 
+{
+	ANIM_NAME					= "DamageAirDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"SPRIGGAN_SMALL_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+SPRIGGAN_SMALL_DAMAGE_AIR_UP = 
+{
+	ANIM_NAME					= "DamageAirUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"SPRIGGAN_SMALL_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"SPRIGGAN_SMALL_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+SPRIGGAN_SMALL_DAMAGE_AIR_FALL = 
+{
+	ANIM_NAME					= "DamageAirDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_POSITIVE_Y_SPEED"],		"SPRIGGAN_SMALL_DAMAGE_AIR_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"SPRIGGAN_SMALL_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+SPRIGGAN_SMALL_DAMAGE_AIR_DOWN_LANDING = 
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SPRIGGAN_SMALL_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SPRIGGAN_SMALL_STAND_UP_FRONT",			},
+	},
+	
+}
+
+SPRIGGAN_SMALL_STAND_UP_FRONT = 
+{
+	ANIM_NAME					= "DamageStandUpFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SPRIGGAN_SMALL_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SPRIGGAN_SMALL_WAIT",				},
+	},
+}
+
+SPRIGGAN_SMALL_STAND_UP_BACK = 
+{
+	ANIM_NAME					= "DamageStandUpBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SPRIGGAN_SMALL_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SPRIGGAN_SMALL_WAIT", },
+	},		
+}
+
+
+
+SPRIGGAN_SMALL_DYING_LAND_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+
+	SOUND_PLAY0					= { 0.1, "Spriggan_Small_Dying.ogg" },
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+	
+SPRIGGAN_SMALL_DYING_LAND_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	SOUND_PLAY0					= { 0.1, "Spriggan_Small_Dying.ogg" },
+	
+	DYING_END					= TRUE,	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+SPRIGGAN_SMALL_DYING_SKY = 
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	SOUND_PLAY0					= { 0.1, "Spriggan_Small_Dying.ogg" },
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+
+
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+
+function SPRIGGAN_SMALL_DYING_LAND_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pos = pNPCUnit:GetPos()
+	pos.y = pos.y + 100.0
+	local GetMinorParticle = pX2Game:GetMinorParticle()
+	
+	local pSeq = GetMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DieLight",		pos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+	if pSeq ~= nil then
+	
+		pSeq:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+		pNPCUnit:SetDieSeq( pSeq:GetHandle() )
+	
+	end
+	pNPCUnit:PlaySound_LUA( "DieLight.ogg" )	
+end
+
+
+
+function SPRIGGAN_SMALL_WAIT_START_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	local UserUnitNum = pX2Game:GetUserUnitNum_LUA()
+	local LightBallCoolTime = 0
+	
+	if UserUnitNum == 1 then
+		LightBallCoolTime = 20
+	elseif UserUnitNum == 2 then
+		LightBallCoolTime = 18
+	elseif UserUnitNum == 3 then
+		LightBallCoolTime = 16
+	elseif UserUnitNum == 4 then
+		LightBallCoolTime = 14
+	else
+		LightBallCoolTime = 20
+	end
+	
+	pNPCUnit:SetInt_LUA(2, LightBallCoolTime)
+
+	pNPCUnit:SetIsRight(true)
+end
+
+function SPRIGGAN_SMALL_WAIT_START_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )    
+    
+    
+    if pX2Game:IsHost() == false then
+		return
+	end
+    
+    
+    if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+		pNPCUnit:SetTimerRestart(0)
+		local iKeyCode = pNPCUnit:GetKeyCode()
+		if iKeyCode == 1 then
+			local vfDelayTimeNKeyCode = D3DXVECTOR3( 0.01, 3, 0 )
+			pX2Game:CreateNPCReq_LUA2( NPC_UNIT_ID["NUI_SPRIGGAN_BIG"], pNPCUnit:GetHardLevel(), false, pNPCUnit:GetPos(), true, vfDelayTimeNKeyCode, true )
+		elseif iKeyCode == 2 then
+			local vfDelayTimeNKeyCode = D3DXVECTOR3( 0.01, 4, 0 )
+			pX2Game:CreateNPCReq_LUA2( NPC_UNIT_ID["NUI_SPRIGGAN_BIG"], pNPCUnit:GetHardLevel(), false, pNPCUnit:GetPos(), true, vfDelayTimeNKeyCode, true )
+		else
+			pX2Game:CreateNPCReq_LUA( NPC_UNIT_ID["NUI_SPRIGGAN_BIG"], pNPCUnit:GetHardLevel(), false, pNPCUnit:GetPos(), true, 0.01, true  )
+		end
+	end
+    
+    
+    if pNPCUnit:AnimEventTimer_LUA( 2.2 ) then
+		local iKeyCode = pNPCUnit:GetKeyCode()
+		local pUnit = nil
+		if iKeyCode == 1 then
+			pUnit = pX2Game:GetKeyCodeNPC(3)
+		elseif iKeyCode == 2 then
+			pUnit = pX2Game:GetKeyCodeNPC(4)
+		else
+			pUnit = pNPCUnit:GetConsultNpc( NPC_UNIT_ID["NUI_SPRIGGAN_BIG"] )
+		end
+		if pUnit ~= nil then
+			pUnit:StateChange_LUA("SPRIGGAN_BIG_WAIT", true)
+			pUnit:SetAIEnable(false)
+			pUnit:SetIsRight(true)
+		end
+	end
+	
+    if pNPCUnit:AnimEventTimer_LUA( 3.70 ) then
+		local iKeyCode = pNPCUnit:GetKeyCode()
+		local pUnit = nil
+		if iKeyCode == 1 then
+			pUnit = pX2Game:GetKeyCodeNPC(3)
+		elseif iKeyCode == 2 then
+			pUnit = pX2Game:GetKeyCodeNPC(4)
+		else
+			pUnit = pNPCUnit:GetConsultNpc( NPC_UNIT_ID["NUI_SPRIGGAN_BIG"] )
+		end
+		if pUnit ~= nil then
+			pUnit:SetAIEnable(true)
+			pUnit:SetIsRight(true)   
+			pUnit:StateChange_LUA("SPRIGGAN_BIG_HIDE", true)
+			
+		end
+	end	
+	
+end
+
+
+function SPRIGGAN_SMALL_MAGIC_ATTACK_A_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	pX2Game:CreateNPCReq_LUA( NPC_UNIT_ID["NUI_SPRIGGAN_ENTANGLE"], pNPCUnit:GetHardLevel(), false, pNPCUnit:GetPos(), false, 0.01, true  )
+end
+
+function SPRIGGAN_SMALL_ATTACK_B_BACK_STATE_START( pKTDXApp, pX2Game, pNPCUnit )    
+    local bRight = pNPCUnit:GetIsRight()   
+    if bRight == true then
+		pNPCUnit:SetIsRight(false)
+    else
+		pNPCUnit:SetIsRight(true)
+    end
+end
+
+function SPRIGGAN_SMALL_ATTACK_B_FRONT_STATE_START( pKTDXApp, pX2Game, pNPCUnit )    
+
+end
+
+
+function SPRIGGAN_SMALL_ATTACK_A_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	
+	if pNPCUnit:AnimEventTimer_LUA( 0.78 ) then
+		pNPCUnit:ClearHitUnitList_LUA()
+		pNPCUnit:SetDamageData_LUA( "DAMAGE_DATA_NEXT" )
+	end
+
+	if pNPCUnit:AnimEventTimer_LUA( 1.22 ) then
+		pNPCUnit:ClearHitUnitList_LUA()
+		pNPCUnit:SetDamageData_LUA( "DAMAGE_DATA_LAST" )
+	end
+
+end
+
+function SPRIGGAN_SMALL_ATTACK_B_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	
+	if pNPCUnit:AnimEventTimer_LUA( 0.78 ) then
+		pNPCUnit:ClearHitUnitList_LUA()
+		pNPCUnit:SetDamageData_LUA( "DAMAGE_DATA_NEXT" )
+	end
+end
+
+
+function SUMMON_LIGHT_BALL( pX2Game, pNPCUnit )
+	local NumLightBall = pNPCUnit:GetInt_LUA(1)
+	
+	if NumLightBall >= 5 then
+		return
+	end
+	
+	local NumAvailPosition = 7 - NumLightBall
+	local RandPositionOffset = pNPCUnit:GetRandVal() % NumAvailPosition
+	local ResultPosition = -1
+	
+	k = 0
+	for i = 1, 7 do
+		local bAlive = pNPCUnit:GetFlag_LUA(i)
+		
+		if bAlive == false then
+			if RandPositionOffset == k then
+				pNPCUnit:SetFlag_LUA(i, true)
+				ResultPosition = i
+				break
+			end
+			k = k + 1
+		end
+	end
+
+	if ResultPosition == -1 then
+		return
+	end
+
+	local StartPosition = ResultPosition * 2
+	local vPos = pX2Game:GetLineMap():GetStartPosition( StartPosition )
+	
+	local iKeyCode = pNPCUnit:GetKeyCode()
+	if iKeyCode == 1 then
+		ResultPosition = ResultPosition + 10
+	elseif iKeyCode == 2 then
+		ResultPosition = ResultPosition + 20
+	end
+	
+	local vfDelayTimeNKeyCode = D3DXVECTOR3( 0.01, ResultPosition, 0 )
+	pX2Game:CreateNPCReq_LUA2( NPC_UNIT_ID["NUI_SPRIGGAN_LIGHT_BALL"], pNPCUnit:GetHardLevel(), false, vPos, false, vfDelayTimeNKeyCode, true )
+
+	NumLightBall = NumLightBall + 1
+	pNPCUnit:SetInt_LUA(1, NumLightBall)
+end		
+
+
+
+
+function SPRIGGAN_SMALL_COMMON_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+    
+    if pNPCUnit:GetNowStateID() == pNPCUnit:GetStartState() then
+		return
+    end
+	
+    
+    if pNPCUnit:GetTimerElapsedTime( 0 ) > pNPCUnit:GetInt_LUA(2) then
+		pNPCUnit:SetTimerRestart( 0 )
+		
+		SUMMON_LIGHT_BALL(pX2Game, pNPCUnit)
+	end	
+    
+	local iKeyCode = pNPCUnit:GetKeyCode()
+	local pUnit = nil
+	if iKeyCode == 1 then
+		pUnit = pX2Game:GetKeyCodeNPC(3)
+	elseif iKeyCode == 2 then
+		pUnit = pX2Game:GetKeyCodeNPC(4)
+	else
+		pUnit = pNPCUnit:GetConsultNpc( NPC_UNIT_ID["NUI_SPRIGGAN_BIG"] )
+	end
+    
+    if pUnit ~= nil then        
+    
+        if pUnit:GetNowHP() <= 0 then
+            return
+        end
+    
+        local bRight = pUnit:GetIsRight()            		        
+        local vPos = pNPCUnit:GetPos()
+		
+         
+        pUnit:SetPositionForce( vPos , bRight)
+        pUnit:SetNowHP_LUA( pNPCUnit:GetNowHP() )
+        pUnit:SetNowMP( pNPCUnit:GetNowMP() )
+
+
+		if pX2Game:IsHost() == false then
+			return
+		end
+
+		
+		local pUID = pX2Game:GetNearNPCUnitUID_LUA(pNPCUnit:GetPos(), NPC_UNIT_ID["NUI_SPRIGGAN_LIGHT_BALL"], 99999 )
+
+		if pUID ~= 0 then
+			local pLightBallUnit = pX2Game:GetNPCUnitByUID(pUID)
+			if pLightBallUnit ~= nil then
+			
+				--if pLightBallUnit:GetFlag_LUA(0) == true then -- 라이트 볼이 완전히 생성
+			
+					local LightBallPos = pLightBallUnit:GetPos()
+					LightBallPos.y = LightBallPos.y + 400
+				
+					local distance = pX2Game:GetDist_LUA(pNPCUnit:GetPos(), LightBallPos)
+					
+					if ShouldSprigganHide(pLightBallUnit, distance, pNPCUnit, pX2Game) == true then
+						local NowStateID = pUnit:GetNowStateID()
+						if NowStateID ~= 7 then									-- SPRIGGAN_BIG_HIDE
+							pUnit:StateChange_LUA("SPRIGGAN_BIG_HIDE", true)
+							pNPCUnit:SetRideToUnit_LUA(pLightBallUnit)
+							pNPCUnit:SetAItoMainAIData_LUA()
+							pNPCUnit:SetInt_LUA(0, pUID)						
+						end
+						
+						if pUID ~= pNPCUnit:GetInt_LUA(0) then					-- 타겟이 변경된 경우
+							pNPCUnit:SetRideToUnit_LUA(pLightBallUnit)
+							pNPCUnit:SetAItoMainAIData_LUA()
+							pNPCUnit:SetInt_LUA(0, pUID)
+						end
+						
+					else
+						local NowStateID = pUnit:GetNowStateID()
+						if NowStateID == 7 then									-- SPRIGGAN_BIG_HIDE
+							pUnit:StateChange_LUA("SPRIGGAN_BIG_WAIT", true)
+						end
+						
+						NowStateID = pNPCUnit:GetNowStateID()
+						if NowStateID == 6 then									-- SPRIGGAN_BIG_WAIT
+							--pNPCUnit:StopRideToUnit_LUA()				-- 난이도
+							pNPCUnit:SetAItoSubAIData_LUA()
+						end
+					end
+				
+				
+				--end
+				
+			end
+		else
+			local NowStateID = pUnit:GetNowStateID()
+			if NowStateID ~= 7 then											-- SPRIGGAN_BIG_HIDE
+				pUnit:StateChange_LUA("SPRIGGAN_BIG_HIDE", true)
+			end
+			
+			pUser = pNPCUnit:GetTargetUser()	-- 빛의 구슬이 존재하지 않는 상황에서 유저와 대치
+			if pUser ~= nil then
+				pNPCUnit:SetAItoMainAIData_LUA()
+			end
+		end
+    end            
+    
+end
+
+-- 스프리건 빅 HIDE 상태
+function CF_SPRIGGAN_SMALL_JUMP_UP_DIR( pKTDXApp, pX2Game, pNPCUnit )
+	if IsSprigganBigHideState(pNPCUnit, pX2Game) == false then
+		return false
+	end	
+	
+	pUser = pNPCUnit:GetTargetUser()
+	if pUser ~= nil then
+		return false
+	end
+	
+	
+	local bEnemyFront = false
+	local bIsRight = pNPCUnit:GetIsRight()
+	local TargetPos = pX2Game:GetNearestUserUnitPos_LUA( pNPCUnit:GetPos(), 0, 999999 )
+
+	local distance = pX2Game:GetDist_LUA(pNPCUnit:GetPos(), TargetPos)
+
+	if distance < 150 then
+		return true
+	end
+
+	if pNPCUnit:IsRightTarget_LUA(pNPCUnit, TargetPos) == true then
+		if bIsRight == true then
+			bEnemyFront = true
+		else
+			bEnemyFront = false
+		end
+	else
+		if bIsRight == true then
+			bEnemyFront = false
+		else
+			bEnemyFront = true
+		end
+	end
+
+	if bEnemyFront == false then
+		return false
+	end
+	
+	if distance > 350 then
+		return false
+	end
+	
+	local Rate = pNPCUnit:GetRandVal() % 100
+	
+	if Rate > 80 then
+		return false
+	end  
+	
+	return true
+end
+
+function CF_SPRIGGAN_SMALL_ATTACK_A( pKTDXApp, pX2Game, pNPCUnit )
+	if IsSprigganBigHideState(pNPCUnit, pX2Game) == false then
+		return false
+	end	
+--[[	
+	local pUser = pNPCUnit:GetTargetUser()
+	if pUser ~= nil then
+		return false
+	end
+--]]	
+	local bEnemyFront = false
+	local bIsRight = pNPCUnit:GetIsRight()
+	local TargetPos = pX2Game:GetNearestUserUnitPos_LUA( pNPCUnit:GetPos(), 0, 999999 )
+
+	if pNPCUnit:IsRightTarget_LUA(pNPCUnit, TargetPos) == true then
+		if bIsRight == true then
+			bEnemyFront = true
+		else
+			bEnemyFront = false
+		end
+	else
+		if bIsRight == true then
+			bEnemyFront = false
+		else
+			bEnemyFront = true
+		end
+	end
+
+	if bEnemyFront == false then
+		return false
+	end
+	
+	local distance = pX2Game:GetDist_LUA(pNPCUnit:GetPos(), TargetPos)
+	
+	if distance > 300 then
+		return false
+	end
+	
+	local Rate = pNPCUnit:GetRandVal() % 100
+	
+	if Rate > 70 then
+		return false
+	end
+	
+	return true
+end
+
+function CF_SPRIGGAN_SMALL_MAGIC_ATTACK_A( pKTDXApp, pX2Game, pNPCUnit )
+	if IsSprigganBigHideState(pNPCUnit, pX2Game) == false then
+		return false
+	end
+--[[	
+	pUser = pNPCUnit:GetTargetUser()
+	if pUser ~= nil then
+		return false
+	end
+--]]	
+	local bEnemyFront = false
+	local bIsRight = pNPCUnit:GetIsRight()
+	local TargetPos = pX2Game:GetNearestUserUnitPos_LUA( pNPCUnit:GetPos(), 0, 999999 )
+
+	if pNPCUnit:IsRightTarget_LUA(pNPCUnit, TargetPos) == true then
+		if bIsRight == true then
+			bEnemyFront = true
+		else
+			bEnemyFront = false
+		end
+	else
+		if bIsRight == true then
+			bEnemyFront = false
+		else
+			bEnemyFront = true
+		end
+	end
+
+	if bEnemyFront == true then
+		return false
+	end
+	
+	local distance = pX2Game:GetDist_LUA(pNPCUnit:GetPos(), TargetPos)
+	
+	if distance > 1500 then
+		return false
+	end
+	
+	if distance < 300 then
+		return false
+	end
+	
+	
+	local Rate = pNPCUnit:GetRandVal() % 100
+	
+	if Rate > 80 then
+		return false
+	end
+	
+	return true
+end
+
+
+-- 스프리건 빅 WAIT 상태
+function CF_SPRIGGAN_SMALL_SPECIAL_ATTACK( pKTDXApp, pX2Game, pNPCUnit )
+	if IsSprigganBigHideState(pNPCUnit, pX2Game) == true then
+		return false
+	end
+	return false
+end
+	
+
+function CF_SPRIGGAN_SMALL_ATTACK_B_FRONT( pKTDXApp, pX2Game, pNPCUnit )
+	if IsSprigganBigHideState(pNPCUnit, pX2Game) == true then
+		return false
+	end	
+	--[[
+	pUser = pNPCUnit:GetTargetUser()
+	if pUser ~= nil then
+		return false
+	end
+	--]]
+	local bEnemyFront = false
+	local bIsRight = pNPCUnit:GetIsRight()
+	local TargetPos = pX2Game:GetNearestUserUnitPos_LUA( pNPCUnit:GetPos(), 0, 999999 )
+
+	if pNPCUnit:IsRightTarget_LUA(pNPCUnit, TargetPos) == true then
+		if bIsRight == true then
+			bEnemyFront = true
+		else
+			bEnemyFront = false
+		end
+	else
+		if bIsRight == true then
+			bEnemyFront = false
+		else
+			bEnemyFront = true
+		end
+	end
+
+	if bEnemyFront == false then
+		return false
+	end
+	
+	local distance = pX2Game:GetDist_LUA(pNPCUnit:GetPos(), TargetPos)
+	
+	if distance > 300 then
+		return false
+	end
+	
+	local Rate = pNPCUnit:GetRandVal() % 100
+	
+	if Rate > 80 then
+		return false
+	end
+	
+	return true
+end
+	
+
+
+function CF_SPRIGGAN_SMALL_ATTACK_B_BACK( pKTDXApp, pX2Game, pNPCUnit )
+	if IsSprigganBigHideState(pNPCUnit, pX2Game) == true then
+		return false
+	end	
+	--[[
+	pUser = pNPCUnit:GetTargetUser()
+	if pUser ~= nil then
+		return false
+	end
+	--]]
+	local bEnemyFront = false
+	local bIsRight = pNPCUnit:GetIsRight()
+	local TargetPos = pX2Game:GetNearestUserUnitPos_LUA( pNPCUnit:GetPos(), 0, 999999 )
+
+	if pNPCUnit:IsRightTarget_LUA(pNPCUnit, TargetPos) == true then
+		if bIsRight == true then
+			bEnemyFront = true
+		else
+			bEnemyFront = false
+		end
+	else
+		if bIsRight == true then
+			bEnemyFront = false
+		else
+			bEnemyFront = true
+		end
+	end
+
+	if bEnemyFront == true then
+		return false
+	end
+	
+	local distance = pX2Game:GetDist_LUA(pNPCUnit:GetPos(), TargetPos)
+	
+	if distance > 300 then
+		return false
+	end
+	
+	local Rate = pNPCUnit:GetRandVal() % 100
+	
+	if Rate > 80 then
+		return false
+	end
+	
+	return true
+end
+
+	
+	
+
+
+------------------------------------------------------------------------------
+
+function ShouldSprigganHide(pLightBallUnit, dist, pNPCUnit, pX2Game)
+
+	if pLightBallUnit:GetNowHP_LUA() <= 0 then
+		return true
+	end
+
+	if pLightBallUnit:GetFlag_LUA(0) == false then -- 라이트 볼이 완전히 생성 안됨
+		return true
+	end
+
+	
+	if IsSprigganBigHideState(pNPCUnit, pX2Game) == true then
+		if dist > 640 then
+			return true
+		end
+	else
+		if dist > 645 then
+			return true
+		end
+	end
+	
+	return false
+end
+
+function IsSprigganBigHideState(pNPCUnit, pX2Game)
+	
+	local iKeyCode = pNPCUnit:GetKeyCode()
+	local pUnit = nil
+	if iKeyCode == 1 then
+		pUnit = pX2Game:GetKeyCodeNPC(3)
+	elseif iKeyCode == 2 then
+		pUnit = pX2Game:GetKeyCodeNPC(4)
+	else
+		pUnit = pNPCUnit:GetConsultNpc( NPC_UNIT_ID["NUI_SPRIGGAN_BIG"] )
+	end
+  
+    if pUnit ~= nil then
+        NowStateID = pUnit:GetNowStateID()
+
+		if NowStateID == 7 then
+			return true
+		end
+    end
+	return false
+	
+end
+
+function MovePos( pos, dirvector, dist )
+	
+	pos.x = pos.x + dist * dirvector.x
+	pos.y = pos.y + dist * dirvector.y
+	pos.z = pos.z + dist * dirvector.z
+	
+	return pos
+	
+end
+
+
+
+
+

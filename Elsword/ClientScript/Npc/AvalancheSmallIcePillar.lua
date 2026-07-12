@@ -1,0 +1,324 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+--[[ KjTiger / 2011/05/18 / 아발란쉬 기술 얼음 기둥 /
+	 Attack( 소환되면서 공격 )
+--]]
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH	= 200.0,
+	UNIT_HEIGHT	= 205.0,
+	UNIT_LAYER	= X2_LAYER["XL_UNIT_0"],
+	UNIT_SCALE	= 0.8,
+}
+------------------------------------------------------------------------------
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+		"Hamel_Resiam_Stage_Boss_Crystal.tga",
+	},
+	
+	READY_SOUND = 
+	{
+	},
+}
+------------------------------------------------------------------------------
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME	= "AV_MaC_SmallIceTower.x",
+}
+------------------------------------------------------------------------------
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL	= 2000,
+	G_ACCEL			= 4000,
+	MAX_G_SPEED		= -2000,
+	
+	WALK_SPEED	= 0,
+	RUN_SPEED	= 0,
+	JUMP_SPEED	= 0,
+	DASH_JUMP_SPEED		= 0,
+}
+------------------------------------------------------------------------------
+INIT_COMPONENT = 
+{
+	MAX_HP			= 9225,
+	
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	--SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	--SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	--SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	--HYPER_MODE_COUNT	= 0,
+	--MAX_HYPER_MODE_TIME	= 30,
+	
+	HEAD_BONE_NAME		= "Dummy01",
+		
+	SHOW_ON_MINIMAP		= FALSE,
+	
+	DIE_FLY				= FALSE,
+}
+------------------------------------------------------------------------------
+INIT_STATE = 
+{
+	{ STATE_NAME = "AVALANCHE_SMALL_ICE_PILLAR_WAIT",		},
+	{ STATE_NAME = "AVALANCHE_SMALL_ICE_PILLAR_WAIT_START",	},
+	{ STATE_NAME = "AVALANCHE_SMALL_ICE_PILLAR_OMEN",			},
+	{ STATE_NAME = "AVALANCHE_SMALL_ICE_PILLAR_DAMAGE",		},
+	{ STATE_NAME = "AVALANCHE_SMALL_ICE_PILLAR_DYING",		},
+	
+	START_STATE	= "AVALANCHE_SMALL_ICE_PILLAR_OMEN",
+	WAIT_STATE	= "AVALANCHE_SMALL_ICE_PILLAR_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT	= "AVALANCHE_SMALL_ICE_PILLAR_DAMAGE",
+	SMALL_DAMAGE_LAND_BACK	= "AVALANCHE_SMALL_ICE_PILLAR_DAMAGE",
+	BIG_DAMAGE_LAND_FRONT	= "AVALANCHE_SMALL_ICE_PILLAR_DAMAGE",
+	BIG_DAMAGE_LAND_BACK	= "AVALANCHE_SMALL_ICE_PILLAR_DAMAGE",
+	DOWN_DAMAGE_LAND_FRONT	= "AVALANCHE_SMALL_ICE_PILLAR_DAMAGE",
+	DOWN_DAMAGE_LAND_BACK	= "AVALANCHE_SMALL_ICE_PILLAR_DAMAGE",
+	FLY_DAMAGE_FRONT		= "AVALANCHE_SMALL_ICE_PILLAR_DAMAGE",
+	FLY_DAMAGE_BACK			= "AVALANCHE_SMALL_ICE_PILLAR_DAMAGE",
+	SMALL_DAMAGE_AIR		= "AVALANCHE_SMALL_ICE_PILLAR_DAMAGE",
+	BIG_DAMAGE_AIR			= "AVALANCHE_SMALL_ICE_PILLAR_DAMAGE",
+	DOWN_DAMAGE_AIR			= "AVALANCHE_SMALL_ICE_PILLAR_DAMAGE",
+	UP_DAMAGE				= "AVALANCHE_SMALL_ICE_PILLAR_DAMAGE",
+	DAMAGE_REVENGE			= "AVALANCHE_SMALL_ICE_PILLAR_DAMAGE",
+	
+	DYING_LAND_FRONT	= "AVALANCHE_SMALL_ICE_PILLAR_DYING",
+	DYING_LAND_BACK		= "AVALANCHE_SMALL_ICE_PILLAR_DYING",
+	DYING_SKY			= "AVALANCHE_SMALL_ICE_PILLAR_DYING",
+
+	REVENGE_ATTACK		= "AVALANCHE_SMALL_ICE_PILLAR_DAMAGE",
+}
+------------------------------------------------------------------------------
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_NEAR_FIRST"],
+		TARGET_INTERVAL				= 3,		-- sec
+		TARGET_NEAR_RANGE			= 300,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 10500,	-- cm
+		TARGET_LOST_RANGE			= 10800,	-- cm
+		TARGET_SUCCESS_RATE			= 100,  	-- 100,		-- %
+		ATTACK_TARGET_RATE			= 0,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 0,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+}
+------------------------------------------------------------------------------
+AVALANCHE_SMALL_ICE_PILLAR_WAIT = 
+{
+	ANIM_NAME	= "Wait",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= FALSE,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= FALSE,	
+
+	SUPER_ARMOR		= TRUE,
+	SUPER_ARMOR_NOT_RED	= TRUE,
+	
+	SPEED_X	= 0,
+	SPEED_Y	= 0,
+	
+	--IMMADIATE_PACKET_SEND	= TRUE,
+	NEVER_MOVE				= TRUE,
+	ALLOW_DIR_CHANGE		= FALSE,
+	VIEW_TARGET				= FALSE,
+	EVENT_INTERVAL_TIME0	= 2,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],	"AVALANCHE_SMALL_ICE_PILLAR_DYING",	"CT_AVALANCHE_SMALL_ICE_PILLAR_DYING",	},
+	},
+	
+	CT_AVALANCHE_SMALL_ICE_PILLAR_DYING = 
+	{
+		EVENT_INTERVAL_ID	= 0,
+		STATE_TIME_OVER		= 6.0,
+	},
+}
+------------------------------------------------------------------------------
+AVALANCHE_SMALL_ICE_PILLAR_OMEN = 
+{
+	ANIM_NAME	= "Ready",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= FALSE,
+		
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Avalanche_Pillar_Omen_Small", 0,
+	},
+			
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"AVALANCHE_SMALL_ICE_PILLAR_WAIT_START",	},
+	},
+}
+------------------------------------------------------------------------------
+AVALANCHE_SMALL_ICE_PILLAR_WAIT_START = 
+{
+	ANIM_NAME	= "WaitStart",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= FALSE,
+	
+	SUPER_ARMOR		= TRUE,
+	SUPER_ARMOR_NOT_RED	= TRUE,
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= FALSE,
+
+    SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	
+	PARTICLE_SEQ =
+	{
+		--Major, time, Name, weaponBonePos, Pos, StateEndDelete, bTrace, posx, posy, posz, bApplyUnitRotation, rotx, roty, rotz,
+		{ TRUE,	0.1,	"Pa_AVALANCHE_MaC_Small_Smoke",	FALSE,	"Dummy01",	TRUE,	FALSE,	0,	0,	0,	TRUE, },
+		{ TRUE,	0.0,	"Pa_AVALANCHE_MaC_Small_ShockWave",	FALSE,	"Dummy01",	TRUE,	FALSE,	0,	0,	0,	TRUE, },
+		{ TRUE,	0.0,	"Pa_AVALANCHE_MaC_Small_Smoke",	FALSE,	"Dummy01",	TRUE,	FALSE,	0,	0,	0,	TRUE, },
+	},
+		
+	ATTACK_TIME0				= { 0.2, 0.6 },
+
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE	= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE	= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE	= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC	= 1.0,
+		},
+		
+		BUFF_FACTOR =
+		{
+			BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_COLD"],
+			RATE	=
+			{
+				1,
+			},
+			IGNORE_REGIST_FOR_RATE = TRUE,
+
+			BEHAVIOR =
+			{
+				COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_CHANGE_ANIM_SPEED"], },
+				
+				BBT_CHANGE_NOW_HP_PER_SECOND =
+				{
+					BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+					BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+
+					MULTIPLIER =
+					{
+						-0.15,
+					},
+				},
+				BBT_CHANGE_ANIM_SPEED =
+				{
+					BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_PERCENT"],
+					BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+
+					PERCENT =
+					{
+						0.85,
+					},
+				},
+			},
+		
+			FINALIZER =
+			{
+				COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+			
+				BFT_TIME =
+				{
+					BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+					NORMAL_TIME =
+					{
+						2,
+					},
+				},
+			},
+		},
+		
+		BACK_SPEED_X			= 400.0,
+		BACK_SPEED_Y			= 0.0,
+				
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"AVALANCHE_SMALL_ICE_PILLAR_WAIT",	},
+	},
+}
+------------------------------------------------------------------------------
+AVALANCHE_SMALL_ICE_PILLAR_DAMAGE =
+{
+	ANIM_NAME	= "Wait",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	SUPER_ARMOR		= TRUE,
+	SUPER_ARMOR_NOT_RED	= TRUE,
+
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= FALSE,
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+	NEVER_MOVE				= TRUE,
+	ALLOW_DIR_CHANGE		= FALSE,
+	VIEW_TARGET				= FALSE,
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"AVALANCHE_SMALL_ICE_PILLAR_WAIT",	},
+	},
+}
+------------------------------------------------------------------------------
+AVALANCHE_SMALL_ICE_PILLAR_DYING =
+{
+	ANIM_NAME	= "Wait",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	SUPER_ARMOR		= TRUE,
+	SUPER_ARMOR_NOT_RED	= TRUE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= TRUE,
+
+	DYING_END	= TRUE,
+	NEVER_MOVE	= TRUE,
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+}
+------------------------------------------------------------------------------

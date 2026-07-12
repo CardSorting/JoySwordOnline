@@ -1,0 +1,175 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+-- El_Forest_Extra_Cave_Stage4.lua
+
+
+g_pWorld:SetLightPos( 50000.0, 50000.0, -100000.0 )
+g_pWorld:SetLineMap( "El_Forest_Extra_Cave_Stage4_LineMap.lua" )
+g_pWorld:SetBGM( "Music010_Stage.ogg" )
+g_pWorld:AddEffectBGM_LUA( "Amb_Elder_Cave.ogg" )
+g_pWorld:AddEffectBGM_LUA( "Amb_Elder_Cave_Bat.ogg" )
+--g_pWorld:AddEffectBGM_LUA( "Amb_Elder_Cave_WaterFall.ogg" )
+g_pWorld:AddEffectBGM_LUA( "Amb_Elder_Cave_WaterDrop.ogg" )
+
+
+
+
+
+
+-- SKY / CLOUD -- 
+g_pSkyDome = g_pWorld:CreateSkyDome()
+g_pSkyDome:SetLayer( X2_LAYER["XL_SKY_DOME_0"] )
+g_pSkyDome:SetDomeMesh( "El_Forest_Extra_Cave_STAGE4_SKY.Y" )
+g_pSkyDome:SetPos( 0, 0, 0 )
+g_pSkyDome:SetRotationSpeed( 0 )
+g_pSkyDome:SetViewTrace( false )
+g_pSkyDome:SetAlphaObject( false )
+g_pRenderParam = g_pSkyDome:GetRenderParam()
+
+
+-- STATIC MESH -- 
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "El_Forest_Extra_Cave_Stage4_Cave1.Y" )
+g_pObjectMesh:SetXMeshLOD( "El_Forest_Extra_Cave_Stage4_Cave1.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( true, false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "El_Forest_Extra_Cave_Stage4_Cave2.Y" )
+g_pObjectMesh:SetXMeshLOD( "El_Forest_Extra_Cave_Stage4_Cave2.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( true, false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "El_Forest_Extra_Cave_Stage4_Cave3.Y" )
+g_pObjectMesh:SetXMeshLOD( "El_Forest_Extra_Cave_Stage4_Cave3.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( true, false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "El_Forest_Extra_Cave_Stage4_Cave4.Y" )
+g_pObjectMesh:SetXMeshLOD( "El_Forest_Extra_Cave_Stage4_Cave4.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( true, false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "El_Forest_Extra_Cave_Stage4_Cave5.Y" )
+g_pObjectMesh:SetXMeshLOD( "El_Forest_Extra_Cave_Stage4_Cave5.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( true, false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "El_Forest_Extra_Cave_Stage4_Crystal1.Y" )
+g_pObjectMesh:SetXMeshLOD( "El_Forest_Extra_Cave_Stage4_Crystal1.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_2"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( true, false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "El_Forest_Extra_Cave_Stage4_Crystal2.Y" )
+g_pObjectMesh:SetXMeshLOD( "El_Forest_Extra_Cave_Stage4_Crystal2.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_2"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( true, false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "El_Forest_Extra_Cave_Stage4_Crystal3.Y" )
+g_pObjectMesh:SetXMeshLOD( "El_Forest_Extra_Cave_Stage4_Crystal3.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_2"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( true, false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "El_Forest_Extra_Cave_Stage4_Fog1.Y" )
+g_pObjectMesh:SetXMeshLOD( "El_Forest_Extra_Cave_Stage4_Fog1.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( true, false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "El_Forest_Extra_Cave_Stage4_Fog2.Y" )
+g_pObjectMesh:SetXMeshLOD( "El_Forest_Extra_Cave_Stage4_Fog2.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( true, false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "El_Forest_Extra_Cave_Stage4_Fog3.Y" )
+g_pObjectMesh:SetXMeshLOD( "El_Forest_Extra_Cave_Stage4_Fog3.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( true, false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+g_pObjectMesh:SetAlphaObject( true )
+g_pRenderParam.bAlphaBlend = true
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "El_Forest_Extra_Cave_Stage4_Ground1.Y" )
+g_pObjectMesh:SetXMeshLOD( "El_Forest_Extra_Cave_Stage4_Ground1.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( true, false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+
+
+g_pObjectMesh = g_pWorld:CreateObjectMesh()
+g_pObjectMesh:SetXMesh(    "El_Forest_Extra_Cave_Stage4_Ground2.Y" )
+g_pObjectMesh:SetXMeshLOD( "El_Forest_Extra_Cave_Stage4_Ground2.Y" )
+g_pObjectMesh:SetLayer( X2_LAYER["XL_SKY_WORLD_BASE_0"] )
+g_pObjectMesh:SetPos( D3DXVECTOR3(0, 0, 0) )
+g_pObjectMesh:SetColorFactor( D3DXCOLOR(1,1,1,1) )
+g_pObjectMesh:SetCanHide( true, false )
+g_pRenderParam = g_pObjectMesh:GetRenderParam()
+
+
+-- SKIN MESH -- 
+
+

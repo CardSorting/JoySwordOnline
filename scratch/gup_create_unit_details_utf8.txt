@@ -1,0 +1,33 @@
+Match: -엘소드
+
+	IF @iUnitClass_ = 1
+
+	BEGIN at position 5004
+Match: -아이샤
+
+	IF @iUnitClass_ = 2
+
+	BEGIN at position 6461
+Match: --레나
+
+	IF @iUnitClass_ = 3
+
+	BEGIN at position 7898
+Match: -레이븐
+
+	IF @iUnitClass_ = 4
+
+	BEGIN at position 9328
+Match: --이브
+
+	IF @iUnitClass_ = 5
+
+	BEGIN at position 10769
+Match: ---청
+
+	IF @iUnitClass_ = 6
+
+	BEGIN at position 12208
+Match: --아라
+
+	IF @iUnitClass_ = 7 -- 장비 빠져있 at position 13653

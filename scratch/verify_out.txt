@@ -1,0 +1,59 @@
+[
+  [
+    {
+      "": [
+        0,
+        "10069"
+      ]
+    }
+  ],
+  [
+    {
+      "": [
+        0,
+        "10070"
+      ]
+    }
+  ],
+  [
+    {
+      "": [
+        0,
+        "10071"
+      ]
+    }
+  ],
+  [
+    {
+      "BaseElapsedMs": 1050
+    }
+  ],
+  [
+    {
+      "": [
+        0,
+        "10072"
+      ]
+    }
+  ],
+  [
+    {
+      "PenaltyElapsedMs": 3010
+    }
+  ],
+  [
+    {
+      "name": "RegistrationHistory",
+      "is_memory_optimized": true,
+      "durability_desc": "SCHEMA_AND_DATA"
+    }
+  ],
+  [
+    {
+      "name": "mup_check_and_record_rate_limit",
+      "uses_native_compilation": true
+    }
+  ]
+]
+
+Python Wrapper Elapsed Time: 4.74 seconds

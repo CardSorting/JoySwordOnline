@@ -1,0 +1,1465 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 50.0,
+	UNIT_HEIGHT		= 150.0,	
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	UNIT_SCALE		= 2.0,
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+		"fireball.ogg",
+		"PunchAttack3.ogg",
+		"flame.ogg",
+		"Ent_DownLand.ogg",
+		"Ent_JumpLand.ogg",
+		"Ent_Voice1.ogg",
+		"Ent_Walk.ogg",
+		"Ent_SpikeBoard.ogg",
+		"Cactus_King_StandUp.ogg",
+		
+	},
+	
+	READY_XSKIN_MESH = 
+	{
+		"FireBall01_GhostMagician.X",
+		"CACTUS_AttackRisingTree.X",
+		"Ent_AttackRisingTree.X",
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_Cactus.x",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 750,
+	RUN_SPEED			= 750,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300,
+}
+
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 7000,
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	
+	USE_SLASH_TRACE		= FALSE,
+	--FORCE_DOWN_GAGE_MAX	= 300,
+	
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	
+	----MIND_FLAG_HEIGHT		= 550.0,
+	
+	--RAGE_COUNT_MAX		= 20,
+	--RAGE_TIME_MAX		= 5,
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	
+	FALL_DOWN			= TRUE,
+	DEFENCE_RATE		= 25,
+		
+
+	
+
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "CACTUS_KING_START",						LUA_CAMERA_MOVE_FUNC = "CACTUS_KING_START_CAMERA_MOVE",					},
+	{ STATE_NAME = "CACTUS_KING_WIN",						},
+	{ STATE_NAME = "CACTUS_KING_WAIT",						},
+	{ STATE_NAME = "CACTUS_KING_WAIT2",						LUA_FRAME_MOVE_FUNC = "CACTUS_KING_WAIT2_FRAME_MOVE"					},
+	{ STATE_NAME = "CACTUS_KING_WAIT3",						LUA_FRAME_MOVE_FUNC = "CACTUS_KING_WAIT3_FRAME_MOVE"					},
+	{ STATE_NAME = "CACTUS_KING_WALK",						LUA_STATE_END_FUNC = "CACTUS_KING_WALK_STATE_END"						},
+	{ STATE_NAME = "CACTUS_KING_JUMP_UP",					},
+	{ STATE_NAME = "CACTUS_KING_JUMP_DOWN",					LUA_STATE_END_FUNC = "CACTUS_KING_JUMP_DOWN_STATE_END" },
+	{ STATE_NAME = "CACTUS_KING_JUMP_UP_DIR",				},
+	{ STATE_NAME = "CACTUS_KING_JUMP_DOWN_DIR",				LUA_STATE_END_FUNC = "CACTUS_KING_JUMP_DOWN_DIR_STATE_END" },
+	{ STATE_NAME = "CACTUS_KING_JUMP_LANDING",				},
+	
+	{ STATE_NAME = "CACTUS_KING_ATTACK",						LUA_FRAME_MOVE_FUNC = "CACTUS_KING_ATTACK_FRAME_MOVE" },
+	{ STATE_NAME = "CACTUS_KING_ATTACK_RISING_TREE",			LUA_FRAME_MOVE_FUNC = "CACTUS_KING_ATTACK_RISING_TREE_FRAME_MOVE", STATE_COOL_TIME = 4, },
+	
+	{ STATE_NAME = "CACTUS_KING_DEFENCE",					STATE_COOL_TIME = 4, },
+
+	
+	--리액션 관련
+	{ STATE_NAME = "CACTUS_KING_DAMAGE_SMALL",				LUA_FRAME_MOVE_FUNC = "CACTUS_KING_DAMAGE_SMALL_FRAME_MOVE"			},
+	{ STATE_NAME = "CACTUS_KING_DAMAGE_BIG",				LUA_FRAME_MOVE_FUNC = "CACTUS_KING_DAMAGE_BIG_FRAME_MOVE"				},
+	{ STATE_NAME = "CACTUS_KING_DAMAGE_DOWN_FRONT",			LUA_FRAME_MOVE_FUNC = "CACTUS_KING_DAMAGE_DOWN_FRONT_FRAME_MOVE"		},
+	{ STATE_NAME = "CACTUS_KING_DAMAGE_DOWN_BACK",			LUA_FRAME_MOVE_FUNC = "CACTUS_KING_DAMAGE_DOWN_BACK_FRAME_MOVE"		},
+	{ STATE_NAME = "CACTUS_KING_DAMAGE_FLY_FRONT",			},
+	{ STATE_NAME = "CACTUS_KING_DAMAGE_FLY_BACK",			},
+	{ STATE_NAME = "CACTUS_KING_DAMAGE_AIR",				},
+	{ STATE_NAME = "CACTUS_KING_DAMAGE_AIR_DOWN",			},
+	{ STATE_NAME = "CACTUS_KING_DAMAGE_AIR_UP",				},
+	{ STATE_NAME = "CACTUS_KING_DAMAGE_AIR_FALL",			},	
+	{ STATE_NAME = "CACTUS_KING_DAMAGE_AIR_DOWN_LANDING",	LUA_FRAME_MOVE_FUNC = "CACTUS_KING_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE"	},
+	{ STATE_NAME = "CACTUS_KING_STAND_UP_FRONT",			},
+	{ STATE_NAME = "CACTUS_KING_STAND_UP_BACK",				},
+	{ STATE_NAME = "CACTUS_KING_STAND_UP_ATTACK_FRONT",		LUA_FRAME_MOVE_FUNC = "CACTUS_KING_STAND_UP_ATTACK_FRONT_FRAME_MOVE"	},
+	{ STATE_NAME = "CACTUS_KING_STAND_UP_ATTACK_BACK",		LUA_FRAME_MOVE_FUNC = "CACTUS_KING_STAND_UP_ATTACK_BACK_FRAME_MOVE"	},
+	{ STATE_NAME = "CACTUS_KING_DAMAGE_REVENGE",			},
+	
+	{ STATE_NAME = "CACTUS_KING_DYING_LAND_FRONT",			LUA_STATE_START_FUNC = "CACTUS_KING_DYING_LAND_STATE_START", },
+	{ STATE_NAME = "CACTUS_KING_DYING_LAND_BACK",			LUA_STATE_START_FUNC = "CACTUS_KING_DYING_LAND_STATE_START", },
+	{ STATE_NAME = "CACTUS_KING_DYING_SKY",					LUA_STATE_START_FUNC = "CACTUS_KING_DYING_LAND_STATE_START", },
+	
+	START_STATE					= "CACTUS_KING_START",
+	WAIT_STATE					= "CACTUS_KING_WAIT",
+	DEFENCE_STATE				= "CACTUS_KING_DEFENCE",
+	
+	
+	SMALL_DAMAGE_LAND_FRONT		= "CACTUS_KING_DAMAGE_SMALL",
+	SMALL_DAMAGE_LAND_BACK		= "CACTUS_KING_DAMAGE_SMALL",
+	BIG_DAMAGE_LAND_FRONT		= "CACTUS_KING_DAMAGE_BIG",
+	BIG_DAMAGE_LAND_BACK		= "CACTUS_KING_DAMAGE_BIG",
+	DOWN_DAMAGE_LAND_FRONT		= "CACTUS_KING_DAMAGE_DOWN_FRONT",
+	DOWN_DAMAGE_LAND_BACK		= "CACTUS_KING_DAMAGE_DOWN_BACK",
+	FLY_DAMAGE_FRONT			= "CACTUS_KING_DAMAGE_FLY_FRONT",
+	FLY_DAMAGE_BACK				= "CACTUS_KING_DAMAGE_FLY_BACK",
+	SMALL_DAMAGE_AIR			= "CACTUS_KING_DAMAGE_AIR",	
+	BIG_DAMAGE_AIR				= "CACTUS_KING_DAMAGE_AIR",
+	DOWN_DAMAGE_AIR				= "CACTUS_KING_DAMAGE_AIR_DOWN",
+	DOWN_DAMAGE_AIR_LANDING				= "CACTUS_KING_DAMAGE_AIR_DOWN_LANDING",
+	UP_DAMAGE					= "CACTUS_KING_DAMAGE_AIR_UP",
+	DAMAGE_REVENGE				= "CACTUS_KING_DAMAGE_REVENGE",
+	
+	DAMAGE_EXTRA_STATES         = {"CACTUS_KING_DAMAGE_AIR_FALL","CACTUS_KING_STAND_UP_FRONT","CACTUS_KING_STAND_UP_BACK","CACTUS_KING_STAND_UP_ATTACK_FRONT","CACTUS_KING_STAND_UP_ATTACK_BACK",
+	"CACTUS_KING_JUMP_DOWN","CACTUS_KING_JUMP_LANDING",},	
+	
+	DYING_LAND_FRONT			= "CACTUS_KING_DYING_LAND_FRONT",
+	DYING_LAND_BACK				= "CACTUS_KING_DYING_LAND_BACK",
+	DYING_SKY					= "CACTUS_KING_DYING_SKY",
+
+	REVENGE_ATTACK				= "",	
+}
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 3,		-- sec
+		TARGET_NEAR_RANGE			= 500,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 1200,		-- cm
+		TARGET_LOST_RANGE			= 800,		-- cm
+		TARGET_SUCCESS_RATE			= 100,  --40,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 30,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 100, -- 30,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 600,
+		DEST_GAP			= 650,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 900,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		WALK_INTERVAL		= 3,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 5,
+		UP_JUMP_RATE		= 100, -- 40,
+		UP_DOWN_RATE		= 20,
+		DOWN_JUMP_RATE		= 100,    --  20,
+		DOWN_DOWN_RATE		= 40,
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 100, --50,		
+		PATROL_RANGE			= 400,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 500,	-- cm
+		ESCAPE_GAP			= 1000,	-- 이 거리 보다 멀어지면 도망 성공
+		
+		WALK_INTERVAL		= 1.5,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 10,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 10,
+		UP_DOWN_RATE		= 10,
+		DOWN_JUMP_RATE		= 100,    --  10,
+		DOWN_DOWN_RATE		= 10,
+	},
+	
+	ESCAPE_CONDITION = 
+	{
+		RATE				= 100, -- 50,
+		ESCAPE_RANGE		= 600,		-- 이 범위 안에 들어오면 타격당하지 않아도 RATE에 지정된 확률로 도망
+	}
+}
+
+
+CACTUS_KING_START =
+{
+	ANIM_NAME					= "WaitStart",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	RIGHT						= TRUE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CACTUS_KING_WAIT",						},
+	},
+	
+}
+
+CACTUS_KING_WIN = 
+{
+	ANIM_NAME					= "Win",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	RIGHT						= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	TALK_BOX =
+	{
+		{ RATE = 50, MESSAGE = STR_ID_1583 },
+ 	},
+ 	
+}
+
+CACTUS_KING_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"CACTUS_KING_WIN",							"CF_CACTUS_KING_WIN",	},		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CACTUS_KING_JUMP_DOWN",					},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"CACTUS_KING_ATTACK",				"CT_CACTUS_KING_ATTACK",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"CACTUS_KING_ATTACK_RISING_TREE",	"CT_CACTUS_KING_ATTACK_RISING_TREE", },
+		
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"CACTUS_KING_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"CACTUS_KING_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"CACTUS_KING_JUMP_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"CACTUS_KING_JUMP_UP_DIR",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"CACTUS_KING_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"CACTUS_KING_JUMP_DOWN_DIR",				},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"CACTUS_KING_WAIT2",						"CT_CACTUS_KING_WAIT2",		},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"CACTUS_KING_WAIT3",						"CT_CACTUS_KING_WAIT3",		},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"CACTUS_KING_WAIT2",						"CT_CACTUS_KING_WAIT2_B",		},
+	},
+	
+	CT_CACTUS_KING_ATTACK = 
+	{
+		EVENT_INTERVAL_ID		= 0,
+		DISTANCE_TO_TARGET_NEAR		= 300,
+		RATE						= 60,
+	},
+	
+	CT_CACTUS_KING_ATTACK_RISING_TREE =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 650,
+		SAME_LINE_WITH_TARGET		= TRUE,
+		RATE						= 70,
+		ESCAPE_CHECK				= TRUE,
+	},
+	
+	
+	CT_CACTUS_KING_WAIT2 = 
+	{
+		ANIM_PLAY_COUNT		= 8,
+		RATE				= 50,
+	},
+	CT_CACTUS_KING_WAIT3 = 
+	{
+		ANIM_PLAY_COUNT		= 15,
+		RATE				= 50,
+	},
+	
+	CT_CACTUS_KING_WAIT2_B = 
+	{
+		ANIM_PLAY_COUNT		= 20,
+		RATE				= 100,
+	},
+}
+
+CACTUS_KING_WAIT2 = 
+{
+	ANIM_NAME					= "WaitStart",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"CACTUS_KING_WIN",							"CF_CACTUS_KING_WIN",	},				
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CACTUS_KING_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CACTUS_KING_WAIT",						},
+	},
+	TALK_BOX =
+	{
+		{ RATE = 8, MESSAGE = STR_ID_1584 },
+	},
+}
+
+CACTUS_KING_WAIT3 = 
+{
+	ANIM_NAME					= "WaitHabit",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"CACTUS_KING_WIN",							"CF_CACTUS_KING_WIN",	},		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CACTUS_KING_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CACTUS_KING_WAIT",						},
+	},
+}
+
+CACTUS_KING_WALK = 
+{
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    SOUND_PLAY0			= { 0.124, "Ent_Walk.ogg" },
+    SOUND_PLAY1			= { 0.710, "Ent_Walk.ogg" },
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"CACTUS_KING_WIN",							"CF_CACTUS_KING_WIN",	},				
+	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CACTUS_KING_JUMP_DOWN_DIR",				},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"CACTUS_KING_ATTACK",				"CT_CACTUS_KING_ATTACK",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"CACTUS_KING_ATTACK_RISING_TREE",	"CT_CACTUS_KING_ATTACK_RISING_TREE", },
+
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"CACTUS_KING_WAIT",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"CACTUS_KING_JUMP_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"CACTUS_KING_JUMP_UP_DIR",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"CACTUS_KING_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"CACTUS_KING_JUMP_DOWN_DIR",				},
+	},
+	
+	
+	CT_CACTUS_KING_ATTACK = 
+	{
+		EVENT_INTERVAL_ID		= 0,
+		DISTANCE_TO_TARGET_NEAR		= 300,
+		RATE						= 60,
+	},
+	
+	CT_CACTUS_KING_ATTACK_RISING_TREE =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 800,
+		SAME_LINE_WITH_TARGET		= TRUE,
+		RATE						= 50,
+		ESCAPE_CHECK				= TRUE,
+	},
+	
+	
+	TALK_BOX = 
+	{
+		{ RATE = 8, MESSAGE = STR_ID_1486 },
+	},
+}
+
+CACTUS_KING_JUMP_UP = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	ADD_POS_Y					= 45,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"CACTUS_KING_JUMP_DOWN",				},
+	},
+}
+
+CACTUS_KING_JUMP_DOWN = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"CACTUS_KING_JUMP_LANDING",				},
+	},
+}
+
+CACTUS_KING_JUMP_UP_DIR = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	ADD_POS_Y					= 45,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"CACTUS_KING_JUMP_DOWN_DIR",				},
+	},
+}
+
+CACTUS_KING_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"CACTUS_KING_JUMP_LANDING",				},
+	},
+}
+
+CACTUS_KING_JUMP_LANDING = 
+{
+	ANIM_NAME					= "JumpLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+
+    SOUND_PLAY0			= { 0.145, "Ent_JumpLand.ogg" },
+		
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CACTUS_KING_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CACTUS_KING_WAIT",					},
+	},
+}
+
+CACTUS_KING_ATTACK = 
+{
+	ANIM_NAME					= "Attack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+
+        SOUND_PLAY0			= { 0.589, "PunchAttack3.ogg" },
+        SOUND_PLAY1			= { 1.229, "PunchAttack3.ogg" },
+
+	VIEW_TARGET					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+			
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CACTUS_KING_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CACTUS_KING_WAIT",					},
+	},
+	
+	ATTACK_TIME0				= { 0.6, 0.66, },
+	ATTACK_TIME1				= { 1.2, 1.26, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["WALK_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+	
+	DAMAGE_DATA_LAST = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["WALK_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 8, MESSAGE = STR_ID_1585 },
+		{ RATE = 8, MESSAGE = STR_ID_1586 },
+	},
+}
+
+CACTUS_KING_ATTACK_RISING_TREE = 
+{
+	ANIM_NAME					= "AttackRisingTree",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    SOUND_PLAY0			= { 0.717, "PunchAttack3.ogg" },
+--    SOUND_PLAY1			= { 0.778, "CACTUS_KING_Voice1.ogg" },
+    
+    VIEW_TARGET					= TRUE,
+    
+    IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"CACTUS_KING_WAIT",												},
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 50, MESSAGE = STR_ID_1587 },
+		{ RATE = 10, MESSAGE = STR_ID_1588 },
+	},
+}
+
+
+
+
+
+CACTUS_KING_DEFENCE =
+{
+	ANIM_NAME					= "Defence",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 50, }, 
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"CACTUS_KING_WAIT",				"CT_WAIT"		},
+	},
+	
+	CT_WAIT = 
+	{
+		STATE_TIME_OVER			= 2,
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 20, MESSAGE = STR_ID_1589 },
+	},
+}
+
+
+
+
+
+
+CACTUS_KING_DAMAGE_SMALL = 
+{
+	ANIM_NAME					= "DamageSmall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+
+	EVENT_INTERVAL_TIME0		= 0.3,
+
+	
+	EVENT_PROCESS = 
+	{
+
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CACTUS_KING_WAIT",												},
+	},
+	
+	
+	
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_1465 },
+		{ RATE = 10, MESSAGE = STR_ID_1463 },
+	},
+	
+}
+
+
+
+
+
+CACTUS_KING_DAMAGE_BIG = 
+{
+	ANIM_NAME					= "DamageBig",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	TALK_BOX = 
+	{
+		{ RATE = 14, MESSAGE = STR_ID_1464 },
+	},
+	
+	
+	EVENT_INTERVAL_TIME0		= 0.3,
+	
+	
+	EVENT_PROCESS = 
+	{
+
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"CACTUS_KING_WAIT",												},
+	},
+	
+
+}
+
+CACTUS_KING_DAMAGE_DOWN_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	
+	
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"CACTUS_KING_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"CACTUS_KING_STAND_UP_ATTACK_FRONT",	"CT_CACTUS_KING_STAND_UP_ATTACK_FRONT", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"CACTUS_KING_STAND_UP_FRONT",			},
+	},
+	
+	CT_CACTUS_KING_STAND_UP_ATTACK_FRONT = 
+	{
+		ANIM_PLAY_COUNT		= 1,
+		RATE				= 20,
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_1465 },
+		{ RATE = 10, MESSAGE = STR_ID_1463 },
+	},
+}
+
+CACTUS_KING_DAMAGE_DOWN_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0			= { 0.446, "Down2.ogg" },
+
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"CACTUS_KING_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"CACTUS_KING_STAND_UP_ATTACK_BACK",	"CT_CACTUS_KING_STAND_UP_ATTACK_BACK", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"CACTUS_KING_STAND_UP_BACK",			},
+	},
+	
+	CT_CACTUS_KING_STAND_UP_ATTACK_BACK = 
+	{
+		ANIM_PLAY_COUNT		= 1,
+		RATE				= 20,
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_1581 },
+		{ RATE = 10, MESSAGE = STR_ID_1463 },
+	},
+}
+
+CACTUS_KING_DAMAGE_FLY_FRONT = 
+{
+	ANIM_NAME					= "DamageAirFlyFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"CACTUS_KING_DAMAGE_DOWN_FRONT",		},
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_1433 },
+	},
+}
+
+CACTUS_KING_DAMAGE_FLY_BACK = 
+{
+	ANIM_NAME					= "DamageAirFlyBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"CACTUS_KING_DAMAGE_DOWN_BACK",		},
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_1433 },
+	},
+}
+
+CACTUS_KING_DAMAGE_AIR = 
+{
+	ANIM_NAME					= "DamageAirSmall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"CACTUS_KING_WAIT",					},
+	},
+}
+
+CACTUS_KING_DAMAGE_AIR_DOWN = 
+{
+	ANIM_NAME					= "DamageAirDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"CACTUS_KING_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+CACTUS_KING_DAMAGE_AIR_UP = 
+{
+	ANIM_NAME					= "DamageAirUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"CACTUS_KING_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"CACTUS_KING_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_1433 },
+	},
+}
+
+CACTUS_KING_DAMAGE_AIR_FALL = 
+{
+	ANIM_NAME					= "DamageAirFall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_POSITIVE_Y_SPEED"],		"CACTUS_KING_DAMAGE_AIR_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"CACTUS_KING_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+CACTUS_KING_DAMAGE_AIR_DOWN_LANDING = 
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+
+	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CACTUS_KING_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"CACTUS_KING_STAND_UP_ATTACK_FRONT",	"CT_CACTUS_KING_STAND_UP_ATTACK_FRONT", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CACTUS_KING_STAND_UP_FRONT",			},
+	},
+	
+	CT_CACTUS_KING_STAND_UP_ATTACK_FRONT = 
+	{
+		ANIM_PLAY_COUNT		= 1,
+		RATE				= 20,
+	},
+}
+
+CACTUS_KING_STAND_UP_FRONT = 
+{
+	ANIM_NAME					= "DamageStandUpFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+    SOUND_PLAY0			= { 0.86, "Cactus_King_StandUp.ogg" },
+
+	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CACTUS_KING_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CACTUS_KING_WAIT",				},
+	},
+}
+
+CACTUS_KING_STAND_UP_BACK = 
+{
+	ANIM_NAME					= "DamageStandUpBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+
+	SOUND_PLAY0			= { 1.140, "Ent_JumpLand.ogg" },
+
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CACTUS_KING_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CACTUS_KING_WAIT", },
+	},		
+}
+
+CACTUS_KING_STAND_UP_ATTACK_FRONT = 
+{
+	ANIM_NAME					= "StandUpAttackFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	ANIM_WAIT_TIME				= 1,
+
+	MIND_FLAG					= MIND_FLAG["MF_STAND_UP_ATTACK"],
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+
+	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    SOUND_PLAY0			= { 0.822, "Cactus_King_StandUp.ogg" },
+    SOUND_PLAY1			= { 1.728, "PunchAttack3.ogg" },
+--    SOUND_PLAY1			= { 1.467, "CACTUS_KING_Voice1.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		--{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CACTUS_KING_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CACTUS_KING_WAIT",				},
+	},
+		
+	ATTACK_TIME0				= { 1.7, 1.8, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+			FIRE		= 0.0,
+			ICE			= 0.0,
+			EARTH		= 0.0,
+			LIGHTNING	= 0.0,
+			DARK		= 0.0,
+			LIGHT		= 0.0,
+			UNIVERSAL	= 0.0,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		STOP_TIME_ATT			= 0.0,		
+		STOP_TIME_DEF			= 0.0,	
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 0.0,	
+		CLEAR_SCREEN_COLOR_A	= 0.0,
+		CLEAR_SCREEN_COLOR_R	= 1.0,
+		CLEAR_SCREEN_COLOR_G	= 1.0,
+		CLEAR_SCREEN_COLOR_B	= 1.0,
+
+		RE_ATTACK				= FALSE,		
+		HIT_GAP					= 0.0,				
+	},
+	
+}
+
+CACTUS_KING_STAND_UP_ATTACK_BACK = 
+{
+	ANIM_NAME					= "StandUpAttackBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	ANIM_WAIT_TIME				= 1,
+
+	MIND_FLAG					= MIND_FLAG["MF_STAND_UP_ATTACK"],
+
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+
+	
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    SOUND_PLAY0			= { 0.964, "PunchAttack3.ogg" },
+--    SOUND_PLAY1			= { 1.541, "CACTUS_KING_Voice1.ogg" },
+	
+	FLIP_DIR_END				= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		--{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CACTUS_KING_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CACTUS_KING_WAIT", },
+	},	
+	
+		
+	ATTACK_TIME0				= { 0.96, 1.03, },	
+	
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+			FIRE		= 0.0,
+			ICE			= 0.0,
+			EARTH		= 0.0,
+			LIGHTNING	= 0.0,
+			DARK		= 0.0,
+			LIGHT		= 0.0,
+			UNIVERSAL	= 0.0,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		STOP_TIME_ATT			= 0.0,		
+		STOP_TIME_DEF			= 0.0,	
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 0.0,	
+		CLEAR_SCREEN_COLOR_A	= 0.0,
+		CLEAR_SCREEN_COLOR_R	= 1.0,
+		CLEAR_SCREEN_COLOR_G	= 1.0,
+		CLEAR_SCREEN_COLOR_B	= 1.0,
+
+		RE_ATTACK				= FALSE,		
+		HIT_GAP					= 0.0,				
+	},
+}
+
+CACTUS_KING_DAMAGE_REVENGE = 
+{
+	ANIM_NAME					= "DamageRevenge",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CACTUS_KING_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CACTUS_KING_WAIT",					},
+	},
+}
+
+
+
+
+CACTUS_KING_DYING_LAND_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+	
+CACTUS_KING_DYING_LAND_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+
+	SOUND_PLAY0			= { 0.446, "Down2.ogg" },
+	
+	DYING_END					= TRUE,	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+CACTUS_KING_DYING_SKY = 
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+
+function CACTUS_KING_START_CAMERA_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	pos = pNPCUnit:GetBonePos_LUA("Bip01_Head")	
+	camera = pX2Game:GetX2Camera()
+	camera:PartsLookDirectCamera_LUA( pNPCUnit, pos, D3DXVECTOR3( 500, -50, -20 ), D3DXVECTOR2( 0,0 ) )
+
+end
+
+
+function CF_CACTUS_KING_WIN( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pX2Game:LiveUserUnitNum() == 0 then
+		return true
+	else
+		return false
+	end
+
+end
+
+
+
+function CACTUS_KING_ATTACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	
+	if pNPCUnit:AnimEventTimer_LUA( 1.085 ) then
+		
+		pNPCUnit:ClearHitUnitList_LUA()
+		pNPCUnit:SetDamageData_LUA( "DAMAGE_DATA_LAST" )
+		
+	end
+
+end
+
+
+function CACTUS_KING_ATTACK_RISING_TREE_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+
+	for i=0, 3 do 
+
+		fTime = 0.768 + i * 0.1
+		
+		if pNPCUnit:AnimEventTimer_LUA( fTime ) then
+		
+			landPos = pNPCUnit:GetLandPosition_LUA()
+			dirVector = pNPCUnit:GetDirVector()
+			bIsRight = pNPCUnit:GetIsRight()
+			
+			
+			if true == bIsRight then 
+				landPos.x = landPos.x + dirVector.x * 250.0 * (i+1)
+				landPos.z = landPos.z + dirVector.z * 250.0 * (i+1)
+			else
+				landPos.x = landPos.x - dirVector.x * 250.0 * (i+1)
+				landPos.z = landPos.z - dirVector.z * 250.0 * (i+1)
+			end
+			
+			landPos = pX2Game:GetLineMap():GetLandPosition_LUA( landPos )
+			
+			pDamageEffect = pX2Game:GetDamageEffect()
+			pDamageEffect:CreateInstance_LUA( pNPCUnit, "ENT_SPIKE_BOARD", landPos, landPos.y )
+		
+		end
+
+	end
+
+end
+
+
+
+
+function CACTUS_KING_WAIT2_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.34 ) then
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function CACTUS_KING_WAIT3_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.7 ) then
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function CACTUS_KING_WALK_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+function CACTUS_KING_JUMP_DOWN_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+function CACTUS_KING_JUMP_DOWN_DIR_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+function CACTUS_KING_DAMAGE_SMALL_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.047 ) then
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function CACTUS_KING_DAMAGE_BIG_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.06 ) then
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function CACTUS_KING_DAMAGE_DOWN_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.74 ) then
+		pNPCUnit:PlaySound_LUA( "Down2.ogg" )
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+
+end
+
+function CACTUS_KING_DAMAGE_DOWN_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.8 ) then
+		pNPCUnit:PlaySound_LUA( "Down2.ogg" )
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+
+end
+
+function CACTUS_KING_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.10 ) then
+		pNPCUnit:PlaySound_LUA( "Down2.ogg" )
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pos = pNPCUnit:GetLandPosition_LUA()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+		pos.y = pos.y + 5
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "GroundShockWave", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(1,-1) )
+		pParticle = pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "AirDownTick", pNPCUnit:GetPos(), D3DXVECTOR2(200,200), D3DXVECTOR2(10,-1) )
+		if pParticle ~= nil then 
+			pParticle:SetLandPosition( pos.y - 5 )
+		end
+		
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 500 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 0.1 )
+		end		
+		
+	elseif pNPCUnit:AnimEventTimer_LUA( 0.44 ) then
+		pNPCUnit:PlaySound_LUA( "Down2.ogg" )
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+
+end
+
+function CACTUS_KING_STAND_UP_ATTACK_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 1.15 ) then
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function CACTUS_KING_STAND_UP_ATTACK_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 1.15 ) then
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+
+
+
+
+
+
+
+function CACTUS_KING_DYING_LAND_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	
+	pos = pNPCUnit:GetPos()
+	pos.y = pos.y + 100.0
+	GetMinorParticle = pX2Game:GetMinorParticle()
+	
+	pSeq = GetMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DieLight",		pos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+	if pSeq ~= nil then
+	
+		pSeq:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+		pNPCUnit:SetDieSeq( pSeq:GetHandle() )
+	
+	end
+	pNPCUnit:PlaySound_LUA( "DieLight.ogg" )
+	
+end
+

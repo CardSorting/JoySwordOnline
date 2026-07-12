@@ -1,0 +1,354 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+g_pUIDialog:SetName( "DLG_Unit_Select_Front" )
+g_pUIDialog:SetPos( 0,0 )
+g_pUIDialog:SetModal( true )
+g_pUIDialog:SetFront( true )
+
+
+g_pUIDialog:AddDummyPos( D3DXVECTOR3( -80, 50, 200 ) )
+g_pUIDialog:AddDummyPos( D3DXVECTOR3( 170, 50, 200 ) )
+g_pUIDialog:AddDummyPos( D3DXVECTOR3( 390, 50, 200 ) )
+g_pUIDialog:AddDummyPos( D3DXVECTOR3( -80, -285, 200 ) )
+g_pUIDialog:AddDummyPos( D3DXVECTOR3( 170, -285, 200 ) )
+g_pUIDialog:AddDummyPos( D3DXVECTOR3( 390, -285, 200 ) )
+
+
+
+IncludeLua( "DLG_Unit_Select_FrontButton.lua" )
+
+IncludeLua( "DLG_Unit_Select_Title.lua" )
+
+
+
+
+
+
+--[[
+g_pButtonUnitSelectDomain = g_pUIDialog:CreateButton()
+
+
+
+g_pUIDialog:AddControl( g_pButtonUnitSelectDomain )
+g_pButtonUnitSelectDomain:SetName( "ButtonUnitSelectDomain" )
+g_pButtonUnitSelectDomain:SetSound( false )
+g_pButtonUnitSelectDomain:SetNormalTex(  "DLG_Room_Button0.tga", "Invisible"  )
+
+g_pButtonUnitSelectDomain:SetNormalPoint
+{
+	USE_TEXTURE_SIZE = FALSE,
+
+	"LEFT_TOP		= D3DXVECTOR2(110,110)",
+	"RIGHT_BOTTOM	= D3DXVECTOR2(370,510)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,0.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonUnitSelectDomain:SetOverTex("DLG_Room_Button0.tga", "Invisible" )
+
+
+g_pButtonUnitSelectDomain:SetOverPoint
+{
+	USE_TEXTURE_SIZE = FALSE,
+
+	"LEFT_TOP		= D3DXVECTOR2(110,110)",
+	"RIGHT_BOTTOM	= D3DXVECTOR2(370,510)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,0.0)",
+	CHANGE_TIME		= 0.0,
+}
+g_pButtonUnitSelectDomain:SetDownTex( "DLG_Room_Button0.tga", "Invisible" )
+
+g_pButtonUnitSelectDomain:SetDownPoint
+{
+	USE_TEXTURE_SIZE = FALSE,
+
+	"LEFT_TOP		= D3DXVECTOR2(110,110)",
+	"RIGHT_BOTTOM	= D3DXVECTOR2(370,510)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,0.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+g_pButtonUnitSelectDomain:SetCustomMsgMouseUp( STATE_SERVER_SELECT_UI_CUSTOM_MSG["SUSUCM_UNIT_ANIMATION_UP"] )
+g_pButtonUnitSelectDomain:SetCustomMsgMouseDown( STATE_SERVER_SELECT_UI_CUSTOM_MSG["SUSUCM_UNIT_ANIMATION_DOWN"] )
+g_pButtonUnitSelectDomain:SetCustomMsgMouseOver( STATE_SERVER_SELECT_UI_CUSTOM_MSG["SUSUCM_UNIT_ANIMATION_OVER"] )
+--]]
+
+
+
+
+
+addLVPosX = 3
+
+g_pStaticUnitSelectStringLVNum = g_pUIDialog:CreateStatic()
+g_pUIDialog:AddControl( g_pStaticUnitSelectStringLVNum )
+g_pStaticUnitSelectStringLVNum:SetName( "StaticUnitSelectStringLVNum" )
+
+g_pStaticUnitSelectStringLVNum:AddString
+{
+ 	-- MSG    		 = "",
+    FONT_INDEX      = XUF_DODUM_13_SEMIBOLD,
+
+ 	FONT_STYLE      = FONT_STYLE["FS_SHELL"],
+ 	SORT_FLAG       = DRAW_TEXT["DT_LEFT"],
+ 	"POS            = D3DXVECTOR2(379,344)",
+ 	"COLOR          = D3DXCOLOR(1.0,1.0,0.0,1.0)",
+	"OUTLINE_COLOR  = D3DXCOLOR(0.0,0.0,0.0,1.0)",
+}
+
+g_pStaticUnitSelectStringLVNum:AddString
+{
+	-- MSG    		 = "",
+    FONT_INDEX      = XUF_DODUM_13_SEMIBOLD,
+
+	FONT_STYLE      = FONT_STYLE["FS_SHELL"],
+	SORT_FLAG       = DRAW_TEXT["DT_LEFT"],
+	"POS            = D3DXVECTOR2(618,344)",
+	"COLOR          = D3DXCOLOR(1.0,1.0,0.0,1.0)",
+	"OUTLINE_COLOR  = D3DXCOLOR(0.0,0.0,0.0,1.0)",
+}
+
+g_pStaticUnitSelectStringLVNum:AddString
+{
+	-- MSG    		 = "",
+    FONT_INDEX      = XUF_DODUM_13_SEMIBOLD,
+
+	FONT_STYLE      = FONT_STYLE["FS_SHELL"],
+	SORT_FLAG       = DRAW_TEXT["DT_LEFT"],
+	"POS            = D3DXVECTOR2(858,344)",
+	"COLOR          = D3DXCOLOR(1.0,1.0,0.0,1.0)",
+	"OUTLINE_COLOR  = D3DXCOLOR(0.0,0.0,0.0,1.0)",
+}
+
+g_pStaticUnitSelectStringLVNum:AddString
+{
+	-- MSG    		 = "",
+    FONT_INDEX      = XUF_DODUM_13_SEMIBOLD,
+  
+	FONT_STYLE      = FONT_STYLE["FS_SHELL"],
+	SORT_FLAG       = DRAW_TEXT["DT_LEFT"],
+	"POS            = D3DXVECTOR2(379,675)",
+	"COLOR          = D3DXCOLOR(1.0,1.0,0.0,1.0)",
+	"OUTLINE_COLOR  = D3DXCOLOR(0.0,0.0,0.0,1.0)",
+}
+
+g_pStaticUnitSelectStringLVNum:AddString
+{
+	-- MSG    		 = "",
+    FONT_INDEX      = XUF_DODUM_13_SEMIBOLD,
+
+	FONT_STYLE      = FONT_STYLE["FS_SHELL"],
+	SORT_FLAG       = DRAW_TEXT["DT_LEFT"],
+	"POS            = D3DXVECTOR2(618,675)",
+	"COLOR          = D3DXCOLOR(1.0,1.0,0.0,1.0)",
+	"OUTLINE_COLOR  = D3DXCOLOR(0.0,0.0,0.0,1.0)",
+}
+
+g_pStaticUnitSelectStringLVNum:AddString
+{
+	-- MSG    		 = "",
+    FONT_INDEX      = XUF_DODUM_13_SEMIBOLD,
+
+	FONT_STYLE      = FONT_STYLE["FS_SHELL"],
+	SORT_FLAG       = DRAW_TEXT["DT_LEFT"],
+	"POS            = D3DXVECTOR2(858,675)",
+	"COLOR          = D3DXCOLOR(1.0,1.0,0.0,1.0)",
+	"OUTLINE_COLOR  = D3DXCOLOR(0.0,0.0,0.0,1.0)",
+}
+
+AddIDPosX = 4
+
+g_pStaticUnitSelectStringID = g_pUIDialog:CreateStatic()
+g_pUIDialog:AddControl( g_pStaticUnitSelectStringID )
+g_pStaticUnitSelectStringID:SetName( "StaticUnitSelectStringID" )
+
+g_pStaticUnitSelectStringID:AddString
+{
+	-- MSG    		 = "  ",
+    FONT_INDEX      = XUF_DODUM_13_SEMIBOLD,
+
+	SORT_FLAG       = DRAW_TEXT["DT_CENTER"],
+	"POS            = D3DXVECTOR2(466,344)",
+	"COLOR          = D3DXCOLOR(0.0,0.0,0.0,1.0)",
+	"OUTLINE_COLOR  = D3DXCOLOR(1.0,1.0,1.0,1.0)",
+}
+
+
+g_pStaticUnitSelectStringID:AddString
+{
+	-- MSG    		 = "  ",
+    FONT_INDEX      = XUF_DODUM_13_SEMIBOLD,
+
+	SORT_FLAG       = DRAW_TEXT["DT_CENTER"],
+	"POS            = D3DXVECTOR2(706,344)",
+	"COLOR          = D3DXCOLOR(0.0,0.0,0.0,1.0)",
+	"OUTLINE_COLOR  = D3DXCOLOR(1.0,1.0,1.0,1.0)",
+}
+
+
+g_pStaticUnitSelectStringID:AddString
+{
+	-- MSG    		 = "  ",
+    FONT_INDEX      = XUF_DODUM_13_SEMIBOLD,
+
+	SORT_FLAG       = DRAW_TEXT["DT_CENTER"],
+	"POS            = D3DXVECTOR2(946,344)",
+	"COLOR          = D3DXCOLOR(0.0,0.0,0.0,1.0)",
+	"OUTLINE_COLOR  = D3DXCOLOR(1.0,1.0,1.0,1.0)",
+}
+
+
+g_pStaticUnitSelectStringID:AddString
+{
+	-- MSG    		 = "  ",
+    FONT_INDEX      = XUF_DODUM_13_SEMIBOLD,
+
+	SORT_FLAG       = DRAW_TEXT["DT_CENTER"],
+	"POS            = D3DXVECTOR2(466,675)",
+	"COLOR          = D3DXCOLOR(0.0,0.0,0.0,1.0)",
+	"OUTLINE_COLOR  = D3DXCOLOR(1.0,1.0,1.0,1.0)",
+}
+
+g_pStaticUnitSelectStringID:AddString
+{
+	-- MSG    		 = " ",
+    FONT_INDEX      = XUF_DODUM_13_SEMIBOLD,
+
+	SORT_FLAG       = DRAW_TEXT["DT_CENTER"],
+	"POS            = D3DXVECTOR2(706,675)",
+	"COLOR          = D3DXCOLOR(0.0,0.0,0.0,1.0)",
+	"OUTLINE_COLOR  = D3DXCOLOR(1.0,1.0,1.0,1.0)",
+}
+
+g_pStaticUnitSelectStringID:AddString
+{
+	-- MSG    		 = "",
+    FONT_INDEX      = XUF_DODUM_13_SEMIBOLD,
+
+	SORT_FLAG       = DRAW_TEXT["DT_CENTER"],
+	"POS            = D3DXVECTOR2(946,675)",
+	"COLOR          = D3DXCOLOR(0.0,0.0,0.0,1.0)",
+	"OUTLINE_COLOR  = D3DXCOLOR(1.0,1.0,1.0,1.0)",
+}
+
+
+g_pStaticUnitSelectUnitEmblem = g_pUIDialog:CreateStatic()
+g_pUIDialog:AddControl( g_pStaticUnitSelectUnitEmblem )
+g_pStaticUnitSelectUnitEmblem:SetName( "UnitEmblem" )
+
+
+g_pPictureSlot1_Emblem= g_pUIDialog:CreatePicture()
+g_pPictureSlot1_Emblem:SetShow( false )
+g_pStaticUnitSelectUnitEmblem:AddPicture( g_pPictureSlot1_Emblem)
+
+g_pPictureSlot1_Emblem:SetTex( "DLG_Common_Emblem00.tga", "PE_RECRUIT" )
+
+g_pPictureSlot1_Emblem:SetPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(353,337)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pPictureSlot2_Emblem= g_pUIDialog:CreatePicture()
+g_pPictureSlot2_Emblem:SetShow( false )
+g_pStaticUnitSelectUnitEmblem:AddPicture( g_pPictureSlot2_Emblem)
+
+g_pPictureSlot2_Emblem:SetTex( "DLG_Common_Emblem00.tga", "PE_RECRUIT" )
+
+g_pPictureSlot2_Emblem:SetPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(592,337)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+g_pPictureSlot3_Emblem= g_pUIDialog:CreatePicture()
+g_pPictureSlot3_Emblem:SetShow( false )
+g_pStaticUnitSelectUnitEmblem:AddPicture( g_pPictureSlot3_Emblem)
+
+g_pPictureSlot3_Emblem:SetTex( "DLG_Common_Emblem00.tga", "PE_RECRUIT" )
+
+g_pPictureSlot3_Emblem:SetPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(832,337)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pPictureSlot4_Emblem= g_pUIDialog:CreatePicture()
+g_pPictureSlot4_Emblem:SetShow( false )
+g_pStaticUnitSelectUnitEmblem:AddPicture( g_pPictureSlot4_Emblem)
+
+g_pPictureSlot4_Emblem:SetTex( "DLG_Common_Emblem00.tga", "PE_RECRUIT" )
+
+g_pPictureSlot4_Emblem:SetPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(353,668)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pPictureSlot5_Emblem= g_pUIDialog:CreatePicture()
+g_pPictureSlot5_Emblem:SetShow( false )
+g_pStaticUnitSelectUnitEmblem:AddPicture( g_pPictureSlot5_Emblem)
+
+g_pPictureSlot5_Emblem:SetTex( "DLG_Common_Emblem00.tga", "PE_RECRUIT" )
+
+g_pPictureSlot5_Emblem:SetPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(592,668)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+g_pPictureSlot6_Emblem= g_pUIDialog:CreatePicture()
+g_pPictureSlot6_Emblem:SetShow( false )
+g_pStaticUnitSelectUnitEmblem:AddPicture( g_pPictureSlot6_Emblem)
+
+g_pPictureSlot6_Emblem:SetTex( "DLG_Common_Emblem00.tga", "PE_RECRUIT" )
+
+g_pPictureSlot6_Emblem:SetPoint
+{
+
+	"LEFT_TOP		= D3DXVECTOR2(832,668)",
+	"COLOR			= D3DXCOLOR(1.0,1.0,1.0,1.0)",
+	CHANGE_TIME		= 0.0,
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

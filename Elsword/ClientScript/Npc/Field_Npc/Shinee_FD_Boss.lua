@@ -1,0 +1,1862 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+--[[ Lenoas / 2011/1/12 / 타락한 클로에, 중간 보스/
+	 
+--]]
+
+INIT_SYSTEM =
+{
+	LUA_SHAREABLE	= TRUE,
+	UNIT_WIDTH		= 130.0,
+	UNIT_HEIGHT		= 200.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	UNIT_SCALE      = 1.2,
+}
+--------------------------------------------------------------------------
+INIT_DEVICE =
+{
+	READY_TEXTURE =
+	{
+        "NUI_CLOE_THE_CORRUPTION_bodyA.tga",
+        "NUI_CLOE_THE_CORRUPTION_bodyB.tga",
+        "NUI_CLOE_THE_CORRUPTION_Face.tga",
+        "NUI_CLOE_THE_CORRUPTION_Hair.tga",
+	},
+
+	READY_SOUND =
+	{
+		"Dark_Sentinel_MagicAttackA.ogg",
+		"Dark_Sentinel_MagicAttackB.ogg",
+		"Dark_Sentinel_SpecialAttackA1.ogg",
+		"Dark_Sentinel_Landing.ogg",
+		"Dark_Sentinel_DamageAir.ogg",
+		
+		"DarkBoss_AttackA.ogg",
+
+		"FootAttack.ogg",
+		"FootAttack2.ogg",
+		"sliding.ogg",
+		
+		"DARKELF_BossVoice_Dying.ogg",
+		"DARKELF_BossVoice_SpecialAttackCReady.ogg",
+		"DARKELF_BossVoice_SpecialAttackC.ogg",
+		"DARKELF_BossVoice_Start.ogg",
+		"DARKELF_BossVoice_DamageBack.ogg",
+		"DARKELF_BossVoice_JumpAttackA.ogg",
+		"DARKELF_BossVoice_Damage.ogg",
+		"DARKSENTINELVoice_Damage.ogg",
+	},
+	READY_XMESH = 
+	{
+	 "Wind_Liner02.Y",
+	},
+--[[
+    READY_XSKIN_MESH =
+	{
+        "CLOE_THE_CORRUPTION_AttackB.X",
+        "CLOE_THE_CORRUPTION_SpecialAttackA_Shockwave.X",
+        "CLOE_THE_CORRUPTION_SpecialAttackA.X",
+        "CLOE_THE_CORRUPTION_SpecialAttackA_Back.X",
+        "CLOE_THE_CORRUPTION_AttackA_Cone.X",
+	},
+	]]--
+}
+--------------------------------------------------------------------------
+INIT_MOTION =
+{
+	MOTION_FILE_NAME		= "Motion_Shinee_Fd_Boss.x",
+	MOTION_CHANGE_TEX_XET	= "SHINEE_FD_BOSS_A.xet",
+	MOTION_ANI_TEX_XET		= "SHINEE_FD_BOSS_A.xet",
+
+	
+}
+--------------------------------------------------------------------------
+INIT_PHYSIC =
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+
+	WALK_SPEED			= 700,
+	RUN_SPEED			= 700,
+	JUMP_SPEED			= 1600,
+	DASH_JUMP_SPEED		= 800,
+}
+--------------------------------------------------------------------------
+INIT_COMPONENT =
+{
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	DRAW_SMALL_MP_BAR	= TRUE,
+    USE_SLASH_TRACE     = FALSE,
+
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+    --MIND_FLAG_HEIGHT		= 230,
+
+	RAGE_COUNT_MAX	    	= 25,
+	RAGE_TIME_MAX		    = 3,
+
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	FALL_DOWN			= TRUE,
+	
+	
+	DIE_FLY             = FALSE,
+	
+	
+	-- 항상 보이는 잔상 효과를 위해서
+	USE_AFTER_IMAGE = TRUE,
+	
+	AFTER_IMAGE_LAYER = X2_LAYER["XL_SKY_WORLD_OBJECT_2"],
+	
+	AFTER_IMAGE_COLOR_R = 0.2, 
+	AFTER_IMAGE_COLOR_G = 0, 
+	AFTER_IMAGE_COLOR_B = 0.2,
+	AFTER_IMAGE_COLOR_A = 0.5,
+	
+	AFTER_IMAGE_DEST_ALPHA_BLEND = TRUE,
+	AFTER_IMAGE_ALWAYS = TRUE,
+}
+--------------------------------------------------------------------------
+INIT_STATE =
+{
+	{ STATE_NAME = "SHINEE_START",						},
+    { STATE_NAME = "SHINEE_WIN",						},
+	{ STATE_NAME = "SHINEE_WAIT",						},
+
+	{ STATE_NAME = "SHINEE_WALK",						},
+    --{ STATE_NAME = "SHINEE_DASH",						},
+    { STATE_NAME = "SHINEE_DASH_END",						STATE_COOL_TIME = 5, 	},
+
+	{ STATE_NAME = "SHINEE_JUMP_UP",					},
+	{ STATE_NAME = "SHINEE_JUMP_DOWN",					LUA_STATE_END_FUNC = "SHINEE_JUMP_DOWN_STATE_END"					},
+	{ STATE_NAME = "SHINEE_JUMP_UP_DIR",				},
+	{ STATE_NAME = "SHINEE_JUMP_DOWN_DIR",				LUA_STATE_END_FUNC = "SHINEE_JUMP_DOWN_DIR_STATE_END"				},
+	{ STATE_NAME = "SHINEE_JUMP_LANDING",				},
+
+
+	{ STATE_NAME = "SHINEE_ATTACK_A",					STATE_COOL_TIME = 5, 	},
+	{ STATE_NAME = "SHINEE_SPECIAL_ATTACK_B",			STATE_COOL_TIME = 10, 	},
+	{ STATE_NAME = "SHINEE_SPECIAL_ATTACK_B_THROUGH_NEAR",},
+	{ STATE_NAME = "SHINEE_SPECIAL_ATTACK_B_THROUGH_FAR",},
+	{ STATE_NAME = "SHINEE_SPECIAL_ATTACK_B_THROUGH_SO_FAR",},
+	{ STATE_NAME = "SHINEE_SPECIAL_ATTACK_B_FINISH",},
+	{ STATE_NAME = "SHINEE_SPECIAL_ATTACK_B_FINISH_FOR_COMBO",},
+	{ STATE_NAME = "SHINEE_HEAL_BEFORE",				STATE_COOL_TIME = 30,		},	
+	{ STATE_NAME = "SHINEE_HEAL",						LUA_FRAME_MOVE_FUNC = "SHINEE_HEAL_FRAME_MOVE" },	
+	--리액션 관련
+	{ STATE_NAME = "SHINEE_DAMAGE_FRONT",				LUA_FRAME_MOVE_FUNC = "SHINEE_DAMAGE_FRONT_FRAME_MOVE"			},
+	{ STATE_NAME = "SHINEE_DAMAGE_BACK",				LUA_FRAME_MOVE_FUNC = "SHINEE_DAMAGE_BACK_FRAME_MOVE"			},
+	{ STATE_NAME = "SHINEE_DAMAGE_DOWN_FRONT",			LUA_FRAME_MOVE_FUNC = "SHINEE_DAMAGE_DOWN_FRONT_FRAME_MOVE"		},
+	{ STATE_NAME = "SHINEE_DAMAGE_DOWN_BACK",			LUA_FRAME_MOVE_FUNC = "SHINEE_DAMAGE_DOWN_BACK_FRAME_MOVE"		},
+	{ STATE_NAME = "SHINEE_DAMAGE_FLY_FRONT",			},
+	{ STATE_NAME = "SHINEE_DAMAGE_FLY_BACK",			},
+	{ STATE_NAME = "SHINEE_DAMAGE_AIR",					},
+	{ STATE_NAME = "SHINEE_DAMAGE_AIR_DOWN",			},
+	{ STATE_NAME = "SHINEE_DAMAGE_AIR_UP",				},
+	{ STATE_NAME = "SHINEE_DAMAGE_AIR_FALL",			},
+	{ STATE_NAME = "SHINEE_DAMAGE_AIR_DOWN_LANDING",	LUA_FRAME_MOVE_FUNC = "SHINEE_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE"	},
+
+	{ STATE_NAME = "SHINEE_STAND_UP_FRONT",				},
+	{ STATE_NAME = "SHINEE_STAND_UP_BACK",				},
+	{ STATE_NAME = "SHINEE_STAND_UP_ATTACK_FRONT",		LUA_FRAME_MOVE_FUNC = "SHINEE_STAND_UP_ATTACK_FRONT_FRAME_MOVE"   },
+    { STATE_NAME = "SHINEE_STAND_UP_ATTACK_BACK",		LUA_FRAME_MOVE_FUNC = "SHINEE_STAND_UP_ATTACK_BACK_FRAME_MOVE"   },
+
+	{ STATE_NAME = "SHINEE_DAMAGE_REVENGE",				},
+
+	{ STATE_NAME = "SHINEE_DYING",			LUA_STATE_START_FUNC = "SHINEE_DYING_LAND_STATE_START",},
+
+	START_STATE					= "SHINEE_START",
+	WAIT_STATE					= "SHINEE_WAIT",
+
+	SMALL_DAMAGE_LAND_FRONT		= "SHINEE_DAMAGE_FRONT",
+	SMALL_DAMAGE_LAND_BACK		= "SHINEE_DAMAGE_BACK",
+	BIG_DAMAGE_LAND_FRONT		= "SHINEE_DAMAGE_FRONT",
+	BIG_DAMAGE_LAND_BACK		= "SHINEE_DAMAGE_BACK",
+	DOWN_DAMAGE_LAND_FRONT		= "SHINEE_DAMAGE_DOWN_FRONT",
+	DOWN_DAMAGE_LAND_BACK		= "SHINEE_DAMAGE_DOWN_BACK",
+	FLY_DAMAGE_FRONT			= "SHINEE_DAMAGE_FLY_FRONT",
+	FLY_DAMAGE_BACK				= "SHINEE_DAMAGE_FLY_BACK",
+	SMALL_DAMAGE_AIR			= "SHINEE_DAMAGE_AIR",
+	BIG_DAMAGE_AIR				= "SHINEE_DAMAGE_AIR",
+	DOWN_DAMAGE_AIR				= "SHINEE_DAMAGE_AIR",
+	DOWN_DAMAGE_AIR_LANDING		= "SHINEE_DAMAGE_AIR_DOWN_LANDING",
+	UP_DAMAGE					= "SHINEE_DAMAGE_AIR_UP",
+	DAMAGE_REVENGE				= "SHINEE_DAMAGE_REVENGE",
+	
+	DAMAGE_EXTRA_STATES         = { "SHINEE_DAMAGE_AIR_DOWN","SHINEE_DAMAGE_AIR_FALL","SHINEE_STAND_UP_FRONT","SHINEE_STAND_UP_BACK",
+		"SHINEE_STAND_UP_ATTACK_FRONT","SHINEE_STAND_UP_ATTACK_BACK","SHINEE_JUMP_DOWN","SHINEE_JUMP_LANDING",},	
+
+	DYING_LAND_FRONT			= "SHINEE_DYING",
+	DYING_LAND_BACK				= "SHINEE_DYING",
+	DYING_SKY					= "SHINEE_DYING",
+
+	REVENGE_ATTACK				= "",
+}
+--------------------------------------------------------------------------
+INIT_AI =
+{
+	TARGET =
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_NEAR_FIRST"],
+		TARGET_INTERVAL				= 1,		-- sec
+		TARGET_NEAR_RANGE			= 800,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 9999,		-- cm
+		TARGET_LOST_RANGE			= 9999,		-- cm
+		TARGET_SUCCESS_RATE			= 100,  --50,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 30,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 0, -- 30,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE =
+	{
+		DEST_GAP			= 300,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 400,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		MOVE_SPLIT_RANGE	= 300,
+		WALK_INTERVAL		= 1,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 5,
+		UP_JUMP_RATE		= 100, -- 40,
+		UP_DOWN_RATE		= 20,
+		DOWN_JUMP_RATE		= 100,    --  20,
+		DOWN_DOWN_RATE		= 40,
+
+		--LINE_END_RANGE		= 100,	-- cm
+	},
+
+	PATROL_MOVE =
+	{
+		PATROL_BEGIN_RATE		= 50, --50,
+		PATROL_RANGE			= 500,
+		PATROL_COOL_TIME		= 5,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+--[[
+	ESCAPE_MOVE =
+	{
+		MOVE_SPLIT_RANGE	= 500,	-- cm
+		ESCAPE_GAP			= 10,	-- 이 거리 보다 멀어지면 도망 성공
+
+		WALK_INTERVAL		= 1,	-- 초
+		NEAR_WALK_RATE		= 30,   --  10,
+		FAR_WALK_RATE		= 50,   -- 10,
+
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+
+		--LINE_END_RANGE		= 80,	-- cm
+	},
+	]]--
+}
+--------------------------------------------------------------------------
+SHINEE_WIN =
+{
+	ANIM_NAME					= "Win",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, },
+
+    --SOUND_PLAY0			= { 0.448, "AirShip_SwordMan_Slash1.ogg" },
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+
+	RIGHT						= TRUE,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+function CF_SHINEE_WIN( pKTDXApp, pX2Game, pNPCUnit )
+	if pX2Game:LiveUserUnitNum() == 0 then
+		return true
+	else
+		return false
+	end
+end
+--------------------------------------------------------------------------
+SHINEE_START =
+{
+	ANIM_NAME	= "WaitStart",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+    SOUND_PLAY0			        = { 0.01, "DARKELF_BossVoice_Start.ogg" },	
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHINEE_WAIT",			},
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"SHINEE_WAIT",		"CT_SHINEE_WAIT"	},
+	},
+--[[
+	CT_SHINEE_WAIT =
+	{
+		STATE_TIME_OVER	= 2.33,
+	},
+	]]--
+}
+--------------------------------------------------------------------------
+SHINEE_WAIT =
+{
+	ANIM_NAME	= "Wait",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	SPEED_X	= 0,
+	SPEED_Y	= 0,
+
+	
+	DISABLE_ATTACK_BOX = 
+	{
+		"ATTACK_SPHERE2_Lfoot",
+		"ATTACK_SPHERE1_Rfoot",
+		"ATTACK_SPHERE3_Dagger1",
+		"ATTACK_SPHERE2_RLeg02",
+		"ATTACK_SPHERE2_LLeg01",
+	},
+	
+	PASSIVE_SPEED_X	= 0,
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+	EVENT_INTERVAL_TIME0	= 1,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],			"SHINEE_WALK",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],			"SHINEE_JUMP_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],		"SHINEE_JUMP_UP_DIR",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],			"SHINEE_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],		"SHINEE_JUMP_DOWN_DIR",		},
+		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHINEE_JUMP_DOWN",			},
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],	"SHINEE_WIN",	"CF_SHINEE_WIN",	},
+
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "SHINEE_ATTACK_A",          "CT_SHINEE_ATTACK_A",            },
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "SHINEE_SPECIAL_ATTACK_B",          "CT_SHINEE_SPECIAL_ATTACK_B",            },
+        { STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"], "SHINEE_HEAL_BEFORE",          "CF_SHINEE_HEAL",            },
+     	
+		
+	},
+
+	
+	CT_SHINEE_ATTACK_A =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,	
+		RATE						= 60,
+	},
+
+	CT_SHINEE_SPECIAL_ATTACK_B =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1200,		
+		RATE						= 60,
+	},	
+}
+--------------------------------------------------------------------------
+SHINEE_WALK =
+{
+	ANIM_NAME					= "Dash",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	ANIM_SPEED					= 1,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	DISABLE_ATTACK_BOX = 
+	{
+		"ATTACK_SPHERE2_Lfoot",
+		"ATTACK_SPHERE1_Rfoot",
+		"ATTACK_SPHERE3_Dagger1",
+		"ATTACK_SPHERE2_RLeg02",
+		"ATTACK_SPHERE2_LLeg01",
+	},
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_INTERVAL_TIME0		= 0.5,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],			"SHINEE_WALK",				},
+		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHINEE_JUMP_DOWN",			},
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],	"SHINEE_WIN",	"CF_SHINEE_WIN",	},
+
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "SHINEE_SPECIAL_ATTACK_B",          "CT_SHINEE_SPECIAL_ATTACK_B",            },
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "SHINEE_ATTACK_A",         			"CT_SHINEE_ATTACK_A",            },
+     	
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],			"SHINEE_JUMP_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],		"SHINEE_JUMP_UP_DIR",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],			"SHINEE_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],		"SHINEE_JUMP_DOWN_DIR",		},
+		
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "SHINEE_DASH_END",          "CT_SHINEE_DASH_END",            },
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"], "SHINEE_WAIT",          "CT_SHINEE_DASH_END2",            },
+	},
+
+	CT_SHINEE_DASH_END =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,	
+		RATE						= 100,
+	},
+	CT_SHINEE_DASH_END2 =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,	
+		RATE						= 100,
+	},
+	
+	CT_SHINEE_ATTACK_A =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,	
+		RATE						= 60,
+	},
+
+	CT_SHINEE_SPECIAL_ATTACK_B =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1200,		
+		RATE						= 60,
+	},	
+}
+------------------------------------------------------------------------
+--[[
+SHINEE_DASH =
+{
+	ANIM_NAME				= "Dash",
+	PLAY_TYPE				= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION				= TRUE,
+
+	CAN_PUSH_UNIT			= TRUE,
+	CAN_PASS_UNIT			= FALSE,
+
+	PASSIVE_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+
+	ALLOW_DIR_CHANGE		= TRUE,
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	EVENT_INTERVAL_TIME0	= 1,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHINEE_JUMP_DOWN_DIR",	},
+
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"SHINEE_DASH_END",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"SHINEE_DASH_END",			},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"SHINEE_JUMP_UP",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"SHINEE_JUMP_UP_DIR",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"SHINEE_JUMP_DOWN",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"SHINEE_JUMP_DOWN_DIR",	},
+	},
+}
+]]--
+--------------------------------------------------------------------------
+SHINEE_DASH_END =
+{
+	ANIM_NAME					= "DashEnd",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SPEED_X						= INIT_PHYSIC["RUN_SPEED"],
+
+	ALLOW_DIR_CHANGE			= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHINEE_JUMP_DOWN_DIR",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHINEE_WAIT",			},
+	},
+}
+--------------------------------------------------------------------------
+SHINEE_JUMP_UP =
+{
+	ANIM_NAME		= "JumpUp",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION		= TRUE,
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+
+	SPEED_X			= 0,
+	SPEED_Y			= INIT_PHYSIC["JUMP_SPEED"],
+
+	ADD_POS_Y		= 45,
+
+	IMMADIATE_PACKET_SEND	= TRUE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"SHINEE_JUMP_DOWN",		},
+	},
+
+}
+
+SHINEE_JUMP_DOWN =
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"SHINEE_JUMP_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+SHINEE_JUMP_UP_DIR =
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+
+	ADD_POS_Y					= 45,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"SHINEE_JUMP_DOWN_DIR",	},
+	},
+}
+--------------------------------------------------------------------------
+SHINEE_JUMP_DOWN_DIR =
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"SHINEE_JUMP_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+SHINEE_JUMP_LANDING =
+{
+	ANIM_NAME					= "JumpLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    SOUND_PLAY0			= { 0.043, "Dark_Sentinel_Landing.ogg" },
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHINEE_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHINEE_WAIT",		},
+	},
+}
+SHINEE_HEAL_BEFORE =
+{
+
+	ANIM_NAME					= "Buff",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHINEE_HEAL",		},
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_UnosGirl_Heal", 0,
+	},
+
+	-- 샤이니 힐 관련 대사 처리
+	TALK_BOX = 
+	{
+		{ RATE = 100, MESSAGE = STR_ID_23600}, -- 힘내! 라노스!
+	},
+
+}
+--------------------------------------------------------------------------
+SHINEE_HEAL =
+{
+	ANIM_NAME					= "Buff",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHINEE_HEAL",		},
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_UnosGirl_Heal", 0,
+	},
+}
+
+
+-- 클로에 기본 물리공격(칼부림)
+
+SHINEE_ATTACK_A = 
+{
+
+	ANIM_SPEED					= 1.2,
+	ANIM_NAME					= "AttackA",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	
+	SUPER_ARMOR			= TRUE,
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	ENABLE_ATTACK_BOX = 
+	{
+		"ATTACK_SPHERE3_Dagger1",
+	},
+	
+	LAND_CONNECT		= FALSE,
+	
+	ATTACK_TIME0				= { 0.2, 0.333, },	
+	ATTACK_TIME1				= { 0.433, 0.633, },	
+	
+	SOUND_PLAY0			= { 0.12, "DarkBoss_AttackA.ogg" },
+	
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Darkelf_Boss_Attack_A", 0,
+	},
+
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_UP"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.5,
+		},
+		BUFF_FACTOR =
+		{
+			BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_WOUND"],
+			RATE	=
+			{
+				1,
+			},
+			IGNORE_REGIST_FOR_RATE = FALSE,
+
+			BEHAVIOR =
+			{
+				COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], BUFF_BEHAVIOR_TYPE["BBT_DASH_IMPOSSIBLE"], },
+				
+				BBT_CHANGE_NOW_HP_PER_SECOND =
+				{
+					BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+					BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+
+					MULTIPLIER =
+					{
+						-0.3,
+					},
+				},
+				BBT_DASH_IMPOSSIBLE =
+				{
+					BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				},
+			},
+		
+			FINALIZER =
+			{
+				COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+			
+				BFT_TIME =
+				{
+					BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+					NORMAL_TIME =
+					{
+						5,
+					},
+				},
+			},
+		},
+		
+		BACK_SPEED_X			= 200.0,
+		BACK_SPEED_Y			= 700.0,
+		
+		STOP_TIME_ATT			= 0.0,		
+		STOP_TIME_DEF			= 0.0,	
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		
+		CLEAR_SCREEN			= 0.0,	
+		CLEAR_SCREEN_COLOR_A	= 0.0,
+		CLEAR_SCREEN_COLOR_R	= 1.0,
+		CLEAR_SCREEN_COLOR_G	= 1.0,
+		CLEAR_SCREEN_COLOR_B	= 1.0,
+		
+		FORCE_FLY				= TRUE,
+
+		RE_ATTACK				= TRUE,		
+		HIT_GAP					= 0.2,			
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 8, MESSAGE = STR_ID_4672 },
+		{ RATE = 8, MESSAGE = STR_ID_4673 },
+	},
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHINEE_WAIT",		},
+	},
+}
+
+
+
+-- 슬라이드 더블 킥
+
+SHINEE_SPECIAL_ATTACK_B =
+{
+	ANIM_SPEED			= 3,
+	ANIM_NAME			= "SLIDE_KICK_Start",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	
+	
+	CAN_PUSH_UNIT		= TRUE,
+	CAN_PASS_UNIT		= FALSE,
+	
+	SUPER_ARMOR			= TRUE,
+	
+	--INVINCIBLE			= { 0, 1.5, },
+	--AFTER_IMAGE			= { 0.1, 100, },
+			
+	
+	SOUND_PLAY0			= { 0.01, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.160, "Lena_SI_SA_WS_Slide_Kick.ogg" },
+	
+	DISABLE_ATTACK_BOX = 
+	{
+		"ATTACK_SPHERE2_Lfoot",
+		"ATTACK_SPHERE2_LLeg01",
+		"ATTACK_SPHERE3_Dagger1",
+	},
+
+	ENABLE_ATTACK_BOX = 
+	{
+		"ATTACK_SPHERE2_RLeg02",
+		"ATTACK_SPHERE1_Rfoot",
+	},
+	
+	ATTACK_TIME0		= { 0.01, 100 },
+
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		ATTACK_TYPE		= ATTACK_TYPE["AT_SPECIAL"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_UP"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.5,
+		},
+		
+		BACK_SPEED_X			= 300,
+		BACK_SPEED_Y			= 1200,
+	
+
+		CAN_REVENGE				= FALSE,
+		RE_ATTACK				= TRUE,
+		HIT_GAP					= 10,	
+		FORCE_FLY				= FALSE,
+	},
+	
+	
+	SOUND_PLAY0			= { 0.01, "Energy.ogg" },
+	SOUND_PLAY1			= { 0.160, "Lena_SI_SA_WS_Slide_Kick.ogg" },
+
+
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Cloe_Sliding", 0.1,
+	},		
+	
+	
+	EVENT_PROCESS =
+	{
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SHINEE_SPECIAL_ATTACK_B_THROUGH_SO_FAR",	"CT_SHINEE_SPECIAL_ATTACK_B_THROUGH_SO_FAR",	},
+		--{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHINEE_SPECIAL_ATTACK_B_THROUGH",		},
+	},
+	
+	CT_SHINEE_SPECIAL_ATTACK_B_THROUGH_SO_FAR =
+	{
+		ANIM_EVENT_TIMER			= 0.6,
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 9999,
+		RATE						= 100,
+	},
+	
+	
+		
+}
+
+SHINEE_SPECIAL_ATTACK_B_THROUGH_NEAR = 
+{
+	ANIM_NAME			= "SLIDE_KICK_Pass",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	
+	CAN_PUSH_UNIT		= TRUE,
+	CAN_PASS_UNIT		= TRUE,
+	
+	SUPER_ARMOR			= TRUE,
+	
+	SPEED_X = 1100,
+		
+	ATTACK_TIME0		= { 0.01, 100 },
+	
+	--CHANGE_TIME = 0.175,		-- 최대 0.3초
+	
+	--INVINCIBLE			= { 0, 100, },
+	
+	DISABLE_ATTACK_BOX = 
+	{
+		"ATTACK_SPHERE2_Lfoot",
+		"ATTACK_SPHERE2_LLeg01",
+		"ATTACK_SPHERE3_Dagger1",
+	},
+
+	ENABLE_ATTACK_BOX = 
+	{
+		"ATTACK_SPHERE2_RLeg02",
+		"ATTACK_SPHERE1_Rfoot",
+	},
+	
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		ATTACK_TYPE		= ATTACK_TYPE["AT_SPECIAL"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.5,
+		},
+		
+		BACK_SPEED_X			= 300,
+		--BACK_SPEED_Y			= 1000,
+		
+		
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.1,
+		CLEAR_SCREEN			= 0,
+
+		CAN_REVENGE				= FALSE,
+		RE_ATTACK				= TRUE,
+		HIT_GAP					= 10,	
+		FORCE_FLY				= FALSE,
+	},
+	
+	
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Cloe_Sliding", 0.01,
+	},	
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHINEE_SPECIAL_ATTACK_B_FINISH",		},
+	},
+	
+}
+
+SHINEE_SPECIAL_ATTACK_B_THROUGH_FAR = 
+{
+	ANIM_NAME			= "SLIDE_KICK_Pass",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	
+	CAN_PUSH_UNIT		= TRUE,
+	CAN_PASS_UNIT		= TRUE,
+	
+	SUPER_ARMOR			= TRUE,
+	
+	SPEED_X = 1600,
+	
+	CHANGE_TIME = 0.175,		-- 최대 0.3초
+	
+	ATTACK_TIME0		= { 0.01, 100 },
+	
+	--CHANGE_TIME = 0.175,		-- 최대 0.3초
+	
+	--INVINCIBLE			= { 0, 100, },
+	
+	DISABLE_ATTACK_BOX = 
+	{
+		"ATTACK_SPHERE2_Lfoot",
+		"ATTACK_SPHERE2_LLeg01",
+		"ATTACK_SPHERE3_Dagger1",
+	},
+
+	ENABLE_ATTACK_BOX = 
+	{
+		"ATTACK_SPHERE2_RLeg02",
+		"ATTACK_SPHERE1_Rfoot",
+	},
+	
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		ATTACK_TYPE		= ATTACK_TYPE["AT_SPECIAL"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.5,
+		},
+		
+		BACK_SPEED_X			= 300,
+		--BACK_SPEED_Y			= 1000,
+		
+		
+		
+		STOP_TIME_ATT			= 0.0,		
+		STOP_TIME_DEF			= 0.5,	
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.1,
+		CLEAR_SCREEN			= 0,
+
+		CAN_REVENGE				= FALSE,
+		RE_ATTACK				= TRUE,
+		HIT_GAP					= 10,	
+		FORCE_FLY				= FALSE,
+	},
+	
+	
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Cloe_Slide_Kick_Start", 0.01,
+	},	
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHINEE_SPECIAL_ATTACK_B_FINISH",		},
+	},
+	
+	
+}
+
+SHINEE_SPECIAL_ATTACK_B_THROUGH_SO_FAR = 
+{
+	ANIM_NAME			= "SLIDE_KICK_Pass",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	
+	CAN_PUSH_UNIT		= TRUE,
+	CAN_PASS_UNIT		= TRUE,
+	
+	SUPER_ARMOR			= TRUE,
+	
+	SPEED_X = 1950,
+	
+	CHANGE_TIME = 0.175,		-- 최대 0.3초
+	
+	ATTACK_TIME0		= { 0.01, 100 },
+	
+	--CHANGE_TIME = 0.175,		-- 최대 0.3초
+	
+	--INVINCIBLE			= { 0, 100, },
+	
+	DISABLE_ATTACK_BOX = 
+	{
+		"ATTACK_SPHERE2_Lfoot",
+		"ATTACK_SPHERE2_LLeg01",
+		"ATTACK_SPHERE3_Dagger1",
+	},
+
+	ENABLE_ATTACK_BOX = 
+	{
+		"ATTACK_SPHERE2_RLeg02",
+		"ATTACK_SPHERE1_Rfoot",
+	},
+	
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		ATTACK_TYPE		= ATTACK_TYPE["AT_SPECIAL"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 2,
+		},
+		
+		BACK_SPEED_X			= 300,
+		--BACK_SPEED_Y			= 1000,
+		
+		
+		
+		STOP_TIME_ATT			= 0.0,		
+		STOP_TIME_DEF			= 0.5,	
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.1,
+		CLEAR_SCREEN			= 0,
+
+		CAN_REVENGE				= FALSE,
+		RE_ATTACK				= TRUE,
+		HIT_GAP					= 10,	
+		FORCE_FLY				= FALSE,
+	},
+	
+	
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Cloe_Slide_Kick_Start", 0.01,
+	},	
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHINEE_SPECIAL_ATTACK_B_FINISH",		},
+	},
+	
+	
+}
+
+
+SHINEE_SPECIAL_ATTACK_B_FINISH = 
+{
+	ANIM_SPEED					= 1.2,
+
+	ANIM_NAME			= "SLIDE_KICK_End",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	
+	SUPER_ARMOR			= TRUE,
+		
+	FLIP_DIR_END		= TRUE,
+	
+	CAN_PUSH_UNIT		= TRUE,
+	SPEED_X = -300,
+	
+		
+	SOUND_PLAY0			= { 0.322, "Lena_SI_SA_WS_Slide_Kick2.ogg" },
+	
+
+
+	EVENT_PROCESS =
+	{
+	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHINEE_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHINEE_WAIT",		},
+	},
+	
+		
+}
+
+SHINEE_SPECIAL_ATTACK_B_FINISH_FOR_COMBO = 
+{
+
+	ANIM_NAME			= "Wait",
+	PLAY_TYPE			= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION			= FALSE,
+	LAND_CONNECT		= FALSE,
+	
+	
+	EVENT_PROCESS =
+	{
+        --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SHINEE_ATTACK_C1",	"CT_SHINEE_ATTACK_C1",	},
+        --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SHINEE_ATTACK_C_COMBO_B",	"CT_SHINEE_ATTACK_C_COMBO_B",	},
+        --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SHINEE_ATTACK_B_FOR_RUNAWAY_A",	"CT_SHINEE_ATTACK_B_FOR_RUNAWAY_A",	},
+        --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SHINEE_ATTACK_B",	"CT_SHINEE_ATTACK_B",	},
+	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHINEE_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHINEE_WAIT",		},
+	},
+	
+	CT_SHINEE_ATTACK_C_COMBO_B =
+	{
+		ANIM_EVENT_TIMER			= 0.066,
+		--ATTACK_SUCCESS				= TRUE, 
+		EVENT_INTERVAL_ID			= 0,
+		MY_MP_MORE_THAN				= 10,
+		DISTANCE_TO_TARGET_NEAR		= 300,
+		RATE						= 60,
+	},
+	CT_SHINEE_ATTACK_C1 =
+	{
+		ANIM_EVENT_TIMER			= 0.233,
+		--ATTACK_SUCCESS				= TRUE, 
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 300,
+		RATE						= 80,
+	},
+	CT_SHINEE_ATTACK_B =
+	{
+		ANIM_EVENT_TIMER			= 0.433,
+		--ATTACK_SUCCESS				= TRUE, 
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 70,
+	},
+	CT_SHINEE_ATTACK_B_FOR_RUNAWAY_A =
+	{
+		ANIM_EVENT_TIMER			= 0.433,
+		--ATTACK_SUCCESS				= TRUE, 
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 100,
+	},
+	
+}
+
+
+--------------------------------------------------------------------------
+SHINEE_DAMAGE_REVENGE =
+{
+	ANIM_NAME					= "DamageRevenge",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"SHINEE_WAIT",												},
+	},
+}
+--------------------------------------------------------------------------
+SHINEE_DAMAGE_FRONT =
+{
+	ANIM_NAME					= "DamageFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SOUND_PLAY0		            = { 0.01, "DARKELF_BossVoice_Damage.ogg", 30 },
+
+	EVENT_PROCESS =
+	{
+        --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SHINEE_SPECIAL_ATTACK_A",	"CT_SHINEE_SPECIAL_ATTACK_A",	},
+		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHINEE_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHINEE_WAIT",		},
+	},
+	
+	
+	CT_SHINEE_SPECIAL_ATTACK_A =
+	{
+		ANIM_EVENT_TIMER			= 0.33,
+		--ATTACK_SUCCESS				= TRUE, 
+		EVENT_INTERVAL_ID			= 0,	
+		RATE						= 7,
+	},
+}
+--------------------------------------------------------------------------
+SHINEE_DAMAGE_BACK =
+{
+	ANIM_NAME					= "DamageBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SOUND_PLAY0		            = { 0.01, "DARKELF_BossVoice_DamageBack.ogg", 40 },
+
+	EVENT_PROCESS =
+	{
+        --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SHINEE_SPECIAL_ATTACK_A",	"CT_SHINEE_SPECIAL_ATTACK_A",	},
+		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHINEE_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHINEE_WAIT",		},
+	},
+	
+	
+	CT_SHINEE_SPECIAL_ATTACK_A =
+	{
+		ANIM_EVENT_TIMER			= 0.33,
+		--ATTACK_SUCCESS				= TRUE, 
+		EVENT_INTERVAL_ID			= 0,	
+		RATE						= 7,
+	},
+	
+}
+--------------------------------------------------------------------------
+SHINEE_DAMAGE_DOWN_FRONT =
+{
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 40, },
+
+    SOUND_PLAY0			= { 0.01, "DARKSENTINELVoice_Damage.ogg" , 30 },
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"SHINEE_DAMAGE_AIR_FALL",	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],             "SHINEE_STAND_UP_ATTACK_FRONT",  "CT_SHINEE_STAND_UP_ATTACK_FRONT" },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"SHINEE_STAND_UP_FRONT",	},
+	},
+
+    CT_SHINEE_STAND_UP_ATTACK_FRONT =
+    {
+        ANIM_PLAY_COUNT     = 1,
+        RATE                = 50,
+    }
+}
+--------------------------------------------------------------------------
+SHINEE_DAMAGE_DOWN_BACK =
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 40, },
+
+    SOUND_PLAY0			= { 0.01, "DARKSENTINELVoice_Damage.ogg" , 30 },
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"SHINEE_DAMAGE_AIR_FALL",	},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],             "SHINEE_STAND_UP_ATTACK_BACK",  "CT_SHINEE_STAND_UP_ATTACK_BACK" },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"SHINEE_STAND_UP_BACK",		},
+	},
+
+    CT_SHINEE_STAND_UP_ATTACK_BACK =
+    {
+        ANIM_PLAY_COUNT     = 1,
+        RATE                = 50,
+    }
+}
+--------------------------------------------------------------------------
+SHINEE_DAMAGE_FLY_FRONT =
+{
+	ANIM_NAME					= "DamageAirFlyFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"SHINEE_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+SHINEE_DAMAGE_FLY_BACK =
+{
+	ANIM_NAME					= "DamageAirFlyBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"SHINEE_DAMAGE_DOWN_BACK",	},
+	},
+}
+--------------------------------------------------------------------------
+SHINEE_DAMAGE_AIR =
+{
+	ANIM_NAME					= "DamageAirSmall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"SHINEE_WAIT",	},
+	},
+
+	VIEW_TARGET					= TRUE,
+	ALLOW_DIR_CHANGE			= TRUE,
+}
+--------------------------------------------------------------------------
+SHINEE_DAMAGE_AIR_DOWN =
+{
+	ANIM_NAME					= "DamageAirDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"SHINEE_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+SHINEE_DAMAGE_AIR_UP =
+{
+	ANIM_NAME					= "DamageAirUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],	"SHINEE_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"SHINEE_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+SHINEE_DAMAGE_AIR_FALL =
+{
+	ANIM_NAME					= "DamageAirFall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_POSITIVE_Y_SPEED"],	"SHINEE_DAMAGE_AIR_UP",			    },
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"SHINEE_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+--------------------------------------------------------------------------
+SHINEE_DAMAGE_AIR_DOWN_LANDING =
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 40, },
+
+	    SOUND_PLAY0			= { 0.01, "DARKSENTINELVoice_Damage.ogg" , 30 },
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHINEE_DAMAGE_AIR_FALL",		},
+        { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],         "SHINEE_STAND_UP_ATTACK_FRONT", "CT_SHINEE_STAND_UP_ATTACK_FRONT" },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHINEE_STAND_UP_FRONT",		},
+	},
+
+    CT_SHINEE_STAND_UP_ATTACK_FRONT =
+    {
+        ANIM_PLAY_COUNT     = 1,
+        RATE                = 50,
+    }
+}
+--------------------------------------------------------------------------
+SHINEE_STAND_UP_FRONT =
+{
+	ANIM_NAME					= "DamageStandUpFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 40, },
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHINEE_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHINEE_WAIT",		},
+	},
+}
+--------------------------------------------------------------------------
+SHINEE_STAND_UP_BACK =
+{
+	ANIM_NAME					= "DamageStandUpBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 40, },
+
+    --SOUND_PLAY0			= { 0.283, "SHINEE_StandUp.ogg" },
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHINEE_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHINEE_WAIT",      },
+	},
+}
+--------------------------------------------------------------------------
+SHINEE_STAND_UP_ATTACK_FRONT =
+{
+	ANIM_NAME					= "StandUpAttackFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	ANIM_WAIT_TIME				= 1,
+
+	MIND_FLAG					= MIND_FLAG["MF_STAND_UP_ATTACK"],
+
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 50, },
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    --SOUND_PLAY0			= { 0.234, "AirShip_SwordMan_Slash1.ogg" },
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHINEE_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHINEE_WAIT",			},
+	},
+
+	ATTACK_TIME0				= { 0.3, 1.000, },
+	
+	DISABLE_ATTACK_BOX = 
+	{
+		"ATTACK_SPHERE3_Dagger1",
+		"ATTACK_SPHERE2_RLeg02",
+		"ATTACK_SPHERE2_LLeg01",
+	},
+
+	ENABLE_ATTACK_BOX = 
+	{
+		"ATTACK_SPHERE2_Lfoot",
+		"ATTACK_SPHERE1_Rfoot",
+	},
+	
+	
+	
+	
+	DAMAGE_DATA = 
+	{
+					
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_KICK_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 2,
+		},
+			
+		FORCE_DOWN			= 5,
+		STOP_TIME_DEF			= 0.05,
+			
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+		
+	    TECH_POINT				= 20,
+	},
+
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_2568 },
+	},
+
+}
+--------------------------------------------------------------------------
+SHINEE_STAND_UP_ATTACK_BACK =
+{
+	ANIM_NAME					= "StandUpAttackBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	ANIM_WAIT_TIME				= 1,
+
+	MIND_FLAG					= MIND_FLAG["MF_STAND_UP_ATTACK"],
+
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 50, },
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    --SOUND_PLAY0			= { 0.234, "AirShip_SwordMan_Slash1.ogg" },
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SHINEE_JUMP_DOWN",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SHINEE_WAIT",		},
+	},
+
+	ATTACK_TIME0				= { 0.3, 1.000, },
+	
+	DISABLE_ATTACK_BOX = 
+	{
+		"ATTACK_SPHERE3_Dagger1",
+		"ATTACK_SPHERE2_RLeg02",
+		"ATTACK_SPHERE2_LLeg01",
+	},
+
+	ENABLE_ATTACK_BOX = 
+	{
+		"ATTACK_SPHERE2_Lfoot",
+		"ATTACK_SPHERE1_Rfoot",
+	},
+	
+	
+	
+	
+	DAMAGE_DATA = 
+	{
+					
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_KICK_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 2,
+		},
+			
+		FORCE_DOWN			= 5,
+		STOP_TIME_DEF			= 0.05,
+			
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+		
+	    TECH_POINT				= 20,
+	},
+
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_2568 },
+	},
+
+}
+
+
+
+--------------------------------------------------------------------------
+
+
+SHINEE_DYING = 
+{
+	--ANIM_SPEED					= 3,
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+
+	SOUND_PLAY0			        = { 1.024, "DARKELF_BossVoice_Dying.ogg" },
+ 	
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	DYING_SPEED					= 1,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+--------------------------------------------------------------------------
+function SHINEE_WALK_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+end
+--------------------------------------------------------------------------
+function SHINEE_JUMP_DOWN_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+end
+--------------------------------------------------------------------------
+function SHINEE_JUMP_DOWN_DIR_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+end
+--------------------------------------------------------------------------
+function SHINEE_ATTACK_A_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.87 ) then
+         local pDamageEffect = pX2Game:GetDamageEffect()
+         local vPos = pNPCUnit:GetPos()
+         local vLandPos = pNPCUnit:GetLandPosition_LUA()
+
+         if pDamageEffect ~= nil then
+            pDamageEffect:CreateInstance_LUA( pNPCUnit, "SHINEE_ATTACK_A", vPos, vLandPos.y )
+         end
+	end
+end
+--------------------------------------------------------------------------
+function SHINEE_DAMAGE_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.047 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+end
+--------------------------------------------------------------------------
+function SHINEE_DAMAGE_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.06 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+end
+--------------------------------------------------------------------------
+function SHINEE_DAMAGE_DOWN_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.634 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+end
+--------------------------------------------------------------------------
+function SHINEE_DAMAGE_DOWN_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.620 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+end
+--------------------------------------------------------------------------
+function SHINEE_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		local pos = pNPCUnit:GetLandPosition_LUA()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+		pos.y = pos.y + 5
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "GroundShockWave", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(1,-1) )
+		local pParticle = pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "AirDownTick", pNPCUnit:GetPos(), D3DXVECTOR2(200,200), D3DXVECTOR2(10,-1) )
+		if pParticle ~= nil then
+			pParticle:SetLandPosition( pos.y - 5 )
+		end
+
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 500 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 0.1 )
+		end
+
+	elseif pNPCUnit:AnimEventTimer_LUA( 0.1 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+end
+--------------------------------------------------------------------------
+function SHINEE_STAND_UP_ATTACK_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+    if pNPCUnit:AnimEventTimer_LUA( 0.35 ) then
+        local pMinorParticle = pX2Game:GetMinorParticle()
+        pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+    end
+end
+--------------------------------------------------------------------------
+function SHINEE_STAND_UP_ATTACK_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+    if pNPCUnit:AnimEventTimer_LUA( 0.35 ) then
+        local pMinorParticle = pX2Game:GetMinorParticle()
+        pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+    end
+end
+--------------------------------------------------------------------------
+function SHINEE_DYING_LAND_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	local pos = pNPCUnit:GetPos()
+	pos.y = pos.y + 100.0
+	local GetMinorParticle = pX2Game:GetMinorParticle()
+
+	local pSeq = GetMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DieLight", pos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+	if pSeq ~= nil then
+		pSeq:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+		pNPCUnit:SetDieSeq( pSeq:GetHandle() )
+	end
+	pNPCUnit:PlaySound_LUA( "DieLight.ogg" )
+end
+--------------------------------------------------------------------------
+function MovePos( pos, dirvector, dist )
+	pos.x = pos.x + dist * dirvector.x
+	pos.y = pos.y + dist * dirvector.y
+	pos.z = pos.z + dist * dirvector.z
+
+	return pos
+end
+
+
+function SHINEE_HEAL_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+		local pNpc = pX2Game:GetNearestNpcInSpecificRangeByNpcId_LUA( pNPCUnit:GetPos(), NPC_UNIT_ID["NUI_LANOS_FD_BOSS"], 999999 )
+		if pNpc ~= nil then	
+			local fRemainHPRate = pNpc:GetNowHP() / pNpc:GetMaxHP()
+			local iPhase = pNPCUnit:GetInt_LUA ( 0 )
+			if iPhase < 10 then
+				local fHealHPRate = pNpc:GetMaxHP() * 0.05
+				pNpc:SetNowHP_LUA( pNpc:GetNowHP() + fHealHPRate )			
+				iPhase = iPhase + 1
+				pNPCUnit:SetInt_LUA ( 0, iPhase )
+			
+			else
+				pNPCUnit:SetInt_LUA ( 0, 0 )
+				pNPCUnit:StateChange_LUA( "SHINEE_WAIT", true )
+			end
+		end
+	end
+end
+
+function CF_SHINEE_HEAL ( pKTDXApp, pX2Game, pNPCUnit )
+	local pNpc = pX2Game:GetNearestNpcInSpecificRangeByNpcId_LUA( pNPCUnit:GetPos(), NPC_UNIT_ID["NUI_LANOS_FD_BOSS"], 999999 )
+	if pNpc ~= nil then	
+		local fRemainHPRate = pNpc:GetNowHP() / pNpc:GetMaxHP()
+		if fRemainHPRate < 0.3 then
+			return true
+		else
+			return false
+		end
+	end
+end
+
+function SHINEE_DYING_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	
+	local pos = pNPCUnit:GetPos()
+   	local pMajorXMeshPlayer = pX2Game:GetMajorXMeshPlayer()
+   	if pMajorXMeshPlayer ~= nil then
+       	local vPos = pNPCUnit:GetPos()
+		local rotDegree = pNPCUnit:GetRotateDegree()
+    	pMajorXMeshPlayer:CreateInstance_LUA( "DarkElf_Boss_Dying_Mesh01", vPos, rotDegree, rotDegree, 14 )
+	end
+
+	pos.y = pos.y + 100.0
+	local GetMinorParticle = pX2Game:GetMinorParticle()
+	local pSeq = GetMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DieLight",		pos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+	if pSeq ~= nil then
+		pSeq:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+		pNPCUnit:SetDieSeq( pSeq:GetHandle() )
+	end
+	pNPCUnit:PlaySound_LUA( "DieLight.ogg" )
+
+end
+
+
+
+
+
+
+
+

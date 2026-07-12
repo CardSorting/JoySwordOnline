@@ -1,0 +1,1038 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 250.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+}
+
+
+INIT_DEVICE = 
+{
+  READY_XMESH = 
+	{
+	  "Lire_Uplight01.Y",
+	  "Arme_ChargeMp1.y",
+	},
+	
+	READY_XSKIN_MESH = 
+	{
+	  "CONRAD_MaA_Bazooka_AttackBox.X",
+	  "CONRAD_MaA_Bomb.X",
+	  "CONRAD_MaB_Spear.X",
+	  "CONRAD_SpecialAttackC_Hand.X",
+	  "Spin_Liner02.X",
+	},
+	READY_TEXTURE = 
+	{
+	  "Spark01.dds",
+	  "Steam_BP.dds",
+	  "Particle_Blur.dds",
+	  "Condense_Light01.dds",
+	  "Explosion_Sphere.dds",
+	  "Arme_Ring2.dds",
+	  "Aerotornado04.dds",
+	  "stone.dds",
+	  "Condense_Pulse01.dds",
+	  "Eve_EG_SP1_HornetSting_Piece00.dds",
+	  "Arme_Critical2.dds",
+	  "GroundShockWave02.dds",
+	  "Eve_EG_SP1_HornetSting_Piece03.tga",
+	  "Smoke.dds",
+	  "smoke02.dds",
+	  "ColorBallBlue.dds",
+	  "ColorBallFire.dds",
+	  "Arme_smoke.dds",
+	},	
+	READY_SOUND = 
+	{
+	"Landing_Tech01.ogg",
+	"Landing_Tech02.ogg",
+	"Landing_Tech03.ogg",
+	"Habit_Machine01.ogg",
+	"Habit_Machine02.ogg",
+	"Hit_Tech01.wav",
+	"Hit_Tech02.wav",
+	"Hit_Tech03.wav",
+	"Hit_Tech04.wav",
+	"Conrad_The_Odd_Dying01.ogg",
+	"Conrad_The_Odd_Dying02.ogg",
+	"Conrad_The_Odd_JumpUp.ogg",
+	"Conrad_The_Odd_MagicAttackA01.ogg",
+	"Conrad_The_Odd_MagicAttackA02.ogg",
+	"Conrad_The_Odd_MagicAttackA03.wa",
+	"Conrad_The_Odd_MagicAttackB.ogg",
+	"Conrad_The_Odd_SpecialAttackA01.ogg",
+	"Conrad_The_Odd_SpecialAttackA02.ogg",
+	"Conrad_The_Odd_SpecialAttackA03.ogg",
+	"Conrad_The_Odd_SpecialAttackC01.ogg",
+	"Conrad_The_Odd_SpecialAttackC02.ogg",
+	"Conrad_The_Odd_WaitStart.ogg",
+	"Conrad_The_Odd_SpecialAttackA04.ogg",
+	"Conrad_The_Odd_Wait_Loop.ogg",
+	"Conrad_The_Odd_Walk_Loop.ogg",
+	"Swing_Medium01.ogg",
+	"Landing_Big_Metal02.ogg",
+	"Landing_RawMeat01.ogg",
+	"Habit_Metal_Scrape01.ogg",
+	"Habit_Metal_Scrape02.ogg",
+	"Effect_Steam01.ogg",
+	"Effect_Steam02.ogg",
+	"Effect_Steam03.ogg",
+	"Effect_Steam04.ogg",
+	"Explosion.ogg",
+	},	
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_CONRAD.x",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 700,
+	RUN_SPEED			= 900,
+	JUMP_SPEED			= 1600,
+	DASH_JUMP_SPEED		= 2300,
+}
+
+
+INIT_COMPONENT = 
+{
+	IMMUNITY_TIME_STOP = TRUE,
+	MAX_HP				= 3250,
+	MP_CHANGE_RATE		= 2,
+	MP_CHARGE_RATE		= 660,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	DRAW_SMALL_MP_BAR	= TRUE,
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_METAL"],
+	
+	FALL_DOWN			= FALSE,
+	DIE_FLY             = 0,
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "CONRAD_START",					},
+	{ STATE_NAME = "CONRAD_WAIT",						},
+		
+	{ STATE_NAME = "CONRAD_WALK",						},
+	{ STATE_NAME = "CONRAD_JUMP_UP_READY",					},
+	{ STATE_NAME = "CONRAD_JUMP_UP",					},
+	{ STATE_NAME = "CONRAD_JUMP_DOWN",				},
+	{ STATE_NAME = "CONRAD_JUMP_UP_DIR_READY",				},
+	{ STATE_NAME = "CONRAD_JUMP_UP_DIR",				},
+	{ STATE_NAME = "CONRAD_JUMP_DOWN_DIR",			},
+	{ STATE_NAME = "CONRAD_JUMP_LANDING",				LUA_STATE_START_FUNC = "CONRAD_DAMAGE_DOWN_STATE_START", },
+	
+	{ STATE_NAME = "CONRAD_DASH_ATTACK",				},
+	{ STATE_NAME = "CONRAD_DASH_ATTACK_END",				},
+	{ STATE_NAME = "CONRAD_MAGICATTACKA",				},
+	{ STATE_NAME = "CONRAD_MAGICATTACKB",				},
+	{ STATE_NAME = "CONRAD_SPECIALATTACKA",			LUA_FRAME_MOVE_FUNC = "CONRAD_SPECIALATTACKA_FRAME_MOVE", STATE_COOL_TIME	= 3,	},
+	{ STATE_NAME = "CONRAD_SPECIALATTACKC",			LUA_FRAME_MOVE_FUNC = "CONRAD_SPECIALATTACKC_FRAME_MOVE", STATE_COOL_TIME	= 6,	},	
+	{ STATE_NAME = "CONRAD_ESCAPE",				},
+	
+	--리액션 관련
+	{ STATE_NAME = "CONRAD_DAMAGEFRONT",				},
+	{ STATE_NAME = "CONRAD_DAMAGEBACK",				},
+	{ STATE_NAME = "CONRAD_DAMAGEAIRDOWN",				},
+	{ STATE_NAME = "CONRAD_DAMAGEAIRDOWNLANDING",       LUA_STATE_START_FUNC = "CONRAD_DAMAGE_DOWN_STATE_START", },
+	{ STATE_NAME = "CONRAD_DAMAGEAIRDOWNLANDINGSTANDUP",				},
+	{ STATE_NAME = "CONRAD_DAMAGEAIRFALL",				},
+	{ STATE_NAME = "CONRAD_DAMAGEAIRFLYBACK",           LUA_STATE_START_FUNC = "CONRAD_DAMAGE_DOWN_STATE_START", },
+	{ STATE_NAME = "CONRAD_DAMAGEAIRFLYFRONT",          LUA_STATE_START_FUNC = "CONRAD_DAMAGE_DOWN_STATE_START", },
+	--{ STATE_NAME = "CONRAD_DAMAGEAIRFLYSMALL",				},
+	{ STATE_NAME = "CONRAD_DAMAGEAIRFLYUP",				},
+	{ STATE_NAME = "CONRAD_DAMAGEBACK",				},
+	{ STATE_NAME = "CONRAD_DAMAGEFRONT",				},		
+	
+	{ STATE_NAME = "CONRAD_DYING",				},
+	
+	START_STATE					= "CONRAD_START",
+	WAIT_STATE					= "CONRAD_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "CONRAD_DAMAGEFRONT",
+	SMALL_DAMAGE_LAND_BACK		= "CONRAD_DAMAGEBACK",
+	BIG_DAMAGE_LAND_FRONT		= "CONRAD_DAMAGEFRONT",
+	BIG_DAMAGE_LAND_BACK 		= "CONRAD_DAMAGEBACK",
+	 
+	SMALL_DAMAGE_AIR			= "CONRAD_DAMAGEAIRDOWN",
+	BIG_DAMAGE_AIR				= "CONRAD_DAMAGEAIRDOWN",
+	 
+	DOWN_DAMAGE_LAND_FRONT 		= "CONRAD_DAMAGEAIRFLYFRONT",
+	DOWN_DAMAGE_LAND_BACK		= "CONRAD_DAMAGEAIRFLYBACK",
+	 
+	DOWN_DAMAGE_AIR				= "CONRAD_DAMAGEAIRDOWN",
+	DOWN_DAMAGE_AIR_LANDING		= "CONRAD_DAMAGEAIRDOWNLANDING",
+	
+	UP_DAMAGE					= "CONRAD_DAMAGEAIRFLYUP",
+	FLY_DAMAGE_FRONT			= "CONRAD_DAMAGEAIRFLYFRONT",
+	FLY_DAMAGE_BACK				= "CONRAD_DAMAGEAIRFLYBACK",
+
+	DAMAGE_REVENGE				= "",
+	
+	DAMAGE_EXTRA_STATES         = {"CONRAD_DAMAGEAIRDOWNLANDINGSTANDUP","CONRAD_DAMAGEAIRFALL","CONRAD_JUMP_DOWN","CONRAD_JUMP_LANDING",},	
+	
+	DYING_LAND_FRONT			= "CONRAD_DYING",
+	DYING_LAND_BACK				= "CONRAD_DYING",
+	DYING_SKY					= "CONRAD_DYING",
+
+	REVENGE_ATTACK				= "",	
+}
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 2,		-- sec
+		TARGET_NEAR_RANGE			= 600,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 1500,		-- cm
+		TARGET_LOST_RANGE			= 2000,		-- cm
+		TARGET_SUCCESS_RATE			= 100,  --40,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 30,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 100, -- 50,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 300,
+		DEST_GAP			= 700,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 900,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		WALK_INTERVAL		= 1,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 40,
+		UP_DOWN_RATE		= 20,
+		DOWN_JUMP_RATE		= 100,    --  20,
+		DOWN_DOWN_RATE		= 40,
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 50, --50,		
+		PATROL_RANGE			= 300,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	--[[
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 1000,	-- cm
+		ESCAPE_GAP			= 1500,	-- 이 거리 보다 멀어지면 도망 성공
+		
+		WALK_INTERVAL		= 1.5,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 10,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+	},
+	
+	ESCAPE_CONDITION = 
+	{
+		RATE	= 80,
+		MY_HP	= 30,
+	}
+	]]--
+}
+
+
+CONRAD_START = 
+{
+	ANIM_NAME					= "WaitStart",
+	
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	EVENT_INTERVAL_TIME0		= 2,
+
+	SOUND_PLAY0					= { 0.08, "Conrad_The_Odd_WaitStart.ogg" },
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CONRAD_WAIT",						},
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Conrad_WaitStart", 0.0,
+	},	
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+}
+
+CONRAD_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	VIEW_TARGET					= TRUE,
+	ALLOW_DIR_CHANGE			= TRUE,
+	
+	--SPEED_X						= 0,
+	--SPEED_Y						= 0,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	EVENT_INTERVAL_TIME0		= 1,
+
+	--SOUND_PLAY0					= {0.00, "Conrad_The_Odd_Wait_Loop.ogg" },	
+	SOUND_PLAY1					= { 0.20, "Habit_Machine01.ogg", 10 },
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CONRAD_JUMP_DOWN",					},
+				
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"CONRAD_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"CONRAD_WALK",						},
+
+ 		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"CONRAD_DASH_ATTACK",		      "CT_CONRAD_DASH_ATTACK",	},		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"CONRAD_MAGICATTACKA",		      "CT_CONRAD_MAGICATTACKA",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"CONRAD_MAGICATTACKB",		      "CT_CONRAD_MAGICATTACKB",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"CONRAD_SPECIALATTACKA",		      "CT_CONRAD_SPECIALATTACKA",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"CONRAD_SPECIALATTACKC",		      "CT_CONRAD_SPECIALATTACKC",	},
+		
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"CONRAD_ESCAPE",		      "CT_CONRAD_ESCAPE",	},
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"CONRAD_JUMP_UP_READY",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],			"CONRAD_JUMP_UP_DIR_READY",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"CONRAD_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"CONRAD_JUMP_DOWN_DIR",				},		
+	},
+	
+	CT_CONRAD_ESCAPE =
+	{
+		EVENT_INTERVAL_ID       = 0,
+		DISTANCE_TO_TARGET_NEAR	= 300,
+		RATE                    = 80,
+	}, 
+	CT_CONRAD_DASH_ATTACK =
+	{
+		EVENT_INTERVAL_ID       = 0,
+		DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 10,
+	},	
+	CT_CONRAD_MAGICATTACKA=
+	{
+		EVENT_INTERVAL_ID       = 0,
+		DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 30,
+	},
+	CT_CONRAD_MAGICATTACKB=
+	{
+		EVENT_INTERVAL_ID       = 0,
+		DISTANCE_TO_TARGET_NEAR	= 1000,
+		RATE                    = 30,
+	}, 
+	CT_CONRAD_SPECIALATTACKA=
+	{
+		EVENT_INTERVAL_ID       = 0,
+		MY_HP_LESS_THAN_PERCENT = 50,
+		MY_MP_MORE_THAN_PERCENT	= 20,
+		RATE                    = 50,
+	}, 
+	CT_CONRAD_SPECIALATTACKC=
+	{
+		EVENT_INTERVAL_ID       = 0,
+		MY_MP_MORE_THAN_PERCENT	= 50,
+		RATE                    = 80,
+	}, 
+	
+}
+
+CONRAD_WALK = 
+{
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 1,
+
+	--SOUND_PLAY0					= {0.00, "Conrad_The_Odd_Walk_Loop.ogg" },	
+	SOUND_PLAY0					= { 0.20, "Habit_Machine02.ogg", 10 },
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CONRAD_JUMP_DOWN_DIR",				},
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"CONRAD_DASH_ATTACK",		    "CT_CONRAD_DASH_ATTACK",	},	   
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"CONRAD_ESCAPE",		      	"CT_CONRAD_ESCAPE",	}, 
+    				
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"CONRAD_WAIT",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"CONRAD_JUMP_UP_READY",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"CONRAD_JUMP_UP_DIR_READY",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"CONRAD_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"CONRAD_JUMP_DOWN_DIR",				},
+	},
+	
+	CT_CONRAD_ESCAPE =
+	{
+		EVENT_INTERVAL_ID       = 0,
+		DISTANCE_TO_TARGET_NEAR	= 300,
+		RATE                    = 80,
+	}, 
+	
+	CT_CONRAD_DASH_ATTACK =
+	{
+	  EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 30,
+	},
+}
+
+CONRAD_JUMP_UP_READY =
+{
+	ANIM_NAME					= "JumpReady",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+				
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	SOUND_PLAY0 				= { 0.01, "Conrad_The_Odd_JumpUp.ogg" },
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CONRAD_JUMP_UP",						},
+	},	
+}
+
+CONRAD_JUMP_UP = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	ADD_POS_Y					= 45,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"CONRAD_JUMP_DOWN",				},
+	},
+	
+}
+
+CONRAD_JUMP_DOWN = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+			
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"CONRAD_JUMP_LANDING",				},
+	},
+}
+
+CONRAD_JUMP_UP_DIR_READY =
+{
+	ANIM_NAME					= "JumpReady",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	SOUND_PLAY0					= { 0.01, "Conrad_The_Odd_JumpUp.ogg" },
+		
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CONRAD_JUMP_UP_DIR",						},
+	},	
+}
+
+CONRAD_JUMP_UP_DIR = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	ADD_POS_Y					= 45,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"CONRAD_JUMP_DOWN_DIR",				},
+	},
+}
+
+CONRAD_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"CONRAD_JUMP_LANDING",				},
+	},
+}
+
+CONRAD_JUMP_LANDING = 
+{
+	ANIM_NAME					= "JumpLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+		
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	SOUND_PLAY0					= { 0.01, "Landing_Tech01.ogg" },
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CONRAD_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CONRAD_WAIT",					},
+	},
+}
+
+
+CONRAD_ESCAPE = 
+{
+	ANIM_NAME					= "Escape",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PASS_UNIT				= TRUE,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	SPEED_X						= -1000,
+	--SPEED_TIME0 = { -2500, 0, 0, 1, },
+	--SPEED_TIME1 = { 300, 0, 1.0, 2, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	SOUND_PLAY0					= { 0.01, "Conrad_The_Odd_SpecialAttackC01.ogg" },
+	SOUND_PLAY1					= { 0.30, "Habit_Metal_Scrape01.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"CONRAD_WAIT",												},
+	},
+}
+
+
+CONRAD_DAMAGEFRONT = 
+{
+	ANIM_NAME					= "DamageFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0					= { 0.01, "Hit_Tech01.wav" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"CONRAD_WAIT",												},
+	},
+}
+
+CONRAD_DAMAGEBACK = 
+{
+	ANIM_NAME					= "DamageBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0					= { 0.01, "Hit_Tech02.wav" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"CONRAD_WAIT",												},
+	},
+}
+
+CONRAD_DAMAGEAIRDOWN = 
+{
+	ANIM_NAME					= "DamageAirDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+		
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 20, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"CONRAD_DAMAGEAIRFALL",			},		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"CONRAD_DAMAGEAIRDOWNLANDINGSTANDUP",			},
+	},
+}
+
+CONRAD_DAMAGEAIRDOWNLANDING = 
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 20, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0					= { 0.40, "Landing_Big_Metal01.ogg" },
+	SOUND_PLAY1					= { 0.01, "Landing_Tech02.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"CONRAD_DAMAGEAIRFALL",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"CONRAD_DAMAGEAIRDOWNLANDINGSTANDUP",			},
+	},
+}
+
+CONRAD_DAMAGEAIRDOWNLANDINGSTANDUP = 
+{
+	ANIM_NAME					= "DamageAirDownLandingStandUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 20, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0					= { 0.01, "Habit_Tech02.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CONRAD_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CONRAD_WAIT",				},
+	},
+}
+
+CONRAD_DAMAGEAIRFLYFRONT = 
+{
+	ANIM_NAME					= "DamageAirFlyFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0					= { 0.001 , "Hit_Tech01.wav" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"CONRAD_DAMAGEFRONT",		},
+	},
+}
+
+CONRAD_DAMAGEAIRFLYBACK =
+{
+	ANIM_NAME					= "DamageAirFlyBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0					= { 0.001 , "Hit_Tech02.wav" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"CONRAD_DAMAGEBACK",		},
+	},
+}
+
+CONRAD_DAMAGEAIRFLYUP = 
+{
+	ANIM_NAME					= "DamageAirFlyUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+    SOUND_PLAY0					= { 0.001 , "Hit_Tech03.wav" },
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"CONRAD_DAMAGEAIRFALL",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"CONRAD_DAMAGEAIRDOWNLANDING",	},
+	},
+}
+
+CONRAD_DAMAGEAIRFALL = 
+{
+	ANIM_NAME					= "DamageAirFall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_POSITIVE_Y_SPEED"],		"CONRAD_DAMAGEAIRFLYUP",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"CONRAD_DAMAGEAIRDOWNLANDING",	},
+	},
+}
+
+CONRAD_DASH_ATTACK =
+{
+	ANIM_NAME					= "Dash",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= TRUE,		
+	
+	ALLOW_DIR_CHANGE			= FALSE,
+		
+	SPEED_X						= 2000,
+	SPEED_Y						= 0,	
+	--PASSIVE_SPEED_X   = 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	SOUND_PLAY1					= { 0.02, "Conrad_The_Odd_SpecialAttackC01.ogg" },
+	SOUND_PLAY0					= { 0.01, "Landing_Tech03.ogg" },
+	
+	ATTACK_TIME0				= { 0.01, 0.9, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_CRASH"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.5,
+
+		},
+				
+		BACK_SPEED_X			= 1000,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+	},
+	
+	EVENT_PROCESS = 
+	{
+	  { STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CONRAD_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CONRAD_DASH_ATTACK_END", },
+	},
+	
+}
+
+CONRAD_DASH_ATTACK_END = 
+{
+  ANIM_NAME					= "DashEnd",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,		
+		
+	SPEED_X						= 100,
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	SOUND_PLAY0					= { 0.001 , "Effect_Metal_Scrape03.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+ 		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CONRAD_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CONRAD_WAIT", },
+	},	
+}
+
+CONRAD_MAGICATTACKA = 
+{
+  ANIM_NAME					= "MagicAttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,		
+	
+	SUPER_ARMOR					= TRUE,
+	
+	SOUND_PLAY0					= { 0.40, "Conrad_The_Odd_MagicAttackA01.ogg" },
+	SOUND_PLAY1					= { 1.40, "Conrad_The_Odd_MagicAttackA02.ogg" },
+	SOUND_PLAY2					= { 3.30, "Swing_Medium01.ogg" },
+	SOUND_PLAY3					= { 3.50, "Conrad_The_Odd_MagicAttackA03.ogg" },
+	
+	
+	EVENT_PROCESS = 
+	{
+ 		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CONRAD_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CONRAD_WAIT", },
+	},	
+	
+	EFFECT_SET_LIST =
+	{
+		"Conrad_MagicA", 0.0,
+	},	
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+}
+
+CONRAD_MAGICATTACKB = 
+{
+  ANIM_NAME					= "MagicAttackB",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,		
+		
+	SOUND_PLAY0					= { 0.001 , "Conrad_The_Odd_MagicAttackB.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+ 		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CONRAD_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CONRAD_WAIT", },
+	},	
+	
+	EFFECT_SET_LIST =
+	{
+		"Conrad_MagicB", 0.0,
+	},	
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+}
+
+CONRAD_SPECIALATTACKA = 
+{
+  ANIM_NAME					= "SpecialAttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	ANIM_SPEED					= 1.5,
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,		
+		
+	SUPER_ARMOR					= TRUE,
+	
+	SOUND_PLAY0 				= { 0.30 , "Conrad_The_Odd_SpecialAttackA01.ogg" },
+	SOUND_PLAY1 				= { 2.40 , "Conrad_The_Odd_SpecialAttackC02.ogg" },
+
+	EVENT_PROCESS = 
+	{
+ 		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CONRAD_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CONRAD_WAIT", },
+	},	
+	
+	EFFECT_SET_LIST =
+	{
+		"Conrad_SpecialA", 0.0,
+	},	
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+}
+
+CONRAD_SPECIALATTACKC = 
+{
+  ANIM_NAME					= "SpecialAttackC",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,		
+		
+    SUPER_ARMOR					= TRUE,
+	
+	SOUND_PLAY0 				= { 0.10 , "Conrad_The_Odd_SpecialAttackA01.ogg" },
+	SOUND_PLAY1 				= { 1.40 , "Conrad_The_Odd_SpecialAttackA02.ogg" },
+	SOUND_PLAY2 				= { 2.70 , "Conrad_The_Odd_SpecialAttackA03.ogg" },
+	SOUND_PLAY3 				= { 2.30 , "Conrad_The_Odd_SpecialAttackA04.ogg" },	
+	SOUND_PLAY4 				= { 1.80 , "Landing_Big_Metal02.ogg" },
+		
+	EVENT_PROCESS = 
+	{
+ 		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"CONRAD_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"CONRAD_WAIT", },
+	},	
+	
+	EFFECT_SET_LIST =
+	{
+		"Conrad_SpecialC", 0.0,
+	},	
+	
+}
+
+CONRAD_DYING = 
+{
+	ANIM_NAME					= "Dying",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	DYING_SPEED					= 1.15,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	SOUND_PLAY0					= { 0.10 , "Explosion.ogg" },
+	SOUND_PLAY1					= { 0.31 , "Conrad_The_Odd_Dying01.ogg" },
+	SOUND_PLAY2					= { 0.31 , "Conrad_The_Odd_Dying02.ogg" },
+	SOUND_PLAY3					= { 1.00 , "Effect_Steam01.ogg" },
+	SOUND_PLAY4					= { 1.20 , "Effect_Steam02.ogg" },
+	SOUND_PLAY5					= { 1.30 , "Habit_Metal_Scrape02.ogg" },
+	SOUND_PLAY6					= { 1.50 , "Landing_RawMeat01.ogg" },
+	SOUND_PLAY7					= { 2.30 , "Conrad_The_Odd_Dying03.ogg" },
+		
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Conrad_Dying", 0.0,
+	},	
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+}
+	
+
+
+function CONRAD_DAMAGE_DOWN_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end	
+
+function CONRAD_SPECIALATTACKA_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+  if pNPCUnit:AnimEventTimer_LUA( 2.74 ) then			
+    local maxHp = pNPCUnit:GetMaxHP()
+    local nowMp = pNPCUnit:GetNowMP()    
+    local nowHp = pNPCUnit:GetNowHP_LUA()
+    pNPCUnit:SetNowMP(nowMp - 50)
+    pNPCUnit:SetNowHP_LUA(nowHp + (maxHp * 0.1))    
+  end
+  
+end	
+
+function CONRAD_SPECIALATTACKC_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+  if pNPCUnit:AnimEventTimer_LUA( 2.74 ) then			
+    pNPCUnit:SetNowMP( pNPCUnit:GetNowMP() - 100 )
+  end
+  
+end	
+
+

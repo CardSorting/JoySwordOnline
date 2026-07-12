@@ -1,0 +1,2324 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+ 
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 350.0,
+	UNIT_HEIGHT		= 280.0,	
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	
+	--RENDER_PARAM	= RENDER_TYPE["RT_REAL_COLOR"],
+	--ALPHA_BLEND		= TRUE,
+	--CULL_MODE		= FALSE,
+	--Z_ENABLE		= FALSE,
+	
+	UNIT_SCALE      = 1.2,
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+	"Summon_Boss_AttackA.ogg",
+	"Summon_Boss_AttackA2.ogg",
+	"Summon_Boss_AttackB1.ogg",
+	"Summon_Boss_AttackB2.ogg",
+	"Summon_Boss_Dying.ogg",
+	"Summon_Boss_MagicAttackA1.ogg",
+	"Summon_Boss_Win.ogg",
+	"Summon_Boss_AttackACombo1.ogg",
+	"Summon_Boss_AttackACombo2.ogg",
+	"Summon_Boss_AttackAComboA2.ogg",
+	"Summon_Boss_Dash.ogg",
+	"Summon_Boss_Dash2.ogg",
+	"Summon_Boss_DashEnd.ogg",
+	"Summon_Boss_Walk.ogg",
+	"Summon_Boss_DamageDownBack.ogg",
+	"Summon_Boss_JumpLanding.ogg",
+	"Summon_Boss_StandUpFront.ogg",
+	"Summon_Boss_MagicAttackB.ogg",
+	"Summon_Boss_SpecialAttackA.ogg",
+	"Summon_Boss_DamageAirDownLanding.ogg",
+	"Summon_Boss_Damage.ogg",
+	"Summon_Boss_DamageAirFly.ogg",
+	"Summon_Boss_DamageDownFront.ogg",
+	"Summon_Boss_AttackA1.ogg",
+	"Summon_Boss_Earthquake.ogg",
+	"Summon_Boss_Earthquake1.ogg",
+	"Summon_Boss_SpecialAttackB.ogg",
+	"Summon_Boss_SpecialAttackA2.ogg",
+	"Summon_Boss_StoneAttack.ogg",
+	"Summon_Boss_StoneCrack.ogg",
+	
+	},
+	
+	READY_XSKIN_MESH = 
+	{
+		"Summon_Boss_AttackA_Mesh01.X",
+		"Summon_Boss_AttackB_Mesh01.X",
+		"Summon_Boss_AttackB_Mesh02.X",
+		"Summon_Boss_A_JumpAttackALanding_Effect_Hole.X",
+		"Summon_Boss_A_JumpAttackALanding_Effect_Rock.X",
+		"Summon_Boss_A_MagicAttackA_Effect_Hole.X",
+		"Summon_Boss_A_MagicAttackA_Effect_Rock.X",
+		"Summon_Boss_AttackComboA_Mesh01.X",
+		"Summon_Boss_AttackComboA_Mesh02.X",
+		"Summon_Boss_AttackComboA_Mesh03.X",
+		"Summon_Boss_StandUpAttackBack_Mesh01.X",
+		"Summon_Boss_StandUpAttackFront_Mesh01.X",
+		"Summon_Boss_A_MagicAttackA_Effect_Bottom_Rock.X,"
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_Summon_Boss.x",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 700,
+	RUN_SPEED			= 2000,
+	JUMP_SPEED			= 2000,
+	DASH_JUMP_SPEED		= 2600,
+}
+
+
+INIT_COMPONENT = 
+{
+	MP_CHANGE_RATE			= 1,
+	MP_CHARGE_RATE			= 130,
+	
+	USE_SLASH_TRACE			= TRUE,
+	
+	SHADOW_SIZE				= 200,
+	SHADOW_FILE_NAME		= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE		= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED		= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW		= "Small_HP_bar_Yellow.TGA",
+	
+	DRAW_SMALL_MP_BAR		= TRUE,
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	--MIND_FLAG_HEIGHT		= 230,
+	--[[
+	HYPER_MODE_COUNT		= 0,
+	MAX_HYPER_MODE_TIME		= 30,
+	--]]
+	
+	RAGE_COUNT_MAX		= 80,
+	RAGE_TIME_MAX		= 6,
+
+	HITTED_TYPE				= HITTED_TYPE["HTD_MEAT"],	
+	
+	DAMAGE_DOWN				= FALSE,
+	
+	USE_GUARD_COLLISION_BOX	= TRUE,
+		
+    --SKY_DIE             = TRUE,		
+    DIE_FLY					= 0,		
+
+
+	BOSS_GAGE_FACE_TEX			= "DLG_BossState.tga",
+	BOSS_GAGE_FACE_TEX_PIECE	= "SUMMON_BOSS",
+	BOSS_NAME_TEX				= "HQ_BOSS_NAME_SUMMON_BOSS.dds",	
+	
+	WEAPON0 = 
+	{
+		WEAPON_FILE_NAME			= "Summon_Boss_Acc_R_Hand.X",
+		WEAPON_BONE_NAME			= "Bip01_R_Hand",
+		
+		ALPHA_OBJECT				= TRUE,
+		Z_ENABLE_FOR_THIS_WEAPON	= TRUE,
+	},
+
+	WEAPON1 = 
+	{
+		WEAPON_FILE_NAME			= "Summon_Boss_Acc_L_Hand.X",
+		WEAPON_BONE_NAME			= "Bip01_L_Hand",
+		
+		ALPHA_OBJECT				= TRUE,		
+		Z_ENABLE_FOR_THIS_WEAPON	= TRUE,
+	},
+	
+	WEAPON2 = 
+	{
+		WEAPON_FILE_NAME			= "Summon_Boss_Acc_Head.X",
+		WEAPON_BONE_NAME			= "Bip01_Head",
+		
+		ALPHA_OBJECT				= TRUE,
+		Z_ENABLE_FOR_THIS_WEAPON	= TRUE,		
+	},
+	
+	WEAPON3 = 
+	{
+		WEAPON_FILE_NAME			= "Summon_Boss_Trace.X",
+		WEAPON_BONE_NAME			= "Bip01_Head",
+			
+		USE_SLASH_TRACE				= TRUE,
+		SLASH_TRACE_TOP_BONE			= "TRACE_START0",
+		SLASH_TRACE_BOTTOM_BONE			= "TRACE_END0",
+	},
+
+	WEAPON4 = 
+	{
+		WEAPON_FILE_NAME			= "Summon_Boss_Trace_a.X",
+		WEAPON_BONE_NAME			= "Bip01_Head",
+			
+		USE_SLASH_TRACE				= TRUE,
+		SLASH_TRACE_TOP_BONE			= "TRACE_START0",
+		SLASH_TRACE_BOTTOM_BONE			= "TRACE_END0",
+	},
+	
+	IMMUNE_SKILL_LIST = 
+	{--2013.07.31 베르드 하울링 조건 변경, 기준 = 초월한 기술의 반지(II)
+		1002, --언리미티드 블레이드
+		1003, --트리플 게이저
+		1005, --아마겟돈 블레이드
+		1006, --더블 슬래시
+		1011, --소드 파이어
+		1012, --피닉스 탤런
+		1013, --스톰 블레이드
+		1015, --파이널 스트라이크
+		1016, --팬텀 소드
+		2002, --거스트 스톰
+		2003, --아이스 스톰
+		2005, --블리자드 샤워
+		2007, --블레이즈 스텝
+		2011, --플라즈마 커터
+		2013, --에이징
+		2017, --슈퍼 노바
+		3002, --에어로 토네이도
+		3003, --피닉스 스트라이크
+		3005, --다이브킥 봄잉
+		3006, --바이올런트 어택
+		3011, --크레이지 샷
+		3013, --궁그닐
+		3018, --콜 오브 루인
+		3019, --카르마
+		4002, --세븐 버스트
+		4003, --하이퍼 소닉 스탭
+		4006, --블러디 액셀
+		4011, --가디언 스트라이크
+		4013, --뉴클리어
+		4019, --헬파이어 개틀링
+		4020, --기가 프로미넌스
+		5002, --제네레이트 블랙홀
+		5003, --디멘션 링크 - 가디언
+		5005, --퀸스 쓰론
+		5006, --정크 브레이크
+		5011, --제노사이드 리퍼
+		5012, --헤븐즈 피스트 - 프레셔
+		5013, --헤븐즈 피스트 - 스위퍼
+		5020, --기가 스트림
+		5024, --리니어 디바이더
+		6002, --기간틱 임팩트
+		6003, --아겔다마
+		6004, --루나틱 퓨리
+		6007, --칼라드볼그 페인
+		6011, --아틸러리 스트라이크 - 퀀텀 발리스타
+		6013, --슈팅 스타
+		6017, --카오스 캐논
+		6018, --카펫 바밍
+		7002, --강룡추
+		7003, --귀살 3식 : 그림자 매듭
+		7006, --맹호격
+		7007, --비연
+		7008, --제압 : 정
+		8002, --메가 버스터
+		8003, --언리미티드 블레이드
+		8006, --승리의 검
+		8007, --심판의 검
+		8011, --인페르날 블레이드
+		8012, --이터널 파이어
+		
+	},
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "SUMMON_BOSS_A_START",					LUA_CAMERA_MOVE_FUNC = "SUMMON_BOSS_A_START_CAMERA_MOVE",			},	
+	{ STATE_NAME = "SUMMON_BOSS_A_WIN",						},	
+	{ STATE_NAME = "SUMMON_BOSS_A_WAIT",					},	
+	{ STATE_NAME = "SUMMON_BOSS_A_WALK",					LUA_FRAME_MOVE_FUNC = "SUMMON_BOSS_A_WALK_FRAME_MOVE",				},
+	
+	{ STATE_NAME = "SUMMON_BOSS_A_DASH_READY",				},
+	{ STATE_NAME = "SUMMON_BOSS_A_DASH",					LUA_FRAME_MOVE_FUNC = "SUMMON_BOSS_A_DASH_FRAME_MOVE",				},
+	{ STATE_NAME = "SUMMON_BOSS_A_DASH_END",				},
+	
+	{ STATE_NAME = "SUMMON_BOSS_A_JUMP_READY",				},
+	{ STATE_NAME = "SUMMON_BOSS_A_JUMP_UP",					},
+	{ STATE_NAME = "SUMMON_BOSS_A_JUMP_DOWN",				}, 
+	{ STATE_NAME = "SUMMON_BOSS_A_JUMP_LANDING",			},
+	
+	{ STATE_NAME = "SUMMON_BOSS_A_JUMP_READY_FOR_JUMP_ATTACK",			}, 
+	{ STATE_NAME = "SUMMON_BOSS_A_JUMP_UP_FOR_JUMP_ATTACK",		},
+	{ STATE_NAME = "SUMMON_BOSS_A_JUMP_ATTACK_A",			},
+	{ STATE_NAME = "SUMMON_BOSS_A_JUMP_ATTACK_A_LANDING",	LUA_FRAME_MOVE_FUNC = "SUMMON_BOSS_A_JUMP_ATTACK_A_LANDING_FRAME_MOVE"	},
+	
+	{ STATE_NAME = "SUMMON_BOSS_A_JUMP_READY_FOR_ATTACK_B",				}, 
+	{ STATE_NAME = "SUMMON_BOSS_A_ATTACK_B",				LUA_FRAME_MOVE_FUNC = "SUMMON_BOSS_A_ATTACK_B_FRAME_MOVE", },
+	
+	{ STATE_NAME = "SUMMON_BOSS_A_JUMP_READY_DIR",			},
+	{ STATE_NAME = "SUMMON_BOSS_A_JUMP_UP_DIR",				},
+	{ STATE_NAME = "SUMMON_BOSS_A_JUMP_DOWN_DIR",			}, --LUA_STATE_END_FUNC = "SUMMON_BOSS_A_JUMP_DOWN_DIR_STATE_END" },
+	
+	{ STATE_NAME = "SUMMON_BOSS_A_ATTACK_A",				},
+	{ STATE_NAME = "SUMMON_BOSS_A_ATTACK_COMBO_A",			},
+	{ STATE_NAME = "SUMMON_BOSS_A_MAGIC_ATTACK_A",			STATE_COOL_TIME	= 10, },	
+	{ STATE_NAME = "SUMMON_BOSS_A_MAGIC_ATTACK_B",			LUA_FRAME_MOVE_FUNC = "SUMMON_BOSS_A_MAGIC_ATTACK_B_FRAME_MOVE",		STATE_COOL_TIME	= 60,},
+	{ STATE_NAME = "SUMMON_BOSS_A_SPECIAL_ATTACK_A",		LUA_FRAME_MOVE_FUNC = "SUMMON_BOSS_A_SPECIAL_ATTACK_A_FRAME_MOVE"	},
+	{ STATE_NAME = "SUMMON_BOSS_A_SPECIAL_ATTACK_B",		LUA_FRAME_MOVE_FUNC = "SUMMON_BOSS_A_SPECIAL_ATTACK_B_FRAME_MOVE"	 },
+	
+	--???? ??
+	{ STATE_NAME = "SUMMON_BOSS_A_DAMAGE",					}, 
+	{ STATE_NAME = "SUMMON_BOSS_A_DAMAGE_DOWN_FRONT",		}, 
+	{ STATE_NAME = "SUMMON_BOSS_A_DAMAGE_DOWN_BACK",		}, 
+	{ STATE_NAME = "SUMMON_BOSS_A_DAMAGE_FLY_FRONT",		},
+	{ STATE_NAME = "SUMMON_BOSS_A_DAMAGE_FLY_BACK",			},
+	{ STATE_NAME = "SUMMON_BOSS_A_DAMAGE_AIR",				},
+	{ STATE_NAME = "SUMMON_BOSS_A_DAMAGE_AIR_DOWN",			},
+	{ STATE_NAME = "SUMMON_BOSS_A_DAMAGE_AIR_UP",			},
+	{ STATE_NAME = "SUMMON_BOSS_A_DAMAGE_AIR_FALL",			},	
+	{ STATE_NAME = "SUMMON_BOSS_A_DAMAGE_AIR_DOWN_LANDING",	}, 
+	{ STATE_NAME = "SUMMON_BOSS_A_STAND_UP_FRONT",			},
+	{ STATE_NAME = "SUMMON_BOSS_A_STAND_UP_BACK",			},
+	{ STATE_NAME = "SUMMON_BOSS_A_STAND_UP_ATTACK_FRONT",	}, 
+	{ STATE_NAME = "SUMMON_BOSS_A_STAND_UP_ATTACK_BACK",	}, 
+	
+	
+	{ STATE_NAME = "SUMMON_BOSS_A_DYING",					}, 
+	
+	
+	
+	START_STATE					= "SUMMON_BOSS_A_START",
+	WAIT_STATE					= "SUMMON_BOSS_A_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "SUMMON_BOSS_A_DAMAGE",
+	SMALL_DAMAGE_LAND_BACK		= "SUMMON_BOSS_A_DAMAGE",
+	BIG_DAMAGE_LAND_FRONT		= "SUMMON_BOSS_A_DAMAGE",
+	BIG_DAMAGE_LAND_BACK		= "SUMMON_BOSS_A_DAMAGE",
+	
+	-- fix!! þ????? ?????
+	DOWN_DAMAGE_LAND_FRONT		= "SUMMON_BOSS_A_DAMAGE_DOWN_FRONT",
+	DOWN_DAMAGE_LAND_BACK		= "SUMMON_BOSS_A_DAMAGE_DOWN_BACK",
+	
+	FLY_DAMAGE_FRONT			= "SUMMON_BOSS_A_DAMAGE_FLY_FRONT",
+	FLY_DAMAGE_BACK				= "SUMMON_BOSS_A_DAMAGE_FLY_BACK",
+	SMALL_DAMAGE_AIR			= "SUMMON_BOSS_A_DAMAGE_AIR",	
+	BIG_DAMAGE_AIR				= "SUMMON_BOSS_A_DAMAGE_AIR",
+	DOWN_DAMAGE_AIR				= "SUMMON_BOSS_A_DAMAGE_AIR_DOWN",
+	DOWN_DAMAGE_AIR_LANDING		= "SUMMON_BOSS_A_DAMAGE_AIR_DOWN_LANDING",
+	UP_DAMAGE					= "SUMMON_BOSS_A_DAMAGE_AIR_UP",
+	DAMAGE_REVENGE				= "SUMMON_BOSS_A_DAMAGE",
+	
+	DAMAGE_EXTRA_STATES         = { "SUMMON_BOSS_A_DAMAGE_AIR_FALL","SUMMON_BOSS_A_STAND_UP_FRONT","SUMMON_BOSS_A_STAND_UP_BACK",
+		"SUMMON_BOSS_A_STAND_UP_ATTACK_FRONT","SUMMON_BOSS_A_STAND_UP_ATTACK_BACK",
+		"SUMMON_BOSS_A_JUMP_DOWN","SUMMON_BOSS_A_JUMP_LANDING",},	
+	
+	DYING_LAND_FRONT			= "SUMMON_BOSS_A_DYING",
+	DYING_LAND_BACK				= "SUMMON_BOSS_A_DYING",
+	DYING_SKY					= "SUMMON_BOSS_A_DYING",
+	--DYING_FLY                 = "SUMMON_BOSS_A_DYING_FLY",
+	
+	IMMUNE_SKILL_STATE 			= "SUMMON_BOSS_A_SPECIAL_ATTACK_B",
+	
+	REVENGE_ATTACK				= "",	
+}
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 1,		
+		TARGET_NEAR_RANGE			= 9000,		
+		TARGET_RANGE				= 9000,		
+		TARGET_LOST_RANGE			= 10000,		
+		TARGET_SUCCESS_RATE			= 100,		
+		ATTACK_TARGET_RATE			= 50,		
+		PRESERVE_LAST_TARGET_RATE	= 40,		
+	},
+
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 700,
+		DEST_GAP			= 800,
+		MOVE_GAP			= 900,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		WALK_INTERVAL		= 3,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 40,
+		UP_JUMP_RATE		= 100, -- 40,
+		UP_DOWN_RATE		= 20,
+		DOWN_JUMP_RATE		= 100,    --  20,
+		DOWN_DOWN_RATE		= 40,
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 100, --50,		
+		PATROL_RANGE			= 200,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+}
+
+SUMMON_BOSS_A_START = 
+{
+	ANIM_NAME					= "Win",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+	
+	SOUND_PLAY0					= { 1.178, "Summon_Boss_Win.ogg" },
+	SOUND_PLAY1					= { 0.001, "Summon_Boss_Earthquake.ogg" },
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],		"SUMMON_BOSS_A_WAIT",				},
+	},
+
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_SummonBossA_SPECIAL_Attack_B", 0,	
+	},
+	
+	-- --[[
+	PARTICLE_SEQ = 
+	{
+		--Major, time, Name, weaponBonePos, Pos, StateEndDelete, bTrace, posx, posy, posz, bApplyUnitRotation, rotx, roty, rotz,
+		{ TRUE, 0.001, "Ice_Ora_Summon_Boss01", FALSE, "Bip01_Spine", FALSE, TRUE, 0, 0, 0, TRUE, },
+		{ TRUE, 0.001, "Ice_Ora_Summon_Boss01", FALSE, "Bone01", FALSE, TRUE, 0, 0, 0, TRUE, },
+		{ TRUE, 0.001, "Ice_Ora_Summon_Boss01", FALSE, "Bip01_L_Foot", FALSE, TRUE, 0, 0, 0, TRUE, },
+		{ TRUE, 0.001, "Ice_Ora_Summon_Boss01", FALSE, "Bip01_R_Foot", FALSE, TRUE, 0, 0, 0, TRUE, },
+		{ TRUE, 0.001, "Ice_Ora_Summon_Boss01", FALSE, "Bip01_R_UpperArm", FALSE, TRUE, 0, 0, 0, TRUE, },
+		{ TRUE, 0.001, "Ice_Ora_Summon_Boss01", FALSE, "Bip01_L_UpperArm", FALSE, TRUE, 0, 0, 0, TRUE, },
+		{ TRUE, 0.001, "Ice_Ora_Summon_Boss01", FALSE, "Bip01_R_Finger2", FALSE, TRUE, 0, 0, 0, TRUE, },
+		{ TRUE, 0.001, "Ice_Ora_Summon_Boss01", FALSE, "Bip01_L_Finger2", FALSE, TRUE, 0, 0, 0, TRUE, },
+		{ TRUE, 0.001, "Ice_Ora_Summon_Boss01", FALSE, "Bip01_Tail2", FALSE, TRUE, 0, 0, 0, TRUE, },
+		{ TRUE, 0.001, "EyeLight_Summon_Boss01", FALSE, "Dummy3_Eye", FALSE, TRUE, 0, 0, -10, TRUE, },
+		{ TRUE, 0.001, "EyeLight_Summon_Boss01", FALSE, "Dummy3_Eye", FALSE, TRUE, 0, 0,10, TRUE, },
+	}, 
+	-- --]]
+}
+
+SUMMON_BOSS_A_WIN = 
+{
+	ANIM_NAME					= "Win",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+	RIGHT						= TRUE,
+
+	SOUND_PLAY0					= { 1.178, "Summon_Boss_Win.ogg" },
+	SOUND_PLAY1					= { 0.001, "Summon_Boss_Earthquake.ogg" },
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_SummonBossA_SPECIAL_Attack_B", 0,	
+	},
+
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],		"SUMMON_BOSS_A_WAIT",	},		
+	}
+}
+
+SUMMON_BOSS_A_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+	GUARD_DEFENCE               = 80,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	VIEW_TARGET					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"SUMMON_BOSS_A_WIN",							"CF_SUMMON_BOSS_A_WIN",	},	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_BOSS_A_JUMP_DOWN",					},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SUMMON_BOSS_A_ATTACK_A",						"CT_SUMMON_BOSS_A_ATTACK_A",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SUMMON_BOSS_A_DASH_READY",						"CT_SUMMON_BOSS_A_DASH_READY",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SUMMON_BOSS_A_JUMP_READY_FOR_JUMP_ATTACK",		"CT_SUMMON_BOSS_A_JUMP_READY_FOR_JUMP_ATTACK",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SUMMON_BOSS_A_JUMP_READY_FOR_ATTACK_B",		"CT_SUMMON_BOSS_A_JUMP_READY_FOR_ATTACK_B",		},				
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SUMMON_BOSS_A_MAGIC_ATTACK_A",					"CT_SUMMON_BOSS_A_MAGIC_ATTACK_A",		},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SUMMON_BOSS_A_MAGIC_ATTACK_B",					"CT_SUMMON_BOSS_A_MAGIC_ATTACK_B",		},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SUMMON_BOSS_A_SPECIAL_ATTACK_A",				"CT_SUMMON_BOSS_A_SPECIAL_ATTACK_A",	},
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SUMMON_BOSS_A_SPECIAL_ATTACK_B",				"CT_SUMMON_BOSS_A_SPECIAL_ATTACK_B",	},
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"SUMMON_BOSS_A_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"SUMMON_BOSS_A_JUMP_READY",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"SUMMON_BOSS_A_JUMP_READY_DIR",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"SUMMON_BOSS_A_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"SUMMON_BOSS_A_JUMP_DOWN_DIR",				},
+	},
+	
+	CT_SUMMON_BOSS_A_SPECIAL_ATTACK_A = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1600,
+		RATE						= 100,		
+		MY_MP_MORE_THAN_PERCENT		= 100,
+	},
+	CT_SUMMON_BOSS_A_ATTACK_A	=
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 600,	
+		TARGET_BELOW_ME         	= FALSE,
+		RATE						= 40,
+	},
+	
+	CT_SUMMON_BOSS_A_DASH_READY =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1000,
+		RATE						= 40,
+	},
+	
+	CT_SUMMON_BOSS_A_JUMP_READY_FOR_JUMP_ATTACK	=
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 2000,
+		RATE						= 60, 
+	},
+	
+	CT_SUMMON_BOSS_A_JUMP_READY_FOR_ATTACK_B	=
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1000,
+		RATE						= 60, 
+	},
+	
+	CT_SUMMON_BOSS_A_MAGIC_ATTACK_A	=
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1200,
+		RATE						= 40,
+	},
+
+	CT_SUMMON_BOSS_A_MAGIC_ATTACK_B	=
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 99999,
+		RATE						= 30,
+	},
+	
+}
+
+
+SUMMON_BOSS_A_WALK = 
+{
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+	
+--	SOUND_PLAY0					= { 0.01, "Summon_Boss_Walk.ogg" },
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+--	GUARD_DEFENCE               = 80,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 0,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"SUMMON_BOSS_A_WIN",							"CF_SUMMON_BOSS_A_WIN",	},		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_BOSS_A_JUMP_DOWN_DIR",				},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SUMMON_BOSS_A_ATTACK_A",						"CT_SUMMON_BOSS_A_ATTACK_A",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SUMMON_BOSS_A_DASH_READY",						"CT_SUMMON_BOSS_A_DASH_READY",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SUMMON_BOSS_A_JUMP_READY_FOR_JUMP_ATTACK",		"CT_SUMMON_BOSS_A_JUMP_READY_FOR_JUMP_ATTACK",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SUMMON_BOSS_A_JUMP_READY_FOR_ATTACK_B",		"CT_SUMMON_BOSS_A_JUMP_READY_FOR_ATTACK_B",		},				
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SUMMON_BOSS_A_MAGIC_ATTACK_A",					"CT_SUMMON_BOSS_A_MAGIC_ATTACK_A",		},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SUMMON_BOSS_A_MAGIC_ATTACK_B",					"CT_SUMMON_BOSS_A_MAGIC_ATTACK_B",		},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SUMMON_BOSS_A_SPECIAL_ATTACK_A",				"CT_SUMMON_BOSS_A_SPECIAL_ATTACK_A",	},		
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"SUMMON_BOSS_A_WAIT",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"SUMMON_BOSS_A_JUMP_READY",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"SUMMON_BOSS_A_JUMP_READY_DIR",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"SUMMON_BOSS_A_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"SUMMON_BOSS_A_JUMP_DOWN_DIR",				},
+	},
+	
+	CT_SUMMON_BOSS_A_SPECIAL_ATTACK_A = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1600,
+		RATE						= 100,
+		MY_MP_MORE_THAN_PERCENT		= 100,
+	},
+	CT_SUMMON_BOSS_A_ATTACK_A	=
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 300,
+		RATE						= 60,
+	},
+	
+	CT_SUMMON_BOSS_A_DASH_READY =
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 500,
+		RATE						= 40,
+	},
+	
+	CT_SUMMON_BOSS_A_JUMP_READY_FOR_JUMP_ATTACK	=
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 800,
+		RATE						= 60,
+	},
+	
+	CT_SUMMON_BOSS_A_JUMP_READY_FOR_ATTACK_B	=
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 300,
+		RATE						= 60,
+	},
+	
+	CT_SUMMON_BOSS_A_MAGIC_ATTACK_A	=
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 1200,
+		RATE						= 40,
+	},
+
+	CT_SUMMON_BOSS_A_MAGIC_ATTACK_B	=
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 99999,
+		RATE						= 30,
+	},
+	
+}
+
+SUMMON_BOSS_A_DASH_READY =
+{
+	ANIM_NAME					= "DashReady",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+--	GUARD_DEFENCE               = 80,
+	
+	VIEW_TARGET					= TRUE,
+	SUPER_ARMOR					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"SUMMON_BOSS_A_DASH",					},
+	},
+	
+	
+}
+
+SUMMON_BOSS_A_DASH = 
+{
+	ANIM_NAME					= "Dash",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+--	GUARD_DEFENCE               = 80,
+	
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+
+	--SOUND_PLAY0					= { 0.023, "Summon_Boss_Dash2.ogg" },
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["RUN_SPEED"],
+	
+	SUPER_ARMOR					= TRUE,	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+			
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"SUMMON_BOSS_A_WIN",		"CF_SUMMON_BOSS_A_WIN",	},			
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_BOSS_A_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"SUMMON_BOSS_A_DASH_END",	"CF_SUMMON_BOSS_A_DASH_END",		},
+	},
+
+	ATTACK_TIME0				= { 0.01, 100, },
+	
+
+	DISABLE_ATTACK_BOX = 
+	{
+		"Tail1",
+		"Tail2",
+		"Tail3",
+	},
+		
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT2"],
+		REACT_TYPE		= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1,
+		},
+		
+		CAN_REVENGE             = FALSE,
+		
+		BACK_SPEED_X			= 1100,
+		BACK_SPEED_Y			= 1700,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,	
+		
+		RE_ATTACK				= TRUE,		
+		HIT_GAP					= 0.3,	
+	},
+
+}
+
+SUMMON_BOSS_A_DASH_END =
+{
+	ANIM_NAME					= "DashEnd",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+	
+	SOUND_PLAY0					= { 0.365, "Summon_Boss_DashEnd.ogg" },
+	
+--	GUARD_DEFENCE               = 80,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	SPEED_X						= 0,
+	
+	SUPER_ARMOR					= TRUE,
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"SUMMON_BOSS_A_WAIT",												},
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_SummonBossA_Dash_End", 0,
+	},
+	
+	DISABLE_ATTACK_BOX = 
+	{
+		"Tail1",
+		"Tail2",
+		"Tail3",
+		"head",
+		"Rhand",
+		"Rhand2",
+	},
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT2"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 2.0,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["WALK_SPEED"],
+		BACK_SPEED_Y			= 0,
+		
+		CAN_REVENGE             = FALSE,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+}
+
+SUMMON_BOSS_A_JUMP_READY = 
+{
+	ANIM_NAME					= "JumpReady",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+		
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+--	GUARD_DEFENCE               = 80,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"SUMMON_BOSS_A_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"SUMMON_BOSS_A_JUMP_UP",				},
+	},	
+}
+
+SUMMON_BOSS_A_JUMP_UP = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	ADD_POS_Y					= 450,
+	
+	SLASH_TRACE					= { 0, 100},
+--	GUARD_DEFENCE               = 80,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"SUMMON_BOSS_A_JUMP_DOWN",				},
+	},
+}
+
+SUMMON_BOSS_A_JUMP_DOWN = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+	
+--	GUARD_DEFENCE               = 80,	
+	
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"SUMMON_BOSS_A_JUMP_LANDING",				},
+	},
+}
+
+SUMMON_BOSS_A_JUMP_LANDING = 
+{
+	ANIM_NAME					= "JumpDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+
+	SOUND_PLAY0					= { 0.140, "Summon_Boss_JumpLanding.ogg" },
+	
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+--	GUARD_DEFENCE               = 80,
+		
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_BOSS_A_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SUMMON_BOSS_A_WAIT",					},
+	},
+}
+
+SUMMON_BOSS_A_JUMP_READY_DIR = 
+{
+	ANIM_NAME					= "JumpReady",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+--	GUARD_DEFENCE               = 80,
+		
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"SUMMON_BOSS_A_JUMP_DOWN_DIR",			},	
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"SUMMON_BOSS_A_JUMP_UP_DIR",				},
+	},
+}
+
+SUMMON_BOSS_A_JUMP_UP_DIR = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	ADD_POS_Y					= 45,
+	
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+--	GUARD_DEFENCE               = 80,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SUMMON_BOSS_A_JUMP_ATTACK_A",				"CT_SUMMON_BOSS_A_JUMP_ATTACK_A",	},
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"SUMMON_BOSS_A_JUMP_DOWN_DIR",				},
+	},
+	
+	CT_SUMMON_BOSS_A_JUMP_ATTACK_A = 
+	{
+		DISTANCE_TO_TARGET_NEAR		= 350,
+		SMALL_THEN_Y_SPEED			= 0,
+		RATE						= 60,
+	},
+}
+
+SUMMON_BOSS_A_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+--	GUARD_DEFENCE               = 80,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"SUMMON_BOSS_A_JUMP_LANDING",				},
+	},
+}
+
+SUMMON_BOSS_A_JUMP_READY_FOR_JUMP_ATTACK = 
+{
+	ANIM_NAME					= "JumpReady",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+		
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+--	GUARD_DEFENCE               = 80,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],		"SUMMON_BOSS_A_JUMP_UP_FOR_JUMP_ATTACK",				},
+	},
+}
+
+SUMMON_BOSS_A_JUMP_UP_FOR_JUMP_ATTACK = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+	SPEED_X						= INIT_PHYSIC["RUN_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"] * 1.5,
+	
+--	GUARD_DEFENCE               = 80,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SUMMON_BOSS_A_JUMP_ATTACK_A",				"CT_SUMMON_BOSS_A_JUMP_ATTACK_A",	},
+	},
+	
+	CT_SUMMON_BOSS_A_JUMP_ATTACK_A = 
+	{
+		SMALL_THEN_Y_SPEED			= 0,
+	},
+	
+	ATTACK_TIME0				= { 0, 100, },
+	
+	DISABLE_ATTACK_BOX = 
+	{
+		"Rhand",
+		"Rhand2",
+		"Tail1",
+		"Tail2",
+		"Tail3",
+		"Lhand",
+		"Lhand2",
+	},
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+		
+		BACK_SPEED_X			= 2000,
+		BACK_SPEED_Y			= 2500,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,	
+	},
+}
+
+SUMMON_BOSS_A_JUMP_ATTACK_A = 
+{
+	ANIM_NAME					= "JumpAttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	--SPEED_X						= INIT_PHYSIC["RUN_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["G_ACCEL"] * -9,
+	
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+---	GUARD_DEFENCE               = 80,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"SUMMON_BOSS_A_JUMP_ATTACK_A_LANDING",			},
+	},	
+}
+
+SUMMON_BOSS_A_JUMP_ATTACK_A_LANDING = 
+{
+	ANIM_NAME					= "JumpAttackALanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+	
+	CAN_PASS_UNIT				= FALSE,	
+	
+	SOUND_PLAY0					= { 0.11, "Summon_Boss_JumpLanding.ogg" },
+	SOUND_PLAY1					= { 0.055, "Summon_Boss_StoneCrack.ogg" },
+		
+--	GUARD_DEFENCE               = 80,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SUMMON_BOSS_A_WAIT",					},
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_SummonBossA_Jump_Attack_A_Landing", 0, 
+		"EffectSet_Smoke_Summon_Boss_JumpLanding01", 0, 
+	},
+}
+
+SUMMON_BOSS_A_ATTACK_A = 
+{
+	ANIM_NAME					= "AttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0					= { 0.798, "Summon_Boss_AttackA.ogg" },
+	SOUND_PLAY1					= { 0.513, "Summon_Boss_AttackA2.ogg" },
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+	SUPER_ARMOR					= TRUE,
+	
+--	GUARD_DEFENCE               = 80,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+			
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_BOSS_A_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SUMMON_BOSS_A_ATTACK_COMBO_A",		"CT_SUMMON_BOSS_A_ATTACK_COMBO_A",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SUMMON_BOSS_A_WAIT",					},
+	},
+	
+	CT_SUMMON_BOSS_A_ATTACK_COMBO_A	=
+	{
+		ANIM_EVENT_TIMER	= 1.0,
+		ATTACK_SUCCESS		= TRUE,
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_SummonBossA_Attack_A", 0,
+	},
+	
+	DELETE_EFFECT_SET_ON_STATE_END	= TRUE,
+	
+	ATTACK_TIME0				= { 0.80, 0.95, },
+
+	DISABLE_ATTACK_BOX = 
+	{
+		"head",
+		"Tail1",
+		"Tail2",
+		"Tail3",
+		"Lhand",
+		"Lhand2",
+	},
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.2,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["WALK_SPEED"] * 2,
+		BACK_SPEED_Y			= 0.0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+	
+}
+
+SUMMON_BOSS_A_JUMP_READY_FOR_ATTACK_B = 
+{
+	ANIM_NAME					= "JumpReady",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+		
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+--	GUARD_DEFENCE               = 80,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],		"SUMMON_BOSS_A_ATTACK_B",				},
+	},
+}
+
+SUMMON_BOSS_A_ATTACK_B = 
+{
+	ANIM_NAME					= "AttackB",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+	
+	SOUND_PLAY0					= { 0.370, "Summon_Boss_AttackB1.ogg" },
+	SOUND_PLAY1					= { 0.348, "Summon_Boss_AttackB2.ogg" },
+	
+	VIEW_TARGET					= TRUE,
+	SUPER_ARMOR					= TRUE,
+	
+--	GUARD_DEFENCE               = 80,
+	
+	--IMMADIATE_PACKET_SEND		= TRUE,
+	
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_SummonBossA_Attack_B", 0,
+	},
+	
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	
+	
+	DISABLE_ATTACK_BOX = 
+	{		
+		"head",
+		"Rhand",
+		"Rhand2",
+	},
+	
+	
+	ATTACK_TIME0				= { 0.43, 0.68, },
+	ATTACK_TIME1				= { 1.087, 1.2,	},	
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH2"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+		
+		BACK_SPEED_X			= 800,
+		--BACK_SPEED_Y			= 2000,
+		
+		CAMERA_CRASH_GAP		= 30.0,	
+		CAMERA_CRASH_TIME		= 0.9,
+					
+	},
+		
+
+	DAMAGE_DATA_LAST = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 2,
+		},
+		
+		BACK_SPEED_X			= 2000,
+		BACK_SPEED_Y			= 1000,
+		
+		CAMERA_CRASH_GAP		= 20.0,	
+		CAMERA_CRASH_TIME		= 0.95,		
+	},
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_BOSS_A_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SUMMON_BOSS_A_WAIT",					},
+	},
+	
+}
+
+SUMMON_BOSS_A_ATTACK_COMBO_A =
+{
+	ANIM_NAME					= "AttackComboA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+	
+	SOUND_PLAY0					= { 0.600, "Summon_Boss_AttackACombo1.ogg" },
+	SOUND_PLAY1					= { 0.634, "Summon_Boss_AttackAComboA2.ogg" },
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+--	GUARD_DEFENCE               = 80,
+
+	SUPER_ARMOR					= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_BOSS_A_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SUMMON_BOSS_A_WAIT",					},
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_SummonBossA_Attack_Combo_A", 0, 
+	},
+	
+	ATTACK_TIME0				= { 0.50, 0.77, },
+	
+	DISABLE_ATTACK_BOX = 
+	{
+		"Lhand",
+		"Lhand2",
+		"Tail1",
+		"Tail2",
+		"Tail3",
+		"head",
+	},
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.3,
+		},
+		
+		BACK_SPEED_X			= 2000,
+		BACK_SPEED_Y			= 1400,
+		
+		CAMERA_CRASH_GAP		= 10.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+		
+		RE_ATTACK				= TRUE,
+		HIT_GAP					= 0.5,
+		CAN_REVENGE				= FALSE,
+	},
+}
+
+SUMMON_BOSS_A_MAGIC_ATTACK_A =
+{
+	ANIM_NAME					= "MagicAttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0					= { 0.2, "Summon_Boss_MagicAttackA1.ogg" },
+	SOUND_PLAY1					= { 0.578, "Summon_Boss_StoneAttack.ogg" },
+	SOUND_PLAY2					= { 1.215, "Summon_Boss_AttackA1.ogg" },
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+    
+	IMMADIATE_PACKET_SEND		= TRUE,
+	SUPER_ARMOR					= TRUE,
+
+--	GUARD_DEFENCE               = 80,
+
+	ALARM =
+	{
+		DANGER  				 = TRUE,  				    	    --DANGER 표시
+		ALARM_MESSAGE 			 = STR_ID_15139,  		  		    --경고 문구
+		DELAY   				 = 0,  				    	 		--이 스테이트가 시작되고 이 시간이 경과 후에 경고가 나갑니다.
+		REPEAT   				 = TRUE,  		 		   		    --한 번만 반복 FALSE, 이 스테이트 취할때 마다 반복 TRUE
+		ALARM_COLOR_TYPE		 = ALARM_COLOR_TYPE["ACT_ORANGE"],  --경고 문구 색깔 (ACT_RED, ACT_BLUE, ACT_YELLOW ,ACT_ORANGE, ACT_MAGENTA
+		DISAPPEAR_TIME  		 = 5, 				  			    -- 표시 지속 시간
+	},
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_BOSS_A_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SUMMON_BOSS_A_WAIT",				},
+	},
+	
+	--ATTACK_TIME0			= { 0, 100 },
+	
+	--[[
+	DISABLE_ATTACK_BOX = 
+	{
+		"ATTACK_SPHERE1_head",
+		"ATTACK_SPHERE1_Tail",
+		"ATTACK_SPHERE2_Tail01",
+		"ATTACK_SPHERE2_Tail",
+		"ATTACK_SPHERE1_Lhand",
+		"ATTACK_SPHERE2_Lhand",
+	},
+	--]]
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_SummonBossA_Magic_Attack_A", 0,
+	},
+}
+
+SUMMON_BOSS_A_MAGIC_ATTACK_B =
+{
+	ANIM_NAME					= "Win",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0					= { 0.1, "Summon_Boss_MagicAttackB.ogg" },
+	SOUND_PLAY1					= { 0.001, "Summon_Boss_Earthquake.ogg" },
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+    VIEW_TARGET					= TRUE,
+    
+	IMMADIATE_PACKET_SEND		= TRUE,
+	SUPER_ARMOR					= TRUE,
+	
+	ALARM =
+	{
+		DANGER  				 = TRUE,  				    	    --DANGER 표시
+		ALARM_MESSAGE 			 = STR_ID_15136,  		  		    --경고 문구
+		DELAY   				 = 0,  				    	 		--이 스테이트가 시작되고 이 시간이 경과 후에 경고가 나갑니다.
+		REPEAT   				 = TRUE,  		 		   		    --한 번만 반복 FALSE, 이 스테이트 취할때 마다 반복 TRUE
+		ALARM_COLOR_TYPE		 = ALARM_COLOR_TYPE["ACT_ORANGE"],  --경고 문구 색깔 (ACT_RED, ACT_BLUE, ACT_YELLOW ,ACT_ORANGE, ACT_MAGENTA
+		DISAPPEAR_TIME  		 = 5, 				  			    -- 표시 지속 시간
+	},
+	
+--	GUARD_DEFENCE               = 80,
+	
+	ANIM_SPEED					= 1.7,
+
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_BOSS_A_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SUMMON_BOSS_A_WAIT",				},
+	},
+	
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_SummonBossA_SPECIAL_Attack_B", 0,
+	},
+	
+	DELETE_EFFECT_SET_ON_STATE_END	= TRUE,
+}
+
+SUMMON_BOSS_A_SPECIAL_ATTACK_A =
+{
+	ANIM_NAME					= "SpecialAttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SOUND_PLAY0					= { 1.650, "Summon_Boss_SpecialAttackA.ogg" },
+	SOUND_PLAY1					= { 1.661, "Summon_Boss_SpecialAttackA2.ogg" },
+    SOUND_PLAY2					= { 1.660, "Summon_Boss_Earthquake1.ogg" },
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+    VIEW_TARGET					= TRUE,
+    
+	IMMADIATE_PACKET_SEND		= TRUE,
+	SUPER_ARMOR					= TRUE,
+	
+--	GUARD_DEFENCE               = 80,
+
+	ALARM =
+	{
+		DANGER  				 = TRUE,  				    	    --DANGER 표시
+		ALARM_MESSAGE 			 = STR_ID_15137,  		  		    --경고 문구
+		DELAY   				 = 0,  				    	 		--이 스테이트가 시작되고 이 시간이 경과 후에 경고가 나갑니다.
+		REPEAT   				 = TRUE,  		 		   		    --한 번만 반복 FALSE, 이 스테이트 취할때 마다 반복 TRUE
+		ALARM_COLOR_TYPE		 = ALARM_COLOR_TYPE["ACT_ORANGE"],  --경고 문구 색깔 (ACT_RED, ACT_BLUE, ACT_YELLOW ,ACT_ORANGE, ACT_MAGENTA
+		DISAPPEAR_TIME  		 = 5, 				  			    -- 표시 지속 시간
+	},
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_BOSS_A_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SUMMON_BOSS_A_WAIT",				},
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_SummonBossA_Special_Attack_A", 0,
+	},
+	
+	ATTACK_TIME0			= { 1.7, 2.7 },
+	
+	DISABLE_ATTACK_BOX = 
+	{
+		"Rhand",
+		"Rhand2",
+		"Tail1",
+		"Tail2",
+		"Tail3",
+		"Lhand",
+		"Lhand2",
+	},
+	
+	DAMAGE_DATA =
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],   -- ?? type ??? u??
+		REACT_TYPE		= REACT_TYPE["RT_FLY"],
+
+		DAMAGE =
+		{
+			PHYSIC		= 1.5,
+		},
+
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"] * 2.7,
+		BACK_SPEED_Y			= INIT_PHYSIC["DASH_JUMP_SPEED"] * 0.5,
+
+		RE_ATTACK				= FALSE,
+		HIT_GAP					= 0.5,
+
+  		CAMERA_CRASH_GAP		= 5.0,
+		CAMERA_CRASH_TIME		= 0.2,
+
+	},
+}
+
+SUMMON_BOSS_A_SPECIAL_ATTACK_B =
+{
+	ANIM_NAME					= "Win",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	SLASH_TRACE0					= { 0, 100, 3},
+	SLASH_TRACE1					= { 0, 100, 4},	
+	
+	INVINCIBLE			= { 0, 100, },
+		
+	SOUND_PLAY0					= { 0.001, "Summon_Boss_Earthquake.ogg" },
+	SOUND_PLAY1					= { 0.001, "Summon_Boss_SpecialAttackB.ogg" },
+	SOUND_PLAY2					= { 0.01, "Summon_Boss_win.ogg" },
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+
+    VIEW_TARGET					= TRUE,
+    
+	IMMADIATE_PACKET_SEND		= TRUE,
+	SUPER_ARMOR					= TRUE,
+	
+--	GUARD_DEFENCE               = 80,
+	
+	--ANIM_SPEED					= 1.7,
+	
+	ALARM =
+	{
+		DANGER  				 = TRUE,  				    	    --DANGER 표시
+		ALARM_MESSAGE 			 = STR_ID_15136,  		  		    --경고 문구
+		DELAY   				 = 0,  				    	 		--이 스테이트가 시작되고 이 시간이 경과 후에 경고가 나갑니다.
+		REPEAT   				 = TRUE,  		 		   		    --한 번만 반복 FALSE, 이 스테이트 취할때 마다 반복 TRUE
+		ALARM_COLOR_TYPE		 = ALARM_COLOR_TYPE["ACT_ORANGE"],  --경고 문구 색깔 (ACT_RED, ACT_BLUE, ACT_YELLOW ,ACT_ORANGE, ACT_MAGENTA
+		DISAPPEAR_TIME  		 = 5, 				  			    -- 표시 지속 시간
+	},
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SUMMON_BOSS_A_WAIT"		},
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_SummonBossA_SPECIAL_Attack_B", 0,
+	},
+	
+	DELETE_EFFECT_SET_ON_STATE_END	= TRUE,
+}
+
+----------------??--------------------------------------------------------------
+
+SUMMON_BOSS_A_DAMAGE = 
+{
+	ANIM_NAME					= "Damage",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	ANIM_SPEED					= 0.5,
+	
+--	GUARD_DEFENCE               = 80,
+	
+    SOUND_PLAY0			= { 0.03, "Summon_Boss_Damage.ogg", 30 },
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"SUMMON_BOSS_A_WAIT",												},
+	},
+}
+
+SUMMON_BOSS_A_DAMAGE_DOWN_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,
+	--DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0			= { 0.840, "Summon_Boss_DamageDownFront.ogg" },
+	
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"SUMMON_BOSS_A_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"SUMMON_BOSS_A_STAND_UP_ATTACK_FRONT",	"CT_SUMMON_BOSS_A_STAND_UP_ATTACK_FRONT", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"SUMMON_BOSS_A_STAND_UP_FRONT",			},
+	},
+	
+	CT_SUMMON_BOSS_A_STAND_UP_ATTACK_FRONT = 
+	{
+		ANIM_PLAY_COUNT		= 1,
+		RATE				= 100,
+	},
+	
+}
+
+SUMMON_BOSS_A_DAMAGE_DOWN_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	--DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0			= { 0.803, "Summon_Boss_DamageDownBack.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"SUMMON_BOSS_A_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"SUMMON_BOSS_A_STAND_UP_ATTACK_BACK",	"CT_SUMMON_BOSS_A_STAND_UP_ATTACK_BACK", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"SUMMON_BOSS_A_STAND_UP_BACK",			},
+	},
+	
+	CT_SUMMON_BOSS_A_STAND_UP_ATTACK_BACK = 
+	{
+		ANIM_PLAY_COUNT		= 1,
+		RATE				= 100,
+	},
+}
+
+SUMMON_BOSS_A_DAMAGE_FLY_FRONT = 
+{
+	ANIM_NAME					= "DamageAirFlyFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	GUARD_DEFENCE               = 80,
+	
+    SOUND_PLAY0			= { 0.001, "Summon_Boss_DamageAirFly.ogg", 30 },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"SUMMON_BOSS_A_DAMAGE_DOWN_FRONT",		},
+	},
+}
+
+SUMMON_BOSS_A_DAMAGE_FLY_BACK = 
+{
+	ANIM_NAME					= "DamageAirFlyBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	GUARD_DEFENCE               = 80,
+	
+    SOUND_PLAY0			= { 0.001, "Summon_Boss_DamageAirFly.ogg", 30 },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"SUMMON_BOSS_A_DAMAGE_DOWN_BACK",		},
+	},
+}
+
+SUMMON_BOSS_A_DAMAGE_AIR = 
+{
+	ANIM_NAME					= "DamageAir",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0			= { 0.02, "Summon_Boss_Damage.ogg", 30 },
+	
+	GUARD_DEFENCE               = 80,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"SUMMON_BOSS_A_WAIT",					},
+	},
+}
+
+SUMMON_BOSS_A_DAMAGE_AIR_DOWN = 
+{
+	ANIM_NAME					= "DamageAirDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	GUARD_DEFENCE               = 80,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"SUMMON_BOSS_A_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+SUMMON_BOSS_A_DAMAGE_AIR_UP = 
+{
+	ANIM_NAME					= "DamageAirUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	PASSIVE_SPEED_Y				= -1,
+	--SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"] * 0.6,
+
+	GUARD_DEFENCE               = 80,
+	
+        --SOUND_PLAY0			= { 0.1, "Monkey_Scream.ogg", 30 },
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"SUMMON_BOSS_A_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"SUMMON_BOSS_A_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+SUMMON_BOSS_A_DAMAGE_AIR_FALL = 
+{
+	ANIM_NAME					= "DamageAirFall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	GUARD_DEFENCE               = 80,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_POSITIVE_Y_SPEED"],		"SUMMON_BOSS_A_DAMAGE_AIR_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"SUMMON_BOSS_A_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+SUMMON_BOSS_A_DAMAGE_AIR_DOWN_LANDING = 
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0			= { 0.142, "Summon_Boss_DamageAirDownLanding.ogg" },
+	SOUND_PLAY1			= { 0.055, "Summon_Boss_StoneCrack.ogg" },
+	
+	GUARD_DEFENCE               = 80,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_BOSS_A_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SUMMON_BOSS_A_STAND_UP_ATTACK_FRONT",	"CT_SUMMON_BOSS_A_STAND_UP_ATTACK_FRONT", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SUMMON_BOSS_A_STAND_UP_FRONT",			},
+	},
+	
+	CT_SUMMON_BOSS_A_STAND_UP_ATTACK_FRONT = 
+	{
+		ANIM_PLAY_COUNT		= 1,
+		RATE				= 0,
+	},
+	
+}
+
+SUMMON_BOSS_A_STAND_UP_FRONT = 
+{
+	ANIM_NAME					= "DamageStandUpFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	SUPER_ARMOR					= TRUE,
+	--DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0			= { 0.433, "Summon_Boss_StandUpFront.ogg" },
+	
+	GUARD_DEFENCE               = 80,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_BOSS_A_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SUMMON_BOSS_A_WAIT",				},
+	},
+}
+
+SUMMON_BOSS_A_STAND_UP_BACK = 
+{
+	ANIM_NAME					= "DamageStandUpBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	--DEFENCE						= { 0, 100, 70, },
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	GUARD_DEFENCE               = 80,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_BOSS_A_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SUMMON_BOSS_A_WAIT", },
+	},		
+}
+
+
+SUMMON_BOSS_A_STAND_UP_ATTACK_FRONT = 
+{
+	ANIM_NAME					= "StandUpAttackFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	ANIM_WAIT_TIME				= 1,
+	MIND_FLAG					= MIND_FLAG["MF_STAND_UP_ATTACK"],
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	GUARD_DEFENCE               = 80,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SOUND_PLAY0			        = { 0.805, "Summon_Boss_AttackA1.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_BOSS_A_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SUMMON_BOSS_A_WAIT",				},
+	},
+	
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_SummonBossA_StandUp_Attack_Front", 0, 
+	},
+	
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+		
+	ATTACK_TIME0				= { 0.67, 0.95, },	
+	
+	
+	DISABLE_ATTACK_BOX = 
+	{
+		"head",
+		"Tail1",
+		"Tail2",
+		"Tail3",
+		"Lhand",
+		"Lhand2",
+	},
+	
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 2,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		STOP_TIME_ATT			= 0.0,		
+		STOP_TIME_DEF			= 0.0,	
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+
+		RE_ATTACK				= FALSE,		
+		HIT_GAP					= 0.0,				
+	},	
+}
+
+
+SUMMON_BOSS_A_STAND_UP_ATTACK_BACK = 
+{
+	ANIM_NAME					= "StandUpAttackBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	ANIM_WAIT_TIME				= 1,
+	MIND_FLAG					= MIND_FLAG["MF_STAND_UP_ATTACK"],
+	
+	SUPER_ARMOR					= TRUE,
+	--DEFENCE						= { 0, 100, 70, },
+	GUARD_DEFENCE               = 80,
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    SOUND_PLAY0			        = { 1.168, "Summon_Boss_AttackA1.ogg" },
+	
+	FLIP_DIR_END				= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"SUMMON_BOSS_A_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SUMMON_BOSS_A_WAIT", },
+	},	
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_SummonBossA_StandUp_Attack_Back", 0, 
+	},
+	
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+		
+	ATTACK_TIME0				= { 1.16, 1.33, },	
+	
+	
+	DISABLE_ATTACK_BOX = 
+	{
+		"head",
+		"Tail1",
+		"Tail2",
+		"Tail3",
+		"Rhand",
+		"Rhand2",
+	},
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 2,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		STOP_TIME_ATT			= 0.0,		
+		STOP_TIME_DEF			= 0.0,	
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+
+		RE_ATTACK				= FALSE,		
+		HIT_GAP					= 0.0,				
+	},
+}
+
+
+SUMMON_BOSS_A_DYING = 
+{
+	ANIM_NAME					= "Dying",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	SOUND_PLAY0					= { 1.735, "Summon_Boss_Dying.ogg" },
+	SOUND_PLAY1					= { 0.710, "Summon_Boss_DamageAirDownLanding.ogg" },
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+
+--[[
+		SUMMON_BOSS_A_DYING_SKY = 
+		{
+			ANIM_NAME					= "DamageAirDownLanding",
+			PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+			TRANSITION					= FALSE,
+			LAND_CONNECT				= FALSE,
+			
+			INVINCIBLE					= { 0, 100, }, 		
+			
+			CAN_PUSH_UNIT				= FALSE,
+			CAN_PASS_UNIT				= TRUE,
+			
+			DYING_END					= TRUE,
+			
+			IMMADIATE_PACKET_SEND		= TRUE,
+		}
+--]]
+
+--[[
+SUMMON_BOSS_A_DYING_FLY = 
+{
+	ANIM_NAME					= "DamageAirFlyFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+--]]
+
+
+
+
+----------- condition function----------------------------------------------------------
+----------------------------------------------------------------------------------------
+function CF_SUMMON_BOSS_A_DASH_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:GetStateTime() < 0.1 then
+		return false 
+	end
+	
+	
+ 	bIsRight = pNPCUnit:GetIsRight()
+	vStartPos = pNPCUnit:GetLineGroupStartPos()
+	vEndPos = pNPCUnit:GetLineGroupEndPos()
+
+ 	
+ 	if bIsRight == true and pNPCUnit:GetDistanceFrom(vEndPos) < 280.0 then
+ 	
+ 	    return true
+ 	    
+   	end
+   	
+   	if bIsRight == false and pNPCUnit:GetDistanceFrom(vStartPos) < 280.0 then
+
+		return true
+  	
+    end
+    
+    if pNPCUnit:GetStateTime() > 5.0 then
+		return true
+	end
+    
+    return false 	
+
+end
+
+function CF_SUMMON_BOSS_A_WIN( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pX2Game:LiveUserUnitNum() == 0 then
+		return true
+	else
+		return false
+	end
+
+end
+
+--------------effect function-------------------------------------------------
+------------------------------------------------------------------------------
+function SUMMON_BOSS_A_START_CAMERA_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	pos = pNPCUnit:GetBonePos_LUA("Bip01_Head")	
+	camera = pX2Game:GetX2Camera()
+	camera:PartsLookDirectCamera_LUA( pNPCUnit, pos, D3DXVECTOR3( 1100, 700, 0 ), D3DXVECTOR2( 0,0 ) )
+	
+end
+
+function SUMMON_BOSS_A_JUMP_ATTACK_A_LANDING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+			
+    if pNPCUnit:AnimTimer_LUA( 0.14 ) == true and GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 1200 then
+--		pNPCUnit:PlaySound_LUA( "Golem_Boss_DashAttack.ogg" )    -- ???? ??? ???
+		pMinorParticle = pX2Game:GetMinorParticle()
+  		landpos = pNPCUnit:GetLandPosition_LUA()
+  		
+		pos = pNPCUnit:GetBonePos_LUA("Bip01_R_Hand")
+  		pos.y = landpos.y
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "GroundShockWaveBlue", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(1,-1) )
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pos, D3DXVECTOR2(200,100), D3DXVECTOR2(10,-1) )
+		
+		pos = pNPCUnit:GetBonePos_LUA("Bip01_L_Hand")
+  		pos.y = landpos.y
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "GroundShockWaveBlue", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(1,-1) )
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pos, D3DXVECTOR2(200,100), D3DXVECTOR2(10,-1) )		
+		
+		pos = pNPCUnit:GetBonePos_LUA("Bip01_R_Toe0")
+		pos.y = landpos.y
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pos, D3DXVECTOR2(200,100), D3DXVECTOR2(10,-1) )
+		
+		pos = pNPCUnit:GetBonePos_LUA("Bip01_L_Toe0")
+		pos.y = landpos.y
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pos, D3DXVECTOR2(200,100), D3DXVECTOR2(10,-1) )
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 1200 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 50.0, 1.0 )
+		end
+	end
+end
+
+function SUMMON_BOSS_A_WALK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+			
+    if pNPCUnit:AnimTimer_LUA( 0.035 ) == true and GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 1200 then
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 1200 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 0.5 )
+		end
+	end
+	
+	if pNPCUnit:AnimTimer_LUA( 0.42 ) == true and GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 1200 then
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 1200 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 0.5 )
+		end
+	end
+	
+	-- ?? ≫?? 
+	if pNPCUnit:AnimEventTimer_LUA( 0.078) then
+		pNPCUnit:PlaySound_LUA( "Summon_Boss_Walk.ogg" )
+		pNPCUnit:ClearEventCheck( 0.577 )
+	end
+	
+	if pNPCUnit:AnimEventTimer_LUA( 0.577 ) then
+		pNPCUnit:PlaySound_LUA( "Summon_Boss_Walk.ogg" )
+		pNPCUnit:ClearEventCheck( 0.078 )
+	end
+	
+end
+
+function SUMMON_BOSS_A_DASH_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+			
+    if pNPCUnit:AnimTimer_LUA( 0.405 ) == true and GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 1200 then
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 1200 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 30.0, 0.5 )
+		end
+	end	
+	
+	-- Dash ??? 
+	if pNPCUnit:AnimTimer_LUA( 0.4 ) == true then
+		pNPCUnit:PlaySound_LUA( "Summon_Boss_Dash.ogg" )
+	end
+
+end
+
+function SUMMON_BOSS_A_SPECIAL_ATTACK_A_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	pX2Game:SetWorldColor_LUA( D3DXCOLOR(0.1,0.1,0.1,1) )
+	
+	pNPCUnit:SetNowMP(0)
+	
+end
+
+function SUMMON_BOSS_A_MAGIC_ATTACK_B_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 3.1 ) then			
+		
+		fRemainHPRate = pNPCUnit:GetNowHP() / pNPCUnit:GetMaxHP()
+			
+		if fRemainHPRate < 0.5 then	
+			
+			local archerNum = pX2Game:LiveNPCNumType_LUA( NPC_UNIT_ID["NUI_GLITER_ARCHER_ELITE"] )
+	
+			if archerNum < 4 then		
+				
+				for nMon = archerNum, 3 do
+					vSummonPos1 = pX2Game:GetLineMap():GetRandomPosition_LUA()
+					pX2Game:CreateNPCReq_LUA( NPC_UNIT_ID["NUI_GLITER_ARCHER_ELITE"], pNPCUnit:GetHardLevel(), false, vSummonPos1, false, 0.3, true  )
+				end
+				
+			end
+		end
+		
+	end
+		
+end
+
+function SUMMON_BOSS_A_SPECIAL_ATTACK_B_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	pNPCUnit:SetNowMP(0)
+	
+	if pNPCUnit:AnimEventTimer_LUA( 3.1 ) then			
+		
+		fRemainHPRate = pNPCUnit:GetNowHP() / pNPCUnit:GetMaxHP()
+			
+		if fRemainHPRate < 0.5 then	
+			
+			local archerNum = pX2Game:LiveNPCNumType_LUA( NPC_UNIT_ID["NUI_GLITER_ARCHER_ELITE"] )
+	
+			if archerNum < 4 then		
+				
+				for nMon = archerNum, 3 do
+					vSummonPos1 = pX2Game:GetLineMap():GetRandomPosition_LUA()
+					pX2Game:CreateNPCReq_LUA( NPC_UNIT_ID["NUI_GLITER_ARCHER_ELITE"], pNPCUnit:GetHardLevel(), false, vSummonPos1, false, 0.3, true  )
+				end
+				
+			end
+		end
+		
+	end
+end
+
+function SUMMON_BOSS_A_ATTACK_B_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 1 ) then
+		pNPCUnit:ClearHitUnitList_LUA()
+		pNPCUnit:SetDamageData_LUA( "DAMAGE_DATA_LAST" )
+	end
+end

@@ -1,0 +1,857 @@
+XMESHPLAYER "UIMajor" 1.00 
+{  
+	TEMPLET "ElSwordBasic" 
+	{
+		lifeType = LT_MANUAL
+
+		meshType = X_SKIN_MESH
+		meshName = "ElswordBasicEff.x"
+
+		RenderType = RT_CARTOON_BLACK_EDGE
+		OutLineWide = 550
+		CartoonTexType = CTT_NORMAL
+
+		lightPos = xyz(1000,1000,1000)
+		zEnable = TRUE
+
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode = D3DBLEND_INVSRCALPHA
+
+		global initial aniName = "Win", XAP_ONE_WAIT
+	}
+	TEMPLET "LireBasic" 
+	{
+		lifeType = LT_MANUAL
+
+		meshType = X_SKIN_MESH
+		meshName = "LireBasicEff.x"
+
+		RenderType = RT_CARTOON_BLACK_EDGE
+		OutLineWide = 550
+		CartoonTexType = CTT_NORMAL
+
+		lightPos = xyz(1000,1000,1000)
+		zEnable = TRUE
+
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode = D3DBLEND_INVSRCALPHA
+
+		global initial aniName = "Win", XAP_ONE_WAIT
+	}
+	TEMPLET "ArmeBasic" 
+	{
+		lifeType = LT_MANUAL
+
+		meshType = X_SKIN_MESH
+		meshName = "ArmeBasicEff.x"
+
+		RenderType = RT_CARTOON_BLACK_EDGE
+		OutLineWide = 700
+		CartoonTexType = CTT_NORMAL
+
+		lightPos = xyz(1000,1000,1000)
+		zEnable = TRUE
+
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode = D3DBLEND_INVSRCALPHA
+
+		global initial aniName = "Win", XAP_ONE_WAIT
+	}
+	TEMPLET "LogoWilliamPPoru" 
+	{
+		Layer			= 15
+		lifeType		= LT_TIME
+		lifetime		= 8
+
+		meshType = X_SKIN_MESH
+		meshName = "Logo_WilliamPPoru.x"
+
+		RenderType = RT_CARTOON_BLACK_EDGE
+		OutLineWide = 300
+		CartoonTexType = CTT_NORMAL
+
+		lightPos = xyz(-5000,1000,-5000)
+		zEnable = TRUE
+		ZWriteEnable	= TRUE
+		ANIPACKAGE	= "Logo_WilliamPPoru.xet"
+
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode = D3DBLEND_INVSRCALPHA
+
+		global initial	aniName			= "Walk", XAP_LOOP
+		global at 3		aniName			= "Surprise", XAP_ONE_WAIT
+		global at 4.9	aniName			= "Dash", XAP_LOOP
+		global initial	velocity		= XYZ(300,0,0)
+		global at 3		velocity		= XYZ(0,0,0)
+		global at 4.9	velocity		= XYZ(800,0,0)
+		global initial	rotate			= XYZ(0,180,0)
+		global initial	size			= XYZ( 1,1,1 )
+	}
+	
+	TEMPLET "LogoElSword" 
+	{
+		Layer			= 15
+		lifeType		= LT_TIME
+		lifetime		= 10
+
+		meshType		= X_SKIN_MESH
+		meshName		= "Logo_Motion_Elsword_Dash.X"
+
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		OutLineWide		= 700
+		CartoonTexType	= CTT_NORMAL
+
+		lightPos		= xyz(-5000,1000,-5000)
+		zEnable			= TRUE
+		ZWriteEnable	= TRUE
+
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial	aniName			= "Elsword_Dash", XAP_LOOP
+		global initial	velocity		= XYZ(0,0,0)
+		global at 5		velocity		= XYZ(1000,0,0)
+		global initial	rotate			= XYZ(0,180,0)
+	}	
+	TEMPLET "LogoLena" 
+	{
+		Layer			= 15
+		lifeType		= LT_TIME
+		lifetime		= 10
+
+		meshType		= X_SKIN_MESH
+		meshName		= "Logo_Motion_Lire_Dash.X"
+
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		OutLineWide		= 700
+		CartoonTexType	= CTT_NORMAL
+
+		lightPos		= xyz(-5000,1000,-5000)
+		zEnable			= TRUE
+		ZWriteEnable	= TRUE
+
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial	aniName			= "Lire_Dash", XAP_LOOP
+		global initial	velocity		= XYZ(0,0,0)
+		global at 5		velocity		= XYZ(1000,0,0)
+		global initial	rotate			= XYZ(0,180,0)
+	}
+	TEMPLET "LogoAisha" 
+	{
+		Layer			= 15
+		lifeType		= LT_TIME
+		lifetime		= 10
+
+		meshType		= X_SKIN_MESH
+		meshName		= "Logo_Motion_Arme_Dash.X"
+
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		OutLineWide		= 700
+		CartoonTexType	= CTT_NORMAL
+
+		lightPos		= xyz(-5000,1000,-5000)
+		zEnable			= TRUE
+		ZWriteEnable	= TRUE
+
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial	aniName			= "Arme_Dash", XAP_LOOP
+		global initial	velocity		= XYZ(0,0,0)
+		global at 5		velocity		= XYZ(1000,0,0)
+		global initial	rotate			= XYZ(0,180,0)
+	}
+	TEMPLET "LogoBenders" 
+	{
+		Layer			= 15
+		lifeType		= LT_TIME
+		lifetime		= 20
+
+		meshType		= X_SKIN_MESH
+		meshName		= "Logo_Motion_Benders.X"
+
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		OutLineWide		= 700
+		CartoonTexType	= CTT_NORMAL
+
+		lightPos		= xyz(-5000,1000,-5000)
+		zEnable			= TRUE
+
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial	aniName			= "Benders_Walk", XAP_LOOP
+		global at 8.7	aniName			= "Event", XAP_ONE_WAIT
+		global at 12.3	aniName			= "Benders_Walk", XAP_LOOP
+		
+		global initial	velocity		= XYZ(0,0,0)
+		global at 7		velocity		= XYZ(200,0,0)
+		global at 8.7	velocity		= XYZ(0,0,0)
+		global at 12.3	velocity		= XYZ(200,0,0)
+		global initial	rotate			= XYZ(0,180,0)
+	}
+	TEMPLET "RewardKey" 
+	{
+		Layer			= 15
+		lifeType		= LT_TIME
+		lifetime		= 2.7
+
+		meshType		= X_MESH
+		meshName		= "Cubic_Key.Y"
+
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		OutLineWide		= 700
+		CartoonTexType	= CTT_NORMAL
+
+		lightPos		= xyz(5000,1000,-5000)
+		zEnable			= TRUE
+
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+		
+		global fade so final			rotate		= XYZ(0,3600,0)
+		global initial					velocity	= XYZ(0,-350,0)
+		global fade so from 0.01 to 2	velocity	= XYZ(0,0,0)
+	}
+	TEMPLET "RewardItemBox" 
+	{
+		Layer			= 15
+		lifeType		= LT_TIME
+		lifetime		= 999999
+
+		meshType		= X_SKIN_MESH
+		meshName		= "Motion_Cubic.x"
+
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		OutLineWide		= 700
+		CartoonTexType	= CTT_NORMAL
+
+		lightPos		= xyz(5000,1000,-5000)
+		zEnable			= TRUE
+		CHANGETEXXET	= "Motion_Cubic.xet"
+
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		aniName		= "Wait", XAP_LOOP
+		global at 2		aniName		= "Open", XAP_ONE_WAIT
+		
+		global initial 						size		= XYZ(1,1,1)
+		global fade so from 1000 to 1000.5 	size		= XYZ(0,0,0)
+		
+		global initial	rotate			= XYZ(-20,0,0)
+	}
+	TEMPLET "LobbyLevelUp01" 
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "LobbyLevelUp01.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		global initial			color		= rgba( 1,1,1,0 )		
+		global fade so from 0 to 0.5	color		= rgba( 1,1,1,1 )
+		global fade so from 1 to 1.333	color		= rgba( 1,1,1,0 )
+
+		global initial		aniName		= "LobbyLevelUp01", XAP_ONE
+		global initial		size		= XYZ( 1.8, 1.8, 1.8 )
+
+	}  
+	
+	TEMPLET "LobbyLevelUp01_1" 
+	{
+		Layer			= 2
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "LobbyLevelUp01-1.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		global initial			color		= rgba( 1,1,1,0 )		
+		global fade so from 0.333 to 0.85	color		= rgba( 1,1,1,1 )
+		global fade so from 1.166 to 1.5	color		= rgba( 1,1,1,0 )
+
+		global initial		aniName		= "LobbyLevelUp01-1", XAP_ONE
+		global initial		size		= XYZ( 1.8, 1.8, 1.8 )
+
+	}  
+	
+	TEMPLET "LobbyLevelUp02" 
+	{
+		Layer			= 3
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "LobbyLevelUp02.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		global initial			color		= rgba( 1,1,1,0 )		
+		global fade so from 2.333 to 2.666	color		= rgba( 1,1,1,0.6 )
+		global fade so from 2.666 to 3.333	color		= rgba( 1,1,1,0 )
+		global initial		aniName		= "LobbyLevelUp02", XAP_ONE
+		global initial		size		= XYZ( 1.75, 1.7, 1.7 )
+	}
+	TEMPLET "LobbyLevelUp04" 
+	{
+		Layer			= 4
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "LobbyLevelUp04.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		global initial			color		= rgba( 1,1,1,0 )
+		global fade so from 0.1 to 0.333	color		= rgba( 1,1,1,1 )
+		global fade so from 1.166 to 1.5	color		= rgba( 1,1,1,0 )
+
+
+		global initial		aniName		= "LobbyLevelUp04", XAP_ONE
+		global initial		size		= XYZ( 1.8, 1.8, 1.8 )
+	}  
+	
+	TEMPLET "FireMachineWait" 
+	{
+		Layer			= 13
+		lifeType		= LT_TIME
+		lifetime		= 999999
+
+		meshType		= X_SKIN_MESH
+		meshName		= "Motion_machine.x"
+
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		OutLineWide		= 15
+		
+		lightPos		= xyz(0,50,-500)
+		zEnable			= true
+		ZWriteEnable	= true
+		
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		aniName		= "Wait", XAP_LOOP
+		global initial		color 		= rgba( 1,1,1,1 )		
+	
+		global initial 			size		= XYZ(2.2,2.2,2.2)
+		
+	}
+	
+	TEMPLET "FireMachineStart" 
+	{
+		Layer			= 13
+		lifeType		= LT_TIME
+		lifetime		= 999999
+
+		meshType		= X_SKIN_MESH
+		meshName		= "Motion_machine.x"
+
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		OutLineWide		= 15
+		
+		lightPos		= xyz(0,50,-500)
+		zEnable			= True
+		ZWriteEnable	= true
+		
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		aniName		= "Start", XAP_ONE
+		global at 5.79		aniName		= "End", XAP_LOOP
+				
+		global initial		color 		= rgba( 1,1,1,1 )		
+		global initial 		size		= XYZ(2.2,2.2,2.2)
+		
+	}
+
+	
+	TEMPLET "GoldFireMachineWait" 
+	{
+		Layer			= 13
+		lifeType		= LT_TIME
+		lifetime		= 999999
+
+		meshType		= X_SKIN_MESH
+		meshName		= "Motion_machine.x"
+
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		OutLineWide		= 15
+		
+		lightPos		= xyz(0,50,-500)
+		zEnable			= true
+		ZWriteEnable	= true
+	
+		CHANGETEXXET	= "GoldFireMachine.xet"		
+
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		aniName		= "Wait", XAP_LOOP
+		global initial		color 		= rgba( 1,1,1,1 )		
+	
+		global initial 			size		= XYZ(2.2,2.2,2.2)
+		
+	}
+	
+	TEMPLET "GoldFireMachineStart" 
+	{
+		Layer			= 13
+		lifeType		= LT_TIME
+		lifetime		= 999999
+
+		meshType		= X_SKIN_MESH
+		meshName		= "Motion_machine.x"
+
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		OutLineWide		= 15
+		
+		lightPos		= xyz(0,50,-500)
+		zEnable			= True
+		ZWriteEnable	= true
+		
+		CHANGETEXXET	= "GoldFireMachine.xet"	
+
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		aniName		= "Start", XAP_ONE
+		global at 5.79		aniName		= "End", XAP_LOOP
+				
+		global initial		color 		= rgba( 1,1,1,1 )		
+		global initial 		size		= XYZ(2.2,2.2,2.2)
+		
+	}
+	
+	TEMPLET "Mesh_LevelUp01.X" 
+	{
+		Layer				= 14
+		lifeType			= LT_PLAY_COUNT
+		playCount			= 1
+		
+		meshType			= X_SKIN_MESH
+		meshName			= "LevelUp01.X"
+		RenderType			= RT_REAL_COLOR
+		
+		zEnable				= false
+		usedieevent			= false
+		
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		
+		global initial		color		= rgba( 0.8,0.8,1,0 )		
+		
+		global fade so from 0 to 0.333		color		= rgba( 0.8,0.8,1,0.5 )
+		global fade so from 1.166 to 1.5	color		= rgba( 0.8,0.8,1,0 )
+
+		global initial		aniName		= "Normal", XAP_ONE
+		global initial		size		= XYZ( 1.1, 1.1, 1.1 )
+
+	}  
+	
+	TEMPLET "Mesh_UI_CSI_CDC_Start_Mini_Gun_L" 
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 99999
+		meshType		= X_SKIN_MESH
+		meshName		= "CDC_MiniGun_L_Ready.X"
+		RenderType		= RT_REAL_COLOR
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		zEnable			= True
+		ZWriteEnable 	= True
+		drawcount		= 1
+
+		global initial	aniName		= "CDC_MiniGun_L_Ready", XAP_LOOP
+		global initial	size		= XYZ( 1, 1, 1 )
+		global initial  aniSpeed	= 0.001
+	}
+	
+	TEMPLET "Mesh_UI_CSI_CDC_Start_Mini_Gun_R" 
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 99999
+		meshType		= X_SKIN_MESH
+		meshName		= "CDC_MiniGun_R_Ready.X"
+		RenderType		= RT_REAL_COLOR
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		zEnable			= True
+		ZWriteEnable 	= True
+		drawcount		= 1
+
+		global initial	aniName		= "CDC_MiniGun_R_Ready", XAP_LOOP
+		global initial	size		= XYZ( 1, 1, 1 )
+		global initial  aniSpeed	= 0.001
+		
+	}
+
+	TEMPLET "Mesh_UI_SheathKnight_SecondSword" 
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 99999
+		meshType		= X_SKIN_MESH
+		meshName		= "Elsword_SisKnight_sword_base.X"
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		OUTLINEWIDE  		= 500
+		LIGHTPOS  		= xyz(100,100,-100)
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		zEnable			= True
+		ZWriteEnable 		= True
+		drawcount		= 1
+
+		global initial		aniName  = "Normal", XAP_LOOP
+		global initial	size		= XYZ( 1, 1, 1 )
+	}
+
+	--{{	SERV_TRAPPING_RANGER_TEST
+	TEMPLET "Mesh_RTR_Lire_Sword_Ready" 
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 99999
+		meshType		= X_SKIN_MESH
+		meshName			= "Mesh_Lire_TR_Effect_Weapon_Ready.X"
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		OUTLINEWIDE  		= 460
+		LIGHTPOS  		= xyz(100,100,-100)
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		zEnable			= True
+		ZWriteEnable 		= True
+		drawcount		= 1
+
+		global initial		aniName  = "Normal", XAP_LOOP
+		global initial	size		= XYZ( 1, 1, 1 )
+	}
+	--}}	SERV_TRAPPING_RANGER_TEST
+	TEMPLET "ApinkBuffStart" 
+	{
+		Layer			= 13
+		lifeType		= LT_TIME
+		lifetime		= 999999
+
+		meshType		= X_SKIN_MESH
+		meshName		= "Motion_Raven_Buff_NPC.X"
+
+		RenderType		= RT_REAL_COLOR
+		OutLineWide		= 15
+		
+		lightPos		= xyz(0,50,-500)
+		zEnable			= True
+		ZWriteEnable	= true
+		
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		aniName		= "Buff", XAP_ONE_WAIT
+				
+		global initial		color 		= rgba( 1,1,1,1 )	
+		global fade so from 3 to 3.51	color		= rgba( 1,1,1,0 )
+		
+		global initial 		size		= XYZ(2,2,2)
+		
+	}
+	TEMPLET "Mesh_RNW_Lire_Sword_Ready" 
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 99999
+		meshType		= X_SKIN_MESH
+		meshName			= "Mesh_Lire_LNW_Effect_Weapon.X"
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		OUTLINEWIDE  		= 460
+		LIGHTPOS  		= xyz(100,100,-100)
+		usedieevent		= false
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_INVSRCALPHA
+		zEnable			= True
+		ZWriteEnable 		= True
+		drawcount		= 1
+
+		global initial		aniName  = "Normal", XAP_LOOP
+		global initial	size		= XYZ( 1, 1, 1 )
+	}	
+	TEMPLET "ApinkBuffStart_sub" 
+	{
+		Layer			= 13
+		lifeType		= LT_TIME
+		lifetime		= 999999
+
+		meshType		= X_SKIN_MESH
+		meshName		= "Motion_Chung_Buff_NPC.X"
+
+		RenderType		= RT_REAL_COLOR
+		OutLineWide		= 15
+		
+		lightPos		= xyz(0,50,-500)
+		zEnable			= True
+		ZWriteEnable	= true
+		
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		aniName		= "Buff", XAP_ONE_WAIT
+				
+		global initial		color 		= rgba( 1,1,1,1 )	
+		global fade so from 3 to 3.51	color		= rgba( 1,1,1,0 )
+		
+		global initial 		size		= XYZ(2,2,2)
+		
+	}
+	TEMPLET "MiniFireMachineStart" 
+	{
+		Layer			= 13
+		lifeType		= LT_TIME
+		lifetime		= 999999
+
+		meshType		= X_SKIN_MESH
+		meshName		= "Motion_mini_machine.x"
+
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		OutLineWide		= 15
+		
+		lightPos		= xyz(0,50,-500)
+		zEnable			= True
+		ZWriteEnable	= true
+		
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		aniName		= "Start", XAP_ONE
+		global at 3.08		aniName		= "End", XAP_LOOP
+				
+		global initial		color 		= rgba( 1,1,1,1 )		
+		global initial 		size		= XYZ(2.2,2.2,2.2)
+	}
+	TEMPLET "MeshAdvertisement_Back" 
+	{
+		Layer			= 13
+		lifeType		= LT_TIME
+		lifetime		= 0
+
+		meshType		= X_SKIN_MESH
+		meshName		= "Sander01.X"
+
+		RenderType		= RT_REAL_COLOR
+		OutLineWide		= 15
+		
+		lightPos		= xyz(0,50,-500)
+		zEnable			= True
+		ZWriteEnable	= true
+		
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		aniName		= "normal", XAP_LOOP
+				
+
+		global initial  	Position	= XYZ(-70, -215, 0)
+
+		global initial		color 		= rgba( 1,1,1,1 )	
+		
+		global initial 		size		= XYZ(0.6,0.6,0.6)
+	
+		
+	}
+	TEMPLET "MeshAdvertisement_Front" 
+	{
+		Layer			= 13
+		lifeType		= LT_TIME
+		lifetime		= 0
+
+		meshType		= X_SKIN_MESH
+		meshName		= "APINK_ANGEL_02_AISHA.x"
+
+		RenderType		= RT_REAL_COLOR
+		OutLineWide		= 15
+		
+		lightPos		= xyz(0,50,-500)
+		zEnable			= true
+		ZWriteEnable	= true
+		
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_DESTALPHA
+
+		global initial		aniName		= "JumpAttackZ", XAP_LOOP
+		global initial  	Position	= XYZ( 300, -300, 1)
+		global initial		color 		= rgba( 1,1,1,1 )		
+	
+		global initial 			size		= XYZ(1,1,1)
+	}
+	TEMPLET "AllInOneFireMachineWait" 
+	{
+		Layer			= 13
+		lifeType		= LT_TIME
+		lifetime		= 999999
+
+		meshType		= X_SKIN_MESH
+		meshName		= "Motion_machine.x"
+
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		OutLineWide		= 15
+		
+		lightPos		= xyz(0,50,-500)
+		zEnable			= true
+		ZWriteEnable	= true
+	
+		CHANGETEXXET	= "AllInOneFireMachine.xet"		
+
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		aniName		= "Wait", XAP_LOOP
+		global initial		color 		= rgba( 1,1,1,1 )		
+	
+		global initial 			size		= XYZ(2.2,2.2,2.2)
+		
+	}	
+	TEMPLET "AllInOneFireMachineStart" 
+	{
+		Layer			= 13
+		lifeType		= LT_TIME
+		lifetime		= 999999
+
+		meshType		= X_SKIN_MESH
+		meshName		= "Motion_machine.x"
+
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		OutLineWide		= 15
+		
+		lightPos		= xyz(0,50,-500)
+		zEnable			= True
+		ZWriteEnable	= true
+		
+		CHANGETEXXET	= "AllInOneFireMachine.xet"	
+
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		aniName		= "Start", XAP_ONE
+		global at 5.79		aniName		= "End", XAP_LOOP
+				
+		global initial		color 		= rgba( 1,1,1,1 )		
+		global initial 		size		= XYZ(2.2,2.2,2.2)
+		
+	}
+	TEMPLET "AncinetFossilRidingPetWait"
+	{
+		Layer			= 13
+		lifeType		= LT_TIME
+		lifetime		= 999999
+
+		meshType		= X_SKIN_MESH
+		meshName		= "Motion_Wind_machine.X"
+
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		OutLineWide		= 15
+		
+		lightPos		= xyz(0,50,-500)
+		zEnable			= true
+		ZWriteEnable	= true
+
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		aniName		= "Wait", XAP_LOOP
+		global initial		color 		= rgba( 1,1,1,1 )		
+	
+		global initial 			size		= XYZ(2.2,2.2,2.2)
+		
+	}	
+	TEMPLET "AncinetFossilRidingPetStart" 
+	{
+		Layer			= 13
+		lifeType		= LT_TIME
+		lifetime		= 999999
+
+		meshType		= X_SKIN_MESH
+		meshName		= "Motion_Wind_machine.X"
+
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		OutLineWide		= 15
+		
+		lightPos		= xyz(0,50,-500)
+		zEnable			= True
+		ZWriteEnable	= true
+
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		aniName		= "Start", XAP_ONE
+		global at 4.2		aniName		= "End", XAP_LOOP
+				
+		global initial		color 		= rgba( 1,1,1,1 )		
+		global initial 		size		= XYZ(2.2,2.2,2.2)
+		
+	}
+	TEMPLET "MarriedSystemEventLatterStart" 
+	{
+		Layer			= 13
+		lifeType		= LT_TIME
+		lifetime		= 999999
+
+		meshType		= X_SKIN_MESH
+		meshName		= "wedding_latter_event.X"
+		RenderType		= RT_REAL_COLOR
+		
+		lightPos		= xyz(0,50,-500)
+		zEnable			= true
+		ZWriteEnable	= true
+		cullmode		= D3DCULL_CCW
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		aniName		= "open", XAP_ONE
+		global at 1.2		aniName		= "wait", XAP_LOOP
+				
+		global initial					color 	= rgba( 1,1,1,0 )
+		global fade so from 0.2 to 0.4 	color	= rgba( 1,1,1,1 )
+		global initial 		size		= XYZ(0.5,0.5,0.5)
+		
+	}
+	TEMPLET "MarriedSystemEventLatterEnd" 
+	{
+		Layer			= 13
+		lifeType		= LT_TIME
+		lifetime		= 999999
+
+		meshType		= X_SKIN_MESH
+		meshName		= "wedding_latter_event.X"
+		RenderType		= RT_REAL_COLOR
+		
+		lightPos		= xyz(0,50,-500)
+		zEnable			= true
+		ZWriteEnable	= true
+		cullmode		= D3DCULL_CCW
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		aniName		= "close", XAP_ONE
+				
+		global initial					color 	= rgba( 1,1,1,1 )
+		global fade so from 0.7 to 0.9 	color	= rgba( 1,1,1,0 )
+		global initial 		size		= XYZ(0.5,0.5,0.5)
+		
+	}
+}

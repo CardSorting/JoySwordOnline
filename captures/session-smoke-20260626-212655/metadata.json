@@ -1,0 +1,20 @@
+{
+  "session_id": "session-smoke-20260626-212655",
+  "created_utc": "2026-06-26T21:26:55.248421+00:00",
+  "profile": "p2p_forced",
+  "connection_mode": "P2P",
+  "client_switch_connect_mode": 1,
+  "duration_requested_sec": 1,
+  "capture_filter": "udp port 8765 or udp port 26424",
+  "ports": {
+    "p2p": 8765,
+    "relay_checker": 26424
+  },
+  "markers": [
+    {
+      "type": "session_start",
+      "utc": "2026-06-26T21:26:55.248421+00:00",
+      "note": "profile=p2p_forced connection_mode=P2P"
+    }
+  ]
+}

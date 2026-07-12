@@ -1,0 +1,4 @@
+﻿=== Found 3 select .tet/.xet files ===
+  data063.kom: DLG_Sever_Select_Background01.tet
+  data063.kom: DLG_Sever_Select_Background02.tet
+  data063.kom: DLG_Sever_Select_Background03.tet

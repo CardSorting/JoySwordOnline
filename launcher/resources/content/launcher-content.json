@@ -1,0 +1,31 @@
+{
+  "schema": "joysword.launcher-content/v1",
+  "eyebrow": "THE SWORD AWAKENS",
+  "title": "Enter the fracture.",
+  "summary": "Connect to the restored JoySword world hosted securely on Azure.",
+  "featured": {
+    "tag": "FEATURED ARCHIVE",
+    "title": "The Emerald Citadel",
+    "description": "A recovered battlefield returns with awakened encounters and rare drops."
+  },
+  "notices": [
+    {
+      "id": "azure-ready",
+      "category": "SYSTEM",
+      "title": "Azure production realm is online",
+      "date": "LIVE"
+    },
+    {
+      "id": "archive-restored",
+      "category": "ARCHIVE",
+      "title": "Release 2026.07.01-13 deployed",
+      "date": "UPDATE 13"
+    },
+    {
+      "id": "diagnostics",
+      "category": "GUIDE",
+      "title": "Diagnostics now repairs Azure client routing",
+      "date": "READ"
+    }
+  ]
+}

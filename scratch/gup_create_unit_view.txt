@@ -1,0 +1,199 @@
+		INSERT INTO dbo.GSkillSlot_New( UnitUID, Slot01, Slot02, Slot03, Slot04 )
+
+			SELECT  @iUnitUID, 6000, 6203, 0, 0
+
+				IF @@ERROR <> 0 OR @@ROWCOUNT <> 1
+
+					BEGIN    SELECT @iOK = -30    GOTO FAIL_TRAN    END
+
+					
+
+		INSERT INTO dbo.GItem (UnitUID, ItemID, InventoryCategory, SlotID, UsageType, Quantity, Endurance, Inserted, RegDate)
+
+			SELECT @iUnitUID, 133125, 9, 10, 0, 0, -1, 125, @sdtNow union all
+
+			SELECT @iUnitUID, 133126, 9,  2, 0, 0, -1, 125, @sdtNow union all
+
+			SELECT @iUnitUID, 133127, 9,  4, 0, 0, -1, 125, @sdtNow union all
+
+			SELECT @iUnitUID, 133128, 9,  6, 0, 0, -1, 125, @sdtNow union all
+
+			SELECT @iUnitUID, 133129, 9,  8, 0, 0, -1, 125, @sdtNow union all
+
+			SELECT @iUnitUID, 111114, 9,  9, 1, 0, 10000, 125, @sdtNow union all
+
+			SELECT @iUnitUID, 111115, 9,  1, 1, 0, 10000, 125, @sdtNow union all
+
+			SELECT @iUnitUID, 111116, 9,  3, 1, 0, 10000, 125, @sdtNow union all
+
+			SELECT @iUnitUID, 111117, 9,  5, 1, 0, 10000, 125, @sdtNow union all
+
+			SELECT @iUnitUID, 111118, 9,  7, 1, 0, 10000, 125, @sdtNow 
+
+			
+
+			IF @@ERROR <> 0 OR @@ROWCOUNT <> 10
+
+					BEGIN    SELECT @iOK = -28    GOTO FAIL_TRAN    END
+
+
+
+	END					
+
+	----아라
+
+	IF @iUnitClass_ = 7 -- 장비 빠져있고 에러부분 체크해야함
+
+	BEGIN
+
+	--	-- 기본 스킬 레벨 1 찍어주기
+
+		INSERT INTO dbo.GSkill_New( UnitUID, SkillID, [Level], CSP)
+
+			SELECT  @iUnitUID, 7001, 1, 0 UNION ALL
+
+			SELECT  @iUnitUID, 7204, 1, 0
+
+			IF @@ERROR <> 0 OR @@ROWCOUNT <> 2
+
+					BEGIN    SELECT @iOK = -31    GOTO FAIL_TRAN    END
+
+
+
+	--	-- 기본 스킬을 스킬 슬롯에 장착
+
+		INSERT INTO dbo.GSkillSlot_New( UnitUID, Slot01, Slot02, Slot03, Slot04 )
+
+			SELECT  @iUnitUID, 7001, 7204, 0, 0
+
+				/*IF @@ERROR <> 0 OR @@ROWCOUNT <> 1
+
+					BEGIN    SELECT @iOK = -32    GOTO FAIL_TRAN    END*/
+
+	
+
+	--	-- 프로모션 & 초보자용 장비 장착
+
+		INSERT INTO dbo.GItem (UnitUID, ItemID, InventoryCategory, SlotID, UsageType, Quantity, Endurance, Inserted, RegDate)
+
+			SELECT @iUnitUID, 41460, 9, 10, 0, 0, -1, 125, @sdtNow union all		-- 아라 프로모션 무기
+
+		    SELECT @iUnitUID, 41470, 9,  2, 0, 0, -1, 125, @sdtNow union all		-- 아라 프로모션 상의
+
+			SELECT @iUnitUID, 41480, 9,  4, 0, 0, -1, 125, @sdtNow union all		-- 아라 프로모션 하의
+
+			SELECT @iUnitUID, 41490, 9,  6, 0, 0, -1, 125, @sdtNow union all		-- 아라 프로모션 장갑
+
+			SELECT @iUnitUID, 41500, 9,  8, 0, 0, -1, 125, @sdtNow union all		-- 아라 프로모션 신발
+
+			SELECT @iUnitUID, 112700, 9,  9, 1, 0, 10000, 125, @sdtNow union all -- 초보자용 코보 창
+
+			SELECT @iUnitUID, 112701, 9,  1, 1, 0, 10000, 125, @sdtNow union all -- 초보자용 코보 무도가 상의
+
+			SELECT @iUnitUID, 112702, 9,  3, 1, 0, 10000, 125, @sdtNow union all -- 초보자용 코보 무도가 바지
+
+			SELECT @iUnitUID, 112703, 9,  5, 1, 0, 10000, 125, @sdtNow union all -- 초보자용 코보 무도가 장갑
+
+			SELECT @iUnitUID, 112704, 9,  7, 1, 0, 10000, 125, @sdtNow			-- 초보자용 코보 무도가 신발		
+
+			IF @@ERROR <> 0 OR @@ROWCOUNT <> 10
+
+					BEGIN    SELECT @iOK = -28    GOTO FAIL_TRAN    END
+
+		
+
+	END	
+
+
+
+	-- 근성도 
+
+	INSERT INTO dbo.GSpirit (UnitUID, Spirit, RegDate)
+
+		SELECT @iUnitUID, @iStartSpirit, @sdtNow
+
+			/*IF @@ERROR <> 0 OR @@ROWCOUNT <> 1
+
+					BEGIN    SELECT @iOK = -41    GOTO FAIL_TRAN    END*/
+
+
+
+	---- 대전 기본 정보(시즌 2 시작시 주석처리 필요)
+
+	--INSERT INTO dbo.GUnitPVP(UnitUID, OfficialMatchCnt, Rating, MaxRating, RPoint, APoint, IsWinBeforeMatch, Grade, win, lose)
+
+	--	SELECT @iUnitUID, 0, 250, 250, 0, 0, 0, 0, 0, 0
+
+	--		IF @@ERROR <> 0 OR @@ROWCOUNT <> 1
+
+	--				BEGIN    SELECT @iOK = -42    GOTO FAIL_TRAN    END	
+
+									
+
+	
+
+	-- 헤니르 보상 제한					
+
+	INSERT INTO dbo.GHenirRewardCnt(UnitUID, NormalCnt, PCBangCnt, EventCnt, LastDate)
+
+		SELECT @iUnitUID, 0, 0, 0, @sdtNow
+
+			IF @@ERROR <> 0 OR @@ROWCOUNT <> 1
+
+					BEGIN    SELECT @iOK = -43    GOTO FAIL_TRAN    END			
+
+					
+
+	-- LastGamepoint 체크
+
+	INSERT INTO	dbo.GUnit_LastPoint WITH (UPDLOCK) (UnitUID, Gamepoint, RegDate)
+
+		SELECT @iUnitUID, 0, @sdtNow
+
+			IF @@ERROR <> 0 OR @@ROWCOUNT <> 1 
+
+			BEGIN    SELECT @iOK = -44   GOTO FAIL_TRAN    END
+
+	
+
+	-- 대전 시즌2 기본 정보				
+
+	INSERT INTO dbo.GUnitPVP_Season2 ( UnitUID, OfficialMatchCnt, Rating, MaxRating, RPoint, APoint, IsWinBeforeMatch, Grade, win, lose, KFactor, IsRedistribution, PastSeasonWin )
+
+		SELECT @iUnitUID, 0, 0, 0, 0, 0, 0, 2, 0, 0, 500, 0, 0	
+
+			IF @@ERROR <> 0 OR @@ROWCOUNT <> 1 
+
+			BEGIN    SELECT @iOK = -45   GOTO FAIL_TRAN    END
+
+		
+
+	-- SERV_LAUNCH_EVENT
+
+	-- INSERT INTO [dbo].[GPet_Info]([UnitUID], [PetID], [PetName], [EvolutionStep], [Satiety],
+
+	-- 		[Intimacy], [Extroversion], [Emotion], [RegDate], [DelDate], [IsCall],
+
+	-- 		[AutoFeed], [LastFeedDate], [LastcallDate], [PickUP])
+
+	-- 	VALUES(@iUnitUID, 29, 'Fox', 3, 3840, 534240, -90, -90, GETDATE(), GETDATE(), 1, 0, GETDATE(),
+
+	-- 		GETDATE(), 0)
+
+COMMIT TRAN
+
+
+
+GOTO END_PROC
+
+
+
+FAIL_TRAN:
+
+ROLLBACK TRAN
+
+
+
+END_PROC:
+
+SELECT @iOK, @iUnitUID, ISNULL(@sdtNickDate,'2000-01-01 00:00')

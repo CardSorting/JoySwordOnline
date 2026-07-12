@@ -1,0 +1,102 @@
+<?xml version="1.0" standalone="no" ?>
+<PatchInfo>
+    <Signature>
+        <Item Name="c490421d" />
+    </Signature>
+    <Directory>
+        <Item Name="Media\" />
+        <Item Name="Media\UI\" />
+        <Item Name="Music\" />
+    </Directory>
+    <File>
+        <Item Name="2002LKOG.ttf" Size="1990828" Version="1" CheckSum="" />
+        <Item Name="BugTrapU.dll" Size="269824" Version="9" CheckSum="94a0ee28" />
+        <Item Name="DLG_First_Loading0.tga" Size="786476" Version="29" CheckSum="" />
+        <Item Name="DLG_First_Loading1.tga" Size="786476" Version="31" CheckSum="" />
+        <Item Name="DLG_Sever_Select_Background01.tga" Size="786476" Version="4" CheckSum="" />
+        <Item Name="DLG_Sever_Select_Background02.tga" Size="786476" Version="4" CheckSum="" />
+        <Item Name="DLG_Sever_Select_Background03.tga" Size="786476" Version="5" CheckSum="" />
+        <Item Name="ElswordKR.ini" Size="329" Version="1" CheckSum="bd9dd2c7" />
+        <Item Name="EndingFlash.DLL" Size="324608" Version="2" CheckSum="638f4f5a" />
+        <Item Name="FindH.dll" Size="23552" Version="1" CheckSum="6bd61c0a" />
+        <Item Name="GameGuard.des" Size="277697" Version="2" CheckSum="8b583356" />
+        <Item Name="H2HDRM.TTF" Size="1169072" Version="1" CheckSum="" />
+        <Item Name="KncCrashRpt.dll" Size="149504" Version="2" CheckSum="cb37bd3a" />
+        <Item Name="KncFirewall.dll" Size="61440" Version="1" CheckSum="1a079d0d" />
+        <Item Name="MailMIME.dll" Size="28672" Version="1" CheckSum="1a178d7f" />
+        <Item Name="MailSMTP.dll" Size="32768" Version="1" CheckSum="40abc3db" />
+        <Item Name="Media\UI\DXUTShared.fx" Size="2594" Version="1" CheckSum="" />
+        <Item Name="Media\UI\arrow.x" Size="23227" Version="1" CheckSum="" />
+        <Item Name="Media\UI\dxutcontrols.dds" Size="262272" Version="1" CheckSum="" />
+        <Item Name="Music\Lobby.ogg" Size="3027441" Version="1" CheckSum="" />
+        <Item Name="Music\MiniGame001.ogg" Size="2514115" Version="1" CheckSum="" />
+        <Item Name="Music\MiniGame002.ogg" Size="2047503" Version="1" CheckSum="" />
+        <Item Name="Music\Music001_Tutorial.ogg" Size="2579318" Version="1" CheckSum="" />
+        <Item Name="Music\Music003_Square.ogg" Size="3359703" Version="1" CheckSum="" />
+        <Item Name="Music\Music005_Stage.ogg" Size="2933512" Version="1" CheckSum="" />
+        <Item Name="Music\Music006_Boss.ogg" Size="2833821" Version="1" CheckSum="" />
+        <Item Name="Music\Music007_Boss.ogg" Size="2606363" Version="1" CheckSum="" />
+        <Item Name="Music\Music008_Stage.ogg" Size="2701507" Version="1" CheckSum="" />
+        <Item Name="Music\Music009_Boss.ogg" Size="2469210" Version="1" CheckSum="" />
+        <Item Name="Music\Music010_Stage.ogg" Size="2701946" Version="1" CheckSum="" />
+        <Item Name="Music\Music011_Boss.ogg" Size="2787935" Version="1" CheckSum="" />
+        <Item Name="Music\Music012_Stage.ogg" Size="3216587" Version="1" CheckSum="" />
+        <Item Name="Music\Music013_Boss.ogg" Size="4041357" Version="1" CheckSum="" />
+        <Item Name="Music\Music014_Stage.ogg" Size="4514390" Version="1" CheckSum="" />
+        <Item Name="Music\Music015_Boss.ogg" Size="1929692" Version="1" CheckSum="" />
+        <Item Name="Music\Music016_Stage.ogg" Size="3120246" Version="1" CheckSum="" />
+        <Item Name="Music\Music017_Boss.ogg" Size="3317533" Version="1" CheckSum="" />
+        <Item Name="Music\Music018_Stage.ogg" Size="2306605" Version="1" CheckSum="" />
+        <Item Name="Music\Music019_Stage.ogg" Size="2661783" Version="1" CheckSum="" />
+        <Item Name="Music\Music020_Stage.ogg" Size="1677759" Version="1" CheckSum="" />
+        <Item Name="Music\Music021_Stage.ogg" Size="2329536" Version="1" CheckSum="" />
+        <Item Name="Music\Music022_Stage.ogg" Size="2803350" Version="1" CheckSum="" />
+        <Item Name="Music\Music023_Stage.ogg" Size="2947827" Version="1" CheckSum="" />
+        <Item Name="Music\Music024_Stage.ogg" Size="2834923" Version="1" CheckSum="" />
+        <Item Name="Music\Music025_Boss.ogg" Size="2422269" Version="1" CheckSum="" />
+        <Item Name="Music\MusicWin.ogg" Size="117133" Version="1" CheckSum="" />
+        <Item Name="Music\Shop.ogg" Size="1759377" Version="1" CheckSum="" />
+        <Item Name="Music\Tutorial_Aisha.ogg" Size="1709085" Version="1" CheckSum="" />
+        <Item Name="Music\Tutorial_Elsword.ogg" Size="710353" Version="1" CheckSum="" />
+        <Item Name="Music\Tutorial_Lena.ogg" Size="3222472" Version="1" CheckSum="" />
+        <Item Name="Music\Tutorial_Raven.ogg" Size="2020565" Version="1" CheckSum="" />
+        <Item Name="X2.exe" Size="5160960" Version="625" CheckSum="cc8c8945" />
+        <Item Name="d3dx9_30.dll" Size="2388176" Version="1" CheckSum="b147203c" />
+        <Item Name="data0.kom" Size="6911103" Version="687" CheckSum="00a0aa5d" />
+        <Item Name="data1.kom" Size="13388705" Version="76" CheckSum="8608f483" />
+        <Item Name="data10.kom" Size="26601007" Version="234" CheckSum="ced53f75" />
+        <Item Name="data11.kom" Size="20107469" Version="192" CheckSum="70035c14" />
+        <Item Name="data12.kom" Size="16490921" Version="271" CheckSum="a37d468f" />
+        <Item Name="data13.kom" Size="29357058" Version="65" CheckSum="24fbeda6" />
+        <Item Name="data14.kom" Size="39917264" Version="159" CheckSum="dafe94cc" />
+        <Item Name="data15.kom" Size="37621198" Version="186" CheckSum="c29ddb85" />
+        <Item Name="data16.kom" Size="31803959" Version="81" CheckSum="84f1154f" />
+        <Item Name="data17.kom" Size="26615481" Version="90" CheckSum="94de6b7a" />
+        <Item Name="data18.kom" Size="31773642" Version="109" CheckSum="e73408c4" />
+        <Item Name="data19.kom" Size="31731441" Version="106" CheckSum="b35e001c" />
+        <Item Name="data2.kom" Size="18464940" Version="54" CheckSum="4a2e5c76" />
+        <Item Name="data20.kom" Size="32204429" Version="105" CheckSum="5fafa173" />
+        <Item Name="data21.kom" Size="31736681" Version="111" CheckSum="90172d63" />
+        <Item Name="data22.kom" Size="19883508" Version="106" CheckSum="60ff1129" />
+        <Item Name="data23.kom" Size="11380612" Version="79" CheckSum="6b49f936" />
+        <Item Name="data24.kom" Size="7066941" Version="83" CheckSum="4f4c7863" />
+        <Item Name="data25.kom" Size="6034759" Version="63" CheckSum="09e67d7c" />
+        <Item Name="data26.kom" Size="9764418" Version="42" CheckSum="8082dd39" />
+        <Item Name="data27.kom" Size="8734224" Version="45" CheckSum="0435bd0c" />
+        <Item Name="data28.kom" Size="11551789" Version="18" CheckSum="6c44d1cd" />
+        <Item Name="data29.kom" Size="1415434" Version="1" CheckSum="075d5d49" />
+        <Item Name="data3.kom" Size="20741533" Version="42" CheckSum="882e1154" />
+        <Item Name="data4.kom" Size="19800169" Version="63" CheckSum="83b1b51d" />
+        <Item Name="data5.kom" Size="15417505" Version="133" CheckSum="c5532170" />
+        <Item Name="data6.kom" Size="9999402" Version="149" CheckSum="a4463c8f" />
+        <Item Name="data7.kom" Size="11198446" Version="124" CheckSum="3c8b6e45" />
+        <Item Name="data8.kom" Size="20427321" Version="134" CheckSum="5d1fc754" />
+        <Item Name="data9.kom" Size="27069036" Version="125" CheckSum="c37a7349" />
+        <Item Name="dbghelp.dll" Size="640000" Version="1" CheckSum="67d3e9d4" />
+        <Item Name="fmodex.dll" Size="340480" Version="1" CheckSum="9c180b9a" />
+        <Item Name="msvcp71.dll" Size="499712" Version="1" CheckSum="5a3b11d4" />
+        <Item Name="msvcr71.dll" Size="348160" Version="1" CheckSum="35563170" />
+        <Item Name="nmcogame.dll" Size="278528" Version="2" CheckSum="daff4ff2" />
+        <Item Name="usp10.dll" Size="424960" Version="1" CheckSum="472f10ab" />
+    </File>
+</PatchInfo>

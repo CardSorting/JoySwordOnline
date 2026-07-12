@@ -1,0 +1,1052 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 250.0,
+	UNIT_HEIGHT		= 300.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	UNIT_SCALE		= 1,
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{	
+	},
+	
+	READY_SOUND = 
+	{	
+	"bite01.ogg",
+	"bite02.ogg",
+	"bite03.ogg",
+	"DeepSea_Fish_AttackA01.ogg",
+	"DeepSea_Fish_Dying.ogg",
+	"Squish01.ogg",
+	"Squish02.ogg",
+	"DeepSea_Fish_DashAttack_Ready.ogg",
+	},
+
+	READY_XMESH = 
+	{
+	},
+	
+	READY_XSKIN_MESH = 
+	{
+	},
+	
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME	= "Motion_DEEPSEA_FISH.x",	
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+		
+	WALK_SPEED			= 400,
+	RUN_SPEED			= 1000,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300,
+}
+
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 1500,
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	--SHADOW_SIZE			= 200,
+	--SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+		
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	HEAD_BONE_NAME			= "Bone01",
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	
+	FALL_DOWN			= FALSE,
+	
+	SKY_DIE             = TRUE,		
+	DAMAGE_DOWN         = FALSE,		
+	DIE_FLY             = 0,
+}
+
+INIT_STATE = 
+{	
+	{ STATE_NAME = "DEEPSEA_FISH_DECOY",						     },
+	{ STATE_NAME = "DEEPSEA_FISH_START",						     },
+	{ STATE_NAME = "DEEPSEA_FISH_FLY_WAIT",						},
+	{ STATE_NAME = "DEEPSEA_FISH_FLY_FRONT",						},
+	{ STATE_NAME = "DEEPSEA_FISH_FLY_FRONT_UP",					},
+	{ STATE_NAME = "DEEPSEA_FISH_FLY_FRONT_DOWN",					},
+	{ STATE_NAME = "DEEPSEA_FISH_FLY_BACK",						},
+	{ STATE_NAME = "DEEPSEA_FISH_FLY_BACK_UP",					},
+	{ STATE_NAME = "DEEPSEA_FISH_FLY_BACK_DOWN",					},
+  { STATE_NAME = "DEEPSEA_FISH_FLY_UP",					        },
+  { STATE_NAME = "DEEPSEA_FISH_FLY_DOWN",					    },
+	  
+
+  { STATE_NAME = "DEEPSEA_FISH_ATTACKA",				},
+  { STATE_NAME = "DEEPSEA_FISH_DASHATTACK_READY",				},	
+  { STATE_NAME = "DEEPSEA_FISH_DASHATTACK",				},
+  { STATE_NAME = "DEEPSEA_FISH_DASHATTACK_END",				},
+	
+	--리액션 관련		
+	{ STATE_NAME = "DEEPSEA_FISH_DAMAGE_FRONT",				},
+	{ STATE_NAME = "DEEPSEA_FISH_DAMAGE_BACK",					},	
+	{ STATE_NAME = "DEEPSEA_FISH_DAMAGEREVENGE",				},
+	{ STATE_NAME = "DEEPSEA_FISH_DYING",					      LUA_STATE_START_FUNC = "DEEPSEA_FISH_DYING_STATE_START", },
+	
+	SIEGE_STATE					= "DEEPSEA_FISH_DECOY",	
+	--START_STATE					= "DEEPSEA_FISH_DECOY",
+	START_STATE					= "DEEPSEA_FISH_START",	
+	WAIT_STATE					= "DEEPSEA_FISH_FLY_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "DEEPSEA_FISH_DAMAGE_FRONT",
+	SMALL_DAMAGE_LAND_BACK		= "DEEPSEA_FISH_DAMAGE_BACK",
+	--SMALL_DAMAGE_AIR			= "DEEPSEA_FISH_DAMAGE_AIR",
+	SMALL_DAMAGE_AIR_FRONT		= "DEEPSEA_FISH_DAMAGE_FRONT",
+	SMALL_DAMAGE_AIR_BACK		= "DEEPSEA_FISH_DAMAGE_BACK",
+	
+	BIG_DAMAGE_LAND_FRONT		= "DEEPSEA_FISH_DAMAGE_FRONT",
+	BIG_DAMAGE_LAND_BACK		= "DEEPSEA_FISH_DAMAGE_BACK",
+	--BIG_DAMAGE_AIR			= "DEEPSEA_FISH_DAMAGE_AIR",
+	BIG_DAMAGE_AIR_FRONT		= "DEEPSEA_FISH_DAMAGE_FRONT",
+	BIG_DAMAGE_AIR_BACK			= "DEEPSEA_FISH_DAMAGE_BACK",
+	
+	DOWN_DAMAGE_LAND_FRONT		= "DEEPSEA_FISH_DAMAGE_FRONT",
+	DOWN_DAMAGE_LAND_BACK		= "DEEPSEA_FISH_DAMAGE_BACK",
+	DOWN_DAMAGE_AIR				= "DEEPSEA_FISH_DAMAGE_FRONT",
+	UP_DAMAGE					= "DEEPSEA_FISH_DAMAGE_FRONT",
+	FLY_DAMAGE_FRONT			= "DEEPSEA_FISH_DAMAGE_FRONT",
+	FLY_DAMAGE_BACK				= "DEEPSEA_FISH_DAMAGE_BACK",
+	REVENGE_ATTACK				= "",
+	DAMAGE_FLUSH_LAND_FRONT		= "DEEPSEA_FISH_DAMAGE_FRONT",
+	DAMAGE_FLUSH_LAND_BACK		= "DEEPSEA_FISH_DAMAGE_BACK",
+	DAMAGE_FLUSH_AIR			= "DEEPSEA_FISH_DAMAGE_FRONT",
+	DAMAGE_REVENGE				= "DEEPSEA_FISH_DAMAGEREVENGE",
+	
+	DYING_LAND_FRONT			= "DEEPSEA_FISH_DYING",
+	DYING_LAND_BACK				= "DEEPSEA_FISH_DYING",
+	DYING_SKY					= "DEEPSEA_FISH_DYING",		
+}
+
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_RANDOM"],
+		TARGET_INTERVAL				= 2,		-- sec
+		TARGET_NEAR_RANGE			= 1000,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 1600,		-- cm
+		TARGET_LOST_RANGE			= 2400,		-- cm
+		TARGET_SUCCESS_RATE			= 50,		-- %
+		ATTACK_TARGET_RATE			= 10,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 50,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE = 
+	{		
+		DEST_GAP			= 700,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 400,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		MOVE_SPLIT_RANGE	= 400,
+		WALK_INTERVAL		= 1,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 100, --50,		
+		PATROL_RANGE			= 300,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	FLY_CHASE_MOVE = 
+	{
+	    DEST_HEIGHT_GAP     = 50,  -- 타겟과 유지할 높이
+	    DEST_LAND_GAP       = 400,  -- 지면상에서의 타겟과 거리기준
+	    DEST_AREA       = 100,  -- 타겟과의 지면거리를 기준으로 이 범위안에 있으면 도착했다고 판단
+	    
+	    FLY_MOVE_INTERVAL		= 2,
+	    
+	    UNDERWATER_MODE	= TRUE,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 1000,
+		ESCAPE_GAP			= 1500,	-- 이 거리 보다 멀면 도망 성공
+		
+		WALK_INTERVAL		= 1,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+	},
+	
+	ESCAPE_CONDITION = 
+	{
+		--RATE	= 0,
+		--MY_HP	= 0,
+	}	
+}
+
+DEEPSEA_FISH_DECOY =
+{
+	ANIM_NAME					= "Decoy",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= TRUE,
+	
+    --RIGHT                       = TRUE,		
+    
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	ADD_POS_Y					= -50,
+	
+	--FLY_AI                      = FALSE,
+	PASSIVE_SPEED_Y				= 0,
+    ENABLE_HEIGHT_FIX           = TRUE,
+    SHOW_NAME                   = FALSE, 
+    
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	NEVER_MOVE					= TRUE,
+	--ALLOW_DIR_CHANGE			= FALSE,
+	--VIEW_TARGET					= FALSE,
+	EVENT_INTERVAL_TIME0		= 0.3,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"DEEPSEA_FISH_ATTACKA",				"CT_DEEPSEA_FISH_ATTACKA",	},
+	},
+	
+	CT_DEEPSEA_FISH_ATTACKA = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		STATE_TIME_OVER				= 3,
+		DISTANCE_TO_TARGET_NEAR		= 500,
+		RATE						= 100,
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_DeepSea_Fish_Decoy", 0.0,
+	},	
+}
+
+DEEPSEA_FISH_START = 
+{
+	ANIM_NAME					= "WaitHabit",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= TRUE,		
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+    RIGHT                       = TRUE,		
+		
+    --FLY_AI                      = FALSE,
+    PASSIVE_SPEED_Y				= 0,
+    ENABLE_HEIGHT_FIX           = TRUE,
+    SHOW_NAME                   = TRUE,
+    
+    SPEED_X						= 0,
+	SPEED_Y						= 0,		
+	NEVER_MOVE					= TRUE,
+    --ADD_POS_Y					= 400,
+    		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],		"DEEPSEA_FISH_FLY_WAIT",							},
+		
+	},
+}
+
+DEEPSEA_FISH_FLY_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,		
+
+    VIEW_TARGET					= TRUE,
+    ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	PASSIVE_SPEED_Y				= 0,
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	SHOW_NAME                   = TRUE, 
+	
+	EVENT_PROCESS = 
+	{	    
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],					    "DEEPSEA_FISH_FLY_BACK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],					"DEEPSEA_FISH_FLY_BACK_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],				"DEEPSEA_FISH_FLY_BACK_DOWN",						},
+	    	 
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],				    "DEEPSEA_FISH_FLY_UP",						        },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				    "DEEPSEA_FISH_FLY_DOWN",						    },
+	    	    
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],				    "DEEPSEA_FISH_FLY_FRONT",						    },		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],					"DEEPSEA_FISH_FLY_FRONT_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],			    "DEEPSEA_FISH_FLY_FRONT_DOWN",						},	
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"DEEPSEA_FISH_DASHATTACK_READY",		      "CT_DEEPSEA_FISH_DASHATTACK_READY",	},		
+	},
+	
+	CT_DEEPSEA_FISH_DASHATTACK_READY =
+	{
+	  EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 1000,
+		RATE                    = 60,
+	},
+}
+
+DEEPSEA_FISH_FLY_FRONT = 
+{
+	ANIM_NAME					= "Dash",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= 800,
+	PASSIVE_SPEED_Y				= 0,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		    
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],				    "DEEPSEA_FISH_FLY_UP",						        },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				    "DEEPSEA_FISH_FLY_DOWN",						    },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],					    "DEEPSEA_FISH_FLY_BACK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],					"DEEPSEA_FISH_FLY_BACK_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],				"DEEPSEA_FISH_FLY_BACK_DOWN",						},
+	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"DEEPSEA_FISH_FLY_ATTACK_READY",		    "CT_DEEPSEA_FISH_FLY_ATTACK_READY",	},	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"DEEPSEA_FISH_FLY_MAGIC_ATTACK_A",		    "CT_DEEPSEA_FISH_FLY_MAGIC_ATTACK_A",	},
+	    
+	    
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					        "DEEPSEA_FISH_FLY_WAIT",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],					"DEEPSEA_FISH_FLY_FRONT_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],				"DEEPSEA_FISH_FLY_FRONT_DOWN",						},
+				
+	},
+	
+	CT_DEEPSEA_FISH_FLY_ATTACK_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 20,
+	},	
+	CT_DEEPSEA_FISH_FLY_MAGIC_ATTACK_A =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+	    DISTANCE_TO_TARGET_NEAR	= 1100,
+		RATE                    = 40,
+	},
+}
+DEEPSEA_FISH_FLY_FRONT_UP = 
+{
+	ANIM_NAME					= "Dash",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= 800,
+	PASSIVE_SPEED_Y				= 4,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{	
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],				    "DEEPSEA_FISH_FLY_UP",						        },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				    "DEEPSEA_FISH_FLY_DOWN",						    },
+	    { STATE_CHANGE_TYPE["SCT_AI_WAIT"],					        "DEEPSEA_FISH_FLY_WAIT",							},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],					    "DEEPSEA_FISH_FLY_BACK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],					"DEEPSEA_FISH_FLY_BACK_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],				"DEEPSEA_FISH_FLY_BACK_DOWN",						},	
+			
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"DEEPSEA_FISH_FLY_ATTACK_READY",		    "CT_DEEPSEA_FISH_FLY_ATTACK_READY",	},	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"DEEPSEA_FISH_FLY_MAGIC_ATTACK_A",		    "CT_DEEPSEA_FISH_FLY_MAGIC_ATTACK_A",	},	    
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],					"DEEPSEA_FISH_FLY_FRONT",						    },
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],				"DEEPSEA_FISH_FLY_FRONT_DOWN",						},
+		
+		
+	},
+	
+	CT_DEEPSEA_FISH_FLY_ATTACK_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 20,
+	},	
+	CT_DEEPSEA_FISH_FLY_MAGIC_ATTACK_A =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+	    DISTANCE_TO_TARGET_NEAR	= 1100,
+		RATE                    = 40,
+	},
+}
+DEEPSEA_FISH_FLY_FRONT_DOWN = 
+{
+	ANIM_NAME					= "Dash",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= 800,
+	PASSIVE_SPEED_Y				= -4,
+
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],				    "DEEPSEA_FISH_FLY_UP",						        },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				    "DEEPSEA_FISH_FLY_DOWN",						    },
+	    { STATE_CHANGE_TYPE["SCT_AI_WAIT"],					        "DEEPSEA_FISH_FLY_WAIT",							},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],					    "DEEPSEA_FISH_FLY_BACK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],					"DEEPSEA_FISH_FLY_BACK_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],				"DEEPSEA_FISH_FLY_BACK_DOWN",						},
+	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"DEEPSEA_FISH_FLY_ATTACK_READY",		    "CT_DEEPSEA_FISH_FLY_ATTACK_READY",	},	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"DEEPSEA_FISH_FLY_MAGIC_ATTACK_A",		    "CT_DEEPSEA_FISH_FLY_MAGIC_ATTACK_A",	},	    
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],				    "DEEPSEA_FISH_FLY_FRONT",						    },		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],					"DEEPSEA_FISH_FLY_FRONT_UP",						},			
+	},
+	
+	CT_DEEPSEA_FISH_FLY_ATTACK_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 20,
+	},	
+	CT_DEEPSEA_FISH_FLY_MAGIC_ATTACK_A =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+	    DISTANCE_TO_TARGET_NEAR	= 1100,
+		RATE                    = 40,
+	},
+}
+
+DEEPSEA_FISH_FLY_BACK = 
+{
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= -300,
+	PASSIVE_SPEED_Y				= 0,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],				    "DEEPSEA_FISH_FLY_UP",						        },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				    "DEEPSEA_FISH_FLY_DOWN",						    },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],					"DEEPSEA_FISH_FLY_BACK_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],				"DEEPSEA_FISH_FLY_BACK_DOWN",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					        "DEEPSEA_FISH_FLY_WAIT",							},
+	      
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],				    "DEEPSEA_FISH_FLY_FRONT",						    },		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],					"DEEPSEA_FISH_FLY_FRONT_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],			    "DEEPSEA_FISH_FLY_FRONT_DOWN",						},				
+		
+		
+	},	
+}
+DEEPSEA_FISH_FLY_BACK_UP = 
+{
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	PASSIVE_SPEED_X				= -300,
+	PASSIVE_SPEED_Y				= 1,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],				    "DEEPSEA_FISH_FLY_UP",						        },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				    "DEEPSEA_FISH_FLY_DOWN",						    },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],					    "DEEPSEA_FISH_FLY_BACK",							},		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],				"DEEPSEA_FISH_FLY_BACK_DOWN",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					        "DEEPSEA_FISH_FLY_WAIT",							},			    
+		
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"DEEPSEA_FISH_FLY_ATTACK_READY",		    "CT_DEEPSEA_FISH_FLY_ATTACK_READY",	},	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"DEEPSEA_FISH_FLY_MAGIC_ATTACK_A",		    "CT_DEEPSEA_FISH_FLY_MAGIC_ATTACK_A",	},	    
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],				    "DEEPSEA_FISH_FLY_FRONT",						    },		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],					"DEEPSEA_FISH_FLY_FRONT_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],			    "DEEPSEA_FISH_FLY_FRONT_DOWN",						},		
+		
+	},	
+	
+	CT_DEEPSEA_FISH_FLY_ATTACK_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 20,
+	},
+	CT_DEEPSEA_FISH_FLY_MAGIC_ATTACK_A =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+	    DISTANCE_TO_TARGET_NEAR	= 1100,
+		RATE                    = 40,
+	},
+}
+DEEPSEA_FISH_FLY_BACK_DOWN = 
+{
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	PASSIVE_SPEED_X				= -300,
+	PASSIVE_SPEED_Y				= -1,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],				    "DEEPSEA_FISH_FLY_UP",						        },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				    "DEEPSEA_FISH_FLY_DOWN",						    },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],					    "DEEPSEA_FISH_FLY_BACK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],					"DEEPSEA_FISH_FLY_BACK_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					        "DEEPSEA_FISH_FLY_WAIT",							},
+		
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"DEEPSEA_FISH_FLY_ATTACK_READY",		    "CT_DEEPSEA_FISH_FLY_ATTACK_READY",	},	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"DEEPSEA_FISH_FLY_MAGIC_ATTACK_A",		    "CT_DEEPSEA_FISH_FLY_MAGIC_ATTACK_A",	},	    
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],				    "DEEPSEA_FISH_FLY_FRONT",						    },		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],					"DEEPSEA_FISH_FLY_FRONT_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],			    "DEEPSEA_FISH_FLY_FRONT_DOWN",						},		
+			
+	},	
+	
+	CT_DEEPSEA_FISH_FLY_ATTACK_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 20,
+	},
+	CT_DEEPSEA_FISH_FLY_MAGIC_ATTACK_A =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+	    DISTANCE_TO_TARGET_NEAR	= 1100,
+		RATE                    = 40,
+	},
+}
+
+
+DEEPSEA_FISH_FLY_UP = 
+{
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,		
+
+    VIEW_TARGET					= TRUE,
+    ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	PASSIVE_SPEED_Y				= 3,
+		
+		
+	EVENT_PROCESS = 
+	{	    
+	    { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			        "DEEPSEA_FISH_FLY_WAIT",		                    "CT_DEEPSEA_FISH_FLY_WAIT",	},	    
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				        "DEEPSEA_FISH_FLY_DOWN",						    },    	    	
+	    { STATE_CHANGE_TYPE["SCT_AI_WAIT"],					        "DEEPSEA_FISH_FLY_WAIT",							},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],					    "DEEPSEA_FISH_FLY_BACK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],					"DEEPSEA_FISH_FLY_BACK_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],				"DEEPSEA_FISH_FLY_BACK_DOWN",						},
+		
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"DEEPSEA_FISH_FLY_ATTACK_READY",		    "CT_DEEPSEA_FISH_FLY_ATTACK_READY",	},	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"DEEPSEA_FISH_FLY_MAGIC_ATTACK_A",		    "CT_DEEPSEA_FISH_FLY_MAGIC_ATTACK_A",	},	    
+	    	    
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],				    "DEEPSEA_FISH_FLY_FRONT",						    },		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],					"DEEPSEA_FISH_FLY_FRONT_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],			    "DEEPSEA_FISH_FLY_FRONT_DOWN",					},				
+	},
+	
+	CT_DEEPSEA_FISH_FLY_WAIT =
+	{
+		STATE_TIME_OVER			= 4,
+	},
+	
+	
+	CT_DEEPSEA_FISH_FLY_ATTACK_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 20,
+	},	
+	CT_DEEPSEA_FISH_FLY_MAGIC_ATTACK_A =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+	    DISTANCE_TO_TARGET_NEAR	= 1100,
+		RATE                    = 40,
+	},
+	
+	
+}
+DEEPSEA_FISH_FLY_DOWN = 
+{
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    VIEW_TARGET					= TRUE,
+    ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	PASSIVE_SPEED_Y				= -3,
+	
+	
+	EVENT_PROCESS = 
+	{		    
+	    { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			        "DEEPSEA_FISH_FLY_WAIT",		                    "CT_DEEPSEA_FISH_FLY_WAIT",	},	
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],				    "DEEPSEA_FISH_FLY_UP",						        },	    	
+	    { STATE_CHANGE_TYPE["SCT_AI_WAIT"],					        "DEEPSEA_FISH_FLY_WAIT",							},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],					    "DEEPSEA_FISH_FLY_BACK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],					"DEEPSEA_FISH_FLY_BACK_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],				"DEEPSEA_FISH_FLY_BACK_DOWN",						},   
+	    	    
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],				    "DEEPSEA_FISH_FLY_FRONT",						    },		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],					"DEEPSEA_FISH_FLY_FRONT_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],			    "DEEPSEA_FISH_FLY_FRONT_DOWN",						},		
+		
+	},
+	
+	CT_DEEPSEA_FISH_FLY_WAIT =
+	{
+		STATE_TIME_OVER			= 4,
+	},
+}
+
+DEEPSEA_FISH_ATTACKA =
+{
+	ANIM_NAME					= "AttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	ALLOW_DIR_CHANGE			= FALSE,
+		
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	--FLY_AI                      = FALSE,
+	
+	ATTACK_TIME0				= { 0.3, 1.6, },
+	
+	SOUND_PLAY0					= { 0.20, "Squish01.ogg" },
+	SOUND_PLAY1					= { 0.45, "Squish02.ogg" },
+	SOUND_PLAY2					= { 0.38, "DeapSea_Fish_AttackA01.ogg" },
+	SOUND_PLAY3					= { 1.00, "Bite01.ogg" },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH2"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.5,
+
+		},
+				
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= 0,
+		
+		BUFF_FACTOR =
+		{
+			BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_STUN"],
+			RATE	=
+			{
+				1,
+			},
+			IGNORE_REGIST_FOR_RATE = TRUE,
+
+			BEHAVIOR =
+			{
+				COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_STUN"], },
+				
+				BBT_STUN =
+				{
+				},
+			},
+		
+			FINALIZER =
+			{
+				COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], BUFF_FINALIZER_TYPE["BFT_HITTED_COUNT"], },
+			
+				BFT_TIME =
+				{
+					BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+					NORMAL_TIME =
+					{
+						2,
+					},
+				},
+
+				BFT_HITTED_COUNT =
+				{
+					BUFF_USE_COUNT_TYPE = BUFF_USE_COUNT_TYPE["BUCT_NOT_USE"],
+					COUNT =
+					{
+						2,
+					},
+				},
+			},
+		},
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+		GROGGY_TIME             = 0.7,
+	},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"DEEPSEA_FISH_DASHATTACK_END", },
+	},
+	
+}
+
+DEEPSEA_FISH_DASHATTACK_READY =
+{
+	ANIM_NAME					= "DashAttack_Ready",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	ALLOW_DIR_CHANGE			= FALSE,
+		
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	--FLY_AI                      = FALSE,
+	
+	SOUND_PLAY0					= { 0.2, "DeepSea_Fish_DashAttack_Ready.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"DEEPSEA_FISH_DASHATTACK", },
+	},
+	
+}
+
+DEEPSEA_FISH_DASHATTACK =
+{
+	ANIM_NAME					= "DashAttack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	ALLOW_DIR_CHANGE			= FALSE,
+		
+	SPEED_X						= 1000,
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_X				= 1500,
+	PASSIVE_SPEED_Y				= 0,
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	--FLY_AI                      = FALSE,
+	
+	ATTACK_TIME0				= { 0.01, 0.39, },
+	
+	SOUND_PLAY0					= { 0.35, "Bite02.ogg" },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH2"],
+		REACT_TYPE		= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.5,
+
+		},
+				
+		BACK_SPEED_X			= 800,
+		BACK_SPEED_Y			= 800,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"DEEPSEA_FISH_DASHATTACK_END", },
+	},
+	
+}
+
+
+DEEPSEA_FISH_DASHATTACK_END =
+{
+	ANIM_NAME					= "DashAttack_End",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	ALLOW_DIR_CHANGE			= FALSE,
+		
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	--FLY_AI                      = FALSE,
+	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"DEEPSEA_FISH_FLY_WAIT", },
+	},
+	
+}
+
+
+DEEPSEA_FISH_DAMAGEREVENGE =
+{
+	ANIM_NAME					= "DamageRevenge",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_Y				= 0,
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	--FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"DEEPSEA_FISH_FLY_WAIT", },
+	},
+	
+}
+
+DEEPSEA_FISH_DAMAGE_FRONT = 
+{
+	ANIM_NAME					= "DamageFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_Y				= 0,
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	--FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"DEEPSEA_FISH_FLY_WAIT", },
+	},
+	
+}
+
+DEEPSEA_FISH_DAMAGE_BACK = 
+{
+	ANIM_NAME					= "DamageBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_Y				= 0,
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	--FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"DEEPSEA_FISH_FLY_WAIT", },
+	},
+	
+}
+
+DEEPSEA_FISH_DYING = 
+{
+	ANIM_NAME					= "Dying",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= TRUE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	NOTUSE_LANDCONNECT  = TRUE,
+	
+	SOUND_PLAY0					= { 0.01, "DeepSea_Fish_Dying.ogg" },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= TRUE,		
+
+	FLY_AI                      = FALSE,
+	
+	DYING_END					= TRUE,
+	DYING_SPEED					= 1,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+
+------------------------------------------------------------------------------------------------------------------
+
+
+function DEEPSEA_FISH_DYING_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+
+	local pos = pNPCUnit:GetPos()
+	pos.y = pos.y + 100.0
+	local GetMinorParticle = pX2Game:GetMinorParticle()
+	
+	local pSeq = GetMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DieLight",		pos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+	if pSeq ~= nil then
+	
+		pSeq:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+		pNPCUnit:SetDieSeq( pSeq:GetHandle() )
+	
+	end
+	
+	local GetMajorParticle = pX2Game:GetMajorParticle()
+	GetMajorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DamageImpact",			pos, D3DXVECTOR2(100,200), D3DXVECTOR2(2,10) )
+	GetMajorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DamageImpactCore",		pos, D3DXVECTOR2(100,200), D3DXVECTOR2(2,10) )
+	GetMajorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DamageImpactRingRed",		pos, D3DXVECTOR2(100,200), D3DXVECTOR2(2,10) )
+	
+	pNPCUnit:PlaySound_LUA( "DieLight.ogg" )
+	
+end

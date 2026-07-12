@@ -1,0 +1,1027 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 50.0,
+	UNIT_HEIGHT		= 150.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+		"",
+	},
+	
+	READY_SOUND = 
+	{
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_Bee.x",
+	MOTION_CHANGE_TEX_XET	= "Motion_BeeBomb.xet",	
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 500,	-- 200???
+	RUN_SPEED			= 500,	-- 200???
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300,
+}
+
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 2250,
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	
+	HEAD_BONE_NAME			= "Bee_Head",
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	
+	FALL_DOWN			= TRUE,
+	
+	DAMAGE_DOWN         = FALSE,
+	
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "BEE_START",							},
+	{ STATE_NAME = "BEE_WAIT",							},
+	{ STATE_NAME = "BEE_ANGRY",							}, --LUA_FRAME_MOVE_FUNC		= "BEE_ANGRY_FRAME_MOVE",				},
+	{ STATE_NAME = "BEE_WALK",							},
+	{ STATE_NAME = "BEE_JUMP_UP",						},
+	{ STATE_NAME = "BEE_JUMP_DOWN",						}, --LUA_STATE_END_FUNC		= "BEE_JUMP_DOWN_STATE_END",			},
+	{ STATE_NAME = "BEE_JUMP_UP_DIR",					},
+	{ STATE_NAME = "BEE_JUMP_DOWN_DIR",					}, --LUA_STATE_END_FUNC		= "BEE_JUMP_DOWN_DIR_STATE_END",		},
+	{ STATE_NAME = "BEE_JUMP_LANDING",					},
+
+	{ STATE_NAME = "BEE_ATTACK",						},
+	{ STATE_NAME = "BEE_BOMB_ATTACK",					}, --LUA_FRAME_MOVE_FUNC		= "BEE_BOMB_ATTACK_FRAME_MOVE"			},
+	{ STATE_NAME = "BEE_BOMB_EXPLODE",					}, --LUA_STATE_START_FUNC	= "BEE_BOMB_EXPLODE_STATE_START"		},
+	
+	--리액션 관련
+	{ STATE_NAME = "BEE_DAMAGE",						}, --LUA_FRAME_MOVE_FUNC		= "BEE_DAMAGE_SMALL_FRAME_MOVE",		},
+	{ STATE_NAME = "BEE_DAMAGE_DOWN",					}, --LUA_FRAME_MOVE_FUNC		= "BEE_DAMAGE_DOWN_FRAME_MOVE",			},
+	{ STATE_NAME = "BEE_DAMAGE_FLY_FRONT",				},
+	{ STATE_NAME = "BEE_DAMAGE_FLY_BACK",				},
+	{ STATE_NAME = "BEE_DAMAGE_FLY_BACK_DOWN",			},
+	
+	{ STATE_NAME = "BEE_DAMAGE_AIR",					},
+	{ STATE_NAME = "BEE_DAMAGE_AIR_DOWN",				},
+	{ STATE_NAME = "BEE_DAMAGE_AIR_UP",					},
+	{ STATE_NAME = "BEE_DAMAGE_AIR_FALL",				},
+	{ STATE_NAME = "BEE_DAMAGE_AIR_DOWN_LANDING",		}, --LUA_FRAME_MOVE_FUNC		= "BEE_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE", },
+	{ STATE_NAME = "BEE_DAMAGE_STAND_UP",				},
+		
+	
+	{ STATE_NAME = "BEE_DYING_LAND",					}, --LUA_STATE_START_FUNC = "BEE_DYING_LAND_STATE_START", },
+	{ STATE_NAME = "BEE_DYING_SKY",						}, --LUA_STATE_START_FUNC = "BEE_DYING_LAND_STATE_START", },
+	
+	
+	START_STATE					= "BEE_START",
+	WAIT_STATE					= "BEE_WAIT",
+	
+	
+	SMALL_DAMAGE_LAND_FRONT		= "BEE_DAMAGE",
+	SMALL_DAMAGE_LAND_BACK		= "BEE_DAMAGE",
+	SMALL_DAMAGE_AIR			= "BEE_DAMAGE_AIR",
+	BIG_DAMAGE_LAND_FRONT		= "BEE_DAMAGE",
+	BIG_DAMAGE_LAND_BACK		= "BEE_DAMAGE",
+	BIG_DAMAGE_AIR				= "BEE_DAMAGE_AIR",
+	
+	-- fix!! test
+	DOWN_DAMAGE_LAND_FRONT		= "BEE_DAMAGE",
+	DOWN_DAMAGE_LAND_BACK		= "BEE_DAMAGE",
+	
+	
+	DOWN_DAMAGE_AIR				= "BEE_DAMAGE_AIR_DOWN",
+	DOWN_DAMAGE_AIR_LANDING				= "BEE_DAMAGE_AIR_DOWN_LANDING",
+	UP_DAMAGE					= "BEE_DAMAGE_AIR_UP",
+	FLY_DAMAGE_FRONT			= "BEE_DAMAGE_FLY_FRONT",
+	FLY_DAMAGE_BACK				= "BEE_DAMAGE_FLY_BACK",
+	REVENGE_ATTACK				= "",
+	DAMAGE_FLUSH_LAND_FRONT		= "BEE_DAMAGE",
+	DAMAGE_FLUSH_LAND_BACK		= "BEE_DAMAGE",
+	DAMAGE_FLUSH_AIR			= "BEE_DAMAGE_AIR",
+	DAMAGE_REVENGE				= "BEE_DAMAGE",
+	
+	DAMAGE_EXTRA_STATES         = {"BEE_DAMAGE_DOWN","BEE_DAMAGE_FLY_BACK_DOWN","BEE_DAMAGE_AIR_FALL","BEE_DAMAGE_STAND_UP",
+	"BEE_JUMP_DOWN","BEE_JUMP_LANDING",},	
+	
+	DYING_LAND_FRONT			= "BEE_DYING_LAND",
+	DYING_LAND_BACK				= "BEE_DYING_LAND",
+	DYING_SKY					= "BEE_DYING_SKY",
+	
+}
+
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_RANDOM"],
+		TARGET_INTERVAL				= 2,		-- sec
+		TARGET_NEAR_RANGE			= 150,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 600,		-- cm
+		TARGET_LOST_RANGE			= 800,		-- cm
+		TARGET_SUCCESS_RATE			= 100,  --50,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 30,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 100, -- 50,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE = 
+	{		
+		DEST_GAP			= 120,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 160,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		MOVE_SPLIT_RANGE	= 400,
+		WALK_INTERVAL		= 1,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 100, --50,		
+		PATROL_RANGE			= 300,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 400,
+		ESCAPE_GAP			= 600,	-- 이 거리 보다 멀면 도망 성공
+		
+		WALK_INTERVAL		= 1,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+	},
+	
+	
+}
+
+
+BEE_START = 
+{
+	ANIM_NAME					= "Start",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],		"BEE_WAIT",							},
+		
+	},
+}
+
+BEE_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 4,
+	EVENT_INTERVAL_TIME1		= 1,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BEE_JUMP_DOWN",								},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"BEE_BOMB_ATTACK",		"CT_BEE_BOMB_ATTACK",	}, 
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"BEE_ATTACK",			"CT_BEE_ATTACK",		}, 
+			
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"BEE_ANGRY",			"CT_BEE_BEE_ANGRY",		},
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"BEE_WALK",										},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"BEE_WALK",										},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"BEE_JUMP_UP",									},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"BEE_JUMP_UP_DIR",								}, 
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"BEE_JUMP_DOWN",								},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"BEE_JUMP_DOWN_DIR",							},
+		
+	},
+	
+	CT_BEE_ATTACK = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 150,
+		RATE						= 40,
+	},
+	
+	CT_BEE_BOMB_ATTACK = 
+	{
+		EVENT_INTERVAL_ID			= 1,
+		DISTANCE_TO_TARGET_NEAR		= 600,
+		RATE						= 30,
+		FLAG_TRUE					= 0,
+	},
+	
+	CT_BEE_BEE_ANGRY = 
+	{
+		MY_HP_LESS_THAN_PERCENT		= 30, -- %, 이 값 이하이면 OK
+		FLAG_FALSE					= 0,
+	},
+}
+
+BEE_ANGRY = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"BEE_WAIT",			"CT_BEE_WAIT",			},		
+	},
+	
+	CT_BEE_WAIT = 
+	{
+		ANIM_PLAY_COUNT			= 3,
+	},
+}
+
+
+BEE_WALK = 
+{
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 4,
+	EVENT_INTERVAL_TIME1		= 1,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BEE_JUMP_DOWN",								},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"BEE_BOMB_ATTACK",		"CT_BEE_BOMB_ATTACK"	}, 
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"BEE_ATTACK",			"CT_BEE_ATTACK",		},
+				
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"BEE_WAIT",										},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"BEE_JUMP_UP",									},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"BEE_JUMP_UP_DIR",								}, 
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"BEE_JUMP_DOWN",								},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"BEE_JUMP_DOWN_DIR",							}, 
+		
+	},
+
+	CT_BEE_ATTACK = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 150,
+		RATE						= 40,
+	},
+	
+	CT_BEE_BOMB_ATTACK = 
+	{
+		EVENT_INTERVAL_ID			= 1,
+		DISTANCE_TO_TARGET_NEAR		= 600,
+		RATE						= 30,
+		FLAG_TRUE					= 0,
+	},
+
+}
+
+
+BEE_JUMP_UP = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	ADD_POS_Y					= 45,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"BEE_JUMP_DOWN", },
+	},
+}
+
+BEE_JUMP_DOWN = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	
+		
+	IMMADIATE_PACKET_SEND		= TRUE,		
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"BEE_JUMP_LANDING", },
+	},
+}
+
+
+BEE_JUMP_UP_DIR = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	ADD_POS_Y					= 45,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"BEE_JUMP_DOWN_DIR", },
+	},
+}
+
+BEE_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+			
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"BEE_JUMP_LANDING", },
+	},
+}
+
+
+BEE_JUMP_LANDING = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+		
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BEE_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BEE_WAIT",						},
+	},
+}
+
+
+
+BEE_ATTACK = 
+{
+	ANIM_NAME					= "Attack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	DISABLE_ATTACK_BOX = 
+	{
+		"Head",
+	},
+	
+	ATTACK_TIME0				= { 0.24, 0.39, },
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BEE_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BEE_WAIT", },
+	},
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+			FIRE		= 0.0,
+			ICE			= 0.0,
+			EARTH		= 0.0,
+			LIGHTNING	= 0.0,
+			DARK		= 0.0,
+			LIGHT		= 0.0,
+			UNIVERSAL	= 0.0,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		STOP_TIME_ATT			= 0.0,		
+		STOP_TIME_DEF			= 0.0,	
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,
+		CLEAR_SCREEN			= 0.0,	
+		CLEAR_SCREEN_COLOR_A	= 0.0,
+		CLEAR_SCREEN_COLOR_R	= 1.0,
+		CLEAR_SCREEN_COLOR_G	= 1.0,
+		CLEAR_SCREEN_COLOR_B	= 1.0,
+
+		RE_ATTACK				= FALSE,		
+		HIT_GAP					= 0.0,				
+	},
+
+}
+
+
+
+BEE_BOMB_ATTACK = 
+{
+	ANIM_NAME					= "BombAttack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	ATTACK_TIME0				= { 0.3, 0.6, },
+	
+	DISABLE_ATTACK_BOX = 
+	{
+		"Bee",
+	},
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BEE_WAIT",										},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"BEE_BOMB_EXPLODE",		"CT_BEE_BOMB_EXPLODE"	},
+	},	
+	
+	CT_BEE_BOMB_EXPLODE = 
+	{
+		ATTACK_SUCCESS = TRUE,
+	},
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_FIRE"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+			FIRE		= 0.0,
+			ICE			= 0.0,
+			EARTH		= 0.0,
+			LIGHTNING	= 0.0,
+			DARK		= 0.0,
+			LIGHT		= 0.0,
+			UNIVERSAL	= 0.0,
+		},
+		
+
+		BUFF_FACTOR =
+		{
+			BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_FIRE"],
+			RATE	=
+			{
+				1,
+			},
+			IGNORE_REGIST_FOR_RATE = TRUE,
+
+			BEHAVIOR =
+			{
+				COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_CHANGE_NOW_HP_PER_SECOND"], },
+				
+				BBT_CHANGE_NOW_HP_PER_SECOND =
+				{
+					BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_RELATION_VALUE"],
+					BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_MIX_ATTACK"],
+
+					MULTIPLIER =
+					{
+						-0.3,
+					},
+				},
+			},
+		
+			FINALIZER =
+			{
+				COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+			
+				BFT_TIME =
+				{
+					BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+					NORMAL_TIME =
+					{
+						10,
+					},
+				},
+			},
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		STOP_TIME_ATT			= 0.0,		
+		STOP_TIME_DEF			= 0.3,	
+		CAMERA_CRASH_GAP		= 20.0,	
+		CAMERA_CRASH_TIME		= 0.3,
+		CLEAR_SCREEN			= 2,	
+		CLEAR_SCREEN_COLOR_A	= 0.0,
+		CLEAR_SCREEN_COLOR_R	= 1.0,
+		CLEAR_SCREEN_COLOR_G	= 1.0,
+		CLEAR_SCREEN_COLOR_B	= 1.0,
+
+		CAN_REVENGE				= FALSE,
+		RE_ATTACK				= FALSE,		
+		HIT_GAP					= 0.0,				
+	},
+	
+	
+}
+
+
+
+BEE_BOMB_EXPLODE = 
+{
+	ANIM_NAME					= "DamageDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	DYING_END_IMMEDIATE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+
+
+BEE_DAMAGE = 
+{
+	ANIM_NAME					= "Damage",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BEE_WAIT", },
+	},
+}
+
+BEE_DAMAGE_DOWN = 
+{
+	ANIM_NAME					= "DamageDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BEE_DAMAGE_AIR_FALL", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BEE_DAMAGE_STAND_UP", },
+	},
+}
+
+
+
+BEE_DAMAGE_FLY_FRONT = 
+{
+	ANIM_NAME					= "DamageAirFlyFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"BEE_DAMAGE_DOWN",		},
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_1507 },
+  	},
+}
+
+
+BEE_DAMAGE_FLY_BACK = 
+{
+	ANIM_NAME					= "DamageAirFlyBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"BEE_DAMAGE_FLY_BACK_DOWN",		},
+	},
+
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_1507 },
+  	},
+}
+
+
+BEE_DAMAGE_FLY_BACK_DOWN = 
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 800,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BEE_DAMAGE_AIR_FALL", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BEE_DAMAGE_STAND_UP", },
+	},
+	
+}
+
+
+
+
+BEE_DAMAGE_AIR = 
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],	"BEE_WAIT", },
+	},
+}
+
+BEE_DAMAGE_AIR_DOWN = 
+{
+	ANIM_NAME					= "DamageDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"BEE_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+BEE_DAMAGE_AIR_UP = 
+{
+	ANIM_NAME					= "DamageAirUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"BEE_DAMAGE_AIR_FALL", },	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"BEE_DAMAGE_AIR_DOWN_LANDING", },	
+	},
+}
+
+BEE_DAMAGE_AIR_FALL = 
+{
+	ANIM_NAME					= "DamageAirFall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_POSITIVE_Y_SPEED"],		"BEE_DAMAGE_AIR_UP", },
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"BEE_DAMAGE_AIR_DOWN_LANDING", },
+	},
+}
+
+BEE_DAMAGE_AIR_DOWN_LANDING = 
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BEE_DAMAGE_AIR_FALL", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BEE_DAMAGE_STAND_UP", },
+	},
+}
+
+BEE_DAMAGE_STAND_UP = 
+{
+	ANIM_NAME					= "DamageStandUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"BEE_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"BEE_WAIT", },
+	},
+}
+
+
+BEE_DYING_LAND = 
+{
+	ANIM_NAME					= "DamageDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+BEE_DYING_SKY = 
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+
+
+--[[
+function BEE_ANGRY_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	pNPCUnit:SetUseWorldColor( false )
+	color = pNPCUnit:GetColor()
+	color.g = color.g - (1 * pKTDXApp:GetElapsedTime())
+	color.b = color.g - (1 * pKTDXApp:GetElapsedTime())
+	pNPCUnit:SetColor( color )
+	
+	pNPCUnit:SetFlag_LUA( 0, true )
+	
+end
+
+function BEE_JUMP_DOWN_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+function BEE_JUMP_DOWN_DIR_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+function BEE_BOMB_ATTACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+end
+
+function BEE_BOMB_EXPLODE_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 500 then
+		pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 20.0, 0.3 )
+	end	
+	
+	pMajorParticle = pX2Game:GetMajorParticle()
+	pMajorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "ExplodeImpactRingRed",		pNPCUnit:GetImpactPoint_LUA(), D3DXVECTOR2(-1,-1), D3DXVECTOR2(4,-1) )
+	pMajorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "ExplodeImpactSlashRed",	pNPCUnit:GetImpactPoint_LUA(), D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+	pMajorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "ExplodeSmoke",				pNPCUnit:GetImpactPoint_LUA(), D3DXVECTOR2(-1,-1), D3DXVECTOR2(20,-1) )
+	pParticle = pMajorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "ExplodeTail",	pNPCUnit:GetImpactPoint_LUA(), D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+	pParticle:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+	
+end
+
+function BEE_DAMAGE_SMALL_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.047 ) then
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function BEE_DAMAGE_DOWN_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.25 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+
+end
+
+
+
+function BEE_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pos = pNPCUnit:GetLandPosition_LUA()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+		pos.y = pos.y + 5
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "GroundShockWave", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(1,-1) )
+		pParticle = pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "AirDownTick", pNPCUnit:GetPos(), D3DXVECTOR2(200,200), D3DXVECTOR2(10,-1) )
+		if pParticle ~= nil then 
+			pParticle:SetLandPosition( pos.y - 5 )
+		end
+		
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 500 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 0.1 )
+		end		
+		
+	elseif pNPCUnit:AnimEventTimer_LUA( 0.35 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+	
+end
+
+
+
+
+
+
+
+function BEE_DYING_LAND_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	
+	pos = pNPCUnit:GetPos()
+	pos.y = pos.y + 100.0
+	GetMinorParticle = pX2Game:GetMinorParticle()
+	
+	pSeq = GetMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DieLight",		pos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+	if pSeq ~= nil then
+	
+		pSeq:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+		pNPCUnit:SetDieSeq( pSeq:GetHandle() )
+	
+	end
+	
+	pNPCUnit:PlaySound_LUA( "DieLight.ogg" )
+	
+end
+
+
+--]]

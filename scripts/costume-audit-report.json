@@ -1,0 +1,19 @@
+{
+  "summary": {
+    "prices": 13169,
+    "packages": 1461,
+    "unpriced_packages": 0,
+    "recoverable_packages": 0,
+    "packages_no_component_prices": 0,
+    "missing_costume_components": 0,
+    "legacy_costume_no_price": 0,
+    "legacy_priced_not_active": 0,
+    "blocked_cash_items": 195,
+    "blocked_and_priced": 195
+  },
+  "packages_no_component_prices": [],
+  "recoverable_packages": [],
+  "missing_components": [],
+  "legacy_no_price": [],
+  "legacy_not_active": []
+}

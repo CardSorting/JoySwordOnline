@@ -1,0 +1,1208 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 100.0,
+	UNIT_HEIGHT		= 150.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{		
+	},
+	
+	READY_SOUND = 
+	{
+	 "Gargoyle_Stone_Attack.ogg",
+	 "Gargoyle_Stone_Damage.ogg",
+	 "Gargoyle_Stone_Dying.ogg",
+	 "Gargoyle_Stone_Dying_Landing.ogg",
+	 "Gargoyle_Stone_WaitFly.ogg",
+	 "Gargoyle_Stone_WaitStart1.ogg",
+	 "Gargoyle_Stone_WaitStart2.ogg",
+	 "Gargoyle_Stone_WalkFlyBack.ogg",
+	 "Gargoyle_Stone_WalkFlyFront.ogg",
+	 "Gargoyle_Stone_MagicAttack.ogg",
+	 "Gargoyle_Stone_MagicAttack2.ogg",
+	
+	},
+	
+	READY_XSKIN_MESH = 
+	{		
+		"Cuttysark_SonicWave.X",
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME	= "NUI_GARGOYLE_STONE.x",	
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+		
+	WALK_SPEED			= 400,
+	RUN_SPEED			= 1000,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300,
+}
+
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 1500,
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	--SHADOW_SIZE			= 200,
+	--SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	
+	HEAD_BONE_NAME			= "Bip01_Head",
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	
+	FALL_DOWN			= FALSE,
+	
+	
+	DAMAGE_DOWN         = FALSE,	
+	--SKY_DIE             = TRUE,
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "GARGOYLE_STONE_START_TRAPMODE",					},
+	{ STATE_NAME = "GARGOYLE_STONE_START",						    LUA_STATE_START_FUNC = "GARGOYLE_STONE_START_STATE_START" },
+	{ STATE_NAME = "GARGOYLE_STONE_FLY_WAIT_START",					},
+	{ STATE_NAME = "GARGOYLE_STONE_FLY_WAIT",						},
+	{ STATE_NAME = "GARGOYLE_STONE_FLY_FRONT",						},
+	{ STATE_NAME = "GARGOYLE_STONE_FLY_FRONT_UP",					},
+	{ STATE_NAME = "GARGOYLE_STONE_FLY_FRONT_DOWN",					},
+	{ STATE_NAME = "GARGOYLE_STONE_FLY_BACK",						},
+	{ STATE_NAME = "GARGOYLE_STONE_FLY_BACK_UP",					},
+	{ STATE_NAME = "GARGOYLE_STONE_FLY_BACK_DOWN",					},
+    { STATE_NAME = "GARGOYLE_STONE_FLY_UP",					        },
+    { STATE_NAME = "GARGOYLE_STONE_FLY_DOWN",					    },
+		
+    { STATE_NAME = "GARGOYLE_STONE_FLY_ATTACK_READY",				STATE_COOL_TIME	= 4, },		
+	{ STATE_NAME = "GARGOYLE_STONE_FLY_ATTACK",						},
+	{ STATE_NAME = "GARGOYLE_STONE_FLY_ATTACK_END",					},
+		
+	{ STATE_NAME = "GARGOYLE_STONE_FLY_MAGIC_ATTACK_A",				LUA_FRAME_MOVE_FUNC = "GARGOYLE_STONE_FLY_MAGIC_ATTACK_A_FRAME_MOVE", STATE_COOL_TIME	= 6, },
+		
+	--리액션 관련		
+	{ STATE_NAME = "GARGOYLE_STONE_DAMAGE_FRONT",				    LUA_STATE_START_FUNC = "GARGOYLE_STONE_DAMAGE_STATE_START" },
+	{ STATE_NAME = "GARGOYLE_STONE_DAMAGE_BACK",					LUA_STATE_START_FUNC = "GARGOYLE_STONE_DAMAGE_STATE_START" },	
+	
+	{ STATE_NAME = "GARGOYLE_STONE_DAMAGE_AIR_FALL_READY",          },	
+	{ STATE_NAME = "GARGOYLE_STONE_DAMAGE_AIR_FALL",     		    },
+	{ STATE_NAME = "GARGOYLE_STONE_DAMAGE_AIR_FALL_LANDING",		},
+	
+	{ STATE_NAME = "GARGOYLE_STONE_DYING_LAND",					},
+	{ STATE_NAME = "GARGOYLE_STONE_DYING_SKY",					},
+		
+    SIEGE_STATE					= "GARGOYLE_STONE_START_TRAPMODE",		
+    START_STATE					= "GARGOYLE_STONE_FLY_WAIT_START",	
+    --START_STATE					= "GARGOYLE_STONE_START_TRAPMODE",	
+	WAIT_STATE					= "GARGOYLE_STONE_FLY_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "GARGOYLE_STONE_DAMAGE_FRONT",
+	SMALL_DAMAGE_LAND_BACK		= "GARGOYLE_STONE_DAMAGE_BACK",
+	--SMALL_DAMAGE_AIR			= "GARGOYLE_STONE_DAMAGE_AIR",
+	SMALL_DAMAGE_AIR_FRONT		= "GARGOYLE_STONE_DAMAGE_FRONT",
+	SMALL_DAMAGE_AIR_BACK		= "GARGOYLE_STONE_DAMAGE_BACK",
+	
+	BIG_DAMAGE_LAND_FRONT		= "GARGOYLE_STONE_DAMAGE_FRONT",
+	BIG_DAMAGE_LAND_BACK		= "GARGOYLE_STONE_DAMAGE_BACK",
+	--BIG_DAMAGE_AIR			= "GARGOYLE_STONE_DAMAGE_AIR",
+	BIG_DAMAGE_AIR_FRONT		= "GARGOYLE_STONE_DAMAGE_FRONT",
+	BIG_DAMAGE_AIR_BACK			= "GARGOYLE_STONE_DAMAGE_BACK",
+	
+	DOWN_DAMAGE_LAND_FRONT		= "GARGOYLE_STONE_DAMAGE_FRONT",
+	DOWN_DAMAGE_LAND_BACK		= "GARGOYLE_STONE_DAMAGE_BACK",
+	DOWN_DAMAGE_AIR				= "GARGOYLE_STONE_DAMAGE_FRONT",
+	UP_DAMAGE					= "GARGOYLE_STONE_DAMAGE_FRONT",
+	FLY_DAMAGE_FRONT			= "GARGOYLE_STONE_DAMAGE_FRONT",
+	FLY_DAMAGE_BACK				= "GARGOYLE_STONE_DAMAGE_BACK",
+	REVENGE_ATTACK				= "",
+	DAMAGE_FLUSH_LAND_FRONT		= "GARGOYLE_STONE_DAMAGE_FRONT",
+	DAMAGE_FLUSH_LAND_BACK		= "GARGOYLE_STONE_DAMAGE_BACK",
+	DAMAGE_FLUSH_AIR			= "GARGOYLE_STONE_DAMAGE_FRONT",
+	--DAMAGE_REVENGE				= "GARGOYLE_STONE_DAMAGE_AIR",
+	
+	DAMAGE_EXTRA_STATES         = { "GARGOYLE_STONE_DAMAGE_AIR_FALL_READY","GARGOYLE_STONE_DAMAGE_AIR_FALL", "GARGOYLE_STONE_DAMAGE_AIR_FALL_LANDING", },	
+	
+	DYING_LAND_FRONT			= "GARGOYLE_STONE_DYING_LAND",
+	DYING_LAND_BACK				= "GARGOYLE_STONE_DYING_LAND",
+	DYING_SKY					= "GARGOYLE_STONE_DYING_SKY",		
+}
+
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_RANDOM"],
+		TARGET_INTERVAL				= 2,		-- sec
+		TARGET_NEAR_RANGE			= 1000,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 1600,		-- cm
+		TARGET_LOST_RANGE			= 2400,		-- cm
+		TARGET_SUCCESS_RATE			= 50,		-- %
+		ATTACK_TARGET_RATE			= 10,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 50,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE = 
+	{		
+		DEST_GAP			= 700,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 400,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		MOVE_SPLIT_RANGE	= 400,
+		WALK_INTERVAL		= 1,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 100, --50,		
+		PATROL_RANGE			= 300,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	FLY_CHASE_MOVE = 
+	{
+	    DEST_HEIGHT_GAP     = 250,  -- 타겟과 유지할 높이
+	    DEST_LAND_GAP       = 400,  -- 지면상에서의 타겟과 거리기준
+	    DEST_AREA       = 100,  -- 타겟과의 지면거리를 기준으로 이 범위안에 있으면 도착했다고 판단
+	    
+	    FLY_MOVE_INTERVAL		= 1.5,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 1000,
+		ESCAPE_GAP			= 1500,	-- 이 거리 보다 멀면 도망 성공
+		
+		WALK_INTERVAL		= 1,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+	},
+	
+	ESCAPE_CONDITION = 
+	{
+		--RATE	= 0,
+		--MY_HP	= 0,
+	}	
+}
+
+GARGOYLE_STONE_START = 
+{
+	ANIM_NAME					= "WaitStart",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	SOUND_PLAY0					= { 0.01 , "Gargoyle_Stone_WaitStart1.ogg" },
+	SOUND_PLAY1					= { 1.50 , "Gargoyle_Stone_WaitStart2.ogg" },
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+    RIGHT                       = TRUE,		
+		
+    --FLY_AI                      = FALSE,
+    PASSIVE_SPEED_Y				= 0,
+    ENABLE_HEIGHT_FIX           = TRUE,
+    SHOW_NAME                   = TRUE,
+    
+    SPEED_X						= 0,
+	SPEED_Y						= 0,		
+	NEVER_MOVE					= TRUE,
+    --ADD_POS_Y					= 400,
+    		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],		"GARGOYLE_STONE_FLY_WAIT",							},
+		
+	},
+}
+
+GARGOYLE_STONE_START_TRAPMODE = 
+{
+	ANIM_NAME					= "TrapMode",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+    RIGHT                       = TRUE,		
+    
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	ADD_POS_Y					= 400,
+	
+	--FLY_AI                      = FALSE,
+	PASSIVE_SPEED_Y				= 0,
+    ENABLE_HEIGHT_FIX           = TRUE,
+    SHOW_NAME                   = FALSE, 
+    
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	NEVER_MOVE					= TRUE,
+	--ALLOW_DIR_CHANGE			= FALSE,
+	--VIEW_TARGET					= FALSE,
+	EVENT_INTERVAL_TIME0		= 0.3,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GARGOYLE_STONE_START",				"CT_GARGOYLE_STONE_START",	},
+	},
+	
+	CT_GARGOYLE_STONE_START = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 500,
+		RATE						= 100,
+	},
+}
+
+GARGOYLE_STONE_FLY_WAIT_START = 
+{
+	ANIM_NAME					= "WaitFly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+
+	SOUND_PLAY0					= { 0.136, "Gargoyle_Stone_WaitFly.ogg" },
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	VIEW_TARGET					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,	
+		
+    --FLY_AI                      = FALSE,
+    SHOW_NAME                   = TRUE,
+    PASSIVE_SPEED_Y				= 0,
+    ENABLE_HEIGHT_FIX           = TRUE,
+    
+    SPEED_X						= 0,
+	SPEED_Y						= 0,		
+	NEVER_MOVE					= TRUE,
+    ADD_POS_Y					= 400,
+    		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],		"GARGOYLE_STONE_FLY_WAIT",							},
+		
+	},
+}
+
+GARGOYLE_STONE_FLY_WAIT = 
+{
+	ANIM_NAME					= "WaitFly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0					= { 0.136, "Gargoyle_Stone_WaitFly.ogg", 30 },
+
+    VIEW_TARGET					= TRUE,
+    ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	PASSIVE_SPEED_Y				= 0,
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	EVENT_PROCESS = 
+	{	    
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],					    "GARGOYLE_STONE_FLY_BACK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],					"GARGOYLE_STONE_FLY_BACK_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],				"GARGOYLE_STONE_FLY_BACK_DOWN",						},
+	    
+	    { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GARGOYLE_STONE_FLY_ATTACK_READY",		            "CT_GARGOYLE_STONE_FLY_ATTACK_READY",	},	    
+	    { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GARGOYLE_STONE_FLY_MAGIC_ATTACK_A",		    "CT_GARGOYLE_STONE_FLY_MAGIC_ATTACK_A",	},
+	    	 
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],				    "GARGOYLE_STONE_FLY_UP",						        },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				    "GARGOYLE_STONE_FLY_DOWN",						    },
+	    	    
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],				    "GARGOYLE_STONE_FLY_FRONT",						    },		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],					"GARGOYLE_STONE_FLY_FRONT_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],			    "GARGOYLE_STONE_FLY_FRONT_DOWN",						},		
+		
+	},
+	
+	CT_GARGOYLE_STONE_FLY_ATTACK_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 30,
+	},
+	CT_GARGOYLE_STONE_FLY_MAGIC_ATTACK_A =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+	    DISTANCE_TO_TARGET_NEAR	= 1100,
+		RATE                    = 40,
+	},	
+}
+
+GARGOYLE_STONE_FLY_FRONT = 
+{
+	ANIM_NAME					= "Walk_Fly_Front",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0					= { 0.073, "Gargoyle_Stone_WalkFlyFront.ogg" },
+	
+	PASSIVE_SPEED_X				= 500,
+	PASSIVE_SPEED_Y				= 0,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		    
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],				    "GARGOYLE_STONE_FLY_UP",						        },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				    "GARGOYLE_STONE_FLY_DOWN",						    },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],					    "GARGOYLE_STONE_FLY_BACK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],					"GARGOYLE_STONE_FLY_BACK_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],				"GARGOYLE_STONE_FLY_BACK_DOWN",						},
+	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GARGOYLE_STONE_FLY_ATTACK_READY",		    "CT_GARGOYLE_STONE_FLY_ATTACK_READY",	},	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GARGOYLE_STONE_FLY_MAGIC_ATTACK_A",		    "CT_GARGOYLE_STONE_FLY_MAGIC_ATTACK_A",	},
+	    
+	    
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					        "GARGOYLE_STONE_FLY_WAIT",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],					"GARGOYLE_STONE_FLY_FRONT_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],				"GARGOYLE_STONE_FLY_FRONT_DOWN",						},
+				
+	},
+	
+	CT_GARGOYLE_STONE_FLY_ATTACK_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 20,
+	},	
+	CT_GARGOYLE_STONE_FLY_MAGIC_ATTACK_A =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+	    DISTANCE_TO_TARGET_NEAR	= 1100,
+		RATE                    = 40,
+	},
+}
+GARGOYLE_STONE_FLY_FRONT_UP = 
+{
+	ANIM_NAME					= "Walk_Fly_Front",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= 500,
+	PASSIVE_SPEED_Y				= 3,
+
+	SOUND_PLAY0					= { 0.073, "Gargoyle_Stone_WalkFlyFront.ogg" },
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{	
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],				    "GARGOYLE_STONE_FLY_UP",						        },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				    "GARGOYLE_STONE_FLY_DOWN",						    },
+	    { STATE_CHANGE_TYPE["SCT_AI_WAIT"],					        "GARGOYLE_STONE_FLY_WAIT",							},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],					    "GARGOYLE_STONE_FLY_BACK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],					"GARGOYLE_STONE_FLY_BACK_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],				"GARGOYLE_STONE_FLY_BACK_DOWN",						},	
+			
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GARGOYLE_STONE_FLY_ATTACK_READY",		    "CT_GARGOYLE_STONE_FLY_ATTACK_READY",	},	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GARGOYLE_STONE_FLY_MAGIC_ATTACK_A",		    "CT_GARGOYLE_STONE_FLY_MAGIC_ATTACK_A",	},	    
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],					"GARGOYLE_STONE_FLY_FRONT",						    },
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],				"GARGOYLE_STONE_FLY_FRONT_DOWN",						},
+		
+		
+	},
+	
+	CT_GARGOYLE_STONE_FLY_ATTACK_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 20,
+	},	
+	CT_GARGOYLE_STONE_FLY_MAGIC_ATTACK_A =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+	    DISTANCE_TO_TARGET_NEAR	= 1100,
+		RATE                    = 40,
+	},
+}
+GARGOYLE_STONE_FLY_FRONT_DOWN = 
+{
+	ANIM_NAME					= "Walk_Fly_Front",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= 500,
+	PASSIVE_SPEED_Y				= -3,
+
+	SOUND_PLAY0					= { 0.073, "Gargoyle_Stone_WalkFlyFront.ogg" },
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],				    "GARGOYLE_STONE_FLY_UP",						        },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				    "GARGOYLE_STONE_FLY_DOWN",						    },
+	    { STATE_CHANGE_TYPE["SCT_AI_WAIT"],					        "GARGOYLE_STONE_FLY_WAIT",							},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],					    "GARGOYLE_STONE_FLY_BACK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],					"GARGOYLE_STONE_FLY_BACK_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],				"GARGOYLE_STONE_FLY_BACK_DOWN",						},
+	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GARGOYLE_STONE_FLY_ATTACK_READY",		    "CT_GARGOYLE_STONE_FLY_ATTACK_READY",	},	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GARGOYLE_STONE_FLY_MAGIC_ATTACK_A",		    "CT_GARGOYLE_STONE_FLY_MAGIC_ATTACK_A",	},	    
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],				    "GARGOYLE_STONE_FLY_FRONT",						    },		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],					"GARGOYLE_STONE_FLY_FRONT_UP",						},			
+	},
+	
+	CT_GARGOYLE_STONE_FLY_ATTACK_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 20,
+	},	
+	CT_GARGOYLE_STONE_FLY_MAGIC_ATTACK_A =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+	    DISTANCE_TO_TARGET_NEAR	= 1100,
+		RATE                    = 40,
+	},
+}
+
+GARGOYLE_STONE_FLY_BACK = 
+{
+	ANIM_NAME					= "Walk_Fly_Back",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0					= { 0.085, "Gargoyle_Stone_WalkFlyBack.ogg" },
+	
+	PASSIVE_SPEED_X				= -700,
+	PASSIVE_SPEED_Y				= 0,
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],				    "GARGOYLE_STONE_FLY_UP",						        },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				    "GARGOYLE_STONE_FLY_DOWN",						    },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],					"GARGOYLE_STONE_FLY_BACK_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],				"GARGOYLE_STONE_FLY_BACK_DOWN",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					        "GARGOYLE_STONE_FLY_WAIT",							},
+	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GARGOYLE_STONE_FLY_ATTACK_READY",		    "CT_GARGOYLE_STONE_FLY_ATTACK_READY",	},	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GARGOYLE_STONE_FLY_MAGIC_ATTACK_A",		    "CT_GARGOYLE_STONE_FLY_MAGIC_ATTACK_A",	},	    
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],				    "GARGOYLE_STONE_FLY_FRONT",						    },		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],					"GARGOYLE_STONE_FLY_FRONT_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],			    "GARGOYLE_STONE_FLY_FRONT_DOWN",						},				
+		
+		
+	},	
+	
+	CT_GARGOYLE_STONE_FLY_ATTACK_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 20,
+	},
+	CT_GARGOYLE_STONE_FLY_MAGIC_ATTACK_A =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+	    DISTANCE_TO_TARGET_NEAR	= 1100,
+		RATE                    = 40,
+	},
+}
+GARGOYLE_STONE_FLY_BACK_UP = 
+{
+	ANIM_NAME					= "Walk_Fly_Back",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= -700,
+	PASSIVE_SPEED_Y				= 3,
+
+	SOUND_PLAY0					= { 0.085, "Gargoyle_Stone_WalkFlyBack.ogg" },
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],				    "GARGOYLE_STONE_FLY_UP",						        },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				    "GARGOYLE_STONE_FLY_DOWN",						    },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],					    "GARGOYLE_STONE_FLY_BACK",							},		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],				"GARGOYLE_STONE_FLY_BACK_DOWN",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					        "GARGOYLE_STONE_FLY_WAIT",							},			    
+		
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GARGOYLE_STONE_FLY_ATTACK_READY",		    "CT_GARGOYLE_STONE_FLY_ATTACK_READY",	},	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GARGOYLE_STONE_FLY_MAGIC_ATTACK_A",		    "CT_GARGOYLE_STONE_FLY_MAGIC_ATTACK_A",	},	    
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],				    "GARGOYLE_STONE_FLY_FRONT",						    },		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],					"GARGOYLE_STONE_FLY_FRONT_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],			    "GARGOYLE_STONE_FLY_FRONT_DOWN",						},		
+		
+	},	
+	
+	CT_GARGOYLE_STONE_FLY_ATTACK_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 20,
+	},
+	CT_GARGOYLE_STONE_FLY_MAGIC_ATTACK_A =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+	    DISTANCE_TO_TARGET_NEAR	= 1100,
+		RATE                    = 40,
+	},
+}
+GARGOYLE_STONE_FLY_BACK_DOWN = 
+{
+	ANIM_NAME					= "Walk_Fly_Back",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= -700,
+	PASSIVE_SPEED_Y				= -3,
+
+	SOUND_PLAY0					= { 0.085, "Gargoyle_Stone_WalkFlyBack.ogg" },
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],				    "GARGOYLE_STONE_FLY_UP",						        },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				    "GARGOYLE_STONE_FLY_DOWN",						    },
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],					    "GARGOYLE_STONE_FLY_BACK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],					"GARGOYLE_STONE_FLY_BACK_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					        "GARGOYLE_STONE_FLY_WAIT",							},
+		
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GARGOYLE_STONE_FLY_ATTACK_READY",		    "CT_GARGOYLE_STONE_FLY_ATTACK_READY",	},	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GARGOYLE_STONE_FLY_MAGIC_ATTACK_A",		    "CT_GARGOYLE_STONE_FLY_MAGIC_ATTACK_A",	},	    
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],				    "GARGOYLE_STONE_FLY_FRONT",						    },		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],					"GARGOYLE_STONE_FLY_FRONT_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],			    "GARGOYLE_STONE_FLY_FRONT_DOWN",						},		
+			
+	},	
+	
+	CT_GARGOYLE_STONE_FLY_ATTACK_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 20,
+	},
+	CT_GARGOYLE_STONE_FLY_MAGIC_ATTACK_A =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+	    DISTANCE_TO_TARGET_NEAR	= 1100,
+		RATE                    = 40,
+	},
+}
+
+
+GARGOYLE_STONE_FLY_UP = 
+{
+	ANIM_NAME					= "WaitFly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    VIEW_TARGET					= TRUE,
+    ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	SOUND_PLAY0					= { 0.136, "Gargoyle_Stone_WaitFly.ogg" },
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	PASSIVE_SPEED_Y				= 3,
+		
+		
+	EVENT_PROCESS = 
+	{	    
+	    { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			        "GARGOYLE_STONE_FLY_WAIT",		                    "CT_GARGOYLE_STONE_FLY_WAIT",	},	    
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_DOWN"],				        "GARGOYLE_STONE_FLY_DOWN",						    },    	    	
+	    { STATE_CHANGE_TYPE["SCT_AI_WAIT"],					        "GARGOYLE_STONE_FLY_WAIT",							},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],					    "GARGOYLE_STONE_FLY_BACK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],					"GARGOYLE_STONE_FLY_BACK_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],				"GARGOYLE_STONE_FLY_BACK_DOWN",						},
+		
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GARGOYLE_STONE_FLY_ATTACK_READY",		    "CT_GARGOYLE_STONE_FLY_ATTACK_READY",	},	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GARGOYLE_STONE_FLY_MAGIC_ATTACK_A",		    "CT_GARGOYLE_STONE_FLY_MAGIC_ATTACK_A",	},	    
+	    	    
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],				    "GARGOYLE_STONE_FLY_FRONT",						    },		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],					"GARGOYLE_STONE_FLY_FRONT_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],			    "GARGOYLE_STONE_FLY_FRONT_DOWN",					},				
+	},
+	
+	CT_GARGOYLE_STONE_FLY_WAIT =
+	{
+		STATE_TIME_OVER			= 4,
+	},
+	
+	
+	CT_GARGOYLE_STONE_FLY_ATTACK_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 20,
+	},	
+	CT_GARGOYLE_STONE_FLY_MAGIC_ATTACK_A =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+	    DISTANCE_TO_TARGET_NEAR	= 1100,
+		RATE                    = 40,
+	},
+	
+	
+}
+GARGOYLE_STONE_FLY_DOWN = 
+{
+	ANIM_NAME					= "WaitFly",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    VIEW_TARGET					= TRUE,
+    ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	SOUND_PLAY0					= { 0.136, "Gargoyle_Stone_WaitFly.ogg" },
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	PASSIVE_SPEED_Y				= -3,
+	
+	
+	EVENT_PROCESS = 
+	{		    
+	    { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			        "GARGOYLE_STONE_FLY_WAIT",		                    "CT_GARGOYLE_STONE_FLY_WAIT",	},	
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_UP"],				    "GARGOYLE_STONE_FLY_UP",						        },	    	
+	    { STATE_CHANGE_TYPE["SCT_AI_WAIT"],					        "GARGOYLE_STONE_FLY_WAIT",							},
+	    { STATE_CHANGE_TYPE["SCT_AI_FLY_BACK"],					    "GARGOYLE_STONE_FLY_BACK",							},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_UP"],					"GARGOYLE_STONE_FLY_BACK_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_BACK_DOWN"],				"GARGOYLE_STONE_FLY_BACK_DOWN",						},    	 
+		
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GARGOYLE_STONE_FLY_ATTACK_READY",		    "CT_GARGOYLE_STONE_FLY_ATTACK_READY",	},	    
+	    --{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"GARGOYLE_STONE_FLY_MAGIC_ATTACK_A",		    "CT_GARGOYLE_STONE_FLY_MAGIC_ATTACK_A",	},	    
+	    	    
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT"],				    "GARGOYLE_STONE_FLY_FRONT",						    },		
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_UP"],					"GARGOYLE_STONE_FLY_FRONT_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_FLY_FRONT_DOWN"],			    "GARGOYLE_STONE_FLY_FRONT_DOWN",						},		
+		
+	},
+	
+	CT_GARGOYLE_STONE_FLY_WAIT =
+	{
+		STATE_TIME_OVER			= 4,
+	},
+	
+		
+	CT_GARGOYLE_STONE_FLY_ATTACK_READY =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+		DISTANCE_TO_TARGET_NEAR	= 800,
+		RATE                    = 20,
+	},	
+	CT_GARGOYLE_STONE_FLY_MAGIC_ATTACK_A =
+	{
+	    EVENT_INTERVAL_ID           = 0,
+	    DISTANCE_TO_TARGET_NEAR	= 1100,
+		RATE                    = 40,
+	},	
+}
+
+GARGOYLE_STONE_FLY_ATTACK_READY = 
+{
+	ANIM_NAME					= "Attack_Ready",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,	
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0					= { 0.246, "Gargoyle_Stone_WaitFly.ogg" },
+
+    --VIEW_TARGET					= TRUE,
+    --ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	    
+	EVENT_INTERVAL_TIME0		= 2,
+			
+	
+	EVENT_PROCESS = 
+	{	
+	    { STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GARGOYLE_STONE_FLY_ATTACK", },
+	},
+	
+	
+}
+
+GARGOYLE_STONE_FLY_ATTACK = 
+{
+	ANIM_NAME					= "Attack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+		
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	SOUND_PLAY0					= { 0.01, "Gargoyle_Stone_Attack.ogg" },
+
+    
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	
+	FLY_AI                      = FALSE,	
+	SPEED_X                     = INIT_PHYSIC["RUN_SPEED"] * 3.0,
+	SPEED_Y                     = INIT_PHYSIC["RUN_SPEED"] * -0.7,
+    G_ACCEL                       = 0,
+    DOWN_ACCEL                    = 0,
+    
+	EVENT_INTERVAL_TIME0		= 2,	
+	
+	
+	EVENT_PROCESS = 
+	{	
+	    { STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"GARGOYLE_STONE_FLY_ATTACK_END",  },
+	},
+		
+	
+	
+	ATTACK_TIME0				= { 0, 100, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_FLY"],
+		--ATTACK_ALL_TEAM	= TRUE,
+	
+		CAN_REVENGE		= TRUE,
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1,
+		},
+		
+		BACK_SPEED_X			= 1200,
+		BACK_SPEED_Y			= 1200,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+}
+
+GARGOYLE_STONE_FLY_ATTACK_END = 
+{
+	ANIM_NAME					= "Walk_Fly_Front",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+		
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+    
+	IMMADIATE_PACKET_SEND		= TRUE,
+    
+    --PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 5,
+    SPEED_X                     = INIT_PHYSIC["RUN_SPEED"] * 1.2,    
+    --ENABLE_HEIGHT_FIX           = TRUE,
+   
+    
+	EVENT_INTERVAL_TIME0		= 1,
+		
+	--FLY_AI                      = FALSE,
+	--SHOW_NAME                   = TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+	    { STATE_CHANGE_TYPE["SCT_MOTION_END"],	            "GARGOYLE_STONE_FLY_WAIT", }	
+	},	
+}
+
+GARGOYLE_STONE_FLY_MAGIC_ATTACK_A = 
+{
+	ANIM_NAME					= "MagicAttack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,	
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    VIEW_TARGET					= TRUE,
+    --ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	SOUND_PLAY0					= { 1.118, "Gargoyle_Stone_MagicAttack2.ogg", 50 },
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	    
+	EVENT_INTERVAL_TIME0		= 2,
+		
+	--FLY_AI                      = FALSE,
+	SUPER_ARMOR                 = TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+	    { STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GARGOYLE_STONE_FLY_WAIT", },
+	},	
+}
+
+
+GARGOYLE_STONE_DAMAGE_FRONT = 
+{
+	ANIM_NAME					= "DamageFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0					= { 0.1, "Gargoyle_Stone_Damage.ogg", 20 },
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_Y				= 0,
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	--FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GARGOYLE_STONE_FLY_WAIT", },
+	},
+	
+}
+
+GARGOYLE_STONE_DAMAGE_BACK = 
+{
+	ANIM_NAME					= "DamageBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0					= { 0.052, "Gargoyle_Stone_Damage.ogg", 20 },
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	PASSIVE_SPEED_Y				= 0,
+	
+	ENABLE_HEIGHT_FIX           = TRUE,
+	
+	--FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GARGOYLE_STONE_FLY_WAIT", },
+	},
+	
+}
+
+GARGOYLE_STONE_DAMAGE_AIR_FALL_READY =
+{
+    ANIM_NAME					= "Dying_Air",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	--ANIM_SPEED                  = 1.5,
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0					= { 0.200, "Gargoyle_Stone_Dying.ogg" },
+	
+	SUPER_ARMOR                 = TRUE,
+    SUPER_ARMOR_NOT_RED         = TRUE, 
+    
+	FLY_AI                      = FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"GARGOYLE_STONE_DAMAGE_AIR_FALL", },
+	},
+}
+
+
+GARGOYLE_STONE_DAMAGE_AIR_FALL =
+{
+    ANIM_NAME					= "Dying_Fall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	FLY_AI                      = FALSE,
+	
+	SUPER_ARMOR                 = TRUE,
+    SUPER_ARMOR_NOT_RED         = TRUE, 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"GARGOYLE_STONE_DAMAGE_AIR_FALL_LANDING",				},
+	},
+}
+
+GARGOYLE_STONE_DAMAGE_AIR_FALL_LANDING = 
+{
+    ANIM_NAME					= "Dying_Landing",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0					= { 0.05, "Gargoyle_Stone_DyingLanding.ogg" },
+	SOUND_PLAY1					= { 0.12, "Down.ogg" },
+	
+	SUPER_ARMOR                 = TRUE,
+    SUPER_ARMOR_NOT_RED         = TRUE, 
+    
+	FLY_AI                      = FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],		"GARGOYLE_STONE_FLY_WAIT",				},
+	},
+}
+
+GARGOYLE_STONE_DYING_LAND = 
+{
+	ANIM_NAME					= "Dying_Landing",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+
+	SOUND_PLAY0					= { 0.05, "Gargoyle_Stone_DyingLanding.ogg" },
+	SOUND_PLAY1					= { 0.12, "Down.ogg" },
+	
+	FLY_AI                      = FALSE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+GARGOYLE_STONE_DYING_SKY = 
+{
+	ANIM_NAME					= "Dying_Landing",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	--LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+
+	SOUND_PLAY0					= { 0.05, "Gargoyle_Stone_DyingLanding.ogg" },
+	SOUND_PLAY1					= { 0.12, "Down.ogg" },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	FLY_AI                      = FALSE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+------------------------------------------------------------------------------------------------------------------
+
+
+function GARGOYLE_STONE_DAMAGE_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+--[[
+    for i=0, 6 do
+	    pEffect = pNPCUnit:GetDamageEffect_LUA(i)
+	    if pEffect ~= nil then
+	        pDamageEffect = pX2Game:GetDamageEffect()
+			if pDamageEffect:IsLiveInstance( pEffect ) == true then				    
+		        pDamageEffect:DestroyInstance( pEffect )
+		    end
+	    end
+        
+	    pNPCUnit:ClearDamageEffect_LUA( i )
+	end
+--]]	
+    if pNPCUnit:GetNowHP() <= 0 then	    
+	     pNPCUnit:StateChange_LUA("GARGOYLE_STONE_DAMAGE_AIR_FALL_READY", true)
+	     return
+	end
+end
+
+
+function GARGOYLE_STONE_FLY_MAGIC_ATTACK_A_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+    for i=0, 3 do
+		
+		fTime = 1.19 + i * 0.13
+		
+		if pNPCUnit:AnimEventTimer_LUA( fTime ) then
+
+			landPos = pNPCUnit:GetLandPosition_LUA()
+			
+			bonePos = pNPCUnit:GetBonePos_LUA( "Dummy1_Mouse" )			
+			
+			pDamageEffect = pX2Game:GetDamageEffect()
+			pDamage = pDamageEffect:CreateInstance_LUA( pNPCUnit, "GARGOYLE_STONE_MAGICATTACK", bonePos, landPos.y)	
+--[[			
+			if pDamage ~= nil then
+		        pNPCUnit:SetDamageEffect_LUA(i, pDamage)		        
+            end	            
+--]]            
+		end
+	
+	end 
+	
+	
+	for i=4, 6 do
+		
+		fTime = 1.19 + i * 0.13
+		
+		if pNPCUnit:AnimEventTimer_LUA( fTime ) then
+
+			landPos = pNPCUnit:GetLandPosition_LUA()
+			
+			bonePos = pNPCUnit:GetBonePos_LUA( "Dummy1_Mouse" )			
+			
+			pDamageEffect = pX2Game:GetDamageEffect()
+			pDamage = pDamageEffect:CreateInstance_LUA( pNPCUnit, "GARGOYLE_STONE_MAGICATTACK", bonePos, landPos.y)			
+            
+--[[            
+			if pDamage ~= nil then
+		        pNPCUnit:SetDamageEffect_LUA(i, pDamage)		        
+            end		
+--]]            
+		end
+	
+	end 
+
+end
+
+function GARGOYLE_STONE_START_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+    pMajorXMeshPlayer = pX2Game:GetMajorXMeshPlayer()
+    if pMajorXMeshPlayer ~= nil then
+        vPos = pNPCUnit:GetPos()
+		rotDegree 	= pNPCUnit:GetRotateDegree()
+		
+	    pMajorXMeshPlayer:CreateInstance_LUA( "Gargoyle_Broken_Rock", vPos, rotDegree, rotDegree, 14 )
+    end	    
+end
+

@@ -1,0 +1,24 @@
+# syntax=docker/dockerfile:1
+# JoySword Elsword server — trimmed Windows runtime image.
+# Build:  joysword.bat build --legacy
+
+FROM mcr.microsoft.com/windows/servercore:ltsc2022
+SHELL ["powershell", "-NoProfile", "-Command", "$ErrorActionPreference = 'Stop';"]
+
+# Python 3 for configure-offline.py / start-offline.py (cached layer).
+RUN [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; \
+    Invoke-WebRequest -UseBasicParsing -Uri 'https://www.python.org/ftp/python/3.12.7/python-3.12.7-amd64.exe' -OutFile 'C:\python-installer.exe'; \
+    Start-Process 'C:\python-installer.exe' -ArgumentList '/quiet InstallAllUsers=1 PrependPath=1 Include_pip=0' -Wait; \
+    Remove-Item 'C:\python-installer.exe'
+
+WORKDIR C:/app
+
+# Payload is pre-staged by scripts/stage-container-payload.py (excludes logs, backups, bulk ClientScript).
+COPY . .
+
+ENV ELSWORD_ROOT=C:\app\Elsword \
+    PYTHONUNBUFFERED=1
+
+EXPOSE 9100 9200 9300 9400 9500
+
+ENTRYPOINT ["powershell", "-NoProfile", "-File", "C:\\app\\scripts\\entrypoint.ps1"]

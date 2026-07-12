@@ -1,0 +1,709 @@
+XMESHPLAYER "UIMajor" 1.00 
+{  
+	TEMPLET "Pet_TreeKnight_Fall_Attack02"
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "Pet_TreeKnight_Attack02.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		ZWriteEnable            = True
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		DrawCount		= 1
+
+		global initial				color		= rgba(0.95,0.35,0.1,0)
+		global Fade so From 0.01 to 0.03		color		= rgba(0.95,0.35,0.1,0.7)
+		global Fade so From 0.5 to 0.83		color		= rgba(0.95,0.35,0.1,0)
+		global initial		aniName		= "Normal", XAP_ONE
+	}
+	TEMPLET "Pet_TreeKnight_Fall_Attack03"
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "Raven_SI_SA_ShockWave_Blade_Mesh01.X"
+		RenderType		= RT_REAL_COLOR
+		
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		ZWriteEnable 		= False
+		Zenable			= False
+		Drawcount		= 2
+
+		global initial				color		= rgba( 1.0,0.2,0.2,0 )
+		global fade so from 0.001 to 0.033	color		= rgba( 1.0,0.2,0.2,1 )
+		global fade so from 0.133 to 0.3	color		= rgba( 1.0,0.2,0.2,0 )
+		global initial				aniName		= "Normal", XAP_ONE
+		global initial				size		= XYZ( 0.3, 0.3, 0.3 )
+	}
+	TEMPLET "Pet_TreeKnight_Winter_Attack02"
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "Pet_TreeKnight_Attack02.X"
+		CHANGETEXXET	= "Pet_TreeKnight_Winter_Attack02.XET"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		ZWriteEnable            = True
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		DrawCount		= 1
+
+		global initial				color		= rgba(1,1,1,0)
+		global Fade so From 0.01 to 0.03		color		= rgba(1,1,1,0.7)
+		global Fade so From 0.5 to 0.83		color		= rgba(1,1,1,0)
+		global initial		aniName		= "Normal", XAP_ONE
+	}
+	TEMPLET "Pet_TreeKnight_Winter_Attack03"
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "Raven_SI_SA_ShockWave_Blade_Mesh01.X"
+		RenderType		= RT_REAL_COLOR
+		
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		ZWriteEnable 		= False
+		Zenable			= False
+		Drawcount		= 2
+
+		global initial				color		= rgba( 0.2,0.2,1,0 )
+		global fade so from 0.001 to 0.033	color		= rgba( 0.2,0.2,1,1 )
+		global fade so from 0.133 to 0.3	color		= rgba( 0.2,0.2,1,0 )
+		global initial				aniName		= "Normal", XAP_ONE
+		global initial				size		= XYZ( 0.3, 0.3, 0.3 )
+	}
+	TEMPLET "Special_Item_Firecracker"
+	{
+		Layer   = 10
+		lifeType  = LT_TIME
+		lifeTime  = 2.0
+		meshType  = X_SKIN_MESH
+		meshName  = "Mesh_Common_Ed_Sphere_Sorted.X"
+		RenderType  = RT_REAL_COLOR
+		zEnable			= true
+		ZWriteEnable            = true
+		usedieevent  = false
+		sourceblendmode  = D3DBLEND_SRCALPHA
+		destblendmode  = D3DBLEND_INVSRCALPHA
+		drawcount  = 1        
+		
+			CRASHLAND       = true
+			NOT_CHECK_LAND_TIME     = 0.1
+
+		global initial    color  = rgba( 0.4,0.4,0.4,0 )
+		--global fade so from 0.001 to 0.2   color  = rgba( 1,1,1,1 )  
+		global initial    aniName  = "Normal", XAP_ONE
+		global initial    size  = XYZ(0.4,0.4,0.4)
+		global initial    Velocity = XYZ(600,0,0)
+		global fade so from 0.1 to 2 Velocity = XYZ(0, -3000, 0)
+	}
+
+	TEMPLET "Special_Item_Sphere_Effect_Firecracker" 
+	{
+		Layer			= 14
+		lifeType		= LT_TIME
+		lifeTime		= 1.5
+		meshType		= X_SKIN_MESH
+		meshName		= "Darkcloud_AttackBox01.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		usedieevent		= false
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		aniName		= "Normal", XAP_LOOP
+		global initial		size		= XYZ( 1,1,1 )
+	}
+	TEMPLET "aisha_active_superNova_white_M01"
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "aisha_active_superNova_circle.X"
+		RenderType		= RT_REAL_COLOR
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		zEnable			= true
+		ZWriteEnable 		= false
+		CHANGETEXXET		= "aisha_active_superNova_circle_white.xet"
+
+
+		global initial				color		= rgba(1,1,1,0)
+		global fade so from 0.01 to 0.1		color		= rgba(1,1,1,1)
+		global fade so from 0.8 to 0.9		color		= rgba(1,1,1,0)
+		global initial				aniName		= "Normal", XAP_ONE
+		global initial				size		= XYZ(1.2,1.2,1.2)
+		global initial				rotate		= xyz(0,0,0)
+		global fade so from 0.01 to 0.9		rotate		= xyz(-1000,0,0)
+	}
+	
+	TEMPLET "aisha_active_superNova_red_M01"
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "aisha_active_superNova_circle.X"
+		RenderType		= RT_REAL_COLOR
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		zEnable			= true
+		ZWriteEnable 		= false
+		CHANGETEXXET		= "aisha_active_superNova_circle_red.xet"
+
+
+		global initial				color		= rgba(1,1,1,0)
+		global fade so from 0.01 to 0.1		color		= rgba(1,1,1,1)
+		global fade so from 0.8 to 0.9		color		= rgba(1,1,1,0)
+		global initial				aniName		= "Normal", XAP_ONE
+		global initial				size		= XYZ(1.2,1.2,1.2)
+		global initial				rotate		= xyz(0,0,0)
+		global fade so from 0.01 to 0.9		rotate		= xyz(-1000,0,0)
+	}
+	TEMPLET "aisha_active_superNova_blue_M01"
+	{
+		Layer			= 14
+		lifeType		= LT_PLAY_COUNT
+		playCount		= 1
+		meshType		= X_SKIN_MESH
+		meshName		= "aisha_active_superNova_circle.X"
+		RenderType		= RT_REAL_COLOR
+		sourceblendmode 	= D3DBLEND_SRCALPHA
+		destblendmode		= D3DBLEND_DESTALPHA
+		zEnable			= true
+		ZWriteEnable 		= false
+		CHANGETEXXET		= "aisha_active_superNova_circle_blue.xet"
+
+
+		global initial				color		= rgba(1,1,1,0)
+		global fade so from 0.01 to 0.1		color		= rgba(1,1,1,1)
+		global fade so from 0.8 to 0.9		color		= rgba(1,1,1,0)
+		global initial				aniName		= "Normal", XAP_ONE
+		global initial				size		= XYZ(1.2,1.2,1.2)
+		global initial				rotate		= xyz(0,0,0)
+		global fade so from 0.01 to 0.9		rotate		= xyz(-1000,0,0)
+	}
+	TEMPLET "Pet_DeathScythe_Attack_Dummy01"
+	{
+		Layer			= 14
+		lifeType		= LT_TIME
+		lifeTime		= 1.4
+		meshType		= X_SKIN_MESH
+		meshName		= "DummyAttackBox_50x50x50.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		usedieevent		= false
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		color		= rgba(0, 0, 0, 0)
+		global initial		aniName		= "Normal", XAP_LOOP
+		global initial		velocity	= XYZ( 1000,0,0 )
+		global initial		size		= XYZ( 1,1,1 )
+		global fade so from 0.5 to 1	velocity	= XYZ( -1000,0,0 )
+	}
+	TEMPLET "Pet_DeathScythe_Attack_Dummy02"
+	{
+		Layer			= 14
+		lifeType		= LT_TIME
+		lifeTime		= 1.4
+		meshType		= X_SKIN_MESH
+		meshName		= "DummyAttackBox_50x50x50.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		usedieevent		= false
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		color		= rgba(0, 0, 0, 0)
+		global initial		aniName		= "Normal", XAP_LOOP
+		global initial		velocity	= XYZ( 1000,0,0 )
+		global initial		size		= XYZ( 2,2,2 )
+		global fade so from 0.5 to 1	velocity	= XYZ( -1000,0,0 )
+	}
+	TEMPLET "Pet_DeathScythe_Attack_Dummy03"
+	{
+		Layer			= 14
+		lifeType		= LT_TIME
+		lifeTime		= 1.4
+		meshType		= X_SKIN_MESH
+		meshName		= "DummyAttackBox_50x50x50.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		usedieevent		= false
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		color		= rgba(0, 0, 0, 0)
+		global initial		aniName		= "Normal", XAP_LOOP
+		global initial		velocity	= XYZ( 1000,0,0 )
+		global initial		size		= XYZ( 3,3,3 )
+		global fade so from 0.5 to 1	velocity	= XYZ( -1000,0,0 )
+	}	
+	TEMPLET "Special_Item_Explosion_Arrow"
+	{
+		Layer			= 14
+		lifeType		= LT_TIME
+		lifeTime		= 1.5
+		meshType		= X_SKIN_MESH
+		meshName		= "Mesh_Common_Arrow_TW_Event01_Sorted.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= true
+		usedieevent		= false
+		sourceblendmode = D3DBLEND_SRCALPHA
+		--destblendmode	= D3DBLEND_INVSRCALPHA
+		destblendmode	= D3DBLEND_DESTALPHA
+		--BillboardType		= BT_X
+		
+
+		global initial		aniName		= "Normal", XAP_LOOP
+		global initial		velocity	= XYZ( 2000,0,0 )
+		global initial		size		= XYZ( 1, 1, 1 )
+	}
+	TEMPLET "Special_Item_Icicle_Spear"
+	{
+		MeshName		= "Mesh_Common_Ed_Event_Icicle_Int.X"
+		LifeType		= LT_TIME
+		MeshType		= X_SKIN_MESH
+		BillBoardType	= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Layer			= 14
+		LifeTime		= 1.500
+		ZEnable			= TRUE
+
+		Global Initial						AniName = "Normal", XAP_LOOP
+		Global Initial						Velocity = XYZ(2000, 0, 0)
+		Global Initial						Size = XYZ(1, 1, 1)
+	}
+	TEMPLET "Pet_RaincoatCat_Attack_B"
+	{
+		Layer			= 14
+		lifeType		= LT_TIME
+		lifeTime		= 0.95
+		meshType		= X_SKIN_MESH
+		meshName		= "DummyAttackBox_50x50x50.X"
+		zEnable			= false
+		usedieevent		= false
+
+		global initial		color		= rgba(0,0,0,0)
+		global initial		aniName		= "Normal", XAP_ONE_WAIT
+		global initial		velocity	= XYZ( 800,0,0 )
+		global initial		size		= XYZ( 2.0,4.0,2.0 )
+	}
+	TEMPLET "PET_RAINCOAT_CAT_BLACK_STEB_3_Attack_C_M01"
+	{
+		MeshName		= "RAINCOAT_CAT_DummyAttackBox_Up3_50x50x50.x"
+		LifeType		= LT_TIME
+		MeshType		= X_SKIN_MESH
+		BillBoardType	= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Layer			= 14
+		PlayCount		= 1
+		LifeTime		= 1.500
+		NOT_CHECK_LAND_TIME	= 0.700
+		ZEnable			= TRUE
+		CrashLand		= TRUE
+
+		Global Initial						Color = RGBA(1, 1, 1, 0)
+		Global Fade so From 0.001 to 0.050	Color = RGBA(1, 1, 1, 0)
+		Global Initial						AniName = "Normal", XAP_ONE_WAIT
+		Global Initial						Size = XYZ(1.500, 1.500, 1.500)
+		Global Initial						Velocity = XYZ(0, -800, 0)
+	}
+	TEMPLET "PET_RAINCOAT_CAT_BLACK_STEB_3_Attack_B_M01"
+	{
+		MeshName		= "Lire_SI_A_Lws_Nature_Force_Mesh01.X"
+		LifeType		= LT_PLAY_COUNT
+		MeshType		= X_SKIN_MESH
+		BillBoardType	= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_DESTALPHA
+		Layer			= 14
+		PlayCount		= 1
+		DrawCount		= 2
+		ZEnable			= TRUE
+
+		Global Initial						Color = RGBA(0.500, 0.500, 1, 0)
+		Global Fade so From 0.001 to 0.033	Color = RGBA(0.500, 0.500, 1, 1)
+		Global Fade so From 0.167 to 0.333	Color = RGBA(0.500, 0.500, 1, 0)
+		Global Initial						AniName = "Normal", XAP_ONE
+		Global Initial						Size = XYZ(0.950, 0.950, 0.950)
+	}
+
+	TEMPLET "Halloween_Poison"
+	{
+		Layer			= 14
+		lifeType		= LT_TIME
+		lifeTime		= 0.5
+		meshType		= X_SKIN_MESH
+		meshName		= "DummyAttackBox_50x50x50.X"
+		zEnable			= true
+		usedieevent		= false
+
+		global initial		color		= rgba( 0, 0, 0, 0 )
+		global initial		aniName		= "Normal", XAP_ONE_WAIT
+		
+		global initial		velocity	= XYZ( 0,0,0 )		
+		global initial		size		= XYZ( 3, 3, 3 )
+	}	
+	TEMPLET "HALLOWEEN_PUMPKIN_ALL_Attack"
+	{
+		MeshName		= "Pumpkin_Shot.X"
+		LifeType		= LT_TIME
+		MeshType		= X_SKIN_MESH
+		BillBoardType	= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Layer			= 10
+		PlayCount		= 1
+		LifeTime		= 2
+		ZEnable			= TRUE
+		ZWriteEnable	= TRUE
+
+		Global Initial						AniName = "Normal", XAP_LOOP
+		Global Initial						Color = RGBA(1, 1, 1, 1)
+		Global Initial						Size = XYZ(1.300, 1.300, 1.300)
+	}
+	TEMPLET "HALLOWEEN_PUMPKIN_ALL_Attack_Follow"
+	{
+		MeshName		= "Pumpkin_Shot.X"
+		LifeType		= LT_TIME
+		MeshType		= X_SKIN_MESH
+		BillBoardType	= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Layer			= 14
+		LifeTime		= 3
+
+		Global Initial						AniName = "Normal", XAP_LOOP
+		Global Initial						Size = XYZ(1.300, 1.300, 1.300)
+		Global Initial						Color = RGBA(1, 1, 1, 0)
+		Global Fade so From 0.010 to 0.100	Color = RGBA(1, 1, 1, 1)
+		Global Initial						Rotate = XYZ(0, 0, 0)
+		Global Initial						Velocity = XYZ(1, 0, 0)
+		Global at 0.001						Velocity = XYZ(0, 0, 0)
+		Global at 0.001						DirSpeed = random(-30, -75)
+		Global at 0.270						DirSpeed = random(-2200, -3100)
+		Global Fade so From 0.270 to 1.100	DirSpeed = random(1200, 2000)
+		Global at 0.001						Rotate = XYZ(0, random(-80, 80), random(-25, 25))
+	}
+	TEMPLET "HALLOWEEN_PUMPKIN_ALL_Explosion"
+	{
+		MeshName		= "Pumpkin_Boom.x"
+		LifeType		= LT_TIME
+		MeshType		= X_SKIN_MESH
+		BillBoardType	= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Layer			= 15
+		PlayCount		= 1
+		LifeTime		= 0.6
+		ZEnable			= TRUE
+		ZWriteEnable	= TRUE
+
+		Global Initial						AniName = "Normal", XAP_ONE
+		Global Initial						Color = RGBA(1, 1, 1, 1)
+		Global Fade so From 0.010 to 0.050	Color = RGBA(1, 1, 1, 1)
+		Global Fade so From 0.600 to 1.300	Color = RGBA(1, 1, 1, 0)
+		Global Initial						Size = XYZ(1.500, 1.500, 1.500)
+	}
+	TEMPLET "EffectSet_PUMPKIN_ELDENA_AttackUp"
+	{
+		MeshName		= "Pumpkin_Shot.X"
+		LifeType		= LT_TIME
+		MeshType		= X_SKIN_MESH
+		BillBoardType	= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Layer			= 10
+		PlayCount		= 1
+		LifeTime		= 2
+		ZEnable			= TRUE
+		ZWriteEnable	= TRUE
+
+		Global Initial						AniName = "Normal", XAP_LOOP
+		Global Initial						Color = RGBA(1, 1, 1, 1)
+		Global Initial						Size = XYZ(1.300, 1.300, 1.300)
+		Global initial						rotate		= xyz(0, 0, 0)
+		Global initial						velocity	= XYZ( 0, 1800, 0 )
+	}
+	TEMPLET "EffectSet_PUMPKIN_ELDENA_AttackDown"
+	{
+		MeshName		= "Pumpkin_Shot.X"
+		LifeType		= LT_TIME
+		MeshType		= X_SKIN_MESH
+		BillBoardType	= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Layer			= 13
+		PlayCount		= 1
+		LifeTime		= 2
+		NOT_CHECK_LAND_TIME	= 0.730
+		Gravity			= XYZ(0, -1, 0)
+		ZEnable			= TRUE
+		CrashLand		= TRUE
+
+		Global Initial						Color = RGBA(1, 1, 1, 1)
+		Global Fade so From 0.001 to 0.050	Color = RGBA(1, 1, 1, 1)
+		Global Initial						AniName = "Normal", XAP_ONE_WAIT
+		Global Initial						Size = XYZ(1.300, 1.300, 1.300)
+		Global Initial						Velocity = XYZ(0, -700, 0)
+		Global Fade so From 0.001 to 1.000	Velocity = XYZ(0, -2500, 0)
+	}
+	TEMPLET "Sonokong_Peach1"
+	{
+		MeshName		= "Peach_R_sonokong.X"
+		LifeType		= LT_TIME
+		MeshType		= X_SKIN_MESH
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		BillBoardType	= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Layer			= 14
+		LifeTime		= 1.00
+		OutLineWide		= 1500
+		ElasticCoeff	= 0.500
+		ElasticCoeff_X	= 0
+		LightPos			= XYZ(100, 0, -100)
+		Gravity			= XYZ(0, -2000, 0)
+		ZEnable			= TRUE
+		ZWriteEnable	= TRUE
+		UseLand			= TRUE
+
+		Global Initial						AniName = "Normal", XAP_LOOP
+		Global Initial						Velocity = XYZ(1200, 600, 0)
+		Global Initial						Size = XYZ(3, 3, 3)
+		Global Fade so final				Rotate = XYZ(360, 360, 360)
+	}
+	TEMPLET "Sonokong_Peach2"
+	{
+		MeshName		= "Peach_R_sonokong.X"
+		LifeType		= LT_TIME
+		MeshType		= X_SKIN_MESH
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		BillBoardType	= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Layer			= 14
+		LifeTime		= 1.00
+		OutLineWide		= 1500
+		ElasticCoeff	= 0.500
+		ElasticCoeff_X	= 0
+		LightPos			= XYZ(100, 0, -100)
+		Gravity			= XYZ(0, -2000, 0)
+		ZEnable			= TRUE
+		ZWriteEnable	= TRUE
+		UseLand			= TRUE
+
+		Global Initial						AniName = "Normal", XAP_LOOP
+		Global Initial						Velocity = XYZ(1200, 500, 0)
+		Global Initial						Size = XYZ(3, 3, 3)
+		Global Fade so final				Rotate = XYZ(360, 360, 360)
+	}
+	TEMPLET "Sonokong_Peach3"
+	{
+		MeshName		= "Peach_R_sonokong.X"
+		LifeType		= LT_TIME
+		MeshType		= X_SKIN_MESH
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		BillBoardType	= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Layer			= 14
+		LifeTime		= 1.00
+		OutLineWide		= 1500
+		ElasticCoeff	= 0.500
+		ElasticCoeff_X	= 0
+		LightPos			= XYZ(100, 0, -100)
+		Gravity			= XYZ(0, -2000, 0)
+		ZEnable			= TRUE
+		ZWriteEnable	= TRUE
+		UseLand			= TRUE
+
+		Global Initial						AniName = "Normal", XAP_LOOP
+		Global Initial						Velocity = XYZ(1200, 400, 0)
+		Global Initial						Size = XYZ(3, 3, 3)
+		Global Fade so final				Rotate = XYZ(360, 360, 360)
+	}
+	--{{ ºÒ²É »Ç·ç ÆøÅº
+	TEMPLET "Pet_Firework_Pporu_Attack01_M01"
+	{
+		MeshName		= "Pet_Firework_Pporu_Attack01.X"
+		LifeType		= LT_TIME
+		MeshType		= X_SKIN_MESH
+		BillBoardType	= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Layer			= 13
+		LifeTime		= 2
+		OutLineWide		= 2000
+		ElasticCoeff	= 0.500
+		ElasticCoeff_X	= 1
+		LightPos			= XYZ(100, 0, -100)
+		Gravity			= XYZ(0, -2500, 0)
+		ZEnable			= TRUE
+		ZWriteEnable	= TRUE
+		UseLand			= TRUE
+
+		Global Initial						AniName = "Noraml", XAP_LOOP
+		Global Initial						Velocity = XYZ(800, 800, 0)
+		Global Initial						Size = XYZ(1.100, 1.100, 1)
+	}
+	--}} ºÒ²É »Ç·ç ÆøÅº ³¡
+	--{{ ´«»ç¶÷
+
+	TEMPLET "PET_SNOWBUMP_Attack_C_M01"
+	{
+		MeshName		= "aisha_active_superNova_downCircle.X"
+		LifeType		= LT_PLAY_COUNT
+		MeshType		= X_SKIN_MESH
+		BillBoardType	= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Layer			= 14
+		PlayCount		= 1
+		ZEnable			= TRUE
+
+		Global Initial						Color = RGBA(1, 1, 1, 0)
+		Global Fade so From 0.010 to 0.200	Color = RGBA(1, 1, 1, 1)
+		Global Fade so From 0.800 to 1.100	Color = RGBA(1, 1, 1, 0)
+		Global Initial						AniName = "Normal", XAP_ONE
+		Global Initial						Size = XYZ(2.600, 2.600, 2.600)
+	}
+	TEMPLET "Pet_SnowBump_Attack_C"
+	{
+		Layer			= 14
+		lifeType		= LT_TIME
+		lifeTime		= 1.75
+		meshType		= X_SKIN_MESH
+		meshName		= "DummyAttackBox_50x50x50.X"
+		zEnable			= false
+		usedieevent		= false
+
+		global initial		color		= rgba(0,0,0,0)
+		global initial		aniName		= "Normal", XAP_ONE_WAIT
+		global initial		velocity	= XYZ( 800,0,0 )
+		global initial		size		= XYZ( 2.0,4.0,2.0 )
+	}
+	TEMPLET "Pet_SnowBump_Attack_C_2"
+	{
+		Layer			= 14
+		lifeType		= LT_TIME
+		lifeTime		= 0.5
+		meshType		= X_SKIN_MESH
+		meshName		= "DummyAttackBox_50x50x50.X"
+		zEnable			= false
+		usedieevent		= false
+
+		global initial		color		= rgba(0,0,0,0)
+		global initial		aniName		= "Normal", XAP_ONE_WAIT
+		global initial		velocity	= XYZ( 800,0,0 )
+		global initial		size		= XYZ( 2.0,4.0,2.0 )
+	}
+	TEMPLET "CHUNG_Detonation_End04_Ice"
+	{
+		MeshName		= "CHUNG_Detonation_End04.X"
+		CHANGETEXXET		= "CHUNG_GIGANTIC_IMPACT04_ice.xet"
+		LifeType		= LT_PLAY_COUNT
+		MeshType		= X_SKIN_MESH
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		BillBoardType	= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Layer			= 14
+		PlayCount		= 1
+		OutLineWide		= 1500
+		LightPos			= XYZ(100, 0, -100)
+		ZEnable			= TRUE
+		ZWriteEnable	= TRUE
+
+		Global Initial						Color = RGBA(1, 1, 1, 0.8)
+		Global Fade so From 1.000 to 1.300	Color = RGBA(1, 1, 1, 0)
+		Global Initial						AniName = "Normal", XAP_ONE
+		Global Initial						Size = XYZ(0.700, 0.700, 0.700)
+		Global Initial						Rotate = XYZ(0, random(0, 3600), 0)
+	}
+	--}} ´«»ç¶÷
+	--{{ Æë±Ï
+	TEMPLET "Pengzzang_Attack_C_Explosion"
+	{
+		Layer			= 14
+		lifeType		= LT_TIME
+		lifeTime		= 3.0
+		meshType		= X_SKIN_MESH
+		meshName		= "Darkcloud_AttackBox01.X"
+		RenderType		= RT_REAL_COLOR
+		zEnable			= false
+		usedieevent		= false
+		sourceblendmode = D3DBLEND_SRCALPHA
+		destblendmode	= D3DBLEND_INVSRCALPHA
+
+		global initial		aniName		= "Normal", XAP_LOOP
+		global initial		size		= XYZ( 0.15,0.15,0.15 )
+	}
+	--}} Æë±Ï
+	--{{ ÃáÀý ´øÁö±â ¾ÆÀÌÅÛ ÆøÁ×
+	TEMPLET "Special_Item_Fire_Cracker"
+	{
+		MeshName		= "Firecracker_Event_Attack01.X"
+		LifeType		= LT_TIME
+		MeshType		= X_SKIN_MESH
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		BillBoardType	= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Layer			= 10
+		LifeTime		= 3
+		OutLineWide		= 1500
+		LightPos			= XYZ(100, 0, -100)
+		NOT_CHECK_LAND_TIME	= 0.100
+		Gravity			= XYZ(0, -2400, 0)
+		ZEnable			= TRUE
+		ZWriteEnable	= TRUE
+		CrashLand		= TRUE
+
+		Global Initial						AniName = "Normal", XAP_LOOP
+		Global Initial						Size = XYZ(1, 1, 1)
+		Global Initial						Velocity = XYZ(1500, 400, 0)
+	}
+	--}} ÃáÀý ´øÁö±â ¾ÆÀÌÅÛ ÆøÁ×
+	--{{ ÇÊµåÀÌº¥Æ®º¸½º ´øÁö´Â ¸¸µÎ
+	TEMPLET "Dumpling"
+	{
+		MeshName		= "FieldBoss_Dumpling_Attack.X"
+		LifeType		= LT_TIME
+		MeshType		= X_SKIN_MESH
+		RenderType		= RT_CARTOON_BLACK_EDGE
+		BillBoardType	= BT_NONE
+		SourceBlendMode	= D3DBLEND_SRCALPHA
+		DestBlendMode	= D3DBLEND_INVSRCALPHA
+		Layer			= 14
+		LifeTime		= 3
+		OutLineWide		= 1500
+		ElasticCoeff	= 0.500
+		ElasticCoeff_X	= 0
+		LightPos			= XYZ(100, 0, -100)
+		Gravity			= XYZ(0, -5000, 0)
+		ZEnable			= TRUE
+		ZWriteEnable	= TRUE
+		UseLand			= TRUE
+
+		Global Initial						AniName = "Normal", XAP_LOOP
+		Global Initial						Velocity = XYZ(1200, -100, 0)
+		Global Initial						Size = XYZ(3.500, 3.500, 3.500)
+		Global Fade so From 0.000 to 0.500	Rotate = XYZ(360, 360, 360)
+	}
+	--}} ÇÊµåÀÌº¥Æ®º¸½º ´øÁö´Â ¸¸µÎ
+}

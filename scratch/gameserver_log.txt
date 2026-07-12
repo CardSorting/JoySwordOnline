@@ -1,0 +1,213 @@
+
+ 
+ 
+Log
+ 
+Log for 28/6/2026 20:11:0
+ 
+                           
+                                                                                       
+cout : KBaseServer::Init(), 2026-06-28 20:11:00, Config File Name : config_gs_US_SERVICE.lua
+cout : KNetLayer::SetCheckSequenceNum_LUA(), 2026-06-28 20:11:00, Check Sequence Number : true
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Account_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Account_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Account_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Account_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Account_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Account_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Account_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Account_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Account_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Account_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Game01_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Game01_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Game01_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Game01_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Game01_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Game01_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Game01_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Game01_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Game01_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Game01_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Game01_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Game01_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Game01_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Game01_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Game01_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\log_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\log_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\log_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\log_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\log_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\log_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\log_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\log_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\log_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\log_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Billing_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Billing_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Billing_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Billing_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Billing_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Billing_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Billing_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Billing_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Billing_US_SERVICE.dsn
+DriverConnect() success. m_strDSN : FILEDSN=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\Billing_US_SERVICE.dsn
+cout2 : KThreadStatisticsManager::SetSendToFTPStatistics_LUA(), 2026-06-28 20:11:01, SetSendToFTPStatistics : false
+cout2 : KThreadStatisticsManager::SetUserLog_LUA(), 2026-06-28 20:11:01, SetUserLog : true
+cout2 : KThreadStatisticsManager::SetBillingPacketLog_LUA(), 2026-06-28 20:11:01, SetBillingPacketLog : true
+cout : KStatistics::SetFlushTime(), 2026-06-28 20:11:01, Æ¯Á¤ ½Ã°¢¿¡ DBÅë°è Flush ½Ã°¢ ¼¼ÆÃ!
+    m_iStatisticsID : 23
+    wstrFlushTime : 2026-06-29 05:00:00
+    m_bTimeFlush : true
+Change LogLevel (from 2 to 0 ).
+cout : KGSSimLayer::Init(), 2026-06-28 20:11:01, Enum Á¤º¸ ·Îµå ¼º°ø.!
+cout2 : LoadingTimer::~LoadingTimer(), 2026-06-28 20:11:01, Enum.lua ·Îµù½Ã°£ : 
+    GetTickCount() - m_dwTime : 32
+cout : KGSSimLayer::Init(), 2026-06-28 20:11:01, Cash Item Data Á¤º¸ ·Îµå ¼º°ø.!
+cout2 : LoadingTimer::~LoadingTimer(), 2026-06-28 20:11:01, CashItemData.lua ·Îµù½Ã°£ : 
+    GetTickCount() - m_dwTime : 0
+cout : KLogManager::SetNewLogByFileSize_LUA(), 2026-06-28 20:11:01, ÆÄÀÏ Å©±â ÃÊ°ú½Ã ·Î±× ÆÄÀÏ »ý¼º ¿©ºÎ : false
+cout : KLogManager::SetNewLogDaily_LUA(), 2026-06-28 20:11:01, ¸ÅÀÏ »õ·Î¿î ·Î±× ÆÄÀÏ »ý¼º ¿©ºÎ : false
+cout : KLogManager::SetErrorLogStat_LUA(), 2026-06-28 20:11:01, ¿¡·¯ ·Î±× Åë°è ³²±â±â ¿©ºÎ : true
+cout : KLogManager::SetCheckTimeGap_LUA(), 2026-06-28 20:11:01, ·Î±× ÆÄÀÏ Ã¼Å© Å¸ÀÓ ÁÖ±â : 300
+cout : KLogManager::SetErrorLogStatTimeGap_LUA(), 2026-06-28 20:11:01, ¿¡·¯ ·Î±× Åë°è DB¾÷µ¥ÀÌÆ® Å¸ÀÓ ÁÖ±â : 1800
+cout : KLogManager::SetLogFileMaxSize_LUA(), 2026-06-28 20:11:01, ·Î±× ÆÄÀÏ ÃÖ´ë Å©±â
+    m_iLogFileMaxSize : 1073741824
+    m_iLogFileMaxSize / 1024 : 1048576
+    m_iLogFileMaxSize / 1024 / 1024 : 1024
+cout2 : KLogManager::OpenScriptFile(), 2026-06-28 20:11:01, LogConfig.lua ·Îµù½Ã°£ : 
+    GetTickCount() - m_dwTime : 0
+cout : KSimLayer::Init(), 2026-06-28 20:11:01, KLogManager Á¤º¸ ·Îµå ¼º°ø.!
+cout2 : KGameEventScriptManager::OpenScriptFile(), 2026-06-28 20:11:01, EventData.lua ·Îµù½Ã°£ : 
+    GetTickCount() - m_dwTime : 15
+cout : KGSSimLayer::Init(), 2026-06-28 20:11:01, KGameEventScriptManager Á¤º¸ ·Îµå ¼º°ø.!
+cout : KGSSimLayer::Init(), 2026-06-28 20:11:01, Map Data Enum Á¤º¸ ·Îµå ¼º°ø.!
+cout2 : LoadingTimer::~LoadingTimer(), 2026-06-28 20:11:01, DLG_Map_Enum.lua ·Îµù½Ã°£ : 
+    GetTickCount() - m_dwTime : 0
+cout : KGSSimLayer::Init(), 2026-06-28 20:11:01, Unit Á¤º¸ ·Îµå ¼º°ø.!
+cout2 : LoadingTimer::~LoadingTimer(), 2026-06-28 20:11:01, UnitTemplet.lua ·Îµù½Ã°£ : 
+    GetTickCount() - m_dwTime : 0
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 109991
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 109991
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 109991
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 130258
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 130598
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 130598
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 130598
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 130598
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 109992
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 109992
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 109992
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 109994
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 109994
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 109994
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 131856
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 131856
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 131856
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 131856
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 131856
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 131856
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 109991
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 132048
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 109992
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 132049
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 109994
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 132050
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 78330
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 78331
+    dungeonData.m_RequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, ±âº» Æ¼ÄÏ Ãß°¡ ¼º°ø
+    dungeonData.m_RequireItemID : 84001800
+    dungeonData.m_RequireItemCount : 0
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 121)
+cout : CXSLDungeonManager::AddDungeonData_LUA(), 2026-06-28 20:11:01, Ãß°¡ Æ¼ÄÏ Ãß°¡ ¼º°ø
+    iRequireItemID : 80002140
+    iRequireItemCount : 1
+    (\Users\Laura\Downloads\ProjectX2_SVN\source\Eu_cn_us\Trunk\KncWX2Server\Common\X2Data\XSLDungeonManager.cpp, 139)
+cout2 : CXSLDungeonManager::OpenScriptFile(), 2026-06-28 20:11:01, DungeonData.lua ·Îµù½Ã°£ : 
+    GetTickCount() - m_dwTime : 31

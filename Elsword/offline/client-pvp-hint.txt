@@ -1,0 +1,9 @@
+JoySword PvP profile: default
+ConnectionMode=Default
+SwitchConnect_LUA mode value: 0
+
+In-game (debug/GM chat), before PvP match:
+  /switchconnect 0   (default — auto P2P/relay)
+
+Verify with packet capture:
+  python scripts/pvp-netcode-capture.py session --profile default --tag test

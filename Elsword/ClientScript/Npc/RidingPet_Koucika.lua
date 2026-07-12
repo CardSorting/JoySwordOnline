@@ -1,0 +1,422 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 200.0,
+	UNIT_HEIGHT		= 200.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+
+	SPEECH =
+	{
+		STR_ID_4016,
+	},
+}
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+		"Riding_Coackatrigle_Map1.tga",
+		"Riding_Coackatrigle_Map2.tga",
+		"Riding_Coackatrigle_Map3.tga",
+	},
+
+	READY_SOUND = 
+	{
+		"RidingPet_Koucika_AttackZ.ogg",
+		"RidingPet_Koucika_DamageBack.ogg",
+		"RidingPet_Koucika_DamageFront.ogg",
+		"RidingPet_Koucika_Dying.ogg",
+		"RidingPet_Koucika_Start.ogg",
+		"RidingPet_Koucika_WaitHabit.ogg",
+	},
+
+	READY_XSKIN_MESH = 
+	{
+		"Riding_Pet_Coca_M01.x",
+	},
+
+	READY_XMESH =
+	{
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME	= "Motion_Riding_Koucika.x",
+	RIDING_MOTION		= "Ride_1",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+
+	WALK_SPEED			= 700,
+	RUN_SPEED			= 1000, --750,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300, -- 2300
+
+	IGNORE_LINE_SPEED	= FALSE,
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "KOUCIKA_START", },
+	{ STATE_NAME = "KOUCIKA_WAIT", },
+	{ STATE_NAME = "KOUCIKA_WAIT_HABIT", },
+	{ STATE_NAME = "KOUCIKA_WALK", },
+
+	{ STATE_NAME = "KOUCIKA_JUMP_UP", },
+	{ STATE_NAME = "KOUCIKA_JUMP_DOWN", },
+	{ STATE_NAME = "KOUCIKA_JUMP_LANDING", },
+	
+	{ STATE_NAME = "KOUCIKA_DASH", },
+	{ STATE_NAME = "KOUCIKA_DASH_END", },
+	{ STATE_NAME = "KOUCIKA_DASH_JUMP", },
+	{ STATE_NAME = "KOUCIKA_DASH_JUMP_LANDING", },
+	
+	{ STATE_NAME = "KOUCIKA_DAMAGE_FRONT", },
+	{ STATE_NAME = "KOUCIKA_DAMAGE_BACK", },
+	{ STATE_NAME = "KOUCIKA_DYING", },
+
+	{ STATE_NAME = "KOUCIKA_ATTACK_Z", },
+	{ STATE_NAME = "KOUCIKA_JUMP_ATTACK_Z", },
+	{ STATE_NAME = "KOUCIKA_ATTACK_X", },
+	{ STATE_NAME = "KOUCIKA_ATTACK_SPECIAL", },
+
+	{ STATE_NAME = "KOUCIKA_SIT_READY", },
+	{ STATE_NAME = "KOUCIKA_SIT_WAIT", },
+	{ STATE_NAME = "KOUCIKA_STAND_UP", },
+	
+	{ STATE_NAME = "KOUCIKA_DOUBLE_JUMP", },
+
+	START_STATE		= "KOUCIKA_START",
+	WAIT_STATE		= "KOUCIKA_WAIT",
+	HABIT_STATE		= "KOUCIKA_WAIT_HABIT",
+	WALK_STATE		= "KOUCIKA_WALK",
+
+	JUMP_UP_STATE		= "KOUCIKA_JUMP_UP",
+	JUMP_DOWN_STATE		= "KOUCIKA_JUMP_DOWN",
+	JUMP_LANDING_STATE	= "KOUCIKA_JUMP_LANDING",
+
+	DASH_STATE				= "KOUCIKA_DASH",
+	DASH_END_STATE			= "KOUCIKA_DASH_END",
+	DASH_JUMP_UP_STATE		= "KOUCIKA_DASH_JUMP",
+	DASH_JUMP_LANDING_STATE	= "KOUCIKA_DASH_JUMP_LANDING",
+
+	DAMAGE_FRONT_STATE	= "KOUCIKA_DAMAGE_FRONT",
+	DAMAGE_BACK_STATE	= "KOUCIKA_DAMAGE_BACK",
+	DYING_STATE_STATE	= "KOUCIKA_DYING",
+
+	ATTACK_Z_STATE			= "KOUCIKA_ATTACK_Z",
+	JUMP_ATTACK_Z_STATE		= "KOUCIKA_JUMP_ATTACK_Z",
+	ATTACK_X_STATE			= "KOUCIKA_ATTACK_X",
+	ATTACK_SPECIAL_STATE	= "KOUCIKA_ATTACK_SPECIAL",
+
+	SIT_READY_STATE = "KOUCIKA_SIT_READY",
+	SIT_WAIT_STATE = "KOUCIKA_SIT_WAIT",
+	STAND_UP_STATE = "KOUCIKA_STAND_UP",
+	
+	SPECIAL_MOVE_STATE = "KOUCIKA_DOUBLE_JUMP",
+}
+
+-- 상태 정의 --
+-- 시작 --
+KOUCIKA_START = 
+{
+	ANIM_NAME	= "Start",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= TRUE,
+	EFFECT_SET_LIST = { "EffectSet_Riding_Pet_Summon", 0.001, },
+
+    SOUND_PLAY0	= { 0.01, "RidingPet_Koucika_Start.ogg", },
+    SOUND_PLAY1	= { 0.001, "RidingPet_Summon.ogg", },
+	SKILL_CANCEL_AFTER	= 0.001,
+	
+}
+----
+
+-- 대기 --
+KOUCIKA_WAIT = 
+{
+	ANIM_NAME	= "Wait",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+}
+-----
+
+-- 습관 --
+KOUCIKA_WAIT_HABIT = 
+{
+	ANIM_NAME	= "WaitHabit",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION	= FALSE,
+	
+    SOUND_PLAY0	= { 0.01, "RidingPet_Koucika_WaitHabit.ogg", },
+}
+----
+
+-- 걷기 --
+KOUCIKA_WALK = 
+{
+	ANIM_NAME	= "Walk",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION	= TRUE,
+}
+----
+
+-- 점프 업 --
+KOUCIKA_JUMP_UP = 
+{
+	ANIM_NAME		= "JumpUp",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+}
+----
+
+-- 점프 다운 --
+KOUCIKA_JUMP_DOWN =
+{
+	ANIM_NAME		= "JumpDown",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+}
+----
+
+-- 점프 착지 --
+KOUCIKA_JUMP_LANDING =
+{
+	ANIM_NAME		= "JumpDownLanding",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+	TRANSITION		= TRUE,
+}
+----
+
+-- 달리기 ---
+KOUCIKA_DASH =
+{
+	ANIM_NAME		= "Dash",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+}
+----
+
+-- 달리다가 멈춤 --
+KOUCIKA_DASH_END =
+{
+	ANIM_NAME	= "DashEnd",
+	PLAY_TYPE	= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	
+    SOUND_PLAY0	= { 0.21, "Landing_Meat01.ogg", },
+	
+}
+----
+
+-- 달리다가 점프 --
+KOUCIKA_DASH_JUMP =
+{
+	ANIM_NAME		= "DashJump",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+}
+----
+
+-- 달리다가 점프 착지 --
+KOUCIKA_DASH_JUMP_LANDING =
+{
+	ANIM_NAME		= "DashJumpLanding",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+}
+----
+
+-- 앞 데미지 --
+KOUCIKA_DAMAGE_FRONT = 
+{
+	ANIM_NAME		= "DamageFront",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+	
+    SOUND_PLAY0	= { 0.02, "RidingPet_Koucika_DamageFront.ogg", 40, },
+	
+}
+----
+
+-- 뒤 데미지 --
+KOUCIKA_DAMAGE_BACK = 
+{
+	ANIM_NAME		= "DamageBack",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+	
+    SOUND_PLAY0	= { 0.02, "RidingPet_Koucika_DamageBack.ogg", 40, },
+	
+}
+----
+
+-- 죽음 --
+KOUCIKA_DYING =
+{
+	ANIM_NAME		= "Dying",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE"],
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+	INVINCIBLE		= { 0, 100, },
+
+    SOUND_PLAY0	= { 0.001, "RidingPet_Koucika_Dying.ogg", },
+    SOUND_PLAY1	= { 0.76, "Down.ogg", },
+	
+	
+	CAN_PUSH_UNIT	= FALSE,
+	CAN_PASS_UNIT	= TRUE,
+}
+----
+
+-- Z 공격 --
+KOUCIKA_ATTACK_Z =
+{
+	ANIM_NAME		= "Attack_Z",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	ANIM_SPEED		= 1.36,
+	LAND_CONNECT	= FALSE,
+	CAN_PUSH_UNIT	= FALSE,
+	TRANSITION		= TRUE,
+
+    SOUND_PLAY0	= { 0.34, "RidingPet_Koucika_AttackZ.ogg", },
+    SOUND_PLAY1	= { 0.47, "RidingPet_Koucika_AttackZ.ogg", },
+    SOUND_PLAY2 = { 0.69, "RidingPet_Koucika_AttackZ.ogg", },
+	
+	SPEED_TIME0		= { 1000, 35, 0.001, 2 },
+	SPEED_TIME1		= { -1, -1, 0.281, 1 },
+	SPEED_TIME2		= { -400, 40, 0.824, 1 },
+
+	EFFECT_SET_LIST = { "EffectSet_Riding_Pet_Coca_AttackZ", 0.01, },
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	SKILL_CANCEL_AFTER	= 0.90,
+	WALK_CANCEL_AFTER	= 0.90,
+	DASH_CANCEL_AFTER	= 0.90,
+}
+----
+
+-- 점프 Z 공격 --
+KOUCIKA_JUMP_ATTACK_Z =
+{
+	ANIM_NAME		= "JumpAttack_Z",
+	ANIM_SPEED		= 1.36,
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	-- SPEED_Y			= 0,
+	SPEED_TIME0		= { 0, -1, 0.001, 2 },
+	SPEED_TIME1		= { 0, 1, 0.15, 2 },
+	TRANSITION		= FALSE,
+	LAND_CONNECT	= FALSE,
+
+    SOUND_PLAY0	= { 0.01, "Swing_Big02.ogg", },
+	
+	EFFECT_SET_LIST = { "EffectSet_Riding_Koucika_JumpAttack", 0.01, },
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+}
+----
+
+-- X 공격 --
+KOUCIKA_ATTACK_X =
+{
+	ANIM_NAME		= "Attack_X",
+	ANIM_SPEED		= 1.4,
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+	
+	SUPER_ARMOR		= TRUE,
+	SUPER_ARMOR_NOT_RED	= TRUE,
+
+    SOUND_PLAY0	= { 0.38, "Wally9_LaserAttack.ogg", },
+	
+	EFFECT_SET_LIST = { "EffectSet_Riding_Pet_Coca_AttackX", 0.001, },
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	SKILL_CANCEL_AFTER	= 1.4,
+	WALK_CANCEL_AFTER	= 1.4,
+	DASH_CANCEL_AFTER	= 1.4,
+}
+----
+
+-- SPECIAL 공격 --
+KOUCIKA_ATTACK_SPECIAL =
+{
+	ANIM_NAME		= "Skill_C",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+	ANIM_SPEED		= 1.14,
+
+	--INVINCIBLE		= { 0, 100, },
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+	
+	SUPER_ARMOR		= TRUE,
+	SUPER_ARMOR_NOT_RED	= TRUE,
+
+    SOUND_PLAY0	= { 0.4, "Raven_WildCharge_Ready.ogg", },
+    SOUND_PLAY1	= { 1.006, "Coacktrigle_MagicAttackA.ogg", },
+	
+	SPEED_TIME0		= { -200, -1, 1.133, 3 },
+	SPEED_TIME1		= { 0, -1, 2.133, 3 },
+
+	EFFECT_SET_LIST = { "EffectSet_Riding_Pet_Coca_SkillC", 0.01, },
+	DELETE_EFFECT_SET_ON_STATE_END = TRUE,
+	DELETE_EFFECT_SET_ON_DIE = TRUE,
+	SKILL_CANCEL_AFTER	= 2.1,
+	WALK_CANCEL_AFTER	= 2.1,
+	DASH_CANCEL_AFTER	= 2.1,
+	NORMAL_CAMERA1_RATE			= 30,
+	CAMERA1 = 
+	{
+		{
+			CAMERA_TYPE		= CAMERA_TYPE["CT_PARTS_LOOK_DIRECT"],
+			LOOK_TYPE		= LOOK_TYPE["LT_BONE"],
+			LOOK_PARTS		= "Bip01_Head",
+			DISTANCE		= 1500,
+			HEIGHT			= 600,
+			ANGLEDEGREE		= 35,
+		},
+	},
+}
+----
+
+KOUCIKA_SIT_READY = 
+{
+	ANIM_NAME		= "SitReady",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+}
+
+KOUCIKA_SIT_WAIT = 
+{
+	ANIM_NAME		= "SitWait",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+}
+
+KOUCIKA_STAND_UP = 
+{
+	ANIM_NAME		= "StandUp",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+
+	CAN_PUSH_UNIT	= TRUE,
+	CAN_PASS_UNIT	= FALSE,
+}
+
+KOUCIKA_DOUBLE_JUMP = 
+{
+	ANIM_NAME		= "DubleJump",
+	PLAY_TYPE		= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	LAND_CONNECT	= FALSE,
+}

@@ -1,0 +1,532 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 80.0,
+	UNIT_HEIGHT		= 150.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	RENDER_PARAM	= RENDER_TYPE["RT_CARTOON"],	
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "rena_A_evoke_Dummy.X",
+	--ADD_ROTATE_Y			= -20.0,
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 0,
+	G_ACCEL				= 0,
+	MAX_G_SPEED			= 0,
+	
+	WALK_SPEED			= 500,
+	RUN_SPEED			= 500,
+	JUMP_SPEED			= 0,
+	DASH_JUMP_SPEED		= 0,
+}
+
+
+INIT_COMPONENT = 
+{
+	MP_CHANGE_RATE		= 0,
+	MP_CHARGE_RATE		= 0,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	SHADOW_SIZE			= 0,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	--SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	--SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	--SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "",
+	EXCLAMATION_MARK_SEQ	= "",
+	
+	HEAD_BONE_NAME			= "Object01",
+	
+	--HYPER_MODE_COUNT	= 0,
+	--MAX_HYPER_MODE_TIME	= 30,
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_STONE"],
+	
+	NOT_EXTRA_DAMAGE	= TRUE,
+	
+	SKY_DIE				= TRUE,
+	DIE_FLY             = 0,
+	--CAN_BE_STEPPED_ON = TRUE,
+}
+
+
+
+
+INIT_STATE = 
+{
+	--리액션 관련
+	{ STATE_NAME = "LIRE_EVOKE_TRAP_MEMO_START",					LUA_STATE_START_FUNC = "LIRE_EVOKE_TRAP_MEMO_START_STATE_START",
+															LUA_FRAME_MOVE_FUNC = "LIRE_EVOKE_TRAP_MEMO_START_FRAME_MOVE", },
+	{ STATE_NAME = "LIRE_EVOKE_TRAP_MEMO_WAIT",					LUA_FRAME_MOVE_FUNC = "LIRE_EVOKE_TRAP_MEMO_WAIT_FRAME_MOVE", },
+
+	{ STATE_NAME = "LIRE_EVOKE_TRAP_MEMO_WAIT_MEMO",				LUA_STATE_START_FUNC = "LIRE_EVOKE_TRAP_MEMO_WAIT_MEMO_STATE_START", },	
+	{ STATE_NAME = "LIRE_EVOKE_TRAP_MEMO_WALK",					},
+
+	{ STATE_NAME = "LIRE_EVOKE_TRAP_MEMO_SELF_DESTRUCTION",		LUA_STATE_START_FUNC = "LIRE_EVOKE_TRAP_MEMO_SELF_DESTRUCTION_STATE_START", },
+
+	{ STATE_NAME = "LIRE_EVOKE_TRAP_MEMO_DYING",					LUA_STATE_START_FUNC="LIRE_EVOKE_TRAP_MEMO_DYING_STATE_START", },
+		
+	
+	START_STATE					= "LIRE_EVOKE_TRAP_MEMO_START",
+	WAIT_STATE					= "LIRE_EVOKE_TRAP_MEMO_WAIT",
+
+	SMALL_DAMAGE_LAND_FRONT		= "LIRE_EVOKE_TRAP_MEMO_DYING",
+	SMALL_DAMAGE_LAND_BACK		= "LIRE_EVOKE_TRAP_MEMO_DYING",
+	BIG_DAMAGE_LAND_FRONT		= "LIRE_EVOKE_TRAP_MEMO_DYING",
+	BIG_DAMAGE_LAND_BACK		= "LIRE_EVOKE_TRAP_MEMO_DYING",
+	DOWN_DAMAGE_LAND_FRONT		= "LIRE_EVOKE_TRAP_MEMO_DYING",
+	DOWN_DAMAGE_LAND_BACK		= "LIRE_EVOKE_TRAP_MEMO_DYING",
+	FLY_DAMAGE_FRONT			= "LIRE_EVOKE_TRAP_MEMO_DYING",
+	FLY_DAMAGE_BACK				= "LIRE_EVOKE_TRAP_MEMO_DYING",
+	SMALL_DAMAGE_AIR			= "LIRE_EVOKE_TRAP_MEMO_DYING",	
+	BIG_DAMAGE_AIR				= "LIRE_EVOKE_TRAP_MEMO_DYING",
+	DOWN_DAMAGE_AIR				= "LIRE_EVOKE_TRAP_MEMO_DYING",
+	UP_DAMAGE					= "LIRE_EVOKE_TRAP_MEMO_DYING",
+	DAMAGE_REVENGE				= "LIRE_EVOKE_TRAP_MEMO_DYING",
+	
+	DYING_LAND_FRONT			= "LIRE_EVOKE_TRAP_MEMO_DYING",
+	DYING_LAND_BACK				= "LIRE_EVOKE_TRAP_MEMO_DYING",
+	DYING_SKY					= "LIRE_EVOKE_TRAP_MEMO_DYING",
+
+	REVENGE_ATTACK				= "",	
+	
+	SELF_DESTRUCTION_STATE		= "LIRE_EVOKE_TRAP_MEMO_SELF_DESTRUCTION"
+}
+
+INIT_AI = 
+{	
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_NEAR_FIRST"],
+		TARGET_INTERVAL				= 0.5,		-- sec
+		TARGET_NEAR_RANGE			= 100,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 4000,		-- cm
+		TARGET_LOST_RANGE			= 9000,		-- cm
+		TARGET_SUCCESS_RATE			= 100,  --50,		-- %
+		ATTACK_TARGET_RATE			= 80, -- 80,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 80, -- 80,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+
+		MANUAL_TARGETING_FUNC		= "LIRE_EVOKE_TRAP_MEMO_MANUAL_TARGET",
+	},
+
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 600,
+		DEST_GAP			= 10,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 200,
+		
+		DIR_CHANGE_INTERVAL = 0.5,
+		
+		WALK_INTERVAL		= 0.5,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,		
+		
+	},	
+
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 0, --50,		
+		PATROL_RANGE			= 200,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+}
+
+function LIRE_EVOKE_TRAP_MEMO_MANUAL_TARGET( pKTDXApp, pX2Game, pNPCUnit )
+
+	local iTargetFlag = 2
+	local eGameType = pX2Game:GetGameType()
+	if eGameType == 1 then
+		-- pvp
+		iTargetFlag = 0
+	else
+		-- dungeon
+		iTargetFlag = 1
+	end
+
+	local pUnit = pX2Game:GetNearestUnit_LUA( pNPCUnit, iTargetFlag )
+	
+	if pUnit ~= nil then               
+         pNPCUnit:SetTargetUnit( pUnit )
+	end    
+end
+
+LIRE_EVOKE_TRAP_MEMO_START = 
+{
+	ANIM_NAME					= "rana_A_evoke_Dummy",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	--NEVER_MOVE					= TRUE,
+	--RIGHT						= TRUE,
+	
+	SHOW_NAME					= FALSE,
+	
+	ATTACK_TIME0				= { 0.25, 0.7 },
+	
+	DAMAGE_DATA = 
+	{
+					
+		
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_LIGHTNING"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		PVP_RATE		= 0.75,
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 0.48,
+		},
+		
+
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		ARRANGED_FLY			= TRUE,
+		BACK_SPEED_Y			= 0.0,
+
+		RE_ATTACK				= TRUE,		
+		HIT_GAP					= 0.1,
+		
+		HIT_ADD_MP     			= 0.13,
+		TECH_POINT				= 6,
+		
+	
+	},
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"LIRE_EVOKE_TRAP_MEMO_WAIT",		"CT_LIRE_EVOKE_TRAP_MEMO_WAIT"				},
+	},
+	
+	CT_LIRE_EVOKE_TRAP_MEMO_WAIT = 
+	{
+		STATE_TIME_OVER			= 0.7,
+	},
+}
+
+
+
+
+
+
+
+LIRE_EVOKE_TRAP_MEMO_WAIT = 
+{
+	ANIM_NAME					= "rana_A_evoke_Dummy",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,	
+
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	--NEVER_MOVE					= TRUE,
+	--RIGHT						= TRUE,
+	
+	SHOW_NAME					= FALSE,	
+
+	ATTACK_TIME0				= { 0, 100 },
+
+	DAMAGE_DATA = 
+	{
+					
+		
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_LIGHTNING"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		PVP_RATE		= 0.75,
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 0.48,
+		},
+
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		ARRANGED_FLY			= TRUE,
+		BACK_SPEED_Y			= 0.0,
+
+		RE_ATTACK				= TRUE,		
+		HIT_GAP					= 0.1,
+		
+		HIT_ADD_MP     			= 0.13,
+		TECH_POINT				= 6,
+		
+	
+	},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"LIRE_EVOKE_TRAP_MEMO_WAIT_MEMO",		"CT_LIRE_EVOKE_TRAP_MEMO_DYING",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"LIRE_EVOKE_TRAP_MEMO_DYING",		"CT_LIRE_EVOKE_TRAP_MEMO_ATTACK",	},
+	},
+	
+	CT_LIRE_EVOKE_TRAP_MEMO_DYING =
+	{
+		STATE_TIME_OVER = 4,		-- fix!!
+	},
+
+	CT_LIRE_EVOKE_TRAP_MEMO_ATTACK =
+	{
+		ATTACK_SUCCESS = TRUE,
+	},
+}
+
+LIRE_EVOKE_TRAP_MEMO_WAIT_MEMO = 
+{
+	ANIM_NAME					= "rana_A_evoke_Dummy",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,	
+
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	--NEVER_MOVE					= TRUE,
+	--RIGHT						= TRUE,
+	
+	SHOW_NAME					= FALSE,
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	ATTACK_TIME0				= { 0, 100 },
+
+	DAMAGE_DATA = 
+	{
+					
+		
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_LIGHTNING"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		PVP_RATE		= 0.75,
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 0.48,
+		},
+
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		ARRANGED_FLY			= TRUE,
+		BACK_SPEED_Y			= 0.0,
+
+		RE_ATTACK				= TRUE,		
+		HIT_GAP					= 0.1,
+		
+		HIT_ADD_MP     			= 0.13,
+		TECH_POINT				= 6,
+		
+	
+	},
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"LIRE_EVOKE_TRAP_MEMO_WALK",			},	
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"LIRE_EVOKE_TRAP_MEMO_WALK",			},	
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"LIRE_EVOKE_TRAP_MEMO_DYING",		"CT_LIRE_EVOKE_TRAP_MEMO_ATTACK",	},
+	},
+
+	CT_LIRE_EVOKE_TRAP_MEMO_ATTACK =
+	{
+		ATTACK_SUCCESS = TRUE,
+	},
+}
+
+LIRE_EVOKE_TRAP_MEMO_WALK = 
+{
+	ANIM_NAME					= "rana_A_evoke_Dummy",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,	
+
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	SHOW_NAME					= FALSE,
+
+	ATTACK_TIME0				= { 0, 100 },
+
+	DAMAGE_DATA = 
+	{
+					
+		
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_LIGHTNING"],
+		REACT_TYPE		= REACT_TYPE["RT_SMALL_DAMAGE"],
+		
+		PVP_RATE		= 0.75,
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 0.48,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		ARRANGED_FLY			= TRUE,
+		BACK_SPEED_Y			= 0.0,
+
+		RE_ATTACK				= TRUE,		
+		HIT_GAP					= 0.1,
+		
+		HIT_ADD_MP     			= 0.13,
+		TECH_POINT				= 6,
+		
+	
+	},
+
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"LIRE_EVOKE_TRAP_MEMO_DYING",		"CT_LIRE_EVOKE_TRAP_MEMO_ATTACK_NEARBY_ENEMY",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"LIRE_EVOKE_TRAP_MEMO_DYING",		"CT_LIRE_EVOKE_TRAP_MEMO_ATTACK_BY_TOUCH",	},
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"LIRE_EVOKE_TRAP_MEMO_WAIT_MEMO",						},		
+	},
+
+	CT_LIRE_EVOKE_TRAP_MEMO_ATTACK_NEARBY_ENEMY =
+	{
+		DISTANCE_TO_TARGET_NEAR		= 250,
+	},
+	CT_LIRE_EVOKE_TRAP_MEMO_ATTACK_BY_TOUCH =
+	{
+		ATTACK_SUCCESS = TRUE,
+	},
+}
+
+LIRE_EVOKE_TRAP_MEMO_SELF_DESTRUCTION =
+{
+	ANIM_NAME					= "rana_A_evoke_Dummy",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	NEVER_MOVE					= TRUE,
+	
+	SHOW						= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+
+LIRE_EVOKE_TRAP_MEMO_DYING = 
+{
+	ANIM_NAME					= "rana_A_evoke_Dummy",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	--SHOW_NAME			= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	NEVER_MOVE					= FALSE,
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	SOUND_PLAY0			= { 0.01, "Aisha_EM_Stone_Wall_End.ogg" },	
+
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_LIRE_EVOKE_TRAP_DYING", 0,
+	},
+}
+
+function LIRE_EVOKE_TRAP_MEMO_START_STATE_START( pKTDXApp, pX2Game, pNPCUnit )	
+	pNPCUnit:SetAIEnable( false )
+	pNPCUnit:StartSelfDestruction( 10 )
+	
+	local hEffect = pNPCUnit:GetEffectSet_LUA( 0 )
+	local pEffectSet = pX2Game:GetEffectSet()
+		
+	if 0 == hEffect then
+		hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_LIRE_EVOKE_TRAP", pNPCUnit )
+		pNPCUnit:SetEffectSet_LUA( 0, hEffect )
+	end
+		
+end
+
+function LIRE_EVOKE_TRAP_MEMO_WAIT_MEMO_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	pNPCUnit:SetAIEnable( true )
+end
+
+function LIRE_EVOKE_TRAP_MEMO_START_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )	
+	if pNPCUnit:AnimEventTimer_LUA( 0.25 ) then
+		pNPCUnit:SetPassiveSpeed( 700, 0 );
+	end
+end
+
+
+function LIRE_EVOKE_TRAP_MEMO_DYING_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	local hEffect = pNPCUnit:GetEffectSet_LUA( 0 )
+	local pEffectSet = pX2Game:GetEffectSet()
+		
+	if nil ~= hEffect then
+		pEffectSet:StopEffectSet_LUA( hEffect )
+		pNPCUnit:ClearEffectSet_LUA( 0 )
+	end
+
+	pNPCUnit:StopSound_LUA( "Lena_Evoke_afterEffect_1.ogg" )
+end
+
+
+function LIRE_EVOKE_TRAP_MEMO_WAIT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	
+	if pNPCUnit:AnimEventTimer_LUA( 0.3 ) then
+		pNPCUnit:PlaySound_LUA( "Lena_Evoke_afterEffect_1.ogg" )
+	end
+
+	if pNPCUnit:GetNowHP() <= 0 then
+		pNPCUnit:StateChange_LUA( "LIRE_EVOKE_TRAP_MEMO_DYING" )
+	end
+
+end
+
+
+function LIRE_EVOKE_TRAP_MEMO_SELF_DESTRUCTION_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	pNPCUnit:SetNowHP_LUA( 0 )
+end

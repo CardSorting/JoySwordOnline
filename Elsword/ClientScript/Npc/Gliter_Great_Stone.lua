@@ -1,0 +1,321 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM =
+{
+	UNIT_WIDTH		= 50.0,
+	UNIT_HEIGHT		= 50.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+
+	--UNIT_SCALE      = 1.2,
+}
+
+
+INIT_DEVICE =
+{
+	READY_TEXTURE =
+	{
+	},
+
+	READY_SOUND =
+	{
+     "Gliter_Great_Stone_AttackA.ogg",
+     "Gliter_Great_Stone_RockBroken.ogg",
+	 "GlitterVoice_AttackRoar2.ogg",
+	 
+	 "GlitterVoice_DeathRoar.ogg",
+	  
+	},
+
+	READY_XSKIN_MESH =
+	{
+	},
+}
+
+INIT_MOTION =
+{
+	MOTION_FILE_NAME		= "NUI_GLITER_GREAT_STONE.x",
+}
+
+INIT_PHYSIC =
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+
+	WALK_SPEED			= 200,
+	RUN_SPEED			= 400,
+	JUMP_SPEED			= 1200,
+	DASH_JUMP_SPEED		= 2000,
+}
+
+
+INIT_COMPONENT =
+{
+	MP_CHANGE_RATE			= 1,
+	MP_CHARGE_RATE			= 130,
+
+	SHADOW_SIZE				= 200,
+	SHADOW_FILE_NAME		= "shadow.dds",
+
+	SMALL_HP_BAR_BLUE		= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED		= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW		= "Small_HP_bar_Yellow.TGA",
+
+	--DRAW_SMALL_MP_BAR		= TRUE,
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	--MIND_FLAG_HEIGHT		= 230,
+	
+	HEAD_BONE_NAME		= "ARC_Bip01_HeadNub",
+	
+	HITTED_TYPE				= HITTED_TYPE["HTD_MEAT"],
+
+	DAMAGE_DOWN				= TRUE,
+
+    --SKY_DIE             = TRUE,
+    DIE_FLY					= 0,
+
+
+	--BOSS_GAGE_FACE_TEX			= "DLG_BossState.tga",
+	--BOSS_GAGE_FACE_TEX_PIECE	= "SUMMON_BOSS",
+	--BOSS_NAME_TEX				= "HQ_BOSS_NAME_SUMMON_BOSS.dds",
+
+}
+
+INIT_STATE =
+{
+	{ STATE_NAME = "GLITER_GREAT_STONE_START",							LUA_STATE_START_FUNC = "GLITER_GREAT_STONE_START_STATE_START_FUNC",				},
+	{ STATE_NAME = "GLITER_GREAT_STONE_WAIT",									},
+	{ STATE_NAME = "GLITER_GREAT_STONE_DYING_WITH_TOWER_FRONT",					},
+	{ STATE_NAME = "GLITER_GREAT_STONE_DYING_WITH_TOWER_BACK",					},
+	{ STATE_NAME = "GLITER_GREAT_STONE_DYING",									},
+	{ STATE_NAME = "GLITER_GREAT_STONE_ATTACK_A",								},
+
+
+
+	START_STATE					= "GLITER_GREAT_STONE_START",
+	WAIT_STATE					= "GLITER_GREAT_STONE_WAIT",
+
+	SMALL_DAMAGE_LAND_FRONT		= "GLITER_GREAT_STONE_WAIT",
+	SMALL_DAMAGE_LAND_BACK		= "GLITER_GREAT_STONE_WAIT",
+	SMALL_DAMAGE_AIR			= "GLITER_GREAT_STONE_WAIT",
+
+	BIG_DAMAGE_LAND_FRONT		= "GLITER_GREAT_STONE_WAIT",
+	BIG_DAMAGE_LAND_BACK		= "GLITER_GREAT_STONE_WAIT",
+	BIG_DAMAGE_AIR				= "GLITER_GREAT_STONE_WAIT",
+
+	DOWN_DAMAGE_LAND_FRONT		= "GLITER_GREAT_STONE_WAIT",
+	DOWN_DAMAGE_LAND_BACK		= "GLITER_GREAT_STONE_WAIT",
+	DOWN_DAMAGE_AIR				= "GLITER_GREAT_STONE_WAIT",
+
+	UP_DAMAGE					= "GLITER_GREAT_STONE_WAIT",
+
+	FLY_DAMAGE_FRONT			= "GLITER_GREAT_STONE_WAIT",
+	FLY_DAMAGE_BACK				= "GLITER_GREAT_STONE_WAIT",
+
+	--REVENGE_ATTACK				= "",
+	DAMAGE_REVENGE				= "GLITER_GREAT_STONE_WAIT",
+
+	DYING_LAND_FRONT			= "GLITER_GREAT_STONE_DYING",
+	DYING_LAND_BACK				= "GLITER_GREAT_STONE_DYING",
+	--DYING_SKY					= "",
+
+	--DOWN_DAMAGE_AIR_LANDING		= "",
+
+}
+
+INIT_AI =
+{
+	TARGET =
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_NEAR_FIRST"],
+		TARGET_INTERVAL				= 0.5,		-- sec
+		TARGET_NEAR_RANGE			= 900,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 1500,		-- cm
+		TARGET_LOST_RANGE			= 2000,		-- cm
+		TARGET_SUCCESS_RATE			= 50,  --60,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 90,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 100, -- 60,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE =
+	{
+		MOVE_SPLIT_RANGE	= 700,
+		DEST_GAP			= 800,
+		MOVE_GAP			= 900,
+
+		DIR_CHANGE_INTERVAL = 0.1,
+
+		WALK_INTERVAL		= 3,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 40,
+		UP_DOWN_RATE		= 20,
+		DOWN_JUMP_RATE		= 100,    --  20,
+		DOWN_DOWN_RATE		= 40,
+	},
+
+	PATROL_MOVE =
+	{
+		PATROL_BEGIN_RATE		= 0, --50,
+		PATROL_RANGE			= 500,
+		PATROL_COOL_TIME		= 0.1,
+	},
+
+	ESCAPE_MOVE =
+	{
+		MOVE_SPLIT_RANGE	= 300,	-- cm
+		ESCAPE_GAP			= 1800,	-- 이 거리 보다 멀어지면 도망 성공
+
+		WALK_INTERVAL		= 0.1,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 10,
+
+		JUMP_INTERVAL		= 3,
+		UP_JUMP_RATE		= 50,
+		UP_DOWN_RATE		= 50,
+		DOWN_JUMP_RATE		= 50,
+		DOWN_DOWN_RATE		= 50,
+	},
+
+	ESCAPE_CONDITION =
+	{
+		RATE				= 0, -- 50,
+		ESCAPE_RANGE		= 2000,		-- 이 범위 안에 들어오면 타격당하지 않아도 RATE에 지정된 확률로 도망
+	}
+}
+
+GLITER_GREAT_STONE_START =
+{
+	--SHOW						= FALSE,
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	INVINCIBLE					= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],		"GLITER_GREAT_STONE_WAIT",	 	},
+	},
+}
+
+GLITER_GREAT_STONE_WAIT =
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	NEVER_MOVE					= TRUE,
+	--SHOW						= TRUE,
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"GLITER_GREAT_STONE_ATTACK_A",			"CT_GLITER_GREAT_STONE_ATTACK_A", 	},
+	},
+	
+	CT_GLITER_GREAT_STONE_ATTACK_A = 
+	{
+		RATE = 50,
+	},
+}
+
+GLITER_GREAT_STONE_DYING_WITH_TOWER_BACK =
+{
+	ANIM_NAME					= "DyingWithTowerBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	NEVER_MOVE					= TRUE,
+
+    SOUND_PLAY0			= { 2.412, "GlitterVoice_AttackRoar2.ogg" },
+	
+	DYING_END					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+GLITER_GREAT_STONE_DYING_WITH_TOWER_FRONT =
+{
+	ANIM_NAME					= "DyingWithTowerFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	INVINCIBLE					= { 0, 100, },
+
+    SOUND_PLAY0			= { 2.141, "GlitterVoice_AttackRoar2.ogg" },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	NEVER_MOVE					= TRUE,
+	
+	DYING_END					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+GLITER_GREAT_STONE_DYING =
+{
+	ANIM_NAME					= "Dying",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	INVINCIBLE					= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	NEVER_MOVE					= TRUE,
+
+    SOUND_PLAY0			= { 0.1, "GlitterVoice_DeathRoar.ogg" },
+	
+	DYING_END					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+
+GLITER_GREAT_STONE_ATTACK_A =
+{
+	ANIM_NAME					= "AttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	NEVER_MOVE					= TRUE,
+
+    SOUND_PLAY0			= { 2.248, "Gliter_Great_Stone_AttackA.ogg" },
+	
+	EFFECT_SET_LIST = 
+	{
+		"EffectSet_Gliter_Great_Stone_Attack_A_Start", 0.0,
+	},
+	
+	EVENT_PROCESS =
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],		"GLITER_GREAT_STONE_ATTACK_A",							},
+	},
+}
+
+----------- state function--------------------------------------------------------------
+----------------------------------------------------------------------------------------
+function GLITER_GREAT_STONE_START_STATE_START_FUNC( pKTDXApp, pX2Game, pNPCUnit )
+	local pSiegeNpc = pX2Game:GetNPCUnitByType( NPC_UNIT_ID["NUI_SIEGE_TOWER"] )
+	
+	if pSiegeNpc ~= nil then
+		local vBonePos	= pSiegeNpc:GetBonePos_LUA( "Dummy_Gliter" )
+		pNPCUnit:SetPosition( vBonePos )
+	
+		pNPCUnit:AddConsultNpc( pSiegeNpc )
+		pSiegeNpc:AddConsultNpc( pNPCUnit )	
+	end
+end

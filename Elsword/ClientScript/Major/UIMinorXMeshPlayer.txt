@@ -1,0 +1,9 @@
+
+XMESHPLAYER "UIMinor" 1.00 
+{  
+	TEMPLET "testMesh" 
+	{
+	}
+}
+
+

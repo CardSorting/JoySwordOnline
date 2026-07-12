@@ -1,0 +1,191 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+
+STAGE_LIST = 
+{
+
+	--던전 맵 없음
+
+	STAGE0 =
+	{
+		WORLD_ID = WORLD_ID["WI_DEFENCE_DUNGEON_HARD_STAGE"],
+		START_MOTION = TRUE,
+		
+		READY_NPC = 
+		{
+			--기본 몬스터 그룹--
+			NPC_UNIT_ID["NUI_DEFENCE_CRYSTAL"],
+			NPC_UNIT_ID["NUI_DEFENCE_DARKNESS_BOSS_HARD"],
+			NPC_UNIT_ID["NUI_DEFENCE_DARK_BALL_HARD"],
+			NPC_UNIT_ID["NUI_DEFENCE_SQUARE"],
+			
+			
+			--소환 몬스터 그룹--
+			NPC_UNIT_ID["NUI_DEFENCE_THIEF_THIN_ZERO"],
+			NPC_UNIT_ID["NUI_DEFENCE_GHOST_MAGICIAN"],
+			NPC_UNIT_ID["NUI_DEFENCE_SOLDIER_BENDERS"],
+			NPC_UNIT_ID["NUI_DEFENCE_LIZARDMAN_HIGH"],
+			NPC_UNIT_ID["NUI_DEFENCE_AIRSHIP_SOLDIER_SWORDMAN"],
+			NPC_UNIT_ID["NUI_DEFENCE_HAMMER"],
+			NPC_UNIT_ID["NUI_DEFENCE_THIEF_GREAT"],
+			NPC_UNIT_ID["NUI_DEFENCE_SHIELD"],
+			NPC_UNIT_ID["NUI_DEFENCE_ARCHER"],
+			NPC_UNIT_ID["NUI_DEFENCE_WALKER"],
+			NPC_UNIT_ID["NUI_DEFENCE_STINGER"],
+			NPC_UNIT_ID["NUI_DEFENCE_GLITER_LANCE"],
+			NPC_UNIT_ID["NUI_DEFENCE_GOLEM"],
+			NPC_UNIT_ID["NUI_DEFENCE_GOLEM_RAGE"],
+			NPC_UNIT_ID["NUI_DEFENCE_GOLEM_BOSS"],
+			NPC_UNIT_ID["NUI_DEFENCE_THIEF_BOSS"],
+		},
+
+		SUB_STAGE0 =
+		{
+			START_LINE_SET      = -1,
+			MAIN_LINE_SET       = 0,
+			END_LINE_SET        = -1,
+
+			GO_TYPE             = GO_TYPE["GT_NONE"],
+			--클리어 조건--
+			CLEAR_COND0 =
+			{
+				CLEAR_CONDITION["CC_KILL_NPC_TYPE"],
+				NPC_ID	 =
+				{ 
+					NPC_UNIT_ID["NUI_DEFENCE_DARKNESS_BOSS_HARD"],
+				},
+
+				NEXT_STAGE0 = { CLEAR_TYPE["CT_GAME"], 0, 0, 100 },
+			},
+			--실패 조건---
+			CLEAR_COND1 =
+			{
+				CLEAR_CONDITION["CC_KILL_NPC_TYPE"],
+				NPC_ID	 =
+				{ 
+					NPC_UNIT_ID["NUI_DEFENCE_CRYSTAL"],
+				},
+
+				NEXT_STAGE0 = { CLEAR_TYPE["CT_GAME"], 0, 0, 100 },
+			},
+
+			CREATED_NPC_DROP_TIMES =
+			{
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_CHEST"],
+					DROP_TIMES	= 12,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_AIRSHIP_SOLDIER_SWORDMAN"],
+					DROP_TIMES	= 5,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_ARCHER"],
+					DROP_TIMES	= 14,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_DURAHAN"],
+					DROP_TIMES	= 3,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_GHOST_MAGICIAN"],
+					DROP_TIMES	= 12,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_GLITER_LANCE"],
+					DROP_TIMES	= 14,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_GOLEM"],
+					DROP_TIMES	= 8,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_GOLEM_BOSS"],
+					DROP_TIMES	= 3,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_GOLEM_RAGE"],
+					DROP_TIMES	= 8,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_HAMMER"],
+					DROP_TIMES	= 9,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_HAMMER_BOSS"],
+					DROP_TIMES	= 3,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_SHADOW_BLAST"],
+					DROP_TIMES	= 215,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_SHADOW_BLAST_BOSS"],
+					DROP_TIMES	= 24,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_SHIELD"],
+					DROP_TIMES	= 14,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_SOLDIER_BENDERS"],
+					DROP_TIMES	= 12,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_STINGER"],
+					DROP_TIMES	= 3,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_THIEF_BOSS"],
+					DROP_TIMES	= 3,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_THIEF_GREAT"],
+					DROP_TIMES	= 9,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_THIEF_THIN_ZERO"],
+					DROP_TIMES	= 6,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_WALKER"],
+					DROP_TIMES	= 12,
+				},
+			},
+
+			NPC_GROUP =
+			{
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_CRYSTAL"],
+					START_POS	= { 33, },
+					ALLY_NPC 	= TRUE,	
+					KEY_CODE	= 5,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_SQUARE"],
+					START_POS	= { 33, },
+					KEY_CODE	= 10,
+					ACTIVE		= FALSE,
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_DARKNESS_BOSS_HARD"],
+					START_POS	= { 34, },
+					KEY_CODE	= 20,
+					ACTIVE		= TRUE,  
+				},
+				{
+					NPC_ID		= NPC_UNIT_ID["NUI_DEFENCE_DARK_BALL_HARD"],
+					START_POS	= { 1, },
+					ACTIVE		= FALSE,
+					KEY_CODE	= 1,
+					IS_RIGHT 	= TRUE,--12,14
+				},
+			},
+
+			TRIGGER_LIST =
+			{
+			},
+		},
+	},
+}

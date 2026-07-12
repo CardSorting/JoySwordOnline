@@ -1,0 +1,255 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 50.0,
+	UNIT_HEIGHT		= 150.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+}
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Mast.x",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 0,
+	RUN_SPEED			= 0,
+	JUMP_SPEED			= 0,
+	DASH_JUMP_SPEED		= 0,
+}
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 1250,
+	MP_CHANGE_RATE		= 0,
+	MP_CHARGE_RATE		= 0,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	SHADOW_SIZE			= 0,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "",
+	EXCLAMATION_MARK_SEQ	= "",
+	
+	HEAD_BONE_NAME			= "Hive",
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+
+	HITTED_TYPE			= HITTED_TYPE["HTD_BEEHOUSE"],
+	
+	DAMAGE_DOWN         = FALSE,
+
+
+	
+
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "MAST_B_START",				}, --LUA_STATE_START_FUNC = "MAST_B_START_STATE_START", },
+	{ STATE_NAME = "MAST_B_WAIT",				},
+	{ STATE_NAME = "MAST_B_RESPAWN",			LUA_FRAME_MOVE_FUNC = "MAST_B_RESPAWN_FRAME_MOVE", },
+		
+	--리액션 관련
+	
+	{ STATE_NAME = "MAST_B_DAMAGE",				},	
+	{ STATE_NAME = "MAST_B_DYING",				}, --LUA_STATE_START_FUNC = "MAST_B_DYING_STATE_START", },
+	
+	START_STATE					= "MAST_B_START",
+	WAIT_STATE					= "MAST_B_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "MAST_B_DAMAGE",
+	SMALL_DAMAGE_LAND_BACK		= "MAST_B_DAMAGE",
+	BIG_DAMAGE_LAND_FRONT		= "MAST_B_DAMAGE",
+	BIG_DAMAGE_LAND_BACK		= "MAST_B_DAMAGE",
+	DOWN_DAMAGE_LAND_FRONT		= "MAST_B_DAMAGE",
+	DOWN_DAMAGE_LAND_BACK		= "MAST_B_DAMAGE",
+	FLY_DAMAGE_FRONT			= "MAST_B_DAMAGE",
+	FLY_DAMAGE_BACK				= "MAST_B_DAMAGE",
+	SMALL_DAMAGE_AIR			= "MAST_B_DAMAGE",	
+	BIG_DAMAGE_AIR				= "MAST_B_DAMAGE",
+	DOWN_DAMAGE_AIR				= "MAST_B_DAMAGE",
+	UP_DAMAGE					= "MAST_B_DAMAGE",
+	DAMAGE_REVENGE				= "MAST_B_DAMAGE",
+	
+	DYING_LAND_FRONT			= "MAST_B_DYING",
+	DYING_LAND_BACK				= "MAST_B_DYING",
+	DYING_SKY					= "MAST_B_DYING",
+
+	REVENGE_ATTACK				= "",	
+}
+
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 99999,	-- sec
+		TARGET_NEAR_RANGE			= 0,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 0,		-- cm
+		TARGET_LOST_RANGE			= 0,		-- cm
+		TARGET_SUCCESS_RATE			= 0,		-- %
+		ATTACK_TARGET_RATE			= 0,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 0,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+}
+
+MAST_B_START = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	NEVER_MOVE					= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"MAST_B_WAIT",	},
+	},
+}
+
+MAST_B_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	NEVER_MOVE					= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],			"MAST_B_RESPAWN",	"CF_MAST_B_RESPAWN",	},
+	},
+}
+
+MAST_B_RESPAWN = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	NEVER_MOVE					= TRUE,
+	COOL_TIME					= 2,
+	SUPER_ARMOR					= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"MAST_B_WAIT",	},
+	},
+}
+
+MAST_B_DAMAGE =
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	NEVER_MOVE					= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"MAST_B_WAIT",		},
+	},
+}
+
+MAST_B_DYING = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+
+
+function CF_MAST_B_RESPAWN( pKTDXApp, pX2Game, pNPCUnit )
+
+	--nMAST_B_respawn	    = pX2Game:LiveNPCNumType_LUA( NPC_UNIT_ID["NUI_GLITER_THIEF_GREAT"] )
+		nMast_B				= pX2Game:LiveNPCNumType_LUA( NPC_UNIT_ID["NUI_GLITER_LANCE_GREAT_SHIP"] )
+		
+	if nMast_B < 1 then
+		return true
+	else
+		return false
+	end
+	
+end
+
+
+function MAST_B_RESPAWN_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.8 ) then		
+		pos = pNPCUnit:GetPos()
+		pos.y = pos.y -60
+		
+		pX2Game:CreateNPCReq_LUA( NPC_UNIT_ID["NUI_GLITER_LANCE_GREAT_SHIP"], pNPCUnit:GetHardLevel(), TRUE, pos, pNPCUnit:GetIsRight(), 0, true  )
+		
+		if pX2Game:IsHost() then 
+			nowHP = pNPCUnit:GetNowHP()			
+			pNPCUnit:SetNowHP_LUA( nowHP - 1.0 )
+		end
+	end		
+end
+
+

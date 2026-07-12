@@ -1,0 +1,801 @@
+Changed database context to 'Account'.
+name                                                                                                                             definition                                                                                                                                                                                                                                                      
+-------------------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+EBI_Cash_Charge_SET                                                                                                              /*
+프로시저명 : dbo.EBI_Cash_Charge_SET
+내용 : 캐시 충전
+작성일 : 2011-03-09
+작성자 : 김병일
+-- ## 관련 테이블 ##--
+	dbo.EB_Cash
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	@CD_USERUID				bigint			-- 계정 UID
+	@ST_USERID				nvarchar(50)	-- 계정 아이디
+	@NO_CHARGE_CASH			int				--
+P_MUser_INS_TW                                                                                                                   CREATE PROCEDURE [dbo].[P_MUser_INS_TW]
+	@strUserID_ [nvarchar](20),
+	@strPassword_ [nvarchar](20),
+	@strUserName_ [nvarchar](25),
+	@iGuestUser_ [bit],
+	@iOK [int] = 0,
+	@iUserUID [bigint] = 0
+AS
+SET NOCOUNT ON;
+
+IF EXISTS(SELECT * FROM dbo.Muser
+
+(2 rows affected)
+Changed database context to 'ES_BILLING'.
+name                                                                                                                             definition                                                                                                                                                                                                                                                      
+-------------------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+EBP_BillOrder_GameServer_SET                                                                                                     /*
+프로시저명 : dbo.EBP_BillOrder_GameServer_SET
+내용 : 주문 등록
+작성일 : 2011-02-15
+작성자 : 김병일
+-- ## 관련 테이블 ##--
+	없음
+-- ## 관련 프로시저 ## --
+	dbo.EBI_TransactionNumber_INT
+	dbo.EBI_BillOrder_SET
+	dbo.EBI_SP_ErrorLog_INT
+-- ## 입력 ## --
+	@ST_TRANSACTION		varchar(
+EBP_BillOrder_Bonus_SET                                                                                                          /*
+프로시저명 : dbo.EBP_BillOrder_Bonus_SET
+내용 : 보너스 캐시 충전 전용
+작성일 : 2011-11-11
+작성자 : KOG_M
+-- ## 관련 테이블 ##--
+	dbo.EB_BillOrder
+-- ## 관련 프로시저 ## --
+	dbo.EBI_TransactionNumber_INT
+	dbo.EBI_Cash_Charge_SET
+	dbo.EBI_CashLog_INT
+	dbo.EBI_SP_ErrorLog_INT
+
+EBP_BuyItem                                                                                                                      /*
+프로시저명 : dbo.EBP_BuyItem
+내용 : 아이템 구매
+작성일 : 2011-02-22
+작성자 : KOG_M
+수정일 : 2011-09-28
+수정자 : KOG_M
+수정내용 : 캐시를 선택(통합, 캐시, 보너스) 사용 하도록 조정
+-- ## 관련 테이블 ##--
+	없음
+-- ## 관련 프로시저 ## --
+	dbo.EBI_TransactionNumber_INT
+	dbo.EBI_Cash_UseFirstCash
+	dbo.EBI_
+EBP_BillOrder_Result                                                                                                             /*
+프로시저명 : dbo.EBP_BillOrder_Result
+내용 : 주문 완료(주문 결과 처리)
+작성일 : 2011-02-18
+작성자 : KOG_M
+수정일 : 2011-09-28
+수정자 : KOG_M
+수정내용 : 캐시, 보너스 구분하여 출력 추가
+-- ## 관련 테이블 ##--
+	dbo.EB_BillOrder
+-- ## 관련 프로시저 ## --
+	dbo.EBI_BillEvent_CHK
+	dbo.EBI_BillEvent_JOIN
+P_LSquareTable_SEL                                                                                                               CREATE PROCEDURE [dbo].[P_LSquareTable_SEL]
+	@int1	INT,
+	@str1	nvarchar
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT 1 as COLUMNAME
+	RETURN
+END
+                                                                                                                
+P_LServerList_UPD                                                                                                                CREATE PROCEDURE [dbo].[P_LServerList_UPD]
+	@int1	INT,
+	@int2	INT,
+	@int3	INT
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT 1 as COLUMNAME
+	RETURN
+END
+                                                                                                         
+P_LServerList_By_PublicIP_SEL                                                                                                    CREATE PROCEDURE [dbo].[P_LServerList_By_PublicIP_SEL]
+	@int1	INT,
+	@int2	INT,
+	@str1	[nvarchar]
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT 1 as COLUMNAME
+	RETURN
+END
+                                                                                      
+P_LCenterProxy_By_ServerUID_SEL                                                                                                  CREATE PROCEDURE [dbo].[P_LCenterProxy_By_ServerUID_SEL]
+	@int1	INT,
+	@int2	INT
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT 1 as COLUMNAME
+	RETURN
+END
+                                                                                                        
+P_Manager_ReleaseTick_UPD                                                                                                        -- =============================================
+-- Author: JR
+-- Create date: 2013-02-21
+-- Update date: 2013-02-21
+-- Description:	 틱변경
+-- =============================================
+CREATE PROC [dbo].[P_Manager_ReleaseTick_UPD]
+	@Type	TINYINT =
+P_Manager_ProductShowManager_DEL                                                                                                 CREATE PROCEDURE [dbo].[P_Manager_ProductShowManager_DEL]
+	@CD_SHOW_NUM	INT
+,	@Result			INT = 0 OUTPUT
+AS
+SET NOCOUNT ON;
+
+DECLARE @EXEC_SCRIPT	NVARCHAR(MAX)
+,		@SQLUser		NVARCHAR(50)
+
+BEGIN TRAN
+	
+	DELETE FROM dbo.EB_ProductShowManager WHERE CD
+P_Manager_ProductShopManager_DEL                                                                                                 CREATE PROCEDURE [dbo].[P_Manager_ProductShopManager_DEL]
+	@CD_PRODUCT_SM	INT
+,	@Result			INT = 0 OUTPUT
+AS
+SET NOCOUNT ON;
+
+DECLARE @EXEC_SCRIPT	NVARCHAR(MAX)
+,		@SQLUser		NVARCHAR(50)
+
+BEGIN TRAN
+	
+	DELETE FROM dbo.EB_ProductShopManager WHERE 
+P_Manager_ProductLimited_DEL                                                                                                     CREATE PROCEDURE [dbo].[P_Manager_ProductLimited_DEL]
+	@CD_PRODUCT_SM	INT
+,	@Result			INT = 0 OUTPUT
+AS
+SET NOCOUNT ON;
+
+DECLARE @EXEC_SCRIPT	NVARCHAR(MAX)
+,		@SQLUser		NVARCHAR(50)
+
+BEGIN TRAN
+	
+	DELETE FROM dbo.EB_ProductLimit WHERE CD_PRODUCT
+P_Manager_ProductInfo_DEL                                                                                                        CREATE PROCEDURE [dbo].[P_Manager_ProductInfo_DEL]
+	@CD_PRODUCTNO	BIGINT
+,	@Result			INT = 0 OUTPUT
+AS
+SET NOCOUNT ON;
+
+DECLARE @EXEC_SCRIPT	NVARCHAR(MAX)
+,		@SQLUser		NVARCHAR(50)
+
+BEGIN TRAN
+	
+	DELETE FROM dbo.EB_PRODUCT WHERE CD_PRODUCTNO = @
+P_Manager_ProductInfo_CHK                                                                                                        CREATE PROCEDURE [dbo].[P_Manager_ProductInfo_CHK]
+AS
+SET NOCOUNT ON
+
+SELECT	CD_PRODUCTNO
+FROM	ES_Billing.dbo.EB_Product WITH(NOLOCK)
+                                                                                                                    
+P_Manager_ProductAttr_DEL                                                                                                        CREATE PROCEDURE [dbo].[P_Manager_ProductAttr_DEL]
+	@CD_PRODUCTNO	BIGINT
+,	@Result			INT = 0 OUTPUT
+AS
+SET NOCOUNT ON;
+
+DECLARE @EXEC_SCRIPT	NVARCHAR(MAX)
+,		@SQLUser		NVARCHAR(50)
+
+BEGIN TRAN
+	
+	DELETE FROM dbo.EB_ProductAttribute WHERE CD_PROD
+P_Manager_ProductAttr_CHK                                                                                                        CREATE PROCEDURE [dbo].[P_Manager_ProductAttr_CHK]
+AS
+SET NOCOUNT ON
+
+SELECT	A.CD_PRODUCTNO
+FROM	ES_Billing.dbo.EB_ProductAttribute AS A WITH(NOLOCK)
+		JOIN ES_Billing.dbo.EB_Product AS B WITH(NOLOCK) ON A.CD_PRODUCTNO = B.CD_PRODUCTNO
+             
+P_Manager_PackageInfo_DEL                                                                                                        CREATE PROCEDURE [dbo].[P_Manager_PackageInfo_DEL]
+	@CD_PACKAGENO	BIGINT
+,	@CD_PRODUCTNO	BIGINT
+,	@Result			INT = 0 OUTPUT
+AS
+SET NOCOUNT ON;
+
+DECLARE @EXEC_SCRIPT	NVARCHAR(MAX)
+,		@SQLUser		NVARCHAR(50)
+
+BEGIN TRAN
+	
+	DELETE FROM dbo.EB_Produc
+P_Manager_PackageInfo_CHK                                                                                                        CREATE PROCEDURE [dbo].[P_Manager_PackageInfo_CHK]
+AS
+SET NOCOUNT ON
+
+SELECT	CD_PACKAGENO, CD_PRODUCTNO
+FROM	ES_Billing.dbo.EB_ProductPackage WITH(NOLOCK)
+                                                                                               
+SYS_SP_ErrorLog_INT                                                                                                              /*
+프로시저명 : dbo.SYS_SP_ErrorLog_INT
+내용 : DB 오류 기록
+작성일 : 2011-02-11
+작성자 : 김병일
+-- ## 관련 테이블 ##--
+	dbo.SYS_SP_ErrorLog
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	@NO_XACT_STATE		smallint					-- 트랜잭션 상태 정보
+-- ## 출력 ## --
+	Output : 없음
+	ReturnValue : 없음
+EBP_ReleaseTick_SEL                                                                                                              /*
+프로시저명 : dbo.EBP_ReleaseTick_SEL
+내용 : 캐시 아이템 갱신 정보
+작성일 : 2011-03-02
+작성자 : KOG_M
+수정일 : 2011-10-10
+수정자 : KOG_M
+수정내용 : DI_TickType 추가(빌링 이벤트 Tick으로 처리)
+-- ## 관련 테이블 ##--
+	dbo.EB_ReleaseTick
+-- ## 입력 ## --
+	없음
+-- ## 출력 ## --
+	Output : 없음
+	Retur
+EBP_ProductShowManager_SET                                                                                                       --상품 On/Off 스케줄러 기능
+CREATE PROC [dbo].[EBP_ProductShowManager_SET]
+
+AS
+
+DECLARE @NowDate		SMALLDATETIME
+SET @NowDate = GETDATE()
+
+
+-- 동일 기간 중복 항목 제거 (가장 마지막에 등록된 설정만 적용)
+UPDATE dbo.EB_Product
+SET DI_ISSHOW = B.DI_ISSHOW
+FROM dbo.EB_Product AS A
+EBP_ProductPackage_SEL                                                                                                           /*
+프로시저명 : dbo.EBP_ProductPackage_SEL
+내용 : 캐시 아이템 패키지 목록
+작성일 : 2011-03-02
+작성자 : 김병일
+-- ## 관련 테이블 ##--
+	dbo.EB_ProductPackage
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	없음
+-- ## 출력 ## --
+	Output : 없음
+	ReturnValue : 없음
+	RecodeSet : 있음
+		CD_PACKAG
+EBP_ProductCategory_SEL                                                                                                          /*
+프로시저명 : dbo.EBP_ProductCategory_SEL
+내용 : 캐시 아이템 카테고리 목록
+작성일 : 2011-03-02
+작성자 : 김병일
+-- ## 관련 테이블 ##--
+	dbo.EB_ProductCategory
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	없음
+-- ## 출력 ## --
+	Output : 없음
+	ReturnValue : 없음
+	RecodeSet : 있음
+		CD_CAT
+EBP_ProductAttribute_SEL                                                                                                         /*
+프로시저명 : dbo.EBP_ProductAttribute_SEL
+내용 : 캐시 아이템 속성 목록
+작성일 : 2011-03-02
+작성자 : 김병일
+-- ## 관련 테이블 ##--
+	dbo.EB_ProductAttribute
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	없음
+-- ## 출력 ## --
+	Output : 없음
+	ReturnValue : 없음
+	RecodeSet : 있음
+		CD_PRO
+EBP_Product_SEL                                                                                                                  /*
+프로시저명 : dbo.EBP_Product_SEL
+내용 : 캐시 아이템 목록
+작성일 : 2011-03-02
+작성자 : 김병일
+-- ## 관련 테이블 ##--
+	dbo.EB_Product
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	없음
+-- ## 출력 ## --
+	Output : 없음
+	ReturnValue : 없음
+	RecodeSet : 있음
+		CD_PRODUCTNO, NO_PRODUCTID,
+EBP_Cash_Total_USERID_SEL                                                                                                        /*
+프로시저명 : dbo.EBP_Cash_Total_USERID_SEL
+내용 : UserID로 엘소드 총 잔여 캐시 조회
+작성일 : 2011-02-22
+작성자 : 김병일
+수정일 : 2011-09-28
+수정자 : 김병일
+수정내용 : 캐시, 보너스 구분하여 출력 추가
+-- ## 관련 테이블 ##--
+	dbo.EB_Cash
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	@ST_USERID			nvarchar(5
+EBP_BuyItemLog_INS                                                                                                               -- =============================================
+-- Author:		ryul
+-- Create date: 2013-05-11
+-- Description:	구매 사전체크 -> 퍼블리셔 캐시차감 -> 아이템구입 단계별 로그 남기기
+-- =============================================
+CREATE PROC [dbo].[EBP_BuyItemLog_INS]
+	@ST_SERVERO
+EBP_CashFailLog_INS                                                                                                              -- =============================================
+-- Author:		YJ
+-- Create date: 2012. 08. 08
+-- Description:	대만 캐쉬 충전 오류 저장
+-- =============================================
+CREATE PROCEDURE [dbo].[EBP_CashFailLog_INS]
+    @iUserUID       [int],
+	@Re
+bup_Update_User_Purchase_info_new                                                                                                CREATE PROCEDURE [dbo].[bup_Update_User_Purchase_info_new]
+	@iUserUID	BIGINT,
+	@iEventUID	INT,
+	@Cnt		INT,
+	@iOK		INT	= 0
+
+/*
+	2009. 09. 16
+	sutamtwo
+	Cash inventory -> my inventory log, delete from cash inventory
+*/
+
+
+AS
+SET NOCOUNT ON;
+
+D
+bup_Update_Unit_Purchase_info_new                                                                                                CREATE PROCEDURE [dbo].[bup_Update_Unit_Purchase_info_new]
+	@iUnitUID	BIGINT,
+	@iEventUID	INT,
+	@Cnt		INT,
+	@iOK		INT	= 0
+
+/*
+	2009. 09. 16
+	sutamtwo
+	Cash inventory -> my inventory log, delete from cash inventory
+*/
+
+
+AS
+SET NOCOUNT ON;
+
+D
+bup_get_User_Purchase_info                                                                                                       CREATE PROCEDURE [dbo].[bup_get_User_Purchase_info]
+	@iUserUID	BIGINT,
+	@iEventUID	INT
+AS
+SET NOCOUNT ON;
+
+
+
+IF NOT EXISTS (SELECT 1 FROM dbo.Bill_UserPurchaseLimitInfo WITH (NOLOCK) WHERE UserUID = @iUserUID AND EventUID = @iEventUID)
+	BEGIN
+		S
+bup_get_Unit_Purchase_info                                                                                                       CREATE PROCEDURE [dbo].[bup_get_Unit_Purchase_info]
+	@iUnitUID	BIGINT,
+	@iEventUID	INT
+AS
+SET NOCOUNT ON;
+
+IF NOT EXISTS (SELECT 1 FROM dbo.Bill_UnitPurchaseLimitInfo WITH (NOLOCK) WHERE UnitUID = @iUnitUID AND EventUID = @iEventUID)
+	BEGIN
+		SELEC
+EBI_Buy_Product_LimitedUser_Set                                                                                                  /*
+프로시저명 : dbo.EBI_Buy_Product_LimitedUser_Set
+내용 : 계정 구매 수량 제한 상품 구매 수량 증가
+작성일 : 2011-05-05
+작성자 : KOG_M
+-- ## 관련 테이블 ##--
+	dbo.EB_BuyCashItemLimited_User
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	@CD_PRODUCT_SM		int				-- 상품 고유번호
+	@CD_USERUID			b
+EBI_Buy_Product_CHK                                                                                                              /*
+프로시저명 : dbo.EBI_Buy_Product_CHK
+내용 : 상품 정보 확인
+작성일 : 2011-05-04
+작성자 : KOG_M
+-- ## 관련 테이블 ##--
+	dbo.EB_Product
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	@CD_PRODUCTNO		int							-- 상품 고유번호
+-- ## 출력 ## --
+	Output :
+		@DI_ISSALE			bit							-- 상품
+EBI_Bonus_Expire_INT                                                                                                             /*
+프로시저명 : dbo.EBI_Bonus_Expire_INT
+내용 : 보너스 만료 등록
+작성일 : 2011-02-22
+작성자 : 김병일
+-- ## 관련 테이블 ##--
+	dbo.EB_Bonus_Expire
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	@CD_TRAN_NUM		bigint			-- 거래 고유번호
+	@CD_USERUID			bigint			-- 계정 UID
+	@NO_CHARGE_BONUS	i
+EBI_BillOrder_SET                                                                                                                /*
+프로시저명 : dbo.EBI_BillOrder_SET
+내용 : 주문 등록
+작성일 : 2011-02-15
+작성자 : 김병일
+-- ## 관련 테이블 ##--
+	dbo.EB_BillOrder
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	@CD_TRAN_NUM		bigint				-- 거래 고유번호
+	@ST_TRANSACTION		varchar(21)			-- 처리열 고유 문자
+	@CD_USERUID			bi
+EBI_BillEvent_JOIN                                                                                                               /*
+프로시저명 : dbo.EBI_BillEvent_JOIN
+내용 : 주문 이벤트 참여
+작성일 : 2011-02-18
+작성자 : 김병일
+-- ## 관련 테이블 ##--
+	dbo.EB_BillEventJoinLog
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	@CD_EVENT				int				-- 이벤트 고유번호
+	@CD_TRAN_NUM			bigint			-- 거래 고유번호
+	@CD_USERUID				i
+EBI_BillEvent_CHK                                                                                                                /*
+프로시저명 : dbo.EBI_BillEvent_CHK
+내용 : 주문 이벤트 확인
+작성일 : 2011-02-18
+작성자 : KOG_M
+-- ## 관련 테이블 ##--
+	dbo.EB_BillEvent
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	@NO_CHARGE_CASH			int				-- 충전 금액
+-- ## 출력 ## --
+	Output :
+		@CD_EVENT				int				-- 이벤트 고유
+EBP_BuyCashItemLockerCount_CHK                                                                                                   CREATE PROC [dbo].[EBP_BuyCashItemLockerCount_CHK]
+	@CD_USERUID				bigint ,			-- 계정 UID
+	@NO_SERVER_SET_ID		tinyint ,			-- 서버 그룹
+	@NO_PRODUCT_COUNT		INT = 1,			-- 여러개 수량 구매
+	@DI_OUTPUT_RECORD		bit = 0,			-- 결과 RecordSet 출력 여부
+	@NO_MAX_KEEP_COUNT		int 
+EBP_BuyCashItemLocker_SEL                                                                                                        /*
+프로시저명 : dbo.EBP_BuyCashItemLocker_SEL
+내용 : 캐시 아이템 보관함
+작성일 : 2011-02-22
+작성자 : 김병일
+-- ## 관련 테이블 ##--
+	dbo.EB_BuyCashItemLocker
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	@CD_USERUID				bigint				-- 계정 UID
+	@NO_SERVER_SET_ID		tinyint				-- 서버 그룹
+-
+EBP_BuyCashItemLocker_Package_SEL                                                                                                /*
+프로시저명 : dbo.EBP_BuyCashItemLocker_Package_SEL
+내용 : 캐시 아이템 보관함 구매 패키지의 잔여 구성물 확인
+작성일 : 2011-09-15
+작성자 : 김병일
+-- ## 관련 테이블 ##--
+	dbo.EB_BuyCashItemLockerPackage
+	dbo.EB_BuyCashItemLocker
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	@CD_USERUID					bi
+EBP_Buy_Product_LimitedUser_CHK                                                                                                  --구매제한 체크
+
+CREATE PROC [dbo].[EBP_Buy_Product_LimitedUser_CHK]
+	@CD_PRODUCTNO		bigint ,				-- 상품 고유번호
+	@CD_USERUID			bigint ,				-- 계정 UID
+	@NO_SERVER_SET_ID	tinyint ,				-- 서버 그룹
+	@CD_PRODUCT_SM		int = NULL	OUTPUT ,	-- 상품 추가 설정 고유번호
+	@NO_LIMIT_COUN
+EBP_BillEvent_SEL                                                                                                                /*
+프로시저명 : dbo.EBP_BillEvent_SEL
+내용 : 등록된 이벤트 목록
+작성일 : 2011-10-04
+작성자 : 김병일
+-- ## 관련 테이블 ##--
+	dbo.EB_BillEvent
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	없음
+-- ## 출력 ## --
+	Output : 없음
+	ReturnValue : 없음
+	RecodeSet : 선택
+		DT_EVENT_START_DATE, D
+EBJ_ProductShopManager_SET                                                                                                       /*
+프로시저명 : dbo.EBJ_ProductShopManager_SET
+내용 : 캐시샵 상품 On/Off
+작성일 : 2011-10-25
+작성자 : KOG_M
+-- ## 관련 테이블 ##--
+	dbo.EB_ProductShopManager / dbo.EB_Product / dbo.EB_ReleaseTick
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	@getDate		smalldatetime		-- 일시
+-
+EBI_SP_ErrorLog_INT                                                                                                              /*
+프로시저명 : dbo.EBI_SP_ErrorLog_INT
+내용 : DB 오류 기록
+작성일 : 2011-02-11
+작성자 : 김병일
+-- ## 관련 테이블 ##--
+	dbo.EB_SP_ErrorLog
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	@NO_XACT_STATE		smallint					-- 트랜잭션 상태 정보
+-- ## 출력 ## --
+	Output : 없음
+	ReturnValue : 없음
+EBI_CashLog_INT                                                                                                                  /*
+프로시저명 : dbo.EBI_CashLog_INT
+내용 : 캐시 충전/소진 로그 기록
+작성일 : 2011-02-21
+작성자 : 김병일
+-- ## 관련 테이블 ##--
+	dbo.EB_CashLog
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	@CD_TRAN_NUM			bigint			-- 거래 고유번호
+	@ST_TRANSACTION			varchar(50)		-- 처리열 고유 문자
+	@CD_USERUID
+EBI_Cash_UseRealCashOnly                                                                                                         /*
+프로시저명 : dbo.EBI_Cash_UseRealCashOnly
+내용 : 리얼 캐시 사용(아이템 구매 - 리얼 캐시 차감)
+작성일 : 2011-09-28
+작성자 : 김병일
+-- ## 관련 테이블 ##--
+	dbo.EB_Cash
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	@CD_USERUID			bigint			-- 계정 UID
+	@ST_USERID			nvarchar(50)	-- 계정 아이디
+	@N
+EBI_Cash_UseFirstCash                                                                                                            /*
+프로시저명 : dbo.EBI_Cash_UseFirstCash
+내용 : 캐시 사용(아이템 구매 - 캐시 우선 차감)
+작성일 : 2011-02-21
+작성자 : 김병일
+-- ## 관련 테이블 ##--
+	dbo.EB_Cash
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	@CD_USERUID			bigint			-- 계정 UID
+	@ST_USERID			nvarchar(50)	-- 계정 아이디
+	@NO_PRIC
+EBI_Cash_UseBonusCashOnly                                                                                                        /*
+프로시저명 : dbo.EBI_Cash_UseBonusCashOnly
+내용 : 보너스 캐시 사용(아이템 구매 - 보너스 캐시 차감)
+작성일 : 2011-09-28
+작성자 : 김병일
+-- ## 관련 테이블 ##--
+	dbo.EB_Cash
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	@CD_USERUID			bigint			-- 계정 UID
+	@ST_USERID			nvarchar(50)	-- 계정 아이디
+
+EBI_Cash_Detial_SEL                                                                                                              /*
+프로시저명 : dbo.EBI_Cash_Detial_SEL
+내용 : 엘소드 캐시 상세 상태
+작성일 : 2011-02-22
+작성자 : 김병일
+-- ## 관련 테이블 ##--
+	dbo.EB_Cash
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	@CD_USERUID			bigint			-- 계정 UID
+-- ## 출력 ## --
+	Output :
+		@NO_REMAIN_CASH			int			-- 총 잔여 
+EBI_Cash_Charge_SET                                                                                                              /*
+프로시저명 : dbo.EBI_Cash_Charge_SET
+내용 : 캐시 충전
+작성일 : 2011-03-09
+작성자 : 김병일
+-- ## 관련 테이블 ##--
+	dbo.EB_Cash
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	@CD_USERUID				bigint			-- 계정 UID
+	@ST_USERID				nvarchar(50)	-- 계정 아이디
+	@NO_CHARGE_CASH			int				--
+EBI_BuyCashItemLocker_SET                                                                                                        /*
+프로시저명 : dbo.EBI_BuyCashItemLocker_SET
+내용 : 캐시 아이템 보관함 저장
+작성일 : 2011-03-08
+작성자 : 김병일
+-- ## 관련 테이블 ##--
+	dbo.EB_BuyCashItemLockerCount
+	dbo.EB_BuyCashItemLocker
+	dbo.EB_BuyCashItemLockerPackage
+-- ## 관련 프로시저 ## --
+	dbo.EBI_SP_ErrorLog_INT
+-- ##
+EBI_TransactionNumber_INT                                                                                                        /*
+프로시저명 : dbo.EBI_TransactionNumber_INT
+내용 : 엘소드 캐시 충전용 거래 고유번호 발행
+작성일 : 2011-02-15
+작성자 : 김병일
+-- ## 관련 테이블 ##--
+	dbo.EB_TransactionNumber
+-- ## 관련 프로시저 ## --
+	dbo.EBI_SP_ErrorLog_INT
+-- ## 입력 ## --
+	@DI_CASH_LOG_TYPE	smallint 			-- 캐시 충전/이용 구분
+
+EBP_TranNumberServer_INT                                                                                                         /*
+프로시저명 : dbo.EBP_TranNumberServer_INT
+내용 : 일별 서버 트랙잭션 고유번호 발행
+작성일 : 2011-03-07
+작성자 : 김병일
+--## 2011-08-11 수정 ##--
+수정자 : 김병일
+수정내용 : @NO_DATE_SECOND
+-- ## 관련 테이블 ##--
+	dbo.EB_TranNumberServer
+-- ## 관련 프로시저 ## --
+	dbo.EBI_SP_ErrorLog_INT
+	dbo.EBP
+EBP_Cash_Total_USERUID_SEL                                                                                                       /*
+프로시저명 : dbo.EBP_Cash_Total_USERUID_SEL
+내용 : UserUID로 엘소드 총 잔여 캐시 조회
+작성일 : 2011-02-22
+작성자 : 김병일
+수정일 : 2011-09-28
+수정자 : 김병일
+수정내용 : 캐시, 보너스 구분하여 출력 추가
+-- ## 관련 테이블 ##--
+	없음
+-- ## 관련 프로시저 ## --
+	dbo.EBI_Cash_Detial_SEL
+-- ## 입력 ## --
+	@CD_USERU
+EBP_Prepare_Gift_Product_CHK                                                                                                     /*
+프로시저명 : dbo.EBP_Prepare_Gift_Product_CHK
+내용 : 구매 제한 상품의 구매 가능 여부 확인
+작성일 : 2011-05-05
+작성자 : KOG_M
+-- ## 관련 테이블 ##--
+	dbo.EB_BuyCashItemLimited_User / dbo.EB_Product
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	@CD_PRODUCTNO		INT			-- 상품 고유번호
+	@CD_S
+EBP_Prepare_Buy_Product_CHK                                                                                                      /*
+프로시저명 : dbo.EBP_Prepare_Buy_Product_CHK
+내용 : 구매 제한 상품의 구매 가능 여부 확인
+작성일 : 2011-05-05
+작성자 : KOG_M
+-- ## 관련 테이블 ##--
+	dbo.EB_BuyCashItemLimited_User / dbo.EB_Product
+-- ## 관련 프로시저 ## --
+	없음
+-- ## 입력 ## --
+	@CD_PRODUCTNO		INT				-- 상품 고유번호
+	@CD_U
+EBP_BuyCashItemTake_SET                                                                                                          /*
+프로시저명 : dbo.EBP_BuyCashItemTake_SET
+내용 : 캐시 아이템 보관함 인출
+작성일 : 2011-02-22
+작성자 : 김병일
+-- ## 관련 테이블 ##--
+	dbo.EB_BuyCashItemLocker
+	dbo.EB_BuyCashItemLockerCount
+	dbo.EB_BuyCashItemTakeLog
+-- ## 관련 프로시저 ## --
+	dbo.EBI_SP_ErrorLog_INT
+-- ## 입력 ## -
+EBP_CouponOrder_SET                                                                                                              /*
+프로시저명 : dbo.EBP_CouponOrder_SET
+내용 : 쿠폰 사용 준비
+작성일 : 2011-03-09
+작성자 : KOG_M
+-- ## 관련 테이블 ##--
+	dbo.EB_CouponOrder
+	dbo.EB_CouponOrder_UseLog
+-- ## 관련 프로시저 ## --
+	dbo.EBI_TransactionNumber_INT
+	dbo.EBI_SP_ErrorLog_INT
+-- ## 입력 ## --
+	@CD_COUPO
+EBP_CouponOrder_Result                                                                                                           /*
+프로시저명 : dbo.EBP_CouponOrder_Result
+내용 : 쿠폰 사용 결과
+작성일 : 2011-03-09
+작성자 : 김병일
+-- ## 관련 테이블 ##--
+	dbo.EB_CouponOrder
+	dbo.EB_CouponOrder_UseLog
+-- ## 관련 프로시저 ## --
+	dbo.EBI_Cash_Charge_SET
+	dbo.EBI_Cash_Detial_SEL
+	dbo.EBI_BuyCashItemLocker_SET
+EBP_CouponOrder_WEB_BR                                                                                                           CREATE PROC [dbo].[EBP_CouponOrder_WEB_BR]
+	@ST_USERID				nvarchar(40),	-- 주문 계정
+	@NO_COUPONID			int,			-- 지급할 아이템
+	@ST_TRANSACTION			varchar(21) 	-- 처리열 고유 문자
+AS
+	SET NOCOUNT ON
+
+	-- 사용 변수 선언
+	DECLARE @Result				int
+	DECLARE @DT_GETDATE			datetim
+EBP_CouponOrder_USE                                                                                                              /*
+프로시저명 : dbo.EBP_CouponOrder_USE
+내용 : 쿠폰 사용
+작성일 : 2012-09-04
+작성자 : KOG_M
+수정일 :
+수정자 :
+수정내용 :
+-- ## 관련 테이블 ##--
+	dbo.EB_Coupon_GroupList
+	dbo.EB_Coupon_List
+	dbo.EB_Coupon_Group_UseCount
+-- ## 관련 프로시저 ## --
+	dbo.EBI_Cash_Detial_SEL
+	dbo.EBI_T
+
+(62 rows affected)

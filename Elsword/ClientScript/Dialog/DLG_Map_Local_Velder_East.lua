@@ -1,0 +1,97 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+DLGBack		= "DLG_Map_Local_Velder_East_Back_NEW.lua"
+DLGFront	= "DLG_Map_Local_Velder_East_Front.lua"
+
+
+
+--LOCAL_MAP_DLG = "DLG_TEMP_UI_Local_Velder_East.lua"
+LOCAL_MAP_DLG = "DLG_Map_Local_Velder_East_Back_NEW.lua"
+
+
+
+BaseWorldStateID = WORLD_MAP_ID["WMI_ELLIOS"] -- 해당 지역을 품는 월드 ID
+
+EnterCondition = 
+{
+	RequireClearDungeonID = 
+	{
+	    DUNGEON_ID["DI_RUBEN_SWAMP_NORMAL"],
+	},
+	RequireUnitLevel = 6,
+}
+
+PositionData =
+{
+	AURORA_POS_X = -200 + 40,
+	AURORA_POS_Y = 190 - 85,
+}
+
+VillageData = 
+{
+	ID			= VILLAGE_MAP_ID["VMI_ELDER"],
+	
+	TEX_NAME	= "DLG_Common_Texture10.TGA",
+	PIECE_NAME	= "Dungeon_Image_Elder_Village",
+
+	EXPLANATION = STR_ID_1109,
+}
+
+VillageDGData = 
+{
+	ID			= VILLAGE_MAP_ID["VMI_DUNGEON_GATE_ELDER"],
+	
+	TEX_NAME	= "DLG_Common_Texture10.TGA",
+	PIECE_NAME	= "Dungeon_Image_Elder_Village",
+
+	EXPLANATION = STR_ID_1109,
+}
+
+
+
+VillageDungeonLoungeData = 
+{
+	ID			= VILLAGE_MAP_ID["VMI_DUNGEON_LOUNGE_ELDER"],
+}
+
+BattleFieldRestData = 
+{
+	ID			= VILLAGE_MAP_ID["VMI_BATTLE_FIELD_ELDER_REST_00"],
+}
+
+
+DungeonIDList = 
+{
+	DUNGEON_ID["DI_ELDER_BENDERS_CAVE_NORMAL"],
+	DUNGEON_ID["DI_ELDER_NATURE_CAVE_NORMAL"],
+	DUNGEON_ID["DI_ELDER_DRUID_FOREST_NORMAL"],
+	DUNGEON_ID["DI_ELDER_WALLY_CASTLE_ROOF_NORMAL"],
+	DUNGEON_ID["DI_ELDER_BELOW_PASSAGE_NORMAL"],	
+	DUNGEON_ID["DI_ELDER_WALLY_CASTLE_CENTER_NORMAL"],
+	--DUNGEON_ID["DI_ELDER_WALLY_CASTLE_LAB_NORMAL"],
+	
+	DUNGEON_ID["DI_ELDER_HENIR_SPACE"],
+	
+	-- kimhc // 2010-04-05 // 비밀던전 개편 테스트
+	DUNGEON_ID["DI_ELDER_SECRET_COMMON"],
+	
+	--DUNGEON_ID["DI_ELDER_HALLOWEEN_NORMAL"],
+	
+	--DUNGEON_ID["DI_EVENT_TREE_DAY_ELDER"], -- 이벤트 던전
+	-- 본섭에 패치 할 던전 ID만 추가해주세요.
+	
+	DUNGEON_ID["DI_DEFENCE_DUNGEON_ELDER_NORMAL"],	-- 디펜스 던전
+--[[	
+		DUNGEON_ID["DI_EVENT_VALENTINE_DAY"],	--발렌타인 이벤트 던전
+--]]
+
+	DUNGEON_ID["DI_EVENT_HALLOWEEN_2013"],
+	DUNGEON_ID["DI_EVENT_HALLOWEEN_2013_BOSS"],
+	DUNGEON_ID["DI_EVENT_HALLOWEEN_2013_LINKER"],
+}
+
+BattleFieldIDList = 
+{
+	VILLAGE_MAP_ID["VMI_BATTLE_FIELD_ELDER_FIELD_01"],
+	VILLAGE_MAP_ID["VMI_BATTLE_FIELD_ELDER_FIELD_02"],
+}

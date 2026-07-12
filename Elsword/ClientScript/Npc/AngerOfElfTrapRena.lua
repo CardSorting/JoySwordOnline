@@ -1,0 +1,334 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 50.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	UNIT_SCALE      = 0.5,
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+	
+	"Entangle_Screw_Start.ogg",
+	"Entangle_Screw_Loop.ogg",
+	
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "rena_A_evoke_Dummy.X",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 0,
+	RUN_SPEED			= 0,
+	JUMP_SPEED			= 0,
+	DASH_JUMP_SPEED		= 0,
+}
+
+
+INIT_COMPONENT = 
+{
+
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	SHADOW_SIZE			= 0,
+
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+
+	SHOW_ON_MINIMAP		= FALSE,
+
+	NOT_EXTRA_DAMAGE	= TRUE,
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "ANGER_OF_ELF_START",					LUA_STATE_START_FUNC = "ANGER_OF_ELF_START_START_FUNC", 	},
+	{ STATE_NAME = "ANGER_OF_ELF_WAIT",						LUA_FRAME_MOVE_FUNC = "ANGER_OF_ELF_WAIT_FRAME_MOVE",   },
+	{ STATE_NAME = "ANGER_OF_ELF_ATTACK_START",				LUA_STATE_START_FUNC = "ANGER_OF_ELF_ATTACK_START_STATE_START", },
+	{ STATE_NAME = "ANGER_OF_ELF_DYING_READY",				LUA_STATE_START_FUNC = "ANGER_OF_ELF_DYING_START_STATE_START",},
+	{ STATE_NAME = "ANGER_OF_ELF_DYING",					LUA_STATE_START_FUNC = "ANGER_OF_ELF_DYING_START_STATE_START",},
+
+	START_STATE					= "ANGER_OF_ELF_START",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "",
+	SMALL_DAMAGE_LAND_BACK		= "",
+	BIG_DAMAGE_LAND_FRONT		= "",
+	BIG_DAMAGE_LAND_BACK		= "",
+	DOWN_DAMAGE_LAND_FRONT		= "",
+	DOWN_DAMAGE_LAND_BACK		= "",
+	FLY_DAMAGE_FRONT			= "",
+	FLY_DAMAGE_BACK				= "",
+	SMALL_DAMAGE_AIR			= "",	
+	BIG_DAMAGE_AIR				= "",
+	DOWN_DAMAGE_AIR				= "",
+	UP_DAMAGE					= "",
+	DAMAGE_REVENGE				= "ANGER_OF_ELF_WAIT",
+	
+	DYING_LAND_FRONT			= "ANGER_OF_ELF_DYING",
+	DYING_LAND_BACK				= "ANGER_OF_ELF_DYING",
+	DYING_SKY					= "ANGER_OF_ELF_DYING",
+
+	REVENGE_ATTACK				= "",	
+}
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_NEAR_FIRST"],
+		TARGET_INTERVAL				= 0.3,		-- sec
+		TARGET_NEAR_RANGE			= 300,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 1000,		-- cm
+		TARGET_LOST_RANGE			= 1200,	-- cm
+		TARGET_SUCCESS_RATE			= 100,
+		ATTACK_TARGET_RATE			= 0,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 0,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+	
+}
+
+ANGER_OF_ELF_START = 
+{
+	INVISIBLE_TO_ENEMY = TRUE,
+
+	ANIM_NAME					= "rana_A_evoke_Dummy",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,	
+	
+	SHOW_NAME					= FALSE,
+	
+	PASSIVE_SPEED_X = 500,
+	
+	-- SPEED_TIME0					= { 1000, 0, 0.0, 3},
+	-- SPEED_TIME1					= { 900, 0, 0.2, 3},
+	-- SPEED_TIME2					= { 700, 0, 0.4, 3},
+	-- SPEED_TIME3					= { 400, 0, 0.6, 3},
+	-- SPEED_TIME4					= { 100, 0, 0.8, 3},
+	
+	ATTACK_TIME0				= { 0.25, 0.7 },
+	
+	DAMAGE_DATA = 
+	{		
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_LIGHTNING"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		ARRANGED_FLY			= TRUE,
+		STOP_UNIT_DEF			= 0.3,
+		HIT_ADD_MP     			= 0.13,
+		TECH_POINT				= 50,	
+	},
+	
+	INVINCIBLE					= { 0, 9999, },
+		
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"ANGER_OF_ELF_WAIT",		"CT_ANGER_OF_ELF_WAIT"				},
+	},
+	
+	CT_ANGER_OF_ELF_WAIT = 
+	{
+		STATE_TIME_OVER			= 0.3,
+	},
+}
+
+function ANGER_OF_ELF_START_START_FUNC( pKTDXApp, pX2Game, pNPCUnit )	
+	local hEffect = pNPCUnit:GetEffectSet_LUA( 0 )
+	local pEffectSet = pX2Game:GetEffectSet()
+		
+	if 0 == hEffect then
+		hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_LIRE_ANGER_OF_ELF_TRAP", pNPCUnit )
+		pNPCUnit:SetEffectSet_LUA( 0, hEffect )
+	end
+end
+
+
+ANGER_OF_ELF_WAIT = 
+{
+	INVISIBLE_TO_ENEMY = TRUE,
+
+	ANIM_NAME					= "rana_A_evoke_Dummy",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,	
+	
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	EVENT_INTERVAL_TIME0		= 0.1,
+	
+	-- PASSIVE_SPEED_X = 200,
+	
+	-- SPEED_TIME0					= { 1000, 0, 0.0, 3},
+	-- SPEED_TIME1					= { 900, 0, 0.2, 3},
+	-- SPEED_TIME2					= { 700, 0, 0.4, 3},
+	-- SPEED_TIME3					= { 400, 0, 0.6, 3},
+	-- SPEED_TIME4					= { 100, 0, 0.8, 3},
+	
+	INVINCIBLE					= { 0, 9999, },
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"ANGER_OF_ELF_ATTACK_START",				"CT_ANGER_OF_ELF_ATTACK_START",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"ANGER_OF_ELF_ATTACK_START",					"CT_ANGER_OF_ELF_ATTACK_START2",	},
+	},
+	
+	CT_ANGER_OF_ELF_ATTACK_START = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 80,
+		RATE						= 100,
+	},
+	CT_ANGER_OF_ELF_ATTACK_START2 = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		TIMER_ELAPSED0				= 20,
+		RATE						= 100,
+	},
+}
+
+function ANGER_OF_ELF_WAIT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )	
+	if( 2 > pNPCUnit:GetNowHP() )then
+		pNPCUnit:StateChange_LUA( "ANGER_OF_ELF_ATTACK_START" )
+	end
+end
+
+
+
+ANGER_OF_ELF_ATTACK_START = 
+{
+	INVISIBLE_TO_ENEMY = FALSE,
+
+	ANIM_SPEED					= 3.2,
+	ANIM_NAME					= "rana_A_evoke_Dummy",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= TRUE,
+
+    SOUND_PLAY0			= { 0.001, "Entangle_Screw_Start.ogg" },
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	
+	INVINCIBLE					= { 0, 9999, },
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"ANGER_OF_ELF_DYING_READY",				"CT_ANGER_OF_ELF_ATTACK_START",	},
+	},
+	
+	CT_ANGER_OF_ELF_ATTACK_START = 
+	{
+		TIMER_ELAPSED0				= 0.24,
+		RATE						= 100,
+	},
+}
+
+----------------------------------------------------------
+function ANGER_OF_ELF_ATTACK_START_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	pNPCUnit:SetNowHP_LUA( 1 ) -- 공격중 임을 나타낸다
+	
+end
+
+
+
+
+ANGER_OF_ELF_DYING_READY = 
+{
+	SHOW						= FALSE,
+	ANIM_NAME					= "rana_A_evoke_Dummy",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"ANGER_OF_ELF_DYING",				"CT_ANGER_OF_ELF_ATTACK_START",	},
+	},
+	
+	CT_ANGER_OF_ELF_ATTACK_START = 
+	{
+		TIMER_ELAPSED0				= 4,
+		RATE						= 100,
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"Effectset_A_RNW_ANGER_OF_ELF_Damage", 0.0,
+	},
+}
+
+ANGER_OF_ELF_DYING = 
+{
+	SHOW						= FALSE,
+	DYING_SPEED					= 5,
+
+	ANIM_NAME					= "rana_A_evoke_Dummy",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+function ANGER_OF_ELF_DYING_START_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	local hEffect = pNPCUnit:GetEffectSet_LUA( 0 )
+	local pEffectSet = pX2Game:GetEffectSet()
+		
+	if nil ~= hEffect then
+		pEffectSet:StopEffectSet_LUA( hEffect )
+		pNPCUnit:ClearEffectSet_LUA( 0 )
+	end
+end
+
+
+
+
+

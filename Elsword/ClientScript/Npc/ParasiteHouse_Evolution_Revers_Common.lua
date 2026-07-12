@@ -1,0 +1,367 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 200.0,
+	UNIT_HEIGHT		= 150.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	UNIT_SCALE		= 1.5,
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	    "Arme_Critical.dds",
+	    "ColorBallGray.dds",
+	    "Poison02.dds",
+	    "Parasite01.tga",
+	},
+	
+	READY_SOUND = 
+	{
+	 
+	 "Parasite_House_Summon.ogg",
+	 "Parasite_House_Damage.ogg",
+	 "Parasite_House_Death.ogg",
+	 "Parasite_House_WaitStart1.ogg",
+	 "Parasite_House_WaitStart2.ogg",
+	
+	},
+	READY_XSKIN_MESH = 
+	{
+		"Motion_Parasite.x",
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_Parasite_House.x",
+	MOTION_CHANGE_TEX_XET	= "Parasite_House_Evolution.xet",	
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 0,
+	RUN_SPEED			= 0,
+	JUMP_SPEED			= 0,
+	DASH_JUMP_SPEED		= 0,
+}
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 1250,
+	MP_CHANGE_RATE		= 0,
+	MP_CHARGE_RATE		= 0,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	SHADOW_SIZE			= 0,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "",
+	EXCLAMATION_MARK_SEQ	= "",
+	
+	HEAD_BONE_NAME			= "Parasite_House1",
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	
+    DAMAGE_DOWN         = FALSE,
+	
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_START",				LUA_STATE_START_FUNC = "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_START_STATE_START", },
+	{ STATE_NAME = "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_WAIT",				},
+	{ STATE_NAME = "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_RESPAWN",			LUA_FRAME_MOVE_FUNC = "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_RESPAWN_FRAME_MOVE", },
+		
+	--리액션 관련
+	
+	{ STATE_NAME = "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_DAMAGE",				},	
+	{ STATE_NAME = "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_DYING",				LUA_STATE_START_FUNC = "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_DYING_STATE_START", },
+	
+	START_STATE					= "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_START",
+	WAIT_STATE					= "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_DAMAGE",
+	SMALL_DAMAGE_LAND_BACK		= "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_DAMAGE",
+	BIG_DAMAGE_LAND_FRONT		= "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_DAMAGE",
+	BIG_DAMAGE_LAND_BACK		= "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_DAMAGE",
+	DOWN_DAMAGE_LAND_FRONT		= "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_DAMAGE",
+	DOWN_DAMAGE_LAND_BACK		= "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_DAMAGE",
+	FLY_DAMAGE_FRONT			= "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_DAMAGE",
+	FLY_DAMAGE_BACK				= "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_DAMAGE",
+	SMALL_DAMAGE_AIR			= "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_DAMAGE",	
+	BIG_DAMAGE_AIR				= "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_DAMAGE",
+	DOWN_DAMAGE_AIR				= "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_DAMAGE",
+	UP_DAMAGE					= "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_DAMAGE",
+	DAMAGE_REVENGE				= "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_DAMAGE",
+	
+	DYING_LAND_FRONT			= "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_DYING",
+	DYING_LAND_BACK				= "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_DYING",
+	DYING_SKY					= "PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_DYING",
+
+	REVENGE_ATTACK				= "",	
+}
+
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 0.5,		-- sec
+		TARGET_NEAR_RANGE			= 5000,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 8000,		-- cm
+		TARGET_LOST_RANGE			= 7000,		-- cm
+		TARGET_SUCCESS_RATE			= 100,  --90,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 80,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 100, -- 80,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+}
+
+
+PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_START = 
+{
+	ANIM_NAME					= "Siege_WaitStart",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+
+    SOUND_PLAY0			= { 0.01, "Parasite_House_WaitStart1.ogg" },
+    SOUND_PLAY1			= { 1.332, "Parasite_House_WaitStart2.ogg" },
+
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	NEVER_MOVE					= TRUE,
+	
+	INVINCIBLE					= { 0, 100, }, 
+
+	DISABLE_COLLISION_BOX =
+	{
+		"Face",
+		"Upbody",
+	},
+
+	PARTICLE_SEQ = 
+	{
+		--Major, time, Name, weaponBonePos, Pos, StateEndDelete, bTrace, posx, posy, posz, bApplyUnitRotation, rotx, roty, rotz,			
+		{ FALSE, 1.15, "Parasite_House_WaitStart01", FALSE, "", TRUE, FALSE, 0, 0, 0, TRUE, 0, 0, 180},
+		{ FALSE, 1.15, "Parasite_House_WaitStart02", FALSE, "", TRUE, FALSE, 0, 0, 0, TRUE, 0, 0, 180},
+	},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],			"PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_WAIT",	},
+	},
+}
+
+PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_WAIT = 
+{
+	ANIM_NAME					= "Siege_Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	NEVER_MOVE					= TRUE,
+	
+	INVINCIBLE					= { 0, 100, }, 
+
+	DISABLE_COLLISION_BOX =
+	{
+		"Face",
+		"Upbody",
+	},
+	
+	EVENT_INTERVAL_ID			= 0,
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_RESPAWN",	"CT_PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_RESPAWN",	},
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"ELSWORD_PARASITE_COMMON_JUMP_FOR_ATTACK",				"CT_ELSWORD_PARASITE_COMMON_JUMP_FOR_ATTACK",	},
+	},
+	
+	CT_PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_RESPAWN = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 8000,
+		RATE						= 100,
+	},
+}
+
+PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_RESPAWN = 
+{
+	ANIM_NAME					= "Siege_Summon",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	NEVER_MOVE					= TRUE,
+	COOL_TIME					= 15,
+	SUPER_ARMOR					= TRUE,
+	
+	INVINCIBLE					= { 0, 100, }, 
+
+	DISABLE_COLLISION_BOX =
+	{
+		"Face",
+		"Upbody",
+	},
+
+	PARTICLE_SEQ = 
+	{
+		--Major, time, Name, weaponBonePos, Pos, StateEndDelete, bTrace, posx, posy, posz, bApplyUnitRotation, rotx, roty, rotz,			
+		{ FALSE, 0.01, "Parasite_House_Summon01", FALSE, "", TRUE, FALSE, 0, 0, 0, TRUE, 0, 0, 180},
+		{ FALSE, 0.02, "Parasite_House_Summon02", FALSE, "", TRUE, FALSE, 0, 0, 0, TRUE, 0, 0, 180},
+	},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_WAIT",	},
+	},
+}
+
+PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_DAMAGE =
+{
+	ANIM_NAME					= "Siege_Damage",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+
+	INVINCIBLE					= { 0, 100, }, 
+
+
+    SOUND_PLAY0			= { 0.285, "Parasite_House_Damage.ogg" },
+	
+	NEVER_MOVE					= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_WAIT",		},
+	},
+}
+
+PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_DYING = 
+{
+	ANIM_NAME					= "Siege_Death",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+
+    SOUND_PLAY0			= { 0.210, "Parasite_House_Death.ogg" },
+
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+
+
+function CF_PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_RESPAWN( pKTDXApp, pX2Game, pNPCUnit )
+
+    if pX2Game:AnyUserUnitInRange( pNPCUnit:GetPos(), 1000 ) then
+	    nParasite = pX2Game:LiveNPCNumType_LUA( NPC_UNIT_ID["NUI_PARASITE_EVOLUTION_REVERS_COMMON"] )
+    		
+	    --if nParasite < pNPCUnit:GetInt_LUA(0) then
+	    if nParasite <= 5 then 
+		    return true
+	    else
+		    return false
+	    end
+	else
+	    return false
+	end
+end
+
+
+function PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_START_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	pNPCUnit:SetInt_LUA( 0, pX2Game:LiveNPCNumType_LUA( NPC_UNIT_ID["NUI_PARASITE_EVOLUTION_REVERS_COMMON"] ) )
+	
+end
+
+function PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_RESPAWN_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+
+	
+	if pNPCUnit:AnimEventTimer_LUA( 1.0 ) then		
+	
+        pNPCUnit:PlaySound_LUA( "Parasite_House_Summon.ogg" )
+	
+		bonePos = pNPCUnit:GetBonePos_LUA( "Parasite_House1" )	
+	
+		pos = pNPCUnit:GetPos()
+
+		
+		pMajorParticle = pX2Game:GetMajorParticle()
+--[[	
+		pParticle = pMajorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "SummonLightVertical",	bonePos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(1,-1) )
+		pParticle:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )			
+		--pos = pX2Game:GetLineMap():GetRandomPositionDir( pNPCUnit:GetPos(), 500, true, true )
+--]]		
+		pos.y = pos.y - 150
+
+		--pParticle:SetBlackHolePosition( pos )
+		pX2Game:PushCreateNPCReq_Lua( NPC_UNIT_ID["NUI_PARASITE_EVOLUTION_REVERS_COMMON"], pNPCUnit:GetHardLevel(), false, pos, true, 1.9, true, 0 )
+		
+		pX2Game:FlushCreateNPCReq()
+
+		if pX2Game:IsHost() then 
+			nowHP = pNPCUnit:GetNowHP()
+			pNPCUnit:SetNowHP_LUA( nowHP - 100.0 )
+		end
+	end		
+		
+	
+end
+
+function PARASITE_HOUSE_EVOLUTION_REVERS_COMMON_DYING_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	pNPCUnit:PlaySound_LUA( "Down.ogg" )
+	pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+
+end
+

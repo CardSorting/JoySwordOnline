@@ -1,0 +1,227 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 50.0,
+	UNIT_HEIGHT		= 400.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	RENDER_PARAM	= RENDER_TYPE["RT_CARTOON"],
+}
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+		"Broken_Stone.ogg",
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_Chain_Gate.x",
+	MOTION_MULTI_TEX_XET	= "Motion_Chain_Gate_Green.xet",
+	MULTI_TEX_SPEED			= { 2, 0, 0.5, },
+	ADD_ROTATE_Y			= -20.0,
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 0,
+	MAX_G_SPEED			= 0,
+	
+	WALK_SPEED			= 0,
+	RUN_SPEED			= 0,
+	JUMP_SPEED			= 0,
+	DASH_JUMP_SPEED		= 0,
+}
+
+INIT_COMPONENT = 
+{
+	MAX_HP				= 3000,
+	MP_CHANGE_RATE		= 0,
+	MP_CHARGE_RATE		= 0,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	SHADOW_SIZE			= 0,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	--SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "",
+	EXCLAMATION_MARK_SEQ	= "",
+	
+	HEAD_BONE_NAME			= "Bip01_Head",
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_STONE"],
+
+	NOT_EXTRA_DAMAGE	= TRUE,
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "CHAIN_GATE_GREEN_WAIT_INVINCIBLE",	},
+	{ STATE_NAME = "CHAIN_GATE_GREEN_WAIT",				}, --LUA_STATE_START_FUNC = "CHAIN_GATE_GREEN_WAIT_START_STATE",		},	
+	--리액션 관련
+	
+	{ STATE_NAME = "CHAIN_GATE_GREEN_DAMAGE",				},
+	
+	{ STATE_NAME = "CHAIN_GATE_GREEN_DYING",				},
+	
+	START_STATE					= "CHAIN_GATE_GREEN_WAIT_INVINCIBLE",
+	WAIT_STATE					= "CHAIN_GATE_GREEN_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "CHAIN_GATE_GREEN_DAMAGE",
+	SMALL_DAMAGE_LAND_BACK		= "CHAIN_GATE_GREEN_DAMAGE",
+	BIG_DAMAGE_LAND_FRONT		= "CHAIN_GATE_GREEN_DAMAGE",
+	BIG_DAMAGE_LAND_BACK		= "CHAIN_GATE_GREEN_DAMAGE",
+	DOWN_DAMAGE_LAND_FRONT		= "CHAIN_GATE_GREEN_DAMAGE",
+	DOWN_DAMAGE_LAND_BACK		= "CHAIN_GATE_GREEN_DAMAGE",
+	FLY_DAMAGE_FRONT			= "CHAIN_GATE_GREEN_DAMAGE",
+	FLY_DAMAGE_BACK				= "CHAIN_GATE_GREEN_DAMAGE",
+	SMALL_DAMAGE_AIR			= "CHAIN_GATE_GREEN_DAMAGE",	
+	BIG_DAMAGE_AIR				= "CHAIN_GATE_GREEN_DAMAGE",
+	DOWN_DAMAGE_AIR				= "CHAIN_GATE_GREEN_DAMAGE",
+	UP_DAMAGE					= "CHAIN_GATE_GREEN_DAMAGE",
+	DAMAGE_REVENGE				= "CHAIN_GATE_GREEN_DAMAGE",
+	
+	DYING_LAND_FRONT			= "CHAIN_GATE_GREEN_DYING",
+	DYING_LAND_BACK				= "CHAIN_GATE_GREEN_DYING",
+	DYING_SKY					= "CHAIN_GATE_GREEN_DYING",
+
+	REVENGE_ATTACK				= "",	
+}
+
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 99999,	-- sec
+		TARGET_NEAR_RANGE			= 0,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 0,		-- cm
+		TARGET_LOST_RANGE			= 0,		-- cm
+		TARGET_SUCCESS_RATE			= 0,		-- %
+		ATTACK_TARGET_RATE			= 0,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 0,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+}
+
+CHAIN_GATE_GREEN_WAIT_INVINCIBLE = 
+{
+	ANIM_NAME					= "GateWait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, },
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	NEVER_MOVE					= TRUE,
+	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],			"CHAIN_GATE_GREEN_WAIT",			"CF_CHAIN_GATE_GREEN_WAIT",	},
+	},
+}
+
+CHAIN_GATE_GREEN_WAIT = 
+{
+	ANIM_NAME					= "GateWait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	NEVER_MOVE					= TRUE,
+	
+	
+	EVENT_PROCESS = 
+	{
+	},
+}
+
+CHAIN_GATE_GREEN_DAMAGE =
+{
+	ANIM_NAME					= "GateDamage",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	NEVER_MOVE					= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"CHAIN_GATE_GREEN_WAIT",												},
+	},
+}
+
+CHAIN_GATE_GREEN_DYING = 
+{
+	ANIM_NAME					= "GateBroken",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	SOUND_PLAY0					= { 0.01, "Broken_Stone.ogg" },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	NEVER_MOVE					= TRUE,
+	DYING_END					= TRUE,
+	--DYING_SPEED					= 1,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+	
+
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+
+function CF_CHAIN_GATE_GREEN_WAIT( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pX2Game:LiveActiveNPCNum() == 0 then
+		return true
+	else
+		return false
+	end
+end
+
+
+--[[
+function CHAIN_GATE_GREEN_WAIT_START_STATE( pKTDXApp, pX2Game, pNPCUnit )
+
+	pXSkinAnim = pNPCUnit:GetXSkinAnim()
+	pXSkinAnim:SetUseTex( 2, false )
+end
+--]]

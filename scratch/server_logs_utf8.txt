@@ -1,0 +1,14 @@
+﻿=== Logs in Elsword\CenterServer\log ===
+=== Logs in Elsword\LoginServer\log ===
+=== Logs in Elsword\GameServer\log ===
+  pvp-profile-startup.log (742 bytes):
+      print_log=False
+      port=26424
+    [PVP][PROFILE] tr_server_changes:
+      TRWorkerThreadCount=6
+    [PVP][PROFILE] room_manager_changes:
+      SetZUTickTime=300
+      SetBattleFieldZUTickTime=20
+    [PVP][PROFILE] changed_files:
+      ServerResource/GameSysValTable.lua
+      Resources/GameSysValTable.lua

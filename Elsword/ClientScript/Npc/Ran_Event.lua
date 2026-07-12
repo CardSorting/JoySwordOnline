@@ -1,0 +1,2430 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+-------------------------------------------------------------------------------------------------
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 120.0,
+	UNIT_HEIGHT		= 140.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	UNIT_SCALE      = 1.3,
+
+	--APPLY_EFFECTSET_SCALE = TRUE,
+}
+
+-------------------------------------------------------------------------------------------------
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+		"Arme_Smoke.dds",
+		"Ran_MaC_Shadow_upbody.tga",
+		"Ran_MaC_Shadow_mugi.tga",
+		"Ran_MaC_Shadow_horn.tga",
+		"Ran_MaC_Shadow_hair.tga",
+		"Ran_MaC_Shadow_foot.tga",
+		"Ran_MaC_Shadow_face.tga",
+		"Ran_Dying_Swing.tga",
+		"SM_MagicAttakcB_Smoke.tga",
+		"ran_StartB_light_P.dds",
+		"Ran_flame02.tga",
+		"Ran_SPAD_Combo_energy02.tga",
+		"Ran_SPAD_Combo_energy01.tga",
+		"Pa_Ran_SpaD_Smoke03.dds",
+		"Pa_Ran_SpaD_Smoke02.dds",
+		"Space_Wrench_Blade01.tga",
+		"soket_earth_quake_stone01.dds",
+		"Ran_SpaD_ShockWave.dds",
+		"Pa_Ran_SpaD_Sword.DDS",
+		"Pa_Ran_SpaD_Smoke.dds",
+		"Pa_Ran_SpaD_DarkFlame.DDS",
+		"Pa_Ran_SpaD_blackSmoke.dds",
+		"Pa_Ran_SpaD_blackAura.DDS",
+		"Wind_Impact01_1.tga",
+		"Ran_SPAC_DarkFire.tga",
+		"Ran_flame01.tga",
+		"ran_SpecialAttackB_floorCircle.DDS",
+		"Ran_SpaA_square02.TGA",
+		"Ran_SpaA_square01.TGA",
+		"Ran_SpaA02_CircleSpark.dds",
+	},
+	
+	READY_SOUND = 
+	{
+		"Ran_Voice_Attack01.ogg",
+		"Ran_Voice_Attack02.ogg",
+		"Ran_Voice_Dying01.ogg",
+		"Ran_Voice_Hit01.ogg",
+		"Ran_Voice_Hit02.ogg",
+		"Ran_Voice_Hit03.ogg",
+		"Ran_Voice_Hit04.ogg",
+		"Ran_Voice_Hit05.ogg",
+		"Ran_Voice_Hit06.ogg",
+		"Ran_Voice_JumpAttack01.ogg",
+		"Ran_Voice_MagicAttackA01.ogg",
+		"Ran_Voice_MagicAttackB01.ogg",
+		"Ran_Voice_MagicAttackC01.ogg",
+		"Ran_Voice_SpecialAttackA01.ogg",
+		"Ran_Voice_SpecialAttackB01.ogg",
+		"Ran_Voice_SpecialAttackC01.ogg",
+		"Ran_Voice_SpecialAttackD01.ogg",
+		"Ran_Voice_StartA01.ogg",
+		"Ran_Voice_StartB01.ogg",
+		"Ran_Voice_StartC01.ogg",
+		"Ran_Voice_Waitstart01.ogg",
+		"Ran_Voice_Win01.ogg",
+		"Ran_MagicAttackC01.ogg",
+		"Ran_SpecialAttackA01.ogg",
+		"Ran_SpecialAttackB01.ogg",
+		"Ran_SpecialAttackC01.ogg",
+		"Ran_Swing01.ogg",
+		"Ran_Swing02.ogg",
+		"Ran_Swing03.ogg",
+		"Slash.ogg",
+		"Slash2.ogg",
+	},
+	
+	READY_XMESH = 
+	{
+		"Wind_Liner02.Y",
+	},
+	
+	READY_XSKIN_MESH = 
+	{
+		"DarkArrow01.X",
+		"DarkElf_Boss_AttackA_Mesh01.X",
+		"DarkElf_Boss_AttackA_Mesh02.X",
+		"DummyAttackBox_50x50x50.x",
+		"MagicAttackCShadow.X",
+		"Ran_StartC_Swing.X",
+		"Ran_SPAD_Combo_energy.X",
+		"Ran_SpaD_SwordFire02.X",
+		"Ran_SpaD_SwordFire01.X",
+		"Ran_SpaD_ShockWave.X",
+		"Ran_SPAC_DarkFire.X",
+		"Mesh_Ran_SPAC_Swing.X",
+		"Ran_SpaA02_CircleSpark.X",
+	},
+}
+-------------------------------------------------------------------------------------------------
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME	= "Motion_NUI_RAN.x",
+	MOTION_CHANGE_TEX_XET		= "UI_NPC_RAN_Event.xet",
+}
+-------------------------------------------------------------------------------------------------
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 500,
+	RUN_SPEED			= 700,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 1800,
+}
+
+-------------------------------------------------------------------------------------------------
+INIT_COMPONENT = 
+{	
+	MP_CHANGE_RATE				= 1,
+	MP_CHARGE_RATE				= 130,
+	
+	
+	SHADOW_SIZE					= 200,
+	SHADOW_FILE_NAME			= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE			= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED			= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW			= "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ			= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ		= "ExclamationMarkNPC",
+	
+    BOSS_GAGE_FACE_TEX			= "DLG_BossState.tga",
+	BOSS_GAGE_FACE_TEX_PIECE	= "NUI_RAN",
+	BOSS_NAME_TEX				= "HQ_BOSS_NAME_RAN.dds",
+
+	
+	RAGE_COUNT_MAX			= 20,
+	RAGE_TIME_MAX			= 10,
+	
+	HITTED_TYPE					= HITTED_TYPE["HTD_MEAT"],
+
+	DIE_FLY						= 0,
+	
+	FALL_DOWN					= TRUE,	
+	
+	
+	-- 항상 보이는 잔상 효과를 위해서
+	USE_AFTER_IMAGE = TRUE,
+	
+	AFTER_IMAGE_LAYER = X2_LAYER["XL_SKY_WORLD_OBJECT_2"],
+	
+	AFTER_IMAGE_COLOR_R = 1, 
+	AFTER_IMAGE_COLOR_G = 0, 
+	AFTER_IMAGE_COLOR_B = 0.96,
+	AFTER_IMAGE_COLOR_A = 0.5,
+	
+	AFTER_IMAGE_DEST_ALPHA_BLEND = TRUE,
+	AFTER_IMAGE_ALWAYS = FALSE,
+	--ALPHA_BLEND_ALWAYS = TRUE,
+	
+	
+}
+
+-------------------------------------------------------------------------------------------------
+INIT_STATE = 
+{
+	{ STATE_NAME = "RAN_WAIT_START",					LUA_STATE_START_FUNC	= "RAN_WAIT_START_STATE_START",
+														LUA_FRAME_MOVE_FUNC		= "RAN_WAIT_START_FRAME_MOVE",		},
+	{ STATE_NAME = "RAN_PHASE1_START",					LUA_STATE_START_FUNC	= "RAN_PHASE1_START_STATE_START",	},
+	{ STATE_NAME = "RAN_PHASE2_START",					LUA_STATE_START_FUNC	= "RAN_PHASE2_START_STATE_START",	},
+	{ STATE_NAME = "RAN_PHASE3_START",					LUA_STATE_START_FUNC	= "RAN_PHASE3_START_STATE_START",	},
+	{ STATE_NAME = "RAN_WAIT",							},
+	{ STATE_NAME = "RAN_WALK",							},
+
+	{ STATE_NAME = "RAN_WIN",							},
+	
+
+	{ STATE_NAME = "RAN_ATTACK_A",						LUA_FRAME_MOVE_FUNC		= "RAN_ATTACK_A_FRAME_MOVE",		},
+	{ STATE_NAME = "RAN_ATTACK_A_COMBO",				LUA_FRAME_MOVE_FUNC		= "RAN_ATTACK_A_COMBO_FRAME_MOVE",	},
+	{ STATE_NAME = "RAN_MAGIC_ATTACK_A",				LUA_FRAME_MOVE_FUNC		= "RAN_MAGIC_ATTACK_A_FRAME_MOVE",	STATE_COOL_TIME = 8,},
+	{ STATE_NAME = "RAN_MAGIC_ATTACK_B",				LUA_FRAME_MOVE_FUNC		= "RAN_MAGIC_ATTACK_B_FRAME_MOVE",	STATE_COOL_TIME = 11,},
+	{ STATE_NAME = "RAN_MAGIC_ATTACK_C",				LUA_FRAME_MOVE_FUNC		= "RAN_MAGIC_ATTACK_C_FRAME_MOVE",	STATE_COOL_TIME = 5,},
+	{ STATE_NAME = "RAN_MAGIC_ATTACK_D",				LUA_FRAME_MOVE_FUNC		= "RAN_MAGIC_ATTACK_D_FRAME_MOVE",	STATE_COOL_TIME = 7,},
+	{ STATE_NAME = "RAN_SPECIAL_ATTACK_A",				LUA_STATE_START_FUNC	= "RAN_SPECIAL_ATTACK_STATE_START",
+														LUA_FRAME_MOVE_FUNC		= "RAN_SPECIAL_ATTACK_A_FRAME_MOVE", STATE_COOL_TIME = 60,},
+	{ STATE_NAME = "RAN_SPECIAL_ATTACK_A_PHASE2START",	LUA_STATE_START_FUNC	= "RAN_SPECIAL_ATTACK_A_PHASESTART_STATE_START",
+														LUA_FRAME_MOVE_FUNC		= "RAN_SPECIAL_ATTACK_A_FRAME_MOVE",},
+	{ STATE_NAME = "RAN_SPECIAL_ATTACK_A_PHASE3START",	LUA_STATE_START_FUNC	= "RAN_SPECIAL_ATTACK_A_PHASESTART_STATE_START",
+														LUA_FRAME_MOVE_FUNC		= "RAN_SPECIAL_ATTACK_A_FRAME_MOVE",},
+	{ STATE_NAME = "RAN_SPECIAL_ATTACK_B",				LUA_FRAME_MOVE_FUNC		= "RAN_SPECIAL_ATTACK_B_FRAME_MOVE",},
+	
+	{ STATE_NAME = "RAN_SPECIAL_ATTACK_C",				LUA_STATE_START_FUNC	= "RAN_SPECIAL_ATTACK_STATE_START",
+														LUA_FRAME_MOVE_FUNC		= "RAN_SPECIAL_ATTACK_C_FRAME_MOVE", STATE_COOL_TIME = 22,},
+	{ STATE_NAME = "RAN_SPECIAL_ATTACK_D",				LUA_STATE_START_FUNC	= "RAN_SPECIAL_ATTACK_STATE_START",
+														LUA_FRAME_MOVE_FUNC		= "RAN_SPECIAL_ATTACK_D_FRAME_MOVE", STATE_COOL_TIME = 30,},
+	{ STATE_NAME = "RAN_SPECIAL_ATTACK_D_COMBO",		LUA_FRAME_MOVE_FUNC		= "RAN_SPECIAL_ATTACK_D_COMBO_FRAME_MOVE",},
+
+	{ STATE_NAME = "RAN_ATTACK_A_REVENGE",				LUA_FRAME_MOVE_FUNC		= "RAN_ATTACK_A_FRAME_MOVE",		},
+	{ STATE_NAME = "RAN_MAGIC_ATTACK_C_REVENGE",		LUA_FRAME_MOVE_FUNC		= "RAN_MAGIC_ATTACK_C_FRAME_MOVE",	},
+
+	{ STATE_NAME = "RAN_JUMP_UP",						},
+	{ STATE_NAME = "RAN_JUMP_DOWN",						},
+	{ STATE_NAME = "RAN_JUMP_UP_DIR",					},
+	{ STATE_NAME = "RAN_JUMP_DOWN_DIR",					},
+	{ STATE_NAME = "RAN_JUMP_LANDING",					},
+
+
+	{ STATE_NAME = "RAN_JUMP_ATTACK_GRAVITY_READY",		STATE_COOL_TIME = 12,},
+	{ STATE_NAME = "RAN_JUMP_UP_GRAVITY",				LUA_STATE_START_FUNC	= "RAN_JUMP_UP_GRAVITY_STATE_START",	
+														LUA_FRAME_MOVE_FUNC		= "RAN_JUMP_UP_GRAVITY_FRAME_MOVE",			
+														LUA_STATE_END_FUNC		= "RAN_JUMP_UP_GRAVITY_STATE_END",			},
+	{ STATE_NAME = "RAN_JUMP_ATTACK_GRAVITY",			LUA_STATE_START_FUNC	= "RAN_JUMP_ATTACK_GRAVITY_STATE_START",	
+														LUA_FRAME_MOVE_FUNC		= "RAN_JUMP_ATTACK_GRAVITY_FRAME_MOVE",		
+														LUA_STATE_END_FUNC		= "RAN_JUMP_ATTACK_GRAVITY_STATE_END",		},
+	{ STATE_NAME = "RAN_JUMP_DOWN_GRAVITY",				LUA_STATE_START_FUNC	= "RAN_JUMP_DOWN_GRAVITY_STATE_START",	
+														LUA_FRAME_MOVE_FUNC		= "RAN_JUMP_DOWN_GRAVITY_FRAME_MOVE",
+														LUA_STATE_END_FUNC		= "RAN_JUMP_DOWN_GRAVITY_STATE_END",			},
+
+
+	{ STATE_NAME = "RAN_DAMAGE_SMALL_FRONT",			},
+	{ STATE_NAME = "RAN_DAMAGE_BIG_FRONT",				},
+	{ STATE_NAME = "RAN_DAMAGE_SMALL_BACK",				},
+	{ STATE_NAME = "RAN_DAMAGE_BIG_BACK",				},
+	{ STATE_NAME = "RAN_DAMAGE_DOWN_FRONT",				},
+	{ STATE_NAME = "RAN_DAMAGE_DOWN_BACK",				},
+	{ STATE_NAME = "RAN_DAMAGE_FLY_FRONT",				},
+	{ STATE_NAME = "RAN_DAMAGE_FLY_BACK",				},
+	{ STATE_NAME = "RAN_DAMAGE_AIR",					},
+	{ STATE_NAME = "RAN_DAMAGE_AIR_DOWN",				},
+	{ STATE_NAME = "RAN_DAMAGE_AIR_UP",					},
+	{ STATE_NAME = "RAN_DAMAGE_AIR_DOWN_LANDING",		},
+	{ STATE_NAME = "RAN_STAND_UP_FRONT",				},
+	{ STATE_NAME = "RAN_STAND_UP_BACK",					},
+	{ STATE_NAME = "RAN_STAND_UP_ATTACK_FRONT",			LUA_FRAME_MOVE_FUNC		= "RAN_STAND_UP_ATTACK_FRONT_FRAME_MOVE",		},
+	{ STATE_NAME = "RAN_STAND_UP_ATTACK_BACK",			LUA_FRAME_MOVE_FUNC		= "RAN_STAND_UP_ATTACK_BACK_FRAME_MOVE",		},
+	
+	{ STATE_NAME = "RAN_DYING",							LUA_STATE_START_FUNC = "RAN_DYING_STATE_START",				 },
+	
+	
+	
+	START_STATE					= "RAN_WAIT_START",		
+	WAIT_STATE					= "RAN_WAIT",
+
+	
+	SMALL_DAMAGE_LAND_FRONT		= "RAN_DAMAGE_SMALL_FRONT",
+	SMALL_DAMAGE_LAND_BACK		= "RAN_DAMAGE_SMALL_BACK",
+	BIG_DAMAGE_LAND_FRONT		= "RAN_DAMAGE_BIG_FRONT",
+	BIG_DAMAGE_LAND_BACK		= "RAN_DAMAGE_BIG_BACK",
+	DOWN_DAMAGE_LAND_FRONT		= "RAN_DAMAGE_DOWN_FRONT",
+	DOWN_DAMAGE_LAND_BACK		= "RAN_DAMAGE_DOWN_BACK",
+	FLY_DAMAGE_FRONT			= "RAN_DAMAGE_FLY_FRONT",
+	FLY_DAMAGE_BACK				= "RAN_DAMAGE_FLY_BACK",
+	SMALL_DAMAGE_AIR			= "RAN_DAMAGE_AIR",	
+	BIG_DAMAGE_AIR				= "RAN_DAMAGE_AIR",
+	DOWN_DAMAGE_AIR				= "RAN_DAMAGE_AIR_DOWN",
+	DOWN_DAMAGE_AIR_LANDING		= "RAN_DAMAGE_AIR_DOWN_LANDING",
+	UP_DAMAGE					= "RAN_DAMAGE_AIR_UP",
+	DAMAGE_REVENGE				= "",
+	
+	DAMAGE_EXTRA_STATES         = { "RAN_STAND_UP_FRONT", "RAN_STAND_UP_BACK","RAN_STAND_UP_ATTACK_FRONT","RAN_STAND_UP_ATTACK_BACK",
+	"RAN_JUMP_DOWN","RAN_JUMP_LANDING",},	
+	
+	DYING_LAND_FRONT			= "RAN_DYING",
+	DYING_LAND_BACK				= "RAN_DYING",
+	DYING_SKY					= "RAN_DYING",
+
+	REVENGE_ATTACK				= "",	
+
+	COMMON_FRAME_FUNC           = "RAN_COMMON_FRAMEMOVE",	
+}
+
+-------------------------------------------------------------------------------------------------
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 3,		-- sec
+		TARGET_NEAR_RANGE			= 400,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 9000,		-- cm
+		TARGET_LOST_RANGE			= 8000,		-- cm
+		TARGET_SUCCESS_RATE			= 100,  --70,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 80,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 100, -- 80,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 600,
+		DEST_GAP			= 400,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 500,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		WALK_INTERVAL		= 3,
+		NEAR_WALK_RATE		= 100,   --  70,
+		FAR_WALK_RATE		= 100,   -- 30,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 40, -- 40,
+		UP_DOWN_RATE		= 20,
+		DOWN_JUMP_RATE		= 20,    --  20,
+		DOWN_DOWN_RATE		= 40,
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 100, --50,		
+		PATROL_RANGE			= 200,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 500,	-- cm
+		ESCAPE_GAP			= 650,	-- 이 거리 보다 멀어지면 도망 성공
+		
+		WALK_INTERVAL		= 1.5,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 10,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+	},
+	
+}
+
+-------------------------------------------------------------------------------------------------
+RAN_WAIT_START =
+{
+	ANIM_NAME					= "WaitStart",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	INVINCIBLE					= { 0, 100, }, 	
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+    
+    SOUND_PLAY0			        = { 0.01, "Ran_Voice_WaitStart01.ogg",100,FALSE,-1.0,FALSE },	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,	
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"RAN_PHASE1_START",				},
+	},
+
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_RAN_WAIT_START", 0,	
+	},	
+}
+
+
+RAN_PHASE1_START =
+{
+	ANIM_NAME					= "StartA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	INVINCIBLE					= { 0, 100, }, 	
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SOUND_PLAY0			        = { 0.01, "Ran_Voice_StartA01.ogg",100,FALSE,-1.0,FALSE },	
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,	
+	
+	SOUND_PLAY0 		        = { 2.00, "Slash.ogg", },		
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"RAN_WAIT",				},
+	},
+
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_RAN_PHASE_1_START", 0,	
+	},	
+}
+
+RAN_PHASE2_START =
+{
+	ANIM_NAME					= "StartB",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	INVINCIBLE					= { 0, 100, }, 	
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SOUND_PLAY0			        = { 0.01, "Ran_Voice_StartB01.ogg" , 100, FALSE, -1.0, FALSE },	
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	CUSTOM_STATE_DELETE_EFFECT_SET = TRUE,
+
+	IMMADIATE_PACKET_SEND		= TRUE,	
+	
+	ALARM =
+	{
+		DANGER  				 = TRUE,  				    	    --DANGER 표시
+		ALARM_MESSAGE 			 = STR_ID_15203,  		  		    --경고 문구
+		DELAY   				 = 0,  				    	 		--이 스테이트가 시작되고 이 시간이 경과 후에 경고가 나갑니다.
+		REPEAT   				 = TRUE,  		 		   		    --한 번만 반복 FALSE, 이 스테이트 취할때 마다 반복 TRUE
+		ALARM_COLOR_TYPE		 = ALARM_COLOR_TYPE["ACT_ORANGE"],  --경고 문구 색깔 (ACT_RED, ACT_BLUE, ACT_YELLOW ,ACT_ORANGE, ACT_MAGENTA
+		DISAPPEAR_TIME  		 = 6, 				  			    -- 표시 지속 시간
+	},
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"RAN_SPECIAL_ATTACK_A_PHASE2START",				},
+	},
+
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_RAN_PHASE_2_START", 0,	
+	},	
+}
+
+RAN_PHASE3_START =
+{
+	ANIM_NAME					= "StartC",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	INVINCIBLE					= { 0, 100, }, 	
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	ALARM =
+	{
+		DANGER  				 = TRUE,  				    	    --DANGER 표시
+		ALARM_MESSAGE 			 = STR_ID_15204,  		  		    --경고 문구
+		DELAY   				 = 0,  				    	 		--이 스테이트가 시작되고 이 시간이 경과 후에 경고가 나갑니다.
+		REPEAT   				 = TRUE,  		 		   		    --한 번만 반복 FALSE, 이 스테이트 취할때 마다 반복 TRUE
+		ALARM_COLOR_TYPE		 = ALARM_COLOR_TYPE["ACT_ORANGE"],  --경고 문구 색깔 (ACT_RED, ACT_BLUE, ACT_YELLOW ,ACT_ORANGE, ACT_MAGENTA
+		DISAPPEAR_TIME  		 = 6, 				  			    -- 표시 지속 시간
+	},
+
+	SOUND_PLAY0			        = { 0.01, "Ran_Voice_StartC01.ogg",100,FALSE,-1.0,FALSE },	
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	CUSTOM_STATE_DELETE_EFFECT_SET = TRUE,
+
+	IMMADIATE_PACKET_SEND		= TRUE,	
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"RAN_SPECIAL_ATTACK_A_PHASE3START",				},
+	},
+
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_RAN_PHASE_3_START", 0,	
+	},	
+
+}
+
+RAN_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	EVENT_INTERVAL_TIME0		= 0.5,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"RAN_JUMP_DOWN",				},
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"RAN_WIN",							"CF_RAN_WIN",	},	
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"RAN_SPECIAL_ATTACK_A",				"CF_RAN_SPECIAL_ATTACK_A",	},	
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"RAN_SPECIAL_ATTACK_C",				"CF_RAN_SPECIAL_ATTACK_C",	},	
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"RAN_SPECIAL_ATTACK_D",				"CF_RAN_SPECIAL_ATTACK_D",	},	
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"RAN_JUMP_ATTACK_GRAVITY_READY",	"CF_RAN_JUMP_ATTACK_GRAVITY_READY",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"RAN_MAGIC_ATTACK_D",				"CF_RAN_MAGIC_ATTACK_D",	},
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"RAN_ATTACK_A",						"CT_RAN_ATTACK_A",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"RAN_MAGIC_ATTACK_C",				"CT_RAN_MAGIC_ATTACK_C",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"RAN_MAGIC_ATTACK_A",				"CT_RAN_MAGIC_ATTACK_A",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"RAN_MAGIC_ATTACK_B",				"CT_RAN_MAGIC_ATTACK_B",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"RAN_ATTACK_A",						"CT_RAN_ATTACK_A_AGAIN",	},
+
+
+					
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"RAN_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"RAN_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"RAN_JUMP_UP",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"RAN_JUMP_UP_DIR",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"RAN_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"RAN_JUMP_DOWN_DIR",			},
+	},
+	
+
+	CT_RAN_ATTACK_A = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 35,
+	},
+
+	CT_RAN_MAGIC_ATTACK_C = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 5000,
+		RATE						= 90,
+	},
+
+	CT_RAN_MAGIC_ATTACK_A = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 60,
+	},
+
+	CT_RAN_MAGIC_ATTACK_B = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 70,
+	},
+	
+	CT_RAN_ATTACK_A_AGAIN = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 80,
+	},
+}
+
+RAN_WALK = 
+{
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 0.5,
+	
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"RAN_JUMP_DOWN",				},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"RAN_WIN",							"CF_RAN_WIN",	},	
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"RAN_SPECIAL_ATTACK_A",				"CF_RAN_SPECIAL_ATTACK_A",	},	
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"RAN_SPECIAL_ATTACK_C",				"CF_RAN_SPECIAL_ATTACK_C",	},	
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"RAN_SPECIAL_ATTACK_D",				"CF_RAN_SPECIAL_ATTACK_D",	},	
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"RAN_JUMP_ATTACK_GRAVITY_READY",	"CF_RAN_JUMP_ATTACK_GRAVITY_READY",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"RAN_MAGIC_ATTACK_D",				"CF_RAN_MAGIC_ATTACK_D",	},
+
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"RAN_ATTACK_A",						"CT_RAN_ATTACK_A",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"RAN_MAGIC_ATTACK_C",				"CT_RAN_MAGIC_ATTACK_C",	},
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"RAN_MAGIC_ATTACK_A",				"CT_RAN_MAGIC_ATTACK_A",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"RAN_MAGIC_ATTACK_B",				"CT_RAN_MAGIC_ATTACK_B",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"RAN_ATTACK_A",						"CT_RAN_ATTACK_A_AGAIN",	},
+
+
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"RAN_WAIT",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"RAN_WALK",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"RAN_JUMP_UP",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"RAN_JUMP_UP_DIR",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"RAN_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"RAN_JUMP_DOWN_DIR",			},
+		
+	},
+
+	CT_RAN_ATTACK_A = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 35,
+	},
+
+
+	CT_RAN_MAGIC_ATTACK_C = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 5000,
+		RATE						= 90,
+	},
+
+	CT_RAN_MAGIC_ATTACK_A = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 60,
+	},
+
+	CT_RAN_MAGIC_ATTACK_B = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 70,
+	},
+	
+	CT_RAN_ATTACK_A_AGAIN = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 80,
+	},
+
+}
+
+
+
+RAN_ATTACK_A = 
+{
+	ANIM_NAME					= "AttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR_TIME0			= { 0, 1.7, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	DELETE_EFFECT_SET_ON_DAMAGE_REACT	= TRUE,
+
+	SOUND_PLAY0			        = { 0.01, "Ran_Voice_Attack01.ogg",50 },	
+	SOUND_PLAY1			        = { 0.95, "Slash.ogg", },	
+	SOUND_PLAY2			        = { 1.55, "Slash2.ogg", },	
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"RAN_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],			"RAN_ATTACK_A_COMBO",					"CF_RAN_ATTACK_A_COMBO",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"RAN_WAIT",				},
+	},
+
+}
+
+
+
+
+RAN_ATTACK_A_REVENGE = 
+{
+	ANIM_NAME					= "AttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	DELETE_EFFECT_SET_ON_CUSTOM_STATE	= TRUE,
+
+	SOUND_PLAY0			        = { 0.01, "Ran_Voice_Attack01.ogg",50 },	
+	SOUND_PLAY1			        = { 0.95, "Slash.ogg", },	
+	SOUND_PLAY2			        = { 1.55, "Slash2.ogg", },	
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"RAN_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],			"RAN_ATTACK_A_COMBO",					"CF_RAN_ATTACK_A_COMBO",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"RAN_WAIT",				},
+	},
+
+}
+
+
+RAN_ATTACK_A_COMBO = 
+{
+	ANIM_NAME					= "AttackACombo",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	DELETE_EFFECT_SET_ON_CUSTOM_STATE	= TRUE,
+
+	SOUND_PLAY0			        = { 0.01, "Ran_Voice_Attack02.ogg",50 },
+	SOUND_PLAY1			        = { 0.80, "Ran_swing03.ogg" },
+	--SOUND_PLAY2			        = { 1.90, "Ran_swing01.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"RAN_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"RAN_WAIT",				},
+	},
+
+}
+
+RAN_WIN = 
+{
+	ANIM_NAME					= "Win",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	INVINCIBLE					= { 0, 100, },
+
+    SOUND_PLAY0 = { 0.01, "Ran_Voice_Win01.ogg" }, 
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+
+	RIGHT						= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	DELETE_EFFECT_SET_ON_STATE_END	= TRUE,
+
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_RAN_WIN", 0,	
+	},
+}
+
+
+RAN_MAGIC_ATTACK_A = 
+{
+	ANIM_NAME					= "MagicAttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR_TIME0			= { 0, 1.7, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	SOUND_PLAY0			        = { 0.01, "Ran_Voice_MagicAttackA01.ogg",50 },
+	SOUND_PLAY1			        = { 1.10, "Ran_swing02.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"RAN_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"RAN_WAIT",				},
+	},
+}
+
+RAN_MAGIC_ATTACK_B = 
+{
+	ANIM_NAME					= "MagicAttackB",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR_TIME0			= { 0, 1.7, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	SOUND_PLAY0			        = { 0.01, "Ran_Voice_MagicAttackB01.ogg",50 },
+	SOUND_PLAY1			        = { 1.10, "Ran_swing01.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"RAN_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"RAN_WAIT",				},
+	},
+}
+
+RAN_MAGIC_ATTACK_C = 
+{
+	ANIM_NAME					= "MagicAttackC",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	
+	ANIM_SPEED					= 2.2,
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	SOUND_PLAY0			        = { 0.01, "Ran_Voice_MagicAttackC01.ogg",50 },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"RAN_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"RAN_WAIT",				},
+	},
+}
+
+RAN_MAGIC_ATTACK_C_REVENGE = 
+{
+	ANIM_NAME					= "MagicAttackC",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,
+	
+	ANIM_SPEED					= 2.2,
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	SOUND_PLAY0			        = { 0.01, "Ran_Voice_MagicAttackC01.ogg",50 },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"RAN_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"RAN_WAIT",				},
+	},
+}
+
+-- 장거리 견제
+RAN_MAGIC_ATTACK_D = 
+{
+	ANIM_NAME					= "MagicAttackB",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR_TIME0			= { 0, 1.7, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	SOUND_PLAY0			        = { 0.01, "Ran_Voice_MagicAttackB01.ogg",50 },
+	SOUND_PLAY1			        = { 1.10, "Ran_swing01.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"RAN_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"RAN_ATTACK_A_REVENGE",		"CT_RAN_ATTACK_A_REVENGE", },
+	},
+
+	CT_RAN_ATTACK_A_REVENGE = 
+	{
+		STATE_TIME_OVER			= 1.2,
+	},
+}
+
+
+
+RAN_SPECIAL_ATTACK_A = 
+{
+	ANIM_NAME					= "SpecialAttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR_TIME0			= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	SOUND_PLAY0			        = { 1.50, "Ran_Voice_SpecialAttackA01.ogg" },
+	SOUND_PLAY1			        = { 0.01, "Ran_SpecialAttackA01.ogg" },
+	
+	ALARM =
+	{
+		DANGER  				 = TRUE,  				    	    --DANGER 표시
+		ALARM_MESSAGE 			 = STR_ID_15205,  		  		    --경고 문구
+		DELAY   				 = 0,  				    	 		--이 스테이트가 시작되고 이 시간이 경과 후에 경고가 나갑니다.
+		REPEAT   				 = TRUE,  		 		   		    --한 번만 반복 FALSE, 이 스테이트 취할때 마다 반복 TRUE
+		ALARM_COLOR_TYPE		 = ALARM_COLOR_TYPE["ACT_ORANGE"],  --경고 문구 색깔 (ACT_RED, ACT_BLUE, ACT_YELLOW ,ACT_ORANGE, ACT_MAGENTA
+		DISAPPEAR_TIME  		 = 6, 				  			    -- 표시 지속 시간
+	},
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"RAN_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"RAN_SPECIAL_ATTACK_B",				},
+	},
+}
+
+RAN_SPECIAL_ATTACK_A_PHASE2START = 
+{
+	ANIM_NAME					= "SpecialAttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR_TIME0			= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	ALARM =
+	{
+		DANGER  				 = TRUE,  				    	    --DANGER 표시
+		ALARM_MESSAGE 			 = STR_ID_15205,  		  		    --경고 문구
+		DELAY   				 = 0,  				    	 		--이 스테이트가 시작되고 이 시간이 경과 후에 경고가 나갑니다.
+		REPEAT   				 = TRUE,  		 		   		    --한 번만 반복 FALSE, 이 스테이트 취할때 마다 반복 TRUE
+		ALARM_COLOR_TYPE		 = ALARM_COLOR_TYPE["ACT_ORANGE"],  --경고 문구 색깔 (ACT_RED, ACT_BLUE, ACT_YELLOW ,ACT_ORANGE, ACT_MAGENTA
+		DISAPPEAR_TIME  		 = 6, 				  			    -- 표시 지속 시간
+	},
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"RAN_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"RAN_SPECIAL_ATTACK_B",				},
+	},
+}
+
+RAN_SPECIAL_ATTACK_A_PHASE3START = 
+{
+	ANIM_NAME					= "SpecialAttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR_TIME0			= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	ALARM =
+	{
+		DANGER  				 = TRUE,  				    	    --DANGER 표시
+		ALARM_MESSAGE 			 = STR_ID_15205,  		  		    --경고 문구
+		DELAY   				 = 0,  				    	 		--이 스테이트가 시작되고 이 시간이 경과 후에 경고가 나갑니다.
+		REPEAT   				 = TRUE,  		 		   		    --한 번만 반복 FALSE, 이 스테이트 취할때 마다 반복 TRUE
+		ALARM_COLOR_TYPE		 = ALARM_COLOR_TYPE["ACT_ORANGE"],  --경고 문구 색깔 (ACT_RED, ACT_BLUE, ACT_YELLOW ,ACT_ORANGE, ACT_MAGENTA
+		DISAPPEAR_TIME  		 = 6, 				  			    -- 표시 지속 시간
+	},
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"RAN_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"RAN_SPECIAL_ATTACK_B",				},
+	},
+}
+
+
+
+RAN_SPECIAL_ATTACK_B = 
+{
+	ANIM_NAME					= "SpecialAttackB",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR_TIME0			= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	SOUND_PLAY0			        = { 0.01, "Ran_Voice_SpecialAttackB01.ogg" },
+	SOUND_PLAY1			        = { 0.80, "Ran_swing03.ogg" },
+	SOUND_PLAY2			        = { 0.90, "Ran_SpecialAttackB01.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"RAN_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"RAN_WAIT",				},
+	},
+
+}
+
+
+RAN_SPECIAL_ATTACK_C = 
+{
+	ANIM_NAME					= "SpecialAttackC",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR_TIME0			= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	STOP_OTHER_UNIT0		= { 0.8, 0.75 },
+		
+	SOUND_PLAY0			        = { 0.01, "Ran_Voice_SpecialAttackC01.ogg" },	
+	SOUND_PLAY1			        = { 1.65, "Slash2.ogg", },	
+	SOUND_PLAY2			        = { 1.65, "Ran_SpecialAttackC01.ogg", },	
+
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"RAN_JUMP_DOWN",						},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"RAN_WAIT",			},
+	},
+
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_RAN_SPECIAL_ATTACK_C", 0,	
+	},
+}
+
+
+RAN_SPECIAL_ATTACK_D = 
+{
+	ANIM_NAME					= "SpecialAttackD",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR_TIME0			= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	STOP_OTHER_UNIT0		= { 0.8, 1.6 },
+	
+	SOUND_PLAY0			        = { 0.01, "Ran_Voice_SpecialAttackD01.ogg" },
+	SOUND_PLAY1			        = { 0.92, "Slash.ogg", },	
+	SOUND_PLAY2			        = { 1.30, "Slash2.ogg", },	
+	SOUND_PLAY3			        = { 1.80, "Slash.ogg", },	
+	SOUND_PLAY4			        = { 2.10, "Slash2.ogg", },	
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"RAN_JUMP_DOWN",						},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"RAN_SPECIAL_ATTACK_D_COMBO",			},
+	},
+	
+
+
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_RAN_SPECIAL_ATTACK_D", 0,	
+	},	
+}
+
+
+RAN_SPECIAL_ATTACK_D_COMBO = 
+{
+	ANIM_NAME					= "SpecialAttackDCombo",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR_TIME0			= { 0, 100, },
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	SOUND_PLAY0			        = { 0.41, "Slash.ogg", },	
+	SOUND_PLAY1			        = { 1.20, "Ran_swing02.ogg" },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"RAN_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"RAN_WAIT",				},
+	},
+	
+	
+
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_RAN_SPECIAL_ATTACK_D_COMBO", 0,	
+	},	
+}
+
+
+RAN_JUMP_ATTACK_GRAVITY_READY = 
+{
+	ANIM_NAME					= "JumpReady",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	ANIM_SPEED					= 1.0,
+
+	SUPER_ARMOR					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"RAN_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"RAN_JUMP_UP_GRAVITY",		},
+	},
+}
+
+RAN_JUMP_UP = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	
+	ADD_POS_Y					= 45, 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"RAN_JUMP_DOWN",			},
+	},
+	
+}
+
+
+RAN_JUMP_UP_GRAVITY = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	ADD_POS_Y					= 0,
+
+	SUPER_ARMOR					= TRUE,
+	
+	VIEW_TARGET					= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"RAN_JUMP_ATTACK_GRAVITY",		"CT_RAN_JUMP_ATTACK_GRAVITY", },
+	},
+
+	CT_RAN_JUMP_ATTACK_GRAVITY = 
+	{
+		STATE_TIME_OVER			= 0.6,
+	},
+}
+
+
+RAN_JUMP_ATTACK_GRAVITY = 
+{
+	ANIM_NAME					= "JumpAttack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR_TIME0			= { 0, 100, },
+
+	ANIM_SPEED					= 1.0,
+
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	VIEW_TARGET					= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	SOUND_PLAY0			        = { 0.92, "Ran_Swing01.ogg" },	
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"RAN_JUMP_LANDING",						},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"RAN_JUMP_DOWN_GRAVITY",				},
+	},
+}
+
+RAN_JUMP_DOWN_GRAVITY = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"RAN_JUMP_LANDING",				},
+	},
+}
+
+RAN_JUMP_DOWN = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"RAN_JUMP_LANDING",				},
+	},
+}
+
+RAN_JUMP_UP_DIR = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	ADD_POS_Y					= 45,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"RAN_JUMP_DOWN_DIR",				},
+	},
+	
+}
+
+RAN_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"RAN_JUMP_LANDING",				},
+	},
+}
+
+RAN_JUMP_LANDING = 
+{
+	ANIM_NAME					= "JumpLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+		
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"RAN_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"RAN_WAIT",					},
+	},
+}
+
+RAN_DAMAGE_SMALL_FRONT = 
+{
+	ANIM_NAME					= "DamageFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0		            = { 0.01, "Ran_Voice_Hit01.ogg",50 },
+	
+	EVENT_INTERVAL_TIME0		= 0.5,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"RAN_ATTACK_A_REVENGE",						"CT_RAN_ATTACK_A_REVENGE",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"RAN_MAGIC_ATTACK_C_REVENGE",				"CT_RAN_MAGIC_ATTACK_C_REVENGE",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"RAN_WAIT",									},
+
+	},
+	
+	CT_RAN_ATTACK_A_REVENGE = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 5,
+	},
+
+	CT_RAN_MAGIC_ATTACK_C_REVENGE = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 5,
+	},
+
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_4678 },
+		{ RATE = 10, MESSAGE = STR_ID_4680 },
+	},
+}
+
+RAN_DAMAGE_BIG_FRONT = 
+{
+	ANIM_NAME					= "DamageFront",
+	ANIM_SPEED					= 0.8,
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0		            = { 0.01, "Ran_Voice_Hit02.ogg",50 },
+	
+	
+	EVENT_INTERVAL_TIME0		= 0.5,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"RAN_ATTACK_A_REVENGE",						"CT_RAN_ATTACK_A_REVENGE",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"RAN_MAGIC_ATTACK_C_REVENGE",				"CT_RAN_MAGIC_ATTACK_C_REVENGE",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"RAN_WAIT",									},
+
+	},
+	
+	CT_RAN_ATTACK_A_REVENGE = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 5,
+	},
+
+	CT_RAN_MAGIC_ATTACK_C_REVENGE = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 5,
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_4678 },
+		{ RATE = 10, MESSAGE = STR_ID_4680 },
+	},
+}
+
+RAN_DAMAGE_SMALL_BACK = 
+{
+	ANIM_NAME					= "DamageBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0		            = { 0.01, "Ran_Voice_Hit03.ogg",50 },
+
+
+	TALK_BOX = 
+	{
+		{ RATE = 14, MESSAGE = STR_ID_4679 },
+	},
+	
+	EVENT_INTERVAL_TIME0		= 0.5,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"RAN_ATTACK_A_REVENGE",						"CT_RAN_ATTACK_A_REVENGE",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"RAN_MAGIC_ATTACK_C_REVENGE",				"CT_RAN_MAGIC_ATTACK_C_REVENGE",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"RAN_WAIT",									},
+
+	},
+	
+	CT_RAN_ATTACK_A_REVENGE = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 5,
+	},
+
+	CT_RAN_MAGIC_ATTACK_C_REVENGE = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 5,
+	},
+}
+
+RAN_DAMAGE_BIG_BACK = 
+{
+	ANIM_NAME					= "DamageBack",
+	ANIM_SPEED					= 0.8,
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0		            = { 0.01, "Ran_Voice_Hit04.ogg",50 },
+
+
+	TALK_BOX = 
+	{
+		{ RATE = 14, MESSAGE = STR_ID_4679 },
+	},
+	
+	EVENT_INTERVAL_TIME0		= 0.5,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"RAN_ATTACK_A_REVENGE",						"CT_RAN_ATTACK_A_REVENGE",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"RAN_MAGIC_ATTACK_C_REVENGE",				"CT_RAN_MAGIC_ATTACK_C_REVENGE",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"RAN_WAIT",									},
+
+	},
+	
+	CT_RAN_ATTACK_A_REVENGE = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 5,
+	},
+
+	CT_RAN_MAGIC_ATTACK_C_REVENGE = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		RATE						= 5,
+	},
+}
+
+RAN_DAMAGE_DOWN_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+
+    SOUND_PLAY0		            = { 0.01, "Ran_Voice_Hit05.ogg",50 },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	CUSTOM_STATE_DELETE_EFFECT_SET = TRUE,
+
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"RAN_DAMAGE_AIR_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"RAN_STAND_UP_ATTACK_FRONT",	"CT_RAN_STAND_UP_ATTACK_FRONT", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"RAN_STAND_UP_FRONT",			},
+	},
+	
+	CT_RAN_STAND_UP_ATTACK_FRONT = 
+	{
+		ANIM_PLAY_COUNT				= 1,
+		DISTANCE_TO_TARGET_NEAR		= 800,
+		RATE						= 100,
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_4681 },
+		{ RATE = 10, MESSAGE = STR_ID_4682 },
+	},
+}
+
+RAN_DAMAGE_DOWN_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+    
+    SOUND_PLAY0		            = { 0.01, "Ran_Voice_Hit06.ogg",50 },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	CUSTOM_STATE_DELETE_EFFECT_SET = TRUE,
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"RAN_DAMAGE_AIR_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"RAN_STAND_UP_ATTACK_BACK",		"CT_RAN_STAND_UP_ATTACK_BACK", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"RAN_STAND_UP_BACK",			},
+	},
+	
+	CT_RAN_STAND_UP_ATTACK_BACK = 
+	{
+		ANIM_PLAY_COUNT				= 1,
+		DISTANCE_TO_TARGET_NEAR		= 800,
+		RATE						= 100,
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_4681 },
+	},
+}
+
+RAN_DAMAGE_FLY_FRONT = 
+{
+	ANIM_NAME					= "DamageAirFlyFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SOUND_PLAY0		            = { 0.01, "Ran_Voice_Hit01.ogg",50 },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"RAN_DAMAGE_DOWN_FRONT",		},
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_4678 },
+	},
+}
+
+RAN_DAMAGE_FLY_BACK = 
+{
+	ANIM_NAME					= "DamageAirFlyBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0		            = { 0.01, "Ran_Voice_Hit02.ogg",50 },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"RAN_DAMAGE_DOWN_BACK",		},
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_4679 },
+	},
+}
+
+RAN_DAMAGE_AIR = 
+{
+	ANIM_NAME					= "DamageAirSmall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0		            = { 0.01, "Ran_Voice_Hit03.ogg",50 },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"RAN_WAIT",					},
+	},
+}
+
+
+RAN_DAMAGE_AIR_UP = 
+{
+	ANIM_NAME					= "DamageAirUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SOUND_PLAY0		            = { 0.01, "Ran_Voice_Hit04.ogg",50 },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"RAN_DAMAGE_AIR_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"RAN_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+	
+	TALK_BOX =
+	{
+		{ RATE = 10, MESSAGE = STR_ID_4678 },
+	},
+}
+
+RAN_DAMAGE_AIR_DOWN = 
+{
+	ANIM_NAME					= "DamageAirDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0		            = { 0.01, "Ran_Voice_Hit05.ogg",50 },
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_POSITIVE_Y_SPEED"],		"RAN_DAMAGE_AIR_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"RAN_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+RAN_DAMAGE_AIR_DOWN_LANDING = 
+{
+	ANIM_NAME					= "DamageDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+
+    SOUND_PLAY0		            = { 0.01, "Ran_Voice_Hit06.ogg",50 },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"RAN_DAMAGE_AIR_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"RAN_STAND_UP_ATTACK_FRONT",	"CT_RAN_STAND_UP_ATTACK_FRONT", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"RAN_STAND_UP_FRONT",			},
+	},
+	
+	CT_RAN_STAND_UP_ATTACK_FRONT = 
+	{
+		ANIM_PLAY_COUNT		= 1,
+		DISTANCE_TO_TARGET_NEAR		= 800,
+		RATE						= 100,
+	},
+}
+
+RAN_STAND_UP_FRONT = 
+{
+	ANIM_NAME					= "DamageStandUpFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SOUND_PLAY0		            = { 0.01, "Ran_Voice_Hit01.ogg",50 },
+	SOUND_PLAY1			        = { 0.81, "Slash.ogg", },	
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"RAN_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"RAN_WAIT",				},
+	},
+}
+
+RAN_STAND_UP_BACK = 
+{
+	ANIM_NAME					= "DamageStandUpBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+
+	SOUND_PLAY0		            = { 0.01, "Ran_Voice_Hit02.ogg",50 },
+	SOUND_PLAY1			        = { 0.82, "Slash.ogg", },	
+
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"RAN_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"RAN_WAIT", },
+	},		
+}
+
+RAN_STAND_UP_ATTACK_FRONT = 
+{
+	ANIM_NAME					= "StandUpAttackFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	MIND_FLAG					= MIND_FLAG["MF_STAND_UP_ATTACK"],
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	SOUND_PLAY0		            = { 0.01, "Ran_Voice_AttackA01.ogg",50 },
+	SOUND_PLAY1			        = { 1.35, "Ran_swing01.ogg" },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"RAN_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"RAN_WAIT",				},
+	},
+	
+}
+
+
+RAN_STAND_UP_ATTACK_BACK = 
+{
+	ANIM_NAME					= "StandUpAttackBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	MIND_FLAG					= MIND_FLAG["MF_STAND_UP_ATTACK"],
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+		
+	SOUND_PLAY0		            = { 0.01, "Ran_Voice_AttackA02.ogg",50 },
+	SOUND_PLAY1			        = { 1.55, "Ran_swing01.ogg" },
+		
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	--FLIP_DIR_END				= TRUE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"RAN_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"RAN_WAIT", },
+	},	
+}
+
+
+
+RAN_DYING = 
+{
+	ANIM_NAME					= "Dying",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+
+	SOUND_PLAY0			        = { 0.01, "Ran_Voice_Dying01.ogg" },
+ 	
+	RIGHT						= TRUE,
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	DYING_SPEED					= 1,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_RAN_DYING", 0,	
+	},	
+
+}
+
+
+
+--------------------------------------------------------------------------------------------------------------------
+function RAN_WAIT_START_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	pNPCUnit:SetIsRight(true)
+end
+
+function RAN_WAIT_START_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+end
+
+
+function RAN_PHASE1_START_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	pX2Game:SetEnableAllKeyProcess(true)
+	pNPCUnit:SetInt_LUA(0, 1) -- PHASE 1
+end
+
+function RAN_PHASE2_START_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	pNPCUnit:SetInt_LUA(0, 2) -- PHASE 2
+	pNPCUnit:SetEnableAfterImageAlways(true)
+	pNPCUnit:ChangeAfterImageColor(D3DXCOLOR(0.0, 0.0, 0.0, 0.5))
+end
+
+function RAN_PHASE3_START_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	pNPCUnit:SetInt_LUA(0, 3) -- PHASE 3
+	pNPCUnit:SetEnableAfterImageAlways(true)
+	pNPCUnit:ChangeAfterImageColor(D3DXCOLOR(1.0, 0.0, 0.96, 0.5))
+end
+
+
+function RAN_DYING_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	local vPos = pNPCUnit:GetPos()
+
+	vPos.y = vPos.y + 100.0
+
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	local pSeq = pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DieLight",		vPos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+
+	if pSeq ~= nil then
+		pSeq:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+		pNPCUnit:SetDieSeq( pSeq:GetHandle() )
+	end
+
+	pNPCUnit:PlaySound_LUA( "DieLight.ogg" )
+end
+
+
+function RAN_ATTACK_A_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pEffectSet = pX2Game:GetEffectSet()
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.06666 ) then
+		if	pNPCUnit:GetInt_LUA(0) == 1 then
+			--pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_2_ATTACK_A", pNPCUnit )
+		elseif	pNPCUnit:GetInt_LUA(0) == 2 then
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_2_ATTACK_A", pNPCUnit )
+		elseif	pNPCUnit:GetInt_LUA(0) == 3 then
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_3_ATTACK_A", pNPCUnit )
+		end
+	end
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.93333 ) then
+		pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_ATTACK_A_MELEE_ONE", pNPCUnit )
+	end	
+
+	if pNPCUnit:AnimEventTimer_LUA( 1.53333 ) then
+		pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_ATTACK_A_MELEE_TWO", pNPCUnit )
+	end	
+
+end
+
+function RAN_ATTACK_A_COMBO_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pEffectSet = pX2Game:GetEffectSet()
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.001 ) then
+		pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_ATTACK_A_COMBO_MELEE", pNPCUnit )
+	end
+
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+		if	pNPCUnit:GetInt_LUA(0) == 1 then
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_1_ATTACK_A_COMBO", pNPCUnit )
+		elseif	pNPCUnit:GetInt_LUA(0) == 2 then
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_2_ATTACK_A_COMBO", pNPCUnit )
+		elseif	pNPCUnit:GetInt_LUA(0) == 3 then
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_3_ATTACK_A_COMBO", pNPCUnit )
+		end
+	end
+end
+
+function RAN_MAGIC_ATTACK_A_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	local pEffectSet = pX2Game:GetEffectSet()
+
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.001 ) then
+		if	pNPCUnit:GetInt_LUA(0) == 1 then
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_1_MAGIC_ATTACK_A", pNPCUnit )
+		elseif	pNPCUnit:GetInt_LUA(0) == 2 then
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_2_MAGIC_ATTACK_A", pNPCUnit )
+		elseif	pNPCUnit:GetInt_LUA(0) == 3 then
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_3_MAGIC_ATTACK_A", pNPCUnit )
+		end
+	end
+end
+
+function RAN_MAGIC_ATTACK_B_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	local pEffectSet = pX2Game:GetEffectSet()
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.001 ) then
+		if	pNPCUnit:GetInt_LUA(0) == 1 then
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_1_MAGIC_ATTACK_B", pNPCUnit )
+		elseif	pNPCUnit:GetInt_LUA(0) == 2 then
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_2_MAGIC_ATTACK_B", pNPCUnit )
+		elseif	pNPCUnit:GetInt_LUA(0) == 3 then
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_3_MAGIC_ATTACK_B", pNPCUnit )
+		end
+	end
+
+end
+
+
+function RAN_STAND_UP_ATTACK_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	local pEffectSet = pX2Game:GetEffectSet()
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.001 ) then
+		if	pNPCUnit:GetInt_LUA(0) == 1 then
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_1_STAND_UP_ATTACK_FRONT", pNPCUnit )
+		elseif	pNPCUnit:GetInt_LUA(0) == 2 then
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_2_STAND_UP_ATTACK_FRONT", pNPCUnit )
+		elseif	pNPCUnit:GetInt_LUA(0) == 3 then
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_3_STAND_UP_ATTACK_FRONT", pNPCUnit )
+		end
+	end
+
+end
+
+function RAN_STAND_UP_ATTACK_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	local pEffectSet = pX2Game:GetEffectSet()
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.001 ) then
+		if	pNPCUnit:GetInt_LUA(0) == 1 then
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_1_STAND_UP_ATTACK_BACK", pNPCUnit )
+		elseif	pNPCUnit:GetInt_LUA(0) == 2 then
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_2_STAND_UP_ATTACK_BACK", pNPCUnit )
+		elseif	pNPCUnit:GetInt_LUA(0) == 3 then
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_3_STAND_UP_ATTACK_BACK", pNPCUnit )
+		end
+	end
+end
+
+function RAN_MAGIC_ATTACK_C_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+
+		local pEffectSet = pX2Game:GetEffectSet()
+		local pDamageEffect = pX2Game:GetDamageEffect()	
+		local vTargetDamagePos = pX2Game:GetFarthestUserUnitPos_LUA( pNPCUnit:GetPos(), 0, 999999 )
+		local vTargetShadowPos = pX2Game:GetFarthestUserUnitPos_LUA( pNPCUnit:GetPos(), 0, 999999 )
+		local vDirVector = pNPCUnit:GetDirVector()
+		local vEffectRotateDegree = pNPCUnit:GetRotateDegree()
+		local bIsRight   = pNPCUnit:GetIsRight()
+		vEffectRotateDegree.y = vEffectRotateDegree.y + 180
+
+
+		if bIsRight == true then
+			vTargetDamagePos = NewMovePos( vTargetDamagePos, vDirVector, 60 )
+			vTargetDamagePos.y = vTargetDamagePos.y + 150
+			vTargetShadowPos = NewMovePos( vTargetShadowPos, vDirVector, 150 )
+		else
+			vTargetDamagePos = NewMovePos( vTargetDamagePos, vDirVector, -60 )
+			vTargetDamagePos.y = vTargetDamagePos.y + 150
+			vTargetShadowPos = NewMovePos( vTargetShadowPos, vDirVector, -150 )
+		end
+
+		if	pNPCUnit:GetInt_LUA(0) == 1 then
+			pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_RAN_PHASE1_MAGIC_ATTACK_C", vTargetDamagePos, vTargetDamagePos.y, pNPCUnit:GetRotateDegree())	
+		elseif	pNPCUnit:GetInt_LUA(0) == 2 then
+			pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_RAN_PHASE2_MAGIC_ATTACK_C", vTargetDamagePos, vTargetDamagePos.y, pNPCUnit:GetRotateDegree())	
+		elseif	pNPCUnit:GetInt_LUA(0) == 3 then
+			pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_RAN_PHASE3_MAGIC_ATTACK_C", vTargetDamagePos, vTargetDamagePos.y, pNPCUnit:GetRotateDegree())	
+		end
+
+		pEffectSet:PlayEffectSetWithCustomPos_LUA( "EffectSet_RAN_PHASE_1_MAGIC_ATTACK_C", pNPCUnit, vTargetShadowPos, vEffectRotateDegree )
+
+
+	end
+
+end
+
+
+function RAN_MAGIC_ATTACK_D_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+
+		local pEffectSet = pX2Game:GetEffectSet()
+		local pDamageEffect = pX2Game:GetDamageEffect()	
+
+		local vTargetDamagePos = pX2Game:GetFarthestUserUnitPos_LUA( pNPCUnit:GetPos(), 0, 999999 )
+		local vTargetShadowPos = pX2Game:GetFarthestUserUnitPos_LUA( pNPCUnit:GetPos(), 0, 999999 )
+		local vDirVector = pNPCUnit:GetDirVector()
+		local bIsRight   = pNPCUnit:GetIsRight()
+
+		if bIsRight == true then
+			vTargetDamagePos = NewMovePos( vTargetDamagePos, vDirVector, 60 )
+			vTargetDamagePos.y = vTargetDamagePos.y + 150
+			vTargetShadowPos = NewMovePos( vTargetShadowPos, vDirVector, 150 )
+		else
+			vTargetDamagePos = NewMovePos( vTargetDamagePos, vDirVector, -60 )
+			vTargetDamagePos.y = vTargetDamagePos.y + 150
+			vTargetShadowPos = NewMovePos( vTargetShadowPos, vDirVector, -150 )
+		end
+
+		if	pNPCUnit:GetInt_LUA(0) == 2 then
+			pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_RAN_PHASE2_MAGIC_ATTACK_D", vTargetDamagePos, vTargetDamagePos.y, pNPCUnit:GetRotateDegree())	
+		elseif	pNPCUnit:GetInt_LUA(0) == 3 then
+			pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_RAN_PHASE3_MAGIC_ATTACK_D", vTargetDamagePos, vTargetDamagePos.y, pNPCUnit:GetRotateDegree())	
+		end
+
+		if	pNPCUnit:GetInt_LUA(0) == 2 then
+			pEffectSet:PlayEffectSetWithCustomPos_LUA( "EffectSet_RAN_PHASE_2_MAGIC_ATTACK_D", pNPCUnit, vTargetShadowPos, pNPCUnit:GetRotateDegree() )
+		elseif	pNPCUnit:GetInt_LUA(0) == 3 then
+			pEffectSet:PlayEffectSetWithCustomPos_LUA( "EffectSet_RAN_PHASE_3_MAGIC_ATTACK_D", pNPCUnit, vTargetShadowPos, pNPCUnit:GetRotateDegree() )
+		end
+	end
+
+
+end
+
+
+function RAN_SPECIAL_ATTACK_A_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pEffectSet = pX2Game:GetEffectSet()
+
+	if	pNPCUnit:GetInt_LUA(0) == 2 then
+		
+		if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_2_SPECIAL_ATTACK_A", pNPCUnit )
+		end
+
+		if pNPCUnit:AnimEventTimer_LUA( 1.5 ) then
+			pX2Game:AddReverseGravityRegion( pNPCUnit:GetPos(), 450.0, 2.8, 150.0, pNPCUnit:GetTeam() );
+		end
+
+	elseif	pNPCUnit:GetInt_LUA(0) == 3 then
+		pX2Game:SetWorldColor_LUA( D3DXCOLOR(0.2,0.2,0.2,1) )
+
+		if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_3_SPECIAL_ATTACK_A", pNPCUnit )
+		end
+
+		if pNPCUnit:AnimEventTimer_LUA( 1.5 ) then
+			pX2Game:AddReverseGravityRegion( pNPCUnit:GetPos(), 600.0, 3.0, 250.0, pNPCUnit:GetTeam() );
+		end
+	end
+
+end
+
+
+function RAN_SPECIAL_ATTACK_B_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pEffectSet = pX2Game:GetEffectSet()
+
+	if	pNPCUnit:GetInt_LUA(0) == 2 then
+		
+		if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_2_SPECIAL_ATTACK_B", pNPCUnit )
+		end
+
+	elseif	pNPCUnit:GetInt_LUA(0) == 3 then
+		pX2Game:SetWorldColor_LUA( D3DXCOLOR(0.2,0.2,0.2,1) )
+
+		if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_3_SPECIAL_ATTACK_B", pNPCUnit )
+		end
+
+	end
+
+end
+
+
+
+function RAN_SPECIAL_ATTACK_C_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	pX2Game:SetWorldColor_LUA( D3DXCOLOR(0.2,0.2,0.2,1) )
+end
+
+function RAN_SPECIAL_ATTACK_D_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	pX2Game:SetWorldColor_LUA( D3DXCOLOR(0.2,0.2,0.2,1) )
+end
+
+function RAN_SPECIAL_ATTACK_D_COMBO_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	pX2Game:SetWorldColor_LUA( D3DXCOLOR(0.2,0.2,0.2,1) )
+end
+
+
+
+function RAN_COMMON_FRAMEMOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	local fNowHp = pNPCUnit:GetNowHP() / pNPCUnit:GetMaxHP() * 100   
+
+	if pNPCUnit:GetInt_LUA(0) == 1 then
+		if fNowHp <= 70 then
+			pNPCUnit:StateChange_LUA("RAN_PHASE2_START", true)
+		end
+	elseif pNPCUnit:GetInt_LUA(0) == 2 then
+		if fNowHp <= 50 then
+			pNPCUnit:StateChange_LUA("RAN_PHASE3_START", true)
+		end
+	end
+end
+
+
+--------------------------------------------------------------------------
+function RAN_JUMP_UP_GRAVITY_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	pNPCUnit:SetGAccel(-1200)
+	pNPCUnit:SetSpeedY(200)
+	pNPCUnit:SetPassiveSpeed(-1, -1)
+end
+
+function RAN_JUMP_UP_GRAVITY_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.3 ) then
+		pNPCUnit:SetGAccel(10000)
+	end		
+
+	if pNPCUnit:GetStateTime() > 0.4 then
+		pNPCUnit:SetGAccel(3000)
+	end
+
+end
+
+function RAN_JUMP_UP_GRAVITY_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	pNPCUnit:SetReloadAccel(4000)
+end
+
+
+--------------------------------------------------------------------------
+function RAN_JUMP_ATTACK_GRAVITY_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	pNPCUnit:SetReloadAccel(-1400)
+	pNPCUnit:SetGAccel(0)
+	pNPCUnit:SetSpeedX(0)
+	pNPCUnit:SetSpeedY(0)
+	--pNPCUnit:SetPassiveSpeed(-1, 200)
+end
+
+function RAN_JUMP_ATTACK_GRAVITY_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	local pEffectSet = pX2Game:GetEffectSet()
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.001 ) then
+		if	pNPCUnit:GetInt_LUA(0) == 1 then
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_1_JUMP_ATTACK", pNPCUnit )
+		elseif	pNPCUnit:GetInt_LUA(0) == 2 then
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_2_JUMP_ATTACK", pNPCUnit )
+		elseif	pNPCUnit:GetInt_LUA(0) == 3 then
+			pEffectSet:PlayEffectSet_LUA( "EffectSet_RAN_PHASE_3_JUMP_ATTACK", pNPCUnit )
+		end
+	end
+	
+	if pNPCUnit:AnimEventTimer_LUA( 0.9 ) then
+		pNPCUnit:SetReloadAccel(1800)
+		
+	end
+end
+
+function RAN_JUMP_ATTACK_GRAVITY_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	pNPCUnit:SetVector_LUA(0, D3DXVECTOR3(pNPCUnit:GetSpeedX(), 0.0, 0.0) )
+	pNPCUnit:SetReloadAccel(2000)
+end
+
+--------------------------------------------------------------------------
+function RAN_JUMP_DOWN_GRAVITY_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	pNPCUnit:SetPassiveSpeed( 0,-400 )
+	--pNPCUnit:SetGAccel(5000)
+end
+
+function RAN_JUMP_DOWN_GRAVITY_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	
+	if pNPCUnit:AnimEventTimer_LUA( 1.2 ) then
+
+	end
+end
+
+function RAN_JUMP_DOWN_GRAVITY_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+	pNPCUnit:SetGAccel(4000)
+end
+
+
+
+
+
+
+
+function NewMovePos( vPos, vDirvector, fDist )
+	
+	local vReturnPos = vPos
+
+	vReturnPos.x = vPos.x + fDist * vDirvector.x
+	vReturnPos.y = vPos.y + fDist * vDirvector.y
+	vReturnPos.z = vPos.z + fDist * vDirvector.z
+	
+	return vReturnPos
+	
+end
+
+
+function CF_RAN_ATTACK_A_COMBO( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:GetStateTime() < 1.9 then
+		return false
+	end
+
+	local bEnemyFront = false
+	local bIsRight = pNPCUnit:GetIsRight()
+	local vTargetPos = pX2Game:GetNearestUserUnitPos_LUA( pNPCUnit:GetPos(), 0, 999999 )
+
+	if pNPCUnit:IsRightTarget_LUA(pNPCUnit, vTargetPos) == true then
+		if bIsRight == true then
+			bEnemyFront = true
+		else
+			bEnemyFront = false
+		end
+	else
+		if bIsRight == true then
+			bEnemyFront = false
+		else
+			bEnemyFront = true
+		end
+	end
+
+	if bEnemyFront == false then
+		return false
+	end
+	
+	local iDistance = pX2Game:GetDist_LUA(pNPCUnit:GetPos(), vTargetPos)
+	
+	if iDistance > 800 then
+		return false
+	end
+	
+	return true
+end
+
+
+
+function RAN_SPECIAL_ATTACK_A_PHASESTART_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	pNPCUnit:SetTimerRestart( 0 )
+	pNPCUnit:SetTimerRestart( 1 )
+end
+
+function RAN_SPECIAL_ATTACK_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	pNPCUnit:SetTimerRestart( 1 )
+end
+
+function CF_RAN_SPECIAL_ATTACK_A( pKTDXApp, pX2Game, pNPCUnit )
+	if	pNPCUnit:GetInt_LUA(0) == 1 then
+		return false
+	end
+
+	if pNPCUnit:GetTimerElapsedTime( 1 ) < 8.0 then
+		return false
+	end
+
+	if pNPCUnit:GetTimerElapsedTime( 0 ) < 60.0 then
+		return false
+	end
+
+	local vTargetPos = pX2Game:GetNearestUserUnitPos_LUA( pNPCUnit:GetPos(), 0, 999999 )
+	local iDistance = pX2Game:GetDist_LUA(pNPCUnit:GetPos(), vTargetPos)
+	
+	if iDistance > 400 then
+		return false
+	end
+	
+	return true
+end
+
+function CF_RAN_SPECIAL_ATTACK_C( pKTDXApp, pX2Game, pNPCUnit )
+
+	if	pNPCUnit:GetInt_LUA(0) == 1 or pNPCUnit:GetInt_LUA(0) == 2 then
+		return false
+	end
+
+	if pNPCUnit:GetTimerElapsedTime( 1 ) < 8.0 then
+		return false
+	end
+
+	local vTargetPos = pX2Game:GetNearestUserUnitPos_LUA( pNPCUnit:GetPos(), 0, 999999 )
+	local iDistance = pX2Game:GetDist_LUA(pNPCUnit:GetPos(), vTargetPos)
+	
+	if iDistance > 500 then
+		return false
+	end
+	
+	return true
+end
+
+
+function CF_RAN_SPECIAL_ATTACK_D( pKTDXApp, pX2Game, pNPCUnit )
+
+	if	pNPCUnit:GetInt_LUA(0) == 1 or pNPCUnit:GetInt_LUA(0) == 2 then
+		return false
+	end
+
+	if pNPCUnit:GetTimerElapsedTime( 1 ) < 8.0 then
+		return false
+	end
+	
+	local vTargetPos = pX2Game:GetNearestUserUnitPos_LUA( pNPCUnit:GetPos(), 0, 999999 )
+	local iDistance = pX2Game:GetDist_LUA(pNPCUnit:GetPos(), vTargetPos)
+	
+	if iDistance > 500 then
+		return false
+	end
+	
+	return true
+end
+
+function CF_RAN_WIN( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pX2Game:LiveUserUnitNum() == 0 then
+		return true
+	else
+		return false
+	end
+
+end
+
+
+-- 장거리 견제
+function CF_RAN_JUMP_ATTACK_GRAVITY_READY( pKTDXApp, pX2Game, pNPCUnit )
+	if	pNPCUnit:GetInt_LUA(0) == 1 then
+		return false
+	end
+	
+	local vTargetPos = pX2Game:GetFarthestUserUnitPos_LUA( pNPCUnit:GetPos(), 0, 999999 )
+	local iDistance = pX2Game:GetDist_LUA(pNPCUnit:GetPos(), vTargetPos)
+
+	if iDistance > 800 then
+		return true
+	end
+	return false
+end
+
+-- 장거리 견제
+function CF_RAN_MAGIC_ATTACK_D( pKTDXApp, pX2Game, pNPCUnit )
+	if	pNPCUnit:GetInt_LUA(0) == 1 then
+		return false
+	end
+	
+	local vTargetPos = pX2Game:GetFarthestUserUnitPos_LUA( pNPCUnit:GetPos(), 0, 999999 )
+	local iDistance = pX2Game:GetDist_LUA(pNPCUnit:GetPos(), vTargetPos)
+
+	if iDistance > 800 then
+		return true
+	end
+	return false
+end

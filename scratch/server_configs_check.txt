@@ -1,0 +1,199 @@
+=== Configs in CenterServer ===
+  File: CenterServer\config_cn.ini
+  File: CenterServer\config_cn_US_INTERNAL.lua
+    Line 14: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 15: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\config_cn_US_SERVICE.lua
+    Line 9: -- Add monitoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 10: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\config_cn_US_TEST.lua
+    Line 9: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 10: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\BR\config_cn.ini
+  File: CenterServer\Config\BR\config_cn_US_INTERNAL.lua
+    Line 14: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 15: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\BR\config_cn_US_SERVICE.lua
+    Line 9: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 10: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\BR\config_cn_US_TEST.lua
+    Line 9: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 10: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\CN\config_cn_US_SERVICE.lua
+    Line 9: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 10: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\CN\config_cn_US_TEST.lua
+    Line 9: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 10: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\EU\config_cn.ini
+  File: CenterServer\Config\EU\config_cn_US_INTERNAL.lua
+    Line 14: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 15: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\EU\config_cn_US_SERVICE.lua
+    Line 9: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 10: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\EU\config_cn_US_TEST.lua
+    Line 9: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 10: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\ID\config_cn.ini
+  File: CenterServer\Config\ID\config_cn_US_INTERNAL.lua
+    Line 14: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 15: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\ID\config_cn_US_SERVICE.lua
+    Line 9: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 10: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\ID\config_cn_US_TEST.lua
+    Line 9: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 10: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\INT\config_cn.ini
+  File: CenterServer\Config\INT\config_cn_US_INTERNAL.lua
+    Line 14: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 15: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\INT\config_cn_US_SERVICE.lua
+    Line 9: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 10: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\INT\config_cn_US_TEST.lua
+    Line 9: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 10: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\JP\config_cn.ini
+  File: CenterServer\Config\JP\config_cn_US_INTERNAL.lua
+    Line 14: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 15: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\JP\config_cn_US_SERVICE.lua
+    Line 9: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 10: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\JP\config_cn_US_TEST.lua
+    Line 9: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 10: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\PH\config_cn.ini
+  File: CenterServer\Config\PH\config_cn_US_INTERNAL.lua
+    Line 14: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 15: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\PH\config_cn_US_SERVICE.lua
+    Line 9: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 10: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\PH\config_cn_US_TEST.lua
+    Line 9: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 10: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\TH\config_cn.ini
+  File: CenterServer\Config\TH\config_cn_US_INTERNAL.lua
+    Line 14: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 15: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\TH\config_cn_US_SERVICE.lua
+    Line 9: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 10: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\TH\config_cn_US_TEST.lua
+    Line 9: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 10: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\TWHK\config_cn.ini
+  File: CenterServer\Config\TWHK\config_cn_US_INTERNAL.lua
+    Line 14: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 15: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\TWHK\config_cn_US_SERVICE.lua
+    Line 9: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 10: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\TWHK\config_cn_US_TEST.lua
+    Line 9: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 10: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\US\config_cn.ini
+  File: CenterServer\Config\US\config_cn_US_INTERNAL.lua
+    Line 14: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 15: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\US\config_cn_US_SERVICE.lua
+    Line 9: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 10: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: CenterServer\Config\US\config_cn_US_TEST.lua
+    Line 9: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 10: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+=== Configs in LoginServer ===
+  File: LoginServer\config_lg.ini
+  File: LoginServer\config_lg_US_INTERNAL.lua
+    Line 19: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 20: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+    Line 92: -- InitNexonAuthInfo( 인증 서버 IP, 인증 서버 Port, 서버 도메인, 도메인네임, 세션체크타입, 세션체크카운트 )
+  File: LoginServer\config_lg_US_SERVICE.lua
+    Line 17: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 18: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+    Line 86: -- InitNexonAuthInfo( 인증 서버 IP, 인증 서버 Port, 서버 도메인, 도메인네임, 세션체크타입, 세션체크카운트 )
+  File: LoginServer\config_lg_US_TEST.lua
+    Line 14: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 15: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+    Line 81: -- InitNexonAuthInfo( 인증 서버 IP, 인증 서버 Port, 서버 도메인, 도메인네임, 세션체크타입, 세션체크카운트 )
+=== Configs in GameServer ===
+  File: GameServer\config_gs.ini
+  File: GameServer\config_gs_US_INTERNAL.lua
+    Line 16: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 17: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+    Line 57: CF_CHECK_IP : 접속 IP Check
+    Line 82: -- IP Check --
+    Line 83: -- 설정되어 있지 않으면 모든 IP 접속 허용
+    Line 84: --SimLayer:AddIP( "116.120.238" )
+    Line 126: -- InitNexonBillingTCPInfo( 서버 IP, 서버 Port, 서버 도메인 )
+    Line 129: -- OFFLINE: PayletterBillingManager:InitPayletterBillingInfo( '127.0.0.1', 30010, 99 )
+  File: GameServer\config_gs_US_SERVICE.lua
+    Line 24: -- Add monitoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 25: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+    Line 58: CF_CHECK_IP : 접속 IP Check
+    Line 81: -- IP Check --
+    Line 82: -- 설정되어 있지 않으면 모든 IP 접속 허용
+    Line 83: --SimLayer:AddIP( "116.120.238" )
+    Line 126: -- OFFLINE: PayletterBillingManager:InitPayletterBillingInfo( '127.0.0.1', 30010, 99 )
+  File: GameServer\config_gs_US_TEST.lua
+    Line 23: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 24: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+    Line 58: CF_CHECK_IP : 접속 IP Check
+    Line 81: -- IP Check --
+    Line 82: -- 설정되어 있지 않으면 모든 IP 접속 허용
+    Line 83: --SimLayer:AddIP( "116.120.238" )
+    Line 127: -- OFFLINE: PayletterBillingManager:InitPayletterBillingInfo( '127.0.0.1', 30010, 99 )
+  File: GameServer\GlobalMissionConfig.lua
+  File: GameServer\MissEliosConfig.lua
+=== Configs in ChannelServer ===
+  File: ChannelServer\config_ch.ini
+  File: ChannelServer\config_ch_US_INTERNAL.lua
+    Line 14: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 15: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+    Line 45: -- IP Check --
+    Line 46: SimLayer:SetCheckIPMode( CIM_SERVICE_MODE )		-- 서비스 모드
+    Line 47: --SimLayer:SetCheckIPMode( CIM_CHECK_MODE )		-- 점검모드
+    Line 49: -- 점검 모드 IP 체크
+    Line 50: SimLayer:AddCheckModeIP( "127.0.0.1" )
+    Line 51: SimLayer:SetCheckModeCheckIPType( CIT_CHECK_IP_BLOCK )
+    Line 53: -- 서비스 모드 IP 체크
+    Line 54: SimLayer:AddIP( "127.0.0.1" )
+    Line 55: SimLayer:SetCheckIPType( CIT_ALL_IP_ALLOW )
+    Line 89: -- OFFLINE: K3RComboAuthManager:AddWebServiceAddress( 'http://gamewcf.kill3rcombo.com:83/GameSecurityService.svc' )
+  File: ChannelServer\config_ch_US_SERVICE.lua
+    Line 40: -- IP Check --
+    Line 41: SimLayer:SetCheckIPMode( CIM_SERVICE_MODE )		-- 서비스모드
+    Line 42: --SimLayer:SetCheckIPMode( CIM_CHECK_MODE )		-- 점검모드
+    Line 43: --SimLayer:AddIP( "222.113.245.86" )
+    Line 45: -- IP Check 여부
+    Line 46: SimLayer:SetCheckIPType( CIT_ALL_IP_ALLOW )
+    Line 82: -- 	K3RComboAuthManager:AddWebServiceAddress( 'http://172.18.72.2:81/GameSecurityService.svc' )
+  File: ChannelServer\config_ch_US_TEST.lua
+    Line 11: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 12: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+    Line 42: -- IP Check --
+    Line 43: SimLayer:SetCheckIPMode( CIM_SERVICE_MODE )		-- 서비스 모드
+    Line 44: --SimLayer:SetCheckIPMode( CIM_CHECK_MODE )		-- 점검모드
+    Line 46: -- 설정되어 있지 않으면 모든 IP 접속 허용
+    Line 47: SimLayer:AddIP( "192.168.130" )
+    Line 48: SimLayer:AddIP( "192.168.140" )
+    Line 50: -- IP체크 여부
+    Line 51: SimLayer:SetCheckIPType( CIT_ALL_IP_ALLOW )
+    Line 88: -- OFFLINE: K3RComboAuthManager:AddWebServiceAddress( 'http://172.16.42.2:83/GameSecurityService.svc' )
+=== Configs in GlobalServer ===
+  File: GlobalServer\config_gb.ini
+  File: GlobalServer\config_gb_US_INTERNAL.lua
+    Line 19: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 20: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: GlobalServer\config_gb_US_SERVICE.lua
+    Line 15: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 16: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: GlobalServer\config_gb_US_TEST.lua
+    Line 11: -- Add moritoring server's IP for checking port of elsword's server ( SERV_PERMIT_PORT_CHECK )
+    Line 12: --Server:AddPortCheckMoritoringServer( "79.110.90.240" )
+  File: GlobalServer\GlobalMissionConfig.lua
+  File: GlobalServer\MissEliosConfig.lua
+  File: GlobalServer\WorldMissionConfig.lua

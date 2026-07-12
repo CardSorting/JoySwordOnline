@@ -1,0 +1,61 @@
+=== Found around line 397 ===
+  357: 			SELECT @iUnitUID, 41490, 9,  6, 0, 0, -1, 125, @sdtNow union all		-- ∞òäδ¥╝ φöäδí£δ¬¿∞àÿ ∞₧ÑΩ░æ
+  358: 			SELECT @iUnitUID, 41500, 9,  8, 0, 0, -1, 125, @sdtNow union all		-- ∞òäδ¥╝ φöäδí£δ¬¿∞àÿ ∞ïáδ░£
+  359: 			SELECT @iUnitUID, 112700, 9,  9, 1, 0, 10000, 125, @sdtNow union all -- ∞┤êδ│┤∞₧É∞Ü⌐ ∞╜öδ│┤ ∞░╜
+  360: 			SELECT @iUnitUID, 112701, 9,  1, 1, 0, 10000, 125, @sdtNow union all -- ∞┤êδ│┤∞₧É∞Ü⌐ ∞╜öδ│┤ δ¼┤δÅäΩ░Ç ∞âü∞¥ÿ
+  361: 			SELECT @iUnitUID, 112702, 9,  3, 1, 0, 10000, 125, @sdtNow union all -- ∞┤êδ│┤∞₧É∞Ü⌐ ∞╜öδ│┤ δ¼┤δÅäΩ░Ç δ░ö∞ºÇ
+  362: 			SELECT @iUnitUID, 112703, 9,  5, 1, 0, 10000, 125, @sdtNow union all -- ∞┤êδ│┤∞₧É∞Ü⌐ ∞╜öδ│┤ δ¼┤δÅäΩ░Ç ∞₧ÑΩ░æ
+  363: 			SELECT @iUnitUID, 112704, 9,  7, 1, 0, 10000, 125, @sdtNow			-- ∞┤êδ│┤∞₧É∞Ü⌐ ∞╜öδ│┤ δ¼┤δÅäΩ░Ç ∞ïáδ░£		
+  364: 			IF @@ERROR <> 0 OR @@ROWCOUNT <> 10
+  365: 					BEGIN    SELECT @iOK = -28    GOTO FAIL_TRAN    END
+  366: 		
+  367: 	END	
+  368: 
+  369: 	
+  370: 	----∞ùÿδª¼∞ï£∞èñ
+  371: 	IF @iUnitClass_ = 8
+  372: 	BEGIN
+  373: 		INSERT INTO dbo.GSkill_New( UnitUID, SkillID, [Level], CSP)
+  374: 			SELECT  @iUnitUID, 8001, 1, 0 UNION ALL
+  375: 			SELECT  @iUnitUID, 8200, 1, 0
+  376: 			IF @@ERROR <> 0 OR @@ROWCOUNT <> 2
+  377: 					BEGIN    SELECT @iOK = -31    GOTO FAIL_TRAN    END
+  378: 
+  379: 		INSERT INTO dbo.GSkillSlot_New( UnitUID, Slot01, Slot02, Slot03, Slot04 )
+  380: 			SELECT  @iUnitUID, 8001, 8200, 0, 0
+  381: 				IF @@ERROR <> 0 OR @@ROWCOUNT <> 1
+  382: 					BEGIN    SELECT @iOK = -32    GOTO FAIL_TRAN    END
+  383: 
+  384: 		INSERT INTO dbo.GItem (UnitUID, ItemID, InventoryCategory, SlotID, UsageType, Quantity, Endurance, Inserted, RegDate)
+  385: 			SELECT @iUnitUID, 77, 9, 2, 0, 0, -1, 125, @sdtNow union all
+  386: 			SELECT @iUnitUID, 71, 9, 6, 0, 0, -1, 125, @sdtNow union all
+  387: 			SELECT @iUnitUID, 72, 9, 7, 0, 0, -1, 125, @sdtNow union all
+  388: 			SELECT @iUnitUID, 73, 9, 8, 0, 0, -1, 125, @sdtNow union all
+  389: 			SELECT @iUnitUID, 74, 9, 9, 0, 0, -1, 125, @sdtNow union all
+  390: 			SELECT @iUnitUID, 75, 9, 10, 0, 0, -1, 125, @sdtNow union all
+  391: 			SELECT @iUnitUID, 76, 9, 11, 0, 0, -1, 125, @sdtNow
+  392: 			IF @@ERROR <> 0 OR @@ROWCOUNT <> 7
+  393: 					BEGIN    SELECT @iOK = -28    GOTO FAIL_TRAN    END
+  394: 	END
+  395: 
+  396: -- Ω╖╝∞ä▒δÅä 
+  397: 	INSERT INTO dbo.GSpirit (UnitUID, Spirit, RegDate)
+  398: 		SELECT @iUnitUID, @iStartSpirit, @sdtNow
+  399: 			/*IF @@ERROR <> 0 OR @@ROWCOUNT <> 1
+  400: 					BEGIN    SELECT @iOK = -41    GOTO FAIL_TRAN    END*/
+  401: 
+  402: 	---- δîÇ∞áä Ω╕░δ│╕ ∞áòδ│┤(∞ï£∞ªî 2 ∞ï£∞₧æ∞ï£ ∞ú╝∞ä¥∞▓ÿδª¼ φòä∞Üö)
+  403: 	--INSERT INTO dbo.GUnitPVP(UnitUID, OfficialMatchCnt, Rating, MaxRating, RPoint, APoint, IsWinBeforeMatch, Grade, win, lose)
+  404: 	--	SELECT @iUnitUID, 0, 250, 250, 0, 0, 0, 0, 0, 0
+  405: 	--		IF @@ERROR <> 0 OR @@ROWCOUNT <> 1
+  406: 	--				BEGIN    SELECT @iOK = -42    GOTO FAIL_TRAN    END	
+  407: 									
+  408: 	
+  409: 	-- φùñδïêδÑ┤ δ│┤∞âü ∞á£φò£					
+  410: 	INSERT INTO dbo.GHenirRewardCnt(UnitUID, NormalCnt, PCBangCnt, EventCnt, LastDate)
+  411: 		SELECT @iUnitUID, 0, 0, 0, @sdtNow
+  412: 			IF @@ERROR <> 0 OR @@ROWCOUNT <> 1
+  413: 					BEGIN    SELECT @iOK = -43    GOTO FAIL_TRAN    END			
+  414: 					
+  415: 	-- LastGamepoint ∞▓┤φü¼
+  416: 	INSERT INTO	dbo.GUnit_LastPoint WITH (UPDLOCK) (UnitUID, Gamepoint, RegDate)

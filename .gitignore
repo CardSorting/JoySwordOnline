@@ -1,0 +1,51 @@
+# Local unpacked Windows client payload.
+client.rar
+data/
+client/client.rar
+client/data/
+
+# Local Python cache files.
+__pycache__/
+*.pyc
+
+# Local build products and infrastructure state.
+build/
+release/
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+*.tfplan
+Elsword/offline/edge-wireguard/
+crash.log
+
+# Environment variables and secrets
+.env
+.env.*
+*.env
+*.env.*
+.git-credentials
+
+# Credentials and private keys
+*.pem
+*.key
+*.pub
+
+# Database backups
+*.bak
+**/*.bak
+
+# Large log files
+*.log
+**/*.log
+Elsword/**/log/
+
+# Built installers and large archives
+*.exe
+*.rar
+dist/
+.release-tmp/
+.joysword-kom-build/
+.wrangler/
+tmp/

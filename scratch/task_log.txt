@@ -1,0 +1,332 @@
+==========================================================
+      JoySword Server Startup (No Database Reset)         
+==========================================================
+Updating non-destructive offline.env settings...
+Keeping CHANNEL_SERVER_IP from offline.env. Use scripts\local_connect.py <ip> to change client target.
+Checking Windows Firewall configuration...
+Firewall rules for ports 9100-9500 are already in place.
+Checking Docker daemon...
+Starting SQL Server container without deleting volumes...
+ Container joysword-mssql Running 
+Regenerating server and client configuration files...
+Scanning server Lua/config files...
+  Found 246 Lua file(s) to audit.
+Patching client endpoint configs...
+Syncing GameServer runtime script overrides...
+Patching ODBC DSN files...
+  Found 198 DSN file(s) to audit.
+Writing connection manifest...
+[PVP][PROFILE] Applied profile=default
+[PVP][PROFILE] server_profile=US_SERVICE
+[PVP][PROFILE] ConnectionMode=Default
+[PVP][PROFILE] startup_log=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\log\pvp-profile-startup.log
+[PVP][PROFILE] client_hint=C:\Users\monst\Downloads\JoySwordOffline\Elsword\offline\client-pvp-hint.txt
+[PVP][PROFILE] active_marker=C:\Users\monst\Downloads\JoySwordOffline\Elsword\offline\pvp-profile.active
+[PVP][PROFILE] changed_files=2
+  - ServerResource/GameSysValTable.lua
+  - Resources/GameSysValTable.lua
+fixed: Elsword\Resources\Item.lua
+fixed: Elsword\ClientScript\Major\Item.lua
+fixed: Elsword\ServerResource\GameSysValTable.lua
+fixed: Elsword\Resources\GameSysValTable.lua
+fixed: Elsword\ServerResource\RandomItemMapping.lua
+fixed: Elsword\ServerResource\ClassChangeTable.lua
+fixed: Elsword\ServerResource\ClassChangeSkill.lua
+fixed: Elsword\ServerResource\ClassChangeQuest.lua
+fixed: Elsword\ServerResource\ClassChangeMemo.lua
+fixed: Elsword\ServerResource\ClassChangeItem.lua
+fixed: Elsword\ServerResource\CashItemPrice.lua
+Updated 11 file(s).
+JoySword offline configuration applied.
+  ELSWORD_ROOT      : C:\Users\monst\Downloads\JoySwordOffline\Elsword
+  DB target         : 127.0.0.1:1433 (user: sa)
+  Profile           : US_SERVICE
+  Login mode        : PUBLIC
+  Admin user        : admin
+  Channel endpoint  : 127.0.0.1:9400
+  Server ports      : center 9100, login 9200, global 9500, game 9300
+  Offline auth      : AF_INTERNAL
+  Lua files updated : 0
+  Client configs    : 0 patched in ClientScript/Major/Config*.lua
+  Runtime overrides : 1 synced into GameServer/
+  Manifest          : C:\Users\monst\Downloads\JoySwordOffline\Elsword\offline\connection.manifest
+  PvP profile       : default
+
+Next steps:
+  1. scripts\setup-offline.bat          (database + configure)
+  2. python scripts\local_connect.py 127.0.0.1
+  3. Elsword\Start-Offline.bat
+  4. Start-Client-Windows.bat
+  5. python scripts\verify-offline.py   (check for leftover remote refs)
+  6. python scripts\audit-billing.py    (cash shop / ES_BILLING readiness)
+Verifying existing database state...
+Result                                                                 
+-----------------------------------------------------------------------
+OK: JoySword database healthcheck passed for PUBLIC mode.
+Patching loose game client configs and data036.kom...
+Parsed 13202 unique cash shop items.
+Parsed 8757 unique package component links.
+Category distribution:
+    11 Weapon             1815
+    12 Top                1738
+    13 Bottom             1579
+    14 Hair               1424
+    15 Gloves             1560
+    16 Shoes              1579
+    17 One Piece          72
+    21 Accessory Weapon   15
+    22 Face               412
+    23 Body               264
+    24 Leg                71
+    25 Arm                127
+    26 Ring               59
+    27 Necklace           6
+    31 Recovery           89
+    32 Premium            118
+    33 Reset              43
+    34 Others             679
+    41 Add Slot           11
+    42 Personal Shop      0
+    43 Etc                0
+    51 Package            1461
+    52 Fashion            0
+    53 Accessory          0
+    54 Usable             0
+    55 Setup              0
+    56 Pet                0
+    61 Pet                74
+    62 Consume            3
+    63 Mount              3
+Generated SQL script: C:\Users\monst\Downloads\JoySwordOffline\database\restore-cashshop.sql
+Running SQL script in SQL Server container...
+Cash Shop items restored successfully!
+Changed database context to 'ES_BILLING'.
+Starting Cash Shop restoration...
+
+(8757 rows affected)
+
+(10794 rows affected)
+
+(13244 rows affected)
+
+(36 rows affected)
+
+(36 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(244 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(794 rows affected)
+
+(13244 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(1000 rows affected)
+
+(757 rows affected)
+Cash Shop restoration complete.
+
+(1 rows affected)
+
+compile Elsword\ClientScript\Dialog\DLG_Cash_Shop_Popup_ItemToInven.lua -> data034.kom:DLG_Cash_Shop_Popup_ItemToInven.lua
+compile Elsword\ClientScript\Dialog\DLG_Cash_Shop_Popup_ItemToInven_Slot.lua -> data034.kom:DLG_Cash_Shop_Popup_ItemToInven_Slot.lua
+patched data034.kom: DLG_Cash_Shop_Popup_ItemToInven.lua
+patched data034.kom: DLG_Cash_Shop_Popup_ItemToInven_Slot.lua
+compile Elsword\ClientScript\Major\SocketGroupDataForCashAvatar.lua -> data036.kom:SocketGroupDataForCashAvatar.lua
+compile Elsword\ClientScript\Major\PackageItemData.lua -> data036.kom:PackageItemData.lua
+patched data036.kom: PackageItemData.lua
+patched data036.kom: SocketGroupDataForCashAvatar.lua
+Patched 4 packed client file(s). Relaunch the client to pick up changes.
+==> Restoring billing data with auto-default socket attributes
+==> Repacking cash-shop claim UI into client KOM archives
+Cash-shop socket bypass applied. Restart game servers and fully relaunch the client.
+Item.lua / ItemTrans.lua already patched for Ara/Elesis character select
+compile Elsword\ClientScript\Dialog\DLG_unit_create_front.lua -> data034.kom:DLG_unit_create_front.lua
+compile Elsword\ClientScript\Dialog\DLG_unit_create_back.lua -> data034.kom:DLG_unit_create_back.lua
+compile Elsword\ClientScript\Dialog\DLG_Unit_Create_Select_Unit_Elesis.lua -> data034.kom:DLG_Unit_Create_Select_Unit_Elesis.lua
+compile Elsword\ClientScript\Dialog\DLG_Unit_Create_NickName_Elesis.lua -> data034.kom:DLG_Unit_Create_NickName_Elesis.lua
+compile Elsword\ClientScript\Dialog\DLG_Unit_Create_Front_Menu_Elesis.lua -> data034.kom:DLG_Unit_Create_Front_Menu_Elesis.lua
+compile Elsword\ClientScript\Dialog\DLG_Unit_Create_Unit_Button_Elesis.lua -> data034.kom:DLG_Unit_Create_Unit_Button_Elesis.lua
+compile Elsword\ClientScript\Dialog\NewVillageUI\DLG_Change_Job.lua -> data034.kom:DLG_Change_Job.lua
+compile Elsword\ClientScript\Dialog\DLG_PVP_Result_Card_Back.lua -> data034.kom:DLG_PVP_Result_Card_Back.lua
+compile Elsword\ClientScript\Dialog\DLG_PVP_Result_Card_Back_MatchPvp.lua -> data034.kom:DLG_PVP_Result_Card_Back_MatchPvp.lua
+compile Elsword\ClientScript\Dialog\DLG_PVP_Room_Character_Slot.lua -> data034.kom:DLG_PVP_Room_Character_Slot.lua
+compile Elsword\ClientScript\Dialog\DLG_Cash_Shop_Popup_ItemToInven.lua -> data034.kom:DLG_Cash_Shop_Popup_ItemToInven.lua
+compile Elsword\ClientScript\Dialog\DLG_Cash_Shop_Popup_ItemToInven_Slot.lua -> data034.kom:DLG_Cash_Shop_Popup_ItemToInven_Slot.lua
+compile Elsword\ClientScript\Dialog\DLG_Unit_Select_Slot_Elesis.lua -> data034.kom:DLG_Unit_Select_Slot_Elesis.lua
+compile Elsword\ClientScript\Dialog\DLG_Unit_Select_Name_Elesis.lua -> data034.kom:DLG_Unit_Select_Name_Elesis.lua
+patched data034.kom: DLG_Cash_Shop_Popup_ItemToInven.lua
+patched data034.kom: DLG_Cash_Shop_Popup_ItemToInven_Slot.lua
+patched data034.kom: DLG_Change_Job.lua
+patched data034.kom: DLG_PVP_Result_Card_Back.lua
+patched data034.kom: DLG_PVP_Result_Card_Back_MatchPvp.lua
+patched data034.kom: DLG_PVP_Room_Character_Slot.lua
+patched data034.kom: DLG_Unit_Create_Front_Menu_Elesis.lua
+patched data034.kom: DLG_Unit_Create_NickName_Elesis.lua
+patched data034.kom: DLG_Unit_Create_Select_Unit_Elesis.lua
+patched data034.kom: DLG_Unit_Create_Unit_Button_Elesis.lua
+patched data034.kom: DLG_unit_create_back.lua
+patched data034.kom: DLG_unit_create_front.lua
+patched data034.kom: DLG_Unit_Select_Slot_Elesis.lua
+patched data034.kom: DLG_Unit_Select_Name_Elesis.lua
+compile Elsword\ClientScript\Dungeon\DungeonData.lua -> data035.kom:DungeonData.lua
+patched data035.kom: DungeonData.lua
+compile Elsword\ClientScript\Major\Enum.lua -> data036.kom:Enum.lua
+compile Elsword\ClientScript\Major\Config_US_Service.lua -> data036.kom:Config_US_Service.lua
+compile Elsword\ClientScript\Major\UnitTemplet.lua -> data036.kom:UnitTemplet.lua
+compile Elsword\ClientScript\Major\Item.lua -> data036.kom:Item.lua
+compile Elsword\ClientScript\Major\RandomItem.lua -> data036.kom:RandomItem.lua
+compile Elsword\ClientScript\Major\ItemTrans.lua -> data036.kom:ItemTrans.lua
+compile Elsword\ClientScript\Major\ELESIS_KNIGHT.lua -> data036.kom:ELESIS_KNIGHT.lua
+compile Elsword\ClientScript\Major\NewSkillTempletVer2.lua -> data036.kom:NewSkillTempletVer2.lua
+compile Elsword\ClientScript\Major\SkillLevelUpSocketGroup.lua -> data036.kom:SkillLevelUpSocketGroup.lua
+compile Elsword\ClientScript\Major\LevelUpEvent.lua -> data036.kom:LevelUpEvent.lua
+compile Elsword\ClientScript\Major\SkillData.lua -> data036.kom:SkillData.lua
+compile Elsword\ClientScript\Major\CharacterStatTable.lua -> data036.kom:CharacterStatTable.lua
+compile Elsword\ClientScript\Major\SocketGroupDataForCashAvatar.lua -> data036.kom:SocketGroupDataForCashAvatar.lua
+compile Elsword\ClientScript\Major\PackageItemData.lua -> data036.kom:PackageItemData.lua
+patched data036.kom: CharacterStatTable.lua
+patched data036.kom: Config_US_Service.lua
+patched data036.kom: ELESIS_KNIGHT.lua
+patched data036.kom: Enum.lua
+patched data036.kom: Item.lua
+patched data036.kom: ItemTrans.lua
+patched data036.kom: LevelUpEvent.lua
+patched data036.kom: NewSkillTempletVer2.lua
+patched data036.kom: PackageItemData.lua
+patched data036.kom: RandomItem.lua
+patched data036.kom: SkillData.lua
+patched data036.kom: SkillLevelUpSocketGroup.lua
+patched data036.kom: SocketGroupDataForCashAvatar.lua
+patched data036.kom: UnitTemplet.lua
+Patched 29 packed client file(s). Relaunch the client to pick up changes.
+Pointing Windows client at 127.0.0.1:9400
+Patching client config: C:\Users\monst\Downloads\JoySwordOffline\Elsword\ClientScript\Major\Config.lua
+Successfully pointed client config to 127.0.0.1:9400.
+Patching client config: C:\Users\monst\Downloads\JoySwordOffline\Elsword\ClientScript\Major\Config_INTERNAL.lua
+Successfully pointed client config to 127.0.0.1:9400.
+Patching client config: C:\Users\monst\Downloads\JoySwordOffline\Elsword\ClientScript\Major\Config_QA.lua
+Successfully pointed client config to 127.0.0.1:9400.
+Patching client config: C:\Users\monst\Downloads\JoySwordOffline\Elsword\ClientScript\Major\Config_S.lua
+Successfully pointed client config to 127.0.0.1:9400.
+Patching client config: C:\Users\monst\Downloads\JoySwordOffline\Elsword\ClientScript\Major\Config_S_B.lua
+Successfully pointed client config to 127.0.0.1:9400.
+Patching client config: C:\Users\monst\Downloads\JoySwordOffline\Elsword\ClientScript\Major\Config_US_INTERNAL.lua
+Successfully pointed client config to 127.0.0.1:9400.
+Patching client config: C:\Users\monst\Downloads\JoySwordOffline\Elsword\ClientScript\Major\Config_US_Service.lua
+Successfully pointed client config to 127.0.0.1:9400.
+Patching client config: C:\Users\monst\Downloads\JoySwordOffline\Elsword\ClientScript\Major\Config_US_TEST.lua
+Successfully pointed client config to 127.0.0.1:9400.
+Patching packed Windows client config archive: C:\Users\monst\Downloads\JoySwordOffline\data\data036.kom
+  Config.lua: 127.0.0.1, 127.0.0.1 -> 127.0.0.1
+  Config_INTERNAL.lua: 127.0.0.1 -> 127.0.0.1
+  Config_QA.lua: 127.0.0.1, 127.0.0.1 -> 127.0.0.1
+  Config_S.lua: 127.0.0.1, 127.0.0.1 -> 127.0.0.1
+  Config_S_B.lua: 127.0.0.1, 127.0.0.1 -> 127.0.0.1
+  Config_US_INTERNAL.lua: 127.0.0.1 -> 127.0.0.1
+  Config_US_Service.lua: 127.0.0.1 -> 127.0.0.1
+  Config_US_TEST.lua: 127.0.0.1 -> 127.0.0.1
+Updated 8 loose config file(s).
+Updated 8 packed Windows client config file(s).
+Applying cash-shop socket bypass (billing DB + client KOM)...
+Repacking client Lua (create UI, Enum/Config, UnitTemplet, Item.lua) into KOM archives...
+Launch Start-Client-Windows.bat after the local server stack is running.
+Launching Elsword server stack...
+Patching client endpoint configs...
+Syncing GameServer runtime script overrides...
+Patching ODBC DSN files...
+  Found 198 DSN file(s) to audit.
+Writing connection manifest...
+[PVP][PROFILE] Applied profile=default
+[PVP][PROFILE] server_profile=US_SERVICE
+[PVP][PROFILE] ConnectionMode=Default
+[PVP][PROFILE] startup_log=C:\Users\monst\Downloads\JoySwordOffline\Elsword\GameServer\log\pvp-profile-startup.log
+[PVP][PROFILE] client_hint=C:\Users\monst\Downloads\JoySwordOffline\Elsword\offline\client-pvp-hint.txt
+[PVP][PROFILE] active_marker=C:\Users\monst\Downloads\JoySwordOffline\Elsword\offline\pvp-profile.active
+[PVP][PROFILE] changed_files=2
+  - ServerResource/GameSysValTable.lua
+  - Resources/GameSysValTable.lua
+fixed: Elsword\ServerResource\GameSysValTable.lua
+fixed: Elsword\Resources\GameSysValTable.lua
+fixed: Elsword\ServerResource\RandomItemMapping.lua
+fixed: Elsword\ServerResource\ClassChangeTable.lua
+fixed: Elsword\ServerResource\ClassChangeSkill.lua
+fixed: Elsword\ServerResource\ClassChangeQuest.lua
+fixed: Elsword\ServerResource\ClassChangeMemo.lua
+fixed: Elsword\ServerResource\ClassChangeItem.lua
+fixed: Elsword\ServerResource\CashItemPrice.lua
+Updated 9 file(s).
+JoySword offline configuration applied.
+  ELSWORD_ROOT      : C:\Users\monst\Downloads\JoySwordOffline\Elsword
+  DB target         : 127.0.0.1:1433 (user: sa)
+  Profile           : US_SERVICE
+  Login mode        : PUBLIC
+  Admin user        : admin
+  Channel endpoint  : 127.0.0.1:9400
+  Server ports      : center 9100, login 9200, global 9500, game 9300
+  Offline auth      : AF_INTERNAL
+  Lua files updated : 0
+  Client configs    : 0 patched in ClientScript/Major/Config*.lua
+  Runtime overrides : 1 synced into GameServer/
+  Manifest          : C:\Users\monst\Downloads\JoySwordOffline\Elsword\offline\connection.manifest
+  PvP profile       : default
+GameServer.exe already patched for Elesis 2nd-job class IDs
+GameServer.exe already patched for max level scroll

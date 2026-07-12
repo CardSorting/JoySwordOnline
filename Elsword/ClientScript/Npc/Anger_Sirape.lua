@@ -1,0 +1,965 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 200.0,
+	UNIT_HEIGHT		= 300.0,				
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	UNIT_SCALE		= 1.0,
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+		"Steam_Bp.dds",
+		"Explosion_Sphere.dds",
+		"soket_wind_stom_wind01.dds",
+		"Particle_Blur.dds",
+		"Karoo_Wind_Bomm02.dds",
+		"Karoo_Wind_Bomm01.dds",
+		"NUI_ANGER_SIRAPE_01.tga",
+		"NUI_ANGER_SIRAPE_02.tga",
+	},
+	
+	READY_SOUND = 
+	{
+		"Anger_Sirape_MagicAttackA01.ogg",
+		"Wind01.ogg",
+		"Spriggan_Big_MagicAttackB.ogg",
+		"Anger_Sirape_MagicAttackB01.ogg",
+		"Ran_SpecialAttackA01.ogg",
+	},
+
+	READY_XMESH = 
+	{
+	},
+	
+	READY_XSKIN_MESH = 
+	{
+		"rana_B_damageUp_circle_f15.X",
+		"Triple_W_PropertyA01.X",	 	 
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_ANGER_SIRAPE.x",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 500,
+	RUN_SPEED			= 700,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300,
+}
+
+
+INIT_COMPONENT = 
+{
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	
+	SHADOW_SIZE			= 300,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	
+	FALL_DOWN			= FALSE,
+	DIE_FLY				= FALSE,
+}
+
+
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "ANGER_SIRAPE_START",					LUA_STATE_START_FUNC = "ANGER_SIRAPE_START_STATE_START_FUNC",								},	
+	{ STATE_NAME = "ANGER_SIRAPE_WAIT",						LUA_STATE_START_FUNC = "ANGER_SIRAPE_WAIT_STATE_START_FUNC",						},
+	{ STATE_NAME = "ANGER_SIRAPE_WALK",																											},
+
+	{ STATE_NAME = "ANGER_SIRAPE_JUMP_UP",																										},
+	{ STATE_NAME = "ANGER_SIRAPE_JUMP_DOWN",																									},
+	{ STATE_NAME = "ANGER_SIRAPE_JUMP_LANDING",																									},
+
+	{ STATE_NAME = "ANGER_SIRAPE_MAGIC_ATTACK_A",			LUA_FRAME_MOVE_FUNC = "ANGER_SIRAPE_MAGIC_ATTACK_A_FRAME_MOVE_FUNC",  		
+															LUA_STATE_START_FUNC = "ANGER_SIRAPE_MAGIC_ATTACK_A_STATE_START_FUNC" ,	
+															STATE_COOL_TIME = 5, 																},
+
+	{ STATE_NAME = "ANGER_SIRAPE_MAGIC_ATTACK_B",			LUA_FRAME_MOVE_FUNC = "ANGER_SIRAPE_MAGIC_ATTACK_B_FRAME_MOVE_FUNC", 
+															STATE_COOL_TIME = 3, 																},
+		
+	--리액션 관련
+	{ STATE_NAME = "ANGER_SIRAPE_DAMAGE_FRONT", 																								},
+	{ STATE_NAME = "ANGER_SIRAPE_DAMAGE_BACK", 																									},
+	{ STATE_NAME = "ANGER_SIRAPE_DAMAGE_DOWN_FRONT",																							},
+	{ STATE_NAME = "ANGER_SIRAPE_DAMAGE_DOWN_BACK",																								},
+	{ STATE_NAME = "ANGER_SIRAPE_DAMAGE_FLY_FRONT",																								},
+	{ STATE_NAME = "ANGER_SIRAPE_DAMAGE_FLY_BACK",																								},
+	{ STATE_NAME = "ANGER_SIRAPE_DAMAGE_AIR",																									},
+	{ STATE_NAME = "ANGER_SIRAPE_DAMAGE_AIR_DOWN",																								},
+	{ STATE_NAME = "ANGER_SIRAPE_DAMAGE_AIR_UP",																								},
+	{ STATE_NAME = "ANGER_SIRAPE_DAMAGE_AIR_FALL",																								},
+	{ STATE_NAME = "ANGER_SIRAPE_DAMAGE_AIR_DOWN_LANDING",																						},
+	
+	{ STATE_NAME = "ANGER_SIRAPE_STAND_UP_FRONT",																								},
+	{ STATE_NAME = "ANGER_SIRAPE_STAND_UP_BACK",																								},
+	
+	--{ STATE_NAME = "ANGER_SIRAPE_DAMAGE_REVENGE",																								},
+	
+	{ STATE_NAME = "ANGER_SIRAPE_DYING",				LUA_STATE_START_FUNC = "ANGER_SIRAPE_DYING_LAND_STATE_START",							
+														LUA_FRAME_MOVE_FUNC = "ANGER_SIRAPE_DYING_FRAME_MOVE_FUNC",
+																																				},
+	
+{ STATE_NAME = "ANGER_SIRAPE_JUMP_UP_DIR", },
+{ STATE_NAME = "ANGER_SIRAPE_JUMP_DOWN_DIR", },
+	
+	START_STATE					= "ANGER_SIRAPE_START",
+	WAIT_STATE					= "ANGER_SIRAPE_WAIT",
+
+	
+	SMALL_DAMAGE_LAND_FRONT		= "ANGER_SIRAPE_DAMAGE_FRONT",
+	SMALL_DAMAGE_LAND_BACK		= "ANGER_SIRAPE_DAMAGE_BACK",
+	BIG_DAMAGE_LAND_FRONT		= "ANGER_SIRAPE_DAMAGE_FRONT",
+	BIG_DAMAGE_LAND_BACK		= "ANGER_SIRAPE_DAMAGE_BACK",
+	DOWN_DAMAGE_LAND_FRONT		= "ANGER_SIRAPE_DAMAGE_FRONT",
+	DOWN_DAMAGE_LAND_BACK		= "ANGER_SIRAPE_DAMAGE_BACK",
+	FLY_DAMAGE_FRONT			= "ANGER_SIRAPE_DAMAGE_FRONT",
+	FLY_DAMAGE_BACK				= "ANGER_SIRAPE_DAMAGE_BACK",
+	SMALL_DAMAGE_AIR			= "ANGER_SIRAPE_DAMAGE_FRONT",	
+	BIG_DAMAGE_AIR				= "ANGER_SIRAPE_DAMAGE_FRONT",
+	DOWN_DAMAGE_AIR				= "ANGER_SIRAPE_DAMAGE_FRONT",
+	DOWN_DAMAGE_AIR_LANDING		= "ANGER_SIRAPE_DAMAGE_FRONT",
+	UP_DAMAGE					= "ANGER_SIRAPE_DAMAGE_FRONT",
+	DAMAGE_REVENGE				= "ANGER_SIRAPE_DAMAGE_FRONT",
+	
+	DAMAGE_EXTRA_STATES         = {"ANGER_SIRAPE_DAMAGE_DOWN_FRONT","ANGER_SIRAPE_DAMAGE_DOWN_BACK","ANGER_SIRAPE_DAMAGE_FLY_FRONT","ANGER_SIRAPE_DAMAGE_FLY_BACK",
+	"ANGER_SIRAPE_DAMAGE_AIR", "ANGER_SIRAPE_DAMAGE_AIR_DOWN","ANGER_SIRAPE_DAMAGE_AIR_UP","ANGER_SIRAPE_DAMAGE_AIR_FALL","ANGER_SIRAPE_DAMAGE_AIR_DOWN_LANDING",
+	"ANGER_SIRAPE_STAND_UP_FRONT","ANGER_SIRAPE_STAND_UP_BACK","ANGER_SIRAPE_JUMP_DOWN","ANGER_SIRAPE_JUMP_LANDING",},
+	
+	
+	DYING_LAND_FRONT			= "ANGER_SIRAPE_DYING",
+	DYING_LAND_BACK				= "ANGER_SIRAPE_DYING",
+	DYING_SKY					= "ANGER_SIRAPE_DYING",
+}
+
+
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 1,									-- sec
+		TARGET_NEAR_RANGE			= 1000,									-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 1200,									-- cm
+		TARGET_LOST_RANGE			= 1500,									-- cm
+		TARGET_SUCCESS_RATE			= 100,  --50,							-- %
+		ATTACK_TARGET_RATE			= 70, -- 30,							-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 70, -- 30,							-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 500,
+		DEST_GAP			= 800,				-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 500,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		WALK_INTERVAL		= 2,
+		NEAR_WALK_RATE		= 100,   			-- 70,
+		FAR_WALK_RATE		= 100,   			-- 30,
+		
+		JUMP_INTERVAL		= 5,
+		UP_JUMP_RATE		= 0, 				-- 40,
+		UP_DOWN_RATE		= 0,
+		DOWN_JUMP_RATE		= 0,    			-- 20,
+		DOWN_DOWN_RATE		= 0,
+		
+		LINE_END_RANGE		= 80,				-- cm
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 0, 			-- 50,		
+		PATROL_RANGE			= 200,
+		PATROL_COOL_TIME		= 4,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 600,				-- cm
+		ESCAPE_GAP			= 800,				-- 이 거리 보다 멀어지면 도망 성공
+		
+		WALK_INTERVAL		= 1.0,				-- 초
+		NEAR_WALK_RATE		= 100,   			--  10,
+		FAR_WALK_RATE		= 100,   			-- 10,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 0, 				-- 30,
+		UP_DOWN_RATE		= 0,
+		DOWN_JUMP_RATE		= 0,    			--  30,
+		DOWN_DOWN_RATE		= 0,
+		
+		LINE_END_RANGE		= 80,				-- cm
+	},
+	
+	ESCAPE_CONDITION =
+	{
+		RATE				= 100,
+		ESCAPE_RANGE		= 500,
+	},
+}
+
+
+-- 수정 : Start, Dying 제외한 모든 구문에 IMMADIATE_PACKET_SEND 삭제
+
+ANGER_SIRAPE_START = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,	
+	
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],		"ANGER_SIRAPE_WAIT",	},
+	},
+}
+
+-- 수정 : 해당 State 의 함수는 해당 State 밑에 작성
+
+function ANGER_SIRAPE_START_STATE_START_FUNC ( pKTDXApp, pX2Game, pNPCUnit )
+	pNPCUnit:SetFlag_LUA ( 0, false )
+end
+
+-- 수정 : EVENT_INTERVAL_TIME0 는 필요한 곳에만 사용
+
+ANGER_SIRAPE_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,	
+
+	EVENT_INTERVAL_TIME0		= 1,
+
+	EVENT_PROCESS = 
+	{				
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"ANGER_SIRAPE_JUMP_DOWN",													},
+
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"ANGER_SIRAPE_MAGIC_ATTACK_A",			"CT_ANGER_SIRAPE_MAGIC_ATTACK_A",	},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"ANGER_SIRAPE_MAGIC_ATTACK_B",			"CT_ANGER_SIRAPE_MAGIC_ATTACK_B",	},
+
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"ANGER_SIRAPE_WALK",														},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"ANGER_SIRAPE_JUMP_UP",														},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"ANGER_SIRAPE_JUMP_UP_DIR",													},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"ANGER_SIRAPE_JUMP_DOWN",													},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"ANGER_SIRAPE_JUMP_DOWN_DIR",												},
+	},
+	
+	
+	CT_ANGER_SIRAPE_MAGIC_ATTACK_A = 
+	{
+		EVENT_INTERVAL_ID				= 0,
+		HAVE_TARGET						= 1,
+		DISTANCE_TO_TARGET_NEAR			= 1000,
+		RATE							= 60,
+	},
+	
+	CT_ANGER_SIRAPE_MAGIC_ATTACK_B = 
+	{
+		EVENT_INTERVAL_ID				= 0,
+		HAVE_TARGET						= 1,
+		DISTANCE_TO_TARGET_NEAR			= 700,
+		RATE							= 50,
+	},
+}
+
+function ANGER_SIRAPE_WAIT_STATE_START_FUNC( pKTDXApp , pX2Game , pNPCUnit )
+	ShowWind ( pX2Game, pNPCUnit )
+end	
+
+
+ANGER_SIRAPE_WALK = 
+{
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 1,
+	
+	EVENT_PROCESS = 
+	{		
+		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"ANGER_SIRAPE_JUMP_DOWN_DIR",											},
+		
+		
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"ANGER_SIRAPE_ATTACK_A_READY",			"CT_ANGER_SIRAPE_ATTACK_A_READY",	},
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"ANGER_SIRAPE_SPECIAL_ATTACK_A",		"CT_ANGER_SIRAPE_SPECIAL_ATTACK_A",	},
+		
+	
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"ANGER_SIRAPE_WAIT",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"ANGER_SIRAPE_JUMP_UP",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"ANGER_SIRAPE_JUMP_UP_DIR",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"ANGER_SIRAPE_JUMP_DOWN",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"ANGER_SIRAPE_JUMP_DOWN_DIR",				},
+	},
+	
+	
+	CT_ANGER_SIRAPE_ATTACK_A_READY = 
+	{
+		EVENT_INTERVAL_ID				= 0,
+		HAVE_TARGET						= 1,
+		DISTANCE_TO_TARGET_NEAR			= 1000,
+		RATE							= 60,
+	},
+
+	CT_ANGER_SIRAPE_SPECIAL_ATTACK_A = 
+	{
+		EVENT_INTERVAL_ID				= 0,
+		DISTANCE_TO_TARGET_NEAR			= 1000,	
+		RATE							= 10,
+	},
+
+}
+
+ANGER_SIRAPE_JUMP_UP = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	
+	ADD_POS_Y					= 45, 
+	
+
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"ANGER_SIRAPE_JUMP_DOWN",			},
+		
+	},	
+}
+
+ANGER_SIRAPE_JUMP_DOWN = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"ANGER_SIRAPE_JUMP_LANDING",		},
+	},
+}
+
+ANGER_SIRAPE_JUMP_UP_DIR = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	
+	ADD_POS_Y					= 45, 
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"ANGER_SIRAPE_JUMP_DOWN_DIR",		},
+	},
+	
+}
+
+ANGER_SIRAPE_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	 
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"ANGER_SIRAPE_JUMP_LANDING",		},
+	},
+}
+
+ANGER_SIRAPE_JUMP_LANDING = 
+{
+	ANIM_NAME					= "JumpDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"ANGER_SIRAPE_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"ANGER_SIRAPE_WAIT",				},
+	},
+}
+
+-- 수정 : AllowDirChange 에 대해서 이해 하지 못하고 사용, 해당 구문 삭제
+-- SPEED_X, SPEED_Y 값 필요한 곳에만 사용
+
+ANGER_SIRAPE_MAGIC_ATTACK_A =
+{
+	ANIM_NAME					= "MagicAttack_A",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	VIEW_TARGET					= TRUE,
+		
+			SOUND_PLAY0 = { 0.11, "Anger_Sirape_MagicAttackA01.ogg"},
+			SOUND_PLAY1 = { 0.91, "Wind01.ogg"},
+			SOUND_PLAY2 = { 0.86, "Spriggan_Big_MagicAttackB.ogg"},
+			
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"ANGER_SIRAPE_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],	"ANGER_SIRAPE_WAIT",								},
+	},
+	
+	SUPER_ARMOR	= TRUE,	
+}
+
+
+function ANGER_SIRAPE_MAGIC_ATTACK_A_STATE_START_FUNC( pKTDXApp , pX2Game , pNPCUnit )
+	HideWind ( pX2Game, pNPCUnit )
+end	
+
+
+
+function ANGER_SIRAPE_MAGIC_ATTACK_A_FRAME_MOVE_FUNC( pKTDXApp , pX2Game , pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then	
+		local pTargetUnit = pNPCUnit:GetTargetUser()
+		if nil ~= pTargetUnit then
+			local vPos = pTargetUnit:GetLandPosition_LUA()
+			local pEffectSet = pX2Game:GetEffectSet()
+			local vRot = pNPCUnit:GetRotateDegree()
+			local hEffect = pEffectSet:PlayEffectSetWithCustomPos_LUA ( "Sander_Sirape_Magic_Attack_A", pNPCUnit, vPos, vRot )
+			pNPCUnit:SetEffectSet_LUA( 1, hEffect )
+			pNPCUnit:SetVector_LUA ( 0, vPos )
+		end
+		
+	elseif pNPCUnit:AnimEventTimer_LUA( 1.03 ) then
+		local vPos = pNPCUnit:GetVector_LUA(0)				
+		local pEffectSet = pX2Game:GetEffectSet()
+		local hEffect1 = pNPCUnit:GetEffectSet_LUA(1)
+		
+		if hEffect1 ~= nil then
+			pEffectSet:StopEffectSet_LUA ( hEffect1 )
+			local vRot = pNPCUnit:GetRotateDegree()
+			local hEffect2 = pEffectSet:PlayEffectSetWithCustomPos_LUA ( "Sander_Sirape_Magic_Attack_A_Damage", pNPCUnit, vPos, vRot )
+		end	
+	end		
+end 
+
+
+
+ANGER_SIRAPE_MAGIC_ATTACK_B =
+{
+	ANIM_NAME					= "MagicAttack_B",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	VIEW_TARGET					= TRUE,
+		
+	SOUND_PLAY0 = { 0.71, "Anger_Sirape_MagicAttackB01.ogg"},
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"ANGER_SIRAPE_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"ANGER_SIRAPE_WAIT",								},
+	},
+	
+	EFFECT_SET_LIST =
+	{
+		"Sander_Sirape_Magic_Attack_B", 0,
+	},
+
+}
+
+function ANGER_SIRAPE_MAGIC_ATTACK_B_FRAME_MOVE_FUNC( pKTDXApp, pX2Game, pNPCUnit )
+	
+	if pNPCUnit:AnimEventTimer_LUA( 1.23 ) then
+		pDamageEffect = pX2Game:GetDamageEffect()
+		
+		if nil ~= pDamageEffect then
+			local pos = pNPCUnit:GetLandPosition_LUA()
+			pDamageEffect:CreateInstance_LUA( pNPCUnit, "DAMAGE_EFFECT_ANGER_SIRAPE_MAGIC_B", pNPCUnit:GetBonePos_LUA( "Bip01_Pelvis" ), pos.y )
+		end
+		
+	end
+end
+
+
+ANGER_SIRAPE_DAMAGE_FRONT = 
+{
+	ANIM_NAME					= "DamageFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_INTERVAL_TIME0		= 1,
+	
+	APPLY_ANIM_MOVE		= FALSE,	-- 애니메이션 축 이동 고정	
+	SPEED_Y = 0,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"ANGER_SIRAPE_WAIT",															},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"ANGER_SIRAPE_MAGIC_ATTACK_A",			"CT_ANGER_SIRAPE_MAGIC_ATTACK_A",		},
+	},
+	
+	CT_ANGER_SIRAPE_MAGIC_ATTACK_A = 
+	{
+		EVENT_INTERVAL_ID				= 0,
+		HAVE_TARGET						= 1,
+		DISTANCE_TO_TARGET_NEAR			= 1000,
+		RATE							= 10,
+	},
+	
+}
+
+ANGER_SIRAPE_DAMAGE_BACK = 
+{
+	ANIM_NAME					= "DamageBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_INTERVAL_TIME0		= 1,
+	APPLY_ANIM_MOVE		= FALSE,	-- 애니메이션 축 이동 고정	
+	SPEED_Y = 0,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"ANGER_SIRAPE_WAIT",															},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"ANGER_SIRAPE_MAGIC_ATTACK_A",			"CT_ANGER_SIRAPE_MAGIC_ATTACK_A",		},
+	},
+	
+	CT_ANGER_SIRAPE_MAGIC_ATTACK_A = 
+	{
+		EVENT_INTERVAL_ID				= 0,
+		HAVE_TARGET						= 1,
+		DISTANCE_TO_TARGET_NEAR			= 1000,
+		RATE							= 10,
+	},
+}
+
+ANGER_SIRAPE_DAMAGE_BIG_BACK = 
+{
+	ANIM_NAME					= "DamageBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"ANGER_SIRAPE_SPECIAL_ATTACK_A",			"CT_ANGER_SIRAPE_SPECIAL_ATTACK_A",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"ANGER_SIRAPE_WAIT",														},
+	},
+	
+	CT_ANGER_SIRAPE_SPECIAL_ATTACK_A = 
+	{
+		DISTANCE_TO_TARGET_NEAR			= 1000,	
+		RATE							= 3,
+	},	
+}
+
+ANGER_SIRAPE_DAMAGE_BIG_FRONT = 
+{
+	ANIM_NAME					= "DamageFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	EVENT_PROCESS = 
+	{
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"ANGER_SIRAPE_SPECIAL_ATTACK_A",			"CT_ANGER_SIRAPE_SPECIAL_ATTACK_A",	},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"ANGER_SIRAPE_WAIT",														},
+	},
+	
+	CT_ANGER_SIRAPE_SPECIAL_ATTACK_A = 
+	{
+		DISTANCE_TO_TARGET_NEAR			= 1000,	
+		RATE							= 3,
+	},
+}
+
+
+
+
+
+ANGER_SIRAPE_DAMAGE_DOWN_FRONT = 
+{
+	ANIM_NAME					= "DamageFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+
+    CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"ANGER_SIRAPE_DAMAGE_AIR_FALL",															},
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"ANGER_SIRAPE_STAND_UP_ATTACK_FRONT", "CT_ANGER_SIRAPE_STAND_UP_ATTACK_FRONT",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"ANGER_SIRAPE_STAND_UP_FRONT",															},
+	},
+	
+	CT_ANGER_SIRAPE_STAND_UP_ATTACK_FRONT =
+	{
+		ANIM_PLAY_COUNT  =			1,
+		RATE			 =			33,
+	},
+}
+
+ANGER_SIRAPE_DAMAGE_DOWN_BACK = 
+{
+	ANIM_NAME					= "DamageBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"ANGER_SIRAPE_DAMAGE_AIR_FALL",													},
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"ANGER_SIRAPE_STAND_UP_ATTACK_BACK", "CT_ANGER_SIRAPE_STAND_UP_ATTACK_BACK",		},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"ANGER_SIRAPE_STAND_UP_BACK",													},
+	},
+	
+	CT_ANGER_SIRAPE_STAND_UP_ATTACK_BACK =
+	{
+		ANIM_PLAY_COUNT  =			 1,
+		RATE			 =			33,
+	},
+}
+
+ANGER_SIRAPE_DAMAGE_FLY_FRONT = 
+{
+	ANIM_NAME					= "DamageFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,	
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"ANGER_SIRAPE_DAMAGE_AIR_DOWN_LANDING",		},
+	},
+}
+
+ANGER_SIRAPE_DAMAGE_FLY_BACK = 
+{
+	ANIM_NAME					= "DamageBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"ANGER_SIRAPE_DAMAGE_DOWN_BACK",			},
+	},
+}
+
+ANGER_SIRAPE_DAMAGE_AIR = 
+{
+	ANIM_NAME					= "DamageFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"ANGER_SIRAPE_WAIT",						},
+	},
+}
+
+ANGER_SIRAPE_DAMAGE_AIR_DOWN = 
+{
+	ANIM_NAME					= "DamageFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"ANGER_SIRAPE_DAMAGE_AIR_DOWN_LANDING",		},
+	},
+}
+
+ANGER_SIRAPE_DAMAGE_AIR_UP = 
+{
+	ANIM_NAME					= "DamageFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"ANGER_SIRAPE_DAMAGE_AIR_FALL",				},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"ANGER_SIRAPE_DAMAGE_AIR_DOWN_LANDING",		},
+	},
+}
+
+ANGER_SIRAPE_DAMAGE_AIR_FALL = 
+{
+	ANIM_NAME					= "DamageFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_POSITIVE_Y_SPEED"],		"ANGER_SIRAPE_DAMAGE_AIR_UP",				},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"ANGER_SIRAPE_DAMAGE_AIR_DOWN_LANDING",		},
+	},
+}
+
+ANGER_SIRAPE_DAMAGE_AIR_DOWN_LANDING = 
+{
+	ANIM_NAME					= "DamageFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"ANGER_SIRAPE_DAMAGE_AIR_FALL",													},
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"ANGER_SIRAPE_STAND_UP_ATTACK_FRONT", "CT_ANGER_SIRAPE_STAND_UP_ATTACK_FRONT",		},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"ANGER_SIRAPE_STAND_UP_FRONT",													},
+	},
+	
+	CT_ANGER_SIRAPE_STAND_UP_ATTACK_FRONT =
+	{
+		ANIM_PLAY_COUNT = 1,
+		RATE			= 33,
+	},
+
+}
+
+ANGER_SIRAPE_STAND_UP_FRONT = 
+{
+	ANIM_NAME					= "DamageFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	SUPER_ARMOR					= TRUE,
+	
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"ANGER_SIRAPE_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"ANGER_SIRAPE_WAIT",				},
+	},
+}
+
+ANGER_SIRAPE_STAND_UP_BACK = 
+{
+	ANIM_NAME					= "DamageFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	SUPER_ARMOR					= TRUE,
+	
+	DEFENCE						= { 0, 100, 70, },
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"ANGER_SIRAPE_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"ANGER_SIRAPE_WAIT", },
+	},		
+}
+
+
+
+ANGER_SIRAPE_DYING = 
+{
+	ANIM_NAME					= "Dying",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+		
+	INVINCIBLE					= { 0, 100, }, 		
+	DYING_SPEED					= 1.0, 
+
+ 	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	SOUND_PLAY0 = { 0.01, "Ran_SpecialAttackA01.ogg"},
+
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Anger_Sirape_DYING", 0,
+	},
+	
+}
+	
+
+function ANGER_SIRAPE_DYING_LAND_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+	HideWind ( pX2Game, pNPCUnit )
+	
+end
+
+function ANGER_SIRAPE_DYING_FRAME_MOVE_FUNC( pKTDXApp, pX2Game, pNPCUnit )
+-- 죽고 3초 후 부터 RT_CARTOON_FADE 스타일의 Fade Out 시작, 
+    if pNPCUnit:AnimEventTimer_LUA(3) then
+        pNPCUnit:SetUnitFadeStart(RENDER_TYPE["RT_CARTOON_FADE"], 1.0, 1.0, 1.0, 0.0, true, true)
+        pNPCUnit:SetUnitFadeMove(0.3, 0.0, 0.0, 0.0, 0.1)
+    end
+end
+
+
+
+
+-- 수정 : 루아 함수 내 널 체크 추가
+-- 복잡한 구문 주석 추가
+-- AllocateWind, ReleaseWind 의 경우 정리할 필요가 있다 판단하여 따로 작성, 
+
+-- 수정 : 해당 함수명 이름 변경
+
+------------------------------------------------------------------------------
+-- Flag 0 번 = 바람이 있는 상태인가? 매 프레임마다 체크
+-- EffectSet 0 번 = 바람 Effect ( EffectSet_Anger_Sirape_Wind ), 조건에 맞다면 다시 Play 함
+-- 바람 공격 중일때, 죽었을 때, 바람이 없어짐
+-- 기타 경우에서는 다시 생김
+
+
+function ShowWind ( pX2Game, pNPCUnit )
+	if pNPCUnit:GetFlag_LUA ( 0 ) == false then									
+		local pEffectSet = pX2Game:GetEffectSet()
+		if pEffectSet ~= nil then
+			local hEffect = pEffectSet:PlayEffectSet_LUA( "EffectSet_Anger_Sirape_Wind", pNPCUnit )	
+			pNPCUnit:SetEffectSet_LUA( 0 , hEffect )
+			pNPCUnit:SetFlag_LUA ( 0, true )
+		end
+	end
+end
+
+function HideWind ( pX2Game, pNPCUnit )
+	if pNPCUnit:GetFlag_LUA ( 0 ) == true then
+		local pEffectSet = pX2Game:GetEffectSet()
+		local hEffect = pNPCUnit:GetEffectSet_LUA(0)
+		if hEffect ~= nil then
+			pEffectSet:StopEffectSet_LUA ( hEffect )
+		end
+		pNPCUnit:SetFlag_LUA ( 0, false )
+	end
+end
+-------------------------------------------------------------------------------
+
+

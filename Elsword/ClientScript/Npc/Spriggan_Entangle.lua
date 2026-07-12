@@ -1,0 +1,388 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 50.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+	
+	"Spriggan_Entangle_Attack.ogg",
+	
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "SI_A_LSR_ENTANGLE_Effect_Seed.x",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 0,
+	RUN_SPEED			= 0,
+	JUMP_SPEED			= 0,
+	DASH_JUMP_SPEED		= 0,
+}
+
+
+INIT_COMPONENT = 
+{
+
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	SHADOW_SIZE			= 0,
+	--SHADOW_FILE_NAME	= "shadow.dds",
+	
+	--SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	--SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	--SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+		
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	--HEAD_BONE_NAME		= "Spike_Leaf1",
+	SHOW_ON_MINIMAP		= FALSE,
+
+	NOT_EXTRA_DAMAGE	= TRUE,
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "SPRIGGAN_ENTANGLE_START",					},
+	{ STATE_NAME = "SPRIGGAN_ENTANGLE_WAIT",					LUA_FRAME_MOVE_FUNC = "SPRIGGAN_ENTANGLE_WAIT_FRAME_MOVE",   },
+	{ STATE_NAME = "SPRIGGAN_ENTANGLE_ATTACK_START",			LUA_STATE_START_FUNC = "SPRIGGAN_ENTANGLE_ATTACK_START_STATE_START", },
+	{ STATE_NAME = "SPRIGGAN_ENTANGLE_ATTACK",					LUA_FRAME_MOVE_FUNC = "SPRIGGAN_ENTANGLE_ATTACK_FRAME_MOVE",	},
+	{ STATE_NAME = "SPRIGGAN_ENTANGLE_DYING",					},
+
+
+	START_STATE					= "SPRIGGAN_ENTANGLE_START",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "",
+	SMALL_DAMAGE_LAND_BACK		= "",
+	BIG_DAMAGE_LAND_FRONT		= "",
+	BIG_DAMAGE_LAND_BACK		= "",
+	DOWN_DAMAGE_LAND_FRONT		= "",
+	DOWN_DAMAGE_LAND_BACK		= "",
+	FLY_DAMAGE_FRONT			= "",
+	FLY_DAMAGE_BACK				= "",
+	SMALL_DAMAGE_AIR			= "",	
+	BIG_DAMAGE_AIR				= "",
+	DOWN_DAMAGE_AIR				= "",
+	UP_DAMAGE					= "",
+	DAMAGE_REVENGE				= "SPRIGGAN_ENTANGLE_WAIT",
+	
+	DYING_LAND_FRONT			= "SPRIGGAN_ENTANGLE_DYING",
+	DYING_LAND_BACK				= "SPRIGGAN_ENTANGLE_DYING",
+	DYING_SKY					= "SPRIGGAN_ENTANGLE_DYING",
+
+	REVENGE_ATTACK				= "",	
+}
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_NEAR_FIRST"],
+		TARGET_INTERVAL				= 0.3,		-- sec
+		TARGET_NEAR_RANGE			= 300,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 1000,		-- cm
+		TARGET_LOST_RANGE			= 1200,	-- cm
+		TARGET_SUCCESS_RATE			= 100,
+		ATTACK_TARGET_RATE			= 0,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 0,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+	
+}
+
+
+
+SPRIGGAN_ENTANGLE_START = 
+{
+	SHOW						= FALSE,
+
+	ANIM_NAME					= "SI_A_LSR_ENTANGLE_Effect_Seed_Start",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+
+ 	
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	EVENT_INTERVAL_TIME0		= 0.3,
+	
+	INVINCIBLE					= { 0, 9999, },
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Spriggan_Small_Magic_Attack_A", 0,	
+	},
+	
+	
+		
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SPRIGGAN_ENTANGLE_WAIT",					},
+	},
+}
+
+
+SPRIGGAN_ENTANGLE_WAIT = 
+{
+	SHOW						= FALSE,
+
+	ANIM_NAME					= "SI_A_LSR_ENTANGLE_Effect_Seed_Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	EVENT_INTERVAL_TIME0		= 0.1,
+	
+	INVINCIBLE					= { 0, 9999, },
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"SPRIGGAN_ENTANGLE_ATTACK_START",				"CT_SPRIGGAN_ENTANGLE_ATTACK_START",	},
+	},
+	
+	CT_SPRIGGAN_ENTANGLE_ATTACK_START = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 80,
+		RATE						= 100,
+	},
+}
+
+----------------------------------------------------------
+function SPRIGGAN_ENTANGLE_WAIT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:GetStateTime() > 10.0 then 
+		pNPCUnit:SetNowHP_LUA( 0 )
+	end
+		
+end
+
+
+
+SPRIGGAN_ENTANGLE_ATTACK_START = 
+{
+	SHOW						= FALSE,
+
+	ANIM_NAME					= "SI_A_LSR_ENTANGLE_Effect_Seed_Screw_Start",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	
+	INVINCIBLE					= { 0, 9999, },
+		
+    SOUND_PLAY0			= { 0.001, "Spriggan_Entangle_Attack.ogg" },
+
+	ATTACK_TIME0				= { 0.01, 0.1, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_FIRE"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+	BUFF_FACTOR =
+	{
+		BUFF_TEMPLET_ID = BUFF_TEMPLET_ID["BTI_DEBUFF_SPRIGGAN_ENTANGLE"],
+		RATE	=
+		{
+			1.0,
+		},
+		IGNORE_REGIST_FOR_RATE = TRUE,
+		
+		BEHAVIOR =
+		{
+			COMBINATION = { BUFF_BEHAVIOR_TYPE["BBT_ATTACK_IMPOSSIBLE"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_WALK_RUN_SPEED"],
+							BUFF_BEHAVIOR_TYPE["BBT_CHANGE_JUMP_POWER"], 
+							BUFF_BEHAVIOR_TYPE["BBT_NEVER_MOVE"] },
+
+			BBT_ATTACK_IMPOSSIBLE =
+			{
+			},
+			BBT_CHANGE_WALK_RUN_SPEED =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_SWAP_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				SWAP_VALUE =
+				{
+					0.0,
+				},
+			},		
+			BBT_CHANGE_JUMP_POWER =
+			{
+				BUFF_CHANGE_TYPE = BUFF_CHANGE_TYPE["BCT_SWAP_VALUE"],
+				BUFF_RELATION_TYPE = BUFF_RELATION_TYPE["BRT_END"],
+				SWAP_VALUE =
+				{
+					0.0,
+				},
+			},
+			BBT_NEVER_MOVE =
+			{
+			},
+		},
+	
+		FINALIZER =
+		{
+			COMBINATION = { BUFF_FINALIZER_TYPE["BFT_TIME"], },
+		
+			BFT_TIME =
+			{
+				BUFF_DURATION_TIME_TYPE = BUFF_DURATION_TIME_TYPE["BDTT_NORMAL_TIME"],
+				NORMAL_TIME =
+				{
+					3,
+				},
+			},
+		},
+	},
+		
+		BACK_SPEED_X			= 0,
+		BACK_SPEED_Y			= 0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Spriggan_Small_Magic_Attack_A_Trap", 0,	
+	},
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"SPRIGGAN_ENTANGLE_ATTACK",					},
+	},
+	
+		
+}
+
+----------------------------------------------------------
+function SPRIGGAN_ENTANGLE_ATTACK_START_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	pNPCUnit:SetNowHP_LUA( 1 ) -- 공격중 임을 나타낸다
+	
+	pNPCUnit:SetExtraDamageDataTime( 5 )		-- 유닛을 붙들고 있을 시간을 지정
+		
+end
+
+
+
+
+
+SPRIGGAN_ENTANGLE_ATTACK = 
+{
+	SHOW						= FALSE,
+
+	ANIM_NAME					= "SI_A_LSR_ENTANGLE_Effect_Seed_Screw_Loop",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	VIEW_TARGET					= FALSE,
+	
+	INVINCIBLE					= { 0, 9999, },
+		
+}
+
+
+----------------------------------------------------------
+function SPRIGGAN_ENTANGLE_ATTACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:GetStateTime() > 5 then 
+		if pNPCUnit:GetNowHP() > 0 then
+			pNPCUnit:SetNowHP_LUA( 0 )			
+		end
+	end
+		
+end
+
+
+
+SPRIGGAN_ENTANGLE_DYING = 
+{
+	SHOW						= FALSE,
+	DYING_SPEED					= 2,
+
+	ANIM_NAME					= "SI_A_LSR_ENTANGLE_Effect_Seed_Screw_Loop",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+
+
+
+
+

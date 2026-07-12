@@ -1,0 +1,9 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+
+g_pXET:AddChangeTexture( "npc_bodyA.tga", "GOD_SPECIAL_RED_KNIGHT_C_body_A.tga" )
+g_pXET:AddChangeTexture( "npc_bodyB.tga", "GOD_SPECIAL_RED_KNIGHT_C_body_B.tga" )
+g_pXET:AddChangeTexture( "npc_bodyC.tga", "GOD_SPECIAL_RED_KNIGHT_C_body_C.tga" )
+g_pXET:AddChangeTexture( "npc_bodyD.tga", "GOD_SPECIAL_RED_KNIGHT_C_body_D.tga" )
+

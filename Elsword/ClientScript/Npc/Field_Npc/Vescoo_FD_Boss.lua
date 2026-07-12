@@ -1,0 +1,1570 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+
+INIT_SYSTEM = 
+{
+	LUA_SHAREABLE	= TRUE,
+	UNIT_WIDTH		= 244.0,
+	UNIT_HEIGHT		= 280.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	
+	UNIT_SCALE      = 1.6,
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+	
+     "LizardSaurus_AttackA.ogg",
+	 "LizardSaurus_AttackB.ogg",
+	 "LizardSaurus_AttackB_Ready.ogg",
+	 "LizardSaurus_AttackB1.ogg",
+	 "LizardSaurus_AttackB2.ogg",
+	 
+
+	
+	},
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_VESCOO_FD_BOSS.x",
+	MOTION_CHANGE_TEX_XET	= "VESCOO_FD_BOSS_A.XET",
+	MOTION_ANI_TEX_XET		= "VESCOO_FD_BOSS_A.XET",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 400,
+	RUN_SPEED			= 600,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 1800,
+}
+
+
+INIT_COMPONENT = 
+{
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+
+	
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+	
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	----MIND_FLAG_HEIGHT		= 230,
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	
+	RAGE_COUNT_MAX		= 30,
+	RAGE_TIME_MAX		= 5,
+
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	FALL_DOWN			= TRUE,
+	
+	WEAPON0 = 
+	{
+		WEAPON_FILE_NAME			= "NUI_Besma_LizardMan_Saurus_weapon.X",
+		WEAPON_BONE_NAME			= "Dummy1_Rhand",
+			
+		--USE_SLASH_TRACE				= TRUE,						
+		--SLASH_TRACE_TOP_BONE		= "TRACE_START0",
+		--SLASH_TRACE_BOTTOM_BONE		= "TRACE_END0",
+	},
+}
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "VESCOO_START",						LUA_STATE_START_FUNC = "VESCOO_START_STATE_START" },
+		
+
+	{ STATE_NAME = "VESCOO_WAIT",							},
+	{ STATE_NAME = "VESCOO_WAIT_HABIT",					},
+	
+	{ STATE_NAME = "VESCOO_WALK",							LUA_STATE_END_FUNC = "VESCOO_WALK_STATE_END"						},
+
+	
+	
+	{ STATE_NAME = "VESCOO_JUMP_UP",						},
+	{ STATE_NAME = "VESCOO_JUMP_DOWN",					LUA_STATE_END_FUNC = "VESCOO_JUMP_DOWN_STATE_END"					},
+	{ STATE_NAME = "VESCOO_JUMP_UP_DIR",					},
+	{ STATE_NAME = "VESCOO_JUMP_DOWN_DIR",				LUA_STATE_END_FUNC = "VESCOO_JUMP_DOWN_DIR_STATE_END"				},
+	{ STATE_NAME = "VESCOO_JUMP_LANDING",					},
+
+
+	{ STATE_NAME = "VESCOO_ATTACK_B1",					LUA_FRAME_MOVE_FUNC = "VESCOO_ATTACK_FRAME_MOVE",				STATE_COOL_TIME = 15, },
+	{ STATE_NAME = "VESCOO_ATTACK_B2",					LUA_FRAME_MOVE_FUNC = "VESCOO_ATTACK_FRAME_MOVE",				STATE_COOL_TIME = 15, },
+	{ STATE_NAME = "VESCOO_ATTACK_A",					LUA_FRAME_MOVE_FUNC = "VESCOO_ATTACK_FRAME_MOVE",				STATE_COOL_TIME = 10, },
+	
+	{ STATE_NAME = "VESCOO_ATTACK_B_READY",				LUA_FRAME_MOVE_FUNC = "VESCOO_ATTACK_FRAME_MOVE",				STATE_COOL_TIME = 20, },	
+	{ STATE_NAME = "VESCOO_ATTACK_B",						LUA_FRAME_MOVE_FUNC = "VESCOO_ATTACK_FRAME_MOVE",			STATE_COOL_TIME = 5, },	
+	
+	{ STATE_NAME = "VESCOO_ATTACK_SPECIAL_BEFORE",					STATE_COOL_TIME = 30,																	    },	
+	{ STATE_NAME = "VESCOO_ATTACK_SPECIAL",					LUA_FRAME_MOVE_FUNC = "VESCOO_ATTACK_SPECIAL_FRAME_MOVE", 						},	
+	{ STATE_NAME = "VESCOO_ATTACK_SPECIAL_B",																								},	
+	{ STATE_NAME = "VESCOO_ATTACK_SPECIAL_AFTER",																							},	
+	
+	--리액션 관련
+	{ STATE_NAME = "VESCOO_DAMAGE_FRONT",					LUA_FRAME_MOVE_FUNC = "VESCOO_DAMAGE_FRONT_FRAME_MOVE"				},
+	{ STATE_NAME = "VESCOO_DAMAGE_BACK",					LUA_FRAME_MOVE_FUNC = "VESCOO_DAMAGE_BACK_FRAME_MOVE"				},
+	{ STATE_NAME = "VESCOO_DAMAGE_DOWN_FRONT",				LUA_FRAME_MOVE_FUNC = "VESCOO_DAMAGE_DOWN_FRONT_FRAME_MOVE"		},
+	{ STATE_NAME = "VESCOO_DAMAGE_DOWN_BACK",				LUA_FRAME_MOVE_FUNC = "VESCOO_DAMAGE_DOWN_BACK_FRAME_MOVE"			},
+	{ STATE_NAME = "VESCOO_DAMAGE_FLY_FRONT",				},
+	{ STATE_NAME = "VESCOO_DAMAGE_FLY_BACK",				},
+	{ STATE_NAME = "VESCOO_DAMAGE_AIR",					},
+	{ STATE_NAME = "VESCOO_DAMAGE_AIR_DOWN",				},
+	{ STATE_NAME = "VESCOO_DAMAGE_AIR_UP",				},
+	{ STATE_NAME = "VESCOO_DAMAGE_AIR_FALL",				},
+	{ STATE_NAME = "VESCOO_DAMAGE_AIR_DOWN_LANDING",		LUA_FRAME_MOVE_FUNC = "VESCOO_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE"	},
+	
+	{ STATE_NAME = "VESCOO_STAND_UP_FRONT",				},
+	{ STATE_NAME = "VESCOO_STAND_UP_BACK",				},
+	
+	{ STATE_NAME = "VESCOO_STAND_UP_ATTACK_FRONT",		},
+	{ STATE_NAME = "VESCOO_STAND_UP_ATTACK_BACK",			},
+	
+	
+	
+	{ STATE_NAME = "VESCOO_DAMAGE_REVENGE",				},
+	
+	
+	
+	
+	{ STATE_NAME = "VESCOO_DYING_LAND_FRONT",				LUA_STATE_START_FUNC = "VESCOO_DYING_LAND_STATE_START",},
+	{ STATE_NAME = "VESCOO_DYING_LAND_BACK",				LUA_STATE_START_FUNC = "VESCOO_DYING_LAND_STATE_START",},
+	{ STATE_NAME = "VESCOO_DYING_SKY",					LUA_STATE_START_FUNC = "VESCOO_DYING_LAND_STATE_START",},
+	
+	
+	
+	START_STATE					= "VESCOO_START",
+	WAIT_STATE					= "VESCOO_WAIT",
+
+
+	SMALL_DAMAGE_LAND_FRONT		= "VESCOO_DAMAGE_FRONT",
+	SMALL_DAMAGE_LAND_BACK		= "VESCOO_DAMAGE_BACK",
+	BIG_DAMAGE_LAND_FRONT		= "VESCOO_DAMAGE_FRONT",
+	BIG_DAMAGE_LAND_BACK		= "VESCOO_DAMAGE_BACK",
+	DOWN_DAMAGE_LAND_FRONT		= "VESCOO_DAMAGE_DOWN_FRONT",
+	DOWN_DAMAGE_LAND_BACK		= "VESCOO_DAMAGE_DOWN_BACK",
+	FLY_DAMAGE_FRONT			= "VESCOO_DAMAGE_FLY_FRONT",
+	FLY_DAMAGE_BACK				= "VESCOO_DAMAGE_FLY_BACK",
+	SMALL_DAMAGE_AIR			= "VESCOO_DAMAGE_AIR",	
+	BIG_DAMAGE_AIR				= "VESCOO_DAMAGE_AIR",
+	DOWN_DAMAGE_AIR				= "VESCOO_DAMAGE_AIR",
+	DOWN_DAMAGE_AIR_LANDING		= "VESCOO_DAMAGE_AIR_DOWN_LANDING",
+	UP_DAMAGE					= "VESCOO_DAMAGE_AIR_UP",
+	DAMAGE_REVENGE				= "VESCOO_DAMAGE_REVENGE",
+	
+	DAMAGE_EXTRA_STATES         = { "VESCOO_DAMAGE_AIR_DOWN","VESCOO_DAMAGE_AIR_FALL","VESCOO_STAND_UP_FRONT","VESCOO_STAND_UP_BACK",
+		"VESCOO_STAND_UP_ATTACK_FRONT","VESCOO_STAND_UP_ATTACK_BACK",
+		"VESCOO_JUMP_DOWN","VESCOO_JUMP_LANDING",},	
+	
+	DYING_LAND_FRONT			= "VESCOO_DYING_LAND_FRONT",
+	DYING_LAND_BACK				= "VESCOO_DYING_LAND_BACK",
+	DYING_SKY					= "VESCOO_DYING_SKY",
+
+	REVENGE_ATTACK				= "",	
+}
+
+
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 2,		-- sec
+		TARGET_NEAR_RANGE			= 1300,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 1500,		-- cm
+		TARGET_LOST_RANGE			= 1700,		-- cm
+		TARGET_SUCCESS_RATE			= 100,  --50,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 30,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 100, -- 30,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 600,
+		DEST_GAP			= 200,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 350,
+		
+		DIR_CHANGE_INTERVAL = 0.7,
+		
+		WALK_INTERVAL		= 1,
+		NEAR_WALK_RATE		= 30,   --  70,
+		FAR_WALK_RATE		= 30,   -- 30,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 10, -- 40,
+		UP_DOWN_RATE		= 20,
+		DOWN_JUMP_RATE		= 10,    --  20,
+		DOWN_DOWN_RATE		= 40,
+		
+		--LINE_END_RANGE		= 100,	-- cm
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 50, --50,		
+		PATROL_RANGE			= 1000,
+		PATROL_COOL_TIME		= 2,
+		--ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+	ESCAPE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 500,	-- cm
+		ESCAPE_GAP			= 600,	-- 이 거리 보다 멀어지면 도망 성공
+		
+		WALK_INTERVAL		= 1.5,	-- 초
+		NEAR_WALK_RATE		= 100,   --  10,
+		FAR_WALK_RATE		= 100,   -- 10,
+		
+		JUMP_INTERVAL		= 10,
+		UP_JUMP_RATE		= 100, -- 30,
+		UP_DOWN_RATE		= 30,
+		DOWN_JUMP_RATE		= 100,    --  30,
+		DOWN_DOWN_RATE		= 30,
+		
+		--LINE_END_RANGE		= 80,	-- cm
+	},
+
+}
+
+
+VESCOO_START = 
+{
+	ANIM_NAME					= "WaitHabit",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,	
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],		"VESCOO_WAIT",		"CT_VESCOO_WAIT"				},
+	},
+	
+	CT_VESCOO_WAIT = 
+	{
+		STATE_TIME_OVER			= 2.8,
+	},
+}
+
+
+
+VESCOO_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+	
+	PASSIVE_SPEED_X				= 0,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	EVENT_INTERVAL_TIME0		= 2,
+	EVENT_PROCESS = 
+	{		
+		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"VESCOO_JUMP_DOWN",				},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"VESCOO_ATTACK_A",						"CT_VESCOO_ATTACK_A",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"VESCOO_ATTACK_B1",						"CT_VESCOO_ATTACK_B1",		},		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"VESCOO_ATTACK_B_READY",				"CT_VESCOO_ATTACK_B_READY",		},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"VESCOO_ATTACK_SPECIAL_BEFORE",			"CT_VESCOO_ATTACK_SPECIAL",		},
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"VESCOO_WAIT_HABIT",				"CT_VESCOO_WAIT_HABIT",		},
+		
+		{ STATE_CHANGE_TYPE["SCT_AI_WALK"],					"VESCOO_WALK",						},
+		--{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"VESCOO_DASH",						},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"VESCOO_JUMP_UP",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"VESCOO_JUMP_UP_DIR",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"VESCOO_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"VESCOO_JUMP_DOWN_DIR",			},
+	},
+	
+	CT_VESCOO_ATTACK_A = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 40,
+	},
+	
+	CT_VESCOO_ATTACK_B1 = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 30,
+	},
+	
+	CT_VESCOO_ATTACK_B_READY = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 40,
+	},
+	
+	CT_VESCOO_ATTACK_SPECIAL = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 350,
+		RATE						= 50,
+	},
+	
+	CT_VESCOO_WAIT_HABIT = 
+	{
+		ANIM_PLAY_COUNT				= 1,
+		RATE						= 60,
+		HAVE_TARGET					= 0,		-- false
+	},
+}
+
+
+
+
+VESCOO_WAIT_HABIT = 
+{
+	ANIM_NAME					= "WaitHabit",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"VESCOO_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"VESCOO_WAIT",						},
+	},
+}
+
+
+VESCOO_WALK = 
+{
+	ANIM_NAME					= "Walk",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	
+	ALLOW_DIR_CHANGE			= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	
+	EVENT_PROCESS = 
+	{		
+		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"VESCOO_JUMP_DOWN_DIR",			},
+				
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"VESCOO_ATTACK_A",				"CT_VESCOO_ATTACK_A",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"VESCOO_ATTACK_B1",					"CT_VESCOO_ATTACK_B1",		},		
+		 { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"VESCOO_ATTACK_B_READY",			"CT_VESCOO_ATTACK_B_READY",	},
+		 { STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"VESCOO_ATTACK_SPECIAL_BEFORE",		"CT_VESCOO_ATTACK_SPECIAL",	},
+
+		{ STATE_CHANGE_TYPE["SCT_AI_WAIT"],					"VESCOO_WAIT",					},
+		--{ STATE_CHANGE_TYPE["SCT_AI_DASH"],					"VESCOO_DASH",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP"],					"VESCOO_JUMP_UP",					},
+		{ STATE_CHANGE_TYPE["SCT_AI_JUMP_DIR"],				"VESCOO_JUMP_UP_DIR",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN"],					"VESCOO_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_AI_DOWN_DIR"],				"VESCOO_JUMP_DOWN_DIR",			},
+	},
+	
+	
+	
+	CT_VESCOO_ATTACK_A = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 40,
+	},
+
+	CT_VESCOO_ATTACK_B1 = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 30,
+	},
+	
+	CT_VESCOO_ATTACK_B_READY = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 40,
+	},
+	CT_VESCOO_ATTACK_SPECIAL = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 350,
+		RATE						= 50,
+	
+	},
+}
+
+
+
+VESCOO_JUMP_UP = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SPEED_X						= 0,
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	
+	ADD_POS_Y					= 45, 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"VESCOO_JUMP_DOWN",			},
+	},
+	
+}
+
+VESCOO_JUMP_DOWN = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"VESCOO_JUMP_LANDING",				},
+	},
+}
+
+VESCOO_JUMP_UP_DIR = 
+{
+	ANIM_NAME					= "JumpUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	SPEED_Y						= INIT_PHYSIC["JUMP_SPEED"],
+	
+	ADD_POS_Y					= 45, 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"VESCOO_JUMP_DOWN_DIR",				},
+	},
+	
+}
+
+VESCOO_JUMP_DOWN_DIR = 
+{
+	ANIM_NAME					= "JumpDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	PASSIVE_SPEED_X				= INIT_PHYSIC["WALK_SPEED"],
+	 
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"VESCOO_JUMP_LANDING",				},
+	},
+}
+
+VESCOO_JUMP_LANDING = 
+{
+	ANIM_NAME					= "JumpLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"VESCOO_JUMP_DOWN",				},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"VESCOO_WAIT",						},
+	},
+}
+
+
+VESCOO_ATTACK_B2 = 
+{
+	ANIM_NAME					= "AttackB2",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SPEED_X						= 0,
+	SPEED_Y						= 0,	
+	SUPER_ARMOR_TIME0			= { 0, 2, },
+    SOUND_PLAY0			= { 0.484, "LizardSaurus_AttackB2.ogg" },
+	
+	VIEW_TARGET					= TRUE,
+	SUPER_ARMOR					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"VESCOO_JUMP_DOWN",										},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"VESCOO_WAIT",												},	
+
+	},
+
+	ATTACK_TIME0				= { 0.52, 0.60, },
+
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.4,
+		},
+		
+		BACK_SPEED_X			= 2000,
+		BACK_SPEED_Y			= 100,
+		
+	
+		CAMERA_CRASH_GAP		= 10.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+}
+
+
+
+VESCOO_ATTACK_B1 =
+{
+	ANIM_NAME					= "AttackB1",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	SUPER_ARMOR_TIME0			= { 0, 2, },
+    SOUND_PLAY0			= { 0.665, "LizardSaurus_AttackB1.ogg" },
+	
+	VIEW_TARGET					= TRUE,
+	SUPER_ARMOR					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"VESCOO_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"VESCOO_ATTACK_B2",			"CT_VESCOO_ATTACK_B2",	},		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"VESCOO_WAIT",					},
+	},
+	
+	CT_VESCOO_ATTACK_B2 = 
+	{
+		ANIM_EVENT_TIMER			= 1.05,
+		ATTACK_SUCCESS				= TRUE,
+		RATE						= 100,
+	},
+	
+	ATTACK_TIME0				= { 0.70, 0.74, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.4,
+		},
+		
+		BACK_SPEED_X			= 600,
+		BACK_SPEED_Y			= 2000,
+		
+		CAMERA_CRASH_GAP		= 10.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+}
+
+
+
+VESCOO_ATTACK_SPECIAL_BEFORE = 
+{
+	ANIM_NAME					= "ComboAttack_Start",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	ANIM_SPEED 					= 1,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	SUPER_ARMOR	= TRUE,	
+	
+	IMMADIATE_PACKET_SEND = TRUE,
+	
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Vescoo_Anger_Start", 0,
+	},
+
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"VESCOO_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"VESCOO_ATTACK_SPECIAL",					},
+	},
+	
+	-- 베스쿠 도리도리 어택 관련 대사 처리
+	TALK_BOX = 
+	{
+		{ RATE = 70, MESSAGE = STR_ID_23594}, -- 으아아아아아!! 다가오지마!
+		{ RATE = 30, MESSAGE = STR_ID_23595}, -- …!!!
+	},
+}
+
+VESCOO_ATTACK_SPECIAL =
+{
+	ANIM_NAME					= "ComboAttack_Loop",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE"],
+	TRANSITION					= FALSE,
+	ANIM_SPEED 					= 2.2,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	VIEW_TARGET					= TRUE,
+	SUPER_ARMOR					= TRUE,
+
+    SOUND_PLAY0			= { 0.665, "LizardSaurus_AttackB1.ogg" },
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Vescoo_Anger_Loop", 0,
+	},
+
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"VESCOO_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"VESCOO_ATTACK_SPECIAL_B",		},
+	},
+	
+	
+	ATTACK_TIME0				= { 0.25, 0.74, },
+	SUPER_ARMOR	= TRUE,	
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.4,
+		},
+		
+		BACK_SPEED_X			= 300,
+	},
+	
+}
+
+VESCOO_ATTACK_SPECIAL_B =
+{
+	ANIM_NAME					= "ComboAttack_Loop",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE"],
+	TRANSITION					= FALSE,
+	ANIM_SPEED 					= 2.2,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	VIEW_TARGET					= TRUE,
+	SUPER_ARMOR					= TRUE,
+
+    SOUND_PLAY0			= { 0.665, "LizardSaurus_AttackB1.ogg" },
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EFFECT_SET_LIST =
+	{
+		"EffectSet_Vescoo_Anger_Loop", 0,
+	},
+
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"VESCOO_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"VESCOO_ATTACK_SPECIAL",		},
+	},
+	
+	
+	ATTACK_TIME0				= { 0.25, 0.74, },
+	SUPER_ARMOR	= TRUE,	
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.4,
+		},
+		
+		BACK_SPEED_X			= 300,
+	},
+	
+}
+function VESCOO_ATTACK_SPECIAL_FRAME_MOVE ( pKTDXApp, pX2Game, pNPCUnit )
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+		local iPhase = pNPCUnit:GetInt_LUA ( 0 )
+		if iPhase > 5 then
+			pNPCUnit:SetInt_LUA ( 0, 0 )
+			pNPCUnit:StateChange_LUA( "VESCOO_ATTACK_SPECIAL_AFTER", true )
+		else
+			-- local randInx = (pNPCUnit:GetRandVal() % 2)
+			-- if randInx == 1 then
+				-- pNPCUnit:SetIsRight ( true ) 
+			-- else
+				-- pNPCUnit:SetIsRight ( false ) 
+			-- end
+			
+			iPhase = iPhase + 1
+			pNPCUnit:SetInt_LUA ( 0, iPhase )
+		end
+	end
+end
+
+
+VESCOO_ATTACK_SPECIAL_AFTER = 
+{
+	ANIM_NAME					= "ComboAttack_End",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	VIEW_TARGET					= TRUE,
+	SUPER_ARMOR					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"VESCOO_JUMP_DOWN",										},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"VESCOO_WAIT",											},	
+	},
+}
+
+VESCOO_ATTACK_A =
+{
+	ANIM_NAME					= "AttackA",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	SUPER_ARMOR							= TRUE,
+		
+	CAN_PUSH_UNIT				= TRUE, 
+	CAN_PASS_UNIT				= FALSE,
+
+
+    SOUND_PLAY0			= { 1.400, "LizardSaurus_AttackA.ogg" },
+	
+	VIEW_TARGET					= TRUE,
+	SUPER_ARMOR					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"VESCOO_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"VESCOO_WAIT",					},
+	},
+	
+	
+	ATTACK_TIME0				= { 1.70, 1.80, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_BIG_DAMAGE"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 2,
+		},
+		
+		BACK_SPEED_X			= 1000,
+		
+		CAMERA_CRASH_GAP		= 10.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+}
+
+
+
+
+VESCOO_ATTACK_B =
+{
+	ANIM_NAME					= "AttackB",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+    SOUND_PLAY0			= { 0.424, "LizardSaurus_AttackB.ogg" },
+	
+	VIEW_TARGET					= TRUE,
+	SUPER_ARMOR					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"VESCOO_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"VESCOO_WAIT",					},
+	},
+	
+	
+	ATTACK_TIME0				= { 0.43, 0.48, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_FLY"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 2,
+		},
+		
+		BACK_SPEED_X			= 2000,
+		BACK_SPEED_Y			= 2000,
+		
+		
+			
+		CAMERA_CRASH_GAP		= 10.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+}
+
+
+
+
+
+VESCOO_ATTACK_B_READY =
+{
+	ANIM_NAME					= "AttackBReady",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	SUPER_ARMOR					= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+
+    SOUND_PLAY0			= { 0.648, "LizardSaurus_AttackB_Ready.ogg" },
+    SOUND_PLAY1			= { 1.579, "LizardSaurus_AttackB_Ready.ogg" },
+
+	VIEW_TARGET					= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+		
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"VESCOO_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"VESCOO_ATTACK_B",			},
+	},
+}
+
+
+
+VESCOO_DAMAGE_REVENGE = 
+{
+	ANIM_NAME					= "DamageRevenge",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"VESCOO_WAIT",												},
+	},
+}
+
+
+VESCOO_DAMAGE_FRONT = 
+{
+	ANIM_NAME					= "DamageSmall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	
+	EVENT_INTERVAL_TIME0		= 2,
+	EVENT_PROCESS = 
+	{		
+		
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"VESCOO_ATTACK_A",				"CT_VESCOO_ATTACK_A",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"VESCOO_ATTACK_SPECIAL_BEFORE",			"CT_VESCOO_ATTACK_SPECIAL",	},
+		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"VESCOO_WAIT",												},
+	},
+	
+	CT_VESCOO_ATTACK_SPECIAL = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 350,
+		RATE						= 50,
+	},
+	
+	CT_VESCOO_ATTACK_A = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 40,
+	},
+}
+
+VESCOO_DAMAGE_BACK = 
+{
+	ANIM_NAME					= "DamageSmall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+
+	EVENT_INTERVAL_TIME0		= 2,
+	EVENT_PROCESS = 
+	{		
+		
+		
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"VESCOO_ATTACK_A",				"CT_VESCOO_ATTACK_A",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"VESCOO_ATTACK_SPECIAL_BEFORE",			"CT_VESCOO_ATTACK_SPECIAL",	},
+		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"VESCOO_WAIT",												},
+	},
+	
+	CT_VESCOO_ATTACK_SPECIAL = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 350,
+		RATE						= 50,
+	},
+	
+	CT_VESCOO_ATTACK_A = 
+	{
+		EVENT_INTERVAL_ID			= 0,
+		DISTANCE_TO_TARGET_NEAR		= 400,
+		RATE						= 40,
+	},
+}
+
+
+
+
+
+VESCOO_DAMAGE_DOWN_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"VESCOO_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"VESCOO_STAND_UP_ATTACK_FRONT",	"CT_VESCOO_STAND_UP_ATTACK_FRONT", },	
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"VESCOO_STAND_UP_FRONT",			},
+	},
+	
+	CT_VESCOO_STAND_UP_ATTACK_FRONT = 
+	{
+		ANIM_PLAY_COUNT		= 1,
+		RATE				= 5,
+	},
+}
+
+VESCOO_DAMAGE_DOWN_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],		"VESCOO_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"VESCOO_STAND_UP_ATTACK_BACK",	"CT_VESCOO_STAND_UP_ATTACK_BACK", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"VESCOO_STAND_UP_BACK",			},
+	},
+	
+	CT_VESCOO_STAND_UP_ATTACK_BACK = 
+	{
+		ANIM_PLAY_COUNT		= 1,
+		RATE				= 5,
+	},	
+}
+
+VESCOO_DAMAGE_FLY_FRONT = 
+{
+	ANIM_NAME					= "DamageAirFlyFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"VESCOO_DAMAGE_AIR_DOWN_LANDING",		},
+	},
+}
+
+VESCOO_DAMAGE_FLY_BACK = 
+{
+	ANIM_NAME					= "DamageAirFlyBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"VESCOO_DAMAGE_DOWN_BACK",		},
+	},
+}
+
+VESCOO_DAMAGE_AIR = 
+{
+	ANIM_NAME					= "DamageAirSmall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"VESCOO_WAIT",					},
+	},
+	
+	VIEW_TARGET					= TRUE,
+	ALLOW_DIR_CHANGE			= TRUE,
+
+}
+
+VESCOO_DAMAGE_AIR_DOWN = 
+{
+	ANIM_NAME					= "DamageAirDown",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],			"VESCOO_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+VESCOO_DAMAGE_AIR_UP = 
+{
+	ANIM_NAME					= "DamageAirUp",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_NEGATIVE_Y_SPEED"],		"VESCOO_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"VESCOO_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+VESCOO_DAMAGE_AIR_FALL = 
+{
+	ANIM_NAME					= "DamageAirFall",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_POSITIVE_Y_SPEED"],		"VESCOO_DAMAGE_AIR_UP",			},
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_TRUE"],		"VESCOO_DAMAGE_AIR_DOWN_LANDING",	},
+	},
+}
+
+VESCOO_DAMAGE_AIR_DOWN_LANDING = 
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"VESCOO_DAMAGE_AIR_FALL",			},
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"VESCOO_STAND_UP_ATTACK_FRONT",	"CT_VESCOO_STAND_UP_ATTACK_FRONT", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"VESCOO_STAND_UP_FRONT",			},
+	},
+	
+	CT_VESCOO_STAND_UP_ATTACK_FRONT = 
+	{
+		ANIM_PLAY_COUNT		= 1,
+		RATE				= 5,
+	},
+	
+}
+
+VESCOO_STAND_UP_FRONT = 
+{
+	ANIM_NAME					= "DamageStandUpFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,	
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"VESCOO_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"VESCOO_WAIT",				},
+	},
+}
+
+VESCOO_STAND_UP_BACK = 
+{
+	ANIM_NAME					= "DamageStandUpBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"VESCOO_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"VESCOO_WAIT", },
+	},		
+}
+
+
+VESCOO_STAND_UP_ATTACK_FRONT = 
+{
+	ANIM_NAME					= "StandUpAttackFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+
+	ANIM_WAIT_TIME					= 1,
+	MIND_FLAG					= MIND_FLAG["MF_STAND_UP_ATTACK"],	
+	
+	
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"VESCOO_JUMP_DOWN",			},
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"VESCOO_WAIT",				},
+	},
+	
+	ATTACK_TIME0				= { 0.24, 0.32, },
+		
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1,
+		},
+		
+		BACK_SPEED_X			= 600,
+		BACK_SPEED_Y			= 2000,
+		
+		CAMERA_CRASH_GAP		= 10.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},	
+}
+
+VESCOO_STAND_UP_ATTACK_BACK = 
+{
+	ANIM_NAME					= "StandUpAttackBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+
+	ANIM_WAIT_TIME					= 1,
+	MIND_FLAG					= MIND_FLAG["MF_STAND_UP_ATTACK"],
+
+	SUPER_ARMOR					= TRUE,
+	DEFENCE						= { 0, 100, 70, },
+
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_FOOT_ON_LINE_FALSE_DOWN"],	"VESCOO_JUMP_DOWN", },
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"VESCOO_WAIT", },
+	},		
+	
+	ATTACK_TIME0				= { 0.44, 0.52, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_PUNCH_HIT"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1,
+		},
+		
+		BACK_SPEED_X			= 600,
+		BACK_SPEED_Y			= 2000,
+		
+		CAMERA_CRASH_GAP		= 10.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+	},
+}
+
+
+
+
+VESCOO_DYING_LAND_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+	
+VESCOO_DYING_LAND_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,	
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+VESCOO_DYING_SKY = 
+{
+	ANIM_NAME					= "DamageAirDownLanding",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+	LAND_CONNECT				= FALSE,
+	
+	INVINCIBLE					= { 0, 100, }, 		
+
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+
+function VESCOO_WALK_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+
+
+function VESCOO_JUMP_DOWN_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+function VESCOO_JUMP_DOWN_DIR_STATE_END( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pMinorParticle = pX2Game:GetMinorParticle()
+	pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+
+end
+
+
+
+function VESCOO_ATTACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+	
+	if pNPCUnit:AnimEventTimer_LUA( 1.0 ) then
+		pNPCUnit:ClearHitUnitList_LUA()
+		pNPCUnit:SetDamageData_LUA( "DAMAGE_DATA_LAST" )
+		pNPCUnit:SetSpeedX( INIT_PHYSIC["RUN_SPEED"] )
+	end
+
+end
+
+
+
+function VESCOO_DAMAGE_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.047 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function VESCOO_DAMAGE_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.06 ) then
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+function VESCOO_DAMAGE_DOWN_FRONT_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.41 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )		
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+
+end
+
+function VESCOO_DAMAGE_DOWN_BACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.45 ) then
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )		
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+	end
+
+end
+
+function VESCOO_DAMAGE_AIR_DOWN_LANDING_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.01 ) then
+		
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		local pos = pNPCUnit:GetLandPosition_LUA()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+		pos.y = pos.y + 5
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "GroundShockWave", pos, D3DXVECTOR2(100,100), D3DXVECTOR2(1,-1) )
+		local pParticle = pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "AirDownTick", pNPCUnit:GetPos(), D3DXVECTOR2(200,200), D3DXVECTOR2(10,-1) )
+		if pParticle ~= nil then 
+			pParticle:SetLandPosition( pos.y - 5 )
+		end
+		
+		if GetDistance_LUA( pNPCUnit:GetPos(), pX2Game:GetFocusUnitPos_LUA() ) < 500 then
+			pX2Game:GetX2Camera():GetCamera():UpDownCrashCameraNoReset( 10.0, 0.1 )
+		end		
+		
+	elseif pNPCUnit:AnimEventTimer_LUA( 0.1 ) then
+		
+		pNPCUnit:PlaySound_LUA( "Down.ogg" )		
+		local pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DownSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(7,-1) )
+		
+	end
+
+end
+
+function VESCOO_START_STATE_START ( pKTDXApp, pX2Game, pNPCUnit )
+	pNPCUnit:SetInt_LUA ( 0, 0 )
+end
+
+
+
+
+function VESCOO_DYING_LAND_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	local pos = pNPCUnit:GetPos()
+	pos.y = pos.y + 100.0
+	local GetMinorParticle = pX2Game:GetMinorParticle()
+	
+	local pSeq = GetMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DieLight",		pos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+	if pSeq ~= nil then
+	
+		pSeq:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+		pNPCUnit:SetDieSeq( pSeq:GetHandle() )
+	
+	end
+	pNPCUnit:PlaySound_LUA( "DieLight.ogg" )
+	
+end
+
+
+
+------------------------------------------------------------------------------
+function MovePos( pos, dirvector, dist )
+	
+	pos.x = pos.x + dist * dirvector.x
+	pos.y = pos.y + dist * dirvector.y
+	pos.z = pos.z + dist * dirvector.z
+	
+	return pos
+	
+end
+

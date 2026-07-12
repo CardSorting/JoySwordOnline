@@ -1,0 +1,557 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+
+
+INIT_SYSTEM = 
+{
+	UNIT_WIDTH		= 100.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+	UNIT_SCALE		= 3,
+}
+
+
+INIT_DEVICE = 
+{
+	READY_TEXTURE = 
+	{
+	},
+	
+	READY_SOUND = 
+	{
+		"PunchAttack2.ogg",
+        "Monkey_RollingAttack.ogg",		
+	},
+	
+	READY_XSKIN_MESH = 
+	{
+		"HummingWind_AttackBox.X",
+	},
+
+}
+
+INIT_MOTION = 
+{
+	MOTION_FILE_NAME		= "Motion_Monkey_Rolling.X",
+}
+
+INIT_PHYSIC = 
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+	
+	WALK_SPEED			= 550 * 2,
+	RUN_SPEED			= 550 * 2,
+	JUMP_SPEED			= 1500,
+	DASH_JUMP_SPEED		= 2300,
+}
+
+
+INIT_COMPONENT = 
+{
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+	
+	USE_SLASH_TRACE		= FALSE,
+	
+	SHADOW_SIZE			= 200,
+	SHADOW_FILE_NAME	= "shadow.dds",
+	
+	SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+
+	QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+	
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+	
+	
+	HITTED_TYPE			= HITTED_TYPE["HTD_MEAT"],
+	FALL_DOWN			= TRUE,
+}
+
+
+
+
+
+
+
+INIT_STATE = 
+{
+	{ STATE_NAME = "ROLLING_MONKEY_ARCADE3_WAIT",					},	
+	{ STATE_NAME = "ROLLING_MONKEY_ARCADE3_TURN",					},	
+	
+	{ STATE_NAME = "ROLLING_MONKEY_ARCADE3_ROLLING_ATTACK_READY",	},	
+	{ STATE_NAME = "ROLLING_MONKEY_ARCADE3_ROLLING_ATTACK",			LUA_FRAME_MOVE_FUNC = "ROLLING_MONKEY_ARCADE3_ROLLING_ATTACK_FRAME_MOVE",	},
+	{ STATE_NAME = "ROLLING_MONKEY_ARCADE3_ROLLING_ATTACK_END",		},	
+																	
+	
+	--리액션 관련
+	{ STATE_NAME = "ROLLING_MONKEY_ARCADE3_DAMAGE_SMALL",			LUA_FRAME_MOVE_FUNC = "ROLLING_MONKEY_ARCADE3_DAMAGE_SMALL_FRAME_MOVE"				},
+	{ STATE_NAME = "ROLLING_MONKEY_ARCADE3_DAMAGE_BIG",				LUA_FRAME_MOVE_FUNC = "ROLLING_MONKEY_ARCADE3_DAMAGE_BIG_FRAME_MOVE"				},
+	
+	{ STATE_NAME = "ROLLING_MONKEY_ARCADE3_DYING_LAND_FRONT",		LUA_STATE_START_FUNC = "ROLLING_MONKEY_ARCADE3_DYING_LAND_STATE_START",},
+	{ STATE_NAME = "ROLLING_MONKEY_ARCADE3_DYING_LAND_BACK",			LUA_STATE_START_FUNC = "ROLLING_MONKEY_ARCADE3_DYING_LAND_STATE_START",},
+	
+	
+	START_STATE					= "ROLLING_MONKEY_ARCADE3_WAIT",
+	
+	SMALL_DAMAGE_LAND_FRONT		= "ROLLING_MONKEY_ARCADE3_DAMAGE_SMALL",
+	SMALL_DAMAGE_LAND_BACK		= "ROLLING_MONKEY_ARCADE3_DAMAGE_SMALL",
+	BIG_DAMAGE_LAND_FRONT		= "ROLLING_MONKEY_ARCADE3_DAMAGE_BIG",
+	BIG_DAMAGE_LAND_BACK		= "ROLLING_MONKEY_ARCADE3_DAMAGE_BIG",
+	DOWN_DAMAGE_LAND_FRONT		= "ROLLING_MONKEY_ARCADE3_DAMAGE_BIG",
+	DOWN_DAMAGE_LAND_BACK		= "ROLLING_MONKEY_ARCADE3_DAMAGE_BIG",
+	FLY_DAMAGE_FRONT			= "ROLLING_MONKEY_ARCADE3_DAMAGE_BIG",
+	FLY_DAMAGE_BACK				= "ROLLING_MONKEY_ARCADE3_DAMAGE_BIG",
+	SMALL_DAMAGE_AIR			= "ROLLING_MONKEY_ARCADE3_DAMAGE_BIG",	
+	BIG_DAMAGE_AIR				= "ROLLING_MONKEY_ARCADE3_DAMAGE_BIG",
+	DOWN_DAMAGE_AIR				= "ROLLING_MONKEY_ARCADE3_DAMAGE_BIG",
+	UP_DAMAGE					= "ROLLING_MONKEY_ARCADE3_DAMAGE_BIG",
+	DAMAGE_REVENGE				= "ROLLING_MONKEY_ARCADE3_DAMAGE_BIG",
+	
+	DYING_LAND_FRONT			= "ROLLING_MONKEY_ARCADE3_DYING_LAND_FRONT",
+	DYING_LAND_BACK				= "ROLLING_MONKEY_ARCADE3_DYING_LAND_BACK",
+	DYING_SKY					= "ROLLING_MONKEY_ARCADE3_DYING_LAND_FRONT",
+
+	REVENGE_ATTACK				= "",	
+}
+
+
+
+INIT_AI = 
+{
+	TARGET = 
+	{
+		TARGET_PRIORITY 			= TARGET_PRIORITY["TP_LOW_HP_FIRST"],
+		TARGET_INTERVAL				= 3,		-- sec
+		TARGET_NEAR_RANGE			= 150,		-- 이 거리보다 가까우면 TARGET_SUCCESS_RATE에 관계없이 무조건 타게팅된다
+		TARGET_RANGE				= 500,		-- cm
+		TARGET_LOST_RANGE			= 800,		-- cm
+		TARGET_SUCCESS_RATE			= 100,  --100,		-- %
+		ATTACK_TARGET_RATE			= 100, -- 100,		-- 나를 공격한 유닛을 타게팅할 확률
+		PRESERVE_LAST_TARGET_RATE	= 0,		-- 이전에 타게팅된 유닛을 계속 타게팅할 확률
+	},
+
+	CHASE_MOVE = 
+	{		
+		MOVE_SPLIT_RANGE	= 600,
+		DEST_GAP			= 150,	-- 목적지에서 이 거리 안에 있으면 도착했다고 판단한다
+		MOVE_GAP			= 160,
+		
+		DIR_CHANGE_INTERVAL = 9999,
+		
+		WALK_INTERVAL		= 3,
+		NEAR_WALK_RATE		= 0,
+		FAR_WALK_RATE		= 0,
+		
+		JUMP_INTERVAL		= 5,
+		UP_JUMP_RATE		= 0,
+		UP_DOWN_RATE		= 0,
+		DOWN_JUMP_RATE		= 0,
+		DOWN_DOWN_RATE		= 0,
+		
+		LINE_END_RANGE		= 80,	-- cm
+	},	
+	
+	PATROL_MOVE = 	
+	{
+		PATROL_BEGIN_RATE		= 0,		
+		PATROL_RANGE			= 200,
+		PATROL_COOL_TIME		= 2,
+		ONLY_THIS_LINE_GROUP	= TRUE,
+	},
+	
+}
+
+
+ROLLING_MONKEY_ARCADE3_WAIT = 
+{
+	ANIM_NAME					= "Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= TRUE,
+	
+	
+	INVINCIBLE					= { 0, 9999, }, 		
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	SUPER_ARMOR					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"ROLLING_MONKEY_ARCADE3_ROLLING_ATTACK_READY",												},	
+	},
+	
+}
+
+
+ROLLING_MONKEY_ARCADE3_TURN = 
+{
+	ANIM_NAME					= "WaitZero",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= TRUE,
+		
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	SUPER_ARMOR					= TRUE,
+	FLIP_DIR_END				= TRUE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	INVINCIBLE					= { 0, 9999, }, 		
+	
+	
+	
+	EVENT_PROCESS = 
+	{		
+		--{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"ROLLING_MONKEY_ARCADE3_ROLLING_ATTACK_READY",												},	
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],				"ROLLING_MONKEY_ARCADE3_ROLLING_ATTACK_READY",		"CT_ROLLING_MONKEY_ARCADE3_ROLLING_ATTACK_READY"				},
+	},
+	
+	CT_ROLLING_MONKEY_ARCADE3_ROLLING_ATTACK_READY = 
+	{
+		STATE_TIME_OVER			= 0.01,
+	},
+}
+
+
+
+ROLLING_MONKEY_ARCADE3_ROLLING_ATTACK_READY = 
+{
+	ANIM_NAME					= "RollingAttackReady",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	INVINCIBLE					= { 0, 9999, }, 		
+	
+	
+	SUPER_ARMOR					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"ROLLING_MONKEY_ARCADE3_ROLLING_ATTACK",												},	
+	},
+}
+
+
+
+
+
+ROLLING_MONKEY_ARCADE3_ROLLING_ATTACK = 
+{
+	ANIM_NAME					= "RollingAttackGo",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= TRUE,
+	
+	PASSIVE_SPEED_X				= 600,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	INVINCIBLE					= { 0, 9999, }, 		
+	
+
+	SUPER_ARMOR					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{	
+		{ STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],		"ROLLING_MONKEY_ARCADE3_ROLLING_ATTACK_END",			"CF_ROLLING_MONKEY_ARCADE3_TURN",		},
+	},
+	
+	ATTACK_TIME0				= { 0.01, 100, },
+	
+	DAMAGE_DATA = 
+	{
+		DAMAGE_TYPE		= DAMAGE_TYPE["DT_PHYSIC"],
+		HIT_TYPE		= HIT_TYPE["HT_SWORD_SLASH"],
+		REACT_TYPE		= REACT_TYPE["RT_DOWN"],
+		
+		DAMAGE = 
+		{
+			PHYSIC		= 1.0,
+		},
+		
+		BACK_SPEED_X			= INIT_PHYSIC["RUN_SPEED"],
+		BACK_SPEED_Y			= 0.0,
+		
+		CAMERA_CRASH_GAP		= 5.0,	
+		CAMERA_CRASH_TIME		= 0.2,		
+		
+		CAN_REVENGE				= FALSE,		
+		
+		RE_ATTACK				= TRUE,		
+		HIT_GAP					= 0.5,				
+
+	},
+}
+
+
+
+ROLLING_MONKEY_ARCADE3_ROLLING_ATTACK_END = 
+{
+	ANIM_NAME					= "RollingAttackEnd",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= TRUE,
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,	
+	
+	INVINCIBLE					= { 0, 9999, }, 		
+	
+	
+	SUPER_ARMOR					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	EVENT_PROCESS = 
+	{		
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],				"ROLLING_MONKEY_ARCADE3_TURN",												},	
+	},
+}
+
+
+
+ROLLING_MONKEY_ARCADE3_DAMAGE_SMALL = 
+{
+	ANIM_NAME					= "DamageSmall",		
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= TRUE,	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	ALLOW_DIR_CHANGE			= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	NEVER_MOVE					= TRUE,
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"ROLLING_MONKEY_ARCADE3_ROLLING_ATTACK_READY",										},
+	},
+	
+	TALK_BOX = 
+	{
+		{ RATE = 10, MESSAGE = STR_ID_2467 },
+		{ RATE = 5, MESSAGE = STR_ID_1790 },
+	},
+	
+}
+
+
+
+
+ROLLING_MONKEY_ARCADE3_DAMAGE_BIG = 
+{
+	ANIM_NAME					= "DamageBig",		
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= TRUE,	
+	
+	CAN_PUSH_UNIT				= TRUE,
+	CAN_PASS_UNIT				= FALSE,
+	
+	ALLOW_DIR_CHANGE			= FALSE,
+	IMMADIATE_PACKET_SEND		= TRUE,
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	NEVER_MOVE					= TRUE,
+		
+	EVENT_PROCESS = 
+	{
+		{ STATE_CHANGE_TYPE["SCT_MOTION_END"],					"ROLLING_MONKEY_ARCADE3_ROLLING_ATTACK_READY",										},
+	},
+	
+	TALK_BOX = 
+	{
+		{ RATE = 10, MESSAGE = STR_ID_2468 },
+	},
+	
+}
+
+
+
+
+ROLLING_MONKEY_ARCADE3_DYING_LAND_FRONT = 
+{
+	ANIM_NAME					= "DamageDownFront",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= TRUE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+	
+
+ROLLING_MONKEY_ARCADE3_DYING_LAND_BACK = 
+{
+	ANIM_NAME					= "DamageDownBack",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= TRUE,
+	LAND_CONNECT				= TRUE,
+
+	INVINCIBLE					= { 0, 100, }, 		
+	
+	PASSIVE_SPEED_X				= 0,
+	PASSIVE_SPEED_Y				= 0,
+	
+	
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= TRUE,
+	
+	DYING_END					= TRUE,
+	
+	IMMADIATE_PACKET_SEND		= TRUE,
+}
+	
+
+
+
+
+
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+
+function CF_ROLLING_MONKEY_ARCADE3_TURN( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:GetStateTime() < 0.1 then
+		return false 
+	end
+	
+	
+ 	bIsRight = pNPCUnit:GetIsRight()
+	vStartPos = pNPCUnit:GetLineGroupStartPos()
+	vEndPos = pNPCUnit:GetLineGroupEndPos()
+
+ 	
+ 	if bIsRight == true and pNPCUnit:GetDistanceFrom(vEndPos) < 280.0 then
+ 	
+ 	    return true
+ 	    
+   	end
+   	
+   	if bIsRight == false and pNPCUnit:GetDistanceFrom(vStartPos) < 280.0 then
+
+		return true
+  	
+    end
+    
+    return false
+	
+
+end
+
+
+
+
+function ROLLING_MONKEY_ARCADE3_ROLLING_ATTACK_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+--[[
+	if pNPCUnit:AnimEventTimer_LUA( 1.1 ) then
+		pNPCUnit:SetSpeedX( INIT_PHYSIC["WALK_SPEED"] )
+	end
+	
+	if pNPCUnit:AnimEventTimer_LUA( 1.4 ) then
+		pNPCUnit:SetSpeedX( INIT_PHYSIC["WALK_SPEED"] )
+	end
+--]]	
+	
+end
+
+
+
+
+function ROLLING_MONKEY_ARCADE3_DAMAGE_SMALL_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.047 ) then
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+
+
+
+function ROLLING_MONKEY_ARCADE3_DAMAGE_BIG_FRAME_MOVE( pKTDXApp, pX2Game, pNPCUnit )
+
+	if pNPCUnit:AnimEventTimer_LUA( 0.047 ) then
+		pMinorParticle = pX2Game:GetMinorParticle()
+		pMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "StepSmoke", pNPCUnit:GetLandPosition_LUA(), D3DXVECTOR2(100,100), D3DXVECTOR2(5,-1) )
+	end
+
+end
+
+
+
+function ROLLING_MONKEY_ARCADE3_DYING_LAND_STATE_START( pKTDXApp, pX2Game, pNPCUnit )
+
+	
+	pos = pNPCUnit:GetPos()
+	pos.y = pos.y + 100.0
+	GetMinorParticle = pX2Game:GetMinorParticle()
+	
+	pSeq = GetMinorParticle:GameUnitCreateSequence_LUA( pNPCUnit, "DieLight",		pos, D3DXVECTOR2(-1,-1), D3DXVECTOR2(3,-1) )
+	if pSeq ~= nil then
+	
+		pSeq:SetLandPosition( pNPCUnit:GetLandPosition_LUA().y )
+		pNPCUnit:SetDieSeq( pSeq:GetHandle() )
+	
+	end
+	pNPCUnit:PlaySound_LUA( "DieLight.ogg" )
+	
+end
+
+
+
+
+------------------------------------------------------------------------------
+-- UTIL FUNCTION
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+function MovePos( pos, dirvector, dist )
+	
+	pos.x = pos.x + dist * dirvector.x
+	pos.y = pos.y + dist * dirvector.y
+	pos.z = pos.z + dist * dirvector.z
+	
+	return pos
+	
+end
+

@@ -1,0 +1,184 @@
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+
+-- NUI_CRYSTAL_TRAP_LEFT
+
+INIT_SYSTEM =
+{
+	UNIT_WIDTH		= 200.0,
+	UNIT_LAYER		= X2_LAYER["XL_UNIT_0"],
+
+	--ALPHA_BLEND		= TRUE,
+}
+
+
+INIT_DEVICE =
+{
+	READY_TEXTURE =
+	{
+		"Arme_Critical2.dds",
+		"Explosion_Sphere.dds",
+		"Particle_Blur.dds",
+		"Explosion_Sphere.dds",		
+	},
+
+	READY_SOUND =
+	{
+	},
+
+	READY_XMESH =
+	{
+	},
+
+	READY_XSKIN_MESH =
+	{
+		"Mirror_Left_light.X",
+	},
+
+}
+
+INIT_MOTION =
+{
+	MOTION_FILE_NAME		= "Motion_Mirror_Left.x",
+}
+
+INIT_PHYSIC =
+{
+	RELOAD_ACCEL		= 2000,
+	G_ACCEL				= 4000,
+	MAX_G_SPEED			= -2000,
+
+	WALK_SPEED			= 0,
+	RUN_SPEED			= 0,
+	JUMP_SPEED			= 0,
+	DASH_JUMP_SPEED		= 0,
+}
+
+
+INIT_COMPONENT =
+{
+	MAX_HP				= 9225,
+	MP_CHANGE_RATE		= 1,
+	MP_CHARGE_RATE		= 130,
+
+	USE_SLASH_TRACE		= FALSE,
+
+	--SHADOW_SIZE			= 200,
+	--SHADOW_FILE_NAME	= "shadow.dds",
+
+	--SMALL_HP_BAR_BLUE	= "Small_HP_bar_Blue.TGA",
+	--SMALL_HP_BAR_RED	= "Small_HP_bar_Red.TGA",
+	--SMALL_HP_BAR_YELLOW = "Small_HP_bar_Yellow.TGA",
+
+	--QUESTION_MARK_SEQ		= "QuestionMarkNPC",
+	--EXCLAMATION_MARK_SEQ	= "ExclamationMarkNPC",
+
+	HYPER_MODE_COUNT	= 0,
+	MAX_HYPER_MODE_TIME	= 30,
+
+	--HEAD_BONE_NAME		= "Altera_Plain_Recyle_Mine",
+
+	SHOW_ON_MINIMAP		= FALSE,
+	
+	NOT_EXTRA_DAMAGE    = TRUE,	
+	HITTED_TYPE			= HITTED_TYPE["HTD_METAL2"],	
+	FALL_DOWN			= FALSE,	
+	DAMAGE_DOWN         = FALSE,
+	DIE_FLY				= FALSE,
+
+}
+
+INIT_STATE =
+{
+	{ STATE_NAME = "MIRROR_DUMMY_START",	},
+
+	{ STATE_NAME = "MIRROR_WAIT",	},
+	{ STATE_NAME = "MIRROR_DYING",	},
+
+	START_STATE					= "MIRROR_DUMMY_START",
+	--WAIT_STATE					= "BEE_WAIT",
+	WAIT_STATE					= "MIRROR_WAIT",
+	DYING_LAND_FRONT			= "MIRROR_DYING",
+	DYING_LAND_BACK				= "MIRROR_DYING",
+	DYING_SKY					= "MIRROR_DYING",
+}
+
+
+MIRROR_DUMMY_START =
+{
+	ANIM_NAME					= "Turn_0d_Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+   -- INVINCIBLE					= { 0, 100, },
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	RIGHT						= TRUE,
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	
+
+	--EVENT_PROCESS =
+	--{
+		--{ STATE_CHANGE_TYPE["SCT_CONDITION_TABLE"],			"MIRROR_DUMMY_TURN_120D_WAIT",	"CT_STATE_START"},
+	--},
+
+	CT_STATE_START =
+	{
+		STATE_TIME_OVER				= 5,
+	},
+	
+	-- EFFECT_SET_LIST =
+	-- {
+		-- "EFFECTSET_HAMEL_MIRROR_DUMMY_LIGHT", 0.0,
+	-- },	
+}
+
+MIRROR_WAIT =
+{
+	ANIM_NAME					= "Turn_0d_Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_LOOP"],
+	TRANSITION					= FALSE,
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+	--INVINCIBLE					= { 0, 100, },
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	RIGHT               = TRUE,
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	
+
+	-- EVENT_PROCESS =
+	-- {
+		-- { STATE_CHANGE_TYPE["SCT_CONDITION_FUNCTION"],			"MIRROR_DUMMY_TURN_120D_N40TURN",	"CF_STATE_CHANGE"},
+	-- },
+}
+
+
+MIRROR_DYING =
+{
+	ANIM_NAME					= "Turn_120d_Wait",
+	PLAY_TYPE					= XSKIN_ANIM_PLAYTYPE["XAP_ONE_WAIT"],
+	TRANSITION					= FALSE,
+
+	CAN_PUSH_UNIT				= FALSE,
+	CAN_PASS_UNIT				= FALSE,
+
+   -- INVINCIBLE					= { 0, 100, },
+
+	IMMADIATE_PACKET_SEND		= TRUE,
+
+	RIGHT               = TRUE,
+	NEVER_MOVE					= TRUE,
+	ALLOW_DIR_CHANGE			= FALSE,
+	DYING_END					= TRUE,
+	
+
+}
