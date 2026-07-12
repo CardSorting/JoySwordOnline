@@ -1,21 +1,40 @@
 # JoySword Online
 
-JoySword Online is a complete, modernized, self-hosted deployment system for running a private, offline version of the classic JoySword (Elsword) game server. The project bridges the gap between early-2010s Windows game binaries, legacy Microsoft SQL Server databases, and modern cloud/web architectures.
+<div align="center">
+  <p align="center">
+    <img src="web/public/joysword-icon-192.png" alt="JoySword Logo" width="120" height="120" />
+  </p>
+  
+  <h3>The self-hosted, modernized game preservation stack for JoySword (Elsword).</h3>
+  
+  <p align="center">
+    <a href="https://github.com/CardSorting/JoySwordOnline"><img src="https://img.shields.io/github/stars/CardSorting/JoySwordOnline?style=flat-square&color=5551ff" alt="Stars" /></a>
+    <a href="https://github.com/CardSorting/JoySwordOnline/forks"><img src="https://img.shields.io/github/forks/CardSorting/JoySwordOnline?style=flat-square&color=5551ff" alt="Forks" /></a>
+    <img src="https://img.shields.io/badge/platform-Windows%20%7C%20Azure%20%7C%20Docker-blue?style=flat-square" alt="Platform Compatibility" />
+    <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License" />
+  </p>
 
-It provides an end-to-end sandbox for game preservation, containing:
-* **The Core Server Stack**: Containerized and local execution scripts for the five legacy server processes (*Center*, *Game*, *Channel*, *Login*, and *Global*).
-* **Automated Client Patching**: Custom Python scripts that dynamically rewrite local connection IPs and repack client configuration packages (`.kom` files) to seamlessly point the game engine to the server VM.
-* **Next.js Web Portal & Wiki**: A beautiful front-end registration portal and historical game wiki that connects web logins directly to the server's MSSQL identity schema.
-* **Electron Desktop Launcher**: A user-friendly desktop application to configure display options, patch settings, bypass Windows UAC constraints, and launch the client executable.
-* **Infrastructure as Code**: Terraform scripts to host the complete stack securely on Azure.
+  <sub>Built for developers, gaming historians, and private server administrators.</sub>
+</div>
 
 ---
 
-## Architecture Overview
+## ⚡ Features
+
+* **⚡ Core Server Stack**: Local or containerized execution of the five legacy server executables (*Center, Game, Channel, Login, Global*) bundled with an optimized SQL Server runtime database.
+* **🛡️ Identity Sync Engine**: Bridge modern user authentication (Argon2id hashing via Next.js + PostgreSQL) directly with legacy game database structures (MSSQL) in real time.
+* **🔌 Dynamic Client Patching**: Custom Python algorithms to dynamically override client IP routing tables and repack `.kom` bytecode packages (`data036.kom`) on startup.
+* **💻 Electron Desktop Launcher**: A ready-to-run Windows client wrapper that applies resolutions, launches processes, and bypasses UAC flags using shims.
+* **☁️ Infrastructure as Code**: Terraform configurations to deploy the entire environment securely to Azure VMs with VNet-isolated networking.
+* **📊 Economy Rebalancer**: Scripted tooling to audit, normalize, and scale in-game currency flows, cash shop lists, and costume unlock mechanics.
+
+---
+
+## 📐 Architecture Overview
 
 ```mermaid
 flowchart TD
-    subgraph Client ["Client Layer"]
+    subgraph Client ["Client Layer (Desktop)"]
         L[Electron Launcher] -->|Patches data036.kom| C[Game Client x2.exe]
     end
 
@@ -39,79 +58,65 @@ flowchart TD
 
 ---
 
-## Technical Highlights
+## 📁 Repository Structure
 
-### 1. Server Stack Containerization & Port Mapping
-* Integrated the 5 core game executable servers with a Microsoft SQL Server database container.
-* Configured the exact network boundary maps, securing TCP/UDP channels (9200-9400) for login, gameplay, and channel synchronization.
-* Configured recursive path systems (`SimLayer:AddPath`) in LUA configs via custom Python automation.
-
-### 2. Dynamic Client KOM Patching Engine
-* Automatically reads IP overrides from staging files (`offline.env`).
-* Programmed automated extraction and repacking of encrypted client bytecode archives (specifically `data\data036.kom`), rewriting network endpoints in the client files on-the-fly.
-
-### 3. Next.js Account Portal & Player Wiki
-* React-based landing page and registration portal using Next.js.
-* User sign-ups are hashed using Argon2id in PostgreSQL, while legacy-safe credentials are simultaneously synced to the MSSQL game-server schema.
-* Version-aware, fully searchable Player Wiki featuring progression routes, Ice Burner costume galleries, and cash-shop economics.
-
-### 4. Electron Desktop Launcher
-* Electron desktop application that reads the user's local directory, patches the client configuration, and sets custom game settings (resolution and window modes).
-* Bypassed Windows administrative prompts using the `RunAsInvoker` shim compatibility layer to guarantee a smooth startup experience.
-
-### 5. Infrastructure as Code (Terraform & Azure)
-* Resources to deploy a virtual machine for the game servers and a Linux Web App for the account portal.
-* Secure VNet boundaries and key vault integrations for database passwords, hosting the full game-server stack directly on the Azure VM.
+| Component | Path | Description |
+| :--- | :--- | :--- |
+| 🎮 **Server** | [`Elsword/`](file:///c:/Users/media/Downloads/JoySwordOffline/Elsword) | Executable files, log configurations, and database backups. |
+| 🌐 **Portal** | [`web/`](file:///c:/Users/media/Downloads/JoySwordOffline/web) | Next.js authentication portal, site files, and searchable wiki. |
+| 💻 **Launcher** | [`launcher/`](file:///c:/Users/media/Downloads/JoySwordOffline/launcher) | Desktop Electron app codebase. |
+| ⚙️ **Client** | [`client/`](file:///c:/Users/media/Downloads/JoySwordOffline/client) | Windows client scripts, patches, and launchers. |
+| 🗄️ **Database** | [`database/`](file:///c:/Users/media/Downloads/JoySwordOffline/database) | MSSQL routines, cash-allowance structures, and SQL audits. |
+| ☁️ **Infra** | [`infra/`](file:///c:/Users/media/Downloads/JoySwordOffline/infra) | Azure VM and network deployment scripts. |
+| 🛠️ **Scripts** | [`scripts/`](file:///c:/Users/media/Downloads/JoySwordOffline/scripts) | PowerShell & Python tasks for patches, audits, and configuration. |
+| 🧪 **Tests** | [`tests/`](file:///c:/Users/media/Downloads/JoySwordOffline/tests) | Validation checks for database connection configurations. |
 
 ---
 
-## Repository Structure
+## 🚀 Quick Start Guide
 
-* [**`Elsword/`**](file:///c:/Users/media/Downloads/JoySwordOffline/Elsword) — The legacy game server binaries, configurations, database backups, and operational scripts.
-* [**`web/`**](file:///c:/Users/media/Downloads/JoySwordOffline/web) — The modern Next.js web portal, player wiki content, and cash shop galleries.
-* [**`launcher/`**](file:///c:/Users/media/Downloads/JoySwordOffline/launcher) — The Electron desktop application codebase and configurations.
-* [**`client/`**](file:///c:/Users/media/Downloads/JoySwordOffline/client) — Local client packaging, launch scripts, and desktop installer utilities.
-* [**`database/`**](file:///c:/Users/media/Downloads/JoySwordOffline/database) — SQL migration, auditing scripts, and account provisioning schemas.
-* [**`infra/`**](file:///c:/Users/media/Downloads/JoySwordOffline/infra) — Infrastructure-as-Code Terraform script configurations targeting Azure deployment.
-* [**`scripts/`**](file:///c:/Users/media/Downloads/JoySwordOffline/scripts) — Utility scripts written in Python and PowerShell for environment provisioning, patch overrides, and client testing.
-* [**`tests/`**](file:///c:/Users/media/Downloads/JoySwordOffline/tests) — Automated validation suites for checking build integrity and network endpoints.
+### 📋 Prerequisites
+* **Node.js** (v18.x or v20.x recommended)
+* **Python** (v3.10+ recommended)
+* **Microsoft SQL Server** / **PostgreSQL** (for local runs)
 
----
-
-## Quick Start
-
-### 1. Web Account Portal Setup
-To run the Next.js account registration portal locally:
+### 1. Start the Account Portal
+Spin up the Next.js frontend and registration API:
 ```bash
 cd web
 npm install
 npm run dev
 ```
+Access the portal at `http://localhost:3000`.
 
-### 2. Desktop Launcher Setup
-To build and run the Electron desktop launcher in development mode:
+### 2. Run the Electron Desktop Launcher
+Compile and boot the Electron wrapper client:
 ```bash
 cd launcher
 npm install
 npm run dev
 ```
 
-### 3. Server Startup (Windows / Azure VM)
-To bootstrap the legacy servers and map databases automatically:
+### 3. Initialize Server Executables (Windows / VM)
+Bootstrap database procedures, adjust firewall rules, and sequence server process boot orders:
 ```powershell
 .\Start-Server-Automatic.ps1
 ```
-This PowerShell script checks local firewall rules, reads configuration credentials, and launches the legacy game executables in their sequential dependency order.
 
 ---
 
+## 📖 Documentation Index
 
-## Documentation
+| Guide | Description |
+| :--- | :--- |
+| 🚀 [**Deployment Guide**](deployment_guide.md) | Setting up the game stack locally or on an Azure Virtual Machine. |
+| 🔌 [**Connection Guide**](CLIENT_CONNECTION_GUIDE.md) | Client patching protocols, IP overrides, and launcher configuration details. |
+| 👑 [**Admin Guide**](ADMIN_GUIDE.md) | Database triggers, rebalancing cash shops, and scheduler configurations. |
+| 🩺 [**Troubleshooting Guide**](troubleshooting_guide.md) | Network port mapping boundaries, log audits, and diagnostic runs. |
+| 📝 [**Operations Details**](docs/README.md) | API structures, SQL schemas, and network routing boundaries. |
 
-For guides on how to install, configure, deploy, and debug, please refer to the following documents:
+---
 
-* [**Deployment Guide**](deployment_guide.md) — Steps to configure and run the server stack locally or on the cloud.
-* [**Client Connection Guide**](CLIENT_CONNECTION_GUIDE.md) — Troubleshooting client networking and IP overrides.
-* [**Admin Guide**](ADMIN_GUIDE.md) — System administration and management commands.
-* [**Troubleshooting Guide**](troubleshooting_guide.md) — Operations runbook and logs auditing.
-* [**Operations Overview**](docs/README.md) — Network boundaries, registration API, database synchronization schemas.
+<div align="center">
+  <sub>JoySword Online is created for educational, historical, and software archival purposes.</sub>
+</div>
