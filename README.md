@@ -8,8 +8,6 @@
   <h3>The self-hosted, modernized game preservation stack for JoySword (Elsword).</h3>
   
   <p align="center">
-    <a href="https://github.com/CardSorting/JoySwordOnline"><img src="https://img.shields.io/github/stars/CardSorting/JoySwordOnline?style=flat-square&color=5551ff" alt="Stars" /></a>
-    <a href="https://github.com/CardSorting/JoySwordOnline/forks"><img src="https://img.shields.io/github/forks/CardSorting/JoySwordOnline?style=flat-square&color=5551ff" alt="Forks" /></a>
     <img src="https://img.shields.io/badge/platform-Windows%20%7C%20Azure%20%7C%20Docker-blue?style=flat-square" alt="Platform Compatibility" />
     <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License" />
   </p>
