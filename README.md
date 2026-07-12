@@ -9,6 +9,9 @@
   
   <p align="center">
     <img src="https://img.shields.io/badge/platform-Windows%20%7C%20Azure%20%7C%20Docker-blue?style=flat-square" alt="Platform Compatibility" />
+    <img src="https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js" alt="Next.js" />
+    <img src="https://img.shields.io/badge/Electron-Desktop-blue?style=flat-square&logo=electron" alt="Electron" />
+    <img src="https://img.shields.io/badge/Terraform-IaC-violet?style=flat-square&logo=terraform" alt="Terraform" />
     <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License" />
   </p>
 
@@ -87,7 +90,13 @@ flowchart TD
 * **Python** (v3.10+ recommended)
 * **Microsoft SQL Server** / **PostgreSQL** (for local runs)
 
-### 1. Start the Account Portal
+### ⚙️ 1. Environment Configuration
+Before launching services, copy the environment templates and insert your local or staging variables:
+* **Root Settings**: Copy `.env.example` to `.env` in the root folder.
+* **Web Settings**: Copy `web/.env.example` to `web/.env`.
+* **Server Settings**: Copy `Elsword/offline/offline.env.example` to `Elsword/offline/offline.env`.
+
+### 🌐 2. Start the Account Portal
 Spin up the Next.js frontend and registration API:
 ```bash
 cd web
@@ -96,7 +105,7 @@ npm run dev
 ```
 Access the portal at `http://localhost:3000`.
 
-### 2. Run the Electron Desktop Launcher
+### 💻 3. Run the Electron Desktop Launcher
 Compile and boot the Electron wrapper client:
 ```bash
 cd launcher
@@ -104,7 +113,7 @@ npm install
 npm run dev
 ```
 
-### 3. Initialize Server Executables (Windows / VM)
+### 🎮 4. Initialize Server Executables (Windows / VM)
 Bootstrap database procedures, adjust firewall rules, and sequence server process boot orders:
 ```powershell
 .\Start-Server-Automatic.ps1
