@@ -1,0 +1,272 @@
+﻿
+   Id ProcessName                
+   -- -----------                
+ 8684 AggregatorHost             
+  696 Antigravity IDE            
+ 2708 Antigravity IDE            
+ 3416 Antigravity IDE            
+ 5444 Antigravity IDE            
+ 8700 Antigravity IDE            
+ 8764 Antigravity IDE            
+13264 Antigravity IDE            
+14272 Antigravity IDE            
+14456 Antigravity IDE            
+14988 Antigravity IDE            
+16440 Antigravity IDE            
+16660 Antigravity IDE            
+16844 Antigravity IDE            
+16920 Antigravity IDE            
+16932 Antigravity IDE            
+17240 Antigravity IDE            
+18584 Antigravity IDE            
+12456 BraveCrashHandler          
+12468 BraveCrashHandler64        
+11744 CCleaner                   
+ 3540 CCleaner_service           
+  260 cmd                        
+ 6404 cmd                        
+ 7064 cmd                        
+15516 cmd                        
+ 1532 com.docker.backend         
+ 2260 com.docker.backend         
+11532 com.docker.build           
+  600 CompPkgSrv                 
+ 1996 conhost                    
+ 6048 conhost                    
+ 9020 conhost                    
+10768 conhost                    
+11364 conhost                    
+11416 conhost                    
+13568 conhost                    
+17552 conhost                    
+17624 conhost                    
+17896 conhost                    
+18172 conhost                    
+19124 conhost                    
+19180 conhost                    
+ 3492 Crypserv                   
+  576 csrss                      
+18664 csrss                      
+17768 ctfmon                     
+ 4216 dasHost                    
+ 8084 dasHost                    
+ 3212 dllhost                    
+ 7124 dllhost                    
+13280 dllhost                    
+15196 dllhost                    
+16044 dllhost                    
+ 8368 docker                     
+ 9596 Docker Desktop             
+11924 Docker Desktop             
+11972 Docker Desktop             
+14900 Docker Desktop             
+18280 Docker Desktop             
+ 2972 dwm                        
+ 2208 EKPLogger                  
+19192 explorer                   
+   76 fontdrvhost                
+ 9816 fontdrvhost                
+ 3676 GameInputRedistService     
+10972 GameInputRedistService     
+10584 GameInputSvc               
+10664 GameInputSvc               
+ 4568 gamingservices             
+ 4772 gamingservicesnet          
+ 3784 HPPrintScanDoctorService   
+    0 Idle                       
+ 3860 jhi_service                
+ 2624 language_server_windows_x64
+15452 language_server_windows_x64
+  760 LsaIso                     
+  780 lsass                      
+ 3452 mDNSResponder              
+ 2280 Memory Compression         
+ 1708 MoUsoCoreWorker            
+ 3932 MpDefenderCoreService      
+ 4224 MsMpEng                    
+16608 msrdc                      
+11836 NisSrv                     
+ 1240 node                       
+ 4212 node                       
+ 4304 node                       
+ 6508 node                       
+ 7172 node                       
+ 8436 node                       
+ 9456 node                       
+10080 node                       
+12336 node                       
+13000 node                       
+13232 node                       
+13800 node                       
+16484 node                       
+18056 node                       
+18156 notepad                    
+ 4060 nvcontainer                
+ 8940 nvcontainer                
+11476 nvcontainer                
+11892 nvcontainer                
+ 1832 NVDisplay.Container        
+15464 NVDisplay.Container        
+ 3224 NVIDIA Overlay             
+ 3648 NVIDIA Overlay             
+ 4200 NVIDIA Overlay             
+ 7352 NVIDIA Overlay             
+ 9304 NVIDIA Overlay             
+12040 nvsphelper64               
+ 3532 OfficeClickToRun           
+ 3836 OneApp.IGCC.WinService     
+ 4188 pg_ctl                     
+ 6016 postgres                   
+ 6584 postgres                   
+ 6672 postgres                   
+ 6680 postgres                   
+ 6836 postgres                   
+ 6844 postgres                   
+ 6852 postgres                   
+11080 powershell                 
+13068 powershell                 
+16140 powershell                 
+ 1988 PresentationFontCache      
+15748 pyrefly                    
+ 4124 redis-server               
+  116 Registry                   
+ 3476 remoting_host              
+ 5368 remoting_host              
+10928 RuntimeBroker              
+13296 RuntimeBroker              
+14472 RuntimeBroker              
+19296 RuntimeBroker              
+15480 Sawgrass Print Utility     
+10736 SearchApp                  
+ 7944 SearchFilterHost           
+ 7508 SearchIndexer              
+16732 SearchProtocolHost         
+   56 Secure System              
+15292 SecurityHealthService      
+ 4992 SecurityHealthSystray      
+  752 services                   
+ 1356 ShellExperienceHost        
+18812 sihost                     
+  424 smss                       
+ 3256 spoolsv                    
+ 4116 sshd                       
+ 1064 StartMenuExperienceHost    
+  992 svchost                    
+ 1068 svchost                    
+ 1116 svchost                    
+ 1208 svchost                    
+ 1216 svchost                    
+ 1268 svchost                    
+ 1276 svchost                    
+ 1296 svchost                    
+ 1404 svchost                    
+ 1424 svchost                    
+ 1436 svchost                    
+ 1552 svchost                    
+ 1588 svchost                    
+ 1596 svchost                    
+ 1620 svchost                    
+ 1684 svchost                    
+ 1804 svchost                    
+ 1816 svchost                    
+ 1920 svchost                    
+ 2088 svchost                    
+ 2104 svchost                    
+ 2124 svchost                    
+ 2172 svchost                    
+ 2188 svchost                    
+ 2200 svchost                    
+ 2324 svchost                    
+ 2368 svchost                    
+ 2460 svchost                    
+ 2488 svchost                    
+ 2600 svchost                    
+ 2608 svchost                    
+ 2620 svchost                    
+ 2636 svchost                    
+ 2640 svchost                    
+ 2672 svchost                    
+ 2800 svchost                    
+ 2868 svchost                    
+ 2992 svchost                    
+ 3012 svchost                    
+ 3084 svchost                    
+ 3328 svchost                    
+ 3376 svchost                    
+ 3504 svchost                    
+ 3512 svchost                    
+ 3552 svchost                    
+ 3560 svchost                    
+ 3576 svchost                    
+ 3584 svchost                    
+ 3804 svchost                    
+ 3844 svchost                    
+ 3884 svchost                    
+ 4012 svchost                    
+ 4020 svchost                    
+ 4144 svchost                    
+ 4156 svchost                    
+ 4160 svchost                    
+ 4236 svchost                    
+ 4356 svchost                    
+ 4436 svchost                    
+ 4496 svchost                    
+ 5084 svchost                    
+ 5432 svchost                    
+ 5616 svchost                    
+ 5900 svchost                    
+ 5984 svchost                    
+ 6156 svchost                    
+ 7384 svchost                    
+ 7664 svchost                    
+ 7844 svchost                    
+ 8156 svchost                    
+ 9108 svchost                    
+ 9300 svchost                    
+ 9736 svchost                    
+ 9856 svchost                    
+10236 svchost                    
+10528 svchost                    
+11136 svchost                    
+11348 svchost                    
+11568 svchost                    
+11820 svchost                    
+12916 svchost                    
+13140 svchost                    
+14252 svchost                    
+14280 svchost                    
+14436 svchost                    
+15268 svchost                    
+15460 svchost                    
+16728 svchost                    
+16832 svchost                    
+18232 svchost                    
+18924 svchost                    
+    4 System                     
+10976 taskhostw                  
+14276 taskhostw                  
+15276 TextInputHost              
+ 9808 TiltWheelMouse             
+16524 UserOOBEBroker             
+ 9144 vmcompute                  
+ 9628 vmmem                      
+ 2428 vmwp                       
+  680 wininit                    
+15604 winlogon                   
+ 2576 WmiPrvSE                   
+ 4580 WmiPrvSE                   
+ 6924 WmiPrvSE                   
+ 4272 WMIRegistrationService     
+ 7388 wsl                        
+ 8220 wsl                        
+13472 wsl                        
+15392 wsl                        
+ 5392 wslhost                    
+11300 wslhost                    
+14080 wslhost                    
+19092 wslhost                    
+  364 wslrelay                   
+ 4324 wslservice                 
+  468 WUDFHost                   
+
+

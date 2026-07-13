@@ -17,9 +17,10 @@ docs before investigating anything else:
 
 Required reading:
 
-1. [AGENT_CLIENT_ENDPOINT_PLAYBOOK.md](AGENT_CLIENT_ENDPOINT_PLAYBOOK.md)
-2. [CLIENT_ENDPOINT_TROUBLESHOOTING.md](CLIENT_ENDPOINT_TROUBLESHOOTING.md)
-3. [LEGACY_CLIENT_DIRECT_IP.md](LEGACY_CLIENT_DIRECT_IP.md)
+1. [LOCAL_PUBLIC_HOSTING_RECOVERY.md](LOCAL_PUBLIC_HOSTING_RECOVERY.md)
+2. [AGENT_CLIENT_ENDPOINT_PLAYBOOK.md](AGENT_CLIENT_ENDPOINT_PLAYBOOK.md)
+3. [CLIENT_ENDPOINT_TROUBLESHOOTING.md](CLIENT_ENDPOINT_TROUBLESHOOTING.md)
+4. [LEGACY_CLIENT_DIRECT_IP.md](LEGACY_CLIENT_DIRECT_IP.md)
 
 The invariant: game sockets use direct IPv4 only.
 
@@ -75,6 +76,7 @@ allows `10.42.2.0/24 -> 1433` and a separate allow rule exists.
 
 ## Other docs
 
+- [LOCAL_PUBLIC_HOSTING_RECOVERY.md](LOCAL_PUBLIC_HOSTING_RECOVERY.md) - home-router port forwarding, Windows recovery, startup, and local public-host troubleshooting
 - [AGENT_ACCOUNT_INITIALIZATION.md](AGENT_ACCOUNT_INITIALIZATION.md) — how accounts are created (web portal) + server-side repair
 - [AGENT_WEB_REGISTRATION_PLAYBOOK.md](AGENT_WEB_REGISTRATION_PLAYBOOK.md) — web API registration failures, MSSQL provisioning, and VNet SQL troubleshooting
 - [ACCOUNT_PORTAL_DEPLOYMENT.md](ACCOUNT_PORTAL_DEPLOYMENT.md) — go-live steps for the account portal (SPA + API)

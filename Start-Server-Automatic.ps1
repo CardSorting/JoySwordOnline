@@ -286,6 +286,9 @@ if (-not $DockerReady) {
 # 5. Run configuration regeneration
 Write-Host "Regenerating server and client configuration files..." -ForegroundColor Green
 & python "$ScriptRoot\scripts\configure-offline.py"
+if ($LASTEXITCODE -ne 0) {
+    throw "Server configuration regeneration failed with exit code $LASTEXITCODE."
+}
 
 # 6. Run Database Setup/Restore
 if ($DockerReady) {
@@ -426,19 +429,19 @@ $SQLCmdPath -S localhost -U sa -P "$DBPassword" $ExtraArgs -v ADMIN_USER="$Admin
         $AlterProceduresQuery = @"
 USE [Statistics];
 GO
-ALTER PROCEDURE [dbo].[lup_verify_server_on] @iServerType TINYINT, @strServerIP NVARCHAR(15) AS SET NOCOUNT ON; SELECT [UID], [Name], ServerSetID, ServerType, @strServerIP AS IP, Port1, Port2, MaxConcurrentUser, ConcurrentUser, [Enable], ServerRollType FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType;
+ALTER PROCEDURE [dbo].[lup_verify_server_on] @iServerType TINYINT, @strServerIP NVARCHAR(15) AS SET NOCOUNT ON; SELECT [UID], [Name], ServerSetID, ServerType, N'$PrivateIP' AS IP, Port1, Port2, MaxConcurrentUser, ConcurrentUser, [Enable], ServerRollType FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType;
 GO
-ALTER PROCEDURE [dbo].[P_LServerList_Verify_On_SEL] @iServerSetID TINYINT, @iServerType TINYINT, @strServerIP NVARCHAR(15) AS SET NOCOUNT ON; SELECT [UID], [Name], ServerSetID, ServerType, @strServerIP AS IP, Port1, Port2, MaxConcurrentUser, ConcurrentUser, [Enable], ServerRollType FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType;
+ALTER PROCEDURE [dbo].[P_LServerList_Verify_On_SEL] @iServerSetID TINYINT, @iServerType TINYINT, @strServerIP NVARCHAR(15) AS SET NOCOUNT ON; SELECT [UID], [Name], ServerSetID, ServerType, N'$PrivateIP' AS IP, Port1, Port2, MaxConcurrentUser, ConcurrentUser, [Enable], ServerRollType FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType;
 GO
-ALTER PROCEDURE [dbo].[P_LServerList_GET_verify_PublicIP] @iServerType TINYINT, @strServerIP NVARCHAR(15) AS SET NOCOUNT ON; SELECT [UID], [Name], ServerSetID, ServerType, PublicIP, PrivateIP, Port1, Port2, MaxConcurrentUser, ConcurrentUser, [Enable], ServerRollType FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType;
+ALTER PROCEDURE [dbo].[P_LServerList_GET_verify_PublicIP] @iServerType TINYINT, @strServerIP NVARCHAR(15) AS SET NOCOUNT ON; SELECT [UID], [Name], ServerSetID, ServerType, PublicIP, N'$PrivateIP' AS PrivateIP, Port1, Port2, MaxConcurrentUser, ConcurrentUser, [Enable], ServerRollType FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType;
 GO
-ALTER PROCEDURE [dbo].[P_LServerList_Verify_Connect_SEL] @iServerSetID TINYINT = 0, @iServerType TINYINT, @strServerIP NVARCHAR(15), @iPort1 SMALLINT, @iInternal TINYINT AS SET NOCOUNT ON; IF @iServerType = 0 BEGIN SELECT [UID], ServerSetID, [Name], MaxConcurrentUser, ServerType, PublicIP, PrivateIP FROM dbo.LServerList WITH (NOLOCK) WHERE Port1 = @iPort1 END ELSE BEGIN SELECT [UID], ServerSetID, [Name], MaxConcurrentUser, ServerType, PublicIP, PrivateIP FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType AND Port1 = @iPort1 END;
+ALTER PROCEDURE [dbo].[P_LServerList_Verify_Connect_SEL] @iServerSetID TINYINT = 0, @iServerType TINYINT, @strServerIP NVARCHAR(15), @iPort1 SMALLINT, @iInternal TINYINT AS SET NOCOUNT ON; IF @iServerType = 0 BEGIN SELECT [UID], ServerSetID, [Name], MaxConcurrentUser, ServerType, PublicIP, N'$PrivateIP' AS PrivateIP FROM dbo.LServerList WITH (NOLOCK) WHERE Port1 = @iPort1 END ELSE BEGIN SELECT [UID], ServerSetID, [Name], MaxConcurrentUser, ServerType, PublicIP, N'$PrivateIP' AS PrivateIP FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType AND Port1 = @iPort1 END;
 GO
-ALTER PROCEDURE [dbo].[lup_verify_server_connect] @iServerType TINYINT, @strServerIP NVARCHAR(15), @iPort1 SMALLINT AS SET NOCOUNT ON; SELECT [UID], ServerSetID, [Name], MaxConcurrentUser, IP FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType AND Port1 = @iPort1;
+ALTER PROCEDURE [dbo].[lup_verify_server_connect] @iServerType TINYINT, @strServerIP NVARCHAR(15), @iPort1 SMALLINT AS SET NOCOUNT ON; SELECT [UID], ServerSetID, [Name], MaxConcurrentUser, N'$PrivateIP' AS IP FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType AND Port1 = @iPort1;
 GO
-ALTER PROCEDURE [dbo].[P_LServerList_GET_verify_connect] @iServerType TINYINT, @strServerIP NVARCHAR(15), @iPort1 SMALLINT AS SET NOCOUNT ON; SELECT [UID], ServerSetID, [Name], MaxConcurrentUser, PrivateIP FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType AND Port1 = @iPort1;
+ALTER PROCEDURE [dbo].[P_LServerList_GET_verify_connect] @iServerType TINYINT, @strServerIP NVARCHAR(15), @iPort1 SMALLINT AS SET NOCOUNT ON; SELECT [UID], ServerSetID, [Name], MaxConcurrentUser, N'$PrivateIP' AS PrivateIP FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType AND Port1 = @iPort1;
 GO
-ALTER PROCEDURE [dbo].[P_LServerList_By_PublicIP_SEL] @iServerSetID TINYINT, @iServerType TINYINT, @strServerIP NVARCHAR(15) AS SET NOCOUNT ON; SELECT [UID], [Name], ServerSetID, ServerType, PublicIP, PrivateIP, Port1, Port2, MaxConcurrentUser, ConcurrentUser, [Enable], ServerRollType FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType;
+ALTER PROCEDURE [dbo].[P_LServerList_By_PublicIP_SEL] @iServerSetID TINYINT, @iServerType TINYINT, @strServerIP NVARCHAR(15) AS SET NOCOUNT ON; SELECT [UID], [Name], ServerSetID, ServerType, PublicIP, N'$PrivateIP' AS PrivateIP, Port1, Port2, MaxConcurrentUser, ConcurrentUser, [Enable], ServerRollType FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType;
 GO
 "@
         $AlterProceduresScript = @"
@@ -518,12 +521,49 @@ $SQLCmdPath -S localhost -U sa -P "$DBPassword" $ExtraArgs -b -Q "$SyncIPQuery"
     } else {
         Write-Warning "Could not find sqlcmd to sync database IPs."
     }
+
+    # The legacy executables register their wildcard bind address (0.0.0.0) in
+    # LServerList. Never advertise that value for server-to-server connections:
+    # all five processes share this host and must use the configured private IP.
+    if ($SQLCmdPath) {
+        Write-Host "Pinning internal server routes to $PrivateIP..." -ForegroundColor Green
+        $RuntimeProceduresQuery = @"
+USE [Statistics];
+GO
+ALTER PROCEDURE [dbo].[lup_verify_server_on] @iServerType TINYINT, @strServerIP NVARCHAR(15) AS SET NOCOUNT ON; SELECT [UID], [Name], ServerSetID, ServerType, N'$PrivateIP' AS IP, Port1, Port2, MaxConcurrentUser, ConcurrentUser, [Enable], ServerRollType FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType;
+GO
+ALTER PROCEDURE [dbo].[P_LServerList_Verify_On_SEL] @iServerSetID TINYINT, @iServerType TINYINT, @strServerIP NVARCHAR(15) AS SET NOCOUNT ON; SELECT [UID], [Name], ServerSetID, ServerType, N'$PrivateIP' AS IP, Port1, Port2, MaxConcurrentUser, ConcurrentUser, [Enable], ServerRollType FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType;
+GO
+ALTER PROCEDURE [dbo].[P_LServerList_GET_verify_PublicIP] @iServerType TINYINT, @strServerIP NVARCHAR(15) AS SET NOCOUNT ON; SELECT [UID], [Name], ServerSetID, ServerType, PublicIP, N'$PrivateIP' AS PrivateIP, Port1, Port2, MaxConcurrentUser, ConcurrentUser, [Enable], ServerRollType FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType;
+GO
+ALTER PROCEDURE [dbo].[P_LServerList_Verify_Connect_SEL] @iServerSetID TINYINT = 0, @iServerType TINYINT, @strServerIP NVARCHAR(15), @iPort1 SMALLINT, @iInternal TINYINT AS SET NOCOUNT ON; IF @iServerType = 0 BEGIN SELECT [UID], ServerSetID, [Name], MaxConcurrentUser, ServerType, PublicIP, N'$PrivateIP' AS PrivateIP FROM dbo.LServerList WITH (NOLOCK) WHERE Port1 = @iPort1 END ELSE BEGIN SELECT [UID], ServerSetID, [Name], MaxConcurrentUser, ServerType, PublicIP, N'$PrivateIP' AS PrivateIP FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType AND Port1 = @iPort1 END;
+GO
+ALTER PROCEDURE [dbo].[lup_verify_server_connect] @iServerType TINYINT, @strServerIP NVARCHAR(15), @iPort1 SMALLINT AS SET NOCOUNT ON; SELECT [UID], ServerSetID, [Name], MaxConcurrentUser, N'$PrivateIP' AS IP FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType AND Port1 = @iPort1;
+GO
+ALTER PROCEDURE [dbo].[P_LServerList_GET_verify_connect] @iServerType TINYINT, @strServerIP NVARCHAR(15), @iPort1 SMALLINT AS SET NOCOUNT ON; SELECT [UID], ServerSetID, [Name], MaxConcurrentUser, N'$PrivateIP' AS PrivateIP FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType AND Port1 = @iPort1;
+GO
+ALTER PROCEDURE [dbo].[P_LServerList_By_PublicIP_SEL] @iServerSetID TINYINT, @iServerType TINYINT, @strServerIP NVARCHAR(15) AS SET NOCOUNT ON; SELECT [UID], [Name], ServerSetID, ServerType, PublicIP, N'$PrivateIP' AS PrivateIP, Port1, Port2, MaxConcurrentUser, ConcurrentUser, [Enable], ServerRollType FROM dbo.LServerList WITH (NOLOCK) WHERE ServerType = @iServerType;
+GO
+"@
+        $RuntimeProceduresScript = @"
+export MSSQL_SA_PASSWORD="$DBPassword"
+$SQLCmdPath -S localhost -U sa -P "$DBPassword" $ExtraArgs -b -Q "$RuntimeProceduresQuery"
+"@
+        $RuntimeProceduresResult = Invoke-BashInDocker $RuntimeProceduresScript
+        if ($global:LASTEXITCODE -ne 0) {
+            Write-Host "Output/Error from internal route setup: $RuntimeProceduresResult" -ForegroundColor Red
+            throw "Failed to pin internal server routes."
+        }
+    }
 }
 
 # 7. Run Client Connection Patcher
 if ($ShouldRestoreDb -or ($PublicIP -ne $ExistingIP)) {
     Write-Host "Patching loose game client configs and data036.kom..." -ForegroundColor Green
     & python "$ScriptRoot\scripts\local_connect.py"
+    if ($LASTEXITCODE -ne 0) {
+        throw "Client endpoint patch failed with exit code $LASTEXITCODE."
+    }
 } else {
     Write-Host "Client config is already patched for endpoint $PublicIP. Skipping client patch." -ForegroundColor Green
 }
@@ -535,6 +575,9 @@ if ($Supervise) {
     $StartArgs += "--supervise"
 }
 & python "$ScriptRoot\scripts\start-offline.py" $StartArgs
+if ($LASTEXITCODE -ne 0) {
+    throw "JoySword server stack failed to start with exit code $LASTEXITCODE."
+}
 
 Write-Host "==========================================================" -ForegroundColor Green
 Write-Host "Automated startup complete!" -ForegroundColor Green

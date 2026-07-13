@@ -111,7 +111,7 @@ export interface OfflineConfig {
 
 export function getOfflineConfig(root: string): OfflineConfig {
   const envPath = path.join(root, 'Elsword', 'offline', 'offline.env');
-  let host = '52.238.194.187';
+  let host = '136.36.127.72';
   let loginPort = 9200;
   let gamePort = 9300;
   let channelPort = 9400;

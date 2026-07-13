@@ -63,7 +63,7 @@ describe('launcher core', () => {
     try {
       // Test fallback/default
       expect(getOfflineConfig(root)).toEqual({
-        host: '52.238.194.187',
+        host: '136.36.127.72',
         loginPort: 9200,
         gamePort: 9300,
         channelPort: 9400,

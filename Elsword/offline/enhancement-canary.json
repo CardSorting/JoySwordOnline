@@ -1,0 +1,18 @@
+{
+  "schema": "joysword.enhancement-runtime-canary/v1",
+  "checked_at": "2026-07-12T23:47:45.835186+00:00",
+  "status": "pass",
+  "game_server_pid": 12324,
+  "server_build_sha256": "260da7d6379c51a63bbd15b81fd6dc45cf7144d30e6e6706dbad5a04bf676caa",
+  "table_sha256": "f20d422154b5e1f3373d5f439f13cbb68f4789274ec97c196e18b6996c4ea08c",
+  "probability_section_sha256": "3c35bbfb8bc9a819c050e4b6226becb9c6ca32697d4e5210f3bd6d234eb7ddd3",
+  "invariant_version": 1,
+  "migration_id": "legacy-curve-restoration-v1",
+  "actual_native_attempt_exercised": false,
+  "player_equipment_mutated": false,
+  "limitations": [
+    "The closed legacy GameServer exposes no isolated synthetic-enhancement RPC.",
+    "Native RNG values, material debit, and commit acknowledgements are not exported."
+  ],
+  "problems": []
+}

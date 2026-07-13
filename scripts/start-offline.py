@@ -460,6 +460,7 @@ def launch_stack(env: dict[str, str], *, headless: bool = False, supervise: bool
     payload = {
         "started_at": started_at,
         "profile": profile,
+        "supervisor_pid": os.getpid() if supervise else None,
         "processes": {name: process.pid for name, process in processes.items()},
         "enhancement_table_sha256": validated_enhancement_hash,
         "enhancement_validation_receipt": str(ENHANCEMENT_RECEIPT),

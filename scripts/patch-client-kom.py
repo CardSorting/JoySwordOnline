@@ -35,6 +35,11 @@ CLIENT_PATCHES: dict[str, dict[str, Path]] = {
         "DLG_PVP_Result_Card_Back.lua": CLIENT_DIALOG / "DLG_PVP_Result_Card_Back.lua",
         "DLG_PVP_Result_Card_Back_MatchPvp.lua": CLIENT_DIALOG / "DLG_PVP_Result_Card_Back_MatchPvp.lua",
         "DLG_PVP_Room_Character_Slot.lua": CLIENT_DIALOG / "DLG_PVP_Room_Character_Slot.lua",
+        "DLG_ChatBox.lua": CLIENT_DIALOG / "DLG_ChatBox.lua",
+        "DLG_ChatBox_NEW.lua": CLIENT_DIALOG / "DLG_ChatBox_NEW.lua",
+        "DLG_ChatBox_Emotion_List.lua": CLIENT_DIALOG / "NewVillageUI" / "DLG_ChatBox_Emotion_List.lua",
+        "DLG_Room_ChatBox_ChatList.lua": CLIENT_DIALOG / "DLG_Room_ChatBox_ChatList.lua",
+        "DLG_UI_Chat_Window.lua": CLIENT_DIALOG / "NewVillageUI" / "DLG_UI_Chat_Window.lua",
         "DLG_Cash_Shop_Popup_ItemToInven.lua": CLIENT_DIALOG / "DLG_Cash_Shop_Popup_ItemToInven.lua",
         "DLG_Cash_Shop_Popup_ItemToInven_Slot.lua": CLIENT_DIALOG / "DLG_Cash_Shop_Popup_ItemToInven_Slot.lua",
         "DLG_Unit_Select_Slot_Elesis.lua": CLIENT_DIALOG / "DLG_Unit_Select_Slot_Elesis.lua",
@@ -70,6 +75,16 @@ CASHSHOP_INVENTORY_PATCHES: dict[str, dict[str, Path]] = {
     "data036.kom": {
         "SocketGroupDataForCashAvatar.lua": CLIENT_MAJOR / "SocketGroupDataForCashAvatar.lua",
         "PackageItemData.lua": CLIENT_MAJOR / "PackageItemData.lua",
+    },
+}
+
+CHAT_UI_PATCHES: dict[str, dict[str, Path]] = {
+    "data034.kom": {
+        "DLG_ChatBox.lua": CLIENT_DIALOG / "DLG_ChatBox.lua",
+        "DLG_ChatBox_NEW.lua": CLIENT_DIALOG / "DLG_ChatBox_NEW.lua",
+        "DLG_ChatBox_Emotion_List.lua": CLIENT_DIALOG / "NewVillageUI" / "DLG_ChatBox_Emotion_List.lua",
+        "DLG_Room_ChatBox_ChatList.lua": CLIENT_DIALOG / "DLG_Room_ChatBox_ChatList.lua",
+        "DLG_UI_Chat_Window.lua": CLIENT_DIALOG / "NewVillageUI" / "DLG_UI_Chat_Window.lua",
     },
 }
 
@@ -395,6 +410,10 @@ def patch_cashshop_inventory_kom() -> int:
     return patch_kom_set(CASHSHOP_INVENTORY_PATCHES)
 
 
+def patch_chat_ui_kom() -> int:
+    return patch_kom_set(CHAT_UI_PATCHES)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -406,6 +425,11 @@ def main() -> int:
         "--cashshop-inventory-bypass",
         action="store_true",
         help="Patch cash-shop claim UI and SocketGroupDataForCashAvatar into data034/data036.kom",
+    )
+    parser.add_argument(
+        "--chat-ui",
+        action="store_true",
+        help="Patch the corrected channel chat layout into data034.kom",
     )
     parser.add_argument(
         "--repair-checksums",
@@ -422,6 +446,8 @@ def main() -> int:
         return patch_client_kom(args.archive)
     if args.cashshop_inventory_bypass:
         return patch_cashshop_inventory_kom()
+    if args.chat_ui:
+        return patch_chat_ui_kom()
     if args.repair_checksums:
         for kom_name in CLIENT_PATCHES:
             repair_kom_metadata(DATA / kom_name)

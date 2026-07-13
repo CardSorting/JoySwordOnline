@@ -33,6 +33,12 @@ def stop_from_pid_file() -> None:
     except json.JSONDecodeError:
         payload = {}
 
+    supervisor_pid = payload.get("supervisor_pid")
+    if isinstance(supervisor_pid, int):
+        print(f"Stopping supervisor (PID {supervisor_pid})...")
+        # Stop the parent first so it cannot respawn children while we shut down.
+        taskkill("/PID", str(supervisor_pid), "/T", "/F")
+
     processes = payload.get("processes", {})
     for name, pid in processes.items():
         if not isinstance(pid, int):

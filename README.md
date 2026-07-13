@@ -125,6 +125,7 @@ Bootstrap database procedures, adjust firewall rules, and sequence server proces
 
 | Guide | Description |
 | :--- | :--- |
+| **[Local Public Hosting Recovery](docs/LOCAL_PUBLIC_HOSTING_RECOVERY.md)** | Home-router port forwarding, Windows network recovery, and local public-host troubleshooting. |
 | 🚀 [**Deployment Guide**](deployment_guide.md) | Setting up the game stack locally or on an Azure Virtual Machine. |
 | 🔌 [**Connection Guide**](CLIENT_CONNECTION_GUIDE.md) | Client patching protocols, IP overrides, and launcher configuration details. |
 | 👑 [**Admin Guide**](ADMIN_GUIDE.md) | Database triggers, rebalancing cash shops, and scheduler configurations. |

@@ -15,16 +15,16 @@ g_pMain:SetClientVersion_LUA("N_20100405_A")
 
 
 -- 솔레스 채널 서버 
-g_pMain:AddChannelServerIP_LUA( "52.238.194.187", 9400 )  ---
---g_pMain:AddChannelServerIP_LUA( "52.238.194.187", 9400 ) -- 육사 서버
+g_pMain:AddChannelServerIP_LUA( "136.36.127.72", 9400 )  ---
+--g_pMain:AddChannelServerIP_LUA( "136.36.127.72", 9400 ) -- 육사 서버
 g_pMain:SetChannelServerPort( 9400 )
 g_pMain:SetDefaultChannelServerIPIndex( -1 )
 
 -- 가이아 서버군 추가 테스트로 채널 서버 하나 추가
-g_pMain:AddChannelServerIP_LUA( "52.238.194.187", 9400 )  ---
+g_pMain:AddChannelServerIP_LUA( "136.36.127.72", 9400 )  ---
 
 -- 게임 서버 : 사내 로그인 할 때 계정 생성을 위해서 사용되는 정보입니다.
-g_pMain:AddGameServerIPForCreateID_LUA( "52.238.194.187" )
+g_pMain:AddGameServerIPForCreateID_LUA( "136.36.127.72" )
 g_pMain:SetGameServerPortForCreateID( 9300 )
 
 g_pMain:SetServerTimeOut( 20 )

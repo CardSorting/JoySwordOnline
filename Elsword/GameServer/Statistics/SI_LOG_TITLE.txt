@@ -1,0 +1,2 @@
+  Title ID 	  NickName 	  Char Lv  	
+30001   	Lina    	11      	
