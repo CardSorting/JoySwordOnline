@@ -1,2 +1,0 @@
-  LogType  	  Source   	Destination	    ip     	  RegDate  	  Reason   	
-Disconnect	3       	0       	127.0.0.1	2026-07-13 16:51:14	Session_Close [A¡Ë¨ùO A¨ú¡¤a ¡Æ¡§Ao (Session)]	
