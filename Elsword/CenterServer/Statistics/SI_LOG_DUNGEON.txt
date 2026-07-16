@@ -1,4 +1,0 @@
- DungeonID 	 UnitUID   	 NickName  	 Diffculty 	IsChallenge	 UnitClass 	   Clear   	StartMember	 End Member	   LV      	 PlayTime  	   EXP     	   ED      	   Combo   	Combo Score	 Technical 	Techn Score	   Time    	  Damaged  	Damaged Num	   Rank    	 Continue  	 PassStage 	 PassSubSt 	IsWithPet  	
-39602   	10096   	Lenaaa  	0       	0       	3       	3       	1       	1       	1       	0       	0       	0       	F       	0       	F       	0       	F       	SS      	0       	C       	0       	1       	1       	0       	
-30000   	10096   	Lenaaa  	0       	0       	3       	1       	1       	1       	4       	176     	58514   	1413    	C       	350     	SS      	28081   	C       	SS      	4       	A       	0       	3       	1       	0       	
-30082   	10096   	Lenaaa  	2       	0       	3       	1       	1       	1       	11      	268     	111219  	2196    	A       	1393    	SS      	55712   	C       	SS      	3       	A       	0       	3       	1       	0       	

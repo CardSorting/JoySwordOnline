@@ -1,5 +1,4 @@
--- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
-
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요
 -- 큐브 내용물 매핑 (offline permanent pools)
 -- g_pRandomItemManager:AddRandomItemMappingData( int nIndex, int iCubeID, int iKeyItemID, int iBeforeGroupID, int iAfterGroupID)
 -- g_pRandomItemManager:AddRandomItemMappingTime( int nIndex, const char* szStartDate, const char* szEndDate)

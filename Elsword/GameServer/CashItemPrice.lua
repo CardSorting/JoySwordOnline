@@ -1,4 +1,4 @@
--- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요
+﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요
 -- #ifdef SERV_CASHITEM_RESOLVE_ADD
 g_pCashItemManager:AddCashItemGroup(	10	,	210000222	)	-- 발렌타인 곰인형(1)
 g_pCashItemManager:AddCashItemResolveAdd(	10	,	210000223	,	1	,	100	)  -- 러블리 발렌타인 곰인형

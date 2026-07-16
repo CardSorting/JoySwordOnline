@@ -2,13 +2,16 @@ import os
 import sys
 import boto3
 from botocore.client import Config
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
 
 access_key_id = "71adc09e1c1e61753320d4ea55ee9843"
 secret_access_key = "f535d48c3d3f5af36458c2b695d65cca2480e83bd35a567a89ccfe7cdb742028"
 endpoint_url = "https://33f8b2564698c222880cbad3e42decad.r2.cloudflarestorage.com"
 bucket_name = "joysword-manifest"
 
-version = "1.3.0"
+version = "1.4.0"
 
 files_to_upload = [
     {
@@ -26,6 +29,12 @@ files_to_upload = [
     {
         "file_path": "build/downloads/latest.json",
         "object_key": "latest.json",
+        "content_type": "application/json",
+        "cache_control": "no-cache, max-age=0"
+    },
+    {
+        "file_path": "scratch/server.json",
+        "object_key": "server.json",
         "content_type": "application/json",
         "cache_control": "no-cache, max-age=0"
     }
@@ -56,9 +65,14 @@ class ProgressPercentage(object):
         sys.stdout.flush()
 
 for upload in files_to_upload:
-    file_path = upload["file_path"]
+    file_path = str(ROOT / upload["file_path"])
     object_key = upload["object_key"]
-    print(f"\nUploading {file_path} to bucket '{bucket_name}' key '{object_key}'...")
+    
+    if not os.path.exists(file_path):
+        print(f"Error: local file {file_path} not found.", file=sys.stderr)
+        sys.exit(1)
+        
+    print(f"\nUploading {upload['file_path']} to bucket '{bucket_name}' key '{object_key}'...")
     
     extra_args = {
         'ContentType': upload["content_type"]
@@ -76,9 +90,9 @@ for upload in files_to_upload:
             Callback=ProgressPercentage(file_path),
             ExtraArgs=extra_args
         )
-        print(f"\nUpload of {file_path} completed successfully!")
+        print(f"\nUpload of {upload['file_path']} completed successfully!")
     except Exception as e:
-        print(f"\nUpload of {file_path} failed: {e}")
+        print(f"\nUpload of {upload['file_path']} failed: {e}")
         sys.exit(1)
 
 print("\nAll files deployed successfully to R2 bucket!")
