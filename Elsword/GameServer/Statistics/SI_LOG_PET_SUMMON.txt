@@ -1,0 +1,2 @@
+  NickName 	    Level  	  Pet UID  	  Pet ID   	 Evol Step 	  Intimacy 	Extroversio	  Emotion  	  RegDate  	
+Lenaaa  	16      	44      	30026   	0       	0       	0       	0       	2026-07-16 00:28:48	

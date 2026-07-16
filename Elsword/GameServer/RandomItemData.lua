@@ -1,4 +1,4 @@
-﻿
+
 
 g_pRandomItemManager:SetNotifyMsg( true )
 

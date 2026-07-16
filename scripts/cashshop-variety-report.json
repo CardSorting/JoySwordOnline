@@ -1,10 +1,10 @@
 {
   "summary": {
-    "priced_total": 12574,
+    "priced_total": 13191,
     "legacy_total": 816,
-    "active_total": 4442,
+    "active_total": 1373,
     "legacy_unpriced_total": 149,
-    "active_featured_without_price": 44,
+    "active_featured_without_price": 0,
     "legacy_meaningful_unpriced": 0,
     "active_meaningful_unpriced": 0,
     "blocked_items": 195,
@@ -21,7 +21,6 @@
     "accessories": 0
   },
   "active_unpriced_by_bucket": {
-    "other": 44,
     "pets": 0,
     "mounts": 0,
     "ice_burner": 0,

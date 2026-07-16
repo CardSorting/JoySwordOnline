@@ -1,4 +1,4 @@
-﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요
+-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요
 -- #ifdef SERV_CASHITEM_RESOLVE_ADD
 g_pCashItemManager:AddCashItemGroup(	10	,	210000222	)	-- 발렌타인 곰인형(1)
 g_pCashItemManager:AddCashItemResolveAdd(	10	,	210000223	,	1	,	100	)  -- 러블리 발렌타인 곰인형
@@ -12552,10 +12552,10 @@ g_pCashItemManager:AddCashItemPrice(	269660	,	24000	)	--	--	레이븐 앙드레 
 g_pCashItemManager:AddCashItemPrice(	269670	,	24000	)	--	--	이브 앙드레 벤더스 헤어 (검정)
 g_pCashItemManager:AddCashItemPrice(	269680	,	24000	)	--	--	청 앙드레 벤더스 헤어 (검정)
 g_pCashItemManager:AddCashItemPrice(	269690	,	24000	)	--	--	아라 앙드레 벤더스 헤어 (검정)
-g_pCashItemManager:AddCashItemPrice(	269719	,	33000	)	--	--	핑크 드레스 (엘리시스)
-g_pCashItemManager:AddCashItemPrice(	269720	,	33000	)	--	--	핑크 드레스 (엘리시스)
-g_pCashItemManager:AddCashItemPrice(	183212	,	15000	)	--	--	핑크 드레스 (아라)
-g_pCashItemManager:AddCashItemPrice(	183213	,	15000	)	--	--	핑크 드레스 (엘리시스)
+g_pCashItemManager:AddCashItemPrice(	269719	,	28000	)	--	--	핑크 드레스 (엘리시스)
+g_pCashItemManager:AddCashItemPrice(	269720	,	28000	)	--	--	핑크 드레스 (엘리시스)
+g_pCashItemManager:AddCashItemPrice(	183212	,	12000	)	--	--	핑크 드레스 (아라)
+g_pCashItemManager:AddCashItemPrice(	183213	,	12000	)	--	--	핑크 드레스 (엘리시스)
 g_pCashItemManager:AddCashItemPrice(	270590	,	24000	)	--	--	제 3회 아바타 컨테스트 『인페르노』 헤어
 g_pCashItemManager:AddCashItemPrice(	270600	,	24000	)	--	--	제 3회 아바타 컨테스트 『인페르노』 헤어 (Ver.B)
 g_pCashItemManager:AddCashItemPrice(	270610	,	24000	)	--	--	제 3회 아바타 컨테스트 『허니 초코』 헤어
@@ -14207,3 +14207,30 @@ g_pCashItemManager:AddCashItemPrice(	132113	,	1000	)	--	Magic Stone of Battle
 g_pCashItemManager:AddCashItemPrice(	132114	,	1000	)	--	Magic Stone of Reinforce
 g_pCashItemManager:AddCashItemPrice(	132115	,	1000	)	--	Magic Stone of Bull's Eye
 g_pCashItemManager:AddCashItemPrice(	135184	,	2500	)	--	Sage's Magic Stone
+
+---------------
+-- JoySword offline Wyvern & Ancient Wyvern items --
+---------------
+
+g_pCashItemManager:AddCashItemPrice(	117171	,	5000	)	--	Wyvern’s Headgear
+g_pCashItemManager:AddCashItemPrice(	117172	,	5000	)	--	Wyvern’s Wing
+g_pCashItemManager:AddCashItemPrice(	117173	,	5000	)	--	Wyvern’s Tail
+g_pCashItemManager:AddCashItemPrice(	117174	,	5000	)	--	Wyvern’s Hexacore
+g_pCashItemManager:AddCashItemPrice(	117175	,	5000	)	--	Wyvern’s Claw (Elsword)
+g_pCashItemManager:AddCashItemPrice(	117176	,	5000	)	--	Wyvern’s Claw (Aisha)
+g_pCashItemManager:AddCashItemPrice(	117177	,	5000	)	--	Wyvern’s Claw (Rena)
+g_pCashItemManager:AddCashItemPrice(	117178	,	5000	)	--	Wyvern’s Claw (Raven)
+g_pCashItemManager:AddCashItemPrice(	117179	,	5000	)	--	Wyvern’s Claw (Eve)
+g_pCashItemManager:AddCashItemPrice(	117180	,	5000	)	--	Wyvern’s Claw (Chung)
+g_pCashItemManager:AddCashItemPrice(	117181	,	5000	)	--	Wyvern’s Claw (Ara)
+g_pCashItemManager:AddCashItemPrice(	117182	,	5000	)	--	Ancient Wyvern’s Headgear
+g_pCashItemManager:AddCashItemPrice(	117183	,	5000	)	--	Ancient Wyvern’s Wing
+g_pCashItemManager:AddCashItemPrice(	117184	,	5000	)	--	Ancient Wyvern’s Tail
+g_pCashItemManager:AddCashItemPrice(	117185	,	5000	)	--	Ancient Wyvern’s Hexacore
+g_pCashItemManager:AddCashItemPrice(	117186	,	5000	)	--	Ancient Wyvern’s Claw (Elsword)
+g_pCashItemManager:AddCashItemPrice(	117187	,	5000	)	--	Ancient Wyvern’s Claw (Aisha)
+g_pCashItemManager:AddCashItemPrice(	117188	,	5000	)	--	Ancient Wyvern’s Claw (Rena)
+g_pCashItemManager:AddCashItemPrice(	117189	,	5000	)	--	Ancient Wyvern’s Claw (Raven)
+g_pCashItemManager:AddCashItemPrice(	117190	,	5000	)	--	Ancient Wyvern’s Claw (Eve)
+g_pCashItemManager:AddCashItemPrice(	117191	,	5000	)	--	Ancient Wyvern’s Claw (Chung)
+g_pCashItemManager:AddCashItemPrice(	117192	,	5000	)	--	Ancient Wyvern’s Claw (Ara)

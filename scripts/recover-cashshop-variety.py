@@ -94,6 +94,7 @@ BUCKET_KEYWORDS = {
         "Aura",
         "머리띠",
     ),
+    "pet_packages": (),
 }
 
 ICE_BURNER_OVERRIDES = {

@@ -55,6 +55,7 @@ CLIENT_PATCHES: dict[str, dict[str, Path]] = {
         "Item.lua": CLIENT_MAJOR / "Item.lua",
         "RandomItem.lua": CLIENT_MAJOR / "RandomItem.lua",
         "ItemTrans.lua": CLIENT_MAJOR / "ItemTrans.lua",
+        "CashShopItemList.lua": CLIENT_MAJOR / "CashShopItemList.lua",
         "ELESIS_KNIGHT.lua": CLIENT_MAJOR / "ELESIS_KNIGHT.lua",
         "NewSkillTempletVer2.lua": CLIENT_MAJOR / "NewSkillTempletVer2.lua",
         "SkillLevelUpSocketGroup.lua": CLIENT_MAJOR / "SkillLevelUpSocketGroup.lua",

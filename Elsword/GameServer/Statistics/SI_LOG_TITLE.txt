@@ -1,0 +1,4 @@
+  Title ID 	  NickName 	  Char Lv  	
+30001   	Lenaaa  	11      	
+30      	Lenaaa  	11      	
+30001   	Lenaaa  	16      	
