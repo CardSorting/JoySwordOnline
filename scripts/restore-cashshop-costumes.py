@@ -221,8 +221,8 @@ def royal_blood_sets() -> dict[str, dict[str, int]]:
             crown=81977, wing=81978,
         ),
         "엘리시스": dict(
-            top=81989, bottom=81990, gloves=81991, shoes=81992, hair=81993, weapon=81988,
-            crown=81995, wing=81994,
+            top=81310, bottom=81311, gloves=81312, shoes=81313, hair=81314, weapon=81315,
+            crown=81361, wing=81367,
         ),
     }
 
@@ -398,7 +398,13 @@ def restore_costumes() -> tuple[int, int, list[int]]:
         if not char or not is_target_costume(row["comment"]):
             continue
         if item_id in item_blocks:
-            continue
+            is_conflict = (
+                (88615 <= item_id <= 88678) or  # Salvatore Ventus
+                (88685 <= item_id <= 88748) or  # Ignition Caligo
+                (82020 <= item_id <= 82083)     # Demon Slayer / Evil Tracer 2
+            )
+            if not is_conflict:
+                continue
         targets.append((item_id, char))
 
     cloned: list[str] = []

@@ -17,3 +17,6 @@ Disconnect	3       	0       	127.0.0.1	2026-07-16 12:23:01	Session_Close [A¡Ë¨ùO
 Disconnect	3       	0       	127.0.0.1	2026-07-16 12:23:04	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	
 Disconnect	3       	0       	127.0.0.1	2026-07-16 12:23:05	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	
 Disconnect	3       	0       	127.0.0.1	2026-07-16 12:23:05	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	
+Disconnect	3       	0       	127.0.0.1	2026-07-16 13:02:41	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	
+Disconnect	3       	0       	127.0.0.1	2026-07-16 13:02:41	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	
+Disconnect	3       	0       	127.0.0.1	2026-07-16 13:02:41	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	

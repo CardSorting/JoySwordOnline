@@ -1,3 +1,4 @@
   NickName 	    Level  	  Pet UID  	  Pet ID   	 Evol Step 	  Intimacy 	Extroversio	  Emotion  	  RegDate  	
 Lenaaa  	16      	44      	30026   	0       	0       	0       	0       	2026-07-16 11:44:46	
 Lenaaa  	16      	44      	30026   	0       	0       	0       	0       	2026-07-16 12:06:00	
+Lenaaa  	16      	44      	30026   	0       	0       	0       	0       	2026-07-16 12:40:48	
