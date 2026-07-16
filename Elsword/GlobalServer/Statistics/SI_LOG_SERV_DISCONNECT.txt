@@ -1,10 +1,2 @@
   LogType  	  Source   	Destination	    ip     	  RegDate  	  Reason   	
-Disconnect	6       	4611686030516534109	127.0.0.1	2026-07-12 17:08:28	Session_Close [A﹌卹O A取﹞a ﹉“Ao (Session)]	
-Disconnect	6       	4611686030516534109	127.0.0.1	2026-07-12 17:27:37	Session_Close [A﹌卹O A取﹞a ﹉“Ao (Session)]	
-Disconnect	6       	4611686030516534109	127.0.0.1	2026-07-12 17:32:36	Session_Close [A﹌卹O A取﹞a ﹉“Ao (Session)]	
-Disconnect	6       	4611686078152309487	127.0.0.1	2026-07-12 17:38:22	Session_Close [A﹌卹O A取﹞a ﹉“Ao (Session)]	
-Disconnect	6       	4611686083397301549	192.168.1.138	2026-07-12 17:38:22	Session_Close [A﹌卹O A取﹞a ﹉“Ao (Session)]	
-Disconnect	6       	4611686035235209222	136.36.127.72	2026-07-12 17:38:22	Session_Close [A﹌卹O A取﹞a ﹉“Ao (Session)]	
-Disconnect	6       	4611686030516534109	127.0.0.1	2026-07-12 17:43:46	Session_Close [A﹌卹O A取﹞a ﹉“Ao (Session)]	
-Disconnect	6       	4611686030516534109	127.0.0.1	2026-07-12 17:47:13	Session_Close [A﹌卹O A取﹞a ﹉“Ao (Session)]	
-Disconnect	6       	4611686083397301549	136.36.127.72	2026-07-12 17:49:21	Session_Close [A﹌卹O A取﹞a ﹉“Ao (Session)]	
+Disconnect	6       	3       	127.0.0.1	2026-07-13 16:51:15	Session_Close [A﹌卹O A取﹞a ﹉“Ao (Session)]	

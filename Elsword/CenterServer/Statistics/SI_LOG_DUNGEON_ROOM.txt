@@ -1,4 +1,0 @@
- DungeonID 	 Diffculty 	IsChallenge	  Clear    	  Fail     	StartMember	 End Member	  PlayTime 	  EndTime  	
-39606   	0       	0       	0       	0       	1       	0       	0       	17:53:03	
-30000   	0       	0       	1       	0       	1       	1       	136     	18:03:45	
-30000   	0       	0       	0       	0       	1       	0       	136     	18:04:03	

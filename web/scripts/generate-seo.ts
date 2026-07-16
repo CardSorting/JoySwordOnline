@@ -463,7 +463,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Base Site URL configuration
-const siteUrl = (process.env.VITE_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://launcher.onjoysword.top').replace(/\/$/, '');
+const siteUrl = (process.env.VITE_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://onjoysword.top').replace(/\/$/, '');
 
 console.log(`[SEO Generator] Using Base URL: ${siteUrl}`);
 
@@ -549,7 +549,7 @@ const sourceCodeSchema = {
     'name': 'TypeScript',
     'url': 'https://www.typescriptlang.org/'
   },
-  'codeRepository': 'https://launcher.onjoysword.top/community',
+  'codeRepository': 'https://onjoysword.top/community',
   'targetProduct': {
     '@type': 'SoftwareApplication',
     'name': 'JoySword Launcher',

@@ -1,5 +1,11 @@
 // Configuration loaded from environment. Mirrors web/.env.example and the
 // Azure App Service app_settings wired in infra/azure/web.tf.
+import dotenv from 'dotenv';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 const num = (v, d) => {
   const n = Number(v);
   return Number.isFinite(n) ? n : d;

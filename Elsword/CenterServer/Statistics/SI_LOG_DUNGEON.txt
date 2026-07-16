@@ -1,3 +1,0 @@
- DungeonID 	 UnitUID   	 NickName  	 Diffculty 	IsChallenge	 UnitClass 	   Clear   	StartMember	 End Member	   LV      	 PlayTime  	   EXP     	   ED      	   Combo   	Combo Score	 Technical 	Techn Score	   Time    	  Damaged  	Damaged Num	   Rank    	 Continue  	 PassStage 	 PassSubSt 	IsWithPet  	
-39606   	96      	Lina    	0       	0       	7       	3       	1       	1       	1       	0       	0       	0       	SS      	14      	SS      	315     	F       	F       	0       	B       	0       	1       	1       	0       	
-30000   	96      	Lina    	0       	0       	7       	1       	1       	1       	4       	136     	58291   	1337    	B       	738     	B       	8573    	A       	SS      	0       	A       	0       	3       	1       	0       	

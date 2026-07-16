@@ -9,7 +9,7 @@ export default function WikiHomePage() {
     '@type': 'CollectionPage',
     'name': 'JoySword Player Wiki',
     'description': 'A comprehensive collection of guides, tutorials, FAQs, and database references for the JoySword classic anime action MMORPG.',
-    'url': 'https://launcher.onjoysword.top/wiki'
+    'url': 'https://onjoysword.top/wiki'
   };
 
   return (

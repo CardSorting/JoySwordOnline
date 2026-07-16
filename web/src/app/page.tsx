@@ -272,11 +272,11 @@ export default function HomePage() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     'name': 'JoySword',
-    'url': 'https://launcher.onjoysword.top',
+    'url': 'https://onjoysword.top',
     'description': 'Play JoySword, a community-hosted classic anime action MMORPG realm with fast combat, meaningful progression, and a detailed player wiki.',
     'potentialAction': {
       '@type': 'SearchAction',
-      'target': 'https://launcher.onjoysword.top/wiki?q={search_term_string}',
+      'target': 'https://onjoysword.top/wiki?q={search_term_string}',
       'query-input': 'required name=search_term_string'
     }
   };
