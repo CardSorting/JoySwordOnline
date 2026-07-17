@@ -1,13 +1,13 @@
 {
-  "started_at": "2026-07-16 13:05:22",
+  "started_at": "2026-07-17 01:18:03",
   "profile": "US_SERVICE",
-  "supervisor_pid": 5828,
+  "supervisor_pid": 14864,
   "processes": {
-    "CenterServer": 15264,
-    "ChannelServer": 15108,
-    "GlobalServer": 15076,
-    "LoginServer": 13132,
-    "GameServer": 18248
+    "CenterServer": 16040,
+    "ChannelServer": 18324,
+    "GlobalServer": 11640,
+    "LoginServer": 8868,
+    "GameServer": 11184
   },
   "enhancement_table_sha256": "f20d422154b5e1f3373d5f439f13cbb68f4789274ec97c196e18b6996c4ea08c",
   "enhancement_validation_receipt": "C:\\Users\\media\\Downloads\\JoySwordOffline - Copy\\Elsword\\offline\\enhancement-validation.json"

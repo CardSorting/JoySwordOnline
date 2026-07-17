@@ -47,7 +47,15 @@ export function StoreInstallPanel() {
 
   useEffect(() => {
     const controller = new AbortController();
-    fetch('/latest.json', { signal: controller.signal })
+    fetch(`/latest.json?t=${Date.now()}`, {
+      cache: 'no-store',
+      headers: {
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache',
+        'Expires': '0'
+      },
+      signal: controller.signal
+    })
       .then(async (response) => {
         if (!response.ok) throw new Error('Release unavailable');
         return (await response.json()) as PublicDownloadManifest;

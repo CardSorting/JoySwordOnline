@@ -1,11 +1,13 @@
 @echo off
+cd /d "%~dp0"
 title JoySword One-Click Bootstrapper
 echo ==========================================================
 echo           JoySword One-Click Server Bootstrapper
 echo ==========================================================
 echo.
 echo Starting game servers (in Supervise mode)...
-start "JoySword Game Servers" cmd /k "powershell.exe -ExecutionPolicy Bypass -File .\Start-Server-Automatic.ps1 -SkipFirewall -Supervise"
+start "JoySword Game Servers" cmd /k "powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Start-Server-Automatic.ps1 -SkipFirewall -Supervise"
+
 
 echo.
 echo Starting Web Portal API...

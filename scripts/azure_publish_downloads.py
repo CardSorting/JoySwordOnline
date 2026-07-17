@@ -84,7 +84,7 @@ def main() -> int:
         "--content-type",
         "application/json",
         "--content-cache-control",
-        "no-cache, max-age=0",
+        "no-store, no-cache, must-revalidate, max-age=0",
         "--overwrite",
         "true",
         "--only-show-errors",

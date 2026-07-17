@@ -96,7 +96,7 @@ function serveStatic(req, res, pathname) {
   res.writeHead(200, {
     'Content-Type': contentTypes.get(ext) || 'application/octet-stream',
     'Content-Length': fs.statSync(file).size,
-    'Cache-Control': hashedAsset ? 'public, max-age=31536000, immutable' : 'no-cache',
+    'Cache-Control': hashedAsset ? 'public, max-age=31536000, immutable' : 'no-store, no-cache, must-revalidate, proxy-revalidate',
     'X-Content-Type-Options': 'nosniff',
     'Referrer-Policy': 'strict-origin-when-cross-origin',
   });
