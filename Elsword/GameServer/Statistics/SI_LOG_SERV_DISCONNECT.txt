@@ -1,3 +1,7 @@
   LogType  	  Source   	Destination	    ip     	  RegDate  	  Reason   	
-Disconnect	3       	0       	127.0.0.1	2026-07-17 12:27:25	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	
-Disconnect	3       	0       	127.0.0.1	2026-07-17 12:39:29	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	
+Disconnect	3       	0       	127.0.0.1	2026-07-17 16:10:44	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	
+Disconnect	3       	0       	127.0.0.1	2026-07-17 16:10:44	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	
+Disconnect	3       	0       	127.0.0.1	2026-07-17 16:10:44	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	
+Disconnect	3       	0       	127.0.0.1	2026-07-17 16:30:11	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	
+Disconnect	3       	0       	127.0.0.1	2026-07-17 16:30:12	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	
+Disconnect	3       	0       	127.0.0.1	2026-07-17 16:30:12	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	

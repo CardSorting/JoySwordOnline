@@ -81,6 +81,27 @@ PvpMatchManager:AddPvpNpcInfo
             issues = self.validator.validate_npc_data(path)
         self.assertTrue(any("empty-AI NPC" in issue for issue in issues))
 
+    def test_full_hero_epic_roster_is_required(self) -> None:
+        path = ROOT / "Elsword" / "ServerResource" / "PvpNpcData.lua"
+        text = path.read_text(encoding="utf-8-sig", errors="replace")
+        hero_start = text.index('NPC_UNIT_ID["NUI_PVP_HERO_LOW"]')
+        type_start = text.index('PVP_NPC_TYPE["PNT_HERO_NPC"]', hero_start)
+        broken = (
+            text[:type_start]
+            + 'PVP_NPC_TYPE["PNT_BEGINNER_NPC"]'
+            + text[type_start + len('PVP_NPC_TYPE["PNT_HERO_NPC"]') :]
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            bad_path = Path(directory) / "PvpNpcData.lua"
+            bad_path.write_text(broken, encoding="utf-8")
+            issues = self.validator.validate_npc_data(bad_path)
+        self.assertTrue(
+            any(
+                "Hero/Epic" in issue and "NUI_PVP_HERO_LOW" in issue
+                for issue in issues
+            )
+        )
+
     def test_solo_begin_count_regression_is_detected(self) -> None:
         path = ROOT / "Elsword" / "ServerResource" / "PvpMatchData.lua"
         text = path.read_text(encoding="utf-8-sig", errors="replace")

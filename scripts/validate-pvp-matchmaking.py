@@ -34,6 +34,20 @@ UNUSED_NPCS = frozenset(
         "NUI_PVP_BOT_CHUNG",
     }
 )
+REQUIRED_HERO_NPCS = frozenset(
+    {
+        "NUI_PVP_HERO_LOW",
+        "NUI_PVP_HERO_PENENSIO",
+        "NUI_PVP_HERO_NOA",
+        "NUI_PVP_HERO_SPIKA",
+        "NUI_PVP_HERO_LIME",
+        "NUI_PVP_HERO_AMELIA",
+        "NUI_PVP_HERO_EDAN",
+        "NUI_PVP_HERO_BALAK",
+        "NUI_PVP_HERO_CODE_Q_PROTO_00",
+        "NUI_PVP_HERO_APPLE",
+    }
+)
 REQUIRED_NPC_FIELDS = frozenset(
     {
         "m_PvpNpcID",
@@ -116,6 +130,23 @@ def validate_npc_data(path: Path) -> list[str]:
     ]
     if not beginner_records:
         issues.append(f"{path}: no valid beginner NPC is active for solo matchmaking")
+
+    hero_symbols = {
+        npc_symbol(fields)
+        for fields in blocks
+        if not (REQUIRED_NPC_FIELDS - fields.keys())
+        and is_enum_value(
+            fields.get("m_PvpNpcType", ""),
+            "PVP_NPC_TYPE",
+            "PNT_HERO_NPC",
+        )
+    }
+    missing_heroes = sorted(REQUIRED_HERO_NPCS - hero_symbols)
+    if missing_heroes:
+        issues.append(
+            f"{path}: missing required Hero/Epic NPC(s): "
+            f"{', '.join(missing_heroes)}"
+        )
 
     for symbol in sorted(UNUSED_NPCS & records.keys()):
         issues.append(

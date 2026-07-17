@@ -10,6 +10,10 @@ teams.  This patch changes only the solo 1v1 path:
   original 4- and 6-player requirements for 2v2 and 3v3.
 * TeamMemberSelection permits the one empty human team in solo 1v1 so the
   existing NPC-fill path can populate it after the player accepts.
+* Equal team weights prefer red, keeping the solo human on the room-hosting
+  side.
+* A character's first beginner match still uses the beginner roster, while
+  later one-human matches use the native randomized Hero/Epic NPC roster.
 
 Every write is guarded by the original instruction bytes.  The optional
 ``_GlobalServer.exe`` legacy copy is patched when present so swapping the
@@ -33,6 +37,10 @@ ORIGINAL_SUCCESS_GATE = b"\x8d\x0c\x3f\x3b\xc8"  # expected = team_size * 2
 ORIGINAL_SUCCESS_JUMP = b"\x0f\x84\x65\x02\x00\x00"
 ORIGINAL_CAVE = b"\xcc" * 16
 ORIGINAL_TEAM_CAVE = b"\xcc" * 14
+ORIGINAL_TEAM_TIE = b"\x7d\x2f"  # jge blue assignment
+PATCHED_TEAM_TIE = b"\x7f\x2f"  # jg: equal weights select red
+ORIGINAL_SOLO_NPC_CAVE = b"\xcc" * 15
+ORIGINAL_HERO_NPC_CAVE = b"\xcc" * 14
 
 
 @dataclass(frozen=True)
@@ -42,6 +50,13 @@ class BinaryPatch:
     one_v_one_double_offset: int
     success_gate_offset: int
     cave_offset: int
+    npc_mode_jump_offset: int
+    npc_mode_cave_offset: int
+    npc_mode_beginner_offset: int
+    npc_mode_normal_offset: int
+    hero_npc_cave_offset: int
+    npc_mode_store_offset: int
+    team_tie_offset: int
     red_team_jump_offset: int
     red_team_cave_offset: int
     red_team_continue_offset: int
@@ -86,6 +101,11 @@ class BinaryPatch:
     def near_jump(source: int, target: int) -> bytes:
         displacement = target - (source + 5)
         return b"\xe9" + struct.pack("<i", displacement)
+
+    @staticmethod
+    def equal_jump(source: int, target: int) -> bytes:
+        displacement = target - (source + 6)
+        return b"\x0f\x84" + struct.pack("<i", displacement)
 
     def original_team_jump(self, source: int) -> bytes:
         return self.conditional_jump(source, self.team_failure_offset)
@@ -145,6 +165,60 @@ class BinaryPatch:
             self.blue_team_continue_offset,
         )
 
+    @property
+    def original_npc_mode_jump(self) -> bytes:
+        return self.conditional_jump(
+            self.npc_mode_jump_offset,
+            self.npc_mode_normal_offset,
+        )
+
+    @property
+    def patched_npc_mode_jump(self) -> bytes:
+        return self.conditional_jump(
+            self.npc_mode_jump_offset,
+            self.npc_mode_cave_offset,
+        )
+
+    @property
+    def npc_mode_cave_code(self) -> bytes:
+        # EBP is KMatchUserManager here. A non-beginner solo match gets a
+        # guaranteed Hero/Epic NPC; non-solo matches retain the stock path.
+        compare_one = bytes.fromhex("837d0801")  # cmp dword ptr [ebp+8], 1
+        solo_jump_source = self.npc_mode_cave_offset + len(compare_one)
+        normal_jump_source = solo_jump_source + 6
+        return (
+            compare_one
+            + self.equal_jump(solo_jump_source, self.hero_npc_cave_offset)
+            + self.near_jump(normal_jump_source, self.npc_mode_normal_offset)
+        )
+
+    @property
+    def beginner_npc_mode_cave_code(self) -> bytes:
+        """Return the superseded repeat-match cave for safe upgrades."""
+        compare_one = bytes.fromhex("837d0801")
+        solo_jump_source = self.npc_mode_cave_offset + len(compare_one)
+        normal_jump_source = solo_jump_source + 6
+        return (
+            compare_one
+            + self.equal_jump(
+                solo_jump_source,
+                self.npc_mode_beginner_offset,
+            )
+            + self.near_jump(normal_jump_source, self.npc_mode_normal_offset)
+        )
+
+    @property
+    def hero_npc_cave_code(self) -> bytes:
+        # Set PNT_HERO_NPC (2), then reuse the stock stores for both team
+        # selection fields. GetPvpNpcInfo keeps the native randomized roster.
+        select_hero = bytes.fromhex("b802000000")  # mov eax, 2
+        jump_source = self.hero_npc_cave_offset + len(select_hero)
+        code = select_hero + self.near_jump(
+            jump_source,
+            self.npc_mode_store_offset,
+        )
+        return code + b"\xcc" * (len(ORIGINAL_HERO_NPC_CAVE) - len(code))
+
 
 PATCHES = (
     BinaryPatch(
@@ -153,6 +227,13 @@ PATCHES = (
         one_v_one_double_offset=0x23B3C5,
         success_gate_offset=0x2413AE,
         cave_offset=0x244F70,
+        npc_mode_jump_offset=0x243456,
+        npc_mode_cave_offset=0x25E331,
+        npc_mode_beginner_offset=0x24345C,
+        npc_mode_normal_offset=0x243657,
+        hero_npc_cave_offset=0x25B4D2,
+        npc_mode_store_offset=0x243461,
+        team_tie_offset=0x25FDD5,
         red_team_jump_offset=0x25FEE0,
         red_team_cave_offset=0x25F1A2,
         red_team_continue_offset=0x25FEE6,
@@ -167,6 +248,13 @@ PATCHES = (
         one_v_one_double_offset=0x25A5F5,
         success_gate_offset=0x2605DE,
         cave_offset=0x2641A0,
+        npc_mode_jump_offset=0x262676,
+        npc_mode_cave_offset=0x27D5A1,
+        npc_mode_beginner_offset=0x26267C,
+        npc_mode_normal_offset=0x262877,
+        hero_npc_cave_offset=0x27A742,
+        npc_mode_store_offset=0x262681,
+        team_tie_offset=0x27F075,
         red_team_jump_offset=0x27F180,
         red_team_cave_offset=0x27E442,
         red_team_continue_offset=0x27F186,
@@ -232,6 +320,80 @@ def validate_layout(data: bytes | bytearray, patch: BinaryPatch) -> None:
             "restore its .solo-pvp.bak copy before retrying"
         )
 
+    team_tie = region(data, patch.team_tie_offset, len(ORIGINAL_TEAM_TIE))
+    if team_tie not in {ORIGINAL_TEAM_TIE, PATCHED_TEAM_TIE}:
+        raise ValueError(
+            f"{patch.filename} has unexpected team-tie bytes at "
+            f"0x{patch.team_tie_offset:X}: {team_tie.hex()}"
+        )
+
+    npc_branch = region(
+        data,
+        patch.npc_mode_jump_offset,
+        len(patch.original_npc_mode_jump),
+    )
+    npc_cave = region(
+        data,
+        patch.npc_mode_cave_offset,
+        len(ORIGINAL_SOLO_NPC_CAVE),
+    )
+    hero_cave = region(
+        data,
+        patch.hero_npc_cave_offset,
+        len(ORIGINAL_HERO_NPC_CAVE),
+    )
+    if npc_branch not in {
+        patch.original_npc_mode_jump,
+        patch.patched_npc_mode_jump,
+    }:
+        raise ValueError(
+            f"{patch.filename} has unexpected NPC-mode branch bytes at "
+            f"0x{patch.npc_mode_jump_offset:X}: {npc_branch.hex()}"
+        )
+    if npc_cave not in {
+        ORIGINAL_SOLO_NPC_CAVE,
+        patch.beginner_npc_mode_cave_code,
+        patch.npc_mode_cave_code,
+    }:
+        raise ValueError(
+            f"{patch.filename} has unexpected NPC-mode cave bytes at "
+            f"0x{patch.npc_mode_cave_offset:X}: {npc_cave.hex()}"
+        )
+    if hero_cave not in {
+        ORIGINAL_HERO_NPC_CAVE,
+        patch.hero_npc_cave_code,
+    }:
+        raise ValueError(
+            f"{patch.filename} has unexpected Hero-NPC cave bytes at "
+            f"0x{patch.hero_npc_cave_offset:X}: {hero_cave.hex()}"
+        )
+
+    npc_state = (npc_branch, npc_cave, hero_cave)
+    valid_npc_states = {
+        (
+            patch.original_npc_mode_jump,
+            ORIGINAL_SOLO_NPC_CAVE,
+            ORIGINAL_HERO_NPC_CAVE,
+        ),
+        # Upgrade state produced by the earlier repeat-match fix, which sent
+        # every later solo match back through the beginner pool.
+        (
+            patch.patched_npc_mode_jump,
+            patch.beginner_npc_mode_cave_code,
+            ORIGINAL_HERO_NPC_CAVE,
+        ),
+        (
+            patch.patched_npc_mode_jump,
+            patch.npc_mode_cave_code,
+            patch.hero_npc_cave_code,
+        ),
+    }
+    if npc_state not in valid_npc_states:
+        raise ValueError(
+            f"{patch.filename} contains an incomplete NPC-roster patch; "
+            "restore its .solo-pvp.bak copy before retrying"
+        )
+
     team_regions = (
         (
             "red-team branch",
@@ -286,6 +448,26 @@ def is_patched(data: bytes | bytearray, patch: BinaryPatch) -> bool:
             len(patch.red_patched_team_jump),
         )
         == patch.red_patched_team_jump
+        and region(data, patch.team_tie_offset, len(PATCHED_TEAM_TIE))
+        == PATCHED_TEAM_TIE
+        and region(
+            data,
+            patch.npc_mode_jump_offset,
+            len(patch.patched_npc_mode_jump),
+        )
+        == patch.patched_npc_mode_jump
+        and region(
+            data,
+            patch.npc_mode_cave_offset,
+            len(patch.npc_mode_cave_code),
+        )
+        == patch.npc_mode_cave_code
+        and region(
+            data,
+            patch.hero_npc_cave_offset,
+            len(patch.hero_npc_cave_code),
+        )
+        == patch.hero_npc_cave_code
     )
 
 
@@ -333,6 +515,41 @@ def patch_image(data: bytearray, patch: BinaryPatch) -> bool:
             patch.blue_team_cave_offset + len(ORIGINAL_TEAM_CAVE)
         ] = patch.blue_team_cave_code
 
+    if region(data, patch.team_tie_offset, len(ORIGINAL_TEAM_TIE)) == ORIGINAL_TEAM_TIE:
+        data[
+            patch.team_tie_offset :
+            patch.team_tie_offset + len(PATCHED_TEAM_TIE)
+        ] = PATCHED_TEAM_TIE
+
+    npc_branch = region(
+        data,
+        patch.npc_mode_jump_offset,
+        len(patch.original_npc_mode_jump),
+    )
+    npc_cave = region(
+        data,
+        patch.npc_mode_cave_offset,
+        len(ORIGINAL_SOLO_NPC_CAVE),
+    )
+    if npc_branch == patch.original_npc_mode_jump:
+        data[
+            patch.npc_mode_jump_offset :
+            patch.npc_mode_jump_offset + len(patch.patched_npc_mode_jump)
+        ] = patch.patched_npc_mode_jump
+
+    if npc_cave in {
+        ORIGINAL_SOLO_NPC_CAVE,
+        patch.beginner_npc_mode_cave_code,
+    }:
+        data[
+            patch.npc_mode_cave_offset :
+            patch.npc_mode_cave_offset + len(ORIGINAL_SOLO_NPC_CAVE)
+        ] = patch.npc_mode_cave_code
+        data[
+            patch.hero_npc_cave_offset :
+            patch.hero_npc_cave_offset + len(ORIGINAL_HERO_NPC_CAVE)
+        ] = patch.hero_npc_cave_code
+
     if not is_patched(data, patch):
         raise AssertionError(f"Failed to verify patched {patch.filename} image")
     return True
@@ -349,11 +566,11 @@ def patch_executable(patch: BinaryPatch, *, dry_run: bool = False) -> bool:
     original = path.read_bytes()
     data = bytearray(original)
     if not patch_image(data, patch):
-        print(f"{path.name} already supports solo 1v1 NPC matchmaking")
+        print(f"{path.name} already supports solo Hero/Epic NPC matchmaking")
         return False
 
     if dry_run:
-        print(f"Would patch {path.name} for solo 1v1 NPC matchmaking")
+        print(f"Would patch {path.name} for solo Hero/Epic NPC matchmaking")
         return True
 
     if not patch.backup_path.exists():
@@ -366,7 +583,9 @@ def patch_executable(patch: BinaryPatch, *, dry_run: bool = False) -> bool:
         path.write_bytes(original)
         raise OSError(f"Post-write verification failed for {path.name}; original restored")
 
-    print(f"Patched {path.name}: one player can complete a 1v1 match against an NPC")
+    print(
+        f"Patched {path.name}: later solo matches rotate through Hero/Epic NPCs"
+    )
     return True
 
 

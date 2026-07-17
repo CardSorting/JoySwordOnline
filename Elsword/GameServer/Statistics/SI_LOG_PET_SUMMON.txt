@@ -1,2 +1,0 @@
-  NickName 	    Level  	  Pet UID  	  Pet ID   	 Evol Step 	  Intimacy 	Extroversio	  Emotion  	  RegDate  	
-SallyMon	19      	46      	133     	0       	1330    	10      	0       	2026-07-17 15:26:24	
