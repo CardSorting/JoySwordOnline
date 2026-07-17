@@ -1,8 +1,8 @@
 {
   "schema": "joysword.enhancement-runtime-canary/v1",
-  "checked_at": "2026-07-17T07:50:20.776334+00:00",
+  "checked_at": "2026-07-17T18:56:15.593819+00:00",
   "status": "pass",
-  "game_server_pid": 23136,
+  "game_server_pid": 20012,
   "server_build_sha256": "260da7d6379c51a63bbd15b81fd6dc45cf7144d30e6e6706dbad5a04bf676caa",
   "table_sha256": "f20d422154b5e1f3373d5f439f13cbb68f4789274ec97c196e18b6996c4ea08c",
   "probability_section_sha256": "3c35bbfb8bc9a819c050e4b6226becb9c6ca32697d4e5210f3bd6d234eb7ddd3",
