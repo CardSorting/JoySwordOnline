@@ -74,6 +74,21 @@ The important gotcha is Windows Firewall precedence: an enabled
 `JoySword SQL inbound deny` rule blocks TCP `1433` even when the Azure NSG
 allows `10.42.2.0/24 -> 1433` and a separate allow rule exists.
 
+## NPC PvP Intelligence V7
+
+The V7 documentation set covers the runtime-grounded Hero NPC competitive AI
+implemented across all ten PvP profiles. Start with the brief, then use the
+strategy for calibration work or the whitepaper for implementation details.
+
+- [PVP_AI_V7_COMPANION_BRIEF.md](PVP_AI_V7_COMPANION_BRIEF.md) — concise project and decision brief
+- [PVP_AI_V7_STRATEGY.md](PVP_AI_V7_STRATEGY.md) — implementation, calibration, and change-control strategy
+- [PVP_AI_V7_DESIGN_PHILOSOPHY.md](PVP_AI_V7_DESIGN_PHILOSOPHY.md) — fairness, uncertainty, identity, and anti-cheating principles
+- [PVP_AI_V7_WHITEPAPER.md](PVP_AI_V7_WHITEPAPER.md) — architecture, validation methodology, results, and evidence boundaries
+
+The current milestone is validated through static analysis, deterministic V6
+simulation, and a synthetic engine-approximation harness. Live arena behavior
+has not yet been validated.
+
 ## Other docs
 
 - [LOCAL_PUBLIC_HOSTING_RECOVERY.md](LOCAL_PUBLIC_HOSTING_RECOVERY.md) - home-router port forwarding, Windows recovery, startup, and local public-host troubleshooting

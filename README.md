@@ -68,6 +68,53 @@ flowchart TD
 
 ---
 
+## NPC PvP Intelligence V7
+
+JoySword now includes a runtime-grounded competitive cognition system for all
+ten Hero NPC PvP profiles. V6 supplies persistent match strategy, exchange
+plans, tactical intentions, opponent hypotheses, conditioning, combo judgment,
+adaptive defense, and character-specific playbooks. V7 verifies how those
+decisions pass through the legacy engine before allowing the bots to learn from
+their outcomes.
+
+The V7 execution path separates five questions that older reactive AI commonly
+conflates:
+
+```text
+decision -> action request -> engine start -> combat result -> attributed learning
+```
+
+Key improvements include:
+
+* A shared 48-signal contract distinguishing direct, derived, heuristic,
+  unverified, and unavailable runtime information.
+* Expiring observations with source, confidence, and action attribution.
+* A bounded action lifecycle for start, contact, damage, block/armor, whiff,
+  interruption, rejection, timeout, recovery, and uncertain results.
+* Character-specific timing, range, pacing, defense, resource, and identity
+  calibration for Amelia, Apple, Balak, Edan, Lime, Low, Noa, Penensio,
+  Q-PROTO_00, and Spika.
+* Separate decision, execution, confirmation, tactical, and strategic failure
+  handling so engine rejection cannot incorrectly retrain match strategy.
+* Optional bounded telemetry, route memory, repetition analysis, occupancy
+  metrics, dormant-action coverage, and counterfactual diagnostics.
+
+Offline validation completed 300 deterministic scenarios and 64,000 decision
+ticks across the roster. In the V7 engine approximation, all 1,237 requested
+actions reached terminal lifecycle states while telemetry remained capped at 96
+entries and route memory at 48. These results establish offline calibration
+readiness; they do not claim live collision, timing, or human-like gameplay
+validation.
+
+Read the [companion brief](docs/PVP_AI_V7_COMPANION_BRIEF.md) for the concise
+overview, the [implementation strategy](docs/PVP_AI_V7_STRATEGY.md) for rollout
+and calibration guidance, the [design philosophy](docs/PVP_AI_V7_DESIGN_PHILOSOPHY.md)
+for the fairness and intelligence principles, and the
+[technical whitepaper](docs/PVP_AI_V7_WHITEPAPER.md) for architecture and
+evidence.
+
+---
+
 ## 📁 Repository Structure
 
 | Component | Path | Description |
@@ -125,6 +172,10 @@ Bootstrap database procedures, adjust firewall rules, and sequence server proces
 
 | Guide | Description |
 | :--- | :--- |
+| **[NPC PvP Intelligence V7 Companion Brief](docs/PVP_AI_V7_COMPANION_BRIEF.md)** | Concise summary of the runtime-grounding milestone, evidence, limitations, and recommended next step. |
+| **[NPC PvP Intelligence V7 Strategy](docs/PVP_AI_V7_STRATEGY.md)** | Implementation, calibration, change-control, and live-testing strategy for all ten Hero NPC profiles. |
+| **[NPC PvP Intelligence V7 Design Philosophy](docs/PVP_AI_V7_DESIGN_PHILOSOPHY.md)** | Principles for believable high-skill behavior, uncertainty, fairness, identity, bounded adaptation, and anti-cheating. |
+| **[NPC PvP Intelligence V7 Whitepaper](docs/PVP_AI_V7_WHITEPAPER.md)** | Technical architecture, signal contract, confirmation lifecycle, harness methodology, exact offline results, and evidence boundaries. |
 | **[Local Public Hosting Recovery](docs/LOCAL_PUBLIC_HOSTING_RECOVERY.md)** | Home-router port forwarding, Windows network recovery, and local public-host troubleshooting. |
 | 🚀 [**Deployment Guide**](deployment_guide.md) | Setting up the game stack locally or on an Azure Virtual Machine. |
 | 🔌 [**Connection Guide**](CLIENT_CONNECTION_GUIDE.md) | Client patching protocols, IP overrides, and launcher configuration details. |
