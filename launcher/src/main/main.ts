@@ -324,7 +324,7 @@ function directGameHost(host: string): string {
   return DEFAULT_SERVER_HOST;
 }
 
-async function fetchManifest(root: string | null): Promise<Manifest> {
+async function fetchManifestRaw(root: string | null): Promise<Manifest> {
   const now = Date.now();
   if (cachedManifest && (now - lastManifestFetch < 5000)) {
     return cachedManifest;
@@ -407,6 +407,16 @@ async function fetchManifest(root: string | null): Promise<Manifest> {
     const msg = error instanceof Error ? error.message : String(error);
     throw new Error(`Manifest server unreachable: ${msg}`);
   }
+}
+
+async function fetchManifest(root: string | null): Promise<Manifest> {
+  const settings = readSettings();
+  const manifest = await fetchManifestRaw(root);
+  if (settings.customServerEnabled && settings.customServerIp) {
+    manifest.loginHost = settings.customServerIp.trim();
+    manifest.patchHost = settings.customServerIp.trim();
+  }
+  return manifest;
 }
 
 async function resolveHost(host: string): Promise<string> {

@@ -15,18 +15,19 @@ from client_connect import (
     patch_client_config,
     patch_windows_client_archive,
 )
+import urllib.request
+import json
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
-if (ROOT.parent / "scripts" / "patch-client-kom.py").exists():
-    PATCH_CLIENT_KOM = ROOT.parent / "scripts" / "patch-client-kom.py"
-else:
-    PATCH_CLIENT_KOM = ROOT / "scripts" / "patch-client-kom.py"
+PATCH_CLIENT_KOM = ROOT / "scripts" / "patch-client-kom.py"
 
 if (ROOT.parent / "Elsword" / "offline" / "offline.env").exists():
     ENV_FILE = ROOT.parent / "Elsword" / "offline" / "offline.env"
-else:
+elif (ROOT / "Elsword" / "offline" / "offline.env").exists():
     ENV_FILE = ROOT / "Elsword" / "offline" / "offline.env"
+else:
+    ENV_FILE = ROOT / "offline.env"
 IPV4_PATTERN = re.compile(r"^(?:\d{1,3}\.){3}\d{1,3}$")
 
 
@@ -43,8 +44,30 @@ def load_env() -> dict[str, str]:
     return values
 
 
+def fetch_manifest_ip() -> str | None:
+    try:
+        url = "https://manifest.onjoysword.top/server.json"
+        req = urllib.request.Request(url, headers={'User-Agent': 'JoySword-Client-Patcher'})
+        with urllib.request.urlopen(req, timeout=3) as response:
+            data = json.loads(response.read().decode('utf-8'))
+            host = data.get("loginHost")
+            if host:
+                return host
+    except Exception:
+        pass
+    return None
+
+
 def default_ip(env: dict[str, str]) -> str:
-    return env.get("CHANNEL_SERVER_IP", "127.0.0.1").strip() or "127.0.0.1"
+    ip = env.get("CHANNEL_SERVER_IP", "").strip()
+    if ip:
+        return ip
+    # Fallback to fetching cloud manifest IP
+    cloud_ip = fetch_manifest_ip()
+    if cloud_ip:
+        print(f"Retrieved active server IP from cloud manifest: {cloud_ip}")
+        return cloud_ip
+    return "127.0.0.1"
 
 
 def default_port(env: dict[str, str], key: str, fallback: int) -> int:

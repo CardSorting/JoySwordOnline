@@ -212,6 +212,34 @@ def main() -> int:
             "JoySword/scripts/launch-client.ps1",
             args.release_date,
         )
+        if (ROOT / "scripts" / "local_connect.py").exists():
+            add_file(
+                archive,
+                ROOT / "scripts" / "local_connect.py",
+                "JoySword/scripts/local_connect.py",
+                args.release_date,
+            )
+        if (ROOT / "scripts" / "client_connect.py").exists():
+            add_file(
+                archive,
+                ROOT / "scripts" / "client_connect.py",
+                "JoySword/scripts/client_connect.py",
+                args.release_date,
+            )
+        if (ROOT / "scripts" / "patch-client-kom.py").exists():
+            add_file(
+                archive,
+                ROOT / "scripts" / "patch-client-kom.py",
+                "JoySword/scripts/patch-client-kom.py",
+                args.release_date,
+            )
+        if (ROOT / "Elsword" / "offline" / "offline.env").exists():
+            add_file(
+                archive,
+                ROOT / "Elsword" / "offline" / "offline.env",
+                "JoySword/offline.env",
+                args.release_date,
+            )
         files = client_files(client_dir)
         for index, path in enumerate(files, start=1):
             target = Path("JoySword/data") / path.relative_to(client_dir)

@@ -13,6 +13,8 @@ export type LauncherSettings = {
   fullscreen: boolean;
   closeOnLaunch: boolean;
   gameRoot: string | null;
+  customServerEnabled: boolean;
+  customServerIp: string;
 };
 
 export type LauncherStatus = {

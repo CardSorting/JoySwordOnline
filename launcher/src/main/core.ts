@@ -7,6 +7,8 @@ export const DEFAULT_SETTINGS: LauncherSettings = {
   fullscreen: false,
   closeOnLaunch: false,
   gameRoot: null,
+  customServerEnabled: false,
+  customServerIp: '',
 };
 
 export const RESOLUTIONS = new Set<LauncherSettings['resolution']>([
@@ -54,6 +56,8 @@ export function normalizeSettings(value: unknown): LauncherSettings {
     gameRoot: typeof input.gameRoot === 'string' && path.isAbsolute(input.gameRoot)
       ? path.normalize(input.gameRoot)
       : null,
+    customServerEnabled: input.customServerEnabled === true,
+    customServerIp: typeof input.customServerIp === 'string' ? input.customServerIp.trim() : '',
   };
 }
 

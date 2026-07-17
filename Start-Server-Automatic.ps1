@@ -517,6 +517,26 @@ $SQLCmdPath -S localhost -U sa -P "$DBPassword" $ExtraArgs -b -Q "$SyncIPQuery"
             Write-Host "Warning: Failed to sync IPs in database: $SyncIPResult" -ForegroundColor Yellow
         } else {
             Write-Host "Database IP sync complete!" -ForegroundColor Green
+            
+            # Sync R2 manifest with the active IP
+            Write-Host "Updating cloud R2 manifest server.json with active IP..." -ForegroundColor Green
+            $PythonExe = "python"
+            & $PythonExe -c "import boto3" 2>$null
+            if ($LASTEXITCODE -ne 0) {
+                Write-Host "boto3 not found on default python. Attempting to install..." -ForegroundColor Yellow
+                & $PythonExe -m pip install boto3 --quiet --user 2>$null
+                & $PythonExe -c "import boto3" 2>$null
+                if ($LASTEXITCODE -ne 0) {
+                    $CustomPython = "C:\Users\media\AppData\Local\Programs\Python\Python311\python.exe"
+                    if (Test-Path $CustomPython) {
+                        $PythonExe = $CustomPython
+                    }
+                }
+            }
+            & $PythonExe "$ScriptRoot\scripts\sync_r2_manifest.py" --ip "$PublicIP"
+            if ($LASTEXITCODE -ne 0) {
+                Write-Host "Warning: Cloud R2 manifest sync failed." -ForegroundColor Yellow
+            }
         }
     } else {
         Write-Warning "Could not find sqlcmd to sync database IPs."
@@ -568,19 +588,47 @@ if ($ShouldRestoreDb -or ($PublicIP -ne $ExistingIP)) {
     Write-Host "Client config is already patched for endpoint $PublicIP. Skipping client patch." -ForegroundColor Green
 }
 
-# 8. Start Elsword Server Stack
-Write-Host "Launching Elsword server stack..." -ForegroundColor Green
-$StartArgs = @()
-if ($Supervise) {
-    $StartArgs += "--supervise"
-}
-& python "$ScriptRoot\scripts\start-offline.py" $StartArgs
-if ($LASTEXITCODE -ne 0) {
-    throw "JoySword server stack failed to start with exit code $LASTEXITCODE."
-}
+# 8. Start Web API and Cloudflare Tunnel in background
+$WebApiProcess = $null
+$TunnelProcess = $null
 
-Write-Host "==========================================================" -ForegroundColor Green
-Write-Host "Automated startup complete!" -ForegroundColor Green
-Write-Host "Check the console windows for each Elsword server process." -ForegroundColor Green
-Write-Host "Your players can now launch Start-Client-Windows.bat to connect." -ForegroundColor Green
-Write-Host "==========================================================" -ForegroundColor Green
+try {
+    Write-Host "Launching Web Portal Backend API..." -ForegroundColor Green
+    $WebApiProcess = Start-Process -FilePath "npm.cmd" -ArgumentList "start" -WorkingDirectory "$ScriptRoot\web\api" -PassThru -WindowStyle Hidden
+
+    Write-Host "Launching Cloudflare Tunnel..." -ForegroundColor Green
+    $TunnelExe = "C:\Program Files (x86)\cloudflared\cloudflared.exe"
+    $TunnelConfig = "C:\Users\media\.cloudflared\config.yml"
+    if (Test-Path $TunnelExe) {
+        $TunnelProcess = Start-Process -FilePath $TunnelExe -ArgumentList "--config `"$TunnelConfig`" tunnel run" -PassThru -WindowStyle Hidden
+    } else {
+        Write-Warning "Cloudflare Tunnel executable not found at $TunnelExe."
+    }
+
+    # 9. Start Elsword Server Stack
+    Write-Host "Launching Elsword server stack..." -ForegroundColor Green
+    $StartArgs = @()
+    if ($Supervise) {
+        $StartArgs += "--supervise"
+    }
+    & python "$ScriptRoot\scripts\start-offline.py" $StartArgs
+    if ($LASTEXITCODE -ne 0) {
+        throw "JoySword server stack failed to start with exit code $LASTEXITCODE."
+    }
+
+    Write-Host "==========================================================" -ForegroundColor Green
+    Write-Host "Automated startup complete!" -ForegroundColor Green
+    Write-Host "Check the console windows for each Elsword server process." -ForegroundColor Green
+    Write-Host "Your players can now launch Start-Client-Windows.bat to connect." -ForegroundColor Green
+    Write-Host "==========================================================" -ForegroundColor Green
+} finally {
+    Write-Host "Cleaning up background services..." -ForegroundColor Yellow
+    if ($WebApiProcess) {
+        Write-Host "Stopping Web Portal Backend API..." -ForegroundColor Yellow
+        Stop-Process -Id $WebApiProcess.Id -Force -ErrorAction SilentlyContinue
+    }
+    if ($TunnelProcess) {
+        Write-Host "Stopping Cloudflare Tunnel..." -ForegroundColor Yellow
+        Stop-Process -Id $TunnelProcess.Id -Force -ErrorAction SilentlyContinue
+    }
+}

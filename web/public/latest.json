@@ -10,8 +10,8 @@
       "version": "1.5.0",
       "fileName": "JoySword-Client-1.5.0-windows-x64.zip",
       "blobName": "releases/1.5.0/JoySword-Client-1.5.0-windows-x64.zip",
-      "bytes": 2648882244,
-      "sha256": "c18112e4be0760dc8ec02ebb12027a0408e1c6d3b14ca7744b19b8b30dc365f8",
+      "bytes": 2648915023,
+      "sha256": "2992c5d592deef6ec14b37140ff47e01779037ab635c4046b40b5a1250eb0458",
       "platform": "windows-x64",
       "kind": "archive",
       "recommended": true
@@ -23,8 +23,8 @@
       "version": "1.5.0",
       "fileName": "JoySword-Launcher-Setup-1.5.0-x64.exe",
       "blobName": "releases/1.5.0/JoySword-Launcher-Setup-1.5.0-x64.exe",
-      "bytes": 93084985,
-      "sha256": "d322c4c2e53786dd8febf69890a64c4142070b2cabcdf6490c981f252d77d16a",
+      "bytes": 93085339,
+      "sha256": "b2807472d70631b5ff84f53198489b8959d00d91e34aad8dbdaf34d26939289e",
       "platform": "windows-x64",
       "kind": "installer",
       "recommended": false

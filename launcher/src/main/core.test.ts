@@ -29,6 +29,7 @@ describe('launcher core', () => {
     const root = path.parse(os.tmpdir()).root;
     expect(normalizeSettings({ resolution: '1920x1080', fullscreen: true, closeOnLaunch: true, gameRoot: root })).toEqual({
       resolution: '1920x1080', fullscreen: true, closeOnLaunch: true, gameRoot: path.normalize(root),
+      customServerEnabled: false, customServerIp: '',
     });
   });
 

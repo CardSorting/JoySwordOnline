@@ -24,3 +24,5 @@ Disconnect	2       	4611686039044435549	1.24.16.196	2026-07-16 21:20:58	Session_
 Disconnect	2       	4611686019036785117	220.167.232.58	2026-07-16 21:21:09	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	
 Disconnect	2       	4611686030516534109	18.116.101.220	2026-07-17 00:14:56	Session_Close [A¡Ë¨ùO A¨ú¡¤a ¡Æ¡§Ao (Session)]	
 Disconnect	2       	4611686030516534109	127.0.0.1	2026-07-17 01:19:32	Session_Close [A¡Ë¨ùO A¨ú¡¤a ¡Æ¡§Ao (Session)]	
+Disconnect	2       	4611686030516534109	127.0.0.1	2026-07-17 01:49:57	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	
+Disconnect	2       	4611686083397301549	20.98.128.249	2026-07-17 01:56:52	Session_Close [A¡Ë¨ùO A¨ú¡¤a ¡Æ¡§Ao (Session)]	

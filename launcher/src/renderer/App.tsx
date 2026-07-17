@@ -12,6 +12,8 @@ const DEFAULT_SETTINGS: LauncherSettings = {
   fullscreen: false,
   closeOnLaunch: false,
   gameRoot: null,
+  customServerEnabled: false,
+  customServerIp: '',
 };
 
 const DEFAULT_CONTENT: LauncherContent = {
@@ -174,6 +176,16 @@ function SettingsView({ settings, onChange, onChooseRoot, onOpenData }: {
           <button className="secondary-button" type="button" onClick={onChooseRoot}><ChromeIcon name="folder" />Choose folder</button>
           <button className="text-button" type="button" onClick={onOpenData}>Open client data folder <span>↗</span></button>
           <div className="setting-note"><i />The selected folder must contain <code>data\x2.exe</code>.</div>
+        </div>
+        <div className="settings-card glass-panel">
+          <div className="card-title"><span>03</span><div><strong>Connection profile</strong><small>SERVER DESTINATION CONFIGURATION</small></div></div>
+          <Toggle label="Custom server IP" hint="Override the default manifest IP destination" checked={settings.customServerEnabled} onChange={(checked) => onChange({ ...settings, customServerEnabled: checked })} />
+          {settings.customServerEnabled && (
+            <div className="input-field">
+              <label className="field-label" htmlFor="customServerIp">Server IP / Host</label>
+              <input id="customServerIp" className="custom-ip-input" type="text" placeholder="127.0.0.1" value={settings.customServerIp} onChange={(event) => onChange({ ...settings, customServerIp: event.target.value })} />
+            </div>
+          )}
         </div>
       </section>
     </main>
