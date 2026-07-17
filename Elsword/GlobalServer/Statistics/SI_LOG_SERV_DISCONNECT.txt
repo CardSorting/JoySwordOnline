@@ -7,3 +7,4 @@ Disconnect	6       	3       	127.0.0.1	2026-07-16 12:06:04	Session_Close [A¡Ë¨ùO
 Disconnect	6       	4611686030516534109	127.0.0.1	2026-07-16 12:22:03	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	
 Disconnect	6       	4611686078152309487	127.0.0.1	2026-07-16 12:22:06	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	
 Disconnect	6       	3       	127.0.0.1	2026-07-16 13:04:01	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	
+Disconnect	6       	4611686030516534109	127.0.0.1	2026-07-16 13:06:58	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	

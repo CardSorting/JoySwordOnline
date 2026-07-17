@@ -1,4 +1,96 @@
-﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+﻿-- Global variables to track win streaks, daily bonuses, play sessions, promotions, loss streaks, performance grades, demotion shields, clutch wins, rating gaps, promotion series, and nemesis wins
+g_MatchUpdated = g_MatchUpdated or false
+g_PvpWinStreak = g_PvpWinStreak or 0
+g_LastWinDate = g_LastWinDate or ""
+g_IsFirstWinToday = g_IsFirstWinToday or false
+g_SessionMatchesPlayed = g_SessionMatchesPlayed or 0
+g_IsRankPromoted = g_IsRankPromoted or false
+g_PvpLossStreak = g_PvpLossStreak or 0
+g_IsComebackWin = g_IsComebackWin or false
+g_LastMatchDeathNum = g_LastMatchDeathNum or 0
+g_DemotionShields = g_DemotionShields or 3
+g_IsClutchWin = g_IsClutchWin or false
+g_IsGiantSlayer = g_IsGiantSlayer or false
+g_IsHighStakesWin = g_IsHighStakesWin or false
+g_IsNemesisWin = g_IsNemesisWin or false
+g_InPromoSeries = g_InPromoSeries or false
+g_PromoTargetMilestone = g_PromoTargetMilestone or 0
+g_PromoWins = g_PromoWins or 0
+g_PromoLosses = g_PromoLosses or 0
+g_PromoOutcome = g_PromoOutcome or 0
+
+function UPDATE_WIN_STREAK( IsWin )
+	if not g_MatchUpdated then
+		g_SessionMatchesPlayed = g_SessionMatchesPlayed + 1
+		if IsWin == true then
+			g_PvpWinStreak = g_PvpWinStreak + 1
+			-- Restore a Demotion Shield charge on victory (max 3)
+			g_DemotionShields = math.min(g_DemotionShields + 1, 3)
+			-- Check if this is a Comeback Win (ending a loss streak of 2+)
+			if g_PvpLossStreak >= 2 then
+				g_IsComebackWin = true
+			else
+				g_IsComebackWin = false
+			end
+			g_PvpLossStreak = 0
+			-- Check if this is the First Win of the Day
+			local today = os.date("%Y-%m-%d")
+			if g_LastWinDate ~= today then
+				g_IsFirstWinToday = true
+				g_LastWinDate = today
+			else
+				g_IsFirstWinToday = false
+			end
+		else
+			g_PvpWinStreak = 0
+			g_IsFirstWinToday = false
+			g_IsComebackWin = false
+			g_PvpLossStreak = g_PvpLossStreak + 1
+		end
+		g_MatchUpdated = true
+	end
+end
+
+function CLEAR_MATCH_FLAG()
+	g_MatchUpdated = false
+end
+
+function GET_STREAK_MULTIPLIER()
+	if g_PvpWinStreak >= 4 then
+		return 1.5
+	elseif g_PvpWinStreak == 3 then
+		return 1.25
+	elseif g_PvpWinStreak == 2 then
+		return 1.1
+	else
+		return 1.0
+	end
+end
+
+function GET_SESSION_MULTIPLIER()
+	local bonus = math.min(g_SessionMatchesPlayed * 0.05, 0.25)
+	return 1.0 + bonus
+end
+
+function GET_PERFORMANCE_GRADE_MULTIPLIER( IsWin, KillNum, MDKillNum, DeathNum )
+	if IsWin == true then
+		if DeathNum == 0 and KillNum >= 3 then
+			return 1.5 -- S Grade
+		elseif DeathNum <= 1 and (KillNum + MDKillNum) >= 2 then
+			return 1.2 -- A Grade
+		else
+			return 1.0 -- B Grade
+		end
+	else
+		if (KillNum + MDKillNum) >= 3 and DeathNum <= 2 then
+			return 1.0 -- A Grade (on loss)
+		else
+			return 0.8 -- C Grade (on loss)
+		end
+	end
+end
+
+-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
 
 
 --[[
@@ -101,14 +193,21 @@ end
 ----------------------------------------------
 -- [대전개편] 대전 결과에 따른 Rating값 구하는 함수
 ----------------------------------------------
-function GET_RATING_PVP_RESULT( MyTeamRating, EnemyTeamRating, UserRating, UserMaxRating, PvpPlayCount, IsWin, IsWinBeforeMatch, MatchType, PvpNpcType )
+function GET_RATING_PVP_RESULT( MyTeamRating, EnemyTeamRating, UserRating, IsWin, KFactor, ArrangeTeamsMatch )
 
-	-- K상수값을 구하자!
-	local KFactor = GET_K_FACTOR( PvpPlayCount, IsWin, IsWinBeforeMatch, UserMaxRating )
-
+	-- Check if this is a High Stakes or Nemesis match based on win streak
+	local EffectiveEnemyRating = EnemyTeamRating
+	local IsHighStakes = (g_PvpWinStreak == 4)
+	local IsNemesis = (g_PvpWinStreak >= 5)
+	
+	if IsNemesis then
+		EffectiveEnemyRating = EnemyTeamRating + 200
+	elseif IsHighStakes then
+		EffectiveEnemyRating = EnemyTeamRating + 150
+	end
 
 	-- 기대승률을 구하자!
-	local ExpectOfVictory = GET_EXPECT_OF_VICTORY( MyTeamRating, EnemyTeamRating )
+	local ExpectOfVictory = GET_EXPECT_OF_VICTORY( MyTeamRating, EffectiveEnemyRating )
 
 
 	-- 승패값을 구하자!
@@ -123,23 +222,160 @@ function GET_RATING_PVP_RESULT( MyTeamRating, EnemyTeamRating, UserRating, UserM
 	-- 최종 Rating값을 구하자!
 	local RatingResult = ( UserRating + ( KFactor * ( MyTeamResultFactor - ExpectOfVictory ) ) )
 	
+	local RatingIncresment = RatingResult - UserRating
 	
-	--print( '------------- Rating값 구하는 함수 ---------------' )
-	--print( 'K상수' )
-	--print( KFactor )
-	--print( '기대승률' )
-	--print( ExpectOfVictory )
-	--print( '승패값' )
-	--print( MyTeamResultFactor )
-	--print( '최종결과값' )
-	--print( RatingResult )
-	--print( '실제 유저가 받을값' )
-	--print( RatingResult - UserRating )
-	--print( '-----------------------------------------------' )
+	-- Modern Progression: Underdog Rating Scaling & Loss Mitigation (Rating gap >= 200)
+	local RatingGap = EffectiveEnemyRating - MyTeamRating
+	if RatingGap >= 200 then
+		if IsWin == true then
+			RatingIncresment = RatingIncresment * 1.5
+		else
+			RatingIncresment = RatingIncresment * 0.5
+		end
+	end
 	
+	-- Modern Progression: Win Streak Loss Protection
+	if IsWin == false and g_PvpWinStreak > 0 then
+		RatingIncresment = RatingIncresment * 0.5
+	end
+	
+	-- Modern Progression: Loss Streak Protection (mitigate rating loss on consecutive defeats)
+	if IsWin == false then
+		if g_PvpLossStreak == 2 then
+			RatingIncresment = RatingIncresment * 0.75 -- 25% loss reduction
+		elseif g_PvpLossStreak >= 3 then
+			RatingIncresment = RatingIncresment * 0.5  -- 50% loss reduction
+		end
+	end
+	
+	-- Modern Progression: "On Fire" Hot Streak (Win Streak >= 3)
+	if g_PvpWinStreak >= 3 then
+		RatingIncresment = RatingIncresment * 1.5
+	end
+	
+	-- Update win streak & Demotion Shields
+	local OldShields = g_DemotionShields
+	
+	g_IsHighStakesWin = false
+	if IsWin == true and IsHighStakes then
+		g_IsHighStakesWin = true
+	end
+	
+	g_IsNemesisWin = false
+	if IsWin == true and IsNemesis then
+		g_IsNemesisWin = true
+	end
+	
+	UPDATE_WIN_STREAK( IsWin )
+	
+	-- Modern Progression: Win Streak Gain Multiplier (applied on win)
+	if IsWin == true then
+		RatingIncresment = RatingIncresment * GET_STREAK_MULTIPLIER()
+	end
+	
+	-- Modern Progression: High Stakes Lobby Win Boost (2x rating points)
+	if g_IsHighStakesWin == true then
+		RatingIncresment = RatingIncresment * 2.0
+	end
+	
+	-- Modern Progression: Nemesis Boss Win Boost (2.5x rating points)
+	if g_IsNemesisWin == true then
+		RatingIncresment = RatingIncresment * 2.5
+	end
+	
+	-- Modern Progression: Comeback Booster (+50% rating gain after breaking a loss streak)
+	if IsWin == true and g_IsComebackWin == true then
+		RatingIncresment = RatingIncresment * 1.5
+	end
+	
+	-- Modern Progression: Low-Elo Catch-Up Booster (applied on win under 1200)
+	if IsWin == true and UserRating < 1200 then
+		RatingIncresment = RatingIncresment * 1.5
+	end
+	
+	if ( ArrangeTeamsMatch == true ) and ( IsWin == false ) then
+		RatingIncresment = RatingIncresment * 0.5
+	end
+
+	-- Modern Progression: Rating Milestone Floor Protection with Demotion Shield Charges
+	local Milestones = { 2000, 1800, 1600, 1400, 1200, 1000 }
+	local RatingFloor = 0
+	for _, val in ipairs(Milestones) do
+		if UserRating >= val then
+			RatingFloor = val
+			break
+		end
+	end
+	
+	local NewRating = UserRating + RatingIncresment
+	if NewRating < RatingFloor then
+		if OldShields > 0 then
+			-- Shield absorbs the drop to keep the player at the floor
+			RatingIncresment = RatingFloor - UserRating
+			g_DemotionShields = math.max(OldShields - 1, 0)
+		else
+			-- Protection fails: demote below floor
+		end
+	end
+	
+	-- Modern Progression: Best-of-3 Promotion Series Logic
+	g_PromoOutcome = 0
+	if g_InPromoSeries == false then
+		-- Check if player qualified for a new series
+		local TargetMilestone = 0
+		for _, val in ipairs(Milestones) do
+			if UserRating < val and (UserRating + RatingIncresment) >= val then
+				TargetMilestone = val
+				break
+			end
+		end
+		
+		if TargetMilestone > 0 and IsWin == true then
+			g_InPromoSeries = true
+			g_PromoTargetMilestone = TargetMilestone
+			g_PromoWins = 1
+			g_PromoLosses = 0
+			-- Lock rating at the gate
+			RatingIncresment = (TargetMilestone - 1) - UserRating
+		end
+	else
+		-- In active series: update win/loss counters
+		if IsWin == true then
+			g_PromoWins = g_PromoWins + 1
+		else
+			g_PromoLosses = g_PromoLosses + 1
+		end
+		
+		-- Evaluate outcomes
+		if g_PromoWins >= 2 then
+			-- Promo Succeeded!
+			RatingIncresment = (g_PromoTargetMilestone + 50) - UserRating
+			g_PromoOutcome = 1
+			g_InPromoSeries = false
+		elseif g_PromoLosses >= 2 then
+			-- Promo Failed!
+			RatingIncresment = (g_PromoTargetMilestone - 30) - UserRating
+			g_PromoOutcome = 2
+			g_InPromoSeries = false
+		else
+			-- Series still active: keep locked at gate
+			RatingIncresment = (g_PromoTargetMilestone - 1) - UserRating
+		end
+	end
+
+	-- Modern Progression: Rank Promotion Detection (Only if not overriding with active promo series lock)
+	g_IsRankPromoted = false
+	if g_InPromoSeries == false and g_PromoOutcome == 0 then
+		for _, val in ipairs(Milestones) do
+			if UserRating < val and (UserRating + RatingIncresment) >= val then
+				g_IsRankPromoted = true
+				break
+			end
+		end
+	end
 
 	-- 최종Rating값에서 유저의 현재Rating값을 뺀것을 돌려주자!
-    return ( RatingResult - UserRating )
+    return RatingIncresment
 end
 --]]
 
@@ -148,8 +384,19 @@ end
 ----------------------------------------------
 function GET_RATING_PVP_RESULT( MyTeamRating, EnemyTeamRating, UserRating, IsWin, KFactor, ArrangeTeamsMatch )
 
+	-- Check if this is a High Stakes or Nemesis match based on win streak
+	local EffectiveEnemyRating = EnemyTeamRating
+	local IsHighStakes = (g_PvpWinStreak == 4)
+	local IsNemesis = (g_PvpWinStreak >= 5)
+	
+	if IsNemesis then
+		EffectiveEnemyRating = EnemyTeamRating + 200
+	elseif IsHighStakes then
+		EffectiveEnemyRating = EnemyTeamRating + 150
+	end
+
 	-- 기대승률을 구하자!
-	local ExpectOfVictory = GET_EXPECT_OF_VICTORY( MyTeamRating, EnemyTeamRating )
+	local ExpectOfVictory = GET_EXPECT_OF_VICTORY( MyTeamRating, EffectiveEnemyRating )
 
 
 	-- 승패값을 구하자!
@@ -164,24 +411,156 @@ function GET_RATING_PVP_RESULT( MyTeamRating, EnemyTeamRating, UserRating, IsWin
 	-- 최종 Rating값을 구하자!
 	local RatingResult = ( UserRating + ( KFactor * ( MyTeamResultFactor - ExpectOfVictory ) ) )
 	
-	
-	--print( '------------- Rating값 구하는 함수 ---------------' )
-	--print( 'K상수' )
-	--print( KFactor )
-	--print( '기대승률' )
-	--print( ExpectOfVictory )
-	--print( '승패값' )
-	--print( MyTeamResultFactor )
-	--print( '최종결과값' )
-	--print( RatingResult )
-	--print( '실제 유저가 받을값' )
-	--print( RatingResult - UserRating )
-	--print( '-----------------------------------------------' )
-	
 	local RatingIncresment = RatingResult - UserRating
+	
+	-- Modern Progression: Underdog Rating Scaling & Loss Mitigation (Rating gap >= 200)
+	local RatingGap = EffectiveEnemyRating - MyTeamRating
+	if RatingGap >= 200 then
+		if IsWin == true then
+			RatingIncresment = RatingIncresment * 1.5
+		else
+			RatingIncresment = RatingIncresment * 0.5
+		end
+	end
+	
+	-- Modern Progression: Win Streak Loss Protection
+	if IsWin == false and g_PvpWinStreak > 0 then
+		RatingIncresment = RatingIncresment * 0.5
+	end
+	
+	-- Modern Progression: Loss Streak Protection (mitigate rating loss on consecutive defeats)
+	if IsWin == false then
+		if g_PvpLossStreak == 2 then
+			RatingIncresment = RatingIncresment * 0.75 -- 25% loss reduction
+		elseif g_PvpLossStreak >= 3 then
+			RatingIncresment = RatingIncresment * 0.5  -- 50% loss reduction
+		end
+	end
+	
+	-- Modern Progression: "On Fire" Hot Streak (Win Streak >= 3)
+	if g_PvpWinStreak >= 3 then
+		RatingIncresment = RatingIncresment * 1.5
+	end
+	
+	-- Update win streak & Demotion Shields
+	local OldShields = g_DemotionShields
+	
+	g_IsHighStakesWin = false
+	if IsWin == true and IsHighStakes then
+		g_IsHighStakesWin = true
+	end
+	
+	g_IsNemesisWin = false
+	if IsWin == true and IsNemesis then
+		g_IsNemesisWin = true
+	end
+	
+	UPDATE_WIN_STREAK( IsWin )
+	
+	-- Modern Progression: Win Streak Gain Multiplier (applied on win)
+	if IsWin == true then
+		RatingIncresment = RatingIncresment * GET_STREAK_MULTIPLIER()
+	end
+	
+	-- Modern Progression: High Stakes Lobby Win Boost (2x rating points)
+	if g_IsHighStakesWin == true then
+		RatingIncresment = RatingIncresment * 2.0
+	end
+	
+	-- Modern Progression: Nemesis Boss Win Boost (2.5x rating points)
+	if g_IsNemesisWin == true then
+		RatingIncresment = RatingIncresment * 2.5
+	end
+	
+	-- Modern Progression: Comeback Booster (+50% rating gain after breaking a loss streak)
+	if IsWin == true and g_IsComebackWin == true then
+		RatingIncresment = RatingIncresment * 1.5
+	end
+	
+	-- Modern Progression: Low-Elo Catch-Up Booster (applied on win under 1200)
+	if IsWin == true and UserRating < 1200 then
+		RatingIncresment = RatingIncresment * 1.5
+	end
 	
 	if ( ArrangeTeamsMatch == true ) and ( IsWin == false ) then
 		RatingIncresment = RatingIncresment * 0.5
+	end
+
+	-- Modern Progression: Rating Milestone Floor Protection with Demotion Shield Charges
+	local Milestones = { 2000, 1800, 1600, 1400, 1200, 1000 }
+	local RatingFloor = 0
+	for _, val in ipairs(Milestones) do
+		if UserRating >= val then
+			RatingFloor = val
+			break
+		end
+	end
+	
+	local NewRating = UserRating + RatingIncresment
+	if NewRating < RatingFloor then
+		if OldShields > 0 then
+			-- Shield absorbs the drop to keep the player at the floor
+			RatingIncresment = RatingFloor - UserRating
+			g_DemotionShields = math.max(OldShields - 1, 0)
+		else
+			-- Protection fails: demote below floor
+		end
+	end
+	
+	-- Modern Progression: Best-of-3 Promotion Series Logic
+	g_PromoOutcome = 0
+	if g_InPromoSeries == false then
+		-- Check if player qualified for a new series
+		local TargetMilestone = 0
+		for _, val in ipairs(Milestones) do
+			if UserRating < val and (UserRating + RatingIncresment) >= val then
+				TargetMilestone = val
+				break
+			end
+		end
+		
+		if TargetMilestone > 0 and IsWin == true then
+			g_InPromoSeries = true
+			g_PromoTargetMilestone = TargetMilestone
+			g_PromoWins = 1
+			g_PromoLosses = 0
+			-- Lock rating at the gate
+			RatingIncresment = (TargetMilestone - 1) - UserRating
+		end
+	else
+		-- In active series: update win/loss counters
+		if IsWin == true then
+			g_PromoWins = g_PromoWins + 1
+		else
+			g_PromoLosses = g_PromoLosses + 1
+		end
+		
+		-- Evaluate outcomes
+		if g_PromoWins >= 2 then
+			-- Promo Succeeded!
+			RatingIncresment = (g_PromoTargetMilestone + 50) - UserRating
+			g_PromoOutcome = 1
+			g_InPromoSeries = false
+		elseif g_PromoLosses >= 2 then
+			-- Promo Failed!
+			RatingIncresment = (g_PromoTargetMilestone - 30) - UserRating
+			g_PromoOutcome = 2
+			g_InPromoSeries = false
+		else
+			-- Series still active: keep locked at gate
+			RatingIncresment = (g_PromoTargetMilestone - 1) - UserRating
+		end
+	end
+
+	-- Modern Progression: Rank Promotion Detection (Only if not overriding with active promo series lock)
+	g_IsRankPromoted = false
+	if g_InPromoSeries == false and g_PromoOutcome == 0 then
+		for _, val in ipairs(Milestones) do
+			if UserRating < val and (UserRating + RatingIncresment) >= val then
+				g_IsRankPromoted = true
+				break
+			end
+		end
 	end
 
 	-- 최종Rating값에서 유저의 현재Rating값을 뺀것을 돌려주자!
@@ -207,13 +586,19 @@ MATCH_TYPE =
 ----------------------------------------------
 function GET_RANKING_POINT_PVP_RESULT( MyTeamRating, EnemyTeamRating, IsWin, KillNum, MDKillNum, DeathNum, MatchType, PvpNpcType )
 
-	-- 기대승률을 구하자!	
-	local ExpectOfVictory = GET_EXPECT_OF_VICTORY( MyTeamRating, EnemyTeamRating )
+	-- Check if this is a High Stakes or Nemesis match
+	local EffectiveEnemyRating = EnemyTeamRating
+	if g_PvpWinStreak >= 5 then
+		EffectiveEnemyRating = EnemyTeamRating + 200
+	elseif g_PvpWinStreak == 4 then
+		EffectiveEnemyRating = EnemyTeamRating + 150
+	end
+
+	-- 기대승률을 구하자! (using EffectiveEnemyRating)
+	local ExpectOfVictory = GET_EXPECT_OF_VICTORY( MyTeamRating, EffectiveEnemyRating )
 
 	
-	-- 승패 RPoint 구하는 방식 대폭 변경 (조건이 추가된 이유)
-	
-	-- A. 승,패에 따른 RP 변동의 기본 점수 기준 설정 (모드별)
+	-- 승패 RP 변동 기본 설정
 	local WinLoseConstant
 		if ( MATCH_TYPE["MT_TEAM_DEATH_3_ON_3"] == MatchType )  then
 			WinLoseConstant = 16
@@ -227,70 +612,102 @@ function GET_RANKING_POINT_PVP_RESULT( MyTeamRating, EnemyTeamRating, IsWin, Kil
 			WinLoseConstant = 14
 		else 
 			WinLoseConstant = 12
-			
 		end
 
-	-- B. 승 패 결정
+	-- 승 패 결정
 	local WinLoseRFactor
 		if (IsWin == true ) then
 			WinLoseRFactor = 1
-
 		else 
 			WinLoseRFactor = 0
 		end
 	
-	-- C. (A, B를 이용하여) 승패 결과에 따른 변동을 결정하자.	
 	local WinLoseMPoint  = WinLoseConstant * ( WinLoseRFactor - ExpectOfVictory )
-
-	-- C값의 하한선을 -6으로 하자!
 	local WinLoseRPoint = math.max ( WinLoseMPoint , -6 )
 
-    -- 킬데스 RPoint를 구하자!
     local MiddleResult = ( KillNum + MDKillNum - DeathNum )
-	local SecondMiddleResult = math.max ( -4, MiddleResult )   -- 하한점도 추가
+	local SecondMiddleResult = math.max ( -4, MiddleResult )
 	local KillDeathRPoint = math.min( 12, SecondMiddleResult )	
-	
-	
-	
-	--[[ 승패 RPoint를 구하자!
-	local WinLoseRPoint
-	if ( IsWin == true ) then
-        WinLoseRPoint = ( 12.0 * ( 1.0 - ExpectOfVictory ) )
-	else
-		WinLoseRPoint = ( -12.0 * ExpectOfVictory )
-	end
-	
-
-    -- 킬데스 RPoint를 구하자!
-    local MiddleResult = ( KillNum + MDKillNum - DeathNum )
-	local KillDeathRPoint = math.min( 12, MiddleResult )
-	
-	]]
 	
 	-- 최종 결과값 반환
 	local FinalResult = ( WinLoseRPoint + KillDeathRPoint )
 	
-	
-	-- 영웅NPC와의 대전이라면?      --** 
-	if ( PvpNpcType == PVP_NPC_TYPE["PNT_HERO_NPC"] ) then
-	
-		FinalResult = ( FinalResult * 2 )    -- 2배로 수정
-		
+	-- 영웅NPC와의 대전이라면?
+	if ( PvpNpcType == PVP_NPC_TYPE["PNT_HERO_NPC"] ) or ( PvpNpcType == PVP_NPC_TYPE["PNT_BEGINNER_NPC"] ) then
+		FinalResult = ( FinalResult * 2 )
 	end
 	
+	-- Modern Progression: Performance-Based Modifiers
+	local PerformanceMultiplier = 1.0
+	-- Flawless Victory (+50% Ranking Points)
+	if IsWin == true and DeathNum == 0 and KillNum > 0 then
+		PerformanceMultiplier = PerformanceMultiplier + 0.5
+	end
+	-- Underdog Adjustment (+50% on win, -50% loss mitigation on defeat)
+	local RatingGap = EffectiveEnemyRating - MyTeamRating
 	
-	--print( '------------- Ranking Point값 구하는 함수 ---------------' )	
-	--print( '기대승률' )
-	--print( ExpectOfVictory )
-	--print( '승패값' )
-	--print( WinLoseRPoint )
-	--print( '최종결과값' )
-	--print( FinalResult )
-	--print( '-----------------------------------------------' )
+	-- Determine Giant Slayer status
+	g_IsGiantSlayer = false
+	if IsWin == true and RatingGap >= 200 then
+		g_IsGiantSlayer = true
+	end
 	
+	if RatingGap >= 200 then
+		if IsWin == true then
+			PerformanceMultiplier = PerformanceMultiplier + 0.5
+		else
+			PerformanceMultiplier = PerformanceMultiplier - 0.5
+		end
+	end
+	FinalResult = FinalResult * PerformanceMultiplier
+	
+	-- Store death num globally for other calculations
+	g_LastMatchDeathNum = DeathNum
+	
+	-- Determine Clutch Win status
+	g_IsClutchWin = false
+	if IsWin == true then
+		if MatchType == MATCH_TYPE["MT_TEAM_DEATH_3_ON_3"] and DeathNum >= 10 then
+			g_IsClutchWin = true
+		elseif MatchType == MATCH_TYPE["MT_TEAM_DEATH_2_ON_2"] and DeathNum >= 6 then
+			g_IsClutchWin = true
+		elseif MatchType == MATCH_TYPE["MT_TEAM_DEATH_1_ON_1"] and DeathNum >= 4 then
+			g_IsClutchWin = true
+		elseif (MatchType == MATCH_TYPE["MT_TEAM_1_ON_1"] or MatchType == MATCH_TYPE["MT_TEAM_3_ON_3"]) and DeathNum >= 2 then
+			g_IsClutchWin = true
+		end
+	end
+	
+	-- Apply Clutch Rating Boost
+	if g_IsClutchWin == true then
+		FinalResult = FinalResult * 1.3
+	end
+	
+	-- Apply High Stakes Lobby Win Boost (2x RP)
+	if g_IsHighStakesWin == true then
+		FinalResult = FinalResult * 2.0
+	end
+	
+	-- Apply Nemesis Boss Win Boost (2.5x RP)
+	if g_IsNemesisWin == true then
+		FinalResult = FinalResult * 2.5
+	end
+	
+	-- Apply Promotion Series Success Boost (2x RP)
+	if g_PromoOutcome == 1 then
+		FinalResult = FinalResult * 2.0
+	end
+	
+	-- Modern Progression: Performance Grade Multiplier
+	local GradeMultiplier = GET_PERFORMANCE_GRADE_MULTIPLIER( IsWin, KillNum, MDKillNum, DeathNum )
+	FinalResult = FinalResult * GradeMultiplier
+	
+	-- Modern Progression: Win Streak Multiplier (applied on win)
+	if IsWin == true then
+		FinalResult = FinalResult * GET_STREAK_MULTIPLIER()
+	end
 	
 	return FinalResult
-
 end
 
 
@@ -300,8 +717,6 @@ end
 ----------------------------------------------
 function GET_ARENA_POINT_PVP_RESULT( UserRating, IsWin, KillNum, MDKillNum, MatchType, PvpNpcType )
 
-	
-	-- 승패 APoint구하자! *** MatchType에 따라 차등 되어야 한다. (MatchType, Win APoint, Lose APoint) = (5, 8, 2) , (4, 6, 1.5) , (2, 5, 1.25) , (1, 5, 1.25),  ( 나머지, 4, 1)
 	local WinLoseAPoint
 	if (IsWin == true) then	
 		if ( MATCH_TYPE["MT_TEAM_DEATH_3_ON_3"] == MatchType )  then
@@ -317,7 +732,7 @@ function GET_ARENA_POINT_PVP_RESULT( UserRating, IsWin, KillNum, MDKillNum, Matc
 		else
 			WinLoseAPoint = 2
 		end
-	else	-- ***** 여기 맞는지 물어보자.
+	else
 		if ( MATCH_TYPE["MT_TEAM_DEATH_3_ON_3"] == MatchType )  then
 			WinLoseAPoint = 2
 		elseif ( MATCH_TYPE["MT_TEAM_DEATH_2_ON_2"] == MatchType )  then
@@ -333,68 +748,87 @@ function GET_ARENA_POINT_PVP_RESULT( UserRating, IsWin, KillNum, MDKillNum, Matc
 		end
 	end
 	
-
-	-- 킬데스 APoint구하자!
-	--local MiddleResult = math.min( 6, ( KillNum + MDKillNum ) )   -- 6으로 수정
-	--local KillDeathAPoint = math.max( 0, MiddleResult )           -- 음수가 나오지 않아 불필요
-	
-	-------------------------------
-	-- 모드별로 킬데스 포인트의 한계값 정하자. (변동 가능성이 있어서 촌스럽게)
 	local MaxKillDeath
-	if ( MATCH_TYPE["MT_TEAM_DEATH_3_ON_3"] == MatchType ) then					-- 3대3 데스
+	if ( MATCH_TYPE["MT_TEAM_DEATH_3_ON_3"] == MatchType ) then
 			MaxKillDeath = 10
-	elseif( MATCH_TYPE["MT_TEAM_DEATH_2_ON_2"] == MatchType ) then			-- 2대2 데스
+	elseif( MATCH_TYPE["MT_TEAM_DEATH_2_ON_2"] == MatchType ) then
 			MaxKillDeath = 10
-	elseif( MATCH_TYPE["MT_TEAM_DEATH_1_ON_1"] == MatchType ) then			-- 1대1 데스
-			MaxKillDeath = 3					--** 3 (데스지만 1대1, 없어질 모드)
-	elseif ( MATCH_TYPE["MT_TEAM_3_ON_3"] == MatchType ) then			-- 3대3 팀
+	elseif( MATCH_TYPE["MT_TEAM_DEATH_1_ON_1"] == MatchType ) then
+			MaxKillDeath = 3
+	elseif ( MATCH_TYPE["MT_TEAM_3_ON_3"] == MatchType ) then
 			MaxKillDeath = 	10
-	elseif ( MATCH_TYPE["MT_TEAM_2_ON_2"] == MatchType ) then			-- 2대2 팀
+	elseif ( MATCH_TYPE["MT_TEAM_2_ON_2"] == MatchType ) then
 			MaxKillDeath = 	10
 	else 
-			MaxKillDeath = 0			-- 1대1 팀매치 경우 킬데스 보너스 하향한 의미임. (8/18 0으로 수정, 킬데스 보너스 주지 않는 의미)
+			MaxKillDeath = 0
 	end
 	
-	--------------------------------
-	local KillDeathAPoint = math.min( MaxKillDeath, ( KillNum + MDKillNum ) )   -- 앞에서 구한 MaxKillDeath 들어감 ***
-		
-
-	-- Rating으로 APoint구하자!
-	--local RatingAPoint = ( UserRating * 0.03 ) 
+	local KillDeathAPoint = math.min( MaxKillDeath, ( KillNum + MDKillNum ) )
 	local RatingMiddle = ( UserRating * 0.01 )
-	local RatingAPoint = math.floor( RatingMiddle ) + 10         --** 로 바꾸어야 함   수정함
+	local RatingAPoint = math.floor( RatingMiddle ) + 10
 	
-		
-
-	-- 최종 결과값
-	local SemiFinalResult = ( ( WinLoseAPoint + KillDeathAPoint ) * RatingAPoint ) + 0.5     -- 8/18 추가 및 수정
-	local FinalResult = math.floor( SemiFinalResult )										-- 8/18 추가 및 수정
+	local SemiFinalResult = ( ( WinLoseAPoint + KillDeathAPoint ) * RatingAPoint ) + 0.5
+	local FinalResult = math.floor( SemiFinalResult )
 	
-	
-	-- 영웅NPC와의 대전이라면?
-	if ( PvpNpcType == PVP_NPC_TYPE["PNT_HERO_NPC"] ) then
-	
+	-- NPC와의 대전
+	if ( PvpNpcType == PVP_NPC_TYPE["PNT_HERO_NPC"] ) or ( PvpNpcType == PVP_NPC_TYPE["PNT_BEGINNER_NPC"] ) then
 		FinalResult = ( FinalResult * 10 )
-		
 	end
 	
+	-- Modern Progression: Domination Bonus (+30% AP for 3+ kills on win)
+	if IsWin == true and KillNum >= 3 then
+		FinalResult = math.floor( FinalResult * 1.3 )
+	end
 	
-	--print( '------------- Arena Point값 구하는 함수 ---------------' )
-	--print( '승패값' )
-	--print( WinLoseAPoint )
-	--print( '킬데스값' )
-	--print( KillDeathAPoint )
-	--print( 'Rating결과값' )
-	--print( RatingAPoint )
-	--print( '최종결과값' )
-	--print( FinalResult )
-	--print( '영웅NPC와 체크한 최종결과값' )
-	--print( FinalResult )
-	--print( '-----------------------------------------------' )
+	-- Modern Progression: Win Streak Multiplier (applied on win)
+	if IsWin == true then
+		FinalResult = math.floor( FinalResult * GET_STREAK_MULTIPLIER() )
+	end
 	
+	-- Modern Progression: First Win of the Day Bonus (2x AP on first win)
+	if IsWin == true and g_IsFirstWinToday == true then
+		FinalResult = FinalResult * 2
+	end
+	
+	-- Modern Progression: Rank Promotion Bonus (2x AP on rank promotion)
+	if IsWin == true and g_IsRankPromoted == true then
+		FinalResult = FinalResult * 2
+	end
+	
+	-- Modern Progression: Clutch Victory Bonus (1.5x AP)
+	if g_IsClutchWin == true then
+		FinalResult = FinalResult * 1.5
+	end
+	
+	-- Modern Progression: Giant Slayer Underdog Bonus (1.5x AP)
+	if g_IsGiantSlayer == true then
+		FinalResult = FinalResult * 1.5
+	end
+	
+	-- Modern Progression: High Stakes Lobby Win Boost (2x AP)
+	if g_IsHighStakesWin == true then
+		FinalResult = FinalResult * 2.0
+	end
+	
+	-- Modern Progression: Nemesis Boss Win Boost (2.5x AP)
+	if g_IsNemesisWin == true then
+		FinalResult = FinalResult * 2.5
+	end
+	
+	-- Modern Progression: Promotion Series Success Bonus (3x AP)
+	if g_PromoOutcome == 1 then
+		FinalResult = FinalResult * 3
+	end
+	
+	-- Modern Progression: Performance Grade Multiplier
+	local deaths = g_LastMatchDeathNum or 0
+	local GradeMultiplier = GET_PERFORMANCE_GRADE_MULTIPLIER( IsWin, KillNum, MDKillNum, deaths )
+	FinalResult = math.floor( FinalResult * GradeMultiplier )
+	
+	-- Modern Progression: Session Heat (Consecutive Play Bonus)
+	FinalResult = math.floor( FinalResult * GET_SESSION_MULTIPLIER() )
 	
 	return FinalResult
-
 end
 
 
@@ -403,7 +837,6 @@ end
 ----------------------------------------------
 function GET_EXP_PVP_RESULT( ExpByLevel, IsWin, KillNum, MDKillNum, MatchType, PvpNpcType )
 	
-	-- 승패 상수	
 	local WinLoseFactor
 	if (IsWin == true) then
 		WinLoseFactor = 1.0
@@ -411,15 +844,10 @@ function GET_EXP_PVP_RESULT( ExpByLevel, IsWin, KillNum, MDKillNum, MatchType, P
 		WinLoseFactor = 0.2
 	end
 	
-
-	-- 킬데스 값
 	local MiddleResult = math.min( ( KillNum + MDKillNum ), 3 )
 	local KillDeathExp = ( 0.2 * MiddleResult )
 	
-	
-	-- MatchType별 가중치 (PT기준 설정)
 	local MatchTypeBonus
-
 		if ( MATCH_TYPE["MT_TEAM_DEATH_3_ON_3"] == MatchType )  then
 			MatchTypeBonus = 2
 		elseif ( MATCH_TYPE["MT_TEAM_DEATH_2_ON_2"] == MatchType )  then
@@ -434,26 +862,70 @@ function GET_EXP_PVP_RESULT( ExpByLevel, IsWin, KillNum, MDKillNum, MatchType, P
 			MatchTypeBonus = 1
 		end
 
-		
-	-- 최종 결과값
 	local FinalResult = ( ExpByLevel * ( WinLoseFactor + KillDeathExp ) ) * MatchTypeBonus
 	
+	-- NPC와의 대전
+	if ( PvpNpcType == PVP_NPC_TYPE["PNT_HERO_NPC"] ) or ( PvpNpcType == PVP_NPC_TYPE["PNT_BEGINNER_NPC"] ) then
+		FinalResult = ( FinalResult * 5 )
+	end
 	
-	--print( '------------- Exp 값 구하는 함수 ---------------' )		
-	--print( '얻어온경험치' )
-	--print( ExpByLevel )
-	--print( '승패값' )
-	--print( WinLoseFactor )
-	--print( '킬데스EXP' )
-	--print( KillDeathExp )
-	--print( '최종결과값' )
-	--print( FinalResult )
-	--print( '-----------------------------------------------' )
+	-- Modern Progression: Domination Bonus (+30% EXP for 3+ kills on win)
+	if IsWin == true and KillNum >= 3 then
+		FinalResult = math.floor( FinalResult * 1.3 )
+	end
 	
-
-	-- 최종 결과값 반환
+	-- Modern Progression: Win Streak Multiplier (applied on win)
+	if IsWin == true then
+		FinalResult = math.floor( FinalResult * GET_STREAK_MULTIPLIER() )
+	end
+	
+	-- Modern Progression: First Win of the Day Bonus (2x EXP on first win)
+	if IsWin == true and g_IsFirstWinToday == true then
+		FinalResult = FinalResult * 2
+	end
+	
+	-- Modern Progression: Rank Promotion Bonus (2x EXP on rank promotion)
+	if IsWin == true and g_IsRankPromoted == true then
+		FinalResult = FinalResult * 2
+	end
+	
+	-- Modern Progression: Clutch Victory Bonus (1.5x EXP)
+	if g_IsClutchWin == true then
+		FinalResult = FinalResult * 1.5
+	end
+	
+	-- Modern Progression: Giant Slayer Underdog Bonus (1.5x EXP)
+	if g_IsGiantSlayer == true then
+		FinalResult = FinalResult * 1.5
+	end
+	
+	-- Modern Progression: High Stakes Lobby Win Boost (2x EXP)
+	if g_IsHighStakesWin == true then
+		FinalResult = FinalResult * 2.0
+	end
+	
+	-- Modern Progression: Nemesis Boss Win Boost (2.5x EXP)
+	if g_IsNemesisWin == true then
+		FinalResult = FinalResult * 2.5
+	end
+	
+	-- Modern Progression: Promotion Series Success Bonus (3x EXP)
+	if g_PromoOutcome == 1 then
+		FinalResult = FinalResult * 3
+	end
+	
+	-- Modern Progression: Performance Grade Multiplier
+	local deaths = g_LastMatchDeathNum or 0
+	local GradeMultiplier = GET_PERFORMANCE_GRADE_MULTIPLIER( IsWin, KillNum, MDKillNum, deaths )
+	FinalResult = math.floor( FinalResult * GradeMultiplier )
+	
+	-- Modern Progression: Session Heat (Consecutive Play Bonus)
+	FinalResult = math.floor( FinalResult * GET_SESSION_MULTIPLIER() )
+	
+	-- Clear the match update flag for the next match
+	CLEAR_MATCH_FLAG()
+	
     return FinalResult
-
 end
 
 

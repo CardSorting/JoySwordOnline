@@ -316,7 +316,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_ELSWORD_01"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_ELSWORD_SWORDMAN"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -325,7 +325,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_ELSWORD_02"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_ELSWORD_SWORDMAN"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -334,7 +334,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_ELSWORD_03"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_ELSWORD_SWORDMAN"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -343,7 +343,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_ELSWORD_04"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_ELSWORD_SWORDMAN"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -352,7 +352,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_ELSWORD_05"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_ELSWORD_SWORDMAN"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -365,7 +365,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_AISHA_01"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_ARME_VIOLET_MAGE"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -374,7 +374,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_AISHA_02"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_ARME_VIOLET_MAGE"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -383,7 +383,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_AISHA_03"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_ARME_VIOLET_MAGE"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -392,7 +392,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_AISHA_04"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_ARME_VIOLET_MAGE"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -401,7 +401,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_AISHA_05"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_ARME_VIOLET_MAGE"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -413,7 +413,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_RENA_01"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_LIRE_ELVEN_RANGER"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -422,7 +422,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_RENA_02"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_LIRE_ELVEN_RANGER"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -431,7 +431,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_RENA_03"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_LIRE_ELVEN_RANGER"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -440,7 +440,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_RENA_04"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_LIRE_ELVEN_RANGER"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -449,7 +449,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_RENA_05"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_LIRE_ELVEN_RANGER"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -463,7 +463,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_RAVEN_01"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_RAVEN_FIGHTER"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -472,7 +472,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_RAVEN_02"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_RAVEN_FIGHTER"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -481,7 +481,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_RAVEN_03"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_RAVEN_FIGHTER"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -490,7 +490,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_RAVEN_04"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_RAVEN_FIGHTER"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -499,7 +499,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_RAVEN_05"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_RAVEN_FIGHTER"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -511,7 +511,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_EVE_01"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_EVE_NASOD"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -520,7 +520,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_EVE_02"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_EVE_NASOD"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -529,7 +529,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_EVE_03"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_EVE_NASOD"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -538,7 +538,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_EVE_04"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_EVE_NASOD"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -547,7 +547,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_NPC_EVE_05"],	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_EVE_NASOD"],	
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 400,	
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_E"],
 }
@@ -607,7 +607,7 @@ PvpMatchManager:AddPvpNpcInfo
 	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_HERO_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_ELSWORD_LORD_KNIGHT"],
-	m_Level			= 1,
+	m_Level			= 70,
 	m_CharName		= "Lou",
 	m_Rating		= 1400,
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_A"],
@@ -619,7 +619,7 @@ PvpMatchManager:AddPvpNpcInfo
 	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_HERO_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_ELSWORD_RUNE_SLAYER"],
-	m_Level			= 1,
+	m_Level			= 80,
 	m_CharName		= "Penentio",
 	m_Rating		= 2200,
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_S"],
@@ -632,7 +632,7 @@ PvpMatchManager:AddPvpNpcInfo
 	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_HERO_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_ARME_ELEMENTAL_MASTER"],
-	m_Level			= 1,
+	m_Level			= 80,
 	m_CharName		= "Neva",
 	m_Rating		= 2500,
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_SS"],
@@ -646,7 +646,7 @@ PvpMatchManager:AddPvpNpcInfo
 	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_HERO_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_ARME_VOID_PRINCESS"],
-	m_Level			= 1,
+	m_Level			= 70,
 	m_CharName		= "Hekate",
 	m_Rating		= 2000,
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_S"],
@@ -660,7 +660,7 @@ PvpMatchManager:AddPvpNpcInfo
 	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_HERO_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_LIRE_WIND_SNEAKER"],
-	m_Level			= 1,
+	m_Level			= 70,
 	m_CharName		= "Boudicca",
 	m_Rating		= 1900,
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_S"],
@@ -674,7 +674,7 @@ PvpMatchManager:AddPvpNpcInfo
 	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_HERO_NPC"],
 	m_UnitClass		= UNIT_CLASS["UC_LIRE_GRAND_ARCHER"],
-	m_Level			= 1,
+	m_Level			= 70,
 	m_CharName		= "Amelia",
 	m_Rating		= 1700,
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_A"],
@@ -688,7 +688,7 @@ PvpMatchManager:AddPvpNpcInfo
 	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_HERO_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_RAVEN_BLADE_MASTER"],
-	m_Level			= 1,
+	m_Level			= 80,
 	m_CharName		= "Ethan",
 	m_Rating		= 3000,
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_SSS"],
@@ -702,7 +702,7 @@ PvpMatchManager:AddPvpNpcInfo
 	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_HERO_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_RAVEN_RECKLESS_FIST"],
-	m_Level			= 1,
+	m_Level			= 80,
 	m_CharName		= "Balzac",
 	m_Rating		= 3300,
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_SSS"],
@@ -716,7 +716,7 @@ PvpMatchManager:AddPvpNpcInfo
 	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_HERO_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_EVE_CODE_NEMESIS"],
-	m_Level			= 1,
+	m_Level			= 80,
 	m_CharName		= "Q-PROTO_00",
 	m_Rating		= 3300,
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_SSS"],
@@ -730,21 +730,20 @@ PvpMatchManager:AddPvpNpcInfo
 	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_HERO_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_EVE_CODE_EMPRESS"],
-	m_Level			= 1,
+	m_Level			= 70,
 	m_CharName		= "Victoria",
 	m_Rating		= 1600,
 	m_Ranking		= PVP_RANK["PVPRANK_RANK_A"],
 	
 }
 
---[[
 PvpMatchManager:AddPvpNpcInfo
 {
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_PVP_BOT_ELSWORD"],
 	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_ELSWORD_SWORDMAN"],
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 500,
 	
 	m_RewardTitleID = 10,
@@ -758,7 +757,7 @@ PvpMatchManager:AddPvpNpcInfo
 	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_ARME_VIOLET_MAGE"],
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 550,
 	
 	m_RewardTitleID = 10,
@@ -772,7 +771,7 @@ PvpMatchManager:AddPvpNpcInfo
 	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_LIRE_ELVEN_RANGER"],
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 600,
 	
 	m_RewardTitleID = 10,
@@ -786,7 +785,7 @@ PvpMatchManager:AddPvpNpcInfo
 	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_RAVEN_FIGHTER"],
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 650,
 	
 	m_RewardTitleID = 10,
@@ -800,7 +799,7 @@ PvpMatchManager:AddPvpNpcInfo
 	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_EVE_NASOD"],
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 575,
 	
 	m_RewardTitleID = 10,
@@ -814,13 +813,12 @@ PvpMatchManager:AddPvpNpcInfo
 	
 	m_PvpNpcType	= PVP_NPC_TYPE["PNT_BEGINNER_NPC"],	
 	m_UnitClass		= UNIT_CLASS["UC_CHUNG_IRON_CANNON"],
-	m_Level			= 1,
+	m_Level			= 50,
 	m_Rating		= 575,
 	
 	m_RewardTitleID = 10,
 	m_RewardTitle	= 0,
 }
---]]
 
 
 
