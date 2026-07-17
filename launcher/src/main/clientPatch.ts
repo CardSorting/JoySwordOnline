@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { inflateSync, deflateSync } from 'node:zlib';
 
-export const DEFAULT_SERVER_HOST = '136.36.127.72';
+export const DEFAULT_SERVER_HOST = '192.168.1.138';
 export const DEFAULT_SERVER_PORTS = {
   login: 9200,
   game: 9300,

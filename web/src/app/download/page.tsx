@@ -25,9 +25,9 @@ export default function DownloadPage() {
     'name': 'JoySword Client & Launcher',
     'operatingSystem': 'Windows 10, Windows 11',
     'applicationCategory': 'GameApplication',
-    'downloadUrl': 'https://manifest.onjoysword.top/releases/1.4.0/JoySword-Launcher-Setup-1.4.0-x64.exe',
+    'downloadUrl': 'https://manifest.onjoysword.top/releases/1.5.0/JoySword-Launcher-Setup-1.5.0-x64.exe',
     'fileSize': '93MB',
-    'softwareVersion': '1.4.0',
+    'softwareVersion': '1.5.0',
     'offers': {
       '@type': 'Offer',
       'price': '0',
