@@ -79,6 +79,8 @@ IMAGE_RUNTIME_SCRIPTS = frozenset(
         "scripts/entrypoint.ps1",
         "scripts/sync-enhancement-table.py",
         "scripts/validate-enhancement-probabilities.py",
+        "scripts/validate-pvp-matchmaking.py",
+        "scripts/patch-globalserver-solo-pvp.py",
         "scripts/enhancement-runtime-canary.py",
     }
 )

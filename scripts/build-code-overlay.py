@@ -51,6 +51,10 @@ INCLUDE_GLOBS: tuple[tuple[str, str], ...] = (
     # ServerResource during configure-offline so local and Azure combat agree.
     ("Elsword/ServerResource", "EnchantTable.lua"),
     ("Elsword/GameServer", "EnchantTable.lua"),
+    # Solo queue policy and the native server fallback NPC pool.
+    ("Elsword/ServerResource", "PvpMatchData.lua"),
+    ("Elsword/Resources", "PvpMatchData.lua"),
+    ("Elsword/ServerResource", "PvpNpcData*.lua"),
 )
 
 EXCLUDE_RE = re.compile(r"(?:^|/)(?:__pycache__/|\.)|\.pyc$")
@@ -142,6 +146,26 @@ def main() -> int:
     if enhancement_validation.returncode != 0:
         print("ERROR: enhancement gameplay invariants failed.", file=sys.stderr)
         return 4
+    pvp_validation = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "validate-pvp-matchmaking.py")],
+        cwd=str(ROOT),
+        check=False,
+    )
+    if pvp_validation.returncode != 0:
+        print("ERROR: PvP matchmaking invariants failed.", file=sys.stderr)
+        return 5
+    pvp_binary_validation = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "patch-globalserver-solo-pvp.py"),
+            "--dry-run",
+        ],
+        cwd=str(ROOT),
+        check=False,
+    )
+    if pvp_binary_validation.returncode != 0:
+        print("ERROR: GlobalServer solo queue patch is incompatible.", file=sys.stderr)
+        return 6
 
     files = collect()
     if not files:

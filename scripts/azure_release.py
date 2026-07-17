@@ -62,6 +62,7 @@ RELEASE_SCRIPTS = frozenset(
         "install-creation-fixes.py",
         "patch-gameserver-max-level-scroll.py",
         "patch-gameserver-unit-class-limit.py",
+        "patch-globalserver-solo-pvp.py",
         "prune-runtime-artifacts.py",
         "rebalance-cashshop-economy.py",
         "repair-account-init.py",
@@ -70,6 +71,7 @@ RELEASE_SCRIPTS = frozenset(
         "stop-offline.py",
         "sync-enhancement-table.py",
         "validate-enhancement-probabilities.py",
+        "validate-pvp-matchmaking.py",
         "enhancement-runtime-canary.py",
     }
 )
@@ -104,10 +106,12 @@ def build_release(version: str, out_dir: Path, commit: str = "unknown") -> tuple
     for command in (
         [sys.executable, str(SCRIPTS / "sync-enhancement-table.py"), "--check"],
         [sys.executable, str(SCRIPTS / "validate-enhancement-probabilities.py"), "--check-only"],
+        [sys.executable, str(SCRIPTS / "validate-pvp-matchmaking.py")],
+        [sys.executable, str(SCRIPTS / "patch-globalserver-solo-pvp.py"), "--dry-run"],
     ):
         result = subprocess.run(command, cwd=str(ROOT), check=False)
         if result.returncode != 0:
-            raise RuntimeError("enhancement invariant validation failed; refusing release build")
+            raise RuntimeError("release invariant validation failed; refusing release build")
     enhancement_manifest = json.loads(
         (ROOT / "config" / "enhancement-invariants.json").read_text(encoding="utf-8")
     )
@@ -135,6 +139,7 @@ def build_release(version: str, out_dir: Path, commit: str = "unknown") -> tuple
         "archive_sha256": sha256_file(archive),
         "database_migration_level": 1,
         "enhancement_validation": "pass",
+        "pvp_matchmaking_validation": "pass",
         "enhancement_invariant_version": enhancement_manifest["version"],
         "enhancement_migration_id": enhancement_manifest["migration"]["id"],
         "enhancement_probability_section_sha256": enhancement_manifest[
@@ -176,6 +181,8 @@ def verify_release(archive: Path, manifest_path: Path) -> None:
         "scripts/install-creation-fixes.py",
         "scripts/rebalance-cashshop-economy.py",
         "scripts/start-offline.py",
+        "scripts/patch-globalserver-solo-pvp.py",
+        "scripts/validate-pvp-matchmaking.py",
     }
     missing = sorted(required - names)
     if missing:

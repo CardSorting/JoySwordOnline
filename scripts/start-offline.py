@@ -25,6 +25,8 @@ ENHANCEMENT_VALIDATOR = ROOT / "scripts" / "validate-enhancement-probabilities.p
 ENHANCEMENT_RUNTIME_TABLE = ELSWORD / "GameServer" / "EnchantTable.lua"
 ENHANCEMENT_RECEIPT = ELSWORD / "offline" / "enhancement-validation.json"
 ENHANCEMENT_CANARY = ROOT / "scripts" / "enhancement-runtime-canary.py"
+PVP_MATCHMAKING_VALIDATOR = ROOT / "scripts" / "validate-pvp-matchmaking.py"
+PVP_MATCHMAKING_PATCHER = ROOT / "scripts" / "patch-globalserver-solo-pvp.py"
 
 if str(ROOT / "scripts") not in sys.path:
     sys.path.insert(0, str(ROOT / "scripts"))
@@ -380,6 +382,36 @@ def validate_enhancement_probabilities() -> None:
         raise SystemExit("Enhancement probability validation failed; refusing to start GameServer.")
 
 
+def validate_pvp_matchmaking() -> None:
+    """Refuse startup when the solo queue or fallback NPC pool is malformed."""
+    if not PVP_MATCHMAKING_VALIDATOR.exists():
+        raise SystemExit(f"Missing PvP matchmaking validator: {PVP_MATCHMAKING_VALIDATOR}")
+    print("Validating solo PvP matchmaking and fallback NPCs...")
+    result = subprocess.run(
+        [sys.executable, str(PVP_MATCHMAKING_VALIDATOR)],
+        cwd=str(ROOT),
+        check=False,
+    )
+    if result.returncode != 0:
+        raise SystemExit("PvP matchmaking validation failed; refusing to start the server stack.")
+
+
+def apply_globalserver_pvp_patch(*, dry_run: bool = False) -> None:
+    """Make the native GlobalServer solo gate agree with the Lua queue policy."""
+    if not PVP_MATCHMAKING_PATCHER.exists():
+        raise SystemExit(f"Missing PvP matchmaking patcher: {PVP_MATCHMAKING_PATCHER}")
+    action = "Validating" if dry_run else "Applying"
+    print(f"{action} native solo PvP matchmaking patch...")
+    command = [sys.executable, str(PVP_MATCHMAKING_PATCHER)]
+    if dry_run:
+        command.append("--dry-run")
+    result = subprocess.run(command, cwd=str(ROOT), check=False)
+    if result.returncode != 0:
+        raise SystemExit(
+            "GlobalServer solo PvP patch failed; refusing to start with a dead solo queue."
+        )
+
+
 def launch_stack(env: dict[str, str], *, headless: bool = False, supervise: bool = False) -> dict[str, int]:
     if os.name != "nt":
         raise SystemExit("The Elsword server binaries are Windows .exe files. Run this launcher on Windows.")
@@ -414,6 +446,8 @@ def launch_stack(env: dict[str, str], *, headless: bool = False, supervise: bool
     else:
         apply_pvp_profile(env)
 
+    validate_pvp_matchmaking()
+    apply_globalserver_pvp_patch()
     validate_enhancement_probabilities()
     validated_enhancement_hash = hashlib.sha256(ENHANCEMENT_RUNTIME_TABLE.read_bytes()).hexdigest()
     enforce_enhancement_integrity()
@@ -508,6 +542,8 @@ def main() -> int:
     check_runtime(args, env)
 
     if args.dry_run:
+        validate_pvp_matchmaking()
+        apply_globalserver_pvp_patch(dry_run=True)
         validate_enhancement_probabilities()
         print("Offline server startup preflight passed.")
         print(f"Profile: {env.get('SERVER_PROFILE', 'US_SERVICE')}")

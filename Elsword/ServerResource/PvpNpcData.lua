@@ -927,6 +927,11 @@ PvpMatchManager:AddPvpNpcInfo
 -- }
 
 
+-- These legacy NUI_PVP_BOT_* templates are explicitly marked unused in
+-- Enum.lua and their client Lua files contain no behavior. Keep them out of
+-- the live beginner pool; the supported NUI_NPC_* roster above supplies the
+-- solo opponent.
+--[[
 PvpMatchManager:AddPvpNpcInfo
 {
 	m_PvpNpcID		= NPC_UNIT_ID["NUI_PVP_BOT_ELSWORD"],
@@ -1009,6 +1014,7 @@ PvpMatchManager:AddPvpNpcInfo
 	m_RewardTitleID = 10,
 	m_RewardTitle	= 0,
 }
+--]]
 
 
 

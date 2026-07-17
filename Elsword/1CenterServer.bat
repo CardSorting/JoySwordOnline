@@ -13,10 +13,14 @@ if defined JOYSWORD_PVP_PROFILE set "PVP_PROFILE=%JOYSWORD_PVP_PROFILE%"
 
 cd /d "%~dp0.."
 where python >nul 2>&1
-if not errorlevel 1 (
-  python scripts\apply-pvp-profile.py %PVP_PROFILE%
-  if errorlevel 1 exit /b 1
+if errorlevel 1 (
+  echo ERROR: Python is required to validate the PvP matchmaking configuration.
+  exit /b 1
 )
+python scripts\apply-pvp-profile.py %PVP_PROFILE%
+if errorlevel 1 exit /b 1
+python scripts\validate-pvp-matchmaking.py
+if errorlevel 1 exit /b 1
 
 cd /d "%~dp0CenterServer"
 start "CenterServer" CenterServer.exe %PROFILE% 0
