@@ -160,7 +160,10 @@ def normalize_simlayer_path_order(text: str) -> str:
     return text[:start] + replacement + text[end:]
 
 
+_DYNAMIC_SPECS_CACHE = None
+
 def patch_lua_paths(text: str, elsword_root: str) -> str:
+    global _DYNAMIC_SPECS_CACHE
     # 1. Base directories
     base_specs = [
         ("GameServer", f"{elsword_root}\\GameServer"),
@@ -170,20 +173,24 @@ def patch_lua_paths(text: str, elsword_root: str) -> str:
     ]
     
     # 2. Dynamically scan all subdirectories of ClientScript that contain .lua files
-    client_script_root = Path(elsword_root) / "ClientScript"
-    dynamic_specs = []
-    if client_script_root.exists():
-        for dirpath, dirnames, filenames in os.walk(client_script_root):
-            dirnames.sort()
-            has_lua = any(f.endswith(".lua") for f in filenames)
-            if has_lua:
-                rel_path = os.path.relpath(dirpath, client_script_root)
-                if rel_path == ".":
-                    continue
-                name_key = "ClientScript" + rel_path.replace("\\", "").replace("-", "").replace("_", "")
-                dynamic_specs.append((name_key, dirpath))
-                
-    dynamic_specs.sort(key=lambda x: x[0])
+    if _DYNAMIC_SPECS_CACHE is None:
+        client_script_root = Path(elsword_root) / "ClientScript"
+        dynamic_specs = []
+        if client_script_root.exists():
+            for dirpath, dirnames, filenames in os.walk(client_script_root):
+                dirnames.sort()
+                has_lua = any(f.endswith(".lua") for f in filenames)
+                if has_lua:
+                    rel_path = os.path.relpath(dirpath, client_script_root)
+                    if rel_path == ".":
+                        continue
+                    name_key = "ClientScript" + rel_path.replace("\\", "").replace("-", "").replace("_", "")
+                    dynamic_specs.append((name_key, dirpath))
+        dynamic_specs.sort(key=lambda x: x[0])
+        _DYNAMIC_SPECS_CACHE = dynamic_specs
+    else:
+        dynamic_specs = _DYNAMIC_SPECS_CACHE
+        
     path_specs = tuple(base_specs + dynamic_specs)
     lua_paths = {name: lua_string_path(path) for name, path in path_specs}
 
@@ -543,7 +550,7 @@ def should_patch_lua(path: Path) -> bool:
     rel = str(path.relative_to(ELSWORD)).replace("\\", "/")
     if "/log/" in rel:
         return False
-    if rel.startswith("Resources/Item.lua"):
+    if rel.endswith("Item.lua"):
         return False
     return True
 
@@ -571,8 +578,7 @@ def apply_lua_tree(env: dict[str, str]) -> int:
 
     lua_changed = 0
     for index, path in enumerate(lua_files, start=1):
-        if index % 500 == 0:
-            progress(f"  Audited {index}/{len(lua_files)} Lua file(s)...")
+        progress(f"  Auditing {index}/{len(lua_files)}: {path.name}")
         original = path.read_text(encoding="utf-8", errors="replace")
         updated = patch_lua_paths(original, elsword_root)
         updated = patch_offline_lua_flags(updated, use_internal_auth)

@@ -250,7 +250,7 @@ GameSysVal:SetProcessCommunication( True )
 --#endif //SERV_PROCESS_COMMUNICATION_KSMS
 
 --[[ JOYSWORD_PVP_PROFILE_BEGIN default ]]
--- applied_utc: 2026-07-17T22:31:27Z
+-- applied_utc: 2026-07-19T22:16:10Z
 -- client_connection_mode: Default
 -- client_switch_connect_mode: 0
 

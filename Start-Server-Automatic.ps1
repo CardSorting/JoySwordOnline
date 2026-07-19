@@ -521,20 +521,48 @@ $SQLCmdPath -S localhost -U sa -P "$DBPassword" $ExtraArgs -b -Q "$SyncIPQuery"
             # Sync R2 manifest with the active IP
             Write-Host "Updating cloud R2 manifest server.json with active IP..." -ForegroundColor Green
             $PythonExe = "python"
-            & $PythonExe -c "import boto3" 2>$null
-            if ($LASTEXITCODE -ne 0) {
-                Write-Host "boto3 not found on default python. Attempting to install..." -ForegroundColor Yellow
-                & $PythonExe -m pip install boto3 --quiet --user 2>$null
+            $Boto3Installed = $false
+            try {
+                $OldPreference = $ErrorActionPreference
+                $ErrorActionPreference = "SilentlyContinue"
                 & $PythonExe -c "import boto3" 2>$null
-                if ($LASTEXITCODE -ne 0) {
+                if ($LASTEXITCODE -eq 0) {
+                    $Boto3Installed = $true
+                }
+                $ErrorActionPreference = $OldPreference
+            } catch {
+                $ErrorActionPreference = $OldPreference
+            }
+
+            if (-not $Boto3Installed) {
+                Write-Host "boto3 not found on default python. Attempting to install..." -ForegroundColor Yellow
+                try {
+                    $OldPreference = $ErrorActionPreference
+                    $ErrorActionPreference = "SilentlyContinue"
+                    & $PythonExe -m pip install boto3 --quiet --user 2>$null
+                    & $PythonExe -c "import boto3" 2>$null
+                    if ($LASTEXITCODE -eq 0) {
+                        $Boto3Installed = $true
+                    }
+                    $ErrorActionPreference = $OldPreference
+                } catch {
+                    $ErrorActionPreference = $OldPreference
+                }
+
+                if (-not $Boto3Installed) {
                     $CustomPython = "C:\Users\media\AppData\Local\Programs\Python\Python311\python.exe"
                     if (Test-Path $CustomPython) {
                         $PythonExe = $CustomPython
                     }
                 }
             }
-            & $PythonExe "$ScriptRoot\scripts\sync_r2_manifest.py" --ip "$PublicIP"
-            if ($LASTEXITCODE -ne 0) {
+            try {
+                $OldPreference = $ErrorActionPreference
+                $ErrorActionPreference = "SilentlyContinue"
+                & $PythonExe "$ScriptRoot\scripts\sync_r2_manifest.py" --ip "$PublicIP"
+                $ErrorActionPreference = $OldPreference
+            } catch {
+                $ErrorActionPreference = $OldPreference
                 Write-Host "Warning: Cloud R2 manifest sync failed." -ForegroundColor Yellow
             }
         }
