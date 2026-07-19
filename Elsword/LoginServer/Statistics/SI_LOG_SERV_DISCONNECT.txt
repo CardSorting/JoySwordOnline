@@ -1,6 +1,0 @@
-  LogType  	  Source   	Destination	    ip     	  RegDate  	  Reason   	
-Disconnect	2       	4611686030516534109	127.0.0.1	2026-07-17 16:05:35	Session_Close [A¡Ë¨ùO A¨ú¡¤a ¡Æ¡§Ao (Session)]	
-Disconnect	2       	4611686030516534109	127.0.0.1	2026-07-17 16:12:42	Session_Close [A¡Ë¨ùO A¨ú¡¤a ¡Æ¡§Ao (Session)]	
-Disconnect	2       	4611686083397301549	127.0.0.1	2026-07-17 16:14:31	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	
-Disconnect	2       	4611686030516534109	127.0.0.1	2026-07-17 16:32:01	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	
-Disconnect	2       	4611686083397301549	127.0.0.1	2026-07-17 16:32:49	IOCP_GetStatus [IOCP_GetStatus Closed by local machine]	

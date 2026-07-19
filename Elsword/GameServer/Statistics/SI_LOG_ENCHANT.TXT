@@ -1,0 +1,1 @@
+   ItemID  	  Lv1 Succ 	  Lv1 Fail 	  Lv2 Succ 	  Lv2 Fail 	  Lv3 Succ 	  Lv3 Fail 	  Lv4 Succ 	  Lv4 Fail 	  Lv5 Succ 	  Lv5 Fail 	  Lv6 Succ 	  Lv6 Fail 	  Lv7 Succ 	  Lv7 Fail 	  Lv8 Succ 	  Lv8 Fail 	  Lv9 Succ 	  Lv9 Fail 	
