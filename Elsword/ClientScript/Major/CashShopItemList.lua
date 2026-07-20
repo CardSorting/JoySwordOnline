@@ -1444,4 +1444,30 @@ FIRST_PAGE_ITEM_LIST = {
 			{	117190	,		} ,--	Ancient Wyvern’s Claw (Eve)
 			{	117191	,		} ,--	Ancient Wyvern’s Claw (Chung)
 			{	117192	,		} ,--	Ancient Wyvern’s Claw (Ara)
+
+			-- Restored Potions and Elixirs
+			{	77000	,		} ,--	Beginner's Potion
+			{	77010	,		} ,--	Beginner's Mana Potion
+			{	77170	,		} ,--	Intermediate Potion
+			{	77180	,		} ,--	Intermediate Mana Potion
+			{	77190	,		} ,--	Advanced Potion
+			{	78902	,		} ,--	Advanced Mana Potion
+			{	77270	,		} ,--	The Most Advanced Potion
+			{	130165	,		} ,--	Complete Recovery Potion
+			{	215680	,		} ,--	Mana Elixir
+			{	132469	,		} ,--	Vigor Potion
+			{	60000877	,		} ,--	Vita Potion
+			{	78560	,		} ,--	Seraphim's Blessing (Elixir)
+			{	78570	,		} ,--	Geb's Blessing (Elixir)
+			{	78580	,		} ,--	Amon's Blessing (Elixir)
+			{	78590	,		} ,--	Cronus' Blessing (Elixir)
+			{	78894	,		} ,--	Giant Potion (Elixir)
+			{	78895	,		} ,--	Blazing Bomb (Elixir)
+			{	78896	,		} ,--	Tracker's Soul (Elixir)
+			{	78897	,		} ,--	Baby Fairy Cradle (Elixir)
+			{	78898	,		} ,--	Denif's Ice Orb (Elixir)
+			{	78899	,		} ,--	Ventus' Wings (Elixir)
+			{	78900	,		} ,--	Rosso's Blazing Ring (Elixir)
+			{	78901	,		} ,--	Giant Hand Potion (Elixir)
+			{	60008001	,		} ,--	Luriel's Awakening Potion
 }, }								

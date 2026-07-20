@@ -11,7 +11,7 @@ secret_access_key = "f535d48c3d3f5af36458c2b695d65cca2480e83bd35a567a89ccfe7cdb7
 endpoint_url = "https://33f8b2564698c222880cbad3e42decad.r2.cloudflarestorage.com"
 bucket_name = "joysword-manifest"
 
-version = "1.5.0"
+version = "1.6.0"
 
 files_to_upload = [
     {

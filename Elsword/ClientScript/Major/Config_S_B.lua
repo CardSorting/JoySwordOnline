@@ -12,13 +12,13 @@ g_pMain:SetSubClientVersion_LUA( "C" )
 
 
 -- 채널 서버
---g_pMain:AddChannelServerIP_LUA( "192.168.1.138", 9400 ) --필드오픈테섭
-g_pMain:AddChannelServerIP_LUA( "192.168.1.138", 9400 ) --본섭오픈테섭
+--g_pMain:AddChannelServerIP_LUA( "136.36.127.72", 9400 ) --필드오픈테섭
+g_pMain:AddChannelServerIP_LUA( "136.36.127.72", 9400 ) --본섭오픈테섭
 g_pMain:SetChannelServerPort( 9400 )
 g_pMain:SetDefaultChannelServerIPIndex( 0 )
 
 -- 가이아 서버군
-g_pMain:AddChannelServerIP_LUA( "192.168.1.138", 9400 ) --필드오픈테섭 
+g_pMain:AddChannelServerIP_LUA( "136.36.127.72", 9400 ) --필드오픈테섭 
 
 g_pMain:SetServerTimeOut( 20 )
 

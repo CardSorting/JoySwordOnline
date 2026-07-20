@@ -9,12 +9,12 @@ g_pMain:SetSubClientVersion_LUA("1")
 
 
 -- 솔레스 채널 서버
-g_pMain:AddChannelServerIP_LUA( "192.168.1.138", 9400 )
+g_pMain:AddChannelServerIP_LUA( "136.36.127.72", 9400 )
 g_pMain:SetChannelServerPort( 9400 )
 g_pMain:SetDefaultChannelServerIPIndex( 0 )
 
 -- 가이아 서버군 추가 테스트로 채널 서버 하나 추가
-g_pMain:AddChannelServerIP_LUA( "192.168.1.138", 9400 )
+g_pMain:AddChannelServerIP_LUA( "136.36.127.72", 9400 )
 
 g_pMain:SetServerTimeOut( 20 )
 

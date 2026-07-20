@@ -170,8 +170,13 @@ def compile_lua_many(sources: list[Path]) -> dict[Path, bytes]:
         shutil.rmtree(work)
     work.mkdir(parents=True)
 
+    cache_dir = (ROOT.parent if (ROOT.parent / ".joysword-kom-build-apks").is_dir() else ROOT) / ".joysword-kom-build-apks"
+    if cache_dir.is_dir():
+        for apk_path in cache_dir.glob("*.apk"):
+            shutil.copy2(apk_path, work / apk_path.name)
+
     staged_files: list[tuple[Path, Path, Path]] = []
-    compile_commands = ["apk add --no-cache lua5.1 >/dev/null"]
+    compile_commands = ["apk add --no-cache --allow-untrusted /work/lua5.1-libs-*.apk /work/lua5.1-5.1.5-r*.apk >/dev/null"]
     for index, source in enumerate(unique_sources):
         staged = work / f"source_{index}.lua"
         out = work / f"source_{index}.luac"

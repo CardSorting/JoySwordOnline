@@ -1,4 +1,4 @@
-﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요
+-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요
 -- #ifdef SERV_CASHITEM_RESOLVE_ADD
 g_pCashItemManager:AddCashItemGroup(	10	,	210000222	)	-- 발렌타인 곰인형(1)
 g_pCashItemManager:AddCashItemResolveAdd(	10	,	210000223	,	1	,	100	)  -- 러블리 발렌타인 곰인형
@@ -14234,3 +14234,29 @@ g_pCashItemManager:AddCashItemPrice(	117189	,	5000	)	--	Ancient Wyvern’s Claw 
 g_pCashItemManager:AddCashItemPrice(	117190	,	5000	)	--	Ancient Wyvern’s Claw (Eve)
 g_pCashItemManager:AddCashItemPrice(	117191	,	5000	)	--	Ancient Wyvern’s Claw (Chung)
 g_pCashItemManager:AddCashItemPrice(	117192	,	5000	)	--	Ancient Wyvern’s Claw (Ara)
+
+-- Restored Potions and Elixirs
+g_pCashItemManager:AddCashItemPrice(	77000	,	500	)	--	Beginner's Potion
+g_pCashItemManager:AddCashItemPrice(	77010	,	500	)	--	Beginner's Mana Potion
+g_pCashItemManager:AddCashItemPrice(	77170	,	500	)	--	Intermediate Potion
+g_pCashItemManager:AddCashItemPrice(	77180	,	500	)	--	Intermediate Mana Potion
+g_pCashItemManager:AddCashItemPrice(	77190	,	500	)	--	Advanced Potion
+g_pCashItemManager:AddCashItemPrice(	78902	,	500	)	--	Advanced Mana Potion
+g_pCashItemManager:AddCashItemPrice(	77270	,	500	)	--	The Most Advanced Potion
+g_pCashItemManager:AddCashItemPrice(	130165	,	1000	)	--	Complete Recovery Potion
+g_pCashItemManager:AddCashItemPrice(	215680	,	1000	)	--	Mana Elixir
+g_pCashItemManager:AddCashItemPrice(	132469	,	1000	)	--	Vigor Potion
+g_pCashItemManager:AddCashItemPrice(	60000877	,	1000	)	--	Vita Potion
+g_pCashItemManager:AddCashItemPrice(	60008001	,	1000	)	--	Luriel's Awakening Potion
+g_pCashItemManager:AddCashItemPrice(	78560	,	1000	)	--	Seraphim's Blessing (Elixir)
+g_pCashItemManager:AddCashItemPrice(	78570	,	1000	)	--	Geb's Blessing (Elixir)
+g_pCashItemManager:AddCashItemPrice(	78580	,	1000	)	--	Amon's Blessing (Elixir)
+g_pCashItemManager:AddCashItemPrice(	78590	,	1000	)	--	Cronus' Blessing (Elixir)
+g_pCashItemManager:AddCashItemPrice(	78894	,	1500	)	--	Giant Potion (Elixir)
+g_pCashItemManager:AddCashItemPrice(	78895	,	1000	)	--	Blazing Bomb (Elixir)
+g_pCashItemManager:AddCashItemPrice(	78896	,	1000	)	--	Tracker's Soul (Elixir)
+g_pCashItemManager:AddCashItemPrice(	78897	,	1000	)	--	Baby Fairy Cradle (Elixir)
+g_pCashItemManager:AddCashItemPrice(	78898	,	1000	)	--	Denif's Ice Orb (Elixir)
+g_pCashItemManager:AddCashItemPrice(	78899	,	2500	)	--	Ventus' Wings (Elixir)
+g_pCashItemManager:AddCashItemPrice(	78900	,	2500	)	--	Rosso's Blazing Ring (Elixir)
+g_pCashItemManager:AddCashItemPrice(	78901	,	1500	)	--	Giant Hand Potion (Elixir)
