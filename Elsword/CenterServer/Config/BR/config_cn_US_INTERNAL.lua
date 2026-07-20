@@ -30,7 +30,7 @@ SimLayer:SetUseKogOTP ( true )
 		PBCT_DB					= 2,	// DB 통신 Manager를 통해
 		PBCT_UNUSUAL		= 3,	// 섞어 쓰던가 특이 사항 있는 경우
 --]]
-SimLayer:SetPublisherBillingConnectType (PBCT_NORMAL)
+SimLayer:SetPublisherBillingConnectType ( PBCT_DB )
 SimLayer:SetCheckCouponByPublisher ( false )
 
 -- Auth Flag --

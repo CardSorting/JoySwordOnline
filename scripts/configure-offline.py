@@ -254,10 +254,10 @@ def is_server_config(path: Path) -> bool:
         rel = path.relative_to(ELSWORD)
     except ValueError:
         return False
-    if len(rel.parts) != 2:
+    name = path.name
+    if not (name.startswith("config_") and name.endswith(".lua")):
         return False
-    server_dir, name = rel.parts
-    return server_dir in SERVER_DIRS and name.startswith("config_") and name.endswith(".lua")
+    return any(part in SERVER_DIRS for part in rel.parts)
 
 
 def patch_offline_billing(text: str, path: Path) -> str:
