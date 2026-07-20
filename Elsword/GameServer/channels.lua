@@ -1,4 +1,4 @@
-﻿-- enum CHANNEL_TYPE
+-- enum CHANNEL_TYPE
 CHANNEL_TYPE = 
 {
 	CT_PVP				= 1,
@@ -30,6 +30,17 @@ g_pChannelManager:SetStartDungeonID( CTI_DUNGEON )
 g_pChannelManager:AddCMTemplet
 {
 	CHANNEL_ID		= 1,
+	CHANNEL_TYPE	= CHANNEL_TYPE["CT_SQUARE"],
+
+	MIN_LEVEL  		= 1,
+	MAX_LEVEL  		= 100,
+}
+
+-- 거래광장 (Market Square) 채널 추가
+g_pChannelManager:AddCMTemplet
+{
+	CHANNEL_ID		= 40,
+	MAP_ID			= 163, -- WI_SQUARE_MARKET
 	CHANNEL_TYPE	= CHANNEL_TYPE["CT_SQUARE"],
 
 	MIN_LEVEL  		= 1,
