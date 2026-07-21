@@ -12,16 +12,21 @@
     <img src="https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js" alt="Next.js" />
     <img src="https://img.shields.io/badge/Electron-Desktop-blue?style=flat-square&logo=electron" alt="Electron" />
     <img src="https://img.shields.io/badge/Economy-Rebalanced%20100%25-success?style=flat-square" alt="Economy Rebalanced" />
+    <img src="https://img.shields.io/badge/Enhancement-0%25%20Destruction-brightgreen?style=flat-square" alt="0 Destruction" />
+    <img src="https://img.shields.io/badge/PvP%20AI-V7%20Grounded-purple?style=flat-square" alt="PvP AI V7" />
     <img src="https://img.shields.io/badge/Tests-30%2F30%20Passing-brightgreen?style=flat-square" alt="Tests Passing" />
     <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License" />
   </p>
 
   <p align="center">
     <a href="#🚀-quick-start-guide"><b>Quick Start</b></a> •
-    <a href="#📐-architecture-overview"><b>Architecture</b></a> •
+    <a href="#📐-architecture--network-boundary-map"><b>Architecture & Ports</b></a> •
     <a href="#⚡-features"><b>Features</b></a> •
     <a href="#💎-master-economy--gacha-architecture"><b>Master Economy</b></a> •
-    <a href="#🛠️-cli-utilities-reference"><b>CLI Reference</b></a> •
+    <a href="#⚡-monetization--progression-database-suite"><b>Monetization DB Suite</b></a> •
+    <a href="#⚔️-npc-pvp-intelligence-v7"><b>PvP AI V7</b></a> •
+    <a href="#🧪-test--verification-suites"><b>Test Suites</b></a> •
+    <a href="#🛠️-cli-utilities--operator-reference"><b>CLI Reference</b></a> •
     <a href="#📖-documentation-index"><b>Documentation</b></a> •
     <a href="#🩺-quick-troubleshooting"><b>Troubleshooting</b></a>
   </p>
@@ -33,22 +38,28 @@
 
 ## ⚡ Features
 
-* **⚡ Core Server Stack**: Local or containerized execution of the five legacy server executables (*Center, Game, Channel, Login, Global*) bundled with an optimized SQL Server database (`ES_BILLING`, `Game01`, `Account`).
+* **⚡ Core Server Stack**: Local or containerized execution of all five legacy server executables (*Center, Game, Channel, Login, Global*) coupled with an optimized SQL Server database (`ES_BILLING`, `Game01`, `Account`).
 * **💎 Modern CashShop & Gacha Economy Engine**:
-  * **100% Item Coverage**: 17,042+ catalog items normalized into F2P-friendly price tiers across `CashItemPrice.lua` and `ES_BILLING.dbo.EB_Product`.
-  * **Server-Side Price Validation**: `EBP_BuyItem` dynamically validates unit price x quantity against database product tables and logs positive transaction values.
+  * **100% Item Catalog Coverage**: 17,042+ catalog items normalized into F2P-friendly price tiers across `CashItemPrice.lua` and `ES_BILLING.dbo.EB_Product`.
+  * **Server-Side Price Validation**: `EBP_BuyItem` stored procedure dynamically validates unit price x quantity against database product tables and logs positive transaction values.
   * **2x First Top-Up Bonus**: 100% cash bonus on first purchase across 6 USD tiers ($0.99 to $99.99).
   * **10% Starlight Cashback**: Earn 10% Starlight Tokens on all cash purchases, redeemable for endgame Lv.11 & Lv.12 Magic Amulets and prestige cosmetics.
   * **15-Tier VIP Loyalty & Paragon Pass**: Includes 15 VIP tiers with ED multipliers, fee discounts, monthly Ice Burner stipends, and a 50-tier Paragon Battle Pass.
-* **🛡️ Identity Sync Engine**: Bridges modern user authentication (Argon2id hashing via Next.js + SQL) directly with legacy game database structures in real-time.
-* **🎮 Master Economy Balance**: Zero enhancement destruction (0% Break / 0% DownTo0 on Lv.1–12), 5x field boss drop scaling, authentic Gacha rates (0.8% SSR) + 200 Token Pity Crafting exchange, and modern Echo NPC Shop items.
-* **🔌 Dynamic Client Patching**: Custom Python algorithms to dynamically override client IP routing tables and repack `.kom` bytecode packages (`data036.kom`) on startup.
-* **💻 Electron Desktop Launcher**: A ready-to-run Windows client wrapper that applies resolutions, launches processes, and bypasses UAC flags using shims.
-* **☁️ Infrastructure as Code**: Terraform configurations to deploy the entire environment securely to Azure VMs with VNet-isolated networking.
+  * **Avatar Salvage & Recycling**: Duplicate Ice Burner costume pieces salvage into Ice Burner Mileage Tokens for continuous item recycling.
+* **🛡️ Modern Auth & Identity Sync Engine**: Next.js 14 Web Portal providing Firebase Auth & Argon2id password security with instant credential sync (`/api/account/sync`) directly to legacy MSSQL identity schemas (`Account.dbo.T_Account`).
+* **🎮 Hardened Gameplay & Zero-RNG Destruction**:
+  * **0% Break / 0% DownTo0** across equipment enhancement Lv.1–12 in `EnchantTable.lua` (no item destruction or upgrade reset).
+  * **5x Middle Boss Drop Scaling** in `FieldBonusDrop.lua` + escalated Boss ED drops in `DropTable.lua`.
+  * **Authentic Gacha Rates**: 0.8% SSR / 6.0% SR / 93.2% R with a 200 Token Pity Exchange recipe for Lv.12 Magic Amulets.
+* **⚔️ Grounded NPC PvP AI V7 Engine**: Autonomous competitive combat intelligence across all 10 Hero NPCs (Amelia, Apple, Balak, Edan, Lime, Low, Noa, Penensio, Q-PROTO_00, Spika) with a 48-signal shared contract and action-confirmation lifecycle tracking.
+* **🔥 Code Overlay & Hot-Patching Engine**: Lightweight code deployment architecture (`build-code-overlay.py`, `apply-code-overlay.ps1`) that separates code fixes from the multi-gigabyte static asset payload, allowing zero-downtime hot-path patching.
+* **🔌 Dynamic Client Patching**: Custom Python algorithms (`patch-client-kom.py`, `local_connect.py`) that unpack, modify, and repack encrypted client configuration archives (`data036.kom`) and override IP routing tables on startup.
+* **💻 Electron Desktop Launcher**: Ready-to-run Windows client wrapper with custom resolution selection, process control, and automatic UAC elevation bypass via `RunAsInvoker` shims.
+* **☁️ Infrastructure as Code & Tunnels**: Docker Compose stack (`joysword-mssql`, `joysword-postgres`, `joysword-server`), Cloudflare Tunnel integration (`Start-Cloudflare-Tunnel.bat`), and Terraform automation (`azure_deploy.py`) to provision VM server stacks and web portals in Azure.
 
 ---
 
-## 📐 Architecture Overview
+## 📐 Architecture & Network Boundary Map
 
 ```mermaid
 flowchart TD
@@ -57,8 +68,8 @@ flowchart TD
     end
 
     subgraph Web ["Web & Identity Layer"]
-        W[Next.js Portal / Gacha Storefront] -->|Argon2id Hash| DB_PG[(Postgres Database)]
-        W -->|Sync Credentials & Cash| DB_MS[(MSSQL Database - ES_BILLING / Game01)]
+        W[Next.js Portal / Gacha Storefront] -->|Firebase Auth / Argon2id| DB_PG[(Postgres Database)]
+        W -->|Sync API /api/account/sync| DB_MS[(MSSQL Database - ES_BILLING / Game01 / Account)]
     end
 
     subgraph Server ["Server Stack (Docker / VM)"]
@@ -73,6 +84,19 @@ flowchart TD
     C -->|Session / Port 9300| Game
     C -->|Lobby / Port 9400| Channel
 ```
+
+### 🌐 Network Ports & Service Map
+
+| Service Name | Port (Host / Container) | Protocol | Purpose & Traffic Direction |
+| :--- | :--- | :--- | :--- |
+| **LoginServer** | `9200` | TCP | Inbound client authentication and session ticket issuance. |
+| **GameServer** | `9300` | TCP | Inbound active gameplay instance, combat events, and inventory state sync. |
+| **ChannelServer** | `9400` | TCP | Inbound lobby channel management, room creation, and party coordination. |
+| **CenterServer** | `9100` | TCP | Internal server process synchronization, inter-service IPC, and heartbeat monitoring. |
+| **GlobalServer** | `9500` | TCP | Internal cross-channel PvP arena matchmaking and battle dispatch. |
+| **MSSQL Database** | `1433` | TCP | Game, account, and cash shop billing database operations (`ES_BILLING`, `Game01`, `Account`). |
+| **PostgreSQL DB** | `5432` | TCP | Web portal identity storage (`joysword_web`) for Argon2id credential hashing. |
+| **Next.js Web Portal** | `3000` | TCP / HTTP | Player registration, Gacha Storefront, account sync API, and wiki. |
 
 ---
 
@@ -97,7 +121,7 @@ flowchart LR
         Locker -->|Claimed In-Game| Inven[Player Inventory]
         Inven -->|Dismantle| Salvage[Avatar Salvage Gacha Loop]
         Star -->|Redeem| Amulet[Magic Amulet Lv.11 / 12]
-    </div>
+    end
 ```
 
 ### 📊 Master Economy Rebalancing Breakdown (Phases 1–10)
@@ -117,9 +141,43 @@ flowchart LR
 
 ---
 
-## NPC PvP Intelligence V7
+## ⚡ Monetization & Progression Database Suite
 
-JoySword includes a runtime-grounded competitive cognition system for all ten Hero NPC PvP profiles (Amelia, Apple, Balak, Edan, Lime, Low, Noa, Penensio, Q-PROTO_00, Spika). V6 supplies persistent match strategy, exchange plans, and adaptive defense, while V7 verifies how actions pass through the legacy engine.
+The system includes modular Python database injectors that automatically provision stored procedures, tables, and triggers into MSSQL:
+
+| Installer Script | System Introduced | Mechanics & Database Impact |
+| :--- | :--- | :--- |
+| 💎 `install-first-topup-bonus.py` | **2x First Top-Up Bonus** | Grants 100% bonus cash on first deposit across 6 USD tiers ($0.99–$99.99). |
+| ⭐ `install-starlight-cashback-system.py` | **10% Starlight Cashback** | Grants 10% Starlight Tokens on cash purchases, redeemable for endgame Magic Amulets. |
+| 👑 `install-vip-tier-system.py` | **15-Tier VIP Loyalty** | Accumulates lifetime spend to unlock up to +30% ED bonus and monthly Ice Burner stipends. |
+| 🎟️ `install-battlepass-system.py` | **50-Tier Paragon Pass** | Tracks battle pass XP and unlocks tiered ED, Ice Burner, and cosmetic rewards. |
+| 📅 `install-monthly-pass-system.py` | **Monthly Paragon Pass** | Manages monthly active subscriber status and recurring stipend triggers. |
+| 🔥 `install-login-streak.py` | **7-Day Login Streak** | Rewards consecutive daily logins with scaling Cash, ED, and consumable packages. |
+| 🎁 `install-winback-package.py` | **Welcome Back Package** | Delivers a Lv.10 Magic Amulet winback bundle to returning players upon first login. |
+| 💵 `install-cash-allowance.py` | **Daily Cash Allowance** | Automatically grants 12,000 Cash daily upon initial server session verification. |
+| 💰 `install-ed-allowance.py` | **Daily ED Allowance** | Grants level-scaled ED currency stipends on daily server login. |
+
+---
+
+## 🔥 Code Overlay & Hot-Patching Engine
+
+Deploying legacy game environments usually requires uploading multi-gigabyte server binaries, `.kom` archives, and SQL `.bak` dumps. JoySword solves this with a **Code Overlay Architecture**:
+
+```mermaid
+flowchart LR
+    Bulk["Bulk Workspace (~6.7 GB Static Assets)"] --> VM["Target Server VM / Container"]
+    Overlay["Code Overlay ZIP (~150 KB Code & SQL)"] -->|Extracted Over Workspace| VM
+    VM --> Ready["Always Up-To-Date Server Stack"]
+```
+
+* **`scripts/build-code-overlay.py`**: Packages code files (`*.py`, `*.ps1`, `*.sql`), configuration templates, and Lua balance tables into `build/joysword-code-overlay.zip` while verifying zero forbidden IP address leaks.
+* **`scripts/apply-code-overlay.ps1`**: Runs during deployment to extract current code overlay files *over* existing bulk directories, guaranteeing the server runs updated scripts without re-building multi-gigabyte images.
+
+---
+
+## ⚔️ NPC PvP Intelligence V7
+
+JoySword includes a runtime-grounded competitive cognition system for all ten Hero NPC PvP profiles (*Amelia, Apple, Balak, Edan, Lime, Low, Noa, Penensio, Q-PROTO_00, Spika*). V6 supplied persistent match strategy, exchange plans, and adaptive defense, while V7 verifies how actions pass through the legacy engine.
 
 The V7 execution path separates decision, action request, engine start, combat result, and attributed learning:
 
@@ -127,153 +185,258 @@ The V7 execution path separates decision, action request, engine start, combat r
 decision -> action request -> engine start -> combat result -> attributed learning
 ```
 
-Key improvements include:
-* A shared 48-signal contract distinguishing direct, derived, heuristic, and unverified runtime information.
-* Expiring observations with source, confidence, and action attribution.
-* Bounded action lifecycles for contact, damage, block/armor, whiff, interruption, and recovery.
-* Character-specific timing, range, pacing, defense, and resource calibration across all 10 Hero NPCs.
+```mermaid
+flowchart LR
+    Sensors["Runtime State (48 Signals)"] --> Decision["V7 Cognitive Matrix"]
+    Decision --> Action["Action Request"]
+    Action --> Engine["Legacy Game Engine"]
+    Engine --> Feedback["Combat Confirmation & Lifecycle"]
+    Feedback --> Learning["Attributed Learning Loop"]
+    Learning --> Sensors
+```
 
-Read the [companion brief](docs/PVP_AI_V7_COMPANION_BRIEF.md) for the concise overview, [implementation strategy](docs/PVP_AI_V7_STRATEGY.md) for rollout guidance, [design philosophy](docs/PVP_AI_V7_DESIGN_PHILOSOPHY.md) for fairness principles, and [technical whitepaper](docs/PVP_AI_V7_WHITEPAPER.md) for architecture.
+Key technical milestones include:
+* **48-Signal Shared Contract**: Distinguishes direct, derived, heuristic, and unverified runtime information.
+* **Confirmation Lifecycle**: Tracks action lifecycles for contact, damage, block/armor, whiff, interruption, and recovery.
+* **Character Calibration**: Unique timing, range, pacing, defense, and resource calibration across all 10 Hero NPCs.
+* **Propagation Patcher**: `propagate-pvp-ai-v7.py` updates Lua configurations dynamically across server resource paths.
+
+Read the [Companion Brief](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/PVP_AI_V7_COMPANION_BRIEF.md), [Implementation Strategy](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/PVP_AI_V7_STRATEGY.md), [Design Philosophy](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/PVP_AI_V7_DESIGN_PHILOSOPHY.md), and [Technical Whitepaper](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/PVP_AI_V7_WHITEPAPER.md).
 
 ---
 
-## 🛠️ CLI Utilities Reference
+## 🧪 Test & Verification Suites
 
-| Utility Script | Primary Purpose | Command Example |
+The repository contains automated test suites to ensure system integrity, non-destructive mechanics, netcode routing, and billing procedures:
+
+| Test Suite File | Domain / Focus | Key Test Coverage |
 | :--- | :--- | :--- |
-| 💎 `rebalance-cashshop-economy.py` | Rebalance CashShop item prices into transparent tiers & inject missing catalog items. | `python scripts/rebalance-cashshop-economy.py --apply` |
-| 🗄️ `restore-cashshop.py` | Populate `ES_BILLING.dbo.EB_Product` with 17,042 restored items, package links & socket attributes. | `python scripts/restore-cashshop.py` |
-| 🧪 `test-master-economy.py` | Execute the 30-test automated verification suite for economy integrity & SQL procedures. | `python tests/test-master-economy.py` |
-| 🔍 `verify-cash-deduction-flow.py` | Run 10 billing integrity checks for cash deduction, topup multipliers & price definitions. | `python scripts/verify-cash-deduction-flow.py` |
-| 🩺 `audit-billing.py` | Perform live database healthcheck of `ES_BILLING`, user cash accounts & catalog metrics. | `python scripts/audit-billing.py` |
-| 🛠️ `repair-account-init.py` | Repair account initialization tables for users encountering `GetUID() : 0` errors. | `python scripts/repair-account-init.py` |
-| ⚙️ `configure-offline.py` | Update server configuration files and profiles for offline or local hosting. | `python scripts/configure-offline.py` |
+| 🧪 [test-master-economy.py](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/tests/test-master-economy.py) | **Master Economy (30 Tests)** | CashShop catalog sync, price normalization, cashback calculations, VIP tier logic, daily stipends, and SQL procedure checks. |
+| 🛡️ [test_enhancement_hardening.py](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/tests/test_enhancement_hardening.py) | **Enhancement Hardening** | Validates 0% Break and 0% DownTo0 probability tables in `EnchantTable.lua` for equipment upgrade safety. |
+| 🔍 [test_enhancement_integrity.py](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/tests/test_enhancement_integrity.py) | **Enhancement Rate Integrity** | Verifies probability distributions, item destruction suppression, and CSV validation outputs. |
+| ⚔️ [test_globalserver_solo_pvp_patch.py](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/tests/test_globalserver_solo_pvp_patch.py) | **GlobalServer Solo PvP** | Audits bytecode patching logic for GlobalServer to enable 1v1 AI arena matchmaking without full lobbies. |
+| 🌐 [test_pvp_matchmaking.py](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/tests/test_pvp_matchmaking.py) | **PvP Matchmaking Netcode** | Verifies UDP/P2P socket parameters, host migration thresholds, and battle queue dispatch. |
+| ☁️ [test_azure_deploy.py](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/tests/test_azure_deploy.py) | **Azure Cloud Deployment** | Tests Terraform variables, exclusion filters, and automated deployment payload packaging. |
+
+Run all tests via pytest or Python runners:
+```bash
+python tests/test-master-economy.py
+python -m pytest tests/
+```
+
+---
+
+## 🛠️ CLI Utilities & Operator Reference
+
+### 🎮 Unified Operator CLI (`joysword.bat`)
+The root batch wrapper `joysword.bat` provides a unified entrypoint for common operational tasks:
+
+```cmd
+:: Prune temporary build and runtime log artifacts
+joysword.bat prune [--dry-run] [--legacy]
+
+:: Audit container payload budget and deployment exclusions
+joysword.bat audit [--workspace-only] [--payload-only] [--budget-mib 500]
+
+:: Stage container payload and bake configuration files
+joysword.bat stage
+
+:: Generate build manifest and sha256 digests
+joysword.bat package
+
+:: Build Docker container image (joysword-server:local)
+joysword.bat build
+```
+
+### 💎 Economy & Billing Automation
+* 💎 `rebalance-cashshop-economy.py`: Rebalances CashShop prices into transparent tiers and updates `CashItemPrice.lua`.  
+  `python scripts/rebalance-cashshop-economy.py --apply`
+* 🗄️ `restore-cashshop.py`: Restores 17,042 items, package links, and socket attributes into `ES_BILLING.dbo.EB_Product`.  
+  `python scripts/restore-cashshop.py`
+* 🩺 `audit-billing.py`: Performs live database health checks of `ES_BILLING`, user cash accounts, and product catalog metrics.  
+  `python scripts/audit-billing.py`
+* 🔍 `verify-cash-deduction-flow.py`: Verifies billing procedures for cash deductions, top-up multipliers, and price definitions.  
+  `python scripts/verify-cash-deduction-flow.py`
+* 🎁 `further_improve_iceburners.py`: Rebalances Ice Burner avatar drop ratios, salvage rates, and mileage token recycling loops.  
+  `python scripts/further_improve_iceburners.py`
+
+### 🛡️ System & Account Management
+* 🛠️ `repair-account-init.py`: Repairs account initialization tables for accounts encountering `GetUID() : 0` errors.  
+  `python scripts/repair-account-init.py`
+* ⚙️ `configure-offline.py`: Configures server profile files, IP bindings, and directories for offline or local hosting.  
+  `python scripts/configure-offline.py`
+* 👤 `manage-users.py`: CLI tool for administrative account creation, password resets, and cash balance adjustments.  
+  `python scripts/manage-users.py`
+
+### ⚔️ PvP & Intelligence Patcher
+* 🤖 `propagate-pvp-ai-v7.py`: Propagates V7 Hero NPC PvP intelligence and 48-signal configs across server Lua files.  
+  `python scripts/propagate-pvp-ai-v7.py`
+* ⚔️ `apply-pvp-profile.py`: Switches server netcode settings, host migration thresholds, and match parameters.  
+  `python scripts/apply-pvp-profile.py`
+
+### 🔌 Client & Release Tooling
+* 🔌 `patch-client-kom.py`: Unpacks encrypted `.kom` client bytecode (`data036.kom`), updates IP routing, and repacks archives.  
+  `python scripts/patch-client-kom.py`
+* 📦 `build-public-release.py`: Packages complete server, client, and web portal public release zips.  
+  `python scripts/build-public-release.py`
+* 🛠️ `build-code-overlay.py`: Builds the lightweight code overlay ZIP archive for cloud deployments.  
+  `python scripts/build-code-overlay.py`
+
+---
+
+## ⚙️ Environment Variables Reference
+
+| Variable Name | Default Value | Target Component | Purpose & Description |
+| :--- | :--- | :--- | :--- |
+| `MSSQL_SA_PASSWORD` | `JoySword!Offline123` | MSSQL Container & Server | Administrative password for Microsoft SQL Server (`sa`). |
+| `POSTGRES_PASSWORD` | `JoySwordPostgresLocal123` | Postgres Container & Portal | Password for Next.js web portal PostgreSQL database (`joysword_web`). |
+| `SERVER_PROFILE` | `US_SERVICE` | Server Executables | Game server configuration profile tier. |
+| `LOGIN_MODE` | `PUBLIC` | LoginServer | Controls client login verification mode (`PUBLIC` / `INTERNAL`). |
+| `OFFLINE_AUTH` | `INTERNAL` | CenterServer | Authenticates account credentials locally vs remote auth server. |
+| `SERVER_READINESS_MODE` | `strict` | Server Executables | Controls readiness checks before accepting socket connections. |
+| `JOYSWORD_PVP_PROFILE` | `v7_grounded` | GlobalServer | Controls active PvP AI profile calibration (V6 adaptive vs V7 grounded). |
 
 ---
 
 ## 📁 Repository Structure
 
-| Component | Path | Description |
+| Directory / Component | Path | Description |
 | :--- | :--- | :--- |
-| 🎮 **Server** | [`Elsword/`](file:///c:/Users/media/Downloads/JoySwordOffline/Elsword) | Executable files, log configurations, Lua price files, and database backups. |
-| 🌐 **Portal** | [`web/`](file:///c:/Users/media/Downloads/JoySwordOffline/web) | Next.js authentication portal, Gacha Storefront, and searchable wiki. |
-| 💻 **Launcher** | [`launcher/`](file:///c:/Users/media/Downloads/JoySwordOffline/launcher) | Desktop Electron app codebase. |
-| ⚙️ **Client** | [`client/`](file:///c:/Users/media/Downloads/JoySwordOffline/client) | Windows client scripts, patches, and launchers. |
-| 🗄️ **Database** | [`database/`](file:///c:/Users/media/Downloads/JoySwordOffline/database) | MSSQL routines, cash deduction procedures, VIP policies, and restoration SQL scripts. |
-| ☁️ **Infra** | [`infra/`](file:///c:/Users/media/Downloads/JoySwordOffline/infra) | Azure VM and network deployment scripts. |
-| 🛠️ **Scripts** | [`scripts/`](file:///c:/Users/media/Downloads/JoySwordOffline/scripts) | Python automation for cash shop rebalancing, database healthchecks, and billing audits. |
-| 🧪 **Tests** | [`tests/`](file:///c:/Users/media/Downloads/JoySwordOffline/tests) | Master economy unit test suite (`test-master-economy.py`). |
+| 🎮 **Server Executables** | [Elsword/](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/Elsword) | Legacy server binaries, process startup bat scripts, LUA resource files, and MSSQL database dumps. |
+| 🌐 **Web Portal** | [web/](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/web) | Next.js 14 web registration portal, Gacha Storefront, Firebase Auth sync API, and searchable game wiki. |
+| 💻 **Desktop Launcher** | [launcher/](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/launcher) | Electron desktop application codebase with resolution selector, patcher, and UAC shims. |
+| ⚙️ **Client Tools** | [client/](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/client) | Client launchers, IP override patches, and KOM repacking utilities. |
+| 🗄️ **Database** | [database/](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/database) | MSSQL schema definitions, stored procedures (`EBP_BuyItem`), stored cash procedures, and repair SQL scripts. |
+| ☁️ **Infrastructure** | [infra/](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/infra) | Terraform Infrastructure as Code for Azure VM deployment and networking. |
+| 📖 **Documentation** | [docs/](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs) | Complete technical library covering PvP AI, enhancement math, client networking, and deployment playbooks. |
+| 🛠️ **Scripts** | [scripts/](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/scripts) | 150+ Python and PowerShell automation scripts for database maintenance, patching, and economy audits. |
+| 🧪 **Tests** | [tests/](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/tests) | Automated test suites for economy, enhancement hardening, PvP netcode, and deployment automation. |
 
 ---
 
 ## 🚀 Quick Start Guide
 
 ### 📋 Prerequisites
-* **Node.js** (v18.x or v20.x recommended)
-* **Python** (v3.10+ recommended)
-* **Microsoft SQL Server** / **Docker** (for local server execution)
+* **Node.js**: v18.x or v20.x recommended
+* **Python**: v3.10+ recommended
+* **Docker & Docker Compose**: For containerized database & server execution
+* **PowerShell 7+**: For running administrative server scripts
 
-### ⚙️ 1. Environment Configuration
-Before launching services, copy the environment templates and insert your local or staging variables:
-* **Root Settings**: Copy `.env.example` to `.env` in the root folder.
-* **Web Settings**: Copy `web/.env.example` to `web/.env`.
-* **Server Settings**: Copy `Elsword/offline/offline.env.example` to `Elsword/offline/offline.env`.
+### ⚙️ 1. Environment Setup
+Copy template environment files and set your local variables:
+```bash
+# Copy root environment variables
+copy .env.example .env
 
-### 🌐 2. Start the Account & Gacha Portal
-Spin up the Next.js frontend and API route handlers:
+# Copy web portal environment configuration
+copy web\.env.example web\.env
+
+# Copy server offline configuration
+copy Elsword\offline\offline.env.example Elsword\offline\offline.env
+```
+
+### 🐳 2. Start Containerized Database Stack
+Spin up Microsoft SQL Server and PostgreSQL containers:
+```bash
+docker compose up -d mssql postgres
+```
+
+### 🌐 3. Launch Account & Gacha Portal
+Spin up the Next.js frontend web portal and account sync API:
 ```bash
 cd web
 npm install
 npm run dev
 ```
-Access the portal and Gacha Storefront at `http://localhost:3000`.
+Open `http://localhost:3000` to view the registration portal and Gacha Storefront.
 
-### 💻 3. Run the Electron Desktop Launcher
-Compile and boot the Electron wrapper client:
+### 💻 4. Run the Electron Desktop Launcher
+Build and run the Electron desktop wrapper:
 ```bash
 cd launcher
 npm install
 npm run dev
 ```
 
-### 🎮 4. Initialize Server Stack & Economy
-Bootstrap database procedures, normalize cash shop prices, and sequence server process boot orders:
+### 🎮 5. Initialize Server Stack & Economy
+Run automated cash shop price normalization and sequence server process boot orders:
 ```powershell
-# Restore cash shop items and normalize pricing across Lua files & DB
+# Rebalance prices and restore cash shop items to MSSQL database
 python scripts/rebalance-cashshop-economy.py --apply
 python scripts/restore-cashshop.py
 
-# Launch server stack
+# Propagate PvP AI V7 configurations
+python scripts/propagate-pvp-ai-v7.py
+
+# Launch all 5 server executables automatically
 .\Start-Server-Automatic.ps1
-```
-
-### 🧪 5. Verification & Health Audits
-Run automated test suites and billing audits to verify system integrity:
-```bash
-# Run Master Economy 30-Test Suite
-python tests/test-master-economy.py
-
-# Verify Cash Deduction & Top-Up Flow
-python scripts/verify-cash-deduction-flow.py
-
-# Run Live Database Billing Audit
-python scripts/audit-billing.py
 ```
 
 ---
 
 ## 📖 Documentation Index
 
-| Guide | Description |
-| :--- | :--- |
-| **[NPC PvP Intelligence V7 Companion Brief](docs/PVP_AI_V7_COMPANION_BRIEF.md)** | Concise summary of the runtime-grounding milestone, evidence, limitations, and recommended next step. |
-| **[NPC PvP Intelligence V7 Strategy](docs/PVP_AI_V7_STRATEGY.md)** | Implementation, calibration, change-control, and live-testing strategy for all ten Hero NPC profiles. |
-| **[NPC PvP Intelligence V7 Design Philosophy](docs/PVP_AI_V7_DESIGN_PHILOSOPHY.md)** | Principles for believable high-skill behavior, uncertainty, fairness, identity, bounded adaptation, and anti-cheating. |
-| **[NPC PvP Intelligence V7 Whitepaper](docs/PVP_AI_V7_WHITEPAPER.md)** | Technical architecture, signal contract, confirmation lifecycle, harness methodology, exact offline results, and evidence boundaries. |
-| **[Local Public Hosting Recovery](docs/LOCAL_PUBLIC_HOSTING_RECOVERY.md)** | Home-router port forwarding, Windows network recovery, and local public-host troubleshooting. |
-| 🚀 [**Deployment Guide**](deployment_guide.md) | Setting up the game stack locally or on an Azure Virtual Machine. |
-| 🔌 [**Connection Guide**](CLIENT_CONNECTION_GUIDE.md) | Client patching protocols, IP overrides, and launcher configuration details. |
-| 👑 [**Admin Guide**](ADMIN_GUIDE.md) | Database triggers, rebalancing cash shops, and scheduler configurations. |
-| 🩺 [**Troubleshooting Guide**](troubleshooting_guide.md) | Network port mapping boundaries, log audits, and diagnostic runs. |
-| 📝 [**Operations Details**](docs/README.md) | API structures, SQL schemas, and network routing boundaries. |
+| Category | Guide Document | Description |
+| :--- | :--- | :--- |
+| **PvP AI V7** | [Companion Brief](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/PVP_AI_V7_COMPANION_BRIEF.md) | High-level summary of V7 runtime grounding, evidence, and limitations. |
+| **PvP AI V7** | [Implementation Strategy](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/PVP_AI_V7_STRATEGY.md) | Profile rollout, calibration matrix, and live testing strategy for all 10 Hero NPCs. |
+| **PvP AI V7** | [Design Philosophy](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/PVP_AI_V7_DESIGN_PHILOSOPHY.md) | Principles for believable high-skill behavior, uncertainty, and fairness. |
+| **PvP AI V7** | [Technical Whitepaper](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/PVP_AI_V7_WHITEPAPER.md) | Complete architecture, 48-signal contract, and confirmation lifecycle. |
+| **Gameplay** | [Enhancement Validation](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/ENHANCEMENT_PROBABILITY_VALIDATION.md) | Mathematical proof and audit of 0% destruction enhancement mechanics. |
+| **Deployment** | [Deployment Guide](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/deployment_guide.md) | Setting up the game stack locally or on an Azure Virtual Machine. |
+| **Deployment** | [Azure Deployment](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/AZURE_DEPLOYMENT.md) | Step-by-step Azure VM and Linux Web App deployment guide. |
+| **Deployment** | [Account Portal Deployment](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/ACCOUNT_PORTAL_DEPLOYMENT.md) | Deploying the Next.js web portal and Firebase/PostgreSQL identity layer. |
+| **Networking** | [Client Connection Guide](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/CLIENT_CONNECTION_GUIDE.md) | Client patching protocols, IP overrides, and launcher configuration details. |
+| **Networking** | [Local Public Hosting Recovery](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/LOCAL_PUBLIC_HOSTING_RECOVERY.md) | Home-router port forwarding, Windows network recovery, and local hosting. |
+| **Networking** | [Client Endpoint Troubleshooting](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/CLIENT_ENDPOINT_TROUBLESHOOTING.md) | Comprehensive client socket mapping and connection diagnostic guide. |
+| **Administration** | [Admin Guide](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/ADMIN_GUIDE.md) | Database triggers, cash shop rebalancing, and scheduler configurations. |
+| **Diagnostics** | [Troubleshooting Guide](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/troubleshooting_guide.md) | Network port mapping boundaries, log audits, and diagnostic runs. |
+| **Architecture** | [Operations Details](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/README.md) | API structures, SQL schemas, and network routing boundaries. |
+| **Showcase** | [Project Writeup](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/PROJECT_WRITEUP.md) | Complete technical writeup and architecture breakdown of the project. |
 
 ---
 
 ## 🩺 Quick Troubleshooting
 
 > [!TIP]
-> Use these quick checks for common setup and deployment hurdles.
+> Use these diagnostic steps for common operational and connection challenges.
 
-### 🔌 Client Cannot Connect / Login Hangs
-Ensure game client sockets use **direct IPv4 only** (`52.238.194.187`). Hostnames are supported for HTTP/web APIs, but are unsupported for client game connections. Check Azure NSG rules and verify Windows Firewall is permitting inbound traffic on TCP ports `9200`, `9300`, and `9400`.
+### 🔌 Client Connection Hangs or Fails
+Ensure game client sockets use **direct IPv4 addresses** (e.g. `52.238.194.187` or local IP). Hostnames are supported for HTTP web APIs, but are unsupported for native legacy client socket connections. Check Azure Network Security Group (NSG) rules and ensure Windows Firewall permits inbound traffic on TCP ports `9200` (Login), `9300` (Game), and `9400` (Channel).
 
-### 💎 Cash Shop Buy Fails In-Game
-If item purchases fail or return an error, ensure that `rebalance-cashshop-economy.py --apply` has been executed to update `CashItemPrice.lua` in both `ServerResource` and `GameServer` directories, and that `restore-cashshop.py` has updated `ES_BILLING.dbo.EB_Product`. Run `python scripts/audit-billing.py` to confirm.
+### 💎 In-Game Cash Shop Purchase Error
+If item purchases fail in-game or return error codes, verify that `rebalance-cashshop-economy.py --apply` has updated `CashItemPrice.lua` in both `ServerResource` and `GameServer` directories, and that `restore-cashshop.py` has updated `ES_BILLING.dbo.EB_Product`. Run `python scripts/audit-billing.py` to confirm database sync.
 
-### 🗄️ Account Enters Login but Fails Channel Selection
-If user verification succeeds but entering a channel fails with a server log of `GetUID() : 0`, the account was created without its SQL provisioning tables. Use the database repair utility to resolve this:
+### 🗄️ Account Logs In but Fails Channel Selection (`GetUID() : 0`)
+If user authentication succeeds but entering a channel fails with a server log of `GetUID() : 0`, the account was registered without initial SQL provisioning tables. Run the repair script:
 ```powershell
 python scripts/repair-account-init.py
 ```
 
-### 🌐 Web Registration Portal Returns 503
-If the API is healthy but registration fails, verify that database access is not being blocked. A common issue is a Windows Firewall rule `JoySword SQL inbound deny` blocking SQL Server port `1433` even if VNet routes are configured correctly.
+### 🌐 Web Registration Portal Returns 503 / Database Timeout
+If the web portal API is running but account registration fails, verify that database access is permitted. A common Windows issue is an aggressive firewall rule (`JoySword SQL inbound deny`) blocking SQL Server port `1433`.
+
+### 🛡️ Equipment Enhancement Fails / Probability Verification
+To verify that equipment cannot be broken or reset during enhancement, run the validation check:
+```bash
+python scripts/validate-enhancement-probabilities.py
+```
 
 ---
 
 ## 🤖 Showcase Background
 
-This repository stands as an automated system integration showcase for **Nous Research's Hermes Agent** operating inside **The Nous Portal**.
+This repository stands as a premier system integration showcase for **Nous Research's Hermes Agent** operating inside **The Nous Portal**.
 
 * **Token Optimization**: Orchestrated across diverse architectures using a total token budget of **$600**.
-* **Multi-Model Routing**: Hermes divided system tasks between specialized models:
-  * **Gemini 3.5 Flash** for rapid prototyping, logs parsing, and React development.
-  * **Kimi 2.5** for parsing structured configurations and executing data steps.
-  * **Opus 4.8** for network auditing and security boundaries.
-  * **GPT 5.5** for top-level service configurations and database schema migrations.
-* **LUMI Swarm**: Utilized a Kanban-based agent swarm to orchestrate simultaneous validation testing across web portals, client setup, and launcher builds.
+* **Multi-Model Routing Breakdown**:
+  * 🟢 **Gemini 3.5 Flash**: Rapid prototyping, log parsing, and React/Next.js frontend web development.
+  * 🔵 **Kimi 2.5**: Parsing structured LUA/CSV configurations, batch database mappings, and data execution scripts.
+  * 🔴 **Opus 4.8**: Complex architectural planning, security boundary audits, and stateful synchronization algorithms.
+  * 🟣 **GPT 5.5**: System design, edge-routing strategies, and MSSQL procedure rewrites.
+* **LUMI Agent Swarm**: Coordinated a Kanban-based agent swarm to manage concurrent workflows, execute parallel validation testing, and manage builds across web portals, client setup, launcher applications, and database automation.
 
 ---
 
 ## 📜 License
-JoySword Online is created for educational, historical, and software archival purposes. Distributed under the MIT License.
+JoySword Online is created for educational, historical, and software archival purposes. Distributed under the [MIT License](LICENSE).
