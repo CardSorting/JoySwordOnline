@@ -1,4 +1,4 @@
-﻿g_pItemManager:AddShopItemGroup_LUA({
+g_pItemManager:AddShopItemGroup_LUA({
   GROUP_ID = 1,
   ITEM_ID = {1}
 })
@@ -460,10 +460,30 @@ g_pItemManager:AddShopItemList_LUA({
         90000720
       }
     },
-    {
+        {
       NPC_ID = NPC_UNIT_ID.NUI_ECHO,
       ITEM_LIST = {
         108900,
+        207500,
+        69423,
+        85002870,
+        85002440,
+        85002872,
+        85002874,
+        85002876,
+        84001710,
+        85003722,
+        85003820,
+        131377,
+        104910,
+        98001,
+        98002,
+        98021,
+        130269,
+        131262,
+        133471,
+        131374,
+        131583,
         72500,
         78340,
         78350,
@@ -472,8 +492,7 @@ g_pItemManager:AddShopItemList_LUA({
         130054,
         91620,
         91630,
-        160773,
-        85003820
+        160773
       }
     },
     {
