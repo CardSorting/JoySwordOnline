@@ -6,6 +6,7 @@ import { ServiceStatus } from '@/components/ServiceStatus';
 import { PortalHeader } from '@/components/PortalHeader';
 import { useSectionNavigator } from '@/lib/navigation';
 import { SEO } from '@/components/SEO';
+import { GachaStorefront } from '@/components/GachaStorefront';
 
 type CharacterKey = 'elsword' | 'aisha' | 'rena';
 const characterKeys: CharacterKey[] = ['elsword', 'aisha', 'rena'];
@@ -598,6 +599,10 @@ export default function HomePage() {
 
         </div>
       </section>
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <GachaStorefront />
+      </div>
 
       <section id="exploration" className="exploration-section">
         <div className="section-intro centered">

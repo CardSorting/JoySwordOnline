@@ -13297,7 +13297,7 @@ g_pCashItemManager:AddCashItemPrice(	113276	,	18000	)	--	고대의 화려한 보
 g_pCashItemManager:AddCashItemPrice(	131377	,	18000	)	--	이벤트 가열기
 g_pCashItemManager:AddCashItemPrice(	133388	,	12000	)	--	정제된 엘의 조각 랜덤 큐브 (3개)
 g_pCashItemManager:AddCashItemPrice(	135115	,	2500	)	--	봉인된 얼음 조각상(Gold)
-g_pCashItemManager:AddCashItemPrice(	160259	,	18000	)	--	봉인된 얼음 조각상(청 살바토르 솔레스)
+g_pCashItemManager:AddCashItemPrice(	160259	,	1000	)	--	봉인된 얼음 조각상(청 살바토르 솔레스)
 g_pCashItemManager:AddCashItemPrice(	160286	,	1200	)	--	봉인된 얼음 조각상(청 엘 수색대 장교)
 g_pCashItemManager:AddCashItemPrice(	160287	,	1200	)	--	봉인된 얼음 조각상(엘 수색대 장교)
 g_pCashItemManager:AddCashItemPrice(	160324	,	1200	)	--	봉인된 얼음 조각상(청 나소드 배틀 슈트)
@@ -13313,7 +13313,7 @@ g_pCashItemManager:AddCashItemPrice(	160574	,	1500	)	--	리폼 웨딩 신발 큐
 g_pCashItemManager:AddCashItemPrice(	160575	,	3000	)	--	리폼 웨딩 헤어 큐브
 g_pCashItemManager:AddCashItemPrice(	160576	,	2500	)	--	강화의 부적 Lv.9~10큐브
 g_pCashItemManager:AddCashItemPrice(	160578	,	1800	)	--	2배 확률 봉인된 얼음 조각상
-g_pCashItemManager:AddCashItemPrice(	160597	,	18000	)	--	봉인된 얼음 조각상(청 벨더 임페리얼 가드)
+g_pCashItemManager:AddCashItemPrice(	160597	,	1000	)	--	봉인된 얼음 조각상(청 벨더 임페리얼 가드)
 g_pCashItemManager:AddCashItemPrice(	160613	,	18000	)	--	에픽 NPC 카드 랜덤 큐브 (3개)
 g_pCashItemManager:AddCashItemPrice(	160630	,	1000	)	--	겨울 방학 대박 큐브
 g_pCashItemManager:AddCashItemPrice(	160643	,	1200	)	--	봉인된 얼음 조각상(아라 아크엔젤)
@@ -14829,7 +14829,7 @@ g_pCashItemManager:AddCashItemPrice( 131805, 18000 ) -- Cube of Resurrection Sto
 g_pCashItemManager:AddCashItemPrice( 131806, 18000 ) -- Special Accessory Random Cube
 g_pCashItemManager:AddCashItemPrice( 131807, 12000 ) -- Cube of a Gift in April for PC Gaming Centers A
 g_pCashItemManager:AddCashItemPrice( 131808, 12000 ) -- Cube of a Gift in April for PC Gaming Centers B
-g_pCashItemManager:AddCashItemPrice( 131809, 18000 ) -- Cube of Ice Burner Costume Full Set (for 1 day)
+g_pCashItemManager:AddCashItemPrice( 131809, 1200 ) -- Cube of Ice Burner Costume Full Set (for 1 day)
 g_pCashItemManager:AddCashItemPrice( 131810, 18000 ) -- Cube of Archangel's Full Set(A Day's Ticket)
 g_pCashItemManager:AddCashItemPrice( 131811, 18000 ) -- El Search Party Officer Set Cube (1 Day)
 g_pCashItemManager:AddCashItemPrice( 131812, 18000 ) -- Cube of Nasods' Full Set(A Day's Ticket)
@@ -17614,9 +17614,9 @@ g_pCashItemManager:AddCashItemPrice( 90001548, 18000 ) -- Mysterious Continent W
 g_pCashItemManager:AddCashItemPrice( 90001549, 18000 ) -- Mithril Weapon Accessory Cube (30 Days)
 g_pCashItemManager:AddCashItemPrice( 90001580, 29000 ) -- Sheath Knight Cube
 g_pCashItemManager:AddCashItemPrice( 90001590, 2500 ) -- Gold Ice Burner
-g_pCashItemManager:AddCashItemPrice( 90001591, 18000 ) -- Gold Ice Burner 1+1
+g_pCashItemManager:AddCashItemPrice( 90001591, 2000 ) -- Gold Ice Burner 1+1
 g_pCashItemManager:AddCashItemPrice( 90001592, 18000 ) -- Gold Ice Burner 5+2
-g_pCashItemManager:AddCashItemPrice( 90001593, 18000 ) -- Gold Ice Burner 10+3
+g_pCashItemManager:AddCashItemPrice( 90001593, 13000 ) -- Gold Ice Burner 10+3
 g_pCashItemManager:AddCashItemPrice( 90001597, 18000 ) -- Gold Ice Burner (1ea.) Cube
 g_pCashItemManager:AddCashItemPrice( 90001598, 18000 ) -- Gold Ice Burner (2ea.) Cube
 g_pCashItemManager:AddCashItemPrice( 90001599, 18000 ) -- Gold Ice Burner (3ea.) Cube
@@ -17624,7 +17624,7 @@ g_pCashItemManager:AddCashItemPrice( 90001600, 18000 ) -- Gold Ice Burner (4ea.)
 g_pCashItemManager:AddCashItemPrice( 90001601, 18000 ) -- Gold Ice Burner (5ea.) Cube
 g_pCashItemManager:AddCashItemPrice( 90001602, 18000 ) -- Gold Ice Burner (10ea.) Cube
 g_pCashItemManager:AddCashItemPrice( 90001603, 18000 ) -- Gold Ice Burner (100ea.) Cube
-g_pCashItemManager:AddCashItemPrice( 90001604, 18000 ) -- Ice Burner 1+1
+g_pCashItemManager:AddCashItemPrice( 90001604, 2000 ) -- Ice Burner 1+1
 g_pCashItemManager:AddCashItemPrice( 90001605, 18000 ) -- Ice Burner (Type A) 5+1
 g_pCashItemManager:AddCashItemPrice( 90001606, 18000 ) -- Ice Burner (Type B) 5+1
 g_pCashItemManager:AddCashItemPrice( 90001607, 18000 ) -- Ice Burner (Type A) 10+3
@@ -17650,8 +17650,8 @@ g_pCashItemManager:AddCashItemPrice( 90001910, 18000 ) -- Ice Burner (Eve, Nasod
 g_pCashItemManager:AddCashItemPrice( 90001923, 18000 ) -- Ariel's Phoru Foot Stamp Random Cube
 g_pCashItemManager:AddCashItemPrice( 90001980, 2500 ) -- Ice Burner (Chung, Arch Angel)
 g_pCashItemManager:AddCashItemPrice( 90001990, 18000 ) -- Ice Burner 2+2
-g_pCashItemManager:AddCashItemPrice( 90002000, 18000 ) -- Ice Burner 5+1
-g_pCashItemManager:AddCashItemPrice( 90002010, 18000 ) -- Ice Burner 10+3
+g_pCashItemManager:AddCashItemPrice( 90002000, 6000 ) -- Ice Burner 5+1
+g_pCashItemManager:AddCashItemPrice( 90002010, 13000 ) -- Ice Burner 10+3
 g_pCashItemManager:AddCashItemPrice( 90002020, 18000 ) -- Ice Burner (Chung's Archangel) 2+2
 g_pCashItemManager:AddCashItemPrice( 90002030, 18000 ) -- Ice Burner (Chung's Archangel) 5+1
 g_pCashItemManager:AddCashItemPrice( 90002040, 18000 ) -- Ice Burner (Chung's Archangel) 10+3
@@ -17760,9 +17760,9 @@ g_pCashItemManager:AddCashItemPrice( 115000302, 18000 ) -- Pet Pack (Ancient Sha
 g_pCashItemManager:AddCashItemPrice( 120000090, 18000 ) -- Starter Avatar Package
 g_pCashItemManager:AddCashItemPrice( 120002750, 2500 ) -- (BOGO)Ice Burner (20+20)
 g_pCashItemManager:AddCashItemPrice( 120002990, 12000 ) -- Henir Preparation Package
-g_pCashItemManager:AddCashItemPrice( 120003000, 18000 ) -- Ice Burner 1+1
-g_pCashItemManager:AddCashItemPrice( 120003001, 18000 ) -- Ice Burner 5+1
-g_pCashItemManager:AddCashItemPrice( 120003002, 18000 ) -- Ice Burner 10+3
+g_pCashItemManager:AddCashItemPrice( 120003000, 2000 ) -- Ice Burner 1+1
+g_pCashItemManager:AddCashItemPrice( 120003001, 6000 ) -- Ice Burner 5+1
+g_pCashItemManager:AddCashItemPrice( 120003002, 13000 ) -- Ice Burner 10+3
 g_pCashItemManager:AddCashItemPrice( 120003015, 18000 ) -- Elarbor Tree Knight Package
 g_pCashItemManager:AddCashItemPrice( 120003100, 2500 ) -- Ariel's Ice Burner
 g_pCashItemManager:AddCashItemPrice( 120003110, 18000 ) -- Defense Dungeon Package (Skills)
@@ -17803,4 +17803,380 @@ g_pCashItemManager:AddCashItemPrice( 210000250, 18000 ) -- Imperial Panda - Red 
 g_pCashItemManager:AddCashItemPrice( 210000260, 18000 ) -- Imperial Panda - White Special Package
 g_pCashItemManager:AddCashItemPrice( 250000640, 18000 ) -- Archangel's Full Set Costume Package
 g_pCashItemManager:AddCashItemPrice( 250000650, 18000 ) -- El Search Party Officer’s Full Set Costume Package
+-- Modern Gacha Banner & Store Product Registrations
+g_pCashItemManager:AddCashItemPrice( 990001, 1200 ) -- Single Ice Burner Gacha Pull
+g_pCashItemManager:AddCashItemPrice( 990010, 10000 ) -- 10-Pull Ice Burner Gacha Box
+g_pCashItemManager:AddCashItemPrice( 995000, 2500 ) -- Growth Bundle Pack
+g_pCashItemManager:AddCashItemPrice( 995100, 500 ) -- Starlight Cashback Redeem Core
 -- END_RESTORE_ALL_CASHSHOP
+
+-- Auto-injected catalog items for 100% CashShop price coverage
+g_pCashItemManager:AddCashItemPrice( 214410 , 8000 )	----	소드 나이트의 증명
+g_pCashItemManager:AddCashItemPrice( 214420 , 1000 )	----	매직 나이트의 증명
+g_pCashItemManager:AddCashItemPrice( 214430 , 1000 )	----	하이 매지션의 메모라이즈
+g_pCashItemManager:AddCashItemPrice( 214440 , 1000 )	----	다크 매지션의 메모라이즈
+g_pCashItemManager:AddCashItemPrice( 214450 , 1000 )	----	컴뱃 레인저의 영혼
+g_pCashItemManager:AddCashItemPrice( 214460 , 1000 )	----	스나이핑 레인저의 영혼
+g_pCashItemManager:AddCashItemPrice( 214470 , 8000 )	----	소드 테이커의 계시
+g_pCashItemManager:AddCashItemPrice( 214480 , 1000 )	----	오버 테이커의 계시
+g_pCashItemManager:AddCashItemPrice( 214490 , 1000 )	----	코드 엑조틱의 메모리
+g_pCashItemManager:AddCashItemPrice( 214500 , 1000 )	----	코드 아키텍처의 메모리
+g_pCashItemManager:AddCashItemPrice( 216420 , 1000 )	----	로드 나이트 임명장
+g_pCashItemManager:AddCashItemPrice( 216430 , 1000 )	----	룬 슬레이어 징표
+g_pCashItemManager:AddCashItemPrice( 217850 , 1500 )	----	윈드 스니커 전직 캐시 아이템
+g_pCashItemManager:AddCashItemPrice( 217860 , 1000 )	----	그랜드 아처 전직 캐시 아이템
+g_pCashItemManager:AddCashItemPrice( 217920 , 1000 )	----	엘리멘탈 마스터 전직 아이템
+g_pCashItemManager:AddCashItemPrice( 217930 , 1000 )	----	보이드 프린세스 전직 아이템
+g_pCashItemManager:AddCashItemPrice( 217950 , 8000 )	----	블레이드 마스터 전직 아이템
+g_pCashItemManager:AddCashItemPrice( 217960 , 1000 )	----	레크리스 피스트 전직 아이템
+g_pCashItemManager:AddCashItemPrice( 217970 , 8000 )	----	코드 네미시스 전직 아이템
+g_pCashItemManager:AddCashItemPrice( 217980 , 1000 )	----	코드 엠프레스 전직 아이템
+g_pCashItemManager:AddCashItemPrice( 229460 , 1000 )	----	퓨리 가디언의 결의
+g_pCashItemManager:AddCashItemPrice( 229470 , 1000 )	----	슈터 가디언의 결의
+g_pCashItemManager:AddCashItemPrice( 232200 , 1000 )	----	플루오르 스톤 Lv.5 1+1 패키지
+g_pCashItemManager:AddCashItemPrice( 232210 , 1000 )	----	축복받은 복원의 주문서 Lv.5 1+1 패키지
+g_pCashItemManager:AddCashItemPrice( 235120 , 1000 )	----	아이언 팔라딘의
+g_pCashItemManager:AddCashItemPrice( 235130 , 1000 )	----	데들리 체이서의
+g_pCashItemManager:AddCashItemPrice( 246710 , 1000 )	----	강자의 주문서(패키지)
+g_pCashItemManager:AddCashItemPrice( 252640 , 8000 )	----	인피니티 소드의 징표
+g_pCashItemManager:AddCashItemPrice( 252650 , 1000 )	----	디멘션 위치 전직 아이템
+g_pCashItemManager:AddCashItemPrice( 252660 , 1000 )	----	나이트 와처 전직 아이템
+g_pCashItemManager:AddCashItemPrice( 252670 , 1000 )	----	베테랑 커맨더 전직 아이템
+g_pCashItemManager:AddCashItemPrice( 252680 , 1000 )	----	배틀 세라프 전직 아이템
+g_pCashItemManager:AddCashItemPrice( 252690 , 1000 )	----	택티컬 트루퍼 전직 아이템
+
+-- Auto-injected catalog items for 100% CashShop price coverage
+g_pCashItemManager:AddCashItemPrice( 40500 , 6000 )	----	Sheath Knight Basic Hair
+g_pCashItemManager:AddCashItemPrice( 40680 , 6000 )	----	Sheath Knight Promotion Top Piece
+g_pCashItemManager:AddCashItemPrice( 40690 , 6000 )	----	Sheath Knight Promotion Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 40710 , 1500 )	----	Sheath Knight Promotion Shoes
+g_pCashItemManager:AddCashItemPrice( 41585 , 6000 )	----	Little Hsien's Basic Hair
+g_pCashItemManager:AddCashItemPrice( 41600 , 6000 )	----	Little Hsien's Promotion Top Piece
+g_pCashItemManager:AddCashItemPrice( 41610 , 6000 )	----	Little Hsien's Promotion Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 41620 , 1500 )	----	Little Hsien's Promotion Gloves
+g_pCashItemManager:AddCashItemPrice( 41640 , 6000 )	----	Little Hsien's Eun Mode Hair
+g_pCashItemManager:AddCashItemPrice( 69289 , 1000 )	----	Monster Card 'Ancient Phoru'
+g_pCashItemManager:AddCashItemPrice( 77200 , 1000 )	----	Stamina Potion
+g_pCashItemManager:AddCashItemPrice( 77320 , 1000 )	----	Awakening Potion
+g_pCashItemManager:AddCashItemPrice( 78669 , 1000 )	----	Monster Card ‘Cockatigle’
+g_pCashItemManager:AddCashItemPrice( 78722 , 1000 )	----	[Event] Monster Card ‘Cockatigle’
+g_pCashItemManager:AddCashItemPrice( 81226 , 5000 )	----	Heavenly Diamond Yaksha Spirit Cape (Elsword)
+g_pCashItemManager:AddCashItemPrice( 81236 , 5000 )	----	Heavenly Diamond Yaksha Spirit Cape (Aisha)
+g_pCashItemManager:AddCashItemPrice( 81246 , 5000 )	----	Heavenly Diamond Yaksha Spirit Cape (Rena)
+g_pCashItemManager:AddCashItemPrice( 81256 , 5000 )	----	Heavenly Diamond Yaksha Spirit Cape (Raven)
+g_pCashItemManager:AddCashItemPrice( 81266 , 5000 )	----	Heavenly Diamond Yaksha Spirit Cape (Eve)
+g_pCashItemManager:AddCashItemPrice( 81276 , 5000 )	----	Heavenly Diamond Yaksha Spirit Cape (Chung)
+g_pCashItemManager:AddCashItemPrice( 81386 , 5000 )	----	Royal Servant Silver Winged Monocle (Chung)
+g_pCashItemManager:AddCashItemPrice( 81387 , 5000 )	----	Royal Battle Black Mini (Chung)
+g_pCashItemManager:AddCashItemPrice( 91650 , 1000 )	----	Ancient Phoru's Proper Horn
+g_pCashItemManager:AddCashItemPrice( 91855 , 1000 )	----	Cockatigle Teardrop
+g_pCashItemManager:AddCashItemPrice( 92205 , 1000 )	----	Helputt's Letter
+g_pCashItemManager:AddCashItemPrice( 92304 , 1000 )	----	Conwell
+g_pCashItemManager:AddCashItemPrice( 92325 , 1000 )	----	King Nasod Core
+g_pCashItemManager:AddCashItemPrice( 99100 , 1000 )	----	Nasod Core
+g_pCashItemManager:AddCashItemPrice( 99380 , 1000 )	----	Luriel's Letter for Credit Guarantee
+g_pCashItemManager:AddCashItemPrice( 109960 , 1000 )	----	Ancient Weapon Enhancement Stone (Event)
+g_pCashItemManager:AddCashItemPrice( 109970 , 1000 )	----	Ancient Armor Enhancement Stone (Event)
+g_pCashItemManager:AddCashItemPrice( 109992 , 1000 )	----	Map of the Abyss
+g_pCashItemManager:AddCashItemPrice( 109994 , 1000 )	----	Anti-Alterasia Capsule
+g_pCashItemManager:AddCashItemPrice( 111085 , 5000 )	----	Stamina Fortifier Necklace
+g_pCashItemManager:AddCashItemPrice( 129080 , 5000 )	----	Class Vice-president's Armband
+g_pCashItemManager:AddCashItemPrice( 129090 , 5000 )	----	Class President's Armband
+g_pCashItemManager:AddCashItemPrice( 129100 , 5000 )	----	Chairperson's Armband
+g_pCashItemManager:AddCashItemPrice( 129710 , 1500 )	----	Elsword's Land Rova Shoes
+g_pCashItemManager:AddCashItemPrice( 129711 , 1500 )	----	Aisha's Land Rova Shoes
+g_pCashItemManager:AddCashItemPrice( 129712 , 1500 )	----	Rena's Land Rova Shoes
+g_pCashItemManager:AddCashItemPrice( 129713 , 1500 )	----	Elsword's Spris Shoes
+g_pCashItemManager:AddCashItemPrice( 129714 , 1500 )	----	Aisha's Spris Shoes
+g_pCashItemManager:AddCashItemPrice( 129715 , 1500 )	----	Rena's Spris Shoes
+g_pCashItemManager:AddCashItemPrice( 129716 , 1500 )	----	Elsword's Lesmore Shoes
+g_pCashItemManager:AddCashItemPrice( 129717 , 1500 )	----	Aisha's Lesmore Shoes
+g_pCashItemManager:AddCashItemPrice( 129718 , 1500 )	----	Rena's Lesmore Shoes
+g_pCashItemManager:AddCashItemPrice( 129720 , 1000 )	----	Master's Kindness (Mas)
+g_pCashItemManager:AddCashItemPrice( 129721 , 1000 )	----	Master's Kindness (ter)
+g_pCashItemManager:AddCashItemPrice( 129722 , 1000 )	----	Master's Kindness ('s)
+g_pCashItemManager:AddCashItemPrice( 129723 , 1000 )	----	Master's Kindness (Kind)
+g_pCashItemManager:AddCashItemPrice( 129724 , 1000 )	----	Master's Kindness (ness)
+g_pCashItemManager:AddCashItemPrice( 129990 , 1000 )	----	Gold Medal
+g_pCashItemManager:AddCashItemPrice( 130002 , 1000 )	----	Gold Medal
+g_pCashItemManager:AddCashItemPrice( 130118 , 1000 )	----	Alphabet 'E'
+g_pCashItemManager:AddCashItemPrice( 130119 , 1000 )	----	Alphabet 'L'
+g_pCashItemManager:AddCashItemPrice( 130120 , 1000 )	----	Alphabet 'S'
+g_pCashItemManager:AddCashItemPrice( 130121 , 1000 )	----	Alphabet 'W'
+g_pCashItemManager:AddCashItemPrice( 130122 , 1000 )	----	Alphabet 'O'
+g_pCashItemManager:AddCashItemPrice( 130123 , 1000 )	----	Alphabet 'R'
+g_pCashItemManager:AddCashItemPrice( 130124 , 1000 )	----	Alphabet 'D'
+g_pCashItemManager:AddCashItemPrice( 130125 , 1000 )	----	Alphabet 'N'
+g_pCashItemManager:AddCashItemPrice( 130163 , 5000 )	----	Ring of Skills
+g_pCashItemManager:AddCashItemPrice( 130385 , 5000 )	----	Archangel's Wing (Elsword)
+g_pCashItemManager:AddCashItemPrice( 130386 , 5000 )	----	Archangel's Wing (Aisha)
+g_pCashItemManager:AddCashItemPrice( 130387 , 5000 )	----	Archangel's Wing (Rena)
+g_pCashItemManager:AddCashItemPrice( 130388 , 5000 )	----	Archangel's Wing (Raven)
+g_pCashItemManager:AddCashItemPrice( 130389 , 5000 )	----	Archangel's Wing (Eve)
+g_pCashItemManager:AddCashItemPrice( 130390 , 5000 )	----	Archangel's Crown (Elsword)
+g_pCashItemManager:AddCashItemPrice( 130391 , 5000 )	----	Archangel's Crown (Aisha)
+g_pCashItemManager:AddCashItemPrice( 130392 , 5000 )	----	Archangel's Crown (Rena)
+g_pCashItemManager:AddCashItemPrice( 130393 , 5000 )	----	Archangel's Crown (Raven)
+g_pCashItemManager:AddCashItemPrice( 130394 , 5000 )	----	Archangel's Crown (Eve)
+g_pCashItemManager:AddCashItemPrice( 130471 , 1000 )	----	Balloon 'A'
+g_pCashItemManager:AddCashItemPrice( 130472 , 1000 )	----	Balloon 'ri'
+g_pCashItemManager:AddCashItemPrice( 130473 , 1000 )	----	Balloon 'el'
+g_pCashItemManager:AddCashItemPrice( 130474 , 1000 )	----	Balloon 'Ca'
+g_pCashItemManager:AddCashItemPrice( 130475 , 1000 )	----	Balloon 'mil'
+g_pCashItemManager:AddCashItemPrice( 130476 , 1000 )	----	Balloon 'la'
+g_pCashItemManager:AddCashItemPrice( 130477 , 1000 )	----	Balloon 'Hel'
+g_pCashItemManager:AddCashItemPrice( 130478 , 1000 )	----	Balloon 'len'
+g_pCashItemManager:AddCashItemPrice( 130598 , 1000 )	----	William's Invitation Letter
+g_pCashItemManager:AddCashItemPrice( 130614 , 1000 )	----	Letters 'KI'
+g_pCashItemManager:AddCashItemPrice( 130615 , 1000 )	----	Letter 'C'
+g_pCashItemManager:AddCashItemPrice( 130616 , 1000 )	----	Letter 'K'
+g_pCashItemManager:AddCashItemPrice( 130617 , 1000 )	----	Letters 'MA'
+g_pCashItemManager:AddCashItemPrice( 130618 , 1000 )	----	Letters 'NA'
+g_pCashItemManager:AddCashItemPrice( 130633 , 1000 )	----	El Revitalization Drink
+g_pCashItemManager:AddCashItemPrice( 130990 , 1000 )	----	A Fashion Show Ticket
+g_pCashItemManager:AddCashItemPrice( 130998 , 1000 )	----	Reward to the Best Dungeon Player (Rank 1~10)
+g_pCashItemManager:AddCashItemPrice( 131845 , 5000 )	----	Cobo's Special Monster Mask (Mush)
+g_pCashItemManager:AddCashItemPrice( 131851 , 5000 )	----	Cobo's Special Monster Mask (Wally)
+g_pCashItemManager:AddCashItemPrice( 131852 , 5000 )	----	Cobo's Special Monster Mask (Cactus King)
+g_pCashItemManager:AddCashItemPrice( 131853 , 5000 )	----	Cobo's Special Monster Mask (King Nasod)
+g_pCashItemManager:AddCashItemPrice( 131854 , 5000 )	----	Cobo's Special Monster Mask (Plant Overlord)
+g_pCashItemManager:AddCashItemPrice( 131856 , 1000 )	----	Nature's Gift
+g_pCashItemManager:AddCashItemPrice( 132048 , 1000 )	----	Secret Key to Wally's Underground Laboratory
+g_pCashItemManager:AddCashItemPrice( 132049 , 1000 )	----	Hidden Map of the Abyss
+g_pCashItemManager:AddCashItemPrice( 132050 , 1000 )	----	Enhanced Anti-Alterasia Capsule
+g_pCashItemManager:AddCashItemPrice( 132101 , 1000 )	----	Cobo Special Gift Box [Lv. 1 Blessed Restoration Scroll]
+g_pCashItemManager:AddCashItemPrice( 132104 , 1000 )	----	Cobo Special Gift Box [Lv. 4 Blessed Restoration Scroll]
+g_pCashItemManager:AddCashItemPrice( 132497 , 1000 )	----	Ariel's Lv. 7 Magic Amulet
+g_pCashItemManager:AddCashItemPrice( 132500 , 1000 )	----	Ariel's Lv. 10 Enhancement Amulet
+g_pCashItemManager:AddCashItemPrice( 132700 , 5000 )	----	Pocket Phoru's Necklace
+g_pCashItemManager:AddCashItemPrice( 132715 , 1000 )	----	Unlimited Stamina 30!
+g_pCashItemManager:AddCashItemPrice( 132795 , 8000 )	----	Elsword In Wonderland
+g_pCashItemManager:AddCashItemPrice( 132797 , 5000 )	----	Royal Servant Silver Winged Monocle (Elsword)
+g_pCashItemManager:AddCashItemPrice( 132798 , 5000 )	----	Royal Maid Black Headdress (Aisha)
+g_pCashItemManager:AddCashItemPrice( 132799 , 5000 )	----	Royal Maid Black Headdress (Rena)
+g_pCashItemManager:AddCashItemPrice( 132800 , 5000 )	----	Royal Servant Silver Winged Monocle (Raven)
+g_pCashItemManager:AddCashItemPrice( 132801 , 5000 )	----	Royal Maid Black Headdress (Eve)
+g_pCashItemManager:AddCashItemPrice( 132878 , 5000 )	----	Dream Step - Halloween Pumpkin (14 Days)
+g_pCashItemManager:AddCashItemPrice( 133131 , 1200 )	----	Gnosis Blessing (5 SP, 14 days)
+g_pCashItemManager:AddCashItemPrice( 133341 , 1000 )	----	Happy Merry Christmas
+g_pCashItemManager:AddCashItemPrice( 135417 , 1000 )	----	El Revitalization Drink
+g_pCashItemManager:AddCashItemPrice( 160085 , 8000 )	----	Forest Guardian’s Weapon
+g_pCashItemManager:AddCashItemPrice( 160091 , 8000 )	----	Civil Guardian’s Weapon
+g_pCashItemManager:AddCashItemPrice( 160097 , 8000 )	----	Mercenary Of Destruction Weapon
+g_pCashItemManager:AddCashItemPrice( 160103 , 8000 )	----	Wrathful God's Weapon
+g_pCashItemManager:AddCashItemPrice( 160109 , 8000 )	----	World Conqueror's Weapon
+g_pCashItemManager:AddCashItemPrice( 160115 , 8000 )	----	World Conqueror's Weapon
+g_pCashItemManager:AddCashItemPrice( 160121 , 8000 )	----	Blacksmith Union's Weapon
+g_pCashItemManager:AddCashItemPrice( 160475 , 5000 )	----	Fireworks
+g_pCashItemManager:AddCashItemPrice( 180010 , 6000 )	----	Harmony Festival Top Piece
+g_pCashItemManager:AddCashItemPrice( 180011 , 6000 )	----	Harmony Festival Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 180012 , 1500 )	----	Harmony Festival Gloves
+g_pCashItemManager:AddCashItemPrice( 180013 , 1500 )	----	Harmony Festival Shoes
+g_pCashItemManager:AddCashItemPrice( 180144 , 8000 )	----	Harmony Festival Sword
+g_pCashItemManager:AddCashItemPrice( 180145 , 8000 )	----	Harmony Festival Staff
+g_pCashItemManager:AddCashItemPrice( 180146 , 8000 )	----	Harmony Festival Bow
+g_pCashItemManager:AddCashItemPrice( 180147 , 8000 )	----	Harmony Festival Blade
+g_pCashItemManager:AddCashItemPrice( 180370 , 8000 )	----	Assault Mercenary Of Destruction Sword
+g_pCashItemManager:AddCashItemPrice( 180371 , 6000 )	----	Assault Mercenary Of Destruction Top Piece
+g_pCashItemManager:AddCashItemPrice( 180520 , 8000 )	----	Bloody Battle Song Weapon
+g_pCashItemManager:AddCashItemPrice( 180525 , 8000 )	----	Bloody Battle Song Weapon
+g_pCashItemManager:AddCashItemPrice( 180530 , 8000 )	----	Bloody Battle Song Weapon
+g_pCashItemManager:AddCashItemPrice( 180545 , 8000 )	----	Bloody Battle Song Weapon
+g_pCashItemManager:AddCashItemPrice( 180550 , 8000 )	----	Bloody Battle Song Weapon
+g_pCashItemManager:AddCashItemPrice( 180555 , 8000 )	----	Bloody Battle Song Weapon
+g_pCashItemManager:AddCashItemPrice( 180560 , 8000 )	----	Bloody Battle Song Weapon
+g_pCashItemManager:AddCashItemPrice( 180575 , 8000 )	----	Bloody Battle Song Weapon
+g_pCashItemManager:AddCashItemPrice( 183206 , 1000 )	----	Package component 183206
+g_pCashItemManager:AddCashItemPrice( 183207 , 1000 )	----	Package component 183207
+g_pCashItemManager:AddCashItemPrice( 183208 , 1000 )	----	Package component 183208
+g_pCashItemManager:AddCashItemPrice( 183209 , 1000 )	----	Package component 183209
+g_pCashItemManager:AddCashItemPrice( 183210 , 1000 )	----	Package component 183210
+g_pCashItemManager:AddCashItemPrice( 183211 , 1000 )	----	Package component 183211
+g_pCashItemManager:AddCashItemPrice( 200720 , 1000 )	----	EXP Boost Medal (30%)
+g_pCashItemManager:AddCashItemPrice( 213170 , 1000 )	----	Ocean Outlaw
+g_pCashItemManager:AddCashItemPrice( 219140 , 1000 )	----	Total Gift Set for the New Year's Day A
+g_pCashItemManager:AddCashItemPrice( 219150 , 1000 )	----	Total Gift Set for the New Year's Day B
+g_pCashItemManager:AddCashItemPrice( 221570 , 1000 )	----	PC Gaming Center Special Price [Phoru Footprint (Purple)]
+g_pCashItemManager:AddCashItemPrice( 222730 , 8000 )	----	Rena's World Cup Taeguk Warrior Weapon (White)
+g_pCashItemManager:AddCashItemPrice( 222740 , 6000 )	----	Rena's World Cup Taeguk Warrior Sports Top (White)
+g_pCashItemManager:AddCashItemPrice( 222750 , 6000 )	----	Rena's World Cup Taeguk Warrior Distressed Stone-Washed Jeans (White)
+g_pCashItemManager:AddCashItemPrice( 227630 , 1000 )	----	Halloween Surprise Ticket
+g_pCashItemManager:AddCashItemPrice( 245470 , 1000 )	----	Package component 245470
+g_pCashItemManager:AddCashItemPrice( 261630 , 1000 )	----	Package component 261630
+g_pCashItemManager:AddCashItemPrice( 261650 , 1000 )	----	Package component 261650
+g_pCashItemManager:AddCashItemPrice( 550001 , 12000 )	----	Summon Stone: Moby Chariot RT (1 Day)
+g_pCashItemManager:AddCashItemPrice( 550003 , 12000 )	----	Summon Stone: Moby Chariot RT (7 Days)
+g_pCashItemManager:AddCashItemPrice( 550011 , 12000 )	----	Summon Stone: Cockatigle (1 Day)
+g_pCashItemManager:AddCashItemPrice( 550013 , 12000 )	----	Summon Stone: Cockatigle (7 Days)
+g_pCashItemManager:AddCashItemPrice( 550021 , 12000 )	----	Summon Stone: Ancient Phoru (1 Day)
+g_pCashItemManager:AddCashItemPrice( 550023 , 12000 )	----	Summon Stone: Ancient Phoru (7 Days)
+g_pCashItemManager:AddCashItemPrice( 2010115 , 6000 )	----	(Old)Piercing Magician's Cotton Shirt
+g_pCashItemManager:AddCashItemPrice( 2010125 , 6000 )	----	(Old)Drained Magician's Cotton Shirt
+g_pCashItemManager:AddCashItemPrice( 2010130 , 6000 )	----	(Old)Blessed Magician's Cotton Shirt
+g_pCashItemManager:AddCashItemPrice( 2010135 , 6000 )	----	(Old)Ultimate Magician's Cotton Shirt
+g_pCashItemManager:AddCashItemPrice( 2010140 , 6000 )	----	(Old)Magician's Cotton Skirt
+g_pCashItemManager:AddCashItemPrice( 2146350 , 1500 )	----	(Old)Vitality Corduroy Boots
+g_pCashItemManager:AddCashItemPrice( 3342350 , 1500 )	----	(Old)Vitality Copper Boots
+g_pCashItemManager:AddCashItemPrice( 3344385 , 1500 )	----	(Old)Agile Flex Copper Boots
+g_pCashItemManager:AddCashItemPrice( 3344390 , 1500 )	----	(Old)Divine Flex Copper Boots
+g_pCashItemManager:AddCashItemPrice( 3940370 , 1500 )	----	(Old)Vitality Azure Watcher Shoes
+g_pCashItemManager:AddCashItemPrice( 4014080 , 6000 )	----	(Old)Vitality Vintage Krug Shirts
+g_pCashItemManager:AddCashItemPrice( 4956180 , 6000 )	----	(Old)Vitality Penzas Mercenary Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 5046305 , 1500 )	----	(Old)[Vitality]
+Obtain the Aura of Destruction by consuming the Aura of Vitality.
+If used while in Vitality mode, MP consumption is reduced and MP gain increases.
+g_pCashItemManager:AddCashItemPrice( 5556225 , 6000 )	----	(Old)Drained Optical Explorer's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 5556230 , 6000 )	----	(Old)Blessed Optical Explorer's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 10240003 , 6000 )	----	Exceptional Shining Top Piece
+g_pCashItemManager:AddCashItemPrice( 60000000 , 1000 )	----	King Nasod Core
+g_pCashItemManager:AddCashItemPrice( 60000533 , 1000 )	----	Gold Medal
+g_pCashItemManager:AddCashItemPrice( 60000583 , 1000 )	----	Special Ability Accessories (7 Days) TW
+g_pCashItemManager:AddCashItemPrice( 60000883 , 5000 )	----	MC Doll
+g_pCashItemManager:AddCashItemPrice( 60006543 , 1000 )	----	Field Boss Camera Film
+g_pCashItemManager:AddCashItemPrice( 60007095 , 1000 )	----	Sheath Knight
+g_pCashItemManager:AddCashItemPrice( 60007111 , 1000 )	----	Little Hsien
+g_pCashItemManager:AddCashItemPrice( 60007270 , 1000 )	----	Luriel's Lv. 7 Magic Amulet
+g_pCashItemManager:AddCashItemPrice( 60007300 , 1000 )	----	Luriel's Lv. 10 Magic Amulet
+g_pCashItemManager:AddCashItemPrice( 65000096 , 1000 )	----	Treasure Box (Event Quest Reward)
+g_pCashItemManager:AddCashItemPrice( 65000160 , 1000 )	----	Unlimited Stamina
+g_pCashItemManager:AddCashItemPrice( 65000178 , 1000 )	----	PC Gaming Center Special Ticket
+g_pCashItemManager:AddCashItemPrice( 65000216 , 1000 )	----	Queen's Approval
+g_pCashItemManager:AddCashItemPrice( 65000365 , 1000 )	----	Ariel's Jackpot Lunchbox
+g_pCashItemManager:AddCashItemPrice( 65000485 , 1000 )	----	Complete Recovery Potion(Event)
+g_pCashItemManager:AddCashItemPrice( 65000580 , 5000 )	----	Wyvern's Hexa-Core
+g_pCashItemManager:AddCashItemPrice( 67000500 , 6000 )	----	Archdevil's Hair Ver.Dark (Chung)
+g_pCashItemManager:AddCashItemPrice( 67004645 , 5000 )	----	Erendil’s Intense Soul
+g_pCashItemManager:AddCashItemPrice( 67004646 , 5000 )	----	Erendil's Gentle Soul
+g_pCashItemManager:AddCashItemPrice( 67004658 , 5000 )	----	Erendil's Gentle Soul Ring
+g_pCashItemManager:AddCashItemPrice( 67004660 , 5000 )	----	Erendil's Gentle Soul Necklace
+g_pCashItemManager:AddCashItemPrice( 67006220 , 1000 )	----	Suspicious Wyvern's Residue
+g_pCashItemManager:AddCashItemPrice( 67006221 , 1000 )	----	Wyvern's Footprints
+g_pCashItemManager:AddCashItemPrice( 67006226 , 5000 )	----	Suspicious Wyvern's Claw (15 Days) (Elsword)
+g_pCashItemManager:AddCashItemPrice( 67006227 , 5000 )	----	Suspicious Wyvern's Claw (15 Days) (Aisha)
+g_pCashItemManager:AddCashItemPrice( 67006228 , 5000 )	----	Suspicious Wyvern's Claw (15 Days) (Rena)
+g_pCashItemManager:AddCashItemPrice( 67006229 , 5000 )	----	Suspicious Wyvern's Claw (15 Days) (Raven)
+g_pCashItemManager:AddCashItemPrice( 67006230 , 5000 )	----	Suspicious Wyvern's Claw (15 Days) (Eve)
+g_pCashItemManager:AddCashItemPrice( 67006231 , 5000 )	----	Suspicious Wyvern's Claw (15 Days) (Chung)
+g_pCashItemManager:AddCashItemPrice( 67006232 , 5000 )	----	Suspicious Wyvern's Claw (15 Days) (Ara)
+g_pCashItemManager:AddCashItemPrice( 67006248 , 5000 )	----	Forgotten Ancient Wyvern's Claw (15 Days) (Elsword)
+g_pCashItemManager:AddCashItemPrice( 67006249 , 5000 )	----	Forgotten Ancient Wyvern's Claw (15 Days) (Aisha)
+g_pCashItemManager:AddCashItemPrice( 67006250 , 5000 )	----	Forgotten Ancient Wyvern's Claw (15 Days) (Rena)
+g_pCashItemManager:AddCashItemPrice( 67006251 , 5000 )	----	Forgotten Ancient Wyvern's Claw (15 Days) (Raven)
+g_pCashItemManager:AddCashItemPrice( 67006252 , 5000 )	----	Forgotten Ancient Wyvern's Claw (15 Days) (Eve)
+g_pCashItemManager:AddCashItemPrice( 67006253 , 5000 )	----	Forgotten Ancient Wyvern's Claw (15 Days) (Chung)
+g_pCashItemManager:AddCashItemPrice( 67006254 , 5000 )	----	Forgotten Ancient Wyvern's Claw (15 Days) (Ara)
+g_pCashItemManager:AddCashItemPrice( 67006329 , 12000 )	----	Summon Stone: Moby Chariot RT (15 days)
+g_pCashItemManager:AddCashItemPrice( 67006720 , 12000 )	----	Summon Stone: Moby Chariot RT (3 days)
+g_pCashItemManager:AddCashItemPrice( 67006721 , 12000 )	----	Summon Stone: Cockatigle (3 days)
+g_pCashItemManager:AddCashItemPrice( 67006722 , 12000 )	----	Summon Stone: Ancient Phoru (3 days)
+g_pCashItemManager:AddCashItemPrice( 70000201 , 6000 )	----	Elsword's Fantasy Academy S/F Uniform Top (Teal)
+g_pCashItemManager:AddCashItemPrice( 70000202 , 6000 )	----	Elsword's Fantasy Academy S/F Uniform Bottom (Teal)
+g_pCashItemManager:AddCashItemPrice( 70000203 , 1500 )	----	Elsword's Fantasy Academy S/F Uniform Gloves (Teal)
+g_pCashItemManager:AddCashItemPrice( 70000204 , 1500 )	----	Elsword's Fantasy Academy S/F Uniform Shoes (Teal)
+g_pCashItemManager:AddCashItemPrice( 70000205 , 6000 )	----	Elsword's Fantasy Academy S/F Uniform Hairstyle (Teal)
+g_pCashItemManager:AddCashItemPrice( 70000207 , 6000 )	----	Aisha's Fantasy Academy S/F Uniform Top (Teal)
+g_pCashItemManager:AddCashItemPrice( 70000208 , 6000 )	----	Aisha's Fantasy Academy S/F Uniform Bottom (Teal)
+g_pCashItemManager:AddCashItemPrice( 70000209 , 1500 )	----	Aisha's Fantasy Academy S/F Uniform Gloves (Teal)
+g_pCashItemManager:AddCashItemPrice( 80001951 , 1000 )	----	Note of a New Code
+g_pCashItemManager:AddCashItemPrice( 80002143 , 1000 )	----	King Nasod’s Secret Key
+g_pCashItemManager:AddCashItemPrice( 85000198 , 6000 )	----	Niedliches Hexenoberteil (purpur)
+g_pCashItemManager:AddCashItemPrice( 85000199 , 6000 )	----	Niedliches Hexenbeinkleid (purpur)
+g_pCashItemManager:AddCashItemPrice( 85000200 , 1500 )	----	Niedliche Hexenfäustlinge (purpur)
+g_pCashItemManager:AddCashItemPrice( 85000390 , 1200 )	----	Pongo's Secret Manual
+g_pCashItemManager:AddCashItemPrice( 85000497 , 8000 )	----	Mercenary of Destruction Weapon (Elsword)
+g_pCashItemManager:AddCashItemPrice( 85000498 , 8000 )	----	Mercenary of Destruction Weapon (Aisha)
+g_pCashItemManager:AddCashItemPrice( 85000499 , 8000 )	----	Mercenary of Destruction Weapon (Rena)
+g_pCashItemManager:AddCashItemPrice( 85000500 , 8000 )	----	Mercenary of Destruction Weapon (Raven)
+g_pCashItemManager:AddCashItemPrice( 85000861 , 5000 )	----	Rudolph's Red Nose  (15 days)
+g_pCashItemManager:AddCashItemPrice( 85001857 , 5000 )	----	Rune of Destruction (15 Days)
+g_pCashItemManager:AddCashItemPrice( 85001859 , 5000 )	----	Rune of Destruction
+g_pCashItemManager:AddCashItemPrice( 85001861 , 1000 )	----	Aura of Destruction
+g_pCashItemManager:AddCashItemPrice( 85001863 , 1000 )	----	Destruction Coin
+g_pCashItemManager:AddCashItemPrice( 85001867 , 1000 )	----	Destruction Mode Potion
+g_pCashItemManager:AddCashItemPrice( 85001884 , 5000 )	----	Conwell (7 Days)
+g_pCashItemManager:AddCashItemPrice( 85001885 , 5000 )	----	Conwell's Weak Ego
+g_pCashItemManager:AddCashItemPrice( 85001886 , 5000 )	----	Conwell
+g_pCashItemManager:AddCashItemPrice( 85001887 , 1000 )	----	Conwell's Trace
+g_pCashItemManager:AddCashItemPrice( 85001888 , 1000 )	----	Conwell's Ego
+g_pCashItemManager:AddCashItemPrice( 85001919 , 1000 )	----	Package component 85001919
+g_pCashItemManager:AddCashItemPrice( 85002045 , 1000 )	----	Eldrasil's Holy Water
+g_pCashItemManager:AddCashItemPrice( 85002542 , 5000 )	----	Unrefined Infinite Conwell
+g_pCashItemManager:AddCashItemPrice( 85002544 , 5000 )	----	Refined Infinite Conwell
+g_pCashItemManager:AddCashItemPrice( 85002563 , 5000 )	----	Erendil's Gentle Soul (15 days)
+g_pCashItemManager:AddCashItemPrice( 85002579 , 5000 )	----	Erendil’s Intense and Gentle Soul
+g_pCashItemManager:AddCashItemPrice( 85003055 , 1000 )	----	Field Boss Essence
+g_pCashItemManager:AddCashItemPrice( 85003471 , 5000 )	----	Ariel's Surprised Pumpkin Head
+g_pCashItemManager:AddCashItemPrice( 85003476 , 5000 )	----	Ariel's Dream Step - Halloween Pumpkin
+g_pCashItemManager:AddCashItemPrice( 85003830 , 1000 )	----	Weak Heretic Essence
+g_pCashItemManager:AddCashItemPrice( 90000076 , 1000 )	----	Sealed Ice Sculpture
+g_pCashItemManager:AddCashItemPrice( 90000198 , 1000 )	----	Mysterious Enhancement Stone
+g_pCashItemManager:AddCashItemPrice( 90000211 , 1000 )	----	William's Time and Space Invitation
+g_pCashItemManager:AddCashItemPrice( 90000323 , 1000 )	----	Welcome Key
+g_pCashItemManager:AddCashItemPrice( 90000331 , 1000 )	----	Thanksgiving Title
+g_pCashItemManager:AddCashItemPrice( 90000371 , 1000 )	----	Thanksgiving Title
+g_pCashItemManager:AddCashItemPrice( 90000372 , 1000 )	----	Thanksgiving Title
+g_pCashItemManager:AddCashItemPrice( 90000373 , 1000 )	----	Thanksgiving Title
+g_pCashItemManager:AddCashItemPrice( 90000374 , 1000 )	----	Thanksgiving Title
+g_pCashItemManager:AddCashItemPrice( 90000411 , 1000 )	----	Ariel's Merry Maker 23rd(Lv. 4)
+g_pCashItemManager:AddCashItemPrice( 90000502 , 5000 )	----	Luto's Cursed Dice (30 Days)
+g_pCashItemManager:AddCashItemPrice( 90000650 , 1000 )	----	Anne’s Token Of Friendship
+g_pCashItemManager:AddCashItemPrice( 90001022 , 1000 )	----	Resurrection Stone (3)
+g_pCashItemManager:AddCashItemPrice( 90001043 , 1000 )	----	Ancient Cockatigle's Oil
+g_pCashItemManager:AddCashItemPrice( 90001053 , 1000 )	----	Hamel's Protector Crest
+g_pCashItemManager:AddCashItemPrice( 90001109 , 6000 )	----	Hamel Boss Cards (Resiam Outskirts)
+g_pCashItemManager:AddCashItemPrice( 90001110 , 1000 )	----	Hamel Boss Cards (Sunken Resiam)
+g_pCashItemManager:AddCashItemPrice( 90001111 , 1000 )	----	Hamel Boss Cards (Ancient Waterway)
+g_pCashItemManager:AddCashItemPrice( 90001112 , 1000 )	----	Hamel Boss Cards (Heart of the Ancient Waterway)
+g_pCashItemManager:AddCashItemPrice( 90001120 , 5000 )	----	Unidentified Hamel Boss Booty (30 Days)
+g_pCashItemManager:AddCashItemPrice( 90001305 , 1000 )	----	Smoke Bomb of Water
+g_pCashItemManager:AddCashItemPrice( 90001306 , 1000 )	----	Smoke Bomb of Poison
+g_pCashItemManager:AddCashItemPrice( 90001307 , 1000 )	----	Smoke Bomb of Curse
+g_pCashItemManager:AddCashItemPrice( 90001308 , 1000 )	----	Smoke Bomb of Slow
+g_pCashItemManager:AddCashItemPrice( 90001309 , 1000 )	----	Smoke Bomb of Reclusion
+g_pCashItemManager:AddCashItemPrice( 90001310 , 1000 )	----	Smoke Bomb of Mana Regeneration
+g_pCashItemManager:AddCashItemPrice( 90001371 , 6000 )	----	Pirate Bandana (Elsword)
+g_pCashItemManager:AddCashItemPrice( 90001372 , 6000 )	----	Pirate Bandana (Aisha)
+g_pCashItemManager:AddCashItemPrice( 90001373 , 6000 )	----	Pirate Bandana (Rena)
+g_pCashItemManager:AddCashItemPrice( 90001374 , 6000 )	----	Pirate Bandana (Raven)
+g_pCashItemManager:AddCashItemPrice( 90001375 , 6000 )	----	Pirate Bandana (Eve)
+g_pCashItemManager:AddCashItemPrice( 90001376 , 6000 )	----	Pirate Bandana (Chung)
+g_pCashItemManager:AddCashItemPrice( 90001411 , 1000 )	----	Wyvern's Soul
+g_pCashItemManager:AddCashItemPrice( 90001416 , 1000 )	----	Complete Recovery Potion (Cobo)
+g_pCashItemManager:AddCashItemPrice( 90001420 , 8000 )	----	GREENLIGHT ELSWORD (B&W) (14 Days)
+g_pCashItemManager:AddCashItemPrice( 90001453 , 1000 )	----	Nasod Core Energy
+g_pCashItemManager:AddCashItemPrice( 90001454 , 5000 )	----	Nasod Core Ring
+g_pCashItemManager:AddCashItemPrice( 90001455 , 1000 )	----	Nasod Core Stabilizers
+g_pCashItemManager:AddCashItemPrice( 90001488 , 1000 )	----	Miracle Medicine of Appreciation
+g_pCashItemManager:AddCashItemPrice( 90001489 , 1000 )	----	Miracle Medicine of Abundance
+g_pCashItemManager:AddCashItemPrice( 90001490 , 5000 )	----	Miracle Medicine of Sharing
+g_pCashItemManager:AddCashItemPrice( 90001491 , 1000 )	----	Thanksgiving Surprise Present
+g_pCashItemManager:AddCashItemPrice( 90001492 , 1000 )	----	Thanksgiving Surprise Box
+g_pCashItemManager:AddCashItemPrice( 90001536 , 1000 )	----	Altera's Gift of Friendship
+g_pCashItemManager:AddCashItemPrice( 90001537 , 1000 )	----	Feita's Gift of Friendship
+g_pCashItemManager:AddCashItemPrice( 90001538 , 1000 )	----	Velder's Gift of Friendship
+g_pCashItemManager:AddCashItemPrice( 90001539 , 1000 )	----	Hamel's Gift of Friendship
+g_pCashItemManager:AddCashItemPrice( 90001540 , 1000 )	----	COBO's Token of Friendship
+g_pCashItemManager:AddCashItemPrice( 90001541 , 1000 )	----	COBO's Gift of Friendship
+g_pCashItemManager:AddCashItemPrice( 90001735 , 1000 )	----	Fireworks
+g_pCashItemManager:AddCashItemPrice( 90002193 , 1000 )	----	Unrefined Moonstone
+g_pCashItemManager:AddCashItemPrice( 90002290 , 8000 )	----	Life Crystal (Halloween Pumpkin Fairy)
+g_pCashItemManager:AddCashItemPrice( 90003065 , 1500 )	----	Christmas Gloves (Eve)
+g_pCashItemManager:AddCashItemPrice( 152000121 , 1000 )	----	Luriel's Blessed Weapon Enhancement Stone
+g_pCashItemManager:AddCashItemPrice( 200000001 , 8000 )	----	Shepherd Boy’s Weapon (Elsword)
+g_pCashItemManager:AddCashItemPrice( 200000002 , 8000 )	----	Shepherd Boy’s Weapon (Aisha)
+g_pCashItemManager:AddCashItemPrice( 200000003 , 8000 )	----	Shepherd Boy’s Weapon (Rena)
+g_pCashItemManager:AddCashItemPrice( 200000004 , 8000 )	----	Shepherd Boy’s Weapon (Raven)
+g_pCashItemManager:AddCashItemPrice( 200000005 , 8000 )	----	Shepherd Boy’s Weapon (Eve)
+g_pCashItemManager:AddCashItemPrice( 200000006 , 8000 )	----	Shepherd Boy’s Weapon (Chung)
+g_pCashItemManager:AddCashItemPrice( 200000013 , 5000 )	----	Elsword's Elympics Torch
+g_pCashItemManager:AddCashItemPrice( 200000014 , 5000 )	----	Aisha's Elympics Torch
+g_pCashItemManager:AddCashItemPrice( 200000015 , 5000 )	----	Rena's Elympics Torch
+g_pCashItemManager:AddCashItemPrice( 200000016 , 5000 )	----	Raven's Elympics Torch
+g_pCashItemManager:AddCashItemPrice( 200000017 , 5000 )	----	Eve's Elympics Torch
+g_pCashItemManager:AddCashItemPrice( 200000018 , 5000 )	----	Chung's Elympics Torch
+g_pCashItemManager:AddCashItemPrice( 210000202 , 1000 )	----	Fortune of Love Note
+g_pCashItemManager:AddCashItemPrice( 210000203 , 1000 )	----	Fortune of Love Note
+g_pCashItemManager:AddCashItemPrice( 210000204 , 1000 )	----	Fortune of Love Note
+g_pCashItemManager:AddCashItemPrice( 210000205 , 1000 )	----	Fortune of Love Note
+g_pCashItemManager:AddCashItemPrice( 210000206 , 1000 )	----	Fortune of Love Note
+g_pCashItemManager:AddCashItemPrice( 210000207 , 1000 )	----	Fortune of Love Note

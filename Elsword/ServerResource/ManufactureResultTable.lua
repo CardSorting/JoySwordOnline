@@ -45371,3 +45371,145 @@ g_pManufactureItemManager:AddManufactureResultTemplet
 }
 
 g_pManufactureItemManager:AddManufactureResultGroupWithRate( 108470, 108470, 100, false )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- GACHA_PITY_MILEAGE_EXCHANGE: Modern Gacha Pity, High-Tier Amulet, & Spark Crafting Recipes
+-- 30 Mileage Tokens (130047 - El Shard Mystery) -> Magic Amulet Lv.8 (130150)
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    130150, 1, 100, 10000, 0,
+    130047, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+
+-- 50 Mileage Tokens -> Magic Amulet Lv.9 (130151) / Rare Accessory Choice Cube (130269)
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    130151, 1, 100, 25000, 0,
+    130047, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    130269, 1, 100, 10000, 0,
+    130047, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+
+-- 80 Mileage Tokens -> Magic Amulet Lv.10 (130152) / Rare Avatar Wearable Cube (98001)
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    130152, 1, 100, 50000, 0,
+    130047, 80, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    98001, 1, 100, 25000, 0,
+    130047, 80, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+
+-- 120 Mileage Tokens -> Magic Amulet Lv.11 (130720) / Rare Archangel Set Box (85002870)
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    130720, 1, 100, 100000, 0,
+    130047, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    85002870, 1, 100, 50000, 0,
+    130047, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+
+-- 200 Mileage Tokens -> Magic Amulet Lv.12 (130721) (Mythic Guaranteed Upgrade)
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    130721, 1, 100, 250000, 0,
+    130047, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+
+-- DUPLICATE_AVATAR_SALVAGE: Convert Duplicate Rare Accessories/Avatars into 25 Mileage Tokens
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    130047, 25, 100, 5000, 0,
+    130269, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+-- END_GACHA_PITY_MILEAGE_EXCHANGE
+
+
+-- DISMANTLE_RECYCLING_GACHA_LOOP: Convert Dismantled Equipment Pieces + ED into Gacha Keys & Upgrade Materials
+-- 10 Weapon/Armor Pieces (99807/99808) + 50,000 ED -> 1 Ice Burner Key (207500)
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    207500, 1, 100, 50000, 0,
+    99807, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    207500, 1, 100, 50000, 0,
+    99808, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+
+-- 15 Weapon/Armor Pieces + 100,000 ED -> 1 Blessed Fluorite Ore (206770)
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    206770, 1, 100, 100000, 0,
+    99807, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    206770, 1, 100, 100000, 0,
+    99808, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+
+-- 20 Weapon/Armor Pieces + 150,000 ED -> 1 Blessed Restoration Scroll (206920)
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    206920, 1, 100, 150000, 0,
+    99807, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    206920, 1, 100, 150000, 0,
+    99808, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+
+-- 10 Weapon/Armor Pieces + 25,000 ED -> 1 Additional Damage Dual Magic Stone (72510)
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    72510, 1, 100, 25000, 0,
+    99807, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    72520, 1, 100, 25000, 0,
+    99808, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+-- END_DISMANTLE_RECYCLING_GACHA_LOOP

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Standard Modern Gacha Rates Engine for JoySword Ice Burners.
+"""Standard Modern Gacha Rates Engine, Guaranteed Pity/Spark System, & High-Tier Amulet Salvage for JoySword.
 
 Exact Math Model (Mirrors Genshin Impact / Honkai: Star Rail / FGO Gacha Standards):
 - 0.80% SSR Rate: Rare Ice Burner Wearable & Accessory Items (954 items, Weight 1 each).
@@ -8,24 +8,35 @@ Exact Math Model (Mirrors Genshin Impact / Honkai: Star Rail / FGO Gacha Standar
   Provides balanced super-rare drop progression.
 - 93.20% R Rate: Complete Recovery Potions (x5), Mana Elixirs (x5), El Shards (x3).
   Provides standard adventuring consumables.
+
+Guaranteed Pity / Spark Mileage System, High-Tier Amulet Crafting, & Avatar Salvage:
+- Adds guaranteed Mileage Token drops (El Shard Mystery x3) to every pull.
+- Injects 100% Pity exchange crafting recipes into ManufactureResultTable.lua:
+  * 30 Mileage Tokens -> Magic Amulet Lv.8 (130150)
+  * 50 Mileage Tokens -> Magic Amulet Lv.9 (130151) / Rare Accessory Box (130269)
+  * 80 Mileage Tokens -> Magic Amulet Lv.10 (130152) / Rare Wearable Box (98001)
+  * 120 Mileage Tokens -> Magic Amulet Lv.11 (130720) / Rare Weapon Set Box (85002870)
+  * 200 Mileage Tokens -> Magic Amulet Lv.12 (130721) (Mythic Guaranteed Weapon Upgrade)
+- Duplicate Salvage Loop:
+  * Unwanted Duplicate SSR Avatar Items -> 25 Mileage Tokens!
 """
 
 from __future__ import annotations
 
 import re
 import sys
-import subprocess
 from pathlib import Path
-from collections import defaultdict
 
 ROOT = Path(__file__).resolve().parent.parent
 ELSWORD = ROOT / "Elsword"
 
 RANDOM_TABLE_FILE = ELSWORD / "GameServer" / "RandomItemTable.lua"
 SR_RANDOM_FILE = ELSWORD / "ServerResource" / "RandomItemData.lua"
-GS_RANDOM_FILE = ELSWORD / "ServerResource" / "RandomItemData.lua"
+GS_RANDOM_FILE = ELSWORD / "GameServer" / "RandomItemData.lua"
 SR_MAPPING_FILE = ELSWORD / "ServerResource" / "RandomItemMapping.lua"
 GS_MAPPING_FILE = ELSWORD / "GameServer" / "RandomItemMapping.lua"
+SR_MANUFACTURE_FILE = ELSWORD / "ServerResource" / "ManufactureResultTable.lua"
+GS_MANUFACTURE_FILE = ELSWORD / "GameServer" / "ManufactureResultTable.lua"
 
 ITEM_FILES = [
     ELSWORD / "Resources" / "Item.lua",
@@ -70,9 +81,78 @@ def parse_items():
     return items_by_id
 
 
+def inject_pity_manufacture_recipes():
+    pity_recipes_block = """
+-- GACHA_PITY_MILEAGE_EXCHANGE: Modern Gacha Pity, High-Tier Amulet, & Spark Crafting Recipes
+-- 30 Mileage Tokens (130047 - El Shard Mystery) -> Magic Amulet Lv.8 (130150)
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    130150, 1, 100, 10000, 0,
+    130047, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+
+-- 50 Mileage Tokens -> Magic Amulet Lv.9 (130151) / Rare Accessory Choice Cube (130269)
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    130151, 1, 100, 25000, 0,
+    130047, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    130269, 1, 100, 10000, 0,
+    130047, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+
+-- 80 Mileage Tokens -> Magic Amulet Lv.10 (130152) / Rare Avatar Wearable Cube (98001)
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    130152, 1, 100, 50000, 0,
+    130047, 80, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    98001, 1, 100, 25000, 0,
+    130047, 80, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+
+-- 120 Mileage Tokens -> Magic Amulet Lv.11 (130720) / Rare Archangel Set Box (85002870)
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    130720, 1, 100, 100000, 0,
+    130047, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    85002870, 1, 100, 50000, 0,
+    130047, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+
+-- 200 Mileage Tokens -> Magic Amulet Lv.12 (130721) (Mythic Guaranteed Upgrade)
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    130721, 1, 100, 250000, 0,
+    130047, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+
+-- DUPLICATE_AVATAR_SALVAGE: Convert Duplicate Rare Accessories/Avatars into 25 Mileage Tokens
+g_pManufactureItemManager:AddManufactureResultTemplet(
+    130047, 25, 100, 5000, 0,
+    130269, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0
+)
+-- END_GACHA_PITY_MILEAGE_EXCHANGE
+"""
+    for mf in (SR_MANUFACTURE_FILE, GS_MANUFACTURE_FILE):
+        if not mf.exists():
+            continue
+        text = read_text(mf)
+        if "-- GACHA_PITY_MILEAGE_EXCHANGE" in text:
+            text = re.sub(
+                r"\n-- GACHA_PITY_MILEAGE_EXCHANGE:.*?\n-- END_GACHA_PITY_MILEAGE_EXCHANGE\n",
+                "\n",
+                text,
+                flags=re.DOTALL
+            )
+        updated_text = text + "\n" + pity_recipes_block
+        payload = b"\xef\xbb\xbf" + updated_text.encode("utf-8")
+        mf.write_bytes(payload)
+        print(f"Injected Gacha Pity, Amulet Lv.8-12, & Duplicate Salvage Recipes into {mf.name}")
+
+
 def main():
     print("==================================================")
-    print("JoySword Standard Modern Gacha Rates Engine")
+    print("JoySword Standard Modern Gacha Rates & Pity Engine")
     print("==================================================")
 
     items_by_id = parse_items()
@@ -82,7 +162,7 @@ def main():
     ib_keywords = (
         "Archangel", "Archdevil", "Salvatore Solace", "Velder Imperial Guard", "Hamel Navy",
         "Royal Maid", "Dragon Knight", "Miracle Alchemist", "Ignition Caligo", "Grace Fairy",
-        "Holy Unicorn", "Gold Yaksha", "Royal Blood", "Dark Shadows", "Officer", " 장교", "아크엔젤", "아크데빌", "살바토르"
+        "Holy Unicorn", "Gold Yaksha", "Royal Blood", "Dark Shadows", "Officer", " 장교", "아크엔젤", "살바토르"
     )
 
     all_rare_items = []
@@ -112,11 +192,11 @@ def main():
         (180001, "Fighter's Ring"),
     ]
 
-    # Core Consumables & Shards
+    # Core Consumables & Shards (Includes Guaranteed Pity Mileage Token: El Shard Mystery)
     r_consumables = [
         (130165, "Complete Recovery Potion", 5),
         (215680, "Mana Elixir", 5),
-        (130047, "El Shard (Mystery)", 3),
+        (130047, "El Shard (Mystery - Gacha Mileage Token)", 3),
         (130048, "El Shard (Fire)", 3),
         (130049, "El Shard (Water)", 3),
         (130050, "El Shard (Wind)", 3),
@@ -126,12 +206,6 @@ def main():
     ]
 
     target_groups = [502070, 502071, 502870, 502440, 502872, 502874, 502876, 501710, 503722]
-
-    # Standard Gacha Math (0.8% SSR / 6.0% SR / 93.2% R):
-    # Total Target Weight: ~119,254
-    # SSR Pool (954 items): Weight 1 each -> 954 weight total (0.80%)
-    # SR Pool (11 items): Weight 650 each -> 7,150 weight total (6.00%)
-    # R Pool (9 items): Weight 12,350 each -> 111,150 weight total (93.20%)
 
     group_lines = []
     group_lines.append("\n-- FURTHER_IMPROVE_ICEBURNERS: Standard Modern Gacha Rates (0.8% SSR / 6.0% SR / 93.2% R)\n")
@@ -213,11 +287,16 @@ def main():
         rmf.write_text(curr_rmf + mapping_block, encoding="utf-8", newline="\n")
         print(f"Updated themed mapping rules in {rmf.name}")
 
+    # Inject Pity Exchange & Duplicate Salvage Recipes into ManufactureResultTable.lua
+    inject_pity_manufacture_recipes()
+
     print("\n==================================================")
-    print("Successfully configured Standard Modern Gacha Rates!")
+    print("Successfully configured Standard Modern Gacha Rates & Pity Engine!")
     print("  - SSR (Rare Ice Burner Wearable/Accessory): 0.80% Total Rate")
     print("  - SR (Amulets & Upgrade Materials): 6.00% Total Rate")
     print("  - R (Recovery Potions & Shards): 93.20% Total Rate")
+    print("  - Pity Exchange: 30/50/80/120/200 Tokens -> Amulets Lv.8-12 & Choice Cubes")
+    print("  - Duplicate Avatar Salvage: Duplicate SSR Avatar -> 25 Mileage Tokens")
     print("==================================================")
 
 

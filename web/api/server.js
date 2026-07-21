@@ -38,6 +38,16 @@ import * as users from './src/users.js';
 import { serializeUser } from './src/users.js';
 import { db } from './src/db/postgres.js';
 import { getCashAllowance, claimCashAllowance } from './src/cash-allowance.js';
+import {
+  getGachaStatus,
+  executeGachaPull,
+  processTopUp,
+  claimStarlightReward,
+  purchaseBundle,
+  claimVipTier,
+  claimBattlePassTier,
+  claimMonthlyPass,
+} from './src/gacha-service.js';
 
 const staticRoot = path.resolve(
   process.env.STATIC_ROOT || path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')
@@ -189,6 +199,73 @@ const routes = {
     await enforceRateLimit('cash-claim', clientIp(req), 20, 15);
     const body = await readJson(req);
     const result = await claimCashAllowance(user, body.type);
+    sendJson(res, 200, result);
+  },
+
+  'GET /api/account/gacha/status': async (req, res) => {
+    const user = await requireUser(req);
+    const status = await getGachaStatus(user);
+    sendJson(res, 200, status);
+  },
+
+  'POST /api/account/gacha/pull': async (req, res) => {
+    enforceAllowedOrigin(req);
+    const user = await requireUser(req);
+    const body = await readJson(req);
+    const count = Number(body.count) === 10 ? 10 : 1;
+    const result = await executeGachaPull(user, count);
+    sendJson(res, 200, result);
+  },
+
+  'POST /api/account/gacha/topup': async (req, res) => {
+    enforceAllowedOrigin(req);
+    const user = await requireUser(req);
+    const body = await readJson(req);
+    const tierId = Number(body.tierId) || 1;
+    const result = await processTopUp(user, tierId);
+    sendJson(res, 200, result);
+  },
+
+  'POST /api/account/gacha/starlight/claim': async (req, res) => {
+    enforceAllowedOrigin(req);
+    const user = await requireUser(req);
+    const body = await readJson(req);
+    const rewardId = Number(body.rewardId) || 1;
+    const result = await claimStarlightReward(user, rewardId);
+    sendJson(res, 200, result);
+  },
+
+  'POST /api/account/gacha/bundle/buy': async (req, res) => {
+    enforceAllowedOrigin(req);
+    const user = await requireUser(req);
+    const body = await readJson(req);
+    const bundleId = body.bundleId || 'starter';
+    const result = await purchaseBundle(user, bundleId);
+    sendJson(res, 200, result);
+  },
+
+  'POST /api/account/gacha/vip/claim': async (req, res) => {
+    enforceAllowedOrigin(req);
+    const user = await requireUser(req);
+    const body = await readJson(req);
+    const targetVip = Number(body.targetVip) || 1;
+    const result = await claimVipTier(user, targetVip);
+    sendJson(res, 200, result);
+  },
+
+  'POST /api/account/gacha/battlepass/claim': async (req, res) => {
+    enforceAllowedOrigin(req);
+    const user = await requireUser(req);
+    const body = await readJson(req);
+    const targetTier = Number(body.targetTier) || 1;
+    const result = await claimBattlePassTier(user, targetTier);
+    sendJson(res, 200, result);
+  },
+
+  'POST /api/account/gacha/monthly/claim': async (req, res) => {
+    enforceAllowedOrigin(req);
+    const user = await requireUser(req);
+    const result = await claimMonthlyPass(user);
     sendJson(res, 200, result);
   },
 };

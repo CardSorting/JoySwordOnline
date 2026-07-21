@@ -1358,3 +1358,20 @@ GameEvent:AddReward( 2050, { fEventTime = 30, iRewardID = 2050, bGiveOnce = True
 GameEvent:AddNotifyMSGServerInfo( SERVER_GROUP_ID["SGI_SOLES"],  3 ) -- 솔레스
 GameEvent:AddNotifyMSGServerInfo( SERVER_GROUP_ID["SGI_GAIA"], 103 )  -- 가이아
 
+
+
+
+
+
+
+
+
+
+
+
+
+-- REBALANCE_EVENT_MULTIPLIERS: Permanent 200% Comeback & Global Event Multipliers
+GameEvent:AddReward( 9001, { fEXPRate = 2.0, fEDRate = 2.0, fVPRate = 2.0 } )
+GameEvent:AddReward( 9002, { fEXPRate = 2.0, fEDRate = 2.0, fVPRate = 2.0, iUserType = CRITERION_USER_TYPE["CUT_COMEBACK"] } )
+GameEvent:AddReward( 9003, { fEXPRate = 2.0, fEDRate = 2.0, fVPRate = 2.0, iUserType = CRITERION_USER_TYPE["CUT_NEW"] } )
+-- END_REBALANCE_EVENT_MULTIPLIERS

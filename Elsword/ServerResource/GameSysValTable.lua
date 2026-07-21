@@ -330,3 +330,30 @@ GameSysVal:AddPcBangPremiumItem( UNIT_TYPE["UT_ARA"],	86562	) --	그레이트 �
 GameSysVal:AddPcBangPremiumItem( UNIT_TYPE["UT_ARA"],	86563	) --	그레이트 비틀 장갑 (아라)
 GameSysVal:AddPcBangPremiumItem( UNIT_TYPE["UT_ARA"],	86564	) --	그레이트 비틀 신발 (아라)
 GameSysVal:AddPcBangPremiumItem( UNIT_TYPE["UT_ARA"],	86565	) --	그레이트 비틀 헤어 (아라)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- REBALANCE_GAMESYSVAL_BONUSES: Permanent 100% Bonus ED, EXP, and AP Multipliers
+GameSysVal:AddKNXGameBang( 1.0, 1.0, 1.0, 1.0 )
+GameSysVal:AddPremiumEXP( 1.0 )
+GameSysVal:AddVIPEXP( 1.0 )
+-- END_REBALANCE_GAMESYSVAL_BONUSES

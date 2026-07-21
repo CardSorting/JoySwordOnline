@@ -161,6 +161,28 @@ def build_price_plan(module) -> tuple[dict[int, int], dict[int, dict[str, object
 
     plan: dict[int, int] = {}
     detail: dict[int, dict[str, object]] = {}
+
+    missing_component_ids = sorted(
+        {component_id for _, component_id in package_links} - set(item_rows.keys())
+    )
+    for item_id in missing_component_ids:
+        meta = metadata.get(item_id, module.ItemMeta())
+        product_name = meta.name or f"Package component {item_id}"
+        category_id = module.category_for(item_id, 0, product_name, meta)
+        price = module.default_price_for_category(category_id)
+        item_rows[item_id] = (price, category_id, product_name)
+
+    for item_id in sorted(module.parse_attraction_item_ids()):
+        if item_id in item_rows:
+            continue
+        meta = metadata.get(item_id, module.ItemMeta())
+        if not module.is_wearable_meta(meta):
+            continue
+        product_name = meta.name or f"Gacha drop {item_id}"
+        category_id = module.category_for(item_id, 0, product_name, meta)
+        price = module.default_price_for_category(category_id)
+        item_rows[item_id] = (price, category_id, product_name)
+
     for item_id, (price, category, name) in item_rows.items():
         if category == 51:
             continue
@@ -216,13 +238,15 @@ def build_price_plan(module) -> tuple[dict[int, int], dict[int, dict[str, object
     return plan, detail
 
 
-def rewrite_price_file(path: Path, plan: dict[int, int], apply: bool) -> int:
+def rewrite_price_file(path: Path, plan: dict[int, int], detail: dict[int, dict[str, object]], apply: bool) -> int:
     text = path.read_text(encoding="utf-8-sig")
     changed = 0
+    existing_ids: set[int] = set()
 
     def replace(match: re.Match[str]) -> str:
         nonlocal changed
         item_id = int(match.group("item"))
+        existing_ids.add(item_id)
         old_price = int(match.group("price"))
         new_price = plan.get(item_id, old_price)
         if new_price != old_price:
@@ -230,9 +254,27 @@ def rewrite_price_file(path: Path, plan: dict[int, int], apply: bool) -> int:
         return f"{match.group('prefix')}{new_price}{match.group('suffix')}"
 
     updated = PRICE_LINE.sub(replace, text)
-    updated = "\n".join(line.rstrip() for line in updated.splitlines()).rstrip() + "\n"
+
+    # Append missing plan items into CashItemPrice.lua
+    missing_lines: list[str] = []
+    for item_id in sorted(plan.keys()):
+        if item_id in existing_ids:
+            continue
+        price = plan[item_id]
+        if price <= 0:
+            continue
+        name = detail.get(item_id, {}).get("name", f"Item {item_id}")
+        missing_lines.append(f"g_pCashItemManager:AddCashItemPrice( {item_id} , {price} )\t----\t{name}")
+        changed += 1
+
+    if missing_lines:
+        updated_lines = [line.rstrip() for line in updated.splitlines()]
+        updated_lines.append("\n-- Auto-injected catalog items for 100% CashShop price coverage")
+        updated_lines.extend(missing_lines)
+        updated = "\n".join(updated_lines).rstrip() + "\n"
+
     if apply and updated != text:
-        path.write_text(updated, encoding="utf-8", newline="\n")
+        path.write_text(updated, encoding="utf-8-sig", newline="\n")
     return changed
 
 
@@ -299,7 +341,7 @@ def main() -> int:
     priced_ids: set[int] = set()
     for path in PRICE_FILES:
         priced_ids.update(int(match.group("item")) for match in PRICE_LINE.finditer(path.read_text(encoding="utf-8-sig")))
-    changes = {str(path.relative_to(ROOT)): rewrite_price_file(path, plan, args.apply) for path in PRICE_FILES}
+    changes = {str(path.relative_to(ROOT)): rewrite_price_file(path, plan, detail, args.apply) for path in PRICE_FILES}
     report = summarize(detail, priced_ids)
     report["files"] = changes
     report["applied"] = args.apply
