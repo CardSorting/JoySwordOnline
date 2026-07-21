@@ -12,6 +12,7 @@ g_pRandomItemManager:AddRandomItemMappingTime( 3, "2000-01-01 00:00:00", "2099-1
 
 
 
+
 -- FURTHER_IMPROVE_ICEBURNERS: Themed Ice Burner mapping rules
 g_pRandomItemManager:AddRandomItemMappingData( 10, 85002870, 207500, 502870, 502870 ) -- Archangel Burner
 g_pRandomItemManager:AddRandomItemMappingTime( 10, "2000-01-01 00:00:00", "2099-12-31 23:59:59" )

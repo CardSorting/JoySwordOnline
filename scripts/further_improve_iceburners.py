@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Modern Balanced Gacha Economy Engine for JoySword Ice Burners.
+"""Standard Modern Gacha Rates Engine for JoySword Ice Burners.
 
-Rates Model (Mirrors Modern Gacha Games):
-- 5.0% SSR Rate: Rare Ice Burner Wearable & Accessory Items (954 items).
-  Encourages long-term collection goals, high item value, and a healthy economy.
-- 15.0% SR Rate: High-Tier Magic Amulets (+7 to +10), Dual Magic Stones, Fluorite Ore, Restoration Scrolls.
-  Provides steady progress materials.
-- 80.0% R Rate: Complete Recovery Potions (x10), Mana Elixirs (x10), El Shards (x5).
-  Provides essential adventuring supplies.
+Exact Math Model (Mirrors Genshin Impact / Honkai: Star Rail / FGO Gacha Standards):
+- 0.80% SSR Rate: Rare Ice Burner Wearable & Accessory Items (954 items, Weight 1 each).
+  Restores authentic rare gacha prestige, long-term collection goals, and a fully sustainable economy.
+- 6.00% SR Rate: High-Tier Magic Amulets (+7 to +10), Dual Magic Stones, Fluorite Ore, Restoration Scrolls.
+  Provides balanced super-rare drop progression.
+- 93.20% R Rate: Complete Recovery Potions (x5), Mana Elixirs (x5), El Shards (x3).
+  Provides standard adventuring consumables.
 """
 
 from __future__ import annotations
@@ -72,7 +72,7 @@ def parse_items():
 
 def main():
     print("==================================================")
-    print("JoySword Modern Balanced Gacha Economy Engine")
+    print("JoySword Standard Modern Gacha Rates Engine")
     print("==================================================")
 
     items_by_id = parse_items()
@@ -114,43 +114,43 @@ def main():
 
     # Core Consumables & Shards
     r_consumables = [
-        (130165, "Complete Recovery Potion", 10),
-        (215680, "Mana Elixir", 10),
-        (130047, "El Shard (Mystery)", 5),
-        (130048, "El Shard (Fire)", 5),
-        (130049, "El Shard (Water)", 5),
-        (130050, "El Shard (Wind)", 5),
-        (130051, "El Shard (Nature)", 5),
-        (130052, "El Shard (Dark)", 5),
-        (130053, "El Shard (Light)", 5),
+        (130165, "Complete Recovery Potion", 5),
+        (215680, "Mana Elixir", 5),
+        (130047, "El Shard (Mystery)", 3),
+        (130048, "El Shard (Fire)", 3),
+        (130049, "El Shard (Water)", 3),
+        (130050, "El Shard (Wind)", 3),
+        (130051, "El Shard (Nature)", 3),
+        (130052, "El Shard (Dark)", 3),
+        (130053, "El Shard (Light)", 3),
     ]
 
     target_groups = [502070, 502071, 502870, 502440, 502872, 502874, 502876, 501710, 503722]
 
-    # Modern Gacha Weight Math (Target: 5% SSR, 15% SR, 80% R):
-    # Total Target Weight: 190,800
-    # SSR Pool (954 items): Weight 10 each -> 9,540 total weight (5.0%)
-    # SR Pool (11 items): Weight 2,600 each -> 28,600 total weight (15.0%)
-    # R Pool (9 items): Weight 17,000 each -> 153,000 total weight (80.0%)
+    # Standard Gacha Math (0.8% SSR / 6.0% SR / 93.2% R):
+    # Total Target Weight: ~119,254
+    # SSR Pool (954 items): Weight 1 each -> 954 weight total (0.80%)
+    # SR Pool (11 items): Weight 650 each -> 7,150 weight total (6.00%)
+    # R Pool (9 items): Weight 12,350 each -> 111,150 weight total (93.20%)
 
     group_lines = []
-    group_lines.append("\n-- FURTHER_IMPROVE_ICEBURNERS: Modern Gacha Balanced Rates (5% SSR / 15% SR / 80% R)\n")
+    group_lines.append("\n-- FURTHER_IMPROVE_ICEBURNERS: Standard Modern Gacha Rates (0.8% SSR / 6.0% SR / 93.2% R)\n")
 
     for gid in target_groups:
-        group_lines.append(f"-- Group ID {gid}: Modern Balanced Gacha Pool")
+        group_lines.append(f"-- Group ID {gid}: Standard Modern Gacha Pool")
 
-        # 1. SSR: Rare Wearables & Accessories (Weight 10 each -> 5.0% Total Rate)
+        # 1. SSR: Rare Wearables & Accessories (Weight 1 each -> 0.80% Total Rate)
         for iid, name in all_rare_items:
             sanitized = name.replace("\n", " ").strip()
-            group_lines.append(f"g_pRandomItemManager:AddRandomItemGroup( {gid}, {iid}, 10, 0, 1 ) -- [SSR] {sanitized}")
+            group_lines.append(f"g_pRandomItemManager:AddRandomItemGroup( {gid}, {iid}, 1, 0, 1 ) -- [SSR 0.8%] {sanitized}")
 
-        # 2. SR: Enhancement Amulets & Dual Stones (Weight 2600 each -> 15.0% Total Rate)
+        # 2. SR: Enhancement Amulets & Dual Stones (Weight 650 each -> 6.00% Total Rate)
         for iid, name in sr_amulets + sr_materials:
-            group_lines.append(f"g_pRandomItemManager:AddRandomItemGroup( {gid}, {iid}, 2600, 0, 1 ) -- [SR] {name}")
+            group_lines.append(f"g_pRandomItemManager:AddRandomItemGroup( {gid}, {iid}, 650, 0, 1 ) -- [SR 6.0%] {name}")
 
-        # 3. R: Core Potions & Shards (Weight 17000 each -> 80.0% Total Rate)
+        # 3. R: Core Potions & Shards (Weight 12350 each -> 93.20% Total Rate)
         for iid, name, qty in r_consumables:
-            group_lines.append(f"g_pRandomItemManager:AddRandomItemGroup( {gid}, {iid}, 17000, 0, {qty} ) -- [R] {name}")
+            group_lines.append(f"g_pRandomItemManager:AddRandomItemGroup( {gid}, {iid}, 12350, 0, {qty} ) -- [R 93.2%] {name}")
 
     group_lines.append("\n-- END_FURTHER_IMPROVE_ICEBURNERS\n")
     hyper_block = "\n".join(group_lines)
@@ -167,7 +167,7 @@ def main():
 
     updated_table = current_table + hyper_block
     RANDOM_TABLE_FILE.write_text(updated_table, encoding="utf-8", newline="\n")
-    print(f"Updated RandomItemTable.lua with 5%/15%/80% modern gacha rates across {len(target_groups)} groups.")
+    print(f"Updated RandomItemTable.lua with 0.8%/6.0%/93.2% standard modern gacha rates across {len(target_groups)} groups.")
 
     # Mirror to RandomItemData.lua
     for rdf in (SR_RANDOM_FILE, GS_RANDOM_FILE):
@@ -214,10 +214,10 @@ def main():
         print(f"Updated themed mapping rules in {rmf.name}")
 
     print("\n==================================================")
-    print("Successfully configured Modern Balanced Gacha Rates!")
-    print("  - SSR (Rare Ice Burner Wearable/Accessory): 5.0% Total Rate")
-    print("  - SR (Amulets & Upgrade Materials): 15.0% Total Rate")
-    print("  - R (Recovery Potions & Shards): 80.0% Total Rate")
+    print("Successfully configured Standard Modern Gacha Rates!")
+    print("  - SSR (Rare Ice Burner Wearable/Accessory): 0.80% Total Rate")
+    print("  - SR (Amulets & Upgrade Materials): 6.00% Total Rate")
+    print("  - R (Recovery Potions & Shards): 93.20% Total Rate")
     print("==================================================")
 
 
