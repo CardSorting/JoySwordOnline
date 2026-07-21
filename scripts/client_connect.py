@@ -27,7 +27,9 @@ def patch_client_config(file_path: Path, ip: str, channel_port: int = 9400, game
         return False
     
     print(f"Patching client config: {file_path}")
-    original = file_path.read_text(encoding="utf-8", errors="replace")
+    raw_bytes = file_path.read_bytes()
+    has_bom = raw_bytes.startswith(b"\xef\xbb\xbf")
+    original = raw_bytes.decode("utf-8-sig" if has_bom else "utf-8", errors="replace")
     text = original
     
     # Replace channel server IP
@@ -62,7 +64,8 @@ def patch_client_config(file_path: Path, ip: str, channel_port: int = 9400, game
         os.chmod(file_path, stat.S_IWRITE)
     except Exception:
         pass
-    file_path.write_text(text, encoding="utf-8")
+    payload = (b"\xef\xbb\xbf" if has_bom else b"") + text.encode("utf-8")
+    file_path.write_bytes(payload)
     print(f"Successfully pointed client config to {ip}:{channel_port}.")
     return True
 

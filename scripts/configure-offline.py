@@ -579,14 +579,17 @@ def apply_lua_tree(env: dict[str, str]) -> int:
     lua_changed = 0
     for index, path in enumerate(lua_files, start=1):
         progress(f"  Auditing {index}/{len(lua_files)}: {path.name}")
-        original = path.read_text(encoding="utf-8", errors="replace")
+        raw_bytes = path.read_bytes()
+        has_bom = raw_bytes.startswith(b"\xef\xbb\xbf")
+        original = raw_bytes.decode("utf-8-sig" if has_bom else "utf-8", errors="replace")
         updated = patch_lua_paths(original, elsword_root)
         updated = patch_offline_lua_flags(updated, use_internal_auth)
         updated = patch_offline_billing(updated, path)
         updated = comment_external_auth_lines(updated)
         updated = patch_advertisements(updated)
         if updated != original:
-            path.write_text(updated, encoding="utf-8")
+            payload = (b"\xef\xbb\xbf" if has_bom else b"") + updated.encode("utf-8")
+            path.write_bytes(payload)
             lua_changed += 1
     return lua_changed
 
