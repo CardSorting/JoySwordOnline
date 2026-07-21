@@ -64,6 +64,12 @@ services:
       DB_PASSWORD: "${MSSQL_SA_PASSWORD:-JoySword!Offline123}"
       CHANNEL_SERVER_IP: "0.0.0.0"
       SERVER_READINESS_MODE: strict
+    healthcheck:
+      test: ["CMD-SHELL", "python scripts\\stack-status.py --check"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
     restart: unless-stopped
 
 volumes:

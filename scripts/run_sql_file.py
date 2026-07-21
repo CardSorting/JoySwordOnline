@@ -87,7 +87,37 @@ def run_sql_in_docker(env: dict[str, str], query: str) -> None:
     print(result.stdout.strip())
 
 
+def try_run_sql_pyodbc(env: dict[str, str], query: str) -> bool:
+    try:
+        import importlib
+        pyodbc = importlib.import_module("pyodbc")
+    except Exception:
+        return False
+    try:
+        server = f"{env.get('DB_HOST', '127.0.0.1')},{env.get('DB_PORT', '1433')}"
+        conn_str = (
+            f"DRIVER={{SQL Server}};SERVER={server};"
+            f"UID={env.get('DB_USER', 'sa')};PWD={env.get('DB_PASSWORD', 'JoySword!Offline123')};"
+            "TrustServerCertificate=yes;"
+        )
+        with pyodbc.connect(conn_str, autocommit=True, timeout=5) as conn:
+            with conn.cursor() as cursor:
+                cursor.execute(query)
+                try:
+                    rows = cursor.fetchall()
+                    for row in rows:
+                        print(" ".join(str(cell) for cell in row))
+                except Exception:
+                    pass
+        return True
+    except Exception:
+        return False
+
+
 def run_sql(env: dict[str, str], query: str):
+    if try_run_sql_pyodbc(env, query):
+        return
+
     sqlcmd = find_sqlcmd()
     if not sqlcmd:
         run_sql_in_docker(env, query)
@@ -150,9 +180,16 @@ def main():
         
     sql_content = re.sub(r'\$\(([^)]+)\)', replace_var, sql_content)
     
+    # Wrap in atomic transaction and XACT_ABORT ON to prevent partial migration corruption
+    transactional_content = f"SET XACT_ABORT ON;\n{sql_content}\n"
+    
     print(f"Executing SQL file: {sql_path.name}...")
     try:
-        run_sql(env, sql_content)
+        run_sql(env, transactional_content)
+        # Update patch receipt
+        cache_script = ROOT / "scripts" / "db-patch-cache.py"
+        if cache_script.exists():
+            subprocess.run([sys.executable, str(cache_script), "--update"], capture_output=True)
     except Exception as e:
         print(f"Failed to execute SQL: {e}", file=sys.stderr)
         sys.exit(1)

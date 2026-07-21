@@ -34,10 +34,23 @@ def prune(dry_run: bool) -> tuple[int, int]:
         size = path.stat().st_size
         if dry_run:
             print(f"would remove {rel} ({size} bytes)")
+            removed += 1
+            bytes_freed += size
         else:
-            path.unlink()
-        removed += 1
-        bytes_freed += size
+            try:
+                path.unlink()
+                removed += 1
+                bytes_freed += size
+            except (PermissionError, OSError):
+                # If file is locked by a running process, try truncating if large (> 5 MiB)
+                try:
+                    if size > 5 * 1024 * 1024:
+                        with path.open("r+", encoding="utf-8", errors="ignore") as f:
+                            f.truncate(0)
+                        removed += 1
+                        bytes_freed += size
+                except OSError:
+                    pass
     return removed, bytes_freed
 
 

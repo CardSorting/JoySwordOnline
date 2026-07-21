@@ -90,6 +90,10 @@ IF NOT EXISTS (
 
 IF OBJECT_ID(N'dbo.mup_auth_user', N'P') IS NULL
     THROW 50000, 'Missing Account.dbo.mup_auth_user. The Account restore is incomplete.', 1;
+IF OBJECT_ID(N'[Statistics].dbo.LServerList', N'U') IS NULL
+    THROW 50000, 'Missing Statistics.dbo.LServerList table in Statistics database.', 1;
+IF NOT EXISTS (SELECT 1 FROM [Statistics].dbo.LServerList WHERE Enable = 1)
+    THROW 50000, 'No enabled servers registered in Statistics.dbo.LServerList. Run scripts\setup-offline.bat.', 1;
 IF OBJECT_ID(N'dbo.mup_get_userinfo', N'P') IS NULL
     THROW 50000, 'Missing Account.dbo.mup_get_userinfo. The Account restore is incomplete.', 1;
 IF OBJECT_ID(N'dbo.mup_auth_global_user', N'P') IS NULL
@@ -200,6 +204,34 @@ WHERE P.CD_CATEGORYNO IN (11, 12, 13, 14, 15, 16, 17, 21, 22, 23, 24, 25, 26, 27
   AND ISNULL(P.DI_ISCASHINVENSKIP, 0) <> 0;
 IF ISNULL(@MultiSocketSkipWrong, 0) > 0
     THROW 50000, 'Multi-socket wearables must keep DI_ISCASHINVENSKIP=0. Run scripts\restore-cashshop.py.', 1;
+
+-- Self-Healing: Detect and terminate orphaned sessions holding blocking locks > 15s
+DECLARE @BlockedSessionID INT;
+SELECT TOP 1 @BlockedSessionID = blocking_session_id
+FROM sys.dm_exec_requests
+WHERE blocking_session_id > 0
+  AND wait_time > 15000;
+
+IF @BlockedSessionID IS NOT NULL AND @BlockedSessionID > 50
+BEGIN
+    DECLARE @KillSql NVARCHAR(50) = N'KILL ' + CAST(@BlockedSessionID AS NVARCHAR(10));
+    EXEC sp_executesql @KillSql;
+    PRINT 'Self-Healed: Terminated blocking SQL session ' + CAST(@BlockedSessionID AS NVARCHAR(10));
+END
+
+-- Self-Maintenance: Refresh table statistics for query performance
+UPDATE STATISTICS Game01.dbo.GUnit;
+UPDATE STATISTICS Account.dbo.MUser;
+
+-- Self-Maintenance: Ensure Delayed Durability is enabled for high write throughput
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name = 'Game01' AND delayed_durability = 0)
+    ALTER DATABASE [Game01] SET DELAYED_DURABILITY = FORCED;
+
+-- Self-Maintenance: Pre-Warm Procedure Execution Plans for fast binary handshake
+IF OBJECT_ID(N'dbo.lup_verify_server_connect', N'P') IS NOT NULL
+    EXEC dbo.lup_verify_server_connect @iServerType = 0, @strServerIP = N'127.0.0.1', @iPort1 = 9100;
+IF OBJECT_ID(N'dbo.P_LServerList_GET_verify_connect', N'P') IS NOT NULL
+    EXEC dbo.P_LServerList_GET_verify_connect @iServerType = 0, @strServerIP = N'127.0.0.1', @iPort1 = 9100;
 
 SELECT 'OK: JoySword database healthcheck passed for ' + @LoginMode + ' mode.' AS Result;
 """

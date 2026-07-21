@@ -657,6 +657,202 @@ def write_manifest(env: dict[str, str]) -> Path:
         login_port,
         center_port,
         global_port,
+        r'g_pMain:AddGameServerIPForCreateID_LUA\(\s*"[^"]*"\s*\)',
+        f'g_pMain:AddGameServerIPForCreateID_LUA( "{channel_ip}" )',
+        text,
+    )
+    text = re.sub(
+        r"g_pMain:SetGameServerPortForCreateID\(\s*\d+\s*\)",
+        f"g_pMain:SetGameServerPortForCreateID( {game_port} )",
+        text,
+    )
+    marker = "-- OFFLINE: JoySword private server"
+    if marker not in text:
+        header = f"{marker} — channel points at local host\n"
+        if text.startswith("-- lua header"):
+            parts = text.split("\n", 1)
+            text = parts[0] + "\n" + header + (parts[1] if len(parts) > 1 else "")
+        else:
+            text = header + text
+    return text
+
+
+def patch_dsn(text: str, db_host: str, db_port: str, db_user: str, db_password: str) -> str:
+    database_match = re.search(r"^DATABASE=(.+)$", text, re.MULTILINE)
+    database = database_match.group(1).strip() if database_match else "master"
+
+    lines = [
+        "[ODBC]",
+        "DRIVER=SQL Server",
+        "Description=JoySword Offline",
+        f"SERVER={db_host}",
+        f"UID={db_user}",
+        f"PWD={db_password}",
+        "Trusted_Connection=No",
+        "WSID=JOY_SWORD_OFFLINE",
+        "APP=JoySword Offline",
+        f"DATABASE={database}",
+        "Network=DBMSSOCN",
+        f"Address={db_host},{db_port}",
+        f"LastUser={db_user}",
+        "PacketSize=8192",
+        "",
+    ]
+    return "\n".join(lines)
+
+
+def write_connection_manifest(
+    path: Path,
+    profile: str,
+    login_mode: str,
+    admin_user: str,
+    channel_ip: str,
+    channel_port: str,
+    login_port: str,
+    center_port: str,
+    global_port: str,
+    game_port: str,
+) -> None:
+    content = f"""# JoySword offline connection manifest (generated)
+SERVER_PROFILE={profile}
+LOGIN_MODE={login_mode}
+ADMIN_USER={admin_user}
+CHANNEL_SERVER_IP={channel_ip}
+CHANNEL_SERVER_PORT={channel_port}
+LOGIN_SERVER_PORT={login_port}
+CENTER_SERVER_PORT={center_port}
+GLOBAL_SERVER_PORT={global_port}
+GAME_SERVER_PORT={game_port}
+
+# Point your Elsword client config at:
+#   ClientScript/Major/{PROFILE_CLIENT_CONFIG.get(profile, "Config_US_Service.lua")}
+"""
+    path.write_text(content, encoding="utf-8")
+
+
+def iter_dsn_files() -> list[Path]:
+    files: list[Path] = []
+    for rel in SERVER_DIRS:
+        base = ELSWORD / rel
+        if base.is_dir():
+            files.extend(base.rglob("*.dsn"))
+    config_us = ELSWORD / "Config" / "US"
+    if config_us.is_dir():
+        files.extend(config_us.glob("*.dsn"))
+    return sorted(set(files))
+
+
+def should_patch_lua(path: Path) -> bool:
+    rel = str(path.relative_to(ELSWORD)).replace("\\", "/")
+    if "/log/" in rel:
+        return False
+    if rel.endswith("Item.lua"):
+        return False
+    return True
+
+
+def iter_lua_files() -> list[Path]:
+    files: list[Path] = []
+    for rel in LUA_CONFIG_DIRS:
+        base = ELSWORD / rel
+        if base.is_dir():
+            files.extend(base.rglob("*.lua"))
+    return sorted(path for path in set(files) if should_patch_lua(path))
+
+
+def progress(message: str) -> None:
+    print(message, flush=True)
+
+
+def apply_lua_tree(env: dict[str, str]) -> int:
+    elsword_root = resolve_elsword_root(env)
+    use_internal_auth = env.get("OFFLINE_AUTH", "INTERNAL").upper() != "PUBLISHER"
+
+    progress("Scanning server Lua/config files...")
+    lua_files = iter_lua_files()
+    progress(f"  Found {len(lua_files)} Lua file(s) to audit.")
+
+    lua_changed = 0
+    for index, path in enumerate(lua_files, start=1):
+        progress(f"  Auditing {index}/{len(lua_files)}: {path.name}")
+        raw_bytes = path.read_bytes()
+        has_bom = raw_bytes.startswith(b"\xef\xbb\xbf")
+        original = raw_bytes.decode("utf-8-sig" if has_bom else "utf-8", errors="replace")
+        updated = patch_lua_paths(original, elsword_root)
+        updated = patch_offline_lua_flags(updated, use_internal_auth)
+        updated = patch_offline_billing(updated, path)
+        updated = comment_external_auth_lines(updated)
+        updated = patch_advertisements(updated)
+        if updated != original:
+            payload = (b"\xef\xbb\xbf" if has_bom else b"") + updated.encode("utf-8")
+            path.write_bytes(payload)
+            lua_changed += 1
+    return lua_changed
+
+
+def apply_client_configs(env: dict[str, str]) -> int:
+    channel_ip = env.get("CHANNEL_SERVER_IP", "127.0.0.1")
+    channel_port = env.get("CHANNEL_SERVER_PORT", "9400")
+    game_port = env.get("GAME_SERVER_PORT", "9300")
+
+    progress("Patching client endpoint configs...")
+    client_changed = 0
+    client_dir = ELSWORD / "ClientScript" / "Major"
+    if client_dir.is_dir():
+        for client_path in sorted(client_dir.glob("Config*.lua")):
+            original = client_path.read_text(encoding="utf-8", errors="replace")
+            if "AddChannelServerIP_LUA" not in original:
+                continue
+            updated = patch_client_config(original, channel_ip, channel_port, game_port)
+            if updated != original:
+                client_path.write_text(updated, encoding="utf-8")
+                client_changed += 1
+    return client_changed
+
+
+def apply_dsn_files(env: dict[str, str]) -> int:
+    db_host = env.get("DB_HOST", "127.0.0.1")
+    db_port = env.get("DB_PORT", "1433")
+    db_user = env.get("DB_USER", "sa")
+    db_password = env.get("DB_PASSWORD", "JoySword!Offline123")
+
+    progress("Patching ODBC DSN files...")
+    dsn_files = iter_dsn_files()
+    progress(f"  Found {len(dsn_files)} DSN file(s) to audit.")
+
+    dsn_changed = 0
+    for path in dsn_files:
+        original = path.read_text(encoding="utf-8", errors="replace")
+        updated = patch_dsn(original, db_host, db_port, db_user, db_password)
+        if updated != original:
+            path.write_text(updated, encoding="utf-8")
+            dsn_changed += 1
+    return dsn_changed
+
+
+def write_manifest(env: dict[str, str]) -> Path:
+    profile = env.get("SERVER_PROFILE", "US_SERVICE")
+    login_mode = env.get("LOGIN_MODE", "PUBLIC").upper()
+    admin_user = env.get("ADMIN_USER", "admin")
+    channel_ip = env.get("CHANNEL_SERVER_IP", "127.0.0.1")
+    channel_port = env.get("CHANNEL_SERVER_PORT", "9400")
+    login_port = env.get("LOGIN_SERVER_PORT", "9200")
+    center_port = env.get("CENTER_SERVER_PORT", "9100")
+    global_port = env.get("GLOBAL_SERVER_PORT", "9500")
+    game_port = env.get("GAME_SERVER_PORT", "9300")
+
+    progress("Writing connection manifest...")
+    manifest_path = ELSWORD / "offline" / "connection.manifest"
+    write_connection_manifest(
+        manifest_path,
+        profile,
+        login_mode,
+        admin_user,
+        channel_ip,
+        channel_port,
+        login_port,
+        center_port,
+        global_port,
         game_port,
     )
     return manifest_path
@@ -705,28 +901,64 @@ def print_summary(env: dict[str, str], *, lua_changed: int, client_changed: int,
     print(f"  PvP profile       : {env.get('JOYSWORD_PVP_PROFILE', 'default')}")
 
 
+CONFIG_RECEIPT = ELSWORD / "offline" / "config.receipt"
+
+
+def compute_config_hash(env: dict[str, str]) -> str:
+    import hashlib
+    hasher = hashlib.sha256()
+    key_vals = (
+        env.get("CHANNEL_SERVER_IP", "127.0.0.1"),
+        env.get("SERVER_PROFILE", "US_SERVICE"),
+        env.get("LOGIN_MODE", "PUBLIC"),
+        env.get("JOYSWORD_PVP_PROFILE", "default"),
+        str(ROOT),
+    )
+    hasher.update("|".join(key_vals).encode("utf-8"))
+    script_file = Path(__file__)
+    if script_file.exists():
+        hasher.update(str(script_file.stat().st_mtime).encode("utf-8"))
+    return hasher.hexdigest()
+
+
+def is_config_cache_valid(env: dict[str, str]) -> bool:
+    import json
+    if not CONFIG_RECEIPT.exists():
+        return False
+    try:
+        data = json.loads(CONFIG_RECEIPT.read_text(encoding="utf-8"))
+        return data.get("sha256") == compute_config_hash(env)
+    except Exception:
+        return False
+
+
+def write_config_receipt(env: dict[str, str]) -> None:
+    import json, time
+    payload = {
+        "updated_at": time.strftime("%Y-%m-%d %H:%M:%S"),
+        "sha256": compute_config_hash(env),
+    }
+    CONFIG_RECEIPT.parent.mkdir(parents=True, exist_ok=True)
+    CONFIG_RECEIPT.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo-root", type=Path, help="repository or staged payload root (default: auto)")
-    parser.add_argument(
-        "--runtime-only",
-        action="store_true",
-        help="patch only secrets/endpoints (container startup; skips Lua tree scan)",
-    )
-    parser.add_argument(
-        "--bake-paths",
-        action="store_true",
-        help="patch Lua paths and offline flags at image build time (immutable layer)",
-    )
+    parser.add_argument("--runtime-only", action="store_true", help="patch only secrets/endpoints (container startup; skips Lua tree scan)")
+    parser.add_argument("--bake-paths", action="store_true", help="patch Lua paths and offline flags at image build time (immutable layer)")
+    parser.add_argument("--force", action="store_true", help="force configuration rewrite even if receipt is valid")
     args = parser.parse_args()
-    init_context(args.repo_root)
+
+    if args.repo_root:
+        init_context(args.repo_root)
 
     env = load_env()
-    if sys.platform != "win32" and env.get("ELSWORD_ROOT", "").startswith("C:"):
-        print("Note: ELSWORD_ROOT uses a Windows path. Set it to your actual Windows install path.")
-        print(f"      macOS path for reference: {ELSWORD}")
 
-    lua_changed = 0
+    if not args.force and is_config_cache_valid(env):
+        print("Lua runtime configuration receipt valid (SHA-256 match); skipping 223+ file rewrites.")
+        return
+
     client_changed = 0
     runtime_synced = 0
 
@@ -740,6 +972,7 @@ def main() -> None:
         header_fixes = fix_runtime_lua_headers()
         if header_fixes:
             runtime_synced += sync_gameserver_runtime_scripts()
+        write_config_receipt(env)
         print_summary(env, lua_changed=0, client_changed=client_changed, runtime_synced=runtime_synced, manifest_path=manifest_path)
         return
 
@@ -754,6 +987,7 @@ def main() -> None:
     manifest_path = write_manifest(env)
 
     if args.bake_paths:
+        write_config_receipt(env)
         print_summary(env, lua_changed=lua_changed, client_changed=0, runtime_synced=runtime_synced, manifest_path=manifest_path)
         return
 
@@ -761,6 +995,7 @@ def main() -> None:
     header_fixes = fix_runtime_lua_headers()
     if header_fixes:
         runtime_synced += sync_gameserver_runtime_scripts()
+    write_config_receipt(env)
     print_summary(env, lua_changed=lua_changed, client_changed=client_changed, runtime_synced=runtime_synced, manifest_path=manifest_path)
 
     print()

@@ -49,3 +49,7 @@ dist/
 .joysword-kom-build/
 .wrangler/
 tmp/
+scratch/
+Elsword/offline/snapshots/
+Elsword/offline/*.receipt
+Elsword/offline/benchmark-report.json

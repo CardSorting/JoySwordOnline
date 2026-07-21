@@ -117,39 +117,57 @@ scripts\restore-databases.bat
 
 ---
 
-## 6. Operational Commands (Local Ops)
+## 6. Operational Commands & Sovereign SRE Management
 
-All servers run locally using PowerShell and Python scripts from the workspace root.
+All server management operations use Python SRE utilities from the workspace root.
 
-### Stop the Server Stack
-To clean up current connections and stop all processes, run:
+### Sovereign SRE Master Utility (`sovereign-guard.py`)
+The master SRE CLI manages stack health, auto-healing, and preflight auditing:
 ```powershell
+# 1. Run 4-layer system preflight audit
+python scripts\sovereign-guard.py --audit
+
+# 2. Auto-heal: release orphan ports, prune log bloat, refresh SQL statistics
+python scripts\sovereign-guard.py --auto-heal
+
+# 3. View real-time SRE stack telemetry table
+python scripts\sovereign-guard.py --status
+
+# 4. Roll back to previous configuration snapshot
+python scripts\sovereign-guard.py --rollback
+```
+
+### High-Throughput Database Optimization (`db-optimize-storage.py`)
+To enable Read Committed Snapshot Isolation (RCSI lockless concurrency), forced delayed durability, forced query parameterization, Query Store, and index defragmentation:
+```powershell
+python scripts\db-optimize-storage.py
+```
+
+### Chaos Engineering & Strategy Benchmarking
+To test zero-downtime stack auto-recovery under simulated fault injection or execute empirical benchmarking:
+```powershell
+# Run Chaos Monkey fault injection dry-run
+python scripts\chaos-test.py --dry-run
+
+# Run strategy benchmark suite
+python scripts\benchmark-strategy.py
+```
+
+### Stop & Start the Server Stack
+```powershell
+# Start supervised server stack (with automatic crash recovery & webhook alerts)
+python scripts\start-offline.py --supervise
+
+# Stop server stack and release network ports
 python scripts\stop-offline.py
 ```
-Or manually terminate the executables:
-```powershell
-taskkill /f /im CenterServer.exe
-taskkill /f /im ChannelServer.exe
-taskkill /f /im GameServer.exe
-taskkill /f /im GlobalServer.exe
-taskkill /f /im LoginServer.exe
-```
 
-### Start the Server Stack
-To verify endpoints and spin the server stack back up:
-```powershell
-.\Start-Server-Automatic.ps1
-```
+---
 
-### Check Process Status
-To list the running server process IDs:
-```powershell
-Get-Process -Name CenterServer, ChannelServer, GameServer, GlobalServer, LoginServer -ErrorAction SilentlyContinue | Select-Object Id, ProcessName
-```
+## 7. Strategy Documentation Index
 
-### Viewing Logs
-Logs are saved in HTML format under the `log\` subdirectory of each server folder (e.g. `Elsword\CenterServer\log\log_*.htm`).
-To list the most recent logs:
-```powershell
-Get-ChildItem -Path "Elsword\CenterServer\log\log_*.htm" | Sort-Object LastWriteTime -Descending | Select-Object -First 5
-```
+* **[Sovereign SRE Architecture Guide](docs/SOVEREIGN_SRE_ARCHITECTURE.md)**
+* **[High-Throughput Database & SQL Guide](docs/DATABASE_HIGH_THROUGHPUT_GUIDE.md)**
+* **[Chaos Engineering & Testing Guide](docs/CHAOS_ENGINEERING_AND_TESTING.md)**
+* **[Strategy Benchmark Results](docs/STRATEGY_BENCHMARK_RESULTS.md)**
+

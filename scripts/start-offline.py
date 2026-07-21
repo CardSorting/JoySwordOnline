@@ -42,14 +42,15 @@ class ServerSpec:
     default_port: int | None
     delay_env: str | None = None
     default_delay: int = 3
+    secondary_port: int | None = None
 
 
 SERVERS: tuple[ServerSpec, ...] = (
-    ServerSpec("CenterServer", "CenterServer", "CenterServer.exe", "CENTER_SERVER_PORT", 9100, "START_DELAY_SECONDS", 5),
-    ServerSpec("ChannelServer", "ChannelServer", "ChannelServer.exe", "CHANNEL_SERVER_PORT", 9400),
-    ServerSpec("GlobalServer", "GlobalServer", "GlobalServer.exe", "GLOBAL_SERVER_PORT", 9500),
-    ServerSpec("LoginServer", "LoginServer", "LoginServer.exe", "LOGIN_SERVER_PORT", 9200, "START_DELAY_SECONDS", 5),
-    ServerSpec("GameServer", "GameServer", "GameServer.exe", "GAME_SERVER_PORT", 9300, None, 0),
+    ServerSpec("CenterServer", "CenterServer", "CenterServer.exe", "CENTER_SERVER_PORT", 9100, "START_DELAY_SECONDS", 5, None),
+    ServerSpec("ChannelServer", "ChannelServer", "ChannelServer.exe", "CHANNEL_SERVER_PORT", 9400, None, 3, 9401),
+    ServerSpec("GlobalServer", "GlobalServer", "GlobalServer.exe", "GLOBAL_SERVER_PORT", 9500, None, 3, None),
+    ServerSpec("LoginServer", "LoginServer", "LoginServer.exe", "LOGIN_SERVER_PORT", 9200, "START_DELAY_SECONDS", 5, 9201),
+    ServerSpec("GameServer", "GameServer", "GameServer.exe", "GAME_SERVER_PORT", 9300, None, 0, 9301),
 )
 
 DEFAULTS = {
@@ -288,6 +289,214 @@ def process_creation_flags(headless: bool) -> int:
     return flags
 
 
+def get_process_rss(pid: int) -> int | None:
+    if os.name != "nt":
+        return None
+    try:
+        import ctypes
+        from ctypes import wintypes
+
+        PROCESS_QUERY_INFORMATION = 0x0400
+        PROCESS_VM_READ = 0x0010
+
+        class PROCESS_MEMORY_COUNTERS(ctypes.Structure):
+            _fields_ = [
+                ("cb", wintypes.DWORD),
+                ("PageFaultCount", wintypes.DWORD),
+                ("PeakWorkingSetSize", ctypes.c_size_t),
+                ("WorkingSetSize", ctypes.c_size_t),
+                ("QuotaPeakPagedPoolUsage", ctypes.c_size_t),
+                ("QuotaPagedPoolUsage", ctypes.c_size_t),
+                ("QuotaPeakNonPagedPoolUsage", ctypes.c_size_t),
+                ("QuotaNonPagedPoolUsage", ctypes.c_size_t),
+                ("PagefileUsage", ctypes.c_size_t),
+                ("PeakPagefileUsage", ctypes.c_size_t),
+            ]
+
+        handle = ctypes.windll.kernel32.OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, False, pid)
+        if not handle:
+            return None
+        try:
+            counters = PROCESS_MEMORY_COUNTERS()
+            counters.cb = ctypes.sizeof(PROCESS_MEMORY_COUNTERS)
+            if ctypes.windll.psapi.GetProcessMemoryInfo(handle, ctypes.byref(counters), counters.cb):
+                return int(counters.WorkingSetSize)
+        finally:
+            ctypes.windll.kernel32.CloseHandle(handle)
+    except Exception:
+        pass
+    return None
+
+
+def send_webhook_alert(env: dict[str, str], title: str, description: str, color: int = 15158332) -> None:
+    url = os.environ.get("JOY_SWORD_ALERT_WEBHOOK_URL") or env.get("JOY_SWORD_ALERT_WEBHOOK_URL", "").strip()
+    if not url:
+        return
+    try:
+        import urllib.request
+        payload = {
+            "content": f"**[JoySword SRE Alert]** {title}",
+            "embeds": [
+                {
+                    "title": title,
+                    "description": description,
+                    "color": color,
+                    "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+                }
+            ],
+        }
+        data = json.dumps(payload).encode("utf-8")
+        req = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json", "User-Agent": "JoySword-SRE/1.0"})
+        with urllib.request.urlopen(req, timeout=3.0):
+            pass
+    except Exception:
+        pass
+
+
+def record_crash_diagnostic(
+    spec: ServerSpec,
+    exit_code: int | None,
+    uptime_seconds: float,
+    rss_bytes: int | None,
+    reason: str,
+    env: dict[str, str] | None = None,
+) -> Path:
+    crash_dir = ELSWORD / "offline" / "crashes"
+    crash_dir.mkdir(parents=True, exist_ok=True)
+    timestamp = time.strftime("%Y%m%d_%H%M%S")
+    path = crash_dir / f"{spec.name}_{timestamp}.json"
+
+    hex_code = f"0x{exit_code & 0xFFFFFFFF:08X}" if exit_code is not None else "N/A"
+    code_desc = (
+        "C0000005 (Access Violation)"
+        if hex_code == "0xC0000005"
+        else ("C00000FD (Stack Overflow)" if hex_code == "0xC00000FD" else f"Exit code {exit_code}")
+    )
+
+    payload = {
+        "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+        "server": spec.name,
+        "executable": spec.executable,
+        "exit_code": exit_code,
+        "hex_exit_code": hex_code,
+        "description": code_desc,
+        "reason": reason,
+        "uptime_seconds": round(uptime_seconds, 2),
+        "rss_bytes": rss_bytes,
+        "rss_mib": round(rss_bytes / (1024 * 1024), 2) if rss_bytes else None,
+    }
+    path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+    if env:
+        send_webhook_alert(
+            env,
+            f"Process Stopped: {spec.name}",
+            f"Reason: {reason}\nExit code: {hex_code} ({code_desc})\nUptime: {round(uptime_seconds, 1)}s",
+        )
+
+    crash_files = sorted(crash_dir.glob("*.json"), key=lambda p: p.stat().st_mtime)
+    while len(crash_files) > 20:
+        crash_files.pop(0).unlink(missing_ok=True)
+    return path
+
+
+def write_stack_status_telemetry(
+    processes: dict[str, subprocess.Popen[bytes]],
+    start_times: dict[str, float],
+    env: dict[str, str],
+) -> None:
+    telemetry_path = ELSWORD / "offline" / "stack-status.json"
+    bind_ip = "127.0.0.1"
+    now = time.monotonic()
+    server_reports: dict[str, dict[str, object]] = {}
+    healthy_count = 0
+    total_count = len(SERVERS)
+
+    for spec in SERVERS:
+        process = processes.get(spec.name)
+        pid = process.pid if process else None
+        code = process.poll() if process else -1
+        is_running = process is not None and code is None
+        rss = get_process_rss(pid) if (is_running and pid) else None
+
+        primary_port = env_int(env, spec.port_env, spec.default_port) if spec.port_env and spec.default_port else None
+        primary_open = tcp_open(bind_ip, primary_port, timeout=0.2) if primary_port and is_running else False
+        secondary_open = tcp_open(bind_ip, spec.secondary_port, timeout=0.2) if spec.secondary_port and is_running else None
+
+        uptime = round(now - start_times.get(spec.name, now), 1) if is_running else 0.0
+        if is_running and (primary_port is None or primary_open):
+            healthy_count += 1
+
+        server_reports[spec.name] = {
+            "pid": pid,
+            "status": "RUNNING" if is_running else (f"STOPPED (exit {code})" if process else "NOT_STARTED"),
+            "primary_port": primary_port,
+            "primary_open": primary_open,
+            "secondary_port": spec.secondary_port,
+            "secondary_open": secondary_open,
+            "rss_bytes": rss,
+            "rss_mib": round(rss / (1024 * 1024), 1) if rss else None,
+            "uptime_seconds": uptime,
+        }
+
+    health_score = int((healthy_count / total_count) * 100) if total_count > 0 else 0
+    payload = {
+        "updated_at": time.strftime("%Y-%m-%d %H:%M:%S"),
+        "health_score": health_score,
+        "status": "HEALTHY" if health_score == 100 else ("DEGRADED" if health_score > 0 else "UNHEALTHY"),
+        "profile": env.get("SERVER_PROFILE", "US_SERVICE"),
+        "servers": server_reports,
+    }
+    telemetry_path.parent.mkdir(parents=True, exist_ok=True)
+    telemetry_path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+
+class RestartTracker:
+    def __init__(self, window_seconds: float = 180.0, max_restarts: int = 5) -> None:
+        self.window_seconds = window_seconds
+        self.max_restarts = max_restarts
+        self.history: dict[str, list[float]] = {}
+        self.unresponsive_since: dict[str, float] = {}
+
+    def record_restart(self, name: str) -> float:
+        now = time.monotonic()
+        timestamps = [t for t in self.history.get(name, []) if now - t <= self.window_seconds]
+        timestamps.append(now)
+        self.history[name] = timestamps
+        if len(timestamps) > self.max_restarts:
+            raise RuntimeError(
+                f"CRITICAL: {name} has crashed {len(timestamps)} times within {int(self.window_seconds)} seconds. "
+                "Halting supervisor to prevent crash flapping and process storms."
+            )
+        count = len(timestamps)
+        backoff = min(60.0, 2.0 ** min(count, 6))
+        return backoff
+
+    def check_liveness(self, spec: ServerSpec, env: dict[str, str], process: subprocess.Popen[bytes]) -> bool:
+        if spec.port_env is None or spec.default_port is None:
+            return True
+        port = env_int(env, spec.port_env, spec.default_port)
+        bind_ip = "127.0.0.1"
+        is_open = tcp_open(bind_ip, port, timeout=0.3)
+        now = time.monotonic()
+        if is_open:
+            self.unresponsive_since.pop(spec.name, None)
+            # Monitor 32-bit memory limit (1.5 GB working set threshold)
+            rss = get_process_rss(process.pid)
+            if rss and rss > 1500 * 1024 * 1024:
+                print(
+                    f"Warning: {spec.name} (PID {process.pid}) RAM usage is {rss / (1024 * 1024):.1f} MiB; "
+                    "approaching 32-bit Virtual Memory limit!"
+                )
+            return True
+        first_unresponsive = self.unresponsive_since.setdefault(spec.name, now)
+        duration = now - first_unresponsive
+        if duration >= 30.0:
+            print(f"Warning: {spec.name} (PID {process.pid}) port {port} has been unresponsive for {duration:.1f}s.")
+            return False
+        return True
+
+
 def supervise_processes(
     processes: dict[str, subprocess.Popen[bytes]],
     env: dict[str, str],
@@ -295,6 +504,11 @@ def supervise_processes(
     enhancement_hash: str,
 ) -> None:
     print("Supervisor mode enabled; monitoring server processes.")
+    tracker = RestartTracker(window_seconds=180.0, max_restarts=5)
+    start_times: dict[str, float] = {name: time.monotonic() for name in processes}
+    last_log_prune = time.monotonic()
+    last_telemetry = time.monotonic()
+
     while True:
         current_hash = hashlib.sha256(ENHANCEMENT_RUNTIME_TABLE.read_bytes()).hexdigest()
         if current_hash != enhancement_hash:
@@ -304,21 +518,62 @@ def supervise_processes(
             )
             stop_started_processes(processes)
             raise SystemExit(78)
+
+        now = time.monotonic()
+        if now - last_log_prune >= 60.0:
+            guard_log_budget(env)
+            last_log_prune = now
+
+        if now - last_telemetry >= 5.0:
+            write_stack_status_telemetry(processes, start_times, env)
+            last_telemetry = now
+
         for spec in SERVERS:
             process = processes.get(spec.name)
-            if process is None or process.poll() is None:
+            if process is None:
                 continue
-            code = process.returncode
-            print(f"Warning: {spec.name} exited with code {code}; restarting...")
-            server_dir = ELSWORD / spec.directory
-            exe_path = server_dir / spec.executable
-            processes[spec.name] = subprocess.Popen(
-                [str(exe_path), profile, "0"],
-                cwd=str(server_dir),
-                creationflags=process_creation_flags(headless=True),
-            )
+
+            code = process.poll()
+            is_deadlocked = False
+            if code is None:
+                if not tracker.check_liveness(spec, env, process):
+                    is_deadlocked = True
+                    print(f"Terminating deadlocked process {spec.name} (PID {process.pid})...")
+                    process.terminate()
+                    try:
+                        code = process.wait(timeout=3)
+                    except subprocess.TimeoutExpired:
+                        process.kill()
+                        code = process.wait()
+
+            if code is not None or is_deadlocked:
+                reason = "deadlock / socket failure" if is_deadlocked else f"exit code {code}"
+                uptime = now - start_times.get(spec.name, now)
+                rss = get_process_rss(process.pid) if process else None
+                crash_log = record_crash_diagnostic(spec, code, uptime, rss, reason)
+                print(f"Warning: {spec.name} stopped ({reason}); crash diagnostic written to {crash_log.name}")
+
+                try:
+                    delay = tracker.record_restart(spec.name)
+                except RuntimeError as exc:
+                    print(str(exc))
+                    stop_started_processes(processes)
+                    raise SystemExit(79) from exc
+
+                print(f"Restarting {spec.name} in {delay:.1f}s...")
+                time.sleep(delay)
+                server_dir = ELSWORD / spec.directory
+                exe_path = server_dir / spec.executable
+                new_proc = subprocess.Popen(
+                    [str(exe_path), profile, "0"],
+                    cwd=str(server_dir),
+                    creationflags=process_creation_flags(headless=True),
+                )
+                processes[spec.name] = new_proc
+                start_times[spec.name] = time.monotonic()
 
         time.sleep(2)
+
 
 
 def apply_gameserver_patches() -> None:
@@ -340,10 +595,17 @@ def apply_gameserver_patches() -> None:
             raise SystemExit(f"GameServer patch failed (exit {result.returncode}): {name}")
 
 
-def enforce_enhancement_integrity() -> None:
+def enforce_enhancement_integrity(force: bool = False) -> None:
     """Repair invalid enhancement rows and install the legacy 0..20 boundary."""
     if not ENHANCEMENT_INTEGRITY_SQL.exists():
         raise SystemExit(f"Missing enhancement integrity migration: {ENHANCEMENT_INTEGRITY_SQL}")
+
+    cache_script = ROOT / "scripts" / "db-patch-cache.py"
+    if not force and cache_script.exists():
+        cache_check = subprocess.run([sys.executable, str(cache_script), "--check"], capture_output=True)
+        if cache_check.returncode == 0:
+            print("DB patch receipt valid (SHA-256 match); skipping redundant SQL migration.")
+            return
 
     print("Enforcing equipment enhancement integrity (legacy 0..20 range)...")
     result = subprocess.run(
@@ -412,7 +674,13 @@ def apply_globalserver_pvp_patch(*, dry_run: bool = False) -> None:
         )
 
 
-def launch_stack(env: dict[str, str], *, headless: bool = False, supervise: bool = False) -> dict[str, int]:
+def launch_stack(
+    env: dict[str, str],
+    *,
+    headless: bool = False,
+    supervise: bool = False,
+    force_db_patch: bool = False,
+) -> dict[str, int]:
     if os.name != "nt":
         raise SystemExit("The Elsword server binaries are Windows .exe files. Run this launcher on Windows.")
 
@@ -450,7 +718,7 @@ def launch_stack(env: dict[str, str], *, headless: bool = False, supervise: bool
     apply_globalserver_pvp_patch()
     validate_enhancement_probabilities()
     validated_enhancement_hash = hashlib.sha256(ENHANCEMENT_RUNTIME_TABLE.read_bytes()).hexdigest()
-    enforce_enhancement_integrity()
+    enforce_enhancement_integrity(force=force_db_patch)
     apply_gameserver_patches()
 
     try:
@@ -524,6 +792,7 @@ def main() -> int:
     parser.add_argument("--allow-existing-ports", action="store_true", help="warn instead of failing when server ports are already bound")
     parser.add_argument("--headless", action="store_true", help="start servers without opening console windows (container mode)")
     parser.add_argument("--supervise", action="store_true", help="restart crashed server processes (implies --headless)")
+    parser.add_argument("--force-db-patch", action="store_true", help="bypass SHA-256 DB patch cache and re-execute all SQL migrations")
     args = parser.parse_args()
     if args.supervise:
         args.headless = True
@@ -553,7 +822,7 @@ def main() -> int:
         return 0
 
     try:
-        launch_stack(env, headless=args.headless, supervise=args.supervise)
+        launch_stack(env, headless=args.headless, supervise=args.supervise, force_db_patch=args.force_db_patch)
     except (OSError, RuntimeError) as exc:
         print(f"Startup failed: {exc}")
         return 1

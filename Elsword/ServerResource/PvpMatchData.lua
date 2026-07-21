@@ -72,10 +72,10 @@ PvpMatchManager:AddPvpMapForNpcMatch( WORLD_ID["WI_ELDER_WALLY_CASTLE_ROOF_STAGE
 PvpMatchManager:AddPvpMapForNpcMatch( WORLD_ID["WI_SUMMER_2008_PVP"]					)	-- 2008 여름바다 대전맵
 PvpMatchManager:AddPvpMapForNpcMatch( WORLD_ID["WI_PEITA_OFFERING_PVP_STAGE"]			)	-- 페이타 대전맵
 PvpMatchManager:AddPvpMapForNpcMatch( WORLD_ID["WI_TREE_OF_LIGHT_TOP"]					)	-- 엘의 나무 최상층
-PvpMatchManager:AddPvpMapForNpcMatch( WORLD_ID["WI_ELDER_BENDERS_CAVE_STAGE3"]			)	-- 벤더스 동�
-PvpMatchManager:AddPvpMapForNpcMatch( WORLD_ID["WI_ELDER_WALLY_CASTLE_CENTER_STAGE4"]	)	-- 월리의 성 �섰
-PvpMatchManager:AddPvpMapForNpcMatch( WORLD_ID["WI_BESMA_BESMA_LAKE_PVPMAP"]			)	-- �스마 호숸
-PvpMatchManager:AddPvpMapForNpcMatch( WORLD_ID["WI_BESMA_AIR_SHIP_PVPMAP"]				)	-- �스마 비공정
-PvpMatchManager:AddPvpMapForNpcMatch( WORLD_ID["WI_PEITA_SPIRAL_CORRIDOR_PVP_STAGE"]	)	-- 페이타 나�욬랑 대전맵
+PvpMatchManager:AddPvpMapForNpcMatch( WORLD_ID["WI_ELDER_BENDERS_CAVE_STAGE3"]			)	-- 벤더스 동�
+PvpMatchManager:AddPvpMapForNpcMatch( WORLD_ID["WI_ELDER_WALLY_CASTLE_CENTER_STAGE4"]	)	-- 월리의 성 �섰
+PvpMatchManager:AddPvpMapForNpcMatch( WORLD_ID["WI_BESMA_BESMA_LAKE_PVPMAP"]			)	-- �스마 호숸
+PvpMatchManager:AddPvpMapForNpcMatch( WORLD_ID["WI_BESMA_AIR_SHIP_PVPMAP"]				)	-- �스마 비공정
+PvpMatchManager:AddPvpMapForNpcMatch( WORLD_ID["WI_PEITA_SPIRAL_CORRIDOR_PVP_STAGE"]	)	-- 페이타 나�욬랑 대전맵
 PvpMatchManager:AddPvpMapForNpcMatch( WORLD_ID["WI_ELDER_BRIDGE_HOPE_PVPMAP"]			)	-- 희망의 다리 대전맵
 PvpMatchManager:AddPvpMapForNpcMatch( WORLD_ID["WI_WINTER_PVPMAP"]						)	-- 겨울 대전맵

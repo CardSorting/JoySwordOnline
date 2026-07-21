@@ -54,6 +54,46 @@ def stop_by_image_name() -> None:
         taskkill("/IM", process_name, "/T", "/F")
 
 
+PORTS = (9100, 9200, 9300, 9400, 9500)
+
+
+def tcp_open(host: str, port: int, timeout: float = 0.25) -> bool:
+    import socket
+    try:
+        with socket.create_connection((host, port), timeout=timeout):
+            return True
+    except OSError:
+        return False
+
+
+def verify_ports_released(timeout: float = 5.0) -> None:
+    deadline = sys.modules["time"].monotonic() + timeout if "time" in sys.modules else 0
+    import time
+    deadline = time.monotonic() + timeout
+    print("Verifying server network ports are released...")
+    for port in PORTS:
+        bound = True
+        while time.monotonic() < deadline:
+            if not tcp_open("127.0.0.1", port):
+                bound = False
+                break
+            time.sleep(0.5)
+
+        if bound and tcp_open("127.0.0.1", port):
+            print(f"Warning: Port {port} is still bound after shutdown. Attempting orphan handle cleanup...")
+            try:
+                out = subprocess.run(["netstat", "-ano"], capture_output=True, text=True).stdout
+                for line in out.splitlines():
+                    if f":{port} " in line and "LISTENING" in line:
+                        parts = line.strip().split()
+                        pid = parts[-1]
+                        if pid.isdigit() and int(pid) > 0:
+                            print(f"Force killing orphaned PID {pid} bound to port {port}...")
+                            taskkill("/PID", pid, "/F", "/T")
+            except Exception as exc:
+                print(f"Failed orphan cleanup for port {port}: {exc}", file=sys.stderr)
+
+
 def main() -> int:
     if os.name != "nt":
         print("The Elsword server binaries are Windows .exe files. Run this stopper on Windows.")
@@ -62,6 +102,7 @@ def main() -> int:
     print("Stopping JoySword offline server processes...")
     stop_from_pid_file()
     stop_by_image_name()
+    verify_ports_released(timeout=5.0)
     print("Done.")
     return 0
 
