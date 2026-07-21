@@ -1,0 +1,9547 @@
+[
+  [
+    72510,
+    "Additional Damage Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    72520,
+    "Reduced Damage Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    78560,
+    "Seraphim's Blessing (Elixir)",
+    "IT_SPECIAL"
+  ],
+  [
+    78570,
+    "Geb's Blessing (Elixir)",
+    "IT_SPECIAL"
+  ],
+  [
+    78580,
+    "Amon's Blessing (Elixir)",
+    "IT_SPECIAL"
+  ],
+  [
+    78590,
+    "Cronus' Blessing (Elixir)",
+    "IT_SPECIAL"
+  ],
+  [
+    78894,
+    "Giant Potion (Elixir)",
+    "IT_SPECIAL"
+  ],
+  [
+    78895,
+    "Blazing Bomb (Elixir)",
+    "IT_SPECIAL"
+  ],
+  [
+    78896,
+    "Tracker's Soul (Elixir)",
+    "IT_SPECIAL"
+  ],
+  [
+    78897,
+    "Baby Fairy Cradle (Elixir)",
+    "IT_SPECIAL"
+  ],
+  [
+    78898,
+    "Denif's Ice Orb (Elixir)",
+    "IT_SPECIAL"
+  ],
+  [
+    78899,
+    "Ventus' Wings (Elixir)",
+    "IT_SPECIAL"
+  ],
+  [
+    78900,
+    "Rosso's Blazing Ring (Elixir)",
+    "IT_SPECIAL"
+  ],
+  [
+    78901,
+    "Giant Hand Potion (Elixir)",
+    "IT_SPECIAL"
+  ],
+  [
+    92225,
+    "Ice Cube",
+    "IT_QUEST"
+  ],
+  [
+    98001,
+    "Epic NPC Card Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    98002,
+    "Fighter's Ring Cube (7 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    98005,
+    "Sparring Magic Stone [Jump Speed]",
+    "IT_SPECIAL"
+  ],
+  [
+    98006,
+    "Sparring Magic Stone [HP]",
+    "IT_SPECIAL"
+  ],
+  [
+    98007,
+    "Sparring Magic Stone [Accuracy]",
+    "IT_SPECIAL"
+  ],
+  [
+    98008,
+    "Sparring Magic Stone [Evasion]",
+    "IT_SPECIAL"
+  ],
+  [
+    98011,
+    "Sparring Magic Stone [Critical]",
+    "IT_SPECIAL"
+  ],
+  [
+    98012,
+    "Sparring Magic Stone [Attack Speed]",
+    "IT_SPECIAL"
+  ],
+  [
+    98021,
+    "Magic Necklace Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    104910,
+    "Tree of El's Magic Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    105000,
+    "Elsword's Cube 1",
+    "IT_SPECIAL"
+  ],
+  [
+    105010,
+    "Elsword's Cube 2",
+    "IT_SPECIAL"
+  ],
+  [
+    105020,
+    "Elsword's Cube 3",
+    "IT_SPECIAL"
+  ],
+  [
+    105030,
+    "Elsword's Cube 4",
+    "IT_SPECIAL"
+  ],
+  [
+    105040,
+    "Elsword's Cube 5",
+    "IT_SPECIAL"
+  ],
+  [
+    105050,
+    "Elsword's Cube 6",
+    "IT_SPECIAL"
+  ],
+  [
+    105200,
+    "Rena's Cube 1",
+    "IT_SPECIAL"
+  ],
+  [
+    105210,
+    "Rena's Cube 2",
+    "IT_SPECIAL"
+  ],
+  [
+    105220,
+    "Rena's Cube 3",
+    "IT_SPECIAL"
+  ],
+  [
+    105230,
+    "Rena's Cube 4",
+    "IT_SPECIAL"
+  ],
+  [
+    105240,
+    "Rena's Cube 5",
+    "IT_SPECIAL"
+  ],
+  [
+    105250,
+    "Rena's Cube 6",
+    "IT_SPECIAL"
+  ],
+  [
+    105400,
+    "Aisha's Cube 1",
+    "IT_SPECIAL"
+  ],
+  [
+    105410,
+    "Aisha's Cube 2",
+    "IT_SPECIAL"
+  ],
+  [
+    105420,
+    "Aisha's Cube 3",
+    "IT_SPECIAL"
+  ],
+  [
+    105430,
+    "Aisha's Cube 4",
+    "IT_SPECIAL"
+  ],
+  [
+    105440,
+    "Aisha's Cube 5",
+    "IT_SPECIAL"
+  ],
+  [
+    105450,
+    "Aisha's Cube 6",
+    "IT_SPECIAL"
+  ],
+  [
+    105600,
+    "Elsword's Advanced Cube 1",
+    "IT_SPECIAL"
+  ],
+  [
+    105610,
+    "Elsword's Advanced Cube 2",
+    "IT_SPECIAL"
+  ],
+  [
+    105620,
+    "Elsword's Advanced Cube 3",
+    "IT_SPECIAL"
+  ],
+  [
+    105630,
+    "Elsword's Advanced Cube 4",
+    "IT_SPECIAL"
+  ],
+  [
+    105640,
+    "Elsword's Advanced Cube 5",
+    "IT_SPECIAL"
+  ],
+  [
+    105650,
+    "Elsword's Advanced Cube 6",
+    "IT_SPECIAL"
+  ],
+  [
+    105800,
+    "Rena's Advanced Cube 1",
+    "IT_SPECIAL"
+  ],
+  [
+    105810,
+    "Rena's Advanced Cube 2",
+    "IT_SPECIAL"
+  ],
+  [
+    105820,
+    "Rena's Advanced Cube 3",
+    "IT_SPECIAL"
+  ],
+  [
+    105830,
+    "Rena's Advanced Cube 4",
+    "IT_SPECIAL"
+  ],
+  [
+    105840,
+    "Rena's Advanced Cube 5",
+    "IT_SPECIAL"
+  ],
+  [
+    105850,
+    "Rena's Advanced Cube 6",
+    "IT_SPECIAL"
+  ],
+  [
+    106000,
+    "Aisha's Advanced Cube 1",
+    "IT_SPECIAL"
+  ],
+  [
+    106010,
+    "Aisha's Advanced Cube 2",
+    "IT_SPECIAL"
+  ],
+  [
+    106020,
+    "Aisha's Advanced Cube 3",
+    "IT_SPECIAL"
+  ],
+  [
+    106030,
+    "Aisha's Advanced Cube 4",
+    "IT_SPECIAL"
+  ],
+  [
+    106040,
+    "Aisha's Advanced Cube 5",
+    "IT_SPECIAL"
+  ],
+  [
+    106050,
+    "Aisha's Advanced Cube 6",
+    "IT_SPECIAL"
+  ],
+  [
+    106060,
+    "Master's Kindness Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    106061,
+    "Master's Kindness Elementary Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    106062,
+    "Master's Kindness Intermediate Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    106063,
+    "Master's Kindness Advanced Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    106064,
+    "A Cube for Adventurers' Group",
+    "IT_SPECIAL"
+  ],
+  [
+    106065,
+    "A Cube for Adventurers' Group",
+    "IT_SPECIAL"
+  ],
+  [
+    108000,
+    "Tree of El's Secret Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    108010,
+    "Cube from Dark Forest",
+    "IT_SPECIAL"
+  ],
+  [
+    108020,
+    "Cube from Banthus Cave",
+    "IT_SPECIAL"
+  ],
+  [
+    108030,
+    "Cube from Banthus' Gang",
+    "IT_SPECIAL"
+  ],
+  [
+    108040,
+    "Cube from Underground Waterway Search Party",
+    "IT_SPECIAL"
+  ],
+  [
+    108050,
+    "Cube from Phoru the Thief",
+    "IT_SPECIAL"
+  ],
+  [
+    108060,
+    "Cube from Guards at the Wally Castle",
+    "IT_SPECIAL"
+  ],
+  [
+    108070,
+    "Cube from Dragon Lord",
+    "IT_SPECIAL"
+  ],
+  [
+    108080,
+    "Cube from the Bethma Lake",
+    "IT_SPECIAL"
+  ],
+  [
+    108090,
+    "Cube from the Bethma Gorge",
+    "IT_SPECIAL"
+  ],
+  [
+    108100,
+    "Cube from Dragon Nest",
+    "IT_SPECIAL"
+  ],
+  [
+    108200,
+    "Cube from Richie Mine",
+    "IT_SPECIAL"
+  ],
+  [
+    108210,
+    "Raven's Cube 1",
+    "IT_SPECIAL"
+  ],
+  [
+    108220,
+    "Raven's Cube 2",
+    "IT_SPECIAL"
+  ],
+  [
+    108230,
+    "Raven's Cube 3",
+    "IT_SPECIAL"
+  ],
+  [
+    108240,
+    "Raven's Cube 4",
+    "IT_SPECIAL"
+  ],
+  [
+    108250,
+    "Raven's Cube 5",
+    "IT_SPECIAL"
+  ],
+  [
+    108260,
+    "Raven's Cube 6",
+    "IT_SPECIAL"
+  ],
+  [
+    108270,
+    "Raven's Advanced Cube 1",
+    "IT_SPECIAL"
+  ],
+  [
+    108280,
+    "Raven's Advanced Cube 2",
+    "IT_SPECIAL"
+  ],
+  [
+    108290,
+    "Raven's Advanced Cube 3",
+    "IT_SPECIAL"
+  ],
+  [
+    108300,
+    "Raven's Advanced Cube 4",
+    "IT_SPECIAL"
+  ],
+  [
+    108310,
+    "Raven's Advanced Cube 5",
+    "IT_SPECIAL"
+  ],
+  [
+    108320,
+    "Raven's Advanced Cube 6",
+    "IT_SPECIAL"
+  ],
+  [
+    108400,
+    "A Shabby Equipment Cube (Elsword)",
+    "IT_SPECIAL"
+  ],
+  [
+    108410,
+    "An Ordinary Equipment Cube (Elsword)",
+    "IT_SPECIAL"
+  ],
+  [
+    108420,
+    "An Advanced Equipment Cube (Elsword)",
+    "IT_SPECIAL"
+  ],
+  [
+    108430,
+    "A Colorful Equipment Cube (Elsword)",
+    "IT_SPECIAL"
+  ],
+  [
+    108440,
+    "Elsword's Cube 5",
+    "IT_SPECIAL"
+  ],
+  [
+    108450,
+    "Elsword's Cube 6",
+    "IT_SPECIAL"
+  ],
+  [
+    108460,
+    "Elsword's Cube 7",
+    "IT_SPECIAL"
+  ],
+  [
+    108470,
+    "Elsword's Cube 8",
+    "IT_SPECIAL"
+  ],
+  [
+    108480,
+    "Elsword's Cube 9",
+    "IT_SPECIAL"
+  ],
+  [
+    108490,
+    "Elsword's Cube 10",
+    "IT_SPECIAL"
+  ],
+  [
+    108500,
+    "A Shabby Equipment Cube (Aisha)",
+    "IT_SPECIAL"
+  ],
+  [
+    108510,
+    "An Ordinary Equipment Cube (Aisha)",
+    "IT_SPECIAL"
+  ],
+  [
+    108520,
+    "An Advanced Equipment Cube (Aisha)",
+    "IT_SPECIAL"
+  ],
+  [
+    108530,
+    "A Colorful Equipment Cube (Aisha)",
+    "IT_SPECIAL"
+  ],
+  [
+    108540,
+    "Aisha's Cube 5",
+    "IT_SPECIAL"
+  ],
+  [
+    108550,
+    "Aisha's Cube 6",
+    "IT_SPECIAL"
+  ],
+  [
+    108560,
+    "Aisha's Cube 7",
+    "IT_SPECIAL"
+  ],
+  [
+    108570,
+    "Aisha's Cube 8",
+    "IT_SPECIAL"
+  ],
+  [
+    108580,
+    "Aisha's Cube 9",
+    "IT_SPECIAL"
+  ],
+  [
+    108590,
+    "Aisha's Cube 10",
+    "IT_SPECIAL"
+  ],
+  [
+    108600,
+    "A Shabby Equipment Cube (Rena)",
+    "IT_SPECIAL"
+  ],
+  [
+    108610,
+    "An Ordinary Equipment Cube (Rena)",
+    "IT_SPECIAL"
+  ],
+  [
+    108620,
+    "An Advanced Equipment Cube (Rena)",
+    "IT_SPECIAL"
+  ],
+  [
+    108630,
+    "A Colorful Equipment Cube (Rena)",
+    "IT_SPECIAL"
+  ],
+  [
+    108640,
+    "Rena's Cube 5",
+    "IT_SPECIAL"
+  ],
+  [
+    108650,
+    "Rena's Cube 6",
+    "IT_SPECIAL"
+  ],
+  [
+    108660,
+    "Rena's Cube 7",
+    "IT_SPECIAL"
+  ],
+  [
+    108670,
+    "Rena's Cube 8",
+    "IT_SPECIAL"
+  ],
+  [
+    108680,
+    "Rena's Cube 9",
+    "IT_SPECIAL"
+  ],
+  [
+    108690,
+    "Rena's Cube 10",
+    "IT_SPECIAL"
+  ],
+  [
+    108700,
+    "A Shabby Equipment Cube (Raven)",
+    "IT_SPECIAL"
+  ],
+  [
+    108710,
+    "An Ordinary Equipment Cube (Raven)",
+    "IT_SPECIAL"
+  ],
+  [
+    108720,
+    "An Advanced Equipment Cube (Raven)",
+    "IT_SPECIAL"
+  ],
+  [
+    108730,
+    "A Colorful Equipment Cube (Raven)",
+    "IT_SPECIAL"
+  ],
+  [
+    108740,
+    "Raven's Cube 5",
+    "IT_SPECIAL"
+  ],
+  [
+    108750,
+    "Raven's Cube 6",
+    "IT_SPECIAL"
+  ],
+  [
+    108760,
+    "Raven's Cube 7",
+    "IT_SPECIAL"
+  ],
+  [
+    108770,
+    "Raven's Cube 8",
+    "IT_SPECIAL"
+  ],
+  [
+    108780,
+    "Raven's Cube 9",
+    "IT_SPECIAL"
+  ],
+  [
+    108790,
+    "Raven's Cube 10",
+    "IT_SPECIAL"
+  ],
+  [
+    108800,
+    "A Shabby Equipment Cube (Eve)",
+    "IT_SPECIAL"
+  ],
+  [
+    108810,
+    "An Ordinary Equipment Cube (Eve)",
+    "IT_SPECIAL"
+  ],
+  [
+    108820,
+    "An Advanced Equipment Cube (Eve)",
+    "IT_SPECIAL"
+  ],
+  [
+    108830,
+    "A Colorful Equipment Cube (Eve)",
+    "IT_SPECIAL"
+  ],
+  [
+    108840,
+    "Eve's Cube 5",
+    "IT_SPECIAL"
+  ],
+  [
+    108850,
+    "Eve's Cube 6",
+    "IT_SPECIAL"
+  ],
+  [
+    108860,
+    "Eve's Cube 7",
+    "IT_SPECIAL"
+  ],
+  [
+    108870,
+    "Eve's Cube 8",
+    "IT_SPECIAL"
+  ],
+  [
+    108880,
+    "Eve's Cube 9",
+    "IT_SPECIAL"
+  ],
+  [
+    108890,
+    "Eve's Cube 10",
+    "IT_SPECIAL"
+  ],
+  [
+    109895,
+    "A Jewel to dismantle the Knight's Job Change Costume Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    109896,
+    "A Jewel to dismantle the Ranger's Job Change Costume Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    109897,
+    "A Jewel to dismantle the Magician's Job Change Costume Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    109898,
+    "A Jewel to dismantle the Raven's Promotion Costume Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    109900,
+    "Cube Opener",
+    "IT_SPECIAL"
+  ],
+  [
+    109901,
+    "Advanced Cube Opener",
+    "IT_SPECIAL"
+  ],
+  [
+    109945,
+    "Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    109950,
+    "Blessed Weapon Enhancement Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    109955,
+    "Advanced Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    109965,
+    "Blessed Armor Enhancement Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    109999,
+    "The First Job Change Promotion Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    110831,
+    "Cobo's Special Weapon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    110850,
+    "The Second Job Change Promotion Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    111087,
+    "Resurrection Stone (3 ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    111701,
+    "Magic Stone of Destruction",
+    "IT_SPECIAL"
+  ],
+  [
+    111702,
+    "Magic Stone of Explosion",
+    "IT_SPECIAL"
+  ],
+  [
+    111703,
+    "Magic Stone of Combustion",
+    "IT_SPECIAL"
+  ],
+  [
+    111704,
+    "Magic Stone of Quickness",
+    "IT_SPECIAL"
+  ],
+  [
+    111705,
+    "Magic Stone of Wrath",
+    "IT_SPECIAL"
+  ],
+  [
+    128077,
+    "Cube for Raven's Promotion Costumes",
+    "IT_SPECIAL"
+  ],
+  [
+    129020,
+    "El's Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    129070,
+    "Resurrection Stone Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    129075,
+    "Resurrection Stone Cube (10)",
+    "IT_SPECIAL"
+  ],
+  [
+    129230,
+    "Class Vice-president's Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    129240,
+    "Class President's Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    129250,
+    "Chairperson's Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    129260,
+    "Cube for the Knight's Job Change Costumes",
+    "IT_SPECIAL"
+  ],
+  [
+    129261,
+    "Cube for the Ranger's Job Change Costumes",
+    "IT_SPECIAL"
+  ],
+  [
+    129262,
+    "Cube for the Magician's Job Change Costumes",
+    "IT_SPECIAL"
+  ],
+  [
+    129270,
+    "Cube for Beginners' Equipments",
+    "IT_SPECIAL"
+  ],
+  [
+    129280,
+    "Cube for One Comic Book",
+    "IT_SPECIAL"
+  ],
+  [
+    129590,
+    "Black Day Cube (Elsword)",
+    "IT_SPECIAL"
+  ],
+  [
+    129592,
+    "Black Day Cube (Rena)",
+    "IT_SPECIAL"
+  ],
+  [
+    129594,
+    "Black Day Cube (Aisha)",
+    "IT_SPECIAL"
+  ],
+  [
+    129600,
+    "Black Day Bridge Cube (Elsword)",
+    "IT_SPECIAL"
+  ],
+  [
+    129610,
+    "Black Day Bridge Cube (Rena)",
+    "IT_SPECIAL"
+  ],
+  [
+    129620,
+    "Black Day Bridge Cube (Aisha)",
+    "IT_SPECIAL"
+  ],
+  [
+    129680,
+    "Land Rova Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    129690,
+    "Spris Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    129700,
+    "Lesmore Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    129727,
+    "A Cube for the Event for the Masters' Day",
+    "IT_SPECIAL"
+  ],
+  [
+    129728,
+    "A Cube Celebrating the Conversion to an Experience ID",
+    "IT_SPECIAL"
+  ],
+  [
+    129729,
+    "An Everyday Secret Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    129755,
+    "Combat Ration Cubes",
+    "IT_SPECIAL"
+  ],
+  [
+    129790,
+    "Cube of a Promotion Weapon",
+    "IT_SPECIAL"
+  ],
+  [
+    129885,
+    "Entrance and Exit Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    129890,
+    "Weapon Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    129895,
+    "Random Recovery Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    129900,
+    "Magic Stone Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    129905,
+    "Enhancement Stone Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    129906,
+    "Random Cube for 3 Letters of ACT",
+    "IT_SPECIAL"
+  ],
+  [
+    129950,
+    "Cube of Promotion Weapon",
+    "IT_SPECIAL"
+  ],
+  [
+    129972,
+    "Cube for the Taker's Job Change Costumes",
+    "IT_SPECIAL"
+  ],
+  [
+    129973,
+    "Jewel to dismantle a Cube for the Taker's Job Change Costumes",
+    "IT_SPECIAL"
+  ],
+  [
+    129974,
+    "Cube Celebrating the Entry into the Arcade Mode Ranking",
+    "IT_SPECIAL"
+  ],
+  [
+    129975,
+    "Cube of Gold Phoru",
+    "IT_SPECIAL"
+  ],
+  [
+    129988,
+    "Ex Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130001,
+    "Gold Medal Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130003,
+    "A Cube Cheering the Republic of Korea",
+    "IT_SPECIAL"
+  ],
+  [
+    130004,
+    "A Cube for a New Semester",
+    "IT_SPECIAL"
+  ],
+  [
+    130029,
+    "Entrance and Exit Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130042,
+    "A Cube of the Full Moon",
+    "IT_SPECIAL"
+  ],
+  [
+    130067,
+    "Halloween Carnival Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130068,
+    "Colorful Halloween Carnival Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130076,
+    "Magic Stone Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130117,
+    "Promotion Equipment Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130130,
+    "Alphabet Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130133,
+    "Eve's Promotion Equipment Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130141,
+    "A Jewel to dismantle an Eve's Promotion Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130159,
+    "Ruben Boss Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130160,
+    "Elder Boss Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130161,
+    "Bethma Boss Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130162,
+    "Altera Boss Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130167,
+    "Cube of 80 Complete Recovery Potions",
+    "IT_SPECIAL"
+  ],
+  [
+    130168,
+    "A Cube of 40 Blessed Weapon Enhancement Stones",
+    "IT_SPECIAL"
+  ],
+  [
+    130169,
+    "Cube of 80 Armor Enhancement Stones",
+    "IT_SPECIAL"
+  ],
+  [
+    130170,
+    "Cube of 80 Magic Stones",
+    "IT_SPECIAL"
+  ],
+  [
+    130171,
+    "A Cube of 40 Advanced Magic Stones",
+    "IT_SPECIAL"
+  ],
+  [
+    130172,
+    "Cube of 20 El Shards(Mystery)",
+    "IT_SPECIAL"
+  ],
+  [
+    130173,
+    "Cube of 20 El Shards(Fire)",
+    "IT_SPECIAL"
+  ],
+  [
+    130174,
+    "Cube of 20 El Shards(Water)",
+    "IT_SPECIAL"
+  ],
+  [
+    130175,
+    "Cube of 20 El Shards(Wind)",
+    "IT_SPECIAL"
+  ],
+  [
+    130176,
+    "Cube of 20 El Shards(Nature)",
+    "IT_SPECIAL"
+  ],
+  [
+    130177,
+    "Cube of 20 El Shards(Dark)",
+    "IT_SPECIAL"
+  ],
+  [
+    130178,
+    "Cube of 20 El Shards(Light)",
+    "IT_SPECIAL"
+  ],
+  [
+    130210,
+    "Elrios Thanks Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130220,
+    "A Cube of Celebration of Return to Elrios Continent",
+    "IT_SPECIAL"
+  ],
+  [
+    130268,
+    "A Cube of the Ring of Skills",
+    "IT_SPECIAL"
+  ],
+  [
+    130269,
+    "Orichalcum Weapon Accessory Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130270,
+    "A Cube of Archangel's Hair (for 15 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    130350,
+    "Eve's Job Change Promotion Equipment Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130355,
+    "Jewel to dismantle Cube of Eve's Job Change Promotion Equipment",
+    "IT_SPECIAL"
+  ],
+  [
+    130360,
+    "Cube of Promotion Weapon",
+    "IT_SPECIAL"
+  ],
+  [
+    130361,
+    "Cube of Promotion Top Piece",
+    "IT_SPECIAL"
+  ],
+  [
+    130362,
+    "Cube of Promotion Bottom Piece",
+    "IT_SPECIAL"
+  ],
+  [
+    130363,
+    "Cube of Promotion Gloves",
+    "IT_SPECIAL"
+  ],
+  [
+    130364,
+    "Cube of Promotion Shoes",
+    "IT_SPECIAL"
+  ],
+  [
+    130464,
+    "Random Cube for El Shard",
+    "IT_SPECIAL"
+  ],
+  [
+    130469,
+    "A Cube of the El Search Party",
+    "IT_SPECIAL"
+  ],
+  [
+    130479,
+    "Balloon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130508,
+    "COBO's Adventure Package",
+    "IT_SPECIAL"
+  ],
+  [
+    130520,
+    "A Cube of April Fools' Day",
+    "IT_SPECIAL"
+  ],
+  [
+    130530,
+    "Cube with a medal of 100% of experience points",
+    "IT_SPECIAL"
+  ],
+  [
+    130601,
+    "Archangel's Set Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130602,
+    "Cube of Hair of an El Search Party Officer",
+    "IT_SPECIAL"
+  ],
+  [
+    130603,
+    "Cube of Ring of Fury",
+    "IT_SPECIAL"
+  ],
+  [
+    130604,
+    "Cube of Arbor Day's Weapon",
+    "IT_SPECIAL"
+  ],
+  [
+    130605,
+    "Cube of Promotion Weapon",
+    "IT_SPECIAL"
+  ],
+  [
+    130606,
+    "Cube of a Magic Necklace",
+    "IT_SPECIAL"
+  ],
+  [
+    130609,
+    "Cube celebrating the 500th day",
+    "IT_SPECIAL"
+  ],
+  [
+    130632,
+    "A Cube of Words",
+    "IT_SPECIAL"
+  ],
+  [
+    130634,
+    "Cube of Celebration of Return to Elrios Continent",
+    "IT_SPECIAL"
+  ],
+  [
+    130635,
+    "Cube of Welcoming to Elrios",
+    "IT_SPECIAL"
+  ],
+  [
+    130636,
+    "Elrios Thanks Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130637,
+    "Elrios Gift Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130643,
+    "Act 2 Festival 'Magic Necklace' Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130644,
+    "Act 2 Festival 'Ring of Fury' Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130645,
+    "Feita Boss Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130711,
+    "Sparring Experiences Cube",
+    ""
+  ],
+  [
+    130712,
+    "Sparring Resolutions Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130713,
+    "Sparring Preparations Cube",
+    ""
+  ],
+  [
+    130769,
+    "Cube of a Very Hasty Promotion Weapon",
+    "IT_SPECIAL"
+  ],
+  [
+    130770,
+    "Cube of a Swift Promotion Weapon",
+    "IT_SPECIAL"
+  ],
+  [
+    130771,
+    "Cube of a Poweful Promotion Weapon",
+    "IT_SPECIAL"
+  ],
+  [
+    130801,
+    "Letter Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130820,
+    "10 Resurrection Stones Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130821,
+    "Magic Stone Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130822,
+    "Fluorite Ore Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130823,
+    "Enhancement Stone Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130824,
+    "A Cube for a Day's Ticket for Accessories",
+    ""
+  ],
+  [
+    130825,
+    "EXP Boost Medal Cube (1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    130826,
+    "A Cube of a Day's Ticket for Random Title",
+    ""
+  ],
+  [
+    130827,
+    "A cube celebrating the conquer of Feita 1",
+    "IT_SPECIAL"
+  ],
+  [
+    130828,
+    "A cube celebrating the conquer of Feita 2",
+    "IT_SPECIAL"
+  ],
+  [
+    130842,
+    "Letter Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    130845,
+    "A Cube of a Hero's Weapon",
+    "IT_SPECIAL"
+  ],
+  [
+    130930,
+    "Cube containing Necessary Items for a Match",
+    ""
+  ],
+  [
+    130931,
+    "Jewel to dismantle the Cube of Necessary Items for a Match",
+    "IT_SPECIAL"
+  ],
+  [
+    130937,
+    "Cube for the Last Gift in Act2 Supplementary Version",
+    "IT_SPECIAL"
+  ],
+  [
+    130963,
+    "A Cube of Special Gifts for a New Semester",
+    "IT_SPECIAL"
+  ],
+  [
+    130964,
+    "A Special Gift Cube for a New Semester",
+    "IT_SPECIAL"
+  ],
+  [
+    130965,
+    "Costume Exchange Ticket A",
+    "IT_SPECIAL"
+  ],
+  [
+    130966,
+    "Costume Exchange Ticket B",
+    "IT_SPECIAL"
+  ],
+  [
+    130967,
+    "Costume Weapon Cube A (A Ticket for One)",
+    ""
+  ],
+  [
+    130968,
+    "Costume Weapon Cube A (for 3 days)",
+    ""
+  ],
+  [
+    130969,
+    "Costume Top Piece Cube A (for 5 days)",
+    ""
+  ],
+  [
+    130970,
+    "Costume Bottom Piece Cube A (for 5 days)",
+    ""
+  ],
+  [
+    130971,
+    "Costume Gloves Cube A (for 5 days)",
+    ""
+  ],
+  [
+    130972,
+    "Costume Shoes Cube A (for 5 days)",
+    ""
+  ],
+  [
+    130973,
+    "Costume Hair Cube A (for 5 days)",
+    ""
+  ],
+  [
+    130974,
+    "Costume Weapon Cube B (A Ticket for One)",
+    ""
+  ],
+  [
+    130975,
+    "Costume Weapon Cube B (for 3 days)",
+    ""
+  ],
+  [
+    130976,
+    "Costume Top Piece Cube B (for 5 days)",
+    ""
+  ],
+  [
+    130977,
+    "Costume Bottom Piece Cube B (for 5 days)",
+    ""
+  ],
+  [
+    130978,
+    "Costume Gloves Cube B (for 5 days)",
+    ""
+  ],
+  [
+    130979,
+    "Costume Shoes Cube B (for 5 days)",
+    ""
+  ],
+  [
+    130980,
+    "Costume Hair Cube B (for 5 days)",
+    ""
+  ],
+  [
+    130982,
+    "Accessories Cube (Face: for 3 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    130983,
+    "Accessories Cube (Top Piece: for 3 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    130984,
+    "Accessories Cube (Bottom Piece: for 3 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    130985,
+    "Accessories Cube (Arm weapon, ring, and necklace: for 3 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    130991,
+    "A Cube of Very Hasty Promotion Weapon (for 2 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    130992,
+    "A Cube of the Swift Promotion Weapon (for 2 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    130993,
+    "A Cube of the Poweful Promotion Weapon (for 2 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    130994,
+    "Accessories Cube (A Ticket for One)",
+    "IT_SPECIAL"
+  ],
+  [
+    130995,
+    "Accessories Cube (for 30 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    130996,
+    "Accessories Cube (for 15 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    130997,
+    "Fashion Show Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    131007,
+    "Summer Casual Package Costume",
+    "IT_SPECIAL"
+  ],
+  [
+    131008,
+    "Popular Accessories Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    131009,
+    "A Cube of Accessories with Special Abilities",
+    "IT_SPECIAL"
+  ],
+  [
+    131048,
+    "Gift for the Thanksgiving Day: Cube of Weapon",
+    "IT_SPECIAL"
+  ],
+  [
+    131049,
+    "Gift for the Thanksgiving Day: Cube of Top Piece",
+    "IT_SPECIAL"
+  ],
+  [
+    131050,
+    "Gift for the Thanksgiving Day: Cube of Bottom Piece",
+    "IT_SPECIAL"
+  ],
+  [
+    131051,
+    "Gift for the Thanksgiving Day: Cube of Gloves",
+    "IT_SPECIAL"
+  ],
+  [
+    131052,
+    "Gift for the Thanksgiving Day: Cube of Shoes",
+    "IT_SPECIAL"
+  ],
+  [
+    131053,
+    "Gift for the Thanksgiving Day: Cube of Hair",
+    "IT_SPECIAL"
+  ],
+  [
+    131056,
+    "Fluorite Ore Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    131057,
+    "Upgraded Costume Weapon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    131132,
+    "Magic Cube (Enhancement Stone)",
+    "IT_SPECIAL"
+  ],
+  [
+    131133,
+    "Magic Cube (Costume)",
+    "IT_SPECIAL"
+  ],
+  [
+    131158,
+    "Bonus Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    131199,
+    "A Cube of Celebration of Return to Elrios Continent",
+    "IT_SPECIAL"
+  ],
+  [
+    131200,
+    "A Cube for New travelers",
+    "IT_SPECIAL"
+  ],
+  [
+    131204,
+    "Happy Saturday Cube Celebrating Act 3 (October 31)",
+    ""
+  ],
+  [
+    131205,
+    "Happy Saturday Cube Celebrating Act 3 (November 7)",
+    ""
+  ],
+  [
+    131206,
+    "Happy Saturday Cube Celebrating Act 3 (November 14)",
+    ""
+  ],
+  [
+    131207,
+    "Happy Saturday Cube Celebrating Act 3 (November 21)",
+    ""
+  ],
+  [
+    131219,
+    "Cube with a Day's Ticket for Accessories",
+    "IT_SPECIAL"
+  ],
+  [
+    131220,
+    "Cube with a Day's Ticket for Costume Full Set",
+    "IT_SPECIAL"
+  ],
+  [
+    131221,
+    "Cube with a 30 Days' Ticket for Accessories",
+    "IT_SPECIAL"
+  ],
+  [
+    131222,
+    "Cube with a 30 Days' Ticket for Costume Full Set",
+    "IT_SPECIAL"
+  ],
+  [
+    131223,
+    "Cube for a Ticket for an Accessory",
+    "IT_SPECIAL"
+  ],
+  [
+    131261,
+    "A Cube for a Day's Ticket for the Blessed Medal",
+    "IT_SPECIAL"
+  ],
+  [
+    131262,
+    "Velder Boss Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    131265,
+    "A Cube of Great Beetle Weapon",
+    "IT_SPECIAL"
+  ],
+  [
+    131269,
+    "Cube of 101 Conquer Face",
+    "IT_SPECIAL"
+  ],
+  [
+    131270,
+    "Cube of Star Academy Costume",
+    "IT_SPECIAL"
+  ],
+  [
+    131271,
+    "Cube of Idol Band Costume",
+    "IT_SPECIAL"
+  ],
+  [
+    131272,
+    "Cube of Striped Glasses",
+    "IT_SPECIAL"
+  ],
+  [
+    131281,
+    "Cube of Time and Space Card",
+    "IT_SPECIAL"
+  ],
+  [
+    131285,
+    "Full Set Cube of Henir's Ruler",
+    "IT_SPECIAL"
+  ],
+  [
+    131286,
+    "Hero's Cube A",
+    "IT_SPECIAL"
+  ],
+  [
+    131287,
+    "Hero's Cube B",
+    "IT_SPECIAL"
+  ],
+  [
+    131288,
+    "Hero's Cube C",
+    "IT_SPECIAL"
+  ],
+  [
+    131314,
+    "Cube of Henir's Key",
+    "IT_SPECIAL"
+  ],
+  [
+    131355,
+    "Cube of El Revitalization Tablet",
+    "IT_SPECIAL"
+  ],
+  [
+    131356,
+    "Cube of Christmas Gifts Items",
+    ""
+  ],
+  [
+    131357,
+    "Cube with a 30 Days' Ticket for Accessories",
+    "IT_SPECIAL"
+  ],
+  [
+    131358,
+    "Cube for a Ticket for an Accessory",
+    "IT_SPECIAL"
+  ],
+  [
+    131359,
+    "Cube with a Ticket for a Random Part of Costume",
+    "IT_SPECIAL"
+  ],
+  [
+    131360,
+    "Cube with a Ticket for an Costume Weapon",
+    "IT_SPECIAL"
+  ],
+  [
+    131361,
+    "Cube with a ticket for one Costume weapon of Ice Burner.",
+    "IT_SPECIAL"
+  ],
+  [
+    131374,
+    "Random Cube of Enhancement Amulet (Lv.5~Lv.8)",
+    ""
+  ],
+  [
+    131375,
+    "Cube of A Special Costume weapon for Christmas (for 7 days)",
+    ""
+  ],
+  [
+    131376,
+    "Cube of Costume Full Set for Christmas 2009 (for 1 day)",
+    ""
+  ],
+  [
+    131379,
+    "Armband of Oath's Cube (for 30 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    131406,
+    "Ice Burner Costume Weapon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    131407,
+    "Cube of Ice Burner Costume Full Set",
+    "IT_SPECIAL"
+  ],
+  [
+    131408,
+    "Cube of Weapon Accessories (for 15 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    131409,
+    "Cube of Ring of Skills (for 30 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    131410,
+    "Cube for a Ticket for an Accessory",
+    "IT_SPECIAL"
+  ],
+  [
+    131411,
+    "Cube of the Full Set of Henir's Ruler (for 30 days)",
+    ""
+  ],
+  [
+    131412,
+    "Fluorite Ore Exchange Ticket",
+    "IT_SPECIAL"
+  ],
+  [
+    131415,
+    "Cube of Henir's Key",
+    "IT_SPECIAL"
+  ],
+  [
+    131416,
+    "Cube of Archangel's Full Set",
+    "IT_SPECIAL"
+  ],
+  [
+    131417,
+    "Cube of the Full Set of the El Search Party Officer",
+    ""
+  ],
+  [
+    131418,
+    "Cube of Nasods' Full Set",
+    "IT_SPECIAL"
+  ],
+  [
+    131419,
+    "Cube of Archdevil's Full Set",
+    "IT_SPECIAL"
+  ],
+  [
+    131422,
+    "Cube of Korean Traditional Costume Costume for the New Year (for 1 day)",
+    ""
+  ],
+  [
+    131424,
+    "Cube with a Day's Ticket for Ring Accessories",
+    "IT_SPECIAL"
+  ],
+  [
+    131425,
+    "Cube of a Day's Ticket for Promotion Costume",
+    "IT_SPECIAL"
+  ],
+  [
+    131427,
+    "[Event] Exp. Boost Medal Cube(1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    131428,
+    "Cube with a Day's Ticket for Accessories",
+    "IT_SPECIAL"
+  ],
+  [
+    131456,
+    "Cube of Basic Promotion Costume for 30 Days",
+    "IT_SPECIAL"
+  ],
+  [
+    131459,
+    "Cube of Basic Promotion Costume for 100 Days",
+    "IT_SPECIAL"
+  ],
+  [
+    131464,
+    "Cube for a Ticket for an Accessory",
+    "IT_SPECIAL"
+  ],
+  [
+    131467,
+    "Cube of Accessories for 30 Days",
+    "IT_SPECIAL"
+  ],
+  [
+    131468,
+    "Cube with a Ticket for an Costume Weapon",
+    "IT_SPECIAL"
+  ],
+  [
+    131469,
+    "Cube of a Ticket for an Costume Package",
+    "IT_SPECIAL"
+  ],
+  [
+    131470,
+    "Cube of Preparations for Job Change",
+    ""
+  ],
+  [
+    131583,
+    "Random Cube of Enhancement Amulet",
+    ""
+  ],
+  [
+    131586,
+    "Cube of Special Gifts over a Winter Vacation",
+    ""
+  ],
+  [
+    131589,
+    "Cube of the Archangel's Full Set for 1 Day",
+    ""
+  ],
+  [
+    131592,
+    "Cube with a 30 Days' Ticket for Special Accessories",
+    ""
+  ],
+  [
+    131594,
+    "Cube of Premium Costume Full Set at PC Gaming Centers for 30 Days",
+    ""
+  ],
+  [
+    131595,
+    "Cube of Premium Reward at PC Gaming Centers 1",
+    ""
+  ],
+  [
+    131596,
+    "Cube of Premium Reward at PC Gaming Centers 2",
+    ""
+  ],
+  [
+    131652,
+    "Random Cube of Weapon Costume for 30 Days",
+    "IT_SPECIAL"
+  ],
+  [
+    131655,
+    "Cube of Drink of Oblivion",
+    "IT_SPECIAL"
+  ],
+  [
+    131656,
+    "Application Ticket for a Random Cube of Ice Burner Weapon",
+    "IT_SPECIAL"
+  ],
+  [
+    131657,
+    "Application Ticket for a Random Cube of Ice Burner Accessories",
+    "IT_SPECIAL"
+  ],
+  [
+    131658,
+    "Application Ticket for a Full Set Cube of Ice Burner",
+    "IT_SPECIAL"
+  ],
+  [
+    131659,
+    "Cube of Costume Accessories of Ice Burner",
+    ""
+  ],
+  [
+    131663,
+    "Special Cube of PC Gaming Centers",
+    "IT_SPECIAL"
+  ],
+  [
+    131755,
+    "Random Cube of Enhancement Amulet",
+    ""
+  ],
+  [
+    131756,
+    "Cube for 1 Ice Burner",
+    "IT_SPECIAL"
+  ],
+  [
+    131757,
+    "EXP Boost Medal (30%) Cube (1Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    131758,
+    "Random Cube of Accessories for 5 Days",
+    "IT_SPECIAL"
+  ],
+  [
+    131759,
+    "Cube of Korean Traditional Costume Costume for 5 Days",
+    ""
+  ],
+  [
+    131760,
+    "Cube of Valentine's Special Costume for 5 Days",
+    "IT_SPECIAL"
+  ],
+  [
+    131761,
+    "Random Cube of Weapon Costume for 5 Days",
+    "IT_SPECIAL"
+  ],
+  [
+    131762,
+    "Resurrection Stone Cube (10 ea.)",
+    "IT_SPECIAL"
+  ],
+  [
+    131798,
+    "Cube of a Gift on a Special Day",
+    "IT_SPECIAL"
+  ],
+  [
+    131802,
+    "Cube of a Ticket for 1 Costume Hair",
+    "IT_SPECIAL"
+  ],
+  [
+    131803,
+    "Cube of School Uniform Costume Full Set (for 3 days)",
+    ""
+  ],
+  [
+    131804,
+    "Cube of a Total Gift for a New Semester",
+    ""
+  ],
+  [
+    131805,
+    "Cube of Resurrection Stones (100)",
+    "IT_SPECIAL"
+  ],
+  [
+    131806,
+    "Special Accessory Random Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    131807,
+    "Cube of a Gift in April for PC Gaming Centers A",
+    ""
+  ],
+  [
+    131808,
+    "Cube of a Gift in April for PC Gaming Centers B",
+    ""
+  ],
+  [
+    131809,
+    "Cube of Ice Burner Costume Full Set (for 1 day)",
+    ""
+  ],
+  [
+    131810,
+    "Cube of Archangel's Full Set(A Day's Ticket)",
+    "IT_SPECIAL"
+  ],
+  [
+    131811,
+    "El Search Party Officer Set Cube (1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    131812,
+    "Cube of Nasods' Full Set(A Day's Ticket)",
+    "IT_SPECIAL"
+  ],
+  [
+    131813,
+    "Cube of Archdevil's Full Set(A Day's Ticket)",
+    "IT_SPECIAL"
+  ],
+  [
+    131814,
+    "Cube of New Costume Full Set",
+    "IT_SPECIAL"
+  ],
+  [
+    131815,
+    "Resurrection Stone Cube (3)",
+    "IT_SPECIAL"
+  ],
+  [
+    131816,
+    "Cube of 5 El Shards(Mystery)",
+    "IT_SPECIAL"
+  ],
+  [
+    131817,
+    "Cube for 5 Complete Recovery Potions",
+    "IT_SPECIAL"
+  ],
+  [
+    131818,
+    "Cube of Ring of Skills (for 30 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    131819,
+    "Cube Celebrating White Day C",
+    "IT_SPECIAL"
+  ],
+  [
+    131820,
+    "Cube of White Day Special Weapon Costume for 30 Days",
+    "IT_SPECIAL"
+  ],
+  [
+    131826,
+    "White Day Cube A",
+    "IT_SPECIAL"
+  ],
+  [
+    131827,
+    "White Day Cube B",
+    "IT_SPECIAL"
+  ],
+  [
+    131833,
+    "Cube Celebrating Dungeon Channel Integration",
+    ""
+  ],
+  [
+    131849,
+    "Random Cube of Boss Items",
+    "IT_SPECIAL"
+  ],
+  [
+    131850,
+    "Special Cube for April Fools' Day",
+    ""
+  ],
+  [
+    131855,
+    "Cobo's Special Monster Mask Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    131858,
+    "Resurrection Stone Cube (110)",
+    "IT_SPECIAL"
+  ],
+  [
+    131861,
+    "Random Cube of Enhancement Amulet(Lv.6~Lv.8)",
+    "IT_SPECIAL"
+  ],
+  [
+    131862,
+    "Random Cube of Enhancement Amulet(Lv.5~Lv.6)",
+    "IT_SPECIAL"
+  ],
+  [
+    131863,
+    "Elsword Costume Cube (A Type)",
+    "IT_SPECIAL"
+  ],
+  [
+    131864,
+    "Elsword Costume Cube (B Type)",
+    "IT_SPECIAL"
+  ],
+  [
+    132052,
+    "Cube of Cat Bag (for 7 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    132055,
+    "Cube of Gift Set on Children's Day",
+    ""
+  ],
+  [
+    132056,
+    "Cube of 4 Kinds of Special Accessories (for 1 day)",
+    ""
+  ],
+  [
+    132057,
+    "Cube of Salvatore Solace Full Set (for 1 day)",
+    "IT_SPECIAL"
+  ],
+  [
+    132058,
+    "Exchange Ticket for Cube of Ice Burner Costume (for 1 day)",
+    "IT_MATERIAL"
+  ],
+  [
+    132097,
+    "Cobo Special Gift Box [Lv. 1 Fluorite Ore]",
+    "IT_SPECIAL"
+  ],
+  [
+    132098,
+    "Cobo Special Gift Box [Lv. 2 Fluorite Ore]",
+    "IT_SPECIAL"
+  ],
+  [
+    132099,
+    "Cobo Special Gift Box [Lv. 3 Fluorite Ore]",
+    "IT_SPECIAL"
+  ],
+  [
+    132100,
+    "Cobo Special Gift Box [Lv. 4 Fluorite Ore]",
+    "IT_SPECIAL"
+  ],
+  [
+    132107,
+    "Cobo Special Gift Box [Ice Statue Heater]",
+    "IT_SPECIAL"
+  ],
+  [
+    132110,
+    "Magic Stone of Harmony",
+    "IT_SPECIAL"
+  ],
+  [
+    132111,
+    "Magic Stone of Mystery",
+    "IT_SPECIAL"
+  ],
+  [
+    132112,
+    "Magic Stone of Brilliance",
+    "IT_SPECIAL"
+  ],
+  [
+    132113,
+    "Magic Stone of Battle",
+    "IT_SPECIAL"
+  ],
+  [
+    132114,
+    "Magic Stone of Reinforce",
+    "IT_SPECIAL"
+  ],
+  [
+    132115,
+    "Magic Stone of Bull's Eye",
+    "IT_SPECIAL"
+  ],
+  [
+    132122,
+    "PC Gaming Center May Gift Cube",
+    ""
+  ],
+  [
+    132187,
+    "Teachers' Day Gift Cube",
+    ""
+  ],
+  [
+    132188,
+    "PC Gaming Center Connection Event Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132192,
+    "High-Grade Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    132193,
+    "Physical Attack Power Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    132194,
+    "Magic Attack Power Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    132195,
+    "Physical Defense Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    132196,
+    "Magic Defense Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    132197,
+    "Awakening Time Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    132198,
+    "Health Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    132199,
+    "Awakening Charging Speed Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    132200,
+    "Attack Speed Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    132201,
+    "Critical Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    132202,
+    "Movement Speed Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    132203,
+    "Accuracy Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    132204,
+    "Evasion Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    132205,
+    "Jump Speed Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    132206,
+    "Promotional Avatar Cube (3 Days)",
+    ""
+  ],
+  [
+    132212,
+    "Random Hell Dungeon Pass Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132213,
+    "Hell Dungeon Pass Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132337,
+    "Random Magic Stone Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132467,
+    "Promotional Avatar (15 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132470,
+    "PC Gaming Center Dual Option Magic Stone Random Cube",
+    ""
+  ],
+  [
+    132471,
+    "PC Gaming Center Resurrection Stone (10 ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132476,
+    "First Victory Special Cube",
+    ""
+  ],
+  [
+    132477,
+    "Special Accessory (3 Days) Cube",
+    ""
+  ],
+  [
+    132478,
+    "Skill Ring (3 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132479,
+    "Accessory (Face (Mid), 3 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132480,
+    "Accessory (Arm, 3 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132481,
+    "Random Fluorite Ore Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132482,
+    "Random Blessed Restoration Scroll Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132483,
+    "Random Monster Mask (7 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132484,
+    "Gold Promotion Weapon Avatar (7 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132485,
+    "Weapon Accessory (15 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132486,
+    "Special Accessory (15 Days) Cube",
+    ""
+  ],
+  [
+    132487,
+    "Skill Ring (7 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132529,
+    "Flexible Skill Ring (15 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132530,
+    "Tenacious Skill Ring (15 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132531,
+    "Powerful Skill Ring (15 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132532,
+    "Transcendent Skill Ring (15 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132533,
+    "Mana Elixir (5 ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132534,
+    "Quarterfinal Special Cube",
+    ""
+  ],
+  [
+    132535,
+    "Round of 16 Special Cube",
+    ""
+  ],
+  [
+    132580,
+    "Returned Warrior Welcoming Cube",
+    ""
+  ],
+  [
+    132584,
+    "Adventurer Package Cube",
+    ""
+  ],
+  [
+    132646,
+    "PC Gaming Center July Gift Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132648,
+    "Random Heater Accessory (Permanent) Cube",
+    ""
+  ],
+  [
+    132649,
+    "Random Weapon Avatar (Permanent) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132650,
+    "Random Enhancement Amulet (Lv. 7~Lv. 9) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132653,
+    "Gaia's Blessing Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132654,
+    "Random Bethbite's Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132656,
+    "Random Dungeon Pass Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132661,
+    "Random Heater Accessory (15 Days) Cube",
+    ""
+  ],
+  [
+    132696,
+    "Oblivion Drink (7 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132698,
+    "Medal of Blessings (1 Day) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132703,
+    "Battle Essential Item Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132704,
+    "Salvatore Solace Full Set Cube",
+    ""
+  ],
+  [
+    132705,
+    "Velder Imperial Guard Full Set Cube",
+    ""
+  ],
+  [
+    132706,
+    "Royal Servant/Maid Full Set Cube",
+    ""
+  ],
+  [
+    132707,
+    "Ice Statue Heater Avatar Weapon (1 ea) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132708,
+    "Ice Statue Heater Avatar Full Set (1 ea) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132746,
+    "Special Promotion Avatar Full Set (3 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132748,
+    "Perfect Recovery Potion (3ea) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132749,
+    "Holiday Task Reward Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132750,
+    "Random Reinforcement Amulet Cube (Lv.5~8)",
+    "IT_SPECIAL"
+  ],
+  [
+    132789,
+    "Easter Weapon (14 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132808,
+    "Random Secret Card Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132809,
+    "Dual Magic Stone Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132810,
+    "Random Shining Silver Cube (5~10ea) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132811,
+    "Unknown Cube A",
+    "IT_SPECIAL"
+  ],
+  [
+    132812,
+    "High-Grade Magic Stone Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132813,
+    "Random Shining Silver Cube (3~5ea) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132814,
+    "Unknown Cube B",
+    "IT_SPECIAL"
+  ],
+  [
+    132815,
+    "Resurrection Stone (2ea) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132816,
+    "Special Skill Ring (1 Day) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132823,
+    "Random Dream Step (1 Day) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132840,
+    "Resurrection Stone (10ea) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132841,
+    "Cobo Express VIP Ticket (1 Day) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132843,
+    "Archangel Accessory Full Set Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132844,
+    "Arch Devil Accessory Full Set Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132880,
+    "Halloween Ghost Candy",
+    "IT_SPECIAL"
+  ],
+  [
+    132885,
+    "Resurrection Stone (50ea) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132886,
+    "Complete Skill Reset Medal (5ea) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    132918,
+    "El Tree Fruits (25ea) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    133252,
+    "Advanced Weapon Cube (Lv. 36)",
+    "IT_SPECIAL"
+  ],
+  [
+    133253,
+    "Advanced Armor Cube (Lv. 36)",
+    "IT_SPECIAL"
+  ],
+  [
+    133254,
+    "Advanced Weapon Cube (Lv. 44)",
+    "IT_SPECIAL"
+  ],
+  [
+    133255,
+    "Advanced Armor Cube (Lv. 44)",
+    "IT_SPECIAL"
+  ],
+  [
+    133256,
+    "Elegant Equipment Cube (Lv. 52 Weapon)",
+    "IT_SPECIAL"
+  ],
+  [
+    133257,
+    "Elegant Equipment Cube (Lv. 52 Armor)",
+    "IT_SPECIAL"
+  ],
+  [
+    133258,
+    "Advanced Weapon Cube (Lv. 60)",
+    "IT_SPECIAL"
+  ],
+  [
+    133259,
+    "Advanced Armor Cube (Lv. 60)",
+    "IT_SPECIAL"
+  ],
+  [
+    133369,
+    "Refined El Shard (Petrifying Master)",
+    "IT_SPECIAL"
+  ],
+  [
+    133372,
+    "Refined El Shard (Burning Petrifying)",
+    "IT_SPECIAL"
+  ],
+  [
+    133375,
+    "Refined El Shard (Freezing Petrifying)",
+    "IT_SPECIAL"
+  ],
+  [
+    133378,
+    "Refined El Shard (Poison Petrifying)",
+    "IT_SPECIAL"
+  ],
+  [
+    133388,
+    "Refined El Shard Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    133471,
+    "Hamel Boss Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    135080,
+    "Resurrection Stones (5) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    135184,
+    "Sage's Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    135342,
+    "Dual Magic Stone Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    135345,
+    "High-Grade Magic Stone Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    160012,
+    "Premium Personal Shop Medal Cube (7 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    160013,
+    "Premium Personal Shop Medal Cube (15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    160014,
+    "Premium Personal Shop Medal Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    160015,
+    "Shoe Costume Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    160016,
+    "Glove Costume Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    160017,
+    "Top Piece Costume Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    160018,
+    "Bottom Piece Costume Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    160019,
+    "Hair Costume Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    160020,
+    "Weapon Costume Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    160021,
+    "Harmony Festival Magic Stone Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    160022,
+    "Harmony Festival Enhancement Stone Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    160023,
+    "Harmony Festival El Shard Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    160024,
+    "Harmony Festival Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    160025,
+    "Harmony Festival Costume Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    160038,
+    "Demon's Core Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    160170,
+    "Resurrection Stone Cube (1 ea)",
+    "IT_SPECIAL"
+  ],
+  [
+    160248,
+    "The Ring of Heroes (60 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    160257,
+    "Skill Slot Change Medal Cube (7 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    160426,
+    "+6 Assault Mercenary Of Destruction Full Set Cube",
+    ""
+  ],
+  [
+    160427,
+    "+6 Fierce Wrathful God Full Set Cube",
+    ""
+  ],
+  [
+    160428,
+    "+6 Glorious World Conqueror Full Set Cube",
+    ""
+  ],
+  [
+    160429,
+    "+6 Fearless Apocalypse Warrior Full Set Cube",
+    ""
+  ],
+  [
+    160430,
+    "+6 Blacksmith Union Full Set Cube",
+    ""
+  ],
+  [
+    160431,
+    "+6 Bloody Battle Song Full Set Cube",
+    ""
+  ],
+  [
+    160432,
+    "+6 Elrios Hero Full Set Cube",
+    ""
+  ],
+  [
+    160613,
+    "Epic NPC Card Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    160658,
+    "Monster Card Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    160773,
+    "Unidentified Ancient Fossil ",
+    "IT_SPECIAL"
+  ],
+  [
+    160813,
+    "QPL Jelly Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    160814,
+    "Mysterious QPL Jelly Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    160815,
+    "Strange QPL Jelly Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    200730,
+    "Selected Skill Reset Medal",
+    "IT_SPECIAL"
+  ],
+  [
+    200740,
+    "Premium Personal Shop Medal",
+    "IT_SPECIAL"
+  ],
+  [
+    200751,
+    "Inventory Expansion Card (Equipment)",
+    "IT_SPECIAL"
+  ],
+  [
+    200752,
+    "Inventory Expansion Card (Accessories)",
+    "IT_SPECIAL"
+  ],
+  [
+    200753,
+    "Inventory Expansion Card (Consume)",
+    "IT_SPECIAL"
+  ],
+  [
+    200754,
+    "Inventory Expansion Card (Item)",
+    "IT_SPECIAL"
+  ],
+  [
+    200755,
+    "Inventory Expansion Card (Quest)",
+    "IT_SPECIAL"
+  ],
+  [
+    200756,
+    "Inventory Expansion Card (Special)",
+    "IT_SPECIAL"
+  ],
+  [
+    203800,
+    "Complete Skill Reset Medal",
+    "IT_SPECIAL"
+  ],
+  [
+    205260,
+    "Big 3 One Package",
+    "IT_SPECIAL"
+  ],
+  [
+    205270,
+    "Big 3 Two Package",
+    "IT_SPECIAL"
+  ],
+  [
+    205280,
+    "Big 3 Three Package",
+    "IT_SPECIAL"
+  ],
+  [
+    206820,
+    "Character Slot Expansion Card (1 space)",
+    "IT_SPECIAL"
+  ],
+  [
+    206830,
+    "Character Slot Expansion Card (2 spaces)",
+    "IT_SPECIAL"
+  ],
+  [
+    206840,
+    "Fluorite Ore Package Lv.1",
+    "IT_SPECIAL"
+  ],
+  [
+    206850,
+    "Fluorite Ore Package Lv.2",
+    "IT_SPECIAL"
+  ],
+  [
+    206860,
+    "Fluorite Ore Package Lv.3",
+    "IT_SPECIAL"
+  ],
+  [
+    206870,
+    "Fluorite Ore Package Lv.4",
+    "IT_SPECIAL"
+  ],
+  [
+    206880,
+    "Blessed Restoration Scroll Lv.1",
+    "IT_SPECIAL"
+  ],
+  [
+    206890,
+    "Blessed Restoration Scroll Lv.2",
+    "IT_SPECIAL"
+  ],
+  [
+    206900,
+    "Blessed Restoration Scroll Lv.3",
+    "IT_SPECIAL"
+  ],
+  [
+    206910,
+    "Blessed Restoration Scroll Lv.4",
+    "IT_SPECIAL"
+  ],
+  [
+    206920,
+    "Blessed Restoration Scroll Lv.5",
+    "IT_SPECIAL"
+  ],
+  [
+    206930,
+    "Blessed Restoration Scroll Lv.6",
+    "IT_SPECIAL"
+  ],
+  [
+    206940,
+    "Blessed Restoration Scroll Lv.7",
+    "IT_SPECIAL"
+  ],
+  [
+    206950,
+    "Blessed Restoration Scroll Lv.8",
+    "IT_SPECIAL"
+  ],
+  [
+    206960,
+    "Blessed Restoration Scroll Lv.9",
+    "IT_SPECIAL"
+  ],
+  [
+    207500,
+    "Ice Burner",
+    "IT_SPECIAL"
+  ],
+  [
+    209660,
+    "Character Nickname Change Card",
+    "IT_SPECIAL"
+  ],
+  [
+    210370,
+    "Nerdy Diva's Magic Box (Purple)",
+    ""
+  ],
+  [
+    210430,
+    "Nerdy Diva's Magic Box (Brown)",
+    ""
+  ],
+  [
+    210490,
+    "Enhancement Package Lv.1",
+    "IT_SPECIAL"
+  ],
+  [
+    210500,
+    "Enhancement Package Lv.2",
+    "IT_SPECIAL"
+  ],
+  [
+    210510,
+    "Enhancement Package Lv.3",
+    "IT_SPECIAL"
+  ],
+  [
+    210520,
+    "Enhancement Package Lv.4",
+    "IT_SPECIAL"
+  ],
+  [
+    210550,
+    "Ice Burner 1+1 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    210560,
+    "Ice Burner 5+1 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    210570,
+    "Ice Burner 10+3 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    212360,
+    "Extreme Nasod Megaphone",
+    "IT_SPECIAL"
+  ],
+  [
+    213180,
+    "Special Package for Act2 Supplementary Version 1",
+    "IT_SPECIAL"
+  ],
+  [
+    213190,
+    "Special Package for Act2 Supplementary Version 2",
+    "IT_SPECIAL"
+  ],
+  [
+    213200,
+    "Special Package for Act2 Supplementary Version 3",
+    "IT_SPECIAL"
+  ],
+  [
+    213610,
+    "Cobo's Credit Guarantee",
+    "IT_SPECIAL"
+  ],
+  [
+    213790,
+    "Steel Box of Clouds and Flowers (Black)",
+    ""
+  ],
+  [
+    213850,
+    "Steel Box of Clouds and Flowers (Yellow)",
+    ""
+  ],
+  [
+    215660,
+    "Cobo Express VIP Ticket",
+    "IT_SPECIAL"
+  ],
+  [
+    217900,
+    "Drop Day Special Package (Purple)",
+    "IT_SPECIAL"
+  ],
+  [
+    217910,
+    "Drop Day Special Package (White)",
+    "IT_SPECIAL"
+  ],
+  [
+    221540,
+    "Cube of Ice Burner (50)",
+    "IT_SPECIAL"
+  ],
+  [
+    222310,
+    "Lv. 1 Fluorite Ore 1+1 Package",
+    "IT_SPECIAL"
+  ],
+  [
+    222320,
+    "Lv. 2 Fluorite Ore 1+1 Package",
+    "IT_SPECIAL"
+  ],
+  [
+    222330,
+    "Lv. 3 Fluorite Ore 1+1 Package",
+    "IT_SPECIAL"
+  ],
+  [
+    222340,
+    "Lv. 4 Fluorite Ore 1+1 Package",
+    "IT_SPECIAL"
+  ],
+  [
+    222350,
+    "Fluorite Ore LV. 1 10 + 10 Package",
+    "IT_SPECIAL"
+  ],
+  [
+    222360,
+    "Fluorite Ore LV. 2 10 + 10 Package",
+    "IT_SPECIAL"
+  ],
+  [
+    222370,
+    "Fluorite Ore LV. 3 10 + 10 Package",
+    "IT_SPECIAL"
+  ],
+  [
+    222380,
+    "Fluorite Ore LV. 4 10 + 10 Package",
+    "IT_SPECIAL"
+  ],
+  [
+    223170,
+    "Ice Statue Heater 10+9 Package",
+    "IT_SPECIAL"
+  ],
+  [
+    224390,
+    "Phoru Footprint (White) 1+1 Package",
+    "IT_SPECIAL"
+  ],
+  [
+    224400,
+    "Phoru Footprint (White) 5+5 Package",
+    "IT_SPECIAL"
+  ],
+  [
+    224410,
+    "Phoru Footprint (Purple) 1+1 Package",
+    "IT_SPECIAL"
+  ],
+  [
+    224420,
+    "Phoru Footprint (Purple) 5+5 Package",
+    "IT_SPECIAL"
+  ],
+  [
+    225160,
+    "High-Performance Nasod Megaphone 1+1 Package",
+    "IT_SPECIAL"
+  ],
+  [
+    225170,
+    "High-Performance Nasod Megaphone 10+10 Package",
+    "IT_SPECIAL"
+  ],
+  [
+    226110,
+    "Cobo Special Enhancement Package Lv.1",
+    "IT_SPECIAL"
+  ],
+  [
+    226120,
+    "Cobo Special Enhancement Package Lv.2",
+    "IT_SPECIAL"
+  ],
+  [
+    226130,
+    "Cobo Special Enhancement Package Lv.3",
+    "IT_SPECIAL"
+  ],
+  [
+    226140,
+    "Cobo Special Enhancement Package Lv.4",
+    "IT_SPECIAL"
+  ],
+  [
+    230350,
+    "Enhancement Package Lv.5",
+    "IT_SPECIAL"
+  ],
+  [
+    244560,
+    "Extended Quick Slot",
+    "IT_SPECIAL"
+  ],
+  [
+    248390,
+    "Pet Nickname Change Card",
+    "IT_SPECIAL"
+  ],
+  [
+    252770,
+    "Ice Burner 5+1 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    252780,
+    "Ice Burner 10+2 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    252790,
+    "Ice Burner 20+5 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    269731,
+    "Fossil Reader",
+    "IT_SPECIAL"
+  ],
+  [
+    270848,
+    "Blessed Time and Space Scroll Lv.1",
+    "IT_SPECIAL"
+  ],
+  [
+    270849,
+    "Blessed Time and Space Scroll Lv.2",
+    "IT_SPECIAL"
+  ],
+  [
+    270850,
+    "Blessed Time and Space Scroll Lv.3",
+    "IT_SPECIAL"
+  ],
+  [
+    270851,
+    "Blessed Time and Space Scroll Lv.4",
+    "IT_SPECIAL"
+  ],
+  [
+    270852,
+    "Blessed Time and Space Scroll Lv.5",
+    "IT_SPECIAL"
+  ],
+  [
+    270853,
+    "Blessed Time and Space Scroll Lv.6",
+    "IT_SPECIAL"
+  ],
+  [
+    270866,
+    "Blessed Time and Space Scroll (Scaled Item Level)",
+    "IT_SPECIAL"
+  ],
+  [
+    270970,
+    "Camilla’s Secret Manual (Basic)",
+    "IT_SPECIAL"
+  ],
+  [
+    270971,
+    "Camilla’s Secret Manual (Intermediate)",
+    "IT_SPECIAL"
+  ],
+  [
+    270972,
+    "Camilla’s Secret Manual (Advanced)",
+    "IT_SPECIAL"
+  ],
+  [
+    270973,
+    "Camilla’s Secret Manual (Expert)",
+    "IT_SPECIAL"
+  ],
+  [
+    271076,
+    "Gnosis Blessing (30 SP, 15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    271077,
+    "Gnosis Blessing (60 SP, 15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    271078,
+    "Gnosis Blessing (30 SP, 30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    271079,
+    "Gnosis Blessing (60 SP, 30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    272424,
+    "Fetch Aura (Permanent) Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    273060,
+    "Pet Toy (30 days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    500040,
+    "El Tree Fruit",
+    "IT_SPECIAL"
+  ],
+  [
+    500050,
+    "Wild Pocket Phoru",
+    "IT_SPECIAL"
+  ],
+  [
+    500060,
+    "Ancient Phoru",
+    "IT_SPECIAL"
+  ],
+  [
+    500070,
+    "Tree Knight",
+    "IT_SPECIAL"
+  ],
+  [
+    500110,
+    "Hallow Witch",
+    "IT_SPECIAL"
+  ],
+  [
+    500130,
+    "Hallow Witch Special Package",
+    "IT_SPECIAL"
+  ],
+  [
+    500140,
+    "Rudolph Phoru",
+    "IT_SPECIAL"
+  ],
+  [
+    500200,
+    "Life Crystal Package (Mystic Special Edition – Black)",
+    "IT_SPECIAL"
+  ],
+  [
+    500230,
+    "Life Crystal (Hatchling)",
+    "IT_SPECIAL"
+  ],
+  [
+    500240,
+    "Life Crystal (Dark Hatchling)",
+    "IT_SPECIAL"
+  ],
+  [
+    500250,
+    "Life Crystal (Fire Hatchling)",
+    "IT_SPECIAL"
+  ],
+  [
+    500260,
+    "Life Crystal (Light Hatchling)",
+    "IT_SPECIAL"
+  ],
+  [
+    500280,
+    "Life Crystal (Dark Hatchling) Package",
+    "IT_SPECIAL"
+  ],
+  [
+    500290,
+    "Life Crystal (Fire Hatchling) Package",
+    "IT_SPECIAL"
+  ],
+  [
+    500300,
+    "Life Crystal (Light Hatchling) Package",
+    "IT_SPECIAL"
+  ],
+  [
+    500310,
+    "Evil Ancient Phoru",
+    "IT_SPECIAL"
+  ],
+  [
+    500320,
+    "Hellfire Ancient Phoru",
+    "IT_SPECIAL"
+  ],
+  [
+    500330,
+    "Hallow Ancient Phoru",
+    "IT_SPECIAL"
+  ],
+  [
+    500340,
+    "Seraph Ancient Phoru",
+    "IT_SPECIAL"
+  ],
+  [
+    500520,
+    "Tree Knight(Christmas Tree Edition)",
+    "IT_SPECIAL"
+  ],
+  [
+    500530,
+    "Tree Knight(Santa Edition)",
+    "IT_SPECIAL"
+  ],
+  [
+    500560,
+    "Life Crystal (Uniel) Package",
+    "IT_SPECIAL"
+  ],
+  [
+    500570,
+    "Life Crystal (Uniring) Package",
+    "IT_SPECIAL"
+  ],
+  [
+    500610,
+    "Life Crystal (Firefox Shiho)",
+    "IT_SPECIAL"
+  ],
+  [
+    500620,
+    "Life Crystal (Darkfox Naho)",
+    "IT_SPECIAL"
+  ],
+  [
+    500660,
+    "Blood Eater",
+    "IT_SPECIAL"
+  ],
+  [
+    500670,
+    "Mana Eater",
+    "IT_SPECIAL"
+  ],
+  [
+    550000,
+    "Summon Stone: Moby Chariot RT",
+    "IT_SPECIAL"
+  ],
+  [
+    550002,
+    "Moby Chariot RT Package",
+    "IT_SPECIAL"
+  ],
+  [
+    550010,
+    "Summon Stone: Cockatigle",
+    "IT_SPECIAL"
+  ],
+  [
+    550012,
+    "Cockatigle Package",
+    "IT_SPECIAL"
+  ],
+  [
+    550020,
+    "Summon Stone: Ancient Phoru",
+    "IT_SPECIAL"
+  ],
+  [
+    550022,
+    "Ancient Phoru Package",
+    "IT_SPECIAL"
+  ],
+  [
+    60000001,
+    "Raven Card Package",
+    "IT_SPECIAL"
+  ],
+  [
+    60000050,
+    "The First Job Change Promotion Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000190,
+    "Eve's Special Package 1",
+    "IT_SPECIAL"
+  ],
+  [
+    60000191,
+    "Eve's Special Package 2",
+    "IT_SPECIAL"
+  ],
+  [
+    60000192,
+    "Eve's Special Package 3",
+    "IT_SPECIAL"
+  ],
+  [
+    60000193,
+    "Eve's Special Package 4",
+    "IT_SPECIAL"
+  ],
+  [
+    60000240,
+    "Eve Card Package",
+    "IT_SPECIAL"
+  ],
+  [
+    60000250,
+    "A Cube of the Ring of Skills (7 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000260,
+    "2nd Cube for Beginning Adventurers",
+    "IT_SPECIAL"
+  ],
+  [
+    60000261,
+    "Cube for Taiwan",
+    "IT_SPECIAL"
+  ],
+  [
+    60000262,
+    "Cube of Event for Taiwanese Connection (Promotion Cube to be Provided)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000263,
+    "The First Job Change Promotion Cube(A Day's Ticket)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000264,
+    "Cube of Feita Shooter Event",
+    "IT_SPECIAL"
+  ],
+  [
+    60000280,
+    "A White Heart Candy Cube (5 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000281,
+    "A White Star Candy Cube (5 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000282,
+    "A White Lollipop Cube (! Day(s))",
+    "IT_SPECIAL"
+  ],
+  [
+    60000283,
+    "White Day Event Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000290,
+    "Entrance and Exit Random Cube (White Day Event)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000300,
+    "Cube of Top Piece of Animal Costume",
+    "IT_SPECIAL"
+  ],
+  [
+    60000301,
+    "Cube of Bottom Piece of Animal Costume",
+    "IT_SPECIAL"
+  ],
+  [
+    60000302,
+    "Cube of Gloves of Animal Costume",
+    "IT_SPECIAL"
+  ],
+  [
+    60000303,
+    "Cube of Shoes of Animal Costume",
+    "IT_SPECIAL"
+  ],
+  [
+    60000304,
+    "Cube of Hair of Animal Costume",
+    "IT_SPECIAL"
+  ],
+  [
+    60000305,
+    "Cube of Accessories of Animal Costume",
+    "IT_SPECIAL"
+  ],
+  [
+    60000306,
+    "Animal Costume Full Set Cube (7 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000310,
+    "Cube of Easter Event",
+    "IT_SPECIAL"
+  ],
+  [
+    60000320,
+    "Cube of Easter Special Event for 7 Days",
+    "IT_SPECIAL"
+  ],
+  [
+    60000390,
+    "Special Cube of Hong Kong Easter",
+    "IT_SPECIAL"
+  ],
+  [
+    60000420,
+    "Resurrection Stone Cube(50)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000421,
+    "Resurrection Stone Cube (2 ea.)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000430,
+    "A Cube of Necessary Items for a Match(for 2 days)",
+    ""
+  ],
+  [
+    60000431,
+    "Magic Stone Set Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000440,
+    "Cube of Angelcraft Event",
+    "IT_SPECIAL"
+  ],
+  [
+    60000441,
+    "LOVE Alphabet Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000442,
+    "LOVE Cube Opener",
+    "IT_SPECIAL"
+  ],
+  [
+    60000443,
+    "Ticket to Manufacture LOVE Alphabet Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000444,
+    "Cube of 5 Blessed Weapon Enhancement Stones",
+    "IT_SPECIAL"
+  ],
+  [
+    60000445,
+    "Cube of 5 Blessed Armor Enhancement Stones",
+    "IT_SPECIAL"
+  ],
+  [
+    60000450,
+    "Kung Fu Hustle Event Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000451,
+    "Kung Fu Hustle Event Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000460,
+    "Skill Ticket Collection Event Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000480,
+    "Mother's Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000490,
+    "Mother's Cube Craft Ticket",
+    "IT_SPECIAL"
+  ],
+  [
+    60000500,
+    "Taiwan May New Event Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000520,
+    "Red Animal Costume Weapon Cube (Permanent)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000521,
+    "Blue Animal Costume Full Set Cube (15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000522,
+    "Red Animal Costume Full Set Cube (7 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000523,
+    "Animal Costume Accessory Set Cube (7 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000524,
+    "Primary Skill Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000525,
+    "Intermediate Skill Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000526,
+    "Advanced Skill Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000527,
+    "Fantasy Costume Box Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000530,
+    "Guild Olympic Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000536,
+    "Tzung Tzu 30 Days Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000537,
+    "Tzung Tzu 15 Days Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000543,
+    "William's Invitation Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000560,
+    "100 El Pieces (Dark) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000561,
+    "25 El Shards(Mystery)Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000562,
+    "20 El Pieces Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000570,
+    "Fantasy Academy S/F Uniform Cube (Teal)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000580,
+    "Guild Event Promotional Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000581,
+    "Special Ability Accessories (7 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000582,
+    "Special Ability Accessories (30 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000590,
+    "El Scout Officer (Website Event Cube)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000591,
+    "Archangel (Website Event Cube)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000592,
+    "Nasod Battle (Website Event Cube)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000600,
+    "Idol Band Costume Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000800,
+    "Star Academy Summer Uniform Cube (Navy)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000810,
+    "Rage Ring Cube (1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000811,
+    "Mystle Weapon Accessory Cube (1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000812,
+    "El Scout Officer Manteau Cube (1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000813,
+    "Nasod Backpack Cube (1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000814,
+    "Archangel Wing Cube (1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000815,
+    "Fluffy Fox Tail Cube (1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000817,
+    "Blessed Medal 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000818,
+    "Stamina Potion Cube (2 ea.)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000819,
+    "Back Knife 15 Days Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000820,
+    "Dark Elf Teardrop 15 Days Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000821,
+    "Dark Steel Bracelet 15 Days Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000822,
+    "Advanced Magic Stone Cube (3 ea.)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000823,
+    "Rage Ring Cube (1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000824,
+    "Velder Boss Accessories Cube (7 Days) ",
+    "IT_SPECIAL"
+  ],
+  [
+    60000826,
+    "Velder Kingdom Connection Cube (July 2)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000827,
+    "Velder Kingdom Connection Cube (July 3)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000828,
+    "Velder Kingdom Connection Cube (July 4)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000829,
+    "Velder Kingdom Connection Cube (July 9)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000830,
+    "Velder Kingdom Connection Cube (July 10)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000831,
+    "Velder Kingdom Connection Cube (July 11)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000835,
+    "Random Enhancement Item Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000837,
+    "Random Enhancement Amulet Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000840,
+    "Random Secret Dungeon Pass Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000863,
+    "Elsword Trial Promotional Random Cube",
+    ""
+  ],
+  [
+    60000864,
+    "Elsword Trial 2nd Promotional Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000865,
+    "Elsword Promotional 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000866,
+    "Elsword 1st Job Change Promotional 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000867,
+    "Elsword 2nd Job Change Promotional 2 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000868,
+    "Cheongyang Pepper 2ea Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000869,
+    "Rune Slayer Promotional Full Set 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000870,
+    "Lord Knight Promotional Full Set 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000871,
+    "Sword Knight Promotional Full Set 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000872,
+    "Magic Knight Promotional Full Set 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000876,
+    "Star Academy S/F Uniform Avatar Full Set 30 Days Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000879,
+    "Vita Potion 5ea Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000880,
+    "Fine Tea (5 ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000881,
+    "World Cup Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000882,
+    "2nd Job Change Reward Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000887,
+    "PC Gaming Center Promotional Hairstyle Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000888,
+    "PC Gaming Center Promotional Top Piece Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000889,
+    "PC Gaming Center Promotional Bottom Piece Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000890,
+    "PC Gaming Center Promotional Gloves Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000891,
+    "PC Gaming Center Promotional Shoes Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000892,
+    "PC Gaming Center  Promotional Weapon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000893,
+    "PC Gaming Center Promotional Hairstyle Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000894,
+    "PC Gaming Center Promotional Top Piece Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000895,
+    "PC Gaming Center Promotional Bottom Piece Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000896,
+    "PC Gaming Center Promotional Gloves Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000897,
+    "PC Gaming Center Promotional Shoes Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000898,
+    "PC Gaming Center Promotional Weapon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000899,
+    "PC Gaming Center Promotional Hairstyle Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000900,
+    "PC Gaming Center Promotional Top Piece Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000901,
+    "PC Gaming Center Promotion Bottom Piece Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000902,
+    "PC Gaming Center Promotional Gloves Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000903,
+    "PC Gaming Center Promotional Shoes Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000904,
+    "PC Gaming Promotional Weapon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000905,
+    "MC Doll Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000906,
+    "April Fool's Day Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000908,
+    "Star Academy S/F Uniform A Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000909,
+    "Star Academy S/F Uniform B Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000910,
+    "Mystle Weapon Accessory Cube (7 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000911,
+    "Skill Ring Cube (7 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000912,
+    "Archangel Wing Cube (1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000948,
+    "Random Heater Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000949,
+    "Magic Stone + 5 El Shards(Mystery) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000950,
+    "Advanced Magic Stone + 5 El Shards(Mystery) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000951,
+    "BWRS + 5 El Shards(Mystery) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000952,
+    "BARS + 5 El Shards(Mystery) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000953,
+    "Magic Stone + 10 BARS Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000954,
+    "Magic Stone + 10 BWRS Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000955,
+    "Advanced Magic Stone + 5 BARS Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000956,
+    "Advanced Magic Stone + 5 BWRS Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000957,
+    "Elsword Tiger Cosplay Cash Package (Red)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000958,
+    "Aisha Cat Cosplay Cash Package (Red)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000959,
+    "Rena Fox Cosplay Cash Package (Red)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000960,
+    "Raven Wolf Cosplay Cash Package (Red)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000961,
+    "Eve Lamb Cosplay Cash Package (Taupe)",
+    "IT_SPECIAL"
+  ],
+  [
+    60000962,
+    "Elder Boss Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000963,
+    "Bethma Boss Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000964,
+    "Pirate Cosplay Avatar Full Set 7 Days Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000965,
+    "Pirate Cosplay Avatar Full Set 15 Days Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000966,
+    "Pirate Cosplay Avatar Full Set 30 Days Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000972,
+    "All Properties 5ea Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000976,
+    "2nd Job Change Reward Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000997,
+    "Aisha Trial Promotion 1 Day Random Cube",
+    ""
+  ],
+  [
+    60000998,
+    "Aisha Trial 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60000999,
+    "Aisha 1st Job Change Promotion 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001000,
+    "Aisha 2nd Job Change Promotion 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001001,
+    "High Magician Promotion 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001002,
+    "Dark Magician Promotion 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001003,
+    "Elemental Master Promotion 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001004,
+    "Void Princess Promotion 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001048,
+    "Accessory Random 2 Days Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001098,
+    "Random Reinforcement Amulet Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001102,
+    "2nd Job Change Reward Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001123,
+    "Rena Trial Promotion 1 Day Random Cube",
+    ""
+  ],
+  [
+    60001124,
+    "Rena Trial 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001125,
+    "Rena 1st Job Change Promotion 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001126,
+    "Rena 2nd Job Change Promotion 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001127,
+    "Combat Ranger Promotion 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001128,
+    "Sniping Ranger Promotion 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001129,
+    "Wind Sneaker Promotion 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001130,
+    "Grand Archer Promotion 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001193,
+    "Heater Avatar Full Set (15 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001194,
+    "Arch Devil Full Set 15 Days Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001195,
+    "Archangel Full Set 15 Days Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001196,
+    "El Scout Officer Full Set 15 Days Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001197,
+    "Nasod Battle Full Set 15 Days Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001198,
+    "Random Heater Avatar Accessory 7 Days Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001199,
+    "Archangel Crown 7 Days Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001200,
+    "Arch Devil Eye 7 Days Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001205,
+    "Random Rare Avatar Weapon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001206,
+    "Random Arch Devil Weapon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001207,
+    "Random Archangel Weapon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001208,
+    "Random Nasod Battle Weapon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001209,
+    "Random El Scout Officer Weapon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001210,
+    "Accessory Random 15 Days Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001214,
+    "April Fool's Day Special Cube",
+    ""
+  ],
+  [
+    60001215,
+    "Blessed Armor Reinforcement Stone 10ea Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001216,
+    "William's Reward Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001222,
+    "Moon Rabbit Wooden Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001223,
+    "Moon Rabbit Copper Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001224,
+    "Moon Rabbit Silver Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001248,
+    "2nd Job Change Reward Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001269,
+    "Raven Trial Promotion 1 Day Random Cube",
+    ""
+  ],
+  [
+    60001270,
+    "Raven Trial 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001271,
+    "Raven 1st Job Change Promotion 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001272,
+    "Raven 2nd Job Change Promotion 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001273,
+    "Over Taker Promotion 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001274,
+    "Sword Taker Promotion 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001275,
+    "Blade Master Promotion 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001276,
+    "Reckless Fist Promotion 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001281,
+    "Firework Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001282,
+    "Archangel Full Set (7 Day) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001283,
+    "Arch Devil Full Set (7 Day) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001284,
+    "Nasod Battle Full Set (7 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001285,
+    "El Scout Full Set (7 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001286,
+    "Archangel Full Set (30 Day) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001287,
+    "Arch Devil Full Set (30 Day) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001288,
+    "Nasod Battle Full Set (30 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001289,
+    "El Scout Full Set (30 Days) Cube",
+    ""
+  ],
+  [
+    60001290,
+    "Archangel Full Set Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001291,
+    "Arch Devil Full Set Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001292,
+    "Nasod Battle Full Set Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001293,
+    "El Scout Full Set Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001294,
+    "Random Heater Avatar Full Set (7 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001295,
+    "Random Heater Avatar Full Set (30 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001296,
+    "Heater Avatar Raffle Ticket",
+    "IT_SPECIAL"
+  ],
+  [
+    60001300,
+    "Resurrection Stone (1 ea) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001301,
+    "Wedding Avatar Full Set 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001302,
+    "April Fool's Day Special Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001316,
+    "Weapon Avatar Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001318,
+    "[Event] EXP. Boost Medal Cube (1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    60001319,
+    "Manual Vol.3 Reward Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001342,
+    "Eve Trial Promotion 1 Day Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001343,
+    "Eve Trial 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001344,
+    "Eve 1st Job Change Promotion 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001345,
+    "Eve 2nd Job Change Promotion 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001346,
+    "Code Exotic Promotion 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001347,
+    "Code Architecture Promotion 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001348,
+    "Code Nemesis Promotion 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001349,
+    "Code Empress Promotion 1 Day Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001350,
+    "2nd Job Change Reward Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001351,
+    "New User's Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001352,
+    "Old User's Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001372,
+    "Pirate Avatar (Gloves, Top) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001373,
+    "Pirate Avatar (Shoes, Bottoms) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001374,
+    "Pirate Avatar (Hairstyle, Weapon) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001384,
+    "Random Pumpkin Accessory Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    60001388,
+    "Halloween Dungeon Pass 3ea Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001389,
+    "Halloween Dungeon Pass 6ea Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001390,
+    "Salvatore Solace 7 Days Weapon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001391,
+    "Salvatore Solace 7 Days Upper Armor Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001392,
+    "Salvatore Solace 7 Days Lower Armor Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001393,
+    "Salvatore Solace 7 Days Gloves Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001394,
+    "Salvatore Solace 7 Days Shoes Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001407,
+    "El Shards(Mystery) 5ea Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001408,
+    "Advanced Magic Stone (5ea) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001409,
+    "Perfect Recovery Potion 10ea Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001411,
+    "Random Reformed Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001412,
+    "Random Reformed Magic Stone Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001413,
+    "Cobo Express VIP Ticket 15 Days Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001414,
+    "Random Hell Mode Pass Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60001415,
+    "Reformed Box Set Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60003979,
+    "Refined El Shard Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60004428,
+    "First Grade Magic Stone Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60005020,
+    "Monster Cards Random Cube 1",
+    "IT_SPECIAL"
+  ],
+  [
+    60005021,
+    "Monster Cards Random Cube 2",
+    "IT_SPECIAL"
+  ],
+  [
+    60005022,
+    "Monster Cards Random Cube 3",
+    "IT_SPECIAL"
+  ],
+  [
+    60005046,
+    "Monster Card Collector's Hat Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    60006502,
+    "ES-888 Camera Cube (20 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    60006541,
+    "Lucky Field Boss Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60006580,
+    "Field Boss Cube (2)",
+    "IT_SPECIAL"
+  ],
+  [
+    60006581,
+    "Field Boss Cube (3)",
+    "IT_SPECIAL"
+  ],
+  [
+    60006582,
+    "Field Boss Cube (4)",
+    "IT_SPECIAL"
+  ],
+  [
+    60006583,
+    "Field Boss Cube (5)",
+    "IT_SPECIAL"
+  ],
+  [
+    60006584,
+    "Field Boss Cube (6)",
+    "IT_SPECIAL"
+  ],
+  [
+    60006585,
+    "Field Boss Cube (7)",
+    "IT_SPECIAL"
+  ],
+  [
+    60006586,
+    "Field Boss Cube (8)",
+    "IT_SPECIAL"
+  ],
+  [
+    60006587,
+    "Field Boss Cube (9)",
+    "IT_SPECIAL"
+  ],
+  [
+    60006588,
+    "Field Boss Cube (10)",
+    "IT_SPECIAL"
+  ],
+  [
+    60007010,
+    "Sealed Legendary 9 Tailed Fox 'Eun' Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60007011,
+    "Sealed Legendary 9 Tailed Fox 'Eun' Cube Key",
+    "IT_SPECIAL"
+  ],
+  [
+    60007012,
+    "Sealed Legendary 9 Tailed Fox 'Eun' Special Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60007015,
+    "Ara's Special Pre-Event Gold Falcon Ice Burner Package",
+    "IT_SPECIAL"
+  ],
+  [
+    60007023,
+    "Divine Legendary Fox Tail Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60007112,
+    "Little Hsien Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    60007122,
+    "3 Day Special Accessory Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60007123,
+    "Ara's Special Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60007240,
+    "Accessory Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60007347,
+    "Little Hsien’s Special Gift Cube A",
+    "IT_SPECIAL"
+  ],
+  [
+    60007348,
+    "Little Hsien’s Special Gift Cube B",
+    "IT_SPECIAL"
+  ],
+  [
+    60007349,
+    "Ariel’s Magic Amulet Random Cube (Lv.6~Lv.7)",
+    "IT_SPECIAL"
+  ],
+  [
+    60007352,
+    "Divine Legendary Fox Tail Accessory Cube  (2 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    60007353,
+    "Shining Red Legendary Fox Tail Accessory Cube  (2 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    60007468,
+    "Sander Accessory Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60007590,
+    "Item Revamp Promo Package Lv.1",
+    "IT_SPECIAL"
+  ],
+  [
+    60007591,
+    "Item Revamp Promo Package Lv.2",
+    "IT_SPECIAL"
+  ],
+  [
+    60007592,
+    "Item Revamp Promo Package Lv.3",
+    "IT_SPECIAL"
+  ],
+  [
+    60007593,
+    "Item Revamp Promo Package Lv.4",
+    "IT_SPECIAL"
+  ],
+  [
+    60007594,
+    "Item Revamp Promo Package Lv.5",
+    "IT_SPECIAL"
+  ],
+  [
+    60007595,
+    "Item Revamp Promo Package Lv.6",
+    "IT_SPECIAL"
+  ],
+  [
+    60007596,
+    "Item Revamp Promo Package (Scaled Item Level)",
+    "IT_SPECIAL"
+  ],
+  [
+    60007754,
+    "Raincoat Cat - Rebi",
+    "IT_SPECIAL"
+  ],
+  [
+    60007755,
+    "Raincoat Cat - Regi",
+    "IT_SPECIAL"
+  ],
+  [
+    60007756,
+    "Raincoat Cat - Rebi Package",
+    "IT_SPECIAL"
+  ],
+  [
+    60007757,
+    "Raincoat Cat - Regi Package",
+    "IT_SPECIAL"
+  ],
+  [
+    60007856,
+    "Orbs Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60008000,
+    "Unstoppable Ara Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60008003,
+    "Unstoppable Little Devil Cube",
+    ""
+  ],
+  [
+    60008004,
+    "Ara El Search Party Officer (1 day) Full Set Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60008008,
+    "4 Ring of Skills (7 days) Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60008009,
+    "Little Devil's Helping Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60008013,
+    "Victory Trophy Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60008014,
+    "Ara's New Job Celebration Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    60008023,
+    "2nd Job Promotion Weapon (Poison) Cube (3 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    65000001,
+    "Cube of Advanced Test Reward",
+    "IT_SPECIAL"
+  ],
+  [
+    65000002,
+    "Cube of Basic Promotion Costume for 7 Days",
+    "IT_SPECIAL"
+  ],
+  [
+    65000004,
+    "Cube of Special Challenge Lv.1",
+    "IT_SPECIAL"
+  ],
+  [
+    65000005,
+    "Cube of Special Challenge Lv.2",
+    "IT_SPECIAL"
+  ],
+  [
+    65000008,
+    "Special Cube for April Fools' Day",
+    ""
+  ],
+  [
+    65000009,
+    "Guild Memorial Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000010,
+    "Guild Memorial Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000011,
+    "Reward Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000012,
+    "Reward Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000020,
+    "Elsword Primary Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000021,
+    "Elsword Average Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000022,
+    "Elsword Superior Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000024,
+    "Resurrection Stone (5 ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000025,
+    "Weapon Accessories (Mystle 30 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000026,
+    "Weapon Accessories (Nasod Panel 30 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000027,
+    "Rage Ring (30 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000028,
+    "Nasod Prototype Goggles (30 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000029,
+    "Magic Necklace (30 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000030,
+    "Respawn Ring (30 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000036,
+    "120-Minute Connection Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000037,
+    "120-Minute Connection Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000038,
+    "120-Minute Connection Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000039,
+    "120-Minute Connection Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000040,
+    "120-Minute Connection Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000041,
+    "120-Minute Connection Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000042,
+    "120-Minute Connection Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000044,
+    "Battle Essential Item Cube (15 Days)",
+    ""
+  ],
+  [
+    65000045,
+    "Cat Ear Cube (50 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    65000046,
+    "Cat Tail Cube (50 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    65000047,
+    "Cat Bag Cube (50 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    65000048,
+    "Fluorite Ore Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000049,
+    "Lucky Golden Week Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000052,
+    "Lunchbox Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000054,
+    "Level 40 Celebration Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000055,
+    "Avatar Full Set (30 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000056,
+    "Promotional Avatar (30 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000057,
+    "Scar Tattoo (7 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000058,
+    "Fluffy Fox Tail (30 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000059,
+    "Candy (5 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000060,
+    "Limited Edition Avatar Garment (30 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000061,
+    "Limited Edition Avatar Weapon (30 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000062,
+    "Limited Edition  Avatar WeaponCube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000063,
+    "Level 40 Celebration Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000071,
+    "Magic Stone Cube (10 ea.)",
+    "IT_SPECIAL"
+  ],
+  [
+    65000072,
+    "Advanced Magic Stone Cube (10 ea.)",
+    "IT_SPECIAL"
+  ],
+  [
+    65000073,
+    "Random Blessed Enhancement Stone (1 ea.) Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    65000074,
+    "Random Blessed Enhancement Stone (10 ea.) Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    65000075,
+    "Lv. 1 Raven Commemoration Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    65000076,
+    "Lv. 2 Raven Commemoration Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    65000077,
+    "Raven Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000078,
+    "Pirate Pistol (15 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000079,
+    "Idol Avatar Full Set 15 Days Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000081,
+    "GW New 3000 Event Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000082,
+    "Raven's 1st Job Change Commemorative Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000094,
+    "Military Avatar Full Set (5 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000100,
+    "GW New Event Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000101,
+    "World Cup First Victory Special Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000103,
+    "El Scout Gloves (5 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000104,
+    "El Scout Shoes (5 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000105,
+    "El Scout Hairstyle (5 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000106,
+    "El Scout Bottom Piece (5 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000107,
+    "El Scout Top Piece (5 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000108,
+    "El Scout Weapon (5 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000109,
+    "El Scout Officer Hat (5 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000110,
+    "El Scout Officer Uniform Manteau (5 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000111,
+    "El Scout Officer Ceremonial Sword (5 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000114,
+    "Round of 16 Entry Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000115,
+    "Round of 16 Entry Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000122,
+    "Resurrection Stone (5 ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000123,
+    "Stamina Potion (5 ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000124,
+    "Potion Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000125,
+    "Advanced Magic Stone (5 ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000126,
+    "Perfect Recovery Potion (5 ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000127,
+    "Magic Stone (5 ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000128,
+    "Blessed Armor Enhancement Stone (5 ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000129,
+    "Blessed Weapon Enhancement Stone (5 ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000132,
+    "16 Days Reward Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000140,
+    "Secret Dungeon Pass Cube (Elder Vesma)",
+    "IT_SPECIAL"
+  ],
+  [
+    65000150,
+    "Queen's Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000151,
+    "Tanabata Matsuri Reward Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000152,
+    "Dospara Tie Up Special Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000153,
+    "Altera Core Conqueror Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000170,
+    "Queen's Resurrection Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000171,
+    "Ocean Day Special Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000172,
+    "Illogical Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000200,
+    "Advanced Magic Stone 5ea Cube (PC Gaming Center Special)",
+    "IT_SPECIAL"
+  ],
+  [
+    65000201,
+    "Perfect Recovery Potion 10ea Cube (PC Gaming Center Special)",
+    "IT_SPECIAL"
+  ],
+  [
+    65000202,
+    "Resurrection Stone 5ea Cube (PC Gaming Center Special)",
+    "IT_SPECIAL"
+  ],
+  [
+    65000203,
+    "Lv. 5 Ariel's Enhancement Amulet Cube (PC Gaming Center Special)",
+    "IT_SPECIAL"
+  ],
+  [
+    65000204,
+    "El Shards(Mystery) 3ea Cube (PC Gaming Center Special)",
+    "IT_SPECIAL"
+  ],
+  [
+    65000205,
+    "PC Gaming Center Special Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000214,
+    "New Code Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000229,
+    "You Spy Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000254,
+    "NPC Beauty Queen Contest VIP Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000258,
+    "Random Reinforcement Amulet Cube (Lv.6~7)",
+    "IT_SPECIAL"
+  ],
+  [
+    65000259,
+    "New User Swimsuit Avatar Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000263,
+    "Yukata Accessory Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000277,
+    "Accessory Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000280,
+    "Your Ariel Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000282,
+    "Yukata Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000343,
+    "Demonic Halloween Manteau 7 Days Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000351,
+    "Corn Head Cube (100 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    65000352,
+    "Friend Reference Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000366,
+    "Random Ariel's Reinforcement Amulet (Lv.5~6) Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    65000585,
+    "Wyvern's Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000645,
+    "Rare Costume Accessory Cube (1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    65000646,
+    "Rare Costume Cube (1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    65000679,
+    "Resurrection Stone (1 ea) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000680,
+    "Resurrection Stone (5ea) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000681,
+    "Weapon Enhancement Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000682,
+    "Armor Enhancement Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65000711,
+    "VIP Customer's Special Gift Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    65001078,
+    "Weak Heretic Essence Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    67003744,
+    "Dual Magic Stone Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    67003745,
+    "2013 Miss Elrios Pledged Ice Burner 1+1 Package ",
+    "IT_SPECIAL"
+  ],
+  [
+    67003746,
+    "2013 Miss Elrios Fluorite Ore Random Cube (Lv. 3-5)",
+    "IT_SPECIAL"
+  ],
+  [
+    67003750,
+    "2013 Miss Elrios Special Magic Stones",
+    "IT_SPECIAL"
+  ],
+  [
+    67003760,
+    "2013 Miss Elrios Special Cube",
+    ""
+  ],
+  [
+    67003761,
+    "2013 Miss Elrios Normal Cube",
+    ""
+  ],
+  [
+    67003762,
+    "2013 Miss Elrios Participation Cube",
+    ""
+  ],
+  [
+    67003763,
+    "Resurrection Stone Cube (10)",
+    "IT_SPECIAL"
+  ],
+  [
+    67003764,
+    "Resurrection Stone Cube (5)",
+    "IT_SPECIAL"
+  ],
+  [
+    67003765,
+    "Resurrection Stone Cube (3)",
+    "IT_SPECIAL"
+  ],
+  [
+    67003766,
+    "Complete Recovery Potion Cube (30)",
+    "IT_SPECIAL"
+  ],
+  [
+    67003767,
+    "Complete Recovery Potion Cube (20)",
+    "IT_SPECIAL"
+  ],
+  [
+    67003768,
+    "Complete Recovery Potion Cube (10)",
+    "IT_SPECIAL"
+  ],
+  [
+    67003769,
+    "Phoru's Foot Stamp Random Cube (White, Yellow, Purple)",
+    "IT_SPECIAL"
+  ],
+  [
+    67003770,
+    "Fluorite Ore Random Cube (Lv. 3-5)",
+    "IT_SPECIAL"
+  ],
+  [
+    67003771,
+    "Victory Crown Cube (14 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    67003772,
+    "2013 Miss Elrios Pledged Ice Burner 5+1 Package",
+    "IT_SPECIAL"
+  ],
+  [
+    67003773,
+    "2013 Miss Elrios Pledged Ice Burner 11+3 Package",
+    "IT_SPECIAL"
+  ],
+  [
+    67004420,
+    "El Shard Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    67004636,
+    "Resurrection Stone Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    67006185,
+    "Sander Village Conqueror Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    67006212,
+    "Elixir Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    67006213,
+    "Suspicious Wyvern's Accessory Cube (15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    67006214,
+    "Forgotten Ancient Wyvern's Accessory Cube (15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    67006215,
+    "Suspicious Wyvern's Claw Cube (15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    67006216,
+    "Forgotten Ancient Wyvern's Claw Cube (15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    67006458,
+    "Ring of Skill Random Cube (1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    70000060,
+    "Cube of Ardent Costume (7 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    70000061,
+    "Cube of Aisha's Ardent Costume (7 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    70000062,
+    "Cube of Lena's Ardent Costume (7 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    70000063,
+    "Package of Raven's Ardent Costume (7 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    70000064,
+    "Package of Eve's Ardent Costume (7 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    70000190,
+    "Dive Package",
+    "IT_SPECIAL"
+  ],
+  [
+    70000300,
+    "Ice Statue Heater (Archangel)",
+    "IT_SPECIAL"
+  ],
+  [
+    70000301,
+    "Ice Statue Heater (El Scout Officer)",
+    "IT_SPECIAL"
+  ],
+  [
+    70000302,
+    "Ice Statue Heater (Nasod Battle)",
+    "IT_SPECIAL"
+  ],
+  [
+    70000303,
+    "Ice Statue Heater (Undecided)",
+    "IT_SPECIAL"
+  ],
+  [
+    70000500,
+    "Elsword Yukata Package (Red)",
+    "IT_SPECIAL"
+  ],
+  [
+    70000501,
+    "Elsword Yukata Package (White)",
+    "IT_SPECIAL"
+  ],
+  [
+    70000502,
+    "Aisha Yukata Package (Plum)",
+    "IT_SPECIAL"
+  ],
+  [
+    70000503,
+    "Aisha Yukata Package (Pink)",
+    "IT_SPECIAL"
+  ],
+  [
+    70000504,
+    "Rena Yukata Package (Azure)",
+    "IT_SPECIAL"
+  ],
+  [
+    70000505,
+    "Rena Yukata Package (Plum)",
+    "IT_SPECIAL"
+  ],
+  [
+    70000506,
+    "Raven Yukata Package (Blue)",
+    "IT_SPECIAL"
+  ],
+  [
+    70000507,
+    "Raven Yukata Package (Dark Brown)",
+    "IT_SPECIAL"
+  ],
+  [
+    70000508,
+    "Eve Yukata Package (Pink)",
+    "IT_SPECIAL"
+  ],
+  [
+    70000509,
+    "Eve Yukata Package (Yellow)",
+    "IT_SPECIAL"
+  ],
+  [
+    70006040,
+    "Firefox Shiho",
+    "IT_SPECIAL"
+  ],
+  [
+    70006050,
+    "Darkfox Naho",
+    "IT_SPECIAL"
+  ],
+  [
+    70006070,
+    "Firefox Shiho Adult Package",
+    "IT_SPECIAL"
+  ],
+  [
+    70006080,
+    "Darkfox Naho Adult Package",
+    "IT_SPECIAL"
+  ],
+  [
+    70007201,
+    "Cube of Enlightenment ",
+    "IT_SPECIAL"
+  ],
+  [
+    70007204,
+    "El Shard Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    70007209,
+    "Ara Supporter Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    70007210,
+    "Ara’s Thankful Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    75000000,
+    "Accessory Fever Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    75000001,
+    "Ice Statue Heater (Salvatore Solace)",
+    "IT_SPECIAL"
+  ],
+  [
+    80000000,
+    "Everyday Login Reward Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    80000001,
+    "Everyday Login Reward Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    80000006,
+    "Level 20 Celebration Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    80000007,
+    "Level 30 Celebration Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    80000008,
+    "Everyday Login Cube (60 Min)",
+    "IT_SPECIAL"
+  ],
+  [
+    80000009,
+    "Everyday Login Cube (30 Min)",
+    "IT_SPECIAL"
+  ],
+  [
+    80000010,
+    "Everyday Login Cube (60 Min)",
+    "IT_SPECIAL"
+  ],
+  [
+    80000690,
+    "Mandrasil's Essence Package Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    80000691,
+    "Magic Stone Seeds",
+    "IT_SPECIAL"
+  ],
+  [
+    80000692,
+    "Advanced Magic Stone Seeds",
+    "IT_SPECIAL"
+  ],
+  [
+    80001431,
+    "Resurrection Stone Cube (10)",
+    "IT_SPECIAL"
+  ],
+  [
+    80001921,
+    "Archangel's All Set (2days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    80001922,
+    "Archdevil's All Set (2days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    80001923,
+    "Salvatore Solace All Set (2days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    80001953,
+    "El Shard Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    80002050,
+    "Weapon Costume Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    80002130,
+    "Erendil’s Intense Soul Cube Key",
+    "IT_SPECIAL"
+  ],
+  [
+    80002131,
+    "Erendil's Gentle Soul Cube Key",
+    "IT_SPECIAL"
+  ],
+  [
+    80002132,
+    "Erendil’s Intense and Gentle Soul Cube Key",
+    "IT_SPECIAL"
+  ],
+  [
+    80002144,
+    "Unidentified Nasod Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    80002145,
+    "Nasod’s Secret Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    80002146,
+    "King Nasod’s Secret Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    80002201,
+    "Code Battle Seraph Preparation Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    80002206,
+    "Seraph Code Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    80002208,
+    "Unidentified Code Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    80002209,
+    "Unidentified Code Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    80002210,
+    "Unidentified Code Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    80002211,
+    "Unidentified Code Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    80002217,
+    "Seraph Hair Ornament Cube (15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    80002218,
+    "Seraph Wing Cube (15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    80002219,
+    "Seraph Wing Tail Cube (15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    80002241,
+    "Tactical Trooper Preparation Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    80002255,
+    "Transformation Evolution Character Card Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    84001272,
+    "Panda Bear- Red",
+    "IT_SPECIAL"
+  ],
+  [
+    84001273,
+    "Panda Bear - Blue",
+    "IT_SPECIAL"
+  ],
+  [
+    84001276,
+    "Panda Bear - Red Special Package",
+    "IT_SPECIAL"
+  ],
+  [
+    84001277,
+    "Panda Bear - Blue Special Package",
+    "IT_SPECIAL"
+  ],
+  [
+    84001420,
+    "Santa Christmas Tree Knight Package",
+    "IT_SPECIAL"
+  ],
+  [
+    85000513,
+    "Ariel's Beginner Support Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85000514,
+    "Cobo's Support Cube 1",
+    "IT_SPECIAL"
+  ],
+  [
+    85000515,
+    "Cobo's Support Cube 2",
+    ""
+  ],
+  [
+    85000516,
+    "Cobo's Support Cube 3",
+    ""
+  ],
+  [
+    85000517,
+    "Cobo's Support Cube 4",
+    ""
+  ],
+  [
+    85000518,
+    "Cobo's Support Cube 5",
+    ""
+  ],
+  [
+    85000650,
+    "Cube of El Tree Seeds (3ea)",
+    "IT_SPECIAL"
+  ],
+  [
+    85000860,
+    "Rudolph's Red Nose Cube (15 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85000866,
+    "Christmas Special Gift Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85000912,
+    "Combat Support Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85000914,
+    "Flourite Ore Random Cube (Lv. 2 ~ 4)",
+    "IT_SPECIAL"
+  ],
+  [
+    85000915,
+    "Cube of 15 El Shards (Mystery)",
+    "IT_SPECIAL"
+  ],
+  [
+    85000916,
+    "Cube of 25 El Shards (Mystery)",
+    "IT_SPECIAL"
+  ],
+  [
+    85000917,
+    "Cube of 50 El Shards (Mystery)",
+    "IT_SPECIAL"
+  ],
+  [
+    85000929,
+    "Hamel's Combat Support Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85000931,
+    "Hamel's Volunteer Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85000932,
+    "Hamel's Warrior Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85000933,
+    "Hamel's Guardian Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85000934,
+    "Hamel's Hero Cube",
+    ""
+  ],
+  [
+    85001663,
+    "Dual Magic Stone Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85001830,
+    "Elsword PVP Tournament Invitation Cube",
+    ""
+  ],
+  [
+    85001844,
+    "Secret Dungeon Entrance Ticket Random Cube (Normal)",
+    "IT_SPECIAL"
+  ],
+  [
+    85001845,
+    "Secret Dungeon Entrance Ticket Random Cube (Hell)",
+    "IT_SPECIAL"
+  ],
+  [
+    85001864,
+    "Vitality Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85001865,
+    "Destruction Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85001889,
+    "Conwell Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85001894,
+    "Apprentice Adventurer’s Job Training Cube (Sheath Knight) ",
+    ""
+  ],
+  [
+    85001895,
+    "Apprentice Adventurer’s Job Training Cube (Sword Knight) ",
+    ""
+  ],
+  [
+    85001896,
+    "Apprentice Adventurer’s Job Training Cube (Magic Knight) ",
+    ""
+  ],
+  [
+    85001897,
+    "Apprentice Adventurer’s Job Training Aid  Cube",
+    ""
+  ],
+  [
+    85001898,
+    "Apprentice Adventurer’s Job Training Aid  Cube Key",
+    "IT_SPECIAL"
+  ],
+  [
+    85001902,
+    "Certificate of Apprentice Adventurer’s Training Cube (Like a New Recruit)",
+    ""
+  ],
+  [
+    85001904,
+    "Adventurer’s Training Uniform Full set Costume Cube (30 days) ",
+    "IT_SPECIAL"
+  ],
+  [
+    85001905,
+    "Regular Adventurer's Costume Discount Coupon",
+    "IT_SPECIAL"
+  ],
+  [
+    85001906,
+    "Skill Ring Cube (4 rings / 30 Days) ",
+    ""
+  ],
+  [
+    85001907,
+    "Skill Ring Cube (4 rings / 15 Days) ",
+    ""
+  ],
+  [
+    85001908,
+    "+6 Lv. 26 Equipment Full set Cube ",
+    ""
+  ],
+  [
+    85001928,
+    "Magician's Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85001933,
+    "Rare Costume Sets Resolution",
+    "IT_SPECIAL"
+  ],
+  [
+    85001943,
+    "Exp Medal (30%) Cube(1Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    85001944,
+    "El Search Party Officer All Set (2days) Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    85001945,
+    "Royal Maid/Servant Costume All Set (2days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85001946,
+    "Royal Maid/Servant Costume (Black) All Set (2days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85001947,
+    "Evil Tracer All Set (2days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85001948,
+    "Salvatore Denip All Set (2days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85001952,
+    "Cube for Undefined Resolutions",
+    "IT_SPECIAL"
+  ],
+  [
+    85001955,
+    "Ariel’s Weapon Costume (365 days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85001956,
+    "Ariel’s Accessory (365 days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85001957,
+    "Ariel’s Exp 10% Medal (365 days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85001958,
+    "Ariel’s 2013 Special Potion (365 ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85001959,
+    "Ariel’s Unknown 365 days Cube 365 ea.",
+    "IT_SPECIAL"
+  ],
+  [
+    85001966,
+    "Black Ninja Mask (3 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85001967,
+    "Penensio’s Cloak (3 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85001968,
+    "El Cat Mini-me (3 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85001969,
+    "Angel Girl (3 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85001970,
+    "Fleecy Ram Hat (3 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002000,
+    "Skill Ring Cube (4 rings) (1 Day)",
+    ""
+  ],
+  [
+    85002001,
+    "Tag Mode Promotional Weapon Costumes Cube (3 Types) (1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    85002002,
+    "Nasod Prototype Goggles Cube (15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85002003,
+    "Respawn Ring Cube (15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85002004,
+    "Fury Ring Cube(15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85002005,
+    "Eye of the Titan Cube (15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85002008,
+    "Accessory Random Cube (15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85002009,
+    "Orichalcum Weapon Accessory Cube (15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85002020,
+    "2013 Miss Elrios Pledged Enhancement Package Lv.1",
+    "IT_SPECIAL"
+  ],
+  [
+    85002021,
+    "2013 Miss Elrios Pledged Enhancement Package Lv.2",
+    "IT_SPECIAL"
+  ],
+  [
+    85002022,
+    "2013 Miss Elrios Pledged Enhancement Package Lv.3",
+    "IT_SPECIAL"
+  ],
+  [
+    85002023,
+    "2013 Miss Elrios Pledged Enhancement Package Lv.4",
+    "IT_SPECIAL"
+  ],
+  [
+    85002024,
+    "2013 Miss Elrios Pledged Enhancement Package Lv.5",
+    "IT_SPECIAL"
+  ],
+  [
+    85002040,
+    "Eldrasil's Holy Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002047,
+    "Eldrasil's Holy Cube Key",
+    "IT_SPECIAL"
+  ],
+  [
+    85002059,
+    "Ariel's Cube of Appreciation",
+    "IT_SPECIAL"
+  ],
+  [
+    85002066,
+    "Cobo Mercenary Startup Cube",
+    ""
+  ],
+  [
+    85002067,
+    "Cobo Mercenary Startup Cube Key",
+    "IT_SPECIAL"
+  ],
+  [
+    85002068,
+    "Dungeon Use Items Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002070,
+    "Return of the Commander’s Cube 1",
+    ""
+  ],
+  [
+    85002071,
+    "Return of the Commander’s Cube 2",
+    ""
+  ],
+  [
+    85002072,
+    "Return of the Commander’s Cube 3",
+    ""
+  ],
+  [
+    85002073,
+    "Raven Skill Note Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002085,
+    "Nasod Queen’s Accessory Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002087,
+    "Nasod Queen’s Commemoration Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002089,
+    "Code Electra’s Cube",
+    ""
+  ],
+  [
+    85002094,
+    "Luriel's Fluorite Ore Exchange Ticket",
+    "IT_SPECIAL"
+  ],
+  [
+    85002282,
+    "Great Beetle Costume Full Set Cube (30 day)",
+    "IT_SPECIAL"
+  ],
+  [
+    85002283,
+    "Trial Sparring Equipment Full Set Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002314,
+    "Gladiator’s Shield Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85002315,
+    "Gladiator’s Shield Cube (7Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85002317,
+    "Challenging the World of Competition (Step 1)",
+    "IT_SPECIAL"
+  ],
+  [
+    85002318,
+    "Challenging the World of Competition (Step 2)",
+    "IT_SPECIAL"
+  ],
+  [
+    85002319,
+    "Challenging the World of Competition (Step 3)",
+    "IT_SPECIAL"
+  ],
+  [
+    85002320,
+    "Challenging the World of Competition (Step 4)",
+    "IT_SPECIAL"
+  ],
+  [
+    85002321,
+    "Challenging the World of Competition (Step 5)",
+    "IT_SPECIAL"
+  ],
+  [
+    85002322,
+    "PVP Dual Magic Stone Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002323,
+    "Epic NPC Card Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002324,
+    "High-Grade Magic Stone Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002327,
+    "Permanent Accessory Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002340,
+    "PVP Exclusive Weapon Cube (15 Days)",
+    ""
+  ],
+  [
+    85002478,
+    "Elrios Inspector Costume Full Set Cube (15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85002518,
+    "Ariel’s Magic Amulet Lv.6~Lv.8 Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002520,
+    "Ariel’s Magic Amulet Lv.6~Lv.8 Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002521,
+    "Ariel’s Magic Amulet Lv.6~Lv.8 Random Cube Key",
+    "IT_SPECIAL"
+  ],
+  [
+    85002524,
+    "Skill Ring Cube (4 rings / 30 Days) ",
+    ""
+  ],
+  [
+    85002525,
+    "Dual Magic Stone Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002530,
+    "Elrios Inspector Weapon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002531,
+    "Elrios Inspector Top Piece Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002532,
+    "Elrios Inspector Bottom Piece Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002533,
+    "Elrios Inspector Gloves Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002534,
+    "Elrios Inspector Shoes Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002535,
+    "Elrios Inspector Hair Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002541,
+    "Infinity Sword Preparation Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002564,
+    "Ponggos' Appreciation Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002570,
+    "Erendil's Intense Soul Ring Cube (15 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85002571,
+    "Erendil's Gentle Soul Ring Cube (15 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85002572,
+    "Erendil's Intense Soul Necklace Cube (15 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85002573,
+    "Erendil's Gentle Soul Necklace Cube (15 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85002576,
+    "Erendil’s Intense Soul Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002577,
+    "Erendil's Gentle Soul Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002578,
+    "Erendil’s Intense and Gentle Soul Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85002610,
+    "Basic Weapon Costume Random Cube (Permanent)",
+    "IT_SPECIAL"
+  ],
+  [
+    85002611,
+    "Basic Top Piece Costume Random Cube (Permanent)",
+    ""
+  ],
+  [
+    85002612,
+    "Basic Bottom Piece Costume Random Cube (Permanent)",
+    ""
+  ],
+  [
+    85002613,
+    "Basic Glove Costume Random Cube (Permanent)",
+    "IT_SPECIAL"
+  ],
+  [
+    85002614,
+    "Basic Shoes Costume Random Cube (Permanent)",
+    "IT_SPECIAL"
+  ],
+  [
+    85002615,
+    "Basic Hair Costume Random Cube (Permanent)",
+    "IT_SPECIAL"
+  ],
+  [
+    85002800,
+    "Weak Infinite cube",
+    ""
+  ],
+  [
+    85002801,
+    "Infinite Cube",
+    ""
+  ],
+  [
+    85002802,
+    "Evolved Infinite Cube",
+    ""
+  ],
+  [
+    85003031,
+    "Veteran Commander Preparation Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85003040,
+    "Mercenary Phoru",
+    "IT_SPECIAL"
+  ],
+  [
+    85003042,
+    "Limited Edition Permanent Accessory Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85003043,
+    "Random Skill Ring Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85003048,
+    "Dark Raven's Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85003056,
+    "2008 Halloween Costume Piece Exchange Ticket (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003057,
+    "2009 Halloween Costume Piece Exchange Ticket (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003058,
+    "2011 Halloween Costume Piece Exchange Ticket (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003059,
+    "2008 Halloween Costume Set A Piece (30 Days) Exchange Ticket",
+    "IT_SPECIAL"
+  ],
+  [
+    85003060,
+    "2008 Halloween Costume Set B Piece (30 Days) Exchange Ticket",
+    "IT_SPECIAL"
+  ],
+  [
+    85003061,
+    "2009 Halloween Costume Set A Piece (30 Days) Exchange Ticket",
+    "IT_SPECIAL"
+  ],
+  [
+    85003062,
+    "2009 Halloween Costume Set B Piece (30 Days) Exchange Ticket",
+    "IT_SPECIAL"
+  ],
+  [
+    85003063,
+    "2011 Halloween Costume Set A Piece (30 Days) Exchange Ticket",
+    "IT_SPECIAL"
+  ],
+  [
+    85003064,
+    "2011 Halloween Costume Set B Piece (30 Days) Exchange Ticket",
+    "IT_SPECIAL"
+  ],
+  [
+    85003065,
+    "2008 Halloween Costume A Piece Weapon Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003066,
+    "2008 Halloween Costume A Piece Top Piece Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003067,
+    "2008 Halloween Costume A Piece Bottom Piece Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003068,
+    "2008 Halloween Costume A Piece Gloves Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003069,
+    "2008 Halloween Costume A Piece Shoes Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003070,
+    "2008 Halloween Costume A Piece Hair Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003071,
+    "2008 Halloween Costume B Piece Weapon Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003072,
+    "2008 Halloween Costume B Piece Top Piece Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003073,
+    "2008 Halloween Costume B Piece Bottom Piece Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003074,
+    "2008 Halloween Costume B Piece Gloves Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003075,
+    "2008 Halloween Costume B Piece Shoes Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003076,
+    "2008 Halloween Costume B Piece Hair Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003077,
+    "2009 Halloween Costume A Piece Weapon Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003078,
+    "2009 Halloween Costume A Piece Top Piece Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003079,
+    "2009 Halloween Costume A Piece Bottom Piece Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003080,
+    "2009 Halloween Costume A Piece Gloves Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003081,
+    "2009 Halloween Costume A Piece Shoes Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003082,
+    "2009 Halloween Costume A Piece Hair Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003083,
+    "2009 Halloween Costume B Piece Weapon Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003084,
+    "2009 Halloween Costume B Piece Top Piece Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003085,
+    "2009 Halloween Costume B Piece Bottom Piece Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003086,
+    "2009 Halloween Costume B Piece Gloves Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003087,
+    "2009 Halloween Costume B Piece Shoes Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003088,
+    "2009 Halloween Costume B Piece Hair Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003089,
+    "2011 Halloween Costume A Piece Weapon Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003090,
+    "2011 Halloween Costume A Piece Top Piece Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003091,
+    "2011 Halloween Costume A Piece Bottom Piece Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003092,
+    "2011 Halloween Costume A Piece Gloves Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003093,
+    "2011 Halloween Costume A Piece Shoes Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003094,
+    "2011 Halloween Costume A Piece Hair Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003095,
+    "2011 Halloween Costume B Piece Weapon Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003096,
+    "2011 Halloween Costume B Piece Top Piece Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003097,
+    "2011 Halloween Costume B Piece Bottom Piece Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003098,
+    "2011 Halloween Costume B Piece Gloves Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003099,
+    "2011 Halloween Costume B Piece Shoes Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003100,
+    "2011 Halloween Costume B Piece Hair Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003492,
+    "Wicked-eyed Tree Mask Cube (1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003493,
+    "Toppling Totem Mask Cube (1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003495,
+    "Sewing Doll Head Cube (1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003496,
+    "Zombie’s Incubator Cube (1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003497,
+    "Victor's Fist Cube (1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003670,
+    "Snowman",
+    "IT_SPECIAL"
+  ],
+  [
+    85003680,
+    "Arctic Hunter Peng",
+    "IT_SPECIAL"
+  ],
+  [
+    85003721,
+    "Gold Ice Burner",
+    "IT_SPECIAL"
+  ],
+  [
+    85003723,
+    "Ice Burner (Ara, El Search Party Officer)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003726,
+    "Gold Ice Burner (1) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85003727,
+    "Gold Ice Burner (2) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85003728,
+    "Gold Ice Burner (3) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85003729,
+    "Gold Ice Burner (4) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85003730,
+    "Gold Ice Burner (5) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85003731,
+    "Gold Ice Burner (10) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85003732,
+    "Gold Ice Burner (100) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85003733,
+    "Ice Burner (Ara, El Search Party Officer) (1) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85003734,
+    "Ice Burner (Ara, El Search Party Officer) (2) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85003735,
+    "Ice Burner (Ara, El Search Party Officer) (3) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85003736,
+    "Ice Burner (Ara, El Search Party Officer) (4) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85003737,
+    "Ice Burner (Ara, El Search Party Officer) (5) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85003738,
+    "Ice Burner (Ara, El Search Party Officer) (10) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85003739,
+    "Ice Burner (Ara, El Search Party Officer) (100) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85003780,
+    "Ara's Archangel Full Set Cube (3 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003800,
+    "2nd Job Congratulatory Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85003821,
+    "Ice Burner (Ara, Archangel)",
+    "IT_SPECIAL"
+  ],
+  [
+    85003833,
+    "Justice Vision Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85003834,
+    "Heretic Vision Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85003835,
+    "Justice Vision Cube Key",
+    "IT_SPECIAL"
+  ],
+  [
+    85003836,
+    "Heretic Vision Cube Key",
+    "IT_SPECIAL"
+  ],
+  [
+    85003837,
+    "Luriel's High Grade Magic Stone Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85003838,
+    "Luriel's Dual Magic Stone Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    85003840,
+    "Luriel's Additional Damage Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    85003841,
+    "Luriel's Reduced Damage Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    85003842,
+    "Luriel's Awakening Time Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    85003843,
+    "Luriel's Health Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    85003844,
+    "Luriel's Awakening Charging Speed Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    85003845,
+    "Luriel's Attack Speed Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    85003846,
+    "Luriel's Critical Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    85003847,
+    "Luriel's Movement Speed Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    85003848,
+    "Luriel's Accuracy Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    85003849,
+    "Luriel's Evasion Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    85003850,
+    "Luriel's Jump Speed Magic Stone",
+    "IT_SPECIAL"
+  ],
+  [
+    90000004,
+    "Ruben Boss Cube (7 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000005,
+    "Elder Boss Cube (7 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000006,
+    "Bethma Boss Cube (7 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000017,
+    "Surprise Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000029,
+    "Flimsy Ice Burner",
+    "IT_SPECIAL"
+  ],
+  [
+    90000031,
+    "Feita Boss Cube (7 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000032,
+    "Altera Boss Cube (7 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000129,
+    "No Job Change Promotion Cube(14 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000130,
+    "1st Job Change Promotion Cube(14 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000131,
+    "2nd Job Change Promotion Cube(14 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000149,
+    "Fraven Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000164,
+    "Raven Random Cash Costume Set Cube (7 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000165,
+    "Raven Random Cash Costume Set Cube (15 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000166,
+    "Raven Random Cash Costume Set Cube (30 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000167,
+    "Raven’s Western Outfit Package Cube (7 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000168,
+    "Raven’s Western Outfit Package Cube (15 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000169,
+    "Raven’s Western Outfit Package Cube (30 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000170,
+    "Raven’s Tactical Package Cube (7 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000171,
+    "Raven’s Tactical Package Cube (15 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000172,
+    "Raven’s Tactical Package Cube (30 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000173,
+    "Raven's Steel Mercenaries Package Cube (7 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000174,
+    "Raven's Steel Mercenaries Package Cube (15 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000175,
+    "Raven's Steel Mercenaries Package Cube (30 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000179,
+    "Raven Celebration Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000180,
+    "Lv. 10 Achievement Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000181,
+    "Lv. 20 Achievement Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000182,
+    "Lv. 30 Achievement Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000185,
+    "Wooden Weapon Cube (30 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000186,
+    "Accessory Cube (Permanent)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000187,
+    "Wooden Weapon Cube (Permanent)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000188,
+    "Elsword Fan Cube (30 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000199,
+    "Mysterious Enhancement Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000203,
+    "Stamina Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000207,
+    "Resurrection Stone Cube(10 stones)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000208,
+    "Resurrection Stone Cube(50 stones)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000214,
+    "William's Invitation Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000228,
+    "Pocket Phoru's Necklace Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000229,
+    "Epic Boss Battle Event Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000230,
+    "William's Time and Space Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000310,
+    "Blessed Weapon Enhancement Stones Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000320,
+    "Eve’s cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000322,
+    "Welcome Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000330,
+    "Fluorite Ore Random Cube (Lv.1~4)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000333,
+    "Queen's Drone Cube",
+    ""
+  ],
+  [
+    90000334,
+    "Wise Queen's Drone Cube",
+    ""
+  ],
+  [
+    90000335,
+    "Evolved Queen's Drone Cube",
+    ""
+  ],
+  [
+    90000336,
+    "Graceful Queen's Drone Cube",
+    ""
+  ],
+  [
+    90000337,
+    "Cold-Hearted Queen's Drone Cube",
+    ""
+  ],
+  [
+    90000338,
+    "Thoughtful Queen's Drone Cube",
+    ""
+  ],
+  [
+    90000339,
+    "Awakened Queen's Drone Cube",
+    ""
+  ],
+  [
+    90000352,
+    "El Revitalization Drink Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000353,
+    "Pongo's Secret Manual Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000384,
+    "25 Resurrection Stone Cubes",
+    "IT_SPECIAL"
+  ],
+  [
+    90000385,
+    "Enhancement Item Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000386,
+    "Thanksgiving Title Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000392,
+    "1 Cube of 4 Rings of Skills ",
+    "IT_SPECIAL"
+  ],
+  [
+    90000393,
+    "B+ Grade Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000394,
+    "A- Grade Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000395,
+    "A Grade Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000396,
+    "A+ Grade Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000430,
+    "3 Resurrection Stones Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000440,
+    "Trace of boss from Feita Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000480,
+    "Fluorite Ore Lv. 3 (2ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000481,
+    "Fluorite Ore Lv. 3 (3ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000482,
+    "Fluorite Ore Lv. 3 (4ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000483,
+    "Fluorite Ore Lv. 3 (5ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000484,
+    "Fluorite Ore Lv. 4 (2ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000485,
+    "Fluorite Ore Lv. 4 (3ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000486,
+    "Fluorite Ore Lv. 4 (4ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000487,
+    "Fluorite Ore Lv. 4 (5ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000488,
+    "Resurrection Stones (10ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000489,
+    "Resurrection Stones (50ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000490,
+    "Resurrection Stones (110ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000491,
+    "Ice Burner (1ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000492,
+    "Ice Burner (2ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000493,
+    "Ice Burner (3ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000494,
+    "Ice Burner (4ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000495,
+    "Ice Burner (5ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000496,
+    "Ice Burner (10ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000497,
+    "Ice Burner (100ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000498,
+    "EXP Boost Medal (50%) Cube (1Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000499,
+    "Cobo Express VIP Ticket (30Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000500,
+    "Premium Personal Shop Medal (15Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000501,
+    "Mana Mint Bubble Gum (30Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000504,
+    "Elder's Secret Dungeon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000505,
+    "Bethma's Secret Dungeon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000506,
+    "Altera's Secret Dungeon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000507,
+    "High-Grade Magic Stone Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000508,
+    "Luto's Cursed Dice (30 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000513,
+    "Lunar Costume Cube (7 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000525,
+    "Accessory Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000534,
+    "Football Cube (7 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000546,
+    "Valentine's Angel Cube (14 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000550,
+    "Hoffman’s Entrance Certificate Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000551,
+    "Map of the Abyss Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000552,
+    "Anti-Alterasia Capsule Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000553,
+    "Secret Key to Wally's Underground Laboratory Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000554,
+    "Hidden Map of the Abyss Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000555,
+    "Enhanced Anti-Alterasia Capsule Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000560,
+    "Ariel’s Magic Amulet Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000561,
+    "Henir's Time and Space Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000562,
+    "Henir's Time and Space Special Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000563,
+    "Skill Ring Cube (4 rings)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000564,
+    "Henir's Time and Space Special Cube Key",
+    "IT_SPECIAL"
+  ],
+  [
+    90000586,
+    "Ariel's 1st Anniversary Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000587,
+    "Luriel's 1st Anniversary Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000588,
+    "Camilla's 1st Anniversary Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000589,
+    "Helen's 1st Anniversary Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000593,
+    "1st Anniversary Random Accessory Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000594,
+    "Nature's Gift Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000620,
+    "Lv. 1 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000621,
+    "Lv. 4 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000622,
+    "Lv. 7 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000623,
+    "Lv. 10 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000624,
+    "Lv. 12 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000625,
+    "Lv. 14 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000626,
+    "Lv. 16 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000627,
+    "Lv. 18 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000628,
+    "Lv. 20 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000629,
+    "Lv. 22 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000630,
+    "Lv. 24 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000631,
+    "Lv. 26 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000632,
+    "Lv. 28 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000633,
+    "Lv. 30 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000634,
+    "Lv. 31 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000635,
+    "Lv. 32 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000636,
+    "Lv. 33 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000637,
+    "Lv. 34 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000638,
+    "Lv. 35 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000639,
+    "Lv. 40 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000640,
+    "Lv. 45 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000641,
+    "Lv. 50 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000664,
+    "Unbreakable Friendship Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000665,
+    "Friendship Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000666,
+    "Unbreakable Friendship Cube Key",
+    "IT_SPECIAL"
+  ],
+  [
+    90000667,
+    "Friendship Cube Key",
+    "IT_SPECIAL"
+  ],
+  [
+    90000681,
+    "Respawn Ring Cube (7 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000682,
+    "Nasod Prototype Goggles Cube (7 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000683,
+    "Ring of Fury Cube (7 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000684,
+    "Magic Necklace (+30%) Cube (7 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000685,
+    "Guild Package Cube (7 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000692,
+    "EXP Boost Medal (50%) Cube (1Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000706,
+    "Appreciation Cube from Hamel residents",
+    "IT_SPECIAL"
+  ],
+  [
+    90000712,
+    "Prince Seiker's Cube",
+    ""
+  ],
+  [
+    90000714,
+    "Chung's Costume Exchange Ticket (7 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000715,
+    "Resurrection Stone Cube (10ea)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000720,
+    "Stewardship Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000721,
+    "Complete Recovery Potion from Stewardship Cube",
+    "IT_QICK_SLOT"
+  ],
+  [
+    90000722,
+    "Vigor Potion from  Stewardship Cube",
+    "IT_QICK_SLOT"
+  ],
+  [
+    90000723,
+    "Resurrection Stone (1 ea) from Stewardship Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000724,
+    "Full Set Stewardship Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000731,
+    "Forest Guardian’s Weapon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000732,
+    "Civil Guardian’s Weapon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000733,
+    "Mercenary Of Destruction Weapon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000734,
+    "Wrathful God's Weapon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000735,
+    "World Conqueror's Weapon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000736,
+    "World Conqueror's Weapon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000737,
+    "Blacksmith Union's Weapon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000738,
+    "Bloody Battle Song Weapon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000740,
+    "Cube of Promised Growth Lv. 10",
+    "IT_SPECIAL"
+  ],
+  [
+    90000741,
+    "Cube of Promised Growth Lv. 15",
+    "IT_SPECIAL"
+  ],
+  [
+    90000742,
+    "Cube of Promised Growth Lv. 20",
+    "IT_SPECIAL"
+  ],
+  [
+    90000743,
+    "Cube of Promised Growth Lv. 25",
+    "IT_SPECIAL"
+  ],
+  [
+    90000744,
+    "Cube of Promised Growth Lv. 30",
+    "IT_SPECIAL"
+  ],
+  [
+    90000745,
+    "Cube of Promised Growth Lv. 40",
+    "IT_SPECIAL"
+  ],
+  [
+    90000746,
+    "Resurrection Stone Cube (20)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000748,
+    "Skill Ring Cube (4 rings / 15 days)",
+    ""
+  ],
+  [
+    90000749,
+    "Random Accessory Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000750,
+    "Cobo Class Change Cube",
+    ""
+  ],
+  [
+    90000751,
+    "Support Cube for Returning Users",
+    ""
+  ],
+  [
+    90000752,
+    "General Notes Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000753,
+    "Resurrection Stone Cube (15)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000756,
+    "Cash Notes Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000759,
+    "Random Cube of Accessories (Elder, Bethma)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000760,
+    "Random Cube of Accessories (Altera, Feita, Velder)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000764,
+    "Refined El Shard Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000850,
+    "EXP Boost Medal (50%) Cube (1Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000930,
+    "Summer Accessories Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000948,
+    "El Shard Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90000960,
+    "Archangel Full Set Cube (1 Day)",
+    ""
+  ],
+  [
+    90000970,
+    "Sailor Boy Scout Costume Cube (7 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000971,
+    "Dandy Cross Buckle Costume Cube (7 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000972,
+    "Saint Cross Guard Costume Cube (7 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000973,
+    "Royal Cannoneer Costume Cube (7 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000974,
+    "Air Geared Costume Cube (7 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000975,
+    "Ghost Hunter Costume Cube (7 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90000980,
+    "Camilla’s Skill Improvement Cube(Basic)",
+    ""
+  ],
+  [
+    90000981,
+    "Camilla’s Skill Improvement Cube (Intermediate)",
+    ""
+  ],
+  [
+    90000982,
+    "Camilla’s Skill Improvement Cube (Advanced)",
+    ""
+  ],
+  [
+    90000994,
+    "Camilla’s Notes Random Cube",
+    ""
+  ],
+  [
+    90000995,
+    "Camilla’s Notes Random Cube Key",
+    "IT_SPECIAL"
+  ],
+  [
+    90000998,
+    "Magic Amulet Random Cube (Lv 5~7)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001005,
+    "Chung’s Memo Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001010,
+    "Resurrection Stone Cube (5)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001020,
+    "Resurrection Stone Cube (1)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001021,
+    "Resurrection Stone Cube (2)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001023,
+    "Resurrection Stone Cube (5)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001047,
+    "Magic Stone Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001056,
+    "Hamel's Protector Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001080,
+    "Ice Burner x 30 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001097,
+    "Seiker Family's Improved Cannon Cube (Chung)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001098,
+    "Seiker Family's Refined Cannon Cube (Chung)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001099,
+    "Seiker Family's Striking Cannon Cube (Chung)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001106,
+    "Resurrection Stone Cube (5ea)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001293,
+    "Magic Stone Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001294,
+    "El Shard Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001295,
+    "Enhancement Stone Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001296,
+    "Enhanced Cobo's +10 Weapon Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001297,
+    "Secret Dungeon Entrance Ticket Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001304,
+    "Smoke Bomb Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001322,
+    "Resurrection Stone Cube (10)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001347,
+    "Allegro’s Appreciation Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001348,
+    "Lento’s Appreciation Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001350,
+    "Secret Dungeon Entrance Ticket Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001367,
+    "Pirate's Costume Cube (1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001368,
+    "Pirate's Accessory Cube (7 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001369,
+    "Pirate's Full Premium Set Cube (15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001370,
+    "Pirate Bandana Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001377,
+    "Pirate Bandana Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001400,
+    "Pirate's Accessory Cube (1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001412,
+    "Secret Potion Cube Pieces",
+    "IT_QUEST"
+  ],
+  [
+    90001413,
+    "Wonder Potion Cube Pieces",
+    "IT_QUEST"
+  ],
+  [
+    90001414,
+    "Secret Potion Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001415,
+    "Wonder Potion Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001417,
+    "Summer Star Academy Costume (3 Days) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001418,
+    "Cube of 4 Special Accessories (for 1 day)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001419,
+    "4 Rings of Skills Cube (1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001430,
+    "Start Up Cube Lv. 5",
+    "IT_SPECIAL"
+  ],
+  [
+    90001431,
+    "Start Up Cube Lv. 10",
+    "IT_SPECIAL"
+  ],
+  [
+    90001432,
+    "Start Up Cube Lv. 15",
+    "IT_SPECIAL"
+  ],
+  [
+    90001433,
+    "Start Up Cube Lv. 20",
+    "IT_SPECIAL"
+  ],
+  [
+    90001434,
+    "Start Up Special Cube Lv. 20",
+    "IT_SPECIAL"
+  ],
+  [
+    90001435,
+    "Start Up Cube Lv. 30",
+    "IT_SPECIAL"
+  ],
+  [
+    90001436,
+    "Start Up Cube Lv. 35",
+    "IT_SPECIAL"
+  ],
+  [
+    90001437,
+    "Start Up Special Cube Key",
+    "IT_SPECIAL"
+  ],
+  [
+    90001451,
+    "+10 Cobo Special Blade for Adventurers Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001452,
+    "Nasod Core Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001456,
+    "Raven's Weapon Costume Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001457,
+    "Raven's Full Costume Cube (15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001462,
+    "Stumped Ariel’s Thanksgiving Present Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001463,
+    "Pleased Ariel’s Thanksgiving Present Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001464,
+    "Appreciated Ariel’s Thanksgiving Present Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001465,
+    "Praised Ariel’s Thanksgiving Present Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001466,
+    "Delighted Ariel’s Thanksgiving Present Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001470,
+    "XMMORPG Giveaway Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001480,
+    "Indian Accessories Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001481,
+    "Indian Accessories Full Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001493,
+    "Miracle Medicine Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001494,
+    "Indian Accessory Random Cube (15 Days) ",
+    "IT_SPECIAL"
+  ],
+  [
+    90001495,
+    "Indian Accessory Random Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001501,
+    "Lv. 1 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001502,
+    "Lv. 4 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001503,
+    "Lv. 7 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001504,
+    "Lv. 10 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001505,
+    "Lv. 12 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001506,
+    "Lv. 14 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001507,
+    "Lv. 16 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001508,
+    "Lv. 18 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001509,
+    "Lv. 20 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001510,
+    "Lv. 22 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001511,
+    "Lv. 24 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001512,
+    "Lv. 26 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001513,
+    "Lv. 28 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001514,
+    "Lv. 30 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001515,
+    "Lv. 31 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001516,
+    "Lv. 32 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001517,
+    "Lv. 33 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001518,
+    "Lv. 34 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001519,
+    "Lv. 35 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001520,
+    "Lv. 40 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001521,
+    "Lv. 45 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001522,
+    "Lv. 50 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001523,
+    "Orb Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001524,
+    "Summer Casual Costume Full Set Cube (7 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001525,
+    "Summer Casual Costume Full Set Cube (Permanent)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001526,
+    "Random Accessory Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001527,
+    "Ring of Skill Set Cube (7 Days)",
+    ""
+  ],
+  [
+    90001542,
+    "Henir/Secret Dungeon Note Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001543,
+    "Unbreakable Friendship Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001544,
+    "Mysterious Continent Armor Package Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001545,
+    "Mysterious Continent Weapon Package Cube (Permanent)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001546,
+    "Friendship Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001547,
+    "Mysterious Continent Armor Package Cube (15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001548,
+    "Mysterious Continent Weapon Package Cube (15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001549,
+    "Mithril Weapon Accessory Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001580,
+    "Sheath Knight Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001591,
+    "Gold Ice Burner 1+1",
+    "IT_SPECIAL"
+  ],
+  [
+    90001592,
+    "Gold Ice Burner 5+2",
+    "IT_SPECIAL"
+  ],
+  [
+    90001593,
+    "Gold Ice Burner 10+3",
+    "IT_SPECIAL"
+  ],
+  [
+    90001597,
+    "Gold Ice Burner (1ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001598,
+    "Gold Ice Burner (2ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001599,
+    "Gold Ice Burner (3ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001600,
+    "Gold Ice Burner (4ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001601,
+    "Gold Ice Burner (5ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001602,
+    "Gold Ice Burner (10ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001603,
+    "Gold Ice Burner (100ea.) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001604,
+    "Ice Burner 1+1",
+    "IT_SPECIAL"
+  ],
+  [
+    90001605,
+    "Ice Burner (Type A) 5+1",
+    "IT_SPECIAL"
+  ],
+  [
+    90001606,
+    "Ice Burner (Type B) 5+1",
+    "IT_SPECIAL"
+  ],
+  [
+    90001607,
+    "Ice Burner (Type A) 10+3",
+    "IT_SPECIAL"
+  ],
+  [
+    90001608,
+    "Ice Burner (Type B) 10+3",
+    "IT_SPECIAL"
+  ],
+  [
+    90001614,
+    "2012 Christmas Costumes 3 day Cube(Red)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001615,
+    "2012 Christmas Costumes 3 day Cube(Purple)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001701,
+    "Magician's Hope Cube (15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001708,
+    "El Shard (Mystery) Cube (10 ea.)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001736,
+    "Special Accessory Set Cube(4 Kinds) (7days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001738,
+    "Space Ruler's (Bethma) +9 Armor Full set Cube(Lv 20)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001739,
+    "Space Ruler's (Feita) +9 Armor Full set Cube(Lv 40)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001740,
+    "Absolute Time and Space Armor +9 Full set Cube(Lv 60)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001742,
+    "Space Ruler's (Bethma) +9 Weapon Cube(Lv 20)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001743,
+    "Space Ruler's (Feita) +9 Weapon Cube(Lv 40)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001744,
+    "Absolute Time and Space Weapon +9 Cube(Lv 60)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001745,
+    "El Shard/Refined El Shard Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001746,
+    "Magic Stone Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001840,
+    "2013 Lunar New Year Costume Package Cube (1day)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001897,
+    "Recycled Can Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001898,
+    "Recycled Glass Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001899,
+    "Recycled Plastic Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001910,
+    "Ice Burner (Eve, Nasod Battle)",
+    "IT_SPECIAL"
+  ],
+  [
+    90001923,
+    "Ariel's Phoru Foot Stamp Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90001990,
+    "Ice Burner 2+2",
+    "IT_SPECIAL"
+  ],
+  [
+    90002000,
+    "Ice Burner 5+1",
+    "IT_SPECIAL"
+  ],
+  [
+    90002010,
+    "Ice Burner 10+3",
+    "IT_SPECIAL"
+  ],
+  [
+    90002020,
+    "Ice Burner (Chung's Archangel) 2+2",
+    "IT_SPECIAL"
+  ],
+  [
+    90002030,
+    "Ice Burner (Chung's Archangel) 5+1",
+    "IT_SPECIAL"
+  ],
+  [
+    90002040,
+    "Ice Burner (Chung's Archangel) 10+3",
+    "IT_SPECIAL"
+  ],
+  [
+    90002060,
+    "Sheriff",
+    "IT_SPECIAL"
+  ],
+  [
+    90002070,
+    "Life Crystal Package (Sheriff)",
+    "IT_SPECIAL"
+  ],
+  [
+    90002080,
+    "Sheriff Package",
+    "IT_SPECIAL"
+  ],
+  [
+    90002100,
+    "Sheriff (White)",
+    "IT_SPECIAL"
+  ],
+  [
+    90002110,
+    "Life Crystal Package (White Sheriff)",
+    "IT_SPECIAL"
+  ],
+  [
+    90002120,
+    "Sheriff Package (White)",
+    "IT_SPECIAL"
+  ],
+  [
+    90002140,
+    "UGC Wonderland Costume Cube (15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90002150,
+    "Memorial Day Military Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90002161,
+    "Level 1 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90002162,
+    "Level 4 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90002163,
+    "Level 7 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90002164,
+    "Level 10 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90002165,
+    "Level 15 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90002166,
+    "Level 20 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90002167,
+    "Level 23 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90002168,
+    "Level 26 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90002169,
+    "Level 29 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90002170,
+    "Level 32 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90002171,
+    "Level 35 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90002172,
+    "Summer Casual Costume Full Set Cube (30 days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90002191,
+    "Dimension Witch Preparation Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90002194,
+    "Unrefined Moonstone Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90002196,
+    "Neutralized Moonstone Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90002197,
+    "Aisha's Skill Note Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90002199,
+    "Resurrection Stone (1 ea) Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002200,
+    "Potion/Elixir Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90002202,
+    "Moonstone Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90002203,
+    "El Revitalization Drink (7 Day) Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90002220,
+    "Level 1 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002221,
+    "Level 4 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002222,
+    "Level 7 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002223,
+    "Level 10 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002224,
+    "Level 15 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002225,
+    "Level 20 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002226,
+    "Level 23 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002227,
+    "Level 26 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002228,
+    "Level 29 Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90002229,
+    "Level 32 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002230,
+    "Level 35 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002270,
+    "Heavenly Diamond Yaksha Full Set Cube (1 day)",
+    "IT_SPECIAL"
+  ],
+  [
+    90002271,
+    "Sailor Costume Full Set Cube (1 day)",
+    "IT_SPECIAL"
+  ],
+  [
+    90002296,
+    "Halloween Pumpkin Fairy - Tanya Package",
+    "IT_SPECIAL"
+  ],
+  [
+    90002297,
+    "Halloween Pumpkin Fairy - Rael Package",
+    "IT_SPECIAL"
+  ],
+  [
+    90002298,
+    "Halloween Pumpkin Fairy - Rosetta Package",
+    "IT_SPECIAL"
+  ],
+  [
+    90002299,
+    "Halloween Pumpkin Fairy - Narnea package",
+    "IT_SPECIAL"
+  ],
+  [
+    90002330,
+    "Mysterious Continent Adventurer Costume Full Set Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002350,
+    "Level 1 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002351,
+    "Level 4 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002352,
+    "Level 7 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002353,
+    "Level 10 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002354,
+    "Level 12 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002355,
+    "Level 14 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002356,
+    "Level 16 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002357,
+    "Level 18 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002358,
+    "Level 20 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002359,
+    "Level 22 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002360,
+    "Level 24 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002361,
+    "Level 26 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002362,
+    "Level 28 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002363,
+    "Level 30 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002364,
+    "Level 31 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002365,
+    "Level 32 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002366,
+    "Level 33 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002367,
+    "Level 34 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002368,
+    "Level 35 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002369,
+    "Level 40 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002370,
+    "Level 45 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002371,
+    "Level 50 Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    90002372,
+    "Orb Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90002374,
+    "Acessory Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90003000,
+    "New Recruit Support Cube (Lv.16)",
+    "IT_SPECIAL"
+  ],
+  [
+    90003001,
+    "New Recruit Support Cube (Lv.22)",
+    "IT_SPECIAL"
+  ],
+  [
+    90003002,
+    "New Recruit Support Cube (Lv.26)",
+    "IT_SPECIAL"
+  ],
+  [
+    90003003,
+    "New Recruit Support Cube (Lv.34)",
+    "IT_SPECIAL"
+  ],
+  [
+    90003024,
+    "Basic Notes Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90003026,
+    "Premium Personal Shop Medal Cube (15 Days) ",
+    "IT_SPECIAL"
+  ],
+  [
+    90003027,
+    "Weapon Costume Random Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90003030,
+    "Harvest Tool Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90003035,
+    "Luriel's Resurrection Stone Cube (5ea)",
+    "IT_SPECIAL"
+  ],
+  [
+    90003036,
+    "Luriel's Wonder Elixir Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90003037,
+    "Luriel's Secret Potion Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90003038,
+    "Luriel's Cobo Express VIP Ticket Cube (7 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90003040,
+    "Gnosis Blessing 30 SP Cube (15 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90003041,
+    "Luriel's Gnosis Blessing 30 SP Cube (7 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    90003042,
+    "Luriel's Complete Recovery Potion Cube (5)",
+    "IT_SPECIAL"
+  ],
+  [
+    90003043,
+    "Wonder Elixir Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90003044,
+    "Secret Potion Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90003050,
+    "Ice Burner 1+1 Package",
+    "IT_SPECIAL"
+  ],
+  [
+    90003051,
+    "Ice Burner 5+5 Package",
+    "IT_SPECIAL"
+  ],
+  [
+    90003052,
+    "Ice Burner 10+10 Package",
+    "IT_SPECIAL"
+  ],
+  [
+    90003053,
+    "Ice Burner 20+20 Package",
+    "IT_SPECIAL"
+  ],
+  [
+    90003070,
+    "Resurrection Stone Cube (10ea)",
+    "IT_SPECIAL"
+  ],
+  [
+    90003071,
+    "Wonder Potion Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90003072,
+    "Secret Potion Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90003073,
+    "Cobo Express VIP Ticket 15 Days Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90003074,
+    "Complete Recovery Potion Cube (10ea)",
+    "IT_SPECIAL"
+  ],
+  [
+    90003080,
+    "Santa's Hat Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90003081,
+    "Christmas Gloves Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    90003090,
+    "Skill Ring Cube (15 Days)",
+    ""
+  ],
+  [
+    120000090,
+    "Starter Avatar Package",
+    "IT_SPECIAL"
+  ],
+  [
+    120003000,
+    "Ice Burner 1+1",
+    "IT_SPECIAL"
+  ],
+  [
+    120003001,
+    "Ice Burner 5+1",
+    "IT_SPECIAL"
+  ],
+  [
+    120003002,
+    "Ice Burner 10+3",
+    "IT_SPECIAL"
+  ],
+  [
+    120003015,
+    "Elarbor Tree Knight Package",
+    "IT_SPECIAL"
+  ],
+  [
+    120003110,
+    "Defense Dungeon Package (Skills)",
+    "IT_SPECIAL"
+  ],
+  [
+    120003111,
+    "Defense Dungeon Package (Resurrection Stones)",
+    "IT_SPECIAL"
+  ],
+  [
+    152000699,
+    "Luriel's Magic Stone of Destruction",
+    "IT_SPECIAL"
+  ],
+  [
+    152000701,
+    "Luriel's Magic Stone of Combustion",
+    "IT_SPECIAL"
+  ],
+  [
+    152000702,
+    "Luriel's Magic Stone of Quickness",
+    "IT_SPECIAL"
+  ],
+  [
+    152000703,
+    "Luriel's Magic Stone of Wrath",
+    "IT_SPECIAL"
+  ],
+  [
+    153000081,
+    "Mysterious Ice Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    153000085,
+    "Polar Bear Costume Suit Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    153000095,
+    "Adult Fireworks Phoru",
+    "IT_SPECIAL"
+  ],
+  [
+    153000096,
+    "Max Level Support Cube ",
+    "IT_SPECIAL"
+  ],
+  [
+    153000097,
+    "Max Level All Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    153000101,
+    "2014 Special New Year Package Purchase Ticket ",
+    "IT_SPECIAL"
+  ],
+  [
+    153000102,
+    "+6 Equipment Full Set Cube (Level 22)",
+    "IT_SPECIAL"
+  ],
+  [
+    153000103,
+    "Promotion Costume Full Set Cube (30 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    153000163,
+    "Elesis's Captain Rudolph Package ",
+    "IT_SPECIAL"
+  ],
+  [
+    153000165,
+    "2014 New Year Special Ice Burner Package",
+    "IT_SPECIAL"
+  ],
+  [
+    153000167,
+    "EXP Boost Medal (100%) Cube (3 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    200000000,
+    "Shepherd Boy’s Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    200000020,
+    "Elympics Torch Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    200000022,
+    "Elympics Torch Cube (3 Days)",
+    "IT_SPECIAL"
+  ],
+  [
+    210000075,
+    "Camilla's Pet Training Camp Invitation",
+    "IT_SPECIAL"
+  ],
+  [
+    210000082,
+    "Pet Training Certificate",
+    "IT_SPECIAL"
+  ],
+  [
+    210000121,
+    "Halloween Pumpkin Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    210000122,
+    "Halloween Premium Pumpkin Cube",
+    ""
+  ],
+  [
+    210000123,
+    "Halloween Pumpkin Hammer",
+    "IT_SPECIAL"
+  ],
+  [
+    210000127,
+    "Halloween Accessory Ticket A",
+    "IT_SPECIAL"
+  ],
+  [
+    210000128,
+    "Halloween Accessory Ticket B",
+    "IT_SPECIAL"
+  ],
+  [
+    210000129,
+    "Halloween Accessory Ticket C",
+    "IT_SPECIAL"
+  ],
+  [
+    210000130,
+    "Halloween Accessory Ticket D",
+    "IT_SPECIAL"
+  ],
+  [
+    210000137,
+    "6 Kinds Of Death Scythes Cube (1 Day)",
+    "IT_SPECIAL"
+  ],
+  [
+    210000140,
+    "Grim Reaper",
+    "IT_SPECIAL"
+  ],
+  [
+    210000201,
+    "Fortune of Love Note Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    210000209,
+    "Elsword Mate Cube",
+    "IT_SPECIAL"
+  ],
+  [
+    210000225,
+    "Resurrection Stone Cube (5 ea.)",
+    "IT_SPECIAL"
+  ],
+  [
+    210000226,
+    "Luriel's Ice Burner",
+    "IT_SPECIAL"
+  ],
+  [
+    210000250,
+    "Imperial Panda - Red Special Package",
+    "IT_SPECIAL"
+  ],
+  [
+    210000260,
+    "Imperial Panda - White Special Package",
+    "IT_SPECIAL"
+  ],
+  [
+    250000650,
+    "El Search Party Officer’s Full Set Costume Package",
+    "IT_SPECIAL"
+  ]
+]

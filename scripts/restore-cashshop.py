@@ -871,7 +871,7 @@ def build_sql(
         values = []
         for item_id, price, category_id, product_name, visible in batch:
             meta = metadata.get(item_id, ItemMeta())
-            product_name = truncate_utf16(product_name, 128)
+            product_name = truncate_utf16(product_name, 64)
             cash_inventory_skip = cash_inventory_skip_for_item(meta, category_id)
             # NO_PERIOD=0 is permanent in billing. Consumables used to get 1 day.
             period_days = 0 if CASH_SHOP_PERMANENT_ALL else int(

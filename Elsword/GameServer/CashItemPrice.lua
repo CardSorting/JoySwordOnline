@@ -1,4 +1,4 @@
-﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요
+-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요
 -- #ifdef SERV_CASHITEM_RESOLVE_ADD
 g_pCashItemManager:AddCashItemGroup(	10	,	210000222	)	-- 발렌타인 곰인형(1)
 g_pCashItemManager:AddCashItemResolveAdd(	10	,	210000223	,	1	,	100	)  -- 러블리 발렌타인 곰인형
@@ -857,13 +857,13 @@ g_pCashItemManager:AddCashItemPrice( 209650, 6000 )
 
 
 -- 20090422 패치
-g_pCashItemManager:AddCashItemPrice( 210370, 8000 )
+g_pCashItemManager:AddCashItemPrice( 210370, 18000 )
 g_pCashItemManager:AddCashItemPrice( 210380, 6000 )
 g_pCashItemManager:AddCashItemPrice( 210390, 6000 )
 g_pCashItemManager:AddCashItemPrice( 210400, 1500 )
 g_pCashItemManager:AddCashItemPrice( 210410, 1500 )
 g_pCashItemManager:AddCashItemPrice( 210420, 6000 )
-g_pCashItemManager:AddCashItemPrice( 210430, 8000 )
+g_pCashItemManager:AddCashItemPrice( 210430, 18000 )
 g_pCashItemManager:AddCashItemPrice( 210440, 6000 )
 g_pCashItemManager:AddCashItemPrice( 210450, 6000 )
 g_pCashItemManager:AddCashItemPrice( 210460, 1500 )
@@ -1283,13 +1283,13 @@ g_pCashItemManager:AddCashItemPrice(	213750	,	6000	)
 g_pCashItemManager:AddCashItemPrice(	213760	,	1500	)
 g_pCashItemManager:AddCashItemPrice(	213770	,	1500	)
 g_pCashItemManager:AddCashItemPrice(	213780	,	6000	)
-g_pCashItemManager:AddCashItemPrice(	213790	,	8000	)
+g_pCashItemManager:AddCashItemPrice(	213790	,	18000	)
 g_pCashItemManager:AddCashItemPrice(	213800	,	6000	)
 g_pCashItemManager:AddCashItemPrice(	213810	,	6000	)
 g_pCashItemManager:AddCashItemPrice(	213820	,	2500	)
 g_pCashItemManager:AddCashItemPrice(	213830	,	1500	)
 g_pCashItemManager:AddCashItemPrice(	213840	,	5000	)
-g_pCashItemManager:AddCashItemPrice(	213850	,	8000	)
+g_pCashItemManager:AddCashItemPrice(	213850	,	18000	)
 g_pCashItemManager:AddCashItemPrice(	213860	,	6000	)
 g_pCashItemManager:AddCashItemPrice(	213870	,	6000	)
 g_pCashItemManager:AddCashItemPrice(	213880	,	2500	)
@@ -3956,10 +3956,10 @@ g_pCashItemManager:AddCashItemPrice(	238110	,	6000	)   --	2ne1 탐탐이
 g_pCashItemManager:AddCashItemPrice(	238120	,	6000	)   --	2ne1 레트로 666 선글라스
 g_pCashItemManager:AddCashItemPrice(	238130	,	6000	)   --	2ne1 잘나가는 헤드셋 마이크
 g_pCashItemManager:AddCashItemPrice(	238140	,	8000	)   --	2ne1 펑키 CD 미니미
-g_pCashItemManager:AddCashItemPrice(	500230	,	8000	)   --	생명의 결정 (해츨링)
-g_pCashItemManager:AddCashItemPrice(	500240	,	8000	)   --	생명의 결정 (해츨링-다크)
-g_pCashItemManager:AddCashItemPrice(	500250	,	8000	)   --	생명의 결정 (해츨링-파이어)
-g_pCashItemManager:AddCashItemPrice(	500260	,	8000	)   --	생명의 결정 (해츨링-라이트)
+g_pCashItemManager:AddCashItemPrice(	500230	,	18000	)   --	생명의 결정 (해츨링)
+g_pCashItemManager:AddCashItemPrice(	500240	,	18000	)   --	생명의 결정 (해츨링-다크)
+g_pCashItemManager:AddCashItemPrice(	500250	,	18000	)   --	생명의 결정 (해츨링-파이어)
+g_pCashItemManager:AddCashItemPrice(	500260	,	18000	)   --	생명의 결정 (해츨링-라이트)
 
 -- 추가 민성  9/27
 g_pCashItemManager:AddCashItemPrice(	130550	,	8000	)   --	엘 수색대 장교 소드 (엘소드)
@@ -4614,8 +4614,8 @@ g_pCashItemManager:AddCashItemPrice(	244400	,	8000	)   --	이브 캡틴 루돌�
 g_pCashItemManager:AddCashItemPrice(	244410	,	8000	)   --	이브 캡틴 루돌프 프레젠트 기어(ver.Icecream)
 g_pCashItemManager:AddCashItemPrice(	244420	,	8000	)   --	청 캡틴 루돌프 스노우맨 캐논
 g_pCashItemManager:AddCashItemPrice(	244430	,	8000	)   --	청 캡틴 루돌프 스노우맨 캐논(ver.Icecream)
-g_pCashItemManager:AddCashItemPrice(	500520	,	8000	)   --	트리 나이트(크리스마스 에디션)
-g_pCashItemManager:AddCashItemPrice(	500530	,	8000	)   --	트리 나이트(산타 에디션)
+g_pCashItemManager:AddCashItemPrice(	500520	,	12000	)   --	트리 나이트(크리스마스 에디션)
+g_pCashItemManager:AddCashItemPrice(	500530	,	12000	)   --	트리 나이트(산타 에디션)
 g_pCashItemManager:AddCashItemPrice(	180161	,	2500	)   --	에렌딜의 증명
 
 -- 추가
@@ -5407,7 +5407,7 @@ g_pCashItemManager:AddCashItemPrice(	81633	,	5000	) --	홀리 유니콘 호른 �
 g_pCashItemManager:AddCashItemPrice(	81634	,	5000	) --	홀리 유니콘 호른 크라운(이브)
 g_pCashItemManager:AddCashItemPrice(	81635	,	5000	) --	홀리 유니콘 호른 크라운(청)
 g_pCashItemManager:AddCashItemPrice(	81640	,	5000	) --	홀리 유니콘 엔젤 윙 포스
-g_pCashItemManager:AddCashItemPrice(	81650	,	5000	) --	홀리 유니콘
+g_pCashItemManager:AddCashItemPrice(	81650	,	12000	) --	홀리 유니콘
 
 
 -- 추가 6/13 박세훈
@@ -11713,16 +11713,16 @@ g_pCashItemManager:AddCashItemPrice(	212270	,	23000	)	--	아이샤 리보닉 썸
 g_pCashItemManager:AddCashItemPrice(	212290	,	24000	)	--	레나 엘핀 체커 썸머룩 패키지(빨강)
 g_pCashItemManager:AddCashItemPrice(	212310	,	24000	)	--	레이븐 체커 플라워 비치룩 패키지(온색)
 g_pCashItemManager:AddCashItemPrice(	212330	,	24000	)	--	이브 스쿨 스윔슈트 패키지(검정)
-g_pCashItemManager:AddCashItemPrice(	120002980	,	24000	)	--	엘소드 판타지 절마사 패키지(빨강)
-g_pCashItemManager:AddCashItemPrice(	120002982	,	24000	)	--	아이샤 판타지 마봉술사 패키지(와인)
-g_pCashItemManager:AddCashItemPrice(	120002984	,	24000	)	--	레나 판타지 이블 헌터 패키지(남청)
-g_pCashItemManager:AddCashItemPrice(	120002986	,	31000	)	--	레이븐 판타지 뱀파이어 헌터 패키지(검정)
-g_pCashItemManager:AddCashItemPrice(	120002988	,	24000	)	--	이브 판타지 시스터 패키지(검정)
-g_pCashItemManager:AddCashItemPrice(	120002981	,	24000	)	--	엘소드 판타지 절마사 패키지(초록)
-g_pCashItemManager:AddCashItemPrice(	120002983	,	24000	)	--	아이샤 판타지 마봉술사 패키지(연녹)
-g_pCashItemManager:AddCashItemPrice(	120002985	,	31000	)	--	레나 판타지 이블 헌터 패키지(주황)
-g_pCashItemManager:AddCashItemPrice(	120002987	,	31000	)	--	레이븐 판타지 뱀파이어 헌터 패키지(하양)
-g_pCashItemManager:AddCashItemPrice(	120002989	,	24000	)	--	이브 판타지 시스터 패키지(하양)
+g_pCashItemManager:AddCashItemPrice(	120002980	,	38000	)	--	엘소드 판타지 절마사 패키지(빨강)
+g_pCashItemManager:AddCashItemPrice(	120002982	,	37000	)	--	아이샤 판타지 마봉술사 패키지(와인)
+g_pCashItemManager:AddCashItemPrice(	120002984	,	38000	)	--	레나 판타지 이블 헌터 패키지(남청)
+g_pCashItemManager:AddCashItemPrice(	120002986	,	44000	)	--	레이븐 판타지 뱀파이어 헌터 패키지(검정)
+g_pCashItemManager:AddCashItemPrice(	120002988	,	38000	)	--	이브 판타지 시스터 패키지(검정)
+g_pCashItemManager:AddCashItemPrice(	120002981	,	38000	)	--	엘소드 판타지 절마사 패키지(초록)
+g_pCashItemManager:AddCashItemPrice(	120002983	,	37000	)	--	아이샤 판타지 마봉술사 패키지(연녹)
+g_pCashItemManager:AddCashItemPrice(	120002985	,	44000	)	--	레나 판타지 이블 헌터 패키지(주황)
+g_pCashItemManager:AddCashItemPrice(	120002987	,	44000	)	--	레이븐 판타지 뱀파이어 헌터 패키지(하양)
+g_pCashItemManager:AddCashItemPrice(	120002989	,	38000	)	--	이브 판타지 시스터 패키지(하양)
 g_pCashItemManager:AddCashItemPrice(	222210	,	24000	)	--	엘소드 테니스 세트(파랑)
 g_pCashItemManager:AddCashItemPrice(	222230	,	24000	)	--	아이샤 테니스 세트(하양)
 g_pCashItemManager:AddCashItemPrice(	222250	,	23000	)	--	레나 테니스 세트(노랑)
@@ -11756,13 +11756,13 @@ g_pCashItemManager:AddCashItemPrice(	208270	,	23000	)	--	레나의 장저고리 
 g_pCashItemManager:AddCashItemPrice(	208290	,	24000	)	--	레이븐의 우포청 포도대장 관복 패키지(파랑)
 g_pCashItemManager:AddCashItemPrice(	208310	,	24000	)	--	이브의 난초화 극장저고리 한복 패키지(보라)
 g_pCashItemManager:AddCashItemPrice(	214270	,	24000	)	--	엘소드 썸머 캐쥬얼 패키지(검정)
-g_pCashItemManager:AddCashItemPrice(	214290	,	24000	)	--	아이샤 썸머 캐쥬얼 패키지(검정)
+g_pCashItemManager:AddCashItemPrice(	214290	,	32000	)	--	아이샤 썸머 캐쥬얼 패키지(검정)
 g_pCashItemManager:AddCashItemPrice(	214310	,	24000	)	--	레나 썸머 캐쥬얼 패키지(검정)
 g_pCashItemManager:AddCashItemPrice(	214330	,	24000	)	--	레이븐 썸머 캐쥬얼 패키지(하양)
 g_pCashItemManager:AddCashItemPrice(	214350	,	24000	)	--	이브 썸머 캐쥬얼 패키지(검정)
 g_pCashItemManager:AddCashItemPrice(	85001122	,	24000	)	--	청 썸머 캐쥬얼 패키지(빨강)
 g_pCashItemManager:AddCashItemPrice(	214280	,	24000	)	--	엘소드 썸머 캐쥬얼 패키지(하늘)
-g_pCashItemManager:AddCashItemPrice(	214300	,	24000	)	--	아이샤 썸머 캐쥬얼 패키지(하양)
+g_pCashItemManager:AddCashItemPrice(	214300	,	32000	)	--	아이샤 썸머 캐쥬얼 패키지(하양)
 g_pCashItemManager:AddCashItemPrice(	214320	,	24000	)	--	레나 썸머 캐쥬얼 패키지(노랑)
 g_pCashItemManager:AddCashItemPrice(	214340	,	24000	)	--	레이븐 썸머 캐쥬얼 패키지(노랑)
 g_pCashItemManager:AddCashItemPrice(	214360	,	24000	)	--	이브 썸머 캐쥬얼 패키지(하양)
@@ -11936,10 +11936,10 @@ g_pCashItemManager:AddCashItemPrice(	200910	,	19000	)	--	recovered costume packa
 g_pCashItemManager:AddCashItemPrice(	200920	,	19000	)	--	recovered costume package 200920
 g_pCashItemManager:AddCashItemPrice(	200930	,	19000	)	--	recovered costume package 200930
 g_pCashItemManager:AddCashItemPrice(	200940	,	19000	)	--	recovered costume package 200940
-g_pCashItemManager:AddCashItemPrice(	203760	,	25000	)	--	recovered costume package 203760
-g_pCashItemManager:AddCashItemPrice(	203770	,	25000	)	--	recovered costume package 203770
-g_pCashItemManager:AddCashItemPrice(	203780	,	25000	)	--	recovered costume package 203780
-g_pCashItemManager:AddCashItemPrice(	203790	,	25000	)	--	recovered costume package 203790
+g_pCashItemManager:AddCashItemPrice(	203760	,	39000	)	--	recovered costume package 203760
+g_pCashItemManager:AddCashItemPrice(	203770	,	39000	)	--	recovered costume package 203770
+g_pCashItemManager:AddCashItemPrice(	203780	,	39000	)	--	recovered costume package 203780
+g_pCashItemManager:AddCashItemPrice(	203790	,	39000	)	--	recovered costume package 203790
 g_pCashItemManager:AddCashItemPrice(	211320	,	16000	)	--	recovered costume package 211320
 g_pCashItemManager:AddCashItemPrice(	212050	,	18000	)	--	recovered costume package 212050
 g_pCashItemManager:AddCashItemPrice(	212060	,	18000	)	--	recovered costume package 212060
@@ -12690,8 +12690,8 @@ g_pCashItemManager:AddCashItemPrice(	271914	,	24000	)	--	청 엘리오스 느와
 g_pCashItemManager:AddCashItemPrice(	271915	,	24000	)	--	청 엘리오스 느와르 헤어 (검정)
 g_pCashItemManager:AddCashItemPrice(	271916	,	24000	)	--	아라 엘리오스 느와르 헤어 (검정)
 g_pCashItemManager:AddCashItemPrice(	271917	,	24000	)	--	아라 엘리오스 느와르 헤어 (진갈)
-g_pCashItemManager:AddCashItemPrice(	500640	,	20000	)	--	--	엘의 나무 열매
-g_pCashItemManager:AddCashItemPrice(	500650	,	20000	)	--	--	엘의 나무 열매
+g_pCashItemManager:AddCashItemPrice(	500640	,	28000	)	--	--	엘의 나무 열매
+g_pCashItemManager:AddCashItemPrice(	500650	,	28000	)	--	--	엘의 나무 열매
 g_pCashItemManager:AddCashItemPrice(	500770	,	18000	)	--	--	팬더 탈
 g_pCashItemManager:AddCashItemPrice(	500780	,	18000	)	--	--	팬더 탈
 g_pCashItemManager:AddCashItemPrice(	500823	,	13000	)	--	햇츠온 (스팅코)
@@ -12720,7 +12720,7 @@ g_pCashItemManager:AddCashItemPrice(	90000092	,	17000	)	--	recovered costume pac
 g_pCashItemManager:AddCashItemPrice(	90000093	,	13000	)	--	recovered costume package 90000093
 g_pCashItemManager:AddCashItemPrice(	90000094	,	17000	)	--	recovered costume package 90000094
 g_pCashItemManager:AddCashItemPrice(	90000095	,	13000	)	--	recovered costume package 90000095
-g_pCashItemManager:AddCashItemPrice(	90000136	,	12000	)	--	g_pCashItemManager:AddPackageItemData( 90000136, 212360, 0, true )
+g_pCashItemManager:AddCashItemPrice(	90000136	,	23000	)	--	g_pCashItemManager:AddPackageItemData( 90000136, 212360, 0, true )
 g_pCashItemManager:AddCashItemPrice(	90000137	,	18000	)	--	recovered costume package 90000137
 g_pCashItemManager:AddCashItemPrice(	90000138	,	18000	)	--	recovered costume package 90000138
 g_pCashItemManager:AddCashItemPrice(	90000139	,	18000	)	--	recovered costume package 90000139
@@ -13004,8 +13004,8 @@ g_pCashItemManager:AddCashItemPrice(	85001280	,	21000	)	--	레나 벨스타 헌�
 g_pCashItemManager:AddCashItemPrice(	85001281	,	21000	)	--	레나 벨스타 헌터 패키지 (고동)	레프트 테일 헤어(검정)
 g_pCashItemManager:AddCashItemPrice(	85001290	,	24000	)	--	레이븐 패딩 플레이트 아머 패키지 (빨강)	드라이 솔져 컷 (검정)
 g_pCashItemManager:AddCashItemPrice(	85001291	,	24000	)	--	레이븐 패딩 플레이트 아머 패키지 (파랑)	드라이 솔져 컷 (하양)
-g_pCashItemManager:AddCashItemPrice(	85001300	,	24000	)	--	이브 성 비비안 여학원 제복 패키지 (자주색)	세미롱 스트록 컷 헤어 (자주색)
-g_pCashItemManager:AddCashItemPrice(	85001301	,	24000	)	--	이브 성 비비안 여학원 제복 패키지 (회갈색)	세미롱 스트록 컷 헤어 (회갈색)
+g_pCashItemManager:AddCashItemPrice(	85001300	,	32000	)	--	이브 성 비비안 여학원 제복 패키지 (자주색)	세미롱 스트록 컷 헤어 (자주색)
+g_pCashItemManager:AddCashItemPrice(	85001301	,	32000	)	--	이브 성 비비안 여학원 제복 패키지 (회갈색)	세미롱 스트록 컷 헤어 (회갈색)
 g_pCashItemManager:AddCashItemPrice(	85001310	,	24000	)	--	청 로열캐너니어 패키지 (파랑)	로열캐너니어 헤어 (파랑)
 g_pCashItemManager:AddCashItemPrice(	85001311	,	24000	)	--	청 로열캐너니어 패키지 (하늘)	로열캐너니어 헤어 (하늘)
 g_pCashItemManager:AddCashItemPrice(	85001320	,	24000	)	--	엘소드 리틀 나이츠 패키지 (빨강)	보이 숏컷 (빨강)
@@ -13120,16 +13120,16 @@ g_pCashItemManager:AddCashItemPrice(	261664	,	18000	)	--	붉은 기사단장 망
 g_pCashItemManager:AddCashItemPrice(	500180	,	4000	)	--	생명의 결정 (미스틱 스페셜 에디션-레드) 패키지	엘의 나무 열매 (패키지용) piece
 g_pCashItemManager:AddCashItemPrice(	500040	,	4000	)	--	생명의 결정 (미스틱 스페셜 에디션-레드) 패키지	엘의 나무 열매 (패키지용) piece
 g_pCashItemManager:AddCashItemPrice(	500220	,	18000	)	--	생명의 결정 (미스틱 스페셜 에디션-레드) 패키지	엘의 나무 열매 (패키지용)
-g_pCashItemManager:AddCashItemPrice(	500660	,	5000	)	--	--	할로윈 고스트 캔디 piece
-g_pCashItemManager:AddCashItemPrice(	132880	,	5000	)	--	--	할로윈 고스트 캔디 piece
+g_pCashItemManager:AddCashItemPrice(	500660	,	12000	)	--	--	할로윈 고스트 캔디 piece
+g_pCashItemManager:AddCashItemPrice(	132880	,	12000	)	--	--	할로윈 고스트 캔디 piece
 g_pCashItemManager:AddCashItemPrice(	500680	,	30000	)	--	--	할로윈 고스트 캔디
-g_pCashItemManager:AddCashItemPrice(	210000122	,	5000	)	--	할로윈 프리미엄 호박 패키지 piece
-g_pCashItemManager:AddCashItemPrice(	210000123	,	5000	)	--	할로윈 프리미엄 호박 패키지 piece
-g_pCashItemManager:AddCashItemPrice(	210000127	,	5000	)	--	할로윈 프리미엄 호박 패키지 piece
-g_pCashItemManager:AddCashItemPrice(	210000128	,	5000	)	--	할로윈 프리미엄 호박 패키지 piece
-g_pCashItemManager:AddCashItemPrice(	210000129	,	5000	)	--	할로윈 프리미엄 호박 패키지 piece
-g_pCashItemManager:AddCashItemPrice(	210000130	,	5000	)	--	할로윈 프리미엄 호박 패키지 piece
-g_pCashItemManager:AddCashItemPrice(	210000124	,	24000	)	--	할로윈 프리미엄 호박 패키지
+g_pCashItemManager:AddCashItemPrice(	210000122	,	18000	)	--	할로윈 프리미엄 호박 패키지 piece
+g_pCashItemManager:AddCashItemPrice(	210000123	,	18000	)	--	할로윈 프리미엄 호박 패키지 piece
+g_pCashItemManager:AddCashItemPrice(	210000127	,	12000	)	--	할로윈 프리미엄 호박 패키지 piece
+g_pCashItemManager:AddCashItemPrice(	210000128	,	12000	)	--	할로윈 프리미엄 호박 패키지 piece
+g_pCashItemManager:AddCashItemPrice(	210000129	,	12000	)	--	할로윈 프리미엄 호박 패키지 piece
+g_pCashItemManager:AddCashItemPrice(	210000130	,	12000	)	--	할로윈 프리미엄 호박 패키지 piece
+g_pCashItemManager:AddCashItemPrice(	210000124	,	60000	)	--	할로윈 프리미엄 호박 패키지
 
 ---------------
 -- Recovered cash shop costume / package gaps --
@@ -13146,35 +13146,35 @@ g_pCashItemManager:AddCashItemPrice(	210000141	,	18000	)	--	사신 특별 패키
 -- Recovered cash shop variety items --
 ---------------
 
-g_pCashItemManager:AddCashItemPrice(	200730	,	2000	)	--	선택 스킬 초기화 메달
-g_pCashItemManager:AddCashItemPrice(	200740	,	1200	)	--	프리미엄 개인상점 메달
-g_pCashItemManager:AddCashItemPrice(	200751	,	6000	)	--	인벤토리확장 카드(장비)
-g_pCashItemManager:AddCashItemPrice(	200752	,	5000	)	--	인벤토리확장 카드(악세사리)
-g_pCashItemManager:AddCashItemPrice(	200753	,	6000	)	--	인벤토리확장 카드(물약)
-g_pCashItemManager:AddCashItemPrice(	200754	,	6000	)	--	인벤토리확장 카드(재료)
-g_pCashItemManager:AddCashItemPrice(	200755	,	6000	)	--	인벤토리확장 카드(퀘스트)
-g_pCashItemManager:AddCashItemPrice(	200756	,	6000	)	--	인벤토리확장 카드(특수)
+g_pCashItemManager:AddCashItemPrice(	200730	,	18000	)	--	선택 스킬 초기화 메달
+g_pCashItemManager:AddCashItemPrice(	200740	,	18000	)	--	프리미엄 개인상점 메달
+g_pCashItemManager:AddCashItemPrice(	200751	,	10000	)	--	인벤토리확장 카드(장비)
+g_pCashItemManager:AddCashItemPrice(	200752	,	12000	)	--	인벤토리확장 카드(악세사리)
+g_pCashItemManager:AddCashItemPrice(	200753	,	10000	)	--	인벤토리확장 카드(물약)
+g_pCashItemManager:AddCashItemPrice(	200754	,	10000	)	--	인벤토리확장 카드(재료)
+g_pCashItemManager:AddCashItemPrice(	200755	,	10000	)	--	인벤토리확장 카드(퀘스트)
+g_pCashItemManager:AddCashItemPrice(	200756	,	10000	)	--	인벤토리확장 카드(특수)
 g_pCashItemManager:AddCashItemPrice(	200880	,	6000	)	--	스킬 슬롯 체인지 메달
 g_pCashItemManager:AddCashItemPrice(	200885	,	6000	)	--	스킬 슬롯 체인지 메달 (1개권)
-g_pCashItemManager:AddCashItemPrice(	203800	,	2000	)	--	스킬 초기화 메달
+g_pCashItemManager:AddCashItemPrice(	203800	,	18000	)	--	스킬 초기화 메달
 g_pCashItemManager:AddCashItemPrice(	206750	,	1500	)	--	플루오르 스톤 Lv.3
 g_pCashItemManager:AddCashItemPrice(	206760	,	1500	)	--	플루오르 스톤 Lv.4
 g_pCashItemManager:AddCashItemPrice(	206770	,	1500	)	--	플루오르 스톤 Lv.5
 g_pCashItemManager:AddCashItemPrice(	206780	,	2500	)	--	플루오르 스톤 Lv.6
 g_pCashItemManager:AddCashItemPrice(	206820	,	10000	)	--	캐릭터 슬롯 확장 카드 (1칸)
 g_pCashItemManager:AddCashItemPrice(	206830	,	10000	)	--	캐릭터 슬롯 확장권 2개
-g_pCashItemManager:AddCashItemPrice(	206900	,	1500	)	--	축복받은 복원의 주문서 Lv.3
-g_pCashItemManager:AddCashItemPrice(	206910	,	1500	)	--	축복받은 복원의 주문서 Lv.4
-g_pCashItemManager:AddCashItemPrice(	206920	,	1500	)	--	축복받은 복원의 주문서 Lv.5
-g_pCashItemManager:AddCashItemPrice(	206930	,	2500	)	--	축복받은 복원의 주문서 Lv.6
-g_pCashItemManager:AddCashItemPrice(	207500	,	1200	)	--	Ice Burner
-g_pCashItemManager:AddCashItemPrice(	209660	,	2000	)	--	캐릭터 닉네임 변경 카드
-g_pCashItemManager:AddCashItemPrice(	210550	,	2000	)	--	얼음 조각상 가열기 1+1 큐브
-g_pCashItemManager:AddCashItemPrice(	210560	,	6000	)	--	얼음 조각상 가열기 5+1 큐브
-g_pCashItemManager:AddCashItemPrice(	210570	,	13000	)	--	얼음 조각상 가열기 10+3 큐브
-g_pCashItemManager:AddCashItemPrice(	212360	,	1200	)	--	고성능 나소드 메가폰
+g_pCashItemManager:AddCashItemPrice(	206900	,	6000	)	--	축복받은 복원의 주문서 Lv.3
+g_pCashItemManager:AddCashItemPrice(	206910	,	6000	)	--	축복받은 복원의 주문서 Lv.4
+g_pCashItemManager:AddCashItemPrice(	206920	,	6000	)	--	축복받은 복원의 주문서 Lv.5
+g_pCashItemManager:AddCashItemPrice(	206930	,	6000	)	--	축복받은 복원의 주문서 Lv.6
+g_pCashItemManager:AddCashItemPrice(	207500	,	18000	)	--	Ice Burner
+g_pCashItemManager:AddCashItemPrice(	209660	,	4000	)	--	캐릭터 닉네임 변경 카드
+g_pCashItemManager:AddCashItemPrice(	210550	,	36000	)	--	얼음 조각상 가열기 1+1 큐브
+g_pCashItemManager:AddCashItemPrice(	210560	,	29000	)	--	얼음 조각상 가열기 5+1 큐브
+g_pCashItemManager:AddCashItemPrice(	210570	,	32000	)	--	얼음 조각상 가열기 10+3 큐브
+g_pCashItemManager:AddCashItemPrice(	212360	,	18000	)	--	고성능 나소드 메가폰
 g_pCashItemManager:AddCashItemPrice(	213340	,	6000	)	--	메탈더스트오라
-g_pCashItemManager:AddCashItemPrice(	213610	,	6000	)	--	코보 은행 전체 확장
+g_pCashItemManager:AddCashItemPrice(	213610	,	10000	)	--	코보 은행 전체 확장
 g_pCashItemManager:AddCashItemPrice(	241660	,	8000	)	--	카펫 바밍
 g_pCashItemManager:AddCashItemPrice(	241950	,	2000	)	--	소드 나이트 전직 변경권
 g_pCashItemManager:AddCashItemPrice(	241960	,	2000	)	--	매직 나이트 전직 변경권
@@ -13218,7 +13218,7 @@ g_pCashItemManager:AddCashItemPrice(	242330	,	1000	)	--	트래핑 레인저의 �
 g_pCashItemManager:AddCashItemPrice(	242340	,	1000	)	--	웨폰 테이커의 계시
 g_pCashItemManager:AddCashItemPrice(	242350	,	1000	)	--	코드 일렉트라의 메모리
 g_pCashItemManager:AddCashItemPrice(	242360	,	1000	)	--	쉘링 가디언의 결의
-g_pCashItemManager:AddCashItemPrice(	244560	,	6000	)	--	퀵슬롯 확장권
+g_pCashItemManager:AddCashItemPrice(	244560	,	10000	)	--	퀵슬롯 확장권
 g_pCashItemManager:AddCashItemPrice(	252751	,	2000	)	--	제천 전직 변경권
 g_pCashItemManager:AddCashItemPrice(	252752	,	2000	)	--	명왕 전직 변경권
 g_pCashItemManager:AddCashItemPrice(	252756	,	2000	)	--	소마 전직 변경권
@@ -13227,50 +13227,50 @@ g_pCashItemManager:AddCashItemPrice(	264380	,	1000	)	--	소선의 맹세
 g_pCashItemManager:AddCashItemPrice(	264390	,	1000	)	--	제천의 맹세
 g_pCashItemManager:AddCashItemPrice(	264393	,	1000	)	--	소마의 각인
 g_pCashItemManager:AddCashItemPrice(	264394	,	1000	)	--	명왕의 각인
-g_pCashItemManager:AddCashItemPrice(	269731	,	1000	)	--	고대 화석 판별기
-g_pCashItemManager:AddCashItemPrice(	270848	,	1000	)	--	축복받은 시공간의 주문서 Lv.1
-g_pCashItemManager:AddCashItemPrice(	270849	,	1000	)	--	축복받은 시공간의 주문서 Lv.2
-g_pCashItemManager:AddCashItemPrice(	270850	,	1500	)	--	축복받은 시공간의 주문서 Lv.3
-g_pCashItemManager:AddCashItemPrice(	270851	,	1500	)	--	축복받은 시공간의 주문서 Lv.4
-g_pCashItemManager:AddCashItemPrice(	270852	,	1500	)	--	축복받은 시공간의 주문서 Lv.5
-g_pCashItemManager:AddCashItemPrice(	270853	,	2500	)	--	축복받은 시공간의 주문서 Lv.6
-g_pCashItemManager:AddCashItemPrice(	270866	,	1000	)	--	축복받은 시공간의 주문서 (연동레벨)
-g_pCashItemManager:AddCashItemPrice(	270970	,	1200	)	--	카밀라의 비전서 (초급)
-g_pCashItemManager:AddCashItemPrice(	270971	,	1200	)	--	카밀라의 비전서 (중급)
-g_pCashItemManager:AddCashItemPrice(	270972	,	1200	)	--	카밀라의 비전서 (상급)
-g_pCashItemManager:AddCashItemPrice(	270973	,	1800	)	--	카밀라의 비전서 (고급)
-g_pCashItemManager:AddCashItemPrice(	271076	,	1800	)	--	그노시스의 축복 (30 SP, 15일권)
-g_pCashItemManager:AddCashItemPrice(	271077	,	1800	)	--	그노시스의 축복 (60 SP, 15일권)
-g_pCashItemManager:AddCashItemPrice(	271078	,	1800	)	--	그노시스의 축복 (30 SP, 30일권)
-g_pCashItemManager:AddCashItemPrice(	271079	,	2500	)	--	그노시스의 축복 (60 SP, 30일권)
+g_pCashItemManager:AddCashItemPrice(	269731	,	12000	)	--	고대 화석 판별기
+g_pCashItemManager:AddCashItemPrice(	270848	,	6000	)	--	축복받은 시공간의 주문서 Lv.1
+g_pCashItemManager:AddCashItemPrice(	270849	,	6000	)	--	축복받은 시공간의 주문서 Lv.2
+g_pCashItemManager:AddCashItemPrice(	270850	,	6000	)	--	축복받은 시공간의 주문서 Lv.3
+g_pCashItemManager:AddCashItemPrice(	270851	,	6000	)	--	축복받은 시공간의 주문서 Lv.4
+g_pCashItemManager:AddCashItemPrice(	270852	,	6000	)	--	축복받은 시공간의 주문서 Lv.5
+g_pCashItemManager:AddCashItemPrice(	270853	,	6000	)	--	축복받은 시공간의 주문서 Lv.6
+g_pCashItemManager:AddCashItemPrice(	270866	,	6000	)	--	축복받은 시공간의 주문서 (연동레벨)
+g_pCashItemManager:AddCashItemPrice(	270970	,	18000	)	--	카밀라의 비전서 (초급)
+g_pCashItemManager:AddCashItemPrice(	270971	,	18000	)	--	카밀라의 비전서 (중급)
+g_pCashItemManager:AddCashItemPrice(	270972	,	18000	)	--	카밀라의 비전서 (상급)
+g_pCashItemManager:AddCashItemPrice(	270973	,	18000	)	--	카밀라의 비전서 (고급)
+g_pCashItemManager:AddCashItemPrice(	271076	,	18000	)	--	그노시스의 축복 (30 SP, 15일권)
+g_pCashItemManager:AddCashItemPrice(	271077	,	18000	)	--	그노시스의 축복 (60 SP, 15일권)
+g_pCashItemManager:AddCashItemPrice(	271078	,	18000	)	--	그노시스의 축복 (30 SP, 30일권)
+g_pCashItemManager:AddCashItemPrice(	271079	,	18000	)	--	그노시스의 축복 (60 SP, 30일권)
 g_pCashItemManager:AddCashItemPrice(	500010	,	8000	)	--	생명의 결정 (쁘띠 에인션트 뽀루)
 g_pCashItemManager:AddCashItemPrice(	500020	,	8000	)	--	생명의 결정 (트리 나이트)
 g_pCashItemManager:AddCashItemPrice(	500150	,	8000	)	--	생명의 결정 (미스틱)
 g_pCashItemManager:AddCashItemPrice(	500280	,	18000	)	--	생명의 결정 (해츨링-다크) 패키지
 g_pCashItemManager:AddCashItemPrice(	500300	,	18000	)	--	생명의 결정 (해츨링-라이트) 패키지
-g_pCashItemManager:AddCashItemPrice(	500320	,	5000	)	--	고스트 에인션트 뽀루-헬파이어
+g_pCashItemManager:AddCashItemPrice(	500320	,	12000	)	--	고스트 에인션트 뽀루-헬파이어
 g_pCashItemManager:AddCashItemPrice(	500540	,	8000	)	--	생명의 결정 (유니엘-더 라이트 브링어)
 g_pCashItemManager:AddCashItemPrice(	500600	,	8000	)	--	생명의 결정 (은여우 미호)
-g_pCashItemManager:AddCashItemPrice(	500610	,	8000	)	--	생명의 결정 (불여우 시호)
-g_pCashItemManager:AddCashItemPrice(	500620	,	8000	)	--	생명의 결정 (어둠여우 나호)
+g_pCashItemManager:AddCashItemPrice(	500610	,	18000	)	--	생명의 결정 (불여우 시호)
+g_pCashItemManager:AddCashItemPrice(	500620	,	18000	)	--	생명의 결정 (어둠여우 나호)
 g_pCashItemManager:AddCashItemPrice(	500630	,	18000	)	--	은여우 미호 패키지
 g_pCashItemManager:AddCashItemPrice(	500720	,	4000	)	--	펫 물건 줍기 오라
 g_pCashItemManager:AddCashItemPrice(	550000	,	12000	)	--	소환석 : 돌진 전차 모비RT
 g_pCashItemManager:AddCashItemPrice(	550010	,	12000	)	--	소환석 : 바람의 코우시카
 g_pCashItemManager:AddCashItemPrice(	550020	,	12000	)	--	소환석 : 에이션트 라이딩 뽀루
 g_pCashItemManager:AddCashItemPrice(	604010	,	1000	)	--	볼트 출력 강화
-g_pCashItemManager:AddCashItemPrice(	70006040	,	5000	)	--	불여우 시호
-g_pCashItemManager:AddCashItemPrice(	70006050	,	5000	)	--	어둠여우 나호
-g_pCashItemManager:AddCashItemPrice(	70006070	,	12000	)	--	불여우 시호 완전체 패키지
-g_pCashItemManager:AddCashItemPrice(	70006080	,	12000	)	--	어둠여우 나호 완전체 패키지
+g_pCashItemManager:AddCashItemPrice(	70006040	,	12000	)	--	불여우 시호
+g_pCashItemManager:AddCashItemPrice(	70006050	,	12000	)	--	어둠여우 나호
+g_pCashItemManager:AddCashItemPrice(	70006070	,	18000	)	--	불여우 시호 완전체 패키지
+g_pCashItemManager:AddCashItemPrice(	70006080	,	18000	)	--	어둠여우 나호 완전체 패키지
 g_pCashItemManager:AddCashItemPrice(	84001270	,	8000	)	--	생명의 결정 (봉술 팬더-레드)
-g_pCashItemManager:AddCashItemPrice(	84001272	,	5000	)	--	봉술 팬더-레드
+g_pCashItemManager:AddCashItemPrice(	84001272	,	12000	)	--	봉술 팬더-레드
 g_pCashItemManager:AddCashItemPrice(	84001274	,	18000	)	--	생명의 결정 (봉술 팬더-레드) 특별 패키지
-g_pCashItemManager:AddCashItemPrice(	84001276	,	12000	)	--	봉술 팬더-레드 특별 패키지
-g_pCashItemManager:AddCashItemPrice(	85002441	,	2500	)	--	얼음 조각상 가열기(레이븐, 이브, 청 나소드 배틀 슈트)
-g_pCashItemManager:AddCashItemPrice(	85002451	,	2500	)	--	얼음 조각상 가열기(나소드 배틀 슈트)
-g_pCashItemManager:AddCashItemPrice(	85003723	,	2500	)	--	얼음 조각상 가열기(아라 아크엔젤)
-g_pCashItemManager:AddCashItemPrice(	85003821	,	2500	)	--	얼음 조각상 가열기(아라 아크엔젤)
+g_pCashItemManager:AddCashItemPrice(	84001276	,	18000	)	--	봉술 팬더-레드 특별 패키지
+g_pCashItemManager:AddCashItemPrice(	85002441	,	18000	)	--	얼음 조각상 가열기(레이븐, 이브, 청 나소드 배틀 슈트)
+g_pCashItemManager:AddCashItemPrice(	85002451	,	18000	)	--	얼음 조각상 가열기(나소드 배틀 슈트)
+g_pCashItemManager:AddCashItemPrice(	85003723	,	18000	)	--	얼음 조각상 가열기(아라 아크엔젤)
+g_pCashItemManager:AddCashItemPrice(	85003821	,	18000	)	--	얼음 조각상 가열기(아라 아크엔젤)
 
 ---------------
 -- Recovered premium / gacha cash shop items --
@@ -13279,31 +13279,31 @@ g_pCashItemManager:AddCashItemPrice(	85003821	,	2500	)	--	얼음 조각상 가�
 g_pCashItemManager:AddCashItemPrice(	91610	,	1200	)	--	premium charm key
 g_pCashItemManager:AddCashItemPrice(	92377	,	5000	)	--	premium charm key
 g_pCashItemManager:AddCashItemPrice(	92378	,	5000	)	--	premium charm key
-g_pCashItemManager:AddCashItemPrice(	108900	,	1200	)	--	봉인된 얼음 조각상
+g_pCashItemManager:AddCashItemPrice(	108900	,	18000	)	--	봉인된 얼음 조각상
 g_pCashItemManager:AddCashItemPrice(	108901	,	1200	)	--	봉인된 얼음 조각상(아크엔젤)
 g_pCashItemManager:AddCashItemPrice(	108902	,	1200	)	--	봉인된 얼음 조각상(청 아크엔젤)
-g_pCashItemManager:AddCashItemPrice(	111064	,	500	)	--	오래된 나무 큐브
-g_pCashItemManager:AddCashItemPrice(	111065	,	1000	)	--	빛 바랜 구리 큐브
-g_pCashItemManager:AddCashItemPrice(	111066	,	1000	)	--	튼튼한 강철 큐브
-g_pCashItemManager:AddCashItemPrice(	111067	,	1000	)	--	빛나는 은 큐브
-g_pCashItemManager:AddCashItemPrice(	111068	,	2500	)	--	고급스러운 황금 큐브
-g_pCashItemManager:AddCashItemPrice(	111069	,	2500	)	--	화려한 보석 세공 큐브
-g_pCashItemManager:AddCashItemPrice(	111073	,	1000	)	--	고대의 나무 큐브
-g_pCashItemManager:AddCashItemPrice(	111074	,	1000	)	--	고대의 구리 큐브
-g_pCashItemManager:AddCashItemPrice(	111075	,	2500	)	--	고대의 강철 큐브
-g_pCashItemManager:AddCashItemPrice(	111076	,	2500	)	--	고대의 은 큐브
-g_pCashItemManager:AddCashItemPrice(	111610	,	5000	)	--	고대의 황금 큐브
-g_pCashItemManager:AddCashItemPrice(	113276	,	5000	)	--	고대의 화려한 보석 세공 큐브
-g_pCashItemManager:AddCashItemPrice(	131377	,	2500	)	--	이벤트 가열기
-g_pCashItemManager:AddCashItemPrice(	133388	,	1800	)	--	정제된 엘의 조각 랜덤 큐브 (3개)
+g_pCashItemManager:AddCashItemPrice(	111064	,	18000	)	--	오래된 나무 큐브
+g_pCashItemManager:AddCashItemPrice(	111065	,	18000	)	--	빛 바랜 구리 큐브
+g_pCashItemManager:AddCashItemPrice(	111066	,	18000	)	--	튼튼한 강철 큐브
+g_pCashItemManager:AddCashItemPrice(	111067	,	18000	)	--	빛나는 은 큐브
+g_pCashItemManager:AddCashItemPrice(	111068	,	18000	)	--	고급스러운 황금 큐브
+g_pCashItemManager:AddCashItemPrice(	111069	,	18000	)	--	화려한 보석 세공 큐브
+g_pCashItemManager:AddCashItemPrice(	111073	,	18000	)	--	고대의 나무 큐브
+g_pCashItemManager:AddCashItemPrice(	111074	,	18000	)	--	고대의 구리 큐브
+g_pCashItemManager:AddCashItemPrice(	111075	,	18000	)	--	고대의 강철 큐브
+g_pCashItemManager:AddCashItemPrice(	111076	,	18000	)	--	고대의 은 큐브
+g_pCashItemManager:AddCashItemPrice(	111610	,	18000	)	--	고대의 황금 큐브
+g_pCashItemManager:AddCashItemPrice(	113276	,	18000	)	--	고대의 화려한 보석 세공 큐브
+g_pCashItemManager:AddCashItemPrice(	131377	,	18000	)	--	이벤트 가열기
+g_pCashItemManager:AddCashItemPrice(	133388	,	12000	)	--	정제된 엘의 조각 랜덤 큐브 (3개)
 g_pCashItemManager:AddCashItemPrice(	135115	,	2500	)	--	봉인된 얼음 조각상(Gold)
-g_pCashItemManager:AddCashItemPrice(	160259	,	1200	)	--	봉인된 얼음 조각상(청 살바토르 솔레스)
+g_pCashItemManager:AddCashItemPrice(	160259	,	18000	)	--	봉인된 얼음 조각상(청 살바토르 솔레스)
 g_pCashItemManager:AddCashItemPrice(	160286	,	1200	)	--	봉인된 얼음 조각상(청 엘 수색대 장교)
 g_pCashItemManager:AddCashItemPrice(	160287	,	1200	)	--	봉인된 얼음 조각상(엘 수색대 장교)
 g_pCashItemManager:AddCashItemPrice(	160324	,	1200	)	--	봉인된 얼음 조각상(청 나소드 배틀 슈트)
 g_pCashItemManager:AddCashItemPrice(	160325	,	1200	)	--	봉인된 얼음 조각상(나소드 배틀 슈트)
 g_pCashItemManager:AddCashItemPrice(	160377	,	1200	)	--	봉인된 얼음 조각상(청 로열 서번트)
-g_pCashItemManager:AddCashItemPrice(	160535	,	1000	)	--	2012년 여름방학 넥슨 캐시 큐브
+g_pCashItemManager:AddCashItemPrice(	160535	,	18000	)	--	2012년 여름방학 넥슨 캐시 큐브
 g_pCashItemManager:AddCashItemPrice(	160559	,	1200	)	--	봉인된 얼음 조각상(청 아크데빌)
 g_pCashItemManager:AddCashItemPrice(	160570	,	4000	)	--	리폼 웨딩 무기 큐브
 g_pCashItemManager:AddCashItemPrice(	160571	,	3000	)	--	리폼 웨딩 상의 큐브
@@ -13313,8 +13313,8 @@ g_pCashItemManager:AddCashItemPrice(	160574	,	1500	)	--	리폼 웨딩 신발 큐
 g_pCashItemManager:AddCashItemPrice(	160575	,	3000	)	--	리폼 웨딩 헤어 큐브
 g_pCashItemManager:AddCashItemPrice(	160576	,	2500	)	--	강화의 부적 Lv.9~10큐브
 g_pCashItemManager:AddCashItemPrice(	160578	,	1800	)	--	2배 확률 봉인된 얼음 조각상
-g_pCashItemManager:AddCashItemPrice(	160597	,	1200	)	--	봉인된 얼음 조각상(청 벨더 임페리얼 가드)
-g_pCashItemManager:AddCashItemPrice(	160613	,	1800	)	--	에픽 NPC 카드 랜덤 큐브 (3개)
+g_pCashItemManager:AddCashItemPrice(	160597	,	18000	)	--	봉인된 얼음 조각상(청 벨더 임페리얼 가드)
+g_pCashItemManager:AddCashItemPrice(	160613	,	18000	)	--	에픽 NPC 카드 랜덤 큐브 (3개)
 g_pCashItemManager:AddCashItemPrice(	160630	,	1000	)	--	겨울 방학 대박 큐브
 g_pCashItemManager:AddCashItemPrice(	160643	,	1200	)	--	봉인된 얼음 조각상(아라 아크엔젤)
 g_pCashItemManager:AddCashItemPrice(	160644	,	4000	)	--	엘소드 5주념 기념 큐브
@@ -13334,21 +13334,21 @@ g_pCashItemManager:AddCashItemPrice(	160682	,	3000	)	--	리폼 이상한 나라�
 g_pCashItemManager:AddCashItemPrice(	160683	,	1800	)	--	봉인된 얼음 조각상 2배용
 g_pCashItemManager:AddCashItemPrice(	160684	,	1800	)	--	봉인된 얼음 조각상(아라 살바토르 이벨른) 2배용
 g_pCashItemManager:AddCashItemPrice(	160710	,	1200	)	--	봉인된 얼음 조각상(골드 팔콘)
-g_pCashItemManager:AddCashItemPrice(	160712	,	1000	)	--	필드 중간 보스 큐브
-g_pCashItemManager:AddCashItemPrice(	160716	,	4000	)	--	(주)앙벤 창립 기념 큐브
-g_pCashItemManager:AddCashItemPrice(	160717	,	4000	)	--	(주)앙벤 창립 기념 PC방 제휴 큐브
-g_pCashItemManager:AddCashItemPrice(	160718	,	1000	)	--	엘노트 큐브
-g_pCashItemManager:AddCashItemPrice(	160731	,	4000	)	--	엘소드 모험가의 감사 큐브
+g_pCashItemManager:AddCashItemPrice(	160712	,	60000	)	--	필드 중간 보스 큐브
+g_pCashItemManager:AddCashItemPrice(	160716	,	18000	)	--	(주)앙벤 창립 기념 큐브
+g_pCashItemManager:AddCashItemPrice(	160717	,	18000	)	--	(주)앙벤 창립 기념 PC방 제휴 큐브
+g_pCashItemManager:AddCashItemPrice(	160718	,	18000	)	--	엘노트 큐브
+g_pCashItemManager:AddCashItemPrice(	160731	,	18000	)	--	엘소드 모험가의 감사 큐브
 g_pCashItemManager:AddCashItemPrice(	160747	,	1200	)	--	봉인된 얼음 조각상(아라 엘 수색대 장교)
 g_pCashItemManager:AddCashItemPrice(	160748	,	1800	)	--	봉인된 얼음 조각상(골드 팔콘) 2배용
-g_pCashItemManager:AddCashItemPrice(	160769	,	1000	)	--	다크 크리스탈 축복 큐브
+g_pCashItemManager:AddCashItemPrice(	160769	,	18000	)	--	다크 크리스탈 축복 큐브
 g_pCashItemManager:AddCashItemPrice(	160772	,	2500	)	--	봉인된 올인원 얼음 조각상 (시즌1)
-g_pCashItemManager:AddCashItemPrice(	160773	,	2500	)	--	정체 불명의 고대 화석
+g_pCashItemManager:AddCashItemPrice(	160773	,	12000	)	--	정체 불명의 고대 화석
 g_pCashItemManager:AddCashItemPrice(	160836	,	4000	)	--	나소드 배틀 슈트 MK2 올 세트 큐브
 g_pCashItemManager:AddCashItemPrice(	160857	,	5000	)	--	[코보] 올인원 얼음 조각상 가열기
 g_pCashItemManager:AddCashItemPrice(	160867	,	1200	)	--	봉인된 얼음 조각상(엘리시스 엘 수색대 장교)
 g_pCashItemManager:AddCashItemPrice(	160873	,	1200	)	--	봉인된 얼음 조각상(아라 로열 메이드)
-g_pCashItemManager:AddCashItemPrice(	160874	,	1000	)	--	루토의 주사위 큐브
+g_pCashItemManager:AddCashItemPrice(	160874	,	18000	)	--	루토의 주사위 큐브
 g_pCashItemManager:AddCashItemPrice(	160877	,	1200	)	--	봉인된 얼음 조각상(엘리시스 로열 메이드)
 g_pCashItemManager:AddCashItemPrice(	160878	,	1200	)	--	봉인된 얼음 조각상(아라 아크데빌)
 g_pCashItemManager:AddCashItemPrice(	160880	,	4000	)	--	스타 아카데미 동복 무기 큐브
@@ -13357,29 +13357,29 @@ g_pCashItemManager:AddCashItemPrice(	160882	,	3000	)	--	스타 아카데미 동�
 g_pCashItemManager:AddCashItemPrice(	160883	,	1500	)	--	스타 아카데미 동복 장갑 큐브
 g_pCashItemManager:AddCashItemPrice(	160884	,	1500	)	--	스타 아카데미 동복 신발 큐브
 g_pCashItemManager:AddCashItemPrice(	160885	,	3000	)	--	스타 아카데미 동복 헤어 큐브
-g_pCashItemManager:AddCashItemPrice(	160888	,	1000	)	--	가죽 소원주머니
-g_pCashItemManager:AddCashItemPrice(	160889	,	2500	)	--	비단 소원주머니
-g_pCashItemManager:AddCashItemPrice(	160890	,	5000	)	--	대박 소원주머니
-g_pCashItemManager:AddCashItemPrice(	160891	,	5000	)	--	초대박 소원주머니
+g_pCashItemManager:AddCashItemPrice(	160888	,	18000	)	--	가죽 소원주머니
+g_pCashItemManager:AddCashItemPrice(	160889	,	18000	)	--	비단 소원주머니
+g_pCashItemManager:AddCashItemPrice(	160890	,	18000	)	--	대박 소원주머니
+g_pCashItemManager:AddCashItemPrice(	160891	,	18000	)	--	초대박 소원주머니
 g_pCashItemManager:AddCashItemPrice(	160896	,	1200	)	--	봉인된 얼음 조각상(아라 그레이스 페어리)
 g_pCashItemManager:AddCashItemPrice(	160897	,	1200	)	--	봉인된 얼음 조각상(엘리시스 아크엔젤)
 g_pCashItemManager:AddCashItemPrice(	160902	,	2500	)	--	아리엘의 강화의 부적 랜덤 큐브 (Lv.5~Lv.9)
 g_pCashItemManager:AddCashItemPrice(	160942	,	1200	)	--	봉인된 얼음 조각상(아라 금강야차)
-g_pCashItemManager:AddCashItemPrice(	160949	,	2500	)	--	영웅 지원 큐브
+g_pCashItemManager:AddCashItemPrice(	160949	,	18000	)	--	영웅 지원 큐브
 g_pCashItemManager:AddCashItemPrice(	160950	,	1200	)	--	봉인된 얼음 조각상(엘리시스 금강야차)
-g_pCashItemManager:AddCashItemPrice(	160951	,	1000	)	--	필드 보스 큐브 // 2013.11.15 신진섭	필드보스레이드 보상
+g_pCashItemManager:AddCashItemPrice(	160951	,	18000	)	--	필드 보스 큐브 // 2013.11.15 신진섭	필드보스레이드 보상
 g_pCashItemManager:AddCashItemPrice(	160953	,	1200	)	--	봉인된 얼음 조각상
 g_pCashItemManager:AddCashItemPrice(	160954	,	1200	)	--	봉인된 얼음 조각상(아라 금강야차)
 g_pCashItemManager:AddCashItemPrice(	160955	,	1200	)	--	봉인된 얼음 조각상(엘리시스 금강야차)
-g_pCashItemManager:AddCashItemPrice(	161024	,	2500	)	--	천재지변 큐브
-g_pCashItemManager:AddCashItemPrice(	161025	,	2500	)	--	스페셜 천재지변 큐브
-g_pCashItemManager:AddCashItemPrice(	161026	,	2500	)	--	아리엘의 강화의 부적 Lv.9~10큐브
-g_pCashItemManager:AddCashItemPrice(	161027	,	2500	)	--	웰컴 천재지변 큐브
+g_pCashItemManager:AddCashItemPrice(	161024	,	18000	)	--	천재지변 큐브
+g_pCashItemManager:AddCashItemPrice(	161025	,	18000	)	--	스페셜 천재지변 큐브
+g_pCashItemManager:AddCashItemPrice(	161026	,	18000	)	--	아리엘의 강화의 부적 Lv.9~10큐브
+g_pCashItemManager:AddCashItemPrice(	161027	,	18000	)	--	웰컴 천재지변 큐브
 g_pCashItemManager:AddCashItemPrice(	161029	,	1200	)	--	봉인된 얼음 조각상(애드 아크엔젤)
-g_pCashItemManager:AddCashItemPrice(	161033	,	1000	)	--	특별한 선물 꾸러미
-g_pCashItemManager:AddCashItemPrice(	183398	,	2500	)	--	아리엘 강화의 부적(Lv.7~Lv.10) 랜덤 큐브
-g_pCashItemManager:AddCashItemPrice(	215660	,	2500	)	--	코보 익스프레스 VIP 티켓
-g_pCashItemManager:AddCashItemPrice(	229480	,	2500	)	--	아크엔젤 가열기
+g_pCashItemManager:AddCashItemPrice(	161033	,	18000	)	--	특별한 선물 꾸러미
+g_pCashItemManager:AddCashItemPrice(	183398	,	18000	)	--	아리엘 강화의 부적(Lv.7~Lv.10) 랜덤 큐브
+g_pCashItemManager:AddCashItemPrice(	215660	,	18000	)	--	코보 익스프레스 VIP 티켓
+g_pCashItemManager:AddCashItemPrice(	229480	,	18000	)	--	아크엔젤 가열기
 g_pCashItemManager:AddCashItemPrice(	235140	,	2500	)	--	얼음 조각상 가열기(청 아크엔젤)
 g_pCashItemManager:AddCashItemPrice(	235180	,	2000	)	--	(청 아크엔젤)얼음 조각상 가열기 1+1 큐브
 g_pCashItemManager:AddCashItemPrice(	235190	,	6000	)	--	(청 아크엔젤)얼음 조각상 가열기 5+1 큐브
@@ -13404,46 +13404,46 @@ g_pCashItemManager:AddCashItemPrice(	241910	,	6000	)	--	(나소드 배틀 슈트
 g_pCashItemManager:AddCashItemPrice(	241920	,	13000	)	--	(나소드 배틀 슈트)얼음 조각상 가열기 10+3 큐브 가이아
 g_pCashItemManager:AddCashItemPrice(	241930	,	24000	)	--	(나소드 배틀 슈트)얼음 조각상 가열기 20+4 큐브 가이아
 g_pCashItemManager:AddCashItemPrice(	241940	,	35000	)	--	(나소드 배틀 슈트)얼음 조각상 가열기 30+5 큐브 가이아
-g_pCashItemManager:AddCashItemPrice(	252770	,	6000	)	--	가열기 5+1 큐브
-g_pCashItemManager:AddCashItemPrice(	252780	,	12000	)	--	가열기 10+2 큐브
-g_pCashItemManager:AddCashItemPrice(	252790	,	25000	)	--	가열기 20+5 큐브
+g_pCashItemManager:AddCashItemPrice(	252770	,	48000	)	--	가열기 5+1 큐브
+g_pCashItemManager:AddCashItemPrice(	252780	,	18000	)	--	가열기 10+2 큐브
+g_pCashItemManager:AddCashItemPrice(	252790	,	30000	)	--	가열기 20+5 큐브
 g_pCashItemManager:AddCashItemPrice(	252800	,	36000	)	--	가열기 30+8 큐브
 g_pCashItemManager:AddCashItemPrice(	263380	,	1800	)	--	미니 얼음 조각상 가열기
-g_pCashItemManager:AddCashItemPrice(	264400	,	5000	)	--	황금 가열기 대박 큐브
+g_pCashItemManager:AddCashItemPrice(	264400	,	18000	)	--	황금 가열기 대박 큐브
 g_pCashItemManager:AddCashItemPrice(	268544	,	1200	)	--	봉인된 미니 얼음 조각상(골드 팔콘)
-g_pCashItemManager:AddCashItemPrice(	80001977	,	2500	)	--	아리엘의 황금 복주머니
-g_pCashItemManager:AddCashItemPrice(	80001978	,	2500	)	--	춘절 황금 복주머니
-g_pCashItemManager:AddCashItemPrice(	80002400	,	5000	)	--	루리엘의 빛나는 할로윈 몬스터의 영혼
-g_pCashItemManager:AddCashItemPrice(	80002730	,	1200	)	--	봉인된 얼음 조각상(아라, 아크엔젤, 엘 수색대)
-g_pCashItemManager:AddCashItemPrice(	84001142	,	1200	)	--	봉인된 얼음 조각상(청 나소드 배틀 슈트)
-g_pCashItemManager:AddCashItemPrice(	84001144	,	1200	)	--	봉인된 얼음 조각상(청 엘 수색대 장교)
-g_pCashItemManager:AddCashItemPrice(	84001710	,	1000	)	--	로열 메이드 (컬러&블랙) 한정 매직 큐브
-g_pCashItemManager:AddCashItemPrice(	84001844	,	1000	)	--	직녀
-g_pCashItemManager:AddCashItemPrice(	84001860	,	1000	)	--	국경절
-g_pCashItemManager:AddCashItemPrice(	85001530	,	1200	)	--	봉인된 얼음 조각상(레이븐, 이브, 청 엘 수색대 장교)
-g_pCashItemManager:AddCashItemPrice(	85002440	,	1200	)	--	봉인된 얼음 조각상(레이븐, 이브, 청 나소드 배틀 슈트)
-g_pCashItemManager:AddCashItemPrice(	85002450	,	1200	)	--	봉인된 얼음 조각상(나소드 배틀 슈트)
-g_pCashItemManager:AddCashItemPrice(	85002870	,	1200	)	--	봉인된 얼음 조각상(아크엔젤)
-g_pCashItemManager:AddCashItemPrice(	85002871	,	1200	)	--	봉인된 얼음 조각상(이브, 청 아크엔젤)
-g_pCashItemManager:AddCashItemPrice(	85002872	,	1200	)	--	봉인된 얼음 조각상(벨더 임페리얼 가드)
-g_pCashItemManager:AddCashItemPrice(	85002873	,	1200	)	--	봉인된 얼음 조각상(청 벨더 임페리얼 가드)
-g_pCashItemManager:AddCashItemPrice(	85002874	,	1200	)	--	봉인된 얼음 조각상(살바토르 솔레스)
-g_pCashItemManager:AddCashItemPrice(	85002875	,	1200	)	--	봉인된 얼음 조각상(청 살바토르 솔레스)
-g_pCashItemManager:AddCashItemPrice(	85002876	,	1200	)	--	봉인된 얼음 조각상(청 아크데빌)
-g_pCashItemManager:AddCashItemPrice(	85002877	,	1200	)	--	봉인된 얼음 조각상(아크데빌)
-g_pCashItemManager:AddCashItemPrice(	85003498	,	2500	)	--	할로윈 몬스터의 영혼
-g_pCashItemManager:AddCashItemPrice(	85003500	,	5000	)	--	빛나는 할로윈 몬스터의 영혼
-g_pCashItemManager:AddCashItemPrice(	85003720	,	2500	)	--	봉인된 황금 얼음 조각상
-g_pCashItemManager:AddCashItemPrice(	85003722	,	1200	)	--	봉인된 얼음 조각상(아라 엘 수색대 장교)
-g_pCashItemManager:AddCashItemPrice(	85003820	,	1200	)	--	봉인된 얼음 조각상(아라 아크엔젤)
-g_pCashItemManager:AddCashItemPrice(	90000595	,	1200	)	--	봉인된 얼음 조각상(이브 엘 수색대 장교)
-g_pCashItemManager:AddCashItemPrice(	90001060	,	1200	)	--	봉인된 얼음 조각상(청 엘 수색대 장교)
-g_pCashItemManager:AddCashItemPrice(	90001594	,	2500	)	--	봉인된 얼음 조각상(황금색)
-g_pCashItemManager:AddCashItemPrice(	90001900	,	1200	)	--	봉인된 얼음 조각상(이브, 나소드 배틀)
-g_pCashItemManager:AddCashItemPrice(	90001970	,	1200	)	--	봉인된 얼음 조각상(청, 아크엔젤)
-g_pCashItemManager:AddCashItemPrice(	153000081	,	2500	)	--	선행 확인증
-g_pCashItemManager:AddCashItemPrice(	210000084	,	2000	)	--	펫 랜덤 박스
-g_pCashItemManager:AddCashItemPrice(	250001580	,	1000	)	--	다크니스 코어
+g_pCashItemManager:AddCashItemPrice(	80001977	,	18000	)	--	아리엘의 황금 복주머니
+g_pCashItemManager:AddCashItemPrice(	80001978	,	18000	)	--	춘절 황금 복주머니
+g_pCashItemManager:AddCashItemPrice(	80002400	,	18000	)	--	루리엘의 빛나는 할로윈 몬스터의 영혼
+g_pCashItemManager:AddCashItemPrice(	80002730	,	18000	)	--	봉인된 얼음 조각상(아라, 아크엔젤, 엘 수색대)
+g_pCashItemManager:AddCashItemPrice(	84001142	,	18000	)	--	봉인된 얼음 조각상(청 나소드 배틀 슈트)
+g_pCashItemManager:AddCashItemPrice(	84001144	,	18000	)	--	봉인된 얼음 조각상(청 엘 수색대 장교)
+g_pCashItemManager:AddCashItemPrice(	84001710	,	18000	)	--	로열 메이드 (컬러&블랙) 한정 매직 큐브
+g_pCashItemManager:AddCashItemPrice(	84001844	,	18000	)	--	직녀
+g_pCashItemManager:AddCashItemPrice(	84001860	,	18000	)	--	국경절
+g_pCashItemManager:AddCashItemPrice(	85001530	,	18000	)	--	봉인된 얼음 조각상(레이븐, 이브, 청 엘 수색대 장교)
+g_pCashItemManager:AddCashItemPrice(	85002440	,	18000	)	--	봉인된 얼음 조각상(레이븐, 이브, 청 나소드 배틀 슈트)
+g_pCashItemManager:AddCashItemPrice(	85002450	,	18000	)	--	봉인된 얼음 조각상(나소드 배틀 슈트)
+g_pCashItemManager:AddCashItemPrice(	85002870	,	18000	)	--	봉인된 얼음 조각상(아크엔젤)
+g_pCashItemManager:AddCashItemPrice(	85002871	,	18000	)	--	봉인된 얼음 조각상(이브, 청 아크엔젤)
+g_pCashItemManager:AddCashItemPrice(	85002872	,	18000	)	--	봉인된 얼음 조각상(벨더 임페리얼 가드)
+g_pCashItemManager:AddCashItemPrice(	85002873	,	18000	)	--	봉인된 얼음 조각상(청 벨더 임페리얼 가드)
+g_pCashItemManager:AddCashItemPrice(	85002874	,	18000	)	--	봉인된 얼음 조각상(살바토르 솔레스)
+g_pCashItemManager:AddCashItemPrice(	85002875	,	18000	)	--	봉인된 얼음 조각상(청 살바토르 솔레스)
+g_pCashItemManager:AddCashItemPrice(	85002876	,	18000	)	--	봉인된 얼음 조각상(청 아크데빌)
+g_pCashItemManager:AddCashItemPrice(	85002877	,	18000	)	--	봉인된 얼음 조각상(아크데빌)
+g_pCashItemManager:AddCashItemPrice(	85003498	,	18000	)	--	할로윈 몬스터의 영혼
+g_pCashItemManager:AddCashItemPrice(	85003500	,	18000	)	--	빛나는 할로윈 몬스터의 영혼
+g_pCashItemManager:AddCashItemPrice(	85003720	,	18000	)	--	봉인된 황금 얼음 조각상
+g_pCashItemManager:AddCashItemPrice(	85003722	,	18000	)	--	봉인된 얼음 조각상(아라 엘 수색대 장교)
+g_pCashItemManager:AddCashItemPrice(	85003820	,	18000	)	--	봉인된 얼음 조각상(아라 아크엔젤)
+g_pCashItemManager:AddCashItemPrice(	90000595	,	18000	)	--	봉인된 얼음 조각상(이브 엘 수색대 장교)
+g_pCashItemManager:AddCashItemPrice(	90001060	,	18000	)	--	봉인된 얼음 조각상(청 엘 수색대 장교)
+g_pCashItemManager:AddCashItemPrice(	90001594	,	18000	)	--	봉인된 얼음 조각상(황금색)
+g_pCashItemManager:AddCashItemPrice(	90001900	,	18000	)	--	봉인된 얼음 조각상(이브, 나소드 배틀)
+g_pCashItemManager:AddCashItemPrice(	90001970	,	18000	)	--	봉인된 얼음 조각상(청, 아크엔젤)
+g_pCashItemManager:AddCashItemPrice(	153000081	,	18000	)	--	선행 확인증
+g_pCashItemManager:AddCashItemPrice(	210000084	,	18000	)	--	펫 랜덤 박스
+g_pCashItemManager:AddCashItemPrice(	250001580	,	18000	)	--	다크니스 코어
 g_pCashItemManager:AddCashItemPrice(	250001660	,	4000	)	--	아라 할로윈 파티 코스프레 무기
 g_pCashItemManager:AddCashItemPrice(	250001661	,	3000	)	--	아라 할로윈 파티 코스프레 상의
 g_pCashItemManager:AddCashItemPrice(	250001662	,	3000	)	--	아라 할로윈 파티 코스프레 하의
@@ -13466,20 +13466,20 @@ g_pCashItemManager:AddCashItemPrice(	250001756	,	2500	)	--	할로윈 파티 코�
 ---------------
 
 g_pCashItemManager:AddCashItemPrice(	500000	,	8000	)	--	쁘띠 뽀루
-g_pCashItemManager:AddCashItemPrice(	500050	,	5000	)	--	야생 쁘띠 뽀루
-g_pCashItemManager:AddCashItemPrice(	500060	,	5000	)	--	쁘띠 에인션트 뽀루
-g_pCashItemManager:AddCashItemPrice(	500070	,	5000	)	--	트리 나이트
+g_pCashItemManager:AddCashItemPrice(	500050	,	12000	)	--	야생 쁘띠 뽀루
+g_pCashItemManager:AddCashItemPrice(	500060	,	12000	)	--	쁘띠 에인션트 뽀루
+g_pCashItemManager:AddCashItemPrice(	500070	,	12000	)	--	트리 나이트
 g_pCashItemManager:AddCashItemPrice(	500100	,	8000	)	--	할로 위치
-g_pCashItemManager:AddCashItemPrice(	500110	,	5000	)	--	할로 위치
-g_pCashItemManager:AddCashItemPrice(	500140	,	5000	)	--	루돌뽀
+g_pCashItemManager:AddCashItemPrice(	500110	,	12000	)	--	할로 위치
+g_pCashItemManager:AddCashItemPrice(	500140	,	12000	)	--	루돌뽀
 g_pCashItemManager:AddCashItemPrice(	500160	,	8000	)	--	미스틱 - 블랙
 g_pCashItemManager:AddCashItemPrice(	500170	,	8000	)	--	미스틱 - 화이트
-g_pCashItemManager:AddCashItemPrice(	500310	,	5000	)	--	고스트 에인션트 뽀루-이블
-g_pCashItemManager:AddCashItemPrice(	500330	,	5000	)	--	고스트 에인션트 뽀루-할로우
-g_pCashItemManager:AddCashItemPrice(	500340	,	5000	)	--	고스트 에인션트 뽀루-세라프
+g_pCashItemManager:AddCashItemPrice(	500310	,	12000	)	--	고스트 에인션트 뽀루-이블
+g_pCashItemManager:AddCashItemPrice(	500330	,	12000	)	--	고스트 에인션트 뽀루-할로우
+g_pCashItemManager:AddCashItemPrice(	500340	,	12000	)	--	고스트 에인션트 뽀루-세라프
 g_pCashItemManager:AddCashItemPrice(	500510	,	8000	)	--	쁘띠 붐힐 뽀루 (버파 공동 프로모션 보상 펫) -- 재훈
 g_pCashItemManager:AddCashItemPrice(	500550	,	8000	)	--	유니콘-다크브링어 유니링
-g_pCashItemManager:AddCashItemPrice(	500670	,	5000	)	--	마나 이터
+g_pCashItemManager:AddCashItemPrice(	500670	,	12000	)	--	마나 이터
 g_pCashItemManager:AddCashItemPrice(	500700	,	5000	)	--	트리 나이트 (서리 에디션)
 g_pCashItemManager:AddCashItemPrice(	500710	,	5000	)	--	천년여우 은
 g_pCashItemManager:AddCashItemPrice(	500730	,	5000	)	--	봉술 판다 빨강
@@ -13514,14 +13514,14 @@ g_pCashItemManager:AddCashItemPrice(	60003800	,	12000	)	--	해츨링_나이트 �
 g_pCashItemManager:AddCashItemPrice(	60003950	,	12000	)	--	해츨링_별 완전체(대만 홍콩) 2012.01.13 임성식
 g_pCashItemManager:AddCashItemPrice(	60007750	,	8000	)	--	생명의 결정 (우비 입은 고양이 - 레비)
 g_pCashItemManager:AddCashItemPrice(	60007751	,	8000	)	--	생명의 결정 (우비 입은 고양이 - 레지)
-g_pCashItemManager:AddCashItemPrice(	60007754	,	6000	)	--	우비 입은 고양이 - 레비
-g_pCashItemManager:AddCashItemPrice(	60007755	,	6000	)	--	우비 입은 고양이 - 레지
+g_pCashItemManager:AddCashItemPrice(	60007754	,	18000	)	--	우비 입은 고양이 - 레비
+g_pCashItemManager:AddCashItemPrice(	60007755	,	18000	)	--	우비 입은 고양이 - 레지
 g_pCashItemManager:AddCashItemPrice(	67005730	,	12000	)	--	유니엘-더 라이트 브링어 (완전체) 2013.04.19 이경철
 g_pCashItemManager:AddCashItemPrice(	67005830	,	12000	)	--	유니링-더 다크 브링어 (완전체) 2013.05.11 이경철
 g_pCashItemManager:AddCashItemPrice(	67005860	,	12000	)	--	이벤트용 블러드 이터 완전체) 2013.06.07 이경철
 g_pCashItemManager:AddCashItemPrice(	67006630	,	8000	)	--	생명의 결정(손오공)
 g_pCashItemManager:AddCashItemPrice(	67006632	,	12000	)	--	손오공 완전체
-g_pCashItemManager:AddCashItemPrice(	70006030	,	5000	)	--	은여우 미호
+g_pCashItemManager:AddCashItemPrice(	70006030	,	12000	)	--	은여우 미호
 g_pCashItemManager:AddCashItemPrice(	75000633	,	12000	)	--	트리 나이트 봄 (완전체)
 g_pCashItemManager:AddCashItemPrice(	75000634	,	12000	)	--	트리 나이트 가을 (완전체)
 g_pCashItemManager:AddCashItemPrice(	75000635	,	12000	)	--	트리 나이트 겨울 (완전체)
@@ -13539,10 +13539,10 @@ g_pCashItemManager:AddCashItemPrice(	83000132	,	5000	)	--	해츨링 - 파이어
 g_pCashItemManager:AddCashItemPrice(	83000133	,	5000	)	--	해츨링 - 라이트
 g_pCashItemManager:AddCashItemPrice(	84001271	,	8000	)	--	생명의 결정 (봉술 팬더-블루)
 g_pCashItemManager:AddCashItemPrice(	84001273	,	12000	)	--	봉술펜더 완전체 (봉술 팬더-블루)
-g_pCashItemManager:AddCashItemPrice(	85003020	,	5000	)	--	야생 해츨링
-g_pCashItemManager:AddCashItemPrice(	85003040	,	5000	)	--	용병뽀루
-g_pCashItemManager:AddCashItemPrice(	85003670	,	5000	)	--	눈사람
-g_pCashItemManager:AddCashItemPrice(	85003680	,	5000	)	--	팽귄
+g_pCashItemManager:AddCashItemPrice(	85003020	,	12000	)	--	야생 해츨링
+g_pCashItemManager:AddCashItemPrice(	85003040	,	12000	)	--	용병뽀루
+g_pCashItemManager:AddCashItemPrice(	85003670	,	12000	)	--	눈사람
+g_pCashItemManager:AddCashItemPrice(	85003680	,	12000	)	--	팽귄
 g_pCashItemManager:AddCashItemPrice(	90000280	,	8000	)	--	트리 나이트 봄
 g_pCashItemManager:AddCashItemPrice(	90000281	,	8000	)	--	트리 나이트 가을
 g_pCashItemManager:AddCashItemPrice(	90000282	,	8000	)	--	트리 나이트 겨울
@@ -13554,7 +13554,7 @@ g_pCashItemManager:AddCashItemPrice(	90002292	,	12000	)	--	할로윈 호박 요�
 g_pCashItemManager:AddCashItemPrice(	90002293	,	12000	)	--	할로윈 호박 요정 라엘 완전체
 g_pCashItemManager:AddCashItemPrice(	90002294	,	12000	)	--	할로윈 호박 요정 로제타 완전체
 g_pCashItemManager:AddCashItemPrice(	90002295	,	12000	)	--	할로윈 호박 요정 나르네아 완전체
-g_pCashItemManager:AddCashItemPrice(	90002296	,	12000	)	--	할로윈 호박 요정 엘데나 완전체 ( 테스트용 )
+g_pCashItemManager:AddCashItemPrice(	90002296	,	18000	)	--	할로윈 호박 요정 엘데나 완전체 ( 테스트용 )
 g_pCashItemManager:AddCashItemPrice(	115000130	,	12000	)	--	트리 나이트 봄(완전체)
 g_pCashItemManager:AddCashItemPrice(	115000131	,	12000	)	--	트리 나이트 가을(완전체)
 g_pCashItemManager:AddCashItemPrice(	115000132	,	12000	)	--	트리 나이트 겨울(완전체)
@@ -13567,7 +13567,7 @@ g_pCashItemManager:AddCashItemPrice(	141000908	,	5000	)	--	트리 나이트
 g_pCashItemManager:AddCashItemPrice(	141000909	,	5000	)	--	쁘띠 에인션트 뽀루
 g_pCashItemManager:AddCashItemPrice(	141000910	,	5000	)	--	미스틱
 g_pCashItemManager:AddCashItemPrice(	141000911	,	5000	)	--	해츨링
-g_pCashItemManager:AddCashItemPrice(	153000095	,	5000	)	--	불꽃 뽀루
+g_pCashItemManager:AddCashItemPrice(	153000095	,	12000	)	--	불꽃 뽀루
 g_pCashItemManager:AddCashItemPrice(	210000071	,	5000	)	--	야생 해츨링(유체)
 g_pCashItemManager:AddCashItemPrice(	210000138	,	8000	)	--	사신
 g_pCashItemManager:AddCashItemPrice(	210000140	,	12000	)	--	사신 ( 완전체 )
@@ -14158,18 +14158,18 @@ g_pCashItemManager:AddCashItemPrice(	160267	,	4000	)	--	Max Level Scroll
 -- JoySword offline advanced magic stones --
 ---------------
 
-g_pCashItemManager:AddCashItemPrice(	109955	,	1000	)	--	Advanced Magic Stone
-g_pCashItemManager:AddCashItemPrice(	60000822	,	2500	)	--	Advanced Magic Stone Cube (3 ea.)
-g_pCashItemManager:AddCashItemPrice(	60001408	,	5000	)	--	Advanced Magic Stone (5ea) Cube
-g_pCashItemManager:AddCashItemPrice(	65000072	,	5000	)	--	Advanced Magic Stone Cube (10 ea.)
-g_pCashItemManager:AddCashItemPrice(	130171	,	12000	)	--	A Cube of 40 Advanced Magic Stones
+g_pCashItemManager:AddCashItemPrice(	109955	,	12000	)	--	Advanced Magic Stone
+g_pCashItemManager:AddCashItemPrice(	60000822	,	18000	)	--	Advanced Magic Stone Cube (3 ea.)
+g_pCashItemManager:AddCashItemPrice(	60001408	,	18000	)	--	Advanced Magic Stone (5ea) Cube
+g_pCashItemManager:AddCashItemPrice(	65000072	,	18000	)	--	Advanced Magic Stone Cube (10 ea.)
+g_pCashItemManager:AddCashItemPrice(	130171	,	18000	)	--	A Cube of 40 Advanced Magic Stones
 
 ---------------
 -- JoySword offline enhancement & restoration stones --
 ---------------
 
-g_pCashItemManager:AddCashItemPrice(	109950	,	1000	)	--	Blessed Weapon Enhancement Stone
-g_pCashItemManager:AddCashItemPrice(	109965	,	1000	)	--	Blessed Armor Enhancement Stone
+g_pCashItemManager:AddCashItemPrice(	109950	,	6000	)	--	Blessed Weapon Enhancement Stone
+g_pCashItemManager:AddCashItemPrice(	109965	,	6000	)	--	Blessed Armor Enhancement Stone
 g_pCashItemManager:AddCashItemPrice(	206730	,	1000	)	--	Fluorite Ore Lv.1
 g_pCashItemManager:AddCashItemPrice(	206740	,	1000	)	--	Fluorite Ore Lv.2
 g_pCashItemManager:AddCashItemPrice(	206750	,	1500	)	--	Fluorite Ore Lv.3
@@ -14179,34 +14179,34 @@ g_pCashItemManager:AddCashItemPrice(	206780	,	2500	)	--	Fluorite Ore Lv.6
 g_pCashItemManager:AddCashItemPrice(	206790	,	1000	)	--	Fluorite Ore Lv.7
 g_pCashItemManager:AddCashItemPrice(	206800	,	1000	)	--	Blessed Fluorite Ore Lv.8 (or standard)
 g_pCashItemManager:AddCashItemPrice(	206810	,	1000	)	--	Blessed Fluorite Ore Lv.9 (or standard)
-g_pCashItemManager:AddCashItemPrice(	206880	,	1000	)	--	Blessed Restoration Scroll Lv.1
-g_pCashItemManager:AddCashItemPrice(	206890	,	1000	)	--	Blessed Restoration Scroll Lv.2
-g_pCashItemManager:AddCashItemPrice(	206900	,	1500	)	--	Blessed Restoration Scroll Lv.3
-g_pCashItemManager:AddCashItemPrice(	206910	,	1500	)	--	Blessed Restoration Scroll Lv.4
-g_pCashItemManager:AddCashItemPrice(	206920	,	1500	)	--	Blessed Restoration Scroll Lv.5
-g_pCashItemManager:AddCashItemPrice(	206930	,	2500	)	--	Blessed Restoration Scroll Lv.6
-g_pCashItemManager:AddCashItemPrice(	206940	,	1000	)	--	Blessed Restoration Scroll Lv.7
-g_pCashItemManager:AddCashItemPrice(	206950	,	1000	)	--	Blessed Restoration Scroll Lv.8
-g_pCashItemManager:AddCashItemPrice(	206960	,	1000	)	--	Blessed Restoration Scroll Lv.9
+g_pCashItemManager:AddCashItemPrice(	206880	,	6000	)	--	Blessed Restoration Scroll Lv.1
+g_pCashItemManager:AddCashItemPrice(	206890	,	6000	)	--	Blessed Restoration Scroll Lv.2
+g_pCashItemManager:AddCashItemPrice(	206900	,	6000	)	--	Blessed Restoration Scroll Lv.3
+g_pCashItemManager:AddCashItemPrice(	206910	,	6000	)	--	Blessed Restoration Scroll Lv.4
+g_pCashItemManager:AddCashItemPrice(	206920	,	6000	)	--	Blessed Restoration Scroll Lv.5
+g_pCashItemManager:AddCashItemPrice(	206930	,	6000	)	--	Blessed Restoration Scroll Lv.6
+g_pCashItemManager:AddCashItemPrice(	206940	,	6000	)	--	Blessed Restoration Scroll Lv.7
+g_pCashItemManager:AddCashItemPrice(	206950	,	6000	)	--	Blessed Restoration Scroll Lv.8
+g_pCashItemManager:AddCashItemPrice(	206960	,	6000	)	--	Blessed Restoration Scroll Lv.9
 
 ---------------
 -- JoySword offline magic stones, refined, dual, sage --
 ---------------
 
-g_pCashItemManager:AddCashItemPrice(	109945	,	500	)	--	Magic Stone
-g_pCashItemManager:AddCashItemPrice(	132192	,	1000	)	--	High-Grade Magic Stone (Refined)
-g_pCashItemManager:AddCashItemPrice(	111701	,	1000	)	--	Magic Stone of Destruction
-g_pCashItemManager:AddCashItemPrice(	111702	,	1000	)	--	Magic Stone of Explosion
-g_pCashItemManager:AddCashItemPrice(	111703	,	1000	)	--	Magic Stone of Combustion
-g_pCashItemManager:AddCashItemPrice(	111704	,	1000	)	--	Magic Stone of Quickness
-g_pCashItemManager:AddCashItemPrice(	111705	,	1000	)	--	Magic Stone of Wrath
-g_pCashItemManager:AddCashItemPrice(	132110	,	1000	)	--	Magic Stone of Harmony
-g_pCashItemManager:AddCashItemPrice(	132111	,	1000	)	--	Magic Stone of Mystery
-g_pCashItemManager:AddCashItemPrice(	132112	,	1000	)	--	Magic Stone of Brilliance
-g_pCashItemManager:AddCashItemPrice(	132113	,	1000	)	--	Magic Stone of Battle
-g_pCashItemManager:AddCashItemPrice(	132114	,	1000	)	--	Magic Stone of Reinforce
-g_pCashItemManager:AddCashItemPrice(	132115	,	1000	)	--	Magic Stone of Bull's Eye
-g_pCashItemManager:AddCashItemPrice(	135184	,	2500	)	--	Sage's Magic Stone
+g_pCashItemManager:AddCashItemPrice(	109945	,	12000	)	--	Magic Stone
+g_pCashItemManager:AddCashItemPrice(	132192	,	12000	)	--	High-Grade Magic Stone (Refined)
+g_pCashItemManager:AddCashItemPrice(	111701	,	12000	)	--	Magic Stone of Destruction
+g_pCashItemManager:AddCashItemPrice(	111702	,	12000	)	--	Magic Stone of Explosion
+g_pCashItemManager:AddCashItemPrice(	111703	,	12000	)	--	Magic Stone of Combustion
+g_pCashItemManager:AddCashItemPrice(	111704	,	12000	)	--	Magic Stone of Quickness
+g_pCashItemManager:AddCashItemPrice(	111705	,	12000	)	--	Magic Stone of Wrath
+g_pCashItemManager:AddCashItemPrice(	132110	,	12000	)	--	Magic Stone of Harmony
+g_pCashItemManager:AddCashItemPrice(	132111	,	12000	)	--	Magic Stone of Mystery
+g_pCashItemManager:AddCashItemPrice(	132112	,	12000	)	--	Magic Stone of Brilliance
+g_pCashItemManager:AddCashItemPrice(	132113	,	12000	)	--	Magic Stone of Battle
+g_pCashItemManager:AddCashItemPrice(	132114	,	12000	)	--	Magic Stone of Reinforce
+g_pCashItemManager:AddCashItemPrice(	132115	,	12000	)	--	Magic Stone of Bull's Eye
+g_pCashItemManager:AddCashItemPrice(	135184	,	12000	)	--	Sage's Magic Stone
 
 ---------------
 -- JoySword offline Wyvern & Ancient Wyvern items --
@@ -14248,15 +14248,3559 @@ g_pCashItemManager:AddCashItemPrice(	215680	,	1000	)	--	Mana Elixir
 g_pCashItemManager:AddCashItemPrice(	132469	,	1000	)	--	Vigor Potion
 g_pCashItemManager:AddCashItemPrice(	60000877	,	1000	)	--	Vita Potion
 g_pCashItemManager:AddCashItemPrice(	60008001	,	1000	)	--	Luriel's Awakening Potion
-g_pCashItemManager:AddCashItemPrice(	78560	,	1000	)	--	Seraphim's Blessing (Elixir)
-g_pCashItemManager:AddCashItemPrice(	78570	,	1000	)	--	Geb's Blessing (Elixir)
-g_pCashItemManager:AddCashItemPrice(	78580	,	1000	)	--	Amon's Blessing (Elixir)
-g_pCashItemManager:AddCashItemPrice(	78590	,	1000	)	--	Cronus' Blessing (Elixir)
-g_pCashItemManager:AddCashItemPrice(	78894	,	1500	)	--	Giant Potion (Elixir)
-g_pCashItemManager:AddCashItemPrice(	78895	,	1000	)	--	Blazing Bomb (Elixir)
-g_pCashItemManager:AddCashItemPrice(	78896	,	1000	)	--	Tracker's Soul (Elixir)
-g_pCashItemManager:AddCashItemPrice(	78897	,	1000	)	--	Baby Fairy Cradle (Elixir)
-g_pCashItemManager:AddCashItemPrice(	78898	,	1000	)	--	Denif's Ice Orb (Elixir)
-g_pCashItemManager:AddCashItemPrice(	78899	,	2500	)	--	Ventus' Wings (Elixir)
-g_pCashItemManager:AddCashItemPrice(	78900	,	2500	)	--	Rosso's Blazing Ring (Elixir)
-g_pCashItemManager:AddCashItemPrice(	78901	,	1500	)	--	Giant Hand Potion (Elixir)
+g_pCashItemManager:AddCashItemPrice(	78560	,	12000	)	--	Seraphim's Blessing (Elixir)
+g_pCashItemManager:AddCashItemPrice(	78570	,	12000	)	--	Geb's Blessing (Elixir)
+g_pCashItemManager:AddCashItemPrice(	78580	,	12000	)	--	Amon's Blessing (Elixir)
+g_pCashItemManager:AddCashItemPrice(	78590	,	12000	)	--	Cronus' Blessing (Elixir)
+g_pCashItemManager:AddCashItemPrice(	78894	,	6000	)	--	Giant Potion (Elixir)
+g_pCashItemManager:AddCashItemPrice(	78895	,	12000	)	--	Blazing Bomb (Elixir)
+g_pCashItemManager:AddCashItemPrice(	78896	,	12000	)	--	Tracker's Soul (Elixir)
+g_pCashItemManager:AddCashItemPrice(	78897	,	12000	)	--	Baby Fairy Cradle (Elixir)
+g_pCashItemManager:AddCashItemPrice(	78898	,	12000	)	--	Denif's Ice Orb (Elixir)
+g_pCashItemManager:AddCashItemPrice(	78899	,	12000	)	--	Ventus' Wings (Elixir)
+g_pCashItemManager:AddCashItemPrice(	78900	,	12000	)	--	Rosso's Blazing Ring (Elixir)
+g_pCashItemManager:AddCashItemPrice(	78901	,	6000	)	--	Giant Hand Potion (Elixir)
+
+-- RESTORE_ALL_CASHSHOP: Newly normalized rare item prices
+g_pCashItemManager:AddCashItemPrice( 30049, 5000 ) -- (Old)Puppet Bomb
+g_pCashItemManager:AddCashItemPrice( 30187, 5000 ) -- Puppet Bomb
+g_pCashItemManager:AddCashItemPrice( 60300, 8000 ) -- Competitor's Sword
+g_pCashItemManager:AddCashItemPrice( 60301, 6000 ) -- Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60302, 6000 ) -- Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60303, 3000 ) -- Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60304, 3000 ) -- Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60310, 8000 ) -- Competitor's  Wand
+g_pCashItemManager:AddCashItemPrice( 60311, 6000 ) -- Competitor's  Top Piece
+g_pCashItemManager:AddCashItemPrice( 60312, 6000 ) -- Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60313, 3000 ) -- Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60314, 3000 ) -- Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60320, 8000 ) -- Competitor's Bow
+g_pCashItemManager:AddCashItemPrice( 60321, 6000 ) -- Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60322, 6000 ) -- Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60323, 3000 ) -- Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60324, 3000 ) -- Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60330, 8000 ) -- Competitor's Blade
+g_pCashItemManager:AddCashItemPrice( 60331, 6000 ) -- Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60332, 6000 ) -- Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60333, 3000 ) -- Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60334, 3000 ) -- Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60340, 8000 ) -- Competitor's Drone
+g_pCashItemManager:AddCashItemPrice( 60341, 6000 ) -- Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60342, 6000 ) -- Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60343, 3000 ) -- Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60344, 3000 ) -- Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60350, 8000 ) -- Competitor's Cannon
+g_pCashItemManager:AddCashItemPrice( 60351, 6000 ) -- Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60352, 6000 ) -- Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60353, 3000 ) -- Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60354, 3000 ) -- Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60400, 8000 ) -- Savage Competitor's Sword
+g_pCashItemManager:AddCashItemPrice( 60401, 6000 ) -- Savage Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60402, 6000 ) -- Savage Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60403, 3000 ) -- Savage Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60404, 3000 ) -- Savage Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60405, 8000 ) -- Savage Competitor's Powerful Sword
+g_pCashItemManager:AddCashItemPrice( 60406, 6000 ) -- Savage Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60407, 6000 ) -- Savage Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60408, 3000 ) -- Savage Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60409, 3000 ) -- Savage Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60410, 8000 ) -- Savage Competitor's Wand
+g_pCashItemManager:AddCashItemPrice( 60411, 6000 ) -- Savage Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60412, 6000 ) -- Savage Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60413, 3000 ) -- Savage Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60414, 3000 ) -- Savage Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60415, 8000 ) -- Savage Competitor's Wand
+g_pCashItemManager:AddCashItemPrice( 60416, 6000 ) -- Savage Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60417, 6000 ) -- Savage Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60418, 3000 ) -- Savage Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60419, 3000 ) -- Savage Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60420, 8000 ) -- Savage Competitor's Bow
+g_pCashItemManager:AddCashItemPrice( 60421, 6000 ) -- Savage Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60422, 6000 ) -- Savage Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60423, 3000 ) -- Savage Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60424, 3000 ) -- Savage Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60425, 8000 ) -- Savage Competitor's Bow
+g_pCashItemManager:AddCashItemPrice( 60426, 6000 ) -- Savage Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60427, 6000 ) -- Savage Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60428, 3000 ) -- Savage Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60429, 3000 ) -- Savage Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60430, 8000 ) -- Savage Competitor's Blade
+g_pCashItemManager:AddCashItemPrice( 60431, 6000 ) -- Savage Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60432, 6000 ) -- Savage Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60433, 3000 ) -- Savage Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60434, 3000 ) -- Savage Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60435, 8000 ) -- Savage Competitor's Blade
+g_pCashItemManager:AddCashItemPrice( 60436, 6000 ) -- Savage Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60437, 6000 ) -- Savage Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60438, 3000 ) -- Savage Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60439, 3000 ) -- Savage Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60440, 8000 ) -- Savage Competitor's Drone
+g_pCashItemManager:AddCashItemPrice( 60441, 6000 ) -- Savage Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60442, 6000 ) -- Savage Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60443, 3000 ) -- Savage Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60444, 3000 ) -- Savage Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60445, 8000 ) -- Savage Competitor's Drone
+g_pCashItemManager:AddCashItemPrice( 60446, 6000 ) -- Savage Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60447, 6000 ) -- Savage Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60448, 3000 ) -- Savage Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60449, 3000 ) -- Savage Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60450, 8000 ) -- Savage Competitor's Cannon
+g_pCashItemManager:AddCashItemPrice( 60451, 6000 ) -- Savage Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60452, 6000 ) -- Savage Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60453, 3000 ) -- Savage Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60454, 3000 ) -- Savage Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60455, 8000 ) -- Savage Competitor's Cannon
+g_pCashItemManager:AddCashItemPrice( 60456, 6000 ) -- Savage Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60457, 6000 ) -- Savage Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60458, 3000 ) -- Savage Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60459, 3000 ) -- Savage Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60500, 8000 ) -- Assault Competitor's Sword
+g_pCashItemManager:AddCashItemPrice( 60501, 6000 ) -- Assault Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60502, 6000 ) -- Assault Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60503, 3000 ) -- Assault Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60504, 3000 ) -- Assault Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60505, 8000 ) -- Assault Competitor's Powerful Sword
+g_pCashItemManager:AddCashItemPrice( 60506, 6000 ) -- Assault Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60507, 6000 ) -- Assault Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60508, 3000 ) -- Assault Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60509, 3000 ) -- Assault Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60510, 8000 ) -- Assault Competitor's Wand
+g_pCashItemManager:AddCashItemPrice( 60511, 6000 ) -- Assault Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60512, 6000 ) -- Assault Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60513, 3000 ) -- Assault Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60514, 3000 ) -- Assault Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60515, 8000 ) -- Assault Competitor's Wand
+g_pCashItemManager:AddCashItemPrice( 60516, 6000 ) -- Assault Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60517, 6000 ) -- Assault Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60518, 3000 ) -- Assault Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60519, 3000 ) -- Assault Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60520, 8000 ) -- Assault Competitor's Bow
+g_pCashItemManager:AddCashItemPrice( 60521, 6000 ) -- Assault Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60522, 6000 ) -- Assault Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60523, 3000 ) -- Assault Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60524, 3000 ) -- Assault Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60525, 8000 ) -- Assault Competitor's Bow
+g_pCashItemManager:AddCashItemPrice( 60526, 6000 ) -- Assault Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60527, 6000 ) -- Assault Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60528, 3000 ) -- Assault Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60529, 3000 ) -- Assault Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60530, 8000 ) -- Assault Competitor's Blade
+g_pCashItemManager:AddCashItemPrice( 60531, 6000 ) -- Assault Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60532, 6000 ) -- Assault Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60533, 3000 ) -- Assault Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60534, 3000 ) -- Assault Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60535, 8000 ) -- Assault Competitor's Blade
+g_pCashItemManager:AddCashItemPrice( 60536, 6000 ) -- Assault Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60537, 6000 ) -- Assault Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60538, 3000 ) -- Assault Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60539, 3000 ) -- Assault Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60540, 8000 ) -- Assault Competitor's Drone
+g_pCashItemManager:AddCashItemPrice( 60541, 6000 ) -- Assault Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60542, 6000 ) -- Assault Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60543, 3000 ) -- Assault Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60544, 3000 ) -- Assault Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60545, 8000 ) -- Assault Competitor's Drone
+g_pCashItemManager:AddCashItemPrice( 60546, 6000 ) -- Assault Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60547, 6000 ) -- Assault Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60548, 3000 ) -- Assault Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60549, 3000 ) -- Assault Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60550, 8000 ) -- Assault Competitor's Cannon
+g_pCashItemManager:AddCashItemPrice( 60551, 6000 ) -- Assault Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60552, 6000 ) -- Assault Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60553, 3000 ) -- Assault Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60554, 3000 ) -- Assault Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 60555, 8000 ) -- Assault Competitor's Cannon
+g_pCashItemManager:AddCashItemPrice( 60556, 6000 ) -- Assault Competitor's Top Piece
+g_pCashItemManager:AddCashItemPrice( 60557, 6000 ) -- Assault Competitor's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 60558, 3000 ) -- Assault Competitor's Gloves
+g_pCashItemManager:AddCashItemPrice( 60559, 3000 ) -- Assault Competitor's Shoes
+g_pCashItemManager:AddCashItemPrice( 72510, 12000 ) -- Additional Damage Magic Stone
+g_pCashItemManager:AddCashItemPrice( 72520, 12000 ) -- Reduced Damage Magic Stone
+g_pCashItemManager:AddCashItemPrice( 77090, 4000 ) -- Petrifying Potion
+g_pCashItemManager:AddCashItemPrice( 78820, 5000 ) -- Monster Card 'Dark Wing Okypete'
+g_pCashItemManager:AddCashItemPrice( 91160, 5000 ) -- Alterasia Petal
+g_pCashItemManager:AddCashItemPrice( 92215, 5000 ) -- Black Petals
+g_pCashItemManager:AddCashItemPrice( 92225, 12000 ) -- Ice Cube
+g_pCashItemManager:AddCashItemPrice( 98001, 18000 ) -- Epic NPC Card Random Cube
+g_pCashItemManager:AddCashItemPrice( 98002, 18000 ) -- Fighter's Ring Cube (7 Days)
+g_pCashItemManager:AddCashItemPrice( 98004, 1000 ) -- Sparring Magic Stone [Movement Speed]
+g_pCashItemManager:AddCashItemPrice( 98005, 12000 ) -- Sparring Magic Stone [Jump Speed]
+g_pCashItemManager:AddCashItemPrice( 98006, 12000 ) -- Sparring Magic Stone [HP]
+g_pCashItemManager:AddCashItemPrice( 98007, 12000 ) -- Sparring Magic Stone [Accuracy]
+g_pCashItemManager:AddCashItemPrice( 98008, 12000 ) -- Sparring Magic Stone [Evasion]
+g_pCashItemManager:AddCashItemPrice( 98009, 1000 ) -- Sparring Magic Stone [Awakening Charging Speed]
+g_pCashItemManager:AddCashItemPrice( 98010, 1000 ) -- Sparring Magic Stone [Awakening Time]
+g_pCashItemManager:AddCashItemPrice( 98011, 12000 ) -- Sparring Magic Stone [Critical]
+g_pCashItemManager:AddCashItemPrice( 98012, 12000 ) -- Sparring Magic Stone [Attack Speed]
+g_pCashItemManager:AddCashItemPrice( 98013, 1000 ) -- Sparring Magic Stone [Additional Damage]
+g_pCashItemManager:AddCashItemPrice( 98014, 1000 ) -- Sparring Magic Stone [Damage Reduction]
+g_pCashItemManager:AddCashItemPrice( 98015, 1000 ) -- Sparring Magic Stone [Explosion]
+g_pCashItemManager:AddCashItemPrice( 98016, 1000 ) -- Sparring Magic Stone [Destruction]
+g_pCashItemManager:AddCashItemPrice( 98017, 1000 ) -- Sparring Magic Stone [Agile]
+g_pCashItemManager:AddCashItemPrice( 98018, 1000 ) -- Sparring Magic Stone [Combustion]
+g_pCashItemManager:AddCashItemPrice( 98019, 1000 ) -- Sparring Magic Stone [Wrath]
+g_pCashItemManager:AddCashItemPrice( 98020, 5000 ) -- Competitor's Coin
+g_pCashItemManager:AddCashItemPrice( 98021, 18000 ) -- Magic Necklace Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 99967, 5000 ) -- Skill Book: Carpet Bombing
+g_pCashItemManager:AddCashItemPrice( 104910, 18000 ) -- Tree of El's Magic Cube
+g_pCashItemManager:AddCashItemPrice( 105000, 18000 ) -- Elsword's Cube 1
+g_pCashItemManager:AddCashItemPrice( 105010, 18000 ) -- Elsword's Cube 2
+g_pCashItemManager:AddCashItemPrice( 105020, 18000 ) -- Elsword's Cube 3
+g_pCashItemManager:AddCashItemPrice( 105030, 18000 ) -- Elsword's Cube 4
+g_pCashItemManager:AddCashItemPrice( 105040, 18000 ) -- Elsword's Cube 5
+g_pCashItemManager:AddCashItemPrice( 105050, 18000 ) -- Elsword's Cube 6
+g_pCashItemManager:AddCashItemPrice( 105200, 18000 ) -- Rena's Cube 1
+g_pCashItemManager:AddCashItemPrice( 105210, 18000 ) -- Rena's Cube 2
+g_pCashItemManager:AddCashItemPrice( 105220, 18000 ) -- Rena's Cube 3
+g_pCashItemManager:AddCashItemPrice( 105230, 18000 ) -- Rena's Cube 4
+g_pCashItemManager:AddCashItemPrice( 105240, 18000 ) -- Rena's Cube 5
+g_pCashItemManager:AddCashItemPrice( 105250, 18000 ) -- Rena's Cube 6
+g_pCashItemManager:AddCashItemPrice( 105400, 18000 ) -- Aisha's Cube 1
+g_pCashItemManager:AddCashItemPrice( 105410, 18000 ) -- Aisha's Cube 2
+g_pCashItemManager:AddCashItemPrice( 105420, 18000 ) -- Aisha's Cube 3
+g_pCashItemManager:AddCashItemPrice( 105430, 18000 ) -- Aisha's Cube 4
+g_pCashItemManager:AddCashItemPrice( 105440, 18000 ) -- Aisha's Cube 5
+g_pCashItemManager:AddCashItemPrice( 105450, 18000 ) -- Aisha's Cube 6
+g_pCashItemManager:AddCashItemPrice( 105600, 18000 ) -- Elsword's Advanced Cube 1
+g_pCashItemManager:AddCashItemPrice( 105610, 18000 ) -- Elsword's Advanced Cube 2
+g_pCashItemManager:AddCashItemPrice( 105620, 18000 ) -- Elsword's Advanced Cube 3
+g_pCashItemManager:AddCashItemPrice( 105630, 18000 ) -- Elsword's Advanced Cube 4
+g_pCashItemManager:AddCashItemPrice( 105640, 18000 ) -- Elsword's Advanced Cube 5
+g_pCashItemManager:AddCashItemPrice( 105650, 18000 ) -- Elsword's Advanced Cube 6
+g_pCashItemManager:AddCashItemPrice( 105800, 18000 ) -- Rena's Advanced Cube 1
+g_pCashItemManager:AddCashItemPrice( 105810, 18000 ) -- Rena's Advanced Cube 2
+g_pCashItemManager:AddCashItemPrice( 105820, 18000 ) -- Rena's Advanced Cube 3
+g_pCashItemManager:AddCashItemPrice( 105830, 18000 ) -- Rena's Advanced Cube 4
+g_pCashItemManager:AddCashItemPrice( 105840, 18000 ) -- Rena's Advanced Cube 5
+g_pCashItemManager:AddCashItemPrice( 105850, 18000 ) -- Rena's Advanced Cube 6
+g_pCashItemManager:AddCashItemPrice( 106000, 18000 ) -- Aisha's Advanced Cube 1
+g_pCashItemManager:AddCashItemPrice( 106010, 18000 ) -- Aisha's Advanced Cube 2
+g_pCashItemManager:AddCashItemPrice( 106020, 18000 ) -- Aisha's Advanced Cube 3
+g_pCashItemManager:AddCashItemPrice( 106030, 18000 ) -- Aisha's Advanced Cube 4
+g_pCashItemManager:AddCashItemPrice( 106040, 18000 ) -- Aisha's Advanced Cube 5
+g_pCashItemManager:AddCashItemPrice( 106050, 18000 ) -- Aisha's Advanced Cube 6
+g_pCashItemManager:AddCashItemPrice( 106060, 12000 ) -- Master's Kindness Cube
+g_pCashItemManager:AddCashItemPrice( 106061, 18000 ) -- Master's Kindness Elementary Cube
+g_pCashItemManager:AddCashItemPrice( 106062, 18000 ) -- Master's Kindness Intermediate Cube
+g_pCashItemManager:AddCashItemPrice( 106063, 18000 ) -- Master's Kindness Advanced Cube
+g_pCashItemManager:AddCashItemPrice( 106064, 18000 ) -- A Cube for Adventurers' Group
+g_pCashItemManager:AddCashItemPrice( 106065, 18000 ) -- A Cube for Adventurers' Group
+g_pCashItemManager:AddCashItemPrice( 108000, 18000 ) -- Tree of El's Secret Cube
+g_pCashItemManager:AddCashItemPrice( 108010, 18000 ) -- Cube from Dark Forest
+g_pCashItemManager:AddCashItemPrice( 108020, 18000 ) -- Cube from Banthus Cave
+g_pCashItemManager:AddCashItemPrice( 108030, 18000 ) -- Cube from Banthus' Gang
+g_pCashItemManager:AddCashItemPrice( 108040, 18000 ) -- Cube from Underground Waterway Search Party
+g_pCashItemManager:AddCashItemPrice( 108050, 18000 ) -- Cube from Phoru the Thief
+g_pCashItemManager:AddCashItemPrice( 108060, 18000 ) -- Cube from Guards at the Wally Castle
+g_pCashItemManager:AddCashItemPrice( 108070, 18000 ) -- Cube from Dragon Lord
+g_pCashItemManager:AddCashItemPrice( 108080, 18000 ) -- Cube from the Bethma Lake
+g_pCashItemManager:AddCashItemPrice( 108090, 18000 ) -- Cube from the Bethma Gorge
+g_pCashItemManager:AddCashItemPrice( 108100, 18000 ) -- Cube from Dragon Nest
+g_pCashItemManager:AddCashItemPrice( 108200, 18000 ) -- Cube from Richie Mine
+g_pCashItemManager:AddCashItemPrice( 108210, 18000 ) -- Raven's Cube 1
+g_pCashItemManager:AddCashItemPrice( 108220, 18000 ) -- Raven's Cube 2
+g_pCashItemManager:AddCashItemPrice( 108230, 18000 ) -- Raven's Cube 3
+g_pCashItemManager:AddCashItemPrice( 108240, 18000 ) -- Raven's Cube 4
+g_pCashItemManager:AddCashItemPrice( 108250, 18000 ) -- Raven's Cube 5
+g_pCashItemManager:AddCashItemPrice( 108260, 18000 ) -- Raven's Cube 6
+g_pCashItemManager:AddCashItemPrice( 108270, 18000 ) -- Raven's Advanced Cube 1
+g_pCashItemManager:AddCashItemPrice( 108280, 18000 ) -- Raven's Advanced Cube 2
+g_pCashItemManager:AddCashItemPrice( 108290, 18000 ) -- Raven's Advanced Cube 3
+g_pCashItemManager:AddCashItemPrice( 108300, 18000 ) -- Raven's Advanced Cube 4
+g_pCashItemManager:AddCashItemPrice( 108310, 18000 ) -- Raven's Advanced Cube 5
+g_pCashItemManager:AddCashItemPrice( 108320, 18000 ) -- Raven's Advanced Cube 6
+g_pCashItemManager:AddCashItemPrice( 108400, 18000 ) -- A Shabby Equipment Cube (Elsword)
+g_pCashItemManager:AddCashItemPrice( 108410, 18000 ) -- An Ordinary Equipment Cube (Elsword)
+g_pCashItemManager:AddCashItemPrice( 108420, 18000 ) -- An Advanced Equipment Cube (Elsword)
+g_pCashItemManager:AddCashItemPrice( 108430, 18000 ) -- A Colorful Equipment Cube (Elsword)
+g_pCashItemManager:AddCashItemPrice( 108440, 18000 ) -- Elsword's Cube 5
+g_pCashItemManager:AddCashItemPrice( 108450, 18000 ) -- Elsword's Cube 6
+g_pCashItemManager:AddCashItemPrice( 108460, 18000 ) -- Elsword's Cube 7
+g_pCashItemManager:AddCashItemPrice( 108470, 18000 ) -- Elsword's Cube 8
+g_pCashItemManager:AddCashItemPrice( 108480, 18000 ) -- Elsword's Cube 9
+g_pCashItemManager:AddCashItemPrice( 108490, 18000 ) -- Elsword's Cube 10
+g_pCashItemManager:AddCashItemPrice( 108500, 18000 ) -- A Shabby Equipment Cube (Aisha)
+g_pCashItemManager:AddCashItemPrice( 108510, 18000 ) -- An Ordinary Equipment Cube (Aisha)
+g_pCashItemManager:AddCashItemPrice( 108520, 18000 ) -- An Advanced Equipment Cube (Aisha)
+g_pCashItemManager:AddCashItemPrice( 108530, 18000 ) -- A Colorful Equipment Cube (Aisha)
+g_pCashItemManager:AddCashItemPrice( 108540, 18000 ) -- Aisha's Cube 5
+g_pCashItemManager:AddCashItemPrice( 108550, 18000 ) -- Aisha's Cube 6
+g_pCashItemManager:AddCashItemPrice( 108560, 18000 ) -- Aisha's Cube 7
+g_pCashItemManager:AddCashItemPrice( 108570, 18000 ) -- Aisha's Cube 8
+g_pCashItemManager:AddCashItemPrice( 108580, 18000 ) -- Aisha's Cube 9
+g_pCashItemManager:AddCashItemPrice( 108590, 18000 ) -- Aisha's Cube 10
+g_pCashItemManager:AddCashItemPrice( 108600, 18000 ) -- A Shabby Equipment Cube (Rena)
+g_pCashItemManager:AddCashItemPrice( 108610, 18000 ) -- An Ordinary Equipment Cube (Rena)
+g_pCashItemManager:AddCashItemPrice( 108620, 18000 ) -- An Advanced Equipment Cube (Rena)
+g_pCashItemManager:AddCashItemPrice( 108630, 18000 ) -- A Colorful Equipment Cube (Rena)
+g_pCashItemManager:AddCashItemPrice( 108640, 18000 ) -- Rena's Cube 5
+g_pCashItemManager:AddCashItemPrice( 108650, 18000 ) -- Rena's Cube 6
+g_pCashItemManager:AddCashItemPrice( 108660, 18000 ) -- Rena's Cube 7
+g_pCashItemManager:AddCashItemPrice( 108670, 18000 ) -- Rena's Cube 8
+g_pCashItemManager:AddCashItemPrice( 108680, 18000 ) -- Rena's Cube 9
+g_pCashItemManager:AddCashItemPrice( 108690, 18000 ) -- Rena's Cube 10
+g_pCashItemManager:AddCashItemPrice( 108700, 18000 ) -- A Shabby Equipment Cube (Raven)
+g_pCashItemManager:AddCashItemPrice( 108710, 18000 ) -- An Ordinary Equipment Cube (Raven)
+g_pCashItemManager:AddCashItemPrice( 108720, 18000 ) -- An Advanced Equipment Cube (Raven)
+g_pCashItemManager:AddCashItemPrice( 108730, 18000 ) -- A Colorful Equipment Cube (Raven)
+g_pCashItemManager:AddCashItemPrice( 108740, 18000 ) -- Raven's Cube 5
+g_pCashItemManager:AddCashItemPrice( 108750, 18000 ) -- Raven's Cube 6
+g_pCashItemManager:AddCashItemPrice( 108760, 18000 ) -- Raven's Cube 7
+g_pCashItemManager:AddCashItemPrice( 108770, 18000 ) -- Raven's Cube 8
+g_pCashItemManager:AddCashItemPrice( 108780, 18000 ) -- Raven's Cube 9
+g_pCashItemManager:AddCashItemPrice( 108790, 18000 ) -- Raven's Cube 10
+g_pCashItemManager:AddCashItemPrice( 108800, 18000 ) -- A Shabby Equipment Cube (Eve)
+g_pCashItemManager:AddCashItemPrice( 108810, 18000 ) -- An Ordinary Equipment Cube (Eve)
+g_pCashItemManager:AddCashItemPrice( 108820, 18000 ) -- An Advanced Equipment Cube (Eve)
+g_pCashItemManager:AddCashItemPrice( 108830, 18000 ) -- A Colorful Equipment Cube (Eve)
+g_pCashItemManager:AddCashItemPrice( 108840, 18000 ) -- Eve's Cube 5
+g_pCashItemManager:AddCashItemPrice( 108850, 18000 ) -- Eve's Cube 6
+g_pCashItemManager:AddCashItemPrice( 108860, 18000 ) -- Eve's Cube 7
+g_pCashItemManager:AddCashItemPrice( 108870, 18000 ) -- Eve's Cube 8
+g_pCashItemManager:AddCashItemPrice( 108880, 18000 ) -- Eve's Cube 9
+g_pCashItemManager:AddCashItemPrice( 108890, 18000 ) -- Eve's Cube 10
+g_pCashItemManager:AddCashItemPrice( 109895, 18000 ) -- A Jewel to dismantle the Knight's Job Change Costume Cube
+g_pCashItemManager:AddCashItemPrice( 109896, 18000 ) -- A Jewel to dismantle the Ranger's Job Change Costume Cube
+g_pCashItemManager:AddCashItemPrice( 109897, 18000 ) -- A Jewel to dismantle the Magician's Job Change Costume Cube
+g_pCashItemManager:AddCashItemPrice( 109898, 18000 ) -- A Jewel to dismantle the Raven's Promotion Costume Cube
+g_pCashItemManager:AddCashItemPrice( 109900, 18000 ) -- Cube Opener
+g_pCashItemManager:AddCashItemPrice( 109901, 18000 ) -- Advanced Cube Opener
+g_pCashItemManager:AddCashItemPrice( 109999, 18000 ) -- The First Job Change Promotion Cube
+g_pCashItemManager:AddCashItemPrice( 110831, 18000 ) -- Cobo's Special Weapon Cube
+g_pCashItemManager:AddCashItemPrice( 110850, 18000 ) -- The Second Job Change Promotion Cube
+g_pCashItemManager:AddCashItemPrice( 111087, 18000 ) -- Resurrection Stone (3 ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 111090, 5000 ) -- Puppet Soul Fragment
+g_pCashItemManager:AddCashItemPrice( 128077, 18000 ) -- Cube for Raven's Promotion Costumes
+g_pCashItemManager:AddCashItemPrice( 129020, 32000 ) -- El's Cube
+g_pCashItemManager:AddCashItemPrice( 129070, 60000 ) -- Resurrection Stone Cube
+g_pCashItemManager:AddCashItemPrice( 129075, 20000 ) -- Resurrection Stone Cube (10)
+g_pCashItemManager:AddCashItemPrice( 129230, 18000 ) -- Class Vice-president's Cube
+g_pCashItemManager:AddCashItemPrice( 129240, 18000 ) -- Class President's Cube
+g_pCashItemManager:AddCashItemPrice( 129250, 18000 ) -- Chairperson's Cube
+g_pCashItemManager:AddCashItemPrice( 129260, 18000 ) -- Cube for the Knight's Job Change Costumes
+g_pCashItemManager:AddCashItemPrice( 129261, 18000 ) -- Cube for the Ranger's Job Change Costumes
+g_pCashItemManager:AddCashItemPrice( 129262, 18000 ) -- Cube for the Magician's Job Change Costumes
+g_pCashItemManager:AddCashItemPrice( 129270, 18000 ) -- Cube for Beginners' Equipments
+g_pCashItemManager:AddCashItemPrice( 129280, 18000 ) -- Cube for One Comic Book
+g_pCashItemManager:AddCashItemPrice( 129590, 18000 ) -- Black Day Cube (Elsword)
+g_pCashItemManager:AddCashItemPrice( 129592, 18000 ) -- Black Day Cube (Rena)
+g_pCashItemManager:AddCashItemPrice( 129594, 18000 ) -- Black Day Cube (Aisha)
+g_pCashItemManager:AddCashItemPrice( 129600, 18000 ) -- Black Day Bridge Cube (Elsword)
+g_pCashItemManager:AddCashItemPrice( 129610, 18000 ) -- Black Day Bridge Cube (Rena)
+g_pCashItemManager:AddCashItemPrice( 129620, 18000 ) -- Black Day Bridge Cube (Aisha)
+g_pCashItemManager:AddCashItemPrice( 129680, 12000 ) -- Land Rova Cube
+g_pCashItemManager:AddCashItemPrice( 129690, 12000 ) -- Spris Cube
+g_pCashItemManager:AddCashItemPrice( 129700, 12000 ) -- Lesmore Cube
+g_pCashItemManager:AddCashItemPrice( 129727, 18000 ) -- A Cube for the Event for the Masters' Day
+g_pCashItemManager:AddCashItemPrice( 129728, 18000 ) -- A Cube Celebrating the Conversion to an Experience ID
+g_pCashItemManager:AddCashItemPrice( 129729, 18000 ) -- An Everyday Secret Cube
+g_pCashItemManager:AddCashItemPrice( 129755, 18000 ) -- Combat Ration Cubes
+g_pCashItemManager:AddCashItemPrice( 129790, 18000 ) -- Cube of a Promotion Weapon
+g_pCashItemManager:AddCashItemPrice( 129885, 18000 ) -- Entrance and Exit Random Cube
+g_pCashItemManager:AddCashItemPrice( 129890, 18000 ) -- Weapon Random Cube
+g_pCashItemManager:AddCashItemPrice( 129895, 18000 ) -- Random Recovery Cube
+g_pCashItemManager:AddCashItemPrice( 129900, 60000 ) -- Magic Stone Random Cube
+g_pCashItemManager:AddCashItemPrice( 129905, 18000 ) -- Enhancement Stone Random Cube
+g_pCashItemManager:AddCashItemPrice( 129906, 18000 ) -- Random Cube for 3 Letters of ACT
+g_pCashItemManager:AddCashItemPrice( 129950, 18000 ) -- Cube of Promotion Weapon
+g_pCashItemManager:AddCashItemPrice( 129972, 18000 ) -- Cube for the Taker's Job Change Costumes
+g_pCashItemManager:AddCashItemPrice( 129973, 18000 ) -- Jewel to dismantle a Cube for the Taker's Job Change Costumes
+g_pCashItemManager:AddCashItemPrice( 129974, 18000 ) -- Cube Celebrating the Entry into the Arcade Mode Ranking
+g_pCashItemManager:AddCashItemPrice( 129975, 18000 ) -- Cube of Gold Phoru
+g_pCashItemManager:AddCashItemPrice( 129988, 28000 ) -- Ex Cube
+g_pCashItemManager:AddCashItemPrice( 130001, 12000 ) -- Gold Medal Cube
+g_pCashItemManager:AddCashItemPrice( 130003, 18000 ) -- A Cube Cheering the Republic of Korea
+g_pCashItemManager:AddCashItemPrice( 130004, 18000 ) -- A Cube for a New Semester
+g_pCashItemManager:AddCashItemPrice( 130029, 18000 ) -- Entrance and Exit Random Cube
+g_pCashItemManager:AddCashItemPrice( 130042, 18000 ) -- A Cube of the Full Moon
+g_pCashItemManager:AddCashItemPrice( 130067, 18000 ) -- Halloween Carnival Cube
+g_pCashItemManager:AddCashItemPrice( 130068, 18000 ) -- Colorful Halloween Carnival Cube
+g_pCashItemManager:AddCashItemPrice( 130076, 60000 ) -- Magic Stone Random Cube
+g_pCashItemManager:AddCashItemPrice( 130117, 12000 ) -- Promotion Equipment Cube
+g_pCashItemManager:AddCashItemPrice( 130130, 12000 ) -- Alphabet Cube
+g_pCashItemManager:AddCashItemPrice( 130133, 18000 ) -- Eve's Promotion Equipment Cube
+g_pCashItemManager:AddCashItemPrice( 130141, 18000 ) -- A Jewel to dismantle an Eve's Promotion Cube
+g_pCashItemManager:AddCashItemPrice( 130159, 18000 ) -- Ruben Boss Cube
+g_pCashItemManager:AddCashItemPrice( 130160, 55000 ) -- Elder Boss Cube
+g_pCashItemManager:AddCashItemPrice( 130161, 18000 ) -- Bethma Boss Cube
+g_pCashItemManager:AddCashItemPrice( 130162, 18000 ) -- Altera Boss Cube
+g_pCashItemManager:AddCashItemPrice( 130167, 18000 ) -- Cube of 80 Complete Recovery Potions
+g_pCashItemManager:AddCashItemPrice( 130168, 18000 ) -- A Cube of 40 Blessed Weapon Enhancement Stones
+g_pCashItemManager:AddCashItemPrice( 130169, 18000 ) -- Cube of 80 Armor Enhancement Stones
+g_pCashItemManager:AddCashItemPrice( 130170, 18000 ) -- Cube of 80 Magic Stones
+g_pCashItemManager:AddCashItemPrice( 130172, 18000 ) -- Cube of 20 El Shards(Mystery)
+g_pCashItemManager:AddCashItemPrice( 130173, 18000 ) -- Cube of 20 El Shards(Fire)
+g_pCashItemManager:AddCashItemPrice( 130174, 18000 ) -- Cube of 20 El Shards(Water)
+g_pCashItemManager:AddCashItemPrice( 130175, 18000 ) -- Cube of 20 El Shards(Wind)
+g_pCashItemManager:AddCashItemPrice( 130176, 18000 ) -- Cube of 20 El Shards(Nature)
+g_pCashItemManager:AddCashItemPrice( 130177, 18000 ) -- Cube of 20 El Shards(Dark)
+g_pCashItemManager:AddCashItemPrice( 130178, 18000 ) -- Cube of 20 El Shards(Light)
+g_pCashItemManager:AddCashItemPrice( 130210, 18000 ) -- Elrios Thanks Cube
+g_pCashItemManager:AddCashItemPrice( 130220, 18000 ) -- A Cube of Celebration of Return to Elrios Continent
+g_pCashItemManager:AddCashItemPrice( 130268, 18000 ) -- A Cube of the Ring of Skills
+g_pCashItemManager:AddCashItemPrice( 130269, 18000 ) -- Orichalcum Weapon Accessory Cube
+g_pCashItemManager:AddCashItemPrice( 130270, 18000 ) -- A Cube of Archangel's Hair (for 15 days)
+g_pCashItemManager:AddCashItemPrice( 130350, 18000 ) -- Eve's Job Change Promotion Equipment Cube
+g_pCashItemManager:AddCashItemPrice( 130355, 18000 ) -- Jewel to dismantle Cube of Eve's Job Change Promotion Equipment
+g_pCashItemManager:AddCashItemPrice( 130360, 18000 ) -- Cube of Promotion Weapon
+g_pCashItemManager:AddCashItemPrice( 130361, 18000 ) -- Cube of Promotion Top Piece
+g_pCashItemManager:AddCashItemPrice( 130362, 18000 ) -- Cube of Promotion Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 130363, 18000 ) -- Cube of Promotion Gloves
+g_pCashItemManager:AddCashItemPrice( 130364, 18000 ) -- Cube of Promotion Shoes
+g_pCashItemManager:AddCashItemPrice( 130464, 18000 ) -- Random Cube for El Shard
+g_pCashItemManager:AddCashItemPrice( 130469, 18000 ) -- A Cube of the El Search Party
+g_pCashItemManager:AddCashItemPrice( 130479, 12000 ) -- Balloon Cube
+g_pCashItemManager:AddCashItemPrice( 130508, 18000 ) -- COBO's Adventure Package
+g_pCashItemManager:AddCashItemPrice( 130520, 18000 ) -- A Cube of April Fools' Day
+g_pCashItemManager:AddCashItemPrice( 130530, 18000 ) -- Cube with a medal of 100% of experience points
+g_pCashItemManager:AddCashItemPrice( 130601, 18000 ) -- Archangel's Set Cube
+g_pCashItemManager:AddCashItemPrice( 130602, 18000 ) -- Cube of Hair of an El Search Party Officer
+g_pCashItemManager:AddCashItemPrice( 130603, 18000 ) -- Cube of Ring of Fury
+g_pCashItemManager:AddCashItemPrice( 130604, 18000 ) -- Cube of Arbor Day's Weapon
+g_pCashItemManager:AddCashItemPrice( 130605, 18000 ) -- Cube of Promotion Weapon
+g_pCashItemManager:AddCashItemPrice( 130606, 18000 ) -- Cube of a Magic Necklace
+g_pCashItemManager:AddCashItemPrice( 130609, 18000 ) -- Cube celebrating the 500th day
+g_pCashItemManager:AddCashItemPrice( 130632, 18000 ) -- A Cube of Words
+g_pCashItemManager:AddCashItemPrice( 130634, 18000 ) -- Cube of Celebration of Return to Elrios Continent
+g_pCashItemManager:AddCashItemPrice( 130635, 18000 ) -- Cube of Welcoming to Elrios
+g_pCashItemManager:AddCashItemPrice( 130636, 18000 ) -- Elrios Thanks Cube
+g_pCashItemManager:AddCashItemPrice( 130637, 18000 ) -- Elrios Gift Cube
+g_pCashItemManager:AddCashItemPrice( 130643, 18000 ) -- Act 2 Festival 'Magic Necklace' Cube
+g_pCashItemManager:AddCashItemPrice( 130644, 18000 ) -- Act 2 Festival 'Ring of Fury' Cube
+g_pCashItemManager:AddCashItemPrice( 130645, 18000 ) -- Feita Boss Cube
+g_pCashItemManager:AddCashItemPrice( 130711, 12000 ) -- Sparring Experiences Cube
+g_pCashItemManager:AddCashItemPrice( 130712, 18000 ) -- Sparring Resolutions Cube
+g_pCashItemManager:AddCashItemPrice( 130713, 12000 ) -- Sparring Preparations Cube
+g_pCashItemManager:AddCashItemPrice( 130769, 18000 ) -- Cube of a Very Hasty Promotion Weapon
+g_pCashItemManager:AddCashItemPrice( 130770, 18000 ) -- Cube of a Swift Promotion Weapon
+g_pCashItemManager:AddCashItemPrice( 130771, 18000 ) -- Cube of a Poweful Promotion Weapon
+g_pCashItemManager:AddCashItemPrice( 130801, 12000 ) -- Letter Cube
+g_pCashItemManager:AddCashItemPrice( 130820, 18000 ) -- 10 Resurrection Stones Cube
+g_pCashItemManager:AddCashItemPrice( 130821, 60000 ) -- Magic Stone Cube
+g_pCashItemManager:AddCashItemPrice( 130822, 60000 ) -- Fluorite Ore Cube
+g_pCashItemManager:AddCashItemPrice( 130823, 60000 ) -- Enhancement Stone Cube
+g_pCashItemManager:AddCashItemPrice( 130824, 12000 ) -- A Cube for a Day's Ticket for Accessories
+g_pCashItemManager:AddCashItemPrice( 130825, 18000 ) -- EXP Boost Medal Cube (1 Day)
+g_pCashItemManager:AddCashItemPrice( 130826, 18000 ) -- A Cube of a Day's Ticket for Random Title
+g_pCashItemManager:AddCashItemPrice( 130827, 18000 ) -- A cube celebrating the conquer of Feita 1
+g_pCashItemManager:AddCashItemPrice( 130828, 18000 ) -- A cube celebrating the conquer of Feita 2
+g_pCashItemManager:AddCashItemPrice( 130842, 12000 ) -- Letter Cube
+g_pCashItemManager:AddCashItemPrice( 130845, 18000 ) -- A Cube of a Hero's Weapon
+g_pCashItemManager:AddCashItemPrice( 130930, 12000 ) -- Cube containing Necessary Items for a Match
+g_pCashItemManager:AddCashItemPrice( 130931, 18000 ) -- Jewel to dismantle the Cube of Necessary Items for a Match
+g_pCashItemManager:AddCashItemPrice( 130937, 18000 ) -- Cube for the Last Gift in Act2 Supplementary Version
+g_pCashItemManager:AddCashItemPrice( 130963, 18000 ) -- A Cube of Special Gifts for a New Semester
+g_pCashItemManager:AddCashItemPrice( 130964, 18000 ) -- A Special Gift Cube for a New Semester
+g_pCashItemManager:AddCashItemPrice( 130965, 4000 ) -- Costume Exchange Ticket A
+g_pCashItemManager:AddCashItemPrice( 130966, 4000 ) -- Costume Exchange Ticket B
+g_pCashItemManager:AddCashItemPrice( 130967, 18000 ) -- Costume Weapon Cube A (A Ticket for One)
+g_pCashItemManager:AddCashItemPrice( 130968, 18000 ) -- Costume Weapon Cube A (for 3 days)
+g_pCashItemManager:AddCashItemPrice( 130969, 18000 ) -- Costume Top Piece Cube A (for 5 days)
+g_pCashItemManager:AddCashItemPrice( 130970, 18000 ) -- Costume Bottom Piece Cube A (for 5 days)
+g_pCashItemManager:AddCashItemPrice( 130971, 7000 ) -- Costume Gloves Cube A (for 5 days)
+g_pCashItemManager:AddCashItemPrice( 130972, 7000 ) -- Costume Shoes Cube A (for 5 days)
+g_pCashItemManager:AddCashItemPrice( 130973, 18000 ) -- Costume Hair Cube A (for 5 days)
+g_pCashItemManager:AddCashItemPrice( 130974, 18000 ) -- Costume Weapon Cube B (A Ticket for One)
+g_pCashItemManager:AddCashItemPrice( 130975, 18000 ) -- Costume Weapon Cube B (for 3 days)
+g_pCashItemManager:AddCashItemPrice( 130976, 18000 ) -- Costume Top Piece Cube B (for 5 days)
+g_pCashItemManager:AddCashItemPrice( 130977, 18000 ) -- Costume Bottom Piece Cube B (for 5 days)
+g_pCashItemManager:AddCashItemPrice( 130978, 7000 ) -- Costume Gloves Cube B (for 5 days)
+g_pCashItemManager:AddCashItemPrice( 130979, 7000 ) -- Costume Shoes Cube B (for 5 days)
+g_pCashItemManager:AddCashItemPrice( 130980, 18000 ) -- Costume Hair Cube B (for 5 days)
+g_pCashItemManager:AddCashItemPrice( 130982, 18000 ) -- Accessories Cube (Face: for 3 days)
+g_pCashItemManager:AddCashItemPrice( 130983, 18000 ) -- Accessories Cube (Top Piece: for 3 days)
+g_pCashItemManager:AddCashItemPrice( 130984, 18000 ) -- Accessories Cube (Bottom Piece: for 3 days)
+g_pCashItemManager:AddCashItemPrice( 130985, 18000 ) -- Accessories Cube (Arm weapon, ring, and necklace: for 3 days)
+g_pCashItemManager:AddCashItemPrice( 130991, 18000 ) -- A Cube of Very Hasty Promotion Weapon (for 2 days)
+g_pCashItemManager:AddCashItemPrice( 130992, 18000 ) -- A Cube of the Swift Promotion Weapon (for 2 days)
+g_pCashItemManager:AddCashItemPrice( 130993, 18000 ) -- A Cube of the Poweful Promotion Weapon (for 2 days)
+g_pCashItemManager:AddCashItemPrice( 130994, 18000 ) -- Accessories Cube (A Ticket for One)
+g_pCashItemManager:AddCashItemPrice( 130995, 18000 ) -- Accessories Cube (for 30 days)
+g_pCashItemManager:AddCashItemPrice( 130996, 18000 ) -- Accessories Cube (for 15 days)
+g_pCashItemManager:AddCashItemPrice( 130997, 18000 ) -- Fashion Show Cube
+g_pCashItemManager:AddCashItemPrice( 131004, 12000 ) -- Reward to the Best Match Player (1 Ticket for Package Costume)
+g_pCashItemManager:AddCashItemPrice( 131007, 18000 ) -- Summer Casual Package Costume
+g_pCashItemManager:AddCashItemPrice( 131008, 18000 ) -- Popular Accessories Cube
+g_pCashItemManager:AddCashItemPrice( 131009, 18000 ) -- A Cube of Accessories with Special Abilities
+g_pCashItemManager:AddCashItemPrice( 131048, 18000 ) -- Gift for the Thanksgiving Day: Cube of Weapon
+g_pCashItemManager:AddCashItemPrice( 131049, 18000 ) -- Gift for the Thanksgiving Day: Cube of Top Piece
+g_pCashItemManager:AddCashItemPrice( 131050, 18000 ) -- Gift for the Thanksgiving Day: Cube of Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 131051, 18000 ) -- Gift for the Thanksgiving Day: Cube of Gloves
+g_pCashItemManager:AddCashItemPrice( 131052, 18000 ) -- Gift for the Thanksgiving Day: Cube of Shoes
+g_pCashItemManager:AddCashItemPrice( 131053, 18000 ) -- Gift for the Thanksgiving Day: Cube of Hair
+g_pCashItemManager:AddCashItemPrice( 131056, 60000 ) -- Fluorite Ore Cube
+g_pCashItemManager:AddCashItemPrice( 131057, 18000 ) -- Upgraded Costume Weapon Cube
+g_pCashItemManager:AddCashItemPrice( 131132, 18000 ) -- Magic Cube (Enhancement Stone)
+g_pCashItemManager:AddCashItemPrice( 131133, 18000 ) -- Magic Cube (Costume)
+g_pCashItemManager:AddCashItemPrice( 131158, 18000 ) -- Bonus Cube
+g_pCashItemManager:AddCashItemPrice( 131197, 12000 ) -- Cobo Adventurer Package
+g_pCashItemManager:AddCashItemPrice( 131198, 12000 ) -- Cobo Developer Package
+g_pCashItemManager:AddCashItemPrice( 131199, 18000 ) -- A Cube of Celebration of Return to Elrios Continent
+g_pCashItemManager:AddCashItemPrice( 131200, 18000 ) -- A Cube for New travelers
+g_pCashItemManager:AddCashItemPrice( 131204, 12000 ) -- Happy Saturday Cube Celebrating Act 3 (October 31)
+g_pCashItemManager:AddCashItemPrice( 131205, 12000 ) -- Happy Saturday Cube Celebrating Act 3 (November 7)
+g_pCashItemManager:AddCashItemPrice( 131206, 12000 ) -- Happy Saturday Cube Celebrating Act 3 (November 14)
+g_pCashItemManager:AddCashItemPrice( 131207, 12000 ) -- Happy Saturday Cube Celebrating Act 3 (November 21)
+g_pCashItemManager:AddCashItemPrice( 131219, 18000 ) -- Cube with a Day's Ticket for Accessories
+g_pCashItemManager:AddCashItemPrice( 131220, 18000 ) -- Cube with a Day's Ticket for Costume Full Set
+g_pCashItemManager:AddCashItemPrice( 131221, 18000 ) -- Cube with a 30 Days' Ticket for Accessories
+g_pCashItemManager:AddCashItemPrice( 131222, 18000 ) -- Cube with a 30 Days' Ticket for Costume Full Set
+g_pCashItemManager:AddCashItemPrice( 131223, 18000 ) -- Cube for a Ticket for an Accessory
+g_pCashItemManager:AddCashItemPrice( 131261, 18000 ) -- A Cube for a Day's Ticket for the Blessed Medal
+g_pCashItemManager:AddCashItemPrice( 131262, 18000 ) -- Velder Boss Cube
+g_pCashItemManager:AddCashItemPrice( 131265, 18000 ) -- A Cube of Great Beetle Weapon
+g_pCashItemManager:AddCashItemPrice( 131269, 18000 ) -- Cube of 101 Conquer Face
+g_pCashItemManager:AddCashItemPrice( 131270, 18000 ) -- Cube of Star Academy Costume
+g_pCashItemManager:AddCashItemPrice( 131271, 18000 ) -- Cube of Idol Band Costume
+g_pCashItemManager:AddCashItemPrice( 131272, 18000 ) -- Cube of Striped Glasses
+g_pCashItemManager:AddCashItemPrice( 131281, 18000 ) -- Cube of Time and Space Card
+g_pCashItemManager:AddCashItemPrice( 131282, 12000 ) -- The Legend of Elrios Continent Package
+g_pCashItemManager:AddCashItemPrice( 131285, 18000 ) -- Full Set Cube of Henir's Ruler
+g_pCashItemManager:AddCashItemPrice( 131286, 18000 ) -- Hero's Cube A
+g_pCashItemManager:AddCashItemPrice( 131287, 18000 ) -- Hero's Cube B
+g_pCashItemManager:AddCashItemPrice( 131288, 18000 ) -- Hero's Cube C
+g_pCashItemManager:AddCashItemPrice( 131314, 18000 ) -- Cube of Henir's Key
+g_pCashItemManager:AddCashItemPrice( 131355, 18000 ) -- Cube of El Revitalization Tablet
+g_pCashItemManager:AddCashItemPrice( 131356, 12000 ) -- Cube of Christmas Gifts Items
+g_pCashItemManager:AddCashItemPrice( 131357, 18000 ) -- Cube with a 30 Days' Ticket for Accessories
+g_pCashItemManager:AddCashItemPrice( 131358, 18000 ) -- Cube for a Ticket for an Accessory
+g_pCashItemManager:AddCashItemPrice( 131359, 18000 ) -- Cube with a Ticket for a Random Part of Costume
+g_pCashItemManager:AddCashItemPrice( 131360, 18000 ) -- Cube with a Ticket for an Costume Weapon
+g_pCashItemManager:AddCashItemPrice( 131361, 18000 ) -- Cube with a ticket for one Costume weapon of Ice Burner.
+g_pCashItemManager:AddCashItemPrice( 131374, 6000 ) -- Random Cube of Enhancement Amulet (Lv.5~Lv.8)
+g_pCashItemManager:AddCashItemPrice( 131375, 18000 ) -- Cube of A Special Costume weapon for Christmas (for 7 days)
+g_pCashItemManager:AddCashItemPrice( 131376, 12000 ) -- Cube of Costume Full Set for Christmas 2009 (for 1 day)
+g_pCashItemManager:AddCashItemPrice( 131379, 18000 ) -- Armband of Oath's Cube (for 30 days)
+g_pCashItemManager:AddCashItemPrice( 131406, 18000 ) -- Ice Burner Costume Weapon Cube
+g_pCashItemManager:AddCashItemPrice( 131407, 18000 ) -- Cube of Ice Burner Costume Full Set
+g_pCashItemManager:AddCashItemPrice( 131408, 18000 ) -- Cube of Weapon Accessories (for 15 days)
+g_pCashItemManager:AddCashItemPrice( 131409, 18000 ) -- Cube of Ring of Skills (for 30 days)
+g_pCashItemManager:AddCashItemPrice( 131410, 18000 ) -- Cube for a Ticket for an Accessory
+g_pCashItemManager:AddCashItemPrice( 131411, 12000 ) -- Cube of the Full Set of Henir's Ruler (for 30 days)
+g_pCashItemManager:AddCashItemPrice( 131412, 4000 ) -- Fluorite Ore Exchange Ticket
+g_pCashItemManager:AddCashItemPrice( 131415, 18000 ) -- Cube of Henir's Key
+g_pCashItemManager:AddCashItemPrice( 131416, 18000 ) -- Cube of Archangel's Full Set
+g_pCashItemManager:AddCashItemPrice( 131417, 12000 ) -- Cube of the Full Set of the El Search Party Officer
+g_pCashItemManager:AddCashItemPrice( 131418, 18000 ) -- Cube of Nasods' Full Set
+g_pCashItemManager:AddCashItemPrice( 131419, 18000 ) -- Cube of Archdevil's Full Set
+g_pCashItemManager:AddCashItemPrice( 131422, 12000 ) -- Cube of Korean Traditional Costume Costume for the New Year (for 1 day)
+g_pCashItemManager:AddCashItemPrice( 131424, 18000 ) -- Cube with a Day's Ticket for Ring Accessories
+g_pCashItemManager:AddCashItemPrice( 131425, 18000 ) -- Cube of a Day's Ticket for Promotion Costume
+g_pCashItemManager:AddCashItemPrice( 131427, 18000 ) -- [Event] Exp. Boost Medal Cube(1 Day)
+g_pCashItemManager:AddCashItemPrice( 131428, 18000 ) -- Cube with a Day's Ticket for Accessories
+g_pCashItemManager:AddCashItemPrice( 131456, 18000 ) -- Cube of Basic Promotion Costume for 30 Days
+g_pCashItemManager:AddCashItemPrice( 131457, 5000 ) -- The 1st Job Change Promotion Costume for 30 Days
+g_pCashItemManager:AddCashItemPrice( 131458, 5000 ) -- The 2nd Job Change Promotion Costume for 30 Days
+g_pCashItemManager:AddCashItemPrice( 131459, 18000 ) -- Cube of Basic Promotion Costume for 100 Days
+g_pCashItemManager:AddCashItemPrice( 131460, 5000 ) -- The 1st Job Change Promotion Costume for 100 Days
+g_pCashItemManager:AddCashItemPrice( 131461, 5000 ) -- The 2nd Job Change Promotion Costume for 100 Days
+g_pCashItemManager:AddCashItemPrice( 131464, 18000 ) -- Cube for a Ticket for an Accessory
+g_pCashItemManager:AddCashItemPrice( 131467, 18000 ) -- Cube of Accessories for 30 Days
+g_pCashItemManager:AddCashItemPrice( 131468, 18000 ) -- Cube with a Ticket for an Costume Weapon
+g_pCashItemManager:AddCashItemPrice( 131469, 18000 ) -- Cube of a Ticket for an Costume Package
+g_pCashItemManager:AddCashItemPrice( 131470, 12000 ) -- Cube of Preparations for Job Change
+g_pCashItemManager:AddCashItemPrice( 131583, 6000 ) -- Random Cube of Enhancement Amulet
+g_pCashItemManager:AddCashItemPrice( 131586, 12000 ) -- Cube of Special Gifts over a Winter Vacation
+g_pCashItemManager:AddCashItemPrice( 131589, 12000 ) -- Cube of the Archangel's Full Set for 1 Day
+g_pCashItemManager:AddCashItemPrice( 131592, 12000 ) -- Cube with a 30 Days' Ticket for Special Accessories
+g_pCashItemManager:AddCashItemPrice( 131594, 18000 ) -- Cube of Premium Costume Full Set at PC Gaming Centers for 30 Days
+g_pCashItemManager:AddCashItemPrice( 131595, 18000 ) -- Cube of Premium Reward at PC Gaming Centers 1
+g_pCashItemManager:AddCashItemPrice( 131596, 18000 ) -- Cube of Premium Reward at PC Gaming Centers 2
+g_pCashItemManager:AddCashItemPrice( 131652, 18000 ) -- Random Cube of Weapon Costume for 30 Days
+g_pCashItemManager:AddCashItemPrice( 131655, 18000 ) -- Cube of Drink of Oblivion
+g_pCashItemManager:AddCashItemPrice( 131656, 18000 ) -- Application Ticket for a Random Cube of Ice Burner Weapon
+g_pCashItemManager:AddCashItemPrice( 131657, 18000 ) -- Application Ticket for a Random Cube of Ice Burner Accessories
+g_pCashItemManager:AddCashItemPrice( 131658, 18000 ) -- Application Ticket for a Full Set Cube of Ice Burner
+g_pCashItemManager:AddCashItemPrice( 131659, 18000 ) -- Cube of Costume Accessories of Ice Burner
+g_pCashItemManager:AddCashItemPrice( 131663, 18000 ) -- Special Cube of PC Gaming Centers
+g_pCashItemManager:AddCashItemPrice( 131755, 6000 ) -- Random Cube of Enhancement Amulet
+g_pCashItemManager:AddCashItemPrice( 131756, 18000 ) -- Cube for 1 Ice Burner
+g_pCashItemManager:AddCashItemPrice( 131757, 18000 ) -- EXP Boost Medal (30%) Cube (1Day)
+g_pCashItemManager:AddCashItemPrice( 131758, 18000 ) -- Random Cube of Accessories for 5 Days
+g_pCashItemManager:AddCashItemPrice( 131759, 12000 ) -- Cube of Korean Traditional Costume Costume for 5 Days
+g_pCashItemManager:AddCashItemPrice( 131760, 18000 ) -- Cube of Valentine's Special Costume for 5 Days
+g_pCashItemManager:AddCashItemPrice( 131761, 18000 ) -- Random Cube of Weapon Costume for 5 Days
+g_pCashItemManager:AddCashItemPrice( 131762, 18000 ) -- Resurrection Stone Cube (10 ea.)
+g_pCashItemManager:AddCashItemPrice( 131798, 18000 ) -- Cube of a Gift on a Special Day
+g_pCashItemManager:AddCashItemPrice( 131802, 18000 ) -- Cube of a Ticket for 1 Costume Hair
+g_pCashItemManager:AddCashItemPrice( 131803, 12000 ) -- Cube of School Uniform Costume Full Set (for 3 days)
+g_pCashItemManager:AddCashItemPrice( 131804, 12000 ) -- Cube of a Total Gift for a New Semester
+g_pCashItemManager:AddCashItemPrice( 131805, 18000 ) -- Cube of Resurrection Stones (100)
+g_pCashItemManager:AddCashItemPrice( 131806, 18000 ) -- Special Accessory Random Cube
+g_pCashItemManager:AddCashItemPrice( 131807, 12000 ) -- Cube of a Gift in April for PC Gaming Centers A
+g_pCashItemManager:AddCashItemPrice( 131808, 12000 ) -- Cube of a Gift in April for PC Gaming Centers B
+g_pCashItemManager:AddCashItemPrice( 131809, 18000 ) -- Cube of Ice Burner Costume Full Set (for 1 day)
+g_pCashItemManager:AddCashItemPrice( 131810, 18000 ) -- Cube of Archangel's Full Set(A Day's Ticket)
+g_pCashItemManager:AddCashItemPrice( 131811, 18000 ) -- El Search Party Officer Set Cube (1 Day)
+g_pCashItemManager:AddCashItemPrice( 131812, 18000 ) -- Cube of Nasods' Full Set(A Day's Ticket)
+g_pCashItemManager:AddCashItemPrice( 131813, 18000 ) -- Cube of Archdevil's Full Set(A Day's Ticket)
+g_pCashItemManager:AddCashItemPrice( 131814, 18000 ) -- Cube of New Costume Full Set
+g_pCashItemManager:AddCashItemPrice( 131815, 18000 ) -- Resurrection Stone Cube (3)
+g_pCashItemManager:AddCashItemPrice( 131816, 18000 ) -- Cube of 5 El Shards(Mystery)
+g_pCashItemManager:AddCashItemPrice( 131817, 18000 ) -- Cube for 5 Complete Recovery Potions
+g_pCashItemManager:AddCashItemPrice( 131818, 18000 ) -- Cube of Ring of Skills (for 30 days)
+g_pCashItemManager:AddCashItemPrice( 131819, 18000 ) -- Cube Celebrating White Day C
+g_pCashItemManager:AddCashItemPrice( 131820, 18000 ) -- Cube of White Day Special Weapon Costume for 30 Days
+g_pCashItemManager:AddCashItemPrice( 131826, 18000 ) -- White Day Cube A
+g_pCashItemManager:AddCashItemPrice( 131827, 18000 ) -- White Day Cube B
+g_pCashItemManager:AddCashItemPrice( 131833, 12000 ) -- Cube Celebrating Dungeon Channel Integration
+g_pCashItemManager:AddCashItemPrice( 131846, 1000 ) -- Broken Pieces of Fluorite Ores
+g_pCashItemManager:AddCashItemPrice( 131849, 18000 ) -- Random Cube of Boss Items
+g_pCashItemManager:AddCashItemPrice( 131850, 12000 ) -- Special Cube for April Fools' Day
+g_pCashItemManager:AddCashItemPrice( 131855, 20000 ) -- Cobo's Special Monster Mask Cube
+g_pCashItemManager:AddCashItemPrice( 131858, 18000 ) -- Resurrection Stone Cube (110)
+g_pCashItemManager:AddCashItemPrice( 131861, 18000 ) -- Random Cube of Enhancement Amulet(Lv.6~Lv.8)
+g_pCashItemManager:AddCashItemPrice( 131862, 18000 ) -- Random Cube of Enhancement Amulet(Lv.5~Lv.6)
+g_pCashItemManager:AddCashItemPrice( 131863, 18000 ) -- Elsword Costume Cube (A Type)
+g_pCashItemManager:AddCashItemPrice( 131864, 18000 ) -- Elsword Costume Cube (B Type)
+g_pCashItemManager:AddCashItemPrice( 132052, 18000 ) -- Cube of Cat Bag (for 7 days)
+g_pCashItemManager:AddCashItemPrice( 132055, 12000 ) -- Cube of Gift Set on Children's Day
+g_pCashItemManager:AddCashItemPrice( 132056, 12000 ) -- Cube of 4 Kinds of Special Accessories (for 1 day)
+g_pCashItemManager:AddCashItemPrice( 132057, 18000 ) -- Cube of Salvatore Solace Full Set (for 1 day)
+g_pCashItemManager:AddCashItemPrice( 132058, 18000 ) -- Exchange Ticket for Cube of Ice Burner Costume (for 1 day)
+g_pCashItemManager:AddCashItemPrice( 132097, 18000 ) -- Cobo Special Gift Box [Lv. 1 Fluorite Ore]
+g_pCashItemManager:AddCashItemPrice( 132098, 18000 ) -- Cobo Special Gift Box [Lv. 2 Fluorite Ore]
+g_pCashItemManager:AddCashItemPrice( 132099, 18000 ) -- Cobo Special Gift Box [Lv. 3 Fluorite Ore]
+g_pCashItemManager:AddCashItemPrice( 132100, 18000 ) -- Cobo Special Gift Box [Lv. 4 Fluorite Ore]
+g_pCashItemManager:AddCashItemPrice( 132107, 18000 ) -- Cobo Special Gift Box [Ice Statue Heater]
+g_pCashItemManager:AddCashItemPrice( 132122, 12000 ) -- PC Gaming Center May Gift Cube
+g_pCashItemManager:AddCashItemPrice( 132187, 12000 ) -- Teachers' Day Gift Cube
+g_pCashItemManager:AddCashItemPrice( 132188, 18000 ) -- PC Gaming Center Connection Event Cube
+g_pCashItemManager:AddCashItemPrice( 132193, 12000 ) -- Physical Attack Power Magic Stone
+g_pCashItemManager:AddCashItemPrice( 132194, 12000 ) -- Magic Attack Power Magic Stone
+g_pCashItemManager:AddCashItemPrice( 132195, 12000 ) -- Physical Defense Magic Stone
+g_pCashItemManager:AddCashItemPrice( 132196, 12000 ) -- Magic Defense Magic Stone
+g_pCashItemManager:AddCashItemPrice( 132197, 12000 ) -- Awakening Time Magic Stone
+g_pCashItemManager:AddCashItemPrice( 132198, 12000 ) -- Health Magic Stone
+g_pCashItemManager:AddCashItemPrice( 132199, 12000 ) -- Awakening Charging Speed Magic Stone
+g_pCashItemManager:AddCashItemPrice( 132200, 12000 ) -- Attack Speed Magic Stone
+g_pCashItemManager:AddCashItemPrice( 132201, 12000 ) -- Critical Magic Stone
+g_pCashItemManager:AddCashItemPrice( 132202, 12000 ) -- Movement Speed Magic Stone
+g_pCashItemManager:AddCashItemPrice( 132203, 12000 ) -- Accuracy Magic Stone
+g_pCashItemManager:AddCashItemPrice( 132204, 12000 ) -- Evasion Magic Stone
+g_pCashItemManager:AddCashItemPrice( 132205, 12000 ) -- Jump Speed Magic Stone
+g_pCashItemManager:AddCashItemPrice( 132206, 12000 ) -- Promotional Avatar Cube (3 Days)
+g_pCashItemManager:AddCashItemPrice( 132212, 18000 ) -- Random Hell Dungeon Pass Cube
+g_pCashItemManager:AddCashItemPrice( 132213, 18000 ) -- Hell Dungeon Pass Cube
+g_pCashItemManager:AddCashItemPrice( 132337, 18000 ) -- Random Magic Stone Cube
+g_pCashItemManager:AddCashItemPrice( 132467, 18000 ) -- Promotional Avatar (15 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 132470, 18000 ) -- PC Gaming Center Dual Option Magic Stone Random Cube
+g_pCashItemManager:AddCashItemPrice( 132471, 18000 ) -- PC Gaming Center Resurrection Stone (10 ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 132476, 12000 ) -- First Victory Special Cube
+g_pCashItemManager:AddCashItemPrice( 132477, 12000 ) -- Special Accessory (3 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 132478, 18000 ) -- Skill Ring (3 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 132479, 18000 ) -- Accessory (Face (Mid), 3 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 132480, 18000 ) -- Accessory (Arm, 3 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 132481, 18000 ) -- Random Fluorite Ore Cube
+g_pCashItemManager:AddCashItemPrice( 132482, 18000 ) -- Random Blessed Restoration Scroll Cube
+g_pCashItemManager:AddCashItemPrice( 132483, 18000 ) -- Random Monster Mask (7 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 132484, 18000 ) -- Gold Promotion Weapon Avatar (7 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 132485, 18000 ) -- Weapon Accessory (15 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 132486, 12000 ) -- Special Accessory (15 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 132487, 18000 ) -- Skill Ring (7 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 132529, 18000 ) -- Flexible Skill Ring (15 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 132530, 18000 ) -- Tenacious Skill Ring (15 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 132531, 18000 ) -- Powerful Skill Ring (15 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 132532, 18000 ) -- Transcendent Skill Ring (15 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 132533, 18000 ) -- Mana Elixir (5 ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 132534, 12000 ) -- Quarterfinal Special Cube
+g_pCashItemManager:AddCashItemPrice( 132535, 12000 ) -- Round of 16 Special Cube
+g_pCashItemManager:AddCashItemPrice( 132538, 5000 ) -- Monster Card 'Crazy Puppet'
+g_pCashItemManager:AddCashItemPrice( 132580, 12000 ) -- Returned Warrior Welcoming Cube
+g_pCashItemManager:AddCashItemPrice( 132584, 12000 ) -- Adventurer Package Cube
+g_pCashItemManager:AddCashItemPrice( 132646, 18000 ) -- PC Gaming Center July Gift Cube
+g_pCashItemManager:AddCashItemPrice( 132648, 12000 ) -- Random Heater Accessory (Permanent) Cube
+g_pCashItemManager:AddCashItemPrice( 132649, 18000 ) -- Random Weapon Avatar (Permanent) Cube
+g_pCashItemManager:AddCashItemPrice( 132650, 18000 ) -- Random Enhancement Amulet (Lv. 7~Lv. 9) Cube
+g_pCashItemManager:AddCashItemPrice( 132653, 18000 ) -- Gaia's Blessing Cube
+g_pCashItemManager:AddCashItemPrice( 132654, 18000 ) -- Random Bethbite's Cube
+g_pCashItemManager:AddCashItemPrice( 132656, 18000 ) -- Random Dungeon Pass Cube
+g_pCashItemManager:AddCashItemPrice( 132661, 12000 ) -- Random Heater Accessory (15 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 132696, 18000 ) -- Oblivion Drink (7 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 132698, 18000 ) -- Medal of Blessings (1 Day) Cube
+g_pCashItemManager:AddCashItemPrice( 132703, 18000 ) -- Battle Essential Item Cube
+g_pCashItemManager:AddCashItemPrice( 132704, 12000 ) -- Salvatore Solace Full Set Cube
+g_pCashItemManager:AddCashItemPrice( 132705, 12000 ) -- Velder Imperial Guard Full Set Cube
+g_pCashItemManager:AddCashItemPrice( 132706, 12000 ) -- Royal Servant/Maid Full Set Cube
+g_pCashItemManager:AddCashItemPrice( 132707, 18000 ) -- Ice Statue Heater Avatar Weapon (1 ea) Cube
+g_pCashItemManager:AddCashItemPrice( 132708, 18000 ) -- Ice Statue Heater Avatar Full Set (1 ea) Cube
+g_pCashItemManager:AddCashItemPrice( 132746, 18000 ) -- Special Promotion Avatar Full Set (3 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 132748, 18000 ) -- Perfect Recovery Potion (3ea) Cube
+g_pCashItemManager:AddCashItemPrice( 132749, 18000 ) -- Holiday Task Reward Cube
+g_pCashItemManager:AddCashItemPrice( 132750, 18000 ) -- Random Reinforcement Amulet Cube (Lv.5~8)
+g_pCashItemManager:AddCashItemPrice( 132789, 18000 ) -- Easter Weapon (14 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 132808, 18000 ) -- Random Secret Card Cube
+g_pCashItemManager:AddCashItemPrice( 132809, 60000 ) -- Dual Magic Stone Random Cube
+g_pCashItemManager:AddCashItemPrice( 132810, 18000 ) -- Random Shining Silver Cube (5~10ea) Cube
+g_pCashItemManager:AddCashItemPrice( 132811, 18000 ) -- Unknown Cube A
+g_pCashItemManager:AddCashItemPrice( 132812, 12000 ) -- High-Grade Magic Stone Random Cube
+g_pCashItemManager:AddCashItemPrice( 132813, 18000 ) -- Random Shining Silver Cube (3~5ea) Cube
+g_pCashItemManager:AddCashItemPrice( 132814, 18000 ) -- Unknown Cube B
+g_pCashItemManager:AddCashItemPrice( 132815, 18000 ) -- Resurrection Stone (2ea) Cube
+g_pCashItemManager:AddCashItemPrice( 132816, 18000 ) -- Special Skill Ring (1 Day) Cube
+g_pCashItemManager:AddCashItemPrice( 132823, 18000 ) -- Random Dream Step (1 Day) Cube
+g_pCashItemManager:AddCashItemPrice( 132840, 18000 ) -- Resurrection Stone (10ea) Cube
+g_pCashItemManager:AddCashItemPrice( 132841, 18000 ) -- Cobo Express VIP Ticket (1 Day) Cube
+g_pCashItemManager:AddCashItemPrice( 132843, 18000 ) -- Archangel Accessory Full Set Cube
+g_pCashItemManager:AddCashItemPrice( 132844, 18000 ) -- Arch Devil Accessory Full Set Cube
+g_pCashItemManager:AddCashItemPrice( 132885, 18000 ) -- Resurrection Stone (50ea) Cube
+g_pCashItemManager:AddCashItemPrice( 132886, 18000 ) -- Complete Skill Reset Medal (5ea) Cube
+g_pCashItemManager:AddCashItemPrice( 132918, 18000 ) -- El Tree Fruits (25ea) Cube
+g_pCashItemManager:AddCashItemPrice( 133252, 18000 ) -- Advanced Weapon Cube (Lv. 36)
+g_pCashItemManager:AddCashItemPrice( 133253, 18000 ) -- Advanced Armor Cube (Lv. 36)
+g_pCashItemManager:AddCashItemPrice( 133254, 18000 ) -- Advanced Weapon Cube (Lv. 44)
+g_pCashItemManager:AddCashItemPrice( 133255, 18000 ) -- Advanced Armor Cube (Lv. 44)
+g_pCashItemManager:AddCashItemPrice( 133256, 18000 ) -- Elegant Equipment Cube (Lv. 52 Weapon)
+g_pCashItemManager:AddCashItemPrice( 133257, 18000 ) -- Elegant Equipment Cube (Lv. 52 Armor)
+g_pCashItemManager:AddCashItemPrice( 133258, 18000 ) -- Advanced Weapon Cube (Lv. 60)
+g_pCashItemManager:AddCashItemPrice( 133259, 18000 ) -- Advanced Armor Cube (Lv. 60)
+g_pCashItemManager:AddCashItemPrice( 133369, 12000 ) -- Refined El Shard (Petrifying Master)
+g_pCashItemManager:AddCashItemPrice( 133372, 12000 ) -- Refined El Shard (Burning Petrifying)
+g_pCashItemManager:AddCashItemPrice( 133375, 12000 ) -- Refined El Shard (Freezing Petrifying)
+g_pCashItemManager:AddCashItemPrice( 133378, 12000 ) -- Refined El Shard (Poison Petrifying)
+g_pCashItemManager:AddCashItemPrice( 133471, 12000 ) -- Hamel Boss Cube
+g_pCashItemManager:AddCashItemPrice( 135080, 18000 ) -- Resurrection Stones (5) Cube
+g_pCashItemManager:AddCashItemPrice( 135342, 60000 ) -- Dual Magic Stone Random Cube
+g_pCashItemManager:AddCashItemPrice( 135345, 36000 ) -- High-Grade Magic Stone Random Cube
+g_pCashItemManager:AddCashItemPrice( 160012, 18000 ) -- Premium Personal Shop Medal Cube (7 Days)
+g_pCashItemManager:AddCashItemPrice( 160013, 18000 ) -- Premium Personal Shop Medal Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 160014, 18000 ) -- Premium Personal Shop Medal Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 160015, 18000 ) -- Shoe Costume Cube
+g_pCashItemManager:AddCashItemPrice( 160016, 18000 ) -- Glove Costume Cube
+g_pCashItemManager:AddCashItemPrice( 160017, 18000 ) -- Top Piece Costume Cube
+g_pCashItemManager:AddCashItemPrice( 160018, 18000 ) -- Bottom Piece Costume Cube
+g_pCashItemManager:AddCashItemPrice( 160019, 18000 ) -- Hair Costume Cube
+g_pCashItemManager:AddCashItemPrice( 160020, 60000 ) -- Weapon Costume Cube
+g_pCashItemManager:AddCashItemPrice( 160021, 18000 ) -- Harmony Festival Magic Stone Random Cube
+g_pCashItemManager:AddCashItemPrice( 160022, 18000 ) -- Harmony Festival Enhancement Stone Random Cube
+g_pCashItemManager:AddCashItemPrice( 160023, 18000 ) -- Harmony Festival El Shard Random Cube
+g_pCashItemManager:AddCashItemPrice( 160024, 38000 ) -- Harmony Festival Cube
+g_pCashItemManager:AddCashItemPrice( 160025, 18000 ) -- Harmony Festival Costume Cube
+g_pCashItemManager:AddCashItemPrice( 160038, 18000 ) -- Demon's Core Cube
+g_pCashItemManager:AddCashItemPrice( 160170, 26000 ) -- Resurrection Stone Cube (1 ea)
+g_pCashItemManager:AddCashItemPrice( 160248, 18000 ) -- The Ring of Heroes (60 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 160257, 18000 ) -- Skill Slot Change Medal Cube (7 Days)
+g_pCashItemManager:AddCashItemPrice( 160426, 12000 ) -- +6 Assault Mercenary Of Destruction Full Set Cube
+g_pCashItemManager:AddCashItemPrice( 160427, 12000 ) -- +6 Fierce Wrathful God Full Set Cube
+g_pCashItemManager:AddCashItemPrice( 160428, 12000 ) -- +6 Glorious World Conqueror Full Set Cube
+g_pCashItemManager:AddCashItemPrice( 160429, 12000 ) -- +6 Fearless Apocalypse Warrior Full Set Cube
+g_pCashItemManager:AddCashItemPrice( 160430, 12000 ) -- +6 Blacksmith Union Full Set Cube
+g_pCashItemManager:AddCashItemPrice( 160431, 12000 ) -- +6 Bloody Battle Song Full Set Cube
+g_pCashItemManager:AddCashItemPrice( 160432, 12000 ) -- +6 Elrios Hero Full Set Cube
+g_pCashItemManager:AddCashItemPrice( 160658, 18000 ) -- Monster Card Random Cube
+g_pCashItemManager:AddCashItemPrice( 160813, 18000 ) -- QPL Jelly Random Cube
+g_pCashItemManager:AddCashItemPrice( 160814, 18000 ) -- Mysterious QPL Jelly Random Cube
+g_pCashItemManager:AddCashItemPrice( 160815, 18000 ) -- Strange QPL Jelly Random Cube
+g_pCashItemManager:AddCashItemPrice( 204850, 12000 ) -- Special Package for the Thanksgiving Day
+g_pCashItemManager:AddCashItemPrice( 205260, 18000 ) -- Big 3 One Package
+g_pCashItemManager:AddCashItemPrice( 205270, 18000 ) -- Big 3 Two Package
+g_pCashItemManager:AddCashItemPrice( 205280, 18000 ) -- Big 3 Three Package
+g_pCashItemManager:AddCashItemPrice( 205930, 12000 ) -- Necklace Package
+g_pCashItemManager:AddCashItemPrice( 205940, 12000 ) -- Play Package
+g_pCashItemManager:AddCashItemPrice( 205950, 12000 ) -- Ring Package
+g_pCashItemManager:AddCashItemPrice( 205960, 12000 ) -- Best Player Package
+g_pCashItemManager:AddCashItemPrice( 206840, 18000 ) -- Fluorite Ore Package Lv.1
+g_pCashItemManager:AddCashItemPrice( 206850, 18000 ) -- Fluorite Ore Package Lv.2
+g_pCashItemManager:AddCashItemPrice( 206860, 18000 ) -- Fluorite Ore Package Lv.3
+g_pCashItemManager:AddCashItemPrice( 206870, 18000 ) -- Fluorite Ore Package Lv.4
+g_pCashItemManager:AddCashItemPrice( 210490, 18000 ) -- Enhancement Package Lv.1
+g_pCashItemManager:AddCashItemPrice( 210500, 18000 ) -- Enhancement Package Lv.2
+g_pCashItemManager:AddCashItemPrice( 210510, 18000 ) -- Enhancement Package Lv.3
+g_pCashItemManager:AddCashItemPrice( 210520, 18000 ) -- Enhancement Package Lv.4
+g_pCashItemManager:AddCashItemPrice( 213180, 18000 ) -- Special Package for Act2 Supplementary Version 1
+g_pCashItemManager:AddCashItemPrice( 213190, 18000 ) -- Special Package for Act2 Supplementary Version 2
+g_pCashItemManager:AddCashItemPrice( 213200, 18000 ) -- Special Package for Act2 Supplementary Version 3
+g_pCashItemManager:AddCashItemPrice( 215690, 12000 ) -- Special Package Celebrating Guild Update
+g_pCashItemManager:AddCashItemPrice( 217140, 5000 ) -- Compensation Costume to Go Around the Dungeon 101 Times
+g_pCashItemManager:AddCashItemPrice( 217870, 5000 ) -- Hong Kong Costume
+g_pCashItemManager:AddCashItemPrice( 217900, 18000 ) -- Drop Day Special Package (Purple)
+g_pCashItemManager:AddCashItemPrice( 217910, 18000 ) -- Drop Day Special Package (White)
+g_pCashItemManager:AddCashItemPrice( 220810, 12000 ) -- God of Transaction Package
+g_pCashItemManager:AddCashItemPrice( 221540, 18000 ) -- Cube of Ice Burner (50)
+g_pCashItemManager:AddCashItemPrice( 221560, 2500 ) -- PC Gaming Center Special Price [Ice Statue Heater]
+g_pCashItemManager:AddCashItemPrice( 222310, 18000 ) -- Lv. 1 Fluorite Ore 1+1 Package
+g_pCashItemManager:AddCashItemPrice( 222320, 18000 ) -- Lv. 2 Fluorite Ore 1+1 Package
+g_pCashItemManager:AddCashItemPrice( 222330, 18000 ) -- Lv. 3 Fluorite Ore 1+1 Package
+g_pCashItemManager:AddCashItemPrice( 222340, 18000 ) -- Lv. 4 Fluorite Ore 1+1 Package
+g_pCashItemManager:AddCashItemPrice( 222350, 18000 ) -- Fluorite Ore LV. 1 10 + 10 Package
+g_pCashItemManager:AddCashItemPrice( 222360, 18000 ) -- Fluorite Ore LV. 2 10 + 10 Package
+g_pCashItemManager:AddCashItemPrice( 222370, 18000 ) -- Fluorite Ore LV. 3 10 + 10 Package
+g_pCashItemManager:AddCashItemPrice( 222380, 18000 ) -- Fluorite Ore LV. 4 10 + 10 Package
+g_pCashItemManager:AddCashItemPrice( 222390, 6000 ) -- Lv. 1 Blessed Restoration Scroll 1+1 Package
+g_pCashItemManager:AddCashItemPrice( 222400, 6000 ) -- Lv. 2 Blessed Restoration Scroll 1+1 Package
+g_pCashItemManager:AddCashItemPrice( 222410, 6000 ) -- Lv. 3 Blessed Restoration Scroll 1+1 Package
+g_pCashItemManager:AddCashItemPrice( 222420, 6000 ) -- Lv. 4 Blessed Restoration Scroll 1+1 Package
+g_pCashItemManager:AddCashItemPrice( 223170, 18000 ) -- Ice Statue Heater 10+9 Package
+g_pCashItemManager:AddCashItemPrice( 224380, 12000 ) -- Cobo Support Package
+g_pCashItemManager:AddCashItemPrice( 224390, 18000 ) -- Phoru Footprint (White) 1+1 Package
+g_pCashItemManager:AddCashItemPrice( 224400, 18000 ) -- Phoru Footprint (White) 5+5 Package
+g_pCashItemManager:AddCashItemPrice( 224410, 18000 ) -- Phoru Footprint (Purple) 1+1 Package
+g_pCashItemManager:AddCashItemPrice( 224420, 18000 ) -- Phoru Footprint (Purple) 5+5 Package
+g_pCashItemManager:AddCashItemPrice( 224430, 12000 ) -- Ice Statue Heater 10+6 Package
+g_pCashItemManager:AddCashItemPrice( 224440, 12000 ) -- World Cup Fever 1+1 Package
+g_pCashItemManager:AddCashItemPrice( 225160, 18000 ) -- High-Performance Nasod Megaphone 1+1 Package
+g_pCashItemManager:AddCashItemPrice( 225170, 18000 ) -- High-Performance Nasod Megaphone 10+10 Package
+g_pCashItemManager:AddCashItemPrice( 225180, 12000 ) -- Starters Package
+g_pCashItemManager:AddCashItemPrice( 225200, 6000 ) -- Avatar Alteration Ticket
+g_pCashItemManager:AddCashItemPrice( 226110, 18000 ) -- Cobo Special Enhancement Package Lv.1
+g_pCashItemManager:AddCashItemPrice( 226120, 18000 ) -- Cobo Special Enhancement Package Lv.2
+g_pCashItemManager:AddCashItemPrice( 226130, 18000 ) -- Cobo Special Enhancement Package Lv.3
+g_pCashItemManager:AddCashItemPrice( 226140, 18000 ) -- Cobo Special Enhancement Package Lv.4
+g_pCashItemManager:AddCashItemPrice( 230350, 18000 ) -- Enhancement Package Lv.5
+g_pCashItemManager:AddCashItemPrice( 237190, 12000 ) -- Ice Sculpture Heater (Chung, Sun Master)
+g_pCashItemManager:AddCashItemPrice( 248390, 18000 ) -- Pet Nickname Change Card
+g_pCashItemManager:AddCashItemPrice( 259300, 12000 ) -- Ice Sculpture Heater (Chung, Imperial Sentinel)
+g_pCashItemManager:AddCashItemPrice( 272424, 18000 ) -- Fetch Aura (Permanent) Cube
+g_pCashItemManager:AddCashItemPrice( 273060, 18000 ) -- Pet Toy (30 days) Cube
+g_pCashItemManager:AddCashItemPrice( 500080, 18000 ) -- Life Crystal (Ancient Phoru) Special Package
+g_pCashItemManager:AddCashItemPrice( 500090, 18000 ) -- Life Crystal (Tree Knight) Special Package
+g_pCashItemManager:AddCashItemPrice( 500120, 18000 ) -- Life Crystal (Hallow Witch) Special Package
+g_pCashItemManager:AddCashItemPrice( 500130, 18000 ) -- Hallow Witch Special Package
+g_pCashItemManager:AddCashItemPrice( 500190, 18000 ) -- Life Crystal (Mystic) Special Package
+g_pCashItemManager:AddCashItemPrice( 500200, 18000 ) -- Life Crystal Package (Mystic Special Edition – Black)
+g_pCashItemManager:AddCashItemPrice( 500210, 18000 ) -- Life Crystal (Mystic Special Edition-White) Package
+g_pCashItemManager:AddCashItemPrice( 500290, 18000 ) -- Life Crystal (Fire Hatchling) Package
+g_pCashItemManager:AddCashItemPrice( 500560, 18000 ) -- Life Crystal (Uniel) Package
+g_pCashItemManager:AddCashItemPrice( 500570, 18000 ) -- Life Crystal (Uniring) Package
+g_pCashItemManager:AddCashItemPrice( 500580, 8000 ) -- Pet Toy
+g_pCashItemManager:AddCashItemPrice( 550002, 48000 ) -- Moby Chariot RT Package
+g_pCashItemManager:AddCashItemPrice( 550012, 42000 ) -- Cockatigle Package
+g_pCashItemManager:AddCashItemPrice( 550022, 56000 ) -- Ancient Phoru Package
+g_pCashItemManager:AddCashItemPrice( 1002120, 6000 ) -- (Old)Petrifying Shirts for Apprentice Warriors
+g_pCashItemManager:AddCashItemPrice( 1002210, 6000 ) -- (Old)Petrifying Pants for Apprentice Warriors
+g_pCashItemManager:AddCashItemPrice( 1002300, 3000 ) -- (Old)Petrifying Gloves for Apprentice Warriors
+g_pCashItemManager:AddCashItemPrice( 1002395, 3000 ) -- (Old)Petrifying Shoes for Apprentice Warriors
+g_pCashItemManager:AddCashItemPrice( 1004125, 6000 ) -- (Old)Petrifying Treasure Shirts
+g_pCashItemManager:AddCashItemPrice( 1004220, 6000 ) -- (Old)Petrifying Treasure Pants
+g_pCashItemManager:AddCashItemPrice( 1004315, 3000 ) -- (Old)Petrifying Treasure Gloves
+g_pCashItemManager:AddCashItemPrice( 1004415, 3000 ) -- (Old)Petrifying Treasure Shoes
+g_pCashItemManager:AddCashItemPrice( 1006120, 6000 ) -- (Old)Petrifying Cotton Shirts
+g_pCashItemManager:AddCashItemPrice( 1006210, 6000 ) -- (Old)Petrifying Cotton Pants
+g_pCashItemManager:AddCashItemPrice( 1006300, 3000 ) -- (Old)Petrifying Cotton Gloves
+g_pCashItemManager:AddCashItemPrice( 1006395, 3000 ) -- (Old)Petrifying Cotton Shoes
+g_pCashItemManager:AddCashItemPrice( 1008125, 6000 ) -- (Old)Petrifying Leather Shirts
+g_pCashItemManager:AddCashItemPrice( 1008220, 6000 ) -- (Old)Petrifying Leather Pants
+g_pCashItemManager:AddCashItemPrice( 1008315, 3000 ) -- (Old)Petrifying Leather Gloves
+g_pCashItemManager:AddCashItemPrice( 1008415, 3000 ) -- (Old)Petrifying Leather Shoes
+g_pCashItemManager:AddCashItemPrice( 1010120, 6000 ) -- (Old)Petrifying Scout Leather Shirts
+g_pCashItemManager:AddCashItemPrice( 1010210, 6000 ) -- (Old)Petrifying Scout Leather Pants
+g_pCashItemManager:AddCashItemPrice( 1010300, 3000 ) -- (Old)Petrifying Scout Leather Gloves
+g_pCashItemManager:AddCashItemPrice( 1010395, 3000 ) -- (Old)Petrifying Scout Leather Shoes
+g_pCashItemManager:AddCashItemPrice( 1012125, 6000 ) -- (Old)Petrifying Suede Shirts
+g_pCashItemManager:AddCashItemPrice( 1012220, 6000 ) -- (Old)Petrifying Suede Pants
+g_pCashItemManager:AddCashItemPrice( 1012315, 3000 ) -- (Old)Petrifying Suede Gloves
+g_pCashItemManager:AddCashItemPrice( 1012415, 3000 ) -- (Old)Petrifying Suede Shoes
+g_pCashItemManager:AddCashItemPrice( 1014120, 6000 ) -- (Old)Petrifying Padded Suede Shirts
+g_pCashItemManager:AddCashItemPrice( 1014210, 6000 ) -- (Old)Petrifying Padded Suede Pants
+g_pCashItemManager:AddCashItemPrice( 1014300, 3000 ) -- (Old)Petrifying Padded Suede Gloves
+g_pCashItemManager:AddCashItemPrice( 1014395, 3000 ) -- (Old)Petrifying Padded Suede Shoes
+g_pCashItemManager:AddCashItemPrice( 1016125, 6000 ) -- (Old)Petrifying Layered Leather Shirts
+g_pCashItemManager:AddCashItemPrice( 1016220, 6000 ) -- (Old)Petrifying Layered Leather Pants
+g_pCashItemManager:AddCashItemPrice( 1016315, 3000 ) -- (Old)Petrifying Layered Leather Gloves
+g_pCashItemManager:AddCashItemPrice( 1016415, 3000 ) -- (Old)Petrifying Layered Leather Shoes
+g_pCashItemManager:AddCashItemPrice( 1018120, 6000 ) -- (Old)Petrifying Cloth Armor
+g_pCashItemManager:AddCashItemPrice( 1018210, 6000 ) -- (Old)Petrifying Cloth Leggings
+g_pCashItemManager:AddCashItemPrice( 1018300, 3000 ) -- (Old)Petrifying Cloth Gloves
+g_pCashItemManager:AddCashItemPrice( 1018395, 3000 ) -- (Old)Petrifying Cloth Sneakers
+g_pCashItemManager:AddCashItemPrice( 1020125, 6000 ) -- (Old)Petrifying Leather Armor
+g_pCashItemManager:AddCashItemPrice( 1020220, 6000 ) -- (Old)Petrifying Leather Leggings
+g_pCashItemManager:AddCashItemPrice( 1020315, 3000 ) -- (Old)Petrifying Leather Gloves
+g_pCashItemManager:AddCashItemPrice( 1020415, 3000 ) -- (Old)Petrifying Leather Sneakers
+g_pCashItemManager:AddCashItemPrice( 1022120, 6000 ) -- (Old)Petrifying Hard Leather Armor
+g_pCashItemManager:AddCashItemPrice( 1022210, 6000 ) -- (Old)Petrifying Hard Leather Leggings
+g_pCashItemManager:AddCashItemPrice( 1022300, 3000 ) -- (Old)Petrifying Hard Leather Gloves
+g_pCashItemManager:AddCashItemPrice( 1022395, 3000 ) -- (Old)Petrifying Hard Leather Sneakers
+g_pCashItemManager:AddCashItemPrice( 1024125, 6000 ) -- (Old)Petrifying High-grade Suede Armor
+g_pCashItemManager:AddCashItemPrice( 1024220, 6000 ) -- (Old)Petrifying High-grade Suede Leggings
+g_pCashItemManager:AddCashItemPrice( 1024315, 3000 ) -- (Old)Petrifying High-grade Suede Gloves
+g_pCashItemManager:AddCashItemPrice( 1024415, 3000 ) -- (Old)Petrifying High-grade Suede Sneakers
+g_pCashItemManager:AddCashItemPrice( 1026120, 5000 ) -- (Old)Petrifying Ring Armor
+g_pCashItemManager:AddCashItemPrice( 1026210, 5000 ) -- (Old)Petrifying Ring Leggings
+g_pCashItemManager:AddCashItemPrice( 1026300, 5000 ) -- (Old)Petrifying Ring Gloves
+g_pCashItemManager:AddCashItemPrice( 1026395, 5000 ) -- (Old)Petrifying Ring Sneakers
+g_pCashItemManager:AddCashItemPrice( 1028125, 6000 ) -- (Old)Petrifying Brave Armor
+g_pCashItemManager:AddCashItemPrice( 1028220, 6000 ) -- (Old)Petrifying Brave Leggings
+g_pCashItemManager:AddCashItemPrice( 1028315, 3000 ) -- (Old)Petrifying Brave Gloves
+g_pCashItemManager:AddCashItemPrice( 1028415, 3000 ) -- (Old)Petrifying Brave Sneakers
+g_pCashItemManager:AddCashItemPrice( 1030120, 6000 ) -- (Old)Petrifying Shining Armor
+g_pCashItemManager:AddCashItemPrice( 1030210, 6000 ) -- (Old)Petrifying Shining Leggings
+g_pCashItemManager:AddCashItemPrice( 1030300, 3000 ) -- (Old)Petrifying Shining Gloves
+g_pCashItemManager:AddCashItemPrice( 1030395, 3000 ) -- (Old)Petrifying Shining Sneakers
+g_pCashItemManager:AddCashItemPrice( 1032125, 6000 ) -- (Old)Petrifying Chain Armor
+g_pCashItemManager:AddCashItemPrice( 1032220, 6000 ) -- (Old)Petrifying Chain Leggings
+g_pCashItemManager:AddCashItemPrice( 1032315, 3000 ) -- (Old)Petrifying Chain Gauntlets
+g_pCashItemManager:AddCashItemPrice( 1032415, 3000 ) -- (Old)Petrifying Chain Sneakers
+g_pCashItemManager:AddCashItemPrice( 1034120, 6000 ) -- (Old)Petrifying Scaled Armor
+g_pCashItemManager:AddCashItemPrice( 1034210, 6000 ) -- (Old)Petrifying Scaled Leggings
+g_pCashItemManager:AddCashItemPrice( 1034300, 3000 ) -- (Old)Petrifying Scaled Gauntlets
+g_pCashItemManager:AddCashItemPrice( 1034395, 3000 ) -- (Old)Petrifying Scaled Sneakers
+g_pCashItemManager:AddCashItemPrice( 1036125, 6000 ) -- (Old)Petrifying Banded Armor
+g_pCashItemManager:AddCashItemPrice( 1036220, 6000 ) -- (Old)Petrifying Banded Leggings
+g_pCashItemManager:AddCashItemPrice( 1036315, 3000 ) -- (Old)Petrifying Banded Gauntlets
+g_pCashItemManager:AddCashItemPrice( 1036415, 3000 ) -- (Old)Petrifying Banded Sneakers
+g_pCashItemManager:AddCashItemPrice( 1038120, 6000 ) -- (Old)Petrifying Feather Plate Armor
+g_pCashItemManager:AddCashItemPrice( 1038210, 6000 ) -- (Old)Petrifying Feather Plate Leggings
+g_pCashItemManager:AddCashItemPrice( 1038300, 3000 ) -- (Old)Petrifying Feather Plate Gauntlets
+g_pCashItemManager:AddCashItemPrice( 1038395, 3000 ) -- (Old)Petrifying Feather Plate Sneakers
+g_pCashItemManager:AddCashItemPrice( 1040125, 6000 ) -- (Old)Petrifying Tin Scaled Armor
+g_pCashItemManager:AddCashItemPrice( 1040220, 6000 ) -- (Old)Petrifying Tin Scaled Leggings
+g_pCashItemManager:AddCashItemPrice( 1040315, 3000 ) -- (Old)Petrifying Tin Scaled Gauntlets
+g_pCashItemManager:AddCashItemPrice( 1040415, 3000 ) -- (Old)Petrifying Tin Scaled Sneakers
+g_pCashItemManager:AddCashItemPrice( 1042120, 6000 ) -- (Old)Petrifying Jeweled Plate Armor
+g_pCashItemManager:AddCashItemPrice( 1042210, 6000 ) -- (Old)Petrifying Jeweled Plate Leggings
+g_pCashItemManager:AddCashItemPrice( 1042300, 3000 ) -- (Old)Petrifying Jeweled Plate Gauntlets
+g_pCashItemManager:AddCashItemPrice( 1042395, 3000 ) -- (Old)Petrifying Jeweled Plate Sneakers
+g_pCashItemManager:AddCashItemPrice( 1044125, 6000 ) -- (Old)Petrifying Phantom Iron Armor
+g_pCashItemManager:AddCashItemPrice( 1044220, 6000 ) -- (Old)Petrifying Phantom Iron Leggings
+g_pCashItemManager:AddCashItemPrice( 1044315, 3000 ) -- (Old)Petrifying Phantom Iron Gauntlets
+g_pCashItemManager:AddCashItemPrice( 1044415, 3000 ) -- (Old)Petrifying Phantom Iron Sneakers
+g_pCashItemManager:AddCashItemPrice( 1046120, 6000 ) -- (Old)Petrifying Battle Plate Pauldron
+g_pCashItemManager:AddCashItemPrice( 1046210, 6000 ) -- (Old)Petrifying Battle Plate Sleeve
+g_pCashItemManager:AddCashItemPrice( 1046300, 3000 ) -- (Old)Petrifying Battle Plate Guantlet
+g_pCashItemManager:AddCashItemPrice( 1046395, 3000 ) -- (Old)Petrifying Battle Plate Sneakers
+g_pCashItemManager:AddCashItemPrice( 1138120, 6000 ) -- (Old)Petrifying Rack Armor
+g_pCashItemManager:AddCashItemPrice( 1138210, 6000 ) -- (Old)Petrifying Rack Gaitors
+g_pCashItemManager:AddCashItemPrice( 1138300, 3000 ) -- (Old)Petrifying Rack Gauntlet
+g_pCashItemManager:AddCashItemPrice( 1138395, 3000 ) -- (Old)Petrifying Rack Sneakers
+g_pCashItemManager:AddCashItemPrice( 1140125, 6000 ) -- (Old)Petrifying Shining Rack Armor
+g_pCashItemManager:AddCashItemPrice( 1140220, 6000 ) -- (Old)Petrifying Shining Rack Gaitors
+g_pCashItemManager:AddCashItemPrice( 1140315, 3000 ) -- (Old)Petrifying Shining Rack Gauntlet
+g_pCashItemManager:AddCashItemPrice( 1140415, 3000 ) -- (Old)Petrifying Shining Rack Sneakers
+g_pCashItemManager:AddCashItemPrice( 1142120, 6000 ) -- (Old)Petrifying Lamellar Armor
+g_pCashItemManager:AddCashItemPrice( 1142210, 6000 ) -- (Old)Petrifying Lamellar Gaitors
+g_pCashItemManager:AddCashItemPrice( 1142300, 3000 ) -- (Old)Petrifying Lamellar Gauntlets
+g_pCashItemManager:AddCashItemPrice( 1142395, 3000 ) -- (Old)Petrifying Lamellar Sneakers
+g_pCashItemManager:AddCashItemPrice( 1144125, 6000 ) -- (Old)Petrifying Tough Lamellar Armor
+g_pCashItemManager:AddCashItemPrice( 1144220, 6000 ) -- (Old)Petrifying Tough Lamellar Gaitors
+g_pCashItemManager:AddCashItemPrice( 1144315, 3000 ) -- (Old)Petrifying Tough Lamellar Gauntlets
+g_pCashItemManager:AddCashItemPrice( 1144415, 3000 ) -- (Old)Petrifying Tough Lamellar Sneakers
+g_pCashItemManager:AddCashItemPrice( 1146120, 6000 ) -- (Old)Petrifying Laminated Pauldron
+g_pCashItemManager:AddCashItemPrice( 1146210, 6000 ) -- (Old)Petrifying Laminated Sleeve
+g_pCashItemManager:AddCashItemPrice( 1146300, 3000 ) -- (Old)Petrifying Laminated Gauntlets
+g_pCashItemManager:AddCashItemPrice( 1146395, 3000 ) -- (Old)Petrifying Laminated Sneakers
+g_pCashItemManager:AddCashItemPrice( 1148125, 6000 ) -- (Old)Petrifying Hard Brigandine Pauldron
+g_pCashItemManager:AddCashItemPrice( 1148220, 6000 ) -- (Old)Petrifying Hard Brigandine Sleeve
+g_pCashItemManager:AddCashItemPrice( 1148315, 3000 ) -- (Old)Petrifying Hard Brigandine Gauntlet
+g_pCashItemManager:AddCashItemPrice( 1148415, 3000 ) -- (Old)Petrifying Hard Brigandine Sneakers
+g_pCashItemManager:AddCashItemPrice( 1150120, 6000 ) -- (Old)Petrifying Velder Apprentice Knight Armor
+g_pCashItemManager:AddCashItemPrice( 1150210, 6000 ) -- (Old)Petrifying Velder Apprentice Knight Gaiters
+g_pCashItemManager:AddCashItemPrice( 1150300, 3000 ) -- (Old)Petrifying Velder Apprentice Knight Gloves
+g_pCashItemManager:AddCashItemPrice( 1150395, 3000 ) -- (Old)Petrifying Velder Apprentice Knight Shoes
+g_pCashItemManager:AddCashItemPrice( 1152125, 6000 ) -- (Old)Petrifying Senace Squire Top Piece
+g_pCashItemManager:AddCashItemPrice( 1152220, 6000 ) -- (Old)Petrifying Senace Squire Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 1152315, 3000 ) -- (Old)Petrifying Senace Squire Gloves
+g_pCashItemManager:AddCashItemPrice( 1152415, 3000 ) -- (Old)Petrifying Senace Squire Shoes
+g_pCashItemManager:AddCashItemPrice( 1156120, 5000 ) -- (Old)Petrifying Premium Penzas Top Piece
+g_pCashItemManager:AddCashItemPrice( 1156210, 5000 ) -- (Old)Petrifying Premium Penzas Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 1156300, 5000 ) -- (Old)Petrifying Premium Penzas Combat Gloves
+g_pCashItemManager:AddCashItemPrice( 1156395, 5000 ) -- (Old)Petrifying Premium Penzas Steel Boots
+g_pCashItemManager:AddCashItemPrice( 1160125, 6000 ) -- (Old)Petrifying Knights of Hamel Top Piece
+g_pCashItemManager:AddCashItemPrice( 1160220, 6000 ) -- (Old)Petrifying Knights of Hamel Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 1160315, 3000 ) -- (Old)Petrifying Knights of Hamel Gloves
+g_pCashItemManager:AddCashItemPrice( 1160415, 3000 ) -- (Old)Petrifying Knights of Hamel Boots
+g_pCashItemManager:AddCashItemPrice( 1338120, 6000 ) -- (Old)Petrifying Aqueton Armor
+g_pCashItemManager:AddCashItemPrice( 1338210, 6000 ) -- (Old)Petrifying Aqueton Gaitors
+g_pCashItemManager:AddCashItemPrice( 1338300, 3000 ) -- (Old)Petrifying Aqueton Gauntlets
+g_pCashItemManager:AddCashItemPrice( 1338395, 3000 ) -- (Old)Petrifying Aqueton Sneakers
+g_pCashItemManager:AddCashItemPrice( 1340125, 6000 ) -- (Old)Petrifying Polish Aqueton Armor
+g_pCashItemManager:AddCashItemPrice( 1340220, 6000 ) -- (Old)Petrifying Polish Aqueton Gaitors
+g_pCashItemManager:AddCashItemPrice( 1340315, 3000 ) -- (Old)Petrifying Polish Aqueton Gauntlets
+g_pCashItemManager:AddCashItemPrice( 1340415, 3000 ) -- (Old)Petrifying Polish Aqueton Sneakers
+g_pCashItemManager:AddCashItemPrice( 1342120, 6000 ) -- (Old)Petrifying Ziphone Armor
+g_pCashItemManager:AddCashItemPrice( 1342210, 6000 ) -- (Old)Petrifying Ziphone Gaitors
+g_pCashItemManager:AddCashItemPrice( 1342300, 3000 ) -- (Old)Petrifying Ziphone Gauntlets
+g_pCashItemManager:AddCashItemPrice( 1342395, 3000 ) -- (Old)Petrifying Ziphone Sneakers
+g_pCashItemManager:AddCashItemPrice( 1344125, 6000 ) -- (Old)Petrifying Heavy Ziphone Armor
+g_pCashItemManager:AddCashItemPrice( 1344220, 6000 ) -- (Old)Petrifying Heavy Ziphone Gaitors
+g_pCashItemManager:AddCashItemPrice( 1344315, 3000 ) -- (Old)Petrifying Heavy Ziphone Gauntlets
+g_pCashItemManager:AddCashItemPrice( 1344415, 3000 ) -- (Old)Petrifying Heavy Ziphone Sneakers
+g_pCashItemManager:AddCashItemPrice( 1346120, 6000 ) -- (Old)Petrifying Obero Pauldron
+g_pCashItemManager:AddCashItemPrice( 1346210, 6000 ) -- (Old)Petrifying Ober Sleeve
+g_pCashItemManager:AddCashItemPrice( 1346300, 3000 ) -- (Old)Petrifying Ober Gauntlets
+g_pCashItemManager:AddCashItemPrice( 1346395, 3000 ) -- (Old)Petrifying Ober Sneakers
+g_pCashItemManager:AddCashItemPrice( 1348125, 6000 ) -- (Old)Petrifying Glossy Obero Pauldron
+g_pCashItemManager:AddCashItemPrice( 1348220, 6000 ) -- (Old)Petrifying Glossy Ober Sleeve
+g_pCashItemManager:AddCashItemPrice( 1348315, 3000 ) -- (Old)Petrifying Glossy Ober Gauntlets
+g_pCashItemManager:AddCashItemPrice( 1348415, 3000 ) -- (Old)Petrifying Glossy Ober Sneakers
+g_pCashItemManager:AddCashItemPrice( 1350120, 6000 ) -- (Old)Petrifying Rugged Vagabond Magic Armor
+g_pCashItemManager:AddCashItemPrice( 1350210, 6000 ) -- (Old)Petrifying Rugged Vagabond Gaiters
+g_pCashItemManager:AddCashItemPrice( 1350300, 3000 ) -- (Old)Petrifying Rugged Vagabond Gloves
+g_pCashItemManager:AddCashItemPrice( 1350395, 3000 ) -- (Old)Petrifying Rugged Vagabond Shoes
+g_pCashItemManager:AddCashItemPrice( 1352125, 6000 ) -- (Old)Petrifying Hamel Handmade Combat Top Piece
+g_pCashItemManager:AddCashItemPrice( 1352220, 6000 ) -- (Old)Petrifying Hamel Handmade Combat Trousers
+g_pCashItemManager:AddCashItemPrice( 1352315, 3000 ) -- (Old)Petrifying Hamel Handmade Combat Gloves
+g_pCashItemManager:AddCashItemPrice( 1352415, 3000 ) -- (Old)Petrifying Hamel Handmade Combat Shoes
+g_pCashItemManager:AddCashItemPrice( 1356120, 6000 ) -- (Old)Petrifying Mana Stone Combat Uniform
+g_pCashItemManager:AddCashItemPrice( 1356210, 6000 ) -- (Old)Petrifying Mana Stone Trousers
+g_pCashItemManager:AddCashItemPrice( 1356300, 3000 ) -- (Old)Petrifying Mana Stone Combat Gloves
+g_pCashItemManager:AddCashItemPrice( 1356395, 3000 ) -- (Old)Petrifying Mana Stone Shoes
+g_pCashItemManager:AddCashItemPrice( 1360125, 5000 ) -- (Old)Petrifying Premium Hamel Top Piece
+g_pCashItemManager:AddCashItemPrice( 1360220, 5000 ) -- (Old)Petrifying Premium Hamel Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 1360315, 5000 ) -- (Old)Petrifying Premium Hamel Gloves
+g_pCashItemManager:AddCashItemPrice( 1360415, 5000 ) -- (Old)Petrifying Premium Hamel Shoes
+g_pCashItemManager:AddCashItemPrice( 1540125, 6000 ) -- (Old)Petrifying Tin Armor
+g_pCashItemManager:AddCashItemPrice( 1540220, 6000 ) -- (Old)Petrifying Tin Leggings
+g_pCashItemManager:AddCashItemPrice( 1540315, 3000 ) -- (Old)Petrifying Tin Gauntlets
+g_pCashItemManager:AddCashItemPrice( 1540415, 3000 ) -- (Old)Petrifying Tin Armor Shoes
+g_pCashItemManager:AddCashItemPrice( 1544125, 6000 ) -- (Old)Petrifying Iron Armor
+g_pCashItemManager:AddCashItemPrice( 1544220, 6000 ) -- (Old)Petrifying Iron Leggings
+g_pCashItemManager:AddCashItemPrice( 1544315, 3000 ) -- (Old)Petrifying Iron Gauntlets
+g_pCashItemManager:AddCashItemPrice( 1544415, 3000 ) -- (Old)Petrifying Iron Shoes
+g_pCashItemManager:AddCashItemPrice( 1548125, 6000 ) -- (Old)Petrifying Lightweight Iron Armor
+g_pCashItemManager:AddCashItemPrice( 1548220, 6000 ) -- (Old)Petrifying Lightweight Iron Leggings
+g_pCashItemManager:AddCashItemPrice( 1548315, 3000 ) -- (Old)Petrifying Lightweight Iron Gloves
+g_pCashItemManager:AddCashItemPrice( 1548415, 3000 ) -- (Old)Petrifying Lightweight Iron Shoes
+g_pCashItemManager:AddCashItemPrice( 1552125, 6000 ) -- (Old)Petrifying Wanderer’s Top Piece
+g_pCashItemManager:AddCashItemPrice( 1552220, 6000 ) -- (Old)Petrifying Wanderer’s Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 1552315, 3000 ) -- (Old)Petrifying Wanderer’s Gloves
+g_pCashItemManager:AddCashItemPrice( 1552415, 3000 ) -- (Old)Petrifying Wanderer’s Shoes
+g_pCashItemManager:AddCashItemPrice( 1556120, 6000 ) -- (Old)Petrifying Gravel Top Piece
+g_pCashItemManager:AddCashItemPrice( 1556210, 6000 ) -- (Old)Petrifying Gravel Leggings
+g_pCashItemManager:AddCashItemPrice( 1556300, 3000 ) -- (Old)Petrifying Gravel Gloves
+g_pCashItemManager:AddCashItemPrice( 1556395, 3000 ) -- (Old)Petrifying Gravel Shoes
+g_pCashItemManager:AddCashItemPrice( 1560125, 6000 ) -- (Old)Petrifying Penzas Battle Top Piece
+g_pCashItemManager:AddCashItemPrice( 1560220, 6000 ) -- (Old)Petrifying Penzas Battle Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 1560315, 3000 ) -- (Old)Petrifying Penzas Battle Gloves
+g_pCashItemManager:AddCashItemPrice( 1560415, 3000 ) -- (Old)Petrifying Penzas Battle Shoes
+g_pCashItemManager:AddCashItemPrice( 1940125, 6000 ) -- (Old)Petrifying Brutal Butcher Armor
+g_pCashItemManager:AddCashItemPrice( 1940220, 6000 ) -- (Old)Petrifying Brutal Butcher Gaiters
+g_pCashItemManager:AddCashItemPrice( 1940315, 3000 ) -- (Old)Petrifying Brutal Butcher Gauntlets
+g_pCashItemManager:AddCashItemPrice( 1940415, 3000 ) -- (Old)Petrifying Brutal Butcher Shoes
+g_pCashItemManager:AddCashItemPrice( 1944125, 6000 ) -- (Old)Petrifying Tough Scaled Armor
+g_pCashItemManager:AddCashItemPrice( 1944220, 6000 ) -- (Old)Petrifying Tough Scaled Gaiters
+g_pCashItemManager:AddCashItemPrice( 1944315, 3000 ) -- (Old)Petrifying Tough Scaled Gauntlets
+g_pCashItemManager:AddCashItemPrice( 1944415, 3000 ) -- (Old)Petrifying Tough Scaled Shoes
+g_pCashItemManager:AddCashItemPrice( 1948125, 6000 ) -- (Old)Petrifying Serpent Scale Pauldron
+g_pCashItemManager:AddCashItemPrice( 1948220, 6000 ) -- (Old)Petrifying Serpent Scale Sleeve
+g_pCashItemManager:AddCashItemPrice( 1948315, 3000 ) -- (Old)Petrifying Serpent Scale Gauntlets
+g_pCashItemManager:AddCashItemPrice( 1948415, 3000 ) -- (Old)Petrifying Serpent Scale Shoes
+g_pCashItemManager:AddCashItemPrice( 1952125, 6000 ) -- (Old)Petrifying Titanium Pauldron
+g_pCashItemManager:AddCashItemPrice( 1952220, 6000 ) -- (Old)Petrifying Titanium Sleeve
+g_pCashItemManager:AddCashItemPrice( 1952315, 3000 ) -- (Old)Petrifying Titanium Gauntlets
+g_pCashItemManager:AddCashItemPrice( 1952415, 3000 ) -- (Old)Petrifying Titanium Shoes
+g_pCashItemManager:AddCashItemPrice( 1956125, 6000 ) -- (Old)Petrifying Hard Shell Pauldron
+g_pCashItemManager:AddCashItemPrice( 1956220, 6000 ) -- (Old)Petrifying Hard Shell Sleeve
+g_pCashItemManager:AddCashItemPrice( 1956315, 3000 ) -- (Old)Petrifying Hard Shell Gaunlet
+g_pCashItemManager:AddCashItemPrice( 1956415, 3000 ) -- (Old)Petrifying Hard Shell Shoes
+g_pCashItemManager:AddCashItemPrice( 1960125, 6000 ) -- (Old)Petrifying Extremely Solid Pauldron
+g_pCashItemManager:AddCashItemPrice( 1960220, 6000 ) -- (Old)Petrifying Extremely Solid Sleeve
+g_pCashItemManager:AddCashItemPrice( 1960315, 3000 ) -- (Old)Petrifying Extremely Solid Gaunlet
+g_pCashItemManager:AddCashItemPrice( 1960415, 3000 ) -- (Old)Petrifying Extremely Solid Shoes
+g_pCashItemManager:AddCashItemPrice( 2002120, 6000 ) -- (Old)Petrifying Apprentice Magician's Shirt
+g_pCashItemManager:AddCashItemPrice( 2002210, 6000 ) -- (Old)Petrifying Apprentice Magician's Skirt
+g_pCashItemManager:AddCashItemPrice( 2002300, 3000 ) -- (Old)Petrifying Apprentice Magician's Bands
+g_pCashItemManager:AddCashItemPrice( 2002395, 3000 ) -- (Old)Petrifying Apprentice Magician's Shoes
+g_pCashItemManager:AddCashItemPrice( 2004125, 6000 ) -- (Old)Petrifying Linen Shirts
+g_pCashItemManager:AddCashItemPrice( 2004220, 6000 ) -- (Old)Petrifying Linen Skirt
+g_pCashItemManager:AddCashItemPrice( 2004315, 3000 ) -- (Old)Petrifying Linen Band
+g_pCashItemManager:AddCashItemPrice( 2004415, 3000 ) -- (Old)Petrifying Linen Shoes
+g_pCashItemManager:AddCashItemPrice( 2006120, 6000 ) -- (Old)Petrifying Ripple Shirts
+g_pCashItemManager:AddCashItemPrice( 2006210, 6000 ) -- (Old)Petrifying Ripple Skirt
+g_pCashItemManager:AddCashItemPrice( 2006300, 3000 ) -- (Old)Petrifying Ripple Band
+g_pCashItemManager:AddCashItemPrice( 2006395, 3000 ) -- (Old)Petrifying Ripple Shoes
+g_pCashItemManager:AddCashItemPrice( 2008125, 6000 ) -- (Old)Petrifying Hemp Shirts
+g_pCashItemManager:AddCashItemPrice( 2008220, 6000 ) -- (Old)Petrifying Hemp Skirt
+g_pCashItemManager:AddCashItemPrice( 2008315, 3000 ) -- (Old)Petrifying Hemp Band
+g_pCashItemManager:AddCashItemPrice( 2008415, 3000 ) -- (Old)Petrifying Hemp Shoes
+g_pCashItemManager:AddCashItemPrice( 2010120, 6000 ) -- (Old)Petrifying Magician's Cotton Shirt
+g_pCashItemManager:AddCashItemPrice( 2010210, 6000 ) -- (Old)Petrifying Magician's Cotton Skirt
+g_pCashItemManager:AddCashItemPrice( 2010300, 3000 ) -- (Old)Petrifying Magician's Cotton Bands
+g_pCashItemManager:AddCashItemPrice( 2010395, 3000 ) -- (Old)Petrifying Magician's Cotton Shoes
+g_pCashItemManager:AddCashItemPrice( 2012125, 6000 ) -- (Old)Petrifying Silk Shirts
+g_pCashItemManager:AddCashItemPrice( 2012220, 6000 ) -- (Old)Petrifying Silk Skirt
+g_pCashItemManager:AddCashItemPrice( 2012315, 3000 ) -- (Old)Petrifying Silk Band
+g_pCashItemManager:AddCashItemPrice( 2012415, 3000 ) -- (Old)Petrifying Silk Shoes
+g_pCashItemManager:AddCashItemPrice( 2014120, 6000 ) -- (Old)Petrifying Quilted Cloth Shirts
+g_pCashItemManager:AddCashItemPrice( 2014210, 6000 ) -- (Old)Petrifying Quilted Cloth Skirt
+g_pCashItemManager:AddCashItemPrice( 2014300, 3000 ) -- (Old)Petrifying Quilted Cloth Band
+g_pCashItemManager:AddCashItemPrice( 2014395, 3000 ) -- (Old)Petrifying Quilted Cloth Shoes
+g_pCashItemManager:AddCashItemPrice( 2016125, 6000 ) -- (Old)Petrifying Silk Ivy Shirts
+g_pCashItemManager:AddCashItemPrice( 2016220, 6000 ) -- (Old)Petrifying Silk Ivy Skirt
+g_pCashItemManager:AddCashItemPrice( 2016315, 3000 ) -- (Old)Petrifying Silk Ivy Band
+g_pCashItemManager:AddCashItemPrice( 2016415, 3000 ) -- (Old)Petrifying Silk Ivy Shoes
+g_pCashItemManager:AddCashItemPrice( 2018120, 6000 ) -- (Old)Petrifying Cotton Robe
+g_pCashItemManager:AddCashItemPrice( 2018210, 6000 ) -- (Old)Petrifying Cotton Skirt
+g_pCashItemManager:AddCashItemPrice( 2018300, 3000 ) -- (Old)Petrifying Cotton Gloves
+g_pCashItemManager:AddCashItemPrice( 2018395, 3000 ) -- (Old)Petrifying Cotton Boots
+g_pCashItemManager:AddCashItemPrice( 2020125, 6000 ) -- (Old)Petrifying Matelasse Robe
+g_pCashItemManager:AddCashItemPrice( 2020220, 6000 ) -- (Old)Petrifying Matelasse Skirt
+g_pCashItemManager:AddCashItemPrice( 2020315, 3000 ) -- (Old)Petrifying Matelasse Gloves
+g_pCashItemManager:AddCashItemPrice( 2020415, 3000 ) -- (Old)Petrifying Matelasse Boots
+g_pCashItemManager:AddCashItemPrice( 2022120, 6000 ) -- (Old)Petrifying Rainbow Silk Robe
+g_pCashItemManager:AddCashItemPrice( 2022210, 6000 ) -- (Old)Petrifying Rainbow Silk Skirt
+g_pCashItemManager:AddCashItemPrice( 2022300, 3000 ) -- (Old)Petrifying Rainbow Silk Gloves
+g_pCashItemManager:AddCashItemPrice( 2022395, 3000 ) -- (Old)Petrifying Rainbow Silk Boots
+g_pCashItemManager:AddCashItemPrice( 2024125, 6000 ) -- (Old)Petrifying Saint's Robe
+g_pCashItemManager:AddCashItemPrice( 2024220, 6000 ) -- (Old)Petrifying Saint's Skirt
+g_pCashItemManager:AddCashItemPrice( 2024315, 3000 ) -- (Old)Petrifying Saint's Gloves
+g_pCashItemManager:AddCashItemPrice( 2024415, 3000 ) -- (Old)Petrifying Saint's Boots
+g_pCashItemManager:AddCashItemPrice( 2026120, 6000 ) -- (Old)Petrifying Moon Chiffon Robe
+g_pCashItemManager:AddCashItemPrice( 2026210, 6000 ) -- (Old)Petrifying Moon Chiffon Skirt
+g_pCashItemManager:AddCashItemPrice( 2026300, 3000 ) -- (Old)Petrifying Moon Chiffon Gloves
+g_pCashItemManager:AddCashItemPrice( 2026395, 3000 ) -- (Old)Petrifying Moon Chiffon Boots
+g_pCashItemManager:AddCashItemPrice( 2028125, 6000 ) -- (Old)Petrifying Velvet Robe
+g_pCashItemManager:AddCashItemPrice( 2028220, 6000 ) -- (Old)Petrifying Velvet Skirt
+g_pCashItemManager:AddCashItemPrice( 2028315, 3000 ) -- (Old)Petrifying Velvet Gloves
+g_pCashItemManager:AddCashItemPrice( 2028415, 3000 ) -- (Old)Petrifying Velvet Boots
+g_pCashItemManager:AddCashItemPrice( 2030120, 6000 ) -- (Old)Petrifying Stiff Robe
+g_pCashItemManager:AddCashItemPrice( 2030210, 6000 ) -- (Old)Petrifying Stiff Skirt
+g_pCashItemManager:AddCashItemPrice( 2030300, 3000 ) -- (Old)Petrifying Stiff Gloves
+g_pCashItemManager:AddCashItemPrice( 2030395, 3000 ) -- (Old)Petrifying Stiff Boots
+g_pCashItemManager:AddCashItemPrice( 2032125, 6000 ) -- (Old)Petrifying Arc Valvet Robe
+g_pCashItemManager:AddCashItemPrice( 2032220, 6000 ) -- (Old)Petrifying Arc Valvet Skirt
+g_pCashItemManager:AddCashItemPrice( 2032315, 3000 ) -- (Old)Petrifying Arc Valvet Gloves
+g_pCashItemManager:AddCashItemPrice( 2032415, 3000 ) -- (Old)Petrifying Arc Valvet Boots
+g_pCashItemManager:AddCashItemPrice( 2034120, 6000 ) -- (Old)Petrifying Wind Anchor Robe
+g_pCashItemManager:AddCashItemPrice( 2034210, 6000 ) -- (Old)Petrifying Wind Anchor Skirt
+g_pCashItemManager:AddCashItemPrice( 2034300, 3000 ) -- (Old)Petrifying Wind Anchor Gloves
+g_pCashItemManager:AddCashItemPrice( 2034395, 3000 ) -- (Old)Petrifying Wind Anchor Boots
+g_pCashItemManager:AddCashItemPrice( 2036125, 6000 ) -- (Old)Petrifying Velder Kingdom Aristrocrats' Robe
+g_pCashItemManager:AddCashItemPrice( 2036220, 6000 ) -- (Old)Petrifying Velder Kingdom Aristrocrats' Skirt
+g_pCashItemManager:AddCashItemPrice( 2036315, 3000 ) -- (Old)Petrifying Velder Kingdom Aristrocrats' Gloves
+g_pCashItemManager:AddCashItemPrice( 2036415, 3000 ) -- (Old)Petrifying Velder Kingdom Aristrocrats' Boots
+g_pCashItemManager:AddCashItemPrice( 2038120, 6000 ) -- (Old)Petrifying Frost Silk Robe
+g_pCashItemManager:AddCashItemPrice( 2038210, 6000 ) -- (Old)Petrifying Frost Silk Skirt
+g_pCashItemManager:AddCashItemPrice( 2038300, 3000 ) -- (Old)Petrifying Frost Silk Gloves
+g_pCashItemManager:AddCashItemPrice( 2038395, 3000 ) -- (Old)Petrifying Frost Silk Boots
+g_pCashItemManager:AddCashItemPrice( 2040125, 6000 ) -- (Old)Petrifying Illusion Robe
+g_pCashItemManager:AddCashItemPrice( 2040220, 6000 ) -- (Old)Petrifying Illusion Skirt
+g_pCashItemManager:AddCashItemPrice( 2040315, 3000 ) -- (Old)Petrifying Illusion Gloves
+g_pCashItemManager:AddCashItemPrice( 2040415, 3000 ) -- (Old)Petrifying Illusion Boots
+g_pCashItemManager:AddCashItemPrice( 2042120, 6000 ) -- (Old)Petrifying Void Velvet Robe
+g_pCashItemManager:AddCashItemPrice( 2042210, 6000 ) -- (Old)Petrifying Void Velvet Skirt
+g_pCashItemManager:AddCashItemPrice( 2042300, 3000 ) -- (Old)Petrifying Void Velvet Gloves
+g_pCashItemManager:AddCashItemPrice( 2042395, 3000 ) -- (Old)Petrifying Void Velvet Boots
+g_pCashItemManager:AddCashItemPrice( 2044125, 6000 ) -- (Old)Petrifying Spell Wave Robe
+g_pCashItemManager:AddCashItemPrice( 2044220, 6000 ) -- (Old)Petrifying Spell Wave Skirt
+g_pCashItemManager:AddCashItemPrice( 2044315, 3000 ) -- (Old)Petrifying Spell Wave Gloves
+g_pCashItemManager:AddCashItemPrice( 2044415, 3000 ) -- (Old)Petrifying Spell Wave Boots
+g_pCashItemManager:AddCashItemPrice( 2046120, 6000 ) -- (Old)Petrifying Eternal Hasty Coat
+g_pCashItemManager:AddCashItemPrice( 2046210, 6000 ) -- (Old)Petrifying Eternal Hasty Skirt
+g_pCashItemManager:AddCashItemPrice( 2046300, 3000 ) -- (Old)Petrifying Eternal Hasty Gloves
+g_pCashItemManager:AddCashItemPrice( 2046395, 3000 ) -- (Old)Petrifying Eternal Hasty Boots
+g_pCashItemManager:AddCashItemPrice( 2140125, 6000 ) -- (Old)Petrifying Chiffon Robe
+g_pCashItemManager:AddCashItemPrice( 2140220, 6000 ) -- (Old)Petrifying Chiffon Skirt
+g_pCashItemManager:AddCashItemPrice( 2140315, 3000 ) -- (Old)Petrifying Chiffon Gloves
+g_pCashItemManager:AddCashItemPrice( 2140415, 3000 ) -- (Old)Petrifying Chiffon Boots
+g_pCashItemManager:AddCashItemPrice( 2142120, 6000 ) -- (Old)Petrifying Broadcloth Robe
+g_pCashItemManager:AddCashItemPrice( 2142210, 6000 ) -- (Old)Petrifying Broadcloth Skirt
+g_pCashItemManager:AddCashItemPrice( 2142300, 3000 ) -- (Old)Petrifying Broadcloth Gloves
+g_pCashItemManager:AddCashItemPrice( 2142395, 3000 ) -- (Old)Petrifying Broadcloth Boots
+g_pCashItemManager:AddCashItemPrice( 2144125, 6000 ) -- (Old)Petrifying Astrakhan Robe
+g_pCashItemManager:AddCashItemPrice( 2144220, 6000 ) -- (Old)Petrifying Astrakhan Skirt
+g_pCashItemManager:AddCashItemPrice( 2144315, 3000 ) -- (Old)Petrifying Astrakhan Gloves
+g_pCashItemManager:AddCashItemPrice( 2144415, 3000 ) -- (Old)Petrifying Astrakhan Boots
+g_pCashItemManager:AddCashItemPrice( 2146120, 6000 ) -- (Old)Petrifying Corduroy Coat
+g_pCashItemManager:AddCashItemPrice( 2146210, 6000 ) -- (Old)Petrifying Corduroy Skirt
+g_pCashItemManager:AddCashItemPrice( 2146300, 3000 ) -- (Old)Petrifying Corduroy Gloves
+g_pCashItemManager:AddCashItemPrice( 2146395, 3000 ) -- (Old)Petrifying Corduroy Boots
+g_pCashItemManager:AddCashItemPrice( 2148125, 6000 ) -- (Old)Petrifying Trico Coat
+g_pCashItemManager:AddCashItemPrice( 2148220, 6000 ) -- (Old)Petrifying Trico Skirt
+g_pCashItemManager:AddCashItemPrice( 2148315, 3000 ) -- (Old)Petrifying Trico Gloves
+g_pCashItemManager:AddCashItemPrice( 2148415, 3000 ) -- (Old)Petrifying Trico Boots
+g_pCashItemManager:AddCashItemPrice( 2150120, 6000 ) -- (Old)Petrifying Velder Apprentice Mage Top Piece
+g_pCashItemManager:AddCashItemPrice( 2150210, 6000 ) -- (Old)Petrifying Velder Apprentice Mage Skirt
+g_pCashItemManager:AddCashItemPrice( 2150300, 3000 ) -- (Old)Petrifying Velder Apprentice Mage Gloves
+g_pCashItemManager:AddCashItemPrice( 2150395, 3000 ) -- (Old)Petrifying Velder Apprentice Mage Shoes
+g_pCashItemManager:AddCashItemPrice( 2152125, 6000 ) -- (Old)Petrifying Clear Mana Robe
+g_pCashItemManager:AddCashItemPrice( 2152220, 6000 ) -- (Old)Petrifying Clear Mana Skirt
+g_pCashItemManager:AddCashItemPrice( 2152315, 3000 ) -- (Old)Petrifying Clear Mana Gloves
+g_pCashItemManager:AddCashItemPrice( 2152415, 3000 ) -- (Old)Petrifying Clear Mana Shoes
+g_pCashItemManager:AddCashItemPrice( 2156120, 6000 ) -- (Old)Petrifying Ultra Shock Top Piece
+g_pCashItemManager:AddCashItemPrice( 2156210, 6000 ) -- (Old)Petrifying Ultra Shock Skirt
+g_pCashItemManager:AddCashItemPrice( 2156300, 3000 ) -- (Old)Petrifying Ultra Shock Gloves
+g_pCashItemManager:AddCashItemPrice( 2156395, 3000 ) -- (Old)Petrifying Ultra Shock Shoes
+g_pCashItemManager:AddCashItemPrice( 2160125, 6000 ) -- (Old)Petrifying Water Spirit Top Piece
+g_pCashItemManager:AddCashItemPrice( 2160220, 6000 ) -- (Old)Petrifying Water Spirit Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 2160315, 3000 ) -- (Old)Petrifying Water Spirit Gloves
+g_pCashItemManager:AddCashItemPrice( 2160415, 3000 ) -- (Old)Petrifying Water Spirit Shoes
+g_pCashItemManager:AddCashItemPrice( 2340125, 6000 ) -- (Old)Petrifying Muslin Robe
+g_pCashItemManager:AddCashItemPrice( 2340220, 6000 ) -- (Old)Petrifying Muslin Skirt
+g_pCashItemManager:AddCashItemPrice( 2340315, 3000 ) -- (Old)Petrifying Muslin Gloves
+g_pCashItemManager:AddCashItemPrice( 2340415, 3000 ) -- (Old)Petrifying Muslin Boots
+g_pCashItemManager:AddCashItemPrice( 2342120, 6000 ) -- (Old)Petrifying Melton Robe
+g_pCashItemManager:AddCashItemPrice( 2342210, 6000 ) -- (Old)Petrifying Melton Skirt
+g_pCashItemManager:AddCashItemPrice( 2342300, 3000 ) -- (Old)Petrifying Melton Gloves
+g_pCashItemManager:AddCashItemPrice( 2342395, 3000 ) -- (Old)Petrifying Melton Boots
+g_pCashItemManager:AddCashItemPrice( 2344125, 6000 ) -- (Old)Petrifying Flannel Robe
+g_pCashItemManager:AddCashItemPrice( 2344220, 6000 ) -- (Old)Petrifying Flannel Skirt
+g_pCashItemManager:AddCashItemPrice( 2344315, 3000 ) -- (Old)Petrifying Flannel Gloves
+g_pCashItemManager:AddCashItemPrice( 2344415, 3000 ) -- (Old)Petrifying Flannel Boots
+g_pCashItemManager:AddCashItemPrice( 2346120, 6000 ) -- (Old)Petrifying Doeskin Coat
+g_pCashItemManager:AddCashItemPrice( 2346210, 6000 ) -- (Old)Petrifying Doeskin Skirt
+g_pCashItemManager:AddCashItemPrice( 2346300, 3000 ) -- (Old)Petrifying Doeskin Gloves
+g_pCashItemManager:AddCashItemPrice( 2346395, 3000 ) -- (Old)Petrifying Doeskin Boots
+g_pCashItemManager:AddCashItemPrice( 2348125, 6000 ) -- (Old)Petrifying Pike Coat
+g_pCashItemManager:AddCashItemPrice( 2348220, 6000 ) -- (Old)Petrifying Pike Skirt
+g_pCashItemManager:AddCashItemPrice( 2348315, 3000 ) -- (Old)Petrifying Pike Gloves
+g_pCashItemManager:AddCashItemPrice( 2348415, 3000 ) -- (Old)Petrifying Pike Boots
+g_pCashItemManager:AddCashItemPrice( 2350120, 6000 ) -- (Old)Petrifying Dark Flame Robe
+g_pCashItemManager:AddCashItemPrice( 2350210, 6000 ) -- (Old)Petrifying Dark Flame Skirt
+g_pCashItemManager:AddCashItemPrice( 2350300, 3000 ) -- (Old)Petrifying Dark Flame Gloves
+g_pCashItemManager:AddCashItemPrice( 2350395, 3000 ) -- (Old)Petrifying Dark Flame Shoes
+g_pCashItemManager:AddCashItemPrice( 2352125, 6000 ) -- (Old)Petrifying Dark Training Robe
+g_pCashItemManager:AddCashItemPrice( 2352220, 6000 ) -- (Old)Petrifying Dark Training Skirt
+g_pCashItemManager:AddCashItemPrice( 2352315, 3000 ) -- (Old)Petrifying Dark Training Gloves
+g_pCashItemManager:AddCashItemPrice( 2352415, 3000 ) -- (Old)Petrifying Dark Training Shoes
+g_pCashItemManager:AddCashItemPrice( 2356120, 6000 ) -- (Old)Petrifying Graceful Top Piece
+g_pCashItemManager:AddCashItemPrice( 2356210, 6000 ) -- (Old)Petrifying Graceful Skirt
+g_pCashItemManager:AddCashItemPrice( 2356300, 3000 ) -- (Old)Petrifying Graceful Gloves
+g_pCashItemManager:AddCashItemPrice( 2356395, 3000 ) -- (Old)Petrifying Graceful Shoes
+g_pCashItemManager:AddCashItemPrice( 2360125, 6000 ) -- (Old)Petrifying Black Lily Top Piece
+g_pCashItemManager:AddCashItemPrice( 2360220, 6000 ) -- (Old)Petrifying Black Lily Skirt
+g_pCashItemManager:AddCashItemPrice( 2360315, 3000 ) -- (Old)Petrifying Black Lily Gloves
+g_pCashItemManager:AddCashItemPrice( 2360415, 3000 ) -- (Old)Petrifying Black Lily Shoes
+g_pCashItemManager:AddCashItemPrice( 2540125, 6000 ) -- (Old)Petrifying Reinforced Blouse
+g_pCashItemManager:AddCashItemPrice( 2540220, 6000 ) -- (Old)Petrifying Reinforced Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 2540315, 3000 ) -- (Old)Petrifying Reinforced Gloves
+g_pCashItemManager:AddCashItemPrice( 2540415, 3000 ) -- (Old)Petrifying Reinforced Shoes
+g_pCashItemManager:AddCashItemPrice( 2544125, 6000 ) -- (Old)Petrifying Witch Blouse
+g_pCashItemManager:AddCashItemPrice( 2544220, 6000 ) -- (Old)Petrifying Witch Skirt
+g_pCashItemManager:AddCashItemPrice( 2544315, 3000 ) -- (Old)Petrifying  Witch Gloves
+g_pCashItemManager:AddCashItemPrice( 2544415, 3000 ) -- (Old)Petrifying Witch Shoes
+g_pCashItemManager:AddCashItemPrice( 2548125, 6000 ) -- (Old)Petrifying  West Wind Blouse
+g_pCashItemManager:AddCashItemPrice( 2548220, 6000 ) -- (Old)Petrifying West Wind Skirt
+g_pCashItemManager:AddCashItemPrice( 2548315, 3000 ) -- (Old)Petrifying West Wind Gloves
+g_pCashItemManager:AddCashItemPrice( 2548415, 3000 ) -- (Old)Petrifying West Wind Shoes
+g_pCashItemManager:AddCashItemPrice( 2552125, 6000 ) -- (Old)Petrifying  Meditator's Top Piece
+g_pCashItemManager:AddCashItemPrice( 2552220, 6000 ) -- (Old)Petrifying  Meditator's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 2552315, 3000 ) -- (Old)Petrifying  Meditator's Gloves
+g_pCashItemManager:AddCashItemPrice( 2552415, 3000 ) -- (Old)Petrifying  Meditator's Shoes
+g_pCashItemManager:AddCashItemPrice( 2556125, 6000 ) -- (Old)Petrifying  Passion Blouse
+g_pCashItemManager:AddCashItemPrice( 2556220, 6000 ) -- (Old)Petrifying  Passion Skirt
+g_pCashItemManager:AddCashItemPrice( 2556315, 3000 ) -- (Old)Petrifying  Passion Gloves
+g_pCashItemManager:AddCashItemPrice( 2556415, 3000 ) -- (Old)Petrifying  Passion Shoes
+g_pCashItemManager:AddCashItemPrice( 2560125, 6000 ) -- (Old)Petrifying  Gold Ornament Blouse
+g_pCashItemManager:AddCashItemPrice( 2560220, 6000 ) -- (Old)Petrifying  Gold Ornament Skirt
+g_pCashItemManager:AddCashItemPrice( 2560315, 3000 ) -- (Old)Petrifying  Gold Ornament Gloves
+g_pCashItemManager:AddCashItemPrice( 2560415, 3000 ) -- (Old)Petrifying  Gold Ornament Shoes
+g_pCashItemManager:AddCashItemPrice( 2940125, 6000 ) -- (Old)Petrifying Apprentice Battle Blouse
+g_pCashItemManager:AddCashItemPrice( 2940220, 6000 ) -- (Old)Petrifying Apprentice Battle Skirt
+g_pCashItemManager:AddCashItemPrice( 2940315, 3000 ) -- (Old)Petrifying Apprentice Battle Gloves
+g_pCashItemManager:AddCashItemPrice( 2940415, 3000 ) -- (Old)Petrifying Apprentice Battle Shoes
+g_pCashItemManager:AddCashItemPrice( 2944125, 6000 ) -- (Old)Petrifying Reinforced Battle Blouse
+g_pCashItemManager:AddCashItemPrice( 2944220, 6000 ) -- (Old)Petrifying Reinforced Battle Skirt
+g_pCashItemManager:AddCashItemPrice( 2944315, 3000 ) -- (Old)Petrifying Reinforced Battle Gloves
+g_pCashItemManager:AddCashItemPrice( 2944415, 3000 ) -- (Old)Petrifying Reinforced Battle Shoes
+g_pCashItemManager:AddCashItemPrice( 2948125, 6000 ) -- (Old)Petrifying Velder Battle Mage Blouse
+g_pCashItemManager:AddCashItemPrice( 2948220, 6000 ) -- (Old)Petrifying Velder Battle Mage Skirt
+g_pCashItemManager:AddCashItemPrice( 2948315, 3000 ) -- (Old)Petrifying Velder Battle Mage Gloves
+g_pCashItemManager:AddCashItemPrice( 2948415, 3000 ) -- (Old)Petrifying Velder Battle Mage Shoes
+g_pCashItemManager:AddCashItemPrice( 2952125, 6000 ) -- (Old)Petrifying Penzas Witch Blouse
+g_pCashItemManager:AddCashItemPrice( 2952220, 6000 ) -- (Old)Petrifying Penzas Witch Skirt
+g_pCashItemManager:AddCashItemPrice( 2952315, 3000 ) -- (Old)Petrifying Penzas Witch Gloves
+g_pCashItemManager:AddCashItemPrice( 2952415, 3000 ) -- (Old)Petrifying Penzas Witch Shoes
+g_pCashItemManager:AddCashItemPrice( 2956125, 6000 ) -- (Old)Petrifying Breeze Blouse
+g_pCashItemManager:AddCashItemPrice( 2956220, 6000 ) -- (Old)Petrifying Breeze Skirt
+g_pCashItemManager:AddCashItemPrice( 2956315, 3000 ) -- (Old)Petrifying Breeze Gloves
+g_pCashItemManager:AddCashItemPrice( 2956415, 3000 ) -- (Old)Petrifying Breeze Shoes
+g_pCashItemManager:AddCashItemPrice( 2960125, 6000 ) -- (Old)Petrifying Reinforced Penzas Witch Blouse
+g_pCashItemManager:AddCashItemPrice( 2960220, 6000 ) -- (Old)Petrifying Reinforced Penzas Witch Skirt
+g_pCashItemManager:AddCashItemPrice( 2960315, 3000 ) -- (Old)Petrifying Reinforced Penzas Witch Gloves
+g_pCashItemManager:AddCashItemPrice( 2960415, 3000 ) -- (Old)Petrifying Reinforced Penzas Witch Shoes
+g_pCashItemManager:AddCashItemPrice( 3002120, 6000 ) -- (Old)Petrifying Apprentice Archer's Shirt
+g_pCashItemManager:AddCashItemPrice( 3002210, 6000 ) -- (Old)Petrifying Apprentice Archer's Skirt
+g_pCashItemManager:AddCashItemPrice( 3002300, 3000 ) -- (Old)Petrifying Apprentice Archer's Bands
+g_pCashItemManager:AddCashItemPrice( 3002395, 3000 ) -- (Old)Petrifying Apprentice Archer's Shoes
+g_pCashItemManager:AddCashItemPrice( 3004125, 6000 ) -- (Old)Petrifying Elfin Cloth Shirt
+g_pCashItemManager:AddCashItemPrice( 3004220, 6000 ) -- (Old)Petrifying Elfin Cloth Skirt
+g_pCashItemManager:AddCashItemPrice( 3004315, 3000 ) -- (Old)Petrifying Elfin Cloth Bands
+g_pCashItemManager:AddCashItemPrice( 3004415, 3000 ) -- (Old)Petrifying Elfin Cloth Shoes
+g_pCashItemManager:AddCashItemPrice( 3006120, 6000 ) -- (Old)Petrifying Elfin Cotton Shirt
+g_pCashItemManager:AddCashItemPrice( 3006210, 6000 ) -- (Old)Petrifying Elfin Cotton Skirt
+g_pCashItemManager:AddCashItemPrice( 3006300, 3000 ) -- (Old)Petrifying Elfin Cotton Bands
+g_pCashItemManager:AddCashItemPrice( 3006395, 3000 ) -- (Old)Petrifying Elfin Cotton Shoes
+g_pCashItemManager:AddCashItemPrice( 3008125, 6000 ) -- (Old)Petrifying Elfin Leather Shirts
+g_pCashItemManager:AddCashItemPrice( 3008220, 6000 ) -- (Old)Petrifying Elfin Leather Skirt
+g_pCashItemManager:AddCashItemPrice( 3008315, 3000 ) -- (Old)Petrifying Elfin Leather Bands
+g_pCashItemManager:AddCashItemPrice( 3008415, 3000 ) -- (Old)Petrifying Elfin Leather Shoes
+g_pCashItemManager:AddCashItemPrice( 3010120, 6000 ) -- (Old)Petrifying Windmaker Shirts
+g_pCashItemManager:AddCashItemPrice( 3010210, 6000 ) -- (Old)Petrifying Windmaker Skirt
+g_pCashItemManager:AddCashItemPrice( 3010300, 3000 ) -- (Old)Petrifying Windmaker Band
+g_pCashItemManager:AddCashItemPrice( 3010395, 3000 ) -- (Old)Petrifying Windmaker Shoes
+g_pCashItemManager:AddCashItemPrice( 3012125, 6000 ) -- (Old)Petrifying Elfin Slav Shirts
+g_pCashItemManager:AddCashItemPrice( 3012220, 6000 ) -- (Old)Petrifying Elfin Slav Skirt
+g_pCashItemManager:AddCashItemPrice( 3012315, 3000 ) -- (Old)Petrifying Elfin Slav Band
+g_pCashItemManager:AddCashItemPrice( 3012415, 3000 ) -- (Old)Petrifying Elfin Slav Shoes
+g_pCashItemManager:AddCashItemPrice( 3014120, 6000 ) -- (Old)Petrifying Feather Leather Shirts
+g_pCashItemManager:AddCashItemPrice( 3014210, 6000 ) -- (Old)Petrifying Feather Leather Skirt
+g_pCashItemManager:AddCashItemPrice( 3014300, 3000 ) -- (Old)Petrifying Feather Leather Bands
+g_pCashItemManager:AddCashItemPrice( 3014395, 3000 ) -- (Old)Petrifying Feather Leather Shoes
+g_pCashItemManager:AddCashItemPrice( 3016125, 6000 ) -- (Old)Petrifying Fairies Padded Shirt
+g_pCashItemManager:AddCashItemPrice( 3016220, 6000 ) -- (Old)Petrifying Fairies Padded Skirt
+g_pCashItemManager:AddCashItemPrice( 3016315, 3000 ) -- (Old)Petrifying Fairies Padded Bands
+g_pCashItemManager:AddCashItemPrice( 3016415, 3000 ) -- (Old)Petrifying Fairies Padded Shoes
+g_pCashItemManager:AddCashItemPrice( 3018120, 6000 ) -- (Old)Petrifying Physis Blouse
+g_pCashItemManager:AddCashItemPrice( 3018210, 6000 ) -- (Old)Petrifying Physis Leggings
+g_pCashItemManager:AddCashItemPrice( 3018300, 3000 ) -- (Old)Petrifying Physis Bands
+g_pCashItemManager:AddCashItemPrice( 3018395, 3000 ) -- (Old)Petrifying Physis Shoes
+g_pCashItemManager:AddCashItemPrice( 3020125, 6000 ) -- (Old)Petrifying Elfin Leather Blouse
+g_pCashItemManager:AddCashItemPrice( 3020220, 6000 ) -- (Old)Petrifying Elfin Leather Leggings
+g_pCashItemManager:AddCashItemPrice( 3020315, 3000 ) -- (Old)Petrifying Elfin Leather Bands
+g_pCashItemManager:AddCashItemPrice( 3020415, 3000 ) -- (Old)Petrifying Elfin Leather Shoes
+g_pCashItemManager:AddCashItemPrice( 3022120, 6000 ) -- (Old)Petrifying Hunter's Blouse
+g_pCashItemManager:AddCashItemPrice( 3022210, 6000 ) -- (Old)Petrifying Hunter's Leggings
+g_pCashItemManager:AddCashItemPrice( 3022300, 3000 ) -- (Old)Petrifying Hunter's Bands
+g_pCashItemManager:AddCashItemPrice( 3022395, 3000 ) -- (Old)Petrifying Hunter's Shoes
+g_pCashItemManager:AddCashItemPrice( 3024125, 6000 ) -- (Old)Petrifying Lunatic Suede Blouse
+g_pCashItemManager:AddCashItemPrice( 3024220, 6000 ) -- (Old)Petrifying Lunatic Suede Leggings
+g_pCashItemManager:AddCashItemPrice( 3024315, 3000 ) -- (Old)Petrifying Lunatic Suede Bands
+g_pCashItemManager:AddCashItemPrice( 3024415, 3000 ) -- (Old)Petrifying Lunatic Suede Shoes
+g_pCashItemManager:AddCashItemPrice( 3026120, 6000 ) -- (Old)Petrifying Green-leaf Blouse
+g_pCashItemManager:AddCashItemPrice( 3026210, 6000 ) -- (Old)Petrifying Green-leaf Leggings
+g_pCashItemManager:AddCashItemPrice( 3026300, 3000 ) -- (Old)Petrifying Green-leaf Bands
+g_pCashItemManager:AddCashItemPrice( 3026395, 3000 ) -- (Old)Petrifying Green-leaf Shoes
+g_pCashItemManager:AddCashItemPrice( 3028125, 6000 ) -- (Old)Petrifying Grace Blouse
+g_pCashItemManager:AddCashItemPrice( 3028220, 6000 ) -- (Old)Petrifying Grace Leggings
+g_pCashItemManager:AddCashItemPrice( 3028315, 3000 ) -- (Old)Petrifying Grace Bands
+g_pCashItemManager:AddCashItemPrice( 3028415, 3000 ) -- (Old)Petrifying Grace Shoes
+g_pCashItemManager:AddCashItemPrice( 3030120, 6000 ) -- (Old)Petrifying Turtle-Flower Blouse
+g_pCashItemManager:AddCashItemPrice( 3030210, 6000 ) -- (Old)Petrifying Turtle-Flower Leggings
+g_pCashItemManager:AddCashItemPrice( 3030300, 3000 ) -- (Old)Petrifying Turtle-Flower Bands
+g_pCashItemManager:AddCashItemPrice( 3030395, 3000 ) -- (Old)Petrifying Turtle-Flower Shoes
+g_pCashItemManager:AddCashItemPrice( 3032125, 6000 ) -- (Old)Petrifying Entangle Blouse
+g_pCashItemManager:AddCashItemPrice( 3032220, 6000 ) -- (Old)Petrifying Entangle Leggings
+g_pCashItemManager:AddCashItemPrice( 3032315, 3000 ) -- (Old)Petrifying Entangle Gloves
+g_pCashItemManager:AddCashItemPrice( 3032415, 3000 ) -- (Old)Petrifying Entangle Boots
+g_pCashItemManager:AddCashItemPrice( 3034120, 6000 ) -- (Old)Petrifying Frigid Blouse
+g_pCashItemManager:AddCashItemPrice( 3034210, 6000 ) -- (Old)Petrifying Frigid Leggings
+g_pCashItemManager:AddCashItemPrice( 3034300, 3000 ) -- (Old)Petrifying Frigid Gloves
+g_pCashItemManager:AddCashItemPrice( 3034395, 3000 ) -- (Old)Petrifying Frigid Boots
+g_pCashItemManager:AddCashItemPrice( 3036125, 6000 ) -- (Old)Petrifying Fairiess Battle Blouses
+g_pCashItemManager:AddCashItemPrice( 3036220, 6000 ) -- (Old)Petrifying Fairiess Battle Leggings
+g_pCashItemManager:AddCashItemPrice( 3036315, 3000 ) -- (Old)Petrifying Fairiess Battle Gloves
+g_pCashItemManager:AddCashItemPrice( 3036415, 3000 ) -- (Old)Petrifying Fairiess Battle Boots
+g_pCashItemManager:AddCashItemPrice( 3038120, 6000 ) -- (Old)Petrifying Mithril Blouse
+g_pCashItemManager:AddCashItemPrice( 3038210, 6000 ) -- (Old)Petrifying Mithril Leggings
+g_pCashItemManager:AddCashItemPrice( 3038300, 3000 ) -- (Old)Petrifying Mithril Gloves
+g_pCashItemManager:AddCashItemPrice( 3038395, 3000 ) -- (Old)Petrifying Mithril Boots
+g_pCashItemManager:AddCashItemPrice( 3040125, 6000 ) -- (Old)Petrifying Fairies Scaled Blouses
+g_pCashItemManager:AddCashItemPrice( 3040220, 6000 ) -- (Old)Petrifying Fairies Scaled Leggings
+g_pCashItemManager:AddCashItemPrice( 3040315, 3000 ) -- (Old)Petrifying Fairies Scaled Gloves
+g_pCashItemManager:AddCashItemPrice( 3040415, 3000 ) -- (Old)Petrifying Fairies Scaled Boots
+g_pCashItemManager:AddCashItemPrice( 3042120, 6000 ) -- (Old)Petrifying Holy Elf's Blouse
+g_pCashItemManager:AddCashItemPrice( 3042210, 6000 ) -- (Old)Petrifying Holy Elf's Leggings
+g_pCashItemManager:AddCashItemPrice( 3042300, 3000 ) -- (Old)Petrifying Holy Elf's Gloves
+g_pCashItemManager:AddCashItemPrice( 3042395, 3000 ) -- (Old)Petrifying Holy Elf's Boots
+g_pCashItemManager:AddCashItemPrice( 3044125, 6000 ) -- (Old)Petrifying Trapper's Chain Blouse
+g_pCashItemManager:AddCashItemPrice( 3044220, 6000 ) -- (Old)Petrifying Trapper's Chain Leggings
+g_pCashItemManager:AddCashItemPrice( 3044315, 3000 ) -- (Old)Petrifying Trapper's Chain Gloves
+g_pCashItemManager:AddCashItemPrice( 3044415, 3000 ) -- (Old)Petrifying Trapper's Chain Boots
+g_pCashItemManager:AddCashItemPrice( 3046120, 6000 ) -- (Old)Petrifying Rising Shadow Coat
+g_pCashItemManager:AddCashItemPrice( 3046210, 6000 ) -- (Old)Petrifying Rising Shadow Leggings
+g_pCashItemManager:AddCashItemPrice( 3046300, 3000 ) -- (Old)Petrifying Rising Shadow Gloves
+g_pCashItemManager:AddCashItemPrice( 3046395, 3000 ) -- (Old)Petrifying Rising Shadow Boots
+g_pCashItemManager:AddCashItemPrice( 3140125, 6000 ) -- (Old)Petrifying Soft Aqueton Blouse
+g_pCashItemManager:AddCashItemPrice( 3140220, 6000 ) -- (Old)Petrifying Soft Aqueton Skirt
+g_pCashItemManager:AddCashItemPrice( 3140315, 3000 ) -- (Old)Petrifying Soft Aqueton Gloves
+g_pCashItemManager:AddCashItemPrice( 3140415, 3000 ) -- (Old)Petrifying Soft Aqueton Boots
+g_pCashItemManager:AddCashItemPrice( 3142120, 6000 ) -- (Old)Petrifying Horizon Blouse
+g_pCashItemManager:AddCashItemPrice( 3142210, 6000 ) -- (Old)Petrifying Horizon Skirt
+g_pCashItemManager:AddCashItemPrice( 3142300, 3000 ) -- (Old)Petrifying Horizon Gloves
+g_pCashItemManager:AddCashItemPrice( 3142395, 3000 ) -- (Old)Petrifying Horizon Boots
+g_pCashItemManager:AddCashItemPrice( 3144125, 6000 ) -- (Old)Petrifying Shining Horizon Blouse
+g_pCashItemManager:AddCashItemPrice( 3144220, 6000 ) -- (Old)Petrifying Shining Horizon Skirt
+g_pCashItemManager:AddCashItemPrice( 3144315, 3000 ) -- (Old)Petrifying Shining Horizon Gloves
+g_pCashItemManager:AddCashItemPrice( 3144415, 3000 ) -- (Old)Petrifying Shining Horizon Boots
+g_pCashItemManager:AddCashItemPrice( 3146120, 6000 ) -- (Old)Petrifying Padded Coat
+g_pCashItemManager:AddCashItemPrice( 3146210, 6000 ) -- (Old)Petrifying Padded Skirt
+g_pCashItemManager:AddCashItemPrice( 3146300, 3000 ) -- (Old)Petrifying Padded Gloves
+g_pCashItemManager:AddCashItemPrice( 3146395, 3000 ) -- (Old)Petrifying Padded Boots
+g_pCashItemManager:AddCashItemPrice( 3148125, 6000 ) -- (Old)Petrifying Hard Padded Coat
+g_pCashItemManager:AddCashItemPrice( 3148220, 6000 ) -- (Old)Petrifying Hard Padded Skirt
+g_pCashItemManager:AddCashItemPrice( 3148315, 3000 ) -- (Old)Petrifying Hard Padded Gloves
+g_pCashItemManager:AddCashItemPrice( 3148415, 3000 ) -- (Old)Petrifying Hard Padded Boots
+g_pCashItemManager:AddCashItemPrice( 3150120, 6000 ) -- (Old)Petrifying Forest Fairy Top Piece
+g_pCashItemManager:AddCashItemPrice( 3150210, 6000 ) -- (Old)Petrifying Forest Fairy Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 3150300, 3000 ) -- (Old)Petrifying Forest Fairy Gloves
+g_pCashItemManager:AddCashItemPrice( 3150395, 3000 ) -- (Old)Petrifying Forest Fairy Shoes
+g_pCashItemManager:AddCashItemPrice( 3152125, 6000 ) -- (Old)Petrifying Morning Mist Top Piece
+g_pCashItemManager:AddCashItemPrice( 3152220, 6000 ) -- (Old)Petrifying Morning Mist Skirt
+g_pCashItemManager:AddCashItemPrice( 3152315, 3000 ) -- (Old)Petrifying Morning Mist Gloves
+g_pCashItemManager:AddCashItemPrice( 3152415, 3000 ) -- (Old)Petrifying Morning Mist Shoes
+g_pCashItemManager:AddCashItemPrice( 3156120, 6000 ) -- (Old)Petrifying Green Forest Top Piece
+g_pCashItemManager:AddCashItemPrice( 3156210, 6000 ) -- (Old)Petrifying Green Forest Skirt
+g_pCashItemManager:AddCashItemPrice( 3156300, 3000 ) -- (Old)Petrifying Green Forest Gloves
+g_pCashItemManager:AddCashItemPrice( 3156395, 3000 ) -- (Old)Petrifying Green Forest Shoes
+g_pCashItemManager:AddCashItemPrice( 3160125, 6000 ) -- (Old)Petrifying Blue Mist Top Piece
+g_pCashItemManager:AddCashItemPrice( 3160220, 6000 ) -- (Old)Petrifying Blue Mist Skirt
+g_pCashItemManager:AddCashItemPrice( 3160315, 3000 ) -- (Old)Petrifying Blue Mist Gloves
+g_pCashItemManager:AddCashItemPrice( 3160415, 3000 ) -- (Old)Petrifying Blue Mist Shoes
+g_pCashItemManager:AddCashItemPrice( 3340125, 6000 ) -- (Old)Petrifying Knight's Hawk Blouse
+g_pCashItemManager:AddCashItemPrice( 3340220, 6000 ) -- (Old)Petrifying Knight's Hawk Skirt
+g_pCashItemManager:AddCashItemPrice( 3340315, 3000 ) -- (Old)Petrifying Knight's Hawk Gloves
+g_pCashItemManager:AddCashItemPrice( 3340415, 3000 ) -- (Old)Petrifying Knight's Hawk Boots
+g_pCashItemManager:AddCashItemPrice( 3342120, 6000 ) -- (Old)Petrifying Copper Blouse
+g_pCashItemManager:AddCashItemPrice( 3342210, 6000 ) -- (Old)Petrifying Copper Skirt
+g_pCashItemManager:AddCashItemPrice( 3342300, 3000 ) -- (Old)Petrifying Copper Gloves
+g_pCashItemManager:AddCashItemPrice( 3342395, 3000 ) -- (Old)Petrifying Copper Boots
+g_pCashItemManager:AddCashItemPrice( 3344125, 6000 ) -- (Old)Petrifying Flex Copper Blouse
+g_pCashItemManager:AddCashItemPrice( 3344220, 6000 ) -- (Old)Petrifying Flex Copper Skirt
+g_pCashItemManager:AddCashItemPrice( 3344315, 3000 ) -- (Old)Petrifying Flex Copper Gloves
+g_pCashItemManager:AddCashItemPrice( 3344415, 3000 ) -- (Old)Petrifying Flex Copper Boots
+g_pCashItemManager:AddCashItemPrice( 3346120, 6000 ) -- (Old)Petrifying Blessed Coat
+g_pCashItemManager:AddCashItemPrice( 3346210, 6000 ) -- (Old)Petrifying Blessed Skirt
+g_pCashItemManager:AddCashItemPrice( 3346300, 3000 ) -- (Old)Petrifying Blessed Gloves
+g_pCashItemManager:AddCashItemPrice( 3346395, 3000 ) -- (Old)Petrifying Blessed Boots
+g_pCashItemManager:AddCashItemPrice( 3348055, 6000 ) -- (Old)Fairies Petrifying Coat
+g_pCashItemManager:AddCashItemPrice( 3348060, 6000 ) -- (Old)Improved Fairies Petrifying Coat
+g_pCashItemManager:AddCashItemPrice( 3348065, 6000 ) -- (Old)Superior Fairies Petrifying Coat
+g_pCashItemManager:AddCashItemPrice( 3348070, 6000 ) -- (Old)Armored Fairies Petrifying Coat
+g_pCashItemManager:AddCashItemPrice( 3348075, 6000 ) -- (Old)Advanced Fairies Petrifying Coat
+g_pCashItemManager:AddCashItemPrice( 3348080, 6000 ) -- (Old)Hasty Fairies Petrifying Coat
+g_pCashItemManager:AddCashItemPrice( 3348085, 6000 ) -- (Old)Vitality Fairies Petrifying Coat
+g_pCashItemManager:AddCashItemPrice( 3348090, 6000 ) -- (Old)Precise Fairies Petrifying Coat
+g_pCashItemManager:AddCashItemPrice( 3348095, 6000 ) -- (Old)Nimble Fairies Petrifying Coat
+g_pCashItemManager:AddCashItemPrice( 3348100, 6000 ) -- (Old)Divine Fairies Petrifying Coat
+g_pCashItemManager:AddCashItemPrice( 3348105, 6000 ) -- (Old)Burning Fairies Petrifying Coat
+g_pCashItemManager:AddCashItemPrice( 3348110, 6000 ) -- (Old)Freezing Fairies Petrifying Coat
+g_pCashItemManager:AddCashItemPrice( 3348115, 6000 ) -- (Old)Poisoning Fairies Petrifying Coat
+g_pCashItemManager:AddCashItemPrice( 3348120, 6000 ) -- (Old)Piercing Fairies Petrifying Coat
+g_pCashItemManager:AddCashItemPrice( 3348125, 6000 ) -- (Old)Petrifying Fairies Petrifying Coat
+g_pCashItemManager:AddCashItemPrice( 3348130, 6000 ) -- (Old)Drained Fairies Petrifying Coat
+g_pCashItemManager:AddCashItemPrice( 3348135, 6000 ) -- (Old)Blessed Fairies Petrifying Coat
+g_pCashItemManager:AddCashItemPrice( 3348140, 6000 ) -- (Old)Ultimate Fairies Petrifying Coat
+g_pCashItemManager:AddCashItemPrice( 3348145, 6000 ) -- (Old)Master's Fairies Petrifying Coat
+g_pCashItemManager:AddCashItemPrice( 3348150, 6000 ) -- (Old)Fairies Petrifying Skirt
+g_pCashItemManager:AddCashItemPrice( 3348155, 6000 ) -- (Old)Improved Fairies Petrifying Skirt
+g_pCashItemManager:AddCashItemPrice( 3348160, 6000 ) -- (Old)Superior Fairies Petrifying Skirt
+g_pCashItemManager:AddCashItemPrice( 3348165, 6000 ) -- (Old)Armored Fairies Petrifying Skirt
+g_pCashItemManager:AddCashItemPrice( 3348170, 6000 ) -- (Old)Advanced Fairies Petrifying Skirt
+g_pCashItemManager:AddCashItemPrice( 3348175, 6000 ) -- (Old)Hasty Fairies Petrifying Skirt
+g_pCashItemManager:AddCashItemPrice( 3348180, 6000 ) -- (Old)Vitality Fairies Petrifying Skirt
+g_pCashItemManager:AddCashItemPrice( 3348185, 6000 ) -- (Old)Precise Fairies Petrifying Skirt
+g_pCashItemManager:AddCashItemPrice( 3348190, 6000 ) -- (Old)Nimble Fairies Petrifying Skirt
+g_pCashItemManager:AddCashItemPrice( 3348195, 6000 ) -- (Old)Divine Fairies Petrifying Skirt
+g_pCashItemManager:AddCashItemPrice( 3348200, 6000 ) -- (Old)Burning Fairies Petrifying Skirt
+g_pCashItemManager:AddCashItemPrice( 3348205, 6000 ) -- (Old)Freezing Fairies Petrifying Skirt
+g_pCashItemManager:AddCashItemPrice( 3348210, 6000 ) -- (Old)Poisoning Fairies Petrifying Skirt
+g_pCashItemManager:AddCashItemPrice( 3348215, 6000 ) -- (Old)Piercing Fairies Petrifying Skirt
+g_pCashItemManager:AddCashItemPrice( 3348220, 6000 ) -- (Old)Petrifying Fairies Petrifying Skirt
+g_pCashItemManager:AddCashItemPrice( 3348225, 6000 ) -- (Old)Drained Fairies Petrifying Skirt
+g_pCashItemManager:AddCashItemPrice( 3348230, 6000 ) -- (Old)Blessed Fairies Petrifying Skirt
+g_pCashItemManager:AddCashItemPrice( 3348235, 6000 ) -- (Old)Ultimate Fairies Petrifying Skirt
+g_pCashItemManager:AddCashItemPrice( 3348240, 6000 ) -- (Old)Master's Fairies Petrifying Skirt
+g_pCashItemManager:AddCashItemPrice( 3348245, 3000 ) -- (Old)Fairies Petrifying Gloves
+g_pCashItemManager:AddCashItemPrice( 3348250, 3000 ) -- (Old)Improved Fairies Petrifying Gloves
+g_pCashItemManager:AddCashItemPrice( 3348255, 3000 ) -- (Old)Superior Fairies Petrifying Gloves
+g_pCashItemManager:AddCashItemPrice( 3348260, 3000 ) -- (Old)Armored Fairies Petrifying Gloves
+g_pCashItemManager:AddCashItemPrice( 3348265, 3000 ) -- (Old)Advanced Fairies Petrifying Gloves
+g_pCashItemManager:AddCashItemPrice( 3348270, 3000 ) -- (Old)Hasty Fairies Petrifying Gloves
+g_pCashItemManager:AddCashItemPrice( 3348275, 3000 ) -- (Old)Vitality Fairies Petrifying Gloves
+g_pCashItemManager:AddCashItemPrice( 3348280, 3000 ) -- (Old)Precise Fairies Petrifying Gloves
+g_pCashItemManager:AddCashItemPrice( 3348285, 3000 ) -- (Old)Nimble Fairies Petrifying Gloves
+g_pCashItemManager:AddCashItemPrice( 3348290, 3000 ) -- (Old)Divine Fairies Petrifying Gloves
+g_pCashItemManager:AddCashItemPrice( 3348295, 3000 ) -- (Old)Burning Fairies Petrifying Gloves
+g_pCashItemManager:AddCashItemPrice( 3348300, 3000 ) -- (Old)Freezing Fairies Petrifying Gloves
+g_pCashItemManager:AddCashItemPrice( 3348305, 3000 ) -- (Old)Poisoning Fairies Petrifying Gloves
+g_pCashItemManager:AddCashItemPrice( 3348310, 3000 ) -- (Old)Piercing Fairies Petrifying Gloves
+g_pCashItemManager:AddCashItemPrice( 3348315, 3000 ) -- (Old)Petrifying Fairies Petrifying Gloves
+g_pCashItemManager:AddCashItemPrice( 3348320, 3000 ) -- (Old)Drained Fairies Petrifying Gloves
+g_pCashItemManager:AddCashItemPrice( 3348325, 3000 ) -- (Old)Blessed Fairies Petrifying Gloves
+g_pCashItemManager:AddCashItemPrice( 3348330, 3000 ) -- (Old)Ultimate Fairies Petrifying Gloves
+g_pCashItemManager:AddCashItemPrice( 3348335, 3000 ) -- (Old)Master's Fairies Petrifying Gloves
+g_pCashItemManager:AddCashItemPrice( 3348340, 3000 ) -- (Old)Fairies Petrifying Boots
+g_pCashItemManager:AddCashItemPrice( 3348345, 3000 ) -- (Old)Improved Fairies Petrifying Boots
+g_pCashItemManager:AddCashItemPrice( 3348350, 3000 ) -- (Old)Superior Fairies Petrifying Boots
+g_pCashItemManager:AddCashItemPrice( 3348355, 3000 ) -- (Old)Armored Fairies Petrifying Boots
+g_pCashItemManager:AddCashItemPrice( 3348360, 3000 ) -- (Old)Advanced Fairies Petrifying Boots
+g_pCashItemManager:AddCashItemPrice( 3348365, 3000 ) -- (Old)Hasty Fairies Petrifying Boots
+g_pCashItemManager:AddCashItemPrice( 3348370, 3000 ) -- (Old)Vitality Fairies Petrifying Boots
+g_pCashItemManager:AddCashItemPrice( 3348375, 3000 ) -- (Old)Precise Fairies Petrifying Boots
+g_pCashItemManager:AddCashItemPrice( 3348380, 3000 ) -- (Old)Nimble Fairies Petrifying Boots
+g_pCashItemManager:AddCashItemPrice( 3348385, 3000 ) -- (Old)Agile Fairies Petrifying Boots
+g_pCashItemManager:AddCashItemPrice( 3348390, 3000 ) -- (Old)Divine Fairies Petrifying Boots
+g_pCashItemManager:AddCashItemPrice( 3348395, 3000 ) -- (Old)Burning Fairies Petrifying Boots
+g_pCashItemManager:AddCashItemPrice( 3348400, 3000 ) -- (Old)Freezing Fairies Petrifying Boots
+g_pCashItemManager:AddCashItemPrice( 3348405, 3000 ) -- (Old)Poisoning Fairies Petrifying Boots
+g_pCashItemManager:AddCashItemPrice( 3348410, 3000 ) -- (Old)Piercing Fairies Petrifying Boots
+g_pCashItemManager:AddCashItemPrice( 3348415, 3000 ) -- (Old)Petrifying Fairies Petrifying Boots
+g_pCashItemManager:AddCashItemPrice( 3348420, 3000 ) -- (Old)Drained Fairies Petrifying Boots
+g_pCashItemManager:AddCashItemPrice( 3348425, 3000 ) -- (Old)Blessed Fairies Petrifying Boots
+g_pCashItemManager:AddCashItemPrice( 3348430, 3000 ) -- (Old)Ultimate Fairies Petrifying Boots
+g_pCashItemManager:AddCashItemPrice( 3348435, 3000 ) -- (Old)Master's Fairies Petrifying Boots
+g_pCashItemManager:AddCashItemPrice( 3350120, 6000 ) -- (Old)Petrifying Moonlight Worshipper Top Piece
+g_pCashItemManager:AddCashItemPrice( 3350210, 6000 ) -- (Old)Petrifying Moonlight Worshipper Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 3350300, 3000 ) -- (Old)Petrifying Moonlight Worshipper Gloves
+g_pCashItemManager:AddCashItemPrice( 3350395, 3000 ) -- (Old)Petrifying Moonlight Worshipper Shoes
+g_pCashItemManager:AddCashItemPrice( 3352125, 6000 ) -- (Old)Petrifying Full Moon Cotton Shirt
+g_pCashItemManager:AddCashItemPrice( 3352220, 6000 ) -- (Old)Petrifying Full Moon Skirt
+g_pCashItemManager:AddCashItemPrice( 3352315, 3000 ) -- (Old)Petrifying Full Moon Gloves
+g_pCashItemManager:AddCashItemPrice( 3352415, 3000 ) -- (Old)Petrifying Full Moon Shoes
+g_pCashItemManager:AddCashItemPrice( 3356120, 6000 ) -- (Old)Petrifying Gardenia Blouse
+g_pCashItemManager:AddCashItemPrice( 3356210, 6000 ) -- (Old)Petrifying Gardenia Skirt
+g_pCashItemManager:AddCashItemPrice( 3356300, 3000 ) -- (Old)Petrifying Gardenia Gloves
+g_pCashItemManager:AddCashItemPrice( 3356395, 3000 ) -- (Old)Petrifying Gardenia Shoes
+g_pCashItemManager:AddCashItemPrice( 3360125, 6000 ) -- (Old)Petrifying Blue Moon Top Piece
+g_pCashItemManager:AddCashItemPrice( 3360220, 6000 ) -- (Old)Petrifying Blue Moon Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 3360315, 3000 ) -- (Old)Petrifying Blue Moon Gloves
+g_pCashItemManager:AddCashItemPrice( 3360415, 3000 ) -- (Old)Petrifying Blue Moon Shoes
+g_pCashItemManager:AddCashItemPrice( 3540125, 6000 ) -- (Old)Petrifying Supervisor Top Piece
+g_pCashItemManager:AddCashItemPrice( 3540220, 6000 ) -- (Old)Petrifying Supervisor Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 3540315, 3000 ) -- (Old)Petrifying Supervisor Gloves
+g_pCashItemManager:AddCashItemPrice( 3540415, 3000 ) -- (Old)Petrifying Supervisor Shoes
+g_pCashItemManager:AddCashItemPrice( 3544125, 6000 ) -- (Old)Petrifying Skyline Top Piece
+g_pCashItemManager:AddCashItemPrice( 3544220, 6000 ) -- (Old)Petrifying Skyline Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 3544315, 3000 ) -- (Old)Petrifying Skyline Gloves
+g_pCashItemManager:AddCashItemPrice( 3544415, 3000 ) -- (Old)Petrifying Skyline Shoes
+g_pCashItemManager:AddCashItemPrice( 3548125, 6000 ) -- (Old)Petrifying Twilight Shadow Top Piece
+g_pCashItemManager:AddCashItemPrice( 3548220, 6000 ) -- (Old)Petrifying Twilight Shadow Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 3548315, 3000 ) -- (Old)Petrifying Twilight Shadow Gloves
+g_pCashItemManager:AddCashItemPrice( 3548415, 3000 ) -- (Old)Petrifying Twilight Shadow Shoes
+g_pCashItemManager:AddCashItemPrice( 3552125, 6000 ) -- (Old)Petrifying Dawn Shadow Top Piece
+g_pCashItemManager:AddCashItemPrice( 3552220, 6000 ) -- (Old)Petrifying Dawn Shadow Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 3552315, 3000 ) -- (Old)Petrifying Dawn Shadow Gloves
+g_pCashItemManager:AddCashItemPrice( 3552415, 3000 ) -- (Old)Petrifying Dawn Shadow Shoes
+g_pCashItemManager:AddCashItemPrice( 3556125, 6000 ) -- (Old)Petrifying Guardian Top Piece
+g_pCashItemManager:AddCashItemPrice( 3556220, 6000 ) -- (Old)Petrifying Guardian Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 3556315, 3000 ) -- (Old)Petrifying Guardian Gloves
+g_pCashItemManager:AddCashItemPrice( 3556415, 3000 ) -- (Old)Petrifying Guardian Shoes
+g_pCashItemManager:AddCashItemPrice( 3560125, 6000 ) -- (Old)Petrifying Watcher's Top Piece
+g_pCashItemManager:AddCashItemPrice( 3560220, 6000 ) -- (Old)Petrifying Watcher's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 3560315, 3000 ) -- (Old)Petrifying Watcher's Gloves
+g_pCashItemManager:AddCashItemPrice( 3560415, 3000 ) -- (Old)Petrifying Watcher's Shoes
+g_pCashItemManager:AddCashItemPrice( 3940125, 6000 ) -- (Old)Petrifying Azure Watcher Top Piece
+g_pCashItemManager:AddCashItemPrice( 3940220, 6000 ) -- (Old)Petrifying Azure Watcher Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 3940315, 3000 ) -- (Old)Petrifying Azure Watcher Gloves
+g_pCashItemManager:AddCashItemPrice( 3940415, 3000 ) -- (Old)Petrifying Azure Watcher Shoes
+g_pCashItemManager:AddCashItemPrice( 3944125, 6000 ) -- (Old)Petrifying Apprentice Scout Top Piece
+g_pCashItemManager:AddCashItemPrice( 3944220, 6000 ) -- (Old)Petrifying Apprentice Scout Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 3944315, 3000 ) -- (Old)Petrifying Apprentice Scout Gloves
+g_pCashItemManager:AddCashItemPrice( 3944415, 3000 ) -- (Old)Petrifying Apprentice Scout Shoes
+g_pCashItemManager:AddCashItemPrice( 3948125, 6000 ) -- (Old)Petrifying Scout Top Piece
+g_pCashItemManager:AddCashItemPrice( 3948220, 6000 ) -- (Old)Petrifying Scout Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 3948315, 3000 ) -- (Old)Petrifying Scout Gloves
+g_pCashItemManager:AddCashItemPrice( 3948415, 3000 ) -- (Old)Petrifying Scout Shoes
+g_pCashItemManager:AddCashItemPrice( 3952125, 6000 ) -- (Old)Petrifying Elite Lookout Top Piece
+g_pCashItemManager:AddCashItemPrice( 3952220, 6000 ) -- (Old)Petrifying Elite Lookout Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 3952315, 3000 ) -- (Old)Petrifying Elite Lookout Gloves
+g_pCashItemManager:AddCashItemPrice( 3952415, 3000 ) -- (Old)Petrifying Elite Lookout Shoes
+g_pCashItemManager:AddCashItemPrice( 3956125, 6000 ) -- (Old)Petrifying Senace Lookout Top Piece
+g_pCashItemManager:AddCashItemPrice( 3956220, 6000 ) -- (Old)Petrifying Senace Lookout Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 3956315, 3000 ) -- (Old)Petrifying Senace Lookout Gloves
+g_pCashItemManager:AddCashItemPrice( 3956415, 3000 ) -- (Old)Petrifying Senace Lookout Shoes
+g_pCashItemManager:AddCashItemPrice( 3960125, 6000 ) -- (Old)Petrifying Frost Watcher Top Piece
+g_pCashItemManager:AddCashItemPrice( 3960220, 6000 ) -- (Old)Petrifying Frost Watcher Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 3960315, 3000 ) -- (Old)Petrifying Frost Watcher Gloves
+g_pCashItemManager:AddCashItemPrice( 3960415, 3000 ) -- (Old)Petrifying Frost Watcher Shoes
+g_pCashItemManager:AddCashItemPrice( 4002120, 6000 ) -- (Old)Petrifying Apprentice Mercenary's Shirt
+g_pCashItemManager:AddCashItemPrice( 4002210, 6000 ) -- (Old)Petrifying Apprentice Mercenary's Pant
+g_pCashItemManager:AddCashItemPrice( 4002300, 3000 ) -- (Old)Petrifying Apprentice Mercenary's Gloves
+g_pCashItemManager:AddCashItemPrice( 4002395, 3000 ) -- (Old)Petrifying Apprentice Mercenary's Shoes
+g_pCashItemManager:AddCashItemPrice( 4004125, 6000 ) -- (Old)Petrifying Vintage Shirts
+g_pCashItemManager:AddCashItemPrice( 4004220, 6000 ) -- (Old)Petrifying Vintage Pants
+g_pCashItemManager:AddCashItemPrice( 4004315, 3000 ) -- (Old)Petrifying Vintage Gloves
+g_pCashItemManager:AddCashItemPrice( 4004415, 3000 ) -- (Old)Petrifying Vintage Shoes
+g_pCashItemManager:AddCashItemPrice( 4006120, 6000 ) -- (Old)Petrifying Fake Leather Shirts
+g_pCashItemManager:AddCashItemPrice( 4006210, 6000 ) -- (Old)Petrifying Fake Leather Pants
+g_pCashItemManager:AddCashItemPrice( 4006300, 3000 ) -- (Old)Petrifying Fake Leather Gloves
+g_pCashItemManager:AddCashItemPrice( 4006395, 3000 ) -- (Old)Petrifying Fake Leather Shoes
+g_pCashItemManager:AddCashItemPrice( 4008125, 6000 ) -- (Old)Petrifying Lamad Shirts
+g_pCashItemManager:AddCashItemPrice( 4008220, 6000 ) -- (Old)Petrifying Lamad Pants
+g_pCashItemManager:AddCashItemPrice( 4008315, 3000 ) -- (Old)Petrifying Lamad Gloves
+g_pCashItemManager:AddCashItemPrice( 4008415, 3000 ) -- (Old)Petrifying Lamad Shoes
+g_pCashItemManager:AddCashItemPrice( 4010120, 6000 ) -- (Old)Petrifying Militia Group Leather Shirt
+g_pCashItemManager:AddCashItemPrice( 4010210, 6000 ) -- (Old)Petrifying Militia Group Leather Pants
+g_pCashItemManager:AddCashItemPrice( 4010300, 3000 ) -- (Old)Petrifying Militia Group Leather Gloves
+g_pCashItemManager:AddCashItemPrice( 4010395, 3000 ) -- (Old)Petrifying Militia Group Leather Shoes
+g_pCashItemManager:AddCashItemPrice( 4012125, 6000 ) -- (Old)Petrifying Craig Shirts
+g_pCashItemManager:AddCashItemPrice( 4012220, 6000 ) -- (Old)Petrifying Craig Pants
+g_pCashItemManager:AddCashItemPrice( 4012315, 3000 ) -- (Old)Petrifying Craig Gloves
+g_pCashItemManager:AddCashItemPrice( 4012415, 3000 ) -- (Old)Petrifying Craig Shoes
+g_pCashItemManager:AddCashItemPrice( 4014120, 6000 ) -- (Old)Petrifying Vintage Krug Shirts
+g_pCashItemManager:AddCashItemPrice( 4014210, 6000 ) -- (Old)Petrifying Vintage Krug Pants
+g_pCashItemManager:AddCashItemPrice( 4014300, 3000 ) -- (Old)Petrifying Vintage Krug Gloves
+g_pCashItemManager:AddCashItemPrice( 4014395, 3000 ) -- (Old)Petrifying Vintage Krug Shoes
+g_pCashItemManager:AddCashItemPrice( 4016125, 6000 ) -- (Old)Petrifying Sheepskin Shirts
+g_pCashItemManager:AddCashItemPrice( 4016220, 6000 ) -- (Old)Petrifying Sheepskin Pants
+g_pCashItemManager:AddCashItemPrice( 4016315, 3000 ) -- (Old)Petrifying Sheepskin Gloves
+g_pCashItemManager:AddCashItemPrice( 4016415, 3000 ) -- (Old)Petrifying Sheepskin Shoes
+g_pCashItemManager:AddCashItemPrice( 4018120, 6000 ) -- (Old)Petrifying Golden Suit
+g_pCashItemManager:AddCashItemPrice( 4018210, 6000 ) -- (Old)Petrifying Golden Jean
+g_pCashItemManager:AddCashItemPrice( 4018300, 3000 ) -- (Old)Petrifying Golden Gloves
+g_pCashItemManager:AddCashItemPrice( 4018395, 3000 ) -- (Old)Petrifying Golden Sneakers
+g_pCashItemManager:AddCashItemPrice( 4020125, 6000 ) -- (Old)Petrifying Quilted Leather Suit
+g_pCashItemManager:AddCashItemPrice( 4020220, 6000 ) -- (Old)Petrifying Quilted Leather Jean
+g_pCashItemManager:AddCashItemPrice( 4020315, 3000 ) -- (Old)Petrifying Quilted Leather Gloves
+g_pCashItemManager:AddCashItemPrice( 4020415, 3000 ) -- (Old)Petrifying Quilted Leather Sneakers
+g_pCashItemManager:AddCashItemPrice( 4022120, 6000 ) -- (Old)Petrifying Punk Leather Suit
+g_pCashItemManager:AddCashItemPrice( 4022210, 6000 ) -- (Old)Petrifying Punk Leather Jean
+g_pCashItemManager:AddCashItemPrice( 4022300, 3000 ) -- (Old)Petrifying Punk Leather Gloves
+g_pCashItemManager:AddCashItemPrice( 4022395, 3000 ) -- (Old)Petrifying Punk Leather Sneakers
+g_pCashItemManager:AddCashItemPrice( 4024125, 6000 ) -- (Old)Petrifying High-quality Fake Leather Suit
+g_pCashItemManager:AddCashItemPrice( 4024220, 6000 ) -- (Old)Petrifying High-quality Fake Leather Jeans
+g_pCashItemManager:AddCashItemPrice( 4024315, 3000 ) -- (Old)Petrifying High-quality Fake Leather Gloves
+g_pCashItemManager:AddCashItemPrice( 4024415, 3000 ) -- (Old)Petrifying High-quality Fake Leather Sneakers
+g_pCashItemManager:AddCashItemPrice( 4026120, 6000 ) -- (Old)Petrifying Tough Guy Suit
+g_pCashItemManager:AddCashItemPrice( 4026210, 6000 ) -- (Old)Petrifying Tough Guy Jeans
+g_pCashItemManager:AddCashItemPrice( 4026300, 3000 ) -- (Old)Petrifying Tough Guy Gloves
+g_pCashItemManager:AddCashItemPrice( 4026395, 3000 ) -- (Old)Petrifying Tough Guy Sneakers
+g_pCashItemManager:AddCashItemPrice( 4028125, 6000 ) -- (Old)Petrifying Aquibus Suit
+g_pCashItemManager:AddCashItemPrice( 4028220, 6000 ) -- (Old)Petrifying Aquibus Jeans
+g_pCashItemManager:AddCashItemPrice( 4028315, 3000 ) -- (Old)Petrifying Aquibus Gloves
+g_pCashItemManager:AddCashItemPrice( 4028415, 3000 ) -- (Old)Petrifying Aquibus Sneakers
+g_pCashItemManager:AddCashItemPrice( 4030120, 6000 ) -- (Old)Petrifying Twilight Suit
+g_pCashItemManager:AddCashItemPrice( 4030210, 6000 ) -- (Old)Petrifying Twilight Jeans
+g_pCashItemManager:AddCashItemPrice( 4030300, 3000 ) -- (Old)Petrifying Twilight Gloves
+g_pCashItemManager:AddCashItemPrice( 4030395, 3000 ) -- (Old)Petrifying Twilight Sneakers
+g_pCashItemManager:AddCashItemPrice( 4032125, 6000 ) -- (Old)Petrifying Velour Suit
+g_pCashItemManager:AddCashItemPrice( 4032220, 6000 ) -- (Old)Petrifying Velour Jeans
+g_pCashItemManager:AddCashItemPrice( 4032315, 3000 ) -- (Old)Petrifying Velour Gauntlets
+g_pCashItemManager:AddCashItemPrice( 4032415, 3000 ) -- (Old)Petrifying Velour Sneakers
+g_pCashItemManager:AddCashItemPrice( 4034120, 6000 ) -- (Old)Petrifying Half-steel Suit
+g_pCashItemManager:AddCashItemPrice( 4034210, 6000 ) -- (Old)Petrifying Half-steel Jeans
+g_pCashItemManager:AddCashItemPrice( 4034300, 3000 ) -- (Old)Petrifying Half-steel Gauntlets
+g_pCashItemManager:AddCashItemPrice( 4034395, 3000 ) -- (Old)Petrifying Half-steel Sneakers
+g_pCashItemManager:AddCashItemPrice( 4036125, 6000 ) -- (Old)Petrifying Bandaged Suit
+g_pCashItemManager:AddCashItemPrice( 4036220, 6000 ) -- (Old)Petrifying Bandaged Jeans
+g_pCashItemManager:AddCashItemPrice( 4036315, 3000 ) -- (Old)Petrifying Bandaged Gauntlets
+g_pCashItemManager:AddCashItemPrice( 4036415, 3000 ) -- (Old)Petrifying Bandaged Sneakers
+g_pCashItemManager:AddCashItemPrice( 4038120, 6000 ) -- (Old)Petrifying Iron Suit
+g_pCashItemManager:AddCashItemPrice( 4038210, 6000 ) -- (Old)Petrifying Iron Jeans
+g_pCashItemManager:AddCashItemPrice( 4038300, 3000 ) -- (Old)Petrifying Iron Gauntlets
+g_pCashItemManager:AddCashItemPrice( 4038395, 3000 ) -- (Old)Petrifying Iron Sneakers
+g_pCashItemManager:AddCashItemPrice( 4040125, 6000 ) -- (Old)Petrifying Rider's Suits
+g_pCashItemManager:AddCashItemPrice( 4040220, 6000 ) -- (Old)Petrifying Rider's Jeans
+g_pCashItemManager:AddCashItemPrice( 4040315, 3000 ) -- (Old)Petrifying Rider's Gauntlets
+g_pCashItemManager:AddCashItemPrice( 4040415, 3000 ) -- (Old)Petrifying Rider's Sneakers
+g_pCashItemManager:AddCashItemPrice( 4042120, 6000 ) -- (Old)Petrifying Arc Steel Suit
+g_pCashItemManager:AddCashItemPrice( 4042210, 6000 ) -- (Old)Petrifying Arc Steel Jeans
+g_pCashItemManager:AddCashItemPrice( 4042300, 3000 ) -- (Old)Petrifying Arc Steel Gauntlets
+g_pCashItemManager:AddCashItemPrice( 4042395, 3000 ) -- (Old)Petrifying Arc Steel Sneakers
+g_pCashItemManager:AddCashItemPrice( 4044125, 6000 ) -- (Old)Petrifying Stealth Suit
+g_pCashItemManager:AddCashItemPrice( 4044220, 6000 ) -- (Old)Petrifying Stealth Jeans
+g_pCashItemManager:AddCashItemPrice( 4044315, 3000 ) -- (Old)Petrifying Stealth Gauntlets
+g_pCashItemManager:AddCashItemPrice( 4044415, 3000 ) -- (Old)Petrifying Stealth Sneakers
+g_pCashItemManager:AddCashItemPrice( 4046120, 6000 ) -- (Old)Petrifying Bone Scaled Pao
+g_pCashItemManager:AddCashItemPrice( 4046210, 6000 ) -- (Old)Petrifying Bone Scaled Jeans
+g_pCashItemManager:AddCashItemPrice( 4046300, 3000 ) -- (Old)Petrifying Bone Scaled Gauntlets
+g_pCashItemManager:AddCashItemPrice( 4046395, 3000 ) -- (Old)Petrifying Bone Scaled Sneakers
+g_pCashItemManager:AddCashItemPrice( 4140125, 6000 ) -- (Old)Petrifying Tesis Compact Suit
+g_pCashItemManager:AddCashItemPrice( 4140220, 6000 ) -- (Old)Petrifying Tesis Compact Jeans
+g_pCashItemManager:AddCashItemPrice( 4140315, 3000 ) -- (Old)Petrifying Tesis Compact Gauntlets
+g_pCashItemManager:AddCashItemPrice( 4140415, 3000 ) -- (Old)Petrifying Tesis Compact Sneakers
+g_pCashItemManager:AddCashItemPrice( 4144125, 6000 ) -- (Old)Petrifying Antique Palama Suit
+g_pCashItemManager:AddCashItemPrice( 4144220, 6000 ) -- (Old)Petrifying Antique Palama Jeans
+g_pCashItemManager:AddCashItemPrice( 4144315, 3000 ) -- (Old)Petrifying Antique Palama Gauntlets
+g_pCashItemManager:AddCashItemPrice( 4144415, 3000 ) -- (Old)Petrifying Antique Palama Sneakers
+g_pCashItemManager:AddCashItemPrice( 4146120, 6000 ) -- (Old)Petrifying Lisita Pao
+g_pCashItemManager:AddCashItemPrice( 4146210, 6000 ) -- (Old)Petrifying Lisita Jeans
+g_pCashItemManager:AddCashItemPrice( 4146300, 3000 ) -- (Old)Petrifying Lisita Gauntlets
+g_pCashItemManager:AddCashItemPrice( 4146395, 3000 ) -- (Old)Petrifying Lisita Sneakers
+g_pCashItemManager:AddCashItemPrice( 4148125, 6000 ) -- (Old)Petrifying Glows Lisita Pao
+g_pCashItemManager:AddCashItemPrice( 4148220, 6000 ) -- (Old)Petrifying Glows Lisita Jeans
+g_pCashItemManager:AddCashItemPrice( 4148315, 3000 ) -- (Old)Petrifying Glows Lisita Gauntlets
+g_pCashItemManager:AddCashItemPrice( 4148415, 3000 ) -- (Old)Petrifying Glows Lisita Sneakers
+g_pCashItemManager:AddCashItemPrice( 4150120, 6000 ) -- (Old)Petrifying Shadow Tracer Top Piece
+g_pCashItemManager:AddCashItemPrice( 4150210, 6000 ) -- (Old)Petrifying Shadow Tracer Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 4150300, 3000 ) -- (Old)Petrifying Shadow Tracer Gloves
+g_pCashItemManager:AddCashItemPrice( 4150395, 3000 ) -- (Old)Petrifying Shadow Tracer Shoes
+g_pCashItemManager:AddCashItemPrice( 4152125, 6000 ) -- (Old)Petrifying Shadow Mercenary Top Piece
+g_pCashItemManager:AddCashItemPrice( 4152220, 6000 ) -- (Old)Petrifying Shadow Mercenary Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 4152315, 3000 ) -- (Old)Petrifying Shadow Mercenary Gloves
+g_pCashItemManager:AddCashItemPrice( 4152415, 3000 ) -- (Old)Petrifying Shadow Mercenary Shoes
+g_pCashItemManager:AddCashItemPrice( 4156120, 6000 ) -- (Old)Petrifying Wild Wetlands Top Piece
+g_pCashItemManager:AddCashItemPrice( 4156210, 6000 ) -- (Old)Petrifying Wild Wetlands Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 4156300, 3000 ) -- (Old)Petrifying Wild Wetlands Gloves
+g_pCashItemManager:AddCashItemPrice( 4156395, 3000 ) -- (Old)Petrifying Wild Wetlands Shoes
+g_pCashItemManager:AddCashItemPrice( 4160125, 6000 ) -- (Old)Petrifying Greater Shadow Mercenary Top Piece
+g_pCashItemManager:AddCashItemPrice( 4160220, 6000 ) -- (Old)Petrifying Greater Shadow Mercenary Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 4160315, 3000 ) -- (Old)Petrifying Greater Shadow Mercenary Gloves
+g_pCashItemManager:AddCashItemPrice( 4160415, 3000 ) -- (Old)Petrifying Greater Shadow Mercenary Shoes
+g_pCashItemManager:AddCashItemPrice( 4340125, 6000 ) -- (Old)Petrifying Valanca Elusive Suit
+g_pCashItemManager:AddCashItemPrice( 4340220, 6000 ) -- (Old)Petrifying Valanca Elusive Jeans
+g_pCashItemManager:AddCashItemPrice( 4340315, 3000 ) -- (Old)Petrifying Valanca Elusive Gauntlets
+g_pCashItemManager:AddCashItemPrice( 4340415, 3000 ) -- (Old)Petrifying Valanca Elusive Sneakers
+g_pCashItemManager:AddCashItemPrice( 4344125, 6000 ) -- (Old)Petrifying Calm Spectre Suit
+g_pCashItemManager:AddCashItemPrice( 4344220, 6000 ) -- (Old)Petrifying Calm Spectre Jeans
+g_pCashItemManager:AddCashItemPrice( 4344315, 3000 ) -- (Old)Petrifying Calm Spectre Gauntlets
+g_pCashItemManager:AddCashItemPrice( 4344415, 3000 ) -- (Old)Petrifying Calm Spectre Sneakers
+g_pCashItemManager:AddCashItemPrice( 4346120, 6000 ) -- (Old)Petrifying Popular Pao
+g_pCashItemManager:AddCashItemPrice( 4346210, 6000 ) -- (Old)Petrifying Popular Jeans
+g_pCashItemManager:AddCashItemPrice( 4346300, 3000 ) -- (Old)Petrifying Popular Gauntlets
+g_pCashItemManager:AddCashItemPrice( 4346395, 3000 ) -- (Old)Petrifying Popular Sneakers
+g_pCashItemManager:AddCashItemPrice( 4348125, 6000 ) -- (Old)Petrifying Exec Popular Pao
+g_pCashItemManager:AddCashItemPrice( 4348220, 6000 ) -- (Old)Petrifying Exec Popular Jeans
+g_pCashItemManager:AddCashItemPrice( 4348315, 3000 ) -- (Old)Petrifying Exec Popular Gauntlets
+g_pCashItemManager:AddCashItemPrice( 4348415, 3000 ) -- (Old)Petrifying Exec Popular Sneakers
+g_pCashItemManager:AddCashItemPrice( 4350120, 6000 ) -- (Old)Petrifying Shadow Destroyer Top Piece
+g_pCashItemManager:AddCashItemPrice( 4350210, 6000 ) -- (Old)Petrifying Shadow Destroyer Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 4350300, 3000 ) -- (Old)Petrifying Shadow Destroyer Gloves
+g_pCashItemManager:AddCashItemPrice( 4350395, 3000 ) -- (Old)Petrifying Shadow Destroyer Shoes
+g_pCashItemManager:AddCashItemPrice( 4352125, 6000 ) -- (Old)Petrifying Gray Mercenary Top Piece
+g_pCashItemManager:AddCashItemPrice( 4352220, 6000 ) -- (Old)Petrifying Gray Mercenary Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 4352315, 3000 ) -- (Old)Petrifying Gray Mercenary Gloves
+g_pCashItemManager:AddCashItemPrice( 4352415, 3000 ) -- (Old)Petrifying Gray Mercenary Shoes
+g_pCashItemManager:AddCashItemPrice( 4356120, 6000 ) -- (Old)Petrifying Red Stigma Top Piece
+g_pCashItemManager:AddCashItemPrice( 4356210, 6000 ) -- (Old)Petrifying Red Stigma Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 4356300, 3000 ) -- (Old)Petrifying Red Stigma Gloves
+g_pCashItemManager:AddCashItemPrice( 4356395, 3000 ) -- (Old)Petrifying Red Stigma Shoes
+g_pCashItemManager:AddCashItemPrice( 4360125, 6000 ) -- (Old)Petrifying Greater Gray Mercenary Top Piece
+g_pCashItemManager:AddCashItemPrice( 4360220, 6000 ) -- (Old)Petrifying Greater Gray Mercenary Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 4360315, 3000 ) -- (Old)Petrifying Greater Gray Mercenary Gloves
+g_pCashItemManager:AddCashItemPrice( 4360415, 3000 ) -- (Old)Petrifying Greater Gray Mercenary Shoes
+g_pCashItemManager:AddCashItemPrice( 4540125, 6000 ) -- (Old)Petrifying Durable  Top Piece
+g_pCashItemManager:AddCashItemPrice( 4540220, 6000 ) -- (Old)Petrifying Durable  Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 4540315, 3000 ) -- (Old)Petrifying Durable Gloves
+g_pCashItemManager:AddCashItemPrice( 4540415, 3000 ) -- (Old)Petrifying Durable Shoes
+g_pCashItemManager:AddCashItemPrice( 4544125, 6000 ) -- (Old)Petrifying Scarlet Top Piece
+g_pCashItemManager:AddCashItemPrice( 4544220, 6000 ) -- (Old)Petrifying Scarlet Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 4544315, 3000 ) -- (Old)Petrifying Scarlet Gloves
+g_pCashItemManager:AddCashItemPrice( 4544415, 3000 ) -- (Old)Petrifying Scarlet Shoes
+g_pCashItemManager:AddCashItemPrice( 4548125, 6000 ) -- (Old)Petrifying Blazing Mercenary Top Piece
+g_pCashItemManager:AddCashItemPrice( 4548220, 6000 ) -- (Old)Petrifying Blazing Mercenary Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 4548315, 3000 ) -- (Old)Petrifying Blazing Mercenary Gloves
+g_pCashItemManager:AddCashItemPrice( 4548415, 3000 ) -- (Old)Petrifying Blazing Mercenary Shoes
+g_pCashItemManager:AddCashItemPrice( 4552125, 6000 ) -- (Old)Petrifying Commander Top Piece
+g_pCashItemManager:AddCashItemPrice( 4552220, 6000 ) -- (Old)Petrifying Commander Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 4552315, 3000 ) -- (Old)Petrifying Commander Gloves
+g_pCashItemManager:AddCashItemPrice( 4552415, 3000 ) -- (Old)Petrifying Commander Shoes
+g_pCashItemManager:AddCashItemPrice( 4556125, 6000 ) -- (Old)Petrifying Reserve Mercenary Top Piece
+g_pCashItemManager:AddCashItemPrice( 4556220, 6000 ) -- (Old)Petrifying Reserve Mercenary Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 4556315, 3000 ) -- (Old)Petrifying Reserve Mercenary Gloves
+g_pCashItemManager:AddCashItemPrice( 4556415, 3000 ) -- (Old)Petrifying Reserve Mercenary Shoes
+g_pCashItemManager:AddCashItemPrice( 4560125, 6000 ) -- (Old)Petrifying High Commander Top Piece
+g_pCashItemManager:AddCashItemPrice( 4560220, 6000 ) -- (Old)Petrifying High Commander Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 4560315, 3000 ) -- (Old)Petrifying High Commander Gloves
+g_pCashItemManager:AddCashItemPrice( 4560415, 3000 ) -- (Old)Petrifying High Commander Shoes
+g_pCashItemManager:AddCashItemPrice( 4940125, 6000 ) -- (Old)Petrifying Scout Mercenary Top Piece
+g_pCashItemManager:AddCashItemPrice( 4940220, 6000 ) -- (Old)Petrifying Scout Mercenary Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 4940315, 3000 ) -- (Old)Petrifying Scout Mercenary Gloves
+g_pCashItemManager:AddCashItemPrice( 4940415, 3000 ) -- (Old)Petrifying Scout Mercenary Shoes
+g_pCashItemManager:AddCashItemPrice( 4944125, 6000 ) -- (Old)Petrifying Combat Mercenary Top Piece
+g_pCashItemManager:AddCashItemPrice( 4944220, 6000 ) -- (Old)Petrifying Combat Mercenary Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 4944315, 3000 ) -- (Old)Petrifying Combat Mercenary Gloves
+g_pCashItemManager:AddCashItemPrice( 4944415, 3000 ) -- (Old)Petrifying Combat Mercenary Shoes
+g_pCashItemManager:AddCashItemPrice( 4948125, 6000 ) -- (Old)Petrifying Black Steel Top Piece
+g_pCashItemManager:AddCashItemPrice( 4948220, 6000 ) -- (Old)Petrifying Black Steel Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 4948315, 3000 ) -- (Old)Petrifying Black Steel Gloves
+g_pCashItemManager:AddCashItemPrice( 4948415, 3000 ) -- (Old)Petrifying Black Steel Shoes
+g_pCashItemManager:AddCashItemPrice( 4952125, 6000 ) -- (Old)Petrifying Hamel Combat Mercenary Top Piece
+g_pCashItemManager:AddCashItemPrice( 4952220, 6000 ) -- (Old)Petrifying Hamel Combat Mercenary Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 4952315, 3000 ) -- (Old)Petrifying Hamel Combat Mercenary Gloves
+g_pCashItemManager:AddCashItemPrice( 4952415, 3000 ) -- (Old)Petrifying Hamel Combat Mercenary Shoes
+g_pCashItemManager:AddCashItemPrice( 4956125, 6000 ) -- (Old)Petrifying Penzas Mercenary Top Piece
+g_pCashItemManager:AddCashItemPrice( 4956220, 6000 ) -- (Old)Petrifying Penzas Mercenary Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 4956315, 3000 ) -- (Old)Petrifying Penzas Mercenary Gloves
+g_pCashItemManager:AddCashItemPrice( 4956415, 3000 ) -- (Old)Petrifying Penzas Mercenary Shoes
+g_pCashItemManager:AddCashItemPrice( 4960125, 6000 ) -- (Old)Petrifying Senace Elite Mercenary Top Piece
+g_pCashItemManager:AddCashItemPrice( 4960220, 6000 ) -- (Old)Petrifying Senace Elite Mercenary Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 4960315, 3000 ) -- (Old)Petrifying Senace Elite Mercenary Gloves
+g_pCashItemManager:AddCashItemPrice( 4960415, 3000 ) -- (Old)Petrifying Senace Elite Mercenary Shoes
+g_pCashItemManager:AddCashItemPrice( 5002120, 6000 ) -- (Old)Petrifying Glico Shirts
+g_pCashItemManager:AddCashItemPrice( 5002210, 6000 ) -- (Old)Petrifying Glico Short Pants
+g_pCashItemManager:AddCashItemPrice( 5002300, 3000 ) -- (Old)Petrifying Glico Bands
+g_pCashItemManager:AddCashItemPrice( 5002395, 3000 ) -- (Old)Petrifying Glico Shoes
+g_pCashItemManager:AddCashItemPrice( 5004125, 6000 ) -- (Old)Petrifying Nasod Shirts
+g_pCashItemManager:AddCashItemPrice( 5004220, 6000 ) -- (Old)Petrifying Nasod Short Pants
+g_pCashItemManager:AddCashItemPrice( 5004315, 3000 ) -- (Old)Petrifying Nasod Bands
+g_pCashItemManager:AddCashItemPrice( 5004415, 3000 ) -- (Old)Petrifying Nasod Shoes
+g_pCashItemManager:AddCashItemPrice( 5006120, 6000 ) -- (Old)Petrifying Fork Shirts
+g_pCashItemManager:AddCashItemPrice( 5006210, 6000 ) -- (Old)Petrifying Fork Short Pants
+g_pCashItemManager:AddCashItemPrice( 5006300, 3000 ) -- (Old)Petrifying Fork Bands
+g_pCashItemManager:AddCashItemPrice( 5006395, 3000 ) -- (Old)Petrifying Fork Shoes
+g_pCashItemManager:AddCashItemPrice( 5008125, 6000 ) -- (Old)Petrifying Frilled Shirts
+g_pCashItemManager:AddCashItemPrice( 5008220, 6000 ) -- (Old)Petrifying Frilled Short Pants
+g_pCashItemManager:AddCashItemPrice( 5008315, 3000 ) -- (Old)Petrifying Frilled Bands
+g_pCashItemManager:AddCashItemPrice( 5008415, 3000 ) -- (Old)Petrifying Frilled Shoes
+g_pCashItemManager:AddCashItemPrice( 5010120, 6000 ) -- (Old)Petrifying Scholar Shirts
+g_pCashItemManager:AddCashItemPrice( 5010210, 6000 ) -- (Old)Petrifying Scholar Short Pants
+g_pCashItemManager:AddCashItemPrice( 5010300, 3000 ) -- (Old)Petrifying Scholar Bands
+g_pCashItemManager:AddCashItemPrice( 5010395, 3000 ) -- (Old)Petrifying Scholar Shoes
+g_pCashItemManager:AddCashItemPrice( 5012125, 6000 ) -- (Old)Petrifying Nylon Shirts
+g_pCashItemManager:AddCashItemPrice( 5012220, 6000 ) -- (Old)Petrifying Nylon Short Pants
+g_pCashItemManager:AddCashItemPrice( 5012315, 3000 ) -- (Old)Petrifying Nylon Bands
+g_pCashItemManager:AddCashItemPrice( 5012415, 3000 ) -- (Old)Petrifying Nylon Shoes
+g_pCashItemManager:AddCashItemPrice( 5014120, 6000 ) -- (Old)Petrifying Padded Glico Suit
+g_pCashItemManager:AddCashItemPrice( 5014210, 6000 ) -- (Old)Petrifying Padded Glico Skirt
+g_pCashItemManager:AddCashItemPrice( 5014300, 5000 ) -- (Old)Petrifying Padded Glico Ring Bands
+g_pCashItemManager:AddCashItemPrice( 5014395, 3000 ) -- (Old)Petrifying Padded Glico Shoes
+g_pCashItemManager:AddCashItemPrice( 5016125, 6000 ) -- (Old)Petrifying Bright Suit
+g_pCashItemManager:AddCashItemPrice( 5016220, 6000 ) -- (Old)Petrifying Bright Skirt
+g_pCashItemManager:AddCashItemPrice( 5016315, 5000 ) -- (Old)Petrifying Bright Ring Bands
+g_pCashItemManager:AddCashItemPrice( 5016415, 3000 ) -- (Old)Petrifying Bright Shoes
+g_pCashItemManager:AddCashItemPrice( 5018120, 6000 ) -- (Old)Petrifying Cleo Suit
+g_pCashItemManager:AddCashItemPrice( 5018210, 6000 ) -- (Old)Petrifying Cleo Skirt
+g_pCashItemManager:AddCashItemPrice( 5018300, 5000 ) -- (Old)Petrifying Cleo Ring Bands
+g_pCashItemManager:AddCashItemPrice( 5018395, 3000 ) -- (Old)Petrifying Cleo Shoes
+g_pCashItemManager:AddCashItemPrice( 5020125, 6000 ) -- (Old)Petrifying Vincent Suit
+g_pCashItemManager:AddCashItemPrice( 5020220, 6000 ) -- (Old)Petrifying Vincent Skirt
+g_pCashItemManager:AddCashItemPrice( 5020315, 5000 ) -- (Old)Petrifying Vincent Ring Band
+g_pCashItemManager:AddCashItemPrice( 5020415, 3000 ) -- (Old)Petrifying Vincent Shoes
+g_pCashItemManager:AddCashItemPrice( 5022120, 6000 ) -- (Old)Petrifying Tracking Suit
+g_pCashItemManager:AddCashItemPrice( 5022210, 6000 ) -- (Old)Petrifying Tracking Skirt
+g_pCashItemManager:AddCashItemPrice( 5022300, 5000 ) -- (Old)Petrifying Tracking Ring Band
+g_pCashItemManager:AddCashItemPrice( 5022395, 3000 ) -- (Old)Petrifying Tracking Shoes
+g_pCashItemManager:AddCashItemPrice( 5024125, 6000 ) -- (Old)Petrifying Operator's Suit
+g_pCashItemManager:AddCashItemPrice( 5024220, 6000 ) -- (Old)Petrifying Operator's Skirt
+g_pCashItemManager:AddCashItemPrice( 5024315, 5000 ) -- (Old)Petrifying Operator's Ring Band
+g_pCashItemManager:AddCashItemPrice( 5024415, 3000 ) -- (Old)Petrifying Operator's Shoes
+g_pCashItemManager:AddCashItemPrice( 5026120, 6000 ) -- (Old)Petrifying Tinker's Suit
+g_pCashItemManager:AddCashItemPrice( 5026210, 6000 ) -- (Old)Petrifying Tinker's Skirt
+g_pCashItemManager:AddCashItemPrice( 5026300, 3000 ) -- (Old)Petrifying Tinker's Gloves
+g_pCashItemManager:AddCashItemPrice( 5026395, 3000 ) -- (Old)Petrifying Tinker's Tights
+g_pCashItemManager:AddCashItemPrice( 5028125, 6000 ) -- (Old)Petrifying Silk Suit
+g_pCashItemManager:AddCashItemPrice( 5028220, 6000 ) -- (Old)Petrifying Silk Skirt
+g_pCashItemManager:AddCashItemPrice( 5028315, 3000 ) -- (Old)Petrifying Silk Gloves
+g_pCashItemManager:AddCashItemPrice( 5028415, 3000 ) -- (Old)Petrifying Silk Tights
+g_pCashItemManager:AddCashItemPrice( 5030120, 6000 ) -- (Old)Petrifying Deep Suit
+g_pCashItemManager:AddCashItemPrice( 5030210, 6000 ) -- (Old)Petrifying Deep Skirt
+g_pCashItemManager:AddCashItemPrice( 5030300, 3000 ) -- (Old)Petrifying Deep Gloves
+g_pCashItemManager:AddCashItemPrice( 5030395, 3000 ) -- (Old)Petrifying Deep Tights
+g_pCashItemManager:AddCashItemPrice( 5032125, 6000 ) -- (Old)Petrifying Chained Suit
+g_pCashItemManager:AddCashItemPrice( 5032220, 6000 ) -- (Old)Petrifying Chained Skirt
+g_pCashItemManager:AddCashItemPrice( 5032315, 3000 ) -- (Old)Petrifying Chained Gloves
+g_pCashItemManager:AddCashItemPrice( 5032415, 3000 ) -- (Old)Petrifying Chained Tights
+g_pCashItemManager:AddCashItemPrice( 5034120, 6000 ) -- (Old)Petrifying Preserved Suit
+g_pCashItemManager:AddCashItemPrice( 5034210, 6000 ) -- (Old)Petrifying Preserved Skirt
+g_pCashItemManager:AddCashItemPrice( 5034300, 3000 ) -- (Old)Petrifying Preserved Gloves
+g_pCashItemManager:AddCashItemPrice( 5034395, 3000 ) -- (Old)Petrifying Preserved Tights
+g_pCashItemManager:AddCashItemPrice( 5036125, 6000 ) -- (Old)Petrifying Winston Suit
+g_pCashItemManager:AddCashItemPrice( 5036220, 6000 ) -- (Old)Petrifying Winston Skirt
+g_pCashItemManager:AddCashItemPrice( 5036315, 3000 ) -- (Old)Petrifying Winston Gloves
+g_pCashItemManager:AddCashItemPrice( 5036415, 3000 ) -- (Old)Petrifying Winston Tights
+g_pCashItemManager:AddCashItemPrice( 5038050, 6000 ) -- (Old)Puppet Dress
+g_pCashItemManager:AddCashItemPrice( 5038055, 6000 ) -- (Old)Improved Puppet Dress
+g_pCashItemManager:AddCashItemPrice( 5038060, 6000 ) -- (Old)Superior Puppet Dress
+g_pCashItemManager:AddCashItemPrice( 5038065, 6000 ) -- (Old)Armored Puppet Dress
+g_pCashItemManager:AddCashItemPrice( 5038070, 6000 ) -- (Old)Advanced Puppet Dress
+g_pCashItemManager:AddCashItemPrice( 5038075, 6000 ) -- (Old)Hasty Puppet Dress
+g_pCashItemManager:AddCashItemPrice( 5038080, 6000 ) -- (Old)Vitality Puppet Dress
+g_pCashItemManager:AddCashItemPrice( 5038085, 6000 ) -- (Old)Precise Puppet Dress
+g_pCashItemManager:AddCashItemPrice( 5038090, 6000 ) -- (Old)Nimble Puppet Dress
+g_pCashItemManager:AddCashItemPrice( 5038095, 6000 ) -- (Old)Divine Puppet Dress
+g_pCashItemManager:AddCashItemPrice( 5038100, 6000 ) -- (Old)Burning Puppet Dress
+g_pCashItemManager:AddCashItemPrice( 5038105, 6000 ) -- (Old)Freezing Puppet Dress
+g_pCashItemManager:AddCashItemPrice( 5038110, 6000 ) -- (Old)Poisoning Puppet Dress
+g_pCashItemManager:AddCashItemPrice( 5038115, 6000 ) -- (Old)Piercing Puppet Dress
+g_pCashItemManager:AddCashItemPrice( 5038120, 6000 ) -- (Old)Petrifying Puppet Dress
+g_pCashItemManager:AddCashItemPrice( 5038125, 6000 ) -- (Old)Drained Puppet Dress
+g_pCashItemManager:AddCashItemPrice( 5038130, 6000 ) -- (Old)Blessed Puppet Dress
+g_pCashItemManager:AddCashItemPrice( 5038135, 6000 ) -- (Old)Ultimate Puppet Dress
+g_pCashItemManager:AddCashItemPrice( 5038140, 6000 ) -- (Old)Puppet Stage
+g_pCashItemManager:AddCashItemPrice( 5038145, 6000 ) -- (Old)Improved Puppet Stage
+g_pCashItemManager:AddCashItemPrice( 5038150, 6000 ) -- (Old)Superior Puppet Stage
+g_pCashItemManager:AddCashItemPrice( 5038155, 6000 ) -- (Old)Armored Puppet Stage
+g_pCashItemManager:AddCashItemPrice( 5038160, 6000 ) -- (Old)Advanced Puppet Stage
+g_pCashItemManager:AddCashItemPrice( 5038165, 6000 ) -- (Old)Hasty Puppet Stage
+g_pCashItemManager:AddCashItemPrice( 5038170, 6000 ) -- (Old)Vitality Puppet Stage
+g_pCashItemManager:AddCashItemPrice( 5038175, 6000 ) -- (Old)Precise Puppet Stage
+g_pCashItemManager:AddCashItemPrice( 5038180, 6000 ) -- (Old)Nimble Puppet Stage
+g_pCashItemManager:AddCashItemPrice( 5038185, 6000 ) -- (Old)Divine Puppet Stage
+g_pCashItemManager:AddCashItemPrice( 5038190, 6000 ) -- (Old)Burning Puppet Stage
+g_pCashItemManager:AddCashItemPrice( 5038195, 6000 ) -- (Old)Freezing Puppet Stage
+g_pCashItemManager:AddCashItemPrice( 5038200, 6000 ) -- (Old)Poisoning Puppet Stage
+g_pCashItemManager:AddCashItemPrice( 5038205, 6000 ) -- (Old)Piercing Puppet Stage
+g_pCashItemManager:AddCashItemPrice( 5038210, 6000 ) -- (Old)Petrifying Puppet Stage
+g_pCashItemManager:AddCashItemPrice( 5038215, 6000 ) -- (Old)Drained Puppet Stage
+g_pCashItemManager:AddCashItemPrice( 5038220, 6000 ) -- (Old)Blessed Puppet Stage
+g_pCashItemManager:AddCashItemPrice( 5038225, 6000 ) -- (Old)Ultimate Puppet Stage
+g_pCashItemManager:AddCashItemPrice( 5038230, 3000 ) -- (Old)Puppet Gloves
+g_pCashItemManager:AddCashItemPrice( 5038235, 3000 ) -- (Old)Improved Puppet Gloves
+g_pCashItemManager:AddCashItemPrice( 5038240, 3000 ) -- (Old)Superior Puppet Gloves
+g_pCashItemManager:AddCashItemPrice( 5038245, 3000 ) -- (Old)Armored Puppet Gloves
+g_pCashItemManager:AddCashItemPrice( 5038250, 3000 ) -- (Old)Advanced Puppet Gloves
+g_pCashItemManager:AddCashItemPrice( 5038255, 3000 ) -- (Old)Hasty Puppet Gloves
+g_pCashItemManager:AddCashItemPrice( 5038260, 3000 ) -- (Old)Vitality Puppet Gloves
+g_pCashItemManager:AddCashItemPrice( 5038265, 3000 ) -- (Old)Precise Puppet Gloves
+g_pCashItemManager:AddCashItemPrice( 5038270, 3000 ) -- (Old)Nimble Puppet Gloves
+g_pCashItemManager:AddCashItemPrice( 5038275, 3000 ) -- (Old)Divine Puppet Gloves
+g_pCashItemManager:AddCashItemPrice( 5038280, 3000 ) -- (Old)Burning Puppet Gloves
+g_pCashItemManager:AddCashItemPrice( 5038285, 3000 ) -- (Old)Freezing Puppet Gloves
+g_pCashItemManager:AddCashItemPrice( 5038290, 3000 ) -- (Old)Poisoning Puppet Gloves
+g_pCashItemManager:AddCashItemPrice( 5038295, 3000 ) -- (Old)Piercing Puppet Gloves
+g_pCashItemManager:AddCashItemPrice( 5038300, 3000 ) -- (Old)Petrifying Puppet Gloves
+g_pCashItemManager:AddCashItemPrice( 5038305, 3000 ) -- (Old)Drained Puppet Gloves
+g_pCashItemManager:AddCashItemPrice( 5038310, 3000 ) -- (Old)Blessed Puppet Gloves
+g_pCashItemManager:AddCashItemPrice( 5038315, 3000 ) -- (Old)Ultimate Puppet Gloves
+g_pCashItemManager:AddCashItemPrice( 5038320, 3000 ) -- (Old)Puppet Tights
+g_pCashItemManager:AddCashItemPrice( 5038325, 3000 ) -- (Old)Improved Puppet Tights
+g_pCashItemManager:AddCashItemPrice( 5038330, 3000 ) -- (Old)Superior Puppet Tights
+g_pCashItemManager:AddCashItemPrice( 5038335, 3000 ) -- (Old)Armored Puppet Tights
+g_pCashItemManager:AddCashItemPrice( 5038340, 3000 ) -- (Old)Advanced Puppet Tights
+g_pCashItemManager:AddCashItemPrice( 5038345, 3000 ) -- (Old)Hasty Puppet Tights
+g_pCashItemManager:AddCashItemPrice( 5038350, 3000 ) -- (Old)Vitality Puppet Tights
+g_pCashItemManager:AddCashItemPrice( 5038355, 3000 ) -- (Old)Precise Puppet Tights
+g_pCashItemManager:AddCashItemPrice( 5038360, 3000 ) -- (Old)Nimble Puppet Tights
+g_pCashItemManager:AddCashItemPrice( 5038365, 3000 ) -- (Old)Agile Puppet Tights
+g_pCashItemManager:AddCashItemPrice( 5038370, 3000 ) -- (Old)Divine Puppet Tights
+g_pCashItemManager:AddCashItemPrice( 5038375, 3000 ) -- (Old)Burning Puppet Tights
+g_pCashItemManager:AddCashItemPrice( 5038380, 3000 ) -- (Old)Freezing Puppet Tights
+g_pCashItemManager:AddCashItemPrice( 5038385, 3000 ) -- (Old)Poisoning Puppet Tights
+g_pCashItemManager:AddCashItemPrice( 5038390, 3000 ) -- (Old)Piercing Puppet Tights
+g_pCashItemManager:AddCashItemPrice( 5038395, 3000 ) -- (Old)Petrifying Puppet Tights
+g_pCashItemManager:AddCashItemPrice( 5038400, 3000 ) -- (Old)Drained Puppet Tights
+g_pCashItemManager:AddCashItemPrice( 5038405, 3000 ) -- (Old)Blessed Puppet Tights
+g_pCashItemManager:AddCashItemPrice( 5038410, 3000 ) -- (Old)Ultimate Puppet Tights
+g_pCashItemManager:AddCashItemPrice( 5040125, 6000 ) -- (Old)Petrifying Angelic Dress
+g_pCashItemManager:AddCashItemPrice( 5040220, 6000 ) -- (Old)Petrifying Angelic Stage
+g_pCashItemManager:AddCashItemPrice( 5040315, 3000 ) -- (Old)Petrifying Angelic Gloves
+g_pCashItemManager:AddCashItemPrice( 5040415, 3000 ) -- (Old)Petrifying Angelic Tights
+g_pCashItemManager:AddCashItemPrice( 5042120, 6000 ) -- (Old)Petrifying Glory Dress
+g_pCashItemManager:AddCashItemPrice( 5042210, 6000 ) -- (Old)Petrifying Glory Stage
+g_pCashItemManager:AddCashItemPrice( 5042300, 3000 ) -- (Old)Petrifying Glory Gloves
+g_pCashItemManager:AddCashItemPrice( 5042395, 3000 ) -- (Old)Petrifying Glory Tights
+g_pCashItemManager:AddCashItemPrice( 5044125, 6000 ) -- (Old)Petrifying Gothic Dress
+g_pCashItemManager:AddCashItemPrice( 5044220, 6000 ) -- (Old)Petrifying Gothic Staize
+g_pCashItemManager:AddCashItemPrice( 5044315, 3000 ) -- (Old)Petrifying Gothic Gloves
+g_pCashItemManager:AddCashItemPrice( 5044415, 3000 ) -- (Old)Petrifying Gothic Tights
+g_pCashItemManager:AddCashItemPrice( 5046120, 6000 ) -- (Old)Petrifying Moon Shroud Dress
+g_pCashItemManager:AddCashItemPrice( 5046210, 6000 ) -- (Old)Petrifying Moon Shroud Staize
+g_pCashItemManager:AddCashItemPrice( 5046300, 3000 ) -- (Old)Petrifying Moon Shroud Gloves
+g_pCashItemManager:AddCashItemPrice( 5046315, 3000 ) -- (Old)You can acquire more Aura when you use Vitality skills and commands,\nand using Destruction skills and commands consumes more Aura.\nYou can enter Destruction Mode when you obtain a certain amount of Aura of Destruction.
+g_pCashItemManager:AddCashItemPrice( 5046335, 3000 ) -- (Old)You can acquire more Aura when you use Destruction skills and commands,\nand using Vitality skills and commands consumes more Aura.\nYou can enter Vitality Mode when you obtain a certain amount of Aura of Vitality.
+g_pCashItemManager:AddCashItemPrice( 5046395, 3000 ) -- (Old)Petrifying Moon Shroud Tights
+g_pCashItemManager:AddCashItemPrice( 5138120, 6000 ) -- (Old)Petrifying Portofino Dress
+g_pCashItemManager:AddCashItemPrice( 5138210, 6000 ) -- (Old)Petrifying Fortino Staize
+g_pCashItemManager:AddCashItemPrice( 5138300, 3000 ) -- (Old)Petrifying Portofino Gloves
+g_pCashItemManager:AddCashItemPrice( 5138395, 3000 ) -- (Old)Petrifying Portofino Tights
+g_pCashItemManager:AddCashItemPrice( 5140125, 6000 ) -- (Old)Petrifying Chemise Dress
+g_pCashItemManager:AddCashItemPrice( 5140220, 6000 ) -- (Old)Petrifying Chemise Staize
+g_pCashItemManager:AddCashItemPrice( 5140315, 3000 ) -- (Old)Petrifying Chemise Gloves
+g_pCashItemManager:AddCashItemPrice( 5140415, 3000 ) -- (Old)Petrifying Chemise Tights
+g_pCashItemManager:AddCashItemPrice( 5142120, 6000 ) -- (Old)Petrifying LA Dress
+g_pCashItemManager:AddCashItemPrice( 5142210, 6000 ) -- (Old)Petrifying LA Staize
+g_pCashItemManager:AddCashItemPrice( 5142300, 3000 ) -- (Old)Petrifying LA Gloves
+g_pCashItemManager:AddCashItemPrice( 5142395, 3000 ) -- (Old)Petrifying LA Tights
+g_pCashItemManager:AddCashItemPrice( 5144125, 6000 ) -- (Old)Petrifying Moon Bead Dress
+g_pCashItemManager:AddCashItemPrice( 5144220, 6000 ) -- (Old)Petrifying Moon Bead Staize
+g_pCashItemManager:AddCashItemPrice( 5144315, 3000 ) -- (Old)Petrifying Moon Bead Gloves
+g_pCashItemManager:AddCashItemPrice( 5144415, 3000 ) -- (Old)Petrifying Moon Bead Tights
+g_pCashItemManager:AddCashItemPrice( 5146120, 6000 ) -- (Old)Petrifying Shoemaker's Dress
+g_pCashItemManager:AddCashItemPrice( 5146210, 6000 ) -- (Old)Petrifying Shoemaker's Staize
+g_pCashItemManager:AddCashItemPrice( 5146300, 3000 ) -- (Old)Petrifying Shoemaker's Gloves
+g_pCashItemManager:AddCashItemPrice( 5146395, 3000 ) -- (Old)Petrifying Shoemaker's Tights
+g_pCashItemManager:AddCashItemPrice( 5148125, 6000 ) -- (Old)Petrifying Elven Dress
+g_pCashItemManager:AddCashItemPrice( 5148220, 6000 ) -- (Old)Petrifying Elven Staize
+g_pCashItemManager:AddCashItemPrice( 5148315, 3000 ) -- (Old)Petrifying Elven Gloves
+g_pCashItemManager:AddCashItemPrice( 5148415, 3000 ) -- (Old)Petrifying Elven Tights
+g_pCashItemManager:AddCashItemPrice( 5152125, 6000 ) -- (Old)Petrifying Genesis Top Piece
+g_pCashItemManager:AddCashItemPrice( 5152220, 6000 ) -- (Old)Petrifying Genesis Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 5152315, 3000 ) -- (Old)Petrifying Genesis Gloves
+g_pCashItemManager:AddCashItemPrice( 5152415, 3000 ) -- (Old)Petrifying Genesis Shoes
+g_pCashItemManager:AddCashItemPrice( 5156120, 6000 ) -- (Old)Petrifying Ancient Fabric Top Piece
+g_pCashItemManager:AddCashItemPrice( 5156210, 6000 ) -- (Old)Petrifying Ancient Fabric Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 5156300, 3000 ) -- (Old)Petrifying Ancient Fabric Gloves
+g_pCashItemManager:AddCashItemPrice( 5156395, 3000 ) -- (Old)Petrifying Ancient Fabric Shoes
+g_pCashItemManager:AddCashItemPrice( 5160125, 6000 ) -- (Old)Petrifying Blue Sky Top Piece
+g_pCashItemManager:AddCashItemPrice( 5160220, 6000 ) -- (Old)Petrifying Blue Sky Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 5160315, 3000 ) -- (Old)Petrifying Blue Sky Gloves
+g_pCashItemManager:AddCashItemPrice( 5160415, 3000 ) -- (Old)Petrifying Blue Sky Shoes
+g_pCashItemManager:AddCashItemPrice( 5338120, 6000 ) -- (Old)Petrifying Amoria Dress
+g_pCashItemManager:AddCashItemPrice( 5338210, 6000 ) -- (Old)Petrifying Amoria Staize
+g_pCashItemManager:AddCashItemPrice( 5338300, 3000 ) -- (Old)Petrifying Amoria Gloves
+g_pCashItemManager:AddCashItemPrice( 5338395, 3000 ) -- (Old)Petrifying Amoria Tights
+g_pCashItemManager:AddCashItemPrice( 5340125, 6000 ) -- (Old)Petrifying Lock Dress
+g_pCashItemManager:AddCashItemPrice( 5340220, 6000 ) -- (Old)Petrifying Lock Staize
+g_pCashItemManager:AddCashItemPrice( 5340315, 3000 ) -- (Old)Petrifying Lock Gloves
+g_pCashItemManager:AddCashItemPrice( 5340415, 3000 ) -- (Old)Petrifying Lock Tights
+g_pCashItemManager:AddCashItemPrice( 5342120, 6000 ) -- (Old)Petrifying Asrai Dress
+g_pCashItemManager:AddCashItemPrice( 5342210, 6000 ) -- (Old)Petrifying Asrai Staize
+g_pCashItemManager:AddCashItemPrice( 5342300, 3000 ) -- (Old)Petrifying Asrai Gloves
+g_pCashItemManager:AddCashItemPrice( 5342395, 3000 ) -- (Old)Petrifying Asrai Tights
+g_pCashItemManager:AddCashItemPrice( 5344125, 6000 ) -- (Old)Petrifying Erbohm Dress
+g_pCashItemManager:AddCashItemPrice( 5344220, 6000 ) -- (Old)Petrifying Erbohm Staize
+g_pCashItemManager:AddCashItemPrice( 5344315, 3000 ) -- (Old)Petrifying Erbohm Gloves
+g_pCashItemManager:AddCashItemPrice( 5344415, 3000 ) -- (Old)Petrifying Erbohm Tights
+g_pCashItemManager:AddCashItemPrice( 5346120, 6000 ) -- (Old)Petrifying Copper Dress
+g_pCashItemManager:AddCashItemPrice( 5346210, 6000 ) -- (Old)Petrifying Copper Staize
+g_pCashItemManager:AddCashItemPrice( 5346300, 3000 ) -- (Old)Petrifying Copper Gloves
+g_pCashItemManager:AddCashItemPrice( 5346395, 3000 ) -- (Old)Petrifying Copper Tights
+g_pCashItemManager:AddCashItemPrice( 5348125, 6000 ) -- (Old)Petrifying Brace Dress
+g_pCashItemManager:AddCashItemPrice( 5348220, 6000 ) -- (Old)Petrifying Brace Staize
+g_pCashItemManager:AddCashItemPrice( 5348315, 3000 ) -- (Old)Petrifying Brace Gloves
+g_pCashItemManager:AddCashItemPrice( 5348415, 3000 ) -- (Old)Petrifying Brace Tights
+g_pCashItemManager:AddCashItemPrice( 5352125, 6000 ) -- (Old)Petrifying Unforgettable Top Piece
+g_pCashItemManager:AddCashItemPrice( 5352220, 6000 ) -- (Old)Petrifying Unforgettable Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 5352315, 3000 ) -- (Old)Petrifying Unforgettable Gloves
+g_pCashItemManager:AddCashItemPrice( 5352415, 3000 ) -- (Old)Petrifying Unforgettable Shoes
+g_pCashItemManager:AddCashItemPrice( 5356120, 6000 ) -- (Old)Petrifying Elegant Traveler Top Piece
+g_pCashItemManager:AddCashItemPrice( 5356210, 6000 ) -- (Old)Petrifying Elegant Traveler Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 5356300, 3000 ) -- (Old)Petrifying Elegant Traveler Gloves
+g_pCashItemManager:AddCashItemPrice( 5356395, 3000 ) -- (Old)Petrifying Elegant Traveler Shoes
+g_pCashItemManager:AddCashItemPrice( 5360125, 6000 ) -- (Old)Petrifying Unforgettable Blue Sky Top Piece
+g_pCashItemManager:AddCashItemPrice( 5360220, 6000 ) -- (Old)Petrifying Unforgettable Blue Sky Skirt
+g_pCashItemManager:AddCashItemPrice( 5360315, 3000 ) -- (Old)Petrifying Unforgettable Blue Sky Gloves
+g_pCashItemManager:AddCashItemPrice( 5360415, 3000 ) -- (Old)Petrifying Unforgettable Blue Sky Shoes
+g_pCashItemManager:AddCashItemPrice( 5540125, 6000 ) -- (Old)Petrifying Spectrum Mechanic's Top Piece
+g_pCashItemManager:AddCashItemPrice( 5540220, 6000 ) -- (Old)Petrifying Spectrum Mechanic's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 5540315, 3000 ) -- (Old)Petrifying Spectrum Mechanic's Gloves
+g_pCashItemManager:AddCashItemPrice( 5540415, 3000 ) -- (Old)Petrifying Spectrum Mechanic's Shoes
+g_pCashItemManager:AddCashItemPrice( 5544125, 6000 ) -- (Old)Petrifying Scientist Top Piece
+g_pCashItemManager:AddCashItemPrice( 5544220, 6000 ) -- (Old)Petrifying Scientist Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 5544315, 3000 ) -- (Old)Petrifying Scientist Gloves
+g_pCashItemManager:AddCashItemPrice( 5544415, 3000 ) -- (Old)Petrifying Scientist Shoes
+g_pCashItemManager:AddCashItemPrice( 5548125, 6000 ) -- (Old)Petrifying Amplified Researcher's Top Piece
+g_pCashItemManager:AddCashItemPrice( 5548220, 6000 ) -- (Old)Petrifying Amplified Researcher's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 5548315, 3000 ) -- (Old)Petrifying Amplified Researcher's Gloves
+g_pCashItemManager:AddCashItemPrice( 5548415, 3000 ) -- (Old)Petrifying Amplified Researcher's Shoes
+g_pCashItemManager:AddCashItemPrice( 5552125, 6000 ) -- (Old)Petrifying Output Engineer's Top Piece
+g_pCashItemManager:AddCashItemPrice( 5552220, 6000 ) -- (Old)Petrifying Output Engineer’s Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 5552315, 3000 ) -- (Old)Petrifying Output Engineer’s Gloves
+g_pCashItemManager:AddCashItemPrice( 5552415, 3000 ) -- (Old)Petrifying Output Engineer’s Shoes
+g_pCashItemManager:AddCashItemPrice( 5556125, 6000 ) -- (Old)Petrifying Optical Explorer's Top Piece
+g_pCashItemManager:AddCashItemPrice( 5556220, 6000 ) -- (Old)Petrifying Optical Explorer's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 5556315, 3000 ) -- (Old)Petrifying Optical Explorer's Gloves
+g_pCashItemManager:AddCashItemPrice( 5556415, 3000 ) -- (Old)Petrifying Optical Explorer's Shoes
+g_pCashItemManager:AddCashItemPrice( 5560125, 6000 ) -- (Old)Petrifying Reactive Scientist Top Piece
+g_pCashItemManager:AddCashItemPrice( 5560220, 6000 ) -- (Old)Petrifying Reactive Scientist Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 5560315, 3000 ) -- (Old)Petrifying Reactive Scientist Gloves
+g_pCashItemManager:AddCashItemPrice( 5560415, 3000 ) -- (Old)Petrifying Reactive Scientist Shoes
+g_pCashItemManager:AddCashItemPrice( 5940125, 6000 ) -- (Old)Petrifying Nasod Battle Top Piece
+g_pCashItemManager:AddCashItemPrice( 5940220, 6000 ) -- (Old)Petrifying Nasod Battle Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 5940315, 3000 ) -- (Old)Petrifying Nasod Battle Gloves
+g_pCashItemManager:AddCashItemPrice( 5940415, 3000 ) -- (Old)Petrifying Nasod Battle Shoes
+g_pCashItemManager:AddCashItemPrice( 5944125, 6000 ) -- (Old)Petrifying Amplified Training Top Piece
+g_pCashItemManager:AddCashItemPrice( 5944220, 6000 ) -- (Old)Petrifying Amplified Training Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 5944315, 3000 ) -- (Old)Petrifying Amplified Training Gloves
+g_pCashItemManager:AddCashItemPrice( 5944415, 3000 ) -- (Old)Petrifying Amplified Training Shoes
+g_pCashItemManager:AddCashItemPrice( 5948125, 6000 ) -- (Old)Petrifying Prime Spectrum Top Piece
+g_pCashItemManager:AddCashItemPrice( 5948220, 6000 ) -- (Old)Petrifying Prime Spectrum Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 5948315, 3000 ) -- (Old)Petrifying Prime Spectrum Gloves
+g_pCashItemManager:AddCashItemPrice( 5948415, 3000 ) -- (Old)Petrifying Prime Spectrum Shoes
+g_pCashItemManager:AddCashItemPrice( 5952125, 6000 ) -- (Old)Petrifying Hamel Scientist Top Piece
+g_pCashItemManager:AddCashItemPrice( 5952220, 6000 ) -- (Old)Petrifying Hamel Scientist Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 5952315, 3000 ) -- (Old)Petrifying Hamel Scientist Gloves
+g_pCashItemManager:AddCashItemPrice( 5952415, 3000 ) -- (Old)Petrifying Hamel Scientist Shoes
+g_pCashItemManager:AddCashItemPrice( 5956125, 6000 ) -- (Old)Petrifying Red Explorer Top Piece
+g_pCashItemManager:AddCashItemPrice( 5956220, 6000 ) -- (Old)Petrifying Red Explorer Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 5956315, 3000 ) -- (Old)Petrifying Red Explorer Gloves
+g_pCashItemManager:AddCashItemPrice( 5956415, 3000 ) -- (Old)Petrifying Red Explorer Shoes
+g_pCashItemManager:AddCashItemPrice( 5960125, 6000 ) -- (Old)Petrifying Elite Scientist Top Piece
+g_pCashItemManager:AddCashItemPrice( 5960220, 6000 ) -- (Old)Petrifying Elite Scientist Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 5960315, 3000 ) -- (Old)Petrifying Elite Scientist Gloves
+g_pCashItemManager:AddCashItemPrice( 5960415, 3000 ) -- (Old)Petrifying Elite Scientist Shoes
+g_pCashItemManager:AddCashItemPrice( 6002120, 6000 ) -- (Old)Petrifying Artillery Top Piece
+g_pCashItemManager:AddCashItemPrice( 6002210, 6000 ) -- (Old)Petrifying Artillery Pants
+g_pCashItemManager:AddCashItemPrice( 6002300, 3000 ) -- (Old)Petrifying Artillery Gloves
+g_pCashItemManager:AddCashItemPrice( 6002395, 3000 ) -- (Old)Petrifying Artillery Shoes
+g_pCashItemManager:AddCashItemPrice( 6004125, 6000 ) -- (Old)Petrifying Old Cotton Shirt
+g_pCashItemManager:AddCashItemPrice( 6004220, 6000 ) -- (Old)Petrifying Old Pants
+g_pCashItemManager:AddCashItemPrice( 6004315, 3000 ) -- (Old)Petrifying Old Gloves
+g_pCashItemManager:AddCashItemPrice( 6004415, 3000 ) -- (Old)Petrifying Old Shoes
+g_pCashItemManager:AddCashItemPrice( 6006120, 6000 ) -- (Old)Petrifying Worn-out Cotton Shirt
+g_pCashItemManager:AddCashItemPrice( 6006210, 6000 ) -- (Old)Petrifying Worn-out Cotton Pants
+g_pCashItemManager:AddCashItemPrice( 6006300, 3000 ) -- (Old)Petrifying Worn-out Cotton Gloves
+g_pCashItemManager:AddCashItemPrice( 6006395, 3000 ) -- (Old)Petrifying Worn-out Cotton Shoes
+g_pCashItemManager:AddCashItemPrice( 6008125, 6000 ) -- (Old)Petrifying Cotton Shirt
+g_pCashItemManager:AddCashItemPrice( 6008220, 6000 ) -- (Old)Petrifying Cotton Pants
+g_pCashItemManager:AddCashItemPrice( 6008315, 3000 ) -- (Old)Petrifying Cotton Gloves
+g_pCashItemManager:AddCashItemPrice( 6008415, 3000 ) -- (Old)Petrifying Cotton Shoes
+g_pCashItemManager:AddCashItemPrice( 6010120, 6000 ) -- (Old)Petrifying Apprentice Artillery Top Piece
+g_pCashItemManager:AddCashItemPrice( 6010210, 6000 ) -- (Old)Petrifying Apprentice Artillery Pants
+g_pCashItemManager:AddCashItemPrice( 6010300, 3000 ) -- (Old)Petrifying Apprentice Artillery Gloves
+g_pCashItemManager:AddCashItemPrice( 6010395, 3000 ) -- (Old)Petrifying Apprentice Artillery Shoes
+g_pCashItemManager:AddCashItemPrice( 6012125, 6000 ) -- (Old)Petrifying Apprentice Artillery Handmade Top Piece
+g_pCashItemManager:AddCashItemPrice( 6012220, 6000 ) -- (Old)Petrifying Apprentice Artillery Handmade Pants
+g_pCashItemManager:AddCashItemPrice( 6012315, 3000 ) -- (Old)Petrifying Apprentice Artillery Handmade Gloves
+g_pCashItemManager:AddCashItemPrice( 6012415, 3000 ) -- (Old)Petrifying Apprentice Artillery Handmade Shoes
+g_pCashItemManager:AddCashItemPrice( 6014120, 6000 ) -- (Old)Petrifying Beginner's Artillery Top Piece
+g_pCashItemManager:AddCashItemPrice( 6014210, 6000 ) -- (Old)Petrifying Beginner's Artillery Pants
+g_pCashItemManager:AddCashItemPrice( 6014300, 3000 ) -- (Old)Petrifying Beginner's Artillery Gloves
+g_pCashItemManager:AddCashItemPrice( 6014395, 3000 ) -- (Old)Petrifying Beginner's Artillery Shoes
+g_pCashItemManager:AddCashItemPrice( 6016125, 6000 ) -- (Old)Petrifying Beginner's Artillery Handmade Top Piece
+g_pCashItemManager:AddCashItemPrice( 6016220, 6000 ) -- (Old)Petrifying Beginner's Artillery Handmade Pants
+g_pCashItemManager:AddCashItemPrice( 6016315, 3000 ) -- (Old)Petrifying Beginner's Artillery Handmade Gloves
+g_pCashItemManager:AddCashItemPrice( 6016415, 3000 ) -- (Old)Petrifying Beginner's Artillery Handmade Shoes
+g_pCashItemManager:AddCashItemPrice( 6018120, 6000 ) -- (Old)Petrifying Elder's Artillery Cotton Shirt
+g_pCashItemManager:AddCashItemPrice( 6018210, 6000 ) -- (Old)Petrifying Elder's Artillery Cotton Pants
+g_pCashItemManager:AddCashItemPrice( 6018300, 3000 ) -- (Old)Petrifying Elder's Artillery Cotton Gloves
+g_pCashItemManager:AddCashItemPrice( 6018395, 3000 ) -- (Old)Petrifying Elder's Artillery Cotton Shoes
+g_pCashItemManager:AddCashItemPrice( 6020125, 6000 ) -- (Old)Petrifying Elder's Guardian Top Piece
+g_pCashItemManager:AddCashItemPrice( 6020220, 6000 ) -- (Old)Petrifying Elder's Guardian Pants
+g_pCashItemManager:AddCashItemPrice( 6020315, 3000 ) -- (Old)Petrifying Elder's Guardian Gloves
+g_pCashItemManager:AddCashItemPrice( 6020415, 3000 ) -- (Old)Petrifying Elder's Guardian Shoes
+g_pCashItemManager:AddCashItemPrice( 6022120, 6000 ) -- (Old)Petrifying Canyon Searcher Top Piece
+g_pCashItemManager:AddCashItemPrice( 6022210, 6000 ) -- (Old)Petrifying Canyon Searcher Pants
+g_pCashItemManager:AddCashItemPrice( 6022300, 3000 ) -- (Old)Petrifying Canyon Searcher Gloves
+g_pCashItemManager:AddCashItemPrice( 6022395, 3000 ) -- (Old)Petrifying Canyon Searcher Shoes
+g_pCashItemManager:AddCashItemPrice( 6024125, 6000 ) -- (Old)Petrifying Canyon Searcher Handmade Top Piece
+g_pCashItemManager:AddCashItemPrice( 6024220, 6000 ) -- (Old)Petrifying Canyon Searcher Handmade Pants
+g_pCashItemManager:AddCashItemPrice( 6024315, 3000 ) -- (Old)Petrifying Canyon Searcher Handmade Gloves
+g_pCashItemManager:AddCashItemPrice( 6024415, 3000 ) -- (Old)Petrifying Canyon Searcher Handmade Shoes
+g_pCashItemManager:AddCashItemPrice( 6026120, 6000 ) -- (Old)Petrifying Red Valley Top Piece
+g_pCashItemManager:AddCashItemPrice( 6026210, 6000 ) -- (Old)Petrifying Red Valley Pants
+g_pCashItemManager:AddCashItemPrice( 6026300, 3000 ) -- (Old)Petrifying Red Valley Gloves
+g_pCashItemManager:AddCashItemPrice( 6026395, 3000 ) -- (Old)Petrifying Red Valley Shoes
+g_pCashItemManager:AddCashItemPrice( 6028125, 6000 ) -- (Old)Petrifying Nasod Worker's Top Piece
+g_pCashItemManager:AddCashItemPrice( 6028220, 6000 ) -- (Old)Petrifying Nasod Worker's Pants
+g_pCashItemManager:AddCashItemPrice( 6028315, 3000 ) -- (Old)Petrifying Nasod Worker's Gloves
+g_pCashItemManager:AddCashItemPrice( 6028415, 3000 ) -- (Old)Petrifying Nasod Worker's Shoes
+g_pCashItemManager:AddCashItemPrice( 6030120, 6000 ) -- (Old)Petrifying Notorious Artillery Top Piece
+g_pCashItemManager:AddCashItemPrice( 6030210, 6000 ) -- (Old)Petrifying Notorious Artillery Pants
+g_pCashItemManager:AddCashItemPrice( 6030300, 3000 ) -- (Old)Petrifying Notorious Artillery Gloves
+g_pCashItemManager:AddCashItemPrice( 6030395, 3000 ) -- (Old)Petrifying Notorious Artillery Shoes
+g_pCashItemManager:AddCashItemPrice( 6032125, 6000 ) -- (Old)Petrifying Notorious Artillery Special Top Piece
+g_pCashItemManager:AddCashItemPrice( 6032220, 6000 ) -- (Old)Petrifying Notorious Artillery Special Pants
+g_pCashItemManager:AddCashItemPrice( 6032315, 3000 ) -- (Old)Petrifying Notorious Artillery Special Gloves
+g_pCashItemManager:AddCashItemPrice( 6032415, 3000 ) -- (Old)Petrifying Notorious Artillery Special Shoes
+g_pCashItemManager:AddCashItemPrice( 6034120, 6000 ) -- (Old)Petrifying Fine Leather Clothes
+g_pCashItemManager:AddCashItemPrice( 6034210, 6000 ) -- (Old)Petrifying Fine Leather Pants
+g_pCashItemManager:AddCashItemPrice( 6034300, 3000 ) -- (Old)Petrifying Fine Leather Gloves
+g_pCashItemManager:AddCashItemPrice( 6034395, 3000 ) -- (Old)Petrifying Fine Leather Shoes
+g_pCashItemManager:AddCashItemPrice( 6036125, 6000 ) -- (Old)Petrifying Plain's Watcher Top Piece
+g_pCashItemManager:AddCashItemPrice( 6036220, 6000 ) -- (Old)Petrifying Plain's Watcher Pants
+g_pCashItemManager:AddCashItemPrice( 6036315, 3000 ) -- (Old)Petrifying Plain's Watcher Gloves
+g_pCashItemManager:AddCashItemPrice( 6036415, 3000 ) -- (Old)Petrifying Plain's Watcher Shoes
+g_pCashItemManager:AddCashItemPrice( 6038120, 6000 ) -- (Old)Petrifying Advanced Plain's Watcher Top Piece
+g_pCashItemManager:AddCashItemPrice( 6038210, 6000 ) -- (Old)Petrifying Advanced Plain's Watcher Pants
+g_pCashItemManager:AddCashItemPrice( 6038300, 3000 ) -- (Old)Petrifying Advanced Plain's Watcher Gloves
+g_pCashItemManager:AddCashItemPrice( 6038395, 3000 ) -- (Old)Petrifying Advanced Plain's Watcher Shoes
+g_pCashItemManager:AddCashItemPrice( 6040125, 6000 ) -- (Old)Petrifying Old Mercenary Artillery Clothes
+g_pCashItemManager:AddCashItemPrice( 6040220, 6000 ) -- (Old)Petrifying Old Mercenary Artillery Pants
+g_pCashItemManager:AddCashItemPrice( 6040315, 3000 ) -- (Old)Petrifying Old Mercenary Artillery Gloves
+g_pCashItemManager:AddCashItemPrice( 6040415, 3000 ) -- (Old)Petrifying Old Mercenary Artillery Shoes
+g_pCashItemManager:AddCashItemPrice( 6042120, 6000 ) -- (Old)Petrifying Advanced Mercenary Artillery Clothes
+g_pCashItemManager:AddCashItemPrice( 6042210, 6000 ) -- (Old)Petrifying Advanced Mercenary Artillery Pants
+g_pCashItemManager:AddCashItemPrice( 6042300, 3000 ) -- (Old)Petrifying Advanced Mercenary Artillery Gloves
+g_pCashItemManager:AddCashItemPrice( 6042395, 3000 ) -- (Old)Petrifying Advanced Mercenary Artillery Shoes
+g_pCashItemManager:AddCashItemPrice( 6044125, 6000 ) -- (Old)Petrifying Bulletproof Top Piece
+g_pCashItemManager:AddCashItemPrice( 6044220, 6000 ) -- (Old)Petrifying Bulletproof Pants
+g_pCashItemManager:AddCashItemPrice( 6044315, 3000 ) -- (Old)Petrifying Bulletproof Gloves
+g_pCashItemManager:AddCashItemPrice( 6044415, 3000 ) -- (Old)Petrifying Bulletproof Shoes
+g_pCashItemManager:AddCashItemPrice( 6046120, 6000 ) -- (Old)Petrifying Special Bulletproof Top Piece
+g_pCashItemManager:AddCashItemPrice( 6046210, 6000 ) -- (Old)Petrifying Special Bulletproof Pants
+g_pCashItemManager:AddCashItemPrice( 6046300, 3000 ) -- (Old)Petrifying Special Bulletproof Gloves
+g_pCashItemManager:AddCashItemPrice( 6046395, 3000 ) -- (Old)Petrifying Special Bulletproof Shoes
+g_pCashItemManager:AddCashItemPrice( 6052125, 6000 ) -- (Old)Petrifying Senace Militia Top Piece
+g_pCashItemManager:AddCashItemPrice( 6052220, 6000 ) -- (Old)Petrifying Senace Militia Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6052315, 3000 ) -- (Old)Petrifying Senace Militia Gloves
+g_pCashItemManager:AddCashItemPrice( 6052415, 3000 ) -- (Old)Petrifying Senace Militia Shoes
+g_pCashItemManager:AddCashItemPrice( 6140125, 6000 ) -- (Old)Petrifying Narsillion Top Piece
+g_pCashItemManager:AddCashItemPrice( 6140220, 6000 ) -- (Old)Petrifying Narsillion Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6140315, 3000 ) -- (Old)Petrifying Narsillion Gloves
+g_pCashItemManager:AddCashItemPrice( 6140415, 3000 ) -- (Old)Petrifying Narsillion Shoes
+g_pCashItemManager:AddCashItemPrice( 6144125, 6000 ) -- (Old)Petrifying Niberg Top Piece
+g_pCashItemManager:AddCashItemPrice( 6144220, 6000 ) -- (Old)Petrifying Niberg Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6144315, 3000 ) -- (Old)Petrifying Niberg Gloves
+g_pCashItemManager:AddCashItemPrice( 6144415, 3000 ) -- (Old)Petrifying Niberg Shoes
+g_pCashItemManager:AddCashItemPrice( 6148125, 6000 ) -- (Old)Petrifying Destroyer Top Piece
+g_pCashItemManager:AddCashItemPrice( 6148220, 6000 ) -- (Old)Petrifying Destroyer Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6148315, 3000 ) -- (Old)Petrifying Destroyer Gloves
+g_pCashItemManager:AddCashItemPrice( 6148415, 3000 ) -- (Old)Petrifying Destroyer Shoes
+g_pCashItemManager:AddCashItemPrice( 6152125, 6000 ) -- (Old)Petrifying Chrome Guardian Top Piece
+g_pCashItemManager:AddCashItemPrice( 6152220, 6000 ) -- (Old)Petrifying Chrome Guardian Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6152315, 3000 ) -- (Old)Petrifying Chrome Guardian Gloves
+g_pCashItemManager:AddCashItemPrice( 6152415, 3000 ) -- (Old)Petrifying Chrome Guardian Shoes
+g_pCashItemManager:AddCashItemPrice( 6156120, 6000 ) -- (Old)Petrifying Vela Ixion Top Piece
+g_pCashItemManager:AddCashItemPrice( 6156210, 6000 ) -- (Old)Petrifying Vela Ixion Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6156300, 3000 ) -- (Old)Petrifying Vela Ixion Gloves
+g_pCashItemManager:AddCashItemPrice( 6156395, 3000 ) -- (Old)Petrifying Vela Ixion Shoes
+g_pCashItemManager:AddCashItemPrice( 6160125, 6000 ) -- (Old)Petrifying Hakan Devil's Top Piece
+g_pCashItemManager:AddCashItemPrice( 6160220, 6000 ) -- (Old)Petrifying Hakan Devil's Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6160315, 3000 ) -- (Old)Petrifying Hakan Devil's Gloves
+g_pCashItemManager:AddCashItemPrice( 6160415, 3000 ) -- (Old)Petrifying Hakan Devil's Shoes
+g_pCashItemManager:AddCashItemPrice( 6340125, 6000 ) -- (Old)Petrifying Navigator Top Piece
+g_pCashItemManager:AddCashItemPrice( 6340220, 6000 ) -- (Old)Petrifying Navigator Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6340315, 3000 ) -- (Old)Petrifying Navigator Gloves
+g_pCashItemManager:AddCashItemPrice( 6340415, 3000 ) -- (Old)Petrifying Navigator Shoes
+g_pCashItemManager:AddCashItemPrice( 6344125, 6000 ) -- (Old)Petrifying Ganymede Top Piece
+g_pCashItemManager:AddCashItemPrice( 6344220, 6000 ) -- (Old)Petrifying Ganymede Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6344315, 3000 ) -- (Old)Petrifying Ganymede Gloves
+g_pCashItemManager:AddCashItemPrice( 6344415, 3000 ) -- (Old)Petrifying Ganymede Shoes
+g_pCashItemManager:AddCashItemPrice( 6348125, 6000 ) -- (Old)Petrifying Shadow Chaser Top Piece
+g_pCashItemManager:AddCashItemPrice( 6348220, 6000 ) -- (Old)Petrifying Shadow Chaser Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6348315, 3000 ) -- (Old)Petrifying Shadow Chaser Gloves
+g_pCashItemManager:AddCashItemPrice( 6348415, 3000 ) -- (Old)Petrifying Shadow Chaser Shoes
+g_pCashItemManager:AddCashItemPrice( 6352125, 6000 ) -- (Old)Petrifying Silver Light Top Piece
+g_pCashItemManager:AddCashItemPrice( 6352220, 6000 ) -- (Old)Petrifying Silver Light Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6352315, 3000 ) -- (Old)Petrifying Silver Light Gloves
+g_pCashItemManager:AddCashItemPrice( 6352415, 3000 ) -- (Old)Petrifying Silver Light Shoes
+g_pCashItemManager:AddCashItemPrice( 6356120, 6000 ) -- (Old)Petrifying Royal Artillery Top Piece
+g_pCashItemManager:AddCashItemPrice( 6356210, 6000 ) -- (Old)Petrifying Royal Artillery Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6356300, 3000 ) -- (Old)Petrifying Royal Artillery Gloves
+g_pCashItemManager:AddCashItemPrice( 6356395, 3000 ) -- (Old)Petrifying Royal Artillery Shoes
+g_pCashItemManager:AddCashItemPrice( 6360125, 6000 ) -- (Old)Petrifying Icarus Rising Top Piece
+g_pCashItemManager:AddCashItemPrice( 6360220, 6000 ) -- (Old)Petrifying Icarus Rising Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6360315, 3000 ) -- (Old)Petrifying Icarus Rising Gloves
+g_pCashItemManager:AddCashItemPrice( 6360415, 3000 ) -- (Old)Petrifying Icarus Rising Shoes
+g_pCashItemManager:AddCashItemPrice( 6540125, 6000 ) -- (Old)Petrifying Mobile Squad Top Piece
+g_pCashItemManager:AddCashItemPrice( 6540220, 6000 ) -- (Old)Petrifying Mobile Squad Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6540315, 3000 ) -- (Old)Petrifying Mobile Squad Gloves
+g_pCashItemManager:AddCashItemPrice( 6540415, 3000 ) -- (Old)Petrifying Mobile Squad Shoes
+g_pCashItemManager:AddCashItemPrice( 6544125, 6000 ) -- (Old)Petrifying Enforcer Top Piece
+g_pCashItemManager:AddCashItemPrice( 6544220, 6000 ) -- (Old)Petrifying Enforcer Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6544315, 3000 ) -- (Old)Petrifying Enforcer Gloves
+g_pCashItemManager:AddCashItemPrice( 6544415, 3000 ) -- (Old)Petrifying Enforcer Shoes
+g_pCashItemManager:AddCashItemPrice( 6548125, 6000 ) -- (Old)Petrifying Mechanized Division Top Piece
+g_pCashItemManager:AddCashItemPrice( 6548220, 6000 ) -- (Old)Petrifying Mechanized Division Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6548315, 3000 ) -- (Old)Petrifying Mechanized Division Gloves
+g_pCashItemManager:AddCashItemPrice( 6548415, 3000 ) -- (Old)Petrifying Mechanized Division Shoes
+g_pCashItemManager:AddCashItemPrice( 6552125, 6000 ) -- (Old)Petrifying Conquerors Top Piece
+g_pCashItemManager:AddCashItemPrice( 6552220, 6000 ) -- (Old)Petrifying Conquerors Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6552315, 3000 ) -- (Old)Petrifying Conquerors Gloves
+g_pCashItemManager:AddCashItemPrice( 6552415, 3000 ) -- (Old)Petrifying Conquerors Shoes
+g_pCashItemManager:AddCashItemPrice( 6556125, 6000 ) -- (Old)Petrifying Tactical Squad Top Piece
+g_pCashItemManager:AddCashItemPrice( 6556220, 6000 ) -- (Old)Petrifying Tactical Squad Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6556315, 3000 ) -- (Old)Petrifying Tactical Squad Gloves
+g_pCashItemManager:AddCashItemPrice( 6556415, 3000 ) -- (Old)Petrifying Tactical Squad Shoes
+g_pCashItemManager:AddCashItemPrice( 6560125, 6000 ) -- (Old)Petrifying Annihilator Top Piece
+g_pCashItemManager:AddCashItemPrice( 6560220, 6000 ) -- (Old)Petrifying Annihilator Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6560315, 3000 ) -- (Old)Petrifying Annihilator Gloves
+g_pCashItemManager:AddCashItemPrice( 6560415, 3000 ) -- (Old)Petrifying Annihilator Shoes
+g_pCashItemManager:AddCashItemPrice( 6940125, 6000 ) -- (Old)Petrifying Militia Artillery Top Piece
+g_pCashItemManager:AddCashItemPrice( 6940220, 6000 ) -- (Old)Petrifying Militia Artillery Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6940315, 3000 ) -- (Old)Petrifying Militia Artillery Gloves
+g_pCashItemManager:AddCashItemPrice( 6940415, 3000 ) -- (Old)Petrifying Militia Artillery Shoes
+g_pCashItemManager:AddCashItemPrice( 6944125, 6000 ) -- (Old)Petrifying Velder Artillery Top Piece
+g_pCashItemManager:AddCashItemPrice( 6944220, 6000 ) -- (Old)Petrifying Velder Artillery Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6944315, 3000 ) -- (Old)Petrifying Velder Artillery Gloves
+g_pCashItemManager:AddCashItemPrice( 6944415, 3000 ) -- (Old)Petrifying Velder Artillery Shoes
+g_pCashItemManager:AddCashItemPrice( 6948125, 6000 ) -- (Old)Petrifying Combat Artillery Top Piece
+g_pCashItemManager:AddCashItemPrice( 6948220, 6000 ) -- (Old)Petrifying Combat Artillery Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6948315, 3000 ) -- (Old)Petrifying Combat Artillery Gloves
+g_pCashItemManager:AddCashItemPrice( 6948415, 3000 ) -- (Old)Petrifying Combat Artillery Shoes
+g_pCashItemManager:AddCashItemPrice( 6952125, 6000 ) -- (Old)Petrifying Senance Artillery Top Piece
+g_pCashItemManager:AddCashItemPrice( 6952220, 6000 ) -- (Old)Petrifying Senance Artillery Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6952315, 3000 ) -- (Old)Petrifying Senance Artillery Gloves
+g_pCashItemManager:AddCashItemPrice( 6952415, 3000 ) -- (Old)Petrifying Senance Artillery Shoes
+g_pCashItemManager:AddCashItemPrice( 6956125, 6000 ) -- (Old)Petrifying Hamel Guardian Top Piece
+g_pCashItemManager:AddCashItemPrice( 6956220, 6000 ) -- (Old)Petrifying Hamel Guardian Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6956315, 3000 ) -- (Old)Petrifying Hamel Guardian Gloves
+g_pCashItemManager:AddCashItemPrice( 6956415, 3000 ) -- (Old)Petrifying Hamel Guardian Shoes
+g_pCashItemManager:AddCashItemPrice( 6960125, 6000 ) -- (Old)Petrifying Elite Senance Artillery Top Piece
+g_pCashItemManager:AddCashItemPrice( 6960220, 6000 ) -- (Old)Petrifying Elite Senance Artillery Bottom Piece
+g_pCashItemManager:AddCashItemPrice( 6960315, 3000 ) -- (Old)Petrifying Elite Senance Artillery Gloves
+g_pCashItemManager:AddCashItemPrice( 6960415, 3000 ) -- (Old)Petrifying Elite Senance Artillery Shoes
+g_pCashItemManager:AddCashItemPrice( 60000001, 18000 ) -- Raven Card Package
+g_pCashItemManager:AddCashItemPrice( 60000050, 18000 ) -- The First Job Change Promotion Cube
+g_pCashItemManager:AddCashItemPrice( 60000190, 18000 ) -- Eve's Special Package 1
+g_pCashItemManager:AddCashItemPrice( 60000191, 18000 ) -- Eve's Special Package 2
+g_pCashItemManager:AddCashItemPrice( 60000192, 18000 ) -- Eve's Special Package 3
+g_pCashItemManager:AddCashItemPrice( 60000193, 18000 ) -- Eve's Special Package 4
+g_pCashItemManager:AddCashItemPrice( 60000240, 18000 ) -- Eve Card Package
+g_pCashItemManager:AddCashItemPrice( 60000250, 18000 ) -- A Cube of the Ring of Skills (7 days)
+g_pCashItemManager:AddCashItemPrice( 60000260, 18000 ) -- 2nd Cube for Beginning Adventurers
+g_pCashItemManager:AddCashItemPrice( 60000261, 18000 ) -- Cube for Taiwan
+g_pCashItemManager:AddCashItemPrice( 60000262, 18000 ) -- Cube of Event for Taiwanese Connection (Promotion Cube to be Provided)
+g_pCashItemManager:AddCashItemPrice( 60000263, 18000 ) -- The First Job Change Promotion Cube(A Day's Ticket)
+g_pCashItemManager:AddCashItemPrice( 60000264, 18000 ) -- Cube of Feita Shooter Event
+g_pCashItemManager:AddCashItemPrice( 60000280, 18000 ) -- A White Heart Candy Cube (5 days)
+g_pCashItemManager:AddCashItemPrice( 60000281, 18000 ) -- A White Star Candy Cube (5 days)
+g_pCashItemManager:AddCashItemPrice( 60000282, 18000 ) -- A White Lollipop Cube (! Day(s))
+g_pCashItemManager:AddCashItemPrice( 60000283, 18000 ) -- White Day Event Cube
+g_pCashItemManager:AddCashItemPrice( 60000290, 18000 ) -- Entrance and Exit Random Cube (White Day Event)
+g_pCashItemManager:AddCashItemPrice( 60000300, 18000 ) -- Cube of Top Piece of Animal Costume
+g_pCashItemManager:AddCashItemPrice( 60000301, 18000 ) -- Cube of Bottom Piece of Animal Costume
+g_pCashItemManager:AddCashItemPrice( 60000302, 18000 ) -- Cube of Gloves of Animal Costume
+g_pCashItemManager:AddCashItemPrice( 60000303, 18000 ) -- Cube of Shoes of Animal Costume
+g_pCashItemManager:AddCashItemPrice( 60000304, 18000 ) -- Cube of Hair of Animal Costume
+g_pCashItemManager:AddCashItemPrice( 60000305, 18000 ) -- Cube of Accessories of Animal Costume
+g_pCashItemManager:AddCashItemPrice( 60000306, 18000 ) -- Animal Costume Full Set Cube (7 Days)
+g_pCashItemManager:AddCashItemPrice( 60000310, 18000 ) -- Cube of Easter Event
+g_pCashItemManager:AddCashItemPrice( 60000320, 18000 ) -- Cube of Easter Special Event for 7 Days
+g_pCashItemManager:AddCashItemPrice( 60000390, 18000 ) -- Special Cube of Hong Kong Easter
+g_pCashItemManager:AddCashItemPrice( 60000420, 18000 ) -- Resurrection Stone Cube(50)
+g_pCashItemManager:AddCashItemPrice( 60000421, 18000 ) -- Resurrection Stone Cube (2 ea.)
+g_pCashItemManager:AddCashItemPrice( 60000430, 12000 ) -- A Cube of Necessary Items for a Match(for 2 days)
+g_pCashItemManager:AddCashItemPrice( 60000431, 18000 ) -- Magic Stone Set Cube
+g_pCashItemManager:AddCashItemPrice( 60000440, 18000 ) -- Cube of Angelcraft Event
+g_pCashItemManager:AddCashItemPrice( 60000441, 18000 ) -- LOVE Alphabet Cube
+g_pCashItemManager:AddCashItemPrice( 60000442, 18000 ) -- LOVE Cube Opener
+g_pCashItemManager:AddCashItemPrice( 60000443, 18000 ) -- Ticket to Manufacture LOVE Alphabet Cube
+g_pCashItemManager:AddCashItemPrice( 60000444, 18000 ) -- Cube of 5 Blessed Weapon Enhancement Stones
+g_pCashItemManager:AddCashItemPrice( 60000445, 18000 ) -- Cube of 5 Blessed Armor Enhancement Stones
+g_pCashItemManager:AddCashItemPrice( 60000450, 18000 ) -- Kung Fu Hustle Event Cube
+g_pCashItemManager:AddCashItemPrice( 60000451, 18000 ) -- Kung Fu Hustle Event Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 60000460, 18000 ) -- Skill Ticket Collection Event Cube
+g_pCashItemManager:AddCashItemPrice( 60000480, 18000 ) -- Mother's Cube
+g_pCashItemManager:AddCashItemPrice( 60000490, 18000 ) -- Mother's Cube Craft Ticket
+g_pCashItemManager:AddCashItemPrice( 60000500, 18000 ) -- Taiwan May New Event Cube
+g_pCashItemManager:AddCashItemPrice( 60000520, 18000 ) -- Red Animal Costume Weapon Cube (Permanent)
+g_pCashItemManager:AddCashItemPrice( 60000521, 18000 ) -- Blue Animal Costume Full Set Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 60000522, 18000 ) -- Red Animal Costume Full Set Cube (7 Days)
+g_pCashItemManager:AddCashItemPrice( 60000523, 18000 ) -- Animal Costume Accessory Set Cube (7 Days)
+g_pCashItemManager:AddCashItemPrice( 60000524, 18000 ) -- Primary Skill Cube
+g_pCashItemManager:AddCashItemPrice( 60000525, 18000 ) -- Intermediate Skill Cube
+g_pCashItemManager:AddCashItemPrice( 60000526, 18000 ) -- Advanced Skill Cube
+g_pCashItemManager:AddCashItemPrice( 60000527, 18000 ) -- Fantasy Costume Box Cube
+g_pCashItemManager:AddCashItemPrice( 60000530, 18000 ) -- Guild Olympic Cube
+g_pCashItemManager:AddCashItemPrice( 60000536, 18000 ) -- Tzung Tzu 30 Days Cube
+g_pCashItemManager:AddCashItemPrice( 60000537, 18000 ) -- Tzung Tzu 15 Days Cube
+g_pCashItemManager:AddCashItemPrice( 60000543, 18000 ) -- William's Invitation Cube
+g_pCashItemManager:AddCashItemPrice( 60000560, 18000 ) -- 100 El Pieces (Dark) Cube
+g_pCashItemManager:AddCashItemPrice( 60000561, 18000 ) -- 25 El Shards(Mystery)Cube
+g_pCashItemManager:AddCashItemPrice( 60000562, 18000 ) -- 20 El Pieces Random Cube
+g_pCashItemManager:AddCashItemPrice( 60000570, 28000 ) -- Fantasy Academy S/F Uniform Cube (Teal)
+g_pCashItemManager:AddCashItemPrice( 60000580, 18000 ) -- Guild Event Promotional Cube
+g_pCashItemManager:AddCashItemPrice( 60000581, 18000 ) -- Special Ability Accessories (7 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 60000582, 18000 ) -- Special Ability Accessories (30 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 60000590, 18000 ) -- El Scout Officer (Website Event Cube)
+g_pCashItemManager:AddCashItemPrice( 60000591, 18000 ) -- Archangel (Website Event Cube)
+g_pCashItemManager:AddCashItemPrice( 60000592, 18000 ) -- Nasod Battle (Website Event Cube)
+g_pCashItemManager:AddCashItemPrice( 60000600, 18000 ) -- Idol Band Costume Cube
+g_pCashItemManager:AddCashItemPrice( 60000800, 18000 ) -- Star Academy Summer Uniform Cube (Navy)
+g_pCashItemManager:AddCashItemPrice( 60000810, 18000 ) -- Rage Ring Cube (1 Day)
+g_pCashItemManager:AddCashItemPrice( 60000811, 18000 ) -- Mystle Weapon Accessory Cube (1 Day)
+g_pCashItemManager:AddCashItemPrice( 60000812, 18000 ) -- El Scout Officer Manteau Cube (1 Day)
+g_pCashItemManager:AddCashItemPrice( 60000813, 18000 ) -- Nasod Backpack Cube (1 Day)
+g_pCashItemManager:AddCashItemPrice( 60000814, 18000 ) -- Archangel Wing Cube (1 Day)
+g_pCashItemManager:AddCashItemPrice( 60000815, 18000 ) -- Fluffy Fox Tail Cube (1 Day)
+g_pCashItemManager:AddCashItemPrice( 60000817, 18000 ) -- Blessed Medal 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60000818, 18000 ) -- Stamina Potion Cube (2 ea.)
+g_pCashItemManager:AddCashItemPrice( 60000819, 18000 ) -- Back Knife 15 Days Cube
+g_pCashItemManager:AddCashItemPrice( 60000820, 18000 ) -- Dark Elf Teardrop 15 Days Cube
+g_pCashItemManager:AddCashItemPrice( 60000821, 18000 ) -- Dark Steel Bracelet 15 Days Cube
+g_pCashItemManager:AddCashItemPrice( 60000823, 18000 ) -- Rage Ring Cube (1 Day)
+g_pCashItemManager:AddCashItemPrice( 60000824, 18000 ) -- Velder Boss Accessories Cube (7 Days)
+g_pCashItemManager:AddCashItemPrice( 60000826, 18000 ) -- Velder Kingdom Connection Cube (July 2)
+g_pCashItemManager:AddCashItemPrice( 60000827, 18000 ) -- Velder Kingdom Connection Cube (July 3)
+g_pCashItemManager:AddCashItemPrice( 60000828, 18000 ) -- Velder Kingdom Connection Cube (July 4)
+g_pCashItemManager:AddCashItemPrice( 60000829, 18000 ) -- Velder Kingdom Connection Cube (July 9)
+g_pCashItemManager:AddCashItemPrice( 60000830, 18000 ) -- Velder Kingdom Connection Cube (July 10)
+g_pCashItemManager:AddCashItemPrice( 60000831, 18000 ) -- Velder Kingdom Connection Cube (July 11)
+g_pCashItemManager:AddCashItemPrice( 60000835, 18000 ) -- Random Enhancement Item Cube
+g_pCashItemManager:AddCashItemPrice( 60000837, 18000 ) -- Random Enhancement Amulet Cube
+g_pCashItemManager:AddCashItemPrice( 60000840, 18000 ) -- Random Secret Dungeon Pass Cube
+g_pCashItemManager:AddCashItemPrice( 60000863, 18000 ) -- Elsword Trial Promotional Random Cube
+g_pCashItemManager:AddCashItemPrice( 60000864, 18000 ) -- Elsword Trial 2nd Promotional Cube
+g_pCashItemManager:AddCashItemPrice( 60000865, 18000 ) -- Elsword Promotional 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60000866, 18000 ) -- Elsword 1st Job Change Promotional 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60000867, 18000 ) -- Elsword 2nd Job Change Promotional 2 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60000868, 18000 ) -- Cheongyang Pepper 2ea Cube
+g_pCashItemManager:AddCashItemPrice( 60000869, 18000 ) -- Rune Slayer Promotional Full Set 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60000870, 18000 ) -- Lord Knight Promotional Full Set 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60000871, 18000 ) -- Sword Knight Promotional Full Set 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60000872, 18000 ) -- Magic Knight Promotional Full Set 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60000876, 18000 ) -- Star Academy S/F Uniform Avatar Full Set 30 Days Cube
+g_pCashItemManager:AddCashItemPrice( 60000879, 18000 ) -- Vita Potion 5ea Cube
+g_pCashItemManager:AddCashItemPrice( 60000880, 18000 ) -- Fine Tea (5 ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 60000881, 30000 ) -- World Cup Cube
+g_pCashItemManager:AddCashItemPrice( 60000882, 12000 ) -- 2nd Job Change Reward Cube
+g_pCashItemManager:AddCashItemPrice( 60000884, 5000 ) -- Asian Games Pet
+g_pCashItemManager:AddCashItemPrice( 60000887, 18000 ) -- PC Gaming Center Promotional Hairstyle Cube
+g_pCashItemManager:AddCashItemPrice( 60000888, 18000 ) -- PC Gaming Center Promotional Top Piece Cube
+g_pCashItemManager:AddCashItemPrice( 60000889, 18000 ) -- PC Gaming Center Promotional Bottom Piece Cube
+g_pCashItemManager:AddCashItemPrice( 60000890, 18000 ) -- PC Gaming Center Promotional Gloves Cube
+g_pCashItemManager:AddCashItemPrice( 60000891, 18000 ) -- PC Gaming Center Promotional Shoes Cube
+g_pCashItemManager:AddCashItemPrice( 60000892, 18000 ) -- PC Gaming Center  Promotional Weapon Cube
+g_pCashItemManager:AddCashItemPrice( 60000893, 18000 ) -- PC Gaming Center Promotional Hairstyle Cube
+g_pCashItemManager:AddCashItemPrice( 60000894, 18000 ) -- PC Gaming Center Promotional Top Piece Cube
+g_pCashItemManager:AddCashItemPrice( 60000895, 18000 ) -- PC Gaming Center Promotional Bottom Piece Cube
+g_pCashItemManager:AddCashItemPrice( 60000896, 18000 ) -- PC Gaming Center Promotional Gloves Cube
+g_pCashItemManager:AddCashItemPrice( 60000897, 18000 ) -- PC Gaming Center Promotional Shoes Cube
+g_pCashItemManager:AddCashItemPrice( 60000898, 18000 ) -- PC Gaming Center Promotional Weapon Cube
+g_pCashItemManager:AddCashItemPrice( 60000899, 18000 ) -- PC Gaming Center Promotional Hairstyle Cube
+g_pCashItemManager:AddCashItemPrice( 60000900, 18000 ) -- PC Gaming Center Promotional Top Piece Cube
+g_pCashItemManager:AddCashItemPrice( 60000901, 18000 ) -- PC Gaming Center Promotion Bottom Piece Cube
+g_pCashItemManager:AddCashItemPrice( 60000902, 18000 ) -- PC Gaming Center Promotional Gloves Cube
+g_pCashItemManager:AddCashItemPrice( 60000903, 18000 ) -- PC Gaming Center Promotional Shoes Cube
+g_pCashItemManager:AddCashItemPrice( 60000904, 18000 ) -- PC Gaming Promotional Weapon Cube
+g_pCashItemManager:AddCashItemPrice( 60000905, 18000 ) -- MC Doll Cube
+g_pCashItemManager:AddCashItemPrice( 60000906, 18000 ) -- April Fool's Day Random Cube
+g_pCashItemManager:AddCashItemPrice( 60000908, 18000 ) -- Star Academy S/F Uniform A Cube
+g_pCashItemManager:AddCashItemPrice( 60000909, 18000 ) -- Star Academy S/F Uniform B Cube
+g_pCashItemManager:AddCashItemPrice( 60000910, 18000 ) -- Mystle Weapon Accessory Cube (7 Day)
+g_pCashItemManager:AddCashItemPrice( 60000911, 18000 ) -- Skill Ring Cube (7 Day)
+g_pCashItemManager:AddCashItemPrice( 60000912, 18000 ) -- Archangel Wing Cube (1 Day)
+g_pCashItemManager:AddCashItemPrice( 60000948, 26000 ) -- Random Heater Cube
+g_pCashItemManager:AddCashItemPrice( 60000949, 18000 ) -- Magic Stone + 5 El Shards(Mystery) Cube
+g_pCashItemManager:AddCashItemPrice( 60000950, 18000 ) -- Advanced Magic Stone + 5 El Shards(Mystery) Cube
+g_pCashItemManager:AddCashItemPrice( 60000951, 18000 ) -- BWRS + 5 El Shards(Mystery) Cube
+g_pCashItemManager:AddCashItemPrice( 60000952, 18000 ) -- BARS + 5 El Shards(Mystery) Cube
+g_pCashItemManager:AddCashItemPrice( 60000953, 18000 ) -- Magic Stone + 10 BARS Cube
+g_pCashItemManager:AddCashItemPrice( 60000954, 18000 ) -- Magic Stone + 10 BWRS Cube
+g_pCashItemManager:AddCashItemPrice( 60000955, 18000 ) -- Advanced Magic Stone + 5 BARS Cube
+g_pCashItemManager:AddCashItemPrice( 60000956, 18000 ) -- Advanced Magic Stone + 5 BWRS Cube
+g_pCashItemManager:AddCashItemPrice( 60000957, 18000 ) -- Elsword Tiger Cosplay Cash Package (Red)
+g_pCashItemManager:AddCashItemPrice( 60000958, 18000 ) -- Aisha Cat Cosplay Cash Package (Red)
+g_pCashItemManager:AddCashItemPrice( 60000959, 18000 ) -- Rena Fox Cosplay Cash Package (Red)
+g_pCashItemManager:AddCashItemPrice( 60000960, 18000 ) -- Raven Wolf Cosplay Cash Package (Red)
+g_pCashItemManager:AddCashItemPrice( 60000961, 18000 ) -- Eve Lamb Cosplay Cash Package (Taupe)
+g_pCashItemManager:AddCashItemPrice( 60000962, 31000 ) -- Elder Boss Cube
+g_pCashItemManager:AddCashItemPrice( 60000963, 18000 ) -- Bethma Boss Cube
+g_pCashItemManager:AddCashItemPrice( 60000964, 18000 ) -- Pirate Cosplay Avatar Full Set 7 Days Cube
+g_pCashItemManager:AddCashItemPrice( 60000965, 18000 ) -- Pirate Cosplay Avatar Full Set 15 Days Cube
+g_pCashItemManager:AddCashItemPrice( 60000966, 18000 ) -- Pirate Cosplay Avatar Full Set 30 Days Cube
+g_pCashItemManager:AddCashItemPrice( 60000972, 18000 ) -- All Properties 5ea Cube
+g_pCashItemManager:AddCashItemPrice( 60000976, 12000 ) -- 2nd Job Change Reward Cube
+g_pCashItemManager:AddCashItemPrice( 60000997, 18000 ) -- Aisha Trial Promotion 1 Day Random Cube
+g_pCashItemManager:AddCashItemPrice( 60000998, 18000 ) -- Aisha Trial 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60000999, 18000 ) -- Aisha 1st Job Change Promotion 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001000, 18000 ) -- Aisha 2nd Job Change Promotion 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001001, 18000 ) -- High Magician Promotion 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001002, 18000 ) -- Dark Magician Promotion 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001003, 18000 ) -- Elemental Master Promotion 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001004, 18000 ) -- Void Princess Promotion 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001048, 18000 ) -- Accessory Random 2 Days Cube
+g_pCashItemManager:AddCashItemPrice( 60001098, 18000 ) -- Random Reinforcement Amulet Cube
+g_pCashItemManager:AddCashItemPrice( 60001102, 21000 ) -- 2nd Job Change Reward Cube
+g_pCashItemManager:AddCashItemPrice( 60001123, 18000 ) -- Rena Trial Promotion 1 Day Random Cube
+g_pCashItemManager:AddCashItemPrice( 60001124, 18000 ) -- Rena Trial 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001125, 18000 ) -- Rena 1st Job Change Promotion 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001126, 18000 ) -- Rena 2nd Job Change Promotion 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001127, 18000 ) -- Combat Ranger Promotion 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001128, 18000 ) -- Sniping Ranger Promotion 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001129, 18000 ) -- Wind Sneaker Promotion 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001130, 18000 ) -- Grand Archer Promotion 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001193, 18000 ) -- Heater Avatar Full Set (15 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 60001194, 18000 ) -- Arch Devil Full Set 15 Days Cube
+g_pCashItemManager:AddCashItemPrice( 60001195, 18000 ) -- Archangel Full Set 15 Days Cube
+g_pCashItemManager:AddCashItemPrice( 60001196, 18000 ) -- El Scout Officer Full Set 15 Days Cube
+g_pCashItemManager:AddCashItemPrice( 60001197, 18000 ) -- Nasod Battle Full Set 15 Days Cube
+g_pCashItemManager:AddCashItemPrice( 60001198, 18000 ) -- Random Heater Avatar Accessory 7 Days Cube
+g_pCashItemManager:AddCashItemPrice( 60001199, 18000 ) -- Archangel Crown 7 Days Cube
+g_pCashItemManager:AddCashItemPrice( 60001200, 18000 ) -- Arch Devil Eye 7 Days Cube
+g_pCashItemManager:AddCashItemPrice( 60001205, 18000 ) -- Random Rare Avatar Weapon Cube
+g_pCashItemManager:AddCashItemPrice( 60001206, 18000 ) -- Random Arch Devil Weapon Cube
+g_pCashItemManager:AddCashItemPrice( 60001207, 18000 ) -- Random Archangel Weapon Cube
+g_pCashItemManager:AddCashItemPrice( 60001208, 18000 ) -- Random Nasod Battle Weapon Cube
+g_pCashItemManager:AddCashItemPrice( 60001209, 18000 ) -- Random El Scout Officer Weapon Cube
+g_pCashItemManager:AddCashItemPrice( 60001210, 18000 ) -- Accessory Random 15 Days Cube
+g_pCashItemManager:AddCashItemPrice( 60001214, 12000 ) -- April Fool's Day Special Cube
+g_pCashItemManager:AddCashItemPrice( 60001215, 18000 ) -- Blessed Armor Reinforcement Stone 10ea Cube
+g_pCashItemManager:AddCashItemPrice( 60001216, 18000 ) -- William's Reward Cube
+g_pCashItemManager:AddCashItemPrice( 60001222, 18000 ) -- Moon Rabbit Wooden Cube
+g_pCashItemManager:AddCashItemPrice( 60001223, 18000 ) -- Moon Rabbit Copper Cube
+g_pCashItemManager:AddCashItemPrice( 60001224, 18000 ) -- Moon Rabbit Silver Cube
+g_pCashItemManager:AddCashItemPrice( 60001248, 37000 ) -- 2nd Job Change Reward Cube
+g_pCashItemManager:AddCashItemPrice( 60001269, 18000 ) -- Raven Trial Promotion 1 Day Random Cube
+g_pCashItemManager:AddCashItemPrice( 60001270, 18000 ) -- Raven Trial 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001271, 18000 ) -- Raven 1st Job Change Promotion 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001272, 18000 ) -- Raven 2nd Job Change Promotion 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001273, 18000 ) -- Over Taker Promotion 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001274, 18000 ) -- Sword Taker Promotion 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001275, 18000 ) -- Blade Master Promotion 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001276, 18000 ) -- Reckless Fist Promotion 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001281, 31000 ) -- Firework Cube
+g_pCashItemManager:AddCashItemPrice( 60001282, 18000 ) -- Archangel Full Set (7 Day) Cube
+g_pCashItemManager:AddCashItemPrice( 60001283, 18000 ) -- Arch Devil Full Set (7 Day) Cube
+g_pCashItemManager:AddCashItemPrice( 60001284, 18000 ) -- Nasod Battle Full Set (7 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 60001285, 18000 ) -- El Scout Full Set (7 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 60001286, 18000 ) -- Archangel Full Set (30 Day) Cube
+g_pCashItemManager:AddCashItemPrice( 60001287, 18000 ) -- Arch Devil Full Set (30 Day) Cube
+g_pCashItemManager:AddCashItemPrice( 60001288, 18000 ) -- Nasod Battle Full Set (30 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 60001289, 12000 ) -- El Scout Full Set (30 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 60001290, 54000 ) -- Archangel Full Set Cube
+g_pCashItemManager:AddCashItemPrice( 60001291, 44000 ) -- Arch Devil Full Set Cube
+g_pCashItemManager:AddCashItemPrice( 60001292, 44000 ) -- Nasod Battle Full Set Cube
+g_pCashItemManager:AddCashItemPrice( 60001293, 18000 ) -- El Scout Full Set Cube
+g_pCashItemManager:AddCashItemPrice( 60001294, 18000 ) -- Random Heater Avatar Full Set (7 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 60001295, 18000 ) -- Random Heater Avatar Full Set (30 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 60001296, 12000 ) -- Heater Avatar Raffle Ticket
+g_pCashItemManager:AddCashItemPrice( 60001300, 12000 ) -- Resurrection Stone (1 ea) Cube
+g_pCashItemManager:AddCashItemPrice( 60001301, 18000 ) -- Wedding Avatar Full Set 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001302, 18000 ) -- April Fool's Day Special Cube
+g_pCashItemManager:AddCashItemPrice( 60001316, 18000 ) -- Weapon Avatar Cube
+g_pCashItemManager:AddCashItemPrice( 60001318, 18000 ) -- [Event] EXP. Boost Medal Cube (1 Day)
+g_pCashItemManager:AddCashItemPrice( 60001319, 18000 ) -- Manual Vol.3 Reward Cube
+g_pCashItemManager:AddCashItemPrice( 60001342, 18000 ) -- Eve Trial Promotion 1 Day Random Cube
+g_pCashItemManager:AddCashItemPrice( 60001343, 18000 ) -- Eve Trial 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001344, 18000 ) -- Eve 1st Job Change Promotion 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001345, 18000 ) -- Eve 2nd Job Change Promotion 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001346, 18000 ) -- Code Exotic Promotion 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001347, 18000 ) -- Code Architecture Promotion 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001348, 18000 ) -- Code Nemesis Promotion 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001349, 18000 ) -- Code Empress Promotion 1 Day Cube
+g_pCashItemManager:AddCashItemPrice( 60001350, 60000 ) -- 2nd Job Change Reward Cube
+g_pCashItemManager:AddCashItemPrice( 60001351, 18000 ) -- New User's Cube
+g_pCashItemManager:AddCashItemPrice( 60001352, 18000 ) -- Old User's Cube
+g_pCashItemManager:AddCashItemPrice( 60001372, 18000 ) -- Pirate Avatar (Gloves, Top) Cube
+g_pCashItemManager:AddCashItemPrice( 60001373, 18000 ) -- Pirate Avatar (Shoes, Bottoms) Cube
+g_pCashItemManager:AddCashItemPrice( 60001374, 18000 ) -- Pirate Avatar (Hairstyle, Weapon) Cube
+g_pCashItemManager:AddCashItemPrice( 60001384, 18000 ) -- Random Pumpkin Accessory Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 60001388, 18000 ) -- Halloween Dungeon Pass 3ea Cube
+g_pCashItemManager:AddCashItemPrice( 60001389, 18000 ) -- Halloween Dungeon Pass 6ea Cube
+g_pCashItemManager:AddCashItemPrice( 60001390, 18000 ) -- Salvatore Solace 7 Days Weapon Cube
+g_pCashItemManager:AddCashItemPrice( 60001391, 18000 ) -- Salvatore Solace 7 Days Upper Armor Cube
+g_pCashItemManager:AddCashItemPrice( 60001392, 18000 ) -- Salvatore Solace 7 Days Lower Armor Cube
+g_pCashItemManager:AddCashItemPrice( 60001393, 18000 ) -- Salvatore Solace 7 Days Gloves Cube
+g_pCashItemManager:AddCashItemPrice( 60001394, 18000 ) -- Salvatore Solace 7 Days Shoes Cube
+g_pCashItemManager:AddCashItemPrice( 60001407, 18000 ) -- El Shards(Mystery) 5ea Cube
+g_pCashItemManager:AddCashItemPrice( 60001409, 18000 ) -- Perfect Recovery Potion 10ea Cube
+g_pCashItemManager:AddCashItemPrice( 60001411, 18000 ) -- Random Reformed Cube
+g_pCashItemManager:AddCashItemPrice( 60001412, 18000 ) -- Random Reformed Magic Stone Cube
+g_pCashItemManager:AddCashItemPrice( 60001413, 18000 ) -- Cobo Express VIP Ticket 15 Days Cube
+g_pCashItemManager:AddCashItemPrice( 60001414, 18000 ) -- Random Hell Mode Pass Cube
+g_pCashItemManager:AddCashItemPrice( 60001415, 18000 ) -- Reformed Box Set Cube
+g_pCashItemManager:AddCashItemPrice( 60003979, 34000 ) -- Refined El Shard Random Cube
+g_pCashItemManager:AddCashItemPrice( 60004428, 18000 ) -- First Grade Magic Stone Random Cube
+g_pCashItemManager:AddCashItemPrice( 60005020, 18000 ) -- Monster Cards Random Cube 1
+g_pCashItemManager:AddCashItemPrice( 60005021, 18000 ) -- Monster Cards Random Cube 2
+g_pCashItemManager:AddCashItemPrice( 60005022, 18000 ) -- Monster Cards Random Cube 3
+g_pCashItemManager:AddCashItemPrice( 60005046, 18000 ) -- Monster Card Collector's Hat Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 60005080, 60000 ) -- Day Cube
+g_pCashItemManager:AddCashItemPrice( 60005081, 18000 ) -- Day Cube Key
+g_pCashItemManager:AddCashItemPrice( 60006502, 18000 ) -- ES-888 Camera Cube (20 Days)
+g_pCashItemManager:AddCashItemPrice( 60006541, 18000 ) -- Lucky Field Boss Cube
+g_pCashItemManager:AddCashItemPrice( 60006580, 18000 ) -- Field Boss Cube (2)
+g_pCashItemManager:AddCashItemPrice( 60006581, 18000 ) -- Field Boss Cube (3)
+g_pCashItemManager:AddCashItemPrice( 60006582, 18000 ) -- Field Boss Cube (4)
+g_pCashItemManager:AddCashItemPrice( 60006583, 18000 ) -- Field Boss Cube (5)
+g_pCashItemManager:AddCashItemPrice( 60006584, 18000 ) -- Field Boss Cube (6)
+g_pCashItemManager:AddCashItemPrice( 60006585, 18000 ) -- Field Boss Cube (7)
+g_pCashItemManager:AddCashItemPrice( 60006586, 18000 ) -- Field Boss Cube (8)
+g_pCashItemManager:AddCashItemPrice( 60006587, 18000 ) -- Field Boss Cube (9)
+g_pCashItemManager:AddCashItemPrice( 60006588, 18000 ) -- Field Boss Cube (10)
+g_pCashItemManager:AddCashItemPrice( 60007010, 18000 ) -- Sealed Legendary 9 Tailed Fox 'Eun' Cube
+g_pCashItemManager:AddCashItemPrice( 60007011, 18000 ) -- Sealed Legendary 9 Tailed Fox 'Eun' Cube Key
+g_pCashItemManager:AddCashItemPrice( 60007012, 18000 ) -- Sealed Legendary 9 Tailed Fox 'Eun' Special Cube
+g_pCashItemManager:AddCashItemPrice( 60007015, 18000 ) -- Ara's Special Pre-Event Gold Falcon Ice Burner Package
+g_pCashItemManager:AddCashItemPrice( 60007023, 18000 ) -- Divine Legendary Fox Tail Random Cube
+g_pCashItemManager:AddCashItemPrice( 60007112, 24000 ) -- Little Hsien Cube
+g_pCashItemManager:AddCashItemPrice( 60007122, 18000 ) -- 3 Day Special Accessory Cube
+g_pCashItemManager:AddCashItemPrice( 60007123, 18000 ) -- Ara's Special Cube
+g_pCashItemManager:AddCashItemPrice( 60007240, 29000 ) -- Accessory Random Cube
+g_pCashItemManager:AddCashItemPrice( 60007347, 18000 ) -- Little Hsien’s Special Gift Cube A
+g_pCashItemManager:AddCashItemPrice( 60007348, 18000 ) -- Little Hsien’s Special Gift Cube B
+g_pCashItemManager:AddCashItemPrice( 60007349, 18000 ) -- Ariel’s Magic Amulet Random Cube (Lv.6~Lv.7)
+g_pCashItemManager:AddCashItemPrice( 60007352, 18000 ) -- Divine Legendary Fox Tail Accessory Cube  (2 Days)
+g_pCashItemManager:AddCashItemPrice( 60007353, 18000 ) -- Shining Red Legendary Fox Tail Accessory Cube  (2 Days)
+g_pCashItemManager:AddCashItemPrice( 60007468, 18000 ) -- Sander Accessory Cube
+g_pCashItemManager:AddCashItemPrice( 60007590, 18000 ) -- Item Revamp Promo Package Lv.1
+g_pCashItemManager:AddCashItemPrice( 60007591, 18000 ) -- Item Revamp Promo Package Lv.2
+g_pCashItemManager:AddCashItemPrice( 60007592, 18000 ) -- Item Revamp Promo Package Lv.3
+g_pCashItemManager:AddCashItemPrice( 60007593, 18000 ) -- Item Revamp Promo Package Lv.4
+g_pCashItemManager:AddCashItemPrice( 60007594, 18000 ) -- Item Revamp Promo Package Lv.5
+g_pCashItemManager:AddCashItemPrice( 60007595, 18000 ) -- Item Revamp Promo Package Lv.6
+g_pCashItemManager:AddCashItemPrice( 60007596, 18000 ) -- Item Revamp Promo Package (Scaled Item Level)
+g_pCashItemManager:AddCashItemPrice( 60007752, 18000 ) -- Life Crystal (Raincoat Cat - Rebi) Package
+g_pCashItemManager:AddCashItemPrice( 60007753, 18000 ) -- Life Crystal (Raincoat Cat - Regi) Package
+g_pCashItemManager:AddCashItemPrice( 60007756, 36000 ) -- Raincoat Cat - Rebi Package
+g_pCashItemManager:AddCashItemPrice( 60007757, 36000 ) -- Raincoat Cat - Regi Package
+g_pCashItemManager:AddCashItemPrice( 60007856, 18000 ) -- Orbs Random Cube
+g_pCashItemManager:AddCashItemPrice( 60008000, 18000 ) -- Unstoppable Ara Cube
+g_pCashItemManager:AddCashItemPrice( 60008003, 18000 ) -- Unstoppable Little Devil Cube
+g_pCashItemManager:AddCashItemPrice( 60008004, 18000 ) -- Ara El Search Party Officer (1 day) Full Set Cube
+g_pCashItemManager:AddCashItemPrice( 60008008, 18000 ) -- 4 Ring of Skills (7 days) Random Cube
+g_pCashItemManager:AddCashItemPrice( 60008009, 18000 ) -- Little Devil's Helping Cube
+g_pCashItemManager:AddCashItemPrice( 60008013, 18000 ) -- Victory Trophy Cube
+g_pCashItemManager:AddCashItemPrice( 60008014, 18000 ) -- Ara's New Job Celebration Cube
+g_pCashItemManager:AddCashItemPrice( 60008023, 18000 ) -- 2nd Job Promotion Weapon (Poison) Cube (3 days)
+g_pCashItemManager:AddCashItemPrice( 65000001, 18000 ) -- Cube of Advanced Test Reward
+g_pCashItemManager:AddCashItemPrice( 65000002, 18000 ) -- Cube of Basic Promotion Costume for 7 Days
+g_pCashItemManager:AddCashItemPrice( 65000004, 18000 ) -- Cube of Special Challenge Lv.1
+g_pCashItemManager:AddCashItemPrice( 65000005, 18000 ) -- Cube of Special Challenge Lv.2
+g_pCashItemManager:AddCashItemPrice( 65000008, 12000 ) -- Special Cube for April Fools' Day
+g_pCashItemManager:AddCashItemPrice( 65000009, 18000 ) -- Guild Memorial Cube
+g_pCashItemManager:AddCashItemPrice( 65000010, 18000 ) -- Guild Memorial Cube
+g_pCashItemManager:AddCashItemPrice( 65000011, 60000 ) -- Reward Cube
+g_pCashItemManager:AddCashItemPrice( 65000012, 60000 ) -- Reward Cube
+g_pCashItemManager:AddCashItemPrice( 65000020, 18000 ) -- Elsword Primary Random Cube
+g_pCashItemManager:AddCashItemPrice( 65000021, 18000 ) -- Elsword Average Random Cube
+g_pCashItemManager:AddCashItemPrice( 65000022, 18000 ) -- Elsword Superior Random Cube
+g_pCashItemManager:AddCashItemPrice( 65000024, 18000 ) -- Resurrection Stone (5 ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 65000025, 18000 ) -- Weapon Accessories (Mystle 30 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 65000026, 18000 ) -- Weapon Accessories (Nasod Panel 30 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 65000027, 18000 ) -- Rage Ring (30 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 65000028, 18000 ) -- Nasod Prototype Goggles (30 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 65000029, 18000 ) -- Magic Necklace (30 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 65000030, 18000 ) -- Respawn Ring (30 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 65000036, 12000 ) -- 120-Minute Connection Cube
+g_pCashItemManager:AddCashItemPrice( 65000037, 14000 ) -- 120-Minute Connection Cube
+g_pCashItemManager:AddCashItemPrice( 65000038, 24000 ) -- 120-Minute Connection Cube
+g_pCashItemManager:AddCashItemPrice( 65000039, 43000 ) -- 120-Minute Connection Cube
+g_pCashItemManager:AddCashItemPrice( 65000040, 60000 ) -- 120-Minute Connection Cube
+g_pCashItemManager:AddCashItemPrice( 65000041, 60000 ) -- 120-Minute Connection Cube
+g_pCashItemManager:AddCashItemPrice( 65000042, 60000 ) -- 120-Minute Connection Cube
+g_pCashItemManager:AddCashItemPrice( 65000044, 12000 ) -- Battle Essential Item Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 65000045, 18000 ) -- Cat Ear Cube (50 Days)
+g_pCashItemManager:AddCashItemPrice( 65000046, 18000 ) -- Cat Tail Cube (50 Days)
+g_pCashItemManager:AddCashItemPrice( 65000047, 18000 ) -- Cat Bag Cube (50 Days)
+g_pCashItemManager:AddCashItemPrice( 65000048, 60000 ) -- Fluorite Ore Cube
+g_pCashItemManager:AddCashItemPrice( 65000049, 18000 ) -- Lucky Golden Week Cube
+g_pCashItemManager:AddCashItemPrice( 65000052, 18000 ) -- Lunchbox Cube
+g_pCashItemManager:AddCashItemPrice( 65000054, 18000 ) -- Level 40 Celebration Cube
+g_pCashItemManager:AddCashItemPrice( 65000055, 18000 ) -- Avatar Full Set (30 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 65000056, 18000 ) -- Promotional Avatar (30 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 65000057, 18000 ) -- Scar Tattoo (7 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 65000058, 18000 ) -- Fluffy Fox Tail (30 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 65000059, 18000 ) -- Candy (5 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 65000060, 18000 ) -- Limited Edition Avatar Garment (30 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 65000061, 18000 ) -- Limited Edition Avatar Weapon (30 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 65000062, 18000 ) -- Limited Edition  Avatar WeaponCube
+g_pCashItemManager:AddCashItemPrice( 65000063, 18000 ) -- Level 40 Celebration Cube
+g_pCashItemManager:AddCashItemPrice( 65000071, 18000 ) -- Magic Stone Cube (10 ea.)
+g_pCashItemManager:AddCashItemPrice( 65000073, 18000 ) -- Random Blessed Enhancement Stone (1 ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 65000074, 18000 ) -- Random Blessed Enhancement Stone (10 ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 65000075, 18000 ) -- Lv. 1 Raven Commemoration Cube
+g_pCashItemManager:AddCashItemPrice( 65000076, 18000 ) -- Lv. 2 Raven Commemoration Cube
+g_pCashItemManager:AddCashItemPrice( 65000077, 18000 ) -- Raven Cube
+g_pCashItemManager:AddCashItemPrice( 65000078, 18000 ) -- Pirate Pistol (15 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 65000079, 18000 ) -- Idol Avatar Full Set 15 Days Cube
+g_pCashItemManager:AddCashItemPrice( 65000081, 18000 ) -- GW New 3000 Event Cube
+g_pCashItemManager:AddCashItemPrice( 65000082, 18000 ) -- Raven's 1st Job Change Commemorative Cube
+g_pCashItemManager:AddCashItemPrice( 65000094, 18000 ) -- Military Avatar Full Set (5 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 65000100, 18000 ) -- GW New Event Cube
+g_pCashItemManager:AddCashItemPrice( 65000101, 18000 ) -- World Cup First Victory Special Cube
+g_pCashItemManager:AddCashItemPrice( 65000103, 18000 ) -- El Scout Gloves (5 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 65000104, 18000 ) -- El Scout Shoes (5 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 65000105, 18000 ) -- El Scout Hairstyle (5 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 65000106, 18000 ) -- El Scout Bottom Piece (5 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 65000107, 18000 ) -- El Scout Top Piece (5 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 65000108, 18000 ) -- El Scout Weapon (5 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 65000109, 18000 ) -- El Scout Officer Hat (5 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 65000110, 18000 ) -- El Scout Officer Uniform Manteau (5 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 65000111, 18000 ) -- El Scout Officer Ceremonial Sword (5 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 65000114, 18000 ) -- Round of 16 Entry Cube
+g_pCashItemManager:AddCashItemPrice( 65000115, 18000 ) -- Round of 16 Entry Cube
+g_pCashItemManager:AddCashItemPrice( 65000122, 18000 ) -- Resurrection Stone (5 ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 65000123, 18000 ) -- Stamina Potion (5 ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 65000124, 41000 ) -- Potion Cube
+g_pCashItemManager:AddCashItemPrice( 65000125, 18000 ) -- Advanced Magic Stone (5 ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 65000126, 18000 ) -- Perfect Recovery Potion (5 ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 65000127, 18000 ) -- Magic Stone (5 ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 65000128, 18000 ) -- Blessed Armor Enhancement Stone (5 ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 65000129, 18000 ) -- Blessed Weapon Enhancement Stone (5 ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 65000132, 18000 ) -- 16 Days Reward Cube
+g_pCashItemManager:AddCashItemPrice( 65000140, 18000 ) -- Secret Dungeon Pass Cube (Elder Vesma)
+g_pCashItemManager:AddCashItemPrice( 65000150, 36000 ) -- Queen's Cube
+g_pCashItemManager:AddCashItemPrice( 65000151, 18000 ) -- Tanabata Matsuri Reward Cube
+g_pCashItemManager:AddCashItemPrice( 65000152, 18000 ) -- Dospara Tie Up Special Cube
+g_pCashItemManager:AddCashItemPrice( 65000153, 18000 ) -- Altera Core Conqueror Cube
+g_pCashItemManager:AddCashItemPrice( 65000170, 18000 ) -- Queen's Resurrection Cube
+g_pCashItemManager:AddCashItemPrice( 65000171, 18000 ) -- Ocean Day Special Cube
+g_pCashItemManager:AddCashItemPrice( 65000172, 18000 ) -- Illogical Cube
+g_pCashItemManager:AddCashItemPrice( 65000200, 18000 ) -- Advanced Magic Stone 5ea Cube (PC Gaming Center Special)
+g_pCashItemManager:AddCashItemPrice( 65000201, 18000 ) -- Perfect Recovery Potion 10ea Cube (PC Gaming Center Special)
+g_pCashItemManager:AddCashItemPrice( 65000202, 18000 ) -- Resurrection Stone 5ea Cube (PC Gaming Center Special)
+g_pCashItemManager:AddCashItemPrice( 65000203, 18000 ) -- Lv. 5 Ariel's Enhancement Amulet Cube (PC Gaming Center Special)
+g_pCashItemManager:AddCashItemPrice( 65000204, 18000 ) -- El Shards(Mystery) 3ea Cube (PC Gaming Center Special)
+g_pCashItemManager:AddCashItemPrice( 65000205, 60000 ) -- PC Gaming Center Special Cube
+g_pCashItemManager:AddCashItemPrice( 65000214, 18000 ) -- New Code Cube
+g_pCashItemManager:AddCashItemPrice( 65000229, 18000 ) -- You Spy Cube
+g_pCashItemManager:AddCashItemPrice( 65000254, 18000 ) -- NPC Beauty Queen Contest VIP Cube
+g_pCashItemManager:AddCashItemPrice( 65000258, 18000 ) -- Random Reinforcement Amulet Cube (Lv.6~7)
+g_pCashItemManager:AddCashItemPrice( 65000259, 18000 ) -- New User Swimsuit Avatar Cube
+g_pCashItemManager:AddCashItemPrice( 65000263, 18000 ) -- Yukata Accessory Random Cube
+g_pCashItemManager:AddCashItemPrice( 65000277, 60000 ) -- Accessory Random Cube
+g_pCashItemManager:AddCashItemPrice( 65000280, 18000 ) -- Your Ariel Cube
+g_pCashItemManager:AddCashItemPrice( 65000282, 35000 ) -- Yukata Cube
+g_pCashItemManager:AddCashItemPrice( 65000343, 18000 ) -- Demonic Halloween Manteau 7 Days Cube
+g_pCashItemManager:AddCashItemPrice( 65000351, 18000 ) -- Corn Head Cube (100 Days)
+g_pCashItemManager:AddCashItemPrice( 65000352, 18000 ) -- Friend Reference Cube
+g_pCashItemManager:AddCashItemPrice( 65000366, 18000 ) -- Random Ariel's Reinforcement Amulet (Lv.5~6) Cube
+g_pCashItemManager:AddCashItemPrice( 65000493, 12000 ) -- Avatar-Würfel zum 1. April
+g_pCashItemManager:AddCashItemPrice( 65000585, 60000 ) -- Wyvern's Cube
+g_pCashItemManager:AddCashItemPrice( 65000645, 18000 ) -- Rare Costume Accessory Cube (1 Day)
+g_pCashItemManager:AddCashItemPrice( 65000646, 18000 ) -- Rare Costume Cube (1 Day)
+g_pCashItemManager:AddCashItemPrice( 65000679, 44000 ) -- Resurrection Stone (1 ea) Cube
+g_pCashItemManager:AddCashItemPrice( 65000680, 18000 ) -- Resurrection Stone (5ea) Cube
+g_pCashItemManager:AddCashItemPrice( 65000681, 18000 ) -- Weapon Enhancement Random Cube
+g_pCashItemManager:AddCashItemPrice( 65000682, 18000 ) -- Armor Enhancement Random Cube
+g_pCashItemManager:AddCashItemPrice( 65000711, 18000 ) -- VIP Customer's Special Gift Cube
+g_pCashItemManager:AddCashItemPrice( 65001078, 18000 ) -- Weak Heretic Essence Cube
+g_pCashItemManager:AddCashItemPrice( 67000049, 5000 ) -- Puppet Bomb
+g_pCashItemManager:AddCashItemPrice( 67003570, 18000 ) -- Accessory Random Cube (15 days)
+g_pCashItemManager:AddCashItemPrice( 67003571, 18000 ) -- Orichalcum Weapon Deco Cube (15 days)
+g_pCashItemManager:AddCashItemPrice( 67003744, 12000 ) -- Dual Magic Stone Random Cube
+g_pCashItemManager:AddCashItemPrice( 67003745, 18000 ) -- 2013 Miss Elrios Pledged Ice Burner 1+1 Package
+g_pCashItemManager:AddCashItemPrice( 67003746, 18000 ) -- 2013 Miss Elrios Fluorite Ore Random Cube (Lv. 3-5)
+g_pCashItemManager:AddCashItemPrice( 67003750, 12000 ) -- 2013 Miss Elrios Special Magic Stones
+g_pCashItemManager:AddCashItemPrice( 67003760, 12000 ) -- 2013 Miss Elrios Special Cube
+g_pCashItemManager:AddCashItemPrice( 67003761, 12000 ) -- 2013 Miss Elrios Normal Cube
+g_pCashItemManager:AddCashItemPrice( 67003762, 12000 ) -- 2013 Miss Elrios Participation Cube
+g_pCashItemManager:AddCashItemPrice( 67003763, 12000 ) -- Resurrection Stone Cube (10)
+g_pCashItemManager:AddCashItemPrice( 67003764, 12000 ) -- Resurrection Stone Cube (5)
+g_pCashItemManager:AddCashItemPrice( 67003765, 18000 ) -- Resurrection Stone Cube (3)
+g_pCashItemManager:AddCashItemPrice( 67003766, 18000 ) -- Complete Recovery Potion Cube (30)
+g_pCashItemManager:AddCashItemPrice( 67003767, 18000 ) -- Complete Recovery Potion Cube (20)
+g_pCashItemManager:AddCashItemPrice( 67003768, 18000 ) -- Complete Recovery Potion Cube (10)
+g_pCashItemManager:AddCashItemPrice( 67003769, 18000 ) -- Phoru's Foot Stamp Random Cube (White, Yellow, Purple)
+g_pCashItemManager:AddCashItemPrice( 67003770, 18000 ) -- Fluorite Ore Random Cube (Lv. 3-5)
+g_pCashItemManager:AddCashItemPrice( 67003771, 18000 ) -- Victory Crown Cube (14 Days)
+g_pCashItemManager:AddCashItemPrice( 67003772, 18000 ) -- 2013 Miss Elrios Pledged Ice Burner 5+1 Package
+g_pCashItemManager:AddCashItemPrice( 67003773, 18000 ) -- 2013 Miss Elrios Pledged Ice Burner 11+3 Package
+g_pCashItemManager:AddCashItemPrice( 67004420, 60000 ) -- El Shard Random Cube
+g_pCashItemManager:AddCashItemPrice( 67004636, 48000 ) -- Resurrection Stone Cube
+g_pCashItemManager:AddCashItemPrice( 67006182, 1000 ) -- Ariel's Fluorite Ore Lv. 6
+g_pCashItemManager:AddCashItemPrice( 67006185, 18000 ) -- Sander Village Conqueror Cube
+g_pCashItemManager:AddCashItemPrice( 67006212, 55000 ) -- Elixir Cube
+g_pCashItemManager:AddCashItemPrice( 67006213, 18000 ) -- Suspicious Wyvern's Accessory Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 67006214, 18000 ) -- Forgotten Ancient Wyvern's Accessory Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 67006215, 28000 ) -- Suspicious Wyvern's Claw Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 67006216, 28000 ) -- Forgotten Ancient Wyvern's Claw Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 67006458, 18000 ) -- Ring of Skill Random Cube (1 Day)
+g_pCashItemManager:AddCashItemPrice( 70000010, 6000 ) -- Top Piece of Elsword's Ardent Costume
+g_pCashItemManager:AddCashItemPrice( 70000011, 6000 ) -- Bottom Piece of Elsword's Ardent Costume
+g_pCashItemManager:AddCashItemPrice( 70000012, 3000 ) -- Gloves of Elsword's Ardent Costume
+g_pCashItemManager:AddCashItemPrice( 70000013, 3000 ) -- Shoes of Elsword's Ardent Costume
+g_pCashItemManager:AddCashItemPrice( 70000014, 6000 ) -- Hair of Elsword's Ardent Costume
+g_pCashItemManager:AddCashItemPrice( 70000020, 6000 ) -- Top Piece of Aisha's Ardent Costume
+g_pCashItemManager:AddCashItemPrice( 70000021, 6000 ) -- Bottom Piece of Aisha's Ardent Costume
+g_pCashItemManager:AddCashItemPrice( 70000022, 3000 ) -- Gloves of Aisha's Ardent Costume
+g_pCashItemManager:AddCashItemPrice( 70000023, 3000 ) -- Shoes of Aisha's Ardent Costume
+g_pCashItemManager:AddCashItemPrice( 70000024, 6000 ) -- Hair of Aisha's Ardent Costume
+g_pCashItemManager:AddCashItemPrice( 70000030, 6000 ) -- Top Piece of Lena's Ardent Costume
+g_pCashItemManager:AddCashItemPrice( 70000031, 6000 ) -- Bottom Piece of Lena's Ardent Costume
+g_pCashItemManager:AddCashItemPrice( 70000032, 3000 ) -- Gloves of Lena's Ardent Costume
+g_pCashItemManager:AddCashItemPrice( 70000033, 3000 ) -- Shoes of Lena's Ardent Costume
+g_pCashItemManager:AddCashItemPrice( 70000034, 6000 ) -- Hair of Lena's Ardent Costume
+g_pCashItemManager:AddCashItemPrice( 70000040, 6000 ) -- Top Piece of Raven's Ardent Costume
+g_pCashItemManager:AddCashItemPrice( 70000041, 6000 ) -- Bottom Piece of Raven's Ardent Costume
+g_pCashItemManager:AddCashItemPrice( 70000042, 3000 ) -- Gloves of Raven's Ardent Costume
+g_pCashItemManager:AddCashItemPrice( 70000043, 3000 ) -- Shoes of Raven's Ardent Costume
+g_pCashItemManager:AddCashItemPrice( 70000044, 6000 ) -- Hair of Raven's Ardent Costume
+g_pCashItemManager:AddCashItemPrice( 70000060, 18000 ) -- Cube of Ardent Costume (7 days)
+g_pCashItemManager:AddCashItemPrice( 70000061, 18000 ) -- Cube of Aisha's Ardent Costume (7 days)
+g_pCashItemManager:AddCashItemPrice( 70000062, 18000 ) -- Cube of Lena's Ardent Costume (7 days)
+g_pCashItemManager:AddCashItemPrice( 70000063, 18000 ) -- Package of Raven's Ardent Costume (7 days)
+g_pCashItemManager:AddCashItemPrice( 70000064, 18000 ) -- Package of Eve's Ardent Costume (7 days)
+g_pCashItemManager:AddCashItemPrice( 70000177, 18000 ) -- Elsword's Star Academy Discount Package (White)
+g_pCashItemManager:AddCashItemPrice( 70000178, 12000 ) -- Aisha's Star Academy Discount Package (White)
+g_pCashItemManager:AddCashItemPrice( 70000179, 12000 ) -- Rena's Star Academy Discount Package (White)
+g_pCashItemManager:AddCashItemPrice( 70000180, 12000 ) -- Raven's Star Academy Discount Package (White)
+g_pCashItemManager:AddCashItemPrice( 70000181, 12000 ) -- Eve's Star Academy Discount Package (White)
+g_pCashItemManager:AddCashItemPrice( 70000190, 18000 ) -- Dive Package
+g_pCashItemManager:AddCashItemPrice( 70000300, 12000 ) -- Ice Statue Heater (Archangel)
+g_pCashItemManager:AddCashItemPrice( 70000301, 12000 ) -- Ice Statue Heater (El Scout Officer)
+g_pCashItemManager:AddCashItemPrice( 70000302, 12000 ) -- Ice Statue Heater (Nasod Battle)
+g_pCashItemManager:AddCashItemPrice( 70000303, 12000 ) -- Ice Statue Heater (Undecided)
+g_pCashItemManager:AddCashItemPrice( 70000500, 18000 ) -- Elsword Yukata Package (Red)
+g_pCashItemManager:AddCashItemPrice( 70000501, 18000 ) -- Elsword Yukata Package (White)
+g_pCashItemManager:AddCashItemPrice( 70000502, 18000 ) -- Aisha Yukata Package (Plum)
+g_pCashItemManager:AddCashItemPrice( 70000503, 18000 ) -- Aisha Yukata Package (Pink)
+g_pCashItemManager:AddCashItemPrice( 70000504, 18000 ) -- Rena Yukata Package (Azure)
+g_pCashItemManager:AddCashItemPrice( 70000505, 18000 ) -- Rena Yukata Package (Plum)
+g_pCashItemManager:AddCashItemPrice( 70000506, 18000 ) -- Raven Yukata Package (Blue)
+g_pCashItemManager:AddCashItemPrice( 70000507, 18000 ) -- Raven Yukata Package (Dark Brown)
+g_pCashItemManager:AddCashItemPrice( 70000508, 18000 ) -- Eve Yukata Package (Pink)
+g_pCashItemManager:AddCashItemPrice( 70000509, 18000 ) -- Eve Yukata Package (Yellow)
+g_pCashItemManager:AddCashItemPrice( 70000700, 18000 ) -- Elsword Wizard of Halloween Costume Package (Brown) - No Options
+g_pCashItemManager:AddCashItemPrice( 70000701, 18000 ) -- Elsword Wizard of Halloween Costume Package (White) - No Options
+g_pCashItemManager:AddCashItemPrice( 70000702, 12000 ) -- Aisha Wizard of Halloween Costume Package (Purple) - No Options
+g_pCashItemManager:AddCashItemPrice( 70000703, 12000 ) -- Aisha Wizard of Halloween Costume Package (White) - No Options
+g_pCashItemManager:AddCashItemPrice( 70000704, 12000 ) -- Rena Wizard of Halloween Costume Package (Blue) - No Options
+g_pCashItemManager:AddCashItemPrice( 70000705, 12000 ) -- Rena Wizard of Halloween Costume Package (Pink) - No Options
+g_pCashItemManager:AddCashItemPrice( 70000706, 12000 ) -- Raven Wizard of Halloween Costume Package (Black) - No Options
+g_pCashItemManager:AddCashItemPrice( 70000707, 12000 ) -- Raven Wizard of Halloween Costume Package (White) - No Options
+g_pCashItemManager:AddCashItemPrice( 70000708, 12000 ) -- Eve Wizard of Halloween Costume Package (Taupe) - No Options
+g_pCashItemManager:AddCashItemPrice( 70000709, 12000 ) -- Eve Wizard of Halloween Costume Package (Beige) - No Options
+g_pCashItemManager:AddCashItemPrice( 70000710, 18000 ) -- Elsword Wizard of Halloween Costume Package (Brown)
+g_pCashItemManager:AddCashItemPrice( 70000711, 18000 ) -- Elsword Wizard of Halloween Costume Package (White)
+g_pCashItemManager:AddCashItemPrice( 70000712, 12000 ) -- Aisha Wizard of Halloween Costume Package (Purple)
+g_pCashItemManager:AddCashItemPrice( 70000713, 12000 ) -- Aisha Wizard of Halloween Costume Package (White)
+g_pCashItemManager:AddCashItemPrice( 70000714, 12000 ) -- Rena Wizard of Halloween Costume Package (Blue)
+g_pCashItemManager:AddCashItemPrice( 70000715, 12000 ) -- Rena Wizard of Halloween Costume Package (Pink)
+g_pCashItemManager:AddCashItemPrice( 70000716, 12000 ) -- Raven Wizard of Halloween Costume Package (Black)
+g_pCashItemManager:AddCashItemPrice( 70000717, 12000 ) -- Raven Wizard of Halloween Costume Package (White)
+g_pCashItemManager:AddCashItemPrice( 70000718, 12000 ) -- Eve Wizard of Halloween Costume Package (Taupe)
+g_pCashItemManager:AddCashItemPrice( 70000719, 12000 ) -- Eve Wizard of Halloween Costume Package (Beige)
+g_pCashItemManager:AddCashItemPrice( 70000720, 12000 ) -- Elsword Wizard of Halloween Costume Package (Brown) - With Accessory
+g_pCashItemManager:AddCashItemPrice( 70000721, 12000 ) -- Elsword Wizard of Halloween Costume Package (White) - With Accessory
+g_pCashItemManager:AddCashItemPrice( 70000722, 12000 ) -- Aisha Wizard of Halloween Costume Package (Purple) - With Accessory
+g_pCashItemManager:AddCashItemPrice( 70000723, 12000 ) -- Aisha Wizard of Halloween Costume Package (White) - With Accessory
+g_pCashItemManager:AddCashItemPrice( 70000724, 12000 ) -- Rena Wizard of Halloween Costume Package (Blue) - With Accessory
+g_pCashItemManager:AddCashItemPrice( 70000725, 12000 ) -- Rena Wizard of Halloween Costume Package (Pink) - With Accessory
+g_pCashItemManager:AddCashItemPrice( 70000726, 12000 ) -- Raven Wizard of Halloween Costume Package (Black) - With Accessory
+g_pCashItemManager:AddCashItemPrice( 70000727, 12000 ) -- Raven Wizard of Halloween Costume Package (White) - With Accessory
+g_pCashItemManager:AddCashItemPrice( 70000728, 12000 ) -- Eve Wizard of Halloween Costume Package (Taupe) - With Accessory
+g_pCashItemManager:AddCashItemPrice( 70000729, 12000 ) -- Eve Wizard of Halloween Costume Package (Beige) - With Accessory
+g_pCashItemManager:AddCashItemPrice( 70001000, 8000 ) -- Avatar-Waffe zum 1. April (Elsword)
+g_pCashItemManager:AddCashItemPrice( 70001001, 6000 ) -- Avatar-Oberteil zum 1. April (Elsword)
+g_pCashItemManager:AddCashItemPrice( 70001002, 6000 ) -- Avatar-Beinkleid zum 1. April (Elsword)
+g_pCashItemManager:AddCashItemPrice( 70001003, 3000 ) -- Avatar-Fäustlinge zum 1. April (Elsword)
+g_pCashItemManager:AddCashItemPrice( 70001004, 3000 ) -- Avatar-Schuhe zum 1. April (Elsword)
+g_pCashItemManager:AddCashItemPrice( 70001005, 6000 ) -- Avatar-Frisur zum 1. April (Elsword)
+g_pCashItemManager:AddCashItemPrice( 70001010, 8000 ) -- Avatarwaffe zum 1. April (Aisha)
+g_pCashItemManager:AddCashItemPrice( 70001011, 6000 ) -- Avatar-Oberteil zum 1. April (Aisha)
+g_pCashItemManager:AddCashItemPrice( 70001012, 6000 ) -- Avatar-Beinkleid zum 1. April (Aisha)
+g_pCashItemManager:AddCashItemPrice( 70001013, 3000 ) -- Avatar-Fäustlinge zum 1. April (Aisha)
+g_pCashItemManager:AddCashItemPrice( 70001014, 3000 ) -- Avatar-Schuhe zum 1. April (Aisha)
+g_pCashItemManager:AddCashItemPrice( 70001015, 6000 ) -- Avatar-Frisur zum 1. April (Aisha)
+g_pCashItemManager:AddCashItemPrice( 70001020, 8000 ) -- Avatarwaffe zum 1. April (Rena)
+g_pCashItemManager:AddCashItemPrice( 70001021, 6000 ) -- Avatar-Oberteil zum 1. April (Rena)
+g_pCashItemManager:AddCashItemPrice( 70001022, 6000 ) -- Avatar-Beinkleid zum 1. April (Rena)
+g_pCashItemManager:AddCashItemPrice( 70001023, 3000 ) -- Avatar-Fäustlinge zum 1. April (Rena)
+g_pCashItemManager:AddCashItemPrice( 70001024, 3000 ) -- Avatar-Schuhe zum 1. April (Rena)
+g_pCashItemManager:AddCashItemPrice( 70001025, 6000 ) -- Avatar-Frisur zum 1. April (Rena)
+g_pCashItemManager:AddCashItemPrice( 70006060, 18000 ) -- Pet Packet for Silver Fox Miho (Mighty)
+g_pCashItemManager:AddCashItemPrice( 70007201, 18000 ) -- Cube of Enlightenment
+g_pCashItemManager:AddCashItemPrice( 70007204, 12000 ) -- El Shard Random Cube
+g_pCashItemManager:AddCashItemPrice( 70007209, 18000 ) -- Ara Supporter Cube
+g_pCashItemManager:AddCashItemPrice( 70007210, 18000 ) -- Ara’s Thankful Cube
+g_pCashItemManager:AddCashItemPrice( 75000000, 18000 ) -- Accessory Fever Cube
+g_pCashItemManager:AddCashItemPrice( 75000001, 12000 ) -- Ice Statue Heater (Salvatore Solace)
+g_pCashItemManager:AddCashItemPrice( 80000000, 18000 ) -- Everyday Login Reward Cube
+g_pCashItemManager:AddCashItemPrice( 80000001, 18000 ) -- Everyday Login Reward Cube
+g_pCashItemManager:AddCashItemPrice( 80000006, 18000 ) -- Level 20 Celebration Cube
+g_pCashItemManager:AddCashItemPrice( 80000007, 18000 ) -- Level 30 Celebration Cube
+g_pCashItemManager:AddCashItemPrice( 80000008, 18000 ) -- Everyday Login Cube (60 Min)
+g_pCashItemManager:AddCashItemPrice( 80000009, 18000 ) -- Everyday Login Cube (30 Min)
+g_pCashItemManager:AddCashItemPrice( 80000010, 18000 ) -- Everyday Login Cube (60 Min)
+g_pCashItemManager:AddCashItemPrice( 80000690, 18000 ) -- Mandrasil's Essence Package Cube
+g_pCashItemManager:AddCashItemPrice( 80000691, 12000 ) -- Magic Stone Seeds
+g_pCashItemManager:AddCashItemPrice( 80000692, 12000 ) -- Advanced Magic Stone Seeds
+g_pCashItemManager:AddCashItemPrice( 80001431, 36000 ) -- Resurrection Stone Cube (10)
+g_pCashItemManager:AddCashItemPrice( 80001921, 18000 ) -- Archangel's All Set (2days) Cube
+g_pCashItemManager:AddCashItemPrice( 80001922, 18000 ) -- Archdevil's All Set (2days) Cube
+g_pCashItemManager:AddCashItemPrice( 80001923, 18000 ) -- Salvatore Solace All Set (2days) Cube
+g_pCashItemManager:AddCashItemPrice( 80001953, 60000 ) -- El Shard Random Cube
+g_pCashItemManager:AddCashItemPrice( 80002050, 18000 ) -- Weapon Costume Random Cube
+g_pCashItemManager:AddCashItemPrice( 80002130, 18000 ) -- Erendil’s Intense Soul Cube Key
+g_pCashItemManager:AddCashItemPrice( 80002131, 18000 ) -- Erendil's Gentle Soul Cube Key
+g_pCashItemManager:AddCashItemPrice( 80002132, 18000 ) -- Erendil’s Intense and Gentle Soul Cube Key
+g_pCashItemManager:AddCashItemPrice( 80002144, 18000 ) -- Unidentified Nasod Cube
+g_pCashItemManager:AddCashItemPrice( 80002145, 18000 ) -- Nasod’s Secret Cube
+g_pCashItemManager:AddCashItemPrice( 80002146, 18000 ) -- King Nasod’s Secret Cube
+g_pCashItemManager:AddCashItemPrice( 80002201, 18000 ) -- Code Battle Seraph Preparation Cube
+g_pCashItemManager:AddCashItemPrice( 80002206, 18000 ) -- Seraph Code Random Cube
+g_pCashItemManager:AddCashItemPrice( 80002208, 12000 ) -- Unidentified Code Cube
+g_pCashItemManager:AddCashItemPrice( 80002209, 12000 ) -- Unidentified Code Cube
+g_pCashItemManager:AddCashItemPrice( 80002210, 20000 ) -- Unidentified Code Cube
+g_pCashItemManager:AddCashItemPrice( 80002211, 36000 ) -- Unidentified Code Cube
+g_pCashItemManager:AddCashItemPrice( 80002217, 18000 ) -- Seraph Hair Ornament Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 80002218, 18000 ) -- Seraph Wing Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 80002219, 18000 ) -- Seraph Wing Tail Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 80002241, 18000 ) -- Tactical Trooper Preparation Cube
+g_pCashItemManager:AddCashItemPrice( 80002255, 18000 ) -- Transformation Evolution Character Card Random Cube
+g_pCashItemManager:AddCashItemPrice( 83000190, 1000 ) -- Luriel's Fluorite Ore Lv.1
+g_pCashItemManager:AddCashItemPrice( 83000191, 1000 ) -- Luriel's Fluorite Ore Lv.2
+g_pCashItemManager:AddCashItemPrice( 83000192, 1000 ) -- Luriel's Fluorite Ore Lv.3
+g_pCashItemManager:AddCashItemPrice( 83000193, 1000 ) -- Luriel's Fluorite Ore Lv.4
+g_pCashItemManager:AddCashItemPrice( 83000194, 1000 ) -- Luriel's Fluorite Ore Lv.5
+g_pCashItemManager:AddCashItemPrice( 83000195, 1000 ) -- Luriel's Fluorite Ore Lv.6
+g_pCashItemManager:AddCashItemPrice( 83000196, 1000 ) -- Luriel's Fluorite Ore Lv.7
+g_pCashItemManager:AddCashItemPrice( 83000197, 1000 ) -- Luriel's Fluorite Ore Lv.8
+g_pCashItemManager:AddCashItemPrice( 83000198, 1000 ) -- Luriel's Fluorite Ore Lv.9
+g_pCashItemManager:AddCashItemPrice( 84001275, 18000 ) -- Life Crystal (Panda Bear - Blue) Special Package
+g_pCashItemManager:AddCashItemPrice( 84001277, 18000 ) -- Panda Bear - Blue Special Package
+g_pCashItemManager:AddCashItemPrice( 84001420, 18000 ) -- Santa Christmas Tree Knight Package
+g_pCashItemManager:AddCashItemPrice( 85000072, 12000 ) -- Zufälliger Avatarwürfel zum Karneval
+g_pCashItemManager:AddCashItemPrice( 85000073, 12000 ) -- Zufälliger Avatarwürfel zum Karneval 1
+g_pCashItemManager:AddCashItemPrice( 85000074, 12000 ) -- Zufälliger Avatarwürfel zum Karneval 2
+g_pCashItemManager:AddCashItemPrice( 85000075, 12000 ) -- Zufälliger Avatarwürfel zum Karneval 3
+g_pCashItemManager:AddCashItemPrice( 85000076, 12000 ) -- Zufälliger Avatarwürfel zum Karneval 4
+g_pCashItemManager:AddCashItemPrice( 85000077, 12000 ) -- Zufälliger Avatarwürfel zum Karneval 5
+g_pCashItemManager:AddCashItemPrice( 85000078, 12000 ) -- Zufälliger Avatarwürfel zum Karneval 6
+g_pCashItemManager:AddCashItemPrice( 85000079, 12000 ) -- Zufälliger Avatarwürfel zum Karneval 7
+g_pCashItemManager:AddCashItemPrice( 85000080, 12000 ) -- Zufälliger Avatarwürfel zum Karneval 8
+g_pCashItemManager:AddCashItemPrice( 85000399, 12000 ) -- Zufallswürfel: Oberteil (Avatar)
+g_pCashItemManager:AddCashItemPrice( 85000400, 12000 ) -- Zufallswürfel: Beinkleid (Avatar)
+g_pCashItemManager:AddCashItemPrice( 85000401, 12000 ) -- Zufallswürfel: Waffe (Avatar)
+g_pCashItemManager:AddCashItemPrice( 85000402, 12000 ) -- Zufallswürfel: Schuhe (Avatar)
+g_pCashItemManager:AddCashItemPrice( 85000403, 12000 ) -- Zufallswürfel: Frisur (Avatar)
+g_pCashItemManager:AddCashItemPrice( 85000404, 12000 ) -- Zufallswürfel: Handschuhe (Avatar)
+g_pCashItemManager:AddCashItemPrice( 85000513, 18000 ) -- Ariel's Beginner Support Cube
+g_pCashItemManager:AddCashItemPrice( 85000514, 18000 ) -- Cobo's Support Cube 1
+g_pCashItemManager:AddCashItemPrice( 85000515, 12000 ) -- Cobo's Support Cube 2
+g_pCashItemManager:AddCashItemPrice( 85000516, 12000 ) -- Cobo's Support Cube 3
+g_pCashItemManager:AddCashItemPrice( 85000517, 12000 ) -- Cobo's Support Cube 4
+g_pCashItemManager:AddCashItemPrice( 85000518, 12000 ) -- Cobo's Support Cube 5
+g_pCashItemManager:AddCashItemPrice( 85000646, 8000 ) -- Proof of Pet's Evolution to Infant
+g_pCashItemManager:AddCashItemPrice( 85000647, 8000 ) -- Proof of Pet's Evolution to Teen
+g_pCashItemManager:AddCashItemPrice( 85000648, 8000 ) -- Proof of Pet's Evolution to Adult
+g_pCashItemManager:AddCashItemPrice( 85000650, 18000 ) -- Cube of El Tree Seeds (3ea)
+g_pCashItemManager:AddCashItemPrice( 85000860, 18000 ) -- Rudolph's Red Nose Cube (15 days)
+g_pCashItemManager:AddCashItemPrice( 85000866, 18000 ) -- Christmas Special Gift Cube
+g_pCashItemManager:AddCashItemPrice( 85000912, 18000 ) -- Combat Support Cube
+g_pCashItemManager:AddCashItemPrice( 85000914, 18000 ) -- Flourite Ore Random Cube (Lv. 2 ~ 4)
+g_pCashItemManager:AddCashItemPrice( 85000915, 18000 ) -- Cube of 15 El Shards (Mystery)
+g_pCashItemManager:AddCashItemPrice( 85000916, 18000 ) -- Cube of 25 El Shards (Mystery)
+g_pCashItemManager:AddCashItemPrice( 85000917, 18000 ) -- Cube of 50 El Shards (Mystery)
+g_pCashItemManager:AddCashItemPrice( 85000929, 18000 ) -- Hamel's Combat Support Cube
+g_pCashItemManager:AddCashItemPrice( 85000931, 18000 ) -- Hamel's Volunteer Cube
+g_pCashItemManager:AddCashItemPrice( 85000932, 18000 ) -- Hamel's Warrior Cube
+g_pCashItemManager:AddCashItemPrice( 85000933, 18000 ) -- Hamel's Guardian Cube
+g_pCashItemManager:AddCashItemPrice( 85000934, 12000 ) -- Hamel's Hero Cube
+g_pCashItemManager:AddCashItemPrice( 85001089, 18000 ) -- Cube with Resurrection Stones (10 pieces)
+g_pCashItemManager:AddCashItemPrice( 85001552, 18000 ) -- Cube with Experience Medal (15%, 1 day)
+g_pCashItemManager:AddCashItemPrice( 85001599, 18000 ) -- PvP Title Random Cube (7 days)
+g_pCashItemManager:AddCashItemPrice( 85001663, 15000 ) -- Dual Magic Stone Random Cube
+g_pCashItemManager:AddCashItemPrice( 85001830, 18000 ) -- Elsword PVP Tournament Invitation Cube
+g_pCashItemManager:AddCashItemPrice( 85001844, 18000 ) -- Secret Dungeon Entrance Ticket Random Cube (Normal)
+g_pCashItemManager:AddCashItemPrice( 85001845, 18000 ) -- Secret Dungeon Entrance Ticket Random Cube (Hell)
+g_pCashItemManager:AddCashItemPrice( 85001864, 22000 ) -- Vitality Cube
+g_pCashItemManager:AddCashItemPrice( 85001865, 23000 ) -- Destruction Cube
+g_pCashItemManager:AddCashItemPrice( 85001889, 23000 ) -- Conwell Cube
+g_pCashItemManager:AddCashItemPrice( 85001890, 60000 ) -- Heater Cube
+g_pCashItemManager:AddCashItemPrice( 85001891, 18000 ) -- Heater Cube Key
+g_pCashItemManager:AddCashItemPrice( 85001894, 12000 ) -- Apprentice Adventurer’s Job Training Cube (Sheath Knight)
+g_pCashItemManager:AddCashItemPrice( 85001895, 18000 ) -- Apprentice Adventurer’s Job Training Cube (Sword Knight)
+g_pCashItemManager:AddCashItemPrice( 85001896, 12000 ) -- Apprentice Adventurer’s Job Training Cube (Magic Knight)
+g_pCashItemManager:AddCashItemPrice( 85001897, 12000 ) -- Apprentice Adventurer’s Job Training Aid  Cube
+g_pCashItemManager:AddCashItemPrice( 85001898, 18000 ) -- Apprentice Adventurer’s Job Training Aid  Cube Key
+g_pCashItemManager:AddCashItemPrice( 85001902, 12000 ) -- Certificate of Apprentice Adventurer’s Training Cube (Like a New Recruit)
+g_pCashItemManager:AddCashItemPrice( 85001904, 18000 ) -- Adventurer’s Training Uniform Full set Costume Cube (30 days)
+g_pCashItemManager:AddCashItemPrice( 85001905, 12000 ) -- Regular Adventurer's Costume Discount Coupon
+g_pCashItemManager:AddCashItemPrice( 85001906, 12000 ) -- Skill Ring Cube (4 rings / 30 Days)
+g_pCashItemManager:AddCashItemPrice( 85001907, 12000 ) -- Skill Ring Cube (4 rings / 15 Days)
+g_pCashItemManager:AddCashItemPrice( 85001908, 12000 ) -- +6 Lv. 26 Equipment Full set Cube
+g_pCashItemManager:AddCashItemPrice( 85001918, 18000 ) -- Prodigal Adventurer Cube
+g_pCashItemManager:AddCashItemPrice( 85001920, 12000 ) -- Aranka's Ice Sculpture Heater
+g_pCashItemManager:AddCashItemPrice( 85001921, 18000 ) -- Cube with Rare Water Master Avatar Set (7 days)
+g_pCashItemManager:AddCashItemPrice( 85001922, 18000 ) -- Cube with a Medieval Avatar Weapon (1 piece)
+g_pCashItemManager:AddCashItemPrice( 85001928, 39000 ) -- Magician's Cube
+g_pCashItemManager:AddCashItemPrice( 85001933, 18000 ) -- Rare Costume Sets Resolution
+g_pCashItemManager:AddCashItemPrice( 85001937, 1000 ) -- Luriel's Fluorite Ore Lv. 1
+g_pCashItemManager:AddCashItemPrice( 85001938, 1000 ) -- Luriel's Fluorite Ore Lv. 2
+g_pCashItemManager:AddCashItemPrice( 85001939, 1000 ) -- Luriel's Fluorite Ore Lv. 3
+g_pCashItemManager:AddCashItemPrice( 85001940, 1000 ) -- Luriel's Fluorite Ore Lv. 4
+g_pCashItemManager:AddCashItemPrice( 85001941, 1000 ) -- Luriel's Fluorite Ore Lv. 5
+g_pCashItemManager:AddCashItemPrice( 85001943, 18000 ) -- Exp Medal (30%) Cube(1Day)
+g_pCashItemManager:AddCashItemPrice( 85001944, 18000 ) -- El Search Party Officer All Set (2days) Cube
+g_pCashItemManager:AddCashItemPrice( 85001945, 18000 ) -- Royal Maid/Servant Costume All Set (2days) Cube
+g_pCashItemManager:AddCashItemPrice( 85001946, 18000 ) -- Royal Maid/Servant Costume (Black) All Set (2days) Cube
+g_pCashItemManager:AddCashItemPrice( 85001947, 18000 ) -- Evil Tracer All Set (2days) Cube
+g_pCashItemManager:AddCashItemPrice( 85001948, 18000 ) -- Salvatore Denip All Set (2days) Cube
+g_pCashItemManager:AddCashItemPrice( 85001952, 18000 ) -- Cube for Undefined Resolutions
+g_pCashItemManager:AddCashItemPrice( 85001955, 18000 ) -- Ariel’s Weapon Costume (365 days) Cube
+g_pCashItemManager:AddCashItemPrice( 85001956, 18000 ) -- Ariel’s Accessory (365 days) Cube
+g_pCashItemManager:AddCashItemPrice( 85001957, 18000 ) -- Ariel’s Exp 10% Medal (365 days) Cube
+g_pCashItemManager:AddCashItemPrice( 85001958, 18000 ) -- Ariel’s 2013 Special Potion (365 ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 85001959, 18000 ) -- Ariel’s Unknown 365 days Cube 365 ea.
+g_pCashItemManager:AddCashItemPrice( 85001966, 18000 ) -- Black Ninja Mask (3 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 85001967, 18000 ) -- Penensio’s Cloak (3 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 85001968, 18000 ) -- El Cat Mini-me (3 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 85001969, 18000 ) -- Angel Girl (3 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 85001970, 18000 ) -- Fleecy Ram Hat (3 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 85002000, 12000 ) -- Skill Ring Cube (4 rings) (1 Day)
+g_pCashItemManager:AddCashItemPrice( 85002001, 18000 ) -- Tag Mode Promotional Weapon Costumes Cube (3 Types) (1 Day)
+g_pCashItemManager:AddCashItemPrice( 85002002, 18000 ) -- Nasod Prototype Goggles Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 85002003, 18000 ) -- Respawn Ring Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 85002004, 18000 ) -- Fury Ring Cube(15 Days)
+g_pCashItemManager:AddCashItemPrice( 85002005, 18000 ) -- Eye of the Titan Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 85002008, 18000 ) -- Accessory Random Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 85002009, 18000 ) -- Orichalcum Weapon Accessory Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 85002020, 18000 ) -- 2013 Miss Elrios Pledged Enhancement Package Lv.1
+g_pCashItemManager:AddCashItemPrice( 85002021, 18000 ) -- 2013 Miss Elrios Pledged Enhancement Package Lv.2
+g_pCashItemManager:AddCashItemPrice( 85002022, 18000 ) -- 2013 Miss Elrios Pledged Enhancement Package Lv.3
+g_pCashItemManager:AddCashItemPrice( 85002023, 18000 ) -- 2013 Miss Elrios Pledged Enhancement Package Lv.4
+g_pCashItemManager:AddCashItemPrice( 85002024, 18000 ) -- 2013 Miss Elrios Pledged Enhancement Package Lv.5
+g_pCashItemManager:AddCashItemPrice( 85002026, 18000 ) -- [Miss Elios - Pledge] Poru Seal Random Cube
+g_pCashItemManager:AddCashItemPrice( 85002030, 18000 ) -- Lunar New Year Costume 1+1 Package
+g_pCashItemManager:AddCashItemPrice( 85002031, 12000 ) -- Lunar New Year Costume Package 1
+g_pCashItemManager:AddCashItemPrice( 85002032, 12000 ) -- Lunar New Year Costume Package 2
+g_pCashItemManager:AddCashItemPrice( 85002040, 18000 ) -- Eldrasil's Holy Cube
+g_pCashItemManager:AddCashItemPrice( 85002047, 18000 ) -- Eldrasil's Holy Cube Key
+g_pCashItemManager:AddCashItemPrice( 85002059, 18000 ) -- Ariel's Cube of Appreciation
+g_pCashItemManager:AddCashItemPrice( 85002066, 12000 ) -- Cobo Mercenary Startup Cube
+g_pCashItemManager:AddCashItemPrice( 85002067, 18000 ) -- Cobo Mercenary Startup Cube Key
+g_pCashItemManager:AddCashItemPrice( 85002068, 18000 ) -- Dungeon Use Items Random Cube
+g_pCashItemManager:AddCashItemPrice( 85002070, 12000 ) -- Return of the Commander’s Cube 1
+g_pCashItemManager:AddCashItemPrice( 85002071, 12000 ) -- Return of the Commander’s Cube 2
+g_pCashItemManager:AddCashItemPrice( 85002072, 12000 ) -- Return of the Commander’s Cube 3
+g_pCashItemManager:AddCashItemPrice( 85002073, 18000 ) -- Raven Skill Note Random Cube
+g_pCashItemManager:AddCashItemPrice( 85002085, 18000 ) -- Nasod Queen’s Accessory Cube
+g_pCashItemManager:AddCashItemPrice( 85002087, 18000 ) -- Nasod Queen’s Commemoration Cube
+g_pCashItemManager:AddCashItemPrice( 85002089, 12000 ) -- Code Electra’s Cube
+g_pCashItemManager:AddCashItemPrice( 85002094, 4000 ) -- Luriel's Fluorite Ore Exchange Ticket
+g_pCashItemManager:AddCashItemPrice( 85002282, 18000 ) -- Great Beetle Costume Full Set Cube (30 day)
+g_pCashItemManager:AddCashItemPrice( 85002283, 18000 ) -- Trial Sparring Equipment Full Set Cube
+g_pCashItemManager:AddCashItemPrice( 85002314, 18000 ) -- Gladiator’s Shield Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85002315, 18000 ) -- Gladiator’s Shield Cube (7Days)
+g_pCashItemManager:AddCashItemPrice( 85002317, 12000 ) -- Challenging the World of Competition (Step 1)
+g_pCashItemManager:AddCashItemPrice( 85002318, 12000 ) -- Challenging the World of Competition (Step 2)
+g_pCashItemManager:AddCashItemPrice( 85002319, 12000 ) -- Challenging the World of Competition (Step 3)
+g_pCashItemManager:AddCashItemPrice( 85002320, 12000 ) -- Challenging the World of Competition (Step 4)
+g_pCashItemManager:AddCashItemPrice( 85002321, 12000 ) -- Challenging the World of Competition (Step 5)
+g_pCashItemManager:AddCashItemPrice( 85002322, 18000 ) -- PVP Dual Magic Stone Random Cube
+g_pCashItemManager:AddCashItemPrice( 85002323, 18000 ) -- Epic NPC Card Random Cube
+g_pCashItemManager:AddCashItemPrice( 85002324, 12000 ) -- High-Grade Magic Stone Random Cube
+g_pCashItemManager:AddCashItemPrice( 85002327, 18000 ) -- Permanent Accessory Random Cube
+g_pCashItemManager:AddCashItemPrice( 85002339, 12000 ) -- Field Adventure Package
+g_pCashItemManager:AddCashItemPrice( 85002340, 18000 ) -- PVP Exclusive Weapon Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 85002478, 18000 ) -- Elrios Inspector Costume Full Set Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 85002518, 18000 ) -- Ariel’s Magic Amulet Lv.6~Lv.8 Random Cube
+g_pCashItemManager:AddCashItemPrice( 85002520, 18000 ) -- Ariel’s Magic Amulet Lv.6~Lv.8 Random Cube
+g_pCashItemManager:AddCashItemPrice( 85002521, 18000 ) -- Ariel’s Magic Amulet Lv.6~Lv.8 Random Cube Key
+g_pCashItemManager:AddCashItemPrice( 85002524, 12000 ) -- Skill Ring Cube (4 rings / 30 Days)
+g_pCashItemManager:AddCashItemPrice( 85002525, 39000 ) -- Dual Magic Stone Random Cube
+g_pCashItemManager:AddCashItemPrice( 85002530, 39000 ) -- Elrios Inspector Weapon Cube
+g_pCashItemManager:AddCashItemPrice( 85002531, 29000 ) -- Elrios Inspector Top Piece Cube
+g_pCashItemManager:AddCashItemPrice( 85002532, 29000 ) -- Elrios Inspector Bottom Piece Cube
+g_pCashItemManager:AddCashItemPrice( 85002533, 12000 ) -- Elrios Inspector Gloves Cube
+g_pCashItemManager:AddCashItemPrice( 85002534, 12000 ) -- Elrios Inspector Shoes Cube
+g_pCashItemManager:AddCashItemPrice( 85002535, 29000 ) -- Elrios Inspector Hair Cube
+g_pCashItemManager:AddCashItemPrice( 85002541, 18000 ) -- Infinity Sword Preparation Cube
+g_pCashItemManager:AddCashItemPrice( 85002564, 18000 ) -- Ponggos' Appreciation Cube
+g_pCashItemManager:AddCashItemPrice( 85002570, 18000 ) -- Erendil's Intense Soul Ring Cube (15 days)
+g_pCashItemManager:AddCashItemPrice( 85002571, 18000 ) -- Erendil's Gentle Soul Ring Cube (15 days)
+g_pCashItemManager:AddCashItemPrice( 85002572, 18000 ) -- Erendil's Intense Soul Necklace Cube (15 days)
+g_pCashItemManager:AddCashItemPrice( 85002573, 18000 ) -- Erendil's Gentle Soul Necklace Cube (15 days)
+g_pCashItemManager:AddCashItemPrice( 85002576, 18000 ) -- Erendil’s Intense Soul Cube
+g_pCashItemManager:AddCashItemPrice( 85002577, 46000 ) -- Erendil's Gentle Soul Cube
+g_pCashItemManager:AddCashItemPrice( 85002578, 18000 ) -- Erendil’s Intense and Gentle Soul Cube
+g_pCashItemManager:AddCashItemPrice( 85002610, 18000 ) -- Basic Weapon Costume Random Cube (Permanent)
+g_pCashItemManager:AddCashItemPrice( 85002611, 18000 ) -- Basic Top Piece Costume Random Cube (Permanent)
+g_pCashItemManager:AddCashItemPrice( 85002612, 18000 ) -- Basic Bottom Piece Costume Random Cube (Permanent)
+g_pCashItemManager:AddCashItemPrice( 85002613, 18000 ) -- Basic Glove Costume Random Cube (Permanent)
+g_pCashItemManager:AddCashItemPrice( 85002614, 18000 ) -- Basic Shoes Costume Random Cube (Permanent)
+g_pCashItemManager:AddCashItemPrice( 85002615, 18000 ) -- Basic Hair Costume Random Cube (Permanent)
+g_pCashItemManager:AddCashItemPrice( 85002800, 12000 ) -- Weak Infinite cube
+g_pCashItemManager:AddCashItemPrice( 85002801, 12000 ) -- Infinite Cube
+g_pCashItemManager:AddCashItemPrice( 85002802, 12000 ) -- Evolved Infinite Cube
+g_pCashItemManager:AddCashItemPrice( 85002880, 12000 ) -- Ice Sculpture Heater (Archangel)
+g_pCashItemManager:AddCashItemPrice( 85002881, 12000 ) -- Ice Sculpture Heater (Eve, Chung; Archangel)
+g_pCashItemManager:AddCashItemPrice( 85002882, 12000 ) -- Ice Sculpture Heater (Imperial Sentinel)
+g_pCashItemManager:AddCashItemPrice( 85002883, 12000 ) -- Ice Sculpture Heater (Chung, Imperial Sentinel)
+g_pCashItemManager:AddCashItemPrice( 85002884, 12000 ) -- Ice Sculpture Heater (Sun Master)
+g_pCashItemManager:AddCashItemPrice( 85002885, 12000 ) -- Ice Sculpture Heater (Chung, Sun Master)
+g_pCashItemManager:AddCashItemPrice( 85002886, 12000 ) -- Ice Sculpture Heater (Chung, Archdevil)
+g_pCashItemManager:AddCashItemPrice( 85002887, 12000 ) -- Ice Sculpture Heater (Archdevil)
+g_pCashItemManager:AddCashItemPrice( 85002891, 12000 ) -- Uk Open Beta Cube
+g_pCashItemManager:AddCashItemPrice( 85003011, 18000 ) -- Adventurer Power Boost Cube
+g_pCashItemManager:AddCashItemPrice( 85003021, 18000 ) -- Cube containing Blue Young Wyvern
+g_pCashItemManager:AddCashItemPrice( 85003031, 18000 ) -- Veteran Commander Preparation Cube
+g_pCashItemManager:AddCashItemPrice( 85003042, 18000 ) -- Limited Edition Permanent Accessory Cube
+g_pCashItemManager:AddCashItemPrice( 85003043, 18000 ) -- Random Skill Ring Cube
+g_pCashItemManager:AddCashItemPrice( 85003048, 18000 ) -- Dark Raven's Cube
+g_pCashItemManager:AddCashItemPrice( 85003056, 4000 ) -- 2008 Halloween Costume Piece Exchange Ticket (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003057, 4000 ) -- 2009 Halloween Costume Piece Exchange Ticket (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003058, 4000 ) -- 2011 Halloween Costume Piece Exchange Ticket (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003059, 18000 ) -- 2008 Halloween Costume Set A Piece (30 Days) Exchange Ticket
+g_pCashItemManager:AddCashItemPrice( 85003060, 18000 ) -- 2008 Halloween Costume Set B Piece (30 Days) Exchange Ticket
+g_pCashItemManager:AddCashItemPrice( 85003061, 18000 ) -- 2009 Halloween Costume Set A Piece (30 Days) Exchange Ticket
+g_pCashItemManager:AddCashItemPrice( 85003062, 18000 ) -- 2009 Halloween Costume Set B Piece (30 Days) Exchange Ticket
+g_pCashItemManager:AddCashItemPrice( 85003063, 18000 ) -- 2011 Halloween Costume Set A Piece (30 Days) Exchange Ticket
+g_pCashItemManager:AddCashItemPrice( 85003064, 18000 ) -- 2011 Halloween Costume Set B Piece (30 Days) Exchange Ticket
+g_pCashItemManager:AddCashItemPrice( 85003065, 18000 ) -- 2008 Halloween Costume A Piece Weapon Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003066, 18000 ) -- 2008 Halloween Costume A Piece Top Piece Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003067, 18000 ) -- 2008 Halloween Costume A Piece Bottom Piece Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003068, 18000 ) -- 2008 Halloween Costume A Piece Gloves Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003069, 18000 ) -- 2008 Halloween Costume A Piece Shoes Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003070, 18000 ) -- 2008 Halloween Costume A Piece Hair Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003071, 18000 ) -- 2008 Halloween Costume B Piece Weapon Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003072, 18000 ) -- 2008 Halloween Costume B Piece Top Piece Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003073, 18000 ) -- 2008 Halloween Costume B Piece Bottom Piece Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003074, 18000 ) -- 2008 Halloween Costume B Piece Gloves Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003075, 18000 ) -- 2008 Halloween Costume B Piece Shoes Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003076, 18000 ) -- 2008 Halloween Costume B Piece Hair Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003077, 18000 ) -- 2009 Halloween Costume A Piece Weapon Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003078, 18000 ) -- 2009 Halloween Costume A Piece Top Piece Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003079, 18000 ) -- 2009 Halloween Costume A Piece Bottom Piece Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003080, 18000 ) -- 2009 Halloween Costume A Piece Gloves Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003081, 18000 ) -- 2009 Halloween Costume A Piece Shoes Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003082, 18000 ) -- 2009 Halloween Costume A Piece Hair Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003083, 18000 ) -- 2009 Halloween Costume B Piece Weapon Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003084, 18000 ) -- 2009 Halloween Costume B Piece Top Piece Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003085, 18000 ) -- 2009 Halloween Costume B Piece Bottom Piece Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003086, 18000 ) -- 2009 Halloween Costume B Piece Gloves Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003087, 18000 ) -- 2009 Halloween Costume B Piece Shoes Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003088, 18000 ) -- 2009 Halloween Costume B Piece Hair Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003089, 18000 ) -- 2011 Halloween Costume A Piece Weapon Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003090, 18000 ) -- 2011 Halloween Costume A Piece Top Piece Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003091, 18000 ) -- 2011 Halloween Costume A Piece Bottom Piece Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003092, 18000 ) -- 2011 Halloween Costume A Piece Gloves Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003093, 18000 ) -- 2011 Halloween Costume A Piece Shoes Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003094, 18000 ) -- 2011 Halloween Costume A Piece Hair Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003095, 18000 ) -- 2011 Halloween Costume B Piece Weapon Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003096, 18000 ) -- 2011 Halloween Costume B Piece Top Piece Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003097, 18000 ) -- 2011 Halloween Costume B Piece Bottom Piece Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003098, 18000 ) -- 2011 Halloween Costume B Piece Gloves Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003099, 18000 ) -- 2011 Halloween Costume B Piece Shoes Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003100, 18000 ) -- 2011 Halloween Costume B Piece Hair Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 85003492, 18000 ) -- Wicked-eyed Tree Mask Cube (1 Day)
+g_pCashItemManager:AddCashItemPrice( 85003493, 18000 ) -- Toppling Totem Mask Cube (1 Day)
+g_pCashItemManager:AddCashItemPrice( 85003495, 18000 ) -- Sewing Doll Head Cube (1 Day)
+g_pCashItemManager:AddCashItemPrice( 85003496, 18000 ) -- Zombie’s Incubator Cube (1 Day)
+g_pCashItemManager:AddCashItemPrice( 85003497, 18000 ) -- Victor's Fist Cube (1 Day)
+g_pCashItemManager:AddCashItemPrice( 85003690, 12000 ) -- Snowman and Arctic Hunter Peng Package
+g_pCashItemManager:AddCashItemPrice( 85003721, 18000 ) -- Gold Ice Burner
+g_pCashItemManager:AddCashItemPrice( 85003724, 2500 ) -- Ariel's Merry Maker (Gold Ice Burner)
+g_pCashItemManager:AddCashItemPrice( 85003726, 18000 ) -- Gold Ice Burner (1) Cube
+g_pCashItemManager:AddCashItemPrice( 85003727, 18000 ) -- Gold Ice Burner (2) Cube
+g_pCashItemManager:AddCashItemPrice( 85003728, 18000 ) -- Gold Ice Burner (3) Cube
+g_pCashItemManager:AddCashItemPrice( 85003729, 18000 ) -- Gold Ice Burner (4) Cube
+g_pCashItemManager:AddCashItemPrice( 85003730, 18000 ) -- Gold Ice Burner (5) Cube
+g_pCashItemManager:AddCashItemPrice( 85003731, 18000 ) -- Gold Ice Burner (10) Cube
+g_pCashItemManager:AddCashItemPrice( 85003732, 18000 ) -- Gold Ice Burner (100) Cube
+g_pCashItemManager:AddCashItemPrice( 85003733, 18000 ) -- Ice Burner (Ara, El Search Party Officer) (1) Cube
+g_pCashItemManager:AddCashItemPrice( 85003734, 18000 ) -- Ice Burner (Ara, El Search Party Officer) (2) Cube
+g_pCashItemManager:AddCashItemPrice( 85003735, 18000 ) -- Ice Burner (Ara, El Search Party Officer) (3) Cube
+g_pCashItemManager:AddCashItemPrice( 85003736, 18000 ) -- Ice Burner (Ara, El Search Party Officer) (4) Cube
+g_pCashItemManager:AddCashItemPrice( 85003737, 18000 ) -- Ice Burner (Ara, El Search Party Officer) (5) Cube
+g_pCashItemManager:AddCashItemPrice( 85003738, 18000 ) -- Ice Burner (Ara, El Search Party Officer) (10) Cube
+g_pCashItemManager:AddCashItemPrice( 85003739, 18000 ) -- Ice Burner (Ara, El Search Party Officer) (100) Cube
+g_pCashItemManager:AddCashItemPrice( 85003780, 18000 ) -- Ara's Archangel Full Set Cube (3 days)
+g_pCashItemManager:AddCashItemPrice( 85003800, 18000 ) -- 2nd Job Congratulatory Cube
+g_pCashItemManager:AddCashItemPrice( 85003833, 18000 ) -- Justice Vision Cube
+g_pCashItemManager:AddCashItemPrice( 85003834, 18000 ) -- Heretic Vision Cube
+g_pCashItemManager:AddCashItemPrice( 85003835, 18000 ) -- Justice Vision Cube Key
+g_pCashItemManager:AddCashItemPrice( 85003836, 18000 ) -- Heretic Vision Cube Key
+g_pCashItemManager:AddCashItemPrice( 85003837, 18000 ) -- Luriel's High Grade Magic Stone Random Cube
+g_pCashItemManager:AddCashItemPrice( 85003838, 18000 ) -- Luriel's Dual Magic Stone Random Cube
+g_pCashItemManager:AddCashItemPrice( 85003840, 12000 ) -- Luriel's Additional Damage Magic Stone
+g_pCashItemManager:AddCashItemPrice( 85003841, 12000 ) -- Luriel's Reduced Damage Magic Stone
+g_pCashItemManager:AddCashItemPrice( 85003842, 12000 ) -- Luriel's Awakening Time Magic Stone
+g_pCashItemManager:AddCashItemPrice( 85003843, 12000 ) -- Luriel's Health Magic Stone
+g_pCashItemManager:AddCashItemPrice( 85003844, 12000 ) -- Luriel's Awakening Charging Speed Magic Stone
+g_pCashItemManager:AddCashItemPrice( 85003845, 12000 ) -- Luriel's Attack Speed Magic Stone
+g_pCashItemManager:AddCashItemPrice( 85003846, 12000 ) -- Luriel's Critical Magic Stone
+g_pCashItemManager:AddCashItemPrice( 85003847, 12000 ) -- Luriel's Movement Speed Magic Stone
+g_pCashItemManager:AddCashItemPrice( 85003848, 12000 ) -- Luriel's Accuracy Magic Stone
+g_pCashItemManager:AddCashItemPrice( 85003849, 12000 ) -- Luriel's Evasion Magic Stone
+g_pCashItemManager:AddCashItemPrice( 85003850, 12000 ) -- Luriel's Jump Speed Magic Stone
+g_pCashItemManager:AddCashItemPrice( 90000004, 18000 ) -- Ruben Boss Cube (7 Days)
+g_pCashItemManager:AddCashItemPrice( 90000005, 18000 ) -- Elder Boss Cube (7 Days)
+g_pCashItemManager:AddCashItemPrice( 90000006, 18000 ) -- Bethma Boss Cube (7 Days)
+g_pCashItemManager:AddCashItemPrice( 90000017, 12000 ) -- Surprise Cube
+g_pCashItemManager:AddCashItemPrice( 90000029, 18000 ) -- Flimsy Ice Burner
+g_pCashItemManager:AddCashItemPrice( 90000031, 18000 ) -- Feita Boss Cube (7 Days)
+g_pCashItemManager:AddCashItemPrice( 90000032, 18000 ) -- Altera Boss Cube (7 Days)
+g_pCashItemManager:AddCashItemPrice( 90000129, 18000 ) -- No Job Change Promotion Cube(14 Day)
+g_pCashItemManager:AddCashItemPrice( 90000130, 18000 ) -- 1st Job Change Promotion Cube(14 Day)
+g_pCashItemManager:AddCashItemPrice( 90000131, 18000 ) -- 2nd Job Change Promotion Cube(14 Day)
+g_pCashItemManager:AddCashItemPrice( 90000149, 18000 ) -- Fraven Cube
+g_pCashItemManager:AddCashItemPrice( 90000164, 18000 ) -- Raven Random Cash Costume Set Cube (7 days)
+g_pCashItemManager:AddCashItemPrice( 90000165, 18000 ) -- Raven Random Cash Costume Set Cube (15 days)
+g_pCashItemManager:AddCashItemPrice( 90000166, 18000 ) -- Raven Random Cash Costume Set Cube (30 days)
+g_pCashItemManager:AddCashItemPrice( 90000167, 18000 ) -- Raven’s Western Outfit Package Cube (7 days)
+g_pCashItemManager:AddCashItemPrice( 90000168, 18000 ) -- Raven’s Western Outfit Package Cube (15 days)
+g_pCashItemManager:AddCashItemPrice( 90000169, 18000 ) -- Raven’s Western Outfit Package Cube (30 days)
+g_pCashItemManager:AddCashItemPrice( 90000170, 18000 ) -- Raven’s Tactical Package Cube (7 days)
+g_pCashItemManager:AddCashItemPrice( 90000171, 18000 ) -- Raven’s Tactical Package Cube (15 days)
+g_pCashItemManager:AddCashItemPrice( 90000172, 18000 ) -- Raven’s Tactical Package Cube (30 days)
+g_pCashItemManager:AddCashItemPrice( 90000173, 18000 ) -- Raven's Steel Mercenaries Package Cube (7 days)
+g_pCashItemManager:AddCashItemPrice( 90000174, 18000 ) -- Raven's Steel Mercenaries Package Cube (15 days)
+g_pCashItemManager:AddCashItemPrice( 90000175, 18000 ) -- Raven's Steel Mercenaries Package Cube (30 days)
+g_pCashItemManager:AddCashItemPrice( 90000179, 18000 ) -- Raven Celebration Cube
+g_pCashItemManager:AddCashItemPrice( 90000180, 18000 ) -- Lv. 10 Achievement Cube
+g_pCashItemManager:AddCashItemPrice( 90000181, 18000 ) -- Lv. 20 Achievement Cube
+g_pCashItemManager:AddCashItemPrice( 90000182, 18000 ) -- Lv. 30 Achievement Cube
+g_pCashItemManager:AddCashItemPrice( 90000185, 18000 ) -- Wooden Weapon Cube (30 days)
+g_pCashItemManager:AddCashItemPrice( 90000186, 18000 ) -- Accessory Cube (Permanent)
+g_pCashItemManager:AddCashItemPrice( 90000187, 18000 ) -- Wooden Weapon Cube (Permanent)
+g_pCashItemManager:AddCashItemPrice( 90000188, 18000 ) -- Elsword Fan Cube (30 days)
+g_pCashItemManager:AddCashItemPrice( 90000199, 18000 ) -- Mysterious Enhancement Cube
+g_pCashItemManager:AddCashItemPrice( 90000203, 12000 ) -- Stamina Cube
+g_pCashItemManager:AddCashItemPrice( 90000207, 18000 ) -- Resurrection Stone Cube(10 stones)
+g_pCashItemManager:AddCashItemPrice( 90000208, 18000 ) -- Resurrection Stone Cube(50 stones)
+g_pCashItemManager:AddCashItemPrice( 90000214, 18000 ) -- William's Invitation Cube
+g_pCashItemManager:AddCashItemPrice( 90000228, 18000 ) -- Pocket Phoru's Necklace Cube
+g_pCashItemManager:AddCashItemPrice( 90000229, 18000 ) -- Epic Boss Battle Event Cube
+g_pCashItemManager:AddCashItemPrice( 90000230, 18000 ) -- William's Time and Space Cube
+g_pCashItemManager:AddCashItemPrice( 90000290, 18000 ) -- Life Crystal (Blossom Tree Knight) Special Package
+g_pCashItemManager:AddCashItemPrice( 90000291, 18000 ) -- Life Crystal (Maple Tree Knight) Special Package
+g_pCashItemManager:AddCashItemPrice( 90000292, 18000 ) -- Life Crystal (Polar Tree Knight) Special Package
+g_pCashItemManager:AddCashItemPrice( 90000310, 18000 ) -- Blessed Weapon Enhancement Stones Cube
+g_pCashItemManager:AddCashItemPrice( 90000320, 18000 ) -- Eve’s cube
+g_pCashItemManager:AddCashItemPrice( 90000322, 18000 ) -- Welcome Cube
+g_pCashItemManager:AddCashItemPrice( 90000330, 18000 ) -- Fluorite Ore Random Cube (Lv.1~4)
+g_pCashItemManager:AddCashItemPrice( 90000333, 12000 ) -- Queen's Drone Cube
+g_pCashItemManager:AddCashItemPrice( 90000334, 12000 ) -- Wise Queen's Drone Cube
+g_pCashItemManager:AddCashItemPrice( 90000335, 12000 ) -- Evolved Queen's Drone Cube
+g_pCashItemManager:AddCashItemPrice( 90000336, 12000 ) -- Graceful Queen's Drone Cube
+g_pCashItemManager:AddCashItemPrice( 90000337, 12000 ) -- Cold-Hearted Queen's Drone Cube
+g_pCashItemManager:AddCashItemPrice( 90000338, 12000 ) -- Thoughtful Queen's Drone Cube
+g_pCashItemManager:AddCashItemPrice( 90000339, 12000 ) -- Awakened Queen's Drone Cube
+g_pCashItemManager:AddCashItemPrice( 90000352, 12000 ) -- El Revitalization Drink Cube
+g_pCashItemManager:AddCashItemPrice( 90000353, 18000 ) -- Pongo's Secret Manual Cube
+g_pCashItemManager:AddCashItemPrice( 90000384, 18000 ) -- 25 Resurrection Stone Cubes
+g_pCashItemManager:AddCashItemPrice( 90000385, 18000 ) -- Enhancement Item Cube
+g_pCashItemManager:AddCashItemPrice( 90000386, 12000 ) -- Thanksgiving Title Cube
+g_pCashItemManager:AddCashItemPrice( 90000392, 18000 ) -- 1 Cube of 4 Rings of Skills
+g_pCashItemManager:AddCashItemPrice( 90000393, 18000 ) -- B+ Grade Cube
+g_pCashItemManager:AddCashItemPrice( 90000394, 18000 ) -- A- Grade Cube
+g_pCashItemManager:AddCashItemPrice( 90000395, 18000 ) -- A Grade Cube
+g_pCashItemManager:AddCashItemPrice( 90000396, 18000 ) -- A+ Grade Cube
+g_pCashItemManager:AddCashItemPrice( 90000430, 18000 ) -- 3 Resurrection Stones Cube
+g_pCashItemManager:AddCashItemPrice( 90000440, 18000 ) -- Trace of boss from Feita Cube
+g_pCashItemManager:AddCashItemPrice( 90000480, 18000 ) -- Fluorite Ore Lv. 3 (2ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90000481, 18000 ) -- Fluorite Ore Lv. 3 (3ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90000482, 18000 ) -- Fluorite Ore Lv. 3 (4ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90000483, 18000 ) -- Fluorite Ore Lv. 3 (5ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90000484, 18000 ) -- Fluorite Ore Lv. 4 (2ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90000485, 18000 ) -- Fluorite Ore Lv. 4 (3ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90000486, 18000 ) -- Fluorite Ore Lv. 4 (4ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90000487, 18000 ) -- Fluorite Ore Lv. 4 (5ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90000488, 18000 ) -- Resurrection Stones (10ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90000489, 18000 ) -- Resurrection Stones (50ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90000490, 18000 ) -- Resurrection Stones (110ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90000491, 18000 ) -- Ice Burner (1ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90000492, 18000 ) -- Ice Burner (2ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90000493, 18000 ) -- Ice Burner (3ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90000494, 18000 ) -- Ice Burner (4ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90000495, 18000 ) -- Ice Burner (5ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90000496, 18000 ) -- Ice Burner (10ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90000497, 18000 ) -- Ice Burner (100ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90000498, 18000 ) -- EXP Boost Medal (50%) Cube (1Day)
+g_pCashItemManager:AddCashItemPrice( 90000499, 18000 ) -- Cobo Express VIP Ticket (30Days) Cube
+g_pCashItemManager:AddCashItemPrice( 90000500, 18000 ) -- Premium Personal Shop Medal (15Days) Cube
+g_pCashItemManager:AddCashItemPrice( 90000501, 18000 ) -- Mana Mint Bubble Gum (30Days) Cube
+g_pCashItemManager:AddCashItemPrice( 90000504, 18000 ) -- Elder's Secret Dungeon Cube
+g_pCashItemManager:AddCashItemPrice( 90000505, 18000 ) -- Bethma's Secret Dungeon Cube
+g_pCashItemManager:AddCashItemPrice( 90000506, 18000 ) -- Altera's Secret Dungeon Cube
+g_pCashItemManager:AddCashItemPrice( 90000507, 21000 ) -- High-Grade Magic Stone Random Cube
+g_pCashItemManager:AddCashItemPrice( 90000508, 18000 ) -- Luto's Cursed Dice (30 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 90000513, 18000 ) -- Lunar Costume Cube (7 Days)
+g_pCashItemManager:AddCashItemPrice( 90000525, 60000 ) -- Accessory Random Cube
+g_pCashItemManager:AddCashItemPrice( 90000534, 18000 ) -- Football Cube (7 Days)
+g_pCashItemManager:AddCashItemPrice( 90000546, 18000 ) -- Valentine's Angel Cube (14 Days)
+g_pCashItemManager:AddCashItemPrice( 90000550, 18000 ) -- Hoffman’s Entrance Certificate Cube
+g_pCashItemManager:AddCashItemPrice( 90000551, 12000 ) -- Map of the Abyss Cube
+g_pCashItemManager:AddCashItemPrice( 90000552, 12000 ) -- Anti-Alterasia Capsule Cube
+g_pCashItemManager:AddCashItemPrice( 90000553, 18000 ) -- Secret Key to Wally's Underground Laboratory Cube
+g_pCashItemManager:AddCashItemPrice( 90000554, 18000 ) -- Hidden Map of the Abyss Cube
+g_pCashItemManager:AddCashItemPrice( 90000555, 18000 ) -- Enhanced Anti-Alterasia Capsule Cube
+g_pCashItemManager:AddCashItemPrice( 90000560, 18000 ) -- Ariel’s Magic Amulet Random Cube
+g_pCashItemManager:AddCashItemPrice( 90000561, 18000 ) -- Henir's Time and Space Cube
+g_pCashItemManager:AddCashItemPrice( 90000562, 18000 ) -- Henir's Time and Space Special Cube
+g_pCashItemManager:AddCashItemPrice( 90000563, 18000 ) -- Skill Ring Cube (4 rings)
+g_pCashItemManager:AddCashItemPrice( 90000564, 18000 ) -- Henir's Time and Space Special Cube Key
+g_pCashItemManager:AddCashItemPrice( 90000586, 18000 ) -- Ariel's 1st Anniversary Cube
+g_pCashItemManager:AddCashItemPrice( 90000587, 18000 ) -- Luriel's 1st Anniversary Cube
+g_pCashItemManager:AddCashItemPrice( 90000588, 18000 ) -- Camilla's 1st Anniversary Cube
+g_pCashItemManager:AddCashItemPrice( 90000589, 18000 ) -- Helen's 1st Anniversary Cube
+g_pCashItemManager:AddCashItemPrice( 90000593, 18000 ) -- 1st Anniversary Random Accessory Cube
+g_pCashItemManager:AddCashItemPrice( 90000594, 18000 ) -- Nature's Gift Cube
+g_pCashItemManager:AddCashItemPrice( 90000620, 34000 ) -- Lv. 1 Cube
+g_pCashItemManager:AddCashItemPrice( 90000621, 60000 ) -- Lv. 4 Cube
+g_pCashItemManager:AddCashItemPrice( 90000622, 17000 ) -- Lv. 7 Cube
+g_pCashItemManager:AddCashItemPrice( 90000623, 19000 ) -- Lv. 10 Cube
+g_pCashItemManager:AddCashItemPrice( 90000624, 18000 ) -- Lv. 12 Cube
+g_pCashItemManager:AddCashItemPrice( 90000625, 18000 ) -- Lv. 14 Cube
+g_pCashItemManager:AddCashItemPrice( 90000626, 18000 ) -- Lv. 16 Cube
+g_pCashItemManager:AddCashItemPrice( 90000627, 18000 ) -- Lv. 18 Cube
+g_pCashItemManager:AddCashItemPrice( 90000628, 18000 ) -- Lv. 20 Cube
+g_pCashItemManager:AddCashItemPrice( 90000629, 18000 ) -- Lv. 22 Cube
+g_pCashItemManager:AddCashItemPrice( 90000630, 18000 ) -- Lv. 24 Cube
+g_pCashItemManager:AddCashItemPrice( 90000631, 18000 ) -- Lv. 26 Cube
+g_pCashItemManager:AddCashItemPrice( 90000632, 18000 ) -- Lv. 28 Cube
+g_pCashItemManager:AddCashItemPrice( 90000633, 17000 ) -- Lv. 30 Cube
+g_pCashItemManager:AddCashItemPrice( 90000634, 18000 ) -- Lv. 31 Cube
+g_pCashItemManager:AddCashItemPrice( 90000635, 18000 ) -- Lv. 32 Cube
+g_pCashItemManager:AddCashItemPrice( 90000636, 18000 ) -- Lv. 33 Cube
+g_pCashItemManager:AddCashItemPrice( 90000637, 18000 ) -- Lv. 34 Cube
+g_pCashItemManager:AddCashItemPrice( 90000638, 18000 ) -- Lv. 35 Cube
+g_pCashItemManager:AddCashItemPrice( 90000639, 18000 ) -- Lv. 40 Cube
+g_pCashItemManager:AddCashItemPrice( 90000640, 18000 ) -- Lv. 45 Cube
+g_pCashItemManager:AddCashItemPrice( 90000641, 18000 ) -- Lv. 50 Cube
+g_pCashItemManager:AddCashItemPrice( 90000664, 18000 ) -- Unbreakable Friendship Cube
+g_pCashItemManager:AddCashItemPrice( 90000665, 12000 ) -- Friendship Cube
+g_pCashItemManager:AddCashItemPrice( 90000666, 18000 ) -- Unbreakable Friendship Cube Key
+g_pCashItemManager:AddCashItemPrice( 90000667, 18000 ) -- Friendship Cube Key
+g_pCashItemManager:AddCashItemPrice( 90000681, 18000 ) -- Respawn Ring Cube (7 Days)
+g_pCashItemManager:AddCashItemPrice( 90000682, 18000 ) -- Nasod Prototype Goggles Cube (7 Days)
+g_pCashItemManager:AddCashItemPrice( 90000683, 18000 ) -- Ring of Fury Cube (7 Days)
+g_pCashItemManager:AddCashItemPrice( 90000684, 18000 ) -- Magic Necklace (+30%) Cube (7 Days)
+g_pCashItemManager:AddCashItemPrice( 90000685, 18000 ) -- Guild Package Cube (7 Days)
+g_pCashItemManager:AddCashItemPrice( 90000692, 18000 ) -- EXP Boost Medal (50%) Cube (1Day)
+g_pCashItemManager:AddCashItemPrice( 90000706, 18000 ) -- Appreciation Cube from Hamel residents
+g_pCashItemManager:AddCashItemPrice( 90000712, 12000 ) -- Prince Seiker's Cube
+g_pCashItemManager:AddCashItemPrice( 90000714, 4000 ) -- Chung's Costume Exchange Ticket (7 Days)
+g_pCashItemManager:AddCashItemPrice( 90000715, 18000 ) -- Resurrection Stone Cube (10ea)
+g_pCashItemManager:AddCashItemPrice( 90000720, 12000 ) -- Stewardship Cube
+g_pCashItemManager:AddCashItemPrice( 90000721, 6000 ) -- Complete Recovery Potion from Stewardship Cube
+g_pCashItemManager:AddCashItemPrice( 90000722, 6000 ) -- Vigor Potion from  Stewardship Cube
+g_pCashItemManager:AddCashItemPrice( 90000723, 18000 ) -- Resurrection Stone (1 ea) from Stewardship Cube
+g_pCashItemManager:AddCashItemPrice( 90000724, 18000 ) -- Full Set Stewardship Cube
+g_pCashItemManager:AddCashItemPrice( 90000731, 18000 ) -- Forest Guardian’s Weapon Cube
+g_pCashItemManager:AddCashItemPrice( 90000732, 18000 ) -- Civil Guardian’s Weapon Cube
+g_pCashItemManager:AddCashItemPrice( 90000733, 32000 ) -- Mercenary Of Destruction Weapon Cube
+g_pCashItemManager:AddCashItemPrice( 90000734, 18000 ) -- Wrathful God's Weapon Cube
+g_pCashItemManager:AddCashItemPrice( 90000735, 20000 ) -- World Conqueror's Weapon Cube
+g_pCashItemManager:AddCashItemPrice( 90000736, 29000 ) -- World Conqueror's Weapon Cube
+g_pCashItemManager:AddCashItemPrice( 90000737, 18000 ) -- Blacksmith Union's Weapon Cube
+g_pCashItemManager:AddCashItemPrice( 90000738, 52000 ) -- Bloody Battle Song Weapon Cube
+g_pCashItemManager:AddCashItemPrice( 90000740, 18000 ) -- Cube of Promised Growth Lv. 10
+g_pCashItemManager:AddCashItemPrice( 90000741, 18000 ) -- Cube of Promised Growth Lv. 15
+g_pCashItemManager:AddCashItemPrice( 90000742, 18000 ) -- Cube of Promised Growth Lv. 20
+g_pCashItemManager:AddCashItemPrice( 90000743, 18000 ) -- Cube of Promised Growth Lv. 25
+g_pCashItemManager:AddCashItemPrice( 90000744, 18000 ) -- Cube of Promised Growth Lv. 30
+g_pCashItemManager:AddCashItemPrice( 90000745, 18000 ) -- Cube of Promised Growth Lv. 40
+g_pCashItemManager:AddCashItemPrice( 90000746, 18000 ) -- Resurrection Stone Cube (20)
+g_pCashItemManager:AddCashItemPrice( 90000748, 12000 ) -- Skill Ring Cube (4 rings / 15 days)
+g_pCashItemManager:AddCashItemPrice( 90000749, 18000 ) -- Random Accessory Cube
+g_pCashItemManager:AddCashItemPrice( 90000750, 4000 ) -- Cobo Class Change Cube
+g_pCashItemManager:AddCashItemPrice( 90000751, 12000 ) -- Support Cube for Returning Users
+g_pCashItemManager:AddCashItemPrice( 90000752, 18000 ) -- General Notes Random Cube
+g_pCashItemManager:AddCashItemPrice( 90000753, 18000 ) -- Resurrection Stone Cube (15)
+g_pCashItemManager:AddCashItemPrice( 90000756, 18000 ) -- Cash Notes Random Cube
+g_pCashItemManager:AddCashItemPrice( 90000759, 18000 ) -- Random Cube of Accessories (Elder, Bethma)
+g_pCashItemManager:AddCashItemPrice( 90000760, 18000 ) -- Random Cube of Accessories (Altera, Feita, Velder)
+g_pCashItemManager:AddCashItemPrice( 90000764, 12000 ) -- Refined El Shard Random Cube
+g_pCashItemManager:AddCashItemPrice( 90000850, 18000 ) -- EXP Boost Medal (50%) Cube (1Day)
+g_pCashItemManager:AddCashItemPrice( 90000930, 18000 ) -- Summer Accessories Random Cube
+g_pCashItemManager:AddCashItemPrice( 90000948, 25000 ) -- El Shard Random Cube
+g_pCashItemManager:AddCashItemPrice( 90000960, 12000 ) -- Archangel Full Set Cube (1 Day)
+g_pCashItemManager:AddCashItemPrice( 90000970, 18000 ) -- Sailor Boy Scout Costume Cube (7 days)
+g_pCashItemManager:AddCashItemPrice( 90000971, 18000 ) -- Dandy Cross Buckle Costume Cube (7 days)
+g_pCashItemManager:AddCashItemPrice( 90000972, 18000 ) -- Saint Cross Guard Costume Cube (7 days)
+g_pCashItemManager:AddCashItemPrice( 90000973, 18000 ) -- Royal Cannoneer Costume Cube (7 days)
+g_pCashItemManager:AddCashItemPrice( 90000974, 18000 ) -- Air Geared Costume Cube (7 days)
+g_pCashItemManager:AddCashItemPrice( 90000975, 18000 ) -- Ghost Hunter Costume Cube (7 days)
+g_pCashItemManager:AddCashItemPrice( 90000980, 12000 ) -- Camilla’s Skill Improvement Cube(Basic)
+g_pCashItemManager:AddCashItemPrice( 90000981, 12000 ) -- Camilla’s Skill Improvement Cube (Intermediate)
+g_pCashItemManager:AddCashItemPrice( 90000982, 12000 ) -- Camilla’s Skill Improvement Cube (Advanced)
+g_pCashItemManager:AddCashItemPrice( 90000994, 18000 ) -- Camilla’s Notes Random Cube
+g_pCashItemManager:AddCashItemPrice( 90000995, 18000 ) -- Camilla’s Notes Random Cube Key
+g_pCashItemManager:AddCashItemPrice( 90000998, 18000 ) -- Magic Amulet Random Cube (Lv 5~7)
+g_pCashItemManager:AddCashItemPrice( 90001005, 18000 ) -- Chung’s Memo Random Cube
+g_pCashItemManager:AddCashItemPrice( 90001010, 12000 ) -- Resurrection Stone Cube (5)
+g_pCashItemManager:AddCashItemPrice( 90001020, 18000 ) -- Resurrection Stone Cube (1)
+g_pCashItemManager:AddCashItemPrice( 90001021, 18000 ) -- Resurrection Stone Cube (2)
+g_pCashItemManager:AddCashItemPrice( 90001023, 20000 ) -- Resurrection Stone Cube (5)
+g_pCashItemManager:AddCashItemPrice( 90001047, 60000 ) -- Magic Stone Random Cube
+g_pCashItemManager:AddCashItemPrice( 90001056, 18000 ) -- Hamel's Protector Cube
+g_pCashItemManager:AddCashItemPrice( 90001070, 2500 ) -- Ice Burner (Chung)
+g_pCashItemManager:AddCashItemPrice( 90001080, 18000 ) -- Ice Burner x 30 Cube
+g_pCashItemManager:AddCashItemPrice( 90001097, 18000 ) -- Seiker Family's Improved Cannon Cube (Chung)
+g_pCashItemManager:AddCashItemPrice( 90001098, 18000 ) -- Seiker Family's Refined Cannon Cube (Chung)
+g_pCashItemManager:AddCashItemPrice( 90001099, 18000 ) -- Seiker Family's Striking Cannon Cube (Chung)
+g_pCashItemManager:AddCashItemPrice( 90001106, 18000 ) -- Resurrection Stone Cube (5ea)
+g_pCashItemManager:AddCashItemPrice( 90001293, 60000 ) -- Magic Stone Random Cube
+g_pCashItemManager:AddCashItemPrice( 90001294, 44000 ) -- El Shard Random Cube
+g_pCashItemManager:AddCashItemPrice( 90001295, 18000 ) -- Enhancement Stone Random Cube
+g_pCashItemManager:AddCashItemPrice( 90001296, 18000 ) -- Enhanced Cobo's +10 Weapon Cube
+g_pCashItemManager:AddCashItemPrice( 90001297, 30000 ) -- Secret Dungeon Entrance Ticket Cube
+g_pCashItemManager:AddCashItemPrice( 90001304, 12000 ) -- Smoke Bomb Cube
+g_pCashItemManager:AddCashItemPrice( 90001322, 12000 ) -- Resurrection Stone Cube (10)
+g_pCashItemManager:AddCashItemPrice( 90001347, 18000 ) -- Allegro’s Appreciation Cube
+g_pCashItemManager:AddCashItemPrice( 90001348, 18000 ) -- Lento’s Appreciation Cube
+g_pCashItemManager:AddCashItemPrice( 90001350, 53000 ) -- Secret Dungeon Entrance Ticket Cube
+g_pCashItemManager:AddCashItemPrice( 90001367, 18000 ) -- Pirate's Costume Cube (1 Day)
+g_pCashItemManager:AddCashItemPrice( 90001368, 18000 ) -- Pirate's Accessory Cube (7 Days)
+g_pCashItemManager:AddCashItemPrice( 90001369, 18000 ) -- Pirate's Full Premium Set Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 90001370, 18000 ) -- Pirate Bandana Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 90001377, 44000 ) -- Pirate Bandana Cube
+g_pCashItemManager:AddCashItemPrice( 90001400, 18000 ) -- Pirate's Accessory Cube (1 Day)
+g_pCashItemManager:AddCashItemPrice( 90001412, 6000 ) -- Secret Potion Cube Pieces
+g_pCashItemManager:AddCashItemPrice( 90001413, 6000 ) -- Wonder Potion Cube Pieces
+g_pCashItemManager:AddCashItemPrice( 90001414, 12000 ) -- Secret Potion Cube
+g_pCashItemManager:AddCashItemPrice( 90001415, 18000 ) -- Wonder Potion Cube
+g_pCashItemManager:AddCashItemPrice( 90001417, 18000 ) -- Summer Star Academy Costume (3 Days) Cube
+g_pCashItemManager:AddCashItemPrice( 90001418, 18000 ) -- Cube of 4 Special Accessories (for 1 day)
+g_pCashItemManager:AddCashItemPrice( 90001419, 18000 ) -- 4 Rings of Skills Cube (1 Day)
+g_pCashItemManager:AddCashItemPrice( 90001430, 18000 ) -- Start Up Cube Lv. 5
+g_pCashItemManager:AddCashItemPrice( 90001431, 18000 ) -- Start Up Cube Lv. 10
+g_pCashItemManager:AddCashItemPrice( 90001432, 18000 ) -- Start Up Cube Lv. 15
+g_pCashItemManager:AddCashItemPrice( 90001433, 18000 ) -- Start Up Cube Lv. 20
+g_pCashItemManager:AddCashItemPrice( 90001434, 18000 ) -- Start Up Special Cube Lv. 20
+g_pCashItemManager:AddCashItemPrice( 90001435, 18000 ) -- Start Up Cube Lv. 30
+g_pCashItemManager:AddCashItemPrice( 90001436, 18000 ) -- Start Up Cube Lv. 35
+g_pCashItemManager:AddCashItemPrice( 90001437, 18000 ) -- Start Up Special Cube Key
+g_pCashItemManager:AddCashItemPrice( 90001451, 18000 ) -- +10 Cobo Special Blade for Adventurers Cube
+g_pCashItemManager:AddCashItemPrice( 90001452, 12000 ) -- Nasod Core Cube
+g_pCashItemManager:AddCashItemPrice( 90001456, 18000 ) -- Raven's Weapon Costume Cube
+g_pCashItemManager:AddCashItemPrice( 90001457, 18000 ) -- Raven's Full Costume Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 90001460, 12000 ) -- Thanksgiving Feast Ingredient Package
+g_pCashItemManager:AddCashItemPrice( 90001462, 18000 ) -- Stumped Ariel’s Thanksgiving Present Cube
+g_pCashItemManager:AddCashItemPrice( 90001463, 18000 ) -- Pleased Ariel’s Thanksgiving Present Cube
+g_pCashItemManager:AddCashItemPrice( 90001464, 18000 ) -- Appreciated Ariel’s Thanksgiving Present Cube
+g_pCashItemManager:AddCashItemPrice( 90001465, 18000 ) -- Praised Ariel’s Thanksgiving Present Cube
+g_pCashItemManager:AddCashItemPrice( 90001466, 18000 ) -- Delighted Ariel’s Thanksgiving Present Cube
+g_pCashItemManager:AddCashItemPrice( 90001470, 18000 ) -- XMMORPG Giveaway Cube
+g_pCashItemManager:AddCashItemPrice( 90001480, 18000 ) -- Indian Accessories Random Cube
+g_pCashItemManager:AddCashItemPrice( 90001481, 18000 ) -- Indian Accessories Full Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 90001493, 12000 ) -- Miracle Medicine Cube
+g_pCashItemManager:AddCashItemPrice( 90001494, 18000 ) -- Indian Accessory Random Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 90001495, 18000 ) -- Indian Accessory Random Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 90001500, 2500 ) -- (BOGO)Chung's Ice Burner 20 + 20
+g_pCashItemManager:AddCashItemPrice( 90001501, 60000 ) -- Lv. 1 Cube
+g_pCashItemManager:AddCashItemPrice( 90001502, 60000 ) -- Lv. 4 Cube
+g_pCashItemManager:AddCashItemPrice( 90001503, 30000 ) -- Lv. 7 Cube
+g_pCashItemManager:AddCashItemPrice( 90001504, 60000 ) -- Lv. 10 Cube
+g_pCashItemManager:AddCashItemPrice( 90001505, 18000 ) -- Lv. 12 Cube
+g_pCashItemManager:AddCashItemPrice( 90001506, 18000 ) -- Lv. 14 Cube
+g_pCashItemManager:AddCashItemPrice( 90001507, 18000 ) -- Lv. 16 Cube
+g_pCashItemManager:AddCashItemPrice( 90001508, 18000 ) -- Lv. 18 Cube
+g_pCashItemManager:AddCashItemPrice( 90001509, 60000 ) -- Lv. 20 Cube
+g_pCashItemManager:AddCashItemPrice( 90001510, 18000 ) -- Lv. 22 Cube
+g_pCashItemManager:AddCashItemPrice( 90001511, 18000 ) -- Lv. 24 Cube
+g_pCashItemManager:AddCashItemPrice( 90001512, 18000 ) -- Lv. 26 Cube
+g_pCashItemManager:AddCashItemPrice( 90001513, 18000 ) -- Lv. 28 Cube
+g_pCashItemManager:AddCashItemPrice( 90001514, 57000 ) -- Lv. 30 Cube
+g_pCashItemManager:AddCashItemPrice( 90001515, 18000 ) -- Lv. 31 Cube
+g_pCashItemManager:AddCashItemPrice( 90001516, 18000 ) -- Lv. 32 Cube
+g_pCashItemManager:AddCashItemPrice( 90001517, 18000 ) -- Lv. 33 Cube
+g_pCashItemManager:AddCashItemPrice( 90001518, 18000 ) -- Lv. 34 Cube
+g_pCashItemManager:AddCashItemPrice( 90001519, 18000 ) -- Lv. 35 Cube
+g_pCashItemManager:AddCashItemPrice( 90001520, 18000 ) -- Lv. 40 Cube
+g_pCashItemManager:AddCashItemPrice( 90001521, 18000 ) -- Lv. 45 Cube
+g_pCashItemManager:AddCashItemPrice( 90001522, 18000 ) -- Lv. 50 Cube
+g_pCashItemManager:AddCashItemPrice( 90001523, 18000 ) -- Orb Random Cube
+g_pCashItemManager:AddCashItemPrice( 90001524, 18000 ) -- Summer Casual Costume Full Set Cube (7 Days)
+g_pCashItemManager:AddCashItemPrice( 90001525, 18000 ) -- Summer Casual Costume Full Set Cube (Permanent)
+g_pCashItemManager:AddCashItemPrice( 90001526, 18000 ) -- Random Accessory Cube
+g_pCashItemManager:AddCashItemPrice( 90001527, 12000 ) -- Ring of Skill Set Cube (7 Days)
+g_pCashItemManager:AddCashItemPrice( 90001542, 18000 ) -- Henir/Secret Dungeon Note Random Cube
+g_pCashItemManager:AddCashItemPrice( 90001543, 18000 ) -- Unbreakable Friendship Cube
+g_pCashItemManager:AddCashItemPrice( 90001544, 18000 ) -- Mysterious Continent Armor Package Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 90001545, 18000 ) -- Mysterious Continent Weapon Package Cube (Permanent)
+g_pCashItemManager:AddCashItemPrice( 90001546, 20000 ) -- Friendship Cube
+g_pCashItemManager:AddCashItemPrice( 90001547, 18000 ) -- Mysterious Continent Armor Package Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 90001548, 18000 ) -- Mysterious Continent Weapon Package Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 90001549, 18000 ) -- Mithril Weapon Accessory Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 90001580, 29000 ) -- Sheath Knight Cube
+g_pCashItemManager:AddCashItemPrice( 90001590, 2500 ) -- Gold Ice Burner
+g_pCashItemManager:AddCashItemPrice( 90001591, 18000 ) -- Gold Ice Burner 1+1
+g_pCashItemManager:AddCashItemPrice( 90001592, 18000 ) -- Gold Ice Burner 5+2
+g_pCashItemManager:AddCashItemPrice( 90001593, 18000 ) -- Gold Ice Burner 10+3
+g_pCashItemManager:AddCashItemPrice( 90001597, 18000 ) -- Gold Ice Burner (1ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90001598, 18000 ) -- Gold Ice Burner (2ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90001599, 18000 ) -- Gold Ice Burner (3ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90001600, 18000 ) -- Gold Ice Burner (4ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90001601, 18000 ) -- Gold Ice Burner (5ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90001602, 18000 ) -- Gold Ice Burner (10ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90001603, 18000 ) -- Gold Ice Burner (100ea.) Cube
+g_pCashItemManager:AddCashItemPrice( 90001604, 18000 ) -- Ice Burner 1+1
+g_pCashItemManager:AddCashItemPrice( 90001605, 18000 ) -- Ice Burner (Type A) 5+1
+g_pCashItemManager:AddCashItemPrice( 90001606, 18000 ) -- Ice Burner (Type B) 5+1
+g_pCashItemManager:AddCashItemPrice( 90001607, 18000 ) -- Ice Burner (Type A) 10+3
+g_pCashItemManager:AddCashItemPrice( 90001608, 18000 ) -- Ice Burner (Type B) 10+3
+g_pCashItemManager:AddCashItemPrice( 90001614, 18000 ) -- 2012 Christmas Costumes 3 day Cube(Red)
+g_pCashItemManager:AddCashItemPrice( 90001615, 18000 ) -- 2012 Christmas Costumes 3 day Cube(Purple)
+g_pCashItemManager:AddCashItemPrice( 90001701, 18000 ) -- Magician's Hope Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 90001708, 18000 ) -- El Shard (Mystery) Cube (10 ea.)
+g_pCashItemManager:AddCashItemPrice( 90001736, 18000 ) -- Special Accessory Set Cube(4 Kinds) (7days)
+g_pCashItemManager:AddCashItemPrice( 90001738, 18000 ) -- Space Ruler's (Bethma) +9 Armor Full set Cube(Lv 20)
+g_pCashItemManager:AddCashItemPrice( 90001739, 18000 ) -- Space Ruler's (Feita) +9 Armor Full set Cube(Lv 40)
+g_pCashItemManager:AddCashItemPrice( 90001740, 18000 ) -- Absolute Time and Space Armor +9 Full set Cube(Lv 60)
+g_pCashItemManager:AddCashItemPrice( 90001742, 18000 ) -- Space Ruler's (Bethma) +9 Weapon Cube(Lv 20)
+g_pCashItemManager:AddCashItemPrice( 90001743, 18000 ) -- Space Ruler's (Feita) +9 Weapon Cube(Lv 40)
+g_pCashItemManager:AddCashItemPrice( 90001744, 18000 ) -- Absolute Time and Space Weapon +9 Cube(Lv 60)
+g_pCashItemManager:AddCashItemPrice( 90001745, 18000 ) -- El Shard/Refined El Shard Random Cube
+g_pCashItemManager:AddCashItemPrice( 90001746, 60000 ) -- Magic Stone Random Cube
+g_pCashItemManager:AddCashItemPrice( 90001840, 18000 ) -- 2013 Lunar New Year Costume Package Cube (1day)
+g_pCashItemManager:AddCashItemPrice( 90001897, 18000 ) -- Recycled Can Cube
+g_pCashItemManager:AddCashItemPrice( 90001898, 18000 ) -- Recycled Glass Cube
+g_pCashItemManager:AddCashItemPrice( 90001899, 18000 ) -- Recycled Plastic Cube
+g_pCashItemManager:AddCashItemPrice( 90001910, 18000 ) -- Ice Burner (Eve, Nasod Battle)
+g_pCashItemManager:AddCashItemPrice( 90001923, 18000 ) -- Ariel's Phoru Foot Stamp Random Cube
+g_pCashItemManager:AddCashItemPrice( 90001980, 2500 ) -- Ice Burner (Chung, Arch Angel)
+g_pCashItemManager:AddCashItemPrice( 90001990, 18000 ) -- Ice Burner 2+2
+g_pCashItemManager:AddCashItemPrice( 90002000, 18000 ) -- Ice Burner 5+1
+g_pCashItemManager:AddCashItemPrice( 90002010, 18000 ) -- Ice Burner 10+3
+g_pCashItemManager:AddCashItemPrice( 90002020, 18000 ) -- Ice Burner (Chung's Archangel) 2+2
+g_pCashItemManager:AddCashItemPrice( 90002030, 18000 ) -- Ice Burner (Chung's Archangel) 5+1
+g_pCashItemManager:AddCashItemPrice( 90002040, 18000 ) -- Ice Burner (Chung's Archangel) 10+3
+g_pCashItemManager:AddCashItemPrice( 90002070, 18000 ) -- Life Crystal Package (Sheriff)
+g_pCashItemManager:AddCashItemPrice( 90002080, 60000 ) -- Sheriff Package
+g_pCashItemManager:AddCashItemPrice( 90002110, 18000 ) -- Life Crystal Package (White Sheriff)
+g_pCashItemManager:AddCashItemPrice( 90002120, 18000 ) -- Sheriff Package (White)
+g_pCashItemManager:AddCashItemPrice( 90002140, 18000 ) -- UGC Wonderland Costume Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 90002150, 18000 ) -- Memorial Day Military Cube
+g_pCashItemManager:AddCashItemPrice( 90002161, 18000 ) -- Level 1 Cube
+g_pCashItemManager:AddCashItemPrice( 90002162, 18000 ) -- Level 4 Cube
+g_pCashItemManager:AddCashItemPrice( 90002163, 18000 ) -- Level 7 Cube
+g_pCashItemManager:AddCashItemPrice( 90002164, 18000 ) -- Level 10 Cube
+g_pCashItemManager:AddCashItemPrice( 90002165, 18000 ) -- Level 15 Cube
+g_pCashItemManager:AddCashItemPrice( 90002166, 18000 ) -- Level 20 Cube
+g_pCashItemManager:AddCashItemPrice( 90002167, 18000 ) -- Level 23 Cube
+g_pCashItemManager:AddCashItemPrice( 90002168, 18000 ) -- Level 26 Cube
+g_pCashItemManager:AddCashItemPrice( 90002169, 18000 ) -- Level 29 Cube
+g_pCashItemManager:AddCashItemPrice( 90002170, 18000 ) -- Level 32 Cube
+g_pCashItemManager:AddCashItemPrice( 90002171, 18000 ) -- Level 35 Cube
+g_pCashItemManager:AddCashItemPrice( 90002172, 18000 ) -- Summer Casual Costume Full Set Cube (30 days)
+g_pCashItemManager:AddCashItemPrice( 90002191, 18000 ) -- Dimension Witch Preparation Cube
+g_pCashItemManager:AddCashItemPrice( 90002194, 18000 ) -- Unrefined Moonstone Cube
+g_pCashItemManager:AddCashItemPrice( 90002196, 18000 ) -- Neutralized Moonstone Cube
+g_pCashItemManager:AddCashItemPrice( 90002197, 18000 ) -- Aisha's Skill Note Random Cube
+g_pCashItemManager:AddCashItemPrice( 90002199, 25000 ) -- Resurrection Stone (1 ea) Cube
+g_pCashItemManager:AddCashItemPrice( 90002200, 18000 ) -- Potion/Elixir Random Cube
+g_pCashItemManager:AddCashItemPrice( 90002202, 18000 ) -- Moonstone Random Cube
+g_pCashItemManager:AddCashItemPrice( 90002203, 18000 ) -- El Revitalization Drink (7 Day) Cube
+g_pCashItemManager:AddCashItemPrice( 90002220, 18000 ) -- Level 1 Cube
+g_pCashItemManager:AddCashItemPrice( 90002221, 18000 ) -- Level 4 Cube
+g_pCashItemManager:AddCashItemPrice( 90002222, 18000 ) -- Level 7 Cube
+g_pCashItemManager:AddCashItemPrice( 90002223, 18000 ) -- Level 10 Cube
+g_pCashItemManager:AddCashItemPrice( 90002224, 18000 ) -- Level 15 Cube
+g_pCashItemManager:AddCashItemPrice( 90002225, 18000 ) -- Level 20 Cube
+g_pCashItemManager:AddCashItemPrice( 90002226, 18000 ) -- Level 23 Cube
+g_pCashItemManager:AddCashItemPrice( 90002227, 18000 ) -- Level 26 Cube
+g_pCashItemManager:AddCashItemPrice( 90002228, 18000 ) -- Level 29 Cube
+g_pCashItemManager:AddCashItemPrice( 90002229, 18000 ) -- Level 32 Cube
+g_pCashItemManager:AddCashItemPrice( 90002230, 18000 ) -- Level 35 Cube
+g_pCashItemManager:AddCashItemPrice( 90002260, 18000 ) -- Pet Starter Package
+g_pCashItemManager:AddCashItemPrice( 90002261, 18000 ) -- Ice Burner Starter Package
+g_pCashItemManager:AddCashItemPrice( 90002270, 18000 ) -- Heavenly Diamond Yaksha Full Set Cube (1 day)
+g_pCashItemManager:AddCashItemPrice( 90002271, 18000 ) -- Sailor Costume Full Set Cube (1 day)
+g_pCashItemManager:AddCashItemPrice( 90002291, 18000 ) -- Life Crystal (Halloween Pumpkin Fairy) Package
+g_pCashItemManager:AddCashItemPrice( 90002297, 18000 ) -- Halloween Pumpkin Fairy - Rael Package
+g_pCashItemManager:AddCashItemPrice( 90002298, 18000 ) -- Halloween Pumpkin Fairy - Rosetta Package
+g_pCashItemManager:AddCashItemPrice( 90002299, 18000 ) -- Halloween Pumpkin Fairy - Narnea package
+g_pCashItemManager:AddCashItemPrice( 90002310, 12000 ) -- Chung's Fantasy Cleric (Black) and Rabbit Costume Package (White)
+g_pCashItemManager:AddCashItemPrice( 90002311, 12000 ) -- Chung's Fantasy Cleric (White) and Rabbit Costume Package (Tan)
+g_pCashItemManager:AddCashItemPrice( 90002330, 18000 ) -- Mysterious Continent Adventurer Costume Full Set Cube
+g_pCashItemManager:AddCashItemPrice( 90002350, 18000 ) -- Level 1 Cube
+g_pCashItemManager:AddCashItemPrice( 90002351, 18000 ) -- Level 4 Cube
+g_pCashItemManager:AddCashItemPrice( 90002352, 18000 ) -- Level 7 Cube
+g_pCashItemManager:AddCashItemPrice( 90002353, 18000 ) -- Level 10 Cube
+g_pCashItemManager:AddCashItemPrice( 90002354, 18000 ) -- Level 12 Cube
+g_pCashItemManager:AddCashItemPrice( 90002355, 18000 ) -- Level 14 Cube
+g_pCashItemManager:AddCashItemPrice( 90002356, 18000 ) -- Level 16 Cube
+g_pCashItemManager:AddCashItemPrice( 90002357, 18000 ) -- Level 18 Cube
+g_pCashItemManager:AddCashItemPrice( 90002358, 18000 ) -- Level 20 Cube
+g_pCashItemManager:AddCashItemPrice( 90002359, 18000 ) -- Level 22 Cube
+g_pCashItemManager:AddCashItemPrice( 90002360, 18000 ) -- Level 24 Cube
+g_pCashItemManager:AddCashItemPrice( 90002361, 18000 ) -- Level 26 Cube
+g_pCashItemManager:AddCashItemPrice( 90002362, 18000 ) -- Level 28 Cube
+g_pCashItemManager:AddCashItemPrice( 90002363, 18000 ) -- Level 30 Cube
+g_pCashItemManager:AddCashItemPrice( 90002364, 18000 ) -- Level 31 Cube
+g_pCashItemManager:AddCashItemPrice( 90002365, 18000 ) -- Level 32 Cube
+g_pCashItemManager:AddCashItemPrice( 90002366, 18000 ) -- Level 33 Cube
+g_pCashItemManager:AddCashItemPrice( 90002367, 18000 ) -- Level 34 Cube
+g_pCashItemManager:AddCashItemPrice( 90002368, 18000 ) -- Level 35 Cube
+g_pCashItemManager:AddCashItemPrice( 90002369, 18000 ) -- Level 40 Cube
+g_pCashItemManager:AddCashItemPrice( 90002370, 18000 ) -- Level 45 Cube
+g_pCashItemManager:AddCashItemPrice( 90002371, 18000 ) -- Level 50 Cube
+g_pCashItemManager:AddCashItemPrice( 90002372, 18000 ) -- Orb Random Cube
+g_pCashItemManager:AddCashItemPrice( 90002374, 18000 ) -- Acessory Random Cube
+g_pCashItemManager:AddCashItemPrice( 90003000, 18000 ) -- New Recruit Support Cube (Lv.16)
+g_pCashItemManager:AddCashItemPrice( 90003001, 18000 ) -- New Recruit Support Cube (Lv.22)
+g_pCashItemManager:AddCashItemPrice( 90003002, 18000 ) -- New Recruit Support Cube (Lv.26)
+g_pCashItemManager:AddCashItemPrice( 90003003, 18000 ) -- New Recruit Support Cube (Lv.34)
+g_pCashItemManager:AddCashItemPrice( 90003024, 18000 ) -- Basic Notes Random Cube
+g_pCashItemManager:AddCashItemPrice( 90003026, 18000 ) -- Premium Personal Shop Medal Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 90003027, 18000 ) -- Weapon Costume Random Cube
+g_pCashItemManager:AddCashItemPrice( 90003030, 18000 ) -- Harvest Tool Cube
+g_pCashItemManager:AddCashItemPrice( 90003035, 18000 ) -- Luriel's Resurrection Stone Cube (5ea)
+g_pCashItemManager:AddCashItemPrice( 90003036, 18000 ) -- Luriel's Wonder Elixir Cube
+g_pCashItemManager:AddCashItemPrice( 90003037, 18000 ) -- Luriel's Secret Potion Cube
+g_pCashItemManager:AddCashItemPrice( 90003038, 18000 ) -- Luriel's Cobo Express VIP Ticket Cube (7 Days)
+g_pCashItemManager:AddCashItemPrice( 90003040, 18000 ) -- Gnosis Blessing 30 SP Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 90003041, 18000 ) -- Luriel's Gnosis Blessing 30 SP Cube (7 Days)
+g_pCashItemManager:AddCashItemPrice( 90003042, 18000 ) -- Luriel's Complete Recovery Potion Cube (5)
+g_pCashItemManager:AddCashItemPrice( 90003043, 18000 ) -- Wonder Elixir Cube
+g_pCashItemManager:AddCashItemPrice( 90003044, 30000 ) -- Secret Potion Cube
+g_pCashItemManager:AddCashItemPrice( 90003050, 21000 ) -- Ice Burner 1+1 Package
+g_pCashItemManager:AddCashItemPrice( 90003051, 18000 ) -- Ice Burner 5+5 Package
+g_pCashItemManager:AddCashItemPrice( 90003052, 18000 ) -- Ice Burner 10+10 Package
+g_pCashItemManager:AddCashItemPrice( 90003053, 18000 ) -- Ice Burner 20+20 Package
+g_pCashItemManager:AddCashItemPrice( 90003070, 18000 ) -- Resurrection Stone Cube (10ea)
+g_pCashItemManager:AddCashItemPrice( 90003071, 18000 ) -- Wonder Potion Cube
+g_pCashItemManager:AddCashItemPrice( 90003072, 53000 ) -- Secret Potion Cube
+g_pCashItemManager:AddCashItemPrice( 90003073, 18000 ) -- Cobo Express VIP Ticket 15 Days Cube
+g_pCashItemManager:AddCashItemPrice( 90003074, 18000 ) -- Complete Recovery Potion Cube (10ea)
+g_pCashItemManager:AddCashItemPrice( 90003080, 28000 ) -- Santa's Hat Cube
+g_pCashItemManager:AddCashItemPrice( 90003081, 12000 ) -- Christmas Gloves Cube
+g_pCashItemManager:AddCashItemPrice( 90003090, 12000 ) -- Skill Ring Cube (15 Days)
+g_pCashItemManager:AddCashItemPrice( 115000302, 18000 ) -- Pet Pack (Ancient Shadow Poru)
+g_pCashItemManager:AddCashItemPrice( 120000090, 18000 ) -- Starter Avatar Package
+g_pCashItemManager:AddCashItemPrice( 120002750, 2500 ) -- (BOGO)Ice Burner (20+20)
+g_pCashItemManager:AddCashItemPrice( 120002990, 12000 ) -- Henir Preparation Package
+g_pCashItemManager:AddCashItemPrice( 120003000, 18000 ) -- Ice Burner 1+1
+g_pCashItemManager:AddCashItemPrice( 120003001, 18000 ) -- Ice Burner 5+1
+g_pCashItemManager:AddCashItemPrice( 120003002, 18000 ) -- Ice Burner 10+3
+g_pCashItemManager:AddCashItemPrice( 120003015, 18000 ) -- Elarbor Tree Knight Package
+g_pCashItemManager:AddCashItemPrice( 120003100, 2500 ) -- Ariel's Ice Burner
+g_pCashItemManager:AddCashItemPrice( 120003110, 18000 ) -- Defense Dungeon Package (Skills)
+g_pCashItemManager:AddCashItemPrice( 120003111, 18000 ) -- Defense Dungeon Package (Resurrection Stones)
+g_pCashItemManager:AddCashItemPrice( 120003112, 12000 ) -- Defense Dungeon Package (Ability)
+g_pCashItemManager:AddCashItemPrice( 120003200, 2500 ) -- Ice Burner(El Search Party Officer for Eve)
+g_pCashItemManager:AddCashItemPrice( 152000699, 12000 ) -- Luriel's Magic Stone of Destruction
+g_pCashItemManager:AddCashItemPrice( 152000700, 1000 ) -- Luriel's Magic Stone of Explosion
+g_pCashItemManager:AddCashItemPrice( 152000701, 12000 ) -- Luriel's Magic Stone of Combustion
+g_pCashItemManager:AddCashItemPrice( 152000702, 12000 ) -- Luriel's Magic Stone of Quickness
+g_pCashItemManager:AddCashItemPrice( 152000703, 12000 ) -- Luriel's Magic Stone of Wrath
+g_pCashItemManager:AddCashItemPrice( 153000085, 18000 ) -- Polar Bear Costume Suit Cube
+g_pCashItemManager:AddCashItemPrice( 153000096, 18000 ) -- Max Level Support Cube
+g_pCashItemManager:AddCashItemPrice( 153000097, 18000 ) -- Max Level All Cube
+g_pCashItemManager:AddCashItemPrice( 153000101, 18000 ) -- 2014 Special New Year Package Purchase Ticket
+g_pCashItemManager:AddCashItemPrice( 153000102, 18000 ) -- +6 Equipment Full Set Cube (Level 22)
+g_pCashItemManager:AddCashItemPrice( 153000103, 18000 ) -- Promotion Costume Full Set Cube (30 Days)
+g_pCashItemManager:AddCashItemPrice( 153000163, 18000 ) -- Elesis's Captain Rudolph Package
+g_pCashItemManager:AddCashItemPrice( 153000164, 12000 ) -- Elesis's Captain Rudolph Package (Snow Version)
+g_pCashItemManager:AddCashItemPrice( 153000165, 18000 ) -- 2014 New Year Special Ice Burner Package
+g_pCashItemManager:AddCashItemPrice( 153000167, 18000 ) -- EXP Boost Medal (100%) Cube (3 Days)
+g_pCashItemManager:AddCashItemPrice( 200000000, 39000 ) -- Shepherd Boy’s Cube
+g_pCashItemManager:AddCashItemPrice( 200000020, 25000 ) -- Elympics Torch Cube
+g_pCashItemManager:AddCashItemPrice( 200000022, 18000 ) -- Elympics Torch Cube (3 Days)
+g_pCashItemManager:AddCashItemPrice( 210000075, 18000 ) -- Camilla's Pet Training Camp Invitation
+g_pCashItemManager:AddCashItemPrice( 210000079, 8000 ) -- Single Use Pet Whistle (Attack)
+g_pCashItemManager:AddCashItemPrice( 210000080, 8000 ) -- Single Use Pet Whistle (Cheer)
+g_pCashItemManager:AddCashItemPrice( 210000081, 8000 ) -- Camilla’s Daily Pet Training Magazine
+g_pCashItemManager:AddCashItemPrice( 210000082, 18000 ) -- Pet Training Certificate
+g_pCashItemManager:AddCashItemPrice( 210000120, 4000 ) -- Halloween Costume Potion
+g_pCashItemManager:AddCashItemPrice( 210000121, 60000 ) -- Halloween Pumpkin Cube
+g_pCashItemManager:AddCashItemPrice( 210000137, 18000 ) -- 6 Kinds Of Death Scythes Cube (1 Day)
+g_pCashItemManager:AddCashItemPrice( 210000201, 12000 ) -- Fortune of Love Note Cube
+g_pCashItemManager:AddCashItemPrice( 210000209, 18000 ) -- Elsword Mate Cube
+g_pCashItemManager:AddCashItemPrice( 210000225, 18000 ) -- Resurrection Stone Cube (5 ea.)
+g_pCashItemManager:AddCashItemPrice( 210000226, 18000 ) -- Luriel's Ice Burner
+g_pCashItemManager:AddCashItemPrice( 210000250, 18000 ) -- Imperial Panda - Red Special Package
+g_pCashItemManager:AddCashItemPrice( 210000260, 18000 ) -- Imperial Panda - White Special Package
+g_pCashItemManager:AddCashItemPrice( 250000640, 18000 ) -- Archangel's Full Set Costume Package
+g_pCashItemManager:AddCashItemPrice( 250000650, 18000 ) -- El Search Party Officer’s Full Set Costume Package
+-- END_RESTORE_ALL_CASHSHOP
