@@ -31,12 +31,18 @@
 
 ## ⚡ Features
 
-* **⚡ Core Server Stack**: Local or containerized execution of the five legacy server executables (*Center, Game, Channel, Login, Global*) bundled with an optimized SQL Server database.
-* **🛡️ Identity Sync Engine**: Bridges modern user authentication (Argon2id hashing via Next.js + PostgreSQL) directly with legacy game database structures (MSSQL) in real-time.
+* **⚡ Core Server Stack**: Local or containerized execution of the five legacy server executables (*Center, Game, Channel, Login, Global*) bundled with an optimized SQL Server database (`ES_BILLING`, `Game01`, `Account`).
+* **💎 Modern CashShop & Gacha Economy Engine**:
+  * **100% Item Coverage**: 17,042+ catalog items normalized into F2P-friendly price tiers across `CashItemPrice.lua` and `ES_BILLING.dbo.EB_Product`.
+  * **Server-Side Price Validation**: `EBP_BuyItem` dynamically validates unit price x quantity against database product tables and logs positive transaction values.
+  * **2x First Top-Up Bonus**: 100% cash bonus on first purchase across 6 USD tiers ($0.99 to $99.99).
+  * **10% Starlight Cashback**: Earn 10% Starlight Tokens on all cash purchases, redeemable for endgame Lv.11 & Lv.12 Magic Amulets and prestige cosmetics.
+  * **15-Tier VIP Loyalty & Paragon Pass**: Includes 15 VIP tiers with ED multipliers, fee discounts, monthly Ice Burner stipends, and a 50-tier Paragon Battle Pass.
+* **🛡️ Identity Sync Engine**: Bridges modern user authentication (Argon2id hashing via Next.js + SQL) directly with legacy game database structures in real-time.
+* **🎮 Master Economy Balance**: Zero enhancement destruction (0% Break / 0% DownTo0 on Lv.1–12), 5x field boss drop scaling, authentic Gacha rates (0.8% SSR) + 200 Token Pity Crafting exchange, and modern Echo NPC Shop items.
 * **🔌 Dynamic Client Patching**: Custom Python algorithms to dynamically override client IP routing tables and repack `.kom` bytecode packages (`data036.kom`) on startup.
 * **💻 Electron Desktop Launcher**: A ready-to-run Windows client wrapper that applies resolutions, launches processes, and bypasses UAC flags using shims.
 * **☁️ Infrastructure as Code**: Terraform configurations to deploy the entire environment securely to Azure VMs with VNet-isolated networking.
-* **📊 Economy Rebalancer**: Scripted tooling to audit, normalize, and scale in-game currency flows, cash shop lists, and costume unlock mechanics.
 
 ---
 
@@ -49,8 +55,8 @@ flowchart TD
     end
 
     subgraph Web ["Web & Identity Layer"]
-        W[Next.js Portal / Wiki] -->|Argon2id Hash| DB_PG[(Postgres Database)]
-        W -->|Sync Credentials| DB_MS[(MSSQL Database)]
+        W[Next.js Portal / Gacha Storefront] -->|Argon2id Hash| DB_PG[(Postgres Database)]
+        W -->|Sync Credentials & Cash| DB_MS[(MSSQL Database - ES_BILLING / Game01)]
     end
 
     subgraph Server ["Server Stack (Docker / VM)"]
@@ -70,48 +76,21 @@ flowchart TD
 
 ## NPC PvP Intelligence V7
 
-JoySword now includes a runtime-grounded competitive cognition system for all
-ten Hero NPC PvP profiles. V6 supplies persistent match strategy, exchange
-plans, tactical intentions, opponent hypotheses, conditioning, combo judgment,
-adaptive defense, and character-specific playbooks. V7 verifies how those
-decisions pass through the legacy engine before allowing the bots to learn from
-their outcomes.
+JoySword includes a runtime-grounded competitive cognition system for all ten Hero NPC PvP profiles (Amelia, Apple, Balak, Edan, Lime, Low, Noa, Penensio, Q-PROTO_00, Spika). V6 supplies persistent match strategy, exchange plans, and adaptive defense, while V7 verifies how actions pass through the legacy engine.
 
-The V7 execution path separates five questions that older reactive AI commonly
-conflates:
+The V7 execution path separates decision, action request, engine start, combat result, and attributed learning:
 
 ```text
 decision -> action request -> engine start -> combat result -> attributed learning
 ```
 
 Key improvements include:
-
-* A shared 48-signal contract distinguishing direct, derived, heuristic,
-  unverified, and unavailable runtime information.
+* A shared 48-signal contract distinguishing direct, derived, heuristic, and unverified runtime information.
 * Expiring observations with source, confidence, and action attribution.
-* A bounded action lifecycle for start, contact, damage, block/armor, whiff,
-  interruption, rejection, timeout, recovery, and uncertain results.
-* Character-specific timing, range, pacing, defense, resource, and identity
-  calibration for Amelia, Apple, Balak, Edan, Lime, Low, Noa, Penensio,
-  Q-PROTO_00, and Spika.
-* Separate decision, execution, confirmation, tactical, and strategic failure
-  handling so engine rejection cannot incorrectly retrain match strategy.
-* Optional bounded telemetry, route memory, repetition analysis, occupancy
-  metrics, dormant-action coverage, and counterfactual diagnostics.
+* Bounded action lifecycles for contact, damage, block/armor, whiff, interruption, and recovery.
+* Character-specific timing, range, pacing, defense, and resource calibration across all 10 Hero NPCs.
 
-Offline validation completed 300 deterministic scenarios and 64,000 decision
-ticks across the roster. In the V7 engine approximation, all 1,237 requested
-actions reached terminal lifecycle states while telemetry remained capped at 96
-entries and route memory at 48. These results establish offline calibration
-readiness; they do not claim live collision, timing, or human-like gameplay
-validation.
-
-Read the [companion brief](docs/PVP_AI_V7_COMPANION_BRIEF.md) for the concise
-overview, the [implementation strategy](docs/PVP_AI_V7_STRATEGY.md) for rollout
-and calibration guidance, the [design philosophy](docs/PVP_AI_V7_DESIGN_PHILOSOPHY.md)
-for the fairness and intelligence principles, and the
-[technical whitepaper](docs/PVP_AI_V7_WHITEPAPER.md) for architecture and
-evidence.
+Read the [companion brief](docs/PVP_AI_V7_COMPANION_BRIEF.md) for the concise overview, [implementation strategy](docs/PVP_AI_V7_STRATEGY.md) for rollout guidance, [design philosophy](docs/PVP_AI_V7_DESIGN_PHILOSOPHY.md) for fairness principles, and [technical whitepaper](docs/PVP_AI_V7_WHITEPAPER.md) for architecture.
 
 ---
 
@@ -119,14 +98,14 @@ evidence.
 
 | Component | Path | Description |
 | :--- | :--- | :--- |
-| 🎮 **Server** | [`Elsword/`](file:///c:/Users/media/Downloads/JoySwordOffline/Elsword) | Executable files, log configurations, and database backups. |
-| 🌐 **Portal** | [`web/`](file:///c:/Users/media/Downloads/JoySwordOffline/web) | Next.js authentication portal, site files, and searchable wiki. |
+| 🎮 **Server** | [`Elsword/`](file:///c:/Users/media/Downloads/JoySwordOffline/Elsword) | Executable files, log configurations, Lua price files, and database backups. |
+| 🌐 **Portal** | [`web/`](file:///c:/Users/media/Downloads/JoySwordOffline/web) | Next.js authentication portal, Gacha Storefront, and searchable wiki. |
 | 💻 **Launcher** | [`launcher/`](file:///c:/Users/media/Downloads/JoySwordOffline/launcher) | Desktop Electron app codebase. |
 | ⚙️ **Client** | [`client/`](file:///c:/Users/media/Downloads/JoySwordOffline/client) | Windows client scripts, patches, and launchers. |
-| 🗄️ **Database** | [`database/`](file:///c:/Users/media/Downloads/JoySwordOffline/database) | MSSQL routines, cash-allowance structures, and SQL audits. |
+| 🗄️ **Database** | [`database/`](file:///c:/Users/media/Downloads/JoySwordOffline/database) | MSSQL routines, cash deduction procedures, VIP policies, and restoration SQL scripts. |
 | ☁️ **Infra** | [`infra/`](file:///c:/Users/media/Downloads/JoySwordOffline/infra) | Azure VM and network deployment scripts. |
-| 🛠️ **Scripts** | [`scripts/`](file:///c:/Users/media/Downloads/JoySwordOffline/scripts) | PowerShell & Python tasks for patches, audits, and configuration. |
-| 🧪 **Tests** | [`tests/`](file:///c:/Users/media/Downloads/JoySwordOffline/tests) | Validation checks for database connection configurations. |
+| 🛠️ **Scripts** | [`scripts/`](file:///c:/Users/media/Downloads/JoySwordOffline/scripts) | Python automation for cash shop rebalancing, database healthchecks, and billing audits. |
+| 🧪 **Tests** | [`tests/`](file:///c:/Users/media/Downloads/JoySwordOffline/tests) | Master economy unit test suite (`test-master-economy.py`). |
 
 ---
 
@@ -135,7 +114,7 @@ evidence.
 ### 📋 Prerequisites
 * **Node.js** (v18.x or v20.x recommended)
 * **Python** (v3.10+ recommended)
-* **Microsoft SQL Server** / **PostgreSQL** (for local runs)
+* **Microsoft SQL Server** / **Docker** (for local server execution)
 
 ### ⚙️ 1. Environment Configuration
 Before launching services, copy the environment templates and insert your local or staging variables:
@@ -143,14 +122,14 @@ Before launching services, copy the environment templates and insert your local 
 * **Web Settings**: Copy `web/.env.example` to `web/.env`.
 * **Server Settings**: Copy `Elsword/offline/offline.env.example` to `Elsword/offline/offline.env`.
 
-### 🌐 2. Start the Account Portal
-Spin up the Next.js frontend and registration API:
+### 🌐 2. Start the Account & Gacha Portal
+Spin up the Next.js frontend and API route handlers:
 ```bash
 cd web
 npm install
 npm run dev
 ```
-Access the portal at `http://localhost:3000`.
+Access the portal and Gacha Storefront at `http://localhost:3000`.
 
 ### 💻 3. Run the Electron Desktop Launcher
 Compile and boot the Electron wrapper client:
@@ -160,10 +139,28 @@ npm install
 npm run dev
 ```
 
-### 🎮 4. Initialize Server Executables (Windows / VM)
-Bootstrap database procedures, adjust firewall rules, and sequence server process boot orders:
+### 🎮 4. Initialize Server Stack & Economy
+Bootstrap database procedures, normalize cash shop prices, and sequence server process boot orders:
 ```powershell
+# Restore cash shop items and normalize pricing across Lua files & DB
+python scripts/rebalance-cashshop-economy.py --apply
+python scripts/restore-cashshop.py
+
+# Launch server stack
 .\Start-Server-Automatic.ps1
+```
+
+### 🧪 5. Verification & Health Audits
+Run automated test suites and billing audits to verify system integrity:
+```bash
+# Run Master Economy 30-Test Suite
+python tests/test-master-economy.py
+
+# Verify Cash Deduction & Top-Up Flow
+python scripts/verify-cash-deduction-flow.py
+
+# Run Live Database Billing Audit
+python scripts/audit-billing.py
 ```
 
 ---
@@ -193,6 +190,9 @@ Bootstrap database procedures, adjust firewall rules, and sequence server proces
 ### 🔌 Client Cannot Connect / Login Hangs
 Ensure game client sockets use **direct IPv4 only** (`52.238.194.187`). Hostnames are supported for HTTP/web APIs, but are unsupported for client game connections. Check Azure NSG rules and verify Windows Firewall is permitting inbound traffic on TCP ports `9200`, `9300`, and `9400`.
 
+### 💎 Cash Shop Buy Fails In-Game
+If item purchases fail or return an error, ensure that `rebalance-cashshop-economy.py --apply` has been executed to update `CashItemPrice.lua` in both `ServerResource` and `GameServer` directories, and that `restore-cashshop.py` has updated `ES_BILLING.dbo.EB_Product`. Run `python scripts/audit-billing.py` to confirm.
+
 ### 🗄️ Account Enters Login but Fails Channel Selection
 If user verification succeeds but entering a channel fails with a server log of `GetUID() : 0`, the account was created without its SQL provisioning tables. Use the database repair utility to resolve this:
 ```powershell
@@ -218,6 +218,5 @@ This repository stands as an automated system integration showcase for **Nous Re
 
 ---
 
-<div align="center">
-  <sub>JoySword Online is created for educational, historical, and software archival purposes.</sub>
-</div>
+## 📜 License
+JoySword Online is created for educational, historical, and software archival purposes. Distributed under the MIT License.
