@@ -113,8 +113,12 @@ def run_sql(env: dict[str, str], query: str):
             result = subprocess.run(command, capture_output=True, text=True, encoding="utf-8", errors="replace")
             
         if result.returncode != 0:
-            print(f"Error executing SQL:\nSTDOUT:\n{result.stdout}\nSTDERR:\n{result.stderr}", file=sys.stderr)
-            raise RuntimeError("SQL execution failed")
+            try:
+                run_sql_in_docker(env, query)
+                return
+            except Exception:
+                print(f"Error executing SQL:\nSTDOUT:\n{result.stdout}\nSTDERR:\n{result.stderr}", file=sys.stderr)
+                raise RuntimeError("SQL execution failed")
         print(result.stdout.strip())
     finally:
         try:
