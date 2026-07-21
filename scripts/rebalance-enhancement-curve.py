@@ -70,6 +70,9 @@ def read_text(p: Path) -> str:
 
 def apply_rebalance():
     changed = 0
+    start_marker = "-- 강화에 따른 능력치 변화"
+    end_marker = "-- 이벤트\n-- 드롭에 대한 랜덤 강화 테이블"
+
     for target in TARGETS:
         if not target.exists():
             continue
@@ -78,24 +81,28 @@ def apply_rebalance():
         # Strip previous injection block if present
         if "-- REBALANCE_ENHANCEMENT_CURVE" in text:
             text = re.sub(
-                r"\n-- REBALANCE_ENHANCEMENT_CURVE:.*?\n-- END_REBALANCE_ENHANCEMENT_CURVE\n",
+                r"\n?-- REBALANCE_ENHANCEMENT_CURVE:.*?-- END_REBALANCE_ENHANCEMENT_CURVE\n?",
                 "\n",
                 text,
                 flags=re.DOTALL
             )
             
-        # Replace legacy SetEnchantProbability lines (1..12) with zero-break version
-        pattern = r"EnchantItemManager:SetEnchantProbability\(\s*1,.*?\n\n"
-        if re.search(pattern, text, flags=re.DOTALL):
-            text = re.sub(pattern, NEW_PROB_BLOCK + "\n", text, count=1, flags=re.DOTALL)
+        if start_marker in text and end_marker in text:
+            start_idx = text.index(start_marker)
+            end_idx = text.index(end_marker, start_idx)
+            text = text[:start_idx] + start_marker + "\n" + NEW_PROB_BLOCK + "\n\n" + text[end_idx:]
         else:
-            # Append if replacement location not found
-            text = text + "\n" + NEW_PROB_BLOCK
+            pattern = r"EnchantItemManager:SetEnchantProbability\(\s*1,.*?\n\n"
+            if re.search(pattern, text, flags=re.DOTALL):
+                text = re.sub(pattern, NEW_PROB_BLOCK + "\n", text, count=1, flags=re.DOTALL)
+            else:
+                text = text + "\n\n" + NEW_PROB_BLOCK
             
         payload = b"\xef\xbb\xbf" + text.encode("utf-8")
-        target.write_bytes(payload)
-        changed += 1
-        print(f"Applied Zero-Destruction Enhancement Curve to {target.relative_to(ROOT)}")
+        if target.read_bytes() != payload:
+            target.write_bytes(payload)
+            changed += 1
+            print(f"Applied Zero-Destruction Enhancement Curve to {target.relative_to(ROOT)}")
     return changed
 
 

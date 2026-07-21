@@ -14,9 +14,10 @@ if defined JOYSWORD_PVP_PROFILE set "PVP_PROFILE=%JOYSWORD_PVP_PROFILE%"
 cd /d "%~dp0.."
 where python >nul 2>&1
 if not errorlevel 1 (
-  python scripts\apply-pvp-profile.py %PVP_PROFILE%
+  python scripts\apply-pvp-profile.py "%PVP_PROFILE%"
   if errorlevel 1 (
     echo PvP profile apply failed: %PVP_PROFILE%
+    pause
     exit /b 1
   )
 ) else (
@@ -24,4 +25,9 @@ if not errorlevel 1 (
 )
 
 cd /d "%~dp0GameServer"
+if not exist "GameServer.exe" (
+  echo ERROR: GameServer.exe was not found in %CD%.
+  pause
+  exit /b 1
+)
 start "GameServer" GameServer.exe %PROFILE% 0

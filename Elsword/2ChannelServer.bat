@@ -9,4 +9,9 @@ if exist "%~dp0offline\offline.env" (
 )
 
 cd /d "%~dp0ChannelServer"
+if not exist "ChannelServer.exe" (
+  echo ERROR: ChannelServer.exe was not found in %CD%.
+  pause
+  exit /b 1
+)
 start "ChannelServer" ChannelServer.exe %PROFILE% 0

@@ -9,4 +9,9 @@ if exist "%~dp0offline\offline.env" (
 )
 
 cd /d "%~dp0LoginServer"
+if not exist "LoginServer.exe" (
+  echo ERROR: LoginServer.exe was not found in %CD%.
+  pause
+  exit /b 1
+)
 start "LoginServer" LoginServer.exe %PROFILE% 0
