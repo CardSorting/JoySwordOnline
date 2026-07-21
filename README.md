@@ -11,7 +11,8 @@
     <img src="https://img.shields.io/badge/platform-Windows%20%7C%20Azure%20%7C%20Docker-blue?style=flat-square" alt="Platform Compatibility" />
     <img src="https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js" alt="Next.js" />
     <img src="https://img.shields.io/badge/Electron-Desktop-blue?style=flat-square&logo=electron" alt="Electron" />
-    <img src="https://img.shields.io/badge/Terraform-IaC-violet?style=flat-square&logo=terraform" alt="Terraform" />
+    <img src="https://img.shields.io/badge/Economy-Rebalanced%20100%25-success?style=flat-square" alt="Economy Rebalanced" />
+    <img src="https://img.shields.io/badge/Tests-30%2F30%20Passing-brightgreen?style=flat-square" alt="Tests Passing" />
     <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License" />
   </p>
 
@@ -19,9 +20,10 @@
     <a href="#🚀-quick-start-guide"><b>Quick Start</b></a> •
     <a href="#📐-architecture-overview"><b>Architecture</b></a> •
     <a href="#⚡-features"><b>Features</b></a> •
+    <a href="#💎-master-economy--gacha-architecture"><b>Master Economy</b></a> •
+    <a href="#🛠️-cli-utilities-reference"><b>CLI Reference</b></a> •
     <a href="#📖-documentation-index"><b>Documentation</b></a> •
-    <a href="#🩺-quick-troubleshooting"><b>Troubleshooting</b></a> •
-    <a href="#🤖-showcase-background"><b>Agentic Showcase</b></a>
+    <a href="#🩺-quick-troubleshooting"><b>Troubleshooting</b></a>
   </p>
 
   <sub>Built for developers, gaming historians, and private server administrators.</sub>
@@ -74,6 +76,47 @@ flowchart TD
 
 ---
 
+## 💎 Master Economy & Gacha Architecture
+
+JoySword features a modernized, hyper-scaled game economy designed for player retention, transparent monetization, and zero destructive RNG mechanics.
+
+```mermaid
+flowchart LR
+    subgraph Payment ["Monetization & Top-Up"]
+        T[Top-Up Tier] -->|2x First Bonus| EB_Cash[EB_Cash Balance]
+    end
+
+    subgraph Purchase ["Transaction & Validation"]
+        EB_Cash -->|EBP_BuyItem| Proc[Price Verification & Deduction]
+        Proc -->|Delivers Item| Locker[EB_BuyCashItemLocker]
+        Proc -->|Triggers Cashback| Star[10% Starlight Wallet]
+        Proc -->|Accumulates Spend| VIP[15-Tier VIP Loyalty]
+    end
+
+    subgraph Gameplay ["Progression Loops"]
+        Locker -->|Claimed In-Game| Inven[Player Inventory]
+        Inven -->|Dismantle| Salvage[Avatar Salvage Gacha Loop]
+        Star -->|Redeem| Amulet[Magic Amulet Lv.11 / 12]
+    </div>
+```
+
+### 📊 Master Economy Rebalancing Breakdown (Phases 1–10)
+
+| Phase | Feature System | Description & Configuration Details |
+| :--- | :--- | :--- |
+| **Phase 1** | **Enhancement Hardening** | **0% Break / 0% DownTo0** across Lv.1–12 in `EnchantTable.lua`. Equipment can never be destroyed or reset to 0 upon upgrade failure. |
+| **Phase 2** | **Authentic Gacha & Pity** | Rates set to 0.8% SSR / 6.0% SR / 93.2% R in `RandomItemTable.lua`. Added 200 Token Pity Exchange recipe for Magic Amulet Lv.12 in `ManufactureResultTable.lua`. |
+| **Phase 3** | **Field & Boss Scaling** | **5x Middle Boss Drop Scaling** in `FieldBonusDrop.lua` + escalated Boss ED drops in `DropTable.lua`. |
+| **Phase 4** | **Starlight & VIP Systems** | **10% Starlight Cashback** on all Cash spend + **15-Tier VIP System** providing up to +30% ED bonus, 50% fee discounts, and monthly stipends. |
+| **Phase 5** | **Paragon Battle Pass** | **50-Tier Paragon Battle Pass** granting ED, Ice Burners, and Amulets + Monthly Paragon stipend claims. |
+| **Phase 6** | **Cash & ED Allowances** | Automatic daily stipend triggers granting 12,000 Cash and scaling ED allowances upon login. |
+| **Phase 7** | **Echo Modern NPC Shop** | NPC Echo & Ariel sell modern consumables, Winback Cubes, and Magic Amulets Lv.7–12 with fair ED prices. |
+| **Phase 8** | **Salvage & Recycling Loop** | Duplicate avatar pieces salvage into Ice Burner Mileage Tokens for continuous gacha recycling. |
+| **Phase 9** | **Winback & Login Streak** | 7-Day Cumulative Login Streak rewards + instant Welcome Back package containing Magic Amulet Lv.10. |
+| **Phase 10** | **100% CashShop Coverage** | **17,042 catalog items** synchronized across `CashItemPrice.lua` and `ES_BILLING.dbo.EB_Product` with positive transaction log math. |
+
+---
+
 ## NPC PvP Intelligence V7
 
 JoySword includes a runtime-grounded competitive cognition system for all ten Hero NPC PvP profiles (Amelia, Apple, Balak, Edan, Lime, Low, Noa, Penensio, Q-PROTO_00, Spika). V6 supplies persistent match strategy, exchange plans, and adaptive defense, while V7 verifies how actions pass through the legacy engine.
@@ -91,6 +134,20 @@ Key improvements include:
 * Character-specific timing, range, pacing, defense, and resource calibration across all 10 Hero NPCs.
 
 Read the [companion brief](docs/PVP_AI_V7_COMPANION_BRIEF.md) for the concise overview, [implementation strategy](docs/PVP_AI_V7_STRATEGY.md) for rollout guidance, [design philosophy](docs/PVP_AI_V7_DESIGN_PHILOSOPHY.md) for fairness principles, and [technical whitepaper](docs/PVP_AI_V7_WHITEPAPER.md) for architecture.
+
+---
+
+## 🛠️ CLI Utilities Reference
+
+| Utility Script | Primary Purpose | Command Example |
+| :--- | :--- | :--- |
+| 💎 `rebalance-cashshop-economy.py` | Rebalance CashShop item prices into transparent tiers & inject missing catalog items. | `python scripts/rebalance-cashshop-economy.py --apply` |
+| 🗄️ `restore-cashshop.py` | Populate `ES_BILLING.dbo.EB_Product` with 17,042 restored items, package links & socket attributes. | `python scripts/restore-cashshop.py` |
+| 🧪 `test-master-economy.py` | Execute the 30-test automated verification suite for economy integrity & SQL procedures. | `python tests/test-master-economy.py` |
+| 🔍 `verify-cash-deduction-flow.py` | Run 10 billing integrity checks for cash deduction, topup multipliers & price definitions. | `python scripts/verify-cash-deduction-flow.py` |
+| 🩺 `audit-billing.py` | Perform live database healthcheck of `ES_BILLING`, user cash accounts & catalog metrics. | `python scripts/audit-billing.py` |
+| 🛠️ `repair-account-init.py` | Repair account initialization tables for users encountering `GetUID() : 0` errors. | `python scripts/repair-account-init.py` |
+| ⚙️ `configure-offline.py` | Update server configuration files and profiles for offline or local hosting. | `python scripts/configure-offline.py` |
 
 ---
 
