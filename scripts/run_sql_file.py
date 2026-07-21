@@ -49,7 +49,6 @@ def run_sql_in_docker(env: dict[str, str], query: str) -> None:
     if not docker:
         raise RuntimeError("Neither host sqlcmd nor Docker is available")
 
-    container = env.get("MSSQL_CONTAINER", "joysword-mssql")
     command_env = os.environ.copy()
     command_env["MSSQL_SA_PASSWORD"] = env["DB_PASSWORD"]
     shell = (
@@ -59,8 +58,9 @@ def run_sql_in_docker(env: dict[str, str], query: str) -> None:
         "else CMD=/opt/mssql-tools/bin/sqlcmd; TLS=; fi; "
         '"$CMD" -S localhost -U sa -P "$MSSQL_SA_PASSWORD" $TLS -b -i /dev/stdin'
     )
+    # Try docker compose exec mssql first (works across different folder/project prefixes)
     result = subprocess.run(
-        [docker, "exec", "-i", "-e", "MSSQL_SA_PASSWORD", container, "bash", "-c", shell],
+        [docker, "compose", "exec", "-i", "mssql", "bash", "-c", shell],
         cwd=str(ROOT),
         input=query,
         capture_output=True,
@@ -69,6 +69,18 @@ def run_sql_in_docker(env: dict[str, str], query: str) -> None:
         errors="replace",
         env=command_env,
     )
+    if result.returncode != 0:
+        container = env.get("MSSQL_CONTAINER", "joysword-mssql")
+        result = subprocess.run(
+            [docker, "exec", "-i", "-e", "MSSQL_SA_PASSWORD", container, "bash", "-c", shell],
+            cwd=str(ROOT),
+            input=query,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            env=command_env,
+        )
     if result.returncode != 0:
         print(f"Docker SQL error:\nSTDOUT:\n{result.stdout}\nSTDERR:\n{result.stderr}", file=sys.stderr)
         raise RuntimeError("SQL execution failed in Docker")
