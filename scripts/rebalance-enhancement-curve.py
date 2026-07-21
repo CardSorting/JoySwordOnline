@@ -57,8 +57,7 @@ EnchantItemManager:SetEnchantProbability_Event(  9, { Up1 =  15, NoChange =  55,
 EnchantItemManager:SetEnchantProbability_Event( 10, { Up1 =  10, NoChange =  60, Down1 = 30, DownTo0 = 0, Break = 0 } )
 EnchantItemManager:SetEnchantProbability_Event( 11, { Up1 =   5, NoChange =  65, Down1 = 30, DownTo0 = 0, Break = 0 } )
 EnchantItemManager:SetEnchantProbability_Event( 12, { Up1 =   2, NoChange =  68, Down1 = 30, DownTo0 = 0, Break = 0 } )
--- END_REBALANCE_ENHANCEMENT_CURVE
-"""
+-- END_REBALANCE_ENHANCEMENT_CURVE"""
 
 def read_text(p: Path) -> str:
     for enc in ("utf-8-sig", "utf-8", "cp949", "euc-kr", "latin-1"):

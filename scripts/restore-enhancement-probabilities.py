@@ -28,16 +28,12 @@ def restore() -> int:
         raise RuntimeError(f"Missing legacy enhancement archive: {ARCHIVE}")
     with zipfile.ZipFile(ARCHIVE) as archive:
         legacy = archive.read("EnchantTable.lua.bak").decode("utf-8-sig")
-    section = probability_section(legacy)
 
+    payload = b"\xef\xbb\xbf" + legacy.encode("utf-8")
     changed = 0
     for target in TARGETS:
-        current = target.read_text(encoding="utf-8-sig")
-        start = current.index(START_MARKER)
-        end = current.index(END_MARKER, start)
-        restored = current[:start] + section + current[end:]
-        payload = b"\xef\xbb\xbf" + restored.encode("utf-8")
-        if target.read_bytes() != payload:
+        if not target.exists() or target.read_bytes() != payload:
+            target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(payload)
             changed += 1
     return changed

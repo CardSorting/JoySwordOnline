@@ -7,14 +7,13 @@ EnchantItemManager:SetArmorEnchantStone( 109965 )
 EnchantItemManager:SetRareArmorEnchantStone( 109970 )
 
 -- 플루오르스톤 강화 제한
-EnchantItemManager:SetSupportMaterialLimit( 15 )
+EnchantItemManager:SetSupportMaterialLimit( 10 )
 
 -- 플루오르스톤 강화 이벤트 제한
-EnchantItemManager:SetEventSupportMaterialLimit( 20 )
+EnchantItemManager:SetEventSupportMaterialLimit( 11 )
 
 -- #ifdef SERV_ENCHANT_LIMIT 강화 레벨 제한
--- This GameServer build does not export SetEnchantLimit.  Valid target levels
--- and their complete outcome distributions are enforced by the tables below.
+--EnchantItemManager:SetEnchantLimit( 11 )
 -- #endif SERV_ENCHANT_LIMIT
 
 -- 신규 강화석 정보 세팅
@@ -308,6 +307,26 @@ EnchantItemManager:SetEnchantRate( 20,  8.75 )
 
 -- 강화 성공률 ( 강화레벨, 성공, 변화 없음, 1단계 하락, 초기화, 깨짐)
 -- 해외팀 강화 확률 수정 ( 대만 제외 )
+EnchantItemManager:SetEnchantProbability(  1, { Up1 = 100, NoChange =   0, Down1 =  0, DownTo0 =  0, Break =  0   } )
+EnchantItemManager:SetEnchantProbability(  2, { Up1 = 100, NoChange =   0, Down1 =  0, DownTo0 =  0, Break =  0   } )
+EnchantItemManager:SetEnchantProbability(  3, { Up1 =  80, NoChange =  20, Down1 =  0, DownTo0 =  0, Break =  0   } )
+EnchantItemManager:SetEnchantProbability(  4, { Up1 =  60, NoChange =  40, Down1 =  0, DownTo0 =  0, Break =  0   } )
+EnchantItemManager:SetEnchantProbability(  5, { Up1 =  20, NoChange =  50, Down1 = 30, DownTo0 =  0, Break =  0   } )
+EnchantItemManager:SetEnchantProbability(  6, { Up1 =  10, NoChange =  40, Down1 = 50, DownTo0 =  0, Break =  0   } )
+EnchantItemManager:SetEnchantProbability(  7, { Up1 =  10, NoChange =  20, Down1 = 40, DownTo0 = 20, Break = 10   } )
+EnchantItemManager:SetEnchantProbability(  8, { Up1 =   5, NoChange =  15, Down1 = 30, DownTo0 = 40, Break = 10   } )
+EnchantItemManager:SetEnchantProbability(  9, { Up1 =   2, NoChange =  10, Down1 = 28, DownTo0 = 40, Break = 20   } )
+EnchantItemManager:SetEnchantProbability( 10, { Up1 = 0.7, NoChange =   7, Down1 = 27, DownTo0 = 40, Break = 25.3   } )
+EnchantItemManager:SetEnchantProbability( 11, { Up1 = 0.6, NoChange =   7, Down1 = 27, DownTo0 = 30, Break = 35.4   } )
+EnchantItemManager:SetEnchantProbability( 12, { Up1 =   0, NoChange =   8, Down1 = 27, DownTo0 = 40, Break = 25   } )
+EnchantItemManager:SetEnchantProbability( 13, { Up1 =   0, NoChange =   4, Down1 = 27, DownTo0 = 40, Break = 29   } )
+EnchantItemManager:SetEnchantProbability( 14, { Up1 =   1, NoChange =   7, Down1 = 27, DownTo0 = 40, Break = 25   } )
+EnchantItemManager:SetEnchantProbability( 15, { Up1 = 0.5, NoChange = 5.5, Down1 = 27, DownTo0 = 40, Break = 27   } )
+EnchantItemManager:SetEnchantProbability( 16, { Up1 = 0.5, NoChange = 5.5, Down1 = 27, DownTo0 = 40, Break = 27   } )
+EnchantItemManager:SetEnchantProbability( 17, { Up1 = 0.3, NoChange =   5, Down1 = 27, DownTo0 = 40, Break = 27.7 } )
+EnchantItemManager:SetEnchantProbability( 18, { Up1 = 0.3, NoChange =   5, Down1 = 27, DownTo0 = 40, Break = 27.7 } )
+EnchantItemManager:SetEnchantProbability( 19, { Up1 = 0.1, NoChange =   4, Down1 = 27, DownTo0 = 40, Break = 28.9 } )
+EnchantItemManager:SetEnchantProbability( 20, { Up1 =   0, NoChange =   4, Down1 = 27, DownTo0 = 40, Break = 29   } )
 
 -- GameSysVal.lua 에 SetEnchantEventStartTime , SetEnchantEventEndTime 의 조건이 만족하면 해당 성공률을 참고한다.
 -- 이벤트 강화 성공률 ( 강화레벨, 성공, 변화 없음, 1단계 하락, 초기화, 깨짐)
@@ -422,41 +441,3 @@ EnchantItemManager:AddCubeRandomEnchantInfo( 7,	0.05	)
 EnchantItemManager:AddCubeRandomEnchantInfo( 8,	0.002	)
 EnchantItemManager:AddCubeRandomEnchantInfo( 9,	0.000999	)	-- 부동 소수점 오류로 인해 0.001에서 깎음
 --]]
-
-
-
-
-
-
-
-
-
-
-
--- REBALANCE_ENHANCEMENT_CURVE: Modern Gacha Standard (Zero Destruction, Zero Reset)
-EnchantItemManager:SetEnchantProbability(  1, { Up1 = 100, NoChange =   0, Down1 =  0, DownTo0 = 0, Break = 0 } )
-EnchantItemManager:SetEnchantProbability(  2, { Up1 = 100, NoChange =   0, Down1 =  0, DownTo0 = 0, Break = 0 } )
-EnchantItemManager:SetEnchantProbability(  3, { Up1 =  80, NoChange =  20, Down1 =  0, DownTo0 = 0, Break = 0 } )
-EnchantItemManager:SetEnchantProbability(  4, { Up1 =  60, NoChange =  40, Down1 =  0, DownTo0 = 0, Break = 0 } )
-EnchantItemManager:SetEnchantProbability(  5, { Up1 =  40, NoChange =  60, Down1 =  0, DownTo0 = 0, Break = 0 } )
-EnchantItemManager:SetEnchantProbability(  6, { Up1 =  30, NoChange =  70, Down1 =  0, DownTo0 = 0, Break = 0 } )
-EnchantItemManager:SetEnchantProbability(  7, { Up1 =  35, NoChange =  45, Down1 = 20, DownTo0 = 0, Break = 0 } )
-EnchantItemManager:SetEnchantProbability(  8, { Up1 =  25, NoChange =  50, Down1 = 25, DownTo0 = 0, Break = 0 } )
-EnchantItemManager:SetEnchantProbability(  9, { Up1 =  15, NoChange =  55, Down1 = 30, DownTo0 = 0, Break = 0 } )
-EnchantItemManager:SetEnchantProbability( 10, { Up1 =  10, NoChange =  60, Down1 = 30, DownTo0 = 0, Break = 0 } )
-EnchantItemManager:SetEnchantProbability( 11, { Up1 =   5, NoChange =  65, Down1 = 30, DownTo0 = 0, Break = 0 } )
-EnchantItemManager:SetEnchantProbability( 12, { Up1 =   2, NoChange =  68, Down1 = 30, DownTo0 = 0, Break = 0 } )
-
-EnchantItemManager:SetEnchantProbability_Event(  1, { Up1 = 100, NoChange =   0, Down1 =  0, DownTo0 = 0, Break = 0 } )
-EnchantItemManager:SetEnchantProbability_Event(  2, { Up1 = 100, NoChange =   0, Down1 =  0, DownTo0 = 0, Break = 0 } )
-EnchantItemManager:SetEnchantProbability_Event(  3, { Up1 =  80, NoChange =  20, Down1 =  0, DownTo0 = 0, Break = 0 } )
-EnchantItemManager:SetEnchantProbability_Event(  4, { Up1 =  60, NoChange =  40, Down1 =  0, DownTo0 = 0, Break = 0 } )
-EnchantItemManager:SetEnchantProbability_Event(  5, { Up1 =  40, NoChange =  60, Down1 =  0, DownTo0 = 0, Break = 0 } )
-EnchantItemManager:SetEnchantProbability_Event(  6, { Up1 =  30, NoChange =  70, Down1 =  0, DownTo0 = 0, Break = 0 } )
-EnchantItemManager:SetEnchantProbability_Event(  7, { Up1 =  35, NoChange =  45, Down1 = 20, DownTo0 = 0, Break = 0 } )
-EnchantItemManager:SetEnchantProbability_Event(  8, { Up1 =  25, NoChange =  50, Down1 = 25, DownTo0 = 0, Break = 0 } )
-EnchantItemManager:SetEnchantProbability_Event(  9, { Up1 =  15, NoChange =  55, Down1 = 30, DownTo0 = 0, Break = 0 } )
-EnchantItemManager:SetEnchantProbability_Event( 10, { Up1 =  10, NoChange =  60, Down1 = 30, DownTo0 = 0, Break = 0 } )
-EnchantItemManager:SetEnchantProbability_Event( 11, { Up1 =   5, NoChange =  65, Down1 = 30, DownTo0 = 0, Break = 0 } )
-EnchantItemManager:SetEnchantProbability_Event( 12, { Up1 =   2, NoChange =  68, Down1 = 30, DownTo0 = 0, Break = 0 } )
--- END_REBALANCE_ENHANCEMENT_CURVE
