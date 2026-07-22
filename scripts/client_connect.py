@@ -13,7 +13,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CLIENT_SCRIPT_DIR = ROOT / "Elsword" / "ClientScript" / "Major"
-WINDOWS_CLIENT_ARCHIVE = ROOT / "data" / "data036.kom"
+WINDOWS_CLIENT_ARCHIVE = (
+    ROOT / "client" / "data" / "data036.kom"
+    if (ROOT / "client" / "data" / "data036.kom").exists()
+    else ROOT / "data" / "data036.kom"
+)
 
 KOM_XOR_KEY = bytes.fromhex("02aaf8c6dcab4726efbb0098")
 IP_PATTERN = re.compile(

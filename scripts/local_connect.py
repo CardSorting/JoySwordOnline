@@ -19,7 +19,7 @@ import urllib.request
 import json
 
 ROOT = Path(__file__).resolve().parent.parent
-DATA = ROOT / "data"
+DATA = ROOT / "client" / "data" if (ROOT / "client" / "data").is_dir() else ROOT / "data"
 PATCH_CLIENT_KOM = ROOT / "scripts" / "patch-client-kom.py"
 
 if (ROOT.parent / "Elsword" / "offline" / "offline.env").exists():
@@ -155,6 +155,10 @@ def main() -> int:
                     loose_patched += 1
 
     archive_patched = patch_windows_client_archive(WINDOWS_CLIENT_ARCHIVE, resolved_ip)
+    client_archive = ROOT / "client" / "data" / "data036.kom"
+    if client_archive.exists() and WINDOWS_CLIENT_ARCHIVE.exists() and client_archive.resolve() != WINDOWS_CLIENT_ARCHIVE.resolve():
+        import shutil
+        shutil.copy2(WINDOWS_CLIENT_ARCHIVE, client_archive)
 
     print(f"Updated {loose_patched} loose config file(s).")
     if archive_patched > 0:

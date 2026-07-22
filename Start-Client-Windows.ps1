@@ -10,7 +10,7 @@ if (Get-Command Unblock-File -ErrorAction SilentlyContinue) {
         Unblock-File -Path $MyInvocation.MyCommand.Path -ErrorAction SilentlyContinue
     }
     # Unblock specific target folders recursively to avoid scanning massive directories like launcher/node_modules or Elsword
-    $DataDir = Join-Path $ScriptRoot "data"
+    $DataDir = if (Test-Path (Join-Path $ScriptRoot "client\data")) { Join-Path $ScriptRoot "client\data" } else { Join-Path $ScriptRoot "data" }
     if (Test-Path -LiteralPath $DataDir) {
         Get-ChildItem -Path $DataDir -Recurse -File -ErrorAction SilentlyContinue | Unblock-File -ErrorAction SilentlyContinue
     }

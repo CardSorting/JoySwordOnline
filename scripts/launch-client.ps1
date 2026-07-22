@@ -10,7 +10,7 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
-$ClientDirectory = Join-Path $RepositoryRoot "data"
+$ClientDirectory = if (Test-Path (Join-Path $RepositoryRoot "client\data")) { Join-Path $RepositoryRoot "client\data" } else { Join-Path $RepositoryRoot "data" }
 $ClientExecutable = Join-Path $ClientDirectory "x2.exe"
 $OptionsPath = Join-Path $ClientDirectory "GameOptions.lua"
 $Token = "pxk19slammsu286nfha02kpqnf729ck"

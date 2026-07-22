@@ -224,7 +224,10 @@ def parse_package_links() -> list[tuple[int, int]]:
     links: list[tuple[int, int]] = []
     seen: set[tuple[int, int]] = set()
     for package_id, component_id in PACKAGE_ITEM_PATTERN.findall(read_lua_text(PACKAGE_ITEM_FILE)):
-        link = (int(package_id), int(component_id))
+        p_id, c_id = int(package_id), int(component_id)
+        if p_id <= 0 or c_id <= 0:
+            continue
+        link = (p_id, c_id)
         if link not in seen:
             seen.add(link)
             links.append(link)
@@ -402,7 +405,7 @@ def parse_cash_prices() -> list[CashPrice]:
             if not match:
                 continue
             item_id = int(match.group(1))
-            if item_id in seen:
+            if item_id <= 0 or item_id in seen:
                 continue
             seen.add(item_id)
             prices.append(
@@ -430,7 +433,7 @@ def add_storefront_items(prices: list[CashPrice], seen: set[int]) -> None:
             if not match:
                 continue
             item_id = int(match.group(1))
-            if item_id in seen:
+            if item_id <= 0 or item_id in seen:
                 continue
             seen.add(item_id)
             prices.append(

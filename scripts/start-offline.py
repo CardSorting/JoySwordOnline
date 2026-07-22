@@ -686,8 +686,8 @@ def launch_stack(
 
     creationflags = process_creation_flags(headless)
     profile = env.get("SERVER_PROFILE", "US_SERVICE")
-    startup_timeout = env_int(env, "SERVER_STARTUP_TIMEOUT_SECONDS", 20, minimum=1)
-    readiness_timeout = env_int(env, "SERVER_READINESS_TIMEOUT_SECONDS", 12, minimum=1)
+    startup_timeout = env_int(env, "SERVER_STARTUP_TIMEOUT_SECONDS", 60, minimum=1)
+    readiness_timeout = env_int(env, "SERVER_READINESS_TIMEOUT_SECONDS", 60, minimum=1)
     mode = readiness_mode(env)
     processes: dict[str, subprocess.Popen[bytes]] = {}
     started_at = time.strftime("%Y-%m-%d %H:%M:%S")

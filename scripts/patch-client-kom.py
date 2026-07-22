@@ -13,7 +13,7 @@ import zlib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-DATA = ROOT / "data"
+DATA = ROOT / "client" / "data" if (ROOT / "client" / "data").is_dir() else ROOT / "data"
 CLIENT_DIALOG = ROOT / "Elsword" / "ClientScript" / "Dialog"
 CLIENT_MAJOR = ROOT / "Elsword" / "ClientScript" / "Major"
 
@@ -136,6 +136,10 @@ def patch_kom_set(
         for name in patched:
             print(f"patched {kom_name}: {name}")
             total += 1
+        client_data = ROOT / "client" / "data" / kom_name
+        if client_data.parent.is_dir() and kom_path.exists() and client_data.resolve() != kom_path.resolve():
+            shutil.copy2(kom_path, client_data)
+            print(f"mirrored {kom_name} to {client_data.relative_to(ROOT)}")
     if total == 0:
         print("No client KOM entries were patched.", file=sys.stderr)
         return 1

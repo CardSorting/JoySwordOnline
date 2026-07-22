@@ -1,6 +1,6 @@
 {
   "schema": "joysword.enhancement-validation-receipt/v1",
-  "validated_at": "2026-07-21T16:14:44.604470+00:00",
+  "validated_at": "2026-07-22T06:21:32.443188+00:00",
   "status": "pass",
   "canonical_source": "Elsword/ServerResource/EnchantTable.lua",
   "canonical_file_sha256": "5aed7aef491bd4ea0009f8d15236b6395aee3f096ca2e2534fca97f348904455",
@@ -8,5 +8,5 @@
   "invariant_version": 1,
   "migration_id": "legacy-curve-restoration-v1",
   "runtime_copy": "Elsword/GameServer/EnchantTable.lua",
-  "server_build_sha256": "8ed28ae11c27cc8315ee9310bef5e245126d988f30539abc9735eef986146c31"
+  "server_build_sha256": "260da7d6379c51a63bbd15b81fd6dc45cf7144d30e6e6706dbad5a04bf676caa"
 }
