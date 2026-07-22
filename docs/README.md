@@ -99,6 +99,7 @@ has not yet been validated.
 - [AZURE_DOWNLOAD_RELEASES.md](AZURE_DOWNLOAD_RELEASES.md)
 - [CASH_ALLOWANCE.md](CASH_ALLOWANCE.md)
 - [CASHSHOP_ECONOMY.md](CASHSHOP_ECONOMY.md)
-- [CASHSHOP_TROUBLESHOOTING.md](CASHSHOP_TROUBLESHOOTING.md) â€” catalog and locker failure recovery, SQL contracts, and regression checks
+- [CASHSHOP_TROUBLESHOOTING.md](CASHSHOP_TROUBLESHOOTING.md) — catalog and locker failure recovery, SQL contracts, and regression checks
+- [CUBE_INTEGRITY_AND_CRASH_PREVENTION.md](CUBE_INTEGRITY_AND_CRASH_PREVENTION.md) — cube crash-prevention invariants, data contract checks, KOM read-back verification, and shop sanitization
 - [PVP_NETCODE_AUDIT.md](PVP_NETCODE_AUDIT.md)
 - [PVP_TEST_MATRIX.md](PVP_TEST_MATRIX.md)

@@ -133,14 +133,17 @@ class EnhancementDatabaseTests(unittest.TestCase):
     def test_every_real_start_applies_migration_before_gameserver(self) -> None:
         startup = (ROOT / "scripts" / "start-offline.py").read_text(encoding="utf-8")
         validation_call = startup.index("    validate_enhancement_probabilities()")
-        migration_call = startup.index("    enforce_enhancement_integrity()", validation_call)
+        migration_call = startup.index(
+            "    enforce_enhancement_integrity(force=force_db_patch)",
+            validation_call,
+        )
         patch_call = startup.index("    apply_gameserver_patches()", migration_call)
         launch_loop = startup.index("        for spec in SERVERS:", patch_call)
         self.assertLess(validation_call, migration_call)
         self.assertLess(migration_call, patch_call)
         self.assertLess(patch_call, launch_loop)
 
-    def test_sql_runner_can_use_bundled_container_tools(self) -> None:
+    def test_sql_runner_prefers_the_compose_service(self) -> None:
         runner = load_module("run_sql_file", ROOT / "scripts" / "run_sql_file.py")
         completed = mock.Mock(returncode=0, stdout="ok\n", stderr="")
         env = {"DB_PASSWORD": "test-password", "MSSQL_CONTAINER": "test-mssql"}
@@ -150,9 +153,31 @@ class EnhancementDatabaseTests(unittest.TestCase):
             runner.run_sql_in_docker(env, "SELECT 1;")
 
         command = run.call_args.args[0]
-        self.assertEqual(command[:6], ["docker.exe", "exec", "-i", "-e", "MSSQL_SA_PASSWORD", "test-mssql"])
+        self.assertEqual(
+            command[:7],
+            ["docker.exe", "compose", "exec", "-i", "mssql", "bash", "-c"],
+        )
         self.assertEqual(run.call_args.kwargs["input"], "SELECT 1;")
         self.assertEqual(run.call_args.kwargs["env"]["MSSQL_SA_PASSWORD"], "test-password")
+
+    def test_sql_runner_falls_back_to_the_named_container(self) -> None:
+        runner = load_module("run_sql_file_fallback", ROOT / "scripts" / "run_sql_file.py")
+        compose_failed = mock.Mock(returncode=1, stdout="", stderr="missing service")
+        completed = mock.Mock(returncode=0, stdout="ok\n", stderr="")
+        env = {"DB_PASSWORD": "test-password", "MSSQL_CONTAINER": "test-mssql"}
+        with mock.patch.object(runner.shutil, "which", return_value="docker.exe"), mock.patch.object(
+            runner.subprocess, "run", side_effect=[compose_failed, completed]
+        ) as run:
+            runner.run_sql_in_docker(env, "SELECT 1;")
+
+        self.assertEqual(2, run.call_count)
+        fallback = run.call_args_list[1]
+        self.assertEqual(
+            fallback.args[0][:6],
+            ["docker.exe", "exec", "-i", "-e", "MSSQL_SA_PASSWORD", "test-mssql"],
+        )
+        self.assertEqual(fallback.kwargs["input"], "SELECT 1;")
+        self.assertEqual(fallback.kwargs["env"]["MSSQL_SA_PASSWORD"], "test-password")
 
 
 if __name__ == "__main__":

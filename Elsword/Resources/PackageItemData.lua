@@ -149,68 +149,20 @@ g_pCashItemManager:AddPackageItemData( 204840, 204600, 0, true  )
 g_pCashItemManager:AddPackageItemData( 204840, 204680, 0, true  )
 
 -- 엘소드의 할로윈 의상 패키지(빨강)
-g_pCashItemManager:AddPackageItemData( 205850, 205370, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205850, 205380, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205850, 205390, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205850, 205400, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205850, 205410, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205850, 205770, 0, true  )
 
 -- 엘소드의 할로윈 의상 패키지(청록)
-g_pCashItemManager:AddPackageItemData( 205860, 205420, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205860, 205430, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205860, 205440, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205860, 205450, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205860, 205460, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205860, 205780, 0, true  )
 
 -- 아이샤의 할로윈 의상 패키지(주황)	
-g_pCashItemManager:AddPackageItemData( 205870, 205470, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205870, 205480, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205870, 205490, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205870, 205500, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205870, 205510, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205870, 205790, 0, true  )
 
 -- 아이샤의 할로윈 의상 패키지(빨강)	
-g_pCashItemManager:AddPackageItemData( 205880, 205520, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205880, 205530, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205880, 205540, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205880, 205550, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205880, 205560, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205880, 205800, 0, true  )
 
 -- 레나의 할로윈 의상 패키지(보라)	
-g_pCashItemManager:AddPackageItemData( 205890, 205570, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205890, 205580, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205890, 205590, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205890, 205600, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205890, 205610, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205890, 205810, 0, true  )
 
 -- 레나의 할로윈 의상 패키지(분홍)
-g_pCashItemManager:AddPackageItemData( 205900, 205620, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205900, 205630, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205900, 205640, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205900, 205650, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205900, 205660, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205900, 205820, 0, true  )
 
 -- 레이븐의 할로윈 의상 패키지(파랑)
-g_pCashItemManager:AddPackageItemData( 205910, 205670, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205910, 205680, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205910, 205690, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205910, 205700, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205910, 205710, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205910, 205830, 0, true  )
 
 -- 레이븐의 할로윈 의상 패키지(빨강)	
-g_pCashItemManager:AddPackageItemData( 205920, 205720, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205920, 205730, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205920, 205740, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205920, 205750, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205920, 205760, 0, true  )
-g_pCashItemManager:AddPackageItemData( 205920, 205840, 0, true  )
 
 -- 엘소드의 크리스마스 패키지(빨강)
 g_pCashItemManager:AddPackageItemData( 206630, 206030, 0, true )
@@ -2222,63 +2174,9 @@ g_pCashItemManager:AddPackageItemData(	228350	,	228250	, 0, true )
 
 
 -- 추가
-g_pCashItemManager:AddPackageItemData(	229180	,	228460	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229180	,	228470	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229180	,	228480	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229180	,	228490	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229180	,	228500	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229180	,	228510	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229190	,	228520	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229190	,	228530	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229190	,	228540	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229190	,	228550	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229190	,	228560	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229190	,	228570	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229200	,	228580	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229200	,	228590	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229200	,	228600	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229200	,	228610	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229200	,	228620	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229200	,	228630	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229210	,	228640	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229210	,	228650	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229210	,	228660	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229210	,	228670	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229210	,	228680	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229210	,	228690	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229220	,	228700	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229220	,	228710	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229220	,	228720	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229220	,	228730	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229220	,	228740	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229220	,	228750	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229230	,	228760	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229230	,	228770	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229230	,	228780	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229230	,	228790	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229230	,	228800	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229230	,	228810	, 0, true )
 
 
 -- 추가
-g_pCashItemManager:AddPackageItemData(	229390	,	228460	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229390	,	228470	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229390	,	228480	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229390	,	228490	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229390	,	228500	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229390	,	228510	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229400	,	228580	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229400	,	228590	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229400	,	228600	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229400	,	228610	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229400	,	228620	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229400	,	228630	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229410	,	228700	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229410	,	228710	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229410	,	228720	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229410	,	228730	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229410	,	228740	, 0, true )
-g_pCashItemManager:AddPackageItemData(	229410	,	228750	, 0, true )
 
 
 -- 추가
@@ -2354,42 +2252,6 @@ g_pCashItemManager:AddPackageItemData(	230340	,	230190	, 0, true )
 g_pCashItemManager:AddPackageItemData(	230340	,	230200	, 0, true )
 g_pCashItemManager:AddPackageItemData(	230340	,	230210	, 0, true )
 g_pCashItemManager:AddPackageItemData(	230340	,	230220	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230360	,	229510	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230360	,	229520	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230360	,	229530	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230360	,	229540	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230360	,	229550	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230360	,	229560	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230390	,	229690	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230390	,	229700	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230390	,	229710	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230390	,	229720	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230390	,	229730	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230390	,	229740	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230400	,	229750	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230400	,	229760	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230400	,	229770	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230400	,	229780	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230400	,	229790	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230400	,	229800	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230410	,	229810	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230410	,	229820	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230410	,	229830	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230410	,	229840	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230410	,	229850	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230410	,	229860	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230420	,	229870	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230420	,	229880	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230420	,	229890	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230420	,	229900	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230420	,	229910	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230420	,	229920	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230430	,	229930	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230430	,	229940	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230430	,	229950	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230430	,	229960	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230430	,	229970	, 0, true )
-g_pCashItemManager:AddPackageItemData(	230430	,	229980	, 0, true )
 
 
 -- 추가
@@ -3174,6 +3036,7 @@ g_pCashItemManager:AddPackageItemData(	244190	,	244060	, 0, true )	----	청 크�
 g_pCashItemManager:AddPackageItemData(	244190	,	244070	, 0, true )	----	크리스마스 파티 산타 모자
 
 -- 추가 01/04
+g_pCashItemManager:AddPackageItemData(	244680	,	244650	, 0, true )	----	흑룡천익
 
 -- 추가 01/18
 
@@ -3741,524 +3604,19 @@ g_pCashItemManager:AddPackageItemData(	237180	,	236760	, 0, true )	--	청 홀리
 
 
 -- CUBE_MAPPING_FIX: Auto-generated precise package component mappings
-g_pCashItemManager:AddPackageItemData( 98001, 160613, 0, true ) -- Epic NPC Card Random Cube -> Epic NPC Card Random Cube
-g_pCashItemManager:AddPackageItemData( 104910, 130165, 0, true ) -- Tree of El's Magic Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 105000, 130165, 0, true ) -- Elsword's Cube 1 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 105010, 130165, 0, true ) -- Elsword's Cube 2 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 105020, 130165, 0, true ) -- Elsword's Cube 3 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 105030, 130165, 0, true ) -- Elsword's Cube 4 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 105040, 108440, 0, true ) -- Elsword's Cube 5 -> Elsword's Cube 5
-g_pCashItemManager:AddPackageItemData( 105050, 108450, 0, true ) -- Elsword's Cube 6 -> Elsword's Cube 6
-g_pCashItemManager:AddPackageItemData( 105200, 130165, 0, true ) -- Rena's Cube 1 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 105210, 130165, 0, true ) -- Rena's Cube 2 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 105220, 130165, 0, true ) -- Rena's Cube 3 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 105230, 130165, 0, true ) -- Rena's Cube 4 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 105240, 108640, 0, true ) -- Rena's Cube 5 -> Rena's Cube 5
-g_pCashItemManager:AddPackageItemData( 105250, 108650, 0, true ) -- Rena's Cube 6 -> Rena's Cube 6
-g_pCashItemManager:AddPackageItemData( 105400, 130165, 0, true ) -- Aisha's Cube 1 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 105410, 130165, 0, true ) -- Aisha's Cube 2 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 105420, 130165, 0, true ) -- Aisha's Cube 3 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 105430, 130165, 0, true ) -- Aisha's Cube 4 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 105440, 108540, 0, true ) -- Aisha's Cube 5 -> Aisha's Cube 5
-g_pCashItemManager:AddPackageItemData( 105450, 108550, 0, true ) -- Aisha's Cube 6 -> Aisha's Cube 6
-g_pCashItemManager:AddPackageItemData( 105600, 130165, 0, true ) -- Elsword's Advanced Cube 1 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 105610, 130165, 0, true ) -- Elsword's Advanced Cube 2 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 105620, 130165, 0, true ) -- Elsword's Advanced Cube 3 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 105630, 130165, 0, true ) -- Elsword's Advanced Cube 4 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 105640, 130165, 0, true ) -- Elsword's Advanced Cube 5 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 105650, 130165, 0, true ) -- Elsword's Advanced Cube 6 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 105800, 130165, 0, true ) -- Rena's Advanced Cube 1 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 105810, 130165, 0, true ) -- Rena's Advanced Cube 2 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 105820, 130165, 0, true ) -- Rena's Advanced Cube 3 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 105830, 130165, 0, true ) -- Rena's Advanced Cube 4 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 105840, 130165, 0, true ) -- Rena's Advanced Cube 5 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 105850, 130165, 0, true ) -- Rena's Advanced Cube 6 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 106000, 130165, 0, true ) -- Aisha's Advanced Cube 1 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 106010, 130165, 0, true ) -- Aisha's Advanced Cube 2 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 106020, 130165, 0, true ) -- Aisha's Advanced Cube 3 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 106030, 130165, 0, true ) -- Aisha's Advanced Cube 4 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 106040, 130165, 0, true ) -- Aisha's Advanced Cube 5 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 106050, 130165, 0, true ) -- Aisha's Advanced Cube 6 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 106060, 106061, 0, true ) -- Master's Kindness Cube -> Master's Kindness Elementary Cube
-g_pCashItemManager:AddPackageItemData( 106060, 106062, 0, true ) -- Master's Kindness Cube -> Master's Kindness Intermediate Cube
-g_pCashItemManager:AddPackageItemData( 106060, 106063, 0, true ) -- Master's Kindness Cube -> Master's Kindness Advanced Cube
-g_pCashItemManager:AddPackageItemData( 106060, 129720, 0, true ) -- Master's Kindness Cube -> Master's Kindness (Mas)
-g_pCashItemManager:AddPackageItemData( 106060, 129721, 0, true ) -- Master's Kindness Cube -> Master's Kindness (ter)
-g_pCashItemManager:AddPackageItemData( 106060, 129722, 0, true ) -- Master's Kindness Cube -> Master's Kindness ('s)
-g_pCashItemManager:AddPackageItemData( 106060, 129723, 0, true ) -- Master's Kindness Cube -> Master's Kindness (Kind)
-g_pCashItemManager:AddPackageItemData( 106060, 129724, 0, true ) -- Master's Kindness Cube -> Master's Kindness (ness)
-g_pCashItemManager:AddPackageItemData( 106061, 130165, 0, true ) -- Master's Kindness Elementary Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 106062, 130165, 0, true ) -- Master's Kindness Intermediate Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 106063, 130165, 0, true ) -- Master's Kindness Advanced Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 106064, 106065, 0, true ) -- A Cube for Adventurers' Group -> A Cube for Adventurers' Group
-g_pCashItemManager:AddPackageItemData( 106065, 106064, 0, true ) -- A Cube for Adventurers' Group -> A Cube for Adventurers' Group
-g_pCashItemManager:AddPackageItemData( 108000, 130165, 0, true ) -- Tree of El's Secret Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108010, 130165, 0, true ) -- Cube from Dark Forest -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108020, 130165, 0, true ) -- Cube from Banthus Cave -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108030, 130165, 0, true ) -- Cube from Banthus' Gang -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108040, 130165, 0, true ) -- Cube from Underground Waterway Search Party -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108050, 130165, 0, true ) -- Cube from Phoru the Thief -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108060, 130165, 0, true ) -- Cube from Guards at the Wally Castle -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108070, 130165, 0, true ) -- Cube from Dragon Lord -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108080, 130165, 0, true ) -- Cube from the Bethma Lake -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108090, 130165, 0, true ) -- Cube from the Bethma Gorge -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108100, 130165, 0, true ) -- Cube from Dragon Nest -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108200, 130165, 0, true ) -- Cube from Richie Mine -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108210, 130165, 0, true ) -- Raven's Cube 1 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108220, 130165, 0, true ) -- Raven's Cube 2 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108230, 130165, 0, true ) -- Raven's Cube 3 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108240, 130165, 0, true ) -- Raven's Cube 4 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108250, 108740, 0, true ) -- Raven's Cube 5 -> Raven's Cube 5
-g_pCashItemManager:AddPackageItemData( 108260, 108750, 0, true ) -- Raven's Cube 6 -> Raven's Cube 6
-g_pCashItemManager:AddPackageItemData( 108270, 130165, 0, true ) -- Raven's Advanced Cube 1 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108280, 130165, 0, true ) -- Raven's Advanced Cube 2 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108290, 130165, 0, true ) -- Raven's Advanced Cube 3 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108300, 130165, 0, true ) -- Raven's Advanced Cube 4 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108310, 130165, 0, true ) -- Raven's Advanced Cube 5 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108320, 130165, 0, true ) -- Raven's Advanced Cube 6 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108400, 130165, 0, true ) -- A Shabby Equipment Cube (Elsword) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108410, 130165, 0, true ) -- An Ordinary Equipment Cube (Elsword) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108420, 130165, 0, true ) -- An Advanced Equipment Cube (Elsword) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108430, 130165, 0, true ) -- A Colorful Equipment Cube (Elsword) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108440, 105040, 0, true ) -- Elsword's Cube 5 -> Elsword's Cube 5
-g_pCashItemManager:AddPackageItemData( 108450, 105050, 0, true ) -- Elsword's Cube 6 -> Elsword's Cube 6
-g_pCashItemManager:AddPackageItemData( 108460, 130165, 0, true ) -- Elsword's Cube 7 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108470, 130165, 0, true ) -- Elsword's Cube 8 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108480, 130165, 0, true ) -- Elsword's Cube 9 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108490, 130165, 0, true ) -- Elsword's Cube 10 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108500, 130165, 0, true ) -- A Shabby Equipment Cube (Aisha) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108510, 130165, 0, true ) -- An Ordinary Equipment Cube (Aisha) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108520, 130165, 0, true ) -- An Advanced Equipment Cube (Aisha) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108530, 130165, 0, true ) -- A Colorful Equipment Cube (Aisha) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108540, 105440, 0, true ) -- Aisha's Cube 5 -> Aisha's Cube 5
-g_pCashItemManager:AddPackageItemData( 108550, 105450, 0, true ) -- Aisha's Cube 6 -> Aisha's Cube 6
-g_pCashItemManager:AddPackageItemData( 108560, 130165, 0, true ) -- Aisha's Cube 7 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108570, 130165, 0, true ) -- Aisha's Cube 8 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108580, 130165, 0, true ) -- Aisha's Cube 9 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108590, 130165, 0, true ) -- Aisha's Cube 10 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108600, 130165, 0, true ) -- A Shabby Equipment Cube (Rena) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108610, 130165, 0, true ) -- An Ordinary Equipment Cube (Rena) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108620, 130165, 0, true ) -- An Advanced Equipment Cube (Rena) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108630, 130165, 0, true ) -- A Colorful Equipment Cube (Rena) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108640, 105240, 0, true ) -- Rena's Cube 5 -> Rena's Cube 5
-g_pCashItemManager:AddPackageItemData( 108650, 105250, 0, true ) -- Rena's Cube 6 -> Rena's Cube 6
-g_pCashItemManager:AddPackageItemData( 108660, 130165, 0, true ) -- Rena's Cube 7 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108670, 130165, 0, true ) -- Rena's Cube 8 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108680, 130165, 0, true ) -- Rena's Cube 9 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108690, 130165, 0, true ) -- Rena's Cube 10 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108700, 130165, 0, true ) -- A Shabby Equipment Cube (Raven) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108710, 130165, 0, true ) -- An Ordinary Equipment Cube (Raven) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108720, 130165, 0, true ) -- An Advanced Equipment Cube (Raven) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108730, 130165, 0, true ) -- A Colorful Equipment Cube (Raven) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108740, 108250, 0, true ) -- Raven's Cube 5 -> Raven's Cube 5
-g_pCashItemManager:AddPackageItemData( 108750, 108260, 0, true ) -- Raven's Cube 6 -> Raven's Cube 6
-g_pCashItemManager:AddPackageItemData( 108760, 130165, 0, true ) -- Raven's Cube 7 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108770, 130165, 0, true ) -- Raven's Cube 8 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108780, 130165, 0, true ) -- Raven's Cube 9 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108790, 130165, 0, true ) -- Raven's Cube 10 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108800, 130165, 0, true ) -- A Shabby Equipment Cube (Eve) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108810, 130165, 0, true ) -- An Ordinary Equipment Cube (Eve) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108820, 130165, 0, true ) -- An Advanced Equipment Cube (Eve) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108830, 130165, 0, true ) -- A Colorful Equipment Cube (Eve) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108840, 130165, 0, true ) -- Eve's Cube 5 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108850, 130165, 0, true ) -- Eve's Cube 6 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108860, 130165, 0, true ) -- Eve's Cube 7 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108870, 130165, 0, true ) -- Eve's Cube 8 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108880, 130165, 0, true ) -- Eve's Cube 9 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 108890, 130165, 0, true ) -- Eve's Cube 10 -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 109895, 130165, 0, true ) -- A Jewel to dismantle the Knight's Job Change Costume Cube -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 109896, 130165, 0, true ) -- A Jewel to dismantle the Ranger's Job Change Costume Cube -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 109897, 130165, 0, true ) -- A Jewel to dismantle the Magician's Job Change Costume Cube -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 109898, 130165, 0, true ) -- A Jewel to dismantle the Raven's Promotion Costume Cube -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 109900, 130165, 0, true ) -- Cube Opener -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 109901, 130165, 0, true ) -- Advanced Cube Opener -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 110831, 130165, 0, true ) -- Cobo's Special Weapon Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 110850, 130165, 0, true ) -- The Second Job Change Promotion Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 111064, 130165, 0, true ) -- Old Wooden Box -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 111065, 130165, 0, true ) -- Discolored Copper Box -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 111066, 130165, 0, true ) -- Durable Steel Box -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 111067, 130165, 0, true ) -- Shining Silver Box -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 111068, 130165, 0, true ) -- Lavish Gold Box -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 111069, 130165, 0, true ) -- Gorgeous Jeweled Box -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 111073, 130165, 0, true ) -- Ancient Wooden Box -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 111074, 130165, 0, true ) -- Ancient Copper Box -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 111075, 130165, 0, true ) -- Ancient Steel Box -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 111076, 130165, 0, true ) -- Ancient Silver Box -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 111087, 130165, 0, true ) -- Resurrection Stone (3 ea.) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 111610, 130165, 0, true ) -- Ancient Golden Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 128077, 130165, 0, true ) -- Cube for Raven's Promotion Costumes -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 129020, 81925, 0, true ) -- El's Cube -> Archangel's Spear (Ara)
-g_pCashItemManager:AddPackageItemData( 129020, 81926, 0, true ) -- El's Cube -> Archangel's Top Piece (Ara)
-g_pCashItemManager:AddPackageItemData( 129020, 81927, 0, true ) -- El's Cube -> Archangel's Bottom Piece (Ara)
-g_pCashItemManager:AddPackageItemData( 129020, 81928, 0, true ) -- El's Cube -> Archangel's Gloves (Ara)
-g_pCashItemManager:AddPackageItemData( 129020, 81929, 0, true ) -- El's Cube -> Archangel's Shoes (Ara)
-g_pCashItemManager:AddPackageItemData( 129020, 81930, 0, true ) -- El's Cube -> Archangel's Hair (Ara)
-g_pCashItemManager:AddPackageItemData( 129020, 81931, 0, true ) -- El's Cube -> Archangel's Crown (Ara)
-g_pCashItemManager:AddPackageItemData( 129020, 81932, 0, true ) -- El's Cube -> Archangel's Wing (Ara)
-g_pCashItemManager:AddPackageItemData( 129070, 130820, 0, true ) -- Resurrection Stone Cube -> 10 Resurrection Stones Cube
-g_pCashItemManager:AddPackageItemData( 129070, 131858, 0, true ) -- Resurrection Stone Cube -> Resurrection Stone Cube (110)
-g_pCashItemManager:AddPackageItemData( 129070, 132885, 0, true ) -- Resurrection Stone Cube -> Resurrection Stone (50ea) Cube
-g_pCashItemManager:AddPackageItemData( 129230, 129080, 0, true ) -- Class Vice-president's Cube -> Class Vice-president's Armband
-g_pCashItemManager:AddPackageItemData( 129240, 129090, 0, true ) -- Class President's Cube -> Class President's Armband
-g_pCashItemManager:AddPackageItemData( 129250, 129100, 0, true ) -- Chairperson's Cube -> Chairperson's Armband
-g_pCashItemManager:AddPackageItemData( 129260, 130165, 0, true ) -- Cube for the Knight's Job Change Costumes -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 129261, 130165, 0, true ) -- Cube for the Ranger's Job Change Costumes -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 129262, 130165, 0, true ) -- Cube for the Magician's Job Change Costumes -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 129270, 130165, 0, true ) -- Cube for Beginners' Equipments -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 129280, 130165, 0, true ) -- Cube for One Comic Book -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 129590, 130165, 0, true ) -- Black Day Cube (Elsword) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 129592, 130165, 0, true ) -- Black Day Cube (Rena) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 129594, 130165, 0, true ) -- Black Day Cube (Aisha) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 129600, 130165, 0, true ) -- Black Day Bridge Cube (Elsword) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 129610, 130165, 0, true ) -- Black Day Bridge Cube (Rena) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 129620, 130165, 0, true ) -- Black Day Bridge Cube (Aisha) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 129680, 129712, 0, true ) -- Land Rova Cube -> Rena's Land Rova Shoes
-g_pCashItemManager:AddPackageItemData( 129680, 129710, 0, true ) -- Land Rova Cube -> Elsword's Land Rova Shoes
-g_pCashItemManager:AddPackageItemData( 129680, 129711, 0, true ) -- Land Rova Cube -> Aisha's Land Rova Shoes
-g_pCashItemManager:AddPackageItemData( 129690, 129713, 0, true ) -- Spris Cube -> Elsword's Spris Shoes
-g_pCashItemManager:AddPackageItemData( 129690, 129714, 0, true ) -- Spris Cube -> Aisha's Spris Shoes
-g_pCashItemManager:AddPackageItemData( 129690, 129715, 0, true ) -- Spris Cube -> Rena's Spris Shoes
-g_pCashItemManager:AddPackageItemData( 129700, 129716, 0, true ) -- Lesmore Cube -> Elsword's Lesmore Shoes
-g_pCashItemManager:AddPackageItemData( 129700, 129717, 0, true ) -- Lesmore Cube -> Aisha's Lesmore Shoes
-g_pCashItemManager:AddPackageItemData( 129700, 129718, 0, true ) -- Lesmore Cube -> Rena's Lesmore Shoes
-g_pCashItemManager:AddPackageItemData( 129727, 130165, 0, true ) -- A Cube for the Event for the Masters' Day -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 129728, 130165, 0, true ) -- A Cube Celebrating the Conversion to an Experience ID -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 129729, 130165, 0, true ) -- An Everyday Secret Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 129755, 130165, 0, true ) -- Combat Ration Cubes -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 129790, 130165, 0, true ) -- Cube of a Promotion Weapon -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 129885, 130029, 0, true ) -- Entrance and Exit Random Cube -> Entrance and Exit Random Cube
-g_pCashItemManager:AddPackageItemData( 129890, 130165, 0, true ) -- Weapon Random Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 129895, 130165, 0, true ) -- Random Recovery Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 129900, 160021, 0, true ) -- Magic Stone Random Cube -> Harmony Festival Magic Stone Random Cube
-g_pCashItemManager:AddPackageItemData( 129900, 130076, 0, true ) -- Magic Stone Random Cube -> Magic Stone Random Cube
-g_pCashItemManager:AddPackageItemData( 129900, 135342, 0, true ) -- Magic Stone Random Cube -> Dual Magic Stone Random Cube
-g_pCashItemManager:AddPackageItemData( 129900, 135345, 0, true ) -- Magic Stone Random Cube -> High-Grade Magic Stone Random Cube
-g_pCashItemManager:AddPackageItemData( 129905, 160022, 0, true ) -- Enhancement Stone Random Cube -> Harmony Festival Enhancement Stone Random Cube
-g_pCashItemManager:AddPackageItemData( 129906, 130165, 0, true ) -- Random Cube for 3 Letters of ACT -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 129950, 130360, 0, true ) -- Cube of Promotion Weapon -> Cube of Promotion Weapon
-g_pCashItemManager:AddPackageItemData( 129972, 130165, 0, true ) -- Cube for the Taker's Job Change Costumes -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 129973, 130165, 0, true ) -- Jewel to dismantle a Cube for the Taker's Job Change Costumes -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 129974, 130165, 0, true ) -- Cube Celebrating the Entry into the Arcade Mode Ranking -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 129975, 130165, 0, true ) -- Cube of Gold Phoru -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130001, 130002, 0, true ) -- Gold Medal Cube -> Gold Medal
-g_pCashItemManager:AddPackageItemData( 130001, 129990, 0, true ) -- Gold Medal Cube -> Gold Medal
-g_pCashItemManager:AddPackageItemData( 130004, 130165, 0, true ) -- A Cube for a New Semester -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130029, 129885, 0, true ) -- Entrance and Exit Random Cube -> Entrance and Exit Random Cube
-g_pCashItemManager:AddPackageItemData( 130042, 130165, 0, true ) -- A Cube of the Full Moon -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130067, 130068, 0, true ) -- Halloween Carnival Cube -> Colorful Halloween Carnival Cube
-g_pCashItemManager:AddPackageItemData( 130068, 130165, 0, true ) -- Colorful Halloween Carnival Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130076, 160021, 0, true ) -- Magic Stone Random Cube -> Harmony Festival Magic Stone Random Cube
-g_pCashItemManager:AddPackageItemData( 130076, 135342, 0, true ) -- Magic Stone Random Cube -> Dual Magic Stone Random Cube
-g_pCashItemManager:AddPackageItemData( 130076, 135345, 0, true ) -- Magic Stone Random Cube -> High-Grade Magic Stone Random Cube
-g_pCashItemManager:AddPackageItemData( 130117, 130355, 0, true ) -- Promotion Equipment Cube -> Jewel to dismantle Cube of Eve's Job Change Promotion Equipment
-g_pCashItemManager:AddPackageItemData( 130117, 130133, 0, true ) -- Promotion Equipment Cube -> Eve's Promotion Equipment Cube
-g_pCashItemManager:AddPackageItemData( 130117, 130350, 0, true ) -- Promotion Equipment Cube -> Eve's Job Change Promotion Equipment Cube
-g_pCashItemManager:AddPackageItemData( 130130, 130118, 0, true ) -- Alphabet Cube -> Alphabet 'E'
-g_pCashItemManager:AddPackageItemData( 130130, 130119, 0, true ) -- Alphabet Cube -> Alphabet 'L'
-g_pCashItemManager:AddPackageItemData( 130130, 130120, 0, true ) -- Alphabet Cube -> Alphabet 'S'
-g_pCashItemManager:AddPackageItemData( 130130, 130121, 0, true ) -- Alphabet Cube -> Alphabet 'W'
-g_pCashItemManager:AddPackageItemData( 130130, 130122, 0, true ) -- Alphabet Cube -> Alphabet 'O'
-g_pCashItemManager:AddPackageItemData( 130130, 130123, 0, true ) -- Alphabet Cube -> Alphabet 'R'
-g_pCashItemManager:AddPackageItemData( 130130, 130124, 0, true ) -- Alphabet Cube -> Alphabet 'D'
-g_pCashItemManager:AddPackageItemData( 130130, 130125, 0, true ) -- Alphabet Cube -> Alphabet 'N'
-g_pCashItemManager:AddPackageItemData( 130133, 130165, 0, true ) -- Eve's Promotion Equipment Cube -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 130141, 130165, 0, true ) -- A Jewel to dismantle an Eve's Promotion Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130160, 131262, 0, true ) -- Elder Boss Cube -> Velder Boss Cube
-g_pCashItemManager:AddPackageItemData( 130167, 215680, 0, true ) -- Cube of 80 Complete Recovery Potions -> Mana Elixir
-g_pCashItemManager:AddPackageItemData( 130168, 130165, 0, true ) -- A Cube of 40 Blessed Weapon Enhancement Stones -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130169, 130165, 0, true ) -- Cube of 80 Armor Enhancement Stones -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130170, 72510, 0, true ) -- Cube of 80 Magic Stones -> Additional Damage Magic Stone
-g_pCashItemManager:AddPackageItemData( 130171, 72510, 0, true ) -- A Cube of 40 Advanced Magic Stones -> Additional Damage Magic Stone
-g_pCashItemManager:AddPackageItemData( 130172, 130165, 0, true ) -- Cube of 20 El Shards(Mystery) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130173, 130165, 0, true ) -- Cube of 20 El Shards(Fire) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130174, 130165, 0, true ) -- Cube of 20 El Shards(Water) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130175, 130165, 0, true ) -- Cube of 20 El Shards(Wind) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130176, 130165, 0, true ) -- Cube of 20 El Shards(Nature) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130177, 130165, 0, true ) -- Cube of 20 El Shards(Dark) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130178, 130165, 0, true ) -- Cube of 20 El Shards(Light) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130210, 130636, 0, true ) -- Elrios Thanks Cube -> Elrios Thanks Cube
-g_pCashItemManager:AddPackageItemData( 130220, 131199, 0, true ) -- A Cube of Celebration of Return to Elrios Continent -> A Cube of Celebration of Return to Elrios Continent
-g_pCashItemManager:AddPackageItemData( 130270, 130165, 0, true ) -- A Cube of Archangel's Hair (for 15 days) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130350, 130165, 0, true ) -- Eve's Job Change Promotion Equipment Cube -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 130355, 130165, 0, true ) -- Jewel to dismantle Cube of Eve's Job Change Promotion Equipment -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130360, 129950, 0, true ) -- Cube of Promotion Weapon -> Cube of Promotion Weapon
-g_pCashItemManager:AddPackageItemData( 130361, 130165, 0, true ) -- Cube of Promotion Top Piece -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130362, 130165, 0, true ) -- Cube of Promotion Bottom Piece -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130363, 130165, 0, true ) -- Cube of Promotion Gloves -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130364, 130165, 0, true ) -- Cube of Promotion Shoes -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130464, 130165, 0, true ) -- Random Cube for El Shard -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130469, 130165, 0, true ) -- A Cube of the El Search Party -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130479, 130471, 0, true ) -- Balloon Cube -> Balloon 'A'
-g_pCashItemManager:AddPackageItemData( 130479, 130472, 0, true ) -- Balloon Cube -> Balloon 'ri'
-g_pCashItemManager:AddPackageItemData( 130479, 130473, 0, true ) -- Balloon Cube -> Balloon 'el'
-g_pCashItemManager:AddPackageItemData( 130479, 130474, 0, true ) -- Balloon Cube -> Balloon 'Ca'
-g_pCashItemManager:AddPackageItemData( 130479, 130475, 0, true ) -- Balloon Cube -> Balloon 'mil'
-g_pCashItemManager:AddPackageItemData( 130479, 130476, 0, true ) -- Balloon Cube -> Balloon 'la'
-g_pCashItemManager:AddPackageItemData( 130479, 130477, 0, true ) -- Balloon Cube -> Balloon 'Hel'
-g_pCashItemManager:AddPackageItemData( 130479, 130478, 0, true ) -- Balloon Cube -> Balloon 'len'
-g_pCashItemManager:AddPackageItemData( 130508, 130165, 0, true ) -- COBO's Adventure Package -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130520, 130165, 0, true ) -- A Cube of April Fools' Day -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130530, 130165, 0, true ) -- Cube with a medal of 100% of experience points -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130601, 130165, 0, true ) -- Archangel's Set Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130602, 130165, 0, true ) -- Cube of Hair of an El Search Party Officer -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130604, 130165, 0, true ) -- Cube of Arbor Day's Weapon -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130605, 129950, 0, true ) -- Cube of Promotion Weapon -> Cube of Promotion Weapon
-g_pCashItemManager:AddPackageItemData( 130609, 130165, 0, true ) -- Cube celebrating the 500th day -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130632, 130165, 0, true ) -- A Cube of Words -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130634, 130165, 0, true ) -- Cube of Celebration of Return to Elrios Continent -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130635, 130165, 0, true ) -- Cube of Welcoming to Elrios -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130636, 130210, 0, true ) -- Elrios Thanks Cube -> Elrios Thanks Cube
-g_pCashItemManager:AddPackageItemData( 130637, 130165, 0, true ) -- Elrios Gift Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130769, 130165, 0, true ) -- Cube of a Very Hasty Promotion Weapon -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130770, 130165, 0, true ) -- Cube of a Swift Promotion Weapon -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130771, 130165, 0, true ) -- Cube of a Poweful Promotion Weapon -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130801, 130598, 0, true ) -- Letter Cube -> William's Invitation Letter
-g_pCashItemManager:AddPackageItemData( 130801, 92205, 0, true ) -- Letter Cube -> Helputt's Letter
-g_pCashItemManager:AddPackageItemData( 130801, 99380, 0, true ) -- Letter Cube -> Luriel's Letter for Credit Guarantee
-g_pCashItemManager:AddPackageItemData( 130801, 130614, 0, true ) -- Letter Cube -> Letters 'KI'
-g_pCashItemManager:AddPackageItemData( 130801, 130615, 0, true ) -- Letter Cube -> Letter 'C'
-g_pCashItemManager:AddPackageItemData( 130801, 130616, 0, true ) -- Letter Cube -> Letter 'K'
-g_pCashItemManager:AddPackageItemData( 130801, 130617, 0, true ) -- Letter Cube -> Letters 'MA'
-g_pCashItemManager:AddPackageItemData( 130801, 130618, 0, true ) -- Letter Cube -> Letters 'NA'
-g_pCashItemManager:AddPackageItemData( 130820, 130165, 0, true ) -- 10 Resurrection Stones Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130821, 132110, 0, true ) -- Magic Stone Cube -> Magic Stone of Harmony
-g_pCashItemManager:AddPackageItemData( 130821, 132111, 0, true ) -- Magic Stone Cube -> Magic Stone of Mystery
-g_pCashItemManager:AddPackageItemData( 130821, 132112, 0, true ) -- Magic Stone Cube -> Magic Stone of Brilliance
-g_pCashItemManager:AddPackageItemData( 130821, 132113, 0, true ) -- Magic Stone Cube -> Magic Stone of Battle
-g_pCashItemManager:AddPackageItemData( 130821, 132114, 0, true ) -- Magic Stone Cube -> Magic Stone of Reinforce
-g_pCashItemManager:AddPackageItemData( 130821, 132115, 0, true ) -- Magic Stone Cube -> Magic Stone of Bull's Eye
-g_pCashItemManager:AddPackageItemData( 130821, 135184, 0, true ) -- Magic Stone Cube -> Sage's Magic Stone
-g_pCashItemManager:AddPackageItemData( 130821, 130076, 0, true ) -- Magic Stone Cube -> Magic Stone Random Cube
-g_pCashItemManager:AddPackageItemData( 130822, 132097, 0, true ) -- Fluorite Ore Cube -> Cobo Special Gift Box [Lv. 1 Fluorite Ore]
-g_pCashItemManager:AddPackageItemData( 130822, 132098, 0, true ) -- Fluorite Ore Cube -> Cobo Special Gift Box [Lv. 2 Fluorite Ore]
-g_pCashItemManager:AddPackageItemData( 130822, 132099, 0, true ) -- Fluorite Ore Cube -> Cobo Special Gift Box [Lv. 3 Fluorite Ore]
-g_pCashItemManager:AddPackageItemData( 130822, 132100, 0, true ) -- Fluorite Ore Cube -> Cobo Special Gift Box [Lv. 4 Fluorite Ore]
-g_pCashItemManager:AddPackageItemData( 130822, 132481, 0, true ) -- Fluorite Ore Cube -> Random Fluorite Ore Cube
-g_pCashItemManager:AddPackageItemData( 130822, 131846, 0, true ) -- Fluorite Ore Cube -> Broken Pieces of Fluorite Ores
-g_pCashItemManager:AddPackageItemData( 130822, 206850, 0, true ) -- Fluorite Ore Cube -> Fluorite Ore Package Lv.2
-g_pCashItemManager:AddPackageItemData( 130823, 109960, 0, true ) -- Enhancement Stone Cube -> Ancient Weapon Enhancement Stone (Event)
-g_pCashItemManager:AddPackageItemData( 130823, 109965, 0, true ) -- Enhancement Stone Cube -> Blessed Armor Enhancement Stone
-g_pCashItemManager:AddPackageItemData( 130823, 109970, 0, true ) -- Enhancement Stone Cube -> Ancient Armor Enhancement Stone (Event)
-g_pCashItemManager:AddPackageItemData( 130823, 160022, 0, true ) -- Enhancement Stone Cube -> Harmony Festival Enhancement Stone Random Cube
-g_pCashItemManager:AddPackageItemData( 130825, 130165, 0, true ) -- EXP Boost Medal Cube (1 Day) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130827, 130165, 0, true ) -- A cube celebrating the conquer of Feita 1 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130828, 130165, 0, true ) -- A cube celebrating the conquer of Feita 2 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130842, 130598, 0, true ) -- Letter Cube -> William's Invitation Letter
-g_pCashItemManager:AddPackageItemData( 130842, 92205, 0, true ) -- Letter Cube -> Helputt's Letter
-g_pCashItemManager:AddPackageItemData( 130842, 99380, 0, true ) -- Letter Cube -> Luriel's Letter for Credit Guarantee
-g_pCashItemManager:AddPackageItemData( 130842, 130614, 0, true ) -- Letter Cube -> Letters 'KI'
-g_pCashItemManager:AddPackageItemData( 130842, 130615, 0, true ) -- Letter Cube -> Letter 'C'
-g_pCashItemManager:AddPackageItemData( 130842, 130616, 0, true ) -- Letter Cube -> Letter 'K'
-g_pCashItemManager:AddPackageItemData( 130842, 130617, 0, true ) -- Letter Cube -> Letters 'MA'
-g_pCashItemManager:AddPackageItemData( 130842, 130618, 0, true ) -- Letter Cube -> Letters 'NA'
-g_pCashItemManager:AddPackageItemData( 130845, 130165, 0, true ) -- A Cube of a Hero's Weapon -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 130931, 130165, 0, true ) -- Jewel to dismantle the Cube of Necessary Items for a Match -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130937, 130165, 0, true ) -- Cube for the Last Gift in Act2 Supplementary Version -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130963, 130165, 0, true ) -- A Cube of Special Gifts for a New Semester -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130964, 130165, 0, true ) -- A Special Gift Cube for a New Semester -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130982, 130165, 0, true ) -- Accessories Cube (Face: for 3 days) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130983, 130165, 0, true ) -- Accessories Cube (Top Piece: for 3 days) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130984, 130165, 0, true ) -- Accessories Cube (Bottom Piece: for 3 days) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130991, 130165, 0, true ) -- A Cube of Very Hasty Promotion Weapon (for 2 days) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130992, 130165, 0, true ) -- A Cube of the Swift Promotion Weapon (for 2 days) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130993, 130165, 0, true ) -- A Cube of the Poweful Promotion Weapon (for 2 days) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130994, 130165, 0, true ) -- Accessories Cube (A Ticket for One) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130995, 130165, 0, true ) -- Accessories Cube (for 30 days) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 130996, 131408, 0, true ) -- Accessories Cube (for 15 days) -> Cube of Weapon Accessories (for 15 days)
-g_pCashItemManager:AddPackageItemData( 130997, 130990, 0, true ) -- Fashion Show Cube -> A Fashion Show Ticket
-g_pCashItemManager:AddPackageItemData( 131007, 130165, 0, true ) -- Summer Casual Package Costume -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131008, 130165, 0, true ) -- Popular Accessories Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131009, 130165, 0, true ) -- A Cube of Accessories with Special Abilities -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131048, 130165, 0, true ) -- Gift for the Thanksgiving Day: Cube of Weapon -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131049, 130165, 0, true ) -- Gift for the Thanksgiving Day: Cube of Top Piece -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131050, 130165, 0, true ) -- Gift for the Thanksgiving Day: Cube of Bottom Piece -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131051, 130165, 0, true ) -- Gift for the Thanksgiving Day: Cube of Gloves -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131052, 130165, 0, true ) -- Gift for the Thanksgiving Day: Cube of Shoes -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131053, 130165, 0, true ) -- Gift for the Thanksgiving Day: Cube of Hair -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131056, 132097, 0, true ) -- Fluorite Ore Cube -> Cobo Special Gift Box [Lv. 1 Fluorite Ore]
-g_pCashItemManager:AddPackageItemData( 131056, 132098, 0, true ) -- Fluorite Ore Cube -> Cobo Special Gift Box [Lv. 2 Fluorite Ore]
-g_pCashItemManager:AddPackageItemData( 131056, 132099, 0, true ) -- Fluorite Ore Cube -> Cobo Special Gift Box [Lv. 3 Fluorite Ore]
-g_pCashItemManager:AddPackageItemData( 131056, 132100, 0, true ) -- Fluorite Ore Cube -> Cobo Special Gift Box [Lv. 4 Fluorite Ore]
-g_pCashItemManager:AddPackageItemData( 131056, 132481, 0, true ) -- Fluorite Ore Cube -> Random Fluorite Ore Cube
-g_pCashItemManager:AddPackageItemData( 131056, 130822, 0, true ) -- Fluorite Ore Cube -> Fluorite Ore Cube
-g_pCashItemManager:AddPackageItemData( 131056, 131846, 0, true ) -- Fluorite Ore Cube -> Broken Pieces of Fluorite Ores
-g_pCashItemManager:AddPackageItemData( 131057, 130165, 0, true ) -- Upgraded Costume Weapon Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131132, 130165, 0, true ) -- Magic Cube (Enhancement Stone) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131133, 130165, 0, true ) -- Magic Cube (Costume) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131158, 130165, 0, true ) -- Bonus Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131199, 130220, 0, true ) -- A Cube of Celebration of Return to Elrios Continent -> A Cube of Celebration of Return to Elrios Continent
-g_pCashItemManager:AddPackageItemData( 131200, 130165, 0, true ) -- A Cube for New travelers -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131219, 131428, 0, true ) -- Cube with a Day's Ticket for Accessories -> Cube with a Day's Ticket for Accessories
-g_pCashItemManager:AddPackageItemData( 131220, 130165, 0, true ) -- Cube with a Day's Ticket for Costume Full Set -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131221, 131357, 0, true ) -- Cube with a 30 Days' Ticket for Accessories -> Cube with a 30 Days' Ticket for Accessories
-g_pCashItemManager:AddPackageItemData( 131222, 130165, 0, true ) -- Cube with a 30 Days' Ticket for Costume Full Set -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131223, 131358, 0, true ) -- Cube for a Ticket for an Accessory -> Cube for a Ticket for an Accessory
-g_pCashItemManager:AddPackageItemData( 131261, 130165, 0, true ) -- A Cube for a Day's Ticket for the Blessed Medal -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131265, 130165, 0, true ) -- A Cube of Great Beetle Weapon -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131269, 130165, 0, true ) -- Cube of 101 Conquer Face -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131270, 130165, 0, true ) -- Cube of Star Academy Costume -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131271, 130165, 0, true ) -- Cube of Idol Band Costume -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131272, 130165, 0, true ) -- Cube of Striped Glasses -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131281, 130165, 0, true ) -- Cube of Time and Space Card -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131285, 130165, 0, true ) -- Full Set Cube of Henir's Ruler -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131286, 130165, 0, true ) -- Hero's Cube A -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131287, 130165, 0, true ) -- Hero's Cube B -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131288, 130165, 0, true ) -- Hero's Cube C -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131314, 131415, 0, true ) -- Cube of Henir's Key -> Cube of Henir's Key
-g_pCashItemManager:AddPackageItemData( 131355, 130165, 0, true ) -- Cube of El Revitalization Tablet -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131357, 131221, 0, true ) -- Cube with a 30 Days' Ticket for Accessories -> Cube with a 30 Days' Ticket for Accessories
-g_pCashItemManager:AddPackageItemData( 131358, 131223, 0, true ) -- Cube for a Ticket for an Accessory -> Cube for a Ticket for an Accessory
-g_pCashItemManager:AddPackageItemData( 131359, 130165, 0, true ) -- Cube with a Ticket for a Random Part of Costume -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131360, 131468, 0, true ) -- Cube with a Ticket for an Costume Weapon -> Cube with a Ticket for an Costume Weapon
-g_pCashItemManager:AddPackageItemData( 131361, 130165, 0, true ) -- Cube with a ticket for one Costume weapon of Ice Burner. -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131377, 130165, 0, true ) -- Ice Burner (Ariel's Gift) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131379, 130165, 0, true ) -- Armband of Oath's Cube (for 30 days) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131406, 130165, 0, true ) -- Ice Burner Costume Weapon Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131407, 131809, 0, true ) -- Cube of Ice Burner Costume Full Set -> Cube of Ice Burner Costume Full Set (for 1 day)
-g_pCashItemManager:AddPackageItemData( 131408, 130165, 0, true ) -- Cube of Weapon Accessories (for 15 days) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131409, 131818, 0, true ) -- Cube of Ring of Skills (for 30 days) -> Cube of Ring of Skills (for 30 days)
-g_pCashItemManager:AddPackageItemData( 131410, 131223, 0, true ) -- Cube for a Ticket for an Accessory -> Cube for a Ticket for an Accessory
-g_pCashItemManager:AddPackageItemData( 131415, 131314, 0, true ) -- Cube of Henir's Key -> Cube of Henir's Key
-g_pCashItemManager:AddPackageItemData( 131416, 131810, 0, true ) -- Cube of Archangel's Full Set -> Cube of Archangel's Full Set(A Day's Ticket)
-g_pCashItemManager:AddPackageItemData( 131418, 131812, 0, true ) -- Cube of Nasods' Full Set -> Cube of Nasods' Full Set(A Day's Ticket)
-g_pCashItemManager:AddPackageItemData( 131419, 131813, 0, true ) -- Cube of Archdevil's Full Set -> Cube of Archdevil's Full Set(A Day's Ticket)
-g_pCashItemManager:AddPackageItemData( 131425, 130165, 0, true ) -- Cube of a Day's Ticket for Promotion Costume -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131427, 130165, 0, true ) -- [Event] Exp. Boost Medal Cube(1 Day) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131428, 131219, 0, true ) -- Cube with a Day's Ticket for Accessories -> Cube with a Day's Ticket for Accessories
-g_pCashItemManager:AddPackageItemData( 131456, 130165, 0, true ) -- Cube of Basic Promotion Costume for 30 Days -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131459, 130165, 0, true ) -- Cube of Basic Promotion Costume for 100 Days -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131464, 131223, 0, true ) -- Cube for a Ticket for an Accessory -> Cube for a Ticket for an Accessory
-g_pCashItemManager:AddPackageItemData( 131467, 130165, 0, true ) -- Cube of Accessories for 30 Days -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131468, 131360, 0, true ) -- Cube with a Ticket for an Costume Weapon -> Cube with a Ticket for an Costume Weapon
-g_pCashItemManager:AddPackageItemData( 131469, 130165, 0, true ) -- Cube of a Ticket for an Costume Package -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131652, 130165, 0, true ) -- Random Cube of Weapon Costume for 30 Days -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131655, 130165, 0, true ) -- Cube of Drink of Oblivion -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 131656, 130165, 0, true ) -- Application Ticket for a Random Cube of Ice Burner Weapon -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 131657, 130165, 0, true ) -- Application Ticket for a Random Cube of Ice Burner Accessories -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 131658, 130165, 0, true ) -- Application Ticket for a Full Set Cube of Ice Burner -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131663, 130165, 0, true ) -- Special Cube of PC Gaming Centers -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131756, 130165, 0, true ) -- Cube for 1 Ice Burner -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131757, 130165, 0, true ) -- EXP Boost Medal (30%) Cube (1Day) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131758, 130165, 0, true ) -- Random Cube of Accessories for 5 Days -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131760, 130165, 0, true ) -- Cube of Valentine's Special Costume for 5 Days -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131761, 130165, 0, true ) -- Random Cube of Weapon Costume for 5 Days -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131762, 132471, 0, true ) -- Resurrection Stone Cube (10 ea.) -> PC Gaming Center Resurrection Stone (10 ea.) Cube
-g_pCashItemManager:AddPackageItemData( 131798, 130165, 0, true ) -- Cube of a Gift on a Special Day -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131802, 130165, 0, true ) -- Cube of a Ticket for 1 Costume Hair -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131805, 130165, 0, true ) -- Cube of Resurrection Stones (100) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131806, 130165, 0, true ) -- Special Accessory Random Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131810, 130165, 0, true ) -- Cube of Archangel's Full Set(A Day's Ticket) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131811, 130165, 0, true ) -- El Search Party Officer Set Cube (1 Day) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131812, 130165, 0, true ) -- Cube of Nasods' Full Set(A Day's Ticket) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131813, 130165, 0, true ) -- Cube of Archdevil's Full Set(A Day's Ticket) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131814, 130165, 0, true ) -- Cube of New Costume Full Set -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131816, 130165, 0, true ) -- Cube of 5 El Shards(Mystery) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131817, 215680, 0, true ) -- Cube for 5 Complete Recovery Potions -> Mana Elixir
-g_pCashItemManager:AddPackageItemData( 131818, 131409, 0, true ) -- Cube of Ring of Skills (for 30 days) -> Cube of Ring of Skills (for 30 days)
-g_pCashItemManager:AddPackageItemData( 131819, 130165, 0, true ) -- Cube Celebrating White Day C -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131820, 130165, 0, true ) -- Cube of White Day Special Weapon Costume for 30 Days -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131826, 130165, 0, true ) -- White Day Cube A -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131827, 130165, 0, true ) -- White Day Cube B -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131849, 130165, 0, true ) -- Random Cube of Boss Items -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131855, 131845, 0, true ) -- Cobo's Special Monster Mask Cube -> Cobo's Special Monster Mask (Mush)
-g_pCashItemManager:AddPackageItemData( 131855, 131851, 0, true ) -- Cobo's Special Monster Mask Cube -> Cobo's Special Monster Mask (Wally)
-g_pCashItemManager:AddPackageItemData( 131855, 131852, 0, true ) -- Cobo's Special Monster Mask Cube -> Cobo's Special Monster Mask (Cactus King)
-g_pCashItemManager:AddPackageItemData( 131855, 131853, 0, true ) -- Cobo's Special Monster Mask Cube -> Cobo's Special Monster Mask (King Nasod)
-g_pCashItemManager:AddPackageItemData( 131855, 131854, 0, true ) -- Cobo's Special Monster Mask Cube -> Cobo's Special Monster Mask (Plant Overlord)
-g_pCashItemManager:AddPackageItemData( 131858, 130165, 0, true ) -- Resurrection Stone Cube (110) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131861, 130165, 0, true ) -- Random Cube of Enhancement Amulet(Lv.6~Lv.8) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131862, 130165, 0, true ) -- Random Cube of Enhancement Amulet(Lv.5~Lv.6) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131863, 130165, 0, true ) -- Elsword Costume Cube (A Type) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 131864, 130165, 0, true ) -- Elsword Costume Cube (B Type) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132052, 130165, 0, true ) -- Cube of Cat Bag (for 7 days) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132057, 130165, 0, true ) -- Cube of Salvatore Solace Full Set (for 1 day) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132097, 206770, 0, true ) -- Cobo Special Gift Box [Lv. 1 Fluorite Ore] -> Fluorite Ore Lv.5
-g_pCashItemManager:AddPackageItemData( 132098, 206770, 0, true ) -- Cobo Special Gift Box [Lv. 2 Fluorite Ore] -> Fluorite Ore Lv.5
-g_pCashItemManager:AddPackageItemData( 132099, 206770, 0, true ) -- Cobo Special Gift Box [Lv. 3 Fluorite Ore] -> Fluorite Ore Lv.5
-g_pCashItemManager:AddPackageItemData( 132100, 206770, 0, true ) -- Cobo Special Gift Box [Lv. 4 Fluorite Ore] -> Fluorite Ore Lv.5
-g_pCashItemManager:AddPackageItemData( 132107, 130165, 0, true ) -- Cobo Special Gift Box [Ice Statue Heater] -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132188, 130165, 0, true ) -- PC Gaming Center Connection Event Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132212, 130165, 0, true ) -- Random Hell Dungeon Pass Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132213, 132212, 0, true ) -- Hell Dungeon Pass Cube -> Random Hell Dungeon Pass Cube
-g_pCashItemManager:AddPackageItemData( 132337, 72510, 0, true ) -- Random Magic Stone Cube -> Additional Damage Magic Stone
-g_pCashItemManager:AddPackageItemData( 132467, 130165, 0, true ) -- Promotional Avatar (15 Days) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132471, 130165, 0, true ) -- PC Gaming Center Resurrection Stone (10 ea.) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132479, 130165, 0, true ) -- Accessory (Face (Mid), 3 Days) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132480, 130165, 0, true ) -- Accessory (Arm, 3 Days) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132481, 206770, 0, true ) -- Random Fluorite Ore Cube -> Fluorite Ore Lv.5
-g_pCashItemManager:AddPackageItemData( 132482, 206770, 0, true ) -- Random Blessed Restoration Scroll Cube -> Fluorite Ore Lv.5
-g_pCashItemManager:AddPackageItemData( 132483, 130165, 0, true ) -- Random Monster Mask (7 Days) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132484, 130165, 0, true ) -- Gold Promotion Weapon Avatar (7 Days) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132485, 130165, 0, true ) -- Weapon Accessory (15 Days) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132533, 215680, 0, true ) -- Mana Elixir (5 ea.) Cube -> Mana Elixir
-g_pCashItemManager:AddPackageItemData( 132646, 130165, 0, true ) -- PC Gaming Center July Gift Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132649, 130165, 0, true ) -- Random Weapon Avatar (Permanent) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132650, 130165, 0, true ) -- Random Enhancement Amulet (Lv. 7~Lv. 9) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132653, 130165, 0, true ) -- Gaia's Blessing Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132654, 130165, 0, true ) -- Random Bethbite's Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132656, 130165, 0, true ) -- Random Dungeon Pass Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132696, 130165, 0, true ) -- Oblivion Drink (7 Days) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132698, 130165, 0, true ) -- Medal of Blessings (1 Day) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132707, 130165, 0, true ) -- Ice Statue Heater Avatar Weapon (1 ea) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132708, 130165, 0, true ) -- Ice Statue Heater Avatar Full Set (1 ea) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132746, 130165, 0, true ) -- Special Promotion Avatar Full Set (3 Days) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132748, 215680, 0, true ) -- Perfect Recovery Potion (3ea) Cube -> Mana Elixir
-g_pCashItemManager:AddPackageItemData( 132749, 130165, 0, true ) -- Holiday Task Reward Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132750, 130165, 0, true ) -- Random Reinforcement Amulet Cube (Lv.5~8) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132789, 130165, 0, true ) -- Easter Weapon (14 Days) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132808, 130165, 0, true ) -- Random Secret Card Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132809, 135342, 0, true ) -- Dual Magic Stone Random Cube -> Dual Magic Stone Random Cube
-g_pCashItemManager:AddPackageItemData( 132810, 130165, 0, true ) -- Random Shining Silver Cube (5~10ea) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132811, 130165, 0, true ) -- Unknown Cube A -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132812, 135345, 0, true ) -- High-Grade Magic Stone Random Cube -> High-Grade Magic Stone Random Cube
-g_pCashItemManager:AddPackageItemData( 132813, 130165, 0, true ) -- Random Shining Silver Cube (3~5ea) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132814, 130165, 0, true ) -- Unknown Cube B -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132815, 130165, 0, true ) -- Resurrection Stone (2ea) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132823, 130165, 0, true ) -- Random Dream Step (1 Day) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132840, 130165, 0, true ) -- Resurrection Stone (10ea) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132841, 130165, 0, true ) -- Cobo Express VIP Ticket (1 Day) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132843, 130165, 0, true ) -- Archangel Accessory Full Set Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132844, 130165, 0, true ) -- Arch Devil Accessory Full Set Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132885, 130165, 0, true ) -- Resurrection Stone (50ea) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132886, 130165, 0, true ) -- Complete Skill Reset Medal (5ea) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 132918, 130165, 0, true ) -- El Tree Fruits (25ea) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 133252, 130165, 0, true ) -- Advanced Weapon Cube (Lv. 36) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 133253, 130165, 0, true ) -- Advanced Armor Cube (Lv. 36) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 133254, 130165, 0, true ) -- Advanced Weapon Cube (Lv. 44) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 133255, 130165, 0, true ) -- Advanced Armor Cube (Lv. 44) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 133256, 130165, 0, true ) -- Elegant Equipment Cube (Lv. 52 Weapon) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 133257, 130165, 0, true ) -- Elegant Equipment Cube (Lv. 52 Armor) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 133258, 130165, 0, true ) -- Advanced Weapon Cube (Lv. 60) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 133259, 130165, 0, true ) -- Advanced Armor Cube (Lv. 60) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 135080, 130165, 0, true ) -- Resurrection Stones (5) Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 135342, 132809, 0, true ) -- Dual Magic Stone Random Cube -> Dual Magic Stone Random Cube
-g_pCashItemManager:AddPackageItemData( 135345, 132812, 0, true ) -- High-Grade Magic Stone Random Cube -> High-Grade Magic Stone Random Cube
-g_pCashItemManager:AddPackageItemData( 160012, 130165, 0, true ) -- Premium Personal Shop Medal Cube (7 Days) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 160014, 130165, 0, true ) -- Premium Personal Shop Medal Cube (30 Days) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 160015, 130165, 0, true ) -- Shoe Costume Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 160020, 131652, 0, true ) -- Weapon Costume Cube -> Random Cube of Weapon Costume for 30 Days
-g_pCashItemManager:AddPackageItemData( 160020, 131820, 0, true ) -- Weapon Costume Cube -> Cube of White Day Special Weapon Costume for 30 Days
-g_pCashItemManager:AddPackageItemData( 160020, 131761, 0, true ) -- Weapon Costume Cube -> Random Cube of Weapon Costume for 5 Days
-g_pCashItemManager:AddPackageItemData( 160021, 72510, 0, true ) -- Harmony Festival Magic Stone Random Cube -> Additional Damage Magic Stone
-g_pCashItemManager:AddPackageItemData( 160022, 130165, 0, true ) -- Harmony Festival Enhancement Stone Random Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 160023, 130165, 0, true ) -- Harmony Festival El Shard Random Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 160024, 180010, 0, true ) -- Harmony Festival Cube -> Harmony Festival Top Piece
-g_pCashItemManager:AddPackageItemData( 160024, 180011, 0, true ) -- Harmony Festival Cube -> Harmony Festival Bottom Piece
-g_pCashItemManager:AddPackageItemData( 160024, 180012, 0, true ) -- Harmony Festival Cube -> Harmony Festival Gloves
-g_pCashItemManager:AddPackageItemData( 160024, 180013, 0, true ) -- Harmony Festival Cube -> Harmony Festival Shoes
-g_pCashItemManager:AddPackageItemData( 160024, 180144, 0, true ) -- Harmony Festival Cube -> Harmony Festival Sword
-g_pCashItemManager:AddPackageItemData( 160024, 180145, 0, true ) -- Harmony Festival Cube -> Harmony Festival Staff
-g_pCashItemManager:AddPackageItemData( 160024, 180146, 0, true ) -- Harmony Festival Cube -> Harmony Festival Bow
-g_pCashItemManager:AddPackageItemData( 160024, 180147, 0, true ) -- Harmony Festival Cube -> Harmony Festival Blade
-g_pCashItemManager:AddPackageItemData( 160025, 130165, 0, true ) -- Harmony Festival Costume Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 160038, 130165, 0, true ) -- Demon's Core Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 160257, 130165, 0, true ) -- Skill Slot Change Medal Cube (7 Days) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 160613, 98001, 0, true ) -- Epic NPC Card Random Cube -> Epic NPC Card Random Cube
-g_pCashItemManager:AddPackageItemData( 160658, 130165, 0, true ) -- Monster Card Random Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 160813, 160814, 0, true ) -- QPL Jelly Random Cube -> Mysterious QPL Jelly Random Cube
-g_pCashItemManager:AddPackageItemData( 160813, 160815, 0, true ) -- QPL Jelly Random Cube -> Strange QPL Jelly Random Cube
-g_pCashItemManager:AddPackageItemData( 160814, 130165, 0, true ) -- Mysterious QPL Jelly Random Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 160815, 130165, 0, true ) -- Strange QPL Jelly Random Cube -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 200730, 130165, 0, true ) -- Selected Skill Reset Medal -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 203800, 130165, 0, true ) -- Complete Skill Reset Medal -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 205260, 130165, 0, true ) -- Big 3 One Package -> Complete Recovery Potion
@@ -4272,13 +3630,11 @@ g_pCashItemManager:AddPackageItemData( 210490, 130165, 0, true ) -- Enhancement 
 g_pCashItemManager:AddPackageItemData( 210500, 130165, 0, true ) -- Enhancement Package Lv.2 -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 210510, 130165, 0, true ) -- Enhancement Package Lv.3 -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 210520, 130165, 0, true ) -- Enhancement Package Lv.4 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 210560, 252770, 0, true ) -- Ice Burner 5+1 Cube -> Ice Burner 5+1 Cube
 g_pCashItemManager:AddPackageItemData( 213180, 130165, 0, true ) -- Special Package for Act2 Supplementary Version 1 -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 213190, 130165, 0, true ) -- Special Package for Act2 Supplementary Version 2 -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 213200, 130165, 0, true ) -- Special Package for Act2 Supplementary Version 3 -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 217900, 130165, 0, true ) -- Drop Day Special Package (Purple) -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 217910, 130165, 0, true ) -- Drop Day Special Package (White) -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 221540, 130165, 0, true ) -- Cube of Ice Burner (50) -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 222310, 206770, 0, true ) -- Lv. 1 Fluorite Ore 1+1 Package -> Fluorite Ore Lv.5
 g_pCashItemManager:AddPackageItemData( 222320, 206770, 0, true ) -- Lv. 2 Fluorite Ore 1+1 Package -> Fluorite Ore Lv.5
 g_pCashItemManager:AddPackageItemData( 222330, 206770, 0, true ) -- Lv. 3 Fluorite Ore 1+1 Package -> Fluorite Ore Lv.5
@@ -4299,8 +3655,15 @@ g_pCashItemManager:AddPackageItemData( 226120, 130165, 0, true ) -- Cobo Special
 g_pCashItemManager:AddPackageItemData( 226130, 130165, 0, true ) -- Cobo Special Enhancement Package Lv.3 -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 226140, 130165, 0, true ) -- Cobo Special Enhancement Package Lv.4 -> Complete Recovery Potion
 g_pCashItemManager:AddPackageItemData( 230350, 130165, 0, true ) -- Enhancement Package Lv.5 -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 252770, 210560, 0, true ) -- Ice Burner 5+1 Cube -> Ice Burner 5+1 Cube
-g_pCashItemManager:AddPackageItemData( 252780, 130165, 0, true ) -- Ice Burner 10+2 Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 252790, 130165, 0, true ) -- Ice Burner 20+5 Cube -> Complete Recovery Potion
-g_pCashItemManager:AddPackageItemData( 272424, 130165, 0, true ) -- Fetch Aura (Permanent) Cube -> Complete Recovery Potion
 -- END_CUBE_MAPPING_FIX
+
+-- CUBE_INTEGRITY_FALLBACK_PACKAGES_BEGIN
+g_pCashItemManager:AddPackageItemData( 111070, 130165, 0, true )
+g_pCashItemManager:AddPackageItemData( 111071, 130165, 0, true )
+g_pCashItemManager:AddPackageItemData( 111072, 130165, 0, true )
+g_pCashItemManager:AddPackageItemData( 131372, 130165, 0, true )
+g_pCashItemManager:AddPackageItemData( 131373, 130165, 0, true )
+g_pCashItemManager:AddPackageItemData( 90000135, 130165, 0, true )
+g_pCashItemManager:AddPackageItemData( 90001030, 130165, 0, true )
+g_pCashItemManager:AddPackageItemData( 90001480, 130165, 0, true )
+-- CUBE_INTEGRITY_FALLBACK_PACKAGES_END

@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Add Modern Gacha Consumables, Protection Materials, Ice Burners, Magic Amulets Lv.7-12, Rare Mounts, and Winback Cubes to NPC Echo and NPC Ariel for ED purchase.
+"""Add validated consumables, materials, and cubes to Echo and Ariel for ED.
 
 This script updates:
 1. ClientScript/Major/ShopItem.lua and _ClientScript/Major/ShopItem.lua:
    Populates NPC_UNIT_ID.NUI_ECHO (Elder Village) and NPC_UNIT_ID.NUI_ARIEL (Town NPC)
    with Ice Burner Heaters, Keys, Fluorite Ores, Restoration Scrolls, Magic Amulets Lv.7-12,
-   Dual Magic Stones, Recovery Potions, Rare Mount Cubes, and Returnee Celebration Cubes.
+   Dual Magic Stones, Recovery Potions, and routed Returnee Celebration Cubes.
 2. Ensures items have valid ED prices in Item.lua so they can be bought with ED in-game.
 """
 
@@ -29,25 +29,16 @@ ITEM_FILES = [
     ELSWORD / "_ClientScript" / "Major" / "Item.lua",
 ]
 
-# Complete list of Modern Gacha, Progression, Amulets Lv.7-12, Rare Mounts, and Returnee Winback Cubes for NPC Echo & Ariel
+# Only sell cube/package items whose contents have a validated server route.
 MODERN_NPC_SHOP_ITEMS = [
-    # Winback & Starter Support Cubes
+    # Winback cubes with complete RandomItem routes
     130220,   # A Cube of Celebration of Return to Elrios Continent
     132580,   # Returned Warrior Welcoming Cube
-    224380,   # Cobo Support Package
-    225180,   # Starters Package
-    131254,   # Summon Stone: Rare Mount Choice Cube
 
     # Ice Burners & Gacha Keys
     108900,   # Ice Burner Heater (Standard)
     207500,   # Ice Burner Key
     69423,    # Mystery Key / Cube Key
-    85002870, # Archangel Ice Burner Heater
-    85002440, # Nasod Battle Suit Ice Burner Heater
-    85002872, # Velder Imperial Guard Ice Burner Heater
-    85002874, # Salvatore Solace Ice Burner Heater
-    85002876, # Archdevil Ice Burner Heater
-    84001710, # Royal Maid Ice Burner Heater
     85003722, # Officer Ice Burner Heater
     85003820, # Holy Unicorn Ice Burner Heater
     131377,   # Event Ice Burner Heater
@@ -88,9 +79,6 @@ MODERN_NPC_SHOP_ITEMS = [
 DEFAULT_ED_PRICES = {
     130220: 1000000,
     132580: 2500000,
-    224380: 1500000,
-    225180: 1000000,
-    131254: 15000000,
     108900: 500000,
     207500: 100000,
     206770: 150000,
@@ -193,8 +181,8 @@ def main():
     ensure_item_ed_prices()
 
     print("\n==================================================")
-    print("Successfully added Gacha, Winback Cubes, Magic Amulets Lv.7-12,")
-    print("Rare Mount Cubes, and Progression materials to NPC Echo & Ariel!")
+    print("Successfully added Gacha, routed Winback Cubes, Magic Amulets Lv.7-12,")
+    print("and Progression materials to NPC Echo & Ariel!")
     print("==================================================")
 
 

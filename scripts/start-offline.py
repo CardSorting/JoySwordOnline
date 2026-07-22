@@ -21,12 +21,15 @@ ENV_EXAMPLE = ELSWORD / "offline" / "offline.env.example"
 PID_FILE = ELSWORD / "offline" / "server-pids.json"
 DB_HEALTHCHECK = ROOT / "scripts" / "db-healthcheck.py"
 ENHANCEMENT_INTEGRITY_SQL = ROOT / "database" / "enforce-enhancement-integrity.sql"
+RANKING_BOARD_INTEGRITY_SQL = ROOT / "database" / "fix-ranking-board.sql"
+MARKETPLACE_INTEGRITY_SQL = ROOT / "database" / "fix-marketplace.sql"
 ENHANCEMENT_VALIDATOR = ROOT / "scripts" / "validate-enhancement-probabilities.py"
 ENHANCEMENT_RUNTIME_TABLE = ELSWORD / "GameServer" / "EnchantTable.lua"
 ENHANCEMENT_RECEIPT = ELSWORD / "offline" / "enhancement-validation.json"
 ENHANCEMENT_CANARY = ROOT / "scripts" / "enhancement-runtime-canary.py"
 PVP_MATCHMAKING_VALIDATOR = ROOT / "scripts" / "validate-pvp-matchmaking.py"
 PVP_MATCHMAKING_PATCHER = ROOT / "scripts" / "patch-globalserver-solo-pvp.py"
+CUBE_INTEGRITY_VALIDATOR = ROOT / "scripts" / "cube-integrity.py"
 
 if str(ROOT / "scripts") not in sys.path:
     sys.path.insert(0, str(ROOT / "scripts"))
@@ -624,6 +627,50 @@ def enforce_enhancement_integrity(force: bool = False) -> None:
         )
 
 
+def enforce_ranking_board_integrity() -> None:
+    """Guarantee a null-free personal ranking row for every active character."""
+    if not RANKING_BOARD_INTEGRITY_SQL.exists():
+        raise SystemExit(f"Missing ranking-board migration: {RANKING_BOARD_INTEGRITY_SQL}")
+
+    print("Repairing ranking-board personal records...")
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "run_sql_file.py"),
+            str(RANKING_BOARD_INTEGRITY_SQL),
+        ],
+        cwd=str(ROOT),
+        check=False,
+    )
+    if result.returncode != 0:
+        raise SystemExit(
+            "Ranking-board integrity migration failed; refusing to start with "
+            "a client-crashing null ranking response."
+        )
+
+
+def enforce_marketplace_integrity() -> None:
+    """Restore offline personal-shop state and its null-free lookup contract."""
+    if not MARKETPLACE_INTEGRITY_SQL.exists():
+        raise SystemExit(f"Missing marketplace migration: {MARKETPLACE_INTEGRITY_SQL}")
+
+    print("Repairing marketplace and personal-shop state...")
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "run_sql_file.py"),
+            str(MARKETPLACE_INTEGRITY_SQL),
+        ],
+        cwd=str(ROOT),
+        check=False,
+    )
+    if result.returncode != 0:
+        raise SystemExit(
+            "Marketplace integrity migration failed; refusing to start with "
+            "missing or corrupt personal-shop state."
+        )
+
+
 def validate_enhancement_probabilities() -> None:
     """Refuse startup when an authoritative probability row is malformed."""
     if not ENHANCEMENT_VALIDATOR.exists():
@@ -656,6 +703,20 @@ def validate_pvp_matchmaking() -> None:
     )
     if result.returncode != 0:
         raise SystemExit("PvP matchmaking validation failed; refusing to start the server stack.")
+
+
+def validate_cube_integrity() -> None:
+    """Refuse startup before malformed cube data can return a null item."""
+    if not CUBE_INTEGRITY_VALIDATOR.exists():
+        raise SystemExit(f"Missing cube integrity validator: {CUBE_INTEGRITY_VALIDATOR}")
+    print("Validating cube rewards and package mappings...")
+    result = subprocess.run(
+        [sys.executable, str(CUBE_INTEGRITY_VALIDATOR)],
+        cwd=str(ROOT),
+        check=False,
+    )
+    if result.returncode != 0:
+        raise SystemExit("Cube integrity validation failed; refusing to start GameServer.")
 
 
 def apply_globalserver_pvp_patch(*, dry_run: bool = False) -> None:
@@ -714,11 +775,14 @@ def launch_stack(
     else:
         apply_pvp_profile(env)
 
+    validate_cube_integrity()
     validate_pvp_matchmaking()
     apply_globalserver_pvp_patch()
     validate_enhancement_probabilities()
     validated_enhancement_hash = hashlib.sha256(ENHANCEMENT_RUNTIME_TABLE.read_bytes()).hexdigest()
     enforce_enhancement_integrity(force=force_db_patch)
+    enforce_ranking_board_integrity()
+    enforce_marketplace_integrity()
     apply_gameserver_patches()
 
     try:
@@ -811,6 +875,7 @@ def main() -> int:
     check_runtime(args, env)
 
     if args.dry_run:
+        validate_cube_integrity()
         validate_pvp_matchmaking()
         apply_globalserver_pvp_patch(dry_run=True)
         validate_enhancement_probabilities()

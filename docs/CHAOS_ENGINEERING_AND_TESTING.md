@@ -53,3 +53,14 @@ flowchart TD
   ```powershell
   python scripts\validate-lua-syntax.py
   ```
+
+### 4. Cube System Integrity & Crash Prevention Validator
+* **Script**: [cube-integrity.py](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/scripts/cube-integrity.py)
+* **Test Suite**: [test_cube_integrity.py](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/tests/test_cube_integrity.py)
+* **Playbook**: [CUBE_INTEGRITY_AND_CRASH_PREVENTION.md](CUBE_INTEGRITY_AND_CRASH_PREVENTION.md)
+* **Strategy**: Audits random drop groups (`RandomItem.lua`), package configurations (`PackageItemData.lua`), and shop listings (Echo/Ariel). Hardens `validate_state_contract` to enforce zero null groups, valid scalar rewards (`group_id == 0`), non-recursive packages, and byte-for-byte `.kom` read-back verification in `data036.kom`.
+* **Usage**:
+  ```powershell
+  python scripts\cube-integrity.py --repair
+  python -m unittest tests\test_cube_integrity.py
+  ```

@@ -89,6 +89,21 @@ CHAT_UI_PATCHES: dict[str, dict[str, Path]] = {
     },
 }
 
+MARKETPLACE_UI_PATCHES: dict[str, dict[str, Path]] = {
+    "data034.kom": {
+        "DLG_UI_Market_list.lua": CLIENT_DIALOG / "NewVillageUI" / "DLG_UI_Market_list.lua",
+        "DLG_Personal_Shop_Board.lua": CLIENT_DIALOG / "NewVillageUI" / "DLG_Personal_Shop_Board.lua",
+        "DLG_Personal_Shop_Board_ItemList.lua": CLIENT_DIALOG / "NewVillageUI" / "DLG_Personal_Shop_Board_ItemList.lua",
+    },
+}
+
+CUBE_DATA_PATCHES: dict[str, dict[str, Path]] = {
+    "data036.kom": {
+        "RandomItem.lua": CLIENT_MAJOR / "RandomItem.lua",
+        "PackageItemData.lua": CLIENT_MAJOR / "PackageItemData.lua",
+    },
+}
+
 
 def xor_payload(payload: bytes) -> bytes:
     return bytes(byte ^ KOM_XOR_KEY[index % len(KOM_XOR_KEY)] for index, byte in enumerate(payload))
@@ -133,9 +148,11 @@ def patch_kom_set(
             print(f"compile {source.relative_to(ROOT)} -> {kom_name}:{entry_name}")
             payloads[entry_name] = compiled[source]
         patched = replace_kom_entries(kom_path, payloads)
+        verify_kom_entries(kom_path, payloads)
         for name in patched:
             print(f"patched {kom_name}: {name}")
             total += 1
+        print(f"verified {kom_name}: {', '.join(sorted(payloads))}")
         client_data = ROOT / "client" / "data" / kom_name
         if client_data.parent.is_dir() and kom_path.exists() and client_data.resolve() != kom_path.resolve():
             shutil.copy2(kom_path, client_data)
@@ -365,6 +382,56 @@ def replace_kom_entries(kom_path: Path, replacements: dict[str, bytes]) -> list[
     return patched
 
 
+def verify_kom_entries(kom_path: Path, expected_payloads: dict[str, bytes]) -> None:
+    """Read patched entries back and verify table metadata, checksum, and bytes."""
+    blob = kom_path.read_bytes()
+    xml_start = blob.find(b"<?xml")
+    xml_end = blob.find(b"</Files>", xml_start) + len(b"</Files>")
+    if xml_start < 0 or xml_end < len(b"</Files>"):
+        raise RuntimeError(f"Could not locate KOM XML table in {kom_path}")
+
+    root = ET.fromstring(blob[xml_start:xml_end])
+    checksum_algorithm = detect_checksum_algorithm(root, blob, xml_end)
+    found: dict[str, bytes] = {}
+    pos = xml_end
+    for elem in root:
+        attrs = dict(elem.attrib)
+        compressed_size = int(attrs["CompressedSize"])
+        compressed = blob[pos : pos + compressed_size]
+        pos += compressed_size
+        if len(compressed) != compressed_size:
+            raise RuntimeError(f"Truncated KOM entry {attrs['Name']} in {kom_path}")
+        expected_checksum = attrs[checksum_attr_name(attrs)].lower()
+        actual_checksum = checksum_value(compressed, checksum_algorithm)
+        if actual_checksum != expected_checksum:
+            raise RuntimeError(
+                f"Checksum mismatch for {attrs['Name']} in {kom_path}: "
+                f"{actual_checksum} != {expected_checksum}"
+            )
+        if attrs["Name"] not in expected_payloads:
+            continue
+        try:
+            payload = zlib.decompress(compressed)
+        except zlib.error as exc:
+            raise RuntimeError(
+                f"Could not decompress patched entry {attrs['Name']} in {kom_path}"
+            ) from exc
+        if len(payload) != int(attrs["Size"]):
+            raise RuntimeError(f"Size mismatch for {attrs['Name']} in {kom_path}")
+        found[attrs["Name"]] = payload
+
+    if pos != len(blob):
+        raise RuntimeError(f"Unexpected trailing data in {kom_path}: {len(blob) - pos} bytes")
+    missing = sorted(set(expected_payloads) - set(found))
+    if missing:
+        raise RuntimeError(f"Patched KOM entries could not be read back: {missing}")
+    mismatched = sorted(
+        name for name, payload in expected_payloads.items() if found[name] != payload
+    )
+    if mismatched:
+        raise RuntimeError(f"Patched KOM payload mismatch: {mismatched}")
+
+
 def repair_kom_metadata(kom_path: Path) -> int:
     blob = kom_path.read_bytes()
     xml_start = blob.find(b"<?xml")
@@ -424,6 +491,14 @@ def patch_chat_ui_kom() -> int:
     return patch_kom_set(CHAT_UI_PATCHES)
 
 
+def patch_marketplace_ui_kom() -> int:
+    return patch_kom_set(MARKETPLACE_UI_PATCHES)
+
+
+def patch_cube_data_kom() -> int:
+    return patch_kom_set(CUBE_DATA_PATCHES)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -442,6 +517,16 @@ def main() -> int:
         help="Patch the corrected channel chat layout into data034.kom",
     )
     parser.add_argument(
+        "--marketplace-ui",
+        action="store_true",
+        help="Patch the marketplace channel list and personal-shop board into data034.kom",
+    )
+    parser.add_argument(
+        "--cube-data",
+        action="store_true",
+        help="Patch synchronized RandomItem.lua and null-safe PackageItemData.lua into data036.kom",
+    )
+    parser.add_argument(
         "--repair-checksums",
         action="store_true",
         help="repair archive checksum/FileTime metadata without recompiling payloads",
@@ -458,6 +543,10 @@ def main() -> int:
         return patch_cashshop_inventory_kom()
     if args.chat_ui:
         return patch_chat_ui_kom()
+    if args.marketplace_ui:
+        return patch_marketplace_ui_kom()
+    if args.cube_data:
+        return patch_cube_data_kom()
     if args.repair_checksums:
         for kom_name in CLIENT_PATCHES:
             repair_kom_metadata(DATA / kom_name)

@@ -138,3 +138,33 @@ The workspace includes several Python scripts designed to diagnose client/server
 * **Offline Verification**: Run [verify-offline.py](file:///c:/Users/media/Downloads/JoySwordOffline/scripts/verify-offline.py) to parse server configuration syntax and check for binding port conflicts or missing assets.
 * **Cash Shop Audits**: Run [audit-cashshop-premium.py](file:///c:/Users/media/Downloads/JoySwordOffline/scripts/audit-cashshop-premium.py) to trace products, item IDs, and currency requirements.
 * **Netcode Captures**: Run [pvp-netcode-capture.py](file:///c:/Users/media/Downloads/JoySwordOffline/scripts/pvp-netcode-capture.py) or watch logs using [pvp-log-watch.py](file:///c:/Users/media/Downloads/JoySwordOffline/scripts/pvp-log-watch.py) to diagnose client P2P sync and relay latency.
+
+---
+
+## 8. Cube Crashes, Random Item Group Failures & Package Data Corruption
+
+See **[docs/CUBE_INTEGRITY_AND_CRASH_PREVENTION.md](docs/CUBE_INTEGRITY_AND_CRASH_PREVENTION.md)** for full architectural contract documentation and validator specifications.
+
+### Symptoms
+Opening a gacha cube or package item causes the game client to abruptly crash to desktop, or GameServer logs record `RandomItem.lua` mapping or package lookup errors.
+
+### Root Cause
+1. **Unrouted Package Rewards**: Package items containing rewards with no valid drop group or route path (e.g. legacy items `224380`, `250000640`, `250000650`).
+2. **Client-Server Drift**: Server Lua definitions (`RandomItem.lua` / `PackageItemData.lua`) not in sync with `client/data/data036.kom`.
+3. **Invalid Data Definitions**: Null group IDs, missing reward IDs, negative drop weights, or recursive package references.
+
+### Resolution & Prevention Commands
+1. Run the automatic repair and integrity validator:
+   ```powershell
+   python scripts\cube-integrity.py --repair
+   ```
+2. Verify test coverage:
+   ```powershell
+   python -m unittest tests\test_cube_integrity.py
+   ```
+3. Restart the server stack and relaunch the client:
+   ```powershell
+   python scripts\stop-offline.py
+   python scripts\start-offline.py
+   ```
+

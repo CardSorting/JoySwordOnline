@@ -30,7 +30,7 @@ g_pStatic_Item:SetName( "StaticItemName" )
 g_pStatic_Item:AddString
 {
 	--MSG 			= STR_ID_4852,
-	MSG 			= "엘소드",
+	-- Filled by the native marketplace board controller.
 	FONT_INDEX		= XUF_DODUM_13_SEMIBOLD,
 	FONT_STYLE      = FONT_STYLE["FS_SHELL"],
 	SORT_FLAG		= DRAW_TEXT["DT_LEFT"],
@@ -47,7 +47,7 @@ g_pStatic_Num:SetName( "StaticNum" )
 g_pStatic_Num:AddString
 {
 	--MSG 			= STR_ID_4852,
-	MSG 			= "99개",
+	-- Filled by the native marketplace board controller.
 	FONT_INDEX		= XUF_DODUM_13_SEMIBOLD,
 	--FONT_STYLE      = FONT_STYLE["FS_SHELL"],
 	SORT_FLAG		= DRAW_TEXT["DT_CENTER"],
@@ -64,7 +64,7 @@ g_pStatic_ED:SetName( "StaticED" )
 g_pStatic_ED:AddString
 {
 	--MSG 			= STR_ID_4852,
-	MSG 			= "9,999,999 ED",
+	-- Filled by the native marketplace board controller.
 	FONT_INDEX		= XUF_DODUM_13_SEMIBOLD,
 	--FONT_STYLE      = FONT_STYLE["FS_SHELL"],
 	SORT_FLAG		= DRAW_TEXT["DT_RIGHT"],
@@ -81,7 +81,7 @@ g_pStatic_User:SetName( "g_pStatic_User" )
 g_pStatic_User:AddString
 {
 	--MSG 			= STR_ID_4852,
-	MSG 			= "WWWWWWWWWWWW",
+	-- Filled by the native marketplace board controller.
 	FONT_INDEX		= XUF_DODUM_13_SEMIBOLD,
 	--FONT_STYLE      = FONT_STYLE["FS_SHELL"],
 	SORT_FLAG		= DRAW_TEXT["DT_LEFT"],

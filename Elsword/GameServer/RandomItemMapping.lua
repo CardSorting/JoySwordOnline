@@ -4,7 +4,3 @@
 -- g_pRandomItemManager:AddRandomItemMappingTime( int nIndex, const char* szStartDate, const char* szEndDate)
 g_pRandomItemManager:AddRandomItemMappingData( 1, 108900, 207500, 502070, 502071)
 g_pRandomItemManager:AddRandomItemMappingTime( 1, "2000-01-01 00:00:00", "2099-12-31 23:59:59" )
-g_pRandomItemManager:AddRandomItemMappingData( 2, 85002440, 207500, 502070, 502071)
-g_pRandomItemManager:AddRandomItemMappingTime( 2, "2000-01-01 00:00:00", "2099-12-31 23:59:59" )
-g_pRandomItemManager:AddRandomItemMappingData( 3, 85002870, 207500, 502070, 502071)
-g_pRandomItemManager:AddRandomItemMappingTime( 3, "2000-01-01 00:00:00", "2099-12-31 23:59:59" )

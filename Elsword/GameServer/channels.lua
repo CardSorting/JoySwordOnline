@@ -36,17 +36,6 @@ g_pChannelManager:AddCMTemplet
 	MAX_LEVEL  		= 100,
 }
 
--- 거래광장 (Market Square) 채널 추가
-g_pChannelManager:AddCMTemplet
-{
-	CHANNEL_ID		= 40,
-	MAP_ID			= 163, -- WI_SQUARE_MARKET
-	CHANNEL_TYPE	= CHANNEL_TYPE["CT_SQUARE"],
-
-	MIN_LEVEL  		= 1,
-	MAX_LEVEL  		= 100,
-}
-
 g_pChannelManager:AddCMTemplet
 {
 	CHANNEL_ID		= 2,
@@ -640,4 +629,3 @@ g_pChannelManager:AddCMTemplet
 	MIN_LEVEL  		= 0,
 	MAX_LEVEL  		= 0,
 }
-

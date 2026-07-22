@@ -898,7 +898,7 @@ g_pStaticPageNum:SetName( "StaticPageNum" )
 g_pStaticPageNum:AddString
 {
 	--MSG 			= STR_ID_1329,
-	MSG 			= "00",
+	-- Filled by the native marketplace board controller.
 	FONT_INDEX		= XUF_DODUM_13_SEMIBOLD,
 	--FONT_STYLE      = FONT_STYLE["FS_SHELL"],
 	SORT_FLAG		= DRAW_TEXT["DT_CENTER"],
@@ -911,7 +911,7 @@ g_pStaticPageNum:AddString
 g_pStaticPageNum:AddString
 {
 	--MSG 			= STR_ID_1329,
-	MSG 			= "00",
+	-- Filled by the native marketplace board controller.
 	FONT_INDEX		= XUF_DODUM_13_SEMIBOLD,
 	--FONT_STYLE      = FONT_STYLE["FS_SHELL"],
 	SORT_FLAG		= DRAW_TEXT["DT_CENTER"],
@@ -924,7 +924,7 @@ g_pStaticPageNum:AddString
 g_pStaticPageNum:AddString
 {
 	--MSG 			= STR_ID_1329,
-	MSG 			= "00",
+	-- Filled by the native marketplace board controller.
 	FONT_INDEX		= XUF_DODUM_13_SEMIBOLD,
 	--FONT_STYLE      = FONT_STYLE["FS_SHELL"],
 	SORT_FLAG		= DRAW_TEXT["DT_CENTER"],
@@ -937,7 +937,7 @@ g_pStaticPageNum:AddString
 g_pStaticPageNum:AddString
 {
 	--MSG 			= STR_ID_1329,
-	MSG 			= "00",
+	-- Filled by the native marketplace board controller.
 	FONT_INDEX		= XUF_DODUM_13_SEMIBOLD,
 	--FONT_STYLE      = FONT_STYLE["FS_SHELL"],
 	SORT_FLAG		= DRAW_TEXT["DT_CENTER"],
@@ -950,7 +950,7 @@ g_pStaticPageNum:AddString
 g_pStaticPageNum:AddString
 {
 	--MSG 			= STR_ID_1329,
-	MSG 			= "00",
+	-- Filled by the native marketplace board controller.
 	FONT_INDEX		= XUF_DODUM_13_SEMIBOLD,
 	--FONT_STYLE      = FONT_STYLE["FS_SHELL"],
 	SORT_FLAG		= DRAW_TEXT["DT_CENTER"],
@@ -963,7 +963,7 @@ g_pStaticPageNum:AddString
 g_pStaticPageNum:AddString
 {
 	--MSG 			= STR_ID_1329,
-	MSG 			= "00",
+	-- Filled by the native marketplace board controller.
 	FONT_INDEX		= XUF_DODUM_13_SEMIBOLD,
 	--FONT_STYLE      = FONT_STYLE["FS_SHELL"],
 	SORT_FLAG		= DRAW_TEXT["DT_CENTER"],
@@ -976,7 +976,7 @@ g_pStaticPageNum:AddString
 g_pStaticPageNum:AddString
 {
 	--MSG 			= STR_ID_1329,
-	MSG 			= "00",
+	-- Filled by the native marketplace board controller.
 	FONT_INDEX		= XUF_DODUM_13_SEMIBOLD,
 	--FONT_STYLE      = FONT_STYLE["FS_SHELL"],
 	SORT_FLAG		= DRAW_TEXT["DT_CENTER"],
@@ -989,7 +989,7 @@ g_pStaticPageNum:AddString
 g_pStaticPageNum:AddString
 {
 	--MSG 			= STR_ID_1329,
-	MSG 			= "00",
+	-- Filled by the native marketplace board controller.
 	FONT_INDEX		= XUF_DODUM_13_SEMIBOLD,
 	--FONT_STYLE      = FONT_STYLE["FS_SHELL"],
 	SORT_FLAG		= DRAW_TEXT["DT_CENTER"],
@@ -1002,7 +1002,7 @@ g_pStaticPageNum:AddString
 g_pStaticPageNum:AddString
 {
 	--MSG 			= STR_ID_1329,
-	MSG 			= "00",
+	-- Filled by the native marketplace board controller.
 	FONT_INDEX		= XUF_DODUM_13_SEMIBOLD,
 	--FONT_STYLE      = FONT_STYLE["FS_SHELL"],
 	SORT_FLAG		= DRAW_TEXT["DT_CENTER"],
@@ -1015,7 +1015,7 @@ g_pStaticPageNum:AddString
 g_pStaticPageNum:AddString
 {
 	--MSG 			= STR_ID_1329,
-	MSG 			= "00",
+	-- Filled by the native marketplace board controller.
 	FONT_INDEX		= XUF_DODUM_13_SEMIBOLD,
 	--FONT_STYLE      = FONT_STYLE["FS_SHELL"],
 	SORT_FLAG		= DRAW_TEXT["DT_CENTER"],
