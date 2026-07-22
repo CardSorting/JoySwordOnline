@@ -1,6 +1,6 @@
 {
   "schema": "joysword.enhancement-validation-receipt/v1",
-  "validated_at": "2026-07-22T06:21:32.443188+00:00",
+  "validated_at": "2026-07-22T10:06:33.486240+00:00",
   "status": "pass",
   "canonical_source": "Elsword/ServerResource/EnchantTable.lua",
   "canonical_file_sha256": "5aed7aef491bd4ea0009f8d15236b6395aee3f096ca2e2534fca97f348904455",

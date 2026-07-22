@@ -81,6 +81,7 @@ if command -v docker >/dev/null 2>&1; then
   python3 "$ROOT/scripts/install-cash-allowance.py"
 
   echo "==> Installing Cash Shop credit sync and deduction fixes"
+  run_sql_file /backups/fix-cashshop-billing-transactions.sql
   run_sql_file /backups/fix-cash-deduction.sql
   run_sql_file /backups/fix-credit-sync.sql
   echo "==> Disabling unsafe class-change mailbox rewards"

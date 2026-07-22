@@ -1,7 +1,7 @@
 USE ES_BILLING;
 GO
 
-ALTER PROCEDURE [dbo].[EBP_BuyItem]
+CREATE OR ALTER PROCEDURE [dbo].[EBP_BuyItem]
 	@ST_SERVERORDERID		varchar(50) ,			-- 주문 서버 주문 ID
 	@ST_GROUPORDERID		varchar(50) ,			-- 그룹 주문 ID
 	@CD_USERUID				bigint ,				-- 계정 UID
@@ -17,13 +17,13 @@ ALTER PROCEDURE [dbo].[EBP_BuyItem]
 	@NO_TO_UNITUID			bigint ,				-- 받는 캐릭터 UID
 	@ST_GIFT_MESSAGE		nvarchar(50) ,			-- 선물 메시지
 	@DI_BUY_CASH			tinyint ,				-- 구매 캐시 타입
+	@NO_CHANNEL_CODE		tinyint = 0 ,				-- 채널 코드
 	@NO_TOTAL_CASH			int = NULL OUTPUT ,		-- 총 잔여 캐시
 	@CD_TRAN_NUM			bigint = NULL OUTPUT ,	-- 거래 번호
 	@NO_REMAIN_CASH			int = NULL OUTPUT ,		-- 남은 캐시
 	@NO_REMAIN_BONUS		int = NULL OUTPUT ,		-- 남은 보너스 캐시
 	@DI_OUTPUT_RECORD		bit = 1 ,				-- 결과 레코드셋 출력 여부
-	@NO_FROM_UNITUID		bigint = 0 ,			-- 보낸 캐릭터 UID
-	@NO_CHANNEL_CODE		tinyint = 0				-- 채널 코드
+	@NO_FROM_UNITUID		bigint = 0				-- 보낸 캐릭터 UID
 AS
 BEGIN
 	SET NOCOUNT ON

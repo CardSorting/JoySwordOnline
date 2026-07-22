@@ -10,6 +10,7 @@ import subprocess
 import sys
 from collections import Counter
 from dataclasses import dataclass
+from functools import lru_cache
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -37,6 +38,8 @@ PACKAGE_ITEM_FILE = ROOT / "Elsword" / "ClientScript" / "Major" / "PackageItemDa
 PACKAGE_ITEM_SYNC_TARGETS = (
     ROOT / "Elsword" / "Resources" / "PackageItemData.lua",
 )
+PET_DATA_FILE = ROOT / "Elsword" / "ServerResource" / "PetData.lua"
+RIDING_PET_DATA_FILE = ROOT / "Elsword" / "ServerResource" / "RidingPetData.lua"
 ENV_FILE = ROOT / "Elsword" / "offline" / "offline.env"
 
 CATEGORIES = [
@@ -120,10 +123,22 @@ BILLING_CATEGORY_PATTERN = re.compile(
 ITEM_FIELD_PATTERN = re.compile(
     r"(m_ItemID|m_Name|m_Description|m_ItemType|m_EqipPosition|m_bFashion)\s*=\s*(.+)"
 )
+ITEM_TEMPLATE_ID_PATTERN = re.compile(r"\bm_ItemID\s*=\s*(\d+)\s*,")
+ITEM_TEMPLATE_SPECIAL_PATTERN = re.compile(
+    r"m_ItemID\s*=\s*(\d+)\s*,(?:(?!m_ItemID\s*=).)*?"
+    r"m_ItemType\s*=\s*ITEM_TYPE\[\s*\"IT_SPECIAL\"\s*\]",
+    re.DOTALL,
+)
 LUA_STRING_PATTERN = re.compile(r'"((?:\\.|[^"\\])*)"')
 ENUM_VALUE_PATTERN = re.compile(r'\["([^"]+)"\]')
 PACKAGE_ITEM_PATTERN = re.compile(
     r"g_pCashItemManager:AddPackageItemData\(\s*(\d+)\s*,\s*(\d+)\s*,\s*-?\d+\s*,\s*(?:true|false)\s*\)"
+)
+PET_CREATE_ITEM_PATTERN = re.compile(
+    r"AddPetCreateItemInfo\(\s*(\d+)\s*,\s*PET_UNIT_ID\[[^\]]+\]\s*,\s*(-?\d+)\s*\)"
+)
+RIDING_PET_CREATE_ITEM_PATTERN = re.compile(
+    r"AddRidingPetCreateItemInfo\(\s*(\d+)\s*,\s*RIDING_PET_UNIT_ID\[[^\]]+\]\s*,\s*(-?\d+)\s*\)"
 )
 ATTRACTION_ITEM_PATTERN = re.compile(
     r"AddAttractionItemInfo\(\s*(\d+)\s*,\s*true\s*\)"
@@ -199,39 +214,131 @@ def read_lua_text(path: Path) -> str:
     return path.read_text(encoding="utf-8", errors="replace")
 
 
-def sync_package_item_data() -> int:
-    """Mirror client package mappings onto server Resources for package open/use."""
-    if not PACKAGE_ITEM_FILE.exists():
-        return 0
-
-    synced = 0
-    source_text = read_lua_text(PACKAGE_ITEM_FILE)
-    for target in PACKAGE_ITEM_SYNC_TARGETS:
-        target.parent.mkdir(parents=True, exist_ok=True)
-        current = read_lua_text(target) if target.exists() else ""
-        if current != source_text:
-            target.write_text(source_text, encoding="utf-8", newline="\n")
-            synced += 1
-            print(f"Synced package mappings: {target.relative_to(ROOT)}")
-    return synced
+@lru_cache(maxsize=1)
+def active_item_template_ids() -> frozenset[int]:
+    item_ids: set[int] = set()
+    for item_file in ITEM_METADATA_FILES:
+        if item_file.exists():
+            item_ids.update(
+                int(item_id)
+                for item_id in ITEM_TEMPLATE_ID_PATTERN.findall(read_lua_text(item_file))
+            )
+    return frozenset(item_ids)
 
 
-def parse_package_links() -> list[tuple[int, int]]:
-    """Return unique (package product, component product) pairs in file order."""
+@lru_cache(maxsize=1)
+def special_item_template_ids() -> frozenset[int]:
+    item_ids: set[int] = set()
+    for item_file in ITEM_METADATA_FILES:
+        if item_file.exists():
+            item_ids.update(
+                int(item_id)
+                for item_id in ITEM_TEMPLATE_SPECIAL_PATTERN.findall(read_lua_text(item_file))
+            )
+    return frozenset(item_ids)
+
+
+@lru_cache(maxsize=1)
+def permanent_summon_item_ids() -> tuple[frozenset[int], frozenset[int]]:
+    special_item_ids = special_item_template_ids()
+    item_sets: list[frozenset[int]] = []
+    for data_file, pattern in (
+        (PET_DATA_FILE, PET_CREATE_ITEM_PATTERN),
+        (RIDING_PET_DATA_FILE, RIDING_PET_CREATE_ITEM_PATTERN),
+    ):
+        if not data_file.exists():
+            item_sets.append(frozenset())
+            continue
+        item_sets.append(
+            frozenset(
+                int(item_id)
+                for item_id, period in pattern.findall(read_lua_text(data_file))
+                if int(period) == -1 and int(item_id) in special_item_ids
+            )
+        )
+    return item_sets[0], item_sets[1]
+
+
+def active_package_links() -> list[tuple[int, int]]:
+    """Return unique uncommented package mappings in source order."""
     if not PACKAGE_ITEM_FILE.exists():
         return []
 
     links: list[tuple[int, int]] = []
     seen: set[tuple[int, int]] = set()
-    for package_id, component_id in PACKAGE_ITEM_PATTERN.findall(read_lua_text(PACKAGE_ITEM_FILE)):
-        p_id, c_id = int(package_id), int(component_id)
-        if p_id <= 0 or c_id <= 0:
-            continue
-        link = (p_id, c_id)
-        if link not in seen:
-            seen.add(link)
-            links.append(link)
+    for source_line in read_lua_text(PACKAGE_ITEM_FILE).splitlines():
+        active_line = source_line.split("--", 1)[0]
+        for package_id, component_id in PACKAGE_ITEM_PATTERN.findall(active_line):
+            p_id, c_id = int(package_id), int(component_id)
+            if p_id <= 0 or c_id <= 0:
+                continue
+            link = (p_id, c_id)
+            if link not in seen:
+                seen.add(link)
+                links.append(link)
     return links
+
+
+@lru_cache(maxsize=1)
+def package_mapping_contract() -> tuple[tuple[tuple[int, int], ...], frozenset[int]]:
+    """Keep only package mappings whose package and components are receivable."""
+    links = active_package_links()
+    item_ids = active_item_template_ids()
+    invalid_package_ids = frozenset(
+        package_id
+        for package_id, component_id in links
+        if package_id not in item_ids or component_id not in item_ids
+    )
+    valid_links = tuple(
+        link for link in links if link[0] not in invalid_package_ids
+    )
+    return valid_links, invalid_package_ids
+
+
+def sync_package_item_data() -> int:
+    """Write BOM-encoded, receivable package mappings for the server loader."""
+    if not PACKAGE_ITEM_FILE.exists():
+        return 0
+
+    valid_links, _ = package_mapping_contract()
+    valid_link_set = set(valid_links)
+    emitted_links: set[tuple[int, int]] = set()
+    filtered_lines: list[str] = []
+    skipped = 0
+    for source_line in read_lua_text(PACKAGE_ITEM_FILE).splitlines():
+        active_line = source_line.split("--", 1)[0]
+        match = PACKAGE_ITEM_PATTERN.search(active_line)
+        if match:
+            link = (int(match.group(1)), int(match.group(2)))
+            if link not in valid_link_set or link in emitted_links:
+                skipped += 1
+                continue
+            emitted_links.add(link)
+        filtered_lines.append(source_line)
+    server_text = "\n".join(filtered_lines) + "\n"
+
+    synced = 0
+    for target in PACKAGE_ITEM_SYNC_TARGETS:
+        target.parent.mkdir(parents=True, exist_ok=True)
+        current = read_lua_text(target) if target.exists() else ""
+        has_utf8_bom = target.exists() and target.read_bytes().startswith(b"\xef\xbb\xbf")
+        if current != server_text or not has_utf8_bom:
+            target.write_text(server_text, encoding="utf-8-sig", newline="\n")
+            synced += 1
+            print(f"Synced package mappings: {target.relative_to(ROOT)}")
+    if skipped:
+        print(f"Filtered {skipped} invalid or duplicate package mappings.")
+    return synced
+
+
+def parse_package_links() -> list[tuple[int, int]]:
+    """Return complete, receivable package-component pairs in source order."""
+    return list(package_mapping_contract()[0])
+
+
+def invalid_package_item_ids() -> frozenset[int]:
+    """Return package product IDs that cannot deliver every mapped component."""
+    return package_mapping_contract()[1]
 
 
 def lua_string_value(value: str) -> str:
@@ -372,6 +479,7 @@ def parse_attraction_item_ids() -> set[int]:
     return attraction_ids
 
 
+@lru_cache(maxsize=1)
 def load_item_metadata() -> dict[int, ItemMeta]:
     metadata: dict[int, ItemMeta] = {}
     socket_options: dict[int, tuple[int, ...]] = {}
@@ -621,6 +729,12 @@ def category_for(item_id: int, price: int, product_name: str, meta: ItemMeta) ->
     if product_name.casefold().startswith("recovered costume piece"):
         return {0: 11, 1: 12, 2: 13, 3: 15, 4: 16, 5: 14}.get(item_id % 10, 34)
 
+    pet_item_ids, mount_item_ids = permanent_summon_item_ids()
+    if item_id in mount_item_ids:
+        return 63
+    if item_id in pet_item_ids:
+        return 61
+
     # Item.lua equipment metadata is authoritative. Name heuristics such as
     # "mini-me" otherwise misclassify wearable Ice Burner accessories as pets.
     category_id = metadata_accessory_category(meta)
@@ -704,8 +818,12 @@ def parse_items(package_ids: frozenset[int] | None = None) -> list[tuple[int, in
         package_ids = frozenset(package_id for package_id, _ in parse_package_links())
 
     metadata = load_item_metadata()
+    template_item_ids = active_item_template_ids()
+    invalid_packages = invalid_package_item_ids()
     items = []
     for entry in prices:
+        if entry.item_id not in template_item_ids or entry.item_id in invalid_packages:
+            continue
         meta = metadata.get(entry.item_id, ItemMeta())
         product_name = entry.comment or meta.name or f"Item {entry.item_id}"
         # PackageItemData.lua is authoritative. Name heuristics misclassified

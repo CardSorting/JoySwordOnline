@@ -455,6 +455,20 @@ $SQLCmdPath -S localhost -U sa -P "$DBPassword" $ExtraArgs -b -Q "$AlterProcedur
             exit 1
         }
 
+        Write-Host "Installing Cash Shop billing procedures..." -ForegroundColor Green
+        & python "$ScriptRoot\scripts\run_sql_file.py" "database\fix-cashshop-billing-transactions.sql"
+        if ($LASTEXITCODE -ne 0) {
+            Write-Error "Failed to install Cash Shop billing procedures."
+            exit 1
+        }
+
+        Write-Host "Installing Cash Shop purchase procedure..." -ForegroundColor Green
+        & python "$ScriptRoot\scripts\run_sql_file.py" "database\fix-cash-deduction.sql"
+        if ($LASTEXITCODE -ne 0) {
+            Write-Error "Failed to install Cash Shop purchase procedure."
+            exit 1
+        }
+
         # Restore Cash Shop
         Write-Host "Restoring Cash Shop items..." -ForegroundColor Green
         & python "$ScriptRoot\scripts\restore-cashshop.py"

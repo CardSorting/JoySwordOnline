@@ -12667,14 +12667,8 @@ g_pCashItemManager:AddCashItemPrice( 227630 , 1000 )	----	Halloween Surprise Tic
 g_pCashItemManager:AddCashItemPrice( 245470 , 1000 )	----	Package component 245470
 g_pCashItemManager:AddCashItemPrice( 261630 , 1000 )	----	Package component 261630
 g_pCashItemManager:AddCashItemPrice( 261650 , 1000 )	----	Package component 261650
-Obtain the Aura of Destruction by consuming the Aura of Vitality.
-If used while in Vitality mode, MP consumption is reduced and MP gain increases.
 
 -- Auto-injected catalog items for 100% CashShop price coverage
-Obtain the Aura of Destruction by consuming the Aura of Vitality.
-If used while in Vitality mode, MP consumption is reduced and MP gain increases.
-and using Destruction skills and commands consumes more Aura.
-You can enter Destruction Mode when you obtain a certain amount of Aura of Destruction.
 
 -- Auto-injected catalog items for 100% CashShop price coverage
 g_pCashItemManager:AddCashItemPrice( 67000500 , 6000 )	----	Archdevil's Hair Ver.Dark (Chung)
@@ -12796,3 +12790,85 @@ g_pCashItemManager:AddCashItemPrice( 500580 , 8000 )	----	Pet Toy
 g_pCashItemManager:AddCashItemPrice( 500640 , 18000 )	----	Package 500640
 g_pCashItemManager:AddCashItemPrice( 500650 , 18000 )	----	Package 500650
 g_pCashItemManager:AddCashItemPrice( 90000136 , 18000 )	----	Package 90000136
+
+---------------
+-- Validated permanent summons --
+---------------
+
+-- Pets
+g_pCashItemManager:AddCashItemPrice( 500000 , 5000 )	--	Life Crystal (Pocket Phoru)
+g_pCashItemManager:AddCashItemPrice( 500010 , 5000 )	--	Life Crystal (Ancient Phoru)
+g_pCashItemManager:AddCashItemPrice( 500020 , 5000 )	--	Life Crystal (Tree Knight)
+g_pCashItemManager:AddCashItemPrice( 500050 , 5000 )	--	Wild Pocket Phoru
+g_pCashItemManager:AddCashItemPrice( 500060 , 5000 )	--	Ancient Phoru
+g_pCashItemManager:AddCashItemPrice( 500070 , 5000 )	--	Tree Knight
+g_pCashItemManager:AddCashItemPrice( 500100 , 5000 )	--	Life Crystal (Hallow Witch)
+g_pCashItemManager:AddCashItemPrice( 500110 , 5000 )	--	Hallow Witch
+g_pCashItemManager:AddCashItemPrice( 500140 , 5000 )	--	Rudolph Phoru
+g_pCashItemManager:AddCashItemPrice( 500150 , 5000 )	--	Life Crystal (Mystic)
+g_pCashItemManager:AddCashItemPrice( 500160 , 5000 )	--	Life Crystal (Mystic Special Edition – Black)
+g_pCashItemManager:AddCashItemPrice( 500170 , 5000 )	--	Life Crystal (Mystic Special Edition-White)
+g_pCashItemManager:AddCashItemPrice( 500180 , 5000 )	--	Life Crystal (Mystic Special Edition-Red)
+g_pCashItemManager:AddCashItemPrice( 500230 , 5000 )	--	Life Crystal (Hatchling)
+g_pCashItemManager:AddCashItemPrice( 500240 , 5000 )	--	Life Crystal (Dark Hatchling)
+g_pCashItemManager:AddCashItemPrice( 500250 , 5000 )	--	Life Crystal (Fire Hatchling)
+g_pCashItemManager:AddCashItemPrice( 500260 , 5000 )	--	Life Crystal (Light Hatchling)
+g_pCashItemManager:AddCashItemPrice( 500310 , 5000 )	--	Evil Ancient Phoru
+g_pCashItemManager:AddCashItemPrice( 500320 , 5000 )	--	Hellfire Ancient Phoru
+g_pCashItemManager:AddCashItemPrice( 500330 , 5000 )	--	Hallow Ancient Phoru
+g_pCashItemManager:AddCashItemPrice( 500340 , 5000 )	--	Seraph Ancient Phoru
+g_pCashItemManager:AddCashItemPrice( 500520 , 5000 )	--	Tree Knight(Christmas Tree Edition)
+g_pCashItemManager:AddCashItemPrice( 500530 , 5000 )	--	Tree Knight(Santa Edition)
+g_pCashItemManager:AddCashItemPrice( 500540 , 5000 )	--	Life Crystal (Uniel, The Light Bringer)
+g_pCashItemManager:AddCashItemPrice( 500550 , 5000 )	--	Life Crystal (Uniring-The Dark Bringer)
+g_pCashItemManager:AddCashItemPrice( 500600 , 5000 )	--	Life Crystal (Miho)
+g_pCashItemManager:AddCashItemPrice( 500610 , 5000 )	--	Life Crystal (Firefox Shiho)
+g_pCashItemManager:AddCashItemPrice( 500620 , 5000 )	--	Life Crystal (Darkfox Naho)
+g_pCashItemManager:AddCashItemPrice( 500660 , 5000 )	--	Blood Eater
+g_pCashItemManager:AddCashItemPrice( 500670 , 5000 )	--	Mana Eater
+g_pCashItemManager:AddCashItemPrice( 84001270 , 5000 )	--	Life Crystal (Panda Bear- Red)
+g_pCashItemManager:AddCashItemPrice( 84001271 , 5000 )	--	Life Crystal (Panda Bear - Blue)
+g_pCashItemManager:AddCashItemPrice( 84001272 , 5000 )	--	Panda Bear- Red
+g_pCashItemManager:AddCashItemPrice( 84001273 , 5000 )	--	Panda Bear - Blue
+g_pCashItemManager:AddCashItemPrice( 60007750 , 5000 )	--	Life Crystal (Raincoat Cat - Rebi)
+g_pCashItemManager:AddCashItemPrice( 60007751 , 5000 )	--	Life Crystal (Raincoat Cat - Regi)
+g_pCashItemManager:AddCashItemPrice( 60007754 , 5000 )	--	Raincoat Cat - Rebi
+g_pCashItemManager:AddCashItemPrice( 60007755 , 5000 )	--	Raincoat Cat - Regi
+g_pCashItemManager:AddCashItemPrice( 90000280 , 5000 )	--	Life Crystal (Blossom Tree Knight)
+g_pCashItemManager:AddCashItemPrice( 90000281 , 5000 )	--	Life Crystal (Maple Tree Knight)
+g_pCashItemManager:AddCashItemPrice( 90000282 , 5000 )	--	Life Crystal (Polar Tree Knight)
+g_pCashItemManager:AddCashItemPrice( 115000140 , 5000 )	--	Entscheidung um Leben (Baumritter - Frühling)
+g_pCashItemManager:AddCashItemPrice( 115000141 , 5000 )	--	Entscheidung um Leben (Baumritter - Herbst)
+g_pCashItemManager:AddCashItemPrice( 115000142 , 5000 )	--	Entscheidung um Leben (Baumritter - Winter)
+g_pCashItemManager:AddCashItemPrice( 115000130 , 5000 )	--	Baumritter - Frühling
+g_pCashItemManager:AddCashItemPrice( 115000131 , 5000 )	--	Baumritter - Herbst
+g_pCashItemManager:AddCashItemPrice( 115000132 , 5000 )	--	Baumritter - Winter
+g_pCashItemManager:AddCashItemPrice( 210000071 , 5000 )	--	Wild Hatchling (Infant)
+g_pCashItemManager:AddCashItemPrice( 210000138 , 5000 )	--	Life Crystal (Grim Reaper)
+g_pCashItemManager:AddCashItemPrice( 210000140 , 5000 )	--	Grim Reaper
+g_pCashItemManager:AddCashItemPrice( 67005730 , 5000 )	--	Uniel - The Light Bringer
+g_pCashItemManager:AddCashItemPrice( 90002292 , 5000 )	--	Halloween Pumpkin Fairy - Tanya
+g_pCashItemManager:AddCashItemPrice( 90002293 , 5000 )	--	Halloween Pumpkin Fairy - Rael
+g_pCashItemManager:AddCashItemPrice( 90002294 , 5000 )	--	Halloween Pumpkin Fairy - Rosetta
+g_pCashItemManager:AddCashItemPrice( 90002295 , 5000 )	--	Halloween Pumpkin Fairy - Narnea
+g_pCashItemManager:AddCashItemPrice( 90002296 , 5000 )	--	Halloween Pumpkin Fairy - Tanya Package
+g_pCashItemManager:AddCashItemPrice( 210000230 , 5000 )	--	Imperial Panda - Red
+g_pCashItemManager:AddCashItemPrice( 210000240 , 5000 )	--	Imperial Panda - White
+g_pCashItemManager:AddCashItemPrice( 90002050 , 5000 )	--	Life Crystal (Sheriff)
+g_pCashItemManager:AddCashItemPrice( 90002090 , 5000 )	--	Life Crystal (White Sheriff)
+g_pCashItemManager:AddCashItemPrice( 90002060 , 5000 )	--	Sheriff
+g_pCashItemManager:AddCashItemPrice( 90002100 , 5000 )	--	Sheriff (White)
+g_pCashItemManager:AddCashItemPrice( 85003040 , 5000 )	--	Mercenary Phoru
+g_pCashItemManager:AddCashItemPrice( 153000095 , 5000 )	--	Adult Fireworks Phoru
+g_pCashItemManager:AddCashItemPrice( 85003670 , 5000 )	--	Snowman
+g_pCashItemManager:AddCashItemPrice( 85003680 , 5000 )	--	Arctic Hunter Peng
+g_pCashItemManager:AddCashItemPrice( 70006040 , 5000 )	--	Firefox Shiho
+g_pCashItemManager:AddCashItemPrice( 70006050 , 5000 )	--	Darkfox Naho
+-- Mounts
+g_pCashItemManager:AddCashItemPrice( 550000 , 7000 )	--	Summon Stone: Moby Chariot RT
+g_pCashItemManager:AddCashItemPrice( 550010 , 7000 )	--	Summon Stone: Cockatigle
+g_pCashItemManager:AddCashItemPrice( 550020 , 7000 )	--	Summon Stone: Ancient Phoru
+g_pCashItemManager:AddCashItemPrice( 550030 , 7000 )	--	Summon Stone: Ponggo Scorpion TYPE-R
+g_pCashItemManager:AddCashItemPrice( 550040 , 7000 )	--	Summon Stone: Ice Hameling
+g_pCashItemManager:AddCashItemPrice( 550041 , 7000 )	--	Summon Stone: Dark Hameling
+g_pCashItemManager:AddCashItemPrice( 550042 , 7000 )	--	Summon Stone: Fire Hameling

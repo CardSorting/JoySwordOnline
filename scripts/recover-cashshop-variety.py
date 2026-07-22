@@ -16,6 +16,13 @@ GS_PRICE = ELSWORD / "GameServer" / "CashItemPrice.lua"
 LEGACY_LIST = ELSWORD / "_ClientScript" / "Major" / "CashShopItemList.lua"
 ACTIVE_LIST = ELSWORD / "ClientScript" / "Major" / "CashShopItemList.lua"
 AUDIT_SCRIPT = ROOT / "scripts" / "audit-cashshop-variety.py"
+PET_DATA_FILE = ELSWORD / "ServerResource" / "PetData.lua"
+RIDING_PET_DATA_FILE = ELSWORD / "ServerResource" / "RidingPetData.lua"
+ITEM_TEMPLATE_FILES = (
+    ELSWORD / "Resources" / "Item.lua",
+    ELSWORD / "ClientScript" / "Major" / "Item.lua",
+    ELSWORD / "_ClientScript" / "Major" / "Item.lua",
+)
 
 PRICE_PATTERN = re.compile(
     r"g_pCashItemManager:AddCashItemPrice\(\s*(\d+)\s*,\s*(\d+)\s*\)\s*(?:--\s*(.*))?"
@@ -27,6 +34,14 @@ PACKAGE_PATTERN = re.compile(
 )
 PET_CREATE_PATTERN = re.compile(
     r"AddPetCreateItemInfo\(\s*(\d+)\s*,\s*PET_UNIT_ID\[[^\]]+\]\s*,\s*-1\s*\)\s*(?:--\s*(.*))?"
+)
+RIDING_PET_CREATE_PATTERN = re.compile(
+    r"AddRidingPetCreateItemInfo\(\s*(\d+)\s*,\s*RIDING_PET_UNIT_ID\[[^\]]+\]\s*,\s*-1\s*\)\s*(?:--\s*(.*))?"
+)
+ITEM_TEMPLATE_SPECIAL_PATTERN = re.compile(
+    r"m_ItemID\s*=\s*(\d+)\s*,(?:(?!m_ItemID\s*=).)*?"
+    r"m_ItemType\s*=\s*ITEM_TYPE\[\s*\"IT_SPECIAL\"\s*\]",
+    re.DOTALL,
 )
 
 MEANINGFUL_BUCKETS = (
@@ -225,17 +240,32 @@ def append_price_block(path: Path, title: str, lines: list[str]) -> None:
     path.write_text(text, encoding="utf-8")
 
 
-def parse_pet_life_crystals(path: Path) -> dict[int, str]:
-    crystals: dict[int, str] = {}
+def parse_item_template_ids() -> set[int]:
+    item_ids: set[int] = set()
+    for path in ITEM_TEMPLATE_FILES:
+        if path.exists():
+            item_ids.update(
+                int(item_id)
+                for item_id in ITEM_TEMPLATE_SPECIAL_PATTERN.findall(read_text(path))
+            )
+    return item_ids
+
+
+def parse_summon_creation_items(
+    path: Path,
+    pattern: re.Pattern[str],
+    item_template_ids: set[int],
+) -> dict[int, str]:
+    items: dict[int, str] = {}
     if not path.exists():
-        return crystals
+        return items
     for line in read_text(path).splitlines():
         if line.strip().startswith("--"):
             continue
-        match = PET_CREATE_PATTERN.search(line)
-        if match:
-            crystals[int(match.group(1))] = (match.group(2) or "").strip()
-    return crystals
+        match = pattern.search(line)
+        if match and int(match.group(1)) in item_template_ids:
+            items[int(match.group(1))] = (match.group(2) or "").strip()
+    return items
 
 
 def parse_pet_packages(path: Path) -> dict[int, str]:
@@ -257,17 +287,33 @@ def parse_pet_packages(path: Path) -> dict[int, str]:
     return packages
 
 
-def collect_pet_data_gaps(existing_ids: set[int]) -> list[tuple[int, str, str]]:
+def collect_pet_data_gaps(
+    existing_ids: set[int],
+    item_template_ids: set[int],
+) -> list[tuple[int, str, str]]:
     gaps: list[tuple[int, str, str]] = []
     seen: set[int] = set()
     package_path = ELSWORD / "ClientScript" / "Major" / "PackageItemData.lua"
-    pet_path = ELSWORD / "ServerResource" / "PetData.lua"
 
-    for item_id, comment in parse_pet_life_crystals(pet_path).items():
+    for item_id, comment in parse_summon_creation_items(
+        PET_DATA_FILE,
+        PET_CREATE_PATTERN,
+        item_template_ids,
+    ).items():
         if item_id in existing_ids or item_id in seen:
             continue
         seen.add(item_id)
         gaps.append((item_id, comment or f"생명의 결정 ({item_id})", "pets"))
+
+    for item_id, comment in parse_summon_creation_items(
+        RIDING_PET_DATA_FILE,
+        RIDING_PET_CREATE_PATTERN,
+        item_template_ids,
+    ).items():
+        if item_id in existing_ids or item_id in seen:
+            continue
+        seen.add(item_id)
+        gaps.append((item_id, comment or f"Summon Stone ({item_id})", "mounts"))
 
     for item_id, comment in parse_pet_packages(package_path).items():
         if item_id in existing_ids or item_id in seen:
@@ -314,7 +360,8 @@ def collect_candidates(existing_ids: set[int]) -> list[tuple[int, str, str]]:
             seen.add(item_id)
             candidates.append((item_id, comment, bucket))
 
-    for row in collect_pet_data_gaps(existing_ids):
+    item_template_ids = parse_item_template_ids()
+    for row in collect_pet_data_gaps(existing_ids, item_template_ids):
         item_id = row[0]
         if item_id in seen:
             continue

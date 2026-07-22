@@ -53,3 +53,10 @@ scratch/
 Elsword/offline/snapshots/
 Elsword/offline/*.receipt
 Elsword/offline/benchmark-report.json
+Elsword/**/Statistics/
+Elsword/**/RefreshTimeBackup.ini
+Elsword/offline/crashes/
+Elsword/offline/enhancement-canary.json
+Elsword/offline/server-pids.json
+Elsword/offline/stack-status.json
+

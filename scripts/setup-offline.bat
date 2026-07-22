@@ -52,6 +52,8 @@ echo ==^> Installing daily Cash allowance
 "%PYTHON_EXE%" %PYTHON_ARGS% "%ROOT%\scripts\install-cash-allowance.py"
 if errorlevel 1 exit /b 1
 echo ==^> Installing Cash Shop credit sync and deduction fixes
+"%PYTHON_EXE%" %PYTHON_ARGS% "%ROOT%\scripts\run_sql_file.py" database\fix-cashshop-billing-transactions.sql
+if errorlevel 1 exit /b 1
 "%PYTHON_EXE%" %PYTHON_ARGS% "%ROOT%\scripts\run_sql_file.py" database\fix-cash-deduction.sql
 if errorlevel 1 exit /b 1
 "%PYTHON_EXE%" %PYTHON_ARGS% "%ROOT%\scripts\run_sql_file.py" database\fix-credit-sync.sql

@@ -44,3 +44,6 @@ py -3 scripts\rebalance-cashshop-economy.py --apply
 The generated audit is written to `data\cashshop-economy-report.json`.
 `restore-cashshop.py` automatically applies normalization before rebuilding billing
 products, so recovery scripts cannot silently reintroduce legacy price outliers.
+
+For catalog loading, pricing corruption, and Cash Shop locker failures, follow
+[CASHSHOP_TROUBLESHOOTING.md](CASHSHOP_TROUBLESHOOTING.md).

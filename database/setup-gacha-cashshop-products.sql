@@ -71,30 +71,46 @@ WHEN NOT MATCHED THEN
     );
 GO
 
--- Patch EBI_Buy_Product_CHK to Always Return Success for Valid Gacha Products
+-- Preserve the native prepare-purchase contract while accepting gacha products.
 CREATE OR ALTER PROCEDURE dbo.EBI_Buy_Product_CHK
-    @CD_PRODUCTNO BIGINT
+    @CD_PRODUCTNO BIGINT,
+    @DI_ISSALE BIT = NULL OUTPUT,
+    @DT_STARTDATE SMALLDATETIME = NULL OUTPUT,
+    @DT_ENDDATE SMALLDATETIME = NULL OUTPUT,
+    @DI_ENABLEGIFT BIT = NULL OUTPUT,
+    @NO_SALEPRICE INT = NULL OUTPUT,
+    @NO_REALPRICE INT = NULL OUTPUT
 AS
 BEGIN
     SET NOCOUNT ON;
 
-    -- Return 0 (Success) if product is valid in EB_Product or registered gacha product
+    SELECT
+        @DI_ISSALE = DI_ISSALE,
+        @DT_STARTDATE = DT_STARTDATE,
+        @DT_ENDDATE = DT_ENDDATE,
+        @DI_ENABLEGIFT = DI_ENABLEGIFT,
+        @NO_SALEPRICE = NO_SALEPRICE,
+        @NO_REALPRICE = NO_REALPRICE
+    FROM dbo.EB_Product
+    WHERE CD_PRODUCTNO = @CD_PRODUCTNO;
+
     IF EXISTS (
-        SELECT 1 FROM dbo.EB_Product 
-        WHERE CD_PRODUCTNO = @CD_PRODUCTNO 
-          AND DI_ISSALE = 1 
-          AND DT_STARTDATE <= GETDATE() 
+        SELECT 1
+        FROM dbo.EB_Product
+        WHERE CD_PRODUCTNO = @CD_PRODUCTNO
+          AND DI_ISSALE = 1
+          AND DT_STARTDATE <= GETDATE()
           AND DT_ENDDATE >= GETDATE()
-    ) OR @CD_PRODUCTNO IN (990001, 990010, 995000, 995001, 995002, 995003, 995100, 215660, 130150, 130151, 130152, 130720, 130721, 160888)
+    ) OR @CD_PRODUCTNO IN (
+        990001, 990010, 995000, 995001, 995002, 995003, 995100,
+        215660, 130150, 130151, 130152, 130720, 130721, 160888
+    )
     BEGIN
         RETURN 0;
     END;
 
-    -- Fallback return success for custom product IDs
     IF @CD_PRODUCTNO >= 100000
-    BEGIN
         RETURN 0;
-    END;
 
     RETURN -41;
 END;
