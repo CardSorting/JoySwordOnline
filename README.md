@@ -47,7 +47,7 @@ Welcome to **JoySword Online**. Depending on your role, use the targeted onboard
 | :--- | :--- | :--- | :--- |
 | **🛠️ Server Operators & Admins** | 1-Click local server launch, process monitoring, firewall rules | 1. Run `.\Start-Server-Automatic.ps1` to launch all 5 server executables.<br>2. Execute `powershell -ExecutionPolicy Bypass -File .\scripts\ensure-game-firewall.ps1` for ports.<br>3. Monitor self-healing logs in `logs/server-supervisor.log`. | [Quick Start Guide](#🚀-quick-start-guide)<br>[Self-Healing Supervisor](#1-100-self-healing-process-supervisor) |
 | **💻 Client Devs & Modders** | Desktop launcher, KOM client archive patching, Code Overlays | 1. Run `python scripts/patch-client-kom.py` to configure IP overrides.<br>2. Execute `powershell -ExecutionPolicy Bypass -File .\Start-Client-Windows.ps1` to launch Electron UI.<br>3. Build overlays via `python scripts/build-code-overlay.py`. | [Code Overlay Engine](#🔥-code-overlay--hot-patching-engine)<br>[Dynamic Client Patching](#🔌-dynamic-client-patching) |
-| **🛡️ SRE & Database Engineers** | Lockless RCSI concurrency, 50-thread pool scaling, TempDB 4-file tuning | 1. Apply storage engine fixes via `python scripts/db-optimize-storage.py`.<br>2. Run strategy benchmarks via `python scripts/benchmark-strategy.py`.<br>3. Verify offline profile via `python scripts/verify-offline.py`. | [SRE & DB Architecture](#🛡️-sovereign-sre--high-throughput-db-architecture)<br>[Benchmark Report](file:///C:/Users/media/.gemini/antigravity-ide/brain/092f37d0-4053-47e3-a058-a0fffa8deff8/channel_connection_benchmark_results.md) |
+| **🛡️ SRE & Database Engineers** | Lockless RCSI concurrency, 50-thread pool scaling, TempDB 4-file tuning | 1. Apply storage engine fixes via `python scripts/db-optimize-storage.py`.<br>2. Run strategy benchmarks via `python scripts/benchmark-strategy.py`.<br>3. Verify offline profile via `python scripts/verify-offline.py`. | [SRE & DB Architecture](#🛡️-sovereign-sre--high-throughput-db-architecture)<br>[Benchmark Report](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/STRATEGY_BENCHMARK_RESULTS.md) |
 | **💎 Game Designers & Economy** | CashShop catalog pricing, 0% RNG destruction, VIP/BattlePass balance | 1. Inspect F2P catalog in `Elsword/ServerResource/CashItemPrice.lua`.<br>2. Review 0% destruction tables in `Elsword/ServerResource/EnchantTable.lua`.<br>3. Audit VIP tiers in `database/install-vip-tier-system.sql`. | [Master Economy](#💎-master-economy--gacha-architecture)<br>[PvP AI V7](#⚔️-grounded-npc-pvp-ai-v7-engine) |
 
 ---
@@ -201,6 +201,10 @@ Verify server performance and database integrity:
 python scripts/benchmark-strategy.py
 python -m unittest discover tests
 ```
+
+#### 📊 Empirical Performance & Strategy Benchmark Dashboard
+![JoySword Enterprise Benchmark Results Dashboard](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/benchmark_results_dashboard.png)
+*For complete latency percentiles and configuration caching metrics, consult the [Strategy Benchmark Report](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/STRATEGY_BENCHMARK_RESULTS.md).*
 
 ---
 
@@ -599,6 +603,7 @@ python scripts/propagate-pvp-ai-v7.py
 | :--- | :--- | :--- |
 | **SRE Architecture** | [Sovereign SRE Guide](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/SOVEREIGN_SRE_ARCHITECTURE.md) | Self-healing process supervisor, circuit breaker backoff, dual-socket probes, and webhook alerting. |
 | **Database Architecture** | [High-Throughput DB Guide](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/DATABASE_HIGH_THROUGHPUT_GUIDE.md) | RCSI lockless concurrency, forced delayed durability, query store, in-process pyodbc, and 8KB DSN buffers. |
+| **Strategy Benchmarks** | [Strategy Benchmark Report](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/STRATEGY_BENCHMARK_RESULTS.md) | Empirical measurements for SQL latency percentiles, 374.8x Lua caching acceleration, auth throughput, and precompiler speed. |
 | **Chaos Engineering** | [Chaos & Resilience Testing](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/CHAOS_ENGINEERING_AND_TESTING.md) | Netflix Chaos Monkey-style fault injection testing, data sync auditor, and Lua syntax pre-compiler. |
 | **PvP AI V7** | [Companion Brief](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/PVP_AI_V7_COMPANION_BRIEF.md) | High-level summary of V7 runtime grounding, evidence, and limitations. |
 | **PvP AI V7** | [Implementation Strategy](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/PVP_AI_V7_STRATEGY.md) | Profile rollout, calibration matrix, and live testing strategy for all 10 Hero NPCs. |
