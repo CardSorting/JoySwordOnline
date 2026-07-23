@@ -47,7 +47,7 @@ Welcome to **JoySword Online**. Depending on your role, use the targeted onboard
 | :--- | :--- | :--- | :--- |
 | **🛠️ Server Operators & Admins** | 1-Click local server launch, process monitoring, firewall rules | 1. Run `.\Start-Server-Automatic.ps1` to launch all 5 server executables.<br>2. Execute `powershell -ExecutionPolicy Bypass -File .\scripts\ensure-game-firewall.ps1` for ports.<br>3. Monitor self-healing logs in `logs/server-supervisor.log`. | [Quick Start Guide](#🚀-quick-start-guide)<br>[Self-Healing Supervisor](#1-100-self-healing-process-supervisor) |
 | **💻 Client Devs & Modders** | Desktop launcher, KOM client archive patching, Code Overlays | 1. Run `python scripts/patch-client-kom.py` to configure IP overrides.<br>2. Execute `powershell -ExecutionPolicy Bypass -File .\Start-Client-Windows.ps1` to launch Electron UI.<br>3. Build overlays via `python scripts/build-code-overlay.py`. | [Code Overlay Engine](#🔥-code-overlay--hot-patching-engine)<br>[Dynamic Client Patching](#🔌-dynamic-client-patching) |
-| **🛡️ SRE & Database Engineers** | Lockless RCSI concurrency, 50-thread pool scaling, TempDB 4-file tuning | 1. Apply storage engine fixes via `python scripts/db-optimize-storage.py`.<br>2. Run strategy benchmarks via `python scripts/benchmark-strategy.py`.<br>3. Verify offline profile via `python scripts/verify-offline.py`. | [SRE & DB Architecture](#🛡️-sovereign-sre--high-throughput-db-architecture)<br>[Benchmark Report](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/STRATEGY_BENCHMARK_RESULTS.md) |
+| **🛡️ SRE & Database Engineers** | Lockless RCSI concurrency, 50-thread pool scaling, TempDB 4-file tuning | 1. Apply storage engine fixes via `python scripts/db-optimize-storage.py`.<br>2. Run strategy benchmarks via `python scripts/benchmark-strategy.py`.<br>3. Verify offline profile via `python scripts/verify-offline.py`. | [SRE & DB Architecture](#🛡️-sovereign-sre--high-throughput-db-architecture)<br>[Benchmark Report](docs/STRATEGY_BENCHMARK_RESULTS.md) |
 | **💎 Game Designers & Economy** | CashShop catalog pricing, 0% RNG destruction, VIP/BattlePass balance | 1. Inspect F2P catalog in `Elsword/ServerResource/CashItemPrice.lua`.<br>2. Review 0% destruction tables in `Elsword/ServerResource/EnchantTable.lua`.<br>3. Audit VIP tiers in `database/install-vip-tier-system.sql`. | [Master Economy](#💎-master-economy--gacha-architecture)<br>[PvP AI V7](#⚔️-grounded-npc-pvp-ai-v7-engine) |
 
 ---
@@ -109,7 +109,7 @@ Follow this checklist to verify your environment readiness in under 5 minutes:
   * **Covering Index Optimization**: Nonclustered indexes on search keys (`MUser`, `users`, `EB_Cash`, `Unit`, `GUnit`, `EL_UNIT`, `GItem`, `GItemSocket`, `GRank`, `Rank_SpaceTime_*`) prevent `TabLockX` full table lock escalation.
   * **16KB ODBC Write Buffering**: `PacketSize=16384` across 198 DSN files reduces TCP packet fragmentation for binary blobs by 93%.
   * **PowerShell Console Progress Overhead Suppression**: `$ProgressPreference = 'SilentlyContinue'` across automators eliminates console progress-bar rendering stalls.
-  * **Chaos Engineering Testing**: Netflix Chaos Monkey-style fault injection engine ([chaos-test.py](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/scripts/chaos-test.py)) validates stack recovery under simulated process kills, socket deadlocks, and memory pressure.
+  * **Chaos Engineering Testing**: Netflix Chaos Monkey-style fault injection engine ([chaos-test.py](scripts/chaos-test.py)) validates stack recovery under simulated process kills, socket deadlocks, and memory pressure.
 * **💎 Modern CashShop & Gacha Economy Engine**:
   * **100% Item Catalog Coverage**: 17,042+ catalog items normalized into F2P-friendly price tiers across `CashItemPrice.lua` and `ES_BILLING.dbo.EB_Product`.
   * **Server-Side Price Validation**: `EBP_BuyItem` stored procedure dynamically validates unit price x quantity against database product tables and logs positive transaction values.
@@ -203,8 +203,8 @@ python -m unittest discover tests
 ```
 
 #### 📊 Empirical Performance & Strategy Benchmark Dashboard
-![JoySword Enterprise Benchmark Results Dashboard](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/benchmark_results_dashboard.png)
-*For complete latency percentiles and configuration caching metrics, consult the [Strategy Benchmark Report](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/STRATEGY_BENCHMARK_RESULTS.md).*
+![JoySword Enterprise Benchmark Results Dashboard](docs/benchmark_results_dashboard.png)
+*For complete latency percentiles and configuration caching metrics, consult the [Strategy Benchmark Report](docs/STRATEGY_BENCHMARK_RESULTS.md).*
 
 ---
 
@@ -423,7 +423,7 @@ Key technical milestones include:
 * **Character Calibration**: Unique timing, range, pacing, defense, and resource calibration across all 10 Hero NPCs.
 * **Propagation Patcher**: `propagate-pvp-ai-v7.py` updates Lua configurations dynamically across server resource paths.
 
-Read the [Companion Brief](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/PVP_AI_V7_COMPANION_BRIEF.md), [Implementation Strategy](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/PVP_AI_V7_STRATEGY.md), [Design Philosophy](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/PVP_AI_V7_DESIGN_PHILOSOPHY.md), and [Technical Whitepaper](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/PVP_AI_V7_WHITEPAPER.md).
+Read the [Companion Brief](docs/PVP_AI_V7_COMPANION_BRIEF.md), [Implementation Strategy](docs/PVP_AI_V7_STRATEGY.md), [Design Philosophy](docs/PVP_AI_V7_DESIGN_PHILOSOPHY.md), and [Technical Whitepaper](docs/PVP_AI_V7_WHITEPAPER.md).
 
 ---
 
@@ -433,13 +433,13 @@ The repository contains automated test suites to ensure system integrity, non-de
 
 | Test Suite File | Domain / Focus | Key Test Coverage |
 | :--- | :--- | :--- |
-| ⚡ [test_channel_connection_benchmark.py](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/tests/test_channel_connection_benchmark.py) | **Channel Connection Benchmark** | Verifies 151.6x channel connection validation speedup, fast-path lockless auth, RCSI row versioning, covering indexes, and 30-thread DB connection pools. |
-| 🧪 [test-master-economy.py](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/tests/test-master-economy.py) | **Master Economy (30 Tests)** | CashShop catalog sync, price normalization, cashback calculations, VIP tier logic, daily stipends, and SQL procedure checks. |
-| 🛡️ [test_enhancement_hardening.py](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/tests/test_enhancement_hardening.py) | **Enhancement Hardening** | Validates 0% Break and 0% DownTo0 probability tables in `EnchantTable.lua` for equipment upgrade safety. |
-| 🔍 [test_enhancement_integrity.py](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/tests/test_enhancement_integrity.py) | **Enhancement Rate Integrity** | Verifies probability distributions, item destruction suppression, and CSV validation outputs. |
-| ⚔️ [test_globalserver_solo_pvp_patch.py](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/tests/test_globalserver_solo_pvp_patch.py) | **GlobalServer Solo PvP** | Audits bytecode patching logic for GlobalServer to enable 1v1 AI arena matchmaking without full lobbies. |
-| 🌐 [test_pvp_matchmaking.py](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/tests/test_pvp_matchmaking.py) | **PvP Matchmaking Netcode** | Verifies UDP/P2P socket parameters, host migration thresholds, and battle queue dispatch. |
-| ☁️ [test_azure_deploy.py](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/tests/test_azure_deploy.py) | **Azure Cloud Deployment** | Tests Terraform variables, exclusion filters, and automated deployment payload packaging. |
+| ⚡ [test_channel_connection_benchmark.py](tests/test_channel_connection_benchmark.py) | **Channel Connection Benchmark** | Verifies 151.6x channel connection validation speedup, fast-path lockless auth, RCSI row versioning, covering indexes, and 30-thread DB connection pools. |
+| 🧪 [test-master-economy.py](tests/test-master-economy.py) | **Master Economy (30 Tests)** | CashShop catalog sync, price normalization, cashback calculations, VIP tier logic, daily stipends, and SQL procedure checks. |
+| 🛡️ [test_enhancement_hardening.py](tests/test_enhancement_hardening.py) | **Enhancement Hardening** | Validates 0% Break and 0% DownTo0 probability tables in `EnchantTable.lua` for equipment upgrade safety. |
+| 🔍 [test_enhancement_integrity.py](tests/test_enhancement_integrity.py) | **Enhancement Rate Integrity** | Verifies probability distributions, item destruction suppression, and CSV validation outputs. |
+| ⚔️ [test_globalserver_solo_pvp_patch.py](tests/test_globalserver_solo_pvp_patch.py) | **GlobalServer Solo PvP** | Audits bytecode patching logic for GlobalServer to enable 1v1 AI arena matchmaking without full lobbies. |
+| 🌐 [test_pvp_matchmaking.py](tests/test_pvp_matchmaking.py) | **PvP Matchmaking Netcode** | Verifies UDP/P2P socket parameters, host migration thresholds, and battle queue dispatch. |
+| ☁️ [test_azure_deploy.py](tests/test_azure_deploy.py) | **Azure Cloud Deployment** | Tests Terraform variables, exclusion filters, and automated deployment payload packaging. |
 
 Run all tests via pytest or Python runners:
 ```bash
@@ -525,15 +525,15 @@ joysword.bat build
 
 | Directory / Component | Path | Description |
 | :--- | :--- | :--- |
-| 🎮 **Server Executables** | [Elsword/](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/Elsword) | Legacy server binaries, process startup bat scripts, LUA resource files, and MSSQL database dumps. |
-| 🌐 **Web Portal** | [web/](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/web) | Next.js 14 web registration portal, Gacha Storefront, Firebase Auth sync API, and searchable game wiki. |
-| 💻 **Desktop Launcher** | [launcher/](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/launcher) | Electron desktop application codebase with resolution selector, patcher, and UAC shims. |
-| ⚙️ **Client Tools** | [client/](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/client) | Client launchers, IP override patches, and KOM repacking utilities. |
-| 🗄️ **Database** | [database/](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/database) | MSSQL schema definitions, stored procedures (`EBP_BuyItem`), stored cash procedures, and repair SQL scripts. |
-| ☁️ **Infrastructure** | [infra/](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/infra) | Terraform Infrastructure as Code for Azure VM deployment and networking. |
-| 📖 **Documentation** | [docs/](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs) | Complete technical library covering PvP AI, enhancement math, client networking, and deployment playbooks. |
-| 🛠️ **Scripts** | [scripts/](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/scripts) | 150+ Python and PowerShell automation scripts for database maintenance, patching, and economy audits. |
-| 🧪 **Tests** | [tests/](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/tests) | Automated test suites for economy, enhancement hardening, PvP netcode, and deployment automation. |
+| 🎮 **Server Executables** | [Elsword/](Elsword) | Legacy server binaries, process startup bat scripts, LUA resource files, and MSSQL database dumps. |
+| 🌐 **Web Portal** | [web/](web) | Next.js 14 web registration portal, Gacha Storefront, Firebase Auth sync API, and searchable game wiki. |
+| 💻 **Desktop Launcher** | [launcher/](launcher) | Electron desktop application codebase with resolution selector, patcher, and UAC shims. |
+| ⚙️ **Client Tools** | [client/](client) | Client launchers, IP override patches, and KOM repacking utilities. |
+| 🗄️ **Database** | [database/](database) | MSSQL schema definitions, stored procedures (`EBP_BuyItem`), stored cash procedures, and repair SQL scripts. |
+| ☁️ **Infrastructure** | [infra/](infra) | Terraform Infrastructure as Code for Azure VM deployment and networking. |
+| 📖 **Documentation** | [docs/](docs) | Complete technical library covering PvP AI, enhancement math, client networking, and deployment playbooks. |
+| 🛠️ **Scripts** | [scripts/](scripts) | 150+ Python and PowerShell automation scripts for database maintenance, patching, and economy audits. |
+| 🧪 **Tests** | [tests/](tests) | Automated test suites for economy, enhancement hardening, PvP netcode, and deployment automation. |
 
 ---
 
@@ -601,25 +601,25 @@ python scripts/propagate-pvp-ai-v7.py
 
 | Category | Guide Document | Description |
 | :--- | :--- | :--- |
-| **SRE Architecture** | [Sovereign SRE Guide](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/SOVEREIGN_SRE_ARCHITECTURE.md) | Self-healing process supervisor, circuit breaker backoff, dual-socket probes, and webhook alerting. |
-| **Database Architecture** | [High-Throughput DB Guide](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/DATABASE_HIGH_THROUGHPUT_GUIDE.md) | RCSI lockless concurrency, forced delayed durability, query store, in-process pyodbc, and 8KB DSN buffers. |
-| **Strategy Benchmarks** | [Strategy Benchmark Report](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/STRATEGY_BENCHMARK_RESULTS.md) | Empirical measurements for SQL latency percentiles, 374.8x Lua caching acceleration, auth throughput, and precompiler speed. |
-| **Chaos Engineering** | [Chaos & Resilience Testing](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/CHAOS_ENGINEERING_AND_TESTING.md) | Netflix Chaos Monkey-style fault injection testing, data sync auditor, and Lua syntax pre-compiler. |
-| **PvP AI V7** | [Companion Brief](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/PVP_AI_V7_COMPANION_BRIEF.md) | High-level summary of V7 runtime grounding, evidence, and limitations. |
-| **PvP AI V7** | [Implementation Strategy](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/PVP_AI_V7_STRATEGY.md) | Profile rollout, calibration matrix, and live testing strategy for all 10 Hero NPCs. |
-| **PvP AI V7** | [Design Philosophy](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/PVP_AI_V7_DESIGN_PHILOSOPHY.md) | Principles for believable high-skill behavior, uncertainty, and fairness. |
-| **PvP AI V7** | [Technical Whitepaper](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/PVP_AI_V7_WHITEPAPER.md) | Complete architecture, 48-signal contract, and confirmation lifecycle. |
-| **Gameplay** | [Enhancement Validation](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/ENHANCEMENT_PROBABILITY_VALIDATION.md) | Mathematical proof and audit of 0% destruction enhancement mechanics. |
-| **Deployment** | [Deployment Guide](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/deployment_guide.md) | Setting up the game stack locally or on an Azure Virtual Machine. |
-| **Deployment** | [Azure Deployment](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/AZURE_DEPLOYMENT.md) | Step-by-step Azure VM and Linux Web App deployment guide. |
-| **Deployment** | [Account Portal Deployment](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/ACCOUNT_PORTAL_DEPLOYMENT.md) | Deploying the Next.js web portal and Firebase/PostgreSQL identity layer. |
-| **Networking** | [Client Connection Guide](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/CLIENT_CONNECTION_GUIDE.md) | Client patching protocols, IP overrides, and launcher configuration details. |
-| **Networking** | [Local Public Hosting Recovery](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/LOCAL_PUBLIC_HOSTING_RECOVERY.md) | Home-router port forwarding, Windows network recovery, and local hosting. |
-| **Networking** | [Client Endpoint Troubleshooting](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/CLIENT_ENDPOINT_TROUBLESHOOTING.md) | Comprehensive client socket mapping and connection diagnostic guide. |
-| **Administration** | [Admin Guide](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/ADMIN_GUIDE.md) | Database triggers, cash shop rebalancing, and scheduler configurations. |
-| **Diagnostics** | [Troubleshooting Guide](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/troubleshooting_guide.md) | Network port mapping boundaries, log audits, and diagnostic runs. |
-| **Architecture** | [Operations Details](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/docs/README.md) | API structures, SQL schemas, and network routing boundaries. |
-| **Showcase** | [Project Writeup](file:///c:/Users/media/Downloads/JoySwordOffline%20-%20Copy/PROJECT_WRITEUP.md) | Complete technical writeup and architecture breakdown of the project. |
+| **SRE Architecture** | [Sovereign SRE Guide](docs/SOVEREIGN_SRE_ARCHITECTURE.md) | Self-healing process supervisor, circuit breaker backoff, dual-socket probes, and webhook alerting. |
+| **Database Architecture** | [High-Throughput DB Guide](docs/DATABASE_HIGH_THROUGHPUT_GUIDE.md) | RCSI lockless concurrency, forced delayed durability, query store, in-process pyodbc, and 8KB DSN buffers. |
+| **Strategy Benchmarks** | [Strategy Benchmark Report](docs/STRATEGY_BENCHMARK_RESULTS.md) | Empirical measurements for SQL latency percentiles, 374.8x Lua caching acceleration, auth throughput, and precompiler speed. |
+| **Chaos Engineering** | [Chaos & Resilience Testing](docs/CHAOS_ENGINEERING_AND_TESTING.md) | Netflix Chaos Monkey-style fault injection testing, data sync auditor, and Lua syntax pre-compiler. |
+| **PvP AI V7** | [Companion Brief](docs/PVP_AI_V7_COMPANION_BRIEF.md) | High-level summary of V7 runtime grounding, evidence, and limitations. |
+| **PvP AI V7** | [Implementation Strategy](docs/PVP_AI_V7_STRATEGY.md) | Profile rollout, calibration matrix, and live testing strategy for all 10 Hero NPCs. |
+| **PvP AI V7** | [Design Philosophy](docs/PVP_AI_V7_DESIGN_PHILOSOPHY.md) | Principles for believable high-skill behavior, uncertainty, and fairness. |
+| **PvP AI V7** | [Technical Whitepaper](docs/PVP_AI_V7_WHITEPAPER.md) | Complete architecture, 48-signal contract, and confirmation lifecycle. |
+| **Gameplay** | [Enhancement Validation](docs/ENHANCEMENT_PROBABILITY_VALIDATION.md) | Mathematical proof and audit of 0% destruction enhancement mechanics. |
+| **Deployment** | [Deployment Guide](deployment_guide.md) | Setting up the game stack locally or on an Azure Virtual Machine. |
+| **Deployment** | [Azure Deployment](docs/AZURE_DEPLOYMENT.md) | Step-by-step Azure VM and Linux Web App deployment guide. |
+| **Deployment** | [Account Portal Deployment](docs/ACCOUNT_PORTAL_DEPLOYMENT.md) | Deploying the Next.js web portal and Firebase/PostgreSQL identity layer. |
+| **Networking** | [Client Connection Guide](CLIENT_CONNECTION_GUIDE.md) | Client patching protocols, IP overrides, and launcher configuration details. |
+| **Networking** | [Local Public Hosting Recovery](docs/LOCAL_PUBLIC_HOSTING_RECOVERY.md) | Home-router port forwarding, Windows network recovery, and local hosting. |
+| **Networking** | [Client Endpoint Troubleshooting](docs/CLIENT_ENDPOINT_TROUBLESHOOTING.md) | Comprehensive client socket mapping and connection diagnostic guide. |
+| **Administration** | [Admin Guide](ADMIN_GUIDE.md) | Database triggers, cash shop rebalancing, and scheduler configurations. |
+| **Diagnostics** | [Troubleshooting Guide](troubleshooting_guide.md) | Network port mapping boundaries, log audits, and diagnostic runs. |
+| **Architecture** | [Operations Details](docs/README.md) | API structures, SQL schemas, and network routing boundaries. |
+| **Showcase** | [Project Writeup](PROJECT_WRITEUP.md) | Complete technical writeup and architecture breakdown of the project. |
 
 ---
 
