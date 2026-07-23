@@ -107,17 +107,17 @@ DC_NX_SHOP_GATEWAY : 넥슨 빌링 게이트웨이
 --]]
 -- AddDB( DB 종류, file dsn, thread 개수, DBConnectionString여부 )
 
-DBLayer:AddDB( DC_ACCOUNT,	'Account_US_TEST.dsn',		3, false )
+DBLayer:AddDB( DC_ACCOUNT,	'Account_US_TEST.dsn',		50, false )
 
 if Server:GetServerGroupID() == 0 then
-	DBLayer:AddDB( DC_GAME,		'Game01_US_TEST.dsn',5, false )
-	DBLayer:AddDB( DC_LOG,		'log_US_TEST.dsn',	3, false )
+	DBLayer:AddDB( DC_GAME,		'Game01_US_TEST.dsn',50, false )
+	DBLayer:AddDB( DC_LOG,		'log_US_TEST.dsn',	30, false )
 elseif Server:GetServerGroupID() == 1 then
-	DBLayer:AddDB( DC_GAME,		'Game02_US_TEST.dsn',5, false )
-	DBLayer:AddDB( DC_LOG,		'log_US_TEST.dsn',		3, false )
+	DBLayer:AddDB( DC_GAME,		'Game02_US_TEST.dsn',50, false )
+	DBLayer:AddDB( DC_LOG,		'log_US_TEST.dsn',		30, false )
 else
-	DBLayer:AddDB( DC_GAME,		'Game01_US_TEST.dsn',5, false )
-	DBLayer:AddDB( DC_LOG,		'log_US_TEST.dsn',	3, false )
+	DBLayer:AddDB( DC_GAME,		'Game01_US_TEST.dsn',50, false )
+	DBLayer:AddDB( DC_LOG,		'log_US_TEST.dsn',	30, false )
 end
 
 --DBLayer:AddDB( DC_SMS,		'SMS.dsn',			1, false )

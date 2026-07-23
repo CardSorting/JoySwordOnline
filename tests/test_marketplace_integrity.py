@@ -59,7 +59,7 @@ class MarketplaceIntegrityTests(unittest.TestCase):
         self.assertIn("INSERT INTO dbo.GPShopInfo", sql)
         self.assertIn("unit.Deleted = 0", sql)
         self.assertIn("CREATE OR ALTER PROCEDURE dbo.gup_get_PShop_info_UnitUID", sql)
-        self.assertIn("WITH (UPDLOCK, HOLDLOCK)", sql)
+        self.assertIn("WITH (NOLOCK)", sql)
         self.assertIn("ExpirationDate = @OfflineShopExpiry", sql)
         self.assertIn("CONVERT(BIT, info.IsPShopOpen)", sql)
 

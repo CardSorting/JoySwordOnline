@@ -33,6 +33,12 @@ function Ensure-GameFirewallRule {
 Ensure-GameFirewallRule -DisplayName 'JoySword Public Game TCP' -Protocol 'TCP' -Ports $GameTcpPorts
 Ensure-GameFirewallRule -DisplayName 'JoySword Public Game UDP' -Protocol 'UDP' -Ports $GameUdpPorts
 
+# Optimize OS TCP Network Stack for low latency socket processing
+try {
+    netsh int tcp set global autotuninglevel=normal | Out-Null
+    netsh int tcp set global congestionprovider=cubic | Out-Null
+} catch {}
+
 Write-Output 'VERIFY_BEGIN'
 Get-NetFirewallRule -DisplayName 'JoySword Public Game *' | ForEach-Object {
     $rule = $_

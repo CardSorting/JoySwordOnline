@@ -116,8 +116,8 @@ DC_NX_WEB		   : 넥슨 WEB
 --]]
 -- AddDB( DB 종류, file dsn, thread 개수, DBConnectionString여부 )
 
-DBLayer:AddDB( DC_ACCOUNT,	'Config\\US\\Account_US_INTERNAL.dsn',			1, false )
-DBLayer:AddDB( DC_LOG,		'Config\\US\\log_US_INTERNAL.dsn',		3, false )
+DBLayer:AddDB( DC_ACCOUNT,	'Config\\US\\Account_US_INTERNAL.dsn',			50, false )
+DBLayer:AddDB( DC_LOG,		'Config\\US\\log_US_INTERNAL.dsn',		30, false )
 
 --DBLayer:AddDB( DC_SMS,		'SMS_TEST.dsn',				1, false )
 

@@ -1,4 +1,6 @@
 -- Deterministic Lua 5.1 harness for the shared JoySword PvP AI V6 core.
+collectgarbage( "setpause", 110 )
+collectgarbage( "setstepmul", 200 )
 
 local sourcePath = assert( arg[1],
 	"usage: lua5.1 pvp-ai-v6-harness.lua <npc.lua> [--v7]" )

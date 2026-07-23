@@ -16,6 +16,7 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+$ProgressPreference = "SilentlyContinue"
 $ScriptRoot = if ($PSScriptRoot) {
     $PSScriptRoot
 } else {
@@ -297,7 +298,9 @@ if ($DockerReady) {
     $ShouldRestoreDb = $ForceRebuild -or (-not $ContainerRunning)
 
     if (-not $ShouldRestoreDb) {
-        Write-Host "SQL Server container is already running. Verifying database health..." -ForegroundColor Green
+        Write-Host "SQL Server container is already running. Optimizing database storage & memory buffers..." -ForegroundColor Green
+        & python "$ScriptRoot\scripts\db-optimize-storage.py" --quiet
+        Write-Host "Verifying database health..." -ForegroundColor Green
         & python "$ScriptRoot\scripts\db-healthcheck.py"
         if ($LASTEXITCODE -ne 0) {
             Write-Warning "Database healthcheck failed! Triggering automatic database auto-repair..."

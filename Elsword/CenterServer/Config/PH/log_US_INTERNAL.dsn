@@ -11,4 +11,4 @@ DATABASE=Statistics
 Network=DBMSSOCN
 Address=127.0.0.1,1433
 LastUser=sa
-PacketSize=8192
+PacketSize=16384

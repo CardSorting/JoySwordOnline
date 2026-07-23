@@ -1,4 +1,4 @@
-﻿----------     Channel Server 설정     ----------
+----------     Channel Server 설정     ----------
 
 -- 크래쉬 리포트 메일링 리스트 --
 Server:SetMailingList( "honnak@kog.co.kr" )
@@ -125,14 +125,14 @@ DC_NX_SHOP_GATEWAY : 넥슨 빌링 게이트웨이
 --]]
 -- AddDB( DB 종류, file dsn, thread 개수, DBConnectionString여부 )
 
-DBLayer:AddDB( DC_ACCOUNT,	'Config\\US\\Account_US_INTERNAL.dsn',	3, false )
+DBLayer:AddDB( DC_ACCOUNT,	'Config\\US\\Account_US_INTERNAL.dsn',	50, false )
 
 if Server:GetServerGroupID() == 0 then
-	DBLayer:AddDB( DC_LOG, 'Config\\US\\log_US_INTERNAL.dsn', 3, false )
+	DBLayer:AddDB( DC_LOG, 'Config\\US\\log_US_INTERNAL.dsn', 30, false )
 elseif Server:GetServerGroupID() == 1 then
-	DBLayer:AddDB( DC_LOG, 'Config\\US\\log_US_INTERNAL.dsn', 3, false )
+	DBLayer:AddDB( DC_LOG, 'Config\\US\\log_US_INTERNAL.dsn', 30, false )
 else
-	DBLayer:AddDB( DC_LOG, 'Config\\US\\log_US_INTERNAL.dsn', 3, false )
+	DBLayer:AddDB( DC_LOG, 'Config\\US\\log_US_INTERNAL.dsn', 30, false )
 end
 
 ----------     인증 설정     ----------

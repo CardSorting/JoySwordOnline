@@ -1,4 +1,4 @@
-﻿-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
+-- lua header. UTF-8 인코딩 인식을 위해 이 줄은 지우지 마세요.
 
 ----------     Game Server 설정     ----------
 
@@ -153,18 +153,18 @@ DC_NX_WEB		   : 넥슨 WEB
 --]]
 -- AddDB( DB 종류, file dsn, thread 개수, DBConnectionString여부 )
 
-DBLayer:AddDB( DC_ACCOUNT,	'Account_US_SERVICE.dsn',		10, false )
+DBLayer:AddDB( DC_ACCOUNT,	'Account_US_SERVICE.dsn',		50, false )
 
 if Server:GetServerGroupID() == 0 then
-	DBLayer:AddDB( DC_GAME,		'Game01_US_SERVICE.dsn',			15, false )
-	DBLayer:AddDB( DC_LOG,		'log_US_SERVICE.dsn',	10,false )
+	DBLayer:AddDB( DC_GAME,		'Game01_US_SERVICE.dsn',			50, false )
+	DBLayer:AddDB( DC_LOG,		'log_US_SERVICE.dsn',	30,false )
 	
-	DBLayer:AddDB( DC_KOG_BILLING,		'Billing_US_SERVICE.dsn',		10, false )
+	DBLayer:AddDB( DC_KOG_BILLING,		'Billing_US_SERVICE.dsn',		30, false )
 else
-	DBLayer:AddDB( DC_GAME,		'Game02_US_SERVICE.dsn',		15, false )
-	DBLayer:AddDB( DC_LOG,		'log_US_SERVICE.dsn',		10, false )
+	DBLayer:AddDB( DC_GAME,		'Game02_US_SERVICE.dsn',		50, false )
+	DBLayer:AddDB( DC_LOG,		'log_US_SERVICE.dsn',		30, false )
 	
-	DBLayer:AddDB( DC_KOG_BILLING,		'Billing_US_SERVICE.dsn',		10, false )
+	DBLayer:AddDB( DC_KOG_BILLING,		'Billing_US_SERVICE.dsn',		30, false )
 end
 
 --DBLayer:AddDB( DC_SMS,		'SMS.dsn',		1, false )

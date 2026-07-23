@@ -116,17 +116,17 @@ DC_NX_WEB		   : 넥슨 WEB
 --]]
 -- AddDB( DB 종류, file dsn, thread 개수, DBConnectionString여부 )
 
-DBLayer:AddDB( DC_ACCOUNT,	'Config\\US\\Account_US_INTERNAL.dsn',			3, false )
+DBLayer:AddDB( DC_ACCOUNT,	'Config\\US\\Account_US_INTERNAL.dsn',			50, false )
 
 if Server:GetServerGroupID() == 0 then
-	DBLayer:AddDB( DC_GAME,		'Config\\US\\game01_US_INTERNAL.dsn',		3, false )
-	DBLayer:AddDB( DC_LOG,		'Config\\US\\log_US_INTERNAL.dsn',		3, false )
+	DBLayer:AddDB( DC_GAME,		'Config\\US\\game01_US_INTERNAL.dsn',		50, false )
+	DBLayer:AddDB( DC_LOG,		'Config\\US\\log_US_INTERNAL.dsn',		30, false )
 elseif Server:GetServerGroupID() == 1 then
-	DBLayer:AddDB( DC_GAME,		'Config\\US\\game02_US_INTERNAL.dsn',		3, false )
-	DBLayer:AddDB( DC_LOG,		'Config\\US\\log_US_INTERNAL.dsn',			3, false )
+	DBLayer:AddDB( DC_GAME,		'Config\\US\\game02_US_INTERNAL.dsn',		50, false )
+	DBLayer:AddDB( DC_LOG,		'Config\\US\\log_US_INTERNAL.dsn',			30, false )
 else
-	DBLayer:AddDB( DC_GAME,		'Config\\US\\game01_US_INTERNAL.dsn',		3, false )
-	DBLayer:AddDB( DC_LOG,		'Config\\US\\log_US_INTERNAL.dsn',		3, false )
+	DBLayer:AddDB( DC_GAME,		'Config\\US\\game01_US_INTERNAL.dsn',		50, false )
+	DBLayer:AddDB( DC_LOG,		'Config\\US\\log_US_INTERNAL.dsn',		30, false )
 end
 
 --DBLayer:AddDB( DC_SMS,		'SMS_TEST.dsn',				1, false )

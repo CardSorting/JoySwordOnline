@@ -57,6 +57,17 @@ WHERE unit.Deleted = 0
   );
 
 COMMIT TRANSACTION;
+-- Ensure high-performance nonclustered indexes exist for Marketplace & Personal Shop queries
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.GPShopInfo') AND name = N'IX_GPShopInfo_UnitUID')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_GPShopInfo_UnitUID ON dbo.GPShopInfo (UnitUID);
+END
+GO
+
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.GPShopItem') AND name = N'IX_GPShopItem_UnitUID')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_GPShopItem_UnitUID ON dbo.GPShopItem (UnitUID);
+END
 GO
 
 CREATE OR ALTER PROCEDURE dbo.gup_get_PShop_info_UnitUID
@@ -69,50 +80,47 @@ BEGIN
     DECLARE @OfflineShopExpiry SMALLDATETIME =
         CONVERT(SMALLDATETIME, '2070-01-01T00:00:00', 126);
 
-    BEGIN TRANSACTION;
-
     IF NOT EXISTS (
         SELECT 1
-        FROM dbo.GUnit WITH (UPDLOCK, HOLDLOCK)
+        FROM dbo.GUnit WITH (NOLOCK)
         WHERE UnitUID = @iUnitUID
           AND Deleted = 0
     )
     BEGIN
-        COMMIT TRANSACTION;
         RETURN;
     END;
 
     IF NOT EXISTS (
         SELECT 1
-        FROM dbo.GPShopInfo WITH (UPDLOCK, HOLDLOCK)
+        FROM dbo.GPShopInfo WITH (NOLOCK)
         WHERE UnitUID = @iUnitUID
     )
     BEGIN
-        INSERT INTO dbo.GPShopInfo
-            (UserUID, UnitUID, IsPShopOpen, ShopType, PShopName,
-             BeginDate, ExpirationDate, On_Off)
-        SELECT
-            unit.UserUID,
-            unit.UnitUID,
-            CONVERT(BIT, 0),
-            CONVERT(TINYINT, 0),
-            N'',
-            GETDATE(),
-            @OfflineShopExpiry,
-            CONVERT(BIT, 0)
-        FROM dbo.GUnit AS unit
-        WHERE unit.UnitUID = @iUnitUID
-          AND unit.Deleted = 0;
+        BEGIN TRANSACTION;
+        IF NOT EXISTS (
+            SELECT 1
+            FROM dbo.GPShopInfo WITH (NOLOCK)
+            WHERE UnitUID = @iUnitUID
+        )
+        BEGIN
+            INSERT INTO dbo.GPShopInfo
+                (UserUID, UnitUID, IsPShopOpen, ShopType, PShopName,
+                 BeginDate, ExpirationDate, On_Off)
+            SELECT
+                unit.UserUID,
+                unit.UnitUID,
+                CONVERT(BIT, 0),
+                CONVERT(TINYINT, 0),
+                N'',
+                GETDATE(),
+                @OfflineShopExpiry,
+                CONVERT(BIT, 0)
+            FROM dbo.GUnit AS unit WITH (NOLOCK)
+            WHERE unit.UnitUID = @iUnitUID
+              AND unit.Deleted = 0;
+        END;
+        COMMIT TRANSACTION;
     END;
-
-    UPDATE info
-    SET UserUID = unit.UserUID,
-        ExpirationDate = @OfflineShopExpiry
-    FROM dbo.GPShopInfo AS info
-    JOIN dbo.GUnit AS unit ON unit.UnitUID = info.UnitUID
-    WHERE info.UnitUID = @iUnitUID;
-
-    COMMIT TRANSACTION;
 
     SELECT
         CONVERT(SMALLDATETIME, info.ExpirationDate) AS ExpirationDate,

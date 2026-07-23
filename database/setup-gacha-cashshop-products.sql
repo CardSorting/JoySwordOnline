@@ -91,12 +91,12 @@ BEGIN
         @DI_ENABLEGIFT = DI_ENABLEGIFT,
         @NO_SALEPRICE = NO_SALEPRICE,
         @NO_REALPRICE = NO_REALPRICE
-    FROM dbo.EB_Product
+    FROM dbo.EB_Product WITH (NOLOCK)
     WHERE CD_PRODUCTNO = @CD_PRODUCTNO;
 
     IF EXISTS (
         SELECT 1
-        FROM dbo.EB_Product
+        FROM dbo.EB_Product WITH (NOLOCK)
         WHERE CD_PRODUCTNO = @CD_PRODUCTNO
           AND DI_ISSALE = 1
           AND DT_STARTDATE <= GETDATE()

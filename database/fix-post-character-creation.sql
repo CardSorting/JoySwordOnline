@@ -10,6 +10,108 @@
 USE Account;
 GO
 
+-- Enable Read-Committed Snapshot Isolation (RCSI) for non-blocking reader/writer concurrency
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name = N'Account' AND is_read_committed_snapshot_on = 0)
+BEGIN
+    ALTER DATABASE [Account] SET READ_COMMITTED_SNAPSHOT ON WITH ROLLBACK IMMEDIATE;
+    ALTER DATABASE [Account] SET ALLOW_SNAPSHOT_ISOLATION ON;
+END
+GO
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name = N'Account')
+BEGIN
+    ALTER DATABASE [Account] SET AUTO_CREATE_STATISTICS ON;
+    ALTER DATABASE [Account] SET AUTO_UPDATE_STATISTICS ON;
+    ALTER DATABASE [Account] SET AUTO_UPDATE_STATISTICS_ASYNC ON;
+END
+GO
+
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name = N'Game01' AND is_read_committed_snapshot_on = 0)
+BEGIN
+    ALTER DATABASE [Game01] SET READ_COMMITTED_SNAPSHOT ON WITH ROLLBACK IMMEDIATE;
+    ALTER DATABASE [Game01] SET ALLOW_SNAPSHOT_ISOLATION ON;
+END
+GO
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name = N'Game01')
+BEGIN
+    ALTER DATABASE [Game01] SET AUTO_CREATE_STATISTICS ON;
+    ALTER DATABASE [Game01] SET AUTO_UPDATE_STATISTICS ON;
+    ALTER DATABASE [Game01] SET AUTO_UPDATE_STATISTICS_ASYNC ON;
+END
+GO
+
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name = N'ES_BILLING' AND is_read_committed_snapshot_on = 0)
+BEGIN
+    ALTER DATABASE [ES_BILLING] SET READ_COMMITTED_SNAPSHOT ON WITH ROLLBACK IMMEDIATE;
+    ALTER DATABASE [ES_BILLING] SET ALLOW_SNAPSHOT_ISOLATION ON;
+END
+GO
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name = N'ES_BILLING')
+BEGIN
+    ALTER DATABASE [ES_BILLING] SET AUTO_CREATE_STATISTICS ON;
+    ALTER DATABASE [ES_BILLING] SET AUTO_UPDATE_STATISTICS ON;
+    ALTER DATABASE [ES_BILLING] SET AUTO_UPDATE_STATISTICS_ASYNC ON;
+END
+GO
+
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name = N'Statistics' AND is_read_committed_snapshot_on = 0)
+BEGIN
+    ALTER DATABASE [Statistics] SET READ_COMMITTED_SNAPSHOT ON WITH ROLLBACK IMMEDIATE;
+    ALTER DATABASE [Statistics] SET ALLOW_SNAPSHOT_ISOLATION ON;
+END
+GO
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name = N'Statistics')
+BEGIN
+    ALTER DATABASE [Statistics] SET AUTO_CREATE_STATISTICS ON;
+    ALTER DATABASE [Statistics] SET AUTO_UPDATE_STATISTICS ON;
+    ALTER DATABASE [Statistics] SET AUTO_UPDATE_STATISTICS_ASYNC ON;
+END
+GO
+
+-- Configure Delayed Durability, Recovery Model, and IO Auto-Shrink Prevention for ultra-low latency write I/O
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name = N'Account')
+BEGIN
+    ALTER DATABASE [Account] SET RECOVERY SIMPLE;
+    ALTER DATABASE [Account] SET DELAYED_DURABILITY = FORCED;
+    ALTER DATABASE [Account] SET AUTO_CLOSE OFF;
+    ALTER DATABASE [Account] SET AUTO_SHRINK OFF;
+    ALTER DATABASE [Account] SET TARGET_RECOVERY_TIME = 60 SECONDS;
+    ALTER DATABASE [Account] SET PAGE_VERIFY CHECKSUM;
+END
+GO
+
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name = N'Game01')
+BEGIN
+    ALTER DATABASE [Game01] SET RECOVERY SIMPLE;
+    ALTER DATABASE [Game01] SET DELAYED_DURABILITY = FORCED;
+    ALTER DATABASE [Game01] SET AUTO_CLOSE OFF;
+    ALTER DATABASE [Game01] SET AUTO_SHRINK OFF;
+    ALTER DATABASE [Game01] SET TARGET_RECOVERY_TIME = 60 SECONDS;
+    ALTER DATABASE [Game01] SET PAGE_VERIFY CHECKSUM;
+END
+GO
+
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name = N'ES_BILLING')
+BEGIN
+    ALTER DATABASE [ES_BILLING] SET RECOVERY SIMPLE;
+    ALTER DATABASE [ES_BILLING] SET DELAYED_DURABILITY = FORCED;
+    ALTER DATABASE [ES_BILLING] SET AUTO_CLOSE OFF;
+    ALTER DATABASE [ES_BILLING] SET AUTO_SHRINK OFF;
+    ALTER DATABASE [ES_BILLING] SET TARGET_RECOVERY_TIME = 60 SECONDS;
+    ALTER DATABASE [ES_BILLING] SET PAGE_VERIFY CHECKSUM;
+END
+GO
+
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name = N'Statistics')
+BEGIN
+    ALTER DATABASE [Statistics] SET RECOVERY SIMPLE;
+    ALTER DATABASE [Statistics] SET DELAYED_DURABILITY = FORCED;
+    ALTER DATABASE [Statistics] SET AUTO_CLOSE OFF;
+    ALTER DATABASE [Statistics] SET AUTO_SHRINK OFF;
+    ALTER DATABASE [Statistics] SET TARGET_RECOVERY_TIME = 60 SECONDS;
+    ALTER DATABASE [Statistics] SET PAGE_VERIFY CHECKSUM;
+END
+GO
+
 -- Create or upgrade UserLoginAttempts table for hashed lockout tracking
 IF OBJECT_ID(N'dbo.UserLoginAttempts', N'U') IS NOT NULL AND COL_LENGTH(N'dbo.UserLoginAttempts', N'UserHash') IS NULL
 BEGIN
@@ -50,6 +152,238 @@ BEGIN
     CREATE NONCLUSTERED INDEX IX_RegistrationHistory_RegTime ON dbo.RegistrationHistory (RegTime);
 END
 GO
+
+-- Ensure essential high-performance indexes exist across Account, Game01, and ES_BILLING
+USE Account;
+GO
+
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.MUser') AND name = N'IX_MUser_UserID')
+BEGIN
+    CREATE UNIQUE NONCLUSTERED INDEX IX_MUser_UserID ON dbo.MUser (UserID);
+END
+GO
+
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.MUserAuthority') AND name = N'IX_MUserAuthority_UserUID')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_MUserAuthority_UserUID ON dbo.MUserAuthority (UserUID, AuthLevel);
+END
+GO
+
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.MUserSkillOption') AND name = N'IX_MUserSkillOption_UserUID')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_MUserSkillOption_UserUID ON dbo.MUserSkillOption (UserUID);
+END
+GO
+
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.MUserOTP') AND name = N'IX_MUserOTP_UserUID')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_MUserOTP_UserUID ON dbo.MUserOTP (UserUID);
+END
+GO
+
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.RegistrationHistory') AND name = N'IX_RegistrationHistory_RegTime_PasswordHash')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_RegistrationHistory_RegTime_PasswordHash ON dbo.RegistrationHistory (RegTime, PasswordHash);
+END
+GO
+
+USE Game01;
+GO
+
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.users') AND name = N'IX_users_Login')
+BEGIN
+    CREATE UNIQUE NONCLUSTERED INDEX IX_users_Login ON dbo.users (Login);
+END
+GO
+
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.users') AND name = N'IX_users_LoginUID')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_users_LoginUID ON dbo.users (LoginUID);
+END
+GO
+
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.VCGAVirtualCash') AND name = N'IX_VCGAVirtualCash_LoginUID')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_VCGAVirtualCash_LoginUID ON dbo.VCGAVirtualCash (LoginUID);
+END
+GO
+
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.Unit') AND name = N'IX_Unit_LoginUID')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_Unit_LoginUID ON dbo.Unit (LoginUID, UnitUID);
+END
+GO
+
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.GUnit') AND name = N'IX_GUnit_UserUID_Deleted')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_GUnit_UserUID_Deleted ON dbo.GUnit (UserUID, Deleted);
+END
+GO
+
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.GItem') AND name = N'IX_GItem_UnitUID')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_GItem_UnitUID ON dbo.GItem (UnitUID);
+END
+GO
+
+USE ES_BILLING;
+GO
+
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.EB_Cash') AND name = N'IX_EB_Cash_CD_USERUID')
+BEGIN
+    CREATE UNIQUE NONCLUSTERED INDEX IX_EB_Cash_CD_USERUID ON dbo.EB_Cash (CD_USERUID);
+END
+GO
+
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.EB_Product') AND name = N'IX_EB_Product_SaleStatus')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_EB_Product_SaleStatus ON dbo.EB_Product (DI_ISSALE, NO_PRODUCT_ID);
+END
+GO
+
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.EB_BuyItemLog') AND name = N'IX_EB_BuyItemLog_UserUID')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_EB_BuyItemLog_UserUID ON dbo.EB_BuyItemLog (CD_USERUID, DT_REGDATE);
+END
+GO
+
+IF OBJECT_ID(N'dbo.JoySwordCashAllowanceClaim', N'U') IS NOT NULL 
+   AND NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.JoySwordCashAllowanceClaim') AND name = N'IX_JoySwordCashAllowanceClaim_UserUID_ClaimDate')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_JoySwordCashAllowanceClaim_UserUID_ClaimDate ON dbo.JoySwordCashAllowanceClaim (UserUID, ClaimDate);
+END
+GO
+
+IF OBJECT_ID(N'dbo.JoySwordVIPClaim', N'U') IS NOT NULL 
+   AND NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.JoySwordVIPClaim') AND name = N'IX_JoySwordVIPClaim_UserUID_VIPTier')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_JoySwordVIPClaim_UserUID_VIPTier ON dbo.JoySwordVIPClaim (UserUID, VIPTier);
+END
+GO
+
+IF OBJECT_ID(N'dbo.JoySwordBattlePassClaim', N'U') IS NOT NULL 
+   AND NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.JoySwordBattlePassClaim') AND name = N'IX_JoySwordBattlePassClaim_UserUID_TierLevel')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_JoySwordBattlePassClaim_UserUID_TierLevel ON dbo.JoySwordBattlePassClaim (UserUID, TierLevel);
+END
+GO
+
+IF OBJECT_ID(N'dbo.JoySwordMonthlyPass', N'U') IS NOT NULL 
+   AND NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.JoySwordMonthlyPass') AND name = N'IX_JoySwordMonthlyPass_UserUID_IsActive')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_JoySwordMonthlyPass_UserUID_IsActive ON dbo.JoySwordMonthlyPass (UserUID, IsActive);
+END
+GO
+
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.EB_Product') AND name = N'IX_EB_Product_CD_PRODUCTNO')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_EB_Product_CD_PRODUCTNO ON dbo.EB_Product (CD_PRODUCTNO);
+END
+GO
+
+USE Game01;
+GO
+
+IF OBJECT_ID(N'dbo.GUnit', N'U') IS NOT NULL 
+   AND NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.GUnit') AND name = N'IX_GUnit_UnitUID_ED')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_GUnit_UnitUID_ED ON dbo.GUnit (UnitUID) INCLUDE (ED);
+END
+GO
+
+IF OBJECT_ID(N'dbo.EL_UNIT', N'U') IS NOT NULL 
+   AND NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.EL_UNIT') AND name = N'IX_EL_UNIT_NO_USERUID')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_EL_UNIT_NO_USERUID ON dbo.EL_UNIT (NO_USERUID);
+END
+GO
+
+IF OBJECT_ID(N'dbo.EL_UNIT', N'U') IS NOT NULL 
+   AND NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.EL_UNIT') AND name = N'IX_EL_UNIT_NO_UNITUID_NO_ED')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_EL_UNIT_NO_UNITUID_NO_ED ON dbo.EL_UNIT (NO_UNITUID) INCLUDE (NO_ED);
+END
+GO
+
+IF OBJECT_ID(N'dbo.GItem', N'U') IS NOT NULL 
+   AND NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.GItem') AND name = N'IX_GItem_UnitUID_ItemID')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_GItem_UnitUID_ItemID ON dbo.GItem (UnitUID, ItemID);
+END
+GO
+
+IF OBJECT_ID(N'dbo.GItemSocket', N'U') IS NOT NULL 
+   AND NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.GItemSocket') AND name = N'IX_GItemSocket_ItemUID')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_GItemSocket_ItemUID ON dbo.GItemSocket (ItemUID);
+END
+GO
+
+IF OBJECT_ID(N'dbo.JoySwordStreakClaim', N'U') IS NOT NULL 
+   AND NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.JoySwordStreakClaim') AND name = N'IX_JoySwordStreakClaim_UserUID_ClaimDateKey')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_JoySwordStreakClaim_UserUID_ClaimDateKey ON dbo.JoySwordStreakClaim (UserUID, ClaimDateKey) INCLUDE (StreakDay);
+END
+GO
+
+IF OBJECT_ID(N'dbo.JoySwordWeeklyClaim', N'U') IS NOT NULL 
+   AND NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.JoySwordWeeklyClaim') AND name = N'IX_JoySwordWeeklyClaim_UserUID_WeekYearKey')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_JoySwordWeeklyClaim_UserUID_WeekYearKey ON dbo.JoySwordWeeklyClaim (UserUID, WeekYearKey);
+END
+GO
+
+IF OBJECT_ID(N'dbo.JoySwordAccountLevelClaim', N'U') IS NOT NULL 
+   AND NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.JoySwordAccountLevelClaim') AND name = N'IX_JoySwordAccountLevelClaim_UserUID_TargetLevel')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_JoySwordAccountLevelClaim_UserUID_TargetLevel ON dbo.JoySwordAccountLevelClaim (UserUID, TargetLevel);
+END
+GO
+
+IF OBJECT_ID(N'dbo.JoySwordWinbackClaim', N'U') IS NOT NULL 
+   AND NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.JoySwordWinbackClaim') AND name = N'IX_JoySwordWinbackClaim_UserUID')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_JoySwordWinbackClaim_UserUID ON dbo.JoySwordWinbackClaim (UserUID);
+END
+GO
+
+IF OBJECT_ID(N'dbo.JoySwordFirstTopupBonus', N'U') IS NOT NULL 
+   AND NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.JoySwordFirstTopupBonus') AND name = N'IX_JoySwordFirstTopupBonus_UserUID_TierID')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_JoySwordFirstTopupBonus_UserUID_TierID ON dbo.JoySwordFirstTopupBonus (UserUID, TierID);
+END
+GO
+
+IF OBJECT_ID(N'dbo.GRank', N'U') IS NOT NULL 
+   AND NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.GRank') AND name = N'IX_GRank_UnitUID_ExpRank')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_GRank_UnitUID_ExpRank ON dbo.GRank (UnitUID, ExpRank);
+END
+GO
+
+IF OBJECT_ID(N'dbo.Rank_SpaceTime_Week', N'U') IS NOT NULL 
+   AND NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.Rank_SpaceTime_Week') AND name = N'IX_Rank_SpaceTime_Week_UnitUID_Rank')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_Rank_SpaceTime_Week_UnitUID_Rank ON dbo.Rank_SpaceTime_Week (UnitUID, [Rank]);
+END
+GO
+
+IF OBJECT_ID(N'dbo.Rank_SpaceTime_Month', N'U') IS NOT NULL 
+   AND NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.Rank_SpaceTime_Month') AND name = N'IX_Rank_SpaceTime_Month_UnitUID_Rank')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_Rank_SpaceTime_Month_UnitUID_Rank ON dbo.Rank_SpaceTime_Month (UnitUID, [Rank]);
+END
+GO
+
+IF OBJECT_ID(N'dbo.Rank_SpaceTime_Day', N'U') IS NOT NULL 
+   AND NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.Rank_SpaceTime_Day') AND name = N'IX_Rank_SpaceTime_Day_UnitUID_Rank')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_Rank_SpaceTime_Day_UnitUID_Rank ON dbo.Rank_SpaceTime_Day (UnitUID, [Rank]);
+END
+GO
+
+USE Account;
+GO
 -- Create or upgrade rate limit helper procedure
 IF OBJECT_ID(N'dbo.mup_check_and_record_rate_limit', N'P') IS NOT NULL
     DROP PROCEDURE dbo.mup_check_and_record_rate_limit;
@@ -64,6 +398,7 @@ BEGIN
         @DelaySeconds INT OUTPUT
     WITH NATIVE_COMPILATION, SCHEMABINDING
     AS
+SET NOCOUNT ON;
     BEGIN ATOMIC WITH (
         TRANSACTION ISOLATION LEVEL = SNAPSHOT,
         LANGUAGE = N''us_english''
@@ -1138,7 +1473,7 @@ BEGIN
         BEGIN TRAN;
 
         SELECT @iUserUID = CONVERT(bigint, UserUID)
-        FROM dbo.MUser WITH (UPDLOCK, HOLDLOCK)
+        FROM dbo.MUser WITH (NOLOCK)
         WHERE UserID = @strUserID_;
 
         IF ISNULL(@iUserUID, 0) = 0
@@ -1157,18 +1492,18 @@ BEGIN
             SET @iUserUID = CONVERT(bigint, SCOPE_IDENTITY());
         END
 
-        IF NOT EXISTS (SELECT 1 FROM dbo.MUserAuthority WITH (UPDLOCK, HOLDLOCK) WHERE UserUID = @iUserUID)
+        IF NOT EXISTS (SELECT 1 FROM dbo.MUserAuthority WITH (NOLOCK) WHERE UserUID = @iUserUID)
             INSERT INTO dbo.MUserAuthority (UserUID, AuthLevel) VALUES (@iUserUID, 0);
 
         IF OBJECT_ID(N'dbo.MUserSkillOption', N'U') IS NOT NULL
-           AND NOT EXISTS (SELECT 1 FROM dbo.MUserSkillOption WITH (UPDLOCK, HOLDLOCK) WHERE UserUID = @iUserUID)
+           AND NOT EXISTS (SELECT 1 FROM dbo.MUserSkillOption WITH (NOLOCK) WHERE UserUID = @iUserUID)
             INSERT INTO dbo.MUserSkillOption (UserUID, SkillOption) VALUES (@iUserUID, 1);
 
         IF OBJECT_ID(N'dbo.MUserOTP', N'U') IS NOT NULL
-           AND NOT EXISTS (SELECT 1 FROM dbo.MUserOTP WITH (UPDLOCK, HOLDLOCK) WHERE UserUID = @iUserUID)
+           AND NOT EXISTS (SELECT 1 FROM dbo.MUserOTP WITH (NOLOCK) WHERE UserUID = @iUserUID)
             INSERT INTO dbo.MUserOTP (UserUID, OTP) VALUES (@iUserUID, @strPassword_);
 
-        IF NOT EXISTS (SELECT 1 FROM ES_BILLING.dbo.EB_Cash WITH (UPDLOCK, HOLDLOCK) WHERE CD_USERUID = @iUserUID)
+        IF NOT EXISTS (SELECT 1 FROM ES_BILLING.dbo.EB_Cash WITH (NOLOCK) WHERE CD_USERUID = @iUserUID)
         BEGIN
             INSERT INTO ES_BILLING.dbo.EB_Cash (
                 CD_USERUID, ST_USERID, NO_TOTAL_CHARGE_CASH, NO_TOTAL_CHARGE_BONUS,
@@ -1187,7 +1522,7 @@ BEGIN
             -- users.LoginUID, so virtual cash MUST hang off the real users row.
             DECLARE @iGameLoginUID int = NULL;
             SELECT @iGameLoginUID = LoginUID
-            FROM Game01.dbo.users WITH (UPDLOCK, HOLDLOCK)
+            FROM Game01.dbo.users WITH (NOLOCK)
             WHERE Login = @strUserID_ OR LoginUID = CONVERT(int, @iUserUID);
 
             IF @iGameLoginUID IS NULL
@@ -1211,7 +1546,7 @@ BEGIN
             -- Virtual cash keyed on the resolved (FK-valid) Game01 LoginUID.
             IF NOT EXISTS (
                 SELECT 1
-                FROM Game01.dbo.VCGAVirtualCash WITH (UPDLOCK, HOLDLOCK)
+                FROM Game01.dbo.VCGAVirtualCash WITH (NOLOCK)
                 WHERE LoginUID = @iGameLoginUID
             )
                 INSERT INTO Game01.dbo.VCGAVirtualCash (LoginUID, VCPoint)
@@ -1613,21 +1948,24 @@ BEGIN
 END
 
 -- Self-heal: guarantee the downstream gameplay rows exist for this account
--- (Game01.dbo.users, VCGAVirtualCash, billing, authority). Idempotent: for an
--- existing account it only backfills whatever is missing and never rewrites the
--- password or duplicates rows. Reserved/admin names are skipped inside the proc.
-DECLARE @HealOK INT = 0, @HealUID BIGINT = 0;
-EXEC dbo.JoySwordEnsurePublicIdentity
-    @strUserID_ = @strUserID_,
-    @strPassword_ = @strPassword,
-    @strUserName_ = @strUserName,
-    @iPublisherSN_ = @iPublisherSN,
-    @bGender_ = 1,
-    @iAge_ = @iAge,
-    @iGuestUser_ = 0,
-    @iChannelCode = 0,
-    @iUserUID = @HealUID OUTPUT,
-    @iOK = @HealOK OUTPUT;
+-- (Game01.dbo.users, VCGAVirtualCash, billing, authority). Fast-path check: only
+-- invoke full provisioning if downstream rows are missing.
+IF NOT EXISTS (SELECT 1 FROM Game01.dbo.users WITH (NOLOCK) WHERE Login = @strUserID_)
+   OR NOT EXISTS (SELECT 1 FROM ES_BILLING.dbo.EB_Cash WITH (NOLOCK) WHERE CD_USERUID = @iUserUID)
+BEGIN
+    DECLARE @HealOK INT = 0, @HealUID BIGINT = 0;
+    EXEC dbo.JoySwordEnsurePublicIdentity
+        @strUserID_ = @strUserID_,
+        @strPassword_ = @strPassword,
+        @strUserName_ = @strUserName,
+        @iPublisherSN_ = @iPublisherSN,
+        @bGender_ = 1,
+        @iAge_ = @iAge,
+        @iGuestUser_ = 0,
+        @iChannelCode = 0,
+        @iUserUID = @HealUID OUTPUT,
+        @iOK = @HealOK OUTPUT;
+END
 
 IF @iAge_ <> @iAge
 BEGIN

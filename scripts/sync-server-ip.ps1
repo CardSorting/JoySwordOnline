@@ -27,6 +27,7 @@ param(
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
+$ProgressPreference = 'SilentlyContinue'
 
 $ScriptRoot = Split-Path -Parent -Path $MyInvocation.MyCommand.Definition
 $RootFolder = Split-Path -Parent -Path $ScriptRoot

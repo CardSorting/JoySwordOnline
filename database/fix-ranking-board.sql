@@ -51,6 +51,12 @@ WHERE record.Stage IS NULL
 COMMIT TRANSACTION;
 GO
 
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE object_id = OBJECT_ID(N'dbo.Rank_SpaceTime_MyRecord') AND name = N'IX_Rank_SpaceTime_MyRecord_UnitUID')
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_Rank_SpaceTime_MyRecord_UnitUID ON dbo.Rank_SpaceTime_MyRecord (UnitUID);
+END
+GO
+
 CREATE OR ALTER PROCEDURE dbo.gup_get_rank_myrecord
     @iUnitUID BIGINT
 AS

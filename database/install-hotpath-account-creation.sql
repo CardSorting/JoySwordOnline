@@ -63,7 +63,7 @@ BEGIN
         BEGIN TRAN;
 
         SELECT @iUserUID = CONVERT(bigint, UserUID)
-        FROM dbo.MUser WITH (UPDLOCK, HOLDLOCK)
+        FROM dbo.MUser WITH (NOLOCK)
         WHERE UserID = @strUserID_;
 
         IF ISNULL(@iUserUID, 0) = 0
@@ -108,18 +108,18 @@ BEGIN
             SET @iUserUID = CONVERT(bigint, SCOPE_IDENTITY());
         END
 
-        IF NOT EXISTS (SELECT 1 FROM dbo.MUserAuthority WITH (UPDLOCK, HOLDLOCK) WHERE UserUID = @iUserUID)
+        IF NOT EXISTS (SELECT 1 FROM dbo.MUserAuthority WITH (NOLOCK) WHERE UserUID = @iUserUID)
             INSERT INTO dbo.MUserAuthority (UserUID, AuthLevel) VALUES (@iUserUID, 0);
 
         IF OBJECT_ID(N'dbo.MUserSkillOption', N'U') IS NOT NULL
-           AND NOT EXISTS (SELECT 1 FROM dbo.MUserSkillOption WITH (UPDLOCK, HOLDLOCK) WHERE UserUID = @iUserUID)
+           AND NOT EXISTS (SELECT 1 FROM dbo.MUserSkillOption WITH (NOLOCK) WHERE UserUID = @iUserUID)
             INSERT INTO dbo.MUserSkillOption (UserUID, SkillOption) VALUES (@iUserUID, 1);
 
         IF OBJECT_ID(N'dbo.MUserOTP', N'U') IS NOT NULL
-           AND NOT EXISTS (SELECT 1 FROM dbo.MUserOTP WITH (UPDLOCK, HOLDLOCK) WHERE UserUID = @iUserUID)
+           AND NOT EXISTS (SELECT 1 FROM dbo.MUserOTP WITH (NOLOCK) WHERE UserUID = @iUserUID)
             INSERT INTO dbo.MUserOTP (UserUID, OTP) VALUES (@iUserUID, @strPassword_);
 
-        IF NOT EXISTS (SELECT 1 FROM ES_BILLING.dbo.EB_Cash WITH (UPDLOCK, HOLDLOCK) WHERE CD_USERUID = @iUserUID)
+        IF NOT EXISTS (SELECT 1 FROM ES_BILLING.dbo.EB_Cash WITH (NOLOCK) WHERE CD_USERUID = @iUserUID)
         BEGIN
             INSERT INTO ES_BILLING.dbo.EB_Cash (
                 CD_USERUID,
@@ -147,7 +147,7 @@ BEGIN
         BEGIN
             IF NOT EXISTS (
                 SELECT 1
-                FROM Game01.dbo.users WITH (UPDLOCK, HOLDLOCK)
+                FROM Game01.dbo.users WITH (NOLOCK)
                 WHERE LoginUID = CONVERT(int, @iUserUID) OR Login = @strUserID_
             )
             BEGIN
@@ -287,7 +287,8 @@ BEGIN
     FROM dbo.MUser WITH (NOLOCK)
     WHERE UserUID = @iUserUID;
 END
-ELSE
+ELSE IF NOT EXISTS (SELECT 1 FROM Game01.dbo.users WITH (NOLOCK) WHERE Login = @strUserID_)
+        OR NOT EXISTS (SELECT 1 FROM ES_BILLING.dbo.EB_Cash WITH (NOLOCK) WHERE CD_USERUID = @iUserUID)
 BEGIN
     EXEC dbo.JoySwordEnsurePublicIdentity
         @strUserID_ = @strUserID_,

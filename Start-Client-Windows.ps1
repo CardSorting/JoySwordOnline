@@ -1,5 +1,6 @@
 # Backward-compatible entry point for the shared JoySword client launcher.
 $ErrorActionPreference = "Stop"
+$ProgressPreference = "SilentlyContinue"
 $ScriptRoot = if ($PSScriptRoot) { $PSScriptRoot } else { Split-Path -Parent $MyInvocation.MyCommand.Definition }
 
 # Unblock key folders and files to prevent Windows "Open File - Security Warning" and SmartScreen alerts,
