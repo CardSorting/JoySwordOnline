@@ -1,3 +1,5 @@
+name: joyswordoffline
+
 services:
   postgres:
     image: postgres:16-alpine
@@ -74,4 +76,6 @@ services:
 
 volumes:
   mssql-data:
+    name: joyswordoffline_mssql-data
   postgres-data:
+    name: joyswordoffline_postgres-data

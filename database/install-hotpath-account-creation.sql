@@ -1,62 +1,3 @@
-# Installs the public-login hotpath account creation repair.
-#
-# The legacy LoginServer/GameServer handoff needs both Account identity rows and
-# Game01 legacy identity rows. Without Game01.dbo.users, login can appear to
-# succeed but channel selection fails on GameServer with UID 0.
-
-Set-StrictMode -Version Latest
-$ErrorActionPreference = 'Stop'
-
-$Root = 'D:\JoySword\Server'
-if (-not (Test-Path -LiteralPath $Root)) {
-    $Root = Split-Path -Parent -Path $PSScriptRoot
-}
-
-$EnvFile = Join-Path $Root 'Elsword\offline\offline.env'
-$EnvVars = @{}
-if (Test-Path -LiteralPath $EnvFile) {
-    foreach ($line in Get-Content -LiteralPath $EnvFile) {
-        $trimmed = $line.Trim()
-        if (-not $trimmed -or $trimmed.StartsWith('#') -or $trimmed.IndexOf('=') -lt 0) {
-            continue
-        }
-        $parts = $trimmed.Split('=', 2)
-        $EnvVars[$parts[0].Trim()] = $parts[1].Trim()
-    }
-}
-
-$Password = $env:JOYSWORD_SA_PASSWORD
-if (-not $Password -and $EnvVars.ContainsKey('DB_PASSWORD')) {
-    $Password = $EnvVars['DB_PASSWORD']
-}
-if (-not $Password) {
-    throw 'DB password unavailable. Set JOYSWORD_SA_PASSWORD or DB_PASSWORD in offline.env.'
-}
-
-$SqlCmd = Get-Command sqlcmd.exe -ErrorAction SilentlyContinue
-if ($SqlCmd) {
-    $SqlCmdPath = $SqlCmd.Source
-} else {
-    $SqlCmdPath = @(
-        'C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\180\Tools\Binn\sqlcmd.exe',
-        'C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\sqlcmd.exe'
-    ) | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
-}
-if (-not $SqlCmdPath) {
-    $SqlFile = Join-Path $Root 'database\install-hotpath-account-creation.sql'
-    $RunSqlScript = Join-Path $Root 'scripts\run_sql_file.py'
-    if ((Test-Path -LiteralPath $SqlFile) -and (Test-Path -LiteralPath $RunSqlScript)) {
-        Write-Host 'sqlcmd.exe not found on host. Falling back to python run_sql_file.py...' -ForegroundColor Yellow
-        & python $RunSqlScript $SqlFile
-        if ($LASTEXITCODE -eq 0) {
-            Write-Output 'Hotpath account creation repair installed via Python.'
-            exit 0
-        }
-    }
-    throw 'sqlcmd.exe not found and Python fallback failed'
-}
-
-$Sql = @'
 USE [Account];
 GO
 
@@ -505,14 +446,3 @@ GO
 
 PRINT 'JoySword hotpath account creation repair installed.';
 GO
-'@
-
-$TempSql = Join-Path $env:TEMP 'joysword-hotpath-account-creation.sql'
-Set-Content -LiteralPath $TempSql -Value $Sql -Encoding UTF8
-
-& $SqlCmdPath -S 'localhost\SQLEXPRESS' -U sa -P $Password -C -b -i $TempSql
-if ($LASTEXITCODE -ne 0) {
-    throw "Hotpath account creation SQL failed with exit code $LASTEXITCODE"
-}
-
-Write-Output 'Hotpath account creation repair installed.'

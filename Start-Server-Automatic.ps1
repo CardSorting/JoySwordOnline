@@ -300,8 +300,13 @@ if ($DockerReady) {
         Write-Host "SQL Server container is already running. Verifying database health..." -ForegroundColor Green
         & python "$ScriptRoot\scripts\db-healthcheck.py"
         if ($LASTEXITCODE -ne 0) {
-            Write-Warning "Database healthcheck failed! Automatically triggering database restore/repair..."
-            $ShouldRestoreDb = $true
+            Write-Warning "Database healthcheck failed! Triggering automatic database auto-repair..."
+            & python "$ScriptRoot\scripts\db-auto-repair.py"
+            if ($LASTEXITCODE -ne 0) {
+                Write-Warning "Database auto-repair finished with warnings. Proceeding..."
+            } else {
+                Write-Host "Database auto-repair completed successfully! Database is healthy and ready!" -ForegroundColor Green
+            }
         } else {
             Write-Host "Database is healthy and ready!" -ForegroundColor Green
         }
@@ -350,6 +355,11 @@ $SQLCmdPath -S localhost -U sa -P "$DBPassword" $ExtraArgs -Q "SELECT 1"
 
         # Restore the databases
         foreach ($DbName in @("Account", "ES_BILLING", "Game01", "Statistics")) {
+            $BakPath = Join-Path $ScriptRoot "database\$DbName.bak"
+            if (-not (Test-Path $BakPath)) {
+                Write-Warning "Database backup $DbName.bak not found in database folder. Skipping backup restore."
+                continue
+            }
             Write-Host "Restoring database $DbName..." -ForegroundColor Green
             
             $FileListQuery = "SET NOCOUNT ON; RESTORE FILELISTONLY FROM DISK = N'/backups/$DbName.bak';"
@@ -409,6 +419,10 @@ $SQLCmdPath -S localhost -U sa -P "$DBPassword" $ExtraArgs -b -Q "$RestoreQuery"
             }
             Write-Host "Database $DbName restored successfully!" -ForegroundColor Green
         }
+
+        # Run complete database auto-repair and seeding pipeline
+        Write-Host "Running database auto-repair and seed pipeline..." -ForegroundColor Green
+        & python "$ScriptRoot\scripts\db-auto-repair.py"
 
         # Seed public admin user
         Write-Host "Seeding public admin/operator account..." -ForegroundColor Green
@@ -648,6 +662,8 @@ try {
     }
 
     # 9. Start Elsword Server Stack
+    Write-Host "Ensuring clean port state..." -ForegroundColor Green
+    & python "$ScriptRoot\scripts\stop-offline.py"
     Write-Host "Launching Elsword server stack..." -ForegroundColor Green
     $StartArgs = @()
     if ($Supervise) {
@@ -659,9 +675,19 @@ try {
     }
 
     Write-Host "==========================================================" -ForegroundColor Green
-    Write-Host "Automated startup complete!" -ForegroundColor Green
-    Write-Host "Check the console windows for each Elsword server process." -ForegroundColor Green
-    Write-Host "Your players can now launch Start-Client-Windows.bat to connect." -ForegroundColor Green
+    Write-Host "         JoySword Server Stack Online & Ready!            " -ForegroundColor Green
+    Write-Host "==========================================================" -ForegroundColor Green
+    Write-Host " Active Endpoint  : $PublicIP" -ForegroundColor Cyan
+    Write-Host " LoginServer      : Port 9200" -ForegroundColor Cyan
+    Write-Host " GameServer       : Port 9300" -ForegroundColor Cyan
+    Write-Host " ChannelServer    : Port 9400" -ForegroundColor Cyan
+    Write-Host " GlobalServer     : Port 9500" -ForegroundColor Cyan
+    Write-Host " CenterServer     : Port 9100" -ForegroundColor Cyan
+    Write-Host " Web Portal API   : Port 3000" -ForegroundColor Cyan
+    Write-Host "----------------------------------------------------------" -ForegroundColor Green
+    Write-Host " Launch Game Client:" -ForegroundColor Yellow
+    Write-Host "   Run: .\Start-Client-Windows.bat" -ForegroundColor Yellow
+    Write-Host "   Or:  .\JoySword-Launcher-Portable.exe" -ForegroundColor Yellow
     Write-Host "==========================================================" -ForegroundColor Green
 } finally {
     Write-Host "Cleaning up background services..." -ForegroundColor Yellow

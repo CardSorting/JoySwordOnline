@@ -1,0 +1,6 @@
+-- Ensure required JoySword databases exist
+IF DB_ID(N'Account') IS NULL CREATE DATABASE [Account];
+IF DB_ID(N'ES_BILLING') IS NULL CREATE DATABASE [ES_BILLING];
+IF DB_ID(N'Game01') IS NULL CREATE DATABASE [Game01];
+IF DB_ID(N'Statistics') IS NULL CREATE DATABASE [Statistics];
+GO
